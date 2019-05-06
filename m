@@ -1,67 +1,69 @@
-Return-Path: <linux-ntb+bncBC2K3M5VRYEBB7EPYHTAKGQED3BS72Q@googlegroups.com>
+Return-Path: <linux-ntb+bncBC2K3M5VRYEBBQM3YHTAKGQE7TRRJXA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yw1-xc3c.google.com (mail-yw1-xc3c.google.com [IPv6:2607:f8b0:4864:20::c3c])
-	by mail.lfdr.de (Postfix) with ESMTPS id E0EF714C95
-	for <lists+linux-ntb@lfdr.de>; Mon,  6 May 2019 16:43:09 +0200 (CEST)
-Received: by mail-yw1-xc3c.google.com with SMTP id g128sf25483056ywf.11
-        for <lists+linux-ntb@lfdr.de>; Mon, 06 May 2019 07:43:09 -0700 (PDT)
+Received: from mail-yw1-xc37.google.com (mail-yw1-xc37.google.com [IPv6:2607:f8b0:4864:20::c37])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3B99014F0C
+	for <lists+linux-ntb@lfdr.de>; Mon,  6 May 2019 17:07:46 +0200 (CEST)
+Received: by mail-yw1-xc37.google.com with SMTP id e5sf25766054ywc.8
+        for <lists+linux-ntb@lfdr.de>; Mon, 06 May 2019 08:07:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:message-id:subject:mime-version
-         :x-original-sender:precedence:mailing-list:list-id:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=R/+o6Az+4+h7KN52F8Zd/BDhEwOTUD4dpPjYSmuFBL0=;
-        b=TgKWjCpNNNcf+wi7l8XaATlUolB06qzO6m6kXZFngzZQ9KnBCjT87s7meyJBkQDIbw
-         14wJ8JI8zjgtBRaKeqaRCUo8RJMWheC7wgt+dPhN5OpFXRxCWVMl/xIFenaVnKTC2tqP
-         61kxLuLw3WOfd/ZJpW2QKo0xppNw2mpDDFwmWwnlSFc6TL4LspDVpWtM2lftd1K3XNx4
-         lk/j908HCVfM8/my4mnGYXnacyfRHTB+LELdddnb1veQh/kY1OOaIAvEAXsBKUQZbQ7m
-         +xnnMHcT5ih0AGuewdau3d3Fa3/QksRJ4lsuS4Fxkn5Pmkr5d3MrrdhyXxz12SOLqsnF
-         aoug==
+        h=sender:date:from:to:message-id:in-reply-to:references:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=MPuLPlOZSpD/GqL+phx9RQL7fTeTwawF0nKR/NP/r+I=;
+        b=AcimufdmTLzkcDnPRHHS40g0nyze+uSaEHm55bIDjmT8Jz8OfP/jZNEcbpjdCG85Ke
+         iD1LRPWBSVsshbP3T2sN9Kh4+hmH8L7SfamjsCjv0v7SySiB/DQpt6kYCAleEpnmMlhu
+         COGP5OnEiKDE62jW22SzcUKWEkZSgNyvpLP7XhSpAOI3Gcms/D/zLbrv/aWBd/z/Whgc
+         sN+oE20gOqsxbeby7vbBYT71BvjSe1uPUo8g3KsrvXKeQVWTpPWNBM6QUBc9dr5Q0H81
+         QjowbNUM2ahGJCKQ0ecEUUuQjM2tlR8OTy3y8wcdtejOyV5rYrvcyUxAdZsZ4yz7ndYw
+         3jAw==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=date:from:to:message-id:subject:mime-version:x-original-sender
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=R/+o6Az+4+h7KN52F8Zd/BDhEwOTUD4dpPjYSmuFBL0=;
-        b=CbWxm8ILETHBLEhLAhUfKGlzGsejsD62bhzYFZF/AfeNvLFJmuvDbrAVaD9JDhB1Ow
-         EYu/6do8/4xi57S8Q6Ma+bb3T01OpJn431+LmlR3rUIPTEj9noJDLNnRa/bskawHoq6S
-         7WmjK2kpDb3I3i4mF5gMBRN3/uuhNZOOUmVcAuxlBxCXYt4FXPKXJxkXi98JSk6c6vO7
-         RpP11tGwrwz7BT7z2Eh0zzSX6E3Yb9vGNzxPQp2b87NUOhjXucb0RgjkM0/lzF5jKHgf
-         21FQU2EeyTjK1nUJ8t7ad89BsgXd0oxzJ8ixvQJS7ctSQlB3WT7cEeewsZs3CpQ/eGIq
-         1Awg==
+        h=date:from:to:message-id:in-reply-to:references:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=MPuLPlOZSpD/GqL+phx9RQL7fTeTwawF0nKR/NP/r+I=;
+        b=nZm/wv9ceBJI6qn0/WDkkfx9VCVw+9zdsBvqynuGVU2pjbfjBFO24JmoQbxnxCfzOD
+         7/qr4lT+nRcrohmLyebJ1WSzdDwUfU8AH2nPENB+62u3v64E0omFUeICy/EStXW6wuZ0
+         S61/BbUW8FaqUPs+lkwQEMxArlFSTFW/k1ecTwRGI/1lA8xkoBBc9VJieXd8NIJCAX4L
+         lE6FhrvlPB6EQXysbF/gJiVOeOWvxnL9/rVud5+qroLeK1jHxBDZb6z/apFMUOroyDBK
+         7sRKoj57mQhL8KsR+U1lNUunfl+Ml0UL3fVqpcEgA+itHLuGXa34VKsB/i569Q+3NHaX
+         +PQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:message-id:subject
-         :mime-version:x-original-sender:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=R/+o6Az+4+h7KN52F8Zd/BDhEwOTUD4dpPjYSmuFBL0=;
-        b=sBWXVfKp7ZloYPxqoIF4DwId+Qx7ff6NdJSp3Qtjg/PDjgFOOuJxehoxxqjj18jrFo
-         HZslirZ3HSU/FESJOpW480eAKZ+odcKR/j1BnjU8cV0LAthKh/kfiJaMOziN7aniDLnh
-         ImhhBqGIG0x/K0rW5ZK6aZmKLxJ+KuiSfCVW9AI3gQRHjhI1WfjG2/09Ey+Wj0t2pVJ+
-         rLvb/MaKJIVU3YtwxnfZ1IChTOMx8eukq7jSJ1A5kNf3Ya/n37WGfB88WXxyUoc4+/GA
-         DkysdX5kCNHRehT4WQ+nP9NOZv6ZV2EY/2hXvw1TrqgRQ40BmxuAwP3+NGUUSaPmlvBQ
-         qxdA==
+        h=sender:x-gm-message-state:date:from:to:message-id:in-reply-to
+         :references:subject:mime-version:x-original-sender:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=MPuLPlOZSpD/GqL+phx9RQL7fTeTwawF0nKR/NP/r+I=;
+        b=WozbHN8Ywb35dTWtdSXwMxPQCmijLErNWi9wXl39BsIGdIlJF59BMqj9dasDCiam1J
+         PweMcY4PNiSAHyU3hQW4D9YhTbsblaClxU51OPVJCR+CHKDDRaf8HKWa9MDiPThVcAHf
+         PqlGUwF6DPrz6Qe/inL+6+JnF3igHFa+xE/M4HnPYZv/RoL4+FgdlqPFgXu/OT+ibCJt
+         aoE4F/v1Wee4px91iUVZkOGYwI/iaE6L+0G36VOJqXvfyrJ2RrX8XpaHE6C0EbDP9fWZ
+         IO1QzRkxDtmO5unpxL7LYMZnSLCwdCtg949nGGDBhT9y/qR08yoJ8nLIpwvAc1G+IZjf
+         cQ8Q==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWRTQGXqS6icR2rFXHQmWSERrNjDw/zpc//H5M07j2cUTyvwPqJ
-	zWyCSyxgljZ+xwAH702jEyA=
-X-Google-Smtp-Source: APXvYqwrxz0+n+nS2iXsAkrNhfRspwVhaZIcvoSStMbSaC5KdC7gKFdqBrmiDC930N4G34BMODutEQ==
-X-Received: by 2002:a81:374a:: with SMTP id e71mr8440505ywa.405.1557153788791;
-        Mon, 06 May 2019 07:43:08 -0700 (PDT)
+X-Gm-Message-State: APjAAAUuHPPto8pYfVKyHYW0HM+R3uizP2YlOyEDBDMUZvktZiJ1xgWW
+	YhSKKWQwex5V0mFUDZtlOBw=
+X-Google-Smtp-Source: APXvYqynKZsIuZAqfZavOYQK96EHVx5p0+Qc3YBMQvbwWAY+RlDGqjSspyxtlIiZUv16iyl2iAvXYw==
+X-Received: by 2002:a81:3d51:: with SMTP id k78mr17912705ywa.106.1557155265291;
+        Mon, 06 May 2019 08:07:45 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a81:9401:: with SMTP id l1ls352009ywg.15.gmail; Mon, 06 May
- 2019 07:43:08 -0700 (PDT)
-X-Received: by 2002:a81:6e44:: with SMTP id j65mr8682801ywc.371.1557153788396;
-        Mon, 06 May 2019 07:43:08 -0700 (PDT)
-Date: Mon, 6 May 2019 07:43:07 -0700 (PDT)
+Received: by 2002:a81:7102:: with SMTP id m2ls2309488ywc.1.gmail; Mon, 06 May
+ 2019 08:07:45 -0700 (PDT)
+X-Received: by 2002:a81:68c5:: with SMTP id d188mr10955285ywc.272.1557155264877;
+        Mon, 06 May 2019 08:07:44 -0700 (PDT)
+Date: Mon, 6 May 2019 08:07:44 -0700 (PDT)
 From: trifundroid94@gmail.com
 To: linux-ntb <linux-ntb@googlegroups.com>
-Message-Id: <dfedc9af-85cd-4b78-9249-3ce794fbe3b5@googlegroups.com>
-Subject: NTB connectivity issue under heavy load
+Message-Id: <0552a831-a738-4eb0-8021-a64f3dcec1ad@googlegroups.com>
+In-Reply-To: <dfedc9af-85cd-4b78-9249-3ce794fbe3b5@googlegroups.com>
+References: <dfedc9af-85cd-4b78-9249-3ce794fbe3b5@googlegroups.com>
+Subject: Re: NTB connectivity issue under heavy load
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_1936_941372203.1557153787637"
+	boundary="----=_Part_2042_869245880.1557155264300"
 X-Original-Sender: trifundroid94@gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
@@ -75,64 +77,35 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-------=_Part_1936_941372203.1557153787637
+------=_Part_2042_869245880.1557155264300
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_1937_1705440660.1557153787637"
+	boundary="----=_Part_2043_1643283959.1557155264300"
 
-------=_Part_1937_1705440660.1557153787637
+------=_Part_2043_1643283959.1557155264300
 Content-Type: text/plain; charset="UTF-8"
 
-Hello everyone,
-
-I am not sure if this is the right place to ask but I am going to anyway 
-since this problem has been bothering us for quite some time now.
-
-A PC running kernel 4.16.7 and TI's ARM based SoC running kernel 4.14 are 
-connected via NTB.
-The ntb_netdev drivers are correctly loaded on both sides and the hosts are 
-able to ping each other indefinitely. However, when under some heavier 
-load, the connection breaks. At first we thought that it only happens when 
-running TCP but it also happened for UDP as a transport protocol. 
-The Wireshark logs show that the hosts simply forget where the other side 
-is regarding ARP protocol. In other words, they know the IP of the peer but 
-not its MAC address. We have not found a way to somehow hardcode this, 
-especially knowing that the MAC address of the virtual eth made by 
-ntb_netdev driver is randomized. The only solution is to restart the whole 
-system and start again which is unacceptable.
-
-Has this behavior been observed before? Is there any fix for this?
-
-Thank you in advance.
+We are using Switchtec PFX x24 switch if this is of any help. The 
+ntb_hw_switchtec driver versions are 1-rc1-173-gba65e6c for the one on 
+kernel 4.14 and is obtained from backport_4.13_to_4.14 branch of switchtec 
+kernel repo, and 0.1 on the 4.16.7 kernel on PC which I believe was already 
+there.
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/dfedc9af-85cd-4b78-9249-3ce794fbe3b5%40googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/0552a831-a738-4eb0-8021-a64f3dcec1ad%40googlegroups.com.
 For more options, visit https://groups.google.com/d/optout.
 
-------=_Part_1937_1705440660.1557153787637
+------=_Part_2043_1643283959.1557155264300
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hello everyone,</div><div><br></div><div>I am not sur=
-e if this is the right place to ask but I am going to anyway since this pro=
-blem has been bothering us for quite some time now.</div><div><br></div><di=
-v> A PC running kernel 4.16.7 and TI&#39;s ARM based SoC running kernel 4.1=
-4=20
-are connected via NTB.</div><div>The ntb_netdev drivers are correctly loade=
-d on both sides and the hosts=20
-are able to ping each other indefinitely. However, when under some=20
-heavier load, the connection breaks. At first we thought that it only=20
-happens when running TCP but it also happened for UDP as a transport protoc=
-ol. <br></div><div>The Wireshark logs show that the hosts simply forget whe=
-re the other side is regarding ARP protocol. In other words, they know the =
-IP of the peer but not its MAC address. We have not found a way to somehow =
-hardcode this, especially knowing that the MAC address of the virtual eth m=
-ade by ntb_netdev driver is randomized. The only solution is to restart the=
- whole system and start again which is unacceptable.</div><div><br></div><d=
-iv>Has this behavior been observed before? Is there any fix for this?</div>=
-<div><br></div><div>Thank you in advance.<br></div></div>
+<div dir=3D"ltr">We are using Switchtec PFX x24 switch if this is of any he=
+lp. The ntb_hw_switchtec driver versions are 1-rc1-173-gba65e6c for the one=
+ on kernel 4.14 and is obtained from backport_4.13_to_4.14 branch of switch=
+tec kernel repo, and 0.1 on the 4.16.7 kernel on PC which I believe was alr=
+eady there.<br></div>
 
 <p></p>
 
@@ -145,13 +118,13 @@ mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 To post to this group, send email to <a href=3D"mailto:linux-ntb@googlegrou=
 ps.com">linux-ntb@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/dfedc9af-85cd-4b78-9249-3ce794fbe3b5%40googlegroups.co=
+om/d/msgid/linux-ntb/0552a831-a738-4eb0-8021-a64f3dcec1ad%40googlegroups.co=
 m?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid=
-/linux-ntb/dfedc9af-85cd-4b78-9249-3ce794fbe3b5%40googlegroups.com</a>.<br =
+/linux-ntb/0552a831-a738-4eb0-8021-a64f3dcec1ad%40googlegroups.com</a>.<br =
 />
 For more options, visit <a href=3D"https://groups.google.com/d/optout">http=
 s://groups.google.com/d/optout</a>.<br />
 
-------=_Part_1937_1705440660.1557153787637--
+------=_Part_2043_1643283959.1557155264300--
 
-------=_Part_1936_941372203.1557153787637--
+------=_Part_2042_869245880.1557155264300--
