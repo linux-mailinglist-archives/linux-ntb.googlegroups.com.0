@@ -1,165 +1,127 @@
-Return-Path: <linux-ntb+bncBCJ3VB4HRUCBBCUP2LTAKGQEFPHYQFA@googlegroups.com>
+Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBUVX2PTAKGQEQTJNQ2Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wr1-x43c.google.com (mail-wr1-x43c.google.com [IPv6:2a00:1450:4864:20::43c])
-	by mail.lfdr.de (Postfix) with ESMTPS id DBDD419328
-	for <lists+linux-ntb@lfdr.de>; Thu,  9 May 2019 22:03:22 +0200 (CEST)
-Received: by mail-wr1-x43c.google.com with SMTP id x6sf2797844wru.0
-        for <lists+linux-ntb@lfdr.de>; Thu, 09 May 2019 13:03:22 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1557432202; cv=pass;
+Received: from mail-it1-x140.google.com (mail-it1-x140.google.com [IPv6:2607:f8b0:4864:20::140])
+	by mail.lfdr.de (Postfix) with ESMTPS id ACD8619676
+	for <lists+linux-ntb@lfdr.de>; Fri, 10 May 2019 04:02:59 +0200 (CEST)
+Received: by mail-it1-x140.google.com with SMTP id 73sf3875034itl.2
+        for <lists+linux-ntb@lfdr.de>; Thu, 09 May 2019 19:02:59 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1557453778; cv=pass;
         d=google.com; s=arc-20160816;
-        b=mfrYSwNa3WRG0ZBDBe8tok1Lc2pulwNA3XI96oCWd0yRk9jIRpX4StA/jLn7nYp+pN
-         dkmGEB3xBcp3r8ej3Yq1v6tSOYuID8XtYADB44rxOAykZtJcKlR2kr/5xDLkCLNnq1P+
-         RVFQTMtucpj4U/xl/rA2SrH0s7ZJKv+i50MGQap/gzvp/m4L9+S8LUR7V7mzwJ/RtF5y
-         rkJeDSnmrmvLtRbg8ISJ3uq84FjcPYpSIu5nmHs5GnYcabNcaGlif9xkbaK2hLd3FL4C
-         GvH7gFudJDHBGIEyTENnIOJLl7vAFMWhIBtjysrgCC4Ks3ocXZ1TcXBXOGjh8lb3y+uq
-         oAYg==
+        b=KB9NHUhfUUwzSTaI33ZRpF0HzVgvx3th7LVTJdOFwgzEzFzGwWSaV43jwbEu0q0VDF
+         1xAMKrTbklKkumnO1mTEf637NeYRggpJ3SiX2wdbgIftCibBYnfeCJhrE6WCgdqKZcSS
+         Vn8ItjvVczby2IiIG+Ej6f5G+yP8hwFXwEBAGVlBwNXQ4OfkHsS/99JooQjcIKBWyAr/
+         OgBEPk/GVHpI6a0KVTqheJzOSR2SbVOjAPFuGllvD53aZcJLMSu9GbuA06BAOZWcOGt1
+         92COTmwZHawEc+xpVg0fBZ8vkAWE3vT23qFMfxVZy6jpT8WAP+ZdSmDiKGqeUuhwxFuF
+         itLg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:content-id
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:sender
-         :dkim-signature;
-        bh=tF9m7MmwfMONdJqdQgQ30cfC1lWyiRQgCb2ShesbDjA=;
-        b=yKePj1cHPwBVn494wJxYdnNgvqB3Jx5qS5SQzfFtcidCMA/2DMc4n0188OHWDjtNaM
-         mTFX3Du0eGQn/6ubwj8G7K5SNuZgUEAXVo87jDOVuwAfoVg+xCnf92KjTh9y2rsOWcGs
-         2ds+WOEAfbNf+FjvifRqkNbemwQyi16Rc0TckFclnVbSciJsidnMadNhYiktqQxBrzlm
-         l8LpzAuCBq57bgsiZMIFzL4FfPp7YamIknv6uZ1wt71Xb8nLKhxb4AUtlYnzxzZGVLyT
-         BPElt4QBxm3II4cQqgMPYTtpTfT+Bk0kgblmS5b7MdldoRxTyvdtf3rGVWuq+O2yappY
-         tAqw==
+         :list-id:mailing-list:precedence:subject:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :to:sender:dkim-signature;
+        bh=YSQcd6sEKKwUJk6h/k/TOJr7k5TCMHfStb//RNwTEGk=;
+        b=Br1ClcKLCGQWQYYBm0EFS/FEY3B1JJ/gqIAhVaZGwlmoPAAf91K/e9Lgzmct/sV/wM
+         MB2kbclorIVtmyKXPSiIPuVq34cKm79Lj+Tfx4oDfgQO9dDtRQXXWLZ3go/nUQ3H0vn/
+         ahabfy0m9CrD4SHPwz96UoUKVifbcsHiQIcfMctY1n9EY9TlhLPUGmwzihUUcbssg4gH
+         lmrU62rMOrUFH6i1spO/kx+OxXq59Ko4LavBXdPPATeI7uP4JHtqPSCI0TFQIQlKFPle
+         Ee/JKoovcwaaJh93MoaoGQJuDfTaniv+vwQXypJYHE9Zccn6YRM1jnfgmgWFhV0VLsf7
+         JKug==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector1-amd-com header.b=0qjDmwCO;
-       spf=neutral (google.com: 2a01:111:f400:fe51::629 is neither permitted nor denied by best guess record for domain of gary.hook@amd.com) smtp.mailfrom=Gary.Hook@amd.com
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:thread-topic:thread-index:date:message-id
-         :references:in-reply-to:accept-language:content-language:content-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=tF9m7MmwfMONdJqdQgQ30cfC1lWyiRQgCb2ShesbDjA=;
-        b=D4o0fzJG52fgJahcWtXv9GzVX3OVvnYrtDGitq8JGht7P+LOWenJIu4BhUJyRgHBHg
-         zr2/8/vB+5yzogNLJmseNs2sI6oHpW41qlSO9TVfldLCDUNEa6CzQcaGCWWBBHGQfCZX
-         YyxdPlmy8Oy8QxQx/OoIl0WV/sl5HRLA8DiHBJEc3p/Ngil7aGkPE471bgaUF0kM1Zwj
-         PC4/bK3CRWPcIPAcq/zzy2bSKoFxPM/xFxCgovun5xc73VLP3NRmlMKzxDRowAINBq2G
-         9jclxiA1S9DWq+NhXTlPUkJWZiLENufwF6nm3pubS7vR8DKp3G/0ypmrS4xzOztGbIeD
-         3tkQ==
+        h=sender:to:references:from:message-id:date:user-agent:mime-version
+         :in-reply-to:content-language:subject:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=YSQcd6sEKKwUJk6h/k/TOJr7k5TCMHfStb//RNwTEGk=;
+        b=eILIAPJlS3rjJCcaOdNGgkym6OtF+AQFbNsKftUVJQME4aDl4PyFYJHf+D8/Wz+FRM
+         ZYAU6DvJn90iEsEEWqCyQYRSfNgUAsTsvG+jpCjou7kONuUG/WAkytXQusinZ34Pocil
+         iubxlCGsEbixZHtopWOsEK4BfBKBhAagoiIu4Z8b/uwdVBOm/cvYgpxB4uZQhnpznW+6
+         0M2eHMh7pNCixhuRyTn+7TGxgNqnPuaisV5SH+fSFjFDSjrt/SAoUnDM61x6+8I45ROe
+         wcXnJK1NDr7GIwVncUZ/u/zqHePPQL3YxT/R3yEAmrDO1bBdlCRwcrc3GGqcm+9FBBee
+         rjIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:thread-topic
-         :thread-index:date:message-id:references:in-reply-to:accept-language
-         :content-language:content-id:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=tF9m7MmwfMONdJqdQgQ30cfC1lWyiRQgCb2ShesbDjA=;
-        b=gREaWxv6Cv9UOSAnzKoFHeoWmfIn4RVWmfdev54wavzu0GBXgLfEzlzup/EVh5Qa/8
-         R0NwIQtmLu8da+1mZiaCO0O9H6fn6oX5De2EpI1JPzAEC0piruiRNX31qdYw6wt/wppe
-         yDHj7jrPq4Gwz9dDgOvxAGEzpLkr9XYpxr1m0uFl4zioiJXCbLUJqo05ZXuqVZUs3phx
-         Hgn3fPPnsIGWnaiE3vwbTCBy1O++vQU46cZja/XXRCCo/yXQP52oXIyU4s1beApF1uQD
-         i5AXg/ZhUdbzPRStKr+1xOQOEsgCSdWbnOXyB8JjtMmsiRT3s6r5/a1tt2lIDFf51gcg
-         PP6A==
+        h=sender:x-gm-message-state:to:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language:subject
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=YSQcd6sEKKwUJk6h/k/TOJr7k5TCMHfStb//RNwTEGk=;
+        b=B1ZYUvVYwTYqwF1oTOd8P45ixaJN3hGsFuqbLnJJcsT/QaHRgOTaa74pIHIFZdxRky
+         OdT6E+Mh96tW6yojIkIcL7o4VMFWoDJ8zg9olWDk+1UrIeSmkoxEaLFnxubt4AjyxiK2
+         4zi+LlZTK8phDBH0E1pcgyQLoH3MsfjCDGnZ/S1Z+HbxUIIETsEGMDuAOXCTsgjwSXpN
+         ZUFdryzG7Fh3n61kdhn2XerKvyS9bQNz6lgowoVH6HvtkXouFnO+62/xWjiOjGQlTvaj
+         yWuf+Syk3xrA3IwIVmkbKLAGi6viZLclkQ55BtpHAYewJp30f/3q0+kEXCOD+B2tf+ln
+         WOEQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAVKrQRzoY79z3b9kN6ABCKGCvtiXqob+ajhcIwIlWclrjw7hKL0
-	ei2gKBP4lV5xC0j6Fi2rA7s=
-X-Google-Smtp-Source: APXvYqyy89wzAg1BMHiNYhw7U9vxxFiqsTe3dunACiplbiOE+3MLuHr5IpHdU3yvmL3wtSeqG5nN3w==
-X-Received: by 2002:a1c:2c04:: with SMTP id s4mr4028207wms.123.1557432202643;
-        Thu, 09 May 2019 13:03:22 -0700 (PDT)
+X-Gm-Message-State: APjAAAUBTc0T+12v8KRf2UrJ5awfT9jvY/AXSiaz875UV08rpE2JKnYz
+	DnM/83muvNcOwGYP7XuGzzk=
+X-Google-Smtp-Source: APXvYqyiOYqHvTR97lyKEJQH/6S9DGgzr8rFYZ/COwobWxaLjaByiCjyHtZNp6BAYis7Oj+o4luQgQ==
+X-Received: by 2002:a6b:8bc8:: with SMTP id n191mr4749846iod.86.1557453778346;
+        Thu, 09 May 2019 19:02:58 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:b642:: with SMTP id i2ls817231wre.13.gmail; Thu, 09 May
- 2019 13:03:22 -0700 (PDT)
-X-Received: by 2002:adf:d4c8:: with SMTP id w8mr4863853wrk.2.1557432202249;
-        Thu, 09 May 2019 13:03:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557432202; cv=none;
+Received: by 2002:a6b:7d48:: with SMTP id d8ls660536ioq.6.gmail; Thu, 09 May
+ 2019 19:02:57 -0700 (PDT)
+X-Received: by 2002:a05:6602:2049:: with SMTP id z9mr4915667iod.46.1557453777970;
+        Thu, 09 May 2019 19:02:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557453777; cv=none;
         d=google.com; s=arc-20160816;
-        b=lZ5b/6ZVk5BhGFjA4CcHjRObxmJ8J05IIvb5P3k6JM0RcdRrx9udHLZQ9pkoJIXfC9
-         2IvjUaPi7DNdNe0EJmtFyvEzmlilL6JF5oIj590Tf5c8ujtjMZy9Wihs8VZUurO7A2TA
-         uZGXjUllOYv1W4B2zYbmF2nmD+81xFN6CN7BnvlHkEuXL+0N1vwaJWhuNHl7LDWI6QE7
-         hkr7D4+JpmYwP0NQZP6zGhyFJVy65r8St1gXMHqlaSo0+Txo6KGxHg0TSv4Ki8RFeLG0
-         dpZA59rYRQ0VI2T3v7cCZpN80li/cgzEynGL26y0rb0VYnzlYQ9txhSKXzVCp3rOqYjO
-         LtNQ==
+        b=HAJqzgYLTJbCRl5p8Q+oe9FnMGMzRIofW4J0LhTGBfYXmEtDBCGMdhpRYnUvQrQa4D
+         BbWsKdqxxOZPL6fZ28DWIUbM8K8eyKUrXg9IDutNVgCltF3oX9embhrAAUurl6SW11Zv
+         V+yQUWH43y4j8iJHdRaEVy7lia4SjGPF9juyLqvkT6TY69FgpIRuhQwXq4ZSB6p929uU
+         pa3qdXtgycnVwhQ2/lwheP/fHWJs94WKIfAzCnEwq9yG9xgdzu+Cyr/P5jctRnP5Myh3
+         478Zav+Tf71TOrrPmXP/6CgClTd6ezbK284K23H8L2kqTCljclo6cQxDNiI6HLTX6a8V
+         XpRA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=uNJt8DVER3T54e4x7lJTuhnpM93D4pJ1uA/vT5503Dg=;
-        b=kw1IdqRJLeKUsvajmfAIRUGNXM8NqCHY6H/F9jka/Kt2c6gJ8mzVljBI0DBZ+Kte8h
-         4KvT3rvTYtLNexGyVvRdk60T68qw7QH4MJ7Y2cf+XCUijlWYz6+sLwVwh4RSDlKUV+Y7
-         cFeIw9B/8X9Ep4fbPL+OafMmQ0htlml2HWtnsY8vXf8bTv3Q+rWs3NDlZvgPBssGHUmW
-         zV3ZjUbqluS1yjcA7GNJzz/0kOjXac2JfGZRaaq3CboNgj2bnQZutcyUwLkartFegp7j
-         YqjzEifflX0UnNaTV09DJkwmR8F2anqqRDcwPtDfIk2NJmq5MqvlkhngRizjBp2rmucK
-         VRFg==
+        h=subject:content-transfer-encoding:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:to;
+        bh=Ky3K0MuSIW9uqRoOYPqEDOAaFOHsiH2SDnZ+M5N1o/I=;
+        b=mkFsAw/5mHOI0aZnW9pKbL7TjCvi3OG2cKl8IVvAw23Sz3GfPcgGqlnJVA6m1vt2Rz
+         KSc29SG23nmM0ohBeUgr60h5fGjnlD0qsCzOLiEfCpvOwq+Ftq+PDk7KHyxknIciU/OW
+         KZevvx0bcK/iCg4kouiIRUca2YvWzkm7F2qLV+kgOlF/QGBntEaZ3K/JHj7hQnGVVQX9
+         OV58eejENmTX6n2ajm3oiT2KZQfxbsL7qMZKNUdVk4M8yvwghQ3dZg20rpwSckSnpW8V
+         UzAsb+bvGAWqQG7jvzMXcAB4c3eB/uW9TGy22La2gyV7pQrr04oDK6bZTXCjDeWvCVS9
+         +ErA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector1-amd-com header.b=0qjDmwCO;
-       spf=neutral (google.com: 2a01:111:f400:fe51::629 is neither permitted nor denied by best guess record for domain of gary.hook@amd.com) smtp.mailfrom=Gary.Hook@amd.com
-Received: from NAM05-DM3-obe.outbound.protection.outlook.com (mail-dm3nam05on0629.outbound.protection.outlook.com. [2a01:111:f400:fe51::629])
-        by gmr-mx.google.com with ESMTPS id f188si670303wme.0.2019.05.09.13.03.22
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
+        by gmr-mx.google.com with ESMTPS id d197si563863iof.2.2019.05.09.19.02.57
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Thu, 09 May 2019 13:03:22 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a01:111:f400:fe51::629 is neither permitted nor denied by best guess record for domain of gary.hook@amd.com) client-ip=2a01:111:f400:fe51::629;
-Received: from DM5PR12MB1449.namprd12.prod.outlook.com (10.172.40.14) by
- DM5PR12MB2534.namprd12.prod.outlook.com (52.132.141.153) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1878.21; Thu, 9 May 2019 20:03:18 +0000
-Received: from DM5PR12MB1449.namprd12.prod.outlook.com
- ([fe80::11db:1b41:d1e6:c6dc]) by DM5PR12MB1449.namprd12.prod.outlook.com
- ([fe80::11db:1b41:d1e6:c6dc%11]) with mapi id 15.20.1856.012; Thu, 9 May 2019
- 20:03:18 +0000
-From: Gary R Hook <ghook@amd.com>
-To: Eric Pilmore <epilmore@gigaio.com>, "Mehta, Sanju" <Sanju.Mehta@amd.com>
-CC: S Taylor <staylor@gigaio.com>, D Meyer <dmeyer@gigaio.com>, linux-ntb
-	<linux-ntb@googlegroups.com>, "linux-pci@vger.kernel.org"
-	<linux-pci@vger.kernel.org>
-Subject: Re: Fwd: AMD IO_PAGE_FAULT w/NTB on Write ops?
-Thread-Topic: Fwd: AMD IO_PAGE_FAULT w/NTB on Write ops?
-Thread-Index: AQHU91hjNQoHErsWzEi/5FKxmzbafaZJlASAgAJQjoCAF3E2gA==
-Date: Thu, 9 May 2019 20:03:17 +0000
-Message-ID: <8e4ccf44-9e4f-8007-ddcc-431440f9d533@amd.com>
-References: <CAOQPn8sX2G-Db-ZiFpP2SMKbkQnPyk63UZijAY0we+DoZsmDtQ@mail.gmail.com>
- <CAADLhr49ke_3s25gW11qZ+H-Jjje-E00WMHiMDbKU=mcCQtb3g@mail.gmail.com>
- <cdcd00e9-056b-3364-cfbc-5bcb5bcff91e@amd.com>
- <CAOQPn8sQ+B97UptHpxJgdmcMxBZrqGynQR8qTc3q77fAODRH-A@mail.gmail.com>
-In-Reply-To: <CAOQPn8sQ+B97UptHpxJgdmcMxBZrqGynQR8qTc3q77fAODRH-A@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: SN6PR2101CA0004.namprd21.prod.outlook.com
- (2603:10b6:805:106::14) To DM5PR12MB1449.namprd12.prod.outlook.com
- (2603:10b6:4:10::14)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [165.204.78.1]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 2c88d6cf-8b25-4d71-65d8-08d6d4b96098
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0;PCL:0;RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);SRVR:DM5PR12MB2534;
-x-ms-traffictypediagnostic: DM5PR12MB2534:
-x-microsoft-antispam-prvs: <DM5PR12MB253426787FF9848D0CD86340FD330@DM5PR12MB2534.namprd12.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 003245E729
-x-forefront-antispam-report: SFV:NSPM;SFS:(10009020)(39860400002)(366004)(396003)(136003)(376002)(346002)(189003)(199004)(110136005)(54906003)(446003)(6636002)(31686004)(73956011)(66946007)(186003)(478600001)(26005)(2906002)(256004)(229853002)(305945005)(71190400001)(66066001)(3846002)(99286004)(5660300002)(6116002)(66476007)(66556008)(64756008)(71200400001)(66446008)(52116002)(6512007)(36756003)(31696002)(486006)(81156014)(76176011)(2616005)(476003)(68736007)(6486002)(11346002)(81166006)(14454004)(8676002)(25786009)(6246003)(7736002)(316002)(53936002)(6506007)(102836004)(386003)(53546011)(72206003)(6436002)(4326008)(8936002);DIR:OUT;SFP:1101;SCL:1;SRVR:DM5PR12MB2534;H:DM5PR12MB1449.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;MX:1;A:1;
-received-spf: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: 7PhfNKb+DqXlPYa05v4cK/UNuw/bTJRHI+7vKXOwFNPr2iQV/IXZih9AFezGugpA2VCmNPZQbEc74vnkZzaoBnKcZeZQkyzzNBQ7e49/35ZCXcW4lXRTINt274nTyp6c/efBSBijBeh2g8nU1igBJNVlHcAyl78IyXHi1gsGj0XTM83tHNDia+FEDD/P79V3BNaCanfuRm1FqW4I9zFUeB0J47G//gJzEmNGni+V7dAQuZ+/h893DzA+X6MVd1L7ojoRGRZWd/q4ZH2ceraJbJ8b3yy3t4Jn2XgeWTGQvi2eYVg9xa40GuIhDoB0n7Y+/8dOtnVZPlNJqEG/p/iiau9MLQ4aDB+itjG8ctLgG0bLqSXfoU1lj1LRev9lpUwLS8Q3zFQRFvHabGvrq9rBAddXIaeguS4yUnN3nGPuCVE=
-Content-Type: text/plain; charset="UTF-8"
-Content-ID: <BB3AB0C78BEA1A4DA8BDB947B84C94B1@namprd12.prod.outlook.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 09 May 2019 19:02:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
+Received: from s0106602ad0811846.cg.shawcable.net ([68.147.191.165] helo=[192.168.0.12])
+	by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.89)
+	(envelope-from <logang@deltatee.com>)
+	id 1hOusC-0000OG-0o; Thu, 09 May 2019 20:02:56 -0600
+To: trifundroid94@gmail.com, linux-ntb <linux-ntb@googlegroups.com>
+References: <dfedc9af-85cd-4b78-9249-3ce794fbe3b5@googlegroups.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <b4d7e6a6-8637-bf15-0ec9-e1024ead9933@deltatee.com>
+Date: Thu, 9 May 2019 20:02:54 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.6.1
 MIME-Version: 1.0
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2c88d6cf-8b25-4d71-65d8-08d6d4b96098
-X-MS-Exchange-CrossTenant-originalarrivaltime: 09 May 2019 20:03:18.0037
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM5PR12MB2534
-X-Original-Sender: gary.hook@amd.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@amdcloud.onmicrosoft.com header.s=selector1-amd-com
- header.b=0qjDmwCO;       spf=neutral (google.com: 2a01:111:f400:fe51::629 is
- neither permitted nor denied by best guess record for domain of
- gary.hook@amd.com) smtp.mailfrom=Gary.Hook@amd.com
+In-Reply-To: <dfedc9af-85cd-4b78-9249-3ce794fbe3b5@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Language: en-US
+X-SA-Exim-Connect-IP: 68.147.191.165
+X-SA-Exim-Rcpt-To: linux-ntb@googlegroups.com, trifundroid94@gmail.com
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-6.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
+	autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: NTB connectivity issue under heavy load
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+X-Original-Sender: logang@deltatee.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
+ permitted sender) smtp.mailfrom=logang@deltatee.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -172,50 +134,41 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On 4/24/19 5:04 PM, Eric Pilmore wrote:
-> On Tue, Apr 23, 2019 at 4:00 AM Sanjay R Mehta <sanmehta@amd.com> wrote:
->>
->>
->>> AMD-Vi: Event logged [IO_PAGE_FAULT device=23:01.2 domain=0x0000
->>> address=0x00000000fde1c18c flags=0x0070]
->>
->> the address in the above log looks to be physical address of memory window. Am I Right?
->>
->> If yes then, the first parameter of dma_alloc_coherent() to be passed as below,
->>
->> dma_alloc_coherent(&ntb->pdev->dev, ...)instead of dma_alloc_coherent(&ntb->dev, ...).
->>
->> Hope this should solve your problem.
+
+
+On 2019-05-06 8:43 a.m., trifundroid94@gmail.com wrote:
+> Hello everyone,
 > 
-> Hi Sanjay,
+> I am not sure if this is the right place to ask but I am going to anyway
+> since this problem has been bothering us for quite some time now.
 > 
-> Thanks the for the response.  We are using the correct device for the
-> dma_alloc_coherent(). Upon further investigation what we are finding
-> is that apparently the AMD IOMMU support can only manage one alias, as
-> opposed to Intel IOMMU support which can support multiple. Not clear
-> at this time if it's a software limitation in the AMD IOMMU kernel
-> support or an imposed limitation of the hardware. Still investigating.
+> A PC running kernel 4.16.7 and TI's ARM based SoC running kernel 4.14
+> are connected via NTB.
+> The ntb_netdev drivers are correctly loaded on both sides and the hosts
+> are able to ping each other indefinitely. However, when under some
+> heavier load, the connection breaks. At first we thought that it only
+> happens when running TCP but it also happened for UDP as a transport
+> protocol.
+> The Wireshark logs show that the hosts simply forget where the other
+> side is regarding ARP protocol. In other words, they know the IP of the
+> peer but not its MAC address. We have not found a way to somehow
+> hardcode this, especially knowing that the MAC address of the virtual
+> eth made by ntb_netdev driver is randomized. The only solution is to
+> restart the whole system and start again which is unacceptable.
+> 
+> Has this behavior been observed before? Is there any fix for this?
 
-Please define 'alias'?
+I've never seen this and I'm not sure I can be much help but you should
+maybe try checking the debugfs entries for ntb transport to see if
+packets are still getting through. Just to narrow down the issue. Are
+packets no longer getting through and thus arp requests are failing? Or
+is this a problem on a higher layer with addressing?
 
-The IO_PAGE_FAULT error is described on page 142 of the AMD IOMMU spec, 
-document #48882. Easily found via a search.
-
-The flags value of 0x0070 translates to PE, RW, PR. The page was 
-present, the transaction was a write, and the peripheral didn't have 
-permission. That implies that mapping hadn't been done.
-
-Not being sure how that device presents, or what you're doing with IVHD 
-info, I can't comment further. I can say that the AMD IOMMU provides for 
-a single exclusion range, but as many unity ranges as you wish.
-
-HTH
-
-grh
+Logan
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/8e4ccf44-9e4f-8007-ddcc-431440f9d533%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/b4d7e6a6-8637-bf15-0ec9-e1024ead9933%40deltatee.com.
 For more options, visit https://groups.google.com/d/optout.
