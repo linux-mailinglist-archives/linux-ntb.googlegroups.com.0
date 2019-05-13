@@ -1,127 +1,127 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBUVX2PTAKGQEQTJNQ2Y@googlegroups.com>
+Return-Path: <linux-ntb+bncBDK2JZONSUPRBGOR43TAKGQEOETTJBQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-it1-x140.google.com (mail-it1-x140.google.com [IPv6:2607:f8b0:4864:20::140])
-	by mail.lfdr.de (Postfix) with ESMTPS id ACD8619676
-	for <lists+linux-ntb@lfdr.de>; Fri, 10 May 2019 04:02:59 +0200 (CEST)
-Received: by mail-it1-x140.google.com with SMTP id 73sf3875034itl.2
-        for <lists+linux-ntb@lfdr.de>; Thu, 09 May 2019 19:02:59 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1557453778; cv=pass;
+Received: from mail-vk1-xa3a.google.com (mail-vk1-xa3a.google.com [IPv6:2607:f8b0:4864:20::a3a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F0031BBDE
+	for <lists+linux-ntb@lfdr.de>; Mon, 13 May 2019 19:25:47 +0200 (CEST)
+Received: by mail-vk1-xa3a.google.com with SMTP id s6sf2003779vke.2
+        for <lists+linux-ntb@lfdr.de>; Mon, 13 May 2019 10:25:47 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1557768346; cv=pass;
         d=google.com; s=arc-20160816;
-        b=KB9NHUhfUUwzSTaI33ZRpF0HzVgvx3th7LVTJdOFwgzEzFzGwWSaV43jwbEu0q0VDF
-         1xAMKrTbklKkumnO1mTEf637NeYRggpJ3SiX2wdbgIftCibBYnfeCJhrE6WCgdqKZcSS
-         Vn8ItjvVczby2IiIG+Ej6f5G+yP8hwFXwEBAGVlBwNXQ4OfkHsS/99JooQjcIKBWyAr/
-         OgBEPk/GVHpI6a0KVTqheJzOSR2SbVOjAPFuGllvD53aZcJLMSu9GbuA06BAOZWcOGt1
-         92COTmwZHawEc+xpVg0fBZ8vkAWE3vT23qFMfxVZy6jpT8WAP+ZdSmDiKGqeUuhwxFuF
-         itLg==
+        b=Lgl21PuDxX2mXh2aCy8xhF7EXiXHVHOU32RaITtyQEn3JRv9U99Tou+Fh5qtPIszc1
+         eGzTIExAZodb9U48he4U6HNaylfALX1pM4rG+uswIk6vghxghybG9Xugbca7RdyCKZZ/
+         zRL7+KGQNap7A0n2YWAe09RG92G55QEHc1kBJtkr+3X9PDkiQUyNOwoP3UczHm0PL4FL
+         S7FchbXpJ/CohQc6jxFjlj8SxzvQ4kPiwmXKu4hyw6p1e9lrNPp4by3BWtwaD6EQkQJn
+         GNplV4mVGVZ/wp9pUlH72TYJoUswHbnHTnfA1yle8lspjzoPoxj5exWM0QkUMcFmyE1N
+         mRUw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:subject:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:sender:dkim-signature;
-        bh=YSQcd6sEKKwUJk6h/k/TOJr7k5TCMHfStb//RNwTEGk=;
-        b=Br1ClcKLCGQWQYYBm0EFS/FEY3B1JJ/gqIAhVaZGwlmoPAAf91K/e9Lgzmct/sV/wM
-         MB2kbclorIVtmyKXPSiIPuVq34cKm79Lj+Tfx4oDfgQO9dDtRQXXWLZ3go/nUQ3H0vn/
-         ahabfy0m9CrD4SHPwz96UoUKVifbcsHiQIcfMctY1n9EY9TlhLPUGmwzihUUcbssg4gH
-         lmrU62rMOrUFH6i1spO/kx+OxXq59Ko4LavBXdPPATeI7uP4JHtqPSCI0TFQIQlKFPle
-         Ee/JKoovcwaaJh93MoaoGQJuDfTaniv+vwQXypJYHE9Zccn6YRM1jnfgmgWFhV0VLsf7
-         JKug==
+         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:sender:dkim-signature:dkim-signature;
+        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
+        b=gv2JFcT5Bw+cB2bQx+N7fu9ntVyGBFb6RxdZMos+f7CGl9tmUKiYr/X+SPP+shfJq6
+         zrXRjCr11muFPqoPt7Ou0HP4Shp4sRh2X/f2b//eR5suNpIsnBSczOL665wDAeLNb4bI
+         xN9y1wBz0c3wDvGCsHkpcA4gadBOzfpmACRz/GROHCTt9oFAP87rzMV1jS6wGTwSW0La
+         6EkBNHuI41lQ5qTfP4UP8vEDHVVeZzQjQdLJwxR9kOJflPiEi7xUfAZaB/wAmz3xO0OV
+         OoInWwcdTBHlut/dEzXgZhlS/LP8UtKqtCAdMy1IcemqntsYUA+YqUIOfZUy+51bXDdS
+         tWnQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M3U4pAOi;
+       spf=pass (google.com: domain of sai1.solugenix@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:to:references:from:message-id:date:user-agent:mime-version
-         :in-reply-to:content-language:subject:x-original-sender
+        h=sender:mime-version:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
+        b=Fo5R7pr+cAToa9iIRsZVKPg2Rm9nlHoUOFvAQy569nYBYgX9upvXZLSKsgI4kdZV0r
+         RmaPc9DUy4LWQ1JwJP1XXcSo+VBhNjcwiowPAqV6ixkA6cc60P4+owp0vhUXSRnjMD+I
+         ldUjSv1b0zSxzdESxKEzKpehUVihw40cTM2kjmyhLeOVkRikw5qVkAx3r2LiRcK1XJTe
+         A+HBbX2k1ZQHIe/pR84MapS3nJshLfzemdahDoZ+zAarU+7w5GL6Uxzq9Oqu3VItoezC
+         7AGoZnjoIBBpd4Z8swaoRt0eh8SV7d26qPE2vieg8Q4khr0S32WbXdBq7fTeSCnEcIz5
+         dNHw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=YSQcd6sEKKwUJk6h/k/TOJr7k5TCMHfStb//RNwTEGk=;
-        b=eILIAPJlS3rjJCcaOdNGgkym6OtF+AQFbNsKftUVJQME4aDl4PyFYJHf+D8/Wz+FRM
-         ZYAU6DvJn90iEsEEWqCyQYRSfNgUAsTsvG+jpCjou7kONuUG/WAkytXQusinZ34Pocil
-         iubxlCGsEbixZHtopWOsEK4BfBKBhAagoiIu4Z8b/uwdVBOm/cvYgpxB4uZQhnpznW+6
-         0M2eHMh7pNCixhuRyTn+7TGxgNqnPuaisV5SH+fSFjFDSjrt/SAoUnDM61x6+8I45ROe
-         wcXnJK1NDr7GIwVncUZ/u/zqHePPQL3YxT/R3yEAmrDO1bBdlCRwcrc3GGqcm+9FBBee
-         rjIQ==
+        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
+        b=OWzBxQMbPkmLLTupClFridzQpcDnU3BX9cflevxvHIppRvFlxfkiXBtMICc9UedC+L
+         UNazFHc2gkZUOHSe3IO2KgAp8MD0zZDUjO7ob2MDiHP2syL36GzxrmOrU7C1TTHNqPmM
+         zPnig8YBb8GDIrmCWgiZT9GvLIWD/BWJUJVweDDLdYHAMrtVE3QBLLqihiDay6WGoCay
+         vO5NPtuUrqVicI/YWaXf1zpwgYKX80HoE2sOnBfRNQ4wdSFlv2POPZGBWMZTDv/WNSw6
+         +iD8EtBQlCF+Rdmhz8JPqKZXfxVP9U/VBoCMRQMKBz384YnKeR2T9IiK09miMFg8pB9d
+         U4yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:to:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language:subject
-         :x-original-sender:x-original-authentication-results:precedence
+        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
+         :to:x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=YSQcd6sEKKwUJk6h/k/TOJr7k5TCMHfStb//RNwTEGk=;
-        b=B1ZYUvVYwTYqwF1oTOd8P45ixaJN3hGsFuqbLnJJcsT/QaHRgOTaa74pIHIFZdxRky
-         OdT6E+Mh96tW6yojIkIcL7o4VMFWoDJ8zg9olWDk+1UrIeSmkoxEaLFnxubt4AjyxiK2
-         4zi+LlZTK8phDBH0E1pcgyQLoH3MsfjCDGnZ/S1Z+HbxUIIETsEGMDuAOXCTsgjwSXpN
-         ZUFdryzG7Fh3n61kdhn2XerKvyS9bQNz6lgowoVH6HvtkXouFnO+62/xWjiOjGQlTvaj
-         yWuf+Syk3xrA3IwIVmkbKLAGi6viZLclkQ55BtpHAYewJp30f/3q0+kEXCOD+B2tf+ln
-         WOEQ==
+        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
+        b=OJAcleC2cI5YHHmhz+xczwDeZPVIlz78r+ylEmJHqxF6ylCw6yzkIL09v60cDW7SrY
+         CBtNDOCqXAiCxVSzS/8iDkKgWAi/qyE/o9FRxhj3ARFEx359uakmZF0FMFmhCtjCWiF9
+         q8M2iTw1HajozUmh4gqzBiaJvPlLTPIvXlgndtOU5pTa+euMYcv6B4bouxuQQn+f6Xaw
+         q2zp6eJj1797ynKYFIrpm6XuX7eZwNt7UWgpqvLsserbSNqIv9YX4k0WkQwpcDMRSw53
+         MAT3uesHm4bp2FiqNj4aOx2SmZTDVK3AabQCXLatM/GBQnaE65v+DIZG6jMcK2Q1yXYB
+         jepA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUBTc0T+12v8KRf2UrJ5awfT9jvY/AXSiaz875UV08rpE2JKnYz
-	DnM/83muvNcOwGYP7XuGzzk=
-X-Google-Smtp-Source: APXvYqyiOYqHvTR97lyKEJQH/6S9DGgzr8rFYZ/COwobWxaLjaByiCjyHtZNp6BAYis7Oj+o4luQgQ==
-X-Received: by 2002:a6b:8bc8:: with SMTP id n191mr4749846iod.86.1557453778346;
-        Thu, 09 May 2019 19:02:58 -0700 (PDT)
+X-Gm-Message-State: APjAAAWF9as9QU6r+JZ0PX1x33D7x+rImZaJODBfeOFbIgFjhvts11Hj
+	0uPrfrIgTwMIIeYVu1/b9lk=
+X-Google-Smtp-Source: APXvYqxtkb7lHEoeZ6Rp9qHJbbYNfLJlBt++txFosT+E7YrBRsDMFgiEZRY37efRszHVvV/U3zQiqA==
+X-Received: by 2002:a1f:61c6:: with SMTP id v189mr12396067vkb.87.1557768345986;
+        Mon, 13 May 2019 10:25:45 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a6b:7d48:: with SMTP id d8ls660536ioq.6.gmail; Thu, 09 May
- 2019 19:02:57 -0700 (PDT)
-X-Received: by 2002:a05:6602:2049:: with SMTP id z9mr4915667iod.46.1557453777970;
-        Thu, 09 May 2019 19:02:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557453777; cv=none;
+Received: by 2002:ab0:324e:: with SMTP id r14ls731453uan.11.gmail; Mon, 13 May
+ 2019 10:25:45 -0700 (PDT)
+X-Received: by 2002:ab0:3445:: with SMTP id a5mr7705135uaq.136.1557768345588;
+        Mon, 13 May 2019 10:25:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1557768345; cv=none;
         d=google.com; s=arc-20160816;
-        b=HAJqzgYLTJbCRl5p8Q+oe9FnMGMzRIofW4J0LhTGBfYXmEtDBCGMdhpRYnUvQrQa4D
-         BbWsKdqxxOZPL6fZ28DWIUbM8K8eyKUrXg9IDutNVgCltF3oX9embhrAAUurl6SW11Zv
-         V+yQUWH43y4j8iJHdRaEVy7lia4SjGPF9juyLqvkT6TY69FgpIRuhQwXq4ZSB6p929uU
-         pa3qdXtgycnVwhQ2/lwheP/fHWJs94WKIfAzCnEwq9yG9xgdzu+Cyr/P5jctRnP5Myh3
-         478Zav+Tf71TOrrPmXP/6CgClTd6ezbK284K23H8L2kqTCljclo6cQxDNiI6HLTX6a8V
-         XpRA==
+        b=0dcaui9MPqUPuGI4BAewK0vHXFWAxLT6ejeXPFjRNh8yCUNir4veRsCm01sHEoBLWy
+         gnlu6WR1+cXTH17OKtryB1NEPZVBHse21ee7cXMKgBOhhYq/wZE8ZN5yxH4zNhIGgDTL
+         gzzWu7Ikn1d+1MU5zqUpDTtTvhmXte2ee9GS/wf0JxWTDv5CoPj0P4HGd6FVf46zp45y
+         xhnq9M1csTXckZyPMmLWsJVA64sF0Lc4pji+sMoARtqJqzyKPSXc2KQ28Yw3zMP33qPc
+         rb1e3YcDXZFUAeraWQHUEgDJUCYC5Ls20JKFuJaSJGJ+kx/EImoN6PjIjgoFCMExJee/
+         95Yg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:to;
-        bh=Ky3K0MuSIW9uqRoOYPqEDOAaFOHsiH2SDnZ+M5N1o/I=;
-        b=mkFsAw/5mHOI0aZnW9pKbL7TjCvi3OG2cKl8IVvAw23Sz3GfPcgGqlnJVA6m1vt2Rz
-         KSc29SG23nmM0ohBeUgr60h5fGjnlD0qsCzOLiEfCpvOwq+Ftq+PDk7KHyxknIciU/OW
-         KZevvx0bcK/iCg4kouiIRUca2YvWzkm7F2qLV+kgOlF/QGBntEaZ3K/JHj7hQnGVVQX9
-         OV58eejENmTX6n2ajm3oiT2KZQfxbsL7qMZKNUdVk4M8yvwghQ3dZg20rpwSckSnpW8V
-         UzAsb+bvGAWqQG7jvzMXcAB4c3eB/uW9TGy22La2gyV7pQrr04oDK6bZTXCjDeWvCVS9
-         +ErA==
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=FVsEAyMgg4Kgdj0n7FRvpQyEYw3a00qUibR0OPL9nCQ=;
+        b=x4szGazafJRl+qLCNoNO7SbJwyzffWce6hRvaGhm4EFgx/+adiGLVktaeW+DFdIbXN
+         alc0KjgCxx3k0PLTJ1kN6tOz1IIfb8IGhtHrCH7K+ChIfvpq+NNM6YGa8puesSvgvOEU
+         AIciePwKcLtL660eOgTAte5UN6axePEOMhbJn0RTV9qmNii0bfzbS6J9m8xi3dGtPx+8
+         RhWq2z9UhDrIBJxzGFLwSMUjn5JddclJ8Vt9zrv3fbeaWjvoHs3euInFTQg9NVYtfnPy
+         ZSjVjnZBth7SwGR4k14rKVYc1muwjLUOa7ae+8PX+xAeH01+ApVy5j//B6CHiAP+FXqq
+         JRxg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
-Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
-        by gmr-mx.google.com with ESMTPS id d197si563863iof.2.2019.05.09.19.02.57
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M3U4pAOi;
+       spf=pass (google.com: domain of sai1.solugenix@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-io1-xd43.google.com (mail-io1-xd43.google.com. [2607:f8b0:4864:20::d43])
+        by gmr-mx.google.com with ESMTPS id 19si861988vkv.4.2019.05.13.10.25.45
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 09 May 2019 19:02:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
-Received: from s0106602ad0811846.cg.shawcable.net ([68.147.191.165] helo=[192.168.0.12])
-	by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.89)
-	(envelope-from <logang@deltatee.com>)
-	id 1hOusC-0000OG-0o; Thu, 09 May 2019 20:02:56 -0600
-To: trifundroid94@gmail.com, linux-ntb <linux-ntb@googlegroups.com>
-References: <dfedc9af-85cd-4b78-9249-3ce794fbe3b5@googlegroups.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <b4d7e6a6-8637-bf15-0ec9-e1024ead9933@deltatee.com>
-Date: Thu, 9 May 2019 20:02:54 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.6.1
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 13 May 2019 10:25:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sai1.solugenix@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) client-ip=2607:f8b0:4864:20::d43;
+Received: by mail-io1-xd43.google.com with SMTP id m7so10696860ioa.6
+        for <linux-ntb@googlegroups.com>; Mon, 13 May 2019 10:25:45 -0700 (PDT)
+X-Received: by 2002:a05:6602:143:: with SMTP id v3mr9181538iot.45.1557768344907;
+ Mon, 13 May 2019 10:25:44 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <dfedc9af-85cd-4b78-9249-3ce794fbe3b5@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 68.147.191.165
-X-SA-Exim-Rcpt-To: linux-ntb@googlegroups.com, trifundroid94@gmail.com
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
-	autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: NTB connectivity issue under heavy load
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-Original-Sender: logang@deltatee.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
- permitted sender) smtp.mailfrom=logang@deltatee.com
+From: Sai Kumar <sai1.solugenix@gmail.com>
+Date: Mon, 13 May 2019 10:25:36 -0700
+Message-ID: <CAAQxFq62SKV=AN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8qPyQ@mail.gmail.com>
+Subject: Urgent Need : SailPoint Administrator @ Irvine CA ( Direct Client )
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000d733d90588c834f9"
+X-Original-Sender: sai1.solugenix@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=M3U4pAOi;       spf=pass
+ (google.com: domain of sai1.solugenix@gmail.com designates
+ 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -134,41 +134,292 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+--000000000000d733d90588c834f9
+Content-Type: text/plain; charset="UTF-8"
+
+Hi,
 
 
-On 2019-05-06 8:43 a.m., trifundroid94@gmail.com wrote:
-> Hello everyone,
-> 
-> I am not sure if this is the right place to ask but I am going to anyway
-> since this problem has been bothering us for quite some time now.
-> 
-> A PC running kernel 4.16.7 and TI's ARM based SoC running kernel 4.14
-> are connected via NTB.
-> The ntb_netdev drivers are correctly loaded on both sides and the hosts
-> are able to ping each other indefinitely. However, when under some
-> heavier load, the connection breaks. At first we thought that it only
-> happens when running TCP but it also happened for UDP as a transport
-> protocol.
-> The Wireshark logs show that the hosts simply forget where the other
-> side is regarding ARP protocol. In other words, they know the IP of the
-> peer but not its MAC address. We have not found a way to somehow
-> hardcode this, especially knowing that the MAC address of the virtual
-> eth made by ntb_netdev driver is randomized. The only solution is to
-> restart the whole system and start again which is unacceptable.
-> 
-> Has this behavior been observed before? Is there any fix for this?
 
-I've never seen this and I'm not sure I can be much help but you should
-maybe try checking the debugfs entries for ntb transport to see if
-packets are still getting through. Just to narrow down the issue. Are
-packets no longer getting through and thus arp requests are failing? Or
-is this a problem on a higher layer with addressing?
+Greetings from solugenix!!!
 
-Logan
+My Name is Sai Kumar, working as "Recuiter" for Solugenix.
+
+
+
+Solugenix is an information technology services firm that has a rich
+history of providing comprehensive technology services and solutions for
+more than four decades. Since 1969, Solugenix Corporation has been
+fulfilling the IT services needs of some of the most respected global
+corporations in the U.S.
+
+
+
+Please find the below direct client position open which has opened and *waiting
+for the Full Job Description* . Please let me know if you are available and
+interested in submitting your resume to this position.
+
+
+
+*If you are not available, Please refer anyone whom you know in your
+contacts . I would be really grateful to you.*
+
+
+
+*Client        : Investment Management Domain*
+
+*Position    : Sailpoint administrator*
+
+*Location   : Irvine CA*
+
+*Duration   : 6+ months to Long Term*
+
+
+
+
+
+*Thanks and Regards,*
+
+
+
+[image: cid:image006.png@01D4BD76.95F0E4D0]
+
+Sai Kumar,
+
+*Recruiter*
+
+
+
+*Primary:* 949-468-0052
+
+*Internal Extension:* 1009
+
+*Email:* sai.nakka@solugenix.com <sai.nakka@solugenix.com%20@solugenix.com>
+
+Delivering on business promises for 50 years
+
+[image: cid:image002.png@01D0C49A.9EEF1260]
+<https://www.facebook.com/Solugenix>  [image:
+cid:image003.png@01D0C49A.9EEF1260]
+<https://www.linkedin.com/company/solugenix>  [image:
+cid:image004.png@01D0C49A.9EEF1260] <https://twitter.com/solugenix>  [image:
+cid:image005.png@01D0C49A.9EEF1260] <https://www.youtube.com/user/solugenix>
+
+Your employment with the Company will be on an at-will basis such that both
+you and the Company have the right to terminate the employment relationship
+at any time with or without notice.  Nothing in this e-mail should be
+construed as creating any guaranteed length of employment.  This email is
+not intended to be a solicitation. It is targeted at recruiting &
+consulting professionals. If you have received this in error, please accept
+our apologies & reply with REMOVE as subject to be removed from our mailing
+list. We regret any inconvenience caused.
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/b4d7e6a6-8637-bf15-0ec9-e1024ead9933%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAAQxFq62SKV%3DAN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8qPyQ%40mail.gmail.com.
 For more options, visit https://groups.google.com/d/optout.
+
+--000000000000d733d90588c834f9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;fo=
+nt-size:11pt;font-family:Calibri,sans-serif">Hi,</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Greetings from solugenix!!!</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">My Name is Sai Kumar, working as &quot;Recuiter=
+&quot; for
+Solugenix.</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Solugenix is an information technology services=
+ firm that
+has a rich history of providing comprehensive technology services and solut=
+ions
+for more than four decades. Since 1969, Solugenix Corporation has been
+fulfilling the IT services needs of some of the most respected global
+corporations in the U.S. </p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Please find the below direct client position op=
+en which has
+opened and <b><span style=3D"background:yellow">waiting for
+the Full Job Description</span></b> . Please let me know if you are availab=
+le
+and interested in submitting your resume to this position.</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><b><span style=3D"background:yellow">If
+you are not available, Please refer anyone whom you know in your contacts .=
+ I
+would be really grateful to you.</span></b></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><b>Client=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 :
+Investment Management Domain</b></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><b>Position=C2=A0=C2=A0=C2=A0 : Sailpoint admin=
+istrator</b></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><b>Location=C2=A0=C2=A0 : Irvine CA</b></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><b>Duration=C2=A0=C2=A0 : 6+ months to Long Ter=
+m</b></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><b>Thanks and Regards,</b></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<table class=3D"gmail-MsoNormalTable" border=3D"0" cellspacing=3D"0" cellpa=
+dding=3D"0" style=3D"border-collapse:collapse">
+ <tbody><tr style=3D"height:87.75pt">
+  <td width=3D"217" style=3D"width:162.6pt;border-top:none;border-bottom:no=
+ne;border-left:none;border-right:1pt solid rgb(166,166,166);padding:0in 5.4=
+pt;height:87.75pt">
+  <p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;margin=
+:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span styl=
+e=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;,sans-serif;color:rgb(6=
+4,64,64)"><img width=3D"120" height=3D"120" style=3D"height: 1.25in; width:=
+ 1.25in;" alt=3D"cid:image006.png@01D4BD76.95F0E4D0"></span></p>
+  </td>
+  <td width=3D"266" style=3D"width:199.2pt;padding:0in 5.4pt;height:87.75pt=
+">
+  <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;fo=
+nt-family:Calibri,sans-serif"><span style=3D"font-size:14pt;color:black">Sa=
+i Kumar,</span></p>
+  <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;fo=
+nt-family:Calibri,sans-serif"><b><span style=3D"font-size:10pt;font-family:=
+&quot;Segoe UI&quot;,sans-serif;color:rgb(64,64,64)">Recruiter</span></b></=
+p>
+  <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;fo=
+nt-family:Calibri,sans-serif"><b><span style=3D"color:rgb(64,64,64)">=C2=A0=
+</span></b></p>
+  <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;fo=
+nt-family:Calibri,sans-serif"><b><span style=3D"color:rgb(0,176,240)">Prima=
+ry:</span></b><span style=3D"color:rgb(64,64,64)"> </span><span lang=3D"EN-=
+IN">949-468-0052
+  </span></p>
+  <p class=3D"MsoNormal" style=3D"line-height:105%;margin:0in 0in 0.0001pt;=
+font-size:11pt;font-family:Calibri,sans-serif"><b><span style=3D"color:rgb(=
+0,176,240)">Internal Extension:</span></b> 1009<span style=3D"color:rgb(38,=
+38,38)"></span></p>
+  <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;fo=
+nt-family:Calibri,sans-serif"><b><span style=3D"font-size:10pt;font-family:=
+&quot;Segoe UI&quot;,sans-serif;color:rgb(0,176,240)">Email:</span></b><spa=
+n style=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;,sans-serif;color=
+:rgb(64,64,64)"> </span><span style=3D"color:rgb(64,64,64)"><a href=3D"mail=
+to:sai.nakka@solugenix.com%20@solugenix.com" style=3D"color:rgb(5,99,193)">=
+sai.nakka@solugenix.com
+  </a></span><span style=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;=
+,sans-serif;color:rgb(64,64,64)"></span></p>
+  </td>
+ </tr>
+ <tr style=3D"height:30.6pt">
+  <td width=3D"217" style=3D"width:162.6pt;padding:0in 5.4pt;height:30.6pt"=
+>
+  <p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;margin=
+:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span styl=
+e=3D"font-size:9pt;font-family:&quot;Open Sans&quot;;color:rgb(0,148,201)">=
+Delivering on
+  business promises for 50 years</span><span style=3D"font-size:10pt;font-f=
+amily:&quot;Segoe UI&quot;,sans-serif;color:rgb(64,64,64)"></span></p>
+  </td>
+  <td width=3D"266" style=3D"width:199.2pt;padding:0in 5.4pt;height:30.6pt"=
+>
+  <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;fo=
+nt-family:Calibri,sans-serif"><a href=3D"https://www.facebook.com/Solugenix=
+" style=3D"color:rgb(5,99,193)"><span style=3D"font-size:10pt;font-family:&=
+quot;Segoe UI&quot;,sans-serif;color:rgb(64,64,64);text-decoration-line:non=
+e"><img border=3D"0" width=3D"24" height=3D"24" style=3D"height: 0.25in; wi=
+dth: 0.25in;" alt=3D"cid:image002.png@01D0C49A.9EEF1260"></span></a>=C2=A0 =
+<a href=3D"https://www.linkedin.com/company/solugenix" style=3D"color:rgb(5=
+,99,193)"><span style=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;,sa=
+ns-serif;color:rgb(64,64,64);text-decoration-line:none"><img border=3D"0" w=
+idth=3D"24" height=3D"24" style=3D"height: 0.25in; width: 0.25in;" alt=3D"c=
+id:image003.png@01D0C49A.9EEF1260"></span></a><span style=3D"font-size:10pt=
+;font-family:&quot;Segoe UI&quot;,sans-serif;color:rgb(64,64,64)">=C2=A0 </=
+span><a href=3D"https://twitter.com/solugenix" style=3D"color:rgb(5,99,193)=
+"><span style=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;,sans-serif=
+;color:rgb(64,64,64);text-decoration-line:none"><img border=3D"0" width=3D"=
+24" height=3D"24" style=3D"height: 0.25in; width: 0.25in;" alt=3D"cid:image=
+004.png@01D0C49A.9EEF1260"></span></a><span style=3D"font-size:10pt;font-fa=
+mily:&quot;Segoe UI&quot;,sans-serif;color:rgb(64,64,64)">=C2=A0 </span><a =
+href=3D"https://www.youtube.com/user/solugenix" style=3D"color:rgb(5,99,193=
+)"><span style=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;,sans-seri=
+f;color:rgb(64,64,64);text-decoration-line:none"><img border=3D"0" width=3D=
+"24" height=3D"24" style=3D"height: 0.25in; width: 0.25in;" alt=3D"cid:imag=
+e005.png@01D0C49A.9EEF1260"></span></a><span style=3D"font-size:10pt;font-f=
+amily:&quot;Segoe UI&quot;,sans-serif;color:rgb(64,64,64)"></span></p>
+  </td>
+ </tr>
+</tbody></table>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span style=3D"font-size:8pt">Your employment w=
+ith the
+Company will be on an at-will basis such that both you and the Company have=
+ the
+right to terminate the employment relationship at any time with or without
+notice.=C2=A0 Nothing in this e-mail should be construed as creating any
+guaranteed length of employment.=C2=A0 This email is not intended to be a
+solicitation. It is targeted at recruiting &amp; consulting professionals. =
+If
+you have received this in error, please accept our apologies &amp; reply wi=
+th
+REMOVE as subject to be removed from our mailing list. We regret any
+inconvenience caused. </span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">=C2=A0</p></div>
+
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To post to this group, send email to <a href=3D"mailto:linux-ntb@googlegrou=
+ps.com">linux-ntb@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/CAAQxFq62SKV%3DAN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8qPyQ%=
+40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.goo=
+gle.com/d/msgid/linux-ntb/CAAQxFq62SKV%3DAN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8=
+qPyQ%40mail.gmail.com</a>.<br />
+For more options, visit <a href=3D"https://groups.google.com/d/optout">http=
+s://groups.google.com/d/optout</a>.<br />
+
+--000000000000d733d90588c834f9--
