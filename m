@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBDK2JZONSUPRBGOR43TAKGQEOETTJBQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDK2JZONSUPRBFMC67TAKGQE6N2JZ3A@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3a.google.com (mail-vk1-xa3a.google.com [IPv6:2607:f8b0:4864:20::a3a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F0031BBDE
-	for <lists+linux-ntb@lfdr.de>; Mon, 13 May 2019 19:25:47 +0200 (CEST)
-Received: by mail-vk1-xa3a.google.com with SMTP id s6sf2003779vke.2
-        for <lists+linux-ntb@lfdr.de>; Mon, 13 May 2019 10:25:47 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1557768346; cv=pass;
+Received: from mail-wr1-x440.google.com (mail-wr1-x440.google.com [IPv6:2a00:1450:4864:20::440])
+	by mail.lfdr.de (Postfix) with ESMTPS id AC1E420F6A
+	for <lists+linux-ntb@lfdr.de>; Thu, 16 May 2019 21:59:17 +0200 (CEST)
+Received: by mail-wr1-x440.google.com with SMTP id x15sf1763546wrn.11
+        for <lists+linux-ntb@lfdr.de>; Thu, 16 May 2019 12:59:17 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1558036757; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Lgl21PuDxX2mXh2aCy8xhF7EXiXHVHOU32RaITtyQEn3JRv9U99Tou+Fh5qtPIszc1
-         eGzTIExAZodb9U48he4U6HNaylfALX1pM4rG+uswIk6vghxghybG9Xugbca7RdyCKZZ/
-         zRL7+KGQNap7A0n2YWAe09RG92G55QEHc1kBJtkr+3X9PDkiQUyNOwoP3UczHm0PL4FL
-         S7FchbXpJ/CohQc6jxFjlj8SxzvQ4kPiwmXKu4hyw6p1e9lrNPp4by3BWtwaD6EQkQJn
-         GNplV4mVGVZ/wp9pUlH72TYJoUswHbnHTnfA1yle8lspjzoPoxj5exWM0QkUMcFmyE1N
-         mRUw==
+        b=0gEXg7rIDmzOi8lllDF6eoA1S+LUcwpQSSkL3CbfFlyEflwBGqZstshyZXDgNXEUiX
+         7PQCrA1cXw712JlMv6LW0uYaSv0gcn+UqkDoQ3CPrOCfQzYNjLRVYAxQQpqW1ycEKMJL
+         MrNLR5Gn+Twf22XfL/jNz6/9soU6+c84soA5wUuojSa4ossedpwAYgtUlKwhKxBCZBrb
+         X+E69gWw8B6GWw7wabXiGAqYZl2RW2VzZWt4tZP6vjl2+8rz3RJvCJ4xpnW25TaR5YjZ
+         GcwKHZFF9P8S/C29Qjg3pBN8QgP/Z5rjn4geC3xLDGZJD/3Ui5v/bcpoWkV8EKQaZsB3
+         PlwA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:to:subject:message-id:date:from
          :mime-version:sender:dkim-signature:dkim-signature;
-        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
-        b=gv2JFcT5Bw+cB2bQx+N7fu9ntVyGBFb6RxdZMos+f7CGl9tmUKiYr/X+SPP+shfJq6
-         zrXRjCr11muFPqoPt7Ou0HP4Shp4sRh2X/f2b//eR5suNpIsnBSczOL665wDAeLNb4bI
-         xN9y1wBz0c3wDvGCsHkpcA4gadBOzfpmACRz/GROHCTt9oFAP87rzMV1jS6wGTwSW0La
-         6EkBNHuI41lQ5qTfP4UP8vEDHVVeZzQjQdLJwxR9kOJflPiEi7xUfAZaB/wAmz3xO0OV
-         OoInWwcdTBHlut/dEzXgZhlS/LP8UtKqtCAdMy1IcemqntsYUA+YqUIOfZUy+51bXDdS
-         tWnQ==
+        bh=Idxf5WMo/62Y2QstFZRJzNJIf9bccr3aFLwlFiRKYgY=;
+        b=zgCxEb2+rE5fX3CoHvLL6mP7BMTsXkyWaFx1hnrWBCsq3nHGkNOBoE62yUlE1Vbx7p
+         DMAqAHinw4J5cHKPcyJxC6CPSqOVDJnwITFHhyhWxEoPZaGb8gEuars96c390C7LC7Ge
+         csL2hpP7HBc9aC/2KJJA3pNPxawV4LWGGz8NQyFkFWJ3neWGC2RHTbQTtIh9lGtdnX/7
+         9P4oBZjG8LS9//XBPLagtaho5Tbvn/LjBwrwLovToGDa98VT7I/lo3o8FWMHAybpVhkW
+         GLifdB/71uia9od2ejlmJbuW+3HdvLAjBu3QEFo/2uuQD90c2IFhyUaT1a00/8Hb9o3E
+         dTsQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M3U4pAOi;
-       spf=pass (google.com: domain of sai1.solugenix@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iUVo3yYe;
+       spf=pass (google.com: domain of sai1.solugenix@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,92 +35,92 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
-        b=Fo5R7pr+cAToa9iIRsZVKPg2Rm9nlHoUOFvAQy569nYBYgX9upvXZLSKsgI4kdZV0r
-         RmaPc9DUy4LWQ1JwJP1XXcSo+VBhNjcwiowPAqV6ixkA6cc60P4+owp0vhUXSRnjMD+I
-         ldUjSv1b0zSxzdESxKEzKpehUVihw40cTM2kjmyhLeOVkRikw5qVkAx3r2LiRcK1XJTe
-         A+HBbX2k1ZQHIe/pR84MapS3nJshLfzemdahDoZ+zAarU+7w5GL6Uxzq9Oqu3VItoezC
-         7AGoZnjoIBBpd4Z8swaoRt0eh8SV7d26qPE2vieg8Q4khr0S32WbXdBq7fTeSCnEcIz5
-         dNHw==
+        bh=Idxf5WMo/62Y2QstFZRJzNJIf9bccr3aFLwlFiRKYgY=;
+        b=cURRDLs+XBdE78Gsx+pwcGu+6nOphZ9mr0sOeinrkIArV0A+iOQ8pD0Nqu1oX/XMK5
+         AsE7fAhC0BLLXRM+tRSopXzzjttFtsJSXJ/vXb1TwTQ/LZcnRVwM4Jsbwv51rOv38Drv
+         mDoNHT4Irjs0NMstRke8RPOAhvMxs/5Rf7ssJuVVRUvHlbqQuHHp0qhff93lM5zQO0FF
+         oRDmVfrPdHqRdBymGwo+GoUDGMMrtl5OB6gzeej5Gk3P8g9q/Abv5pK/OkDA80O1l8WW
+         Eo2oqA2eL/CiRmr0MPkJpDm27NcXoTHEU4Jy8kTIrT6jX8hEZRBaEx5uVYApMW0Kbyuj
+         5Z+A==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:from:date:message-id:subject:to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
-        b=OWzBxQMbPkmLLTupClFridzQpcDnU3BX9cflevxvHIppRvFlxfkiXBtMICc9UedC+L
-         UNazFHc2gkZUOHSe3IO2KgAp8MD0zZDUjO7ob2MDiHP2syL36GzxrmOrU7C1TTHNqPmM
-         zPnig8YBb8GDIrmCWgiZT9GvLIWD/BWJUJVweDDLdYHAMrtVE3QBLLqihiDay6WGoCay
-         vO5NPtuUrqVicI/YWaXf1zpwgYKX80HoE2sOnBfRNQ4wdSFlv2POPZGBWMZTDv/WNSw6
-         +iD8EtBQlCF+Rdmhz8JPqKZXfxVP9U/VBoCMRQMKBz384YnKeR2T9IiK09miMFg8pB9d
-         U4yg==
+        bh=Idxf5WMo/62Y2QstFZRJzNJIf9bccr3aFLwlFiRKYgY=;
+        b=IKg/G/EIvM+Yz8VtmBwtYVrArcF2hNKwbguyVvvJuLwTmJ/NHlvHoqsUc6KVABUw1o
+         Yzv96DvOvK8Yj9d4u1QrRxOjNApMTLMWRhnJlUA4lMPr+kEkpCBwdfLYIQPpAlnb8pv4
+         iiGmU/cqU9zviDU5jQI3qO2qO2mxgZ6WqM6Eu9eDp1zpKhcptE4qmoXNZwILNDA70eyQ
+         bKmcBaqCbbvgZeFHbtAQzpLczIkSmP1nxwALxEwbTZ4Ka/a2vwOKU0bkUhBud4MDIlfU
+         xdNzlO30x1zXYitX6Fn6nfz2LsL17d70tab36UPLtZGYKLNzDSSxzWMeu7/pnKdY1a+J
+         98ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
          :to:x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=TmJmDqS9LP7E7UvwuLclIGdtuXLZJLqvPiv89HRw7x8=;
-        b=OJAcleC2cI5YHHmhz+xczwDeZPVIlz78r+ylEmJHqxF6ylCw6yzkIL09v60cDW7SrY
-         CBtNDOCqXAiCxVSzS/8iDkKgWAi/qyE/o9FRxhj3ARFEx359uakmZF0FMFmhCtjCWiF9
-         q8M2iTw1HajozUmh4gqzBiaJvPlLTPIvXlgndtOU5pTa+euMYcv6B4bouxuQQn+f6Xaw
-         q2zp6eJj1797ynKYFIrpm6XuX7eZwNt7UWgpqvLsserbSNqIv9YX4k0WkQwpcDMRSw53
-         MAT3uesHm4bp2FiqNj4aOx2SmZTDVK3AabQCXLatM/GBQnaE65v+DIZG6jMcK2Q1yXYB
-         jepA==
+        bh=Idxf5WMo/62Y2QstFZRJzNJIf9bccr3aFLwlFiRKYgY=;
+        b=mAVKuWJM9Z07NRLXEibtLPLSGclf/XYdohp1n7ikdaQ+VJEY6+kgJsyPxk3NpcLEmY
+         8l6ZvBG8VFYDFnUTHOjuHk5DnPBmt6heN61+KttHVDmjTxEENvogSsk/xUF1ke0RuXU5
+         spa3v8K/JPl/4UArzCCtQkOoEXi8FWSYxAtI3Tf1iGQEy4aPVhGnGcsaOdCcmCZKBxJs
+         lGCKElKL+GV6nJGMLxL6TwaMg0WxbPNk3BUapq+lZt1igezisac4wEgd5fbP1PT8IN/D
+         TAd4LNtwBZTEy1ldhnOnL4xBx61maIRe+pVGTFKyVUtLYs8890gXCnR6qGmESC41CAuI
+         NQtg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWF9as9QU6r+JZ0PX1x33D7x+rImZaJODBfeOFbIgFjhvts11Hj
-	0uPrfrIgTwMIIeYVu1/b9lk=
-X-Google-Smtp-Source: APXvYqxtkb7lHEoeZ6Rp9qHJbbYNfLJlBt++txFosT+E7YrBRsDMFgiEZRY37efRszHVvV/U3zQiqA==
-X-Received: by 2002:a1f:61c6:: with SMTP id v189mr12396067vkb.87.1557768345986;
-        Mon, 13 May 2019 10:25:45 -0700 (PDT)
+X-Gm-Message-State: APjAAAW7t/PJI8r0QpUyc1Vogu+OifnxF6FfsVvlYGQwQ2sZhSB4ZCV0
+	YusrETJNM96Y1VwL8uRtyjk=
+X-Google-Smtp-Source: APXvYqzjQtwYNFzLf5YZECr+4wuFBu0OHoRpOUbGjDHPQpgVkjQCbVJ+L/+Mdd2MJyTZU5HIzZ4RGA==
+X-Received: by 2002:a5d:6145:: with SMTP id y5mr21272072wrt.96.1558036757325;
+        Thu, 16 May 2019 12:59:17 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ab0:324e:: with SMTP id r14ls731453uan.11.gmail; Mon, 13 May
- 2019 10:25:45 -0700 (PDT)
-X-Received: by 2002:ab0:3445:: with SMTP id a5mr7705135uaq.136.1557768345588;
-        Mon, 13 May 2019 10:25:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1557768345; cv=none;
+Received: by 2002:a5d:66ce:: with SMTP id k14ls1780448wrw.4.gmail; Thu, 16 May
+ 2019 12:59:16 -0700 (PDT)
+X-Received: by 2002:a5d:4604:: with SMTP id t4mr31194676wrq.93.1558036756745;
+        Thu, 16 May 2019 12:59:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558036756; cv=none;
         d=google.com; s=arc-20160816;
-        b=0dcaui9MPqUPuGI4BAewK0vHXFWAxLT6ejeXPFjRNh8yCUNir4veRsCm01sHEoBLWy
-         gnlu6WR1+cXTH17OKtryB1NEPZVBHse21ee7cXMKgBOhhYq/wZE8ZN5yxH4zNhIGgDTL
-         gzzWu7Ikn1d+1MU5zqUpDTtTvhmXte2ee9GS/wf0JxWTDv5CoPj0P4HGd6FVf46zp45y
-         xhnq9M1csTXckZyPMmLWsJVA64sF0Lc4pji+sMoARtqJqzyKPSXc2KQ28Yw3zMP33qPc
-         rb1e3YcDXZFUAeraWQHUEgDJUCYC5Ls20JKFuJaSJGJ+kx/EImoN6PjIjgoFCMExJee/
-         95Yg==
+        b=hmkHSMhf/2QIhXY9FN9eFXZ03eOA2gLvHJEBPtIh5T67BgfUGb8TJzHrl8g2uIoOQQ
+         BH5U/v03a+iN1G3mOXUcFYuSAwZ/diZGF0B9LEGV9fCbrUuVjd7jiIBR7CcXPBRp1uZp
+         zPxxIixUx4Kqu5Yr9SkF272S0FeBxJuQrXHsyWH1xS8blDkwu8GbmDH8PaUj4uw3ySCe
+         oMGzztH0KnrZXda/5uyMMJ0bDIExpi9fzL49b3SUtwcMVU4Tq9BrR72I6/Z+/m3IibIZ
+         jyIU8ZQcYMwD7AnpqyLQNfmdZe+Re5iAjD2A0bTXdcDq1wVn1k9fBcwPEMIY5pY3B5w7
+         gZCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=FVsEAyMgg4Kgdj0n7FRvpQyEYw3a00qUibR0OPL9nCQ=;
-        b=x4szGazafJRl+qLCNoNO7SbJwyzffWce6hRvaGhm4EFgx/+adiGLVktaeW+DFdIbXN
-         alc0KjgCxx3k0PLTJ1kN6tOz1IIfb8IGhtHrCH7K+ChIfvpq+NNM6YGa8puesSvgvOEU
-         AIciePwKcLtL660eOgTAte5UN6axePEOMhbJn0RTV9qmNii0bfzbS6J9m8xi3dGtPx+8
-         RhWq2z9UhDrIBJxzGFLwSMUjn5JddclJ8Vt9zrv3fbeaWjvoHs3euInFTQg9NVYtfnPy
-         ZSjVjnZBth7SwGR4k14rKVYc1muwjLUOa7ae+8PX+xAeH01+ApVy5j//B6CHiAP+FXqq
-         JRxg==
+        bh=bKF7rdMS1PEBxtabJQq30v970aMHohzlgcHF8ca/VGI=;
+        b=VGI+BGF0Udh/6IsZQMbtWyz/W6UDjhcfTqpZWYqRQ13Au/gR966Ws7Qw70D1bDHsqN
+         YVmCN5H+pKsog0C83uPrHY7oL4z3eZGXIzuLo88PEJkPauGBmkOwirNvcxZFOOEFakM0
+         pkhABSHvCpuNtlz0SsCrrjfjwaEgGpzEL3GBRxNrK90JWRplKQYUukadM5eHbV+slanv
+         P1+gPz7//5NMLPmEVoIF7hzAjdQBEWOEYvwxagvatveGyTlwbZPAWDfN+9nTfznc5G8s
+         hwZxpC0S4Mqm3RBlMMfmquUCbjfs0F1YUfhZLATcyZnGt/oDoeLaSe3BocaADUft2ly2
+         8/Vw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=M3U4pAOi;
-       spf=pass (google.com: domain of sai1.solugenix@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=iUVo3yYe;
+       spf=pass (google.com: domain of sai1.solugenix@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-io1-xd43.google.com (mail-io1-xd43.google.com. [2607:f8b0:4864:20::d43])
-        by gmr-mx.google.com with ESMTPS id 19si861988vkv.4.2019.05.13.10.25.45
+Received: from mail-lf1-x141.google.com (mail-lf1-x141.google.com. [2a00:1450:4864:20::141])
+        by gmr-mx.google.com with ESMTPS id d14si1254672wrj.3.2019.05.16.12.59.16
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 13 May 2019 10:25:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sai1.solugenix@gmail.com designates 2607:f8b0:4864:20::d43 as permitted sender) client-ip=2607:f8b0:4864:20::d43;
-Received: by mail-io1-xd43.google.com with SMTP id m7so10696860ioa.6
-        for <linux-ntb@googlegroups.com>; Mon, 13 May 2019 10:25:45 -0700 (PDT)
-X-Received: by 2002:a05:6602:143:: with SMTP id v3mr9181538iot.45.1557768344907;
- Mon, 13 May 2019 10:25:44 -0700 (PDT)
+        Thu, 16 May 2019 12:59:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sai1.solugenix@gmail.com designates 2a00:1450:4864:20::141 as permitted sender) client-ip=2a00:1450:4864:20::141;
+Received: by mail-lf1-x141.google.com with SMTP id c17so3619777lfi.2
+        for <linux-ntb@googlegroups.com>; Thu, 16 May 2019 12:59:16 -0700 (PDT)
+X-Received: by 2002:a05:6512:309:: with SMTP id t9mr24758943lfp.103.1558036756168;
+ Thu, 16 May 2019 12:59:16 -0700 (PDT)
 MIME-Version: 1.0
 From: Sai Kumar <sai1.solugenix@gmail.com>
-Date: Mon, 13 May 2019 10:25:36 -0700
-Message-ID: <CAAQxFq62SKV=AN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8qPyQ@mail.gmail.com>
-Subject: Urgent Need : SailPoint Administrator @ Irvine CA ( Direct Client )
+Date: Thu, 16 May 2019 12:59:04 -0700
+Message-ID: <CAAQxFq7-veggjHY-+h=nRosKeeh5P--sLxnOTu4JekKBjQ7_2g@mail.gmail.com>
+Subject: Urgent Need : Salesforce Developer @ Irvine CA ( Direct Client )
 To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000d733d90588c834f9"
+Content-Type: multipart/alternative; boundary="00000000000066061b058906b3d9"
 X-Original-Sender: sai1.solugenix@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=M3U4pAOi;       spf=pass
+ header.i=@gmail.com header.s=20161025 header.b=iUVo3yYe;       spf=pass
  (google.com: domain of sai1.solugenix@gmail.com designates
- 2607:f8b0:4864:20::d43 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
+ 2a00:1450:4864:20::141 as permitted sender) smtp.mailfrom=sai1.solugenix@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
@@ -134,45 +134,102 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---000000000000d733d90588c834f9
+--00000000000066061b058906b3d9
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
 Hi,
 
 
 
-Greetings from solugenix!!!
+Greetings from Solugenix!!!
 
 My Name is Sai Kumar, working as "Recuiter" for Solugenix.
 
 
 
-Solugenix is an information technology services firm that has a rich
+*Solugenix* is an information technology services firm that has a rich
 history of providing comprehensive technology services and solutions for
-more than four decades. Since 1969, Solugenix Corporation has been
+more than four decades. Since 1969, *Solugenix Corporation* has been
 fulfilling the IT services needs of some of the most respected global
 corporations in the U.S.
 
 
 
-Please find the below direct client position open which has opened and *waiting
-for the Full Job Description* . Please let me know if you are available and
-interested in submitting your resume to this position.
+
+
+We found your resume in one of the job boards. Your skills seem to be a
+good match for the position description I have attached below. Please send
+your resume to sai.nakka@solugenix.com  if you are interested in being
+considered for this opportunity.
 
 
 
-*If you are not available, Please refer anyone whom you know in your
-contacts . I would be really grateful to you.*
+Even if you are not available, but if you know someone who would fit this
+job, please don't hesitate to pass this email on to them.
 
 
 
-*Client        : Investment Management Domain*
+*Position Title: Salesforce Developer*
 
-*Position    : Sailpoint administrator*
+*Job Location: Irvine, CA   ( Locals Preferred
+)
+*
 
-*Location   : Irvine CA*
+*Duration: Long Term Contract    *
 
-*Duration   : 6+ months to Long Term*
+
+
+Notes from Client.
+
+Experience with migration from classic to lighting of salesforce experience
+
+Workflows and salesforce reports
+
+Salesforce data loader
+
+
+
+*Notes*
+
+Immediate need for a Salesforce Developer to work on PCS Central
+
+Must be well versed with CRM systems and Salesforce specifically (with
+hands-on SF experience =E2=80=93 maybe some lightweight configuration exper=
+ience)
+
+Must have financial services experience (wealth management experience is a
+huge plus =E2=80=93 knowledge of/experience with client on-boarding, client
+management)
+
+This is a client facing role so this person must have excellent
+communication skills. Will be spending some time in Irvine and LA.
+
+experience using Salesforce.com (SFDC) required. Jira experience is
+preferred.
+Manage enhancements within SFDC, assist team on projects, run/pull reports
+from SFDC.
+
+Financial services experience (wealth management experience is a huge plus
+=E2=80=93 knowledge of/experience with client on-boarding, client managemen=
+t)
+
+Strong business acumen and communication skills.
+
+Users are in LAO and the resource will be working from Irvine office, he
+will gather salesforce requirements or changes from users and work with
+technical team which is sitting in Irvine office
+
+He will travel to Irvine on a need basis to provide training to users and
+for UAT=E2=80=99s
+
+Bachelor degree in related field is preferred.
+ -Reviews, analyzes, and evaluates business systems and user needs.
+
+-Documents requirements, defines scope and objectives, and formulates
+systems to parallel overall business strategies.
+
+-Requires at least 7 years of experience.
 
 
 
@@ -202,8 +259,10 @@ Delivering on business promises for 50 years
 <https://www.facebook.com/Solugenix>  [image:
 cid:image003.png@01D0C49A.9EEF1260]
 <https://www.linkedin.com/company/solugenix>  [image:
-cid:image004.png@01D0C49A.9EEF1260] <https://twitter.com/solugenix>  [image:
-cid:image005.png@01D0C49A.9EEF1260] <https://www.youtube.com/user/solugenix>
+cid:image004.png@01D0C49A.9EEF1260] <https://twitter.com/solugenix>  [image=
+:
+cid:image005.png@01D0C49A.9EEF1260] <https://www.youtube.com/user/solugenix=
+>
 
 Your employment with the Company will be on an at-will basis such that both
 you and the Company have the right to terminate the employment relationship
@@ -214,14 +273,18 @@ consulting professionals. If you have received this in error, please accept
 our apologies & reply with REMOVE as subject to be removed from our mailing
 list. We regret any inconvenience caused.
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAAQxFq62SKV%3DAN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8qPyQ%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/CAAQxFq7-veggjHY-%2Bh%3DnRosKeeh5P--sLxnOTu4JekKBjQ7_2g%40mail.gm=
+ail.com.
 For more options, visit https://groups.google.com/d/optout.
 
---000000000000d733d90588c834f9
+--00000000000066061b058906b3d9
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
@@ -232,7 +295,7 @@ nt-size:11pt;font-family:Calibri,sans-serif">Hi,</p>
 -family:Calibri,sans-serif">=C2=A0</p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif">Greetings from solugenix!!!</p>
+-family:Calibri,sans-serif">Greetings from Solugenix!!!</p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
 -family:Calibri,sans-serif">My Name is Sai Kumar, working as &quot;Recuiter=
@@ -243,52 +306,160 @@ Solugenix.</p>
 -family:Calibri,sans-serif">=C2=A0</p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif">Solugenix is an information technology services=
- firm that
-has a rich history of providing comprehensive technology services and solut=
-ions
-for more than four decades. Since 1969, Solugenix Corporation has been
-fulfilling the IT services needs of some of the most respected global
+-family:Calibri,sans-serif"><b>Solugenix</b> is an information technology s=
+ervices firm
+that has a rich history of providing comprehensive technology services and
+solutions for more than four decades. Since 1969, <b>Solugenix Corporation<=
+/b>
+has been fulfilling the IT services needs of some of the most respected glo=
+bal
 corporations in the U.S. </p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
 -family:Calibri,sans-serif">=C2=A0</p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif">Please find the below direct client position op=
-en which has
-opened and <b><span style=3D"background:yellow">waiting for
-the Full Job Description</span></b> . Please let me know if you are availab=
-le
-and interested in submitting your resume to this position.</p>
+-family:Calibri,sans-serif">=C2=A0</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">We found your resume in one of the job boards. =
+Your skills
+seem to be a good match for the position description I have attached below.
+Please send your resume to <a href=3D"mailto:sai.nakka@solugenix.com" style=
+=3D"color:rgb(5,99,193)">sai.nakka@solugenix.com</a>=C2=A0
+if you are interested in being considered for this opportunity. </p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
 -family:Calibri,sans-serif">=C2=A0</p>
 
-<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif"><b><span style=3D"background:yellow">If
-you are not available, Please refer anyone whom you know in your contacts .=
- I
-would be really grateful to you.</span></b></p>
+<p style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans=
+-serif">Even if you are not available, but
+if you know someone who would fit this job, please don&#39;t hesitate to pa=
+ss this
+email on to them.</p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif">=C2=A0</p>
+-family:Calibri,sans-serif"><span lang=3D"EN-IN">=C2=A0</span></p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif"><b>Client=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 :
-Investment Management Domain</b></p>
+-family:Calibri,sans-serif"><b>Position Title: Salesforce Developer</b></p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif"><b>Position=C2=A0=C2=A0=C2=A0 : Sailpoint admin=
-istrator</b></p>
+-family:Calibri,sans-serif"><b><span lang=3D"EN-IN">Job
+Location: Irvine, CA=C2=A0=C2=A0=C2=A0( Locals Preferred
+)=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0
+</span></b></p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif"><b>Location=C2=A0=C2=A0 : Irvine CA</b></p>
+-family:Calibri,sans-serif"><b>Duration: <span class=3D"gmail-beelinedropdo=
+wnnowidthview">Long
+Term Contract </span>=C2=A0=C2=A0=C2=A0</b></p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
--family:Calibri,sans-serif"><b>Duration=C2=A0=C2=A0 : 6+ months to Long Ter=
-m</b></p>
+-family:Calibri,sans-serif"><span lang=3D"EN-IN">=C2=A0</span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span lang=3D"EN-IN" style=3D"background:yellow=
+">Notes from Client.</span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span lang=3D"EN-IN" style=3D"background:yellow=
+">Experience with migration from classic to
+lighting of salesforce experience</span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span lang=3D"EN-IN" style=3D"background:yellow=
+">Workflows and salesforce reports</span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span lang=3D"EN-IN" style=3D"background:yellow=
+">Salesforce data loader</span><span lang=3D"EN-IN"></span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span style=3D"font-size:10pt;font-family:&quot=
+;Segoe UI&quot;,sans-serif">=C2=A0</span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><b><span style=3D"font-size:10pt;font-family:&q=
+uot;Segoe UI&quot;,sans-serif">Notes</span></b></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Immediate need for a Salesforce Developer to wo=
+rk on PCS
+Central</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Must be well versed with CRM systems and Salesf=
+orce
+specifically (with hands-on SF experience =E2=80=93 maybe some lightweight
+configuration experience)</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Must have financial services experience (wealth=
+ management
+experience is a huge plus =E2=80=93 knowledge of/experience with client on-=
+boarding,
+client management)</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">This is a client facing role so this person mus=
+t have
+excellent communication skills. Will be spending some time in Irvine and LA=
+.</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span class=3D"gmail-beelinelabel">experience u=
+sing Salesforce.com
+(SFDC) required. Jira experience is preferred. </span><br>
+<span class=3D"gmail-beelinelabel">Manage enhancements within SFDC, assist =
+team on
+projects, run/pull reports from SFDC. </span><span class=3D"gmail-beelinela=
+bel"><span lang=3D"EN-IN"></span></span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Financial services experience (wealth managemen=
+t experience
+is a huge plus =E2=80=93 knowledge of/experience with client on-boarding, c=
+lient
+management)</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span class=3D"gmail-beelinelabel">Strong busin=
+ess acumen and
+communication skills.</span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">Users are in LAO and the resource will be worki=
+ng from
+Irvine office, he will gather salesforce requirements or changes from users=
+ and
+work with technical team which is sitting in Irvine office</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">He will travel to Irvine on a need basis to pro=
+vide training
+to users and for UAT=E2=80=99s</p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif"><span class=3D"gmail-beelinelabel">Bachelor deg=
+ree in related field is
+preferred. </span><br>
+<span class=3D"gmail-beelinelabel">=C2=A0</span>-Reviews, analyzes, and eva=
+luates
+business systems and user needs. <span lang=3D"EN-IN"></span></p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">-Documents requirements, defines scope and obje=
+ctives, and
+formulates systems to parallel overall business strategies. </p>
+
+<p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
+-family:Calibri,sans-serif">-Requires at least 7 years of experience.</p>
 
 <p class=3D"MsoNormal" style=3D"margin:0in 0in 0.0001pt;font-size:11pt;font=
 -family:Calibri,sans-serif">=C2=A0</p>
@@ -311,8 +482,9 @@ pt;height:87.75pt">
   <p class=3D"MsoNormal" align=3D"center" style=3D"text-align:center;margin=
 :0in 0in 0.0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span styl=
 e=3D"font-size:10pt;font-family:&quot;Segoe UI&quot;,sans-serif;color:rgb(6=
-4,64,64)"><img width=3D"120" height=3D"120" style=3D"height: 1.25in; width:=
- 1.25in;" alt=3D"cid:image006.png@01D4BD76.95F0E4D0"></span></p>
+4,64,64)"><img border=3D"0" width=3D"120" height=3D"120" style=3D"height: 1=
+.25in; width: 1.25in;" alt=3D"cid:image006.png@01D4BD76.95F0E4D0"></span></=
+p>
   </td>
   <td width=3D"266" style=3D"width:199.2pt;padding:0in 5.4pt;height:87.75pt=
 ">
@@ -415,11 +587,11 @@ mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 To post to this group, send email to <a href=3D"mailto:linux-ntb@googlegrou=
 ps.com">linux-ntb@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CAAQxFq62SKV%3DAN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8qPyQ%=
-40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.goo=
-gle.com/d/msgid/linux-ntb/CAAQxFq62SKV%3DAN-A6eZrvQ0coVJGtLm6nCdoFpwcHVDJS8=
-qPyQ%40mail.gmail.com</a>.<br />
+om/d/msgid/linux-ntb/CAAQxFq7-veggjHY-%2Bh%3DnRosKeeh5P--sLxnOTu4JekKBjQ7_2=
+g%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.g=
+oogle.com/d/msgid/linux-ntb/CAAQxFq7-veggjHY-%2Bh%3DnRosKeeh5P--sLxnOTu4Jek=
+KBjQ7_2g%40mail.gmail.com</a>.<br />
 For more options, visit <a href=3D"https://groups.google.com/d/optout">http=
 s://groups.google.com/d/optout</a>.<br />
 
---000000000000d733d90588c834f9--
+--00000000000066061b058906b3d9--
