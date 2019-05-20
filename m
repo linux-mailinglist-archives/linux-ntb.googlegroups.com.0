@@ -1,166 +1,69 @@
-Return-Path: <linux-ntb+bncBAABBXFVRLTQKGQELQ6JLQI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCELXQMOTUFBB5XRRPTQKGQEE6FHHXA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wr1-x43f.google.com (mail-wr1-x43f.google.com [IPv6:2a00:1450:4864:20::43f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 833202335D
-	for <lists+linux-ntb@lfdr.de>; Mon, 20 May 2019 14:17:32 +0200 (CEST)
-Received: by mail-wr1-x43f.google.com with SMTP id u11sf6532625wri.19
-        for <lists+linux-ntb@lfdr.de>; Mon, 20 May 2019 05:17:32 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1558354652; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=Bjr+kdExnsuvlbqF4GJrVhYq9Z0He4KEacEmQSqsmNRkWo+OX0YN9J1KOo5rOcBEqf
-         GZ71eO8paFA2S28QgTd+HWks4wOa61uGxmTVGa9dCKc+W8ucoELlg+73zE9yOYEePsGk
-         3Qs13qmf2vLzg/J0mcgxS1AByzI7X3G91lHT9RNq+7Drs0eLUSibuVBXXE2s6lL0uSxf
-         ZQ0klFhUeSuhscnv3hwq0h+pBX0bTEA2NuuD+uNluvLwu7N3s3mJsztXOGUCklutpwB4
-         7QfoKcRjuTCOMN565lOaoJaAkUorSkfhwG5kx/xCLldKcQxhVQh4nNSqmTUDy8qUmSeJ
-         Lwug==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:content-id
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:sender
-         :dkim-signature;
-        bh=ekrH/Enwgu009J2d+gLl00DtmGxjJql51wuBLuDqVOU=;
-        b=swezPHkBrY5WwHXT3UjY4xFpL0YQwaauNhvfjGTB0/bjE7yiHgS5E/ZRMmq3kj9guK
-         kXQlQNnV/izm/EYzUMZAZirJCAqPuTPE4LLT48a8IMx6rutcF5qloA75JRZkwii2DSwK
-         x92+LalygCIzG5aPOjQ8xFaUafhPNlSQEju8gq7ZuajP7UZq3lUqWWlZ1lrcMw6FmV8V
-         cQY8q9SWkGx3dQzD7Ggmr1PlDTRiDcOqnUWNVBojqwn64wRPAnLMdHlI/IcxhvJF5XQ9
-         sXsk2btXr1Oixy5U8mXLwdvG8Unph0lLzAM8/zzTle/5xuc/goxGqhtc6nEFZHRHoGQ9
-         FaPg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector1-amdcloud-onmicrosoft-com header.b=oeaNask4;
-       spf=neutral (google.com: 40.107.82.71 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+Received: from mail-yw1-xc37.google.com (mail-yw1-xc37.google.com [IPv6:2607:f8b0:4864:20::c37])
+	by mail.lfdr.de (Postfix) with ESMTPS id E0034240C0
+	for <lists+linux-ntb@lfdr.de>; Mon, 20 May 2019 20:59:03 +0200 (CEST)
+Received: by mail-yw1-xc37.google.com with SMTP id t2sf1765305ywc.10
+        for <lists+linux-ntb@lfdr.de>; Mon, 20 May 2019 11:59:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:thread-topic:thread-index:date:message-id
-         :references:in-reply-to:accept-language:content-language:content-id
-         :mime-version:x-original-sender:x-original-authentication-results
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=MRQoHMhgGj5cNvzBvRzG+/XSmm3Xz9qtg7pwSlCoAKo=;
+        b=cvFI9kYMFrk5s19xHJw6mqfAaoq6EIK7U2kMdi1Ti9PKRrLam98Mz8PxIoszMq2Z+M
+         wnG8i1hZO2Tn2gsmkD8k8mcIynIenGMf7KrnlxApHKq7C4I4HpyVQQPMcot7mbtiFKdp
+         A8hecxcASou8Sq3riw8PKnl+D55k6LL0ZyQszAgr0YdxcB/hZjFSeJs4eq/oU1UWR0hP
+         1huzb25Tlab8S1cZexZ38mrQZBIrIkTrLy9td+ToENqyVSdUEc5mFuEj5AudN7tSkScD
+         e0s+O1XRTQHNb+MX75x5VBVQrNcU+3W0wzPqYRKdIqgmzJKZnmYXpvVf1FbacF0kB612
+         PTnw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=genisists-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=ekrH/Enwgu009J2d+gLl00DtmGxjJql51wuBLuDqVOU=;
-        b=aPQ3Fia82bUzLniWU1rDa8iH1+NF7M1P653OMMSerhmxfxBUtNtRg7hihyFUtC+bw/
-         Winvyb2JF78xgl5+VVKwSasCPFlYVauLJGCRxifVGTJTvjwx2XeJH7qozOfaKE92R3X2
-         /kz9aFszh+3ngSqpIzNoCo/7oNdaTEFkZM3m2Id/YNQVp0fmT6bmcVyzaKkoVqYP5IQj
-         bsYvaKFFYJpQWzkMOvWvbD8S85EInpn7xR4RW5esEHJ1M8j47xRTDlDQ2tsodWDMDcRX
-         wFxjvu4Fz4cKC0B5UNITLvTDx1O2mWoH5FTC7Dpeqw2FHg/qbhFI/TfI8WWkjalPU3I9
-         w+Ug==
+        bh=MRQoHMhgGj5cNvzBvRzG+/XSmm3Xz9qtg7pwSlCoAKo=;
+        b=hk05RzSE0NMqD+I2WAbGGOfrn8/cePc23PMsBgMxGJSSffqPLMAHxegNCJLYEdgN1B
+         9Id7C+BzNclhO+bdJ9yO7gRd69kCIlP8H+Vfkmr4xfGCsnsEE3uprZC3oGQfp5J0qX+D
+         HUKCvdaLnThhmVkcWbCzgPe3dTmYtdzQsiXHjGG/5Y263+fy6IGB76Nl8tw3KSv/CCpT
+         kwmMU+Iy3Y58PWXY0w2KPtl2tBqbO6ICut0tKK3ACvHRkf9bdSs7ObEPXE1quxkNkwUR
+         KApaIr4mnFDpQYo0qwpHSqaYa0trfFG3HusCn7VU+e64/RiBONfDoALEeln4j0djsIAY
+         Lt+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:thread-topic
-         :thread-index:date:message-id:references:in-reply-to:accept-language
-         :content-language:content-id:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=ekrH/Enwgu009J2d+gLl00DtmGxjJql51wuBLuDqVOU=;
-        b=Ra04cenxcuoBnMGxAyqHTMukDwVSKxvqj8U4czWemN8IxvcNq8ioqzhJ8xVeg8pXCB
-         t4/Dn5yqAzunKtjHIeyt2nf+jhGZ8PEOQfVGtkqwKsIbZVU4K3n3avl6X9UfKrT1dji7
-         jV+WExsbeWHVXKJvA8myV1ZE/hp97Nxzx0UEWdS+x8p8+Pos6vtBdQFGyit93KPLh3ae
-         Iqw8PZGqBoZyPXx1vnhSrSyy4i1RvZ9wfZXpYA1pAAg71GrG03pM4rBt8qhJ821KSzFb
-         W8FLXequV7wbdGRVVhCGxyh5Le40ynoA3L4iPftNBnqBkt2BnNPvJlyG2avl53cOASb5
-         3oNA==
+        bh=MRQoHMhgGj5cNvzBvRzG+/XSmm3Xz9qtg7pwSlCoAKo=;
+        b=H1K9fD4LhtA3TSEd7zB3rDXaij67uRbnyuuSZiF2P+EY21Zxl1jpGhqPwWoVPpWpm3
+         dMoe5RKZuPQVetOiBCt1SSGbKET+jXnKtog6+fLmMjIXMLP3E+qI1hnWS3Ag8NlgAuxF
+         SOxpdQwvvz5VBsyvGbFFdOf0ErC8ut4WIFkzhyykNkB3DDBoUz1+qramS836HpJYKH9Q
+         J2Snm06f7KzYEKYeAlbiAJ2U15D3bfTLUEU8OuZKnzX//n/5jdozAUO+us5p87FHK5wf
+         iHVGLS1dijVC+tABK8Wh6z8lffxqf+wvgBlYd1taOMSKJTayURt8KkfpOQbyqgag/ZjC
+         lURg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAV46aY46YCAjGtJ9jT7EO92hTd3WjBD0XRAPX4Y731PungU+zAy
-	7HrfzMv3sa1hJ7Lphbk2dIM=
-X-Google-Smtp-Source: APXvYqyM1g7lPRWE+1+ztYaSLr9pAymjaLC6oU4S9JcpOUQIs6s4Fd4NKSJ6gp9LUvzstPW01HE3nQ==
-X-Received: by 2002:a1c:96c9:: with SMTP id y192mr30123773wmd.75.1558354652229;
-        Mon, 20 May 2019 05:17:32 -0700 (PDT)
+X-Gm-Message-State: APjAAAXwIDBvlfnx3nVkhPgBkFABpSxMLhxss/+WWoMOVU3w3f6hKdox
+	l/4tNkhtxHgXiriOAaIwcLc=
+X-Google-Smtp-Source: APXvYqxd2b83pMbdp31dJPrm37O4sC8+o7GElg7nstywGHA36YmMxsJrl2zmHCart+B77SXEP3GAnA==
+X-Received: by 2002:a25:7608:: with SMTP id r8mr6684926ybc.274.1558378742409;
+        Mon, 20 May 2019 11:59:02 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a5d:6992:: with SMTP id g18ls4074890wru.7.gmail; Mon, 20 May
- 2019 05:17:31 -0700 (PDT)
-X-Received: by 2002:adf:dc0c:: with SMTP id t12mr32525989wri.101.1558354651821;
-        Mon, 20 May 2019 05:17:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558354651; cv=none;
-        d=google.com; s=arc-20160816;
-        b=INQZJUJKqpcFpuXhlfB+2KHvpxlN5BM4g5krWbqTujeWmXk+RfLko1kzq6Y7SD5RT5
-         ZvkovlZkFISkhLWzxD7/MQsleWs+BLr380nBJjtcOxCgdUmREc+gXqYrBLzrm2kUqT7E
-         L1WPfL7RI5vQxukNyhMCtCBnOjcWNAsk+jjLwg3U7XLJ5U4KDS6EXMx37wBkmKdvZROJ
-         LTw0V+rYO73GIFowIJuMWlKph2jYQYdcq3cilClCCAx5Bs/FMRJl+L4xHDnJB0Z3vD/5
-         29OMDzCGypKTRiD5EWAGgDubO0q+gYDbjiw05cfN2I2VxqQBgXkk8FcrssLcD1nEz9+Z
-         XJ2A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:cc:to:from:dkim-signature;
-        bh=cCj7GbY19CLBrglx94cRC9EukNGC0Zs28OvxQfFv1SY=;
-        b=ZE6FV4yGlQWc74umzXoCFjplKLBAaT4T5Hp4LfL/wUrKiC+H3yzXok1Isw3cmFBNaE
-         VXe+YBc/jLOVWx7Bt5UrxXsvAPxf021dcKzhoJuNQJK6JV8PcTs6W5knAYkxAeNC+ZNX
-         D4oqcMzSUVVJlbv8SkTtxhruiD1LtSIFw2D6SM2YEA1XM+GEjxb5+UT9D0UqkP3f8T5A
-         l5tlXUIXwH59s51bwnmjnY67IE8akC7fofYDPHKOZ4FQr4ffiNXkO9zXWhWtMhtC0qY+
-         DEp8IxN82nrPZLtFHWstUXuWJhpKnB5LTes2LKrCI6sVqHXf5PU3EPhUW8d3JapkLOlG
-         GeVw==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector1-amdcloud-onmicrosoft-com header.b=oeaNask4;
-       spf=neutral (google.com: 40.107.82.71 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
-Received: from NAM01-SN1-obe.outbound.protection.outlook.com (mail-eopbgr820071.outbound.protection.outlook.com. [40.107.82.71])
-        by gmr-mx.google.com with ESMTPS id j129si1328718wmj.4.2019.05.20.05.17.31
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Mon, 20 May 2019 05:17:31 -0700 (PDT)
-Received-SPF: neutral (google.com: 40.107.82.71 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) client-ip=40.107.82.71;
-Received: from MN2PR12MB3455.namprd12.prod.outlook.com (20.178.244.22) by
- MN2PR12MB4013.namprd12.prod.outlook.com (10.255.239.30) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.1900.16; Mon, 20 May 2019 12:17:29 +0000
-Received: from MN2PR12MB3455.namprd12.prod.outlook.com
- ([fe80::792c:727b:e40f:3a49]) by MN2PR12MB3455.namprd12.prod.outlook.com
- ([fe80::792c:727b:e40f:3a49%7]) with mapi id 15.20.1900.020; Mon, 20 May 2019
- 12:17:29 +0000
-From: Sanjay R Mehta <sanmehta@amd.com>
-To: Jon Mason <jdmason@kudzu.us>, "Mehta, Sanju" <Sanju.Mehta@amd.com>
-CC: "S-k, Shyam-sundar" <Shyam-sundar.S-k@amd.com>, "dave.jiang@intel.com"
-	<dave.jiang@intel.com>, "allenbh@gmail.com" <allenbh@gmail.com>,
-	"linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: Re: [PATCH 1/4] NTB: ntb_perf: Increased the number of message
- retries to 1000
-Thread-Topic: [PATCH 1/4] NTB: ntb_perf: Increased the number of message
- retries to 1000
-Thread-Index: AQHUxQ+kzcBLircFnkWwMPFTZUsE7qYVAJwAgF+BMwA=
-Date: Mon, 20 May 2019 12:17:28 +0000
-Message-ID: <e67dce79-bd64-9dd2-927c-124a34fcdcfc@amd.com>
-References: <1550222279-27216-1-git-send-email-Sanju.Mehta@amd.com>
- <20190320175011.GA27156@kudzu.us>
-In-Reply-To: <20190320175011.GA27156@kudzu.us>
-Accept-Language: en-IN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-clientproxiedby: MA1PR0101CA0014.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:21::24) To MN2PR12MB3455.namprd12.prod.outlook.com
- (2603:10b6:208:d0::22)
-x-ms-exchange-messagesentrepresentingtype: 1
-x-originating-ip: [165.204.157.251]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: ccef33c1-9166-4688-5ff7-08d6dd1d2062
-x-ms-office365-filtering-ht: Tenant
-x-microsoft-antispam: BCL:0;PCL:0;RULEID:(2390118)(7020095)(4652040)(8989299)(4534185)(4627221)(201703031133081)(201702281549075)(8990200)(5600141)(711020)(4605104)(4618075)(2017052603328)(7193020);SRVR:MN2PR12MB4013;
-x-ms-traffictypediagnostic: MN2PR12MB4013:
-x-ms-exchange-purlcount: 2
-x-microsoft-antispam-prvs: <MN2PR12MB4013E24DB38E12BA27391948E5060@MN2PR12MB4013.namprd12.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:5797;
-x-forefront-prvs: 004395A01C
-x-forefront-antispam-report: SFV:NSPM;SFS:(10009020)(39860400002)(376002)(346002)(396003)(136003)(366004)(199004)(189003)(66946007)(73956011)(26005)(66446008)(64756008)(66556008)(186003)(66476007)(68736007)(25786009)(15650500001)(6436002)(71190400001)(71200400001)(36756003)(229853002)(446003)(6512007)(6306002)(6636002)(486006)(6486002)(2616005)(476003)(305945005)(11346002)(7736002)(31686004)(52116002)(53546011)(6506007)(386003)(14454004)(76176011)(102836004)(54906003)(110136005)(6246003)(5660300002)(478600001)(6116002)(99286004)(53936002)(3846002)(72206003)(256004)(966005)(316002)(14444005)(2906002)(8936002)(81166006)(81156014)(66066001)(8676002)(4326008)(31696002);DIR:OUT;SFP:1101;SCL:1;SRVR:MN2PR12MB4013;H:MN2PR12MB3455.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
-received-spf: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam-message-info: MhhZRDIc+onUd0Rb19jJmig3eGocfxx4ycIBJtSJFZloUCabDVFb7XAIrp0o1I00hSK92mSrRlL6TuU73e3oLXwVCxEF2KMtqCb6ZtVPoJ7plG9n/fU8OqPQldWVdAxfAABknUeXsQqWXVtqYopPNgoPQNcT3WtJrnInPmtAWcTYZBUFCnkLEsFt1D0Lbx5B1UjB7c2Q1WZMeDTniAd5n3+a7gNhmnVbyCxfKvrMnBGKM3vZQG6hxtbu1AhA1Wubt2+ZzvU42vC2Dxp2ZgrV6DnckFxP0gAuWADsAFekzeVP7R59cKnFHbOJeZLCN2BR5jUpErF/bqdyPX+XVhWe4vruELGXjrO5PntufaVYDcLi3UTrswz/pI8m0FSF3hytCingoi3E/Eb6+/eBhP7a0R7KNRm/DdjtZLg3AnfvZvY=
-Content-Type: text/plain; charset="UTF-8"
-Content-ID: <5A37FF114949484F96A13A70D522105A@namprd12.prod.outlook.com>
+Received: by 2002:a25:384:: with SMTP id 126ls33613ybd.1.gmail; Mon, 20 May
+ 2019 11:59:02 -0700 (PDT)
+X-Received: by 2002:a25:acc5:: with SMTP id x5mr12481865ybd.507.1558378741852;
+        Mon, 20 May 2019 11:59:01 -0700 (PDT)
+Date: Mon, 20 May 2019 11:59:01 -0700 (PDT)
+From: prasanth THANDA <prasanth@genisists.com>
+To: linux-ntb <linux-ntb@googlegroups.com>
+Message-Id: <9826846b-a971-4989-b77d-0828418037a1@googlegroups.com>
+Subject: Sales force Developer//Arizona/NJ, Massachusetts//6 months//Direct
+ Client
 MIME-Version: 1.0
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: ccef33c1-9166-4688-5ff7-08d6dd1d2062
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 May 2019 12:17:29.0239
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4013
-X-Original-Sender: sanmehta@amd.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@amdcloud.onmicrosoft.com header.s=selector1-amdcloud-onmicrosoft-com
- header.b=oeaNask4;       spf=neutral (google.com: 40.107.82.71 is neither
- permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2075_24180434.1558378741347"
+X-Original-Sender: prasanth@genisists.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -173,63 +76,199 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+------=_Part_2075_24180434.1558378741347
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2076_1212775567.1558378741348"
 
-On 3/20/2019 11:20 PM, Jon Mason wrote:
-> On Fri, Feb 15, 2019 at 09:20:07AM +0000, Mehta, Sanju wrote:
->> From: Sanjay R Mehta <sanju.mehta@amd.com>
->>
->> while waiting for the peer ntb_perf to initialize scratchpad
->> registers, local side ntb_perf  might have already exhausted the
->> maximum number of retries which is currently set to 500. To avoid
->> this and to give little more time to the peer ntb_perf for scratchpad
->> initialization, increased the number of retries to 1000
->>
->> Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
-> Series applied to my ntb branch.
+------=_Part_2076_1212775567.1558378741348
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Hi Jon,
+Hi,
 
-The above patch series is not visible in 5.2-rc1 branch. Please let me know when I can expect them in upstream kernel.
+   WE HAVE URGENT REQUIREMENT FOR SALES FORCE DEVELOPER IN ARIZONA AND=20
+MASSACHUSETTS
 
+    *NOTE : DIRECT CLIENT REQUIREMENT...!*
+
+Role: Sales force Developer
+Contract: 6 months+
+
+Location: Arizona/NJ, Massachusetts
+
+Client : Direct
+
+=20
+
+=20
+
+Experience:
+
+=C2=B7        8+ years in Software Development
+
+=C2=B7        5+ years experience in Cloud Technology and an in-depth=20
+understanding of the primary concepts and terminology
+
+=C2=B7        5+ years working on Salesforce applications (Lightning is a=
+=20
+must-have.)
+
+=C2=B7        5+ years experience using Force.com (Advanced understanding o=
+f=20
+SFDC Triggers and Controllers, VF page development, sObjects, SOQL etc)
+
+=C2=B7        3+ year hands-on experience in an Agile development team
+
+=C2=B7        Experience in object oriented development is a must
+
+=C2=B7        Experience with SOAP and REST Web Services and integration us=
+ing=20
+APIs is a must
+
+=C2=B7        Experience with source control, branching strategies and usin=
+g=20
+code repositories a must
+
+=C2=B7        Salesforce certification preferred
+
+=C2=B7        Background in leveraging ETL products and tools (e.g. IBM=20
+DataStage, Informatica, etc.) for data management is preferred
+
+=C2=B7        Previous experience of Test Driven development is preferred
+
+=C2=B7        Previous experience in a lead role within a team of engineers
+
+=C2=B7        Advanced understanding of the Salesforce platform and its pri=
+mary=20
+functions.
+
+=C2=B7        Ability to learn new technologies and embrace the challenge=
+=20
+learning presents
+
+=C2=B7        A self-starter, comfortable having conversations with busines=
+s=20
+partners
+
+=C2=B7        Robust and current knowledge of web standards, emerging=20
+technologies, and trends
+
+=C2=B7        Ability to think abstractly and deal with ambiguous/under-def=
+ined=20
+problems
+
+=C2=B7        An excellent communicator, both verbally and written.
+
+
+ --=20
 Thanks & Regards,
 
-Sanjay Mehta
 
->
-> Thanks,
-> Jon
->
->
->> ---
->>  drivers/ntb/test/ntb_perf.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
->> index 2a9d6b0..a828d0e 100644
->> --- a/drivers/ntb/test/ntb_perf.c
->> +++ b/drivers/ntb/test/ntb_perf.c
->> @@ -100,7 +100,7 @@ MODULE_DESCRIPTION("PCIe NTB Performance Measurement Tool");
->>  #define DMA_TRIES		100
->>  #define DMA_MDELAY		10
->>  
->> -#define MSG_TRIES		500
->> +#define MSG_TRIES		1000
->>  #define MSG_UDELAY_LOW		1000
->>  #define MSG_UDELAY_HIGH		2000
->>  
->> -- 
->> 2.7.4
->>
->> -- 
->> You received this message because you are subscribed to the Google Groups "linux-ntb" group.
->> To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
->> To post to this group, send email to linux-ntb@googlegroups.com.
->> To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1550222279-27216-1-git-send-email-Sanju.Mehta%40amd.com.
->> For more options, visit https://groups.google.com/d/optout.
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+Prashanth
+
+
+
+US IT  RECRUITER
+
+
+
+Email :*prasanth@genisists.com <prasanth@genisists.com>*
+
+=20
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/e67dce79-bd64-9dd2-927c-124a34fcdcfc%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/9826846b-a971-4989-b77d-0828418037a1%40googlegroups.com.
 For more options, visit https://groups.google.com/d/optout.
+
+------=_Part_2076_1212775567.1558378741348
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi,</div><div><br></div><div>=C2=A0 =C2=A0WE HAVE URG=
+ENT REQUIREMENT FOR SALES FORCE DEVELOPER IN ARIZONA AND MASSACHUSETTS</div=
+><div><br></div><div>=C2=A0 =C2=A0=C2=A0<b><i><u><font color=3D"#134f5c">NO=
+TE : DIRECT CLIENT REQUIREMENT...!</font></u></i></b></div><div><br></div><=
+div>Role: Sales force Developer</div><div>Contract: 6 months+</div><div><br=
+></div><div>Location: Arizona/NJ, Massachusetts</div><div><br></div><div>Cl=
+ient : Direct</div><div><br></div><div>=C2=A0</div><div><br></div><div>=C2=
+=A0</div><div><br></div><div>Experience:</div><div><br></div><div>=C2=B7=C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 8+ years in Software Development</div><div><br></d=
+iv><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 5+ years experience in Cloud Tech=
+nology and an in-depth understanding of the primary concepts and terminolog=
+y</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 5+ years worki=
+ng on Salesforce applications (Lightning is a must-have.)</div><div><br></d=
+iv><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 5+ years experience using Force.c=
+om (Advanced understanding of SFDC Triggers and Controllers, VF page develo=
+pment, sObjects, SOQL etc)</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 3+ year hands-on experience in an Agile development team</div><d=
+iv><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Experience in object or=
+iented development is a must</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 Experience with SOAP and REST Web Services and integration us=
+ing APIs is a must</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 Experience with source control, branching strategies and using code rep=
+ositories a must</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ Salesforce certification preferred</div><div><br></div><div>=C2=B7=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 Background in leveraging ETL products and tools (e.g. =
+IBM DataStage, Informatica, etc.) for data management is preferred</div><di=
+v><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Previous experience of T=
+est Driven development is preferred</div><div><br></div><div>=C2=B7=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 Previous experience in a lead role within a team of en=
+gineers</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Advanced=
+ understanding of the Salesforce platform and its primary functions.</div><=
+div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Ability to learn new t=
+echnologies and embrace the challenge learning presents</div><div><br></div=
+><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 A self-starter, comfortable having =
+conversations with business partners</div><div><br></div><div>=C2=B7=C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 Robust and current knowledge of web standards, emergin=
+g technologies, and trends</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 Ability to think abstractly and deal with ambiguous/under-define=
+d problems</div><div><br></div><div>=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 An ex=
+cellent communicator, both verbally and written.</div><div><br></div><div><=
+br></div><div>=C2=A0--=C2=A0</div><div>Thanks &amp; Regards,</div><div><br>=
+</div><div><br></div><div><br></div><div>Prashanth</div><div><br></div><div=
+><br></div><div><br></div><div>US IT=C2=A0 RECRUITER</div><div><br></div><d=
+iv><br></div><div><br></div><div>Email :<strong style=3D"font-family: arial=
+, helvetica, sans-serif; font-size: small;"><em><a href=3D"mailto:prasanth@=
+genisists.com" target=3D"_blank" data-mt-detrack-inspected=3D"true" style=
+=3D"color: rgb(17, 85, 204);">prasanth@genisists.com</a></em></strong></div=
+><div dir=3D"ltr" style=3D"font-size: small;"><div class=3D"m_7317114480409=
+613312m_8825020921683662726gmail_signature" dir=3D"ltr" data-smartmail=3D"g=
+mail_signature"><div dir=3D"ltr"><div style=3D"font-family: arial, helvetic=
+a, sans-serif;"><a data-mt-detrack-inspected=3D"true" style=3D"color: rgb(3=
+4, 34, 34);"><img class=3D"m_7317114480409613312CToWUd CToWUd" src=3D"https=
+://ci3.googleusercontent.com/proxy/1gcs-zxCV-sXBHAkDUNXCCVJ2a6h1MId3mNnYNVp=
+0FhTmwRvKw4LQgks3iaTXQjOOUH-Tzx5niXs0Tb2KtIh07hcjy6B0ExMjAXvta3pXcuwv4pCzpx=
+tpwBgNsbnemBgpHaJdmsOJsiQZBLfW5l1ftwP_6QlhvyFNGfKrx3vqsJTZo4qa-dgKUoG8s9GZV=
+wfTdzwY8rOrpS2MX5Csw=3Ds0-d-e1-ft#https://docs.google.com/uc?export=3Ddownl=
+oad&amp;id=3D1fyCxLrUTDZagX7qMBnjT-v0CwrdizLZY&amp;revid=3D0ByEOHs6JWBvzS25=
+CV0lwa2FFS2syRWxCbGdlYUxaUFpjL0N3PQ" alt=3D"" width=3D"200" height=3D"58"><=
+/a></div></div></div></div><p style=3D"font-size: small;">=C2=A0</p></div>
+
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To post to this group, send email to <a href=3D"mailto:linux-ntb@googlegrou=
+ps.com">linux-ntb@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/9826846b-a971-4989-b77d-0828418037a1%40googlegroups.co=
+m?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid=
+/linux-ntb/9826846b-a971-4989-b77d-0828418037a1%40googlegroups.com</a>.<br =
+/>
+For more options, visit <a href=3D"https://groups.google.com/d/optout">http=
+s://groups.google.com/d/optout</a>.<br />
+
+------=_Part_2076_1212775567.1558378741348--
+
+------=_Part_2075_24180434.1558378741347--
