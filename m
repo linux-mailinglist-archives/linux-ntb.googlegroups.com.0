@@ -1,30 +1,30 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBMF6TTTQKGQESJCRVMY@googlegroups.com>
+Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBLN6TTTQKGQETPUE5RA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
 Received: from mail-pl1-x640.google.com (mail-pl1-x640.google.com [IPv6:2607:f8b0:4864:20::640])
-	by mail.lfdr.de (Postfix) with ESMTPS id D0AC428CF1
-	for <lists+linux-ntb@lfdr.de>; Fri, 24 May 2019 00:31:13 +0200 (CEST)
-Received: by mail-pl1-x640.google.com with SMTP id 93sf4422896plf.14
-        for <lists+linux-ntb@lfdr.de>; Thu, 23 May 2019 15:31:13 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1558650672; cv=pass;
+	by mail.lfdr.de (Postfix) with ESMTPS id 129B128CED
+	for <lists+linux-ntb@lfdr.de>; Fri, 24 May 2019 00:31:11 +0200 (CEST)
+Received: by mail-pl1-x640.google.com with SMTP id p9sf2083431plq.1
+        for <lists+linux-ntb@lfdr.de>; Thu, 23 May 2019 15:31:10 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1558650669; cv=pass;
         d=google.com; s=arc-20160816;
-        b=oZezSJxn2RNDKVZvq3fSSxjEDHV23a6ADZmbWlXgAFuXpbc3/20SYUbsIhN9YUtbmF
-         yZ6RRJavIOSH0QeTXET5lL5NGTT7cs7YWrn0shUfv4FyOxZHejNH75UuFuX63dy//48a
-         uMlMZez904UhWrvwES8XcWIz55Om4daxAFhtYIqNQYZ5438cHMVPPhSvbR/BjskV5SO2
-         nam1sHqnRg9/ICqzk8hzVA21E8vslLKgUahodta5jnyD5HLTp1cFb+QXiauK5+e8hRmf
-         SEzyWesnDijAjaZ6OyW8seRI7Qf+wg/BU/pqOL00mUQrctDPTJVcwKtGViRmJZygTUit
-         lorg==
+        b=NeprLYQ3d8JnAYDqVJ1IiSS6xJRDX7Es6aOm+CrM5cTAY/v7RPcJ9FSRgGGO/1b5Dd
+         UQ5S/DheWiNSyg7h1/nytLuYS4UXp4cj+AfaAGqLn5VQRaTLxv1ONy5jWOy+NlF8jg5t
+         y6VNRTt6F1f/jz2Uw7/yPb5pLEl6fh1kk9d1mhEymUt6BUKO+BDA5rp86itS0TiA+cj/
+         BYUJIzTBMS2jsf88CDYPiWegF8Isk3M3V6b0w7SzTLVvVgOAQj8/Dw7I8H23Tbj3WS42
+         57++XqRsQxKlXjTYLclBcu5l1R6bDpPMleS/qDC6Jk1wvwYf/Es4Du4GB83S+RVHTIpI
+         HOaw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:cc:to:from:sender:dkim-signature;
-        bh=cDOQRruIY21u1I34OTaxbSzdFXsYg1JModNgNh9qNRw=;
-        b=CdmHNK7jQynCiWRnbxSBfP3f3TT1FshrqPMWZCANrflbZ2UpURT2YCYuEX1M2eAXWx
-         Et21YB4I78+0D5BDFMSot1wpgAIxVdh9Lb/tMs9SUrFG1PDZ84IY6hX85rAJMiXn7pIn
-         RlwkBTGM5bbRugJNQHOqlags2zjIhwhAD/Rw9xwv/5cx+1NGGTTXJEdwdsuWpDFprE3s
-         3RucaDqb/wXnxMEDq/xs1A+ep9TUGfrEDuJuoPmZzOrqyo0/Bb75JUz86pRq1gJjADoV
-         wSj9PlqXqEBSeeBivxDxNMRwU6lG5TIdgdgLp+JrBvXCYLRqvUJYzZRF98NgwPAIN5kj
-         j7FQ==
+        bh=WXm5Bda64x9bOLnRdu1wQai1ip4NHZocaMZciq0x0bw=;
+        b=LJVN+f/bMvPCTd8YqPTE1jSY3/JQuNH5v9dXAJfg6JJp4Qs0yPbQpmgNqLrGUo29Tr
+         TJdvNoo/NKudnTM10apBjP3vncrv/3o6FYC3KJyVmk0RuabAJZAan1Zok/1gD2wjcPYk
+         6V85NKdneKfYE1/BnEXuzxrJssdsxYfTap12iXMMVGLO4si33bNNEfG4tH0aPOY5zhui
+         6cm8/JxXU/cEaGpASCOmOmf+Sfbdx6DTgR3iquHtKH0f18cdJC7yE6IEN0D1q5DZ7xhT
+         jW3h7IPOiI+ZDr5wNfwtgallpJMIKZ9x6vSJdebfYFI+pVf9i3i019+MxYb5mGczNm8T
+         VPDg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
        spf=pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=gunthorp@deltatee.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -33,13 +33,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:subject:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=cDOQRruIY21u1I34OTaxbSzdFXsYg1JModNgNh9qNRw=;
-        b=D4GmUzU8OmJvSntfZufK9PAVZ6waDtQjkfMvm/4JNFxL9G4odbeCJZb3wU7kcAqhbb
-         Y3Oly5g/RVv0ZpN/5fWCvTXl46Oly0NLBLrSD3L5kaUeQg2idEsuiPxawqbnNN8yXHBs
-         CYqEyus15iW+dngF4ynyv5II9Sv1PM/YMBONn27aV+PuFjza3g3PrK/fYU2w6yX4lTnB
-         vv3aZzxAUfsVPfPTKo5M8uT6DxpvVskdA8QgGsbgC4l48loDQstPWhdXk5JsZ0KdTx1z
-         OlxU4a5earmCrzJj5yaNb+sfJ4s5nEYMOVwpw9+T3LNQuo45P/em+eV8lkxhnAghVTF9
-         q7zA==
+        bh=WXm5Bda64x9bOLnRdu1wQai1ip4NHZocaMZciq0x0bw=;
+        b=JQuXnFochIhvCjGoBtxcZ7h1lykh5RiRpf7DVjkgVeUKlnPnrhb5Do0sQwLW9iqel6
+         AwrmSZPlvfzYOkNj6GMbA3tFPh27+V/BtXSCjm2A8uiH+Q27iVBbxkFxaoBYze15kboW
+         KRaVh7jvLXPVMm0at6jMbIcp7dju+2grXuYHoXZNsI1zK9jj8rjUl77F29TbJBmzmk3a
+         qE/q8nrLzhNwWf1GaLjcHMiCaxd7tjdk3MLUYqdigEa7KCEJeCMiPJI/3k3J3NRXQ72n
+         DbJvEae+6E4szww7Wf/cbscTFAql1lYojYqbzvDwjA1takdjflZuATwOp/U3QdGSNj9V
+         4wlA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:from:to:cc:date:message-id:in-reply-to
@@ -47,58 +47,58 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=cDOQRruIY21u1I34OTaxbSzdFXsYg1JModNgNh9qNRw=;
-        b=JpHAY5Yuw/v07Myq6ADsEwaoaotziTHYj4EHe3QghuPoZASEO4TBxenfYkBs+4DV1+
-         ILK1M/vltDjG9jUWmIKAwYlbTCojqEg2+2jE89UnZa+5A7pxvw/+Q+DqLbDNeReIUXO6
-         55MMdgWsiRz5Btr5bwhLT4A/ZR0+TKuTfKiGwCNJcozN9U2Ymkv/wM5II7WeAH5WNopE
-         8kbMMdz/yqsEcDlRZIT/cD6yqfjzsRHOfUW9jd+zkr1gURWUFDY8iidQ3kH8Xbb1lDcT
-         Khw1wM/vVZprLf55KBQdhh17UjAN7/RfIa8a71EvbuwTTfmlt/L+VuI4qZihUXRKTvU2
-         DV8A==
+        bh=WXm5Bda64x9bOLnRdu1wQai1ip4NHZocaMZciq0x0bw=;
+        b=tCnSI/kr0WH/a1fvNv/YcV62SGz6BGMB43apHt2c40NVZeGsdW00wu7rhkcW8P0skB
+         HA0eWDyLHXHCSPtI1OtpOTWtsDIU4Syc+BcxdHK9OuYXkicEJwhOIkmUFIMgfymbBJ9V
+         LgtvMpddBVI8pMmt9FyLD9oxa9FsbbZqAgvnTz5+WcClkG+lDtpoFZehm073bmB6Ngwk
+         MNEAJtUCq8munZosKgaOBlq+PobbKiNhvs9Fa0sQObTpELw+6nnZtMZ/CUFEJB5l5gLC
+         DlR8JKH9NNwaDkodhtrjKmNTBNGh9mND7cfxD02nvjqM/dxcx5Viu6YDmqSkeh28hs0y
+         tLKw==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXwUtP2NMzl7fQZDD6iigksuret8e6o/7Sm4CKMMGUIqxhO8zAC
-	zg0qjmy5CnHymyzQWOBbYwA=
-X-Google-Smtp-Source: APXvYqzk/56sHXIIjh8Oi13SHqmHjjQ81otiAk0XyscZRBhowI2Iiej9nnkEuZuxwk2EKwZbpDhiaw==
-X-Received: by 2002:a63:8dc9:: with SMTP id z192mr55626433pgd.6.1558650672553;
-        Thu, 23 May 2019 15:31:12 -0700 (PDT)
+X-Gm-Message-State: APjAAAV+pR5VWXeBUMVJlDNV2DCwwGkeDnxa5uSYbhyuAWexNynnF8YH
+	Z9YnmeSqtxpAYBLe7TX6P0c=
+X-Google-Smtp-Source: APXvYqycBR4SCrrD9HQmGwAfLyG2UfD10ZnrgbfaLHEV4PstV4yvvcU0bzlEWGJRDWcqrPcpboioJQ==
+X-Received: by 2002:a17:90a:36d0:: with SMTP id t74mr4784956pjb.4.1558650669506;
+        Thu, 23 May 2019 15:31:09 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:b697:: with SMTP id c23ls1801634pls.16.gmail; Thu,
- 23 May 2019 15:31:12 -0700 (PDT)
-X-Received: by 2002:a17:90a:2908:: with SMTP id g8mr4885514pjd.131.1558650672188;
-        Thu, 23 May 2019 15:31:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558650672; cv=none;
+Received: by 2002:a65:4c86:: with SMTP id m6ls434869pgt.11.gmail; Thu, 23 May
+ 2019 15:31:09 -0700 (PDT)
+X-Received: by 2002:a62:6d47:: with SMTP id i68mr108425147pfc.189.1558650668983;
+        Thu, 23 May 2019 15:31:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558650668; cv=none;
         d=google.com; s=arc-20160816;
-        b=HdkPeU4Z4GbWwGLWwH03h6wUp4DBcRE99/S0MRXFccYFNX+ANaz1bVvuqdH0SFvFiS
-         0pLDBlI04W21GCeufLE0Hh+Wcpvswr5ufB8xzQuvnJJ7JUzjc0kg/v/mQp5QSY8tOdZV
-         ka3SAaJ4KlMUEiSRVR4WVt2odgqLtl/WpYyAmlsgM8PYoQSG1TnWwBHFN4PdBnpgGO6E
-         +Ew5R8u+ZPYsBrTracvf0Ty6ob72Mtp3I4YWxA8oZeD05hvwiCtReItc1S56VaELEuSm
-         v3lCP+qy4e8ruWX96F6mLLDIegyv5UGrC3nDOLNbJZ3Qced3eLKI2rwRBnpcl0Y8h+Fj
-         WBtA==
+        b=skbZYQcoZsWiL+wpUq+scgA+A8bz6ZS/EDIGb8J7M+cBKa6C82jf2QBPvdojcHmtV/
+         sDRu0O334wPQvawCu/Qautv1/gZuNo6xMgwaqxo0JDfAiNGuYdAasVfR9T78o+eDOa3N
+         rb9GtD5WrMqYhc2LIOFQLyBgLlZ6e4K/acL10Jd661mVTrG0S8jDmzgUuvr9j5fv/0Qp
+         tFlT9ZzKbc9OIbULZFV24DfyRu9YGXyawv+Ra2u18UMlIFww17pkuP5Y5Oykif6lCY7w
+         akJnr5xMR4A79pJH+0qlsfSo87rq89pmutGFBWTlh7MwV7GAxZlPnYMPN8hAY45gr7fk
+         ztNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=subject:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:cc:to:from;
-        bh=5IRvA+T0u/OMU/BdPjRFb1ZNn6SZ6nqD4GdL/fgBitY=;
-        b=EmvS9rB5L/IaZXMHxSvCGLu6uZPXablW5TuvvoDA0bUIwAJtYhbeyXR5FDx77SFwy1
-         r4yNykN8rar7nvZvPRZhWES+KPTpDkAejXowE+21OVFvRBD5/p94o69H/T986qHowHHS
-         YfnDPllF4vJFurhJ2sBmCo/pa9MNP9mSCuun3uKl5nZUsl1Ar9xRZ2VWqJYaussPirFf
-         j6mxINBsLBMd9JzeOMBH9AnZGAYzby4fJuOYSVgyFHp5aZn0Zc7eeXP/bDkwKW0ndNEA
-         X0a51T+sEfTZTapDzrkJSwOra+9k3bplOs1zsRJnuEKl/Lhnv1tiDznrrYPrTKeYTNIn
-         dXGg==
+        bh=TqnpLtD917clFMaD7B9zqDjKqNgwFBvIK13sP6fTzvA=;
+        b=LcCNxlYgZ+/RORMgU8zanzpGM1050iVCqck2fsCLffQLZ3IckOC+uOVTf0qf2NPl8l
+         rUr4Flrz58ZhKQ9Ea0ZgMuwezm5kWa+9AEo0euVFJOCI/kUoK29/LL/EY+oMJ6U9tXW+
+         7SptdlLYS+tqnJKYBSA/Qa+nu+jggBI/xCzGafWLUN/BUV+SXTWJT65qhHvBHlVn7LX1
+         8sCDKgqB3rKEdrkunGPeLgaj5MEuok+f41oJIFldrDuplobaHOvasLFl1e+S5x4JGx0/
+         lFjydiEkF+enhbVQECnLnrgoZB5CXu19tPkuaVxtpxLpj8Qi7MleAx43/R5Uv2J8w4e7
+         o8hQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=gunthorp@deltatee.com
 Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
-        by gmr-mx.google.com with ESMTPS id f184si69374pfb.0.2019.05.23.15.31.12
+        by gmr-mx.google.com with ESMTPS id d28si42604plj.0.2019.05.23.15.31.08
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2019 15:31:12 -0700 (PDT)
+        Thu, 23 May 2019 15:31:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
 	by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.89)
 	(envelope-from <gunthorp@deltatee.com>)
-	id 1hTwEs-00062Q-Eu; Thu, 23 May 2019 16:31:10 -0600
+	id 1hTwEs-00062R-Eu; Thu, 23 May 2019 16:31:07 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
 	(envelope-from <gunthorp@deltatee.com>)
-	id 1hTwEq-0001SB-0u; Thu, 23 May 2019 16:31:04 -0600
+	id 1hTwEq-0001SE-4P; Thu, 23 May 2019 16:31:04 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org,
 	linux-ntb@googlegroups.com,
@@ -113,8 +113,8 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,
 	Serge Semin <fancer.lancer@gmail.com>,
 	Eric Pilmore <epilmore@gigaio.com>,
 	Logan Gunthorpe <logang@deltatee.com>
-Date: Thu, 23 May 2019 16:30:54 -0600
-Message-Id: <20190523223100.5526-5-logang@deltatee.com>
+Date: Thu, 23 May 2019 16:30:55 -0600
+Message-Id: <20190523223100.5526-6-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190523223100.5526-1-logang@deltatee.com>
 References: <20190523223100.5526-1-logang@deltatee.com>
@@ -127,7 +127,7 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
 	GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
 	version=3.4.2
-Subject: [PATCH v5 04/10] NTB: Introduce functions to calculate multi-port resource index
+Subject: [PATCH v5 05/10] NTB: Rename ntb.c to support multiple source files in the module
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-Original-Sender: logang@deltatee.com
@@ -147,106 +147,37 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-When using multi-ports each port uses resources (dbs, msgs, mws, etc)
-on every other port. Creating a mapping for these resources such that
-each port has a corresponding resource on every other port is a bit
-tricky.
+The kbuild system does not support having multiple source files in
+a module if one of those source files has the same name as the module.
 
-Introduce the ntb_peer_resource_idx() function for this purpose.
-It returns the peer resource number that will correspond with the
-local peer index on the remote peer.
+Therefore, we must rename ntb.c to core.c, while the module remains
+ntb.ko.
 
-Also, introduce ntb_peer_highest_mw_idx() which will use
-ntb_peer_resource_idx() but return the MW index starting with the
-highest index and working down.
+This is similar to the way the nvme modules are structured.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 Cc: Jon Mason <jdmason@kudzu.us>
 Cc: Dave Jiang <dave.jiang@intel.com>
 Cc: Allen Hubbe <allenbh@gmail.com>
 ---
- include/linux/ntb.h | 70 +++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 70 insertions(+)
+ drivers/ntb/Makefile          | 2 ++
+ drivers/ntb/{ntb.c => core.c} | 0
+ 2 files changed, 2 insertions(+)
+ rename drivers/ntb/{ntb.c => core.c} (100%)
 
-diff --git a/include/linux/ntb.h b/include/linux/ntb.h
-index 91cf492b16a0..66552830544b 100644
---- a/include/linux/ntb.h
-+++ b/include/linux/ntb.h
-@@ -1557,4 +1557,74 @@ static inline int ntb_peer_msg_write(struct ntb_dev *ntb, int pidx, int midx,
- 	return ntb->ops->peer_msg_write(ntb, pidx, midx, msg);
- }
- 
-+/**
-+ * ntb_peer_resource_idx() - get a resource index for a given peer idx
-+ * @ntb:	NTB device context.
-+ * @pidx:	Peer port index.
-+ *
-+ * When constructing a graph of peers, each remote peer must use a different
-+ * resource index (mw, doorbell, etc) to communicate with each other
-+ * peer.
-+ *
-+ * In a two peer system, this function should always return 0 such that
-+ * resource 0 points to the remote peer on both ports.
-+ *
-+ * In a 5 peer system, this function will return the following matrix
-+ *
-+ * pidx \ port    0    1    2    3    4
-+ * 0              0    0    1    2    3
-+ * 1              0    1    1    2    3
-+ * 2              0    1    2    2    3
-+ * 3              0    1    2    3    3
-+ *
-+ * For example, if this function is used to program peer's memory
-+ * windows, port 0 will program MW 0 on all it's peers to point to itself.
-+ * port 1 will program MW 0 in port 0 to point to itself and MW 1 on all
-+ * other ports. etc.
-+ *
-+ * For the legacy two host case, ntb_port_number() and ntb_peer_port_number()
-+ * both return zero and therefore this function will always return zero.
-+ * So MW 0 on each host would be programmed to point to the other host.
-+ *
-+ * Return: the resource index to use for that peer.
-+ */
-+static inline int ntb_peer_resource_idx(struct ntb_dev *ntb, int pidx)
-+{
-+	int local_port, peer_port;
+diff --git a/drivers/ntb/Makefile b/drivers/ntb/Makefile
+index 1921dec1949d..537226f8e78d 100644
+--- a/drivers/ntb/Makefile
++++ b/drivers/ntb/Makefile
+@@ -1,2 +1,4 @@
+ obj-$(CONFIG_NTB) += ntb.o hw/ test/
+ obj-$(CONFIG_NTB_TRANSPORT) += ntb_transport.o
 +
-+	if (pidx >= ntb_peer_port_count(ntb))
-+		return -EINVAL;
-+
-+	local_port = ntb_logical_port_number(ntb);
-+	peer_port = ntb_peer_logical_port_number(ntb, pidx);
-+
-+	if (peer_port < local_port)
-+		return local_port - 1;
-+	else
-+		return local_port;
-+}
-+
-+/**
-+ * ntb_peer_highest_mw_idx() - get a memory window index for a given peer idx
-+ *	using the highest index memory windows first
-+ *
-+ * @ntb:	NTB device context.
-+ * @pidx:	Peer port index.
-+ *
-+ * Like ntb_peer_resource_idx(), except it returns indexes starting with
-+ * last memory window index.
-+ *
-+ * Return: the resource index to use for that peer.
-+ */
-+static inline int ntb_peer_highest_mw_idx(struct ntb_dev *ntb, int pidx)
-+{
-+	int ret;
-+
-+	ret = ntb_peer_resource_idx(ntb, pidx);
-+	if (ret < 0)
-+		return ret;
-+
-+	return ntb_mw_count(ntb, pidx) - ret - 1;
-+}
-+
- #endif
++ntb-y := core.o
+diff --git a/drivers/ntb/ntb.c b/drivers/ntb/core.c
+similarity index 100%
+rename from drivers/ntb/ntb.c
+rename to drivers/ntb/core.c
 -- 
 2.20.1
 
@@ -254,5 +185,5 @@ index 91cf492b16a0..66552830544b 100644
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190523223100.5526-5-logang%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190523223100.5526-6-logang%40deltatee.com.
 For more options, visit https://groups.google.com/d/optout.
