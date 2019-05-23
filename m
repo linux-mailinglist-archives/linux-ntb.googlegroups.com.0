@@ -1,30 +1,30 @@
 Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBMF6TTTQKGQESJCRVMY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x43f.google.com (mail-pf1-x43f.google.com [IPv6:2607:f8b0:4864:20::43f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3560528CF4
-	for <lists+linux-ntb@lfdr.de>; Fri, 24 May 2019 00:31:14 +0200 (CEST)
-Received: by mail-pf1-x43f.google.com with SMTP id g11sf5250598pfq.7
-        for <lists+linux-ntb@lfdr.de>; Thu, 23 May 2019 15:31:14 -0700 (PDT)
+Received: from mail-pl1-x640.google.com (mail-pl1-x640.google.com [IPv6:2607:f8b0:4864:20::640])
+	by mail.lfdr.de (Postfix) with ESMTPS id D0AC428CF1
+	for <lists+linux-ntb@lfdr.de>; Fri, 24 May 2019 00:31:13 +0200 (CEST)
+Received: by mail-pl1-x640.google.com with SMTP id 93sf4422896plf.14
+        for <lists+linux-ntb@lfdr.de>; Thu, 23 May 2019 15:31:13 -0700 (PDT)
 ARC-Seal: i=2; a=rsa-sha256; t=1558650672; cv=pass;
         d=google.com; s=arc-20160816;
-        b=k3/1JmRsiZETp0zcKiKzCs98yZ2tjxLGegTNWvNGSpbE9Am6pOq/TDyAR70l3JEmBj
-         9bZ7mryaqP921otNhal/a6qm5NmqcTHwyNbEEMyrFUE6rJ9w7UQ0ALaB2Ddu9X4GT4WX
-         Qfv2xK1uNyEbxf2bdD9ZdQs1oRjn3nuoIAoGJM8wAN7dWRdGuIaShAGX8CEGAnwOg+CF
-         nCSXuvjV4AuWmqXWleqtTcEewwhdky0CHGmyMFVBYnn1t9dwfYx6nUcNhWrhLa0D4Aq6
-         jW2Zh1sQ/VTBGntK1WUUpZi+inA4OcKfg+sJ9nBqTDKb2jkh+s6nU4b6uYTbQGy0+JBt
-         1/tw==
+        b=oZezSJxn2RNDKVZvq3fSSxjEDHV23a6ADZmbWlXgAFuXpbc3/20SYUbsIhN9YUtbmF
+         yZ6RRJavIOSH0QeTXET5lL5NGTT7cs7YWrn0shUfv4FyOxZHejNH75UuFuX63dy//48a
+         uMlMZez904UhWrvwES8XcWIz55Om4daxAFhtYIqNQYZ5438cHMVPPhSvbR/BjskV5SO2
+         nam1sHqnRg9/ICqzk8hzVA21E8vslLKgUahodta5jnyD5HLTp1cFb+QXiauK5+e8hRmf
+         SEzyWesnDijAjaZ6OyW8seRI7Qf+wg/BU/pqOL00mUQrctDPTJVcwKtGViRmJZygTUit
+         lorg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:subject:mime-version:references
          :in-reply-to:message-id:date:cc:to:from:sender:dkim-signature;
-        bh=OTwmi6EOSmSlnE6DA2YXrxhG94UIgdFYGMaRi8ID7wE=;
-        b=yNys1OZtumNmdo+1Rm/wWK4d4MzaJt/yF2f12RgEnk2PXZiZp11S69DeJdpibpwSBd
-         luFhlGrHmvo0C9Ll0I1LvenpvXtyFF56i7k8GkdE8OinxVGEeY1DReX1bkdWiNpnfcIR
-         p5J1+fOe+0eronH2bLLXTKkDwjWfg4RdCddWiLFSbH+b4bsYBu6J5Bf16mNBtEztAHBN
-         4ay3geKPdewOi0ziv89SrEv/cU54XI6fAg0QSm1Io5p8riPKhtXBAVF8Zpyzq0omsJhZ
-         nUyTzSveeMEFjls2Pb0ZF5BcVGVq09ttK+tGFqbqSybqVKlpC9CVOMEz3aif7JsxBywH
-         Q6lQ==
+        bh=cDOQRruIY21u1I34OTaxbSzdFXsYg1JModNgNh9qNRw=;
+        b=CdmHNK7jQynCiWRnbxSBfP3f3TT1FshrqPMWZCANrflbZ2UpURT2YCYuEX1M2eAXWx
+         Et21YB4I78+0D5BDFMSot1wpgAIxVdh9Lb/tMs9SUrFG1PDZ84IY6hX85rAJMiXn7pIn
+         RlwkBTGM5bbRugJNQHOqlags2zjIhwhAD/Rw9xwv/5cx+1NGGTTXJEdwdsuWpDFprE3s
+         3RucaDqb/wXnxMEDq/xs1A+ep9TUGfrEDuJuoPmZzOrqyo0/Bb75JUz86pRq1gJjADoV
+         wSj9PlqXqEBSeeBivxDxNMRwU6lG5TIdgdgLp+JrBvXCYLRqvUJYzZRF98NgwPAIN5kj
+         j7FQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
        spf=pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=gunthorp@deltatee.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -33,13 +33,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:subject:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=OTwmi6EOSmSlnE6DA2YXrxhG94UIgdFYGMaRi8ID7wE=;
-        b=teVKqeGp7ChkmN4wfAX7y0TlUfusWc7QmHL9/QobW14HREIkJIZWYso1NZMYbkViHd
-         xwjLUfEnoZ6wpWUuos3mPOO6aS3D272xZ1TaRvTEgSRYNS6c2IVY1JMzDgy/dkYGfn2A
-         hXa5YvMYCoja813bJZMOAw7qhupzrQZWXrMGvah8sbYf1Kl5SrCWD/dVXNSEj1aF0bS4
-         Or2q5/aP/xXbHzYbNjKxOl/XKvqMJJt5L39tXkw/V2FKEAwbpgtJfYzrs7qjYRBacC9J
-         Cx0a/VCiSm2jFyWYPpq2+/gczxVq6BITVNBBHZCpOnkOgG5pL0EJyPhbQqMEjLXnCAsl
-         mCmA==
+        bh=cDOQRruIY21u1I34OTaxbSzdFXsYg1JModNgNh9qNRw=;
+        b=D4GmUzU8OmJvSntfZufK9PAVZ6waDtQjkfMvm/4JNFxL9G4odbeCJZb3wU7kcAqhbb
+         Y3Oly5g/RVv0ZpN/5fWCvTXl46Oly0NLBLrSD3L5kaUeQg2idEsuiPxawqbnNN8yXHBs
+         CYqEyus15iW+dngF4ynyv5II9Sv1PM/YMBONn27aV+PuFjza3g3PrK/fYU2w6yX4lTnB
+         vv3aZzxAUfsVPfPTKo5M8uT6DxpvVskdA8QgGsbgC4l48loDQstPWhdXk5JsZ0KdTx1z
+         OlxU4a5earmCrzJj5yaNb+sfJ4s5nEYMOVwpw9+T3LNQuo45P/em+eV8lkxhnAghVTF9
+         q7zA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:from:to:cc:date:message-id:in-reply-to
@@ -47,58 +47,58 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=OTwmi6EOSmSlnE6DA2YXrxhG94UIgdFYGMaRi8ID7wE=;
-        b=V4pLc+dMaLDm6kjvTZzQyMBwNsoCelZePnimdn8mbFgY+aYuZ0kUmnNTTvoMFZrazt
-         Y8razHYrsKWxJV4xFTuVySWQ0G3smIBBiUyRD7Tb+Fdu94O6XJkslMWY3sjYbTseBQGB
-         KbenQGKYP3ss10Pw55prfjgtbr2M/3+Z4kvLze267dXouz/ibrR+JtyGSniZDUsqzB5a
-         GScmUIOH9KsWKhXK6Uo29xWh3/2MWTUdt43fCSkq/9QGzWfoeFUHDGxn2A13BKD7JJ+n
-         cauHvxKZjsCbn5U1eg+ND9EnugmVQQUwoZYfJOi3NaXgZ5C7QNbPF/Du7E3n/D+xzG/A
-         GvPg==
+        bh=cDOQRruIY21u1I34OTaxbSzdFXsYg1JModNgNh9qNRw=;
+        b=JpHAY5Yuw/v07Myq6ADsEwaoaotziTHYj4EHe3QghuPoZASEO4TBxenfYkBs+4DV1+
+         ILK1M/vltDjG9jUWmIKAwYlbTCojqEg2+2jE89UnZa+5A7pxvw/+Q+DqLbDNeReIUXO6
+         55MMdgWsiRz5Btr5bwhLT4A/ZR0+TKuTfKiGwCNJcozN9U2Ymkv/wM5II7WeAH5WNopE
+         8kbMMdz/yqsEcDlRZIT/cD6yqfjzsRHOfUW9jd+zkr1gURWUFDY8iidQ3kH8Xbb1lDcT
+         Khw1wM/vVZprLf55KBQdhh17UjAN7/RfIa8a71EvbuwTTfmlt/L+VuI4qZihUXRKTvU2
+         DV8A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXC+ze/KfftA4CtIz7MxTPerEJ1nwvpwmzpYTYU/aAnSgVDHayt
-	zuu6LePnTfvaaNyTTX+l2zw=
-X-Google-Smtp-Source: APXvYqz5AagldZ+I9wCA59hF2+ryEsg+tK8WT/puJmuYiqP5+1lyCZU+0HRmhQmMTe4oJJoGtfO4/g==
-X-Received: by 2002:a62:62c1:: with SMTP id w184mr106196189pfb.95.1558650672606;
+X-Gm-Message-State: APjAAAXwUtP2NMzl7fQZDD6iigksuret8e6o/7Sm4CKMMGUIqxhO8zAC
+	zg0qjmy5CnHymyzQWOBbYwA=
+X-Google-Smtp-Source: APXvYqzk/56sHXIIjh8Oi13SHqmHjjQ81otiAk0XyscZRBhowI2Iiej9nnkEuZuxwk2EKwZbpDhiaw==
+X-Received: by 2002:a63:8dc9:: with SMTP id z192mr55626433pgd.6.1558650672553;
         Thu, 23 May 2019 15:31:12 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:aa05:: with SMTP id be5ls1812770plb.6.gmail; Thu, 23
- May 2019 15:31:10 -0700 (PDT)
-X-Received: by 2002:a17:902:bc8a:: with SMTP id bb10mr2170880plb.310.1558650670583;
-        Thu, 23 May 2019 15:31:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1558650670; cv=none;
+Received: by 2002:a17:902:b697:: with SMTP id c23ls1801634pls.16.gmail; Thu,
+ 23 May 2019 15:31:12 -0700 (PDT)
+X-Received: by 2002:a17:90a:2908:: with SMTP id g8mr4885514pjd.131.1558650672188;
+        Thu, 23 May 2019 15:31:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1558650672; cv=none;
         d=google.com; s=arc-20160816;
-        b=RFQ4buUcSXxdzsiSaWP7LmGsapCLiwHfkLwzrlPPnuU04V7lctdb0XarJeoMm6JjdB
-         o8/iwv1PTsUirzAXwze6ynDVaBABx3GkA5WRu233syshUFMusoEQGaQsAyl/0utDf8WC
-         xRds9usTTaMrw+6xmWJe2wWFYYGzjjv46oVPVEFxpapkKai+7CP8InzQePgXJjXCtcBq
-         PXK8wyjllAsi2vvfaF1dQRTzSojJ4GOxUYyo1XWtv7W4JZlXtioJRSB+iC671Wk5M/nI
-         /9ho/GQwtsqucTWC6QUNBkLlZvKrgEMBGFr5ImOPrj8f5Mdd7m8pp4t4aftFqJKeqQ2l
-         XGlA==
+        b=HdkPeU4Z4GbWwGLWwH03h6wUp4DBcRE99/S0MRXFccYFNX+ANaz1bVvuqdH0SFvFiS
+         0pLDBlI04W21GCeufLE0Hh+Wcpvswr5ufB8xzQuvnJJ7JUzjc0kg/v/mQp5QSY8tOdZV
+         ka3SAaJ4KlMUEiSRVR4WVt2odgqLtl/WpYyAmlsgM8PYoQSG1TnWwBHFN4PdBnpgGO6E
+         +Ew5R8u+ZPYsBrTracvf0Ty6ob72Mtp3I4YWxA8oZeD05hvwiCtReItc1S56VaELEuSm
+         v3lCP+qy4e8ruWX96F6mLLDIegyv5UGrC3nDOLNbJZ3Qced3eLKI2rwRBnpcl0Y8h+Fj
+         WBtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=subject:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:cc:to:from;
-        bh=yfJ3SFMDnF7P4fDhcAS3u6AmB+q7XD5CFVD4MiA6Fok=;
-        b=fZFxQFB9336md+jTKGIfWPg+sPDRYIHpmICR7XGvGZdCs+KQ6BEn1uevA63WPqkpft
-         8hhRp0GBtjIjhxxx1Leapu7DpdZg/jOAkgvTGzVnCSidTpWhvFPwzZs3LUUgSTwcOBdF
-         ahNfXDt6+OVFdZnD30Z2gPfQXRYfHAYkTFjklrtjKw/TxmJevRbjqqQETz+crOoanDRT
-         i1BSpnn7gOFOtHSOr3RV21XiViTVWJn2urorH1VDMGnSzLTlJop2b5KwM4S2+o83MP/4
-         GLelBc4hPUYkQGhUcDBVV4wY/MltUbmZ6/W4bQtKo+5a8S8c+zRKtbX+4KclmhK/AXub
-         h6QQ==
+        bh=5IRvA+T0u/OMU/BdPjRFb1ZNn6SZ6nqD4GdL/fgBitY=;
+        b=EmvS9rB5L/IaZXMHxSvCGLu6uZPXablW5TuvvoDA0bUIwAJtYhbeyXR5FDx77SFwy1
+         r4yNykN8rar7nvZvPRZhWES+KPTpDkAejXowE+21OVFvRBD5/p94o69H/T986qHowHHS
+         YfnDPllF4vJFurhJ2sBmCo/pa9MNP9mSCuun3uKl5nZUsl1Ar9xRZ2VWqJYaussPirFf
+         j6mxINBsLBMd9JzeOMBH9AnZGAYzby4fJuOYSVgyFHp5aZn0Zc7eeXP/bDkwKW0ndNEA
+         X0a51T+sEfTZTapDzrkJSwOra+9k3bplOs1zsRJnuEKl/Lhnv1tiDznrrYPrTKeYTNIn
+         dXGg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=gunthorp@deltatee.com
 Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
-        by gmr-mx.google.com with ESMTPS id n93si66476pjc.2.2019.05.23.15.31.10
+        by gmr-mx.google.com with ESMTPS id f184si69374pfb.0.2019.05.23.15.31.12
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 23 May 2019 15:31:10 -0700 (PDT)
+        Thu, 23 May 2019 15:31:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
 Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
 	by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.89)
 	(envelope-from <gunthorp@deltatee.com>)
-	id 1hTwEs-00062P-Ev; Thu, 23 May 2019 16:31:09 -0600
+	id 1hTwEs-00062Q-Eu; Thu, 23 May 2019 16:31:10 -0600
 Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
 	(envelope-from <gunthorp@deltatee.com>)
-	id 1hTwEp-0001S8-Tc; Thu, 23 May 2019 16:31:03 -0600
+	id 1hTwEq-0001SB-0u; Thu, 23 May 2019 16:31:04 -0600
 From: Logan Gunthorpe <logang@deltatee.com>
 To: linux-kernel@vger.kernel.org,
 	linux-ntb@googlegroups.com,
@@ -113,8 +113,8 @@ Cc: Bjorn Helgaas <bhelgaas@google.com>,
 	Serge Semin <fancer.lancer@gmail.com>,
 	Eric Pilmore <epilmore@gigaio.com>,
 	Logan Gunthorpe <logang@deltatee.com>
-Date: Thu, 23 May 2019 16:30:53 -0600
-Message-Id: <20190523223100.5526-4-logang@deltatee.com>
+Date: Thu, 23 May 2019 16:30:54 -0600
+Message-Id: <20190523223100.5526-5-logang@deltatee.com>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20190523223100.5526-1-logang@deltatee.com>
 References: <20190523223100.5526-1-logang@deltatee.com>
@@ -127,7 +127,7 @@ X-Spam-Level:
 X-Spam-Status: No, score=-8.7 required=5.0 tests=ALL_TRUSTED,BAYES_00,
 	GREYLIST_ISWHITE,MYRULES_NO_TEXT autolearn=ham autolearn_force=no
 	version=3.4.2
-Subject: [PATCH v5 03/10] NTB: Introduce helper functions to calculate logical port number
+Subject: [PATCH v5 04/10] NTB: Introduce functions to calculate multi-port resource index
 X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
 X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
 X-Original-Sender: logang@deltatee.com
@@ -147,106 +147,106 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This patch introduces the "Logical Port Number" which is similar to the
-"Port Number" in that it enumerates the ports in the system.
+When using multi-ports each port uses resources (dbs, msgs, mws, etc)
+on every other port. Creating a mapping for these resources such that
+each port has a corresponding resource on every other port is a bit
+tricky.
 
-The original (or Physical) "Port Number" can be any number used by the
-hardware to uniquely identify a port in the system. The "Logical Port
-Number" enumerates all ports in the system from 0 to the number of
-ports minus one.
+Introduce the ntb_peer_resource_idx() function for this purpose.
+It returns the peer resource number that will correspond with the
+local peer index on the remote peer.
 
-For example a system with 5 ports might have the following port numbers
-which would be enumerated thusly:
-
-Port Number:           1  2  5  7  116
-Logical Port Number:   0  1  2  3  4
-
-The logical port number is useful when calculating which resources
-to use for which peers. So we thus define two helper functions:
-ntb_logical_port_number() and ntb_peer_logical_port_number() which
-provide the "Logical Port Number" for the local port and any peer
-respectively.
+Also, introduce ntb_peer_highest_mw_idx() which will use
+ntb_peer_resource_idx() but return the MW index starting with the
+highest index and working down.
 
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 Cc: Jon Mason <jdmason@kudzu.us>
 Cc: Dave Jiang <dave.jiang@intel.com>
 Cc: Allen Hubbe <allenbh@gmail.com>
-Cc: Serge Semin <fancer.lancer@gmail.com>
 ---
- include/linux/ntb.h | 53 ++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 52 insertions(+), 1 deletion(-)
+ include/linux/ntb.h | 70 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
 
 diff --git a/include/linux/ntb.h b/include/linux/ntb.h
-index 56a92e3ae3ae..91cf492b16a0 100644
+index 91cf492b16a0..66552830544b 100644
 --- a/include/linux/ntb.h
 +++ b/include/linux/ntb.h
-@@ -616,7 +616,6 @@ static inline int ntb_port_number(struct ntb_dev *ntb)
- 
- 	return ntb->ops->port_number(ntb);
- }
--
- /**
-  * ntb_peer_port_count() - get the number of peer device ports
-  * @ntb:	NTB device context.
-@@ -653,6 +652,58 @@ static inline int ntb_peer_port_number(struct ntb_dev *ntb, int pidx)
- 	return ntb->ops->peer_port_number(ntb, pidx);
+@@ -1557,4 +1557,74 @@ static inline int ntb_peer_msg_write(struct ntb_dev *ntb, int pidx, int midx,
+ 	return ntb->ops->peer_msg_write(ntb, pidx, midx, msg);
  }
  
 +/**
-+ * ntb_logical_port_number() - get the logical port number of the local port
-+ * @ntb:	NTB device context.
-+ *
-+ * The Logical Port Number is defined to be a unique number for each
-+ * port starting from zero through to the number of ports minus one.
-+ * This is in contrast to the Port Number where each port can be assigned
-+ * any unique physical number by the hardware.
-+ *
-+ * The logical port number is useful for calculating the resource indexes
-+ * used by peers.
-+ *
-+ * Return: the logical port number or negative value indicating an error
-+ */
-+static inline int ntb_logical_port_number(struct ntb_dev *ntb)
-+{
-+	int lport = ntb_port_number(ntb);
-+	int pidx;
-+
-+	if (lport < 0)
-+		return lport;
-+
-+	for (pidx = 0; pidx < ntb_peer_port_count(ntb); pidx++)
-+		if (lport <= ntb_peer_port_number(ntb, pidx))
-+			return pidx;
-+
-+	return pidx;
-+}
-+
-+/**
-+ * ntb_peer_logical_port_number() - get the logical peer port by given index
++ * ntb_peer_resource_idx() - get a resource index for a given peer idx
 + * @ntb:	NTB device context.
 + * @pidx:	Peer port index.
 + *
-+ * The Logical Port Number is defined to be a unique number for each
-+ * port starting from zero through to the number of ports minus one.
-+ * This is in contrast to the Port Number where each port can be assigned
-+ * any unique physical number by the hardware.
++ * When constructing a graph of peers, each remote peer must use a different
++ * resource index (mw, doorbell, etc) to communicate with each other
++ * peer.
 + *
-+ * The logical port number is useful for calculating the resource indexes
-+ * used by peers.
++ * In a two peer system, this function should always return 0 such that
++ * resource 0 points to the remote peer on both ports.
 + *
-+ * Return: the peer's logical port number or negative value indicating an error
++ * In a 5 peer system, this function will return the following matrix
++ *
++ * pidx \ port    0    1    2    3    4
++ * 0              0    0    1    2    3
++ * 1              0    1    1    2    3
++ * 2              0    1    2    2    3
++ * 3              0    1    2    3    3
++ *
++ * For example, if this function is used to program peer's memory
++ * windows, port 0 will program MW 0 on all it's peers to point to itself.
++ * port 1 will program MW 0 in port 0 to point to itself and MW 1 on all
++ * other ports. etc.
++ *
++ * For the legacy two host case, ntb_port_number() and ntb_peer_port_number()
++ * both return zero and therefore this function will always return zero.
++ * So MW 0 on each host would be programmed to point to the other host.
++ *
++ * Return: the resource index to use for that peer.
 + */
-+static inline int ntb_peer_logical_port_number(struct ntb_dev *ntb, int pidx)
++static inline int ntb_peer_resource_idx(struct ntb_dev *ntb, int pidx)
 +{
-+	if (ntb_peer_port_number(ntb, pidx) < ntb_port_number(ntb))
-+		return pidx;
++	int local_port, peer_port;
++
++	if (pidx >= ntb_peer_port_count(ntb))
++		return -EINVAL;
++
++	local_port = ntb_logical_port_number(ntb);
++	peer_port = ntb_peer_logical_port_number(ntb, pidx);
++
++	if (peer_port < local_port)
++		return local_port - 1;
 +	else
-+		return pidx + 1;
++		return local_port;
 +}
 +
- /**
-  * ntb_peer_port_idx() - get the peer device port index by given port number
-  * @ntb:	NTB device context.
++/**
++ * ntb_peer_highest_mw_idx() - get a memory window index for a given peer idx
++ *	using the highest index memory windows first
++ *
++ * @ntb:	NTB device context.
++ * @pidx:	Peer port index.
++ *
++ * Like ntb_peer_resource_idx(), except it returns indexes starting with
++ * last memory window index.
++ *
++ * Return: the resource index to use for that peer.
++ */
++static inline int ntb_peer_highest_mw_idx(struct ntb_dev *ntb, int pidx)
++{
++	int ret;
++
++	ret = ntb_peer_resource_idx(ntb, pidx);
++	if (ret < 0)
++		return ret;
++
++	return ntb_mw_count(ntb, pidx) - ret - 1;
++}
++
+ #endif
 -- 
 2.20.1
 
@@ -254,5 +254,5 @@ index 56a92e3ae3ae..91cf492b16a0 100644
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190523223100.5526-4-logang%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190523223100.5526-5-logang%40deltatee.com.
 For more options, visit https://groups.google.com/d/optout.
