@@ -1,124 +1,68 @@
-Return-Path: <linux-ntb+bncBCDZ33GYSUERBJEIWXTQKGQER343WSI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCELXQMOTUFBBH46WXTQKGQEU63XTTQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x43b.google.com (mail-pf1-x43b.google.com [IPv6:2607:f8b0:4864:20::43b])
-	by mail.lfdr.de (Postfix) with ESMTPS id 103F92C89A
-	for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 16:22:30 +0200 (CEST)
-Received: by mail-pf1-x43b.google.com with SMTP id m7sf14642894pfh.9
-        for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 07:22:29 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1559053348; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=vaJ9pWf5e5/hzjmlSnmt3Qi3ju5H7tXdfXkv3D78Uz/XNIdv/q168OEOMWd0kqjcUJ
-         ZtC/VvYXLUeKbGW8rt0t6/tLDvdI22bgRUXsLPqD2fQ+UjcOuFL0tdTZlcPEk9KooyMT
-         btJ5ZYMmBXgJ56Iq135pOqOyAUtIUDpL9sj9k5dq8vps8pSlqjEcsljCsX0QlMzDz8Vo
-         5tAt1Mg8yTLeG86Hz7UUFTxoaPh17qVVBH54WUYuahLPD72VgrUZeVHUYbZSh15q9mxn
-         Ol5lX2XXQH7UvEXIZMRfsvOLL+QYXIh+l4tvP16Q68GFvjE3ynq8pytlg/LCz9Amdvev
-         nSQQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-language:thread-index
-         :mime-version:message-id:date:subject:to:from:sender:dkim-signature;
-        bh=Al0/GKTAignScBHDCuQ8lXg7RUjtJlwqF67DrKGRjpk=;
-        b=kfEEfT8ycaJhBmSUH6bTJAT5tAVrwlG15CpZjB0/pqUq+vDwq84A5An8uc0ALxtPSP
-         S6Yt+E2xj+hz3JD6hvt8TGDIbN7baU79UhGIXDqzofMrWoTu5UjBsRXHCHn0smcTNjNo
-         cIEMfFJsItK/t7vlMALYdaEXWqgFnEwzzWD9cWtVHfPmxrapjNbfJrFmiYtpdk2EYz0l
-         FlhMWlXUX9NGdXp39Qqn2DWy1nx/0PNlryhse3zcwPsnoSlYXTO6n/ThjLBvTvgCNRBv
-         0WTlDIQBXIYl02l35y9pxPy9iP8sUV31a+mCVcxS8oo5CFyqJ+lvIZN+n6DpDMQM+nif
-         ESOw==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@genisists-com.20150623.gappssmtp.com header.s=20150623 header.b=WGBefDfZ;
-       spf=neutral (google.com: 2607:f8b0:4864:20::443 is neither permitted nor denied by best guess record for domain of uma@genisists.com) smtp.mailfrom=uma@genisists.com
+Received: from mail-yw1-xc3c.google.com (mail-yw1-xc3c.google.com [IPv6:2607:f8b0:4864:20::c3c])
+	by mail.lfdr.de (Postfix) with ESMTPS id D11A32C9A9
+	for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 17:09:20 +0200 (CEST)
+Received: by mail-yw1-xc3c.google.com with SMTP id b189sf19185362ywa.19
+        for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 08:09:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:subject:date:message-id:mime-version:thread-index
-         :content-language:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=Al0/GKTAignScBHDCuQ8lXg7RUjtJlwqF67DrKGRjpk=;
-        b=iRXknj9Rcq5pTLTqDwwhvon70Lz82dBJx8PV2lcAu3vaM7/+MrRKKMSsEn1B/hTIIO
-         7woD8pOj1DO2WdnPLS5YResVboKKbzVjfO8qsKJ7pJQa0jWbHg+HRwK6BhJfoek7qMls
-         F+3cZDU6HjzAdmPLA0VlDMjRnTnzLqp4xZGlaBCbDBMOzheV3HWtHZAq+vicN7Tp9eST
-         9Z+MgEgmhjDQfKjpXtCRiS1fcsMsIG/19l87hF1TYFJy/3jP+mg4HdluQP2l7PiS9jx6
-         fRohtbBG+sTDHWnr9uM1eqoo3RuIfdpze2UaEASm1/TeO/F52U1qyljdypRUeSUQm8qp
-         TgBw==
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=1ZXaKyyFtt0NqC9RXp74z0DHdp3uaCStM6fHyutMQt8=;
+        b=I1lBCMxgs/N6In9xdOAcb8p09ZqBJjmGyelIRRNtqlIQEb1ErDKgD5u4uEVj8ye5km
+         xy8IbGW46q4gf0+4dwgxLnnYEed6dgTA0Ijc3Dlxc3alfeqKCBGSN4pfpF/PDDinS6yD
+         61Ksn7EGzwZLLUnAauKh1VoT4eSK6MBGhzMpoyFKvOFMl4x1P+bdmHAyZjgV1qtNKx1l
+         e3+Pplj6SDRBVwVA4vt1L5AilRDhKqwgEoN2ldKf2pBub/QDsdqsBrOHnEgZ7Vghg7eC
+         /rj/iUlsjSRJjlZ7MhgtFQ4Hs9/rw3gIJqhkif2LNzryANZLwqMrFBdUZKMKyDzDeQWc
+         94xA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=genisists-com.20150623.gappssmtp.com; s=20150623;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=1ZXaKyyFtt0NqC9RXp74z0DHdp3uaCStM6fHyutMQt8=;
+        b=eADR6qDCoXKMVJYEuhsXCgXceaRH1YMmQeMVz9W0GeGBJ7esPGTBv8IiGN7tMOhLbX
+         aENKipLI88RpI6IAtm/sNXrlniiYFXAfsaC2CGkwrhUKdP9Pw5GZXWM6E4DABCzNwOmI
+         p6RX9xmC5vwItT/Wg3tc3ckg7GdhKAaryaF6BnEqx6DZqekbSbimcDPGDIKhUur7pZjC
+         AUvhzyvuq46p4uYuKBgA2K2Ply3Ot7y12QgqCOE7Ptld0LDXiTMvgdP2CKZK5bIt3euV
+         qjRI/b8lNvi5B/il7WaUb8hl9mxLz5GInroRc1959hZaJ0NcEwLwSVlkWiQyVOLzpiXE
+         hLfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:subject:date:message-id
-         :mime-version:thread-index:content-language:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=Al0/GKTAignScBHDCuQ8lXg7RUjtJlwqF67DrKGRjpk=;
-        b=f3cdL8ijY44iS/YzUEEZIHQxpAIIbukqFPO9JUX3UNA6bbtRgeUieSeZoJrs/y5Z7T
-         A+3N5azimkHD7BYuW8u+mzYuc0tu5EvGzTBkajz3pKjzQAM3PMToMxMjFPhXVBXRNUBM
-         mOSxkuEDPHvDn5bienKkgWg+65vmdj+jFkrCcCkc2HELG7mbi3ltmCXjoP2A5X34/Cdi
-         C2abc6VMLI8VaMH+t64Nkma+c7Nz7cRPUJM6RrkBPbE+elKXqagRXaRzg95zx3ETe0yj
-         kn9l9D5oIHFRhKSqYiI/4iA1oWn145+OlTRqgBPF2qy/rEEVHANogB/tQvCA3H0acpWo
-         dcRA==
+        bh=1ZXaKyyFtt0NqC9RXp74z0DHdp3uaCStM6fHyutMQt8=;
+        b=k1W4xqJ5lB66ERg+WroJDslfj/S39lS6pfRg5qWT2XIvWVWwOdqwX4QxGAZtXGN1VW
+         d3KzJlYVgDiXq595bQOMktWjl7mVmDWl6fNvLZkOfsbLeTzgbcF7OvJkBoT/2jAUba69
+         OeI6/sdRrRIE12Ou5L2jQgM8ICJswy5DOI5i9Hzpkz39+HI8zwzHzHQ65b62jUooohPG
+         BwlKBpWlA3YvUzg/vx8t2hnZi3a2XTSjHB9ubTeIqwzzI5NjBxyWj4sRoykjRtgRYQrL
+         I2XsUfCYsw8tD7A4TmzZpoDtE3mkIEzZa/MpqOrwrnxQ+kly76+NW93xbRvjsV4Cf9hG
+         /YtQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAV4Aq9KoI2muf1asXHrKK/eJ51SsMR0z7NdzmLL/TlhoWJOo2TS
-	VFDhilBoCogJWZKvr46ODnw=
-X-Google-Smtp-Source: APXvYqx3YFe+Z2v0kWTz7CtBYbKXETGE6+169UAGc4CARhLN6l9nJ72ozdKB1c5A7VVLKOHpHf9o1w==
-X-Received: by 2002:a63:7d09:: with SMTP id y9mr113095219pgc.350.1559053348500;
-        Tue, 28 May 2019 07:22:28 -0700 (PDT)
+X-Gm-Message-State: APjAAAXoLVbQoLUFnMw8EykZfOkl11NURIYstx9SKtyX+YJTrLuy8PjY
+	ZfcC+u3PA9e/YahZuO15zxM=
+X-Google-Smtp-Source: APXvYqzWVVE7QRBvoBaWEUFUdKgySB0qjFw7edJTQiMeJkMUDeSTqxAQA27URapsIjzwHI2Xc5CJ+Q==
+X-Received: by 2002:a25:a289:: with SMTP id c9mr9063397ybi.352.1559056159778;
+        Tue, 28 May 2019 08:09:19 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a62:1c4b:: with SMTP id c72ls2027252pfc.10.gmail; Tue, 28
- May 2019 07:22:28 -0700 (PDT)
-X-Received: by 2002:aa7:8554:: with SMTP id y20mr143642279pfn.258.1559053348156;
-        Tue, 28 May 2019 07:22:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559053348; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rUioZushOU5z93MXssKF+0Nek+WKq0d9/U2JVIt+zZe4S24QI04IeoyVTCbnJfczYz
-         JBqRdLu16Bh6JQnJV4egeiXKamucl927pT8+ksrZDiZfRDxVDSpcKVbPQ//iC0x5Qks0
-         41zAUa9CcOZ2/nQq7TELiVyn3ankH9fiJn+VM1vTVeHwJSN37SHkvOt+TETGdSPBaVal
-         QNoK8mIDsQ7aXY9jbhTBjf624HRNa6yHJyVfYvHFpY0ibg1FIGEBEtxx4jIc90GGQO1S
-         SV/1YJLfL2S9dh5vOjuxJnklQjjPVea0mAQFdeHyzgSD682EE8A5aoA0/9oZWcTd6hrk
-         gVzA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:thread-index:mime-version:message-id:date:subject
-         :to:from:dkim-signature;
-        bh=wxDWXdvv9tUB+e7Ik/j6GfHYI4Fy10gv80FSeJ4UDjs=;
-        b=e83OPHNoJcvy5mtc3hmC4f5chVpfqAz8uCh0jLPiGZIHOFTXMB7RlgT7r+qTMSjik7
-         ShF7wN73q2ze7FkqnH25ul9C+95X9xSoilYQVFJQgePS8sZnZS6gXsIcaz3R+gdayZNC
-         VhwMGbsnTc1tvd5Q21iOIPguIwlIkx8ktBTuGjMpfxYUQSw1pdCMwluCa/ADoyo1Or5k
-         0VX4o4ArU+CBkuixYPV9/i4kHjT7EDmiWJQyOTHtVZwt9lYoEObaqKpdvrXPzeqYHT/E
-         ZZiZk0dP1HljPCMZ/szdIpOhBpq2eJRw5xcH07s4k+VhVeD/eL5le0rhiWNpfX4956sU
-         wbhQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@genisists-com.20150623.gappssmtp.com header.s=20150623 header.b=WGBefDfZ;
-       spf=neutral (google.com: 2607:f8b0:4864:20::443 is neither permitted nor denied by best guess record for domain of uma@genisists.com) smtp.mailfrom=uma@genisists.com
-Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
-        by gmr-mx.google.com with ESMTPS id z6si391806pgv.0.2019.05.28.07.22.28
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 May 2019 07:22:28 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::443 is neither permitted nor denied by best guess record for domain of uma@genisists.com) client-ip=2607:f8b0:4864:20::443;
-Received: by mail-pf1-x443.google.com with SMTP id z26so11584143pfg.6
-        for <linux-ntb@googlegroups.com>; Tue, 28 May 2019 07:22:28 -0700 (PDT)
-X-Received: by 2002:a65:520b:: with SMTP id o11mr78871544pgp.184.1559053347529;
-        Tue, 28 May 2019 07:22:27 -0700 (PDT)
-Received: from falcomitPC ([115.98.2.36])
-        by smtp.gmail.com with ESMTPSA id g9sm12064114pgs.78.2019.05.28.07.22.25
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
-        Tue, 28 May 2019 07:22:26 -0700 (PDT)
-From: "Umashankar" <uma@genisists.com>
-To: <linux-ntb@googlegroups.com>
-Subject: Seeking a ServiceNow Developer/Engineer for our client in the health insurance field!
-Date: Tue, 28 May 2019 19:51:56 +0530
-Message-ID: <06f801d51560$c64e1f70$52ea5e50$@com>
+Received: by 2002:a25:d90e:: with SMTP id q14ls2281323ybg.4.gmail; Tue, 28 May
+ 2019 08:09:19 -0700 (PDT)
+X-Received: by 2002:a25:7496:: with SMTP id p144mr11562847ybc.507.1559056159342;
+        Tue, 28 May 2019 08:09:19 -0700 (PDT)
+Date: Tue, 28 May 2019 08:09:18 -0700 (PDT)
+From: prasanth THANDA <prasanth@genisists.com>
+To: linux-ntb <linux-ntb@googlegroups.com>
+Message-Id: <f0990275-f94e-40a8-b345-5800c7f4f6ad@googlegroups.com>
+Subject: Looking For ServiceNow Developer/Engineer
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
-	boundary="----=_NextPart_000_06F9_01D5158E.E0065B70"
-X-Mailer: Microsoft Office Outlook 12.0
-Thread-Index: AdUVYLLeL2c1mCeKR9uNwdD+XSmC1w==
-Content-Language: en-us
-X-Original-Sender: uma@genisists.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@genisists-com.20150623.gappssmtp.com header.s=20150623
- header.b=WGBefDfZ;       spf=neutral (google.com: 2607:f8b0:4864:20::443 is
- neither permitted nor denied by best guess record for domain of
- uma@genisists.com) smtp.mailfrom=uma@genisists.com
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_2292_343020801.1559056158783"
+X-Original-Sender: prasanth@genisists.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -131,636 +75,187 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This is a multipart message in MIME format.
+------=_Part_2292_343020801.1559056158783
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_2293_1075153962.1559056158783"
 
-------=_NextPart_000_06F9_01D5158E.E0065B70
+------=_Part_2293_1075153962.1559056158783
 Content-Type: text/plain; charset="UTF-8"
 
-Hi All, 
+*WE HAVE URGENT REQUIREMENT FOR  SERVICENOW DEVELOPER / ENGINEER*
 
- 
+*IN HEALTH INSURANCE FIELD*
 
-Seeking a ServiceNow Developer/Engineer for our client in the health
-insurance field!
-
-Position: ServiceNow Developer/Engineer 
+Position: Sr. ServiceNow Developer/Engineer 
 Location: Durham North Carolina 27707
 Term: 6 Months plus
+Experience:8+years
 
- 
 
-SENIOR ServiceNow DEVELOPER WITH 8+ YEARS. 
+SENIOR ServiceNow Developer Wth 8+ Years Exp.. 
 
 
 
 Day-to-Day Responsibilities:
 
-.  Convert user stories into technical solutions.
 
-.  Maintains technology currency and capacity planning in support of
-established SLAs.
+   - Convert user stories into technical solutions.
+   - Maintains technology currency and capacity planning in support of 
+   established SLAs.
+   - Proactively provides information and ongoing consultation for IT and 
+   business areas as well as vendors directly or indirectly affected by 
+   ServiceNow Application.
+   - Leads the requirement gathering sessions collaborating with IT 
+   stakeholders, service owners and partners.
+   - Provides operational readiness through the engineering, planning, 
+   coordination, and execution of performance and tuning analysis, systems 
+   support, and incident and problem resolution.
+   - Provides detailed guidance and consultation in solutioning production 
+   incidents when required.
+   - Collaborates with vendors on infrastructure designs to ensure the 
+   final product is what was architected or designed.
+   -  
+   - 
+   - Is this a good fit? (Requirements):
+   - 
+   - Bachelors degree and 8+ years of systems ServiceNow Developer 
+   experience is required.
+   - In lieu of degree, 10+ years of systems ServiceNow Developer.
+   - Direct experience in one or more of the following technical 
+   specialties: application development, application integration, Web 
+   Services, Scripting, and/or database programming.
+   - Experience automating tasks associated with technical specialties.
+   - Experience successfully leading ITSM projects and initiatives.
+   - Experience in multiple technical specialties preferred.
+   - Experience in one or more of the following technologies (aligning with 
+   relevant technical specialties): Integrating ServiceNow with other 
+   Enterprise Application via API, using REST/SOAP web services, Scripting 
+   Workflow, ServiceNow Discovery,
+   - Must be able to work independently and be self sufficient in defining 
+   and realizing infrastructure designs.
+   - Team and customer service oriented, flexible and adaptable with proven 
+   ability to solve problems in a collaborative and timely manner.
+   - Solid background in data collection, analysis, and reporting.
+   - Proven debugging skills
+   - Excellent oral and written communication and presentation skills
+   - Flexible and adaptable with focus on effectively managing change.
 
-.  Proactively provides information and ongoing consultation for IT and
-business areas as well as vendors directly or indirectly affected by
-ServiceNow Application.
 
-.  Leads the requirement gathering sessions collaborating with IT
-stakeholders, service owners and partners.
+*Forward Your Profiles to Below Mentioned Email Id*
 
-.  Provides operational readiness through the engineering, planning,
-coordination, and execution of performance and tuning analysis, systems
-support, and incident and problem resolution.
+*Hurry...!*
 
-.  Provides detailed guidance and consultation in solutioning production
-incidents when required.
+*Thanks & Regards,*
 
-.  Collaborates with vendors on infrastructure designs to ensure the final
-product is what was architected or designed.
+*Prashanth*
 
- 
+*US IT  RECRUITER*
 
-Is this a good fit? (Requirements):
+*+1 (315)947-0775*
 
-.  Bachelors degree and 8+ years of systems ServiceNow Developer experience
-is required.
-
-.  In lieu of degree, 10+ years of systems ServiceNow Developer.
-
-.  Direct experience in one or more of the following technical specialties:
-application development, application integration, Web Services, Scripting,
-and/or database programming.
-
-.  Experience automating tasks associated with technical specialties.
-
-.  Experience successfully leading ITSM projects and initiatives.
-
-.  Experience in multiple technical specialties preferred.
-
-.  Experience in one or more of the following technologies (aligning with
-relevant technical specialties): Integrating ServiceNow with other
-Enterprise Application via API, using REST/SOAP web services, Scripting
-Workflow, ServiceNow Discovery,
-
-.  Must be able to work independently and be self sufficient in defining and
-realizing infrastructure designs.
-
-.  Team and customer service oriented, flexible and adaptable with proven
-ability to solve problems in a collaborative and timely manner.
-
-.  Solid background in data collection, analysis, and reporting.
-
-.  Proven debugging skills
-
-.  Excellent oral and written communication and presentation skills
-
-.  Flexible and adaptable with focus on effectively managing change.
-
- 
-
- 
-
-Thanks & Regards,
-
-R UMASHANKAR
-
-US IT Recruiter
-
-Contact: (315)320-3439
-
-Email:  <mailto:uma@genisists.com> uma@genisists.com
-
- 
+*Email : prasanth@genisists.com <prasanth@genisists.com>*
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/06f801d51560%24c64e1f70%2452ea5e50%24%40com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/f0990275-f94e-40a8-b345-5800c7f4f6ad%40googlegroups.com.
 For more options, visit https://groups.google.com/d/optout.
 
-------=_NextPart_000_06F9_01D5158E.E0065B70
+------=_Part_2293_1075153962.1559056158783
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
-osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
-xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
-//www.w3.org/TR/REC-html40">
-
-<head>
-<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; charset=3Dus-ascii"=
->
-<meta name=3DGenerator content=3D"Microsoft Word 12 (filtered medium)">
-<style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Cambria;
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
-@font-face
-	{font-family:Verdana;
-	panose-1:2 11 6 4 3 5 4 4 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0in;
-	margin-right:0in;
-	margin-bottom:10.0pt;
-	margin-left:0in;
-	line-height:115%;
-	font-size:11.0pt;
-	font-family:"Calibri","sans-serif";}
-a:link, span.MsoHyperlink
-	{mso-style-priority:99;
-	color:blue;
-	text-decoration:underline;}
-a:visited, span.MsoHyperlinkFollowed
-	{mso-style-priority:99;
-	color:purple;
-	text-decoration:underline;}
-.MsoChpDefault
-	{mso-style-type:export-only;}
-.MsoPapDefault
-	{mso-style-type:export-only;
-	margin-bottom:10.0pt;
-	line-height:115%;}
-@page Section1
-	{size:8.5in 11.0in;
-	margin:1.0in 1.0in 1.0in 1.0in;}
-div.Section1
-	{page:Section1;}
--->
-</style>
-<!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
-</xml><![endif]--><!--[if gte mso 9]><xml>
- <o:shapelayout v:ext=3D"edit">
-  <o:idmap v:ext=3D"edit" data=3D"1" />
- </o:shapelayout></xml><![endif]-->
-</head>
-
-<body lang=3DEN-US link=3Dblue vlink=3Dpurple>
-
-<div class=3DSection1>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Arial=
-","sans-serif";
-color:#222222;background:white'>Hi All,&nbsp;</span><span style=3D'font-siz=
-e:
-12.0pt;font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></sp=
-an></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:10.0pt;font-family:"Ti=
-mes New Roman","serif";
-color:#222222'>&nbsp;</span></b><span style=3D'font-size:12.0pt;font-family=
-:"Times New Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:10.0pt;font-family:"Ti=
-mes New Roman","serif";
-color:#222222'>Seeking a&nbsp;</span></b><b><span style=3D'font-size:10.0pt=
-;
-font-family:"Verdana","sans-serif";color:#222222'>ServiceNow Developer/Engi=
-neer
-for</span></b><b><span style=3D'font-size:10.0pt;font-family:"Times New Rom=
-an","serif";
-color:#222222'>&nbsp;our client in the health insurance field!</span></b><s=
-pan
-style=3D'font-size:10.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><br>
-<br>
-<b>Position:</b>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"V=
-erdana","sans-serif";
-color:#222222'>ServiceNow Developer/</span><span style=3D'font-size:10.0pt;
-font-family:"Times New Roman","serif";color:#222222'>Engineer&nbsp;<br>
-<b>Location:&nbsp;</b>Durham North Carolina 27707<br>
-<b>Term:&nbsp;</b>6 Months plus</span><span style=3D'font-size:12.0pt;font-=
-family:
-"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
- New Roman","serif";
-color:#222222'>&nbsp;<o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
- New Roman","serif";
-color:#222222;background:yellow'>SENIOR ServiceNow DEVELOPER WITH 8+
-YEARS.&nbsp;</span><span style=3D'font-size:12.0pt;font-family:"Times New R=
-oman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
- New Roman","serif";
-color:#222222'><br>
-</span><span style=3D'font-size:10.0pt;font-family:"Times New Roman","serif=
-";
-color:#222222'><br>
-<b>Day-to-Day Responsibilities:</b></span><span style=3D'font-size:12.0pt;
-font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Convert
-user stories into technical solutions.</span><span style=3D'font-size:12.0p=
-t;
-font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Maintains
-technology currency and capacity planning in support of established SLAs.</=
-span><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Proactively
-provides information and ongoing consultation for IT and business areas as =
-well
-as vendors directly or indirectly affected by ServiceNow Application.</span=
-><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Leads
-the requirement gathering sessions collaborating with IT stakeholders, serv=
-ice
-owners and partners.</span><span style=3D'font-size:12.0pt;font-family:"Tim=
-es New Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Provides
-operational readiness through the engineering, planning, coordination, and
-execution of performance and tuning analysis, systems support, and incident=
- and
-problem resolution.</span><span style=3D'font-size:12.0pt;font-family:"Time=
-s New Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Provides
-detailed guidance and consultation in solutioning production incidents when
-required.</span><span style=3D'font-size:12.0pt;font-family:"Times New Roma=
-n","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Collaborates
-with vendors on infrastructure designs to ensure the final product is what =
-was
-architected or designed.</span><span style=3D'font-size:12.0pt;font-family:=
-"Times New Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><span style=3D'font-size:10.0pt;font-family:"Times=
- New Roman","serif";
-color:#222222'>&nbsp;</span><span style=3D'font-size:12.0pt;font-family:"Ti=
-mes New Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:10.0pt;font-family:"Ti=
-mes New Roman","serif";
-color:#222222'>Is this a good fit? (Requirements):</span></b><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Bachelors
-degree and&nbsp;<b>8+ years of systems ServiceNow Developer&nbsp;</b>experi=
-ence
-is required.</span><span style=3D'font-size:12.0pt;font-family:"Times New R=
-oman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->In
-lieu of degree,&nbsp;<b>10+ years of systems ServiceNow Developer</b>.</spa=
-n><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Direct
-experience in one or more of the following technical specialties: applicati=
-on
-development, application integration, Web Services, Scripting, and/or datab=
-ase
-programming.</span><span style=3D'font-size:12.0pt;font-family:"Times New R=
-oman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Experience
-automating tasks associated with technical specialties.</span><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Experience
-successfully leading ITSM projects and initiatives.</span><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Experience
-in multiple technical specialties preferred.</span><span style=3D'font-size=
-:12.0pt;
-font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><b><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Experience
-in one or more of the following technologies (aligning with relevant techni=
-cal
-specialties): Integrating ServiceNow with other Enterprise Application via =
-API,
-using REST/SOAP web services, Scripting Workflow, ServiceNow Discovery,</sp=
-an></b><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Must
-be able to work independently and be self sufficient in defining and realiz=
-ing
-infrastructure designs.</span><span style=3D'font-size:12.0pt;font-family:"=
-Times New Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Team
-and customer service oriented, flexible and adaptable with proven ability t=
-o
-solve problems in a collaborative and timely manner.</span><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Solid
-background in data collection, analysis, and reporting.</span><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Proven
-debugging skills</span><span style=3D'font-size:12.0pt;font-family:"Times N=
-ew Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Excellent
-oral and written communication and presentation skills</span><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
-n-bottom:
-0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
-:
-white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
-iddot;</span><span
-style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
-2'>&nbsp;&nbsp;</span><span
-style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
->Flexible
-and adaptable with focus on effectively managing change.</span><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
- New Roman","serif";
-color:#222222'>&nbsp;<o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><span style=3D'font-size:10.0pt;font-family:"Arial=
-","sans-serif";
-color:#222222'>&nbsp;</span><span style=3D'font-size:12.0pt;font-family:"Ti=
-mes New Roman","serif";
-color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
-mbria","serif";
-color:#222222'>Thanks &amp; Regards,</span></b><span style=3D'font-size:12.=
-0pt;
-font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
-mbria","serif";
-color:#222222'>R UMASHANKAR</span></b><span style=3D'font-size:12.0pt;font-=
-family:
-"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
-mbria","serif";
-color:#222222'>US IT Recruiter</span></b><span style=3D'font-size:12.0pt;
-font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
-mbria","serif";
-color:#222222'>Contact: (315)320-3439</span></b><span style=3D'font-size:12=
-.0pt;
-font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
-height:
-normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
-mbria","serif";
-color:#222222'>Email:&nbsp;<a href=3D"mailto:uma@genisists.com" target=3D"_=
-blank"><span
-style=3D'color:#1155CC'>uma@genisists.com</span></a></span></b><span
-style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
-22'><o:p></o:p></span></p>
-
-<p class=3DMsoNormal><o:p>&nbsp;</o:p></p>
-
-</div>
-
-</body>
-
-</html>
+<div dir=3D"ltr"><div style=3D"text-align: center;"><font size=3D"4" color=
+=3D"#ffffff"><b><i><u style=3D"background-color: rgb(19, 79, 92);">WE HAVE =
+URGENT REQUIREMENT FOR=C2=A0 SERVICENOW DEVELOPER / ENGINEER</u></i></b></f=
+ont></div><div style=3D"text-align: center;"><font size=3D"4" color=3D"#fff=
+fff"><b><i><u style=3D"background-color: rgb(32, 18, 77);"><br></u></i></b>=
+</font></div><div style=3D"text-align: center;"><font color=3D"#ffffff" siz=
+e=3D"4"><b><i><u style=3D"background-color: rgb(102, 0, 0);">IN HEALTH INSU=
+RANCE FIELD</u></i></b></font></div><div style=3D"font-size: small;"><br></=
+div><span style=3D"font-size: small;">Position: Sr. ServiceNow Developer/En=
+gineer=C2=A0</span><br style=3D"font-size: small;"><span style=3D"font-size=
+: small;">Location: Durham North Carolina 27707</span><br style=3D"font-siz=
+e: small;"><span style=3D"font-size: small;">Term: 6 Months plus</span><br =
+style=3D"font-size: small;"><span style=3D"font-size: small;">Experience:8+=
+years</span><br style=3D"font-size: small;"><br style=3D"font-size: small;"=
+><br style=3D"font-size: small;"><font color=3D"#eeeeee"><font size=3D"4" s=
+tyle=3D"background-color: rgb(102, 102, 102);">SENIOR ServiceNow Developer =
+Wth 8+ Years Exp.</font><span style=3D"font-size: small;">.=C2=A0</span></f=
+ont><br style=3D"font-size: small;"><br style=3D"font-size: small;"><br sty=
+le=3D"font-size: small;"><br style=3D"font-size: small;"><span style=3D"fon=
+t-size: small;">Day-to-Day Responsibilities:</span><br style=3D"font-size: =
+small;"><br style=3D"font-size: small;"><ul style=3D"font-size: small;"><li=
+ style=3D"margin-left: 15px;">Convert user stories into technical solutions=
+.</li><li style=3D"margin-left: 15px;">Maintains technology currency and ca=
+pacity planning in support of established SLAs.</li><li style=3D"margin-lef=
+t: 15px;">Proactively provides information and ongoing consultation for IT =
+and business areas as well as vendors directly or indirectly affected by Se=
+rviceNow Application.</li><li style=3D"margin-left: 15px;">Leads the requir=
+ement gathering sessions collaborating with IT stakeholders, service owners=
+ and partners.</li><li style=3D"margin-left: 15px;">Provides operational re=
+adiness through the engineering, planning, coordination, and execution of p=
+erformance and tuning analysis, systems support, and incident and problem r=
+esolution.</li><li style=3D"margin-left: 15px;">Provides detailed guidance =
+and consultation in solutioning production incidents when required.</li><li=
+ style=3D"margin-left: 15px;">Collaborates with vendors on infrastructure d=
+esigns to ensure the final product is what was architected or designed.</li=
+><li style=3D"margin-left: 15px;">=C2=A0</li><li style=3D"margin-left: 15px=
+;"><br></li><li style=3D"margin-left: 15px;">Is this a good fit? (Requireme=
+nts):</li><li style=3D"margin-left: 15px;"><br></li><li style=3D"margin-lef=
+t: 15px;">Bachelors degree and 8+ years of systems ServiceNow Developer exp=
+erience is required.</li><li style=3D"margin-left: 15px;">In lieu of degree=
+, 10+ years of systems ServiceNow Developer.</li><li style=3D"margin-left: =
+15px;">Direct experience in one or more of the following technical specialt=
+ies: application development, application integration, Web Services, Script=
+ing, and/or database programming.</li><li style=3D"margin-left: 15px;">Expe=
+rience automating tasks associated with technical specialties.</li><li styl=
+e=3D"margin-left: 15px;">Experience successfully leading ITSM projects and =
+initiatives.</li><li style=3D"margin-left: 15px;">Experience in multiple te=
+chnical specialties preferred.</li><li style=3D"margin-left: 15px;">Experie=
+nce in one or more of the following technologies (aligning with relevant te=
+chnical specialties): Integrating ServiceNow with other Enterprise Applicat=
+ion via API, using REST/SOAP web services, Scripting Workflow, ServiceNow D=
+iscovery,</li><li style=3D"margin-left: 15px;">Must be able to work indepen=
+dently and be self sufficient in defining and realizing infrastructure desi=
+gns.</li><li style=3D"margin-left: 15px;">Team and customer service oriente=
+d, flexible and adaptable with proven ability to solve problems in a collab=
+orative and timely manner.</li><li style=3D"margin-left: 15px;">Solid backg=
+round in data collection, analysis, and reporting.</li><li style=3D"margin-=
+left: 15px;">Proven debugging skills</li><li style=3D"margin-left: 15px;">E=
+xcellent oral and written communication and presentation skills</li><li sty=
+le=3D"margin-left: 15px;">Flexible and adaptable with focus on effectively =
+managing change.</li></ul><div><font size=3D"2"><br></font></div><div><font=
+ color=3D"#eeeeee" size=3D"2"><b><u style=3D"background-color: rgb(56, 118,=
+ 29);">Forward Your Profiles to Below Mentioned Email Id</u></b></font></di=
+v><div><font size=3D"2"><br></font></div><b><i><u><font size=3D"4" color=3D=
+"#eeeeee" style=3D"background-color: rgb(116, 27, 71);">Hurry...!</font></u=
+></i></b><div><font size=3D"4"><b><i><u><br></u></i></b></font></div><div><=
+p style=3D"font-size: small; font-family: arial, helvetica, sans-serif;"><b=
+><i><span style=3D"line-height: 14.95px;">Thanks &amp; Regards,</span></i><=
+/b><span style=3D"line-height: 14.95px;"></span></p><p style=3D"font-size: =
+small; font-family: arial, helvetica, sans-serif;"><b><i><span style=3D"lin=
+e-height: 14.95px;">Prashanth</span></i></b></p><p style=3D"font-size: smal=
+l; font-family: arial, helvetica, sans-serif;"><b><i><span style=3D"line-he=
+ight: 14.95px;"></span></i></b><b><i><span style=3D"line-height: 14.95px;">=
+<b><i><span style=3D"line-height: 14.95px;">US IT=C2=A0 RECRUITER</span></i=
+></b><span style=3D"line-height: 14.95px;"></span></span></i></b></p><p sty=
+le=3D"font-size: small; font-family: arial, helvetica, sans-serif;"><b><i><=
+span style=3D"line-height: 14.95px;"><b><i><span style=3D"line-height: 14.9=
+5px;">+1 (315)947-0775</span></i></b></span></i></b></p><p style=3D"font-si=
+ze: small;"><font face=3D"arial, helvetica, sans-serif"><b><i>Email :=C2=A0=
+<a href=3D"mailto:prasanth@genisists.com" target=3D"_blank" data-mt-detrack=
+-inspected=3D"true" style=3D"color: rgb(17, 85, 204);">prasanth@genisists.c=
+om</a></i></b></font></p><div style=3D"font-size: small; font-family: arial=
+, helvetica, sans-serif;"><a data-mt-detrack-inspected=3D"true"><img src=3D=
+"https://ci3.googleusercontent.com/proxy/1gcs-zxCV-sXBHAkDUNXCCVJ2a6h1MId3m=
+NnYNVp0FhTmwRvKw4LQgks3iaTXQjOOUH-Tzx5niXs0Tb2KtIh07hcjy6B0ExMjAXvta3pXcuwv=
+4pCzpxtpwBgNsbnemBgpHaJdmsOJsiQZBLfW5l1ftwP_6QlhvyFNGfKrx3vqsJTZo4qa-dgKUoG=
+8s9GZVwfTdzwY8rOrpS2MX5Csw=3Ds0-d-e1-ft#https://docs.google.com/uc?export=
+=3Ddownload&amp;id=3D1fyCxLrUTDZagX7qMBnjT-v0CwrdizLZY&amp;revid=3D0ByEOHs6=
+JWBvzS25CV0lwa2FFS2syRWxCbGdlYUxaUFpjL0N3PQ" width=3D"200" height=3D"58" cl=
+ass=3D"CToWUd"></a></div></div></div>
 
 <p></p>
 
@@ -773,11 +268,13 @@ mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 To post to this group, send email to <a href=3D"mailto:linux-ntb@googlegrou=
 ps.com">linux-ntb@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/06f801d51560%24c64e1f70%2452ea5e50%24%40com?utm_medium=
-=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid/linux-ntb/0=
-6f801d51560%24c64e1f70%2452ea5e50%24%40com</a>.<br />
+om/d/msgid/linux-ntb/f0990275-f94e-40a8-b345-5800c7f4f6ad%40googlegroups.co=
+m?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid=
+/linux-ntb/f0990275-f94e-40a8-b345-5800c7f4f6ad%40googlegroups.com</a>.<br =
+/>
 For more options, visit <a href=3D"https://groups.google.com/d/optout">http=
 s://groups.google.com/d/optout</a>.<br />
 
-------=_NextPart_000_06F9_01D5158E.E0065B70--
+------=_Part_2293_1075153962.1559056158783--
 
+------=_Part_2292_343020801.1559056158783--
