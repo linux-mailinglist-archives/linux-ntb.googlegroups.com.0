@@ -1,68 +1,124 @@
-Return-Path: <linux-ntb+bncBCELXQMOTUFBB7H2WTTQKGQE3G6JKDQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCDZ33GYSUERBJEIWXTQKGQER343WSI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yw1-xc3f.google.com (mail-yw1-xc3f.google.com [IPv6:2607:f8b0:4864:20::c3f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E44A2C828
-	for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 15:54:05 +0200 (CEST)
-Received: by mail-yw1-xc3f.google.com with SMTP id v191sf18975172ywc.11
-        for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 06:54:05 -0700 (PDT)
+Received: from mail-pf1-x43b.google.com (mail-pf1-x43b.google.com [IPv6:2607:f8b0:4864:20::43b])
+	by mail.lfdr.de (Postfix) with ESMTPS id 103F92C89A
+	for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 16:22:30 +0200 (CEST)
+Received: by mail-pf1-x43b.google.com with SMTP id m7sf14642894pfh.9
+        for <lists+linux-ntb@lfdr.de>; Tue, 28 May 2019 07:22:29 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1559053348; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=vaJ9pWf5e5/hzjmlSnmt3Qi3ju5H7tXdfXkv3D78Uz/XNIdv/q168OEOMWd0kqjcUJ
+         ZtC/VvYXLUeKbGW8rt0t6/tLDvdI22bgRUXsLPqD2fQ+UjcOuFL0tdTZlcPEk9KooyMT
+         btJ5ZYMmBXgJ56Iq135pOqOyAUtIUDpL9sj9k5dq8vps8pSlqjEcsljCsX0QlMzDz8Vo
+         5tAt1Mg8yTLeG86Hz7UUFTxoaPh17qVVBH54WUYuahLPD72VgrUZeVHUYbZSh15q9mxn
+         Ol5lX2XXQH7UvEXIZMRfsvOLL+QYXIh+l4tvP16Q68GFvjE3ynq8pytlg/LCz9Amdvev
+         nSQQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:content-language:thread-index
+         :mime-version:message-id:date:subject:to:from:sender:dkim-signature;
+        bh=Al0/GKTAignScBHDCuQ8lXg7RUjtJlwqF67DrKGRjpk=;
+        b=kfEEfT8ycaJhBmSUH6bTJAT5tAVrwlG15CpZjB0/pqUq+vDwq84A5An8uc0ALxtPSP
+         S6Yt+E2xj+hz3JD6hvt8TGDIbN7baU79UhGIXDqzofMrWoTu5UjBsRXHCHn0smcTNjNo
+         cIEMfFJsItK/t7vlMALYdaEXWqgFnEwzzWD9cWtVHfPmxrapjNbfJrFmiYtpdk2EYz0l
+         FlhMWlXUX9NGdXp39Qqn2DWy1nx/0PNlryhse3zcwPsnoSlYXTO6n/ThjLBvTvgCNRBv
+         0WTlDIQBXIYl02l35y9pxPy9iP8sUV31a+mCVcxS8oo5CFyqJ+lvIZN+n6DpDMQM+nif
+         ESOw==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@genisists-com.20150623.gappssmtp.com header.s=20150623 header.b=WGBefDfZ;
+       spf=neutral (google.com: 2607:f8b0:4864:20::443 is neither permitted nor denied by best guess record for domain of uma@genisists.com) smtp.mailfrom=uma@genisists.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:message-id:subject:mime-version
-         :x-original-sender:precedence:mailing-list:list-id:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=w5LtDKiUKNMW7S1uOfXpAPo163z6DBrruSbG0HV6yx4=;
-        b=TsMi2kadh7FpVT/ufvXgxRF1hxpGFITr4dssRvWz6rejIBSffM+5NFH+0yRRNmh/iB
-         HfV/+vZm5772q8qjwElUXzwOxEgVQVs7rDbAl2pUsaeACXKQBoF+rSgYVGWbPBbQQLzp
-         w8jeV4gn89la9x1ub6m79RPklv+IsLWlraNZJa4CH5HA17zz3Y8SjhScMGb/yRkq9szd
-         nN1REqerCDF4snm/Bu7miEcLYrZzqEh0O4x5itzX/eAOqeZmIhFjNoH3HR4b0IKaJjJO
-         GLGAU517k2s/s8cYZRBq5HnqYbCZ78gItjOLWGH0oOr6S+5dLnYFID5kp9cQGTYFW6Us
-         E8yw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=genisists-com.20150623.gappssmtp.com; s=20150623;
-        h=date:from:to:message-id:subject:mime-version:x-original-sender
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=w5LtDKiUKNMW7S1uOfXpAPo163z6DBrruSbG0HV6yx4=;
-        b=H8DiUugZzKa8P6UcTfSXY+YOzF/IwPSIxmaWuSLfA27j7I16FQhf5S5IKqrKuvdF3/
-         KEIaEMAzH3MEvhhKNZ6iIC43A90o+um+w+/l591VkNBEFu52nhzs/yVrT0+vwabql5C+
-         iwFJGQ2oMYd37wl/P0mwRLDn4O79bOZNWx4vLTcXElr0+iaB23c7QcLyei7McYe6Uw8O
-         aYB661WvisEk70KvBkgD0xLvVbWr5LpeEfIbbmc95BgVqFmF50lwYl0CwkDBUnnB+geF
-         uDk97atUkam99+7iVXndxncREc0NeKN6ai1qpJVkNOW7puwrx4xBkEFWWZhBpOXiW7rO
-         YNlw==
+        h=sender:from:to:subject:date:message-id:mime-version:thread-index
+         :content-language:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=Al0/GKTAignScBHDCuQ8lXg7RUjtJlwqF67DrKGRjpk=;
+        b=iRXknj9Rcq5pTLTqDwwhvon70Lz82dBJx8PV2lcAu3vaM7/+MrRKKMSsEn1B/hTIIO
+         7woD8pOj1DO2WdnPLS5YResVboKKbzVjfO8qsKJ7pJQa0jWbHg+HRwK6BhJfoek7qMls
+         F+3cZDU6HjzAdmPLA0VlDMjRnTnzLqp4xZGlaBCbDBMOzheV3HWtHZAq+vicN7Tp9eST
+         9Z+MgEgmhjDQfKjpXtCRiS1fcsMsIG/19l87hF1TYFJy/3jP+mg4HdluQP2l7PiS9jx6
+         fRohtbBG+sTDHWnr9uM1eqoo3RuIfdpze2UaEASm1/TeO/F52U1qyljdypRUeSUQm8qp
+         TgBw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:message-id:subject
-         :mime-version:x-original-sender:precedence:mailing-list:list-id
+        h=sender:x-gm-message-state:from:to:subject:date:message-id
+         :mime-version:thread-index:content-language:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=w5LtDKiUKNMW7S1uOfXpAPo163z6DBrruSbG0HV6yx4=;
-        b=WUmxGQcflLW9lDTRYHunD8G2O3FCVDF1vzUaRHTXhyLggXMpjM+Ue7SAzUTs2t7U7Y
-         WiNO3Tcc4Edrn4qgNiySw3DW8VWxywwPt2KLH68m81VufvlLIwXrSK9MqApR6xvj6TM0
-         p8qjDfVgm/pO4He/3PC6OI7YkxLEEL182txugUO8wL4m6EStOAt/SavU7OfMf0fNPAGD
-         xahKwWA4g3OObu641CZPZ3uva853p4VYoaPip7jZ6W+kowrW6iY4o/RO1g9u1s0/yUU4
-         plgtHQOc9N4dYfakWYRj7Q/WRQ3qpOFn7WA2vkleE+jfMh/IkdaxHAzOxyS8WUhwqMrk
-         KLGg==
+        bh=Al0/GKTAignScBHDCuQ8lXg7RUjtJlwqF67DrKGRjpk=;
+        b=f3cdL8ijY44iS/YzUEEZIHQxpAIIbukqFPO9JUX3UNA6bbtRgeUieSeZoJrs/y5Z7T
+         A+3N5azimkHD7BYuW8u+mzYuc0tu5EvGzTBkajz3pKjzQAM3PMToMxMjFPhXVBXRNUBM
+         mOSxkuEDPHvDn5bienKkgWg+65vmdj+jFkrCcCkc2HELG7mbi3ltmCXjoP2A5X34/Cdi
+         C2abc6VMLI8VaMH+t64Nkma+c7Nz7cRPUJM6RrkBPbE+elKXqagRXaRzg95zx3ETe0yj
+         kn9l9D5oIHFRhKSqYiI/4iA1oWn145+OlTRqgBPF2qy/rEEVHANogB/tQvCA3H0acpWo
+         dcRA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAVIsFU4X8OrU1OdTHNhRdNC0H2NzHGv8RV1LLJkQIS2s//s6G6y
-	WdM9VEABxLiP4MvkosECNGs=
-X-Google-Smtp-Source: APXvYqwPtKV2FYwLKgqnE1vgW/yMuQxf70k7K5Oyb5SsP9dxB+RwNkqy+Eh3K0PTq5TjUTfm9baFkQ==
-X-Received: by 2002:a81:4c05:: with SMTP id z5mr57397682ywa.413.1559051644533;
-        Tue, 28 May 2019 06:54:04 -0700 (PDT)
+X-Gm-Message-State: APjAAAV4Aq9KoI2muf1asXHrKK/eJ51SsMR0z7NdzmLL/TlhoWJOo2TS
+	VFDhilBoCogJWZKvr46ODnw=
+X-Google-Smtp-Source: APXvYqx3YFe+Z2v0kWTz7CtBYbKXETGE6+169UAGc4CARhLN6l9nJ72ozdKB1c5A7VVLKOHpHf9o1w==
+X-Received: by 2002:a63:7d09:: with SMTP id y9mr113095219pgc.350.1559053348500;
+        Tue, 28 May 2019 07:22:28 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a81:ef08:: with SMTP id o8ls2305197ywm.15.gmail; Tue, 28 May
- 2019 06:54:04 -0700 (PDT)
-X-Received: by 2002:a81:57ce:: with SMTP id l197mr25269721ywb.115.1559051644045;
-        Tue, 28 May 2019 06:54:04 -0700 (PDT)
-Date: Tue, 28 May 2019 06:54:03 -0700 (PDT)
-From: prasanth THANDA <prasanth@genisists.com>
-To: linux-ntb <linux-ntb@googlegroups.com>
-Message-Id: <032e80c3-22a4-4f9b-b511-2a669bed92ab@googlegroups.com>
-Subject: REQUIREMENT FOR SALESFORCE DEVELOPER//ARIZONA & MASSECHUSETTS
+Received: by 2002:a62:1c4b:: with SMTP id c72ls2027252pfc.10.gmail; Tue, 28
+ May 2019 07:22:28 -0700 (PDT)
+X-Received: by 2002:aa7:8554:: with SMTP id y20mr143642279pfn.258.1559053348156;
+        Tue, 28 May 2019 07:22:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559053348; cv=none;
+        d=google.com; s=arc-20160816;
+        b=rUioZushOU5z93MXssKF+0Nek+WKq0d9/U2JVIt+zZe4S24QI04IeoyVTCbnJfczYz
+         JBqRdLu16Bh6JQnJV4egeiXKamucl927pT8+ksrZDiZfRDxVDSpcKVbPQ//iC0x5Qks0
+         41zAUa9CcOZ2/nQq7TELiVyn3ankH9fiJn+VM1vTVeHwJSN37SHkvOt+TETGdSPBaVal
+         QNoK8mIDsQ7aXY9jbhTBjf624HRNa6yHJyVfYvHFpY0ibg1FIGEBEtxx4jIc90GGQO1S
+         SV/1YJLfL2S9dh5vOjuxJnklQjjPVea0mAQFdeHyzgSD682EE8A5aoA0/9oZWcTd6hrk
+         gVzA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-language:thread-index:mime-version:message-id:date:subject
+         :to:from:dkim-signature;
+        bh=wxDWXdvv9tUB+e7Ik/j6GfHYI4Fy10gv80FSeJ4UDjs=;
+        b=e83OPHNoJcvy5mtc3hmC4f5chVpfqAz8uCh0jLPiGZIHOFTXMB7RlgT7r+qTMSjik7
+         ShF7wN73q2ze7FkqnH25ul9C+95X9xSoilYQVFJQgePS8sZnZS6gXsIcaz3R+gdayZNC
+         VhwMGbsnTc1tvd5Q21iOIPguIwlIkx8ktBTuGjMpfxYUQSw1pdCMwluCa/ADoyo1Or5k
+         0VX4o4ArU+CBkuixYPV9/i4kHjT7EDmiWJQyOTHtVZwt9lYoEObaqKpdvrXPzeqYHT/E
+         ZZiZk0dP1HljPCMZ/szdIpOhBpq2eJRw5xcH07s4k+VhVeD/eL5le0rhiWNpfX4956sU
+         wbhQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@genisists-com.20150623.gappssmtp.com header.s=20150623 header.b=WGBefDfZ;
+       spf=neutral (google.com: 2607:f8b0:4864:20::443 is neither permitted nor denied by best guess record for domain of uma@genisists.com) smtp.mailfrom=uma@genisists.com
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id z6si391806pgv.0.2019.05.28.07.22.28
+        for <linux-ntb@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 May 2019 07:22:28 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::443 is neither permitted nor denied by best guess record for domain of uma@genisists.com) client-ip=2607:f8b0:4864:20::443;
+Received: by mail-pf1-x443.google.com with SMTP id z26so11584143pfg.6
+        for <linux-ntb@googlegroups.com>; Tue, 28 May 2019 07:22:28 -0700 (PDT)
+X-Received: by 2002:a65:520b:: with SMTP id o11mr78871544pgp.184.1559053347529;
+        Tue, 28 May 2019 07:22:27 -0700 (PDT)
+Received: from falcomitPC ([115.98.2.36])
+        by smtp.gmail.com with ESMTPSA id g9sm12064114pgs.78.2019.05.28.07.22.25
+        for <linux-ntb@googlegroups.com>
+        (version=TLS1 cipher=ECDHE-RSA-AES128-SHA bits=128/128);
+        Tue, 28 May 2019 07:22:26 -0700 (PDT)
+From: "Umashankar" <uma@genisists.com>
+To: <linux-ntb@googlegroups.com>
+Subject: Seeking a ServiceNow Developer/Engineer for our client in the health insurance field!
+Date: Tue, 28 May 2019 19:51:56 +0530
+Message-ID: <06f801d51560$c64e1f70$52ea5e50$@com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_2393_1139747952.1559051643494"
-X-Original-Sender: prasanth@genisists.com
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_000_06F9_01D5158E.E0065B70"
+X-Mailer: Microsoft Office Outlook 12.0
+Thread-Index: AdUVYLLeL2c1mCeKR9uNwdD+XSmC1w==
+Content-Language: en-us
+X-Original-Sender: uma@genisists.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@genisists-com.20150623.gappssmtp.com header.s=20150623
+ header.b=WGBefDfZ;       spf=neutral (google.com: 2607:f8b0:4864:20::443 is
+ neither permitted nor denied by best guess record for domain of
+ uma@genisists.com) smtp.mailfrom=uma@genisists.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -75,330 +131,636 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-------=_Part_2393_1139747952.1559051643494
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_2394_217913482.1559051643494"
+This is a multipart message in MIME format.
 
-------=_Part_2394_217913482.1559051643494
+------=_NextPart_000_06F9_01D5158E.E0065B70
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+
+Hi All, 
+
+ 
+
+Seeking a ServiceNow Developer/Engineer for our client in the health
+insurance field!
+
+Position: ServiceNow Developer/Engineer 
+Location: Durham North Carolina 27707
+Term: 6 Months plus
+
+ 
+
+SENIOR ServiceNow DEVELOPER WITH 8+ YEARS. 
 
 
 
-*WE HAVE URGENT REQUIREMENT FOR SALESFORCE DEVELOPER*
+Day-to-Day Responsibilities:
 
+.  Convert user stories into technical solutions.
 
+.  Maintains technology currency and capacity planning in support of
+established SLAs.
 
-*SEND YOUR UPDATED RESUME TO BELOW MENTIONED EMAIL ADDRESS.*
+.  Proactively provides information and ongoing consultation for IT and
+business areas as well as vendors directly or indirectly affected by
+ServiceNow Application.
 
-=20
+.  Leads the requirement gathering sessions collaborating with IT
+stakeholders, service owners and partners.
 
-=20
+.  Provides operational readiness through the engineering, planning,
+coordination, and execution of performance and tuning analysis, systems
+support, and incident and problem resolution.
 
-            * NOTE : DIRECT CLIENT REQUIREMENT*
+.  Provides detailed guidance and consultation in solutioning production
+incidents when required.
 
-=20
+.  Collaborates with vendors on infrastructure designs to ensure the final
+product is what was architected or designed.
 
-*Role: Sales force Developer*
+ 
 
-*Contract: 6 months+*
+Is this a good fit? (Requirements):
 
-*Location: Arizona/NJ, Massachusetts*
+.  Bachelors degree and 8+ years of systems ServiceNow Developer experience
+is required.
 
-*Client : Direct*
+.  In lieu of degree, 10+ years of systems ServiceNow Developer.
 
-=20
+.  Direct experience in one or more of the following technical specialties:
+application development, application integration, Web Services, Scripting,
+and/or database programming.
 
-=20
+.  Experience automating tasks associated with technical specialties.
 
-Experience:
+.  Experience successfully leading ITSM projects and initiatives.
 
-=C2=B7        8+ years in Software Development
+.  Experience in multiple technical specialties preferred.
 
-=C2=B7        5+ years experience in Cloud Technology and an in-depth=20
-understanding of the primary concepts and terminology
+.  Experience in one or more of the following technologies (aligning with
+relevant technical specialties): Integrating ServiceNow with other
+Enterprise Application via API, using REST/SOAP web services, Scripting
+Workflow, ServiceNow Discovery,
 
-=C2=B7        5+ years working on Salesforce applications (Lightning is a=
-=20
-must-have.)
+.  Must be able to work independently and be self sufficient in defining and
+realizing infrastructure designs.
 
-=C2=B7        5+ years experience using Force.com (Advanced understanding o=
-f=20
-SFDC Triggers and Controllers, VF page development, sObjects, SOQL etc)
+.  Team and customer service oriented, flexible and adaptable with proven
+ability to solve problems in a collaborative and timely manner.
 
-=C2=B7        3+ year hands-on experience in an Agile development team
+.  Solid background in data collection, analysis, and reporting.
 
-=C2=B7        Experience in object oriented development is a must
+.  Proven debugging skills
 
-=C2=B7        Experience with SOAP and REST Web Services and integration us=
-ing=20
-APIs is a must
+.  Excellent oral and written communication and presentation skills
 
-=C2=B7        Experience with source control, branching strategies and usin=
-g=20
-code repositories a must
+.  Flexible and adaptable with focus on effectively managing change.
 
-=C2=B7        Salesforce certification preferred
+ 
 
-=C2=B7        Background in leveraging ETL products and tools (e.g. IBM=20
-DataStage, Informatica, etc.) for data management is preferred
+ 
 
-=C2=B7        Previous experience of Test Driven development is preferred
+Thanks & Regards,
 
-=C2=B7        Previous experience in a lead role within a team of engineers
+R UMASHANKAR
 
-=C2=B7        Advanced understanding of the Salesforce platform and its pri=
-mary=20
-functions.
+US IT Recruiter
 
-=C2=B7        Ability to learn new technologies and embrace the challenge=
-=20
-learning presents
+Contact: (315)320-3439
 
-=C2=B7        A self-starter, comfortable having conversations with busines=
-s=20
-partners
+Email:  <mailto:uma@genisists.com> uma@genisists.com
 
-=C2=B7        Robust and current knowledge of web standards, emerging=20
-technologies, and trends
+ 
 
-=C2=B7        Ability to think abstractly and deal with ambiguous/under-def=
-ined=20
-problems
-
-=C2=B7        An excellent communicator, both verbally and written.
-
-=20
-
- *   Forward Your Resume To Below Mentioned Email Address. *
-
- =20
-
-* HURRY......!!!*
-
-=20
-
---=20
-
-*Thanks & Regards,*
-
-*Prashanth*
-
-*US IT  RECRUITER*
-
-*+1 (315)947-0775*
-
-*Email : prasanth@genisists.com <prasanth@genisists.com>*
-
---=20
-You received this message because you are subscribed to the Google Groups "=
-linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to linux-ntb+unsubscribe@googlegroups.com.
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/032e80c3-22a4-4f9b-b511-2a669bed92ab%40googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/06f801d51560%24c64e1f70%2452ea5e50%24%40com.
 For more options, visit https://groups.google.com/d/optout.
 
-------=_Part_2394_217913482.1559051643494
+------=_NextPart_000_06F9_01D5158E.E0065B70
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><p class=3D"MsoNormal" align=3D"center" style=3D"font-size=
-: 12pt; font-family: &quot;Times New Roman&quot;, serif; text-align: center=
-;"><b><i><span style=3D"background: rgb(102, 0, 0); font-size: 13.5pt; colo=
-r: white;">WE HAVE URGENT REQUIREMENT FOR SALESFORCE DEVELOPER</span></i></=
-b><span style=3D"background-color: rgb(76, 17, 48);"><u></u><u></u></span><=
-/p><p class=3D"MsoNormal" align=3D"center" style=3D"font-size: 12pt; font-f=
-amily: &quot;Times New Roman&quot;, serif; text-align: center;"><b><i><span=
- style=3D"background: rgb(102, 0, 0); font-size: 13.5pt; color: white;"><br=
-></span></i></b></p><div style=3D"font-size: small;"><p class=3D"MsoNormal"=
- style=3D"margin-right: 0in; margin-left: 0in; font-size: 12pt; font-family=
-: &quot;Times New Roman&quot;, serif;"><b style=3D"font-size: 12pt;"><span =
-style=3D"color: rgb(12, 52, 61);"><br></span></b></p><p class=3D"MsoNormal"=
- style=3D"margin-right: 0in; margin-left: 0in; font-size: 12pt; font-family=
-: &quot;Times New Roman&quot;, serif;"><b style=3D"font-size: 12pt;"><span =
-style=3D"color: rgb(12, 52, 61);">SEND YOUR UPDATED RESUME TO BELOW MENTION=
-ED EMAIL ADDRESS.</span></b></p></div><div style=3D"font-size: small;"><p c=
-lass=3D"MsoNormal" style=3D"margin-right: 0in; margin-left: 0in; font-size:=
- 12pt; font-family: &quot;Times New Roman&quot;, serif;"><span style=3D"col=
-or: blue;"><b>=C2=A0</b></span><u></u><u></u></p></div><div style=3D"font-s=
-ize: small;"><p class=3D"MsoNormal" style=3D"margin-right: 0in; margin-left=
-: 0in; font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><=
-span style=3D"color: rgb(80, 0, 80);">=C2=A0</span><u></u><u></u></p></div>=
-<div style=3D"font-size: small;"><p class=3D"MsoNormal" style=3D"margin-rig=
-ht: 0in; margin-left: 0in; font-size: 12pt; font-family: &quot;Times New Ro=
-man&quot;, serif;"><strong><span style=3D"font-size: 10pt; font-family: Cal=
-ibri, sans-serif; color: black;">=C2=A0 =C2=A0</span></strong><strong><span=
- style=3D"font-size: 13.5pt; font-family: Calibri, sans-serif; color: black=
-;">=C2=A0=C2=A0 =C2=A0 =C2=A0=C2=A0</span><span style=3D"font-size: 13.5pt;=
- font-family: Calibri, sans-serif;"><font color=3D"#ffffff">=C2=A0=C2=A0</f=
-ont></span></strong><strong><span style=3D"font-size: 13.5pt; font-family: =
-Calibri, sans-serif; background-color: rgb(12, 52, 61);"><font color=3D"#ff=
-ffff">=C2=A0NOTE : DIRECT CLIENT REQUIREMENT</font></span></strong><u></u><=
-u></u></p></div><div style=3D"font-size: small;"><p class=3D"MsoNormal" sty=
-le=3D"margin-right: 0in; margin-left: 0in; font-size: 12pt; font-family: &q=
-uot;Times New Roman&quot;, serif;">=C2=A0<u></u><u></u></p></div><div style=
-=3D"font-size: small;"><p class=3D"MsoNormal" style=3D"margin-right: 0in; m=
-argin-left: 0in; font-size: 12pt; font-family: &quot;Times New Roman&quot;,=
- serif;"><strong><span style=3D"font-size: 10pt; font-family: Calibri, sans=
--serif; color: black;">Role:=C2=A0Sales force=C2=A0Developer</span></strong=
-><u></u><u></u></p></div><div style=3D"font-size: small;"><p style=3D"margi=
-n: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times New Roman&qu=
-ot;, serif;"><strong><span style=3D"font-size: 10pt; font-family: Calibri, =
-sans-serif; color: black;">Contract: 6 months+</span></strong><u></u><u></u=
-></p><p style=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &q=
-uot;Times New Roman&quot;, serif;"><strong><span style=3D"font-size: 10pt; =
-font-family: Calibri, sans-serif; color: black;">Location: Arizona/NJ, Mass=
-achusetts</span></strong><u></u><u></u></p><p style=3D"margin: 0in 0in 0.00=
-01pt; font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><s=
-trong><span style=3D"font-size: 10pt; font-family: Calibri, sans-serif; col=
-or: black;">Client : Direct</span></strong><u></u><u></u></p><p style=3D"ma=
-rgin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times New Roman=
-&quot;, serif;"><span style=3D"font-size: 11.5pt; font-family: Calibri, san=
-s-serif; color: rgb(51, 51, 51);">=C2=A0</span><u></u><u></u></p><p style=
-=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times New=
- Roman&quot;, serif;"><span style=3D"font-size: 11.5pt; font-family: Calibr=
-i, sans-serif; color: rgb(51, 51, 51);">=C2=A0</span><u></u><u></u></p><p s=
-tyle=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times=
- New Roman&quot;, serif;"><span style=3D"font-size: 10pt; font-family: Cali=
-bri, sans-serif; color: black; background: rgb(249, 249, 249);">Experience:=
-</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt; font-size: 1=
-2pt; font-family: &quot;Times New Roman&quot;, serif;"><span style=3D"font-=
-size: 10pt; font-family: Calibri, sans-serif; color: black; background: rgb=
-(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 8+ years in Software De=
-velopment</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt; fon=
-t-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><span style=
-=3D"font-size: 10pt; font-family: Calibri, sans-serif; color: black; backgr=
-ound: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 5+ years exper=
-ience in Cloud Technology and an in-depth understanding of the primary conc=
-epts and terminology</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.=
-0001pt; font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;">=
-<span style=3D"font-size: 10pt; font-family: Calibri, sans-serif; color: bl=
-ack; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 5+ =
-years working on=C2=A0Salesforce=C2=A0applications (Lightning=C2=A0is a mus=
-t-have.)</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt; font=
--size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><span style=
-=3D"font-size: 10pt; font-family: Calibri, sans-serif; color: black; backgr=
-ound: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 5+ years exper=
-ience using Force.com (Advanced understanding of SFDC Triggers and Controll=
-ers, VF page development, sObjects, SOQL etc)</span><u></u><u></u></p><p st=
-yle=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times =
-New Roman&quot;, serif;"><span style=3D"font-size: 10pt; font-family: Calib=
-ri, sans-serif; color: black; background: rgb(249, 249, 249);">=C2=B7=C2=A0=
- =C2=A0 =C2=A0 =C2=A0 3+ year hands-on experience in an Agile development t=
-eam</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt; font-size=
-: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><span style=3D"fo=
-nt-size: 10pt; font-family: Calibri, sans-serif; color: black; background: =
-rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Experience in object=
- oriented development is a must</span><u></u><u></u></p><p style=3D"margin:=
- 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times New Roman&quot=
-;, serif;"><span style=3D"font-size: 10pt; font-family: Calibri, sans-serif=
-; color: black; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0=
- =C2=A0 Experience with SOAP and REST Web Services and integration using AP=
-Is is a must</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt; =
-font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><span st=
-yle=3D"font-size: 10pt; font-family: Calibri, sans-serif; color: black; bac=
-kground: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Experience =
-with source control, branching strategies and using code repositories a mus=
-t</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt; font-size: =
-12pt; font-family: &quot;Times New Roman&quot;, serif;"><span style=3D"font=
--size: 10pt; font-family: Calibri, sans-serif; color: black; background: rg=
-b(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0Salesforce=C2=A0c=
-ertification preferred</span><u></u><u></u></p><p style=3D"margin: 0in 0in =
-0.0001pt; font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;=
-"><span style=3D"font-size: 10pt; font-family: Calibri, sans-serif; color: =
-black; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 B=
-ackground in leveraging ETL products and tools (e.g. IBM DataStage, Informa=
-tica, etc.) for data management is preferred</span><u></u><u></u></p><p sty=
-le=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times N=
-ew Roman&quot;, serif;"><span style=3D"font-size: 10pt; font-family: Calibr=
-i, sans-serif; color: black; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 Previous experience of Test Driven development is pref=
-erred</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt; font-si=
-ze: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><span style=3D"=
-font-size: 10pt; font-family: Calibri, sans-serif; color: black; background=
-: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Previous experienc=
-e in a lead role within a team of engineers</span><u></u><u></u></p><p styl=
-e=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times Ne=
-w Roman&quot;, serif;"><span style=3D"font-size: 10pt; font-family: Calibri=
-, sans-serif; color: black; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 Advanced understanding of the=C2=A0Salesforce=C2=A0pla=
-tform and its primary functions.</span><u></u><u></u></p><p style=3D"margin=
-: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times New Roman&quo=
-t;, serif;"><span style=3D"font-size: 10pt; font-family: Calibri, sans-seri=
-f; color: black; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 Ability to learn new technologies and embrace the challenge lear=
-ning presents</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.0001pt;=
- font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><span s=
-tyle=3D"font-size: 10pt; font-family: Calibri, sans-serif; color: black; ba=
-ckground: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 A self-sta=
-rter, comfortable having conversations with business partners</span><u></u>=
-<u></u></p><p style=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-fami=
-ly: &quot;Times New Roman&quot;, serif;"><span style=3D"font-size: 10pt; fo=
-nt-family: Calibri, sans-serif; color: black; background: rgb(249, 249, 249=
-);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 Robust and current knowledge of web s=
-tandards, emerging technologies, and trends</span><u></u><u></u></p><p styl=
-e=3D"margin: 0in 0in 0.0001pt; font-size: 12pt; font-family: &quot;Times Ne=
-w Roman&quot;, serif;"><span style=3D"font-size: 10pt; font-family: Calibri=
-, sans-serif; color: black; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 Ability to think abstractly and deal with ambiguous/un=
-der-defined problems</span><u></u><u></u></p><p style=3D"margin: 0in 0in 0.=
-0001pt; font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;">=
-<span style=3D"font-size: 10pt; font-family: Calibri, sans-serif; color: bl=
-ack; background: rgb(249, 249, 249);">=C2=B7=C2=A0 =C2=A0 =C2=A0 =C2=A0 An =
-excellent communicator, both verbally and written.</span><u></u><u></u></p>=
-</div><div style=3D"font-size: small;"><p class=3D"MsoNormal" style=3D"marg=
-in-right: 0in; margin-left: 0in; font-size: 12pt; font-family: &quot;Times =
-New Roman&quot;, serif;">=C2=A0<u></u><u></u></p></div><p class=3D"MsoNorma=
-l" style=3D"font-size: 12pt; font-family: &quot;Times New Roman&quot;, seri=
-f;">=C2=A0<b><u><span style=3D"color: rgb(76, 17, 48);">=C2=A0=C2=A0 Forwar=
-d Your Resume To Below Mentioned Email Address.=C2=A0</span></u></b><u></u>=
-<u></u></p><div style=3D"font-size: small;"><p class=3D"MsoNormal" style=3D=
-"margin-right: 0in; margin-left: 0in; font-size: 12pt; font-family: &quot;T=
-imes New Roman&quot;, serif;"><b><i><span style=3D"color: rgb(204, 0, 0);">=
-=C2=A0=C2=A0</span></i></b><u></u><u></u></p></div><div style=3D"font-size:=
- small;"><p class=3D"MsoNormal" style=3D"margin-right: 0in; margin-left: 0i=
-n; font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><b><i=
-><span style=3D"color: rgb(204, 0, 0);">=C2=A0HURRY......!!!</span></i></b>=
-<span class=3D"m_1829639838445851505gmail-HOEnZb"><font color=3D"#888888"><=
-u></u><u></u></font></span></p><span class=3D"m_1829639838445851505gmail-HO=
-EnZb"><font color=3D"#888888"></font></span></div><span class=3D"m_18296398=
-38445851505gmail-HOEnZb" style=3D"font-size: small;"><font color=3D"#888888=
-"><div><p class=3D"MsoNormal" style=3D"margin-right: 0in; margin-left: 0in;=
- font-size: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><u></u>=
-=C2=A0<u></u></p></div><p class=3D"MsoNormal" style=3D"margin-right: 0in; m=
-argin-left: 0in; font-size: 12pt; font-family: &quot;Times New Roman&quot;,=
- serif;">--=C2=A0<u></u><u></u></p><div><p style=3D"margin-right: 0in; marg=
-in-left: 0in; font-size: 12pt; font-family: &quot;Times New Roman&quot;, se=
-rif;"><b><i><span style=3D"font-family: Arial, sans-serif;">Thanks &amp; Re=
-gards,</span></i></b><span style=3D"font-family: Arial, sans-serif;"><u></u=
-><u></u></span></p><p style=3D"margin-right: 0in; margin-left: 0in; font-si=
-ze: 12pt; font-family: &quot;Times New Roman&quot;, serif;"><b><i><span sty=
-le=3D"font-family: Arial, sans-serif;">Prashanth</span></i></b><span style=
-=3D"font-family: Arial, sans-serif;"><u></u><u></u></span></p><p style=3D"m=
-argin-right: 0in; margin-left: 0in; font-size: 12pt; font-family: &quot;Tim=
-es New Roman&quot;, serif;"><b><i><span style=3D"font-family: Arial, sans-s=
-erif;">US IT=C2=A0 RECRUITER</span></i></b><span style=3D"font-family: Aria=
-l, sans-serif;"><u></u><u></u></span></p><p style=3D"margin-right: 0in; mar=
-gin-left: 0in; font-size: 12pt; font-family: &quot;Times New Roman&quot;, s=
-erif;"><b><i><span style=3D"font-family: Arial, sans-serif;">+1 (315)947-07=
-75</span></i></b><span style=3D"font-family: Arial, sans-serif;"><u></u><u>=
-</u></span></p><p style=3D"margin-right: 0in; margin-left: 0in; font-size: =
-12pt; font-family: &quot;Times New Roman&quot;, serif;"><b><i><span style=
-=3D"font-family: Arial, sans-serif;">Email :=C2=A0<a href=3D"mailto:prasant=
-h@genisists.com" target=3D"_blank" data-mt-detrack-inspected=3D"true" style=
-=3D"color: rgb(17, 85, 204);">prasanth@genisists.com</a></span></i></b></p>=
-</div></font></span><div style=3D"font-size: small;"><a data-mt-detrack-ins=
-pected=3D"true" style=3D"font-family: arial, helvetica, sans-serif;"><img s=
-rc=3D"https://ci3.googleusercontent.com/proxy/1gcs-zxCV-sXBHAkDUNXCCVJ2a6h1=
-MId3mNnYNVp0FhTmwRvKw4LQgks3iaTXQjOOUH-Tzx5niXs0Tb2KtIh07hcjy6B0ExMjAXvta3p=
-Xcuwv4pCzpxtpwBgNsbnemBgpHaJdmsOJsiQZBLfW5l1ftwP_6QlhvyFNGfKrx3vqsJTZo4qa-d=
-gKUoG8s9GZVwfTdzwY8rOrpS2MX5Csw=3Ds0-d-e1-ft#https://docs.google.com/uc?exp=
-ort=3Ddownload&amp;id=3D1fyCxLrUTDZagX7qMBnjT-v0CwrdizLZY&amp;revid=3D0ByEO=
-Hs6JWBvzS25CV0lwa2FFS2syRWxCbGdlYUxaUFpjL0N3PQ" width=3D"200" height=3D"58"=
- class=3D"CToWUd"></a></div><div><a data-mt-detrack-inspected=3D"true" styl=
-e=3D"font-family: arial, helvetica, sans-serif;"><br></a></div></div>
+<html xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-micr=
+osoft-com:office:office" xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:m=3D"http://schemas.microsoft.com/office/2004/12/omml" xmlns=3D"http:=
+//www.w3.org/TR/REC-html40">
+
+<head>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; charset=3Dus-ascii"=
+>
+<meta name=3DGenerator content=3D"Microsoft Word 12 (filtered medium)">
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;}
+.MsoChpDefault
+	{mso-style-type:export-only;}
+.MsoPapDefault
+	{mso-style-type:export-only;
+	margin-bottom:10.0pt;
+	line-height:115%;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext=3D"edit" spidmax=3D"1026" />
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext=3D"edit">
+  <o:idmap v:ext=3D"edit" data=3D"1" />
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=3DEN-US link=3Dblue vlink=3Dpurple>
+
+<div class=3DSection1>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Arial=
+","sans-serif";
+color:#222222;background:white'>Hi All,&nbsp;</span><span style=3D'font-siz=
+e:
+12.0pt;font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></sp=
+an></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:10.0pt;font-family:"Ti=
+mes New Roman","serif";
+color:#222222'>&nbsp;</span></b><span style=3D'font-size:12.0pt;font-family=
+:"Times New Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:10.0pt;font-family:"Ti=
+mes New Roman","serif";
+color:#222222'>Seeking a&nbsp;</span></b><b><span style=3D'font-size:10.0pt=
+;
+font-family:"Verdana","sans-serif";color:#222222'>ServiceNow Developer/Engi=
+neer
+for</span></b><b><span style=3D'font-size:10.0pt;font-family:"Times New Rom=
+an","serif";
+color:#222222'>&nbsp;our client in the health insurance field!</span></b><s=
+pan
+style=3D'font-size:10.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><br>
+<br>
+<b>Position:</b>&nbsp;</span><span style=3D'font-size:10.0pt;font-family:"V=
+erdana","sans-serif";
+color:#222222'>ServiceNow Developer/</span><span style=3D'font-size:10.0pt;
+font-family:"Times New Roman","serif";color:#222222'>Engineer&nbsp;<br>
+<b>Location:&nbsp;</b>Durham North Carolina 27707<br>
+<b>Term:&nbsp;</b>6 Months plus</span><span style=3D'font-size:12.0pt;font-=
+family:
+"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
+ New Roman","serif";
+color:#222222'>&nbsp;<o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
+ New Roman","serif";
+color:#222222;background:yellow'>SENIOR ServiceNow DEVELOPER WITH 8+
+YEARS.&nbsp;</span><span style=3D'font-size:12.0pt;font-family:"Times New R=
+oman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
+ New Roman","serif";
+color:#222222'><br>
+</span><span style=3D'font-size:10.0pt;font-family:"Times New Roman","serif=
+";
+color:#222222'><br>
+<b>Day-to-Day Responsibilities:</b></span><span style=3D'font-size:12.0pt;
+font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Convert
+user stories into technical solutions.</span><span style=3D'font-size:12.0p=
+t;
+font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Maintains
+technology currency and capacity planning in support of established SLAs.</=
+span><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Proactively
+provides information and ongoing consultation for IT and business areas as =
+well
+as vendors directly or indirectly affected by ServiceNow Application.</span=
+><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Leads
+the requirement gathering sessions collaborating with IT stakeholders, serv=
+ice
+owners and partners.</span><span style=3D'font-size:12.0pt;font-family:"Tim=
+es New Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Provides
+operational readiness through the engineering, planning, coordination, and
+execution of performance and tuning analysis, systems support, and incident=
+ and
+problem resolution.</span><span style=3D'font-size:12.0pt;font-family:"Time=
+s New Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Provides
+detailed guidance and consultation in solutioning production incidents when
+required.</span><span style=3D'font-size:12.0pt;font-family:"Times New Roma=
+n","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Collaborates
+with vendors on infrastructure designs to ensure the final product is what =
+was
+architected or designed.</span><span style=3D'font-size:12.0pt;font-family:=
+"Times New Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><span style=3D'font-size:10.0pt;font-family:"Times=
+ New Roman","serif";
+color:#222222'>&nbsp;</span><span style=3D'font-size:12.0pt;font-family:"Ti=
+mes New Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:10.0pt;font-family:"Ti=
+mes New Roman","serif";
+color:#222222'>Is this a good fit? (Requirements):</span></b><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Bachelors
+degree and&nbsp;<b>8+ years of systems ServiceNow Developer&nbsp;</b>experi=
+ence
+is required.</span><span style=3D'font-size:12.0pt;font-family:"Times New R=
+oman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>In
+lieu of degree,&nbsp;<b>10+ years of systems ServiceNow Developer</b>.</spa=
+n><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Direct
+experience in one or more of the following technical specialties: applicati=
+on
+development, application integration, Web Services, Scripting, and/or datab=
+ase
+programming.</span><span style=3D'font-size:12.0pt;font-family:"Times New R=
+oman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Experience
+automating tasks associated with technical specialties.</span><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Experience
+successfully leading ITSM projects and initiatives.</span><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Experience
+in multiple technical specialties preferred.</span><span style=3D'font-size=
+:12.0pt;
+font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><b><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Experience
+in one or more of the following technologies (aligning with relevant techni=
+cal
+specialties): Integrating ServiceNow with other Enterprise Application via =
+API,
+using REST/SOAP web services, Scripting Workflow, ServiceNow Discovery,</sp=
+an></b><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Must
+be able to work independently and be self sufficient in defining and realiz=
+ing
+infrastructure designs.</span><span style=3D'font-size:12.0pt;font-family:"=
+Times New Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Team
+and customer service oriented, flexible and adaptable with proven ability t=
+o
+solve problems in a collaborative and timely manner.</span><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Solid
+background in data collection, analysis, and reporting.</span><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Proven
+debugging skills</span><span style=3D'font-size:12.0pt;font-family:"Times N=
+ew Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Excellent
+oral and written communication and presentation skills</span><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'mso-margin-top-alt:0in;margin-right:0in;margi=
+n-bottom:
+0in;margin-left:47.25pt;margin-bottom:.0001pt;line-height:normal;background=
+:
+white'><span style=3D'font-size:10.0pt;font-family:Symbol;color:#222222'>&m=
+iddot;</span><span
+style=3D'font-size:7.0pt;font-family:"Times New Roman","serif";color:#22222=
+2'>&nbsp;&nbsp;</span><span
+style=3D'font-size:10.0pt;font-family:"Verdana","sans-serif";color:#222222'=
+>Flexible
+and adaptable with focus on effectively managing change.</span><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><span style=3D'font-size:12.0pt;font-family:"Times=
+ New Roman","serif";
+color:#222222'>&nbsp;<o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><span style=3D'font-size:10.0pt;font-family:"Arial=
+","sans-serif";
+color:#222222'>&nbsp;</span><span style=3D'font-size:12.0pt;font-family:"Ti=
+mes New Roman","serif";
+color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
+mbria","serif";
+color:#222222'>Thanks &amp; Regards,</span></b><span style=3D'font-size:12.=
+0pt;
+font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
+mbria","serif";
+color:#222222'>R UMASHANKAR</span></b><span style=3D'font-size:12.0pt;font-=
+family:
+"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
+mbria","serif";
+color:#222222'>US IT Recruiter</span></b><span style=3D'font-size:12.0pt;
+font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
+mbria","serif";
+color:#222222'>Contact: (315)320-3439</span></b><span style=3D'font-size:12=
+.0pt;
+font-family:"Times New Roman","serif";color:#222222'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal style=3D'margin-bottom:0in;margin-bottom:.0001pt;line-=
+height:
+normal;background:white'><b><span style=3D'font-size:12.0pt;font-family:"Ca=
+mbria","serif";
+color:#222222'>Email:&nbsp;<a href=3D"mailto:uma@genisists.com" target=3D"_=
+blank"><span
+style=3D'color:#1155CC'>uma@genisists.com</span></a></span></b><span
+style=3D'font-size:12.0pt;font-family:"Times New Roman","serif";color:#2222=
+22'><o:p></o:p></span></p>
+
+<p class=3DMsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>
 
 <p></p>
 
@@ -411,13 +773,11 @@ mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 To post to this group, send email to <a href=3D"mailto:linux-ntb@googlegrou=
 ps.com">linux-ntb@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/032e80c3-22a4-4f9b-b511-2a669bed92ab%40googlegroups.co=
-m?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid=
-/linux-ntb/032e80c3-22a4-4f9b-b511-2a669bed92ab%40googlegroups.com</a>.<br =
-/>
+om/d/msgid/linux-ntb/06f801d51560%24c64e1f70%2452ea5e50%24%40com?utm_medium=
+=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid/linux-ntb/0=
+6f801d51560%24c64e1f70%2452ea5e50%24%40com</a>.<br />
 For more options, visit <a href=3D"https://groups.google.com/d/optout">http=
 s://groups.google.com/d/optout</a>.<br />
 
-------=_Part_2394_217913482.1559051643494--
+------=_NextPart_000_06F9_01D5158E.E0065B70--
 
-------=_Part_2393_1139747952.1559051643494--
