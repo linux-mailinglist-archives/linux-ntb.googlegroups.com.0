@@ -1,127 +1,123 @@
-Return-Path: <linux-ntb+bncBCSJL7WB3YHBB64BY3TQKGQER2BMXEI@googlegroups.com>
+Return-Path: <linux-ntb+bncBDK2ZV75TIORBFV73PTQKGQEZCSQOAA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x337.google.com (mail-wm1-x337.google.com [IPv6:2a00:1450:4864:20::337])
-	by mail.lfdr.de (Postfix) with ESMTPS id A3E593155E
-	for <lists+linux-ntb@lfdr.de>; Fri, 31 May 2019 21:31:07 +0200 (CEST)
-Received: by mail-wm1-x337.google.com with SMTP id o127sf3906266wmo.0
-        for <lists+linux-ntb@lfdr.de>; Fri, 31 May 2019 12:31:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1559331067; cv=pass;
+Received: from mail-lj1-x238.google.com (mail-lj1-x238.google.com [IPv6:2a00:1450:4864:20::238])
+	by mail.lfdr.de (Postfix) with ESMTPS id 74404351B4
+	for <lists+linux-ntb@lfdr.de>; Tue,  4 Jun 2019 23:16:07 +0200 (CEST)
+Received: by mail-lj1-x238.google.com with SMTP id q12sf2504411ljc.4
+        for <lists+linux-ntb@lfdr.de>; Tue, 04 Jun 2019 14:16:07 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1559682967; cv=pass;
         d=google.com; s=arc-20160816;
-        b=WDWIetCDZGeTatAOX1iFsoH82FVwL9Ahp8w7O5FNpKb906AAiSMCWr/3iYIx7BYTf7
-         oUcYlJ2BGOJ9ft+Px3xxz8oOqdayUNTC1xtjmc2sSXH5t1WH4PeWQrwU6j80vutxZbpo
-         NUDuV9Y77S6gg9jmvoTZznUWJRoPSdNVlRZt1MMPYx1n+5L0fBaKYArapND6MddyGVVP
-         IM5Vy5Ss7F7C2mMry/u9dYlG8IfnmohJg0fCyTRtFPHYi/rlmd0P+MU7t3oUmMUD1WoL
-         cJTOBKgD+Af5aTQKom1KWVVRuql/o50IuuXtvESakatEch7XzWOObxellqvWyAUDBfRo
-         uewQ==
+        b=yGjcPLopNk4fch46BBQwA3jF3/G8sjWiIifX24vKmx1TlNDvJ6wcv9wzpKaFhj/lyK
+         OJ8CQa7+aICEIT3X3IEM36CPaG4Wd05ndrdEHveqCCF0dlRd4stnRCR6spDi7gtzOW2y
+         SaqDEyI9MkPlR4U443xuKF3vpTpX8QF1dqTFTngckIxheeVG6fw5slec1dUSw6hUEEwS
+         hIHhrGhodVkWwqyB784fMecapQVmHbp9WJlazEmUqQJ2NidX3tkhZ4xuK+yvPo5pNrve
+         w0kNpbT+DrBycMht4CCMbSvmiZpMD8O3hngWJ4iUuVtR15B2DeaRYUIsgFPZVmbXQ8Qc
+         lzyQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:to:subject:message-id:date:from
-         :mime-version:sender:dkim-signature:dkim-signature;
-        bh=1xrnYjrzVG6VC5b6n9FrlgXQpRCzXhQ0lPpcDXrUOF0=;
-        b=HnElYKzG7q3p9xxSYuF11/br/ujfrFQCVAlP7X1A755UZhrk0hOiiyoSvtOWemv4g8
-         DrvPC49qT1fxkk58YXQmfAFURFuWMX6i3rHz1n84IuDszXufyIfHh1oOrQMrFq5RrG3f
-         qB5GjrEh4LzqgKc3OQ7AY+7NlsYX4TDpzCW7sDYROfn6pOreJ5Tpm3KqscdOMJw69+gy
-         5Kl7j4SDPjDmSCiMbze3e2nDVHBXGHMd7kT00Oqe9Rt7tpaM/+ltOjeeS8tQ4/SdDyxI
-         LNuOLELAGAiO8V1arY9jMpYipDXvMegOv/xaBbml0F9o4UMjqLWRs+/ZKYMvFxYW0x9D
-         BWZQ==
+         :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:sender:dkim-signature;
+        bh=cklbNOrV+ME1hPgXXL8Qx4miQRVeytUTnOik4+2MHqE=;
+        b=fUVQPfSG7+TKr/QDOc3mxoUC0DVtKc03ttavYMJtpBOb5QsuYYDxdJjGIBjbcvd1lt
+         4jX2Drywcui96e9jCNlZNE9YZuRwmKwI+oFPXuv5ACea2Yxkhg2IMh1/nhfpNKFDug16
+         obFDi5+Kdi00xZ3SZOAv/m6KloU40wJaEHy5KrK4WAP67DhRWC46YEFVd5I77uplNtP1
+         Jerr6EFH0cRYQWU4agSKdJlOR93McRXftNqGHPBkVxQyrWJxNvisSkwtY+iJ05jLgNPY
+         NilHaCQe4rgQba8Z5Dn3VjphHtl8z1bAgqU8AZBy1dG9Rjcxk9U4VoPc8c5ShC51v67F
+         3oIQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UQ6l9vUy;
-       spf=pass (google.com: domain of aravindkumar.canopyone@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=aravindkumar.canopyone@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=DB1f081X;
+       spf=neutral (google.com: 2a00:1450:4864:20::336 is neither permitted nor denied by best guess record for domain of epilmore@gigaio.com) smtp.mailfrom=epilmore@gigaio.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:from:date:message-id:subject:to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:cc:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=1xrnYjrzVG6VC5b6n9FrlgXQpRCzXhQ0lPpcDXrUOF0=;
-        b=OLFz+iR21PaNIN0dg7AISNRkIBupWOrB3/juo+gAxVFBUefry/vGbfbhlPfJhOQWPn
-         lIDt7OgIXCOmGfTpvcZMxQF+DwhQOoYJ5DPtl47Tpc1U6JdVAsp861krFcsaAOSFGq5W
-         q9FA6bcgEL0PhULwaQeGc/e6pcUIofuhmfQXh3spHv10/Kiq9FVC0uiRXWn6v5b6sl8Y
-         /Fpjufu9HrMEr+o+6uXY1kCiGInXxzem4M/i32VwgtewhypJCbSN0cV62Cj4s+J5VD1R
-         JVgQB882IdxpDTJUYysC1+WStiFrSneXPmPhW7uOV8x3RDwq8Jj2cGIJZw/vKVy3204o
-         6aXw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=1xrnYjrzVG6VC5b6n9FrlgXQpRCzXhQ0lPpcDXrUOF0=;
-        b=oCn4NtUIfqGYuzSlWAyOCt10vJgFTETnRj4zKaNSYeDnVa7+l1pFu64S2n7FSYryC2
-         x81uwp5MeXaVZF+GfupDfpBJkl6DSt9C1NSpekwg/rTJ1VRNEjc+8OuVEfcAH+K43PCf
-         jDVmjsKT/m3mOjPTqR6H4ipicKwfkQqal+BluzNEa9nm2iVE4rrVsQzzkSLxKbL781IB
-         p1EVmx8AseEMYHp+rLlKdwfZ5vV04YDF+7rlpOoXKkSTBpblbox+4nzX/qCDi0Ck0SlY
-         tqSOuTxsOGRQJNsehxks8BF+fTL1me0JgPMakEzz4K5l7ReD2dCgWLSauD3NJ8sD8RGL
-         lviA==
+        bh=cklbNOrV+ME1hPgXXL8Qx4miQRVeytUTnOik4+2MHqE=;
+        b=oOYBIjrdVs/DVQrN2Xh11Z22984CvQe48KfRNhWIQ/fBtDi8FFg/Jv0dz9V/0NWNTt
+         P5mAu8cdhocLp7QVU7tAQtE6JB7MKL7QThFzJoBwr68UL8YQbZla015Grsi15p3gR+PN
+         ZolF0iDZwnoSqnbbOMdM14/BgIQ45xJiyq9SVlAqT+tI2dKyPm1o3xzKjkSsSRu3v0Ev
+         wRcKKeJ4MnKyGqZD9qw+CNS1SdyNCK0WsZ5UNvi+O3Yfkx+9IOagU8ylit6otT7HMkm5
+         Mq5kGorcIAm0kb78PifpmRwk8Zjwpu2lelNC1dTXJ8R80rPA3S2jEYxDYKlURw/hFAv9
+         VewA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
-         :to:x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=1xrnYjrzVG6VC5b6n9FrlgXQpRCzXhQ0lPpcDXrUOF0=;
-        b=qVviN0Drc/sTc2Kl/gE3Dt8zoiw3btgsUkbw/iBh4W/vNWLaCbcG81dLpzWcrsdDCx
-         o7yROhjt+T0ey3o1wqFYr2aA1EOzWa7HancRkL9sDahxCK6+o7Nqxmf2zDMR7x6RCPHR
-         afIBNdK/LIatHmD5FLbyYBIt91WfHPZzx2F+0FdeunzPMTnPeVDPt0QMRBcOQdfptCtb
-         ypPhjNkaE2OYA2HSaGjgUCiFIfqj0sMGytliJWRJnDuJNbtiN9eCSyYV5cKhlfU/DO8d
-         4+DwRRiqe4OqkxAaxt1ZOEVAzHkqZ1hxS8DLJUEwvmkuVx6m3fx2w1PP+ES0Yd+aGwfG
-         SRwQ==
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:cc:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=cklbNOrV+ME1hPgXXL8Qx4miQRVeytUTnOik4+2MHqE=;
+        b=Uk08h3Shf6hZI3BLYFiaBU+lPMBvbtDVKgoSzyCTeBdKi1Y6aC/Gc6M9rToNNRfhUn
+         Bqkn+QYxsejBQTLrdXmzVlvkVmXBZ/+w1uEifv+HaJzx5446Ok4YJ6Vi8jCZ57veMOuX
+         Mrz3dezeli5zAwvNQDjvlhW7vD2o5mARuGihHh21BdgRK1ZTlLq2hb8ftdr7TpRbWh0n
+         AXPr1DQ4rllw9wG1UQktJssM7m0gtEWkwq7HKciN03/ZfqQlge8w6jLa+OiegtKs2FYb
+         UH5UFDVSDhSXX5JxWxt9cIR/0u46GSy60zn+CkYN6QB1hX2xvD0805Qghqbpfrpb5QE2
+         8fgw==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUA22dCNS+8ct8J8K+X997HG+iadZ3lZhxd3xw32EYxZ6qtNYVc
-	wQwclkK+nPwRIYOCcEpktxk=
-X-Google-Smtp-Source: APXvYqy4J8aJ8ot5Id08dZi1ttbrxQqF27OrKxKwXjGN5wG+AfdQPfLsVmv2yVE89VXTBzDZxKYtNQ==
-X-Received: by 2002:a05:600c:3cd:: with SMTP id z13mr6837362wmd.3.1559331067326;
-        Fri, 31 May 2019 12:31:07 -0700 (PDT)
+X-Gm-Message-State: APjAAAWqNeviNxRBTHhfk3mywEVmO9oA587hKTnUlTaS/DpbEJufMhn4
+	3EtT5ayMxg8FFh4GDQ7Ocg4=
+X-Google-Smtp-Source: APXvYqzgjDTYXJLHTq3jc9AmEUiwdYZncSuA8GsTXFBpgZj04fesbRmqogIbn3WYsb04J2e9gYzEew==
+X-Received: by 2002:a2e:6348:: with SMTP id x69mr6082405ljb.186.1559682966958;
+        Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:dd44:: with SMTP id u4ls2130156wrm.3.gmail; Fri, 31 May
- 2019 12:31:06 -0700 (PDT)
-X-Received: by 2002:adf:f246:: with SMTP id b6mr7850396wrp.92.1559331066822;
-        Fri, 31 May 2019 12:31:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559331066; cv=none;
+Received: by 2002:a2e:92c8:: with SMTP id k8ls14760ljh.7.gmail; Tue, 04 Jun
+ 2019 14:16:06 -0700 (PDT)
+X-Received: by 2002:a2e:3101:: with SMTP id x1mr18354695ljx.148.1559682966410;
+        Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559682966; cv=none;
         d=google.com; s=arc-20160816;
-        b=K0LgMNGlO3bv+D7o6k/aXA90qN4SonUIkidowb3KHZXnkwIevgNQ3z4W2QWsptFaW5
-         30K12GVUVNW/AOsU/k4vW6Li3yC1+MxWDVsBtJCfDgCFZjg6gBNfFsHv2JI+Ix8sYN3W
-         PcNfvUQ5tcGaBFvzCtO0W3OjlmZ7eZ/Is1J+cHEkPDdo6ub4fO13WPP7OKdMfZRP5YM1
-         zTjXXtBZ0i7OMqOkMhw1Ef129I4YlyOHdmzpBqJCHk5X2TBiOuIdtGlIx7jzItSufl16
-         Pj2iPnDroIFUUbR0NWS+pcEOIj18J4gr/WTJ5XjuzlJvEcDVIm11vm50Qb7jBgs1ikMO
-         Xrag==
+        b=k16BWpo1ZgyWuvsfbQcIx99qjVItNDeFXExkCZ5PET624w489aVb7gL0sySjDhxPDo
+         xIYqZe63YyT31lN5RxKvGRTsOUtWArALFqCqfRYjwjxYNBvgrZHOJev3mnvy9JD2KJ1S
+         tpND5jriuNzrkkhHTukmevkBWsNTtZaQMvbOpdmByYzQZJVm0zAPKUImr8dwETs30xEZ
+         uZz6Z0ZOhCmfSlq86GSv3xKxWJXjb+vUwF+qIWl4cI+7/fncKP8TnLS3w8IdwCbIRhc7
+         mayEyS+dpxUCplq6p/y/fh9iDEdaTXY/XmZq0axv05RkxusZrSZy5zbxtP//s3oFJ+ot
+         r29Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=8jbPL5MEIvfzJ9aIbmuPeynevA/mlP6tqxnxIghihVw=;
-        b=aAL0SC7ixAbnLWamkVnukUTOyY7wHy1Xomv0CVNVTYII5Y9/iEAiCCTPOibUDZYCTu
-         gxxVy6xJeT/x4eepxbfW3MqfpMG4WCaiv3QvUHLhjDRqISZ6hxE2dBmVqARrw1QFn/f/
-         pvH1UYvzTcvY7zdKBK+cEYvslPdFSMhIFV0OpC6MKINXqSX32yENZmFsV9EL3vyAo9y/
-         iAmDlXkq1Yl8MquHvaoOcRwORaDIEQs577wkdzXzjb4CBSwCCHEZIW6CdcxDJ0iL7BW9
-         dfLqZY83tWxYFCxuD5DWs3KVGUozAl5cqf8jH1I4KbqlLPkW6KdP1/f8QV7nDfRl8nk2
-         houg==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=/LhLSypOW9eEI9FrLebgFNQ023mgsanhRlBmqRqaKH8=;
+        b=xQNcUxpoSsBvoHwfbH1ZOR7CH/Ypq4EWxm5Mggnpe6epF3/3XJn8eyS5uaMlAv/QXl
+         pCwfyBmx+wGBDlioVdl/bSi5T+rpoo6BcRuu6EidX9UwZS5ohWMSLLUTbMEMNrGvQCZI
+         uGnTFV9fIIfAO3lIlPne8LXAaWQajDwCTuj/eyVNB0TT/ddUZj8oclwSAGk90AAgrKGI
+         TDNQ52oK++oohViK5ZPhW9tztYPnjlejUJJkrXsAbi3x+9fbG4avf6WKdNpyA6dhHSpq
+         O8xg9qh/pDcHhRVVdxb/Lj1ONyuRxsJjXFuTNOCmrxsIq1AEYRLIN8/ooYORll+JU+I0
+         kecQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=UQ6l9vUy;
-       spf=pass (google.com: domain of aravindkumar.canopyone@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=aravindkumar.canopyone@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-lj1-x242.google.com (mail-lj1-x242.google.com. [2a00:1450:4864:20::242])
-        by gmr-mx.google.com with ESMTPS id j1si114973wme.3.2019.05.31.12.31.06
+       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=DB1f081X;
+       spf=neutral (google.com: 2a00:1450:4864:20::336 is neither permitted nor denied by best guess record for domain of epilmore@gigaio.com) smtp.mailfrom=epilmore@gigaio.com
+Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com. [2a00:1450:4864:20::336])
+        by gmr-mx.google.com with ESMTPS id n20si264198ljg.0.2019.06.04.14.16.06
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 31 May 2019 12:31:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aravindkumar.canopyone@gmail.com designates 2a00:1450:4864:20::242 as permitted sender) client-ip=2a00:1450:4864:20::242;
-Received: by mail-lj1-x242.google.com with SMTP id s21so48842lji.8
-        for <linux-ntb@googlegroups.com>; Fri, 31 May 2019 12:31:06 -0700 (PDT)
-X-Received: by 2002:a2e:870d:: with SMTP id m13mr3044209lji.189.1559331066327;
- Fri, 31 May 2019 12:31:06 -0700 (PDT)
+        Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
+Received-SPF: neutral (google.com: 2a00:1450:4864:20::336 is neither permitted nor denied by best guess record for domain of epilmore@gigaio.com) client-ip=2a00:1450:4864:20::336;
+Received: by mail-wm1-x336.google.com with SMTP id v19so170331wmj.5
+        for <linux-ntb@googlegroups.com>; Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
+X-Received: by 2002:a1c:40c6:: with SMTP id n189mr19170911wma.118.1559682965882;
+ Tue, 04 Jun 2019 14:16:05 -0700 (PDT)
 MIME-Version: 1.0
-From: aravindkumar canopyone <aravindkumar.canopyone@gmail.com>
-Date: Fri, 31 May 2019 15:30:46 -0400
-Message-ID: <CAHdSO-GbUpjjRTTuoqdV7R6a8EB=MZmQBuUNjjpHX=ZF70PSTg@mail.gmail.com>
-Subject: NODEJS Lead/ Architect for location Iselin, NJ
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000004bb9a8058a340e69"
-X-Original-Sender: aravindkumar.canopyone@gmail.com
+References: <CAOQPn8sX2G-Db-ZiFpP2SMKbkQnPyk63UZijAY0we+DoZsmDtQ@mail.gmail.com>
+ <CAADLhr49ke_3s25gW11qZ+H-Jjje-E00WMHiMDbKU=mcCQtb3g@mail.gmail.com>
+ <cdcd00e9-056b-3364-cfbc-5bcb5bcff91e@amd.com> <CAOQPn8sQ+B97UptHpxJgdmcMxBZrqGynQR8qTc3q77fAODRH-A@mail.gmail.com>
+ <8e4ccf44-9e4f-8007-ddcc-431440f9d533@amd.com>
+In-Reply-To: <8e4ccf44-9e4f-8007-ddcc-431440f9d533@amd.com>
+From: Eric Pilmore <epilmore@gigaio.com>
+Date: Tue, 4 Jun 2019 14:15:54 -0700
+Message-ID: <CAOQPn8vE4SbDBt_fu3YsqysHspjZ9rumsDHT9RQe+ZT7HUfKCQ@mail.gmail.com>
+Subject: Re: Fwd: AMD IO_PAGE_FAULT w/NTB on Write ops?
+To: Gary R Hook <ghook@amd.com>
+Cc: "Mehta, Sanju" <Sanju.Mehta@amd.com>, S Taylor <staylor@gigaio.com>, D Meyer <dmeyer@gigaio.com>, 
+	linux-ntb <linux-ntb@googlegroups.com>, 
+	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: epilmore@gigaio.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=UQ6l9vUy;       spf=pass
- (google.com: domain of aravindkumar.canopyone@gmail.com designates
- 2a00:1450:4864:20::242 as permitted sender) smtp.mailfrom=aravindkumar.canopyone@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623
+ header.b=DB1f081X;       spf=neutral (google.com: 2a00:1450:4864:20::336 is
+ neither permitted nor denied by best guess record for domain of
+ epilmore@gigaio.com) smtp.mailfrom=epilmore@gigaio.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -134,271 +130,93 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---0000000000004bb9a8058a340e69
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Thu, May 9, 2019 at 1:03 PM Gary R Hook <ghook@amd.com> wrote:
+>
+> On 4/24/19 5:04 PM, Eric Pilmore wrote:
+> >
+> > Thanks the for the response.  We are using the correct device for the
+> > dma_alloc_coherent(). Upon further investigation what we are finding
+> > is that apparently the AMD IOMMU support can only manage one alias, as
+> > opposed to Intel IOMMU support which can support multiple. Not clear
+> > at this time if it's a software limitation in the AMD IOMMU kernel
+> > support or an imposed limitation of the hardware. Still investigating.
+>
+> Please define 'alias'?
 
-Greetings from Canopy One Solutions,
+Hi Gary,
+
+I appreciate the response. Sorry for the late reply. Got sidetracked
+with other stuff.
+
+I will try to answer this as best I can. Sorry if my terminology might
+be off as I'm still a relative newbie with some of this.
+
+The "alias" is basically another BDF (or ProxyID) that wants to be
+associated with the same IOMMU resources as some primary BDF.
+Reference <drivers/pci/quirks.c>. In the scenario that we have we are
+utilizing NTB and through this bridge will come requests (TLPs) that
+will not necessarily have the ReqID as the BDF of the switch device
+that contains this bridge. Instead, the ReqID will be a "translated"
+(Proxy) BDF of sourcing devices on the other side of the
+Non-Transparent Bridge. In our case our NTB is a Switchtec device and
+the quirk quirk_switchtec_ntb_dma_alias() is used as a means of
+associating these aliases (aka ProxyID or Translated ReqID) with the
+NT endpoint in the local host. On Xeon platforms, the framework
+supports allowing multiple aliases to be defined for a particular
+IOMMU and everything works great. However, with the AMD cpu, it
+appears the IOMMU framework is only accepting just one alias. Note
+Logan's earlier response @ Mon, Apr 22, 10:31 AM. In our case the one
+that is accepted is via the path for a processor Read, but Processor
+Writes go through a slightly different path resulting in a different
+ReqID. As Logan points out it seems since the AMD IOMMU code is only
+accepting one alias, the Write ReqID looks foreign and thus results in
+the IOMMU faults.
+
+>
+> The IO_PAGE_FAULT error is described on page 142 of the AMD IOMMU spec,
+> document #48882. Easily found via a search.
+>
+> The flags value of 0x0070 translates to PE, RW, PR. The page was
+> present, the transaction was a write, and the peripheral didn't have
+> permission. That implies that mapping hadn't been done.
+>
+> Not being sure how that device presents, or what you're doing with IVHD
+> info, I can't comment further. I can say that the AMD IOMMU provides for
+> a single exclusion range, but as many unity ranges as you wish.
+
+I'm currently not doing anything with IVHD. The devices on the other
+side of the NTB that need to be aliased can be anything from a remote
+Host processor, NVMe drive, GPU, etc., anything that wants to send a
+memory transaction to the local host.
+
+If you have any insight into how the AMD IOMMU support in the kernel
+could be extended for multiple aliases, or whether there is a hardware
+limitation that restricts it to just one, that would be greatly
+appreciated.
+
+Thanks,
+Eric
 
 
 
-Hope you all are doing well!
 
+-- 
+Eric Pilmore
+epilmore@gigaio.com
+http://gigaio.com
+Phone: (858) 775 2514
 
+This e-mail message is intended only for the individual(s) to whom
+it is addressed and may contain information that is privileged,
+confidential, proprietary, or otherwise exempt from disclosure under
+applicable law. If you believe you have received this message in
+error, please advise the sender by return e-mail and delete it from
+your mailbox.
+Thank you.
 
-Please glance the requirement & respond me back with your finest consultant
-Resumes & Contact Details.
-
-
-
-*Note: Need Passport Number. *
-
-
-
-*Project Details: *
-
-
-
-Role: NODEJS Lead/ Architect
-
-Location: Iselin, NJ
-
-Duration: Long Term
-
-Visa: USC/GC/H1B
-
-Interview Criteria: Skype & Telephonic
-
-
-
-*Job Description: *
-
-Years of Experience : 9-10+ Years.
-
-
-
-We need profiles on *these Combination skillsets*.
-
-
-
-Position:
-
-=C3=98  Spring boot/Microservices
-
-=C3=98  *Springboot/NodeJS*
-
-=C3=98  MicroServices/Spring boot.
-
-
-
-*Make it a great day*
-Thanks & Regards
-Aravindkumar Komminenei
-
-[image: cid:image008.png@01CE7195.60877940]
-
-Phone: 703-831-8282 Ext 2532, Fax: 703-439-2550
-Email: k.aravind@canopyone.com <b.natraj@canopyone.com>  URL:
-www.canopyone.com
-
-USA : 4229 Lafayette Center Dr , Suite #1625, Chantilly, VA 20151  || *CANA=
-DA:
-*Bankers Hall - West Tower, 888 - 3rd Street SW, 10th Floor, Calgary, AB
-T2P 5C5*||* *INDIA:*  4th Floor, #7, Techno Enclave, Sector 3, Hyderabad
-500081*||*
-
---=20
-You received this message because you are subscribed to the Google Groups "=
-linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to linux-ntb+unsubscribe@googlegroups.com.
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/CAHdSO-GbUpjjRTTuoqdV7R6a8EB%3DMZmQBuUNjjpHX%3DZF70PSTg%40mail.gm=
-ail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAOQPn8vE4SbDBt_fu3YsqysHspjZ9rumsDHT9RQe%2BZT7HUfKCQ%40mail.gmail.com.
 For more options, visit https://groups.google.com/d/optout.
-
---0000000000004bb9a8058a340e69
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.=
-0001pt;font-size:11pt;font-family:Calibri,sans-serif"><span style=3D"font-f=
-amily:Cambria,serif">Greetings from Canopy One Solutions, </span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Hope you all are doing well!</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Please glance the requirement &amp; respond
-me back with your finest consultant Resumes &amp; Contact Details. </span><=
-/p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><b><span style=3D"font-size:20pt;font-=
-family:Cambria,serif;color:red">Note: Need
-Passport Number. </span></b></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><b><span style=3D"font-family:Cambria,=
-serif">Project Details: </span></b></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Role: NODEJS Lead/ Architect</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Location: Iselin, NJ</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Duration: Long Term</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Visa: USC/GC/H1B</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Interview Criteria: Skype &amp; Telephonic</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><b><span style=3D"font-family:Cambria,=
-serif">=C2=A0</span></b></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><b><span style=3D"font-family:Cambria,=
-serif">Job Description: </span></b></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if;color:rgb(31,73,125);background:yellow">Years of Experience : 9-10+ Year=
-s</span><span style=3D"font-family:Cambria,serif">.</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">We need profiles on <b>these Combination
-skillsets</b>.</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">Position:</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt 0.5in;font=
--size:11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Wingd=
-ings">=C3=98<span style=3D"font-variant-numeric:normal;font-variant-east-as=
-ian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family=
-:&quot;Times New Roman&quot;">=C2=A0
-</span></span><span style=3D"font-family:Cambria,serif">Spring boot/Microse=
-rvices</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt 0.5in;font=
--size:11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Wingd=
-ings">=C3=98<span style=3D"font-variant-numeric:normal;font-variant-east-as=
-ian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family=
-:&quot;Times New Roman&quot;">=C2=A0 </span></span><b><span style=3D"font-f=
-amily:Cambria,serif">Springboot/NodeJS</span></b></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt 0.5in;font=
--size:11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Wingd=
-ings">=C3=98<span style=3D"font-variant-numeric:normal;font-variant-east-as=
-ian:normal;font-stretch:normal;font-size:7pt;line-height:normal;font-family=
-:&quot;Times New Roman&quot;">=C2=A0
-</span></span><span style=3D"font-family:Cambria,serif">MicroServices/Sprin=
-g boot.</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><span style=3D"font-family:Cambria,ser=
-if">=C2=A0</span></p>
-
-<p class=3D"gmail-wordsection1" style=3D"margin:0in 0in 0.0001pt;font-size:=
-11pt;font-family:Calibri,sans-serif"><b><span style=3D"font-family:Cambria,=
-serif">Make it a great day</span></b></p><div><div dir=3D"ltr" class=3D"m_-=
-1997136119558983774m_7401066546475112180gmail_signature" data-smartmail=3D"=
-gmail_signature"><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"lt=
-r"><div><div dir=3D"ltr">Thanks &amp; Regards</div><div dir=3D"ltr">Aravind=
-kumar Komminenei=C2=A0<div><p class=3D"MsoNormal"><span style=3D"color:rgb(=
-31,73,125)"><img width=3D"113" height=3D"37" alt=3D"cid:image008.png@01CE71=
-95.60877940"></span><span style=3D"font-size:10pt;color:rgb(31,73,125)"><sp=
-an></span></span></p>
-
-<p class=3D"MsoNormal"><span style=3D"font-size:10pt;font-family:Cambria,se=
-rif;color:rgb(31,73,125)">Phone: 703-831-8282=C2=A0Ext 2532, Fax: 703-439-2=
-550<br>
-Email: k.aravind<a href=3D"mailto:b.natraj@canopyone.com" target=3D"_blank"=
->@canopyone.com</a>=C2=A0
-URL: <a href=3D"http://www.canopyone.com/" target=3D"_blank"><span style=3D=
-"color:blue">www.canopyone.com</span></a><span></span></span></p>
-
-<p class=3D"MsoNormal" style=3D"background-image:initial;background-positio=
-n:initial;background-repeat:initial"><span style=3D"font-size:10pt;font-fam=
-ily:Cambria,serif;color:rgb(227,108,10)">USA :</span><span style=3D"font-si=
-ze:10pt;font-family:Cambria,serif;color:rgb(127,127,127)"> </span><span sty=
-le=3D"font-size:10pt;font-family:Cambria,serif;color:black">4229 Lafayette
-Center Dr , Suite #1625, Chantilly, VA 20151</span><span style=3D"font-size=
-:10pt;font-family:Cambria,serif;color:rgb(31,73,125)">=C2=A0 </span><span s=
-tyle=3D"font-size:10pt;font-family:Cambria,serif;color:black">||=C2=A0</spa=
-n><b><span style=3D"font-size:10pt;font-family:Cambria,serif;color:rgb(227,=
-108,10)">CANADA: </span></b><span style=3D"font-size:10pt;font-family:Cambr=
-ia,serif;color:rgb(31,73,125)">Bankers Hall
-- West Tower, 888 - 3rd Street SW,=C2=A010th Floor, Calgary,=C2=A0AB T2P 5C=
-5<b>||</b>=C2=A0</span><b><span style=3D"font-size:10pt;font-family:Cambria=
-,serif;color:rgb(227,108,10)">INDIA:</span></b><span style=3D"font-size:10p=
-t;font-family:Cambria,serif;color:rgb(31,73,125);background-image:initial;b=
-ackground-position:initial;background-repeat:initial"> =C2=A04<sup>th</sup>=
- Floor, #7, Techno Enclave, Sector 3, Hyderabad
-500081</span><b><span style=3D"font-size:10pt;font-family:Cambria,serif;col=
-or:rgb(31,73,125)">||</span></b><span style=3D"font-size:10pt;font-family:C=
-ambria,serif;color:black"><span></span></span></p></div></div></div></div><=
-/div></div></div></div></div></div></div>
-
-<p></p>
-
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To post to this group, send email to <a href=3D"mailto:linux-ntb@googlegrou=
-ps.com">linux-ntb@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CAHdSO-GbUpjjRTTuoqdV7R6a8EB%3DMZmQBuUNjjpHX%3DZF70PST=
-g%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.g=
-oogle.com/d/msgid/linux-ntb/CAHdSO-GbUpjjRTTuoqdV7R6a8EB%3DMZmQBuUNjjpHX%3D=
-ZF70PSTg%40mail.gmail.com</a>.<br />
-For more options, visit <a href=3D"https://groups.google.com/d/optout">http=
-s://groups.google.com/d/optout</a>.<br />
-
---0000000000004bb9a8058a340e69--
