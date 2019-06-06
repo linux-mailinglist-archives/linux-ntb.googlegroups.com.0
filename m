@@ -1,123 +1,145 @@
-Return-Path: <linux-ntb+bncBDK2ZV75TIORBFV73PTQKGQEZCSQOAA@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBP7Y4LTQKGQE435HPLY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x238.google.com (mail-lj1-x238.google.com [IPv6:2a00:1450:4864:20::238])
-	by mail.lfdr.de (Postfix) with ESMTPS id 74404351B4
-	for <lists+linux-ntb@lfdr.de>; Tue,  4 Jun 2019 23:16:07 +0200 (CEST)
-Received: by mail-lj1-x238.google.com with SMTP id q12sf2504411ljc.4
-        for <lists+linux-ntb@lfdr.de>; Tue, 04 Jun 2019 14:16:07 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1559682967; cv=pass;
+Received: from mail-qk1-x73c.google.com (mail-qk1-x73c.google.com [IPv6:2607:f8b0:4864:20::73c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4592B36D09
+	for <lists+linux-ntb@lfdr.de>; Thu,  6 Jun 2019 09:09:52 +0200 (CEST)
+Received: by mail-qk1-x73c.google.com with SMTP id i196sf1170953qke.20
+        for <lists+linux-ntb@lfdr.de>; Thu, 06 Jun 2019 00:09:52 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1559804991; cv=pass;
         d=google.com; s=arc-20160816;
-        b=yGjcPLopNk4fch46BBQwA3jF3/G8sjWiIifX24vKmx1TlNDvJ6wcv9wzpKaFhj/lyK
-         OJ8CQa7+aICEIT3X3IEM36CPaG4Wd05ndrdEHveqCCF0dlRd4stnRCR6spDi7gtzOW2y
-         SaqDEyI9MkPlR4U443xuKF3vpTpX8QF1dqTFTngckIxheeVG6fw5slec1dUSw6hUEEwS
-         hIHhrGhodVkWwqyB784fMecapQVmHbp9WJlazEmUqQJ2NidX3tkhZ4xuK+yvPo5pNrve
-         w0kNpbT+DrBycMht4CCMbSvmiZpMD8O3hngWJ4iUuVtR15B2DeaRYUIsgFPZVmbXQ8Qc
-         lzyQ==
+        b=ThyiapMPhyTuZ0Com9mjLnAtVnyGGXaDTNL3VK7rBssoaynSdqDx/4ePpK5ZuZEirx
+         yf5gFCBGzxS+kc3dr0lcOQNGnr4J/nk29ib8T7zvyj7Vv3g4kWTlIYbTTFFp6Ih/Oy3W
+         ikIoZOWgExa0DfmYlS5JeWA6dGFYoUwkSpQ31vK3UbcOdIEGq/czwW2CWQvGjEQjuODe
+         +DxyHxMRDxadog/xQdKGYLUcoZf/RPiuu7ljugC8WUi2JwPeFtNAT/L4t3w91VmV4iSk
+         PNk8KuoxxWKpLPn4RZbCMw1DQZsWmLwQHUJd3E3cHdue17IfFLPoLmr6dp9hz2KymE1V
+         mJEQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:sender:dkim-signature;
-        bh=cklbNOrV+ME1hPgXXL8Qx4miQRVeytUTnOik4+2MHqE=;
-        b=fUVQPfSG7+TKr/QDOc3mxoUC0DVtKc03ttavYMJtpBOb5QsuYYDxdJjGIBjbcvd1lt
-         4jX2Drywcui96e9jCNlZNE9YZuRwmKwI+oFPXuv5ACea2Yxkhg2IMh1/nhfpNKFDug16
-         obFDi5+Kdi00xZ3SZOAv/m6KloU40wJaEHy5KrK4WAP67DhRWC46YEFVd5I77uplNtP1
-         Jerr6EFH0cRYQWU4agSKdJlOR93McRXftNqGHPBkVxQyrWJxNvisSkwtY+iJ05jLgNPY
-         NilHaCQe4rgQba8Z5Dn3VjphHtl8z1bAgqU8AZBy1dG9Rjcxk9U4VoPc8c5ShC51v67F
-         3oIQ==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=892Asbc1BAFrbLjX2pTXtGeii8DPGTw6XhgC0tygoUY=;
+        b=caNlOIMjDod2azTlzHHdIIcNfHKvBVZWfwVXb025d7arAqtYkDoT3yY+pVgjlQeVq4
+         Jy8c2gwMk138pWgvsEC1bejIiUqzzvYGhx26MvF6hZFSslyKNwD+amwonOh909afJmMG
+         DOxrh8U+m8d6bd7SNhO+dKDEhCkeBdH5nb5jasw1EzZaYRUBgdDraKs5FfTWcZEImdh3
+         ThOS8rg/24oCR8YmnMNsBoV01tq6pGFSHKpWKpZbXKfTuvh4ZWWc6Y8VxigxSo2Jm3VP
+         o3yRT5tl0Dm8BlV/7qxrAyUsCmNOUg+BBVAPzEFNNFZR22jckppku16Ca8ocIW+50EMr
+         zN7w==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=DB1f081X;
-       spf=neutral (google.com: 2a00:1450:4864:20::336 is neither permitted nor denied by best guess record for domain of epilmore@gigaio.com) smtp.mailfrom=epilmore@gigaio.com
+       spf=neutral (google.com: 216.71.154.253 is neither permitted nor denied by best guess record for domain of kelvin.cao@microchip.com) smtp.mailfrom=kelvin.cao@microchip.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=microchip.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:references:in-reply-to:from:date:message-id
-         :subject:to:cc:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=cklbNOrV+ME1hPgXXL8Qx4miQRVeytUTnOik4+2MHqE=;
-        b=oOYBIjrdVs/DVQrN2Xh11Z22984CvQe48KfRNhWIQ/fBtDi8FFg/Jv0dz9V/0NWNTt
-         P5mAu8cdhocLp7QVU7tAQtE6JB7MKL7QThFzJoBwr68UL8YQbZla015Grsi15p3gR+PN
-         ZolF0iDZwnoSqnbbOMdM14/BgIQ45xJiyq9SVlAqT+tI2dKyPm1o3xzKjkSsSRu3v0Ev
-         wRcKKeJ4MnKyGqZD9qw+CNS1SdyNCK0WsZ5UNvi+O3Yfkx+9IOagU8ylit6otT7HMkm5
-         Mq5kGorcIAm0kb78PifpmRwk8Zjwpu2lelNC1dTXJ8R80rPA3S2jEYxDYKlURw/hFAv9
-         VewA==
+        bh=892Asbc1BAFrbLjX2pTXtGeii8DPGTw6XhgC0tygoUY=;
+        b=D20rHQKQFWdjz7d0nlFR1Bbin9IqiJ8YX8OU4ZWzyVig5a4cx+DB+7auKWoyNhb6qD
+         RF4O/LZyCmyz4whhe1QoN399jZskbEKbJmw9cNY9UHxlkh3W7EPBeHkQ1jVrhD2b7j2S
+         T5W615L0DQspZ6LmZS/bC78CjYeUwSMXzSQLlAnjCgMHFPaLwDETxRgtpOzeGEPm2DfO
+         rXT5+ldEimRniAI1w5IQZd8+Hh9H9GM/7HO1Oks0E19YFqdZebGVplgQHDlqnybHsjwL
+         szqXbSDmxVuWmd1tpAlXSlUxxfc6auIeQC5G6yZMlt4EsKsNq9umakeeG+5LtZK450ti
+         nrVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
-         :date:message-id:subject:to:cc:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=cklbNOrV+ME1hPgXXL8Qx4miQRVeytUTnOik4+2MHqE=;
-        b=Uk08h3Shf6hZI3BLYFiaBU+lPMBvbtDVKgoSzyCTeBdKi1Y6aC/Gc6M9rToNNRfhUn
-         Bqkn+QYxsejBQTLrdXmzVlvkVmXBZ/+w1uEifv+HaJzx5446Ok4YJ6Vi8jCZ57veMOuX
-         Mrz3dezeli5zAwvNQDjvlhW7vD2o5mARuGihHh21BdgRK1ZTlLq2hb8ftdr7TpRbWh0n
-         AXPr1DQ4rllw9wG1UQktJssM7m0gtEWkwq7HKciN03/ZfqQlge8w6jLa+OiegtKs2FYb
-         UH5UFDVSDhSXX5JxWxt9cIR/0u46GSy60zn+CkYN6QB1hX2xvD0805Qghqbpfrpb5QE2
-         8fgw==
+        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=892Asbc1BAFrbLjX2pTXtGeii8DPGTw6XhgC0tygoUY=;
+        b=oSxGSLwufkSv3+AfxvqBpHnUNEyyryt5wnJBAW0MFQwS8D3RWQ7eERoLY3A40GHb/Z
+         z/uLOSGcCrGlzlosyP8AhJLo1aw1NCpVHybAcPdt9x8tLbYSG217gqDWCalEQnM+KQdc
+         pMLkvFvj0tgisPppiOPy7m1Uw5DDS/RDszV/V30m8BCgnmVpFzoSoclecdBQpUBcqtaV
+         uqOZH+NCw5gLZQdxrWdW27pfy6dW6ehepxau2okN9viGOZLvkNhzweXGHgmtpxMYnLUZ
+         MsAz7Ljh32KwmkkkP1Nd/x8wTW0wylbnzanh0/xcPZfV7m5hVM5OYVF+8U8ENhoTtjFV
+         E8FA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWqNeviNxRBTHhfk3mywEVmO9oA587hKTnUlTaS/DpbEJufMhn4
-	3EtT5ayMxg8FFh4GDQ7Ocg4=
-X-Google-Smtp-Source: APXvYqzgjDTYXJLHTq3jc9AmEUiwdYZncSuA8GsTXFBpgZj04fesbRmqogIbn3WYsb04J2e9gYzEew==
-X-Received: by 2002:a2e:6348:: with SMTP id x69mr6082405ljb.186.1559682966958;
-        Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
+X-Gm-Message-State: APjAAAXsarVfLuPDPa1sWFGJdbLhjx1wJmy4d6fbdnzSEM7zYgYMUrTa
+	Lw8+cm4L/EO8SOfl9CYamnk=
+X-Google-Smtp-Source: APXvYqxlifPWwH+xn6qkKSug/cHT7ZDrk0Vq9T6uEg4VwpkkKcdT0KUhUg/m0SXZ5FYKlMC2CB5BIw==
+X-Received: by 2002:a37:490d:: with SMTP id w13mr19952476qka.179.1559804991142;
+        Thu, 06 Jun 2019 00:09:51 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a2e:92c8:: with SMTP id k8ls14760ljh.7.gmail; Tue, 04 Jun
- 2019 14:16:06 -0700 (PDT)
-X-Received: by 2002:a2e:3101:: with SMTP id x1mr18354695ljx.148.1559682966410;
-        Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1559682966; cv=none;
+Received: by 2002:ac8:f16:: with SMTP id e22ls1448959qtk.14.gmail; Thu, 06 Jun
+ 2019 00:09:50 -0700 (PDT)
+X-Received: by 2002:ac8:414e:: with SMTP id e14mr40201390qtm.343.1559804990927;
+        Thu, 06 Jun 2019 00:09:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1559804990; cv=none;
         d=google.com; s=arc-20160816;
-        b=k16BWpo1ZgyWuvsfbQcIx99qjVItNDeFXExkCZ5PET624w489aVb7gL0sySjDhxPDo
-         xIYqZe63YyT31lN5RxKvGRTsOUtWArALFqCqfRYjwjxYNBvgrZHOJev3mnvy9JD2KJ1S
-         tpND5jriuNzrkkhHTukmevkBWsNTtZaQMvbOpdmByYzQZJVm0zAPKUImr8dwETs30xEZ
-         uZz6Z0ZOhCmfSlq86GSv3xKxWJXjb+vUwF+qIWl4cI+7/fncKP8TnLS3w8IdwCbIRhc7
-         mayEyS+dpxUCplq6p/y/fh9iDEdaTXY/XmZq0axv05RkxusZrSZy5zbxtP//s3oFJ+ot
-         r29Q==
+        b=uz8243uknyVXUNykCRIwEDfFMVKXSqFNv/EBNGfeGdCmpUUhK74MafYBl4zvKrjuZ1
+         KzCvfSPCJf2i1OwGZDq7UNB40SzrzgFS/L/Sgpl4lNzWexAOfue7phmlcdGfPE4+bjuO
+         O69mIez6QjzAoBIlZq8+ElrQPwF0M+sKnjEFNugAAaTQZIwIKQ+rWLAehVCAPT7MhJYX
+         NEMgPxnhg2pNWsTmrHwAPakbyCxXhDXnLhQPVqA53V5uk+OvHU2WOglTCKc4+MrO6G+t
+         /JR0ch2kM+2l+3l24/nsyoxCdozcSqkCGUZWBh5GgA5PBnIHYbGVIUrYGRGnnD9D56lm
+         feCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=/LhLSypOW9eEI9FrLebgFNQ023mgsanhRlBmqRqaKH8=;
-        b=xQNcUxpoSsBvoHwfbH1ZOR7CH/Ypq4EWxm5Mggnpe6epF3/3XJn8eyS5uaMlAv/QXl
-         pCwfyBmx+wGBDlioVdl/bSi5T+rpoo6BcRuu6EidX9UwZS5ohWMSLLUTbMEMNrGvQCZI
-         uGnTFV9fIIfAO3lIlPne8LXAaWQajDwCTuj/eyVNB0TT/ddUZj8oclwSAGk90AAgrKGI
-         TDNQ52oK++oohViK5ZPhW9tztYPnjlejUJJkrXsAbi3x+9fbG4avf6WKdNpyA6dhHSpq
-         O8xg9qh/pDcHhRVVdxb/Lj1ONyuRxsJjXFuTNOCmrxsIq1AEYRLIN8/ooYORll+JU+I0
-         kecQ==
+        h=mime-version:message-id:date:subject:cc:to:from;
+        bh=qTG0lPFsGL5aAv45RiRgIusBQvooy6xDaF7WcfwuoEM=;
+        b=FroYsGyc6r0mA9pObwz7ZWxdAO+JQ2LVRTfVQqXk41gPbIThJW8XHohsML2z3bpXv2
+         WRLj+dYqP1MS0O3B9pPZbqen0xpY4LwhRr4KpWm3BWuZ5MC1KW97P5ZRtF6tg6F887/8
+         K97sMwqMzeYLYJ5ncIf2/GIkVWIL5vyuUcccAq5RyAuMuZ9zlswktkR/73fBwqlcuUkZ
+         v/TBPXWQ8NLu4WNhWmY9cUdj1TqKad+OAGnWQdA1BuMhlwH4r8srXcm7Uc0q1I5qcOiD
+         i1vxzh8yFZUrTQxbyVPkV3h2x5zAxZyvjBiyYuakeG7n4XAI6orLw4eTemLpXstexJ1i
+         YYIQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=DB1f081X;
-       spf=neutral (google.com: 2a00:1450:4864:20::336 is neither permitted nor denied by best guess record for domain of epilmore@gigaio.com) smtp.mailfrom=epilmore@gigaio.com
-Received: from mail-wm1-x336.google.com (mail-wm1-x336.google.com. [2a00:1450:4864:20::336])
-        by gmr-mx.google.com with ESMTPS id n20si264198ljg.0.2019.06.04.14.16.06
+       spf=neutral (google.com: 216.71.154.253 is neither permitted nor denied by best guess record for domain of kelvin.cao@microchip.com) smtp.mailfrom=kelvin.cao@microchip.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=microchip.com
+Received: from esa6.microchip.iphmx.com (esa6.microchip.iphmx.com. [216.71.154.253])
+        by gmr-mx.google.com with ESMTPS id o26si67991qtk.3.2019.06.06.00.09.50
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
-Received-SPF: neutral (google.com: 2a00:1450:4864:20::336 is neither permitted nor denied by best guess record for domain of epilmore@gigaio.com) client-ip=2a00:1450:4864:20::336;
-Received: by mail-wm1-x336.google.com with SMTP id v19so170331wmj.5
-        for <linux-ntb@googlegroups.com>; Tue, 04 Jun 2019 14:16:06 -0700 (PDT)
-X-Received: by 2002:a1c:40c6:: with SMTP id n189mr19170911wma.118.1559682965882;
- Tue, 04 Jun 2019 14:16:05 -0700 (PDT)
+        Thu, 06 Jun 2019 00:09:50 -0700 (PDT)
+Received-SPF: neutral (google.com: 216.71.154.253 is neither permitted nor denied by best guess record for domain of kelvin.cao@microchip.com) client-ip=216.71.154.253;
+Received-SPF: SoftFail (esa6.microchip.iphmx.com: domain of
+  kelvin.cao@microchip.com is inclined to not designate
+  208.19.100.22 as permitted sender) identity=mailfrom;
+  client-ip=208.19.100.22; receiver=esa6.microchip.iphmx.com;
+  envelope-from="kelvin.cao@microchip.com";
+  x-sender="kelvin.cao@microchip.com"; x-conformance=spf_only;
+  x-record-type="v=spf1"; x-record-text="v=spf1 mx
+  a:ushub1.microchip.com a:smtpout.microchip.com
+  a:mx1.microchip.iphmx.com a:mx2.microchip.iphmx.com
+  include:servers.mcsv.net include:mktomail.com
+  include:spf.protection.outlook.com ~all"
+Received-SPF: None (esa6.microchip.iphmx.com: no sender
+  authenticity information available from domain of
+  postmaster@smtp.microsemi.com) identity=helo;
+  client-ip=208.19.100.22; receiver=esa6.microchip.iphmx.com;
+  envelope-from="kelvin.cao@microchip.com";
+  x-sender="postmaster@smtp.microsemi.com";
+  x-conformance=spf_only
+X-IronPort-AV: E=Sophos;i="5.63,558,1557212400"; 
+   d="scan'208";a="33318213"
+Received: from unknown (HELO smtp.microsemi.com) ([208.19.100.22])
+  by esa6.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256; 06 Jun 2019 00:09:49 -0700
+Received: from AVMBX3.microsemi.net (10.100.34.33) by AVMBX2.microsemi.net
+ (10.100.34.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Thu, 6 Jun 2019
+ 00:09:48 -0700
+Received: from AVMBX3.microsemi.net (10.100.34.33) by AVMBX3.microsemi.net
+ (10.100.34.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1713.5; Thu, 6 Jun 2019
+ 00:09:48 -0700
+Received: from NTB-Peer.microsemi.net (10.188.116.183) by avmbx3.microsemi.net
+ (10.100.34.33) with Microsoft SMTP Server id 15.1.1713.5 via Frontend
+ Transport; Thu, 6 Jun 2019 00:09:45 -0700
+From: Kelvin Cao <kelvin.cao@microchip.com>
+To: <kurt.schwemmer@microsemi.com>, <logang@deltatee.com>, <jdmason@kudzu.us>,
+	<dave.jiang@intel.com>, <allenbh@gmail.com>, <linux-pci@vger.kernel.org>,
+	<linux-ntb@googlegroups.com>, <linux-kernel@vger.kernel.org>
+CC: <kelvin.cao@microchip.com>, <kelvincao@outlook.com>
+Subject: [PATCH 0/3] Redundant steps removal and bug fix of ntb_hw_switchtec
+Date: Thu, 6 Jun 2019 15:09:41 +0800
+Message-ID: <1559804984-24698-1-git-send-email-kelvin.cao@microchip.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-References: <CAOQPn8sX2G-Db-ZiFpP2SMKbkQnPyk63UZijAY0we+DoZsmDtQ@mail.gmail.com>
- <CAADLhr49ke_3s25gW11qZ+H-Jjje-E00WMHiMDbKU=mcCQtb3g@mail.gmail.com>
- <cdcd00e9-056b-3364-cfbc-5bcb5bcff91e@amd.com> <CAOQPn8sQ+B97UptHpxJgdmcMxBZrqGynQR8qTc3q77fAODRH-A@mail.gmail.com>
- <8e4ccf44-9e4f-8007-ddcc-431440f9d533@amd.com>
-In-Reply-To: <8e4ccf44-9e4f-8007-ddcc-431440f9d533@amd.com>
-From: Eric Pilmore <epilmore@gigaio.com>
-Date: Tue, 4 Jun 2019 14:15:54 -0700
-Message-ID: <CAOQPn8vE4SbDBt_fu3YsqysHspjZ9rumsDHT9RQe+ZT7HUfKCQ@mail.gmail.com>
-Subject: Re: Fwd: AMD IO_PAGE_FAULT w/NTB on Write ops?
-To: Gary R Hook <ghook@amd.com>
-Cc: "Mehta, Sanju" <Sanju.Mehta@amd.com>, S Taylor <staylor@gigaio.com>, D Meyer <dmeyer@gigaio.com>, 
-	linux-ntb <linux-ntb@googlegroups.com>, 
-	"linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: epilmore@gigaio.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623
- header.b=DB1f081X;       spf=neutral (google.com: 2a00:1450:4864:20::336 is
- neither permitted nor denied by best guess record for domain of
- epilmore@gigaio.com) smtp.mailfrom=epilmore@gigaio.com
+X-Original-Sender: kelvin.cao@microchip.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=neutral
+ (google.com: 216.71.154.253 is neither permitted nor denied by best guess
+ record for domain of kelvin.cao@microchip.com) smtp.mailfrom=kelvin.cao@microchip.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=microchip.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -130,93 +152,55 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Thu, May 9, 2019 at 1:03 PM Gary R Hook <ghook@amd.com> wrote:
->
-> On 4/24/19 5:04 PM, Eric Pilmore wrote:
-> >
-> > Thanks the for the response.  We are using the correct device for the
-> > dma_alloc_coherent(). Upon further investigation what we are finding
-> > is that apparently the AMD IOMMU support can only manage one alias, as
-> > opposed to Intel IOMMU support which can support multiple. Not clear
-> > at this time if it's a software limitation in the AMD IOMMU kernel
-> > support or an imposed limitation of the hardware. Still investigating.
->
-> Please define 'alias'?
+Hi, Everyone,
 
-Hi Gary,
+This patch series remove redundant steps and fix one bug of the 
+ntb_hw_switchtec module.
 
-I appreciate the response. Sorry for the late reply. Got sidetracked
-with other stuff.
+When a re-initialization is caused by a link event, the driver will
+re-setup the shared memory windows. But at that time, the shared memory
+is still valid, and it's unnecessary to free, reallocate and then
+initialize it again. Remove these redundant steps.
 
-I will try to answer this as best I can. Sorry if my terminology might
-be off as I'm still a relative newbie with some of this.
+In case of NTB crosslink topology, the setting of shared memory window
+in the virtual partition doesn't reset on peer's reboot. So skip the
+re-setup of shared memory window for that case.
 
-The "alias" is basically another BDF (or ProxyID) that wants to be
-associated with the same IOMMU resources as some primary BDF.
-Reference <drivers/pci/quirks.c>. In the scenario that we have we are
-utilizing NTB and through this bridge will come requests (TLPs) that
-will not necessarily have the ReqID as the BDF of the switch device
-that contains this bridge. Instead, the ReqID will be a "translated"
-(Proxy) BDF of sourcing devices on the other side of the
-Non-Transparent Bridge. In our case our NTB is a Switchtec device and
-the quirk quirk_switchtec_ntb_dma_alias() is used as a means of
-associating these aliases (aka ProxyID or Translated ReqID) with the
-NT endpoint in the local host. On Xeon platforms, the framework
-supports allowing multiple aliases to be defined for a particular
-IOMMU and everything works great. However, with the AMD cpu, it
-appears the IOMMU framework is only accepting just one alias. Note
-Logan's earlier response @ Mon, Apr 22, 10:31 AM. In our case the one
-that is accepted is via the path for a processor Read, but Processor
-Writes go through a slightly different path resulting in a different
-ReqID. As Logan points out it seems since the AMD IOMMU code is only
-accepting one alias, the Write ReqID looks foreign and thus results in
-the IOMMU faults.
+Switchtec does not support setting multiple MWs simultaneously. However,
+there's a race condition when a re-initialization is caused by a link 
+event, the driver will re-setup the shared memory window asynchronously
+and this races with the client setting up its memory windows on the 
+link up event. Fix this by ensure do the entire initialization in a work
+queue and signal the client once it's done. 
 
->
-> The IO_PAGE_FAULT error is described on page 142 of the AMD IOMMU spec,
-> document #48882. Easily found via a search.
->
-> The flags value of 0x0070 translates to PE, RW, PR. The page was
-> present, the transaction was a write, and the peripheral didn't have
-> permission. That implies that mapping hadn't been done.
->
-> Not being sure how that device presents, or what you're doing with IVHD
-> info, I can't comment further. I can say that the AMD IOMMU provides for
-> a single exclusion range, but as many unity ranges as you wish.
+Regard,
+Kelvin
 
-I'm currently not doing anything with IVHD. The devices on the other
-side of the NTB that need to be aliased can be anything from a remote
-Host processor, NVMe drive, GPU, etc., anything that wants to send a
-memory transaction to the local host.
+--
 
-If you have any insight into how the AMD IOMMU support in the kernel
-could be extended for multiple aliases, or whether there is a hardware
-limitation that restricts it to just one, that would be greatly
-appreciated.
+Changed since v1:
+  - It's a second resend of v1
 
-Thanks,
-Eric
+--
 
+Joey Zhang (2):
+  ntb_hw_switchtec: Remove redundant steps of
+    switchtec_ntb_reinit_peer() function
+  ntb_hw_switchtec: Fix setup MW with failure bug
 
+Wesley Sheng (1):
+  ntb_hw_switchtec: Skip unnecessary re-setup of shared memory window
+    for crosslink case
 
+ drivers/ntb/hw/mscc/ntb_hw_switchtec.c | 80 +++++++++++++++++++++-------------
+ 1 file changed, 49 insertions(+), 31 deletions(-)
 
 -- 
-Eric Pilmore
-epilmore@gigaio.com
-http://gigaio.com
-Phone: (858) 775 2514
-
-This e-mail message is intended only for the individual(s) to whom
-it is addressed and may contain information that is privileged,
-confidential, proprietary, or otherwise exempt from disclosure under
-applicable law. If you believe you have received this message in
-error, please advise the sender by return e-mail and delete it from
-your mailbox.
-Thank you.
+2.7.4
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAOQPn8vE4SbDBt_fu3YsqysHspjZ9rumsDHT9RQe%2BZT7HUfKCQ%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1559804984-24698-1-git-send-email-kelvin.cao%40microchip.com.
 For more options, visit https://groups.google.com/d/optout.
