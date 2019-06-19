@@ -1,134 +1,151 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBB467RHUAKGQE4L34R7I@googlegroups.com>
+Return-Path: <linux-ntb+bncBDIZTUWNWICRBZURU7UAKGQEEHXNFCI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yw1-xc3c.google.com (mail-yw1-xc3c.google.com [IPv6:2607:f8b0:4864:20::c3c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 12A5F43E04
-	for <lists+linux-ntb@lfdr.de>; Thu, 13 Jun 2019 17:47:01 +0200 (CEST)
-Received: by mail-yw1-xc3c.google.com with SMTP id 75sf15261467ywb.3
-        for <lists+linux-ntb@lfdr.de>; Thu, 13 Jun 2019 08:47:01 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1560440820; cv=pass;
+Received: from mail-qk1-x737.google.com (mail-qk1-x737.google.com [IPv6:2607:f8b0:4864:20::737])
+	by mail.lfdr.de (Postfix) with ESMTPS id ED6B64B16D
+	for <lists+linux-ntb@lfdr.de>; Wed, 19 Jun 2019 07:32:23 +0200 (CEST)
+Received: by mail-qk1-x737.google.com with SMTP id h198sf14466538qke.1
+        for <lists+linux-ntb@lfdr.de>; Tue, 18 Jun 2019 22:32:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1560922343; cv=pass;
         d=google.com; s=arc-20160816;
-        b=p+lcPNVjl7rVB3hkSTUcmbAGQzqGocPD/uAU7VDFMxduuXcr1B3RkYpS9a9E7EOL0G
-         UmL4D+gsNhoTjEJacgZd4P24daOT4B4MBd35gy46Bz9b8rIjn1y1Y+/E3Xv5ql+MLuHg
-         Y1RWNztBSAK3EDrtFD4BFwJTQxve3IIVaKEHWzTnJAuVU1N7eaZDtspjy0MgIc0tl7KR
-         ePX7nIPHaxlRQYMXyKDo13mZ9If30dhSuCGtkmv4hVxnq7OZS+qJPjFvF8dn94t2SWd1
-         5736gAR3KMyUFWhYKv6+SAbNMwPfpKfMSoWaTv4h11j6XmLvqPGdWu5RaC+WDPi+8Boa
-         kuDw==
+        b=HCogl5/IsREQG7Y1kCQX78gV2bF8BqVpuFyU49zuDnVQ504vByJ+i6r+rG4bTPWUzt
+         cDvoYFR4nEsdGufnyY7f+bc2t6c1xvfhUExQygbcrUYYOkNOBX+SCWxh5bNXgx7A72VE
+         OKRp/h8nF6wj2qPa31X9BLXLPGliCDc1/pFokpijWfXHLmUvu1E/VWoWj3yzF4xqOPeJ
+         16A0vL6/gf+zYtF6A8a+YA4uYuVcsDDOKY6S7sJlQ2qD056pQjaClYZmLYemkNEhlmdI
+         0lWbK6Azsi/9oblpFrzXJPfIp61gByzyIGg5HP8r3UONRLMHu850xYC0brTtQf/ekYbu
+         2Ksw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:subject:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:sender:dkim-signature;
-        bh=L9+YUQUWdcF82SqU63h/QTSYdzsTqvKW9hbr7K2RJ+g=;
-        b=MwSmwe6cbax+Au2JImkEBPfMCDnCcqt4bQyRdUzIwfy+owieqhCSaoMGSA/ENeerVk
-         vyJImci3hJ00Ml5ionZe8N9Acy1MYrzgTryZ9LxIHb75a8jmnhDo+6QKs7qDHulyE18S
-         ku5E/4pzVITup/i+RROQ0EMcriQ62W9PIoq2mno6H2KVGvXhxPRywVysH/cqYU1PbtG2
-         1Afm7auLrbcBUBWkXqpw4vDVhEHTPuRTLC4cVS7NJMtpz6UWO8jsIyDZTtn85F/hEabY
-         AuEEzvZqNVGJCudQ0rv2w+pMlHmQ1KueqZNR3XwF/P18RGJ1HSMvozZY711umU5un/g6
-         d/YQ==
+         :list-id:mailing-list:precedence:user-agent:content-disposition
+         :mime-version:message-id:subject:cc:to:from:date:sender
+         :dkim-signature;
+        bh=/uC/3xaDy17jISOLYplZXeJuPPwHIMEIzPEdDNta0cA=;
+        b=h7x3qSf/N4pKw1trT5qaz/NiL48BuA6tyAWW2MWkvlBH091Gbxs8yyyX0iMN6I+cSJ
+         Xt/sFxntI96+Fvb6MDSDq1/YDBOe4pQNreseVYMJtyCt8LtKwIh7bnPGdIaiy5gFk5WE
+         rKFyt/HD2PZBCIzawpc3ty9jwj67HDzcUcevyA6JKwz9WLC4kmE5FktfGt7eczXivBKw
+         UX1phbO9gR1GAl7p289mIDI2Y4UWzoimt/asmZ/wsRNZ5Q1NagAlqqu3CDfAj7Mte+Cf
+         t2qzVI9GTBEcdLpJb0fjgYvNgwqZyzQy1C6n/4HhH9z8NXFKjnIOlZZy9iZjliYT+s4E
+         hfaA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+       dkim=pass header.i=@oracle.com header.s=corp-2018-07-02 header.b="FcdQ/hXD";
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:subject:x-original-sender
+        h=sender:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=L9+YUQUWdcF82SqU63h/QTSYdzsTqvKW9hbr7K2RJ+g=;
-        b=qJGjtCdJG9ix9a4AGIolhkC9yaqxOaSEhwf2vK4USgcV0dw9rtITvZUrMOJqAv6V/g
-         5tV5Hxr/THg3iy/8JZsdcFJussK4nSHVbbY0EyrcKGpsf4h+VgYP+yNsflKzvCd/5eT3
-         VJxgF0sTzNSJgpVptkt9TCv7ey2ujpR6pfLAwD1+/AQXuFQIY7xlLZpKvHm2NKZiGh2i
-         8Ujf1+0PhV8B6Juazk8PyxU/2fMhMihLah6qUkPvjiZOrmLWtoZdd+7YRdaYVxHesb0x
-         R+B8p0QjqCQ0WJJSr3hiMc2F9EyojGB85rxcupfP8/F6u/fiIXR4J2kDx0ze/E3X4YsF
-         iR2w==
+        bh=/uC/3xaDy17jISOLYplZXeJuPPwHIMEIzPEdDNta0cA=;
+        b=hqz1PCH/tinyopU6Qql3Z8uTElLO2OTyRj8laUccZgKOB2IgrlwQeakhsPTNaVosXl
+         xKUYtDlsLIFCgVJmQVqru3Wxfn+ac6TrZdQcOxgoUfU3xScKT1QKIcBXklwNVUKl3piO
+         Z/y4WaNSBDZBJD52ucssiCLw6I4x8ICXKq/+UbXPW9EazdpyfgH5k/fF1VBlqtDaxsFo
+         2Y4qxUWnVOT1MCvTPBbnExNxq8mOkh4IFjvbNQbhQi8mYkAB5Pu5gaN34Go5SLpDn0A1
+         a6SgiUPZNfSzLx6f+nJkeNvPT6yPTNfznPXvtJs1xUPIkmCDLE/cNIaAgE67oc3prDNA
+         06/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language:subject
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=L9+YUQUWdcF82SqU63h/QTSYdzsTqvKW9hbr7K2RJ+g=;
-        b=hWSekLFSh/A2lIYNzx6sMVWla8X+uXs6sxMSaSUP5Mx7bB1JPLkO2Fr/getuN3uAqj
-         SJaAOuT/rhUTpiS2htT/fasdf2Ip4c1QvkSDSLGBie1VE9v07g51ultt5m4p1+rUIU4L
-         GAC27srh3reU8vHlEIGAI8mX58fp1uvKB0nqy1wZKuCzMJZoUoshzK/6KiAKvwlo9AyX
-         I0R9KlOC9kgOa9nnXjZ5YmCUYjNbD9lj9heQQAEC7JzuthRyW0OcyNS9k1jbYWXu7ksT
-         iGXMnxZnr8DaI8KnU2m23LUTisvseDfa8wcEV3Pg3WfhE2NBh8rsgypJ9xQf/J8N/qu5
-         Ssvg==
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :mime-version:content-disposition:user-agent:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=/uC/3xaDy17jISOLYplZXeJuPPwHIMEIzPEdDNta0cA=;
+        b=RfatjRpWCL3/j7+dipyyjE43HE368zlsQLUALzz+4VzH+GVZw484/KwhQjemDrcwXj
+         kZ3Bn3PO41l67ry4U243u1xWW/bhDDlaq3ds3On8+NHbhmP0fLDcMGfjrVe8MWd/X+bE
+         fEDY7oX2Bc8ZyyhNu7IjZ/beTPPTxkHUjEux23DgyrOR6DRQvjYsjedv4bM1ocmUKfau
+         v+7+oLU4k9gdOJF+EbDAqlsqu2udzpFpns5cvxhFKiiQXaB1i+NODlqlveV1yotBC/sr
+         EIzgj0E9It6eDKw/k48A6V0PzgaT2AiFcIn+bjeqQIyuNvoWLRzwSTpMfmLANNx7D+aN
+         hx8g==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXQsM6KV7WLWt88oZgFs5a73QzDXGqPCwSOh+/IUrMdx2v/UHZN
-	bjY/Uxr8z6y7KSVjrNV5qmc=
-X-Google-Smtp-Source: APXvYqw2GTcrF1yyQhyiMuwIOzhfsif8rRTvcG312ZV0bjKmLQ2ETnJ+hlmy+GfAflwQgq/dBT/aRg==
-X-Received: by 2002:a25:d055:: with SMTP id h82mr44347344ybg.418.1560440819788;
-        Thu, 13 Jun 2019 08:46:59 -0700 (PDT)
+X-Gm-Message-State: APjAAAV6xetrkZHRo+KBhg9TmAWGielCRiNX2fu93aLzxncWvxu0lqdK
+	aXz/bSsNYSJgGQBDXL2WB50=
+X-Google-Smtp-Source: APXvYqwlK5U4vaXZj1FPDAZzSV1MMi7uG1RxVboo5fMX0tpknXl1J/BmvwsyCn8eL8/g7uGlxEmgcQ==
+X-Received: by 2002:a05:620a:69c:: with SMTP id f28mr11110958qkh.274.1560922342836;
+        Tue, 18 Jun 2019 22:32:22 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a81:9b0d:: with SMTP id s13ls851485ywg.4.gmail; Thu, 13 Jun
- 2019 08:46:59 -0700 (PDT)
-X-Received: by 2002:a81:a1d7:: with SMTP id y206mr29020912ywg.7.1560440819492;
-        Thu, 13 Jun 2019 08:46:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1560440819; cv=none;
+Received: by 2002:a0c:9aec:: with SMTP id k44ls238269qvf.2.gmail; Tue, 18 Jun
+ 2019 22:32:22 -0700 (PDT)
+X-Received: by 2002:a0c:b115:: with SMTP id q21mr1469342qvc.68.1560922342665;
+        Tue, 18 Jun 2019 22:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1560922342; cv=none;
         d=google.com; s=arc-20160816;
-        b=gBgBbcZHkEsN+2LkTDq/RwBMdjyfRouU1QhQAqOO4ydAx6DqX0vJ43zPWCS/AXF6OA
-         n0gBgZ5o4jueZVDdHykzZV0DTW/a/Gn+R1vysofjg52w/uOtXr6Hruyv07OgyPbnNkQK
-         9xydabaQUxKeSlihX3pC9ZPwQXzlGKbFE0K0Kg1a7auTUcr7UyOiFMSfzKLFWUwmqnut
-         RAK0zqTZ3RaCvCaWIIVDdIVeQITiCd5qL297uAUpDpYFMIIaUGZkRM46q4XkIKF1m80w
-         EwQhMOqTL6vuqTAavQQa0SIBU/IDGoRycwXhPF1EZ0D1vy3QSKWoAMM+kZtqg4gHK3Fg
-         eIFg==
+        b=Ae/Yo+I2LqC+4tB50F8pid1yZ1GD8isZ4dcJYWiDvaKme62eOI2bcBRC3xXlnudomO
+         gz0gICsuxaLs1U+8mOtn/nXoFfkFN+jUlqEYr34pCDSWqaNEu/pEumxMer/pJANoQmky
+         igsRcRDhnQa9BkcIB8xUqUdiOwjGJHAVp4bZctyw6lUJiqUnJZv8/pmZbwR9IQtVyca+
+         XpmiDIHLjkYZmZ6aqhZ2oTTkOnhYlHrkDWR7kDnuAZSbyeRcpl8UwTZbWrR5V7OLi+I7
+         LuZd9UEFLf3mEZZk2/Ql/vT59ZgxNNiR32E7co7OXH/t+JiWiHjGJboAK7fDhP3vloAo
+         Chzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to;
-        bh=R4fulU1ijRlbMfJjgUA0SbaWH0jhnQL+aY0i3KxUERw=;
-        b=HbyzWMxdZrG7S6Kq/K4raZ/Ss2eEZV/sXZKWQVLAjJGwwQzeHqoGqwR0vTrB0w4dwZ
-         BFLX/6LLdAp1HOisciwh4N93uSisurw/LkaMf2x3Myz3O4iljtLQqLGPHezqxWMaUzc0
-         KQuxgA3e8AneLpcRs+miRhvca//R+K4WjlF+qkJjseOB2cwGLIJNfSep5vpFuN5tAjZV
-         7suUEDl2l1juwtZ2Zb9Vu6gjUTXv+sFUZsvmm99aqAKuwJ/HqnFOuS3MyvduX/70GKlV
-         8SH5vSQG3uKqK3VzTHFtQbSZmnVLXlA0Qd4rZiBaxA7fQs+NTtPuM0yDrf9bMUPNujTe
-         iIEw==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=mocTtvdGYNVUl/q4ExDY/sG+3HeXGdnqOCW2dwUTTYw=;
+        b=kNwNLtHGbgDEypSuFeTahqtzvLhHMTQdXKZ42SNDx+V/TXK2RN4K2dlPRKyYdD7+U1
+         1zOJ+StAY1G7gW6S4TJkI8gt0RuYWZz8FrdSjr4hPNKF2twAOi9TEjezt0K3Epdbls4q
+         KcYezpjYKPVpNhC1U/o/HRVwRi3UE4oXXGmS7nsE4TQ+5x4I0b13areuu9mPBILmHz4f
+         j8f3r7xN3yX2scCdRIncGCq//cVH+N+HxznCqTwbzcyV/fyS5mUrb5H6D3+usRWSDtVZ
+         xP1mkJUOXkYjO1MmJ5uEy1gkWz+kABWKoopVHqt+WF3y9yahOkh+Z3HcIQgDKZ0EmT0E
+         KAig==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
-Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
-        by gmr-mx.google.com with ESMTPS id 189si7896ybc.1.2019.06.13.08.46.59
+       dkim=pass header.i=@oracle.com header.s=corp-2018-07-02 header.b="FcdQ/hXD";
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from userp2120.oracle.com (userp2120.oracle.com. [156.151.31.85])
+        by gmr-mx.google.com with ESMTPS id y53si1132910qtj.1.2019.06.18.22.32.22
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Jun 2019 08:46:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
-Received: from s01061831bf6ec98c.cg.shawcable.net ([68.147.80.180] helo=[192.168.6.132])
-	by ale.deltatee.com with esmtpsa (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.89)
-	(envelope-from <logang@deltatee.com>)
-	id 1hbRwA-0008JX-LL; Thu, 13 Jun 2019 09:46:51 -0600
-To: Jon Mason <jdmason@kudzu.us>
-Cc: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com,
- linux-pci@vger.kernel.org, iommu@lists.linux-foundation.org,
- linux-kselftest@vger.kernel.org, Joerg Roedel <joro@8bytes.org>,
- Bjorn Helgaas <bhelgaas@google.com>, Allen Hubbe <allenbh@gmail.com>,
- Dave Jiang <dave.jiang@intel.com>, Serge Semin <fancer.lancer@gmail.com>,
- Eric Pilmore <epilmore@gigaio.com>
-References: <20190523223100.5526-1-logang@deltatee.com>
- <20190613133014.GE1572@kudzu.us>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <985a41a9-80c2-7b60-da98-4ea92085319b@deltatee.com>
-Date: Thu, 13 Jun 2019 09:46:44 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.7.0
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 18 Jun 2019 22:32:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.85 as permitted sender) client-ip=156.151.31.85;
+Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
+	by userp2120.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5J5P521177654;
+	Wed, 19 Jun 2019 05:32:15 GMT
+Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
+	by userp2120.oracle.com with ESMTP id 2t780994jk-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 19 Jun 2019 05:32:15 +0000
+Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
+	by userp3020.oracle.com (8.16.0.27/8.16.0.27) with SMTP id x5J5V8Ib071995;
+	Wed, 19 Jun 2019 05:32:15 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by userp3020.oracle.com with ESMTP id 2t77ymveds-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 19 Jun 2019 05:32:14 +0000
+Received: from abhmp0011.oracle.com (abhmp0011.oracle.com [141.146.116.17])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id x5J5WDka009329;
+	Wed, 19 Jun 2019 05:32:13 GMT
+Received: from mwanda (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Tue, 18 Jun 2019 22:32:13 -0700
+Date: Wed, 19 Jun 2019 08:32:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: Jon Mason <jdmason@kudzu.us>, Logan Gunthorpe <logang@deltatee.com>
+Cc: Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+        linux-ntb@googlegroups.com, linux-kernel@vger.kernel.org,
+        kernel-janitors@vger.kernel.org
+Subject: [PATCH] NTB: test: remove a duplicate check
+Message-ID: <20190619053205.GA10452@mwanda>
 MIME-Version: 1.0
-In-Reply-To: <20190613133014.GE1572@kudzu.us>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 68.147.80.180
-X-SA-Exim-Rcpt-To: epilmore@gigaio.com, fancer.lancer@gmail.com, dave.jiang@intel.com, allenbh@gmail.com, bhelgaas@google.com, joro@8bytes.org, linux-kselftest@vger.kernel.org, iommu@lists.linux-foundation.org, linux-pci@vger.kernel.org, linux-ntb@googlegroups.com, linux-kernel@vger.kernel.org, jdmason@kudzu.us
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
-	autolearn=ham autolearn_force=no version=3.4.2
-Subject: Re: [PATCH v5 00/10] Support using MSI interrupts in ntb_transport
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-Original-Sender: logang@deltatee.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
- permitted sender) smtp.mailfrom=logang@deltatee.com
+Content-Disposition: inline
+X-Mailer: git-send-email haha only kidding
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9292 signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 malwarescore=0
+ phishscore=0 bulkscore=0 spamscore=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.0.1-1810050000 definitions=main-1906190043
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9292 signatures=668687
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 phishscore=0 bulkscore=0 spamscore=0 clxscore=1011
+ lowpriorityscore=0 mlxscore=0 impostorscore=0 mlxlogscore=999 adultscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.0.1-1810050000
+ definitions=main-1906190043
+X-Original-Sender: dan.carpenter@oracle.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@oracle.com header.s=corp-2018-07-02 header.b="FcdQ/hXD";
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates
+ 156.151.31.85 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -141,40 +158,38 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+We already verified that the "nm->isr_ctx" allocation succeeded so there
+is no need to check again here.
 
+Fixes: a6bed7a54165 ("NTB: Introduce NTB MSI Test Client")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
+---
+Hey Logan, can pick a patch prefix when you're introducing a new module?
+"[PATCH] NTB/test: Introduce NTB MSI Test Client" or whatever.
 
-On 2019-06-13 7:30 a.m., Jon Mason wrote:
-> On Thu, May 23, 2019 at 04:30:50PM -0600, Logan Gunthorpe wrote:
->> This is another resend as there has been no feedback since v4.
->> Seems Jon has been MIA this past cycle so hopefully he appears on the
->> list soon.
->>
->> I've addressed the feedback so far and rebased on the latest kernel
->> and would like this to be considered for merging this cycle.
->>
->> The only outstanding issue I know of is that it still will not work
->> with IDT hardware, but ntb_transport doesn't work with IDT hardware
->> and there is still no sensible common infrastructure to support
->> ntb_peer_mw_set_trans(). Thus, I decline to consider that complication
->> in this patchset. However, I'll be happy to review work that adds this
->> feature in the future.
->>
->> Also, as the port number and resource index stuff is a bit complicated,
->> I made a quick out of tree test fixture to ensure it's correct[1]. As
->> an excerise I also wrote some test code[2] using the upcomming KUnit
->> feature.
-> 
-> Sorry for the delay.  The patch is now in the ntb-next branch.  We've
-> missed window for 5.2, but it will be in the 5.3 pull request (barring
-> last minute comments).
+ drivers/ntb/test/ntb_msi_test.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Thanks Jon!
-
-Logan
+diff --git a/drivers/ntb/test/ntb_msi_test.c b/drivers/ntb/test/ntb_msi_test.c
+index 99d826ed9c34..9ba3c3162cd0 100644
+--- a/drivers/ntb/test/ntb_msi_test.c
++++ b/drivers/ntb/test/ntb_msi_test.c
+@@ -372,9 +372,6 @@ static int ntb_msit_probe(struct ntb_client *client, struct ntb_dev *ntb)
+ 	if (ret)
+ 		goto remove_dbgfs;
+ 
+-	if (!nm->isr_ctx)
+-		goto remove_dbgfs;
+-
+ 	ntb_link_enable(ntb, NTB_SPEED_AUTO, NTB_WIDTH_AUTO);
+ 
+ 	return 0;
+-- 
+2.20.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/985a41a9-80c2-7b60-da98-4ea92085319b%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190619053205.GA10452%40mwanda.
 For more options, visit https://groups.google.com/d/optout.
