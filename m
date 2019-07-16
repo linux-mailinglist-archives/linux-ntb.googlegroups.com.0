@@ -1,139 +1,129 @@
-Return-Path: <linux-ntb+bncBDE55XUH3UHRBO4VXDUQKGQEZ3SIJII@googlegroups.com>
+Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBOUYXDUQKGQEDPJWZPY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x23b.google.com (mail-lj1-x23b.google.com [IPv6:2a00:1450:4864:20::23b])
-	by mail.lfdr.de (Postfix) with ESMTPS id 090766ADBC
-	for <lists+linux-ntb@lfdr.de>; Tue, 16 Jul 2019 19:34:52 +0200 (CEST)
-Received: by mail-lj1-x23b.google.com with SMTP id a19sf4722413ljk.18
-        for <lists+linux-ntb@lfdr.de>; Tue, 16 Jul 2019 10:34:52 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1563298491; cv=pass;
+Received: from mail-yw1-xc3c.google.com (mail-yw1-xc3c.google.com [IPv6:2607:f8b0:4864:20::c3c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A6766ADC9
+	for <lists+linux-ntb@lfdr.de>; Tue, 16 Jul 2019 19:41:15 +0200 (CEST)
+Received: by mail-yw1-xc3c.google.com with SMTP id 75sf16691073ywb.3
+        for <lists+linux-ntb@lfdr.de>; Tue, 16 Jul 2019 10:41:15 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1563298874; cv=pass;
         d=google.com; s=arc-20160816;
-        b=KUsovFqcEsP2LVQXzxWFWW1NLq7yUV3J6miYBbI+cFf2kweV/QtQLTLI6CUtre8L1L
-         g2rXVjV5AnlU8flffLIeFhHUjRaaBXEnEfXrG789pTB8xnbJ4IoNV9mnSTHD8MuhU22i
-         /r61nfIqR1vO7hWpPh4iF9kkjhuw8qH3i2/JRpGtUoViYa6UG6QceAcwaKHe2KChCGqP
-         3Ar6mLWfvwtKW1pTaxl7Od99Tn+oZlqF++ZuYIN02cjJL2JB1tzfMXxtWsW89q4BFqca
-         oKwnRXII0p519V2UOkcaLIiIBHFfCdN7y6BQGGD3rctBNkAIFA23dX97uMQqceJSOFY+
-         alvw==
+        b=BJbOgPX5891NKY7ZCJoPN57BkXgGmWI2zVSuHJymN8IX4pMHAc/U6P8ZKa+TzXl5Qi
+         DD+pAmTQySZXwul2ZehQTmyhhYMOypUDA9WuozxINEtzlEPcEQgTZtiCnz1kHr8wm1r6
+         QryXPsbmdh30MZiXMWpUkQhZSlIl5xNB1uwqRiaGnOxMBjrznN+iriWZ6fnubvT6LIUx
+         R/wxPoscZ21UB9TQao5voExxl3aqlVUyTZ9sPnI/eFvwUBCKN9o7ryFhY9kChraGpj+7
+         m1gJpMFTCym1qfl9/EaPCILcCISK5a72bj6vjazfi4nu6lAwl++IIHGZo1Gwydbpt5yz
+         6E6Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:user-agent:content-disposition
-         :mime-version:message-id:subject:cc:to:from:date:sender
-         :dkim-signature:dkim-signature;
-        bh=CqHSrxM1yJQMTneugRPuACEFsW2mBKCLO1lpscMQgUk=;
-        b=PdLOf9pr6wLuPD1x7qIyZgQJ87hUckBgnVM57BdWVkGTSMmIvQonFtu7EBcMQuhKAn
-         AtoicTV5fAeCyLylfztEyYmCGHLnh+5zd77s90xDwewNr4IQIwWVDUY6UDfWiEEl0Pf/
-         7KwWz0OGtCw22MUK5rrOK830szBNfcbT+Eb1YtSbekcJyRFTAk/9GN7N5JD7pdje7cs+
-         bnl69dkucif8jMqfWR7DJ2UGpaRz0zBMZ6sPoPYp+aYYX8ttXnMg8DUTEw1mfMspkwF8
-         CC+7TrDLS1pV9qCGUuLGiEzrusfCioma/HJrHzpjoeld46zTJ8gS9WdVf0Ev5ZWWL1QM
-         h2rA==
+         :list-id:mailing-list:precedence:subject:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:sender:dkim-signature;
+        bh=ErLY8exq4BhrZwNIGtLuTejfA3OFEA3P+Pw7/DCpeK4=;
+        b=v/TajqZFd1qPzWewKtEZt7AIaWaG6+vW/AaaVIT0ywKJ7LrpPP2sT32DqRA8zJhxhZ
+         AX5a8DtwPon+yALzSUp2UGx219baOrgd77PHi0Iq1w9rQmXXjufG6G6zZZJf1YKJH+Iz
+         MEpU6/L8X/aif29r5cGwrqMMegP+46gn+jiHAoH1zav+6mutbM00qWqUro6fitLax8cR
+         dB6xcpz0xcYRaiKPRS4WwvCTafABXDXziqMaqTHPM3wCoJEFCgKA/l90x48jVFvnj4gI
+         fyMBIo/JOKU7lcVrX4JN4EzXcEa1XOgPgiffUa3/EfG608ip4rUs/cc6mS9uIDbQEFaO
+         sbUA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RviBK+1m;
-       spf=pass (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=fomichev.ru@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent:x-original-sender
+        h=sender:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:subject:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=CqHSrxM1yJQMTneugRPuACEFsW2mBKCLO1lpscMQgUk=;
-        b=XJg+uIigdduaYHDUf8XviphW4dp3yg0LGKR6pqoAtf7lOMN51H5Z1QaSunkMmapZQy
-         mnHy5q56haeRtyGyPIB72NLmRsFT2DgrEWUBoyi4bp2rx8Q2+zzOYYoeWImY0hRR9YPu
-         bTpoCkflpw/chmEGDIyy1+Z+C72ZccPmY3prQx4/u3SWKZ0BImSc55uFtLXzGBHmyQoe
-         ZRv5yiHYIGr3WN+AZUasyb3BiSj6mIcG6RS+myiJhi5XnXApdsuqS4S1qfx1rfugl0kj
-         TkthJA1a04oBkKj4+dtNMNk9fvVATYaeqaQLhJj0t99JEF8XPFWr52BYrsTY4f3TCxft
-         WGTw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:mime-version:content-disposition
-         :user-agent:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=CqHSrxM1yJQMTneugRPuACEFsW2mBKCLO1lpscMQgUk=;
-        b=g7cSzOp1vJd7syrkyyOjAwQVN4P+iM5dHkBgOLVytG/wxShX/31FPJfaEslDTVkYnw
-         zMVJjiThOsxasM3BEughSvGC5WPktBYnSwltZ86R2yiOJ5la2CkxZ5aq3FkspZ2COFE2
-         A95Qqv8OaaSL7okPUuxPjeIl96R2AL0W66Vg06C3oQgKP3gVJRXkgBQ98HU2oUlyjyKr
-         Zzs4+Lzgqw/1HsaO3TLaPwLnnkiymho2pN8/7kANUX9xxRgAlGOmMn7cfljkltwb4hX3
-         qxm+sHQumqd5m2J0e2bPqoSbMzeNYSRXZCECT1cqYQhAQkM7jLqDuhwWHExf8kt6GnRz
-         D5Tg==
+        bh=ErLY8exq4BhrZwNIGtLuTejfA3OFEA3P+Pw7/DCpeK4=;
+        b=DTqfkTGLSnaxYhaeKKxU3P+SR9dmjO1KRsJ4EbxvVFBqugk1tBHZGobR+VATAAfwUV
+         Mo/KHLK5RPi7PUeau5TFkdy57fDf6ZM3vdMSDZRQaBbgyPKXcZ28CfP4Lks61hP1FWEb
+         vdgsMMlKd4B2Y06EHvxJXbgnEMufxTZ811r40oiTMaMEdVjYyjIGcGmxk9Ff0FZEZL5o
+         sFvwHgfd8aRJT9yzpQPlsukkaVYlHJGHOz0F4FrpIqaD6gmPZCD6zc+rdWFOAtpvjnH2
+         CAEyZJwnXdjMXyFN2pmPR4NfyJzKh22+5ZkoXqtIYzN2LVoYD3YeP01ru7eA/lhDxlQt
+         UmuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
-         :mime-version:content-disposition:user-agent:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=CqHSrxM1yJQMTneugRPuACEFsW2mBKCLO1lpscMQgUk=;
-        b=pMxJ7F7gxZQ9BXxWMYF7hYY7kTjjqAGKyvnZp1eRaAm6qagKeHqMnFzvy5eu8H8xZY
-         E6czPaMEW6YcV093t3cm933K9vYqSQBDcle/BHJuR2jrlLjTDS98U4s0prDUtk8r0+s3
-         UQ8d9KRNqrzwdvL351uxUmQusOYh92DE3qjH9qNDNAi0EDqqsQDpOxvCqdUW2rq1VLFO
-         ur24GpeeVEil5x3FrML5j8bO+bLOBTLrS61vycxioIVvXt/DXjTdi+enumcmwWgj7Rt+
-         4PCoX92TPkYZenLR1frWikKnQhIRF/Bvzi6dX8Z9AXLmoCgLju0pToVb41yn/31XQm+A
-         kDyw==
+        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language:subject
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=ErLY8exq4BhrZwNIGtLuTejfA3OFEA3P+Pw7/DCpeK4=;
+        b=GPipHGk//nueQW3l7ymAVhHJMWt1oB+KUZRaFiJCQKfAcMPEmPmPnH9pWPazto3ULZ
+         MVEDs93xpscHxMixnIh9NP6q88H+RqHzEEsyyoe2lP/8JWYXOnCcWYy4t4ad1OXSwyRl
+         TXwo2RE64jvIoL1lbFKkW6MyVJd3E9+kClX21xkMUIwdRzZGOQtqGxntvxtB3vnyDHlC
+         hAPshgU/YfV8/APbNmHtHmKwroYrl6R/391qOMl8LfKnOJwHIbi8WSB/v/lKO0BeAtC9
+         2noPSaT71QT0az9H4fPFiEs9Uv/Rg1UFPPZtXXt6DJeWtsc0i0n2Bd5mLAONq5ljO8/R
+         6bOA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAVeCzRFJGk4sLFHmLiUYAA49O3y/l1mU5HccntNYqjlCSKdFwYX
-	a8KxjWuthL6oa159xgXhR6w=
-X-Google-Smtp-Source: APXvYqxv/YvMzwTyhVe3NZnv2JUq0d6n5tHOGhfGIb5bMrfJ3XMutZZDNwOIQI0gMGmRSLOFNHUFrA==
-X-Received: by 2002:a2e:9997:: with SMTP id w23mr18547389lji.45.1563298491621;
-        Tue, 16 Jul 2019 10:34:51 -0700 (PDT)
+X-Gm-Message-State: APjAAAUIqmFWGBwT+lo8zVMST8lWzhIe1elQW+lHzJCfjeRjoicM9ePt
+	S7K14SzzD6yLtupThMdkDs0=
+X-Google-Smtp-Source: APXvYqyViTC7AWvf7mzSTxy6bC5W2DzMpiZEG/1WDzVyVlPaJPjRMC5JPgzUIuYvRqXOgdyP/2V2PQ==
+X-Received: by 2002:a0d:d44b:: with SMTP id w72mr16030938ywd.438.1563298874352;
+        Tue, 16 Jul 2019 10:41:14 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ac2:4c2e:: with SMTP id u14ls1713416lfq.15.gmail; Tue, 16
- Jul 2019 10:34:50 -0700 (PDT)
-X-Received: by 2002:ac2:46ef:: with SMTP id q15mr15659119lfo.63.1563298490955;
-        Tue, 16 Jul 2019 10:34:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563298490; cv=none;
+Received: by 2002:a81:14b:: with SMTP id 72ls2817504ywb.15.gmail; Tue, 16 Jul
+ 2019 10:41:14 -0700 (PDT)
+X-Received: by 2002:a0d:c941:: with SMTP id l62mr21293750ywd.265.1563298873987;
+        Tue, 16 Jul 2019 10:41:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563298873; cv=none;
         d=google.com; s=arc-20160816;
-        b=eZgwVcrsY+rOY1d/GFFkBeQAUV1ykYVLUmYRwbq4nhP9b/T0PTvIsVqNQfSoyU8Agc
-         eR/6UPiCrVWirmbPux4TLIFW5QIeu8YYX5Bb0PNBPa7d0ThpgjLb177ZF8NXPYKj6lvE
-         qJMiE7Y23tHvIiynNQA0MpnK0QLRmZt1PaKbAFXMvWdiotFHF1cZt+JMpQ9fyrj8sLX7
-         9nG/NoL23uGirsJouKu/V+YE1P4ifQ8rtuse2U/SDXFWaCtC8VlGJqjRS0aQT+NT8yxK
-         ZGqlIlnSKkXu3Y6A0fcpicAyy1KMbBVgdf1oQqK9ANYzG17k/edqQF++Cwfu161YO2Jv
-         Zp0w==
+        b=HSFvtm1Av35GoEb0knvRtJ3TWQiJ9V4mGqV8ynBFgPN6jveY9rDw+38S13WsUKFAox
+         ivgvulix0owzPTfATJTKOfZNzLWJL73Aty5hZ5ajExxbcf+rnzoJTILkHYBX1TloF8cZ
+         YxL1voI3BkBGS8qNVqKi7254YtNuBgA99bhxIheFx6T4JSIdCUCb3B3e59HxObARIkve
+         Qfe/T40+8lSZB3Js+Gp1d1npSb42zhiEFucg/P8noth48dIFSjgrdi2tsbVDXuSRbe+B
+         TysZn5DQ6gpfchyECS33AFyPiYO5UeTMZC2RZSWGx0gtHVRYefF0eeN74oMqXXLEFKYZ
+         nXWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:from:date:dkim-signature;
-        bh=U1ln5M2Wl3gVsjRqvWLCd4oEQkwWlQsy/9s+22rpX6w=;
-        b=rzpsXNvk3ew2fM9ojTwvFwXANX9cX1Mn9qJf5Fnmt6Ssl7qKrULwUb2NJSKyaBWi+O
-         7Ed2uqMpl0LuI2HNkFNjIDZZWtz6Dn9UJa5OZo2ANk4HT974UH88VSYu3I8TWVnlngn4
-         fhEPBOHqwzfZr7uzNkk+9pNAZC4tmdVJkGO9MzjvRw+3rhVTdV0+ivXBgB2e4UwPEUuq
-         5wVyRSnVxnMbcc81//wwcLXlHl995Kp/iDblAgKHoRUBuY5mKC3Hb3y+GRvWmr7qahwf
-         WPjDQ9ljvTN2zG17O97T/UvR1FhFbFY4YwlyaqQM+pFc/oZSsywQfVHGwsyx1G05x/BD
-         sM8w==
+        h=subject:content-transfer-encoding:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to;
+        bh=ytr+sKqLt6Br3k4mZPELbk3k6TX6Zb1xzmHNqCyYXac=;
+        b=XzTdddnUX/GURzO4L/oSSCx9k9LLm+zhdPsAI5cTHO8lcq25CF2RzaKP8P7e0qBra4
+         JoRwN2QmOnl2wpUo+r5z+V/62h1hUnX1tWKLqbdSi0H6J59JVv4sm/HrPb4d5ELw90HN
+         nQjGXyKS6OWZV7Y5Lk7tLGHX2jpcwN4eG9uGDofq72h6z0Sywe3Vrrnf5QK6Z704oFNF
+         1Ah+OcoXon/Lq5ONXRCXv366eEGbpLlrs/kZapPCJvEeWkws2bIsiaaalKaX/m1LzWH7
+         tsIZR5/O1AMemUmkh8uUttrTMs7Jo8nLVMcu1oBLBwDCoEILHQnB0X6dTWVzLJFzw6Yz
+         kRhQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RviBK+1m;
-       spf=pass (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) smtp.mailfrom=fomichev.ru@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-lj1-x244.google.com (mail-lj1-x244.google.com. [2a00:1450:4864:20::244])
-        by gmr-mx.google.com with ESMTPS id z18si1055370lfh.1.2019.07.16.10.34.50
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
+        by gmr-mx.google.com with ESMTPS id b74si765998yba.4.2019.07.16.10.41.13
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Tue, 16 Jul 2019 10:34:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::244 as permitted sender) client-ip=2a00:1450:4864:20::244;
-Received: by mail-lj1-x244.google.com with SMTP id x25so20813393ljh.2
-        for <linux-ntb@googlegroups.com>; Tue, 16 Jul 2019 10:34:50 -0700 (PDT)
-X-Received: by 2002:a2e:9158:: with SMTP id q24mr18457905ljg.119.1563298490308;
-        Tue, 16 Jul 2019 10:34:50 -0700 (PDT)
-Received: from localhost ([89.207.88.249])
-        by smtp.gmail.com with ESMTPSA id m9sm3278678lfo.45.2019.07.16.10.34.48
         (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 16 Jul 2019 10:34:49 -0700 (PDT)
-Date: Tue, 16 Jul 2019 20:34:48 +0300
-From: Alexander Fomichev <fomichev.ru@gmail.com>
-To: linux-ntb@googlegroups.com, linux-pci@vger.kernel.org
-Cc: Logan Gunthorpe <logang@deltatee.com>, Allen Hubbe <allenbh@gmail.com>,
-	linux@yadro.com
-Subject: [PATCH] ntb_hw_switchtec: make ntb_mw_set_trans() work when addr == 0
-Message-ID: <20190716173448.eswemneatvjwnxny@yadro.com>
+        Tue, 16 Jul 2019 10:41:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
+Received: from guinness.priv.deltatee.com ([172.16.1.162])
+	by ale.deltatee.com with esmtp (Exim 4.89)
+	(envelope-from <logang@deltatee.com>)
+	id 1hnRRt-0001EU-Ux; Tue, 16 Jul 2019 11:41:10 -0600
+To: Alexander Fomichev <fomichev.ru@gmail.com>, linux-ntb@googlegroups.com,
+ linux-pci@vger.kernel.org
+Cc: Allen Hubbe <allenbh@gmail.com>, linux@yadro.com
+References: <20190716173448.eswemneatvjwnxny@yadro.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <9428e069-19dd-d020-1a47-f33d99bd01ac@deltatee.com>
+Date: Tue, 16 Jul 2019 11:41:09 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.7.2
 MIME-Version: 1.0
+In-Reply-To: <20190716173448.eswemneatvjwnxny@yadro.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
-User-Agent: NeoMutt/20180716
-X-Original-Sender: fomichev.ru@gmail.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=RviBK+1m;       spf=pass
- (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::244
- as permitted sender) smtp.mailfrom=fomichev.ru@gmail.com;       dmarc=pass
- (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Content-Language: en-CA
+X-SA-Exim-Connect-IP: 172.16.1.162
+X-SA-Exim-Rcpt-To: linux@yadro.com, allenbh@gmail.com, linux-pci@vger.kernel.org, linux-ntb@googlegroups.com, fomichev.ru@gmail.com
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+	GREYLIST_ISWHITE autolearn=ham autolearn_force=no version=3.4.2
+Subject: Re: [PATCH] ntb_hw_switchtec: make ntb_mw_set_trans() work when addr
+ == 0
+X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+X-Original-Sender: logang@deltatee.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
+ permitted sender) smtp.mailfrom=logang@deltatee.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -146,34 +136,41 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On switchtec_ntb_mw_set_trans() call, when (only) address == 0, it acts as
-ntb_mw_clear_trans(). Fix this, since address == 0 and size != 0 is valid
-combination for setting translation.
 
-Signed-off-by: Alexander Fomichev <fomichev.ru@gmail.com>
----
- drivers/ntb/hw/mscc/ntb_hw_switchtec.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
-index db49677..45b9513 100644
---- a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
-+++ b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
-@@ -305,7 +305,7 @@ static int switchtec_ntb_mw_set_trans(struct ntb_dev *ntb, int pidx, int widx,
- 	if (rc)
- 		return rc;
- 
--	if (addr == 0 || size == 0) {
-+	if (size == 0) {
- 		if (widx < nr_direct_mw)
- 			switchtec_ntb_mw_clr_direct(sndev, widx);
- 		else
--- 
-2.7.4
+On 2019-07-16 11:34 a.m., Alexander Fomichev wrote:
+> On switchtec_ntb_mw_set_trans() call, when (only) address == 0, it acts as
+> ntb_mw_clear_trans(). Fix this, since address == 0 and size != 0 is valid
+> combination for setting translation.
+> 
+> Signed-off-by: Alexander Fomichev <fomichev.ru@gmail.com>
+
+Looks good, thanks.
+
+Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
+
+> ---
+>  drivers/ntb/hw/mscc/ntb_hw_switchtec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> index db49677..45b9513 100644
+> --- a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> +++ b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> @@ -305,7 +305,7 @@ static int switchtec_ntb_mw_set_trans(struct ntb_dev *ntb, int pidx, int widx,
+>  	if (rc)
+>  		return rc;
+>  
+> -	if (addr == 0 || size == 0) {
+> +	if (size == 0) {
+>  		if (widx < nr_direct_mw)
+>  			switchtec_ntb_mw_clr_direct(sndev, widx);
+>  		else
+> 
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
 To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190716173448.eswemneatvjwnxny%40yadro.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/9428e069-19dd-d020-1a47-f33d99bd01ac%40deltatee.com.
 For more options, visit https://groups.google.com/d/optout.
