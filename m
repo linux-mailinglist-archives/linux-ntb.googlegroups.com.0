@@ -1,113 +1,114 @@
-Return-Path: <linux-ntb+bncBCS4BDN7YUCRBUNHYPUQKGQECWP6RSA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCS4BDN7YUCRBCE5Z3UQKGQEVCIKUKI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb38.google.com (mail-yb1-xb38.google.com [IPv6:2607:f8b0:4864:20::b38])
-	by mail.lfdr.de (Postfix) with ESMTPS id 139AC6D5A7
-	for <lists+linux-ntb@lfdr.de>; Thu, 18 Jul 2019 22:17:23 +0200 (CEST)
-Received: by mail-yb1-xb38.google.com with SMTP id i70sf23017148ybg.5
-        for <lists+linux-ntb@lfdr.de>; Thu, 18 Jul 2019 13:17:23 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1563481042; cv=pass;
+Received: from mail-io1-xd3a.google.com (mail-io1-xd3a.google.com [IPv6:2607:f8b0:4864:20::d3a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3952C6F0DC
+	for <lists+linux-ntb@lfdr.de>; Sat, 20 Jul 2019 23:58:34 +0200 (CEST)
+Received: by mail-io1-xd3a.google.com with SMTP id h3sf38903449iob.20
+        for <lists+linux-ntb@lfdr.de>; Sat, 20 Jul 2019 14:58:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1563659912; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Up04UxSpHAlYpIOyqATTcb00nzOaL29PgH+wAJ559Ka+y1PLuMnSs3csaEsLy0KFnc
-         FV5o1uqOHozj4PMTBI93/xePg3K4QDb5WMbQWIFxZ8y28Ooe3xmG4N91TpkIaLh4GqHh
-         NGLL085+0k7RzVOZNfGHijPZ3ho8LCbhmlv2VFqxlQ/uY4tCOhtBWZREtZiA5rFR2HIB
-         amVPqzsqaP9I+qhegogrfsobHU6RL6WKq8UbraOBDRqOMRqTuUuD5k+l4VduK50S5GRU
-         BKdZdPAk8jCXafgGeaLaojvu3spHFwaboGCP6CccALie0U2S/4sPvw+l6FDZlkwcxQwd
-         x37w==
+        b=geRgkxhfHIVP/Zaf9HKC1BBr/tx7MjyTZd7Z1Q0FUcZNXQp/ZLczj5q9drT2oA0QTZ
+         7QlIfw7h1UMbi6BwX2WxOd52keF/f3GGVBILGwhrCRldlZLxk/sKLi4Gi2YV2RMwimB+
+         ni7FBGsC30RdWlMIqPRbtbVGVYjYZ6Ux1Xjr1YnK8OmSn+vpcZ0WkxmC4mSrWzDqAx2s
+         cyJU1QUU03OalP1/uhyyTW6l9W4KqBhopIAoH8wMlHVVm/LVa8tQNNmPjD1UYkN6JJrJ
+         ig9ej+EGMQwfVMJmLQID3FM0fgNwq72iPA2QIXVoEbN+QmNGoK80FzhTRpCkYRiwwCxZ
+         wDIw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:user-agent:content-disposition
-         :mime-version:message-id:subject:to:date:from:sender:dkim-signature;
-        bh=V1rkJE+0jeiBBWFkOhF21U8HesyQ77AyMi+vvBnpauc=;
-        b=oA6b3vVXtd9R92ln/qu10d+C69qigfmbZbO3GrD/KiQNu87+2yBiyLHwkd98iPkfaa
-         aneC37jZxDVkraGBtyk5zXhOn6eNdufBOqePI1wva6t63bRw6PzZHOYL4dNi8xTe3lWm
-         QFLRnw6I/2ALbhMzuOPF5ST43gRJwQ95E99UTYHa01hjB7dnf4jc4E3YgK/G+8YWMWqt
-         vmZ2rtmnFy4mmos47H9YSFWDJZPGHF8AajAIYqw2oO3YBbeFCacDPlPjTOLh3SCEDwrf
-         l1fPqOJFw069Eazd9pjIpNa9h0tS36WyhEevgDMQBV/df5BkrPglUMyMuu94YoLe+kDE
-         I5yw==
+         :mime-version:message-id:subject:cc:to:date:from:sender
+         :dkim-signature;
+        bh=Jcgn8MZsYOHMGQRIn/QU7kDGCixgvf+4WEJmxBrkCS8=;
+        b=GfnGdrXly8M0W7zREbBddRuV7/S9O8RQiv9yg3VanZTHendCXIMzYweyVYRO2paWaG
+         2pyfA9J23l4iRVsuhm/KGuEwgdbOcORAg8Vrlz42U6tgUkQExekMf6F7uUEMy981unRC
+         thSPnkbA+VVzd+LuDDqDQaXWjOApsRwdCHfdStVx59E6rk8NtGwMOeuch8LHWHVvEDD+
+         bj0Mmwm1gRwRtg42Vgy5Dq+Ssqa58aP6wyw9FjUETHOuRjF9xzsghAMDNyAdr0o8f4fT
+         O6vYvzBhpnPTnfIFx77utgjgDHXLcW5YNZbRVbUZBya/nCVipWHXKOs6nkh9czVBW5kw
+         uZCg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=C7QQl0+Y;
-       spf=neutral (google.com: 2607:f8b0:4864:20::c34 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b="yEv/5vlp";
+       spf=neutral (google.com: 2607:f8b0:4864:20::c44 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:date:to:subject:message-id:mime-version
+        h=sender:from:date:to:cc:subject:message-id:mime-version
          :content-disposition:user-agent:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=V1rkJE+0jeiBBWFkOhF21U8HesyQ77AyMi+vvBnpauc=;
-        b=nbqYyfv2ERsKd2+n3FVWeFQ5xuQMmcVoHOMneJZtmkQk1kPaDHpvDyy/hqfVlCGNFa
-         MzWFVvFX7KeEXii6aP9rguhBAkEigm12ZjP637u/+xkZrZjGGdB5/opaayxCSZKXbTk8
-         URRZ3EWiJeaRjg0g0PTV0I9EjIZOkF7iWd3EBj6MZ5WzqgVCnZ35P3xtlIBDALeztCel
-         lVNDPpybW/A0WzUWnL3XVYgtgtQw+ZQ7eWcUagn2JiM2Y01VxHtd6Jmr4oVIThBHd0CO
-         y8UdHuiAreYIWKapaiWYAm7+3mVfsFF84/UL7ERfk4/6miJBDDYxib64seUApW1Z7Ob9
-         4ACw==
+        bh=Jcgn8MZsYOHMGQRIn/QU7kDGCixgvf+4WEJmxBrkCS8=;
+        b=PY2o7/RD5DgQzxcqzFu3fN4OaSs+KUXALjvA+6avon4jXxg57uEZg+irvnwlNlTbSi
+         +JknQs2xI765HnJtG2blc1LgxlNmeNhWs6NBYtj/311Lza3SX6Tf7pXbdahFGJlIxICW
+         4jv5eaquFWq+zgKzEx3X9fshhyR4BssgmvSY6ZZqbEO7CBlJnez4zZ09+0WxbKFecInN
+         Ftpy18atbjwSej41F/N1Qg2Cezw/rqWGz7gByX87cQhD380OcGl6/0ySNSrfGJ7akRsO
+         N0sDkq0Ct7pNVgQzoZoLJZsuWFA2eFt2TcCwXSmD5Nvhs0VoHMtYF1weCYI63pj7O5hZ
+         qXsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:date:to:subject:message-id
+        h=sender:x-gm-message-state:from:date:to:cc:subject:message-id
          :mime-version:content-disposition:user-agent:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=V1rkJE+0jeiBBWFkOhF21U8HesyQ77AyMi+vvBnpauc=;
-        b=Q9jZF+Xms5WWP/Fl5YhsrqRu9QxsftIjtvV4B0W+H3ZPNyC6jFsngR1f9+HxWC9q1N
-         Ie/9j+HRFqwND8D5tN1yGHx4Do3+ukxe07DdPX34k/70fkEYbw12yGe+Z1mS0L5ItXvi
-         owY8irXJ1n4gRVoSrQlHO7N40V4ssSj/46dXV5YjieM7RyL9xsHz81hkTjH54PwA+FDI
-         wSji/FQpJiBali+wJPjdK/BOxJU6QZ0PjPh+6Sx+QzfZnhu+IvBK76+gsddLwM5VT+dv
-         XwVx2SeoWhR/upuy5FuAkM3W48WbH38Evy9+M2z+ryLb+tjEmzA30Hkl0krvOb4SgYue
-         UEig==
+        bh=Jcgn8MZsYOHMGQRIn/QU7kDGCixgvf+4WEJmxBrkCS8=;
+        b=b61xI0JC+xJMv+Y3YIiDDtDsgjiJDDTv6rIos5JG/7ASdxkEODa+NbJsQWGgf4JCCh
+         xFplFGTLl9ZIiufQG2IErwv5Dl7R+BjuZ6mh/hFtcYnHCwtlaEHnY+JpRkuNzej/dPvm
+         stM6fFHxIbYEkeBtY3i3TS0SN9Cc4IORvhQZ79QVo+HN8Di79xErxprkfs1uhaI9cJIO
+         Itvdds6G5uIl7kq1xRV0AQREG2Q84gN9NZTqEOYlA+1PLnlDDPJi8RbqNPYhEyHunRpv
+         zCQxSWP35/8b0t3t3FFB05g17h96dlPQlvly55Xbe/ktg7hvxXqheZt6bida1iBrPhcn
+         apSw==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXlVlUfXRIAbPG8DRZEXuwT5MlZt1JRJCD3MZc460lbfFNySxFU
-	Sj7HueKH9tYiSkASvy1lyDo=
-X-Google-Smtp-Source: APXvYqyFXy9p9em86lHgbOHvUZ/CMd+Bc2UGULcS9Jsnbw6ph913hNn9IBa9NxGOaocPMq/oZveOoA==
-X-Received: by 2002:a25:5b06:: with SMTP id p6mr27860962ybb.432.1563481041797;
-        Thu, 18 Jul 2019 13:17:21 -0700 (PDT)
+X-Gm-Message-State: APjAAAW0VuYce4BvCZKtcFjJYTOUCrnPvaYC1gZbfZkC5WQnToPJHOdr
+	9UPTaJQZ9BlJ66F0zmgg0p0=
+X-Google-Smtp-Source: APXvYqy5od3qOlH2tPJ241kXLOC2EcHqUm4CzGMr4H+LEPvWSKwlHd79mbG8MpThcIuyym6Iyi0jBg==
+X-Received: by 2002:a02:340d:: with SMTP id x13mr64000333jae.125.1563659912706;
+        Sat, 20 Jul 2019 14:58:32 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a25:410c:: with SMTP id o12ls284571yba.8.gmail; Thu, 18 Jul
- 2019 13:17:21 -0700 (PDT)
-X-Received: by 2002:a25:8602:: with SMTP id y2mr30193315ybk.483.1563481041510;
-        Thu, 18 Jul 2019 13:17:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1563481041; cv=none;
+Received: by 2002:a05:6602:18d:: with SMTP id m13ls9250005ioo.7.gmail; Sat, 20
+ Jul 2019 14:58:32 -0700 (PDT)
+X-Received: by 2002:a6b:6a01:: with SMTP id x1mr17534815iog.77.1563659912355;
+        Sat, 20 Jul 2019 14:58:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1563659912; cv=none;
         d=google.com; s=arc-20160816;
-        b=gj0cpTvU4wAEqsVKcjAyH3PNfKjLptlWbK3SjNkeNtM8ee2kUCm/Hem+NXqW6DYLfU
-         cY7/rd+zRbV+i0cTOIxR6KDOef0rYHUxneF6mUwc1UzwdVNtJZZZotwGKlx8+XRMelVq
-         XXVIYnjz1lp7BKOU9mM9RmtzCnwSa5dPn9o8ZEEJIHSCzJvI1u/AB9UhLdlyMjkWB1KM
-         1wElUmKZHrXYDux0VKu990gW5E9yBJ9DqZGW98jju3nm2mOH2cIak5W9z0J8JFEUyCcY
-         ERgokFRdGMOwrSlvrtn5dXImeZfeio/4pVKeQMZhUG30WF/zbDZ6qoxkTsYc5W2NB1u1
-         8Kcw==
+        b=NXaosgIEIxWv5cFtmcQvIQWF1gyxg7PZZhBMBiti0BMmTINZxiwWgkzyJCRS1irErh
+         xMjUsp/QoPvR1LokqqwIQJ5YUcZCZw4GvJHeMsrzwr2ADHOeeH0C4UEwpgkPxzz3mUE9
+         uyxJRRn3OROsGowa7MsgA117c93fizZQRSn8hL26AAsdiNOCTdPxgFiu6SDq1+IabglX
+         ST5bN0cS1EAX71ZLW8YTxS0U7U2VYE8Ty47TDEgqCF+J89hEZbB6Bd2hmEmTeYykKrHI
+         4iX6Pv2vyl3UJZLRHJ3kXbs3ZITyQSQS+YFNKQQ5qYXL2P4z+fjLM0g4GZ0f/Ayzc6Uf
+         Rk6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:to
-         :date:from:dkim-signature;
-        bh=mRJp8zgGuuwZOr7P4pSoq4i342Di4VRymnvJG4OIDFs=;
-        b=Zcya9QtRad8DzBoY+0xT4L0hRBm/3MWEWb/xnBZxfmd5X/Mi/WGDO272PcP4Y0KCvD
-         PEJ2v5xGSJwhqypkjwht7xzahQq4EJxNucwJwbPo2y05fz/v4JsVxDJYCImMlMj2Nw9Q
-         QeRt9ps7yCdNJObLvJJhvDFZf9GuCQXnXWcecJV/VEUMYvgApbLUCAe+78ZfaPhl8Ek1
-         Y6riNtZsw465FcyRN3ngtbvh+Q3RT5Bgmw+WRYTDCmUH9qN1nw7DrKsyYYCD1AlLAqfU
-         uCx9GF5egJe1ZsK9kOmfEnkuoG/iqdQk0BgxVN5b0yZN3aTMlVKSr5ruRsx2p4LE4d3P
-         lMkQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:date:from:dkim-signature;
+        bh=7ukW3xU7Dcdw07hb7w1OwbyME2bLJbeEEY9buEId9ZI=;
+        b=Nu815x9sEAMnOKneMjrfmOTdmHiuWTnOu5HnzwKrka1I5DZq1tASmEAXPZ5U94JpnV
+         CzNNRtKrUa9RI9xIyBFSt/W6c8Eq4UBzl0dxwh5Z0xSaLUNpgy9UjA2Sj5cY4oo1pwsU
+         MolJck9hJgHYRrzNDyPyQ3cNnh74I7yZGWxvMwHd7XUz8uk5neeRB1zq//uwh75OAdA5
+         HouEvvVFKen4v8pTu3XQWk8e3AHgisIuUOppYZe3JqbPgsr8X0+bdAbWGEEvIqBZD5fy
+         MUceC31t5WH2Gua3W0FuR94zH9CGwcZs5YHhpOWCvMWzTpopXvpt9LDxp9Im02FJ3vdJ
+         jiDQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=C7QQl0+Y;
-       spf=neutral (google.com: 2607:f8b0:4864:20::c34 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
-Received: from mail-yw1-xc34.google.com (mail-yw1-xc34.google.com. [2607:f8b0:4864:20::c34])
-        by gmr-mx.google.com with ESMTPS id v127si1339117ywv.2.2019.07.18.13.17.21
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b="yEv/5vlp";
+       spf=neutral (google.com: 2607:f8b0:4864:20::c44 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+Received: from mail-yw1-xc44.google.com (mail-yw1-xc44.google.com. [2607:f8b0:4864:20::c44])
+        by gmr-mx.google.com with ESMTPS id t12si1304239iol.0.2019.07.20.14.58.32
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=AEAD-AES128-GCM-SHA256 bits=128/128);
-        Thu, 18 Jul 2019 13:17:21 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::c34 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::c34;
-Received: by mail-yw1-xc34.google.com with SMTP id b143so12728175ywb.7
-        for <linux-ntb@googlegroups.com>; Thu, 18 Jul 2019 13:17:21 -0700 (PDT)
-X-Received: by 2002:a81:980d:: with SMTP id p13mr28952907ywg.51.1563481040901;
-        Thu, 18 Jul 2019 13:17:20 -0700 (PDT)
+        Sat, 20 Jul 2019 14:58:32 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::c44 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::c44;
+Received: by mail-yw1-xc44.google.com with SMTP id i138so14658066ywg.8
+        for <linux-ntb@googlegroups.com>; Sat, 20 Jul 2019 14:58:32 -0700 (PDT)
+X-Received: by 2002:a0d:dd01:: with SMTP id g1mr37007514ywe.482.1563659911682;
+        Sat, 20 Jul 2019 14:58:31 -0700 (PDT)
 Received: from graymalkin (76-230-155-4.lightspeed.rlghnc.sbcglobal.net. [76.230.155.4])
-        by smtp.gmail.com with ESMTPSA id 197sm6556447ywb.56.2019.07.18.13.17.19
-        for <linux-ntb@googlegroups.com>
+        by smtp.gmail.com with ESMTPSA id q13sm7814780ywj.61.2019.07.20.14.58.29
         (version=TLS1_3 cipher=AEAD-AES256-GCM-SHA384 bits=256/256);
-        Thu, 18 Jul 2019 13:17:20 -0700 (PDT)
+        Sat, 20 Jul 2019 14:58:31 -0700 (PDT)
 From: Jon Mason <jdmason@kudzu.us>
-Received: by graymalkin (sSMTP sendmail emulation); Thu, 18 Jul 2019 16:17:18 -0400
-Date: Thu, 18 Jul 2019 16:17:18 -0400
-To: linux-ntb@googlegroups.com
-Subject: NTB changes for v5.3
-Message-ID: <20190718201718.GA20276@graymalkin>
+Received: by graymalkin (sSMTP sendmail emulation); Sat, 20 Jul 2019 17:58:29 -0400
+Date: Sat, 20 Jul 2019 17:58:29 -0400
+To: torvalds@linux-foundation.org
+Cc: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
+Subject: [GIT PULL] NTB changes for v5.3
+Message-ID: <20190720215829.GA10213@graymalkin>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
@@ -115,7 +116,7 @@ User-Agent: Mutt/1.12.0 (2019-05-25)
 X-Original-Sender: jdmason@kudzu.us
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
  header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
- header.b=C7QQl0+Y;       spf=neutral (google.com: 2607:f8b0:4864:20::c34 is
+ header.b="yEv/5vlp";       spf=neutral (google.com: 2607:f8b0:4864:20::c44 is
  neither permitted nor denied by best guess record for domain of
  jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 Precedence: list
@@ -130,8 +131,10 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Here is the proposed pull request that I will be sending tomorrow for
-v5.3.  Please test and scream if any issues are encountered.
+Hello Linus,
+Here are the NTB changes for v5.3.  The big change is adding the virtual
+MSI interface for NTB (reviewed and acked by Bjorn).  Also, there are
+some bug fixes.  Please consider pulling them.
 
 Thanks,
 Jon
@@ -218,6 +221,4 @@ YueHaibing (1):
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To post to this group, send email to linux-ntb@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190718201718.GA20276%40graymalkin.
-For more options, visit https://groups.google.com/d/optout.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190720215829.GA10213%40graymalkin.
