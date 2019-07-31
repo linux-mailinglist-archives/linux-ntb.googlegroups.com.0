@@ -1,133 +1,161 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBCMO5XUQKGQELFKWUAI@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBZGQQ7VAKGQEUMCEHYI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53b.google.com (mail-pg1-x53b.google.com [IPv6:2607:f8b0:4864:20::53b])
-	by mail.lfdr.de (Postfix) with ESMTPS id 699EF77149
-	for <lists+linux-ntb@lfdr.de>; Fri, 26 Jul 2019 20:31:38 +0200 (CEST)
-Received: by mail-pg1-x53b.google.com with SMTP id q9sf33466773pgv.17
-        for <lists+linux-ntb@lfdr.de>; Fri, 26 Jul 2019 11:31:38 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1564165897; cv=pass;
+Received: from mail-wr1-x43b.google.com (mail-wr1-x43b.google.com [IPv6:2a00:1450:4864:20::43b])
+	by mail.lfdr.de (Postfix) with ESMTPS id E84437CC91
+	for <lists+linux-ntb@lfdr.de>; Wed, 31 Jul 2019 21:13:40 +0200 (CEST)
+Received: by mail-wr1-x43b.google.com with SMTP id x2sf34051783wru.22
+        for <lists+linux-ntb@lfdr.de>; Wed, 31 Jul 2019 12:13:40 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1564600420; cv=pass;
         d=google.com; s=arc-20160816;
-        b=hzcl+m0+wsO0ia0QXLPRdOmL2k/c9bOXl1Rn6yu+07PU2fuFaGHIal0UBm95dych4A
-         X8AT7aowgFiaRGcNpfLkwqAaxssaA9IZRQXXfLQYdDznF5SIdQHe4hLsTQzRo7NqtToh
-         cljRsdkrBxz0eJbW9EIDZUi1VKw+ELf4gqAqWe/7zkqrBy+gtqB+vhe4BjzAU0/lyibe
-         +lMUnuoEIR5mWeFD0ZUYNneFi0BFU52l2GU4o6Ovd9exPL9vk7zwS4FO5Ha8w2HD+Z4/
-         4moUnKKWXh5p6x5vu+r2u5iKiCp6PuFtdjBl8V+k31NF9VcFPz/wl+ekGfGuShvDDW0q
-         5Ldg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=i4KS3+HIemYP6nZAcRyfB3D1dS9ePQZeu2GUtaLTBdd4UiacGV5Y/UJFU71g8XN1XB
+         FhJRZpXkFqoKJmnv5Wu9gd5F1MS72Fz/zSzWheajIbb0T/WmsCyLaUguwgu4iAZnz/5Q
+         JKq9Bh29WrWqIfijTzUBnfNV6V92DYykynziGDRe8ocfyY756Qt2shJIcdA1ZD2ceVZg
+         oJ1A8P4OqIW8nwtY2rKknyvZnW9p3Fz1+shIDcmnwZPv8vzUxWJsrbSFGRhE1UeIVdy6
+         PTUr4iotR9AL6xEXKDvH+wRa1SsbRjxL0yXCHV5KDI2UcasYJk37BNevHCIzaZjkPqHc
+         W0ag==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:subject:mime-version:message-id
-         :date:cc:to:from:sender:dkim-signature;
-        bh=TeRMy4T7C4dCMedKuli3dQ8+di2Kuh/gdOz5izCUBMA=;
-        b=AW9zUzepbfeiIUY2MXc5oy3CCPiZOd1K5avTi14GYXvnYH6adQzp5dfdbR7XqxANMl
-         Dxt4U6N28fvUHqWaK0yAgMpvGVKeuxv0SL4JbYoJVcvjnIbTjg4PqIERXq8cQsuKnllA
-         Nb2OXZVvPDVEcgM9U1IdkD/PScn3GhAgVeTETu5JINbl+qYVFxdeQr3R895a7Iv3aXV8
-         95f1RAGLtf87Zix7kfVZrfJSjXws+uxE4L0F+uq+TIEk0BrsHVn3wgrJMdmp74GQfieQ
-         Zzx2NLqXVK7JFB5h1DHYiyB0Kbts8o6s3Y6SHiQnrfOjUSCIfKu0STjCQbQJKoGwzGiJ
-         e06g==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=gunthorp@deltatee.com
+         :list-id:mailing-list:precedence:mime-version:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:subject
+         :from:sender:dkim-signature;
+        bh=P+la6wnifSOeBzPzJSleD3f7AAaqR/DTHzqJdgYEnoc=;
+        b=WtHWcKXsfbEOSqmDk8QDy5F8wDvPEWAYLRFbVPpJnXjrAenCtrBZ7+OgiFVhXOpNft
+         sjkYuZXG59TJAnQztpGopgNTzllOz8v7JU3NCvTF4u5uy4VwNBeL8uZSXIsWUqi6oyM0
+         2kffT+JVsfJ7G960Pa13Gx1BtWzLNlAlpv/E41MfLYAbEK/f3P2qdDJcbik3CaSdunPD
+         /utWuZwh7dgzmVmJLk+KrQR7QeXE8t8VGTNKgO3zTUsEpp+pAdKH7E+K7WaYhy0oAsb3
+         WjptFk4XFvpHzL6S5cjZCPKigGlmgBZKKt1BhmjqZi0oF4z1uUVABdK0KMHEmXKxg+Wo
+         SupQ==
+ARC-Authentication-Results: i=3; gmr-mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=fOA2cP3m;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of patmikando@hotmail.com designates 40.92.6.72 as permitted sender) smtp.mailfrom=patmikando@hotmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:date:message-id:mime-version:subject
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=TeRMy4T7C4dCMedKuli3dQ8+di2Kuh/gdOz5izCUBMA=;
-        b=WW2ICnUTwSs9U2aAPYfDISIWH+U1SbiquKZO8Xivj1BAsjzP12l3KhebV2j0qs3JlW
-         LES9kvEd52PldNtHLWSExUFMPLDBIqSjq1OMMM7CPecczEoV8H+3+vo3bphRwM12WAVd
-         nAvegZP71YDtHXg/UIZV72Ku+r+xbtDGt1PYYwDTStpj50T710owuDQGZdzF90jxgclq
-         kU5UydVtuXEWdOrPLe1CW5jpkfaNBBkuMjxVtwWQKSMIGcaN+jy/WulqhHiV6OZRpJXj
-         0HKdulh6YErW25AuBvPqxG9whgpVyRTiIxbML5zZ+MtTKAT8Juo5Qjc5PvwdpLcyPG6V
-         dJqg==
+        h=sender:from:subject:thread-topic:thread-index:date:message-id
+         :accept-language:content-language:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=P+la6wnifSOeBzPzJSleD3f7AAaqR/DTHzqJdgYEnoc=;
+        b=RVSuYrKp1j1Sj3vy+oq/7YCJO9yAav5nQGzZHFHUADqjB8ja02eXsg9QQ5lObGSZa3
+         3QRGYwChn7sJcCMrWI4RL1g/hykm6L5lgBtJk+FDfUv+Bz5DFpEdK9e+PSnAW7e5PPiH
+         gqrEvHXLL5+AkaM10QyTn9N4pk0FUGWqxJvW8eQuKNVbTnp+Yk+ejH7K+01/osrxO6m1
+         Nw/56miK6N/2EuQyROhBktasPQvayO+YU72dtvYqQbZ2/I4Q4hbaVwNjggUfmYgSbwQl
+         xkEEZDsI039Z0u7UlGNBbtPqUyBTQ9Kbe/gmDHa9hDLNe/0W8xl2z7Y1stgPuKStDnk3
+         DATw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:date:message-id:mime-version
-         :subject:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=TeRMy4T7C4dCMedKuli3dQ8+di2Kuh/gdOz5izCUBMA=;
-        b=oYjyia/U0gx5SGlud3AOuOwYiSw1hVVYVY7OLiN5C6eyRBugNwvvfQZuZ6zlVNTErn
-         NA5oBgM0dNHQ+hrkFtxGpSr/0d4f3wJqPqWk2CuwBwj8KY9+UVS1SCX4L1EEf9BwFLB3
-         EotPvDydQlJLH5EEZqt7DDRxEknW3j8euwpjrx6cC+EaWv6jpQ0xocSPoBmSoJ1r2SHs
-         AFF47tVFeBr8lg0tE6LjcDQ/cUmPu8bKwLKXJr4f/I7hWziLSmKlCwI4cpnv9AuVtCMF
-         bM0bi1HINtG8Wk/v96IjU3h9FUwbo7JpXSo354RiwsRFfVMlaNqdLCvT6/hlEMwBdZ2c
-         EhXw==
+        h=sender:x-gm-message-state:from:subject:thread-topic:thread-index
+         :date:message-id:accept-language:content-language:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=P+la6wnifSOeBzPzJSleD3f7AAaqR/DTHzqJdgYEnoc=;
+        b=AF1sDIb25NemZOOIbF7Su5oNMpbXaGIHfcCDztVOUOnBOLfDut9w0tTal1ZPpfdilp
+         k3KHUf3oLffQxLOHfo6H73CvCO5nIqz5kFrtdSjgOiHQdaSRY45UoE7qfCibaeUEY+bc
+         W08GLyy13Jj3fgYMnqvDMWw9PcOzi4SjI10isZigC5hqJEky9SZbcjPcbiWc4Bhlb8BR
+         rB8Ryh79xWcnKWVqDAnV0X+D+gByD1iiRd9EbYaCBV2s49gPNKN7LfPzaVqvWTkHA0a5
+         oMRtaJviDoJzDkq5ax+GbVgitVaCV8v+2TYPH0Juc6Y56zJMczfbYVzSrhEkJ2/7HImo
+         NV8A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUD9C5RZ+b53nh7JN10vQgCKpE5na2qrlg8odWhzjWRBrRSdI/k
-	H134WmJa25MeOVyjxlES01U=
-X-Google-Smtp-Source: APXvYqzx5Ass4H2OQ97xUh1/BwbR/asyV56QhBtnS/ed1ZZ7XojikptgKMuY9wQj6dZViEnXNyA9Yw==
-X-Received: by 2002:a62:1c5:: with SMTP id 188mr22736228pfb.26.1564165897168;
-        Fri, 26 Jul 2019 11:31:37 -0700 (PDT)
+X-Gm-Message-State: APjAAAUAuD7X6FnEdy4C3KlDLzuhfpjvgDyB6wcpzg7zTIk0fYAhsY/C
+	fa6gMnbK3hf2n1x6jzBBXCk=
+X-Google-Smtp-Source: APXvYqxaxIpJTmkkSb1NpyClLNf6O6JFMI0y/PpBmkxglggFGGmKVgHToc53TBqecpv9mXhZeENrEQ==
+X-Received: by 2002:adf:ff84:: with SMTP id j4mr31538695wrr.71.1564600420654;
+        Wed, 31 Jul 2019 12:13:40 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a62:5f87:: with SMTP id t129ls10562787pfb.8.gmail; Fri, 26
- Jul 2019 11:31:36 -0700 (PDT)
-X-Received: by 2002:a63:1d2:: with SMTP id 201mr58295821pgb.307.1564165896734;
-        Fri, 26 Jul 2019 11:31:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1564165896; cv=none;
+Received: by 2002:adf:a745:: with SMTP id e5ls20800426wrd.5.gmail; Wed, 31 Jul
+ 2019 12:13:40 -0700 (PDT)
+X-Received: by 2002:adf:c803:: with SMTP id d3mr62904881wrh.130.1564600420353;
+        Wed, 31 Jul 2019 12:13:40 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1564600420; cv=pass;
         d=google.com; s=arc-20160816;
-        b=y27wYJ3CUBTgxYy8XXxf5E4E7oTESwO6wEHdn7kVmXb13YjDDQA3NkTMcnVEt6bkob
-         3Fmz9enQluLtCe1mmNbYMS5DmlMYGualPGtQN9qEx53Ip62eba62E27r50lLWJct36B1
-         Jnj/BN/t5YxGfAqKeJw/PT/xXb4hxNkBwX1yB4/AbLZk7JNYv2PoPnTpZpy+DvnNd8iv
-         uvkpp0K5YNH7+TFupdaydEDXTeDO4l4JDIELHSRudBptaZCXykFSF1PN5sYfzi3/6F2x
-         IJw24JgnOelcZVqs/6jbtZg+KzippB0BGn06fJ0eHjZ/yiykEd1gr0jKkHBT28uwUtru
-         mtYw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:mime-version:message-id:date:cc
-         :to:from;
-        bh=uvef8TCfzEmaopMMC2VnK5BdieZywhU5T3T199EsDV8=;
-        b=ufpwwYTx/M9B3+XOW4+2abfs54ALZeBXan4w7mxOCjNJBBrjn8csypoyvU/1YgsPo6
-         AeR6wxoIhdXCnp/tZk6b8TWnC/1FRa2Ahdg2VcjKj0qh/jW7PLkxNJQRCA1JvB9/2s5n
-         Y2RWzHIDry76IOd26WmuVJho28rkfAAaX6V2jqN/SOI1wZOxX8fp/4z8IBuZBni6Nuxt
-         GQfQ5fPmxx0UG4rQaIsMGg41pjOGrE+zYZG8Or9tnu9KaWw/wHI/2YEsU6Js+Q8DOG3f
-         mH6jcx55hAbqZkUwtq/LuwM91z+hIui2ear1lNGAm1cYk5/DvD6UsVZ2fwQ8xLf156Kf
-         ZFNQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=gunthorp@deltatee.com
-Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
-        by gmr-mx.google.com with ESMTPS id z9si2448704pjp.0.2019.07.26.11.31.36
+        b=hAJZgTX3M2omGVqSTqgHJgpIim7h0Pg7Z0koFny+B6nLbHrqxoGbspDnLNao8+9Bt7
+         VSw7ICb4xWFXp3QAN5izT0qNZvsk8PCDRhKbyRJeUzVU6qGMOdsuHZQDMSF0vHLb1DDr
+         XxOvgrg3bi5GW2vkdzUl0UNDtFji8YKnBw+1bIFES/INqES57nRoZg53G7MfSk3QmriQ
+         pW1mO5SdzdteOs6zfzRD726+tMf0Yd6txSYvR2W1aMg+KGpLVbSnOW4Zink8iYuU8WA8
+         LfTBsW23xRhsPzCqlW3KXqDD3pe5sAeO64EcPbj6i+TmG0pAmmtTj3JHWqaWmn3W+wM2
+         7fbQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-language:accept-language:message-id:date
+         :thread-index:thread-topic:subject:from:dkim-signature;
+        bh=UG83ygoa2Rgd5ifLuLFttLquhIwi9U9c6fXHVAmZk0I=;
+        b=AqMVQQOQ6gTtMVk3O4eUNZ9JhVhdih2l+74NsRLtjyq0krfFshzprCTdZCN1QI8Jzm
+         Ij4QqJxtvMzItptDRIoF4kcwQ/y3Le3RUr2VFPSyVym9eyM1wvnmFfAm87CLfY85U4XH
+         nY9Fx6hQDm3gAx78O8GsIUUn8mZVRDvhbLwhc2Dz9vnu1p4DJSnPxKtmkH3nZc1Y6tWM
+         A6uvMaQIo+bI/oT3OtWQOcXjlc1RemFrvGvZCvJC7JZR/zKks05shRNcMIX7ekQgs7yH
+         Je77xXI9s7H0HCF46rpIPf72iBtIHD0v0/FM4aMP2v/ejbf054fft7FNwEL66AJKXknX
+         q5/Q==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=fOA2cP3m;
+       arc=pass (i=1);
+       spf=pass (google.com: domain of patmikando@hotmail.com designates 40.92.6.72 as permitted sender) smtp.mailfrom=patmikando@hotmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+Received: from NAM03-BY2-obe.outbound.protection.outlook.com (mail-oln040092006072.outbound.protection.outlook.com. [40.92.6.72])
+        by gmr-mx.google.com with ESMTPS id q14si3796189wmc.1.2019.07.31.12.13.40
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 26 Jul 2019 11:31:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
-Received: from cgy1-donard.priv.deltatee.com ([172.16.1.31])
-	by ale.deltatee.com with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
-	(Exim 4.89)
-	(envelope-from <gunthorp@deltatee.com>)
-	id 1hr509-0005rd-V2; Fri, 26 Jul 2019 12:31:34 -0600
-Received: from gunthorp by cgy1-donard.priv.deltatee.com with local (Exim 4.89)
-	(envelope-from <gunthorp@deltatee.com>)
-	id 1hr508-0002Si-A4; Fri, 26 Jul 2019 12:31:32 -0600
-From: Logan Gunthorpe <logang@deltatee.com>
-To: LKML <linux-kernel@vger.kernel.org>,
-	linux-ntb@googlegroups.com,
-	Jon Mason <jdmason@kudzu.us>
-Cc: lkp@01.org,
-	Dave Jiang <dave.jiang@intel.com>,
-	Allen Hubbe <allenbh@gmail.com>,
-	Linus Torvalds <torvalds@linux-foundation.org>,
-	Logan Gunthorpe <logang@deltatee.com>,
-	kernel test robot <lkp@intel.com>
-Date: Fri, 26 Jul 2019 12:31:30 -0600
-Message-Id: <20190726183130.9424-1-logang@deltatee.com>
-X-Mailer: git-send-email 2.20.1
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 31 Jul 2019 12:13:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of patmikando@hotmail.com designates 40.92.6.72 as permitted sender) client-ip=40.92.6.72;
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=PSNhzCkACgWLPEEEoB/dbYfsQaK6A83AGshq+G67XolRXEBEz5qjtfnNcJNmjNe2fZmy8a2k94i0UAmReKR9IaK7sSDZBqD1VBj7Y57xlELlIGbN8g4jOpMR2vt/MojZLpxfCvorYp+vqEYu6L8Y93BvxXKY2aKZpgxQh/zb8fT0OpP1qKHHc04eHd9xjM0eZ+x1+kDTEhagluDz83crO1vKm4FQHskeNX+p3v3WMBVUhT3Lk4hx2sy24p2TSX/rOWOON7VKtGBmgDLaBf/CXYA5vzHF+X0WQ7/MdaP2UmwuGmK9z3j3QX52Z9qgfrOW2LqAbk9jvTrzNLvj+S+Nyw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=UG83ygoa2Rgd5ifLuLFttLquhIwi9U9c6fXHVAmZk0I=;
+ b=GBwVyVkygh4eVgPFo4AWBts4fnXqDi6JlhOReuUAMhR7pbXBBxm8OTXMlbkAnhlte3cPxW3QkSpSLo3tIQnZmMaxdgHJuK5sA2OZja314tPoGDj159/Pyp7Q0/anxJ2rVD5zdSII79xWw6229viOJLQ0n4+cwlGEMkgtCk7A64mIKXFej5WTpiJlhMNk1XluiDpUSDumz/8Dka4wUI3OYejg6qfCsQ65AbKHIFz9aZjrYYvbeHjnAQyWDzHuezLcmHZkLb81WiL+E08qYtNKdTbjiBeQkpaMY/K7hAKbsTKUmiNBGeIHTqhVBusp23cBdhRGGHAT3EMXPdMIUjjYBQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com
+ 1;spf=none;dmarc=none;dkim=none;arc=none
+Received: from BY2NAM03FT060.eop-NAM03.prod.protection.outlook.com
+ (10.152.84.60) by BY2NAM03HT028.eop-NAM03.prod.protection.outlook.com
+ (10.152.85.138) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384) id 15.20.2136.14; Wed, 31 Jul
+ 2019 19:13:38 +0000
+Received: from SN6PR05MB3935.namprd05.prod.outlook.com (10.152.84.60) by
+ BY2NAM03FT060.mail.protection.outlook.com (10.152.85.85) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2136.14 via Frontend Transport; Wed, 31 Jul 2019 19:13:38 +0000
+Received: from SN6PR05MB3935.namprd05.prod.outlook.com
+ ([fe80::51a9:5537:62d7:a809]) by SN6PR05MB3935.namprd05.prod.outlook.com
+ ([fe80::51a9:5537:62d7:a809%7]) with mapi id 15.20.2136.010; Wed, 31 Jul 2019
+ 19:13:38 +0000
+From: Patricia Mikando <patmikando@hotmail.com>
+Subject: =?iso-8859-1?Q?W=FCnsche_dir_das_Beste?=
+Thread-Topic: =?iso-8859-1?Q?W=FCnsche_dir_das_Beste?=
+Thread-Index: AQHVR9O0rB1pu7v5hEGtqPcf/g6pEA==
+Date: Wed, 31 Jul 2019 19:13:38 +0000
+Message-ID: <SN6PR05MB393512294C1AC9C1F020D0BDC1DF0@SN6PR05MB3935.namprd05.prod.outlook.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-incomingtopheadermarker: OriginalChecksum:21D0AAA9353D35D160A0FE4BE25956371C8B03280D30C652D151B6F48B93671C;UpperCasedChecksum:7AFD618C834E15C491C6EF9FD2A7B42329C4A17AA029CFB7F5A7E854083D9C5C;SizeAsReceived:6991;Count:39
+x-tmn: [tLnwxl0tDtD94/G4yqVni09s6rYcoBpI]
+x-ms-publictraffictype: Email
+x-incomingheadercount: 39
+x-eopattributedmessage: 0
+x-microsoft-antispam: BCL:0;PCL:0;RULEID:(2390118)(5050001)(7020095)(20181119110)(201702061078)(5061506573)(5061507331)(1603103135)(2017031320274)(2017031322404)(2017031323274)(2017031324274)(1601125500)(1603101475)(1701031045);SRVR:BY2NAM03HT028;
+x-ms-traffictypediagnostic: BY2NAM03HT028:
+x-microsoft-antispam-message-info: 8qaU7Eyv2GFJTTlWX5M+ulGPqpHGuGTDEKs74YCN/QMvFZ7cfkkDDNJ4TGUuQZOtr8x4idkF2mqNlR4RzaTzoXpjCF7w9Fue8yTUB32U677uKC5Jh8CeW9D+SCJPVq3Hb7WSLa/qVvFM2p/+DC3uTKChew2tO6sYohbt3czIjpoGho5DpD/i4lsPApufuYuF
+Content-Type: multipart/alternative;
+	boundary="_000_SN6PR05MB393512294C1AC9C1F020D0BDC1DF0SN6PR05MB3935namp_"
 MIME-Version: 1.0
-X-SA-Exim-Connect-IP: 172.16.1.31
-X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com, jdmason@kudzu.us, lkp@01.org, allenbh@gmail.com, torvalds@linux-foundation.org, logang@deltatee.com, dave.jiang@intel.com, lkp@intel.com
-X-SA-Exim-Mail-From: gunthorp@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-8.5 required=5.0 tests=ALL_TRUSTED,BAYES_00,
-	GREYLIST_ISWHITE,MYRULES_FREE,MYRULES_NO_TEXT autolearn=ham
-	autolearn_force=no version=3.4.2
-Subject: [PATCH] NTB/msi: remove incorrect MODULE defines
-X-SA-Exim-Version: 4.2.1 (built Tue, 02 Aug 2016 21:08:31 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-Original-Sender: logang@deltatee.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of gunthorp@deltatee.com designates 207.54.116.67 as
- permitted sender) smtp.mailfrom=gunthorp@deltatee.com
-Content-Type: text/plain; charset="UTF-8"
+X-OriginatorOrg: hotmail.com
+X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-Network-Message-Id: 5d33be4f-eb94-4860-658f-08d715eb3125
+X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Jul 2019 19:13:38.0607
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Internet
+X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BY2NAM03HT028
+X-Original-Sender: patmikando@hotmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@hotmail.com header.s=selector1 header.b=fOA2cP3m;       arc=pass
+ (i=1);       spf=pass (google.com: domain of patmikando@hotmail.com
+ designates 40.92.6.72 as permitted sender) smtp.mailfrom=patmikando@hotmail.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -140,68 +168,110 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-msi.c is not a module on its own right and should not have the
-MODULE_[LICENSE|VERSION|AUTHOR|DESCRIPTION] definitions.
+--_000_SN6PR05MB393512294C1AC9C1F020D0BDC1DF0SN6PR05MB3935namp_
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-This caused a regression noticed by lkp with the following back
-trace:
+Ich hoffe diese E-Mail findet dich.
+Ich m=C3=B6chte wissen, ob Sie die letzte Nachricht erhalten haben, die ich=
+ Ihnen gesendet habe?
+Ich m=C3=B6chte wirklich von dir h=C3=B6ren.
+W=C3=BCnsche dir das Beste.
+Patricia Mikando.....
+Ich freue mich auf ihre Antwort.
 
-   WARNING: CPU: 0 PID: 1 at kernel/params.c:861 param_sysfs_init+0xb1/0x20a
-   Modules linked in:
-   CPU: 0 PID: 1 Comm: swapper/0 Not tainted 5.2.0-rc1-00018-g26b3a37b928457 #2
-   Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.10.2-1 04/01/2014
-   RIP: 0010:param_sysfs_init+0xb1/0x20a
-   Code: 24 38 e8 ec 17 2e fd 49 8b 7c 24 38 e8 76 fe ff ff 48 85 c0 48 89 c5 74 25 31 d2 4c 89 e6 48 89 c7 e8 6d 6f 3c fd 85 c0 74 02 <0f> 0b 48 89 ef 31 f6 e8 5d 70 a7 fe 48 89 ef e8 95 52 a7 fe 48 83
-   RSP: 0000:ffff88806b0ffe30 EFLAGS: 00010282
-   RAX: 00000000ffffffef RBX: ffffffff83774220 RCX: ffff88806a85e880
-   RDX: 00000000ffffffef RSI: ffff88806b000400 RDI: ffff88806a8608c0
-   RBP: ffff88806b392000 R08: ffffed100d61ff59 R09: ffffed100d61ff59
-   R10: 0000000000000001 R11: ffffed100d61ff58 R12: ffffffff83974bc0
-   R13: 0000000000000004 R14: 0000000000000028 R15: 00000000000003b9
-   FS:  0000000000000000(0000) GS:ffff88806b800000(0000) knlGS:0000000000000000
-   CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
-   CR2: 0000000000000000 CR3: 000000000380e000 CR4: 00000000000406b0
-   DR0: 0000000000000000 DR1: 0000000000000000 DR2: 0000000000000000
-   DR3: 0000000000000000 DR6: 00000000fffe0ff0 DR7: 0000000000000400
-   Call Trace:
-    ? file_caps_disable+0x10/0x10
-    ? locate_module_kobject+0xf2/0xf2
-    do_one_initcall+0x47/0x1f0
-    kernel_init_freeable+0x1b1/0x243
-    ? rest_init+0xd0/0xd0
-    kernel_init+0xa/0x130
-    ? calculate_sigpending+0x63/0x80
-    ? rest_init+0xd0/0xd0
-    ret_from_fork+0x1f/0x30
-   ---[ end trace 78201497ae74cc91 ]---
+I hope this email finds you.
+I want to know if you received the last message I sent you?
+I really want to hear from you.
+wish you all the best.
+Patricia Mikando
+I look forward to your response.
 
-Reported-by: kernel test robot <lkp@intel.com>
-Fixes: 26b3a37b9284 ("NTB: Introduce MSI library")
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
----
- drivers/ntb/msi.c | 5 -----
- 1 file changed, 5 deletions(-)
 
-diff --git a/drivers/ntb/msi.c b/drivers/ntb/msi.c
-index 9dddf133658f..0a5e884a920c 100644
---- a/drivers/ntb/msi.c
-+++ b/drivers/ntb/msi.c
-@@ -6,11 +6,6 @@
- #include <linux/msi.h>
- #include <linux/pci.h>
- 
--MODULE_LICENSE("Dual BSD/GPL");
--MODULE_VERSION("0.1");
--MODULE_AUTHOR("Logan Gunthorpe <logang@deltatee.com>");
--MODULE_DESCRIPTION("NTB MSI Interrupt Library");
--
- struct ntb_msi {
- 	u64 base_addr;
- 	u64 end_addr;
--- 
-2.20.1
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/SN6PR05MB393512294C1AC9C1F020D0BDC1DF0%40SN6PR05MB3935.namprd05.p=
+rod.outlook.com.
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190726183130.9424-1-logang%40deltatee.com.
+--_000_SN6PR05MB393512294C1AC9C1F020D0BDC1DF0SN6PR05MB3935namp_
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Calibri, Helvetica, sans-serif; font-size: 12pt;=
+ color: rgb(0, 0, 0);">
+<div style=3D"margin: 0px; font-size: 12pt; font-family: Calibri, Helvetica=
+, sans-serif; background-color: rgb(255, 255, 255)">
+<span style=3D"margin: 0px"><span style=3D"margin: 0px">Ich hoffe diese E-M=
+ail findet dich.<br>
+</span></span></div>
+<div style=3D"margin: 0px; font-size: 12pt; font-family: Calibri, Helvetica=
+, sans-serif; background-color: rgb(255, 255, 255)">
+<span style=3D"margin: 0px">
+<div style=3D"margin: 0px">Ich m=C3=B6chte wissen, ob Sie die letzte Nachri=
+cht erhalten haben, die ich Ihnen gesendet habe?<br>
+</div>
+<div style=3D"margin: 0px">Ich m=C3=B6chte wirklich von dir h=C3=B6ren.<br>
+</div>
+<div style=3D"margin: 0px">W=C3=BCnsche dir das Beste.<br>
+</div>
+<div style=3D"margin: 0px">Patricia Mikando.....<br>
+</div>
+<span style=3D"margin: 0px">Ich freue mich auf ihre Antwort.</span><br>
+</span></div>
+<div style=3D"margin: 0px; font-size: 12pt; font-family: Calibri, Helvetica=
+, sans-serif; background-color: rgb(255, 255, 255)">
+<span style=3D"margin: 0px"><br>
+</span></div>
+<div style=3D"margin: 0px; font-size: 12pt; font-family: Calibri, Helvetica=
+, sans-serif; background-color: rgb(255, 255, 255)">
+<span style=3D"margin: 0px">I hope this email finds you.<br>
+</span></div>
+<div style=3D"margin: 0px; font-size: 12pt; font-family: Calibri, Helvetica=
+, sans-serif; background-color: rgb(255, 255, 255)">
+<span style=3D"margin: 0px"></span></div>
+<div style=3D"margin: 0px; font-size: 12pt; font-family: Calibri, Helvetica=
+, sans-serif; background-color: rgb(255, 255, 255)">
+<div style=3D"margin: 0px">I want to know if you received the last message =
+I sent you?<br>
+</div>
+<div style=3D"margin: 0px">I really want to hear from you.<br>
+</div>
+<div style=3D"margin: 0px">wish you all the best.<br>
+</div>
+<div style=3D"margin: 0px">Patricia Mikando<br>
+</div>
+<span style=3D"margin: 0px">I look forward to your response.</span></div>
+<br style=3D"font-family: Calibri, Helvetica, sans-serif; background-color:=
+ rgb(255, 255, 255)">
+<br>
+</div>
+</body>
+</html>
+
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/SN6PR05MB393512294C1AC9C1F020D0BDC1DF0%40SN6PR05MB3935=
+.namprd05.prod.outlook.com?utm_medium=3Demail&utm_source=3Dfooter">https://=
+groups.google.com/d/msgid/linux-ntb/SN6PR05MB393512294C1AC9C1F020D0BDC1DF0%=
+40SN6PR05MB3935.namprd05.prod.outlook.com</a>.<br />
+
+--_000_SN6PR05MB393512294C1AC9C1F020D0BDC1DF0SN6PR05MB3935namp_--
