@@ -1,124 +1,120 @@
-Return-Path: <linux-ntb+bncBAABBT5KYHVAKGQETE2BDIQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDU5DXUG4MFRBQF543VAKGQEG4SXKWQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x438.google.com (mail-pf1-x438.google.com [IPv6:2607:f8b0:4864:20::438])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50E18892F5
-	for <lists+linux-ntb@lfdr.de>; Sun, 11 Aug 2019 19:50:09 +0200 (CEST)
-Received: by mail-pf1-x438.google.com with SMTP id h27sf65011143pfq.17
-        for <lists+linux-ntb@lfdr.de>; Sun, 11 Aug 2019 10:50:09 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1565545808; cv=pass;
+Received: from mail-wr1-x43a.google.com (mail-wr1-x43a.google.com [IPv6:2a00:1450:4864:20::43a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 7380C9190F
+	for <lists+linux-ntb@lfdr.de>; Sun, 18 Aug 2019 20:53:52 +0200 (CEST)
+Received: by mail-wr1-x43a.google.com with SMTP id t9sf4075406wrx.9
+        for <lists+linux-ntb@lfdr.de>; Sun, 18 Aug 2019 11:53:52 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1566154432; cv=pass;
         d=google.com; s=arc-20160816;
-        b=d3LQFWkZwQclRkm1LW1ZrAGoahQi++CCUmW8tpJVRjiIUDuqVZ0Pw9Mo6quIZBu1Bm
-         dfwMGnabNPSaqm+P5cM4eQvYvVzNHZDyOtO4UJhpOG5DOs3hZWwRZ8B+YOLqNYt5t0D1
-         2ShqLIO8ILl/NMWl/6yW9V2fP8yhYDK7m8UYw3WZrztUU7/DEgDc7+YtNZNX/YH/MMMx
-         RQJySEMSnYcpA3G2+Womrp8mrh1yKi+e752nBJK+WYNvHh/wzvwIrqnXbK+R80C8Dv9T
-         0NZ1jQXzqQWJVrKR//1Y5ime4yrc1QGaYEL5OW9T9//kUGU8gARLki1VDtkoBerd8y3p
-         32dQ==
+        b=HmUThNTK3bPDtINKTuIDPqLHSPF/iHSMFwzvNR+eQMywjnb3aJPZ51aCKFUbG4eytb
+         uMNEPB0SWHe/4kwGWAYrrgItiQpM4apbRu4b057WBr3C4MKznMa0u2Z/LeGzEXGM/q4Y
+         AhfUOtm5z9GJKlohqWBa5Llj8KedqbqVJAjqaidbCqddpEzawkb1g1W1MTWtLPDNU31u
+         JkKZ4T/bPDW1qY2kjd3nmiu5h05+l2AIn1WgKwT4zhXT36obIlE/2DK50NoPhqKMhfUY
+         eMonQCVstLWoSSJ/dnxkEPtyeGWT+4ikd8s967dtVA7WEjRYsfWM5ThVC/tsgG20hmEM
+         /ZWA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:cc:to:date:message-id:references
-         :in-reply-to:from:subject:mime-version:sender:dkim-signature;
-        bh=Ytum4bsNgBcf6cIIO6AJ+/gTGs2PUFxhzeYYSDfH33U=;
-        b=bKkA3kbv6VUDp4LSNLfXTfZLhqpL/N1SfmSm+MujH51xlCroLDHAaKmuhhT3Zafujf
-         ixN/9+vVY+WPn/L66gQv3exCvKxXsKev9C0We+HWsT9v6w41SFQhyoWXja1cKnk6vDsr
-         aKK1orAIAk+nhv0BMxo6/avBK2iNqJPcSzoz4OBXJ6/fhvfGsc+IFVEg+8JLOFxC5Ta5
-         kIWAMzpy36ePMFWfEtodhtbQTsPbdjYTqUZcwAgYi1mlGKB+8+kRHBw4vH/CyhAH/Aa8
-         E3QF70Quw4S1me+6/0ZuL+7UBp/uxFeOA9Qvpi0B3MEPw3sD/koTjBISoK7T2FNLAV5p
-         CkZA==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=rpw907U74uAMTuqgEatXZHSUL8D9J2cu8t+qILZ1mRg=;
+        b=uTbpGy9s8sDeiGsTfox/gAYoBljCjjpwSlYfFltBmH+SVhGHXLW35ogbPexa0SwFSl
+         AgosMEiqwZcW5zGK4rWuupA87R+lflR0ahQBCLomcMlhoQqwR9AUERv++QnY7KxAbVHL
+         72pv+NbgHRtv4FAw3vEWjRgOHhReiLUKk+EFNUkxBSikAUKdM1jVpdi7IihSDP4rdcda
+         FAFjnFLMHxygCe9tQ75pJ1p16R9xM6o+eSIfHNc6oO5POd2HTkg6JfSjM+xYeRG8HoH9
+         OJRPA9A4Y2Kf1gbmYRzfo4u2CDOc04oyqY8b8IcXKAwlDFFUxbyljosTMfKfEK3X0KjL
+         JbHw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=aVpcW7dd;
-       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:subject:from:in-reply-to:references:message-id
-         :date:to:cc:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=Ytum4bsNgBcf6cIIO6AJ+/gTGs2PUFxhzeYYSDfH33U=;
-        b=P7B2rx76M7+JtuIS24XhnJxwbgXDetv3Rk5ZrLcylRitw2U5txijUupq6oXZsjOQ+W
-         VISxYHPuluqUqXzCM2KvGeNp737kFWWyvidsYIOZ4qmeHl9JYoPgBZWcM6M/JOxCVeXi
-         ddZEwMmnmvxE8J/gmlBLUNLcwQhernDqk6IL6qt9AAIdFcI9jAbieAIUbOUd+hNLQoy0
-         brUQbw2zLqeErhoXeEKs8wm81Ch/hIz4UPkdh6vVcvXQE8UJWbkxfn7PGsxiQyHjfNRr
-         r3t99dM8HFBJr81WI4M7u2TzT+BUtHhSOKa6kbK5iGLBPC9+yV97DxdbKFNCkO0YWxe/
-         gL3g==
+        bh=rpw907U74uAMTuqgEatXZHSUL8D9J2cu8t+qILZ1mRg=;
+        b=DyZKEpPIKWEjxu7hVuMUxUE8BEMzxOL97s8qcWD7EwbN7Mw8Q4N+S1ZsH3VkyiJGcB
+         aZwpuyic94Cpdh2u0Fff1s/r+4vC9jJAfPdIfaPefVRlMmgrII6y1xycg7zeP4cTwzTU
+         FGf6KIMi/Hh6nh50qakL8CErvWM+5wVhiU2JrZKDPG0YoF75Z9sUs7R17B4l5gBackPX
+         n2QgZh1HQ+3AXEGTX4ZAbB/Uc0Ai/ekFRrMizgDe7k5WVOY+uO7d493mb/EsTsXSi7vy
+         drlVyzTBOLxPTq3Lz6zc5/01673wvX9PwuprXmWxb36A/XKmIj0LvB2Ams/MMEohX0yC
+         JIiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:subject:from:in-reply-to
-         :references:message-id:date:to:cc:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=Ytum4bsNgBcf6cIIO6AJ+/gTGs2PUFxhzeYYSDfH33U=;
-        b=TeoQSHT5NhlSsnEUHDpcGVEGIiQMyugFOgfaaSnEglosIgIvqW2dd7IZ2DfSTXmBDu
-         j86SgglyxP2ZAHDjgFwu4GRcRw2VcpgrW+rvWlzAQiE8yCgCEFO75hbxdHtKUPTyHegA
-         FqxZ4lSyEcxtVQqL9Hu765gMvj4S7YchwxTQTZTCcHeYPt6ncfYeBQSt3Rx/3t2FE6xW
-         NXai7JeKPFilRNeroOai4p3biT0jGVu2fogqf99H8s2IlhgvxpPvg1KdRDRvaKRcrPvG
-         HmRoBn1lx0oe1ybIG4eK8H4m9Rr79aKFgfAskVAH2btkOlAFPPGUQdUykbVnb83JbSuJ
-         4OoA==
+        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=rpw907U74uAMTuqgEatXZHSUL8D9J2cu8t+qILZ1mRg=;
+        b=Uj9KdxGZEaUAvfO7m/Xcx/lCwpqrKKYKH0XruEhVMzIul/TfOgCLcX3Mk0lHVTHmeJ
+         dK5Kdmvi/eoi6xdkNRB2D/8A7DCQeB6VO6DWEsgw172lUuPv27LWdsL/vQ5VimVFNXgM
+         aHwnreXNSusCfgsflfUXa6XFVQqsXkpYUGgqRfTjFOGeH9vuwpPOcKsICy0jJX66jJ04
+         UZ2N2tb3ybWzg/DCeXrmbErI2irJSR5nlQFI/UwKXkEpl4NeGcU05cK2gce6l+8Ay6HR
+         S28lFGu6AJRXStCohLfh+4Q0yosqfkTdaxHJYntNS6KUJLAQORFDlvbyRxz02/fVnPWF
+         yrRg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXifCDb3dSz5DuFPEAMaCCzJ+Owz0Zg91iL9ELOEICsvQhvDNCH
-	X4pZY1Cfz7F3VX3cFBppwHg=
-X-Google-Smtp-Source: APXvYqwPnucO0i9wYqIGXkWo3uXIrp1pQspnuzUr3AVHd6eTVyOOWP0gZJbiMB+K+VtjNd3M71dIOQ==
-X-Received: by 2002:a62:874d:: with SMTP id i74mr31622166pfe.94.1565545807896;
-        Sun, 11 Aug 2019 10:50:07 -0700 (PDT)
-MIME-Version: 1.0
+X-Gm-Message-State: APjAAAX9oReRZB9u9n0agYaUh8jUcbd8pSS8kxfAPNtOVPqhCnVgSuBw
+	0Kb82i0a/7JYUGgIRuoF8wQ=
+X-Google-Smtp-Source: APXvYqzNoez3vcnhllAvR4YZzzWcKT/mqnSkLyTaXw2azn6td60cmz/3/pfHsizVYyAP8Nrw4CXbGg==
+X-Received: by 2002:adf:e390:: with SMTP id e16mr12601786wrm.153.1566154432134;
+        Sun, 18 Aug 2019 11:53:52 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a62:b518:: with SMTP id y24ls23913944pfe.14.gmail; Sun, 11
- Aug 2019 10:50:07 -0700 (PDT)
-X-Received: by 2002:a63:1341:: with SMTP id 1mr27436009pgt.48.1565545807532;
-        Sun, 11 Aug 2019 10:50:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1565545807; cv=none;
+Received: by 2002:a7b:c44b:: with SMTP id l11ls3219690wmi.0.canary-gmail; Sun,
+ 18 Aug 2019 11:53:51 -0700 (PDT)
+X-Received: by 2002:a1c:411:: with SMTP id 17mr12169667wme.34.1566154431717;
+        Sun, 18 Aug 2019 11:53:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1566154431; cv=none;
         d=google.com; s=arc-20160816;
-        b=bxHy/XSD2T2b4MWNSagPF6NxiVJTYk/6TwjejoHnmpuVgr695an/0/NXO/Wy2ck0CG
-         YPKLMp5qERCuZFvluvIP4yM2lwzPI5RLTwcN7fY+nTqw0dlwxFe/PwX9JVq+PqdHS04t
-         bW4fE3+BhaQbeDrlgNhbSeI+d9BzsdxiNGjHVVIQL5VNlIo6J4F1LEKiifrXV6ZqJ58M
-         OEAfMSwXJ5nuDAw9jtn20Z6aESjNumGKSjHP4tC17fy0jr/6qACkSrbnZbpfkBt8dXNl
-         I2eKNAkgBr7tPzczIJsGDoieuR9C5DelqrFqKYQeot2DkaYWUVx12GbW7lUWsjfu09FC
-         TtfA==
+        b=AWKL2DEtLaMlUjJH+Hj0SXouhT7BVKGlx1RL2hQVvspOjx2NHWG8qQG70OG9CA+d57
+         Bm53tkbmRDhdYVf2IPIqyg7IY/E+iU6E2k5RvvBPxhoB3LKRd5mPcAbp07oh1OersaXY
+         2RxLQ+ovQ7hy9tt1x3kFav8Ty0JtaM2asckbSfzy1i9Tlg+8qzpDkyJlPp6Yx14vGWG0
+         4xIfNjm1TWYFt3znVFFZQzc/QOQQ+pBD5y8rbcMDS4w+Fhz3/yy7N+nlUSMhks3tyxl3
+         4WVveg0F2q/Ham9dCKcx8NE/EbQhZc1PFJ3OceItmbuJ7baKecazmgjXIvM2/G9lfTmg
+         jdPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:date:message-id:references:in-reply-to:from:dkim-signature
-         :subject;
-        bh=fZaUiO/4ZsFPxiLlhbv9Qbd7Wq5CRpkB/Qdf/RSe8A0=;
-        b=Q4USeXy8MUmjLMk80LX4HDphu1oz6hiJ86Wn9/kFLOyWm2ZDe2bVQ4fRoczPJFQ84I
-         uss3R3J1UZIowi0sP7rYjF73/uaXKnhPSR+YdFIidlgKTZ7o54gMn65IXNZ1AhdxwGzE
-         tsW+h0HxinBl1iA4MLLQdIOtWlb/H3uXuY5P5uJwZ32puwLpa7+UOmeTdd4ZClTJzRd4
-         bLrmU/Vk1DmVYwB1c20fEb17aQ5SCrJfXbEP8q5Q4N9QdtGSQ758C42bc6NKKC8gw5it
-         HVPM1jbgKjfRTF75Vs1EJs37ADbpfExSUIwx4y4h5ij0OE5DxrgQrVq8r/F+x7d0LI+U
-         8krQ==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=p4VhrIIR7fs7Yfhp6vX++rPRmUah2bxQsRfcRHzIoN4=;
+        b=jTkxb8nMzJ86tyaNX1OcwrQidgpj44ZpK5IDm2Ph6heL1wcb7TSQtWl9fuA317OyE0
+         Cuk5nA5zzyC6KnTawcc9nK1h5MN5Ba7y/kBk6DVCug4WvkBp6oT+rDjUvGbWjhyGwyF5
+         FGzwMKhw0NLM6o7ABVtNei9FOD/KwaPJWtOsijP/MeAgRbdGXO7zmdwb4q6rLsezYDBE
+         BxNTH3F5S3mxm2BLpSSCvZCP7uv5EZ+SMGNt/jte/u9ssOZSRQSYjMybrKyh+0d4TlAK
+         dV+uX4sgEntkM708wJqyq8izc1Zu+Z3+WYhmjJhQ37Kv9igJLZDrcEB3NY/o/QUTUj69
+         GlpQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=aVpcW7dd;
-       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id h14si4881353plr.2.2019.08.11.10.50.07
+       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
+Received: from youngberry.canonical.com (youngberry.canonical.com. [91.189.89.112])
+        by gmr-mx.google.com with ESMTPS id g7si721617wmk.0.2019.08.18.11.53.51
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 11 Aug 2019 10:50:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Subject: Re: [GIT PULL] NTB bug fixes for v5.3
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20190811141703.GA12153@graymalkin>
-References: <20190811141703.GA12153@graymalkin>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <20190811141703.GA12153@graymalkin>
-X-PR-Tracked-Remote: git://github.com/jonmason/ntb tags/ntb-5.3-bugfixes
-X-PR-Tracked-Commit-Id: 49da065f7b1f27be625de65d6d55bdd22ac6b5c2
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: f6192cb7429211bfaac1178c35607b0c989900b8
-Message-Id: <156554580721.21169.6349916023834124246.pr-tracker-bot@kernel.org>
-Date: Sun, 11 Aug 2019 17:50:07 +0000
-To: Jon Mason <jdmason@kudzu.us>
-Cc: torvalds@linux-foundation.org, linux-kernel@vger.kernel.org,
- linux-ntb@googlegroups.com
-X-Original-Sender: pr-tracker-bot@kernel.org
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=aVpcW7dd;       spf=pass
- (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as
- permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+        (version=TLS1 cipher=AES128-SHA bits=128/128);
+        Sun, 18 Aug 2019 11:53:51 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) client-ip=91.189.89.112;
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+	by youngberry.canonical.com with esmtpsa (TLS1.0:RSA_AES_256_CBC_SHA1:32)
+	(Exim 4.76)
+	(envelope-from <colin.king@canonical.com>)
+	id 1hzQJJ-0007nC-Eq; Sun, 18 Aug 2019 18:53:49 +0000
+From: Colin King <colin.king@canonical.com>
+To: Jon Mason <jdmason@kudzu.us>,
+	Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>,
+	linux-ntb@googlegroups.com
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] NTB: ntb_transport: remove redundant assignment to rc
+Date: Sun, 18 Aug 2019 19:53:49 +0100
+Message-Id: <20190818185349.15275-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: colin.king@canonical.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: best guess record for domain of colin.king@canonical.com
+ designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -131,20 +127,35 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-The pull request you sent on Sun, 11 Aug 2019 10:17:03 -0400:
+From: Colin Ian King <colin.king@canonical.com>
 
-> git://github.com/jonmason/ntb tags/ntb-5.3-bugfixes
+Variable rc is initialized to a value that is never read and it
+is re-assigned later. The initialization is redundant and can be
+removed.
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/f6192cb7429211bfaac1178c35607b0c989900b8
+Addresses-Coverity: ("Unused value")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/ntb/ntb_transport.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thank you!
-
+diff --git a/drivers/ntb/ntb_transport.c b/drivers/ntb/ntb_transport.c
+index 40c90ca10729..00a5d5764993 100644
+--- a/drivers/ntb/ntb_transport.c
++++ b/drivers/ntb/ntb_transport.c
+@@ -292,7 +292,7 @@ static int ntb_transport_bus_match(struct device *dev,
+ static int ntb_transport_bus_probe(struct device *dev)
+ {
+ 	const struct ntb_transport_client *client;
+-	int rc = -EINVAL;
++	int rc;
+ 
+ 	get_device(dev);
+ 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.wiki.kernel.org/userdoc/prtracker
+2.20.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/156554580721.21169.6349916023834124246.pr-tracker-bot%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190818185349.15275-1-colin.king%40canonical.com.
