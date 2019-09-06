@@ -1,128 +1,128 @@
-Return-Path: <linux-ntb+bncBDPYJBFU6MIBB5ORZPVQKGQEMPCJ33Y@googlegroups.com>
+Return-Path: <linux-ntb+bncBDPYJBFU6MIBBVPAZPVQKGQEQHHNSOQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63c.google.com (mail-pl1-x63c.google.com [IPv6:2607:f8b0:4864:20::63c])
-	by mail.lfdr.de (Postfix) with ESMTPS id EECBDAC2EA
-	for <lists+linux-ntb@lfdr.de>; Sat,  7 Sep 2019 01:17:10 +0200 (CEST)
-Received: by mail-pl1-x63c.google.com with SMTP id h17sf2945972plr.11
-        for <lists+linux-ntb@lfdr.de>; Fri, 06 Sep 2019 16:17:10 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1567811829; cv=pass;
+Received: from mail-pf1-x43e.google.com (mail-pf1-x43e.google.com [IPv6:2607:f8b0:4864:20::43e])
+	by mail.lfdr.de (Postfix) with ESMTPS id 200F1AC361
+	for <lists+linux-ntb@lfdr.de>; Sat,  7 Sep 2019 01:48:39 +0200 (CEST)
+Received: by mail-pf1-x43e.google.com with SMTP id x10sf5754644pfr.20
+        for <lists+linux-ntb@lfdr.de>; Fri, 06 Sep 2019 16:48:39 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1567813717; cv=pass;
         d=google.com; s=arc-20160816;
-        b=OidMiP9I0bXRm+JMmaTpqaxtdo8N3NR8jKg1UtD2tJ8fU3fPiZWug3E7dPeYPY+lB4
-         qr2/HPp5fvZxDYiVsQP0F9hUmLfFeFFThhDi17MpHeFbE5p+/Us2abCG1hI73mEqe3Gb
-         rVvDO3bBPr9q8noslDvPrHV0yhRfpNWwVqPjhRImmnaQDYbg0DtDkmQu+RR4r27Voo0/
-         VTuMD1OlDqtEOtJ0OfjUOzAFv2XAO45hBpZZyfiluDBFQu6YlckbJLDlIVoYeoW01STo
-         T6ujQpkllc6YO8uPiELq0MFpVh0tPzGHMoNvAMBYZqEognTva4GE0oRNQc6wY6cnCyAu
-         AbBQ==
+        b=pKtatS+dm8DXEhi0h/7NbvTQswuP2fjoIMEhh0F2k1Bo+1qHc7bpZKUqk0ZHpgNYTq
+         ztNTBeLOdW8RgJl4p9KeSIsiQd48OHGF3jU0PPsQ+T8Qw6qGXMKG8lRk9woYN8E2IPHR
+         aBvwMXP5Bp9c+Pux0iC2BtuNUboyxZVZaxReXRwiOIEvjQfwgbXdA4+K23kwpjuJMsdY
+         sSoDLh+/OTkJkiJCrH+F/64GMaVizad1XwTmRXRvDNHEOxGqsQQXSCUfRf28kzESv0nw
+         94M07MojRWK3jppmRJuh19TAj6MTM3pw1bDjlze2q4hfiHnWUc3GR64SmzIJa0qEA2CW
+         U4Sw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to
+         :mime-version:user-agent:date:message-id:cc:from:references:to
          :subject:sender:dkim-signature;
-        bh=LyyPMs2zCJZo2vNR3ym1DimUtFdeEt/Wn4YtgjPaBYE=;
-        b=tOeiTuBi6z3x8z7whHCa0qpuQXXH6h4pjcvqhUj74WC0SQ8/ku/UHMV2+Tsddgpu2C
-         lkzUk8iWJzNweLjMlqkGeZPXm50p/u9SRGybBz2hwJOc091mD3rRr3kuHjD2VNkkY9p3
-         QT/KJCuM1e7t1xbN5VGQNSYvTz3oql2RhBH+QVDdyOwXH2X0siGP1RTJyLcJ6V64z+qV
-         L9a12lt80lxPvwqrJSiHv9lR39kuA7exP+bCpINxPk5WVLLnNhum60it3QYigAwXCw/Q
-         IpZRUv7lQLhJLJ6TO8J/CDna9F98YAxhxMvp6vrPWAa5vWSAYYjRkJRNPxaWI4rpepGI
-         ATGA==
+        bh=nOWW5OCRGXIiPju5qWs9XaveMmWVkWQCGOgTUO/MFEQ=;
+        b=QE702dz40wYtjLd9Kc0RuvKZLd4N5wfBKsmBr6BB86cpyImGktqO+Ilo+cWXKlCBq/
+         q8E9Em5HDO+87WZN5r+jNc13gPLHQnPLuRFm4YpAk2ZYzRz5l7dB1DbmNHQ/Wj8ZVKc8
+         uNfwEAWvA5MBdHbf9heshB4tDA+TiOXEwRo8n4mBVlFB5vTF5AWbVquTCPHne/4pCBh9
+         BzvaO1UQVjDoLih52bBxxxTqN1zO4KKssZlw1DDesSbTixD8/hA9+OwN5iQFV52MFYqW
+         pErNNccIGn0Ys7Eec99sT66MkjeI/lZVEa6HRC4wn5Dk1j1yvyBK+gUB6fBxMbbLq+We
+         n1zQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=TkHzW5el;
-       spf=neutral (google.com: 2607:f8b0:4864:20::236 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
+       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=JEEmEyZF;
+       spf=neutral (google.com: 2607:f8b0:4864:20::232 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+        h=sender:subject:to:references:from:cc:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=LyyPMs2zCJZo2vNR3ym1DimUtFdeEt/Wn4YtgjPaBYE=;
-        b=HnLLl3OJjMehpVPkZllE2KsBYqrB0WgTpAtUMs86umNGbFWSWU0Ko3cw7uFKK3oZkp
-         Vti7pdem6F220/ygeksp+jgiMbcaOnYIfaezC5KQX56vx+QnJjRcvevTjww69Dyaskd4
-         6P3bm8NMCBWNgR8JGy/qc9q8BpVqf0NdxSNLdlkdbbKilGsdBEtecs63DZPYHidtLxuz
-         dprPMhVcoqZAV7mHhvWuQ+dcIfdQ8GUn684WZl70yEA+8AeAQHr2mUc623qsHlXis7ds
-         MJT7Mgvl/ia5MyMzmz2lJ/v175IUhjpG/Fvd9VaV5jeRVtAW1yeUQ/DF2AyxSOGrEfKR
-         zmyg==
+        bh=nOWW5OCRGXIiPju5qWs9XaveMmWVkWQCGOgTUO/MFEQ=;
+        b=M/ZwrQhOdBDoetA6woBPpf1k4Dtvuwo3adSgY2A8spR1CZNUEjb3Tvy/53gHiX0QT8
+         33/zWO9/bqkY4Au0ySaFXRgM1y2s4330FXLspGifo8H2c+7qu6Nwp2+cyAAncemyDI5Q
+         aQQc/BU6rMRth1ZjiruidIacDjMVo1r8hSK+li5RAER+bfSwtak2V0GoiUGKXYBmfXT+
+         vn8ofMA/rGx0T2FkIgqxqH6fuH6S2K5GmTYCMIfKWdxKo5A0V0dFXWCoZE9aaDotCTCH
+         /Oa+cpMkjUpXg1L2Wbdfahsvz86e+gOcnjmABNAViA8XGluUuDI7wosuK3opyNslXBiv
+         4Shw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
+        h=sender:x-gm-message-state:subject:to:references:from:cc:message-id
          :date:user-agent:mime-version:in-reply-to:content-language
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=LyyPMs2zCJZo2vNR3ym1DimUtFdeEt/Wn4YtgjPaBYE=;
-        b=rE2oORO1bkPM0NQoAPJ152T85JmSSTi9/I8rb7tDgJ86+ufevdHtZ1PsHPY2/KBjEU
-         kml9waHLcR3R2UTvkCnpDhg/qVF1C+awdkLvClVURTInDmG0tRXp0KT529K21FfFTtw9
-         2fqTmWL7EpRGEYDLyl1qxE3DGpoTdJlCfHfEgZEcZ6TrbwC/YzNncMRd8iW++Lxva7+M
-         DpJHQItE3czQwitV8q9AbxOIhl0/AuuAp5YkULQ55tGcOwBd2ebHE7jmvW1756OvVR5V
-         aJd+Adv/A5JL4ZJpiqjDl/rMVH7DwoC1AbVtR7xMe7flvPwztB8tC0zhBKR9Ugtkn37P
-         Hi4A==
+        bh=nOWW5OCRGXIiPju5qWs9XaveMmWVkWQCGOgTUO/MFEQ=;
+        b=daGDIohp50tna8/j8pk9CxyuK26mtcxDygPJgzq5Cnt8PtFGu2I7V1KYw+G2AsNrm7
+         YPcvn4bjQxlvLSEtU0oofNO0q9ed1KyQCO8NLVJkVBGXrVjlo+0ok22iOTje+Uiwek5E
+         16yQfhaO5z1O56do3o9n3JMtWG35abCj80IIm8/5iDBIomPwkdmEOMLnjMQ8S0RMJPEp
+         9i3oY8eCl70xiJpRH2gKbsOhhPAX6+aZXj4PFi8Gj62MSC5NPyPD3yvVApB2P2qsl20/
+         mQO0fsSfA3yeKTHUh7b8Oh3Gaoli3Myh+IbOfpNqUBF7L5uz40Lx+gtLaB0JIEBv/V6K
+         UB5w==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUrOhzOAENvZk+g2e1WfgLOWMP1r5MVi3ZGcx2c2Q8VknlKwM78
-	30h79M+bcjEnc1pe36Rmpw4=
-X-Google-Smtp-Source: APXvYqzoQRrG+JWxRhGWcl7vuW8qqZx1o2nudkZNNYIX1ese23up+z2O4sY0hDQtxZJSOJWCrMzVlA==
-X-Received: by 2002:aa7:9344:: with SMTP id 4mr12471466pfn.11.1567811829369;
-        Fri, 06 Sep 2019 16:17:09 -0700 (PDT)
+X-Gm-Message-State: APjAAAWO0B49xAgYzJgEXOHPxyALsdi9gt0mmaAMVWygfee6aLsTjdK7
+	0SGUhqrM1OgdTjZUOOLmArM=
+X-Google-Smtp-Source: APXvYqzQU4+Te0ahqhTGI5Rt8rNiyp6ashXYhR3F+aTuYU+g1HQqrdDE+gIgPgQb7KlyLoad1+FLlw==
+X-Received: by 2002:a17:902:7483:: with SMTP id h3mr11691856pll.163.1567813717592;
+        Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a63:34e:: with SMTP id 75ls1414929pgd.11.gmail; Fri, 06 Sep
- 2019 16:17:09 -0700 (PDT)
-X-Received: by 2002:aa7:8c42:: with SMTP id e2mr13866772pfd.158.1567811829039;
-        Fri, 06 Sep 2019 16:17:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567811829; cv=none;
+Received: by 2002:a17:902:a410:: with SMTP id p16ls2008348plq.1.gmail; Fri, 06
+ Sep 2019 16:48:37 -0700 (PDT)
+X-Received: by 2002:a17:902:4545:: with SMTP id m63mr12077685pld.45.1567813717312;
+        Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567813717; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZge8TwIbHR5iMqb9yrL61evCDPG8caPNgvVxw2xs6AtSfn2taPRWvAuywz5JJe6Br
-         BHDeSBV5TFZ7AewxldQFNhWD9weXQKUfUdhWfl3dhlq2g7BshUQ4z0TkMI1wUOHQ3pth
-         gACjKUKN4qDRgdLBqbn4DPswVS9/W6XG7a9+f2srf/rn1o52ffoiTuKJRmUgi4ccIZSa
-         56ONxo2SjelOjkYvYAXMGTCkH19wCVuVYKKGhSgk+/6s78RInHoPh16iCjS5oNyXHMxN
-         eK+GI0HQ3vH37A0wrWwHqZCo//fInbV4sRRpRzTSVc57RPfL305q6d0W1y8Y5KwQ1GwM
-         pmNQ==
+        b=jW8rluuYri95UB9xcb78J3hT76yPVLuARbAvrJi0yU8LVljfY0qzA3Ogld/S2aJMod
+         hEM8ZavbdjPoBYQS+n1Yf3lYG2GQ3uZ5FJt+DBB3zYaDrFn7gaaNBngIN9i//h1b1GX/
+         eEUhfejiMMpptlg1YczLcOiJ0VCxSD3zZPYhCH95V7e2WIFbLjCi+qCWGK5rBuQ78Wi2
+         JNjoi5hx4fsCKB4VSmHuPnFAoGtYd5SP6j9/2mp441aK6gBIYCR0x68F4e1kJqRsS0tS
+         i9jz3fIXd8BGvPJTeUhnTdF30Y6sf3+JySzUVJYq9MvNdNFg+oYyBn3rVgno5e14tpny
+         fnHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=owXoJxcZIJ3wdtRSPca/AiEMTEMuhAKEUpQfG2DND/I=;
-        b=Gx4141rH6QGUhFnN4lp4KX+HD1zlU8JmLZ/lbNHE8sy4uDcD+GaaJSFFUXv05JRzz/
-         dfWp+A7esKLRwgoQwZ4nSs4lILoBG0xWLr8bOQiqp0gofyBJTw0oXap2Wf8sVPJlUBUG
-         4bPGn+XK4NqMrRgDXR0EyfvkYX/5vTiruqM5+AC7qvfEXs1M2jAQOBYirJ/wMUj7Bnqx
-         nzwcgAy54u+r9Y3FqVONG16NfMaFc65d4Gvv+bwy4+8HRFVHpSEJrOA3AdM3SpRU1Q+p
-         C9svvuwkhW6l5MxcYfNh+Y9gYiSSBT0uhUbZRRvFx94tJpkB9bMjTDTJ/yXDQt54gL7x
-         HznQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:cc:from:references:to:subject
+         :dkim-signature;
+        bh=zgzwkt+5f1+/iBFBVoRN90jtDmZfYNKs9pY9DhgTDjc=;
+        b=xogGmVwxRlB88JZBk8e18TatGILcF//Zfqx5NMmHmhdV1q8fv2pd7F80F2Bc8g+o3I
+         kHvNm5BMTuAEhPqukOuW4LPG3fZEBPNpGzS5caT+otopoLgB481jG8aYtu7gxZ+QOpvP
+         7UWNl8OVMFNP+PiP2QvUFlzk/GgyHCI0EJW4N8VFUQUL7Rwbwb90QtU60HEnyRexcnYu
+         2ohCvevYHlROeKmFYddS2UMTlUZTLksaYlR61F+aLOW1qiu6LBQsu3XtG8OjSOJmtlVw
+         27Fcx+T6b7O3SSTHMt6uBO3XRnVe2zEMEZncw/yN0XTxhKB+t1+qIMWJrzC8E9VQdwxH
+         xz+A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=TkHzW5el;
-       spf=neutral (google.com: 2607:f8b0:4864:20::236 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
-Received: from mail-oi1-x236.google.com (mail-oi1-x236.google.com. [2607:f8b0:4864:20::236])
-        by gmr-mx.google.com with ESMTPS id j125si231967pfb.1.2019.09.06.16.17.09
+       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=JEEmEyZF;
+       spf=neutral (google.com: 2607:f8b0:4864:20::232 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
+Received: from mail-oi1-x232.google.com (mail-oi1-x232.google.com. [2607:f8b0:4864:20::232])
+        by gmr-mx.google.com with ESMTPS id w72si457424pfd.2.2019.09.06.16.48.37
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Sep 2019 16:17:09 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::236 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) client-ip=2607:f8b0:4864:20::236;
-Received: by mail-oi1-x236.google.com with SMTP id w6so6373456oie.11
-        for <linux-ntb@googlegroups.com>; Fri, 06 Sep 2019 16:17:08 -0700 (PDT)
-X-Received: by 2002:aca:6044:: with SMTP id u65mr6182662oib.16.1567811828602;
-        Fri, 06 Sep 2019 16:17:08 -0700 (PDT)
+        Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::232 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) client-ip=2607:f8b0:4864:20::232;
+Received: by mail-oi1-x232.google.com with SMTP id 7so6441097oip.5
+        for <linux-ntb@googlegroups.com>; Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
+X-Received: by 2002:aca:1004:: with SMTP id 4mr8798928oiq.92.1567813716654;
+        Fri, 06 Sep 2019 16:48:36 -0700 (PDT)
 Received: from [192.168.71.78] ([12.235.129.34])
-        by smtp.gmail.com with ESMTPSA id l30sm3042434otl.74.2019.09.06.16.17.06
+        by smtp.gmail.com with ESMTPSA id 23sm2218038oiz.8.2019.09.06.16.48.34
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Sep 2019 16:17:07 -0700 (PDT)
-Subject: Re: AMD IO_PAGE_FAULT w/NTB on Write ops?
+        Fri, 06 Sep 2019 16:48:36 -0700 (PDT)
+Subject: Re: AMD Epyc iperf perfomance issues over NTB
 To: linux-ntb <linux-ntb@googlegroups.com>, linux-pci@vger.kernel.org
-Cc: Logan Gunthorpe <logang@deltatee.com>, Eric Pilmore
- <epilmore@gigaio.com>, S Taylor <staylor@gigaio.com>,
- D Meyer <dmeyer@gigaio.com>
 References: <CAOQPn8sX2G-Db-ZiFpP2SMKbkQnPyk63UZijAY0we+DoZsmDtQ@mail.gmail.com>
  <a5a2d312-f6af-f20f-0594-98a7f80c7a9d@deltatee.com>
+ <bce9a1d6-1c37-b9f8-a613-2ba68211fee1@deltatee.com>
 From: Kit Chow <kchow@gigaio.com>
-Message-ID: <f98f7970-455c-dddb-f60f-8a33f87f844c@gigaio.com>
-Date: Fri, 6 Sep 2019 16:17:05 -0700
+Cc: Logan Gunthorpe <logang@deltatee.com>,
+ "Eric Pilmore (GigaIO)" <epilmore@gigaio.com>
+Message-ID: <d719f986-f9ce-a0c3-f9a1-1fe06a3cc0cc@gigaio.com>
+Date: Fri, 6 Sep 2019 16:48:32 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
  Thunderbird/60.8.0
 MIME-Version: 1.0
-In-Reply-To: <a5a2d312-f6af-f20f-0594-98a7f80c7a9d@deltatee.com>
-Content-Type: multipart/alternative;
- boundary="------------85F7104AC962DBA0A466644C"
+In-Reply-To: <bce9a1d6-1c37-b9f8-a613-2ba68211fee1@deltatee.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Language: en-US
 X-Original-Sender: kchow@gigaio.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
  header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623
- header.b=TkHzW5el;       spf=neutral (google.com: 2607:f8b0:4864:20::236 is
+ header.b=JEEmEyZF;       spf=neutral (google.com: 2607:f8b0:4864:20::232 is
  neither permitted nor denied by best guess record for domain of
  kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
 Precedence: list
@@ -137,245 +137,53 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This is a multi-part message in MIME format.
---------------85F7104AC962DBA0A466644C
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: base64
+This is a follow-up of the initial problems encountered trying to get 
+the AMD Epyc 7401server to do host to host communication through NTB. 
+(please see thread for background info).
 
-VGhpcyBpcyBhIGZvbGxvdy11cCBvZiB0aGUgaW5pdGlhbCBwcm9ibGVtcyBlbmNvdW50ZXJlZCB0
-cnlpbmcgdG8gZ2V0IA0KdGhlIEFNRCBFcHljIDc0MDENCnNlcnZlciB0byBkbyBob3N0IHRvIGhv
-c3QgY29tbXVuaWNhdGlvbiB0aHJvdWdoIE5UQi4gKHBsZWFzZSBzZWUgdGhyZWFkIGZvcg0KYmFj
-a2dyb3VuZCBpbmZvKS4NCg0KVGhlIElPX1BBR0VfRkFVTFQgZmxhZ3M9MHgwMDcwIHNlZW4gb24g
-d3JpdGUgb3BzIHdhcyBpbiBmYWN0IHJlbGF0ZWQgdG8gDQpwcm94eSBJRCBzZXR1cA0KYXMgTG9n
-YW4gaGFkIHN1Z2dlc3RlZC4gVGhlIEFNRCBpb21tdSBjb2RlIG9ubHkgcHJvY2Vzc2VkIHRoZSAn
-bGFzdCcgDQpwcm94eSBJRC9kbWEgYWxpYXM7DQp0aGUgbGFzdCBwcm94eSBJRCB3YXMgYXNzb2Np
-YXRlZCB3aXRoIFJlYWRzIGFuZCB0aGlzIGFsbG93ZWQgUmVhZCBvcHMgdG8gDQpzdWNjZWVkIGFu
-ZA0KV3JpdGUgb3BzIHRvIGZhaWwuIEFkZGluZyBzdXBwb3J0IHRvIHByb2Nlc3MgYWxsIG9mIHRo
-ZSBwcm94eSBJRHMgaW4gdGhlIA0KQU1EIGlvbW11IGNvZGUNCihwbHVzIGFkZGluZyBkbWFfbWFw
-X3Jlc291cmNlIHN1cHBvcnQpLCB0aGUgQU1EIEVweWMgc2VydmVyIGNhbiBub3cgYmUgDQpjb25m
-aWd1cmVkIGluIGENCjQgaG9zdCBOVEIgc2V0dXAgYW5kIGNvbW11bmljYXRlIG92ZXIgTlRCICh0
-Y3AvaXAgb3ZlciBudGJfbmV0ZGV2KSB0byANCnRoZSBvdGhlciAzIGhvc3RzLg0KDQpUaGUgcHJv
-YmxlbSB0aGF0IHdlIGFyZSBub3cgZXhwZXJpZW5jaW5nLCBmb3Igd2hpY2ggSSBjYW4gdXNlIHNv
-bWUgaGVscCwgDQp3aXRoIHRoZSBBTUQNCkVweWMgNzQwMSBzZXJ2ZXIgaXMgdmVyeSBwb29yIGlw
-ZXJmIHBlcmZvcm1hbmNlIG92ZXIgTlRCL250Yl9uZXRkZXYuDQoNClRoZSBpcGVyZiBudW1iZXJz
-IG92ZXIgTlRCIHN0YXJ0IG9mZiBpbml0aWFsbHkgYXQgYXJvdW5kIDgwMCBNYml0cy9zIGFuZCAN
-CnF1aWNrbHkgZGVncmFkZXMNCmRvd24gdG8gdGhlIDIwIE1iaXRzL3MgcmFuZ2UuIFJ1bm5pbmcg
-J3RvcCcgZHVyaW5nIGlwZXJmLCBJIHNlZSBtYW55IA0KaW5zdGFuY2VzIG9mIGtzb2Z0aXJxZA0K
-cnVubmluZyB3aGljaCBzdWdnZXN0cyB0aGF0IGludGVycnVwdHMgYXJlIG92ZXJ3aGVsbWluZyB0
-aGUgaW50ZXJydXB0IA0KcHJvY2Vzc2luZy4NCg0KDQpJRCBVU0VSwqDCoMKgwqDCoCBQUsKgIE5J
-wqDCoMKgIFZJUlTCoMKgwqAgUkVTwqDCoMKgIFNIUiBTICVDUFUgJU1FTcKgwqDCoMKgIFRJTUUr
-IENPTU1BTkQNCjEzMzIxIHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKg
-wqDCoMKgIDDCoMKgwqDCoMKgIDAgScKgIDMzLjLCoCAwLjAgMDoxNS42MiANCmt3b3JrZXIvNTgr
-DQogwqAgNTI4IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKg
-IDDCoMKgwqDCoMKgIDAgU8KgIDMxLjbCoCAwLjAgMDowMi44MCANCmtzb2Z0aXJxZC8rDQogwqAg
-MTM5IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKg
-wqDCoMKgIDAgU8KgIDMwLjnCoCAwLjAgMDowMi44NiANCmtzb2Z0aXJxZC8rDQogwqAgNTM2IHJv
-b3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKg
-IDAgU8KgIDI5LjnCoCAwLjAgMDowMi42MCANCmtzb2Z0aXJxZC8rDQogwqAgMTQ3IHJvb3TCoMKg
-wqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8Kg
-IDI4LjnCoCAwLjAgMDowMi42OSANCmtzb2Z0aXJxZC8rDQogwqAgMTMxIHJvb3TCoMKgwqDCoMKg
-IDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgIDI4LjPC
-oCAwLjAgMDowMi43NCANCmtzb2Z0aXJxZC8rDQogwqAgNTIwIHJvb3TCoMKgwqDCoMKgIDIwwqDC
-oCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgIDI4LjDCoCAwLjAg
-MDowMi42MyANCmtzb2Z0aXJxZC8rDQogwqDCoCA4MiByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKg
-wqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIFPCoMKgIDMuMMKgIDAuMCAwOjAw
-LjM1IA0Ka3NvZnRpcnFkLzkNCiDCoMKgIDkwIHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKg
-wqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgwqAgMy4wwqAgMC4wIDA6MDAuMzEg
-DQprc29mdGlycWQvKw0KIMKgwqAgOTggcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKg
-wqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqDCoCAzLjDCoCAwLjAgMDowMC4zNyANCmtz
-b2Z0aXJxZC8rDQogwqAgNDcyIHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDC
-oMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgwqAgMy4wwqAgMC4wIDA6MDAuMzUgDQprc29mdGly
-cWQvKw0KIMKgIDQ4OCByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKg
-wqDCoCAwwqDCoMKgwqDCoCAwIFPCoMKgIDMuMMKgIDAuMCAwOjAwLjM3IA0Ka3NvZnRpcnFkLysN
-CiDCoCA0MTYgcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAg
-MMKgwqDCoMKgwqAgMCBTwqDCoCAyLjbCoCAwLjAgMDowMC4xNyANCmtzb2Z0aXJxZC8rDQogwqDC
-oCAyNSByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDC
-oMKgwqDCoCAwIFPCoMKgIDIuM8KgIDAuMCAwOjAwLjE3IA0Ka3NvZnRpcnFkLzINCiDCoCA0MDAg
-cm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKg
-wqAgMCBSwqDCoCAyLjPCoCAwLjAgMDowMC4xNiANCmtzb2Z0aXJxZC8rDQogwqDCoCAxNyByb290
-wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAw
-IFLCoMKgIDIuMMKgIDAuMCAwOjAwLjE3IA0Ka3NvZnRpcnFkLzENCiDCoCA0MDggcm9vdMKgwqDC
-oMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqDC
-oCAyLjDCoCAwLjAgMDowMC4xNiANCmtzb2Z0aXJxZC8rDQogwqDCoMKgIDggcm9vdMKgwqDCoMKg
-wqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBSwqDCoCAx
-LjbCoCAwLjAgMDowMC4xNiANCmtzb2Z0aXJxZC8wDQogwqAgNDgwIHJvb3TCoMKgwqDCoMKgIDIw
-wqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgwqAgMS42wqAg
-MC4wIDA6MDAuMjEgDQprc29mdGlycWQvKw0KMTM0MzQgdXNlcsKgwqDCoMKgwqAgMjDCoMKgIDDC
-oCAyNDY0MjjCoCAyMjI0OMKgwqAgMjAwMCBTwqDCoCAxLjbCoCAwLjAgMDowMS4wMCBpcGVyZg0K
-MTM1MTYgdXNlcsKgwqDCoMKgwqAgMjDCoMKgIDDCoCAxNjMyNTLCoMKgIDU3OTLCoMKgIDM3OTYg
-UsKgwqAgMS42wqAgMC4wIDA6MDAuNDAgdG9wDQogwqA3OTUwIHJvb3TCoMKgwqDCoMKgIDIwwqDC
-oCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgRMKgwqAgMS4wwqAgMC4w
-IDA6MDAuNjIgY2NwLTUtcTINCiDCoDc5NTEgcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDC
-oMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqDCoCAxLjDCoCAwLjAgMDowMC42NyBj
-Y3AtNS1xMw0KIMKgwqDCoCA5IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDC
-oMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgScKgwqAgMC4zwqAgMC4wIDA6MDAuMzEgcmN1X3NjaGVk
-DQogwqDCoCA1NyByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDC
-oCAwwqDCoMKgwqDCoCAwIFPCoMKgIDAuM8KgIDAuMCAwOjAwLjAxIA0Ka3NvZnRpcnFkLzYNCiDC
-oMKgIDY2IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDC
-oMKgwqDCoMKgIDAgU8KgwqAgMC4zwqAgMC4wIDA6MDAuMDEgDQprc29mdGlycWQvNw0KIMKgwqAg
-NzQgcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDC
-oMKgwqAgMCBTwqDCoCAwLjPCoCAwLjAgMDowMC4wMSANCmtzb2Z0aXJxZC84DQogwqAgMTA2IHJv
-b3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKg
-IDAgU8KgwqAgMC4zwqAgMC4wIDA6MDAuMDMgDQprc29mdGlycWQvKw0KIMKgIDExNSByb290wqDC
-oMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIFPC
-oMKgIDAuM8KgIDAuMCAwOjAwLjAyIA0Ka3NvZnRpcnFkLysNCiDCoCAxMjMgcm9vdMKgwqDCoMKg
-wqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqDCoCAw
-LjPCoCAwLjAgMDowMC4wMiANCmtzb2Z0aXJxZC8rDQoNCg0KL3Byb2MvaW50ZXJydXB0cyBzaG93
-IGxvdHMgb2YgJ2NjcC01JyBkbWEgaW50ZXJydXB0IGFjdGl2aXR5IGFzIHdlbGwgYXMgDQpudGJf
-bmV0ZGV2IGludGVycnVwdA0KYWN0aXZpdHkuIEFmdGVyIGVsaW1pbmF0aW5nIG5ldGRldiBpbnRl
-cnJ1cHRzIGJ5IGNvbmZpZ3VyaW5nIG5ldGRldiB0byANCid1c2VfcG9sbCcgYW5kDQpsZWF2aW5n
-IGNjcCwgdGhlIHBvb3IgaXBlcmYgcGVyZm9ybWFuY2UgcGVyc2lzdHMuDQoNCkFzIGEgY29tcGFy
-aXNvbiwgSSBjYW4gcmVwbGFjZSB0aGUgY2NwIGRtYSB3aXRoIHRoZSBwbHggZG1hIChmb3VuZCBv
-biANCnRoZSBob3N0IGFkYXB0ZXIgY2FyZCkNCm9uIHRoZSBBTUQgc2VydmVyIGFuZCBnZXQgYSBz
-dGVhZHkgOS40IEdiaXRzL3Mgd2l0aCBpcGVyZiBvdmVyIE5UQi4NCg0KSSd2ZSBvcHRtaW1pemVk
-IGZvciBudW1hIHZpYSBudW1hY3RsIGluIGFsbCB0ZXN0IHJ1bnMuDQoNClNvIGl0IGFwcGVhcnMg
-dGhhdCB0aGUgaXBlcmYgTlRCIHBlcmZvcm1hbmNlIGlzc3VlcyBvbiB0aGUgQU1EIEVweWMgDQpz
-ZXJ2ZXIgYXJlIHJlbGF0ZWQgdG8gdGhlDQpjY3AgZG1hIGFuZCBpdHMgaW50ZXJydXB0IHByb2Nl
-c3NpbmcuDQoNCkRvZXMgYW55b25lIGhhdmUgYW55IGV4cGVyaWVuY2Ugd2l0aCB0aGUgY2NwIGRt
-YSB0aGF0IG1pZ2h0IGJlIGFibGUgdG8gaGVscD8NCg0KQW55IGhlbHAgb3Igc3VnZ2VzdGlvbnMg
-b24gaG93IHRvIHByb2NlZWQgd291bGQgYmUgdmVyeSBtdWNoIGFwcHJlY2lhdGVkLg0KDQpUaGFu
-a3MNCktpdA0KDQprY2hvd0BnaWdhaW8uY29tDQoNCi0tIApZb3UgcmVjZWl2ZWQgdGhpcyBtZXNz
-YWdlIGJlY2F1c2UgeW91IGFyZSBzdWJzY3JpYmVkIHRvIHRoZSBHb29nbGUgR3JvdXBzICJsaW51
-eC1udGIiIGdyb3VwLgpUbyB1bnN1YnNjcmliZSBmcm9tIHRoaXMgZ3JvdXAgYW5kIHN0b3AgcmVj
-ZWl2aW5nIGVtYWlscyBmcm9tIGl0LCBzZW5kIGFuIGVtYWlsIHRvIGxpbnV4LW50Yit1bnN1YnNj
-cmliZUBnb29nbGVncm91cHMuY29tLgpUbyB2aWV3IHRoaXMgZGlzY3Vzc2lvbiBvbiB0aGUgd2Vi
-IHZpc2l0IGh0dHBzOi8vZ3JvdXBzLmdvb2dsZS5jb20vZC9tc2dpZC9saW51eC1udGIvZjk4Zjc5
-NzAtNDU1Yy1kZGRiLWY2MGYtOGEzM2Y4N2Y4NDRjJTQwZ2lnYWlvLmNvbS4K
---------------85F7104AC962DBA0A466644C
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: base64
+The IO_PAGE_FAULT flags=0x0070 seen on write ops was in fact related to 
+proxy ID setup as Logan had suggested. The AMD iommu code only processed 
+the 'last' proxy ID/dma alias; the last proxy ID was associated with 
+Reads and this allowed Read ops to succeed and Write ops to fail. Adding 
+support to process all of the proxy IDs in the AMD iommu code (plus 
+adding dma_map_resource support), the AMD Epyc server can now be 
+configured in a 4 host NTB setup and communicate over NTB (tcp/ip over 
+ntb_netdev) to the other 3 hosts.
 
-PGh0bWw+DQogIDxoZWFkPg0KICAgIDxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29u
-dGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04Ij4NCiAgPC9oZWFkPg0KICA8Ym9keSB0ZXh0
-PSIjMDAwMDAwIiBiZ2NvbG9yPSIjRkZGRkZGIj4NCiAgICA8dHQ+VGhpcyBpcyBhIGZvbGxvdy11
-cCBvZiB0aGUgaW5pdGlhbCBwcm9ibGVtcyBlbmNvdW50ZXJlZCB0cnlpbmcNCiAgICAgIHRvIGdl
-dCB0aGUgQU1EIEVweWMgNzQwMTxicj4NCiAgICAgIHNlcnZlciB0byBkbyBob3N0IHRvIGhvc3Qg
-Y29tbXVuaWNhdGlvbiB0aHJvdWdoIE5UQi4gKHBsZWFzZSBzZWUNCiAgICAgIHRocmVhZCBmb3I8
-YnI+DQogICAgICBiYWNrZ3JvdW5kIGluZm8pLjxicj4NCiAgICAgIDxicj4NCiAgICAgIFRoZSBJ
-T19QQUdFX0ZBVUxUIGZsYWdzPTB4MDA3MCBzZWVuIG9uIHdyaXRlIG9wcyB3YXMgaW4gZmFjdA0K
-ICAgICAgcmVsYXRlZCB0byBwcm94eSBJRCBzZXR1cDxicj4NCiAgICAgIGFzIExvZ2FuIGhhZCBz
-dWdnZXN0ZWQuIFRoZSBBTUQgaW9tbXUgY29kZSBvbmx5IHByb2Nlc3NlZCB0aGUNCiAgICAgICds
-YXN0JyBwcm94eSBJRC9kbWEgYWxpYXM7PGJyPg0KICAgICAgdGhlIGxhc3QgcHJveHkgSUQgd2Fz
-IGFzc29jaWF0ZWQgd2l0aCBSZWFkcyBhbmQgdGhpcyBhbGxvd2VkIFJlYWQNCiAgICAgIG9wcyB0
-byBzdWNjZWVkIGFuZDxicj4NCiAgICAgIFdyaXRlIG9wcyB0byBmYWlsLiBBZGRpbmcgc3VwcG9y
-dCB0byBwcm9jZXNzIGFsbCBvZiB0aGUgcHJveHkgSURzDQogICAgICBpbiB0aGUgQU1EIGlvbW11
-IGNvZGU8YnI+DQogICAgICAocGx1cyBhZGRpbmcgZG1hX21hcF9yZXNvdXJjZSBzdXBwb3J0KSwg
-dGhlIEFNRCBFcHljIHNlcnZlciBjYW4NCiAgICAgIG5vdyBiZSBjb25maWd1cmVkIGluIGE8YnI+
-DQogICAgICA0IGhvc3QgTlRCIHNldHVwIGFuZCBjb21tdW5pY2F0ZSBvdmVyIE5UQiAodGNwL2lw
-IG92ZXIgbnRiX25ldGRldikNCiAgICAgIHRvIHRoZSBvdGhlciAzIGhvc3RzLjxicj4NCiAgICAg
-IDxicj4NCiAgICAgIFRoZSBwcm9ibGVtIHRoYXQgd2UgYXJlIG5vdyBleHBlcmllbmNpbmcsIGZv
-ciB3aGljaCBJIGNhbiB1c2Ugc29tZQ0KICAgICAgaGVscCwgd2l0aCB0aGUgQU1EPGJyPg0KICAg
-ICAgRXB5YyA3NDAxIHNlcnZlciBpcyB2ZXJ5IHBvb3IgaXBlcmYgcGVyZm9ybWFuY2Ugb3Zlcg0K
-ICAgICAgTlRCL250Yl9uZXRkZXYuIDxicj4NCiAgICAgIDxicj4NCiAgICAgIFRoZSBpcGVyZiBu
-dW1iZXJzIG92ZXIgTlRCIHN0YXJ0IG9mZiBpbml0aWFsbHkgYXQgYXJvdW5kIDgwMA0KICAgICAg
-TWJpdHMvcyBhbmQgcXVpY2tseSBkZWdyYWRlczxicj4NCiAgICAgIGRvd24gdG8gdGhlIDIwIE1i
-aXRzL3MgcmFuZ2UuIFJ1bm5pbmcgJ3RvcCcgZHVyaW5nIGlwZXJmLCBJIHNlZQ0KICAgICAgbWFu
-eSBpbnN0YW5jZXMgb2Yga3NvZnRpcnFkPGJyPg0KICAgICAgcnVubmluZyB3aGljaCBzdWdnZXN0
-cyB0aGF0IGludGVycnVwdHMgYXJlIG92ZXJ3aGVsbWluZyB0aGUNCiAgICAgIGludGVycnVwdCBw
-cm9jZXNzaW5nLiA8YnI+DQogICAgICA8YnI+DQogICAgPC90dD48dHQ+PHR0Pjxicj4NCiAgICAg
-IDwvdHQ+PGZvbnQgc2l6ZT0iLTEiPklEIFVTRVLCoMKgwqDCoMKgIFBSwqAgTknCoMKgwqAgVklS
-VMKgwqDCoCBSRVPCoMKgwqAgU0hSIFPCoA0KICAgICAgICAlQ1BVICVNRU3CoMKgwqDCoCBUSU1F
-KyBDT01NQU5EPGJyPg0KICAgICAgICAxMzMyMSByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDC
-oMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIEnCoCAzMy4ywqAgMC4wwqDCoA0KICAg
-ICAgICAwOjE1LjYyIGt3b3JrZXIvNTgrPGJyPg0KICAgICAgICDCoCA1Mjggcm9vdMKgwqDCoMKg
-wqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqAgMzEu
-NsKgIDAuMMKgwqANCiAgICAgICAgMDowMi44MCBrc29mdGlycWQvKzxicj4NCiAgICAgICAgwqAg
-MTM5IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKg
-wqDCoMKgIDAgU8KgIDMwLjnCoCAwLjDCoMKgDQogICAgICAgIDA6MDIuODYga3NvZnRpcnFkLys8
-YnI+DQogICAgICAgIMKgIDUzNiByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAw
-wqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIFPCoCAyOS45wqAgMC4wwqDCoA0KICAgICAgICAwOjAy
-LjYwIGtzb2Z0aXJxZC8rPGJyPg0KICAgICAgICDCoCAxNDcgcm9vdMKgwqDCoMKgwqAgMjDCoMKg
-IDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqAgMjguOcKgIDAuMMKg
-wqANCiAgICAgICAgMDowMi42OSBrc29mdGlycWQvKzxicj4NCiAgICAgICAgwqAgMTMxIHJvb3TC
-oMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAg
-U8KgIDI4LjPCoCAwLjDCoMKgDQogICAgICAgIDA6MDIuNzQga3NvZnRpcnFkLys8YnI+DQogICAg
-ICAgIMKgIDUyMCByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDC
-oCAwwqDCoMKgwqDCoCAwIFPCoCAyOC4wwqAgMC4wwqDCoA0KICAgICAgICAwOjAyLjYzIGtzb2Z0
-aXJxZC8rPGJyPg0KICAgICAgICDCoMKgIDgyIHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKg
-wqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgwqAgMy4wwqAgMC4wwqDCoA0KICAg
-ICAgICAwOjAwLjM1IGtzb2Z0aXJxZC85PGJyPg0KICAgICAgICDCoMKgIDkwIHJvb3TCoMKgwqDC
-oMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgwqAg
-My4wwqAgMC4wwqDCoA0KICAgICAgICAwOjAwLjMxIGtzb2Z0aXJxZC8rPGJyPg0KICAgICAgICDC
-oMKgIDk4IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDC
-oMKgwqDCoMKgIDAgU8KgwqAgMy4wwqAgMC4wwqDCoA0KICAgICAgICAwOjAwLjM3IGtzb2Z0aXJx
-ZC8rPGJyPg0KICAgICAgICDCoCA0NzIgcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKg
-wqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqDCoCAzLjDCoCAwLjDCoMKgDQogICAgICAg
-IDA6MDAuMzUga3NvZnRpcnFkLys8YnI+DQogICAgICAgIMKgIDQ4OCByb290wqDCoMKgwqDCoCAy
-MMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIFPCoMKgIDMuMMKg
-IDAuMMKgwqANCiAgICAgICAgMDowMC4zNyBrc29mdGlycWQvKzxicj4NCiAgICAgICAgwqAgNDE2
-IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDCoMKgwqDC
-oMKgIDAgU8KgwqAgMi42wqAgMC4wwqDCoA0KICAgICAgICAwOjAwLjE3IGtzb2Z0aXJxZC8rPGJy
-Pg0KICAgICAgICDCoMKgIDI1IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDC
-oMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgwqAgMi4zwqAgMC4wwqDCoA0KICAgICAgICAwOjAw
-LjE3IGtzb2Z0aXJxZC8yPGJyPg0KICAgICAgICDCoCA0MDAgcm9vdMKgwqDCoMKgwqAgMjDCoMKg
-IDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBSwqDCoCAyLjPCoCAwLjDC
-oMKgDQogICAgICAgIDA6MDAuMTYga3NvZnRpcnFkLys8YnI+DQogICAgICAgIMKgwqAgMTcgcm9v
-dMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAg
-MCBSwqDCoCAyLjDCoCAwLjDCoMKgDQogICAgICAgIDA6MDAuMTcga3NvZnRpcnFkLzE8YnI+DQog
-ICAgICAgIMKgIDQwOCByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKg
-wqDCoCAwwqDCoMKgwqDCoCAwIFPCoMKgIDIuMMKgIDAuMMKgwqANCiAgICAgICAgMDowMC4xNiBr
-c29mdGlycWQvKzxicj4NCiAgICAgICAgwqDCoMKgIDggcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDC
-oMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBSwqDCoCAxLjbCoCAwLjDCoMKg
-DQogICAgICAgIDA6MDAuMTYga3NvZnRpcnFkLzA8YnI+DQogICAgICAgIMKgIDQ4MCByb290wqDC
-oMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIFPC
-oMKgIDEuNsKgIDAuMMKgwqANCiAgICAgICAgMDowMC4yMSBrc29mdGlycWQvKzxicj4NCiAgICAg
-ICAgMTM0MzQgdXNlcsKgwqDCoMKgwqAgMjDCoMKgIDDCoCAyNDY0MjjCoCAyMjI0OMKgwqAgMjAw
-MCBTwqDCoCAxLjbCoCAwLjDCoMKgDQogICAgICAgIDA6MDEuMDAgaXBlcmY8YnI+DQogICAgICAg
-IDEzNTE2IHVzZXLCoMKgwqDCoMKgIDIwwqDCoCAwwqAgMTYzMjUywqDCoCA1NzkywqDCoCAzNzk2
-IFLCoMKgIDEuNsKgIDAuMMKgwqANCiAgICAgICAgMDowMC40MCB0b3A8YnI+DQogICAgICAgIMKg
-Nzk1MCByb290wqDCoMKgwqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDC
-oMKgwqDCoCAwIETCoMKgIDEuMMKgIDAuMMKgwqANCiAgICAgICAgMDowMC42MiBjY3AtNS1xMjxi
-cj4NCiAgICAgICAgwqA3OTUxIHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDC
-oMKgwqDCoMKgIDDCoMKgwqDCoMKgIDAgU8KgwqAgMS4wwqAgMC4wwqDCoA0KICAgICAgICAwOjAw
-LjY3IGNjcC01LXEzPGJyPg0KICAgICAgICDCoMKgwqAgOSByb290wqDCoMKgwqDCoCAyMMKgwqAg
-MMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIEnCoMKgIDAuM8KgIDAuMMKg
-wqANCiAgICAgICAgMDowMC4zMSByY3Vfc2NoZWQ8YnI+DQogICAgICAgIMKgwqAgNTcgcm9vdMKg
-wqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBT
-wqDCoCAwLjPCoCAwLjDCoMKgDQogICAgICAgIDA6MDAuMDEga3NvZnRpcnFkLzY8YnI+DQogICAg
-ICAgIMKgwqAgNjYgcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKgwqAgMMKgwqDCoMKg
-wqAgMMKgwqDCoMKgwqAgMCBTwqDCoCAwLjPCoCAwLjDCoMKgDQogICAgICAgIDA6MDAuMDEga3Nv
-ZnRpcnFkLzc8YnI+DQogICAgICAgIMKgwqAgNzQgcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKg
-wqDCoMKgwqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqDCoCAwLjPCoCAwLjDCoMKgDQog
-ICAgICAgIDA6MDAuMDEga3NvZnRpcnFkLzg8YnI+DQogICAgICAgIMKgIDEwNiByb290wqDCoMKg
-wqDCoCAyMMKgwqAgMMKgwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwwqDCoMKgwqDCoCAwIFPCoMKg
-IDAuM8KgIDAuMMKgwqANCiAgICAgICAgMDowMC4wMyBrc29mdGlycWQvKzxicj4NCiAgICAgICAg
-wqAgMTE1IHJvb3TCoMKgwqDCoMKgIDIwwqDCoCAwwqDCoMKgwqDCoMKgIDDCoMKgwqDCoMKgIDDC
-oMKgwqDCoMKgIDAgU8KgwqAgMC4zwqAgMC4wwqDCoA0KICAgICAgICAwOjAwLjAyIGtzb2Z0aXJx
-ZC8rPGJyPg0KICAgICAgICDCoCAxMjMgcm9vdMKgwqDCoMKgwqAgMjDCoMKgIDDCoMKgwqDCoMKg
-wqAgMMKgwqDCoMKgwqAgMMKgwqDCoMKgwqAgMCBTwqDCoCAwLjPCoCAwLjDCoMKgDQogICAgICAg
-IDA6MDAuMDIga3NvZnRpcnFkLys8L2ZvbnQ+PGJyPg0KICAgICAgPGJyPg0KICAgIDwvdHQ+PGJy
-Pg0KICAgIDx0dD48dHQ+L3Byb2MvaW50ZXJydXB0cyBzaG93IGxvdHMgb2YgJ2NjcC01JyBkbWEg
-aW50ZXJydXB0IGFjdGl2aXR5DQogICAgICAgIGFzIHdlbGwgYXMgbnRiX25ldGRldiBpbnRlcnJ1
-cHQ8YnI+DQogICAgICAgIGFjdGl2aXR5LiBBZnRlciBlbGltaW5hdGluZyBuZXRkZXYgaW50ZXJy
-dXB0cyBieSBjb25maWd1cmluZw0KICAgICAgICBuZXRkZXYgdG8gJ3VzZV9wb2xsJyBhbmQgPGJy
-Pg0KICAgICAgICBsZWF2aW5nIGNjcCwgdGhlIHBvb3IgaXBlcmYgcGVyZm9ybWFuY2UgcGVyc2lz
-dHMuPGJyPg0KICAgICAgPC90dD48dHQ+PHR0PjwvdHQ+PC90dD48L3R0Pjx0dD48dHQ+PHR0Pjx0
-dD48YnI+DQogICAgICAgICAgICBBcyBhIGNvbXBhcmlzb24sIEkgY2FuIHJlcGxhY2UgdGhlIGNj
-cCBkbWEgd2l0aCB0aGUgcGx4IGRtYQ0KICAgICAgICAgICAgKGZvdW5kIG9uIHRoZSBob3N0IGFk
-YXB0ZXIgY2FyZCkgPGJyPg0KICAgICAgICAgICAgb24gdGhlIEFNRCBzZXJ2ZXIgYW5kIGdldCBh
-IHN0ZWFkeSA5LjQgR2JpdHMvcyB3aXRoIGlwZXJmDQogICAgICAgICAgICBvdmVyIE5UQi48YnI+
-DQogICAgICAgICAgICA8YnI+DQogICAgICAgICAgICBJJ3ZlIG9wdG1pbWl6ZWQgZm9yIG51bWEg
-dmlhIG51bWFjdGwgaW4gYWxsIHRlc3QgcnVucy48L3R0Pg0KICAgICAgICAgIDxicj4NCiAgICAg
-ICAgICA8YnI+DQogICAgICAgICAgU28gaXQgYXBwZWFycyB0aGF0IHRoZSBpcGVyZiBOVEIgcGVy
-Zm9ybWFuY2UgaXNzdWVzIG9uIHRoZSBBTUQNCiAgICAgICAgICBFcHljIHNlcnZlciBhcmUgcmVs
-YXRlZCB0byB0aGU8YnI+DQogICAgICAgICAgY2NwIGRtYSBhbmQgaXRzIGludGVycnVwdCBwcm9j
-ZXNzaW5nLjxicj4NCiAgICAgICAgICA8YnI+DQogICAgICAgICAgRG9lcyBhbnlvbmUgaGF2ZSBh
-bnkgZXhwZXJpZW5jZSB3aXRoIHRoZSBjY3AgZG1hIHRoYXQgbWlnaHQgYmUNCiAgICAgICAgICBh
-YmxlIHRvIGhlbHA/PGJyPg0KICAgICAgICAgIDxicj4NCiAgICAgICAgICBBbnkgaGVscCBvciBz
-dWdnZXN0aW9ucyBvbiBob3cgdG8gcHJvY2VlZCB3b3VsZCBiZSB2ZXJ5IG11Y2gNCiAgICAgICAg
-ICBhcHByZWNpYXRlZC48YnI+DQogICAgICAgICAgPGJyPg0KICAgICAgICAgIFRoYW5rczxicj4N
-CiAgICAgICAgICBLaXQ8YnI+DQogICAgICAgICAgPGJyPg0KICAgICAgICAgIDxhIGNsYXNzPSJt
-b3otdHh0LWxpbmstYWJicmV2aWF0ZWQiIGhyZWY9Im1haWx0bzprY2hvd0BnaWdhaW8uY29tIj5r
-Y2hvd0BnaWdhaW8uY29tPC9hPiA8L3R0PjwvdHQ+PC90dD48YnI+DQogIDwvYm9keT4NCjwvaHRt
-bD4NCg0KPHA+PC9wPgoKLS0gPGJyIC8+CllvdSByZWNlaXZlZCB0aGlzIG1lc3NhZ2UgYmVjYXVz
-ZSB5b3UgYXJlIHN1YnNjcmliZWQgdG8gdGhlIEdvb2dsZSBHcm91cHMgJnF1b3Q7bGludXgtbnRi
-JnF1b3Q7IGdyb3VwLjxiciAvPgpUbyB1bnN1YnNjcmliZSBmcm9tIHRoaXMgZ3JvdXAgYW5kIHN0
-b3AgcmVjZWl2aW5nIGVtYWlscyBmcm9tIGl0LCBzZW5kIGFuIGVtYWlsIHRvIDxhIGhyZWY9Im1h
-aWx0bzpsaW51eC1udGIrdW5zdWJzY3JpYmVAZ29vZ2xlZ3JvdXBzLmNvbSI+bGludXgtbnRiK3Vu
-c3Vic2NyaWJlQGdvb2dsZWdyb3Vwcy5jb208L2E+LjxiciAvPgpUbyB2aWV3IHRoaXMgZGlzY3Vz
-c2lvbiBvbiB0aGUgd2ViIHZpc2l0IDxhIGhyZWY9Imh0dHBzOi8vZ3JvdXBzLmdvb2dsZS5jb20v
-ZC9tc2dpZC9saW51eC1udGIvZjk4Zjc5NzAtNDU1Yy1kZGRiLWY2MGYtOGEzM2Y4N2Y4NDRjJTQw
-Z2lnYWlvLmNvbT91dG1fbWVkaXVtPWVtYWlsJnV0bV9zb3VyY2U9Zm9vdGVyIj5odHRwczovL2dy
-b3Vwcy5nb29nbGUuY29tL2QvbXNnaWQvbGludXgtbnRiL2Y5OGY3OTcwLTQ1NWMtZGRkYi1mNjBm
-LThhMzNmODdmODQ0YyU0MGdpZ2Fpby5jb208L2E+LjxiciAvPgo=
---------------85F7104AC962DBA0A466644C--
+The problem that we are now experiencing, for which I can use some help, 
+with the AMD Epyc 7401 server is very poor iperf performance over 
+NTB/ntb_netdev.
+
+The iperf numbers over NTB start off initially at around 800 Mbits/s and 
+quickly degrades down to the 20 Mbits/s range. Running 'top' during 
+iperf, I see many instances (up to 25+) of ksoftirqd running which 
+suggests that interrupts are overwhelming the interrupt processing.
+
+/proc/interrupts show lots of 'ccp-5' dma interrupt activity as well as 
+ntb_netdev interrupt activity. After eliminating netdev interrupts by 
+configuring netdev to 'use_poll' and leaving ccp, the poor iperf 
+performance persists.
+
+As a comparison, I can replace the ccp dma with the plx dma (found on 
+the host adapter card) on the AMD server and get a steady 9.4 Gbits/s 
+with iperf over NTB.
+
+I've optmimized for numa via numactl in all test runs.
+
+So it appears that the iperf NTB performance issues on the AMD Epyc 
+server are related to the ccp dma and its interrupt processing.
+
+
+Does anyone have any experience with the ccp dma that might be able to help?
+
+Any help or suggestions on how to proceed would be very much appreciated.
+
+Thanks
+Kit
+
+kchow@gigaio.com
+
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/d719f986-f9ce-a0c3-f9a1-1fe06a3cc0cc%40gigaio.com.
