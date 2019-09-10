@@ -1,130 +1,120 @@
-Return-Path: <linux-ntb+bncBDPYJBFU6MIBBVPAZPVQKGQEQHHNSOQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCS4BDN7YUCRBPNE37VQKGQE4UATPKA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x43e.google.com (mail-pf1-x43e.google.com [IPv6:2607:f8b0:4864:20::43e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 200F1AC361
-	for <lists+linux-ntb@lfdr.de>; Sat,  7 Sep 2019 01:48:39 +0200 (CEST)
-Received: by mail-pf1-x43e.google.com with SMTP id x10sf5754644pfr.20
-        for <lists+linux-ntb@lfdr.de>; Fri, 06 Sep 2019 16:48:39 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1567813717; cv=pass;
+Received: from mail-qk1-x73c.google.com (mail-qk1-x73c.google.com [IPv6:2607:f8b0:4864:20::73c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12839AEFC5
+	for <lists+linux-ntb@lfdr.de>; Tue, 10 Sep 2019 18:41:35 +0200 (CEST)
+Received: by mail-qk1-x73c.google.com with SMTP id c7sf16010741qkc.2
+        for <lists+linux-ntb@lfdr.de>; Tue, 10 Sep 2019 09:41:35 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1568133694; cv=pass;
         d=google.com; s=arc-20160816;
-        b=pKtatS+dm8DXEhi0h/7NbvTQswuP2fjoIMEhh0F2k1Bo+1qHc7bpZKUqk0ZHpgNYTq
-         ztNTBeLOdW8RgJl4p9KeSIsiQd48OHGF3jU0PPsQ+T8Qw6qGXMKG8lRk9woYN8E2IPHR
-         aBvwMXP5Bp9c+Pux0iC2BtuNUboyxZVZaxReXRwiOIEvjQfwgbXdA4+K23kwpjuJMsdY
-         sSoDLh+/OTkJkiJCrH+F/64GMaVizad1XwTmRXRvDNHEOxGqsQQXSCUfRf28kzESv0nw
-         94M07MojRWK3jppmRJuh19TAj6MTM3pw1bDjlze2q4hfiHnWUc3GR64SmzIJa0qEA2CW
-         U4Sw==
+        b=QbdGveRKqZeOh+AVFvhKrk4kc2c4jnBOYU9gdR0glhZCn2C2wVutFctgTzQ3slJs0O
+         qozJ5SQnBcYiQoXsdiPg4atWSkoJGnDqKXLjOb7LTYn1o/sKtNYnB+q451YGCzcb7Xs7
+         A6G1Gxt3EYfA+bt+1y9h+PM9QtKW9lrxKzxUi74wjk6r2Sryo4qL/NVlAtJo9nUufqq+
+         n57owyb9bXpdxrMiQekDRb9Ht4CdDWdnIh6xs9JCRHI++aUtFvqp7CjpRUAnoG7SjH7F
+         IwNQPyw08YAW7ISnDn0lGxBPrqAfbm97VNhdFgN4eJfaNnj0tuf/QEUTTyMLtsifY3ot
+         4UnA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:cc:from:references:to
-         :subject:sender:dkim-signature;
-        bh=nOWW5OCRGXIiPju5qWs9XaveMmWVkWQCGOgTUO/MFEQ=;
-        b=QE702dz40wYtjLd9Kc0RuvKZLd4N5wfBKsmBr6BB86cpyImGktqO+Ilo+cWXKlCBq/
-         q8E9Em5HDO+87WZN5r+jNc13gPLHQnPLuRFm4YpAk2ZYzRz5l7dB1DbmNHQ/Wj8ZVKc8
-         uNfwEAWvA5MBdHbf9heshB4tDA+TiOXEwRo8n4mBVlFB5vTF5AWbVquTCPHne/4pCBh9
-         BzvaO1UQVjDoLih52bBxxxTqN1zO4KKssZlw1DDesSbTixD8/hA9+OwN5iQFV52MFYqW
-         pErNNccIGn0Ys7Eec99sT66MkjeI/lZVEa6HRC4wn5Dk1j1yvyBK+gUB6fBxMbbLq+We
-         n1zQ==
+         :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:sender:dkim-signature;
+        bh=O/S3U+E5PvmKsNkmg8bMzhZSID1r5jwu9ruivJp7OZI=;
+        b=MkfM8NZhKkJu+lyALTooZlABvxnUanF+S89fA4de0faZTUM2KLSyD12p+8wa6HkgyR
+         +vMKu9N4P9+75b1+uHrLPWR2yJxwUQV0V4kbCCsNCKeySDZETJ+hs6rySN+geXF2mJsq
+         Uy7qygrKBN/0xYo3GScCqVYq6NdLs+Tx56ToJwEVXHD/NTauEtFnwKE4UAKtEhILNNrx
+         h27Zg5XjqXutHBGgoZU4dzctpfHE48rAKxtjk0GrFpS4IWCM+lnQoPrBB6LddLQEks7+
+         j65RNU/bv7LEIXanOd4m5JH5JI9erKUWt5Ql6MxNaUwPlff5ccLvDB8Je4hQEJ9qy0zK
+         JMwA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=JEEmEyZF;
-       spf=neutral (google.com: 2607:f8b0:4864:20::232 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b="We/JeeLS";
+       spf=neutral (google.com: 2607:f8b0:4864:20::d44 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:references:from:cc:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=nOWW5OCRGXIiPju5qWs9XaveMmWVkWQCGOgTUO/MFEQ=;
-        b=M/ZwrQhOdBDoetA6woBPpf1k4Dtvuwo3adSgY2A8spR1CZNUEjb3Tvy/53gHiX0QT8
-         33/zWO9/bqkY4Au0ySaFXRgM1y2s4330FXLspGifo8H2c+7qu6Nwp2+cyAAncemyDI5Q
-         aQQc/BU6rMRth1ZjiruidIacDjMVo1r8hSK+li5RAER+bfSwtak2V0GoiUGKXYBmfXT+
-         vn8ofMA/rGx0T2FkIgqxqH6fuH6S2K5GmTYCMIfKWdxKo5A0V0dFXWCoZE9aaDotCTCH
-         /Oa+cpMkjUpXg1L2Wbdfahsvz86e+gOcnjmABNAViA8XGluUuDI7wosuK3opyNslXBiv
-         4Shw==
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:cc:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=O/S3U+E5PvmKsNkmg8bMzhZSID1r5jwu9ruivJp7OZI=;
+        b=Psx90GSfkwqYqaoKmEPJs8pWJ9SR0weYPGAHYXCnFQen3OuYjZfy+8A7A4oY+ipuoC
+         84mhPZdzdWA1S8eNFwKm4LwRBotZsXzfoE37Fq5VoqvmjfU+6bxORj28dI2W3LbQRlm2
+         bho+pvOcck3vHzGBii4mECpRH7jViwrxt85Hcj67/jtLcFY/jB+iXW2vn4HaGxrv/tJc
+         XXmYPNufN1inCGiTgQixxY9b49+MM+AOHjLUOh8/dHT8xWmTSwYSUIfzy79Lk+0F4noo
+         IcYHhi+1y9i8CZviKWVN3rlFV9OH8/f5xWpxqamEHmomyqW0BTYJgf2ReYJJkpNDMmjl
+         dDXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:references:from:cc:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=nOWW5OCRGXIiPju5qWs9XaveMmWVkWQCGOgTUO/MFEQ=;
-        b=daGDIohp50tna8/j8pk9CxyuK26mtcxDygPJgzq5Cnt8PtFGu2I7V1KYw+G2AsNrm7
-         YPcvn4bjQxlvLSEtU0oofNO0q9ed1KyQCO8NLVJkVBGXrVjlo+0ok22iOTje+Uiwek5E
-         16yQfhaO5z1O56do3o9n3JMtWG35abCj80IIm8/5iDBIomPwkdmEOMLnjMQ8S0RMJPEp
-         9i3oY8eCl70xiJpRH2gKbsOhhPAX6+aZXj4PFi8Gj62MSC5NPyPD3yvVApB2P2qsl20/
-         mQO0fsSfA3yeKTHUh7b8Oh3Gaoli3Myh+IbOfpNqUBF7L5uz40Lx+gtLaB0JIEBv/V6K
-         UB5w==
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:cc:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=O/S3U+E5PvmKsNkmg8bMzhZSID1r5jwu9ruivJp7OZI=;
+        b=OCU8sKmWvyVtNLmYkI7tHaghb74PeJgqmMmwW1HLJxpjNSDSV63thX1Lmoz01Anr6p
+         qXST7QxsmYTmrP27DLl8K6tWeGnbuzC6zR8GI5bOfhqhQdhpeVXXE1APTu7oiL6H/TOl
+         i1tZ1zua/8F8SnP+Hv5rY+nCyr7oZUl1AvVn0Bwk1WaUom/aBnP8BueF0JhAu5ntk2nE
+         wISnUFlzfTESr4+4kOApU1c/F6L+Cee1iR/tT1Q+mE/KAWMEhZSGw8aDPEipdP0p6laB
+         f7AEtlssQ9SjR874EmM4h3DEJxsDqi/CtHGvpdENatvs6lpjp0kGRy6YMrSdtvG8U6F6
+         xCPg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWO0B49xAgYzJgEXOHPxyALsdi9gt0mmaAMVWygfee6aLsTjdK7
-	0SGUhqrM1OgdTjZUOOLmArM=
-X-Google-Smtp-Source: APXvYqzQU4+Te0ahqhTGI5Rt8rNiyp6ashXYhR3F+aTuYU+g1HQqrdDE+gIgPgQb7KlyLoad1+FLlw==
-X-Received: by 2002:a17:902:7483:: with SMTP id h3mr11691856pll.163.1567813717592;
-        Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
+X-Gm-Message-State: APjAAAXoDdXPjLodrQ0WRxY3yY3fU355wDc7Rq/YZmljhBVl05EVCu6a
+	iq++mCq8kKV1gMnGcaY/BQg=
+X-Google-Smtp-Source: APXvYqznTPRh5xgq7VGCp6aJSA0XNZf0na7cSeU9lPMVO6CBdpgow22cO5ctiOMmmciO00m3l6KIYQ==
+X-Received: by 2002:a37:a00f:: with SMTP id j15mr29818632qke.335.1568133694027;
+        Tue, 10 Sep 2019 09:41:34 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:a410:: with SMTP id p16ls2008348plq.1.gmail; Fri, 06
- Sep 2019 16:48:37 -0700 (PDT)
-X-Received: by 2002:a17:902:4545:: with SMTP id m63mr12077685pld.45.1567813717312;
-        Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1567813717; cv=none;
+Received: by 2002:ac8:34fd:: with SMTP id x58ls1708170qtb.8.gmail; Tue, 10 Sep
+ 2019 09:41:33 -0700 (PDT)
+X-Received: by 2002:ac8:604c:: with SMTP id k12mr30987237qtm.62.1568133693583;
+        Tue, 10 Sep 2019 09:41:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1568133693; cv=none;
         d=google.com; s=arc-20160816;
-        b=jW8rluuYri95UB9xcb78J3hT76yPVLuARbAvrJi0yU8LVljfY0qzA3Ogld/S2aJMod
-         hEM8ZavbdjPoBYQS+n1Yf3lYG2GQ3uZ5FJt+DBB3zYaDrFn7gaaNBngIN9i//h1b1GX/
-         eEUhfejiMMpptlg1YczLcOiJ0VCxSD3zZPYhCH95V7e2WIFbLjCi+qCWGK5rBuQ78Wi2
-         JNjoi5hx4fsCKB4VSmHuPnFAoGtYd5SP6j9/2mp441aK6gBIYCR0x68F4e1kJqRsS0tS
-         i9jz3fIXd8BGvPJTeUhnTdF30Y6sf3+JySzUVJYq9MvNdNFg+oYyBn3rVgno5e14tpny
-         fnHA==
+        b=FYNyye6tyGE2i/6WrIVdtQhLCckkesfZUCVrjLDzBldXw4umry6TB8cRWhWZf7RbRI
+         Y/hx6b9+6LFcBw/aTHiRjQSIzLkoyuQKZDslIC5icPHf8FYftC2acN9etf6SRW4RO47P
+         wiZUD9GBNrOVg9twrOZMIHNB55UK1FdfY5PEbT/jIFg6xGRlGO8Mqo2YDRD84T4BTRZa
+         RQE5GUiREcA0IoFxfJqR+l20yRBlCBR28WPZuULOd+QRtPwbYhUYNeh/A3auWA9nLJY9
+         c1M9huoQM7XNm9jPFmKzeOa7AtRP63RGWrWHMGyTpgyxPRMTlEzONWFtoQe/CTJk9EGd
+         Xl0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:cc:from:references:to:subject
-         :dkim-signature;
-        bh=zgzwkt+5f1+/iBFBVoRN90jtDmZfYNKs9pY9DhgTDjc=;
-        b=xogGmVwxRlB88JZBk8e18TatGILcF//Zfqx5NMmHmhdV1q8fv2pd7F80F2Bc8g+o3I
-         kHvNm5BMTuAEhPqukOuW4LPG3fZEBPNpGzS5caT+otopoLgB481jG8aYtu7gxZ+QOpvP
-         7UWNl8OVMFNP+PiP2QvUFlzk/GgyHCI0EJW4N8VFUQUL7Rwbwb90QtU60HEnyRexcnYu
-         2ohCvevYHlROeKmFYddS2UMTlUZTLksaYlR61F+aLOW1qiu6LBQsu3XtG8OjSOJmtlVw
-         27Fcx+T6b7O3SSTHMt6uBO3XRnVe2zEMEZncw/yN0XTxhKB+t1+qIMWJrzC8E9VQdwxH
-         xz+A==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=PuYC847frxgHINuOOhOoZA3oEgF84P0aotCSUtzOwyE=;
+        b=Un2zbjgPbtDOGGGd3/QpzGMeh7FJzcmxKIv3nTsRiHvLSHUb5ZUwdQiOsgOy/xWQA/
+         T0njjDEmxbQiRzNl57I9dAqiX+sH21OzwvgVDMkIyDLiafjo+u8UdHAHisYWRdhrFWga
+         Ts/xzrc7sOnQkGFXjuHbiZnOone99dC6zj94Pqv9t7WQxFdsQO5Y6t23ggTZfwY2F21d
+         0dQ5C297x/Ibe0S4QlDmLn9CrnhwiXKZjIig3wp1zxW4mL9ZkNaj2nPMx8GnjWS8Rx4F
+         VsMjEg8ZyhKlqlEe4mPqxwVEQp23BIWCLTqmCN/Hz59jW24WcKNGNc1vGSuSBtK/4KyX
+         Dodg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623 header.b=JEEmEyZF;
-       spf=neutral (google.com: 2607:f8b0:4864:20::232 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
-Received: from mail-oi1-x232.google.com (mail-oi1-x232.google.com. [2607:f8b0:4864:20::232])
-        by gmr-mx.google.com with ESMTPS id w72si457424pfd.2.2019.09.06.16.48.37
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b="We/JeeLS";
+       spf=neutral (google.com: 2607:f8b0:4864:20::d44 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+Received: from mail-io1-xd44.google.com (mail-io1-xd44.google.com. [2607:f8b0:4864:20::d44])
+        by gmr-mx.google.com with ESMTPS id g21si818381qkm.5.2019.09.10.09.41.33
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::232 is neither permitted nor denied by best guess record for domain of kchow@gigaio.com) client-ip=2607:f8b0:4864:20::232;
-Received: by mail-oi1-x232.google.com with SMTP id 7so6441097oip.5
-        for <linux-ntb@googlegroups.com>; Fri, 06 Sep 2019 16:48:37 -0700 (PDT)
-X-Received: by 2002:aca:1004:: with SMTP id 4mr8798928oiq.92.1567813716654;
-        Fri, 06 Sep 2019 16:48:36 -0700 (PDT)
-Received: from [192.168.71.78] ([12.235.129.34])
-        by smtp.gmail.com with ESMTPSA id 23sm2218038oiz.8.2019.09.06.16.48.34
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 06 Sep 2019 16:48:36 -0700 (PDT)
-Subject: Re: AMD Epyc iperf perfomance issues over NTB
-To: linux-ntb <linux-ntb@googlegroups.com>, linux-pci@vger.kernel.org
-References: <CAOQPn8sX2G-Db-ZiFpP2SMKbkQnPyk63UZijAY0we+DoZsmDtQ@mail.gmail.com>
- <a5a2d312-f6af-f20f-0594-98a7f80c7a9d@deltatee.com>
- <bce9a1d6-1c37-b9f8-a613-2ba68211fee1@deltatee.com>
-From: Kit Chow <kchow@gigaio.com>
-Cc: Logan Gunthorpe <logang@deltatee.com>,
- "Eric Pilmore (GigaIO)" <epilmore@gigaio.com>
-Message-ID: <d719f986-f9ce-a0c3-f9a1-1fe06a3cc0cc@gigaio.com>
-Date: Fri, 6 Sep 2019 16:48:32 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+        Tue, 10 Sep 2019 09:41:33 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::d44 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::d44;
+Received: by mail-io1-xd44.google.com with SMTP id r8so14065535iol.10
+        for <linux-ntb@googlegroups.com>; Tue, 10 Sep 2019 09:41:33 -0700 (PDT)
+X-Received: by 2002:a6b:7215:: with SMTP id n21mr6285570ioc.238.1568133691620;
+ Tue, 10 Sep 2019 09:41:31 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <bce9a1d6-1c37-b9f8-a613-2ba68211fee1@deltatee.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Language: en-US
-X-Original-Sender: kchow@gigaio.com
+References: <20190716173448.eswemneatvjwnxny@yadro.com> <9428e069-19dd-d020-1a47-f33d99bd01ac@deltatee.com>
+In-Reply-To: <9428e069-19dd-d020-1a47-f33d99bd01ac@deltatee.com>
+From: Jon Mason <jdmason@kudzu.us>
+Date: Tue, 10 Sep 2019 17:41:23 +0100
+Message-ID: <CAPoiz9x4Gb6hZg3GBfOjw_zMShOJHmXGmCOm2Nj+-vCaOzDCMg@mail.gmail.com>
+Subject: Re: [PATCH] ntb_hw_switchtec: make ntb_mw_set_trans() work when addr
+ == 0
+To: Logan Gunthorpe <logang@deltatee.com>
+Cc: Alexander Fomichev <fomichev.ru@gmail.com>, linux-ntb <linux-ntb@googlegroups.com>, 
+	linux-pci@vger.kernel.org, Allen Hubbe <allenbh@gmail.com>, linux@yadro.com
+Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: jdmason@kudzu.us
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gigaio-com.20150623.gappssmtp.com header.s=20150623
- header.b=JEEmEyZF;       spf=neutral (google.com: 2607:f8b0:4864:20::232 is
+ header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
+ header.b="We/JeeLS";       spf=neutral (google.com: 2607:f8b0:4864:20::d44 is
  neither permitted nor denied by best guess record for domain of
- kchow@gigaio.com) smtp.mailfrom=kchow@gigaio.com
+ jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -137,53 +127,44 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This is a follow-up of the initial problems encountered trying to get 
-the AMD Epyc 7401server to do host to host communication through NTB. 
-(please see thread for background info).
+On Tue, Jul 16, 2019 at 6:41 PM Logan Gunthorpe <logang@deltatee.com> wrote:
+>
+>
+>
+> On 2019-07-16 11:34 a.m., Alexander Fomichev wrote:
+> > On switchtec_ntb_mw_set_trans() call, when (only) address == 0, it acts as
+> > ntb_mw_clear_trans(). Fix this, since address == 0 and size != 0 is valid
+> > combination for setting translation.
+> >
+> > Signed-off-by: Alexander Fomichev <fomichev.ru@gmail.com>
+>
+> Looks good, thanks.
+>
+> Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
 
-The IO_PAGE_FAULT flags=0x0070 seen on write ops was in fact related to 
-proxy ID setup as Logan had suggested. The AMD iommu code only processed 
-the 'last' proxy ID/dma alias; the last proxy ID was associated with 
-Reads and this allowed Read ops to succeed and Write ops to fail. Adding 
-support to process all of the proxy IDs in the AMD iommu code (plus 
-adding dma_map_resource support), the AMD Epyc server can now be 
-configured in a 4 host NTB setup and communicate over NTB (tcp/ip over 
-ntb_netdev) to the other 3 hosts.
+Applied to ntb-next, thanks
 
-The problem that we are now experiencing, for which I can use some help, 
-with the AMD Epyc 7401 server is very poor iperf performance over 
-NTB/ntb_netdev.
-
-The iperf numbers over NTB start off initially at around 800 Mbits/s and 
-quickly degrades down to the 20 Mbits/s range. Running 'top' during 
-iperf, I see many instances (up to 25+) of ksoftirqd running which 
-suggests that interrupts are overwhelming the interrupt processing.
-
-/proc/interrupts show lots of 'ccp-5' dma interrupt activity as well as 
-ntb_netdev interrupt activity. After eliminating netdev interrupts by 
-configuring netdev to 'use_poll' and leaving ccp, the poor iperf 
-performance persists.
-
-As a comparison, I can replace the ccp dma with the plx dma (found on 
-the host adapter card) on the AMD server and get a steady 9.4 Gbits/s 
-with iperf over NTB.
-
-I've optmimized for numa via numactl in all test runs.
-
-So it appears that the iperf NTB performance issues on the AMD Epyc 
-server are related to the ccp dma and its interrupt processing.
-
-
-Does anyone have any experience with the ccp dma that might be able to help?
-
-Any help or suggestions on how to proceed would be very much appreciated.
-
-Thanks
-Kit
-
-kchow@gigaio.com
+>
+> > ---
+> >  drivers/ntb/hw/mscc/ntb_hw_switchtec.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> > index db49677..45b9513 100644
+> > --- a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> > +++ b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> > @@ -305,7 +305,7 @@ static int switchtec_ntb_mw_set_trans(struct ntb_dev *ntb, int pidx, int widx,
+> >       if (rc)
+> >               return rc;
+> >
+> > -     if (addr == 0 || size == 0) {
+> > +     if (size == 0) {
+> >               if (widx < nr_direct_mw)
+> >                       switchtec_ntb_mw_clr_direct(sndev, widx);
+> >               else
+> >
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/d719f986-f9ce-a0c3-f9a1-1fe06a3cc0cc%40gigaio.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAPoiz9x4Gb6hZg3GBfOjw_zMShOJHmXGmCOm2Nj%2B-vCaOzDCMg%40mail.gmail.com.
