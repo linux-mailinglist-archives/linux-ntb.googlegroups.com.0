@@ -1,46 +1,46 @@
-Return-Path: <linux-ntb+bncBCS4BDN7YUCRBFUGUXWAKGQE7O5OYJA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCS4BDN7YUCRBWUGUXWAKGQEBGEX5AY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53c.google.com (mail-pg1-x53c.google.com [IPv6:2607:f8b0:4864:20::53c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5579EBBE55
-	for <lists+linux-ntb@lfdr.de>; Tue, 24 Sep 2019 00:11:36 +0200 (CEST)
-Received: by mail-pg1-x53c.google.com with SMTP id r35sf10138144pgb.2
-        for <lists+linux-ntb@lfdr.de>; Mon, 23 Sep 2019 15:11:36 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1569276695; cv=pass;
+Received: from mail-vs1-xe3c.google.com (mail-vs1-xe3c.google.com [IPv6:2607:f8b0:4864:20::e3c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 50662BBE5B
+	for <lists+linux-ntb@lfdr.de>; Tue, 24 Sep 2019 00:12:43 +0200 (CEST)
+Received: by mail-vs1-xe3c.google.com with SMTP id c15sf1988199vse.16
+        for <lists+linux-ntb@lfdr.de>; Mon, 23 Sep 2019 15:12:43 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1569276762; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zGUPMqMH8ZZrqbV5+73QqP5mKCw4qIKDSaK0dlDflISk0mNFoGE/vl3Dq4MnYx3X8x
-         UQKKVKfBhhxiqRwFNJ/Oony2cHLyBgzs5V2YHQVkb+GXdIMGT9wTTMB8dwTm/WYbhkBU
-         kfclH9wEApYZaIUvWxI3GVIsSIFgnQthDLpN62lNiUwXTpu9GpgE169JPl6mMaUtmsPO
-         nwT2mN4BCLwQ5UbaLbPfM8y1cG5A/39r5MlQC1AuXjH+4xlziXM4fCneBxnAyl29BGPx
-         0a70pajUdtHAodpE/hhmPbcLOD+LRvBR5j+4zBjYh6a2rhHMEDSLWbY0DaaepWbt9xnM
-         I9fw==
+        b=KW2qBe1CDALzod8T1fBC0fNXTnIt3R/ck6mbuZQz+aA92ryVYXlmpw5Ct+dQjeV9lL
+         oTjJOYGf+LTv5DlloFvlLa2oKoNEgiUenCjoJY/Y1U1iW+YodjH33L0AyNQwzt5re2vu
+         idOyHyw+cKYDrX+d67wb8PMmLeg5k7y165govrze8yeVjpZJawizKykyU22XFb8ZQvfw
+         80K25BkH34VwRUBL7mX8Lams3wUd5mUG/VjB56QTjyZmPcGtgPI5NIBFRC5tvhGFZUyp
+         J08zCAzCowqcibNSfmFS4SZdg7RH47XZt3mFWdSFl/cF/VVXps3QE7i/K8ZfivUcjfCt
+         vqkA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:sender:dkim-signature;
-        bh=jCjxe4V6rd/sKYw4lXB3pFy/ZiFEnafOEj1WQILZ3pY=;
-        b=orCm23joOr2MglbsFin494Xd0Bm//eai2U0wVcY2x2quw4ir4A12RAxZYYXUK1KP53
-         bO4FGfmPNcsvoIsQHlJkTLdjC2hSJO/1Rwb6SUeiLPTBOHappRZJ1haxGLbEREpllELY
-         LZLjmmXBFTtrAP1iro159ioaeyqYXAEFERmraLKZuYD8i2q0ozPIA4Gh6C4eIHnLWib7
-         8jnAVX4TRYEddqNmxrwHh/cprq4xymoD9fK+4i/mO/ilur3FiKGl6CNfUWNTBIvpT9Xj
-         urAaVONjDYsD903Dy4Xktd4G+sd6mivaS4h6P1axqXPM6EsTY+J/MOIrfpcbxtoU8UoS
-         u9tA==
+        bh=7sN/Xt6NhOYyBHn65+6GCWGpNuN2LMzchE1TLmirgQk=;
+        b=025kcMa+TdyxrFhrtj9e979j6Uv9dhpTuIZ7osxG57UvSLAzmDoV6uxgGN5bKmdYKw
+         bYoj+KJx9y92U9qIUqORRSBmA7RIauAAV77GygDGThwhVeqTKNvcdr1QY+izwxmoMBSx
+         N6cLoniR4s90sS5UgE8No9ccjyuyqDeExCXJZK2yvop48V9IMM1vg7+9qEOV/zLJs1E5
+         mJsb4vuY9NX5xqy0RPnaJFkMpNz/4dx2N+z5bZuH+dGGUriXBhQvAgUcrnj81CUrhOwU
+         8Kv4t6RC68pUgdnAE4QLQ1ML0fbXo9lRm6HyQLbCL0tfefJvNgR0OB6Wc7CG3rJ8xDl3
+         dxnQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=QBNbnv6L;
-       spf=neutral (google.com: 2607:f8b0:4864:20::d43 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=F8ctJGLe;
+       spf=neutral (google.com: 2607:f8b0:4864:20::d42 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
         h=sender:mime-version:references:in-reply-to:from:date:message-id
          :subject:to:cc:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=jCjxe4V6rd/sKYw4lXB3pFy/ZiFEnafOEj1WQILZ3pY=;
-        b=EzWRQux7movRLdgR5cG3f4ttbU+cY2p92UZPjJ6iocNs5j+WyI1VMg72XYp5ig5N7E
-         oKLwpGjl+BcfnO/9Mvq5/BRiUYkudiLpQslghNbFwb4lK0F04cGqaJQxVNG/Bg08xZB5
-         C7z+qraVcDbB/9PcqY/oQBpPPqjtTJ+MH61WVIYhcV0ItvsRqBJ2iK2PrY44GP3IWwqo
-         IjMD26eEON3UbDxR98pdvo7w6PEcEymWMKm7MKRXF9HGHhbG/a7nUJFrFKgU43MJ5wk4
-         zYGVRkm26DKrwWfl4SzbLoYqZt1kc+QInYWmFMu9R7Njut6Iy7xgqWKZMnKCacENFyRA
-         MbZg==
+        bh=7sN/Xt6NhOYyBHn65+6GCWGpNuN2LMzchE1TLmirgQk=;
+        b=c8uJHtIeHxe4bz2NDb+m3NIGp9sdHUEX3fu/3ZuBjDt4GHwjiMfy1CH2IUdO0whene
+         m/Pvfn56dpuhY8eAOqJ8wfJcVvn9EGvk6QLa6FnG7RUjIwR6Hz1qAhhh3qWmQGNVIfOj
+         8aC8argwkJwey/Dzn+ndf1JFAAJ2vupmQQDAoilACzaNImF0mWa6nK5dBrj9CVeckBDS
+         AHLjGxMn9pp5rsoJU1x5Lfw7Q/Tg0MdaW1gYvoRM8zuujpauFAB0s9Z5Le7Q0aj1jcI8
+         FhobZB35ndj7OYtoKMP+tzQve55BZFdp3h1tOM2eoo16U5/DTBnr8naxhyyTBwQ7wKFN
+         RdMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
@@ -48,73 +48,71 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=jCjxe4V6rd/sKYw4lXB3pFy/ZiFEnafOEj1WQILZ3pY=;
-        b=SpSQqW2ytE1EhrtswflzhEWRXd8KYRdGjTPxywKYVjaF3g1Rfo5lvlr8yRm2iK26By
-         ZtgiJK4pGNNLekOmuulnw4Ah3tXrgiCm9R7J4sJ6FD4rLN4vvXL6J0k0fBk0CaKr6+QJ
-         6nb6vzagavyEodjOWHGgN1VSToESrhLcJQk+0FY/dwQE8mElYqn/aThKvalu8z+s3jDD
-         mQu3122uDc7tGnfnId/Daqen5XAUgpJSzITJLHSo8rmNagdIePxC3/l/KGGeOfh5noDn
-         /4uO7NTCdUFrPFvhRKbHmGeI0SAcSoXV7q3r/DZDB0pjt/nQJTLy1uwKlU1bHvwSNOeE
-         KnMQ==
+        bh=7sN/Xt6NhOYyBHn65+6GCWGpNuN2LMzchE1TLmirgQk=;
+        b=IjFxRcZd5QpFjh8+8xzRp+p7Ve83R3ZicmaR99/VkMtWoKddF6PrVPS9iLgozJb7z/
+         lVXWZlVoywZDbHtf00JzGhxj+oIqzLq/wMOQOTW8Gbr4rWlj+85us28lbCbWdUq7O1+P
+         Crxctp9wLTrN/iqOq/LKE7P44s9ORPYCV1IcKIMsJ2rbkMcn756eVuwwGG4grLzfu105
+         sNohvoZ6XrTmZqowwO9tz7LjfWudd4+X6nB8HqTOE2VEzeTZjaQG8UslYBgSqG05UYYX
+         UC7cOj0wv6veFGKLIDlHHIWoArMFkPfh80oXpWNVIwtR1lsBBSXs8gRXJABZcP8p8zIb
+         ME3A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWI073aZjbBI4xu4gaSJ3YE7ZcGAuWgQM0ckWgIYDotDauM2h2O
-	Q2kvhj+zfsWSm+x760g4y1A=
-X-Google-Smtp-Source: APXvYqzoNtQGhcke7jTrCW36mPxoB+InHok1mCJZytsjDPbV9HpQ/NQ9ZUUaskiKFoQ6Jk0dgW/tXg==
-X-Received: by 2002:a17:902:b40b:: with SMTP id x11mr2029057plr.87.1569276694770;
-        Mon, 23 Sep 2019 15:11:34 -0700 (PDT)
+X-Gm-Message-State: APjAAAXPbA6mXt3QTqO3B7ajihgSf415iZb6e+YhBolpJzpc/3v1NKrX
+	3ITnC/OKiDzubf3lRdcGFeE=
+X-Google-Smtp-Source: APXvYqzvvesO8LYAnr0cxBzVNjbxJL2ZS5QFKt5sELKiK5DRVomFlwsutRKPl7bUBRIkI5ayGVoG+g==
+X-Received: by 2002:a67:f6d3:: with SMTP id v19mr909426vso.57.1569276762344;
+        Mon, 23 Sep 2019 15:12:42 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a62:6204:: with SMTP id w4ls4285969pfb.6.gmail; Mon, 23 Sep
- 2019 15:11:34 -0700 (PDT)
-X-Received: by 2002:a62:c141:: with SMTP id i62mr2051262pfg.64.1569276694390;
-        Mon, 23 Sep 2019 15:11:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569276694; cv=none;
+Received: by 2002:a1f:9e8f:: with SMTP id h137ls531615vke.2.gmail; Mon, 23 Sep
+ 2019 15:12:42 -0700 (PDT)
+X-Received: by 2002:a1f:2343:: with SMTP id j64mr1299631vkj.84.1569276762053;
+        Mon, 23 Sep 2019 15:12:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569276762; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ox4SBu+XO0z1yL9InO395FYav01DqVs81/6Qx5Ru5rz++ekZ1xGbL71m3QetlO6Sc+
-         xsWaL/r+8EBfZkVcR1kXlae8vvxrS/DwJimWpDzXaj+gPw+T31o2euMSU/q8IRLkWu38
-         d28aaLur4q3l4/IWC33uUpuPfPXzOeFFQCDxbjKhJXqYUu5f/Rw/oUZf0jn7hJ4S197G
-         Pr++oQomzHjh/1HjmXDlEDPf8ESGrJd1VW9exdrI+IOPUSwZ7LYQqypEy780Gmu/Ienp
-         UxFjEP/BNSwRtuLntw8IZCk3grSlKD2ZyaQ5U6am87iv8RMhuJ0VGJLJAH5VjBY6m2vE
-         eapg==
+        b=grwnoO8h79yKwAjLm6sLY9xqcbmE+mhEo+JwiCMDpg3adQX0UkKQ8CZ5qZsi8H8Zna
+         Bwr8JW/0Ni73WQBQmt8rRomLL74NZrEeS4ucKZURL4uV9QyPpejlo7OaY2Kadx4FhTwd
+         bboKH3bdD3fkC87mEr0OlszCjpSIxeobVjDWQiJXaFDe1dCkwg6REPD9hcE75w43niHn
+         k0V+lPfUeiJoaDgzmc0O0cR+jb9WykEyCmEElGQdJ2eroufiU0PRk9Qlhhli1eX9p9q4
+         fTgmnhVE2gXQY0pbuBBz+4FoO0ElF/cvlQWCHH+ykqSCsoyx/vc/7uSQipazgW+rdjqZ
+         sjEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=Uqy59dGY4blvVGjglQKtbrenXU/K+5if5eYupyey+8k=;
-        b=O2hCZwNtNPtb8waQtE+bSrFUajhZ8REHCGIupPyP2Qts2bgXH034cYiY3jTBSX1Mu1
-         X5WkG3pCE7+UkJy3zrDRW+jeYBmuWLT/vmksp9GXOHp89HIPWrHRttMGx4WPidtIYxZf
-         6gV7GSj7mBGGwy/c5C9Kzz3d3FVDe8d7WQKK4bfGdx9ieDdz2buneqoav4cu7KPb/KUF
-         Gp6dNrrfSMKNrvYqG7pIdMxdrhZg34o/8645vMFjdEP/00SUfHMW/e4ow2l5Ql2nRFtU
-         PUkGfUi002m5D+9rFvE7UlDOaTLgTzw/O4S9szwqEdd02Vwpjun+3+6nkxsnufAyMPZB
-         eNnA==
+        bh=BxQAioENvWKeyWX2UgPIsVXz8z9Ck2G/PQ6H2v2Nkt4=;
+        b=PN7hndmDoUYRZQD6BiZxiszEN3kfoermZkZ6ztZjmvj31pWtanQ/gLbB/J/+iITlmS
+         LLkFR/v4Nw2cu6/D3hSuO72jaJlS7PcSnCAVrvYCaEcYR033R9zq7UvzjEyY6qZ9NZrs
+         g5F5xQcCGGWwiFT6o4J5L74KWtGEf9Q0Qh3Cd1psHRQTMbTfwc/83FPHXSU2MR831MUw
+         rMbuP6fNuCNmoiMyyGnHXAJlzFxyIunQ/WL2et5Ib160bKtGu3ijNcfV2z2n0GLjGnOS
+         4qrYW0tmqBKfFOcB1B83169i0jC46vVawuZqpecytvSSSZywQAy/a1H3InkqUcWzIC6j
+         3r8g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=QBNbnv6L;
-       spf=neutral (google.com: 2607:f8b0:4864:20::d43 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
-Received: from mail-io1-xd43.google.com (mail-io1-xd43.google.com. [2607:f8b0:4864:20::d43])
-        by gmr-mx.google.com with ESMTPS id q2si696161pgq.3.2019.09.23.15.11.34
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=F8ctJGLe;
+       spf=neutral (google.com: 2607:f8b0:4864:20::d42 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+Received: from mail-io1-xd42.google.com (mail-io1-xd42.google.com. [2607:f8b0:4864:20::d42])
+        by gmr-mx.google.com with ESMTPS id h184si869123vka.3.2019.09.23.15.12.41
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Sep 2019 15:11:34 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::d43 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::d43;
-Received: by mail-io1-xd43.google.com with SMTP id u8so16115608iom.5
-        for <linux-ntb@googlegroups.com>; Mon, 23 Sep 2019 15:11:34 -0700 (PDT)
-X-Received: by 2002:a5d:89cb:: with SMTP id a11mr1789115iot.159.1569276693582;
- Mon, 23 Sep 2019 15:11:33 -0700 (PDT)
+        Mon, 23 Sep 2019 15:12:41 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::d42 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::d42;
+Received: by mail-io1-xd42.google.com with SMTP id n197so37412149iod.9
+        for <linux-ntb@googlegroups.com>; Mon, 23 Sep 2019 15:12:41 -0700 (PDT)
+X-Received: by 2002:a6b:da06:: with SMTP id x6mr1956758iob.42.1569276761401;
+ Mon, 23 Sep 2019 15:12:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <1568567293-26894-1-git-send-email-Sanju.Mehta@amd.com>
-In-Reply-To: <1568567293-26894-1-git-send-email-Sanju.Mehta@amd.com>
+References: <55f2fb85-9d4d-f78d-e6dd-70b09d7667e4@infradead.org>
+In-Reply-To: <55f2fb85-9d4d-f78d-e6dd-70b09d7667e4@infradead.org>
 From: Jon Mason <jdmason@kudzu.us>
-Date: Mon, 23 Sep 2019 15:11:22 -0700
-Message-ID: <CAPoiz9w5eFaw42SmMBoyNEACJ10QNdTL=jiduS8UbowrgwcdHg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] ntb_hw_amd: Add memory window support for new AMD hardware
-To: "Mehta, Sanju" <Sanju.Mehta@amd.com>
-Cc: "S-k, Shyam-sundar" <Shyam-sundar.S-k@amd.com>, 
-	"Shah, Nehal-bakulchandra" <Nehal-bakulchandra.Shah@amd.com>, 
-	"dave.jiang@intel.com" <dave.jiang@intel.com>, "allenbh@gmail.com" <allenbh@gmail.com>, 
-	"linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
+Date: Mon, 23 Sep 2019 15:12:30 -0700
+Message-ID: <CAPoiz9zWo+LuzWG29kSYCrs9FdwvzDycWBEmg_GHL3W5c3QRuQ@mail.gmail.com>
+Subject: Re: [PATCH] NTB: fix IDT Kconfig typos/spellos
+To: Randy Dunlap <rdunlap@infradead.org>
+Cc: LKML <linux-kernel@vger.kernel.org>, linux-ntb <linux-ntb@googlegroups.com>, 
+	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>, 
+	Serge Semin <fancer.lancer@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 X-Original-Sender: jdmason@kudzu.us
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
  header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
- header.b=QBNbnv6L;       spf=neutral (google.com: 2607:f8b0:4864:20::d43 is
+ header.b=F8ctJGLe;       spf=neutral (google.com: 2607:f8b0:4864:20::d42 is
  neither permitted nor denied by best guess record for domain of
  jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 Precedence: list
@@ -129,122 +127,51 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Sun, Sep 15, 2019 at 10:08 AM Mehta, Sanju <Sanju.Mehta@amd.com> wrote:
+On Wed, Sep 18, 2019 at 1:58 PM Randy Dunlap <rdunlap@infradead.org> wrote:
 >
-> From: Sanjay R Mehta <sanju.mehta@amd.com>
+> From: Randy Dunlap <rdunlap@infradead.org>
 >
-> The AMD new hardware uses BAR23 and BAR45 as memory windows
-> as compared to previos where BAR1, BAR23 and BAR45 is used
-> for memory windows.
+> Fix typos in drivers/ntb/hw/idt/Kconfig.
+> Use consistent spelling and capitalization.
 >
-> This patch add support for both AMD hardwares.
+> Fixes: bf2a952d31d2 ("NTB: Add IDT 89HPESxNTx PCIe-switches support")
+> Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+> Cc: Jon Mason <jdmason@kudzu.us>
+> Cc: Dave Jiang <dave.jiang@intel.com>
+> Cc: Allen Hubbe <allenbh@gmail.com>
+> Cc: Serge Semin <fancer.lancer@gmail.com>
+> Cc: linux-ntb@googlegroups.com
 
-I pulled both of these patches into the ntb branch.  I am aiming for a
-5.4 pull request this Wednesday.  So, please test if possible.
+Pulled into the ntb branch.
 
 Thanks,
 Jon
 
->
-> Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
 > ---
->  drivers/ntb/hw/amd/ntb_hw_amd.c | 23 ++++++++++++++++++-----
->  drivers/ntb/hw/amd/ntb_hw_amd.h |  7 ++++++-
->  2 files changed, 24 insertions(+), 6 deletions(-)
+>  drivers/ntb/hw/idt/Kconfig |    6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 >
-> diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
-> index e9286cf..156c2a1 100644
-> --- a/drivers/ntb/hw/amd/ntb_hw_amd.c
-> +++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
-> @@ -78,7 +78,7 @@ static int ndev_mw_to_bar(struct amd_ntb_dev *ndev, int idx)
->         if (idx < 0 || idx > ndev->mw_count)
->                 return -EINVAL;
+> --- lnx-53.orig/drivers/ntb/hw/idt/Kconfig
+> +++ lnx-53/drivers/ntb/hw/idt/Kconfig
+> @@ -4,11 +4,11 @@ config NTB_IDT
+>         depends on PCI
+>         select HWMON
+>         help
+> -        This driver supports NTB of cappable IDT PCIe-switches.
+> +        This driver supports NTB of capable IDT PCIe-switches.
 >
-> -       return 1 << idx;
-> +       return ndev->dev_data->mw_idx << idx;
->  }
+>          Some of the pre-initializations must be made before IDT PCIe-switch
+> -        exposes it NT-functions correctly. It should be done by either proper
+> -        initialisation of EEPROM connected to master smbus of the switch or
+> +        exposes its NT-functions correctly. It should be done by either proper
+> +        initialization of EEPROM connected to master SMbus of the switch or
+>          by BIOS using slave-SMBus interface changing corresponding registers
+>          value. Evidently it must be done before PCI bus enumeration is
+>          finished in Linux kernel.
 >
->  static int amd_ntb_mw_count(struct ntb_dev *ntb, int pidx)
-> @@ -909,7 +909,7 @@ static int amd_init_ntb(struct amd_ntb_dev *ndev)
->  {
->         void __iomem *mmio = ndev->self_mmio;
->
-> -       ndev->mw_count = AMD_MW_CNT;
-> +       ndev->mw_count = ndev->dev_data->mw_count;
->         ndev->spad_count = AMD_SPADS_CNT;
->         ndev->db_count = AMD_DB_CNT;
->
-> @@ -1069,6 +1069,8 @@ static int amd_ntb_pci_probe(struct pci_dev *pdev,
->                 goto err_ndev;
->         }
->
-> +       ndev->dev_data = (struct ntb_dev_data *)id->driver_data;
-> +
->         ndev_init_struct(ndev, pdev);
->
->         rc = amd_ntb_init_pci(ndev, pdev);
-> @@ -1123,10 +1125,21 @@ static const struct file_operations amd_ntb_debugfs_info = {
->         .read = ndev_debugfs_read,
->  };
->
-> +static const struct ntb_dev_data dev_data[] = {
-> +       { /* for device 145b */
-> +               .mw_count = 3,
-> +               .mw_idx = 1,
-> +       },
-> +       { /* for device 148b */
-> +               .mw_count = 2,
-> +               .mw_idx = 2,
-> +       },
-> +};
-> +
->  static const struct pci_device_id amd_ntb_pci_tbl[] = {
-> -       {PCI_VDEVICE(AMD, 0x145b)},
-> -       {PCI_VDEVICE(AMD, 0x148b)},
-> -       {0}
-> +       { PCI_VDEVICE(AMD, 0x145b), (kernel_ulong_t)&dev_data[0] },
-> +       { PCI_VDEVICE(AMD, 0x148b), (kernel_ulong_t)&dev_data[1] },
-> +       { 0, }
->  };
->  MODULE_DEVICE_TABLE(pci, amd_ntb_pci_tbl);
->
-> diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.h b/drivers/ntb/hw/amd/ntb_hw_amd.h
-> index 3aac994..139a307 100644
-> --- a/drivers/ntb/hw/amd/ntb_hw_amd.h
-> +++ b/drivers/ntb/hw/amd/ntb_hw_amd.h
-> @@ -92,7 +92,6 @@ static inline void _write64(u64 val, void __iomem *mmio)
->
->  enum {
->         /* AMD NTB Capability */
-> -       AMD_MW_CNT              = 3,
->         AMD_DB_CNT              = 16,
->         AMD_MSIX_VECTOR_CNT     = 24,
->         AMD_SPADS_CNT           = 16,
-> @@ -169,6 +168,11 @@ enum {
->         AMD_PEER_OFFSET         = 0x400,
->  };
->
-> +struct ntb_dev_data {
-> +       const unsigned char mw_count;
-> +       const unsigned int mw_idx;
-> +};
-> +
->  struct amd_ntb_dev;
->
->  struct amd_ntb_vec {
-> @@ -184,6 +188,7 @@ struct amd_ntb_dev {
->         u32 cntl_sta;
->         u32 peer_sta;
->
-> +       struct ntb_dev_data *dev_data;
->         unsigned char mw_count;
->         unsigned char spad_count;
->         unsigned char db_count;
-> --
-> 2.7.4
 >
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAPoiz9w5eFaw42SmMBoyNEACJ10QNdTL%3DjiduS8UbowrgwcdHg%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAPoiz9zWo%2BLuzWG29kSYCrs9FdwvzDycWBEmg_GHL3W5c3QRuQ%40mail.gmail.com.
