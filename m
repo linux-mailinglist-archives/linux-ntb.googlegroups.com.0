@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBJWDWLWAKGQEXNKS3MQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBKWDWLWAKGQEQAG63ZA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x539.google.com (mail-pg1-x539.google.com [IPv6:2607:f8b0:4864:20::539])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1773EBF185
-	for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 13:31:52 +0200 (CEST)
-Received: by mail-pg1-x539.google.com with SMTP id x8sf1222661pgq.14
-        for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 04:31:52 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1569497510; cv=pass;
+Received: from mail-pl1-x640.google.com (mail-pl1-x640.google.com [IPv6:2607:f8b0:4864:20::640])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54707BF186
+	for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 13:31:56 +0200 (CEST)
+Received: by mail-pl1-x640.google.com with SMTP id f8sf1326899plj.10
+        for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 04:31:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1569497514; cv=pass;
         d=google.com; s=arc-20160816;
-        b=m0ZCvqkG5a2O3PqRO5aJ/GpESkukP6zHzIVlSZJzwEuDDoqcrXCt+ttzBvUfoVJwpe
-         /7qnAXQXj/6dI5usVFhurtNpJokcaQYO2dzJsfclrdDS80FGrDoFbnLLkU1SfN+2quva
-         FzoXC/j7+VokDTASDQ/xhkWSYUTf5WzjYFegQjjjguKvyNN/hzh/VwCU2JJRcOb05SXk
-         EjBIaPuayFEPZqK/Mh6ROvH//WaCbkX3VKbwKjojb5PpMcRtkuNBkT+rfzmjini8tsUd
-         Sz24lzkW7MuMPsLRZRUJ+lLc6B916FUmSc6FjmK2bfLHzz0m7MUwURXcPx0PZzp2xbXn
-         f1MA==
+        b=DILAM5TIAAl4pEQshkIJ2lT/5Lk592K71UCkoC7D4bNQ6qFB/igCdDu/zDUQ3mfPIX
+         Jm2cuJsFyfQEKZ3mgO3rupoLJTyezk02ynXy0rfUEByHXKBm8b77t54alaML/Jra1IRo
+         akWF02XDq2Ya4m7R0WXS5FZY7XZeIyj6JfxtMTQuR684ZFcBC7f/SG1dIZ9CaVdjkDuR
+         57I+Ucxt05R9bbBUOI+0Jm16d9xLNJJu7wo74XE6mN6viNbe4neIYnlcoQ9z3LiwgGdx
+         5AIacwEpq1xxjXj0dpM+ZIxevwG71yS+AZsjuHSpHZ4/cSlbcrKvStW4/6APLXsjXJuJ
+         r8sQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vGUIz9euLn2kYGdds7mvhRL+fkoxwTMhDuM3AzKZJcI=;
-        b=H5cr+4mWwYQOWSSZacndk7+aXrrKZN29eA+OJEzPFMvSp/GupaydWv/t2DOXf1MQC1
-         Fo79ZKa332HFOC03F3IchjjdFP5OL1OcVRxi0WAB+ZyJAtrtZPhd9NdgCfKL8rW99qNo
-         TjE6T9eaXxvBg1dP7GYXVGJJ/q8SbeMgOiWzgIrCRPPQ6kNTy8Ickg9LzckoHo3bi577
-         L+xZKOJHg1ZomF5640yPhoxaoYf7tOAMi6rbWUXSUNYTyZKiXZXsIDe17uyDxGmfgMro
-         HJfGpB54jk+uwWzi+4AeM3djlFw2RqQnahphnoSN55uZBXBt3IqzaJaAUXKmzhRbecPe
-         /hbA==
+        bh=017fy3BeFXfEMd1PaiXs54+vt7jSBfvdQJNheY4Nync=;
+        b=vrJ7QPHfPrcdt1K+YQZx7Cdzo3PlH6cujMzbMYhZt1570+W6BTR+8M9HmF1oUvfZOx
+         4kh3YcBKy94oEo8vsJiaDC3rNemuCKTpMS/x8sBRQDl+yPlXBJDXMmm5zwln7ksZOP/E
+         ehaqaLL9QqsAWIyP75OAwXiYM0BJkqeo6F6itck5XSSPjNuaKOLBx1ej6TTgZQXtO4lH
+         potqLV2OYyUsas4jhUGdd2DVSVfpYXX+g3YPiJTYzobVZjV3hvPAPA+fR+5HoXaO+DFe
+         r0C2qyvg71kTt5nJ0N04o9FB3oQkiYddvf1XEJvji1bf230LKxjvOjtJX7gLMcTw/7vh
+         sUfw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=jpWByUMO;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="YGXT/KoG";
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=vGUIz9euLn2kYGdds7mvhRL+fkoxwTMhDuM3AzKZJcI=;
-        b=na8Hxt8WwcykLfyqGts0UYKPZMeDqr19zgKRKmOjpld2GhpvdZGGsPdOCSl5mGtH/P
-         N9ALqcvMQKHYxLSW3bwC2pAsr3c3lLw2dhQFQhSUytjGba05dQX0tqTtPVbZp5kHtmbU
-         h5XUimlYPl2mZJrVPNsv0MtIQ6SbGISvGXIpV+LmDpIUllqTRjfvptbfLYY3QtDxbhpl
-         ytXcT32UnKvlXDOvOHI3nGKxd0WBy+j99rhFxNh3tF9fidil95VEBDsbnvdsOhAwZnsf
-         Z5yZHyYC1vZRS+KsPzQOmnA4pJnB9DrMVnsfSUc/B8a8+9UBydFyuPyqMD/ctHt8vcFD
-         dxYQ==
+        bh=017fy3BeFXfEMd1PaiXs54+vt7jSBfvdQJNheY4Nync=;
+        b=CjsIKRXT6wvJCSMTrJhz3n738/SrCDZnnTMYRIhBe5jAqFVY7GUuxFzLl686F+OEE8
+         8aU9OqBWYFkTB6UWCuIekDl1CaaHMdEwipDRSJtOfLAuoxtVobidbUk0mei8VMo0lCyT
+         wZe3RNoHx06/OjRoxGJZa3twrmabf6nqFkSaB8zxYFeQDbP3Vu5j0pZEKQRYML4FhTf4
+         A8lxb7q063iSn17Vfe8KowsIWyzAnv2hSF3h6PS0Qj5gP0rCrLGepNkY6+vA7ZCBkmET
+         Bq64IIMKNumvOq9Mo67aeRkE7DLSnTdKNp2wZ26xL1dvsr+qw8ulrM9SQG6UGi7yksjf
+         Mpdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,68 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=vGUIz9euLn2kYGdds7mvhRL+fkoxwTMhDuM3AzKZJcI=;
-        b=fSPDMU4SH7KAiE25xdPOvBb23tN4vTyT8jhLaS7hdqzdsWAodC/od3ZYCb5mdzxnuH
-         labJEPaeUQEVxP9FNM1Ce9uj9Rww5QfxMofhwTRwd0m4iWfgQWphvToUyWdySe5vNRxt
-         9iAu0UVWDLXB8uGN0ytML40wyhsPUoF5OiNOdgKgzEWGwuAEShAX3iDtyWgbLPZsCM6G
-         r3ibgtXSRZkF3oiK8TxrbfVwhxx7WF6od4HX0kYixbNfSwC8EnfIwUm+mZk2BzMLuNpO
-         bnEEVx6FRO8xR9fXi+OgXDUYwQTzL3U4huMowMeG7wmXBBWvuGpozENnl8gGRPAuSDTe
-         9GGw==
-X-Gm-Message-State: APjAAAW9lMYn7/JwU9iicl6ZG8BiHYIb4XIBCkthOImCmRDQPcFqtDYe
-	i8P4JYBul5ZPs46Uli4GxHw=
-X-Google-Smtp-Source: APXvYqwiADwlmLTpd/w82LDHnd8aHWkE9SaYFyBVyu+hWAKjPhiR3CQGIe+ImAR6vdokBI2oBWi2yA==
-X-Received: by 2002:a63:4603:: with SMTP id t3mr2929140pga.438.1569497510697;
-        Thu, 26 Sep 2019 04:31:50 -0700 (PDT)
+        bh=017fy3BeFXfEMd1PaiXs54+vt7jSBfvdQJNheY4Nync=;
+        b=ZghSUTc/JFe0o/Pa3XnlcQPlD5yQW1j9P78aXPijxEiB8DRTnSCI10tjKjggXcPiw7
+         loc+J/bWVOk/gZwSGvQ3+cubgaxcursxzvyl246+gDtSvvkJhMcFcMchOyujcxFd+Myl
+         yy/99RvYk0tdN4AVeKaz8KKrpHnMrjQjG0f1IECgKxMWf7xtWb4Qo2QKMIY2HYR9ffGc
+         PqyahuirauqUteVqzNM0bc1d6qLKR2KhdEta6jakFzFgrlqUVZPClYRy4baeNVJjYeBP
+         AgOi1k3irR4GGTB8QxeF0a9Sf3rBlpnGa1lg26HkCW/5dydqM6MHIXuxnMpNkLqi6xch
+         nNLQ==
+X-Gm-Message-State: APjAAAUzJ/JHwDsxOJVgkuYleNEiJ89k5gBKnuB2YC/cyAYbpve5UJRF
+	UNHcZf1VYjCjkeLkOHAEG1w=
+X-Google-Smtp-Source: APXvYqzLkXKvZkT4RbNa9x//jzTCaB4nKrTixFAAX1fszjXnXwGq5TVCV46LUmHaIrKvp4cw6qjpjw==
+X-Received: by 2002:a17:902:76c9:: with SMTP id j9mr3209305plt.187.1569497514759;
+        Thu, 26 Sep 2019 04:31:54 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:a704:: with SMTP id w4ls647873plq.14.gmail; Thu, 26
- Sep 2019 04:31:50 -0700 (PDT)
-X-Received: by 2002:a17:90a:fa0d:: with SMTP id cm13mr3156954pjb.70.1569497510419;
-        Thu, 26 Sep 2019 04:31:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569497510; cv=none;
+Received: by 2002:a17:90a:2766:: with SMTP id o93ls666385pje.4.gmail; Thu, 26
+ Sep 2019 04:31:54 -0700 (PDT)
+X-Received: by 2002:a17:90a:3483:: with SMTP id p3mr3085675pjb.108.1569497514437;
+        Thu, 26 Sep 2019 04:31:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569497514; cv=none;
         d=google.com; s=arc-20160816;
-        b=SkM39O+YknRhi0h3Z1+Y2MnN2TYbN1h8uynn1ZOH0YAYGO36K8HL/XGYaDpcPtdwNo
-         RWcLhkKFytdAuy1KwF48cX/ddsGvTvwgAGKB3FKShA+UrnyNcMUZfdouem/hhP4gM4hA
-         lPhOwnbqPGQ8vpsA0FsMdSiPvuOS8hLS5Ubp7GHF64+wiXsQgMfX4OBQGi4icHV3v0eU
-         GytCqEQ31zTLIxk33DKPihXz8Ihy53qagork2tXwJdStg0LijqHDg7SsAtrbd42SF7K8
-         GX7iqXlj9hIi0Ln87ixe95u4Wh8Jrk3S1BK7KaNK3Rd/FL5/BYKg2a4MjCzbdZnEuvz7
-         mhlA==
+        b=OxDBIuI6xexDFpc05ptFtsnUg6dZhBThp27Ie9KDUj7C2HEMXj/jJrNdSq+USwx7r/
+         gi55kjpSct9uxdVVfxXvQYXRVpRzmdVbx/Ik+gH5QZkY//59EWO8PSPrn0o7NI1VvHfL
+         F8Fe3lYfoJpih/cGhxpSbVMYpVS3MWcXXKCqc0SBJNcgGAmY3SpU6/Db3ydyJDmGM+GR
+         yw/J4/sUH90tKoTFikJQ5rdWGoNe5ENm+Q3iiLaEGw4Z6MAWF3O1/13aiK0ZD1pq84BU
+         j9/PeXokXPqAdOjU2iMvnciVFs2tLcA+RI7MZ1G3JMbStEO0CIXKM4ZAOUMB5hduongw
+         qG1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=CVQLahlcO/peyrVMGcW0P4vLEQL8s6mVGnyOrqGBh9U=;
-        b=UomcYTLGg2YU/6Uq5uw0bMK9bHBekm4aUWIcf7NBNNQOdqKijzmtaFlg8+xQBaNTvx
-         Ql0hfka6dsTPPUSAujaS1AqSEo0RYWD90QvrMXdnzznk9R4RC1Fky5LGvooyN/j/R+Un
-         0Etk4JSPLPleK+Z+0+bQTGF00LacPReGX8m12zX5nONp4Iu8MsPTSxeiWoMZUB7dyE7K
-         OzdHGYamF9cKv+RKuc4B4Pwq47UZF7FT0fD1M+b9jGs2cWHGJuhomgO3Yht+x4yvilLd
-         1Bvrum5M7CEUxhzAmexeQeAB8GPstgpJFP0HhJBQ8IF8EWA54K/s0GGiJcGScs16vZ4e
-         MiLA==
+        bh=ng+JuiPXXN1Km6Y2NxLN6mT9lfjCEFK/4Th3ibsGWNo=;
+        b=mrbuDaPwu/pQ2puyGXxXj3O22jZy089lTI5M6Anl54eH1CJh+COGa/K8eXClhHdIMy
+         2lWpcKbYfDRWFNGYQcPjC73V/vR4yDdjR7DMG13koASXp+e9zy7PaU0Va1xAlCEwZl0b
+         HF2QPdJglFBemA5jnvZ/oDdPwRbp7dFMq22MVJFhtxcuVaA5/GufGvWbQUsAzuCJIoEc
+         XJfy/klJ2S58bIZi1UIqg6by+xb9F1kq2alTyY7qsgM8I59Lo62jprTjuNFLAGdx2ds0
+         SQVSbqqhD1zEHUV+W61WvNaATUXEUhCkhMZ1zJYCri+BqRjdcbCusVcPNux/4CSd8Wwa
+         2C2Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=jpWByUMO;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="YGXT/KoG";
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com. [198.47.23.249])
-        by gmr-mx.google.com with ESMTPS id h1si539235pju.1.2019.09.26.04.31.50
+Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
+        by gmr-mx.google.com with ESMTPS id z22si587909pju.2.2019.09.26.04.31.54
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Sep 2019 04:31:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) client-ip=198.47.23.249;
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id x8QBVj3F026099;
-	Thu, 26 Sep 2019 06:31:45 -0500
-Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x8QBVj5h092389
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 26 Sep 2019 06:31:45 -0500
-Received: from DLEE115.ent.ti.com (157.170.170.26) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
+        Thu, 26 Sep 2019 04:31:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id x8QBVnbN042719;
+	Thu, 26 Sep 2019 06:31:49 -0500
+Received: from DFLE101.ent.ti.com (dfle101.ent.ti.com [10.64.6.22])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id x8QBVnO3014516;
+	Thu, 26 Sep 2019 06:31:49 -0500
+Received: from DFLE108.ent.ti.com (10.64.6.29) by DFLE101.ent.ti.com
+ (10.64.6.22) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Thu, 26
- Sep 2019 06:31:37 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE115.ent.ti.com
- (157.170.170.26) with Microsoft SMTP Server (version=TLS1_2,
+ Sep 2019 06:31:49 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE108.ent.ti.com
+ (10.64.6.29) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Thu, 26 Sep 2019 06:31:44 -0500
+ Frontend Transport; Thu, 26 Sep 2019 06:31:41 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id x8QBUTkA069017;
-	Thu, 26 Sep 2019 06:31:41 -0500
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id x8QBUTkB069017;
+	Thu, 26 Sep 2019 06:31:45 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
         Rob
@@ -124,9 +123,9 @@ CC: Mark Rutland <mark.rutland@arm.com>, <kishon@ti.com>,
         <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
         <linux-ntb@googlegroups.com>
-Subject: [RFC PATCH 17/21] PCI: endpoint: *_free_bar() to return error codes on failure
-Date: Thu, 26 Sep 2019 16:59:29 +0530
-Message-ID: <20190926112933.8922-18-kishon@ti.com>
+Subject: [RFC PATCH 18/21] PCI: endpoint: Add EP function driver to provide NTB functionality
+Date: Thu, 26 Sep 2019 16:59:30 +0530
+Message-ID: <20190926112933.8922-19-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20190926112933.8922-1-kishon@ti.com>
 References: <20190926112933.8922-1-kishon@ti.com>
@@ -135,8 +134,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=jpWByUMO;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b="YGXT/KoG";       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -153,71 +152,1199 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Modify pci_epc_get_next_free_bar() and pci_epc_get_first_free_bar() to
-return error values if there are no free BARs available.
+Add a new endpoint function driver to provide NTB functionality
+using multiple PCIe endpoint instances.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/pci/endpoint/pci-epc-core.c | 9 ++++-----
- include/linux/pci-epc.h             | 7 +++----
- 2 files changed, 7 insertions(+), 9 deletions(-)
+ drivers/pci/endpoint/functions/Kconfig       |   12 +
+ drivers/pci/endpoint/functions/Makefile      |    1 +
+ drivers/pci/endpoint/functions/pci-epf-ntb.c | 1143 ++++++++++++++++++
+ 3 files changed, 1156 insertions(+)
+ create mode 100644 drivers/pci/endpoint/functions/pci-epf-ntb.c
 
-diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index 33c745546a42..a93c78488bca 100644
---- a/drivers/pci/endpoint/pci-epc-core.c
-+++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -173,8 +173,7 @@ EXPORT_SYMBOL_GPL(of_pci_epc_get_by_name);
-  * Invoke to get the first unreserved BAR that can be used by the endpoint
-  * function. For any incorrect value in reserved_bar return '0'.
-  */
--unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
--					*epc_features)
-+int pci_epc_get_first_free_bar(const struct pci_epc_features *epc_features)
- {
- 	return pci_epc_get_next_free_bar(epc_features, BAR_0);
- }
-@@ -188,8 +187,8 @@ EXPORT_SYMBOL_GPL(pci_epc_get_first_free_bar);
-  * Invoke to get the next unreserved BAR starting from @bar that can be used
-  * for endpoint function. For any incorrect value in reserved_bar return '0'.
-  */
--unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
--				       *epc_features, enum pci_barno bar)
-+int pci_epc_get_next_free_bar(const struct pci_epc_features
-+			      *epc_features, enum pci_barno bar)
- {
- 	unsigned long free_bar;
+diff --git a/drivers/pci/endpoint/functions/Kconfig b/drivers/pci/endpoint/functions/Kconfig
+index 8820d0f7ec77..55ac7bb2d469 100644
+--- a/drivers/pci/endpoint/functions/Kconfig
++++ b/drivers/pci/endpoint/functions/Kconfig
+@@ -12,3 +12,15 @@ config PCI_EPF_TEST
+ 	   for PCI Endpoint.
  
-@@ -209,7 +208,7 @@ unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
+ 	   If in doubt, say "N" to disable Endpoint test driver.
++
++config PCI_EPF_NTB
++	tristate "PCI Endpoint NTB driver"
++	depends on PCI_ENDPOINT
++	help
++	   Select this configuration option to enable the NTB driver
++	   for PCI Endpoint. NTB driver implements NTB controller
++	   functionality using multiple PCIe endpoint instances. It
++	   can support NTB endpoint function devices created using
++	   device tree.
++
++	   If in doubt, say "N" to disable Endpoint NTB driver.
+diff --git a/drivers/pci/endpoint/functions/Makefile b/drivers/pci/endpoint/functions/Makefile
+index d6fafff080e2..96ab932a537a 100644
+--- a/drivers/pci/endpoint/functions/Makefile
++++ b/drivers/pci/endpoint/functions/Makefile
+@@ -4,3 +4,4 @@
+ #
  
- 	free_bar = find_next_zero_bit(&free_bar, 6, bar);
- 	if (free_bar > 5)
--		return 0;
+ obj-$(CONFIG_PCI_EPF_TEST)		+= pci-epf-test.o
++obj-$(CONFIG_PCI_EPF_NTB)		+= pci-epf-ntb.o
+diff --git a/drivers/pci/endpoint/functions/pci-epf-ntb.c b/drivers/pci/endpoint/functions/pci-epf-ntb.c
+new file mode 100644
+index 000000000000..14b3862fc780
+--- /dev/null
++++ b/drivers/pci/endpoint/functions/pci-epf-ntb.c
+@@ -0,0 +1,1143 @@
++// SPDX-License-Identifier: GPL-2.0
++/**
++ * Endpoint Function Driver to implement Non-Transparent Bridge functionality
++ *
++ * Copyright (C) 2019 Texas Instruments
++ * Author: Kishon Vijay Abraham I <kishon@ti.com>
++ */
++
++#include <linux/delay.h>
++#include <linux/io.h>
++#include <linux/module.h>
++#include <linux/slab.h>
++
++#include <linux/pci-epc.h>
++#include <linux/pci-epf.h>
++
++static struct workqueue_struct *kpcintb_workqueue;
++
++#define COMMAND_CONFIGURE_DOORBELL	1
++#define COMMAND_CONFIGURE_MW		2
++#define COMMAND_LINK_UP			3
++
++#define COMMAND_STATUS_OK		BIT(0)
++#define LINK_STATUS_UP			BIT(1)
++
++#define SPAD_COUNT			64
++#define DB_COUNT			4
++#define NTB_MW_OFFSET			2
++#define DB_COUNT_MASK			GENMASK(15, 0)
++#define MSIX_ENABLE			BIT(16)
++#define MAX_DB_COUNT			32
++#define MAX_MW				4
++
++enum epf_ntb_bar {
++	BAR_CONFIG,
++	BAR_PEER_SPAD,
++	BAR_DB_MW1,
++	BAR_MW2,
++	BAR_MW3,
++	BAR_MW4,
++};
++
++struct epf_ntb {
++	u32 num_mws;
++	u32 *mws_size;
++	u32 db_count;
++	u32 spad_count;
++	struct pci_epf *epf;
++	struct epf_ntb_epc *epc[2];
++};
++
++struct epf_ntb_epc {
++	u8 func_no;
++	u8 vfunc_no;
++	bool linkup;
++	u32 spad_size;
++	struct pci_epc *epc;
++	struct epf_ntb *epf_ntb;
++	void __iomem *mw_addr[6];
++	struct epf_ntb_ctrl *reg;
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno epf_ntb_bar[6];
++	struct delayed_work cmd_handler;
++	enum pci_epc_interface_type type;
++	const struct pci_epc_features *epc_features;
++};
++
++struct epf_ntb_ctrl {
++	u32	command;
++	u32	argument;
++	u32	status;
++	u32	topology;
++	u64	addr;
++	u32	size;
++	u32	mw1_offset;
++	u32	num_mws;
++	u32	spad_offset;
++	u32	spad_count;
++	u32	db_entry_size;
++	u32	db_data[MAX_DB_COUNT];
++} __packed;
++
++static struct pci_epf_header epf_ntb_header = {
++	.vendorid	= PCI_ANY_ID,
++	.deviceid	= PCI_ANY_ID,
++	.baseclass_code	= PCI_BASE_CLASS_MEMORY,
++	.interrupt_pin	= PCI_INTERRUPT_INTA,
++};
++
++static void epf_ntb_link_up(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct epf_ntb_epc *ntb_epc;
++	struct epf_ntb_ctrl *ctrl;
++	u8 vfunc_no, func_no;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ntb_epc = ntb->epc[type];
++		func_no = ntb_epc->func_no;
++		vfunc_no = ntb_epc->vfunc_no;
++		ctrl = ntb_epc->reg;
++		ctrl->status |= LINK_STATUS_UP;
++		pci_epc_raise_irq(ntb_epc->epc, func_no, vfunc_no,
++				  PCI_EPC_IRQ_MSI, 1);
++	}
++}
++
++static void
++epf_ntb_configure_mw(struct epf_ntb *ntb, enum pci_epc_interface_type type,
++		     u32 mw)
++{
++	struct epf_ntb_epc *peer_ntb_epc;
++	struct pci_epf_bar *peer_epf_bar;
++	struct epf_ntb_epc *ntb_epc;
++	enum pci_barno peer_barno;
++	struct epf_ntb_ctrl *ctrl;
++	phys_addr_t phys_addr;
++	u8 vfunc_no, func_no;
++	struct pci_epc *epc;
++	u64 addr;
++	u32 size;
++	int ret;
++
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[mw + NTB_MW_OFFSET];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++
++	phys_addr = peer_epf_bar->phys_addr;
++	ctrl = ntb_epc->reg;
++	addr = ctrl->addr;
++	size = ctrl->size;
++	if (mw + NTB_MW_OFFSET == BAR_DB_MW1)
++		phys_addr += ctrl->mw1_offset;
++
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++
++	ret = pci_epc_map_addr(epc, func_no, vfunc_no, phys_addr, addr, size);
++	WARN(ret < 0, "%s intf: Failed to map memory window %d address\n",
++	     pci_epc_interface_string(type), mw);
++}
++
++static void
++epf_ntb_configure_db(struct epf_ntb *ntb, enum pci_epc_interface_type type,
++		     u16 db_count, bool msix)
++{
++	struct epf_ntb_epc *peer_ntb_epc;
++	struct pci_epf_bar *peer_epf_bar;
++	struct epf_ntb_ctrl *peer_ctrl;
++	struct epf_ntb_epc *ntb_epc;
++	enum pci_barno peer_barno;
++	phys_addr_t phys_addr;
++	u8 vfunc_no, func_no;
++	struct pci_epc *epc;
++	u32 db_entry_size;
++	u32 db_data;
++	int ret, i;
++
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[BAR_DB_MW1];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++	peer_ctrl = peer_ntb_epc->reg;
++	db_entry_size = peer_ctrl->db_entry_size;
++
++	phys_addr = peer_epf_bar->phys_addr;
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++
++	ret = pci_epc_map_msi_irq(epc, func_no, vfunc_no, phys_addr, db_count,
++				  db_entry_size, &db_data);
++	WARN(ret < 0, "%s intf: Failed to map MSI IRQ\n",
++	     pci_epc_interface_string(type));
++	for (i = 0; i < db_count; i++)
++		peer_ctrl->db_data[i] = db_data | i;
++}
++
++static void epf_ntb_cmd_handler(struct work_struct *work)
++{
++	enum pci_epc_interface_type type;
++	struct epf_ntb_epc *ntb_epc;
++	struct epf_ntb_ctrl *ctrl;
++	u32 command, argument;
++	struct epf_ntb *ntb;
++	struct device *dev;
++	u16 db_count;
++	bool is_msix;
++
++	ntb_epc = container_of(work, struct epf_ntb_epc, cmd_handler.work);
++	ctrl = ntb_epc->reg;
++	command = ctrl->command;
++	if (!command)
++		goto reset_handler;
++	argument = ctrl->argument;
++
++	ctrl->command = 0;
++	ctrl->argument = 0;
++
++	ctrl = ntb_epc->reg;
++	type = ntb_epc->type;
++	ntb = ntb_epc->epf_ntb;
++	dev = &ntb->epf->dev;
++
++	switch (command) {
++	case COMMAND_CONFIGURE_DOORBELL:
++		db_count = argument & DB_COUNT_MASK;
++		is_msix = argument & MSIX_ENABLE;
++		epf_ntb_configure_db(ntb, type, db_count, is_msix);
++		ctrl->status |= COMMAND_STATUS_OK;
++		break;
++	case COMMAND_CONFIGURE_MW:
++		epf_ntb_configure_mw(ntb, type, argument);
++		ctrl->status |= COMMAND_STATUS_OK;
++		break;
++	case COMMAND_LINK_UP:
++		ntb_epc->linkup = true;
++		if (ntb->epc[PRIMARY_INTERFACE]->linkup &&
++		    ntb->epc[SECONDARY_INTERFACE]->linkup)
++			epf_ntb_link_up(ntb);
++		ctrl->status |= COMMAND_STATUS_OK;
++		break;
++	default:
++		dev_err(dev, "UNKNOWN command: %d\n", command);
++		break;
++	}
++
++reset_handler:
++	queue_delayed_work(kpcintb_workqueue, &ntb_epc->cmd_handler,
++			   msecs_to_jiffies(5));
++}
++
++static void epf_ntb_peer_spad_bar_clear(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno barno;
++	u8 vfunc_no, func_no;
++	struct pci_epc *epc;
++
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++	barno = ntb_epc->epf_ntb_bar[BAR_PEER_SPAD];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	pci_epc_clear_bar(epc, func_no, vfunc_no, epf_bar);
++}
++
++static int
++epf_ntb_peer_spad_bar_set(struct epf_ntb *ntb, enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *peer_ntb_epc;
++	struct pci_epf_bar *peer_epf_bar;
++	struct epf_ntb_epc *ntb_epc;
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno peer_barno;
++	u32 peer_spad_offset;
++	enum pci_barno barno;
++	u8 vfunc_no, func_no;
++	struct pci_epc *epc;
++	struct device *dev;
++	int ret;
++
++	dev = &ntb->epf->dev;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++
++	ntb_epc = ntb->epc[type];
++	barno = ntb_epc->epf_ntb_bar[BAR_PEER_SPAD];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++	epc = ntb_epc->epc;
++
++	peer_spad_offset = peer_ntb_epc->reg->spad_offset;
++	epf_bar->phys_addr = peer_epf_bar->phys_addr + peer_spad_offset;
++	epf_bar->size = peer_ntb_epc->spad_size;
++	epf_bar->barno = barno;
++	epf_bar->flags = PCI_BASE_ADDRESS_MEM_TYPE_32;
++
++	ret = pci_epc_set_bar(ntb_epc->epc, func_no, vfunc_no, epf_bar);
++	if (ret) {
++		dev_err(dev, "%s intf: peer SPAD BAR set failed\n",
++			pci_epc_interface_string(type));
++		return ret;
++	}
++
++	return 0;
++}
++
++static void epf_ntb_config_sspad_bar_clear(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	u8 vfunc_no, func_no;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++	barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	pci_epc_clear_bar(epc, func_no, vfunc_no, epf_bar);
++}
++
++static int epf_ntb_config_sspad_bar_set(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno barno;
++	u8 vfunc_no, func_no;
++	struct epf_ntb *ntb;
++	struct pci_epc *epc;
++	struct device *dev;
++	int ret;
++
++	ntb = ntb_epc->epf_ntb;
++	dev = &ntb->epf->dev;
++
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++	barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	epf_bar = &ntb_epc->epf_bar[barno];
++
++	ret = pci_epc_set_bar(epc, func_no, vfunc_no, epf_bar);
++	if (ret) {
++		dev_err(dev, "%s inft: Config/Status/SPAD BAR set failed\n",
++			pci_epc_interface_string(ntb_epc->type));
++		return ret;
++	}
++
++	return 0;
++}
++
++static void epf_ntb_config_spad_bar_free(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct epf_ntb_epc *ntb_epc;
++	enum pci_barno barno;
++	struct pci_epf *epf;
++
++	epf = ntb->epf;
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ntb_epc = ntb->epc[type];
++		barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++		if (ntb_epc->reg)
++			pci_epf_free_space(epf, ntb_epc->reg, barno, type);
++	}
++}
++
++static int
++epf_ntb_config_spad_bar_alloc_interface(struct epf_ntb *ntb,
++					enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *peer_epc_features;
++	const struct pci_epc_features *epc_features;
++	struct epf_ntb_epc *peer_ntb_epc;
++	struct epf_ntb_epc *ntb_epc;
++	struct epf_ntb_ctrl *ctrl;
++	enum pci_barno peer_barno;
++	struct device_node *node;
++	u32 spad_size, ctrl_size;
++	enum pci_barno barno;
++	u64 size, peer_size;
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++	struct device *dev;
++	u32 spad_count;
++	size_t align;
++	void *base;
++
++	epf = ntb->epf;
++	node = epf->node;
++	dev = &epf->dev;
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	epc_features = ntb_epc->epc_features;
++	barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	size = epc_features->bar_fixed_size[barno];
++	align = epc_features->align;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_epc_features = peer_ntb_epc->epc_features;
++	peer_barno = ntb_epc->epf_ntb_bar[BAR_PEER_SPAD];
++	peer_size = peer_epc_features->bar_fixed_size[barno];
++
++	/* Check if epc_features is populated incorrectly */
++	if ((!IS_ALIGNED(size, align)))
 +		return -EINVAL;
- 
- 	return free_bar;
- }
-diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
-index 0632a4d4714d..ad8021b0efb7 100644
---- a/include/linux/pci-epc.h
-+++ b/include/linux/pci-epc.h
-@@ -227,10 +227,9 @@ void pci_epc_of_parse_header(struct device_node *node,
- 			     struct pci_epf_header *header);
- const struct pci_epc_features *pci_epc_get_features(struct pci_epc *epc,
- 						    u8 func_no, u8 vfunc_no);
--unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
--					*epc_features);
--unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
--				       *epc_features, enum pci_barno bar);
-+int pci_epc_get_first_free_bar(const struct pci_epc_features *epc_features);
-+int pci_epc_get_next_free_bar(const struct pci_epc_features
-+			      *epc_features, enum pci_barno bar);
- struct pci_epc *pci_epc_get(const char *epc_name);
- void pci_epc_put(struct pci_epc *epc);
- struct pci_epc *of_pci_epc_get(struct device_node *node, int index);
++
++	spad_count = SPAD_COUNT;
++	of_property_read_u32(node, "spad-count", &spad_count);
++
++	ctrl_size = sizeof(struct epf_ntb_ctrl);
++	spad_size = spad_count * 4;
++
++	if (!align) {
++		ctrl_size = roundup_pow_of_two(ctrl_size);
++		spad_size = roundup_pow_of_two(spad_size);
++	} else {
++		ctrl_size = ALIGN(ctrl_size, align);
++		spad_size = ALIGN(spad_size, align);
++	}
++
++	if (peer_size) {
++		if (peer_size < spad_size)
++			spad_count = peer_size / 4;
++		spad_size = peer_size;
++	}
++
++	/*
++	 * In order to make sure SPAD offset is aligned to its size,
++	 * expand control region size to the size of SPAD if SPAD size
++	 * is greater than control region size.
++	 */
++	if (spad_size > ctrl_size)
++		ctrl_size = spad_size;
++
++	if (!size)
++		size = ctrl_size + spad_size;
++	else if (size < ctrl_size + spad_size)
++		return -EINVAL;
++
++	base = pci_epf_alloc_space(epf, size, barno, align, type);
++	if (!base) {
++		dev_err(dev, "%s intf: Config/Status/SPAD alloc region fail\n",
++			pci_epc_interface_string(type));
++		return -ENOMEM;
++	}
++
++	ntb_epc->reg = base;
++
++	ctrl = ntb_epc->reg;
++	ctrl->spad_offset = ctrl_size;
++	ctrl->spad_count = spad_count;
++	ctrl->num_mws = ntb->num_mws;
++	ctrl->db_entry_size = align ? align : 4;
++	ntb_epc->spad_size = spad_size;
++
++	return 0;
++}
++
++static int epf_ntb_config_spad_bar_alloc(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct device *dev;
++	int ret;
++
++	dev = &ntb->epf->dev;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ret = epf_ntb_config_spad_bar_alloc_interface(ntb, type);
++		if (ret) {
++			dev_err(dev, "%s intf: Config/SPAD BAR alloc failed\n",
++				pci_epc_interface_string(type));
++			goto err_config_spad_bar_alloc;
++		}
++	}
++
++	return 0;
++
++err_config_spad_bar_alloc:
++	epf_ntb_config_spad_bar_free(ntb);
++
++	return ret;
++}
++
++static void epf_ntb_free_peer_mem(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	void __iomem *mw_addr;
++	phys_addr_t phys_addr;
++	enum epf_ntb_bar bar;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++	size_t size;
++
++	epc = ntb_epc->epc;
++
++	for (bar = BAR_DB_MW1; bar < BAR_MW4; bar++) {
++		barno = ntb_epc->epf_ntb_bar[bar];
++		mw_addr = ntb_epc->mw_addr[barno];
++		epf_bar = &ntb_epc->epf_bar[barno];
++		phys_addr = epf_bar->phys_addr;
++		size = epf_bar->size;
++		if (mw_addr) {
++			pci_epc_mem_free_addr(epc, phys_addr, mw_addr, size);
++			ntb_epc->mw_addr[barno] = NULL;
++		}
++	}
++}
++
++static void epf_ntb_db_mw_bar_clear(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	enum epf_ntb_bar bar;
++	enum pci_barno barno;
++	u8 vfunc_no, func_no;
++	struct pci_epc *epc;
++
++	epc = ntb_epc->epc;
++
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++
++	for (bar = BAR_DB_MW1; bar < BAR_MW4; bar++) {
++		barno = ntb_epc->epf_ntb_bar[bar];
++		epf_bar = &ntb_epc->epf_bar[barno];
++		pci_epc_clear_bar(epc, func_no, vfunc_no, epf_bar);
++	}
++}
++
++static void epf_ntb_db_mw_bar_cleanup(struct epf_ntb_epc *ntb_epc,
++				      struct epf_ntb_epc *peer_ntb_epc)
++{
++	epf_ntb_db_mw_bar_clear(ntb_epc);
++	epf_ntb_free_peer_mem(peer_ntb_epc);
++}
++
++static int
++epf_ntb_alloc_peer_mem(struct device *dev, struct epf_ntb_epc *ntb_epc,
++		       enum epf_ntb_bar bar, struct epf_ntb_epc *peer_ntb_epc,
++		       size_t size)
++{
++	const struct pci_epc_features *epc_features;
++	struct pci_epf_bar *epf_bar;
++	struct pci_epc *peer_epc;
++	phys_addr_t phys_addr;
++	void __iomem *mw_addr;
++	enum pci_barno barno;
++	size_t align;
++
++	epc_features = ntb_epc->epc_features;
++	align = epc_features->align;
++
++	if (size < 128)
++		size = 128;
++
++	if (align)
++		size = ALIGN(size, align);
++	else
++		size = roundup_pow_of_two(size);
++
++	peer_epc = peer_ntb_epc->epc;
++	mw_addr = pci_epc_mem_alloc_addr(peer_epc, &phys_addr, size);
++	if (!mw_addr) {
++		dev_err(dev, "%s intf: Failed to allocate OB address\n",
++			pci_epc_interface_string(peer_ntb_epc->type));
++		return -ENOMEM;
++	}
++
++	barno = ntb_epc->epf_ntb_bar[bar];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	ntb_epc->mw_addr[barno] = mw_addr;
++
++	epf_bar->phys_addr = phys_addr;
++	epf_bar->size = size;
++	epf_bar->barno = barno;
++	epf_bar->flags = PCI_BASE_ADDRESS_MEM_TYPE_32;
++
++	return 0;
++}
++
++static int epf_ntb_configure_interrupt(struct epf_ntb *ntb,
++				       enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	bool msix_capable, msi_capable;
++	struct epf_ntb_epc *ntb_epc;
++	struct device_node *node;
++	u8 vfunc_no, func_no;
++	struct pci_epc *epc;
++	struct device *dev;
++	u32 db_count;
++	int ret;
++
++	ntb_epc = ntb->epc[type];
++	dev = &ntb->epf->dev;
++	node = ntb->epf->node;
++
++	epc_features = ntb_epc->epc_features;
++	msix_capable = epc_features->msix_capable;
++	msi_capable = epc_features->msi_capable;
++
++	if (!(msix_capable || msi_capable)) {
++		dev_err(dev, "MSI or MSI-X is required for doorbell\n");
++		return -EINVAL;
++	}
++
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++
++	db_count = DB_COUNT;
++	of_property_read_u32(node, "db-count", &db_count);
++	if (db_count > MAX_DB_COUNT) {
++		dev_err(dev, "DB count cannot be more than %d\n", MAX_DB_COUNT);
++		return -EINVAL;
++	}
++
++	ntb->db_count = db_count;
++	epc = ntb_epc->epc;
++
++	if (msi_capable) {
++		ret = pci_epc_set_msi(epc, func_no, vfunc_no, db_count);
++		if (ret) {
++			dev_err(dev, "%s intf: MSI configuration failed\n",
++				pci_epc_interface_string(type));
++			return ret;
++		}
++	}
++
++	if (msix_capable) {
++		ret = pci_epc_set_msix(epc, func_no, vfunc_no, db_count);
++		if (ret) {
++			dev_err(dev, "MSI configuration failed\n");
++			return ret;
++		}
++	}
++
++	return 0;
++}
++
++static int epf_ntb_db_mw_bar_init(struct epf_ntb *ntb,
++				  enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	struct epf_ntb_epc *peer_ntb_epc;
++	struct epf_ntb_epc *ntb_epc;
++	struct pci_epf_bar *epf_bar;
++	struct epf_ntb_ctrl *ctrl;
++	enum epf_ntb_bar bar;
++	u8 vfunc_no, func_no;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++	struct device *dev;
++	u32 num_mws, size;
++	u32 db_count;
++	size_t align;
++	int ret;
++	int i;
++
++	ntb_epc = ntb->epc[type];
++	peer_ntb_epc = ntb->epc[!type];
++
++	dev = &ntb->epf->dev;
++	epc_features = ntb_epc->epc_features;
++	align = epc_features->align;
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++	epc = ntb_epc->epc;
++	num_mws = ntb->num_mws;
++	db_count = ntb->db_count;
++
++	for (bar = BAR_DB_MW1, i = 0; i < num_mws; bar++, i++) {
++		if (bar == BAR_DB_MW1) {
++			align = align ? align : 4;
++			size = db_count * align;
++			size = ALIGN(size, ntb->mws_size[i]);
++			ctrl = ntb_epc->reg;
++			ctrl->mw1_offset = size;
++			size += ntb->mws_size[i];
++		} else {
++			size = ntb->mws_size[i];
++		}
++
++		ret = epf_ntb_alloc_peer_mem(dev, ntb_epc, bar,
++					     peer_ntb_epc, size);
++		if (ret)
++			goto err_alloc_peer_mem;
++
++		barno = ntb_epc->epf_ntb_bar[bar];
++		epf_bar = &ntb_epc->epf_bar[barno];
++
++		ret = pci_epc_set_bar(epc, func_no, vfunc_no, epf_bar);
++		if (ret) {
++			dev_err(dev, "%s intf: DoorBell BAR set failed\n",
++				pci_epc_interface_string(type));
++			goto err_alloc_peer_mem;
++		}
++	}
++
++	return 0;
++
++err_alloc_peer_mem:
++	epf_ntb_db_mw_bar_cleanup(ntb_epc, peer_ntb_epc);
++
++	return ret;
++}
++
++static void epf_ntb_epc_destroy(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct epf_ntb_epc *ntb_epc;
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++
++	epf = ntb->epf;
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ntb_epc = ntb->epc[type];
++		if (!ntb_epc)
++			return;
++		epc = ntb_epc->epc;
++		pci_epc_remove_epf(epc, epf, type);
++		pci_epc_put(epc);
++	}
++}
++
++static int
++epf_ntb_epc_create_interface(struct epf_ntb *ntb, struct pci_epc *epc,
++			     enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	struct pci_epf_bar *epf_bar;
++	struct epf_ntb_epc *ntb_epc;
++	u8 vfunc_no, func_no;
++	struct pci_epf *epf;
++	struct device *dev;
++
++	dev = &ntb->epf->dev;
++
++	ntb_epc = devm_kzalloc(dev, sizeof(*ntb_epc), GFP_KERNEL);
++	if (!ntb_epc)
++		return -ENOMEM;
++
++	epf = ntb->epf;
++	if (type == PRIMARY_INTERFACE) {
++		func_no = epf->func_no;
++		vfunc_no = epf->vfunc_no;
++		epf_bar = epf->bar;
++	} else {
++		func_no = epf->sec_epc_func_no;
++		vfunc_no = epf->sec_epc_vfunc_no;
++		epf_bar = epf->sec_epc_bar;
++	}
++
++	ntb_epc->linkup = false;
++	ntb_epc->epc = epc;
++	ntb_epc->func_no = func_no;
++	ntb_epc->vfunc_no = vfunc_no;
++	ntb_epc->type = type;
++	ntb_epc->epf_bar = epf_bar;
++	ntb_epc->epf_ntb = ntb;
++
++	epc_features = pci_epc_get_features(epc, func_no, vfunc_no);
++	ntb_epc->epc_features = epc_features;
++
++	ntb->epc[type] = ntb_epc;
++
++	return 0;
++}
++
++static int epf_ntb_epc_create(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct device_node *node;
++	const char *epc_name;
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++	struct device *dev;
++	int ret;
++
++	epf = ntb->epf;
++	node = epf->node;
++	dev = &epf->dev;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		epc_name = pci_epc_interface_string(type);
++
++		epc = of_pci_epc_get_by_name(node, epc_name);
++		if (IS_ERR(epc)) {
++			if (PTR_ERR(epc) != -EPROBE_DEFER)
++				dev_err(dev, "%s intf: Failed to get EPC\n",
++					epc_name);
++			ret = PTR_ERR(epc);
++			goto err_epc_get;
++		}
++
++		ret = pci_epc_add_epf(epc, epf, type);
++		if (ret) {
++			dev_err(dev, "%s intf: Fail to add EPF to EPC\n",
++				epc_name);
++			goto err_epc_get;
++		}
++
++		ret = epf_ntb_epc_create_interface(ntb, epc, type);
++		if (ret) {
++			dev_err(dev, "%s intf: Fail to create NTB EPC\n",
++				epc_name);
++			goto err_epc_get;
++		}
++	}
++
++	return 0;
++
++err_epc_get:
++	epf_ntb_epc_destroy(ntb);
++
++	return ret;
++}
++
++static int epf_ntb_init_epc_bar_interface(struct epf_ntb *ntb,
++					  enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	struct epf_ntb_epc *ntb_epc;
++	enum pci_barno barno;
++	enum epf_ntb_bar bar;
++	struct device *dev;
++	u32 num_mws;
++	int i;
++
++	barno = BAR_0;
++	ntb_epc = ntb->epc[type];
++	num_mws = ntb->num_mws;
++	dev = &ntb->epf->dev;
++	epc_features = ntb_epc->epc_features;
++
++	/* These are required BARs which are mandatory for NTB functionality */
++	for (bar = BAR_CONFIG; bar <= BAR_DB_MW1; bar++, barno++) {
++		barno = pci_epc_get_next_free_bar(epc_features, barno);
++		if (barno < 0) {
++			dev_err(dev, "%s intf: Fail to get NTB function BAR\n",
++				pci_epc_interface_string(type));
++			return barno;
++		}
++		ntb_epc->epf_ntb_bar[bar] = barno;
++	}
++
++	/* These are optional BARs which doesn't impact NTB functionality */
++	for (bar = BAR_MW2, i = 1; i < num_mws; bar++, barno++, i++) {
++		barno = pci_epc_get_next_free_bar(epc_features, barno);
++		if (barno < 0) {
++			ntb->num_mws = i;
++			dev_dbg(dev, "BAR not available for > MW%d\n", i + 1);
++		}
++		ntb_epc->epf_ntb_bar[bar] = barno;
++	}
++
++	return 0;
++}
++
++static int epf_ntb_init_epc_bar(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct device *dev;
++	int ret;
++
++	dev = &ntb->epf->dev;
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ret = epf_ntb_init_epc_bar_interface(ntb, type);
++		if (ret) {
++			dev_err(dev, "Fail to init EPC bar for %s interface\n",
++				pci_epc_interface_string(type));
++			return ret;
++		}
++	}
++
++	return 0;
++}
++
++static int epf_ntb_epc_init_interface(struct epf_ntb *ntb,
++				      enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *ntb_epc;
++	u8 vfunc_no, func_no;
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++	struct device *dev;
++	int ret;
++
++	ntb_epc = ntb->epc[type];
++	epf = ntb->epf;
++	dev = &epf->dev;
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++	vfunc_no = ntb_epc->vfunc_no;
++
++	ret = epf_ntb_config_sspad_bar_set(ntb->epc[type]);
++	if (ret) {
++		dev_err(dev, "%s intf: Config/self SPAD BAR init failed\n",
++			pci_epc_interface_string(type));
++		return ret;
++	}
++
++	ret = epf_ntb_peer_spad_bar_set(ntb, type);
++	if (ret) {
++		dev_err(dev, "%s intf: Peer SPAD BAR init failed\n",
++			pci_epc_interface_string(type));
++		goto err_peer_spad_bar_init;
++	}
++
++	ret = epf_ntb_configure_interrupt(ntb, type);
++	if (ret) {
++		dev_err(dev, "%s intf: Interrupt configuration failed\n",
++			pci_epc_interface_string(type));
++		goto err_peer_spad_bar_init;
++	}
++
++	ret = epf_ntb_db_mw_bar_init(ntb, type);
++	if (ret) {
++		dev_err(dev, "%s intf: DB/MW BAR init failed\n",
++			pci_epc_interface_string(type));
++		goto err_db_mw_bar_init;
++	}
++
++	ret = pci_epc_write_header(epc, func_no, vfunc_no, epf->header);
++	if (ret) {
++		dev_err(dev, "%s intf: Configuration header write failed\n",
++			pci_epc_interface_string(type));
++		goto err_write_header;
++	}
++
++	INIT_DELAYED_WORK(&ntb->epc[type]->cmd_handler, epf_ntb_cmd_handler);
++	queue_work(kpcintb_workqueue, &ntb->epc[type]->cmd_handler.work);
++
++	return 0;
++
++err_write_header:
++	epf_ntb_db_mw_bar_cleanup(ntb->epc[type], ntb->epc[!type]);
++
++err_db_mw_bar_init:
++	epf_ntb_peer_spad_bar_clear(ntb->epc[type]);
++
++err_peer_spad_bar_init:
++	epf_ntb_config_sspad_bar_clear(ntb->epc[type]);
++
++	return ret;
++}
++
++static void epf_ntb_epc_cleanup(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct epf_ntb_epc *peer_ntb_epc;
++	struct epf_ntb_epc *ntb_epc;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ntb_epc = ntb->epc[type];
++		peer_ntb_epc = ntb->epc[!type];
++		cancel_delayed_work(&ntb_epc->cmd_handler);
++		epf_ntb_db_mw_bar_cleanup(ntb_epc, peer_ntb_epc);
++		epf_ntb_peer_spad_bar_clear(ntb_epc);
++		epf_ntb_config_sspad_bar_clear(ntb_epc);
++	}
++}
++
++static int epf_ntb_epc_init(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct device *dev;
++	int ret;
++
++	dev = &ntb->epf->dev;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ret = epf_ntb_epc_init_interface(ntb, type);
++		if (ret) {
++			dev_err(dev, "%s intf: Failed to initialize\n",
++				pci_epc_interface_string(type));
++			goto err_init_type;
++		}
++	}
++
++	return 0;
++
++err_init_type:
++	epf_ntb_epc_cleanup(ntb);
++
++	return ret;
++}
++
++static int epf_ntb_of_parse_mw(struct epf_ntb *ntb, struct device_node *node)
++{
++	struct device *dev;
++	u32 *mws_size;
++	u32 num_mws;
++	int ret;
++
++	dev = &ntb->epf->dev;
++	ret = of_property_read_u32(node, "num-mws", &num_mws);
++	if (ret) {
++		dev_err(dev, "Failed to get num-mws dt property\n");
++		return ret;
++	}
++
++	if (num_mws > MAX_MW) {
++		dev_err(dev, "Cannot support more than 4 memory window\n");
++		return ret;
++	}
++
++	mws_size = devm_kzalloc(dev, sizeof(*mws_size) * num_mws, GFP_KERNEL);
++	if (!mws_size)
++		return -ENOMEM;
++
++	ret = of_property_read_u32_array(node, "mws-size", mws_size,
++					 num_mws);
++	if (ret) {
++		dev_err(dev, "Failed to get mws-size dt property\n");
++		return ret;
++	}
++
++	ntb->num_mws = num_mws;
++	ntb->mws_size = mws_size;
++
++	return 0;
++}
++
++static int pci_epf_ntb_of_parse(struct epf_ntb *ntb)
++{
++	struct device_node *node;
++	struct pci_epf *epf;
++	struct device *dev;
++	int ret;
++
++	epf = ntb->epf;
++	node = epf->node;
++	dev = &epf->dev;
++
++	epf->header = &epf_ntb_header;
++	pci_epc_of_parse_header(node, epf->header);
++
++	ret = epf_ntb_of_parse_mw(ntb, node);
++	if (ret) {
++		dev_err(dev, "Invalid memory window configuration in DT\n");
++		return ret;
++	}
++
++	return 0;
++}
++
++static int pci_epf_ntb_probe(struct pci_epf *epf)
++{
++	struct epf_ntb *ntb;
++	struct device *dev;
++	int ret;
++
++	dev = &epf->dev;
++
++	ntb = devm_kzalloc(dev, sizeof(*ntb), GFP_KERNEL);
++	if (!ntb)
++		return -ENOMEM;
++
++	ntb->epf = epf;
++
++	ret = pci_epf_ntb_of_parse(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to parse NTB DT node\n");
++		return ret;
++	}
++
++	ret = epf_ntb_epc_create(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to create NTB EPC\n");
++		return ret;
++	}
++
++	ret = epf_ntb_init_epc_bar(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to create NTB EPC\n");
++		goto err_bar_init;
++	}
++
++	ret = epf_ntb_config_spad_bar_alloc(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to allocate BAR memory\n");
++		goto err_bar_init;
++	}
++
++	ret = epf_ntb_epc_init(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to initialize EPC\n");
++		goto err_epc_init;
++	}
++
++	epf_set_drvdata(epf, ntb);
++
++	return 0;
++
++err_epc_init:
++	epf_ntb_config_spad_bar_free(ntb);
++
++err_bar_init:
++	epf_ntb_epc_destroy(ntb);
++
++	return ret;
++}
++
++static int pci_epf_ntb_remove(struct pci_epf *epf)
++{
++	struct epf_ntb *ntb = epf_get_drvdata(epf);
++
++	epf_ntb_epc_cleanup(ntb);
++	epf_ntb_config_spad_bar_free(ntb);
++	epf_ntb_epc_destroy(ntb);
++
++	return 0;
++}
++
++static const struct pci_epf_device_id pci_epf_ntb_ids[] = {
++	{
++		.name = "pci-epf-ntb",
++	},
++	{},
++};
++
++static struct pci_epf_driver epf_ntb_driver = {
++	.driver.name	= "pci_epf_ntb",
++	.probe		= pci_epf_ntb_probe,
++	.remove		= pci_epf_ntb_remove,
++	.id_table	= pci_epf_ntb_ids,
++	.owner		= THIS_MODULE,
++};
++
++static int __init pci_epf_ntb_init(void)
++{
++	int ret;
++
++	kpcintb_workqueue = alloc_workqueue("kpcintb", WQ_MEM_RECLAIM |
++					    WQ_HIGHPRI, 0);
++	ret = pci_epf_register_driver(&epf_ntb_driver);
++	if (ret) {
++		pr_err("Failed to register pci epf ntb driver --> %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++module_init(pci_epf_ntb_init);
++
++static void __exit pci_epf_ntb_exit(void)
++{
++	pci_epf_unregister_driver(&epf_ntb_driver);
++}
++module_exit(pci_epf_ntb_exit);
++
++MODULE_DESCRIPTION("PCI EPF NTB DRIVER");
++MODULE_AUTHOR("Kishon Vijay Abraham I <kishon@ti.com>");
++MODULE_LICENSE("GPL v2");
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190926112933.8922-18-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190926112933.8922-19-kishon%40ti.com.
