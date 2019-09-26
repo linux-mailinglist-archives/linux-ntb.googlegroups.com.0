@@ -1,146 +1,138 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBNWDWLWAKGQEWTTIWWY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDQ5ZPPL7UHRBWGJWLWAKGQEL6RARJY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63c.google.com (mail-pl1-x63c.google.com [IPv6:2607:f8b0:4864:20::63c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 245F0BF199
-	for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 13:32:08 +0200 (CEST)
-Received: by mail-pl1-x63c.google.com with SMTP id y2sf1314947plk.19
-        for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 04:32:08 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1569497526; cv=pass;
+Received: from mail-wm1-x339.google.com (mail-wm1-x339.google.com [IPv6:2a00:1450:4864:20::339])
+	by mail.lfdr.de (Postfix) with ESMTPS id E59B8BF209
+	for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 13:45:28 +0200 (CEST)
+Received: by mail-wm1-x339.google.com with SMTP id k184sf1055200wmk.1
+        for <lists+linux-ntb@lfdr.de>; Thu, 26 Sep 2019 04:45:28 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1569498328; cv=pass;
         d=google.com; s=arc-20160816;
-        b=kcRrE0jY13QoLyLcY3eGA5/2ZwxUku+sD8ZOrEZEpHSSq47eiLBoPorqR1uvSVLlLg
-         WDt4TrKepXth+qnj0I3qOx+HbO7OQISWTQMEqzAQHiipIyf/T+dIEdLWQGTf4oqXub+j
-         jL1uQQoow5pavsDwcU1BiJ226XXq0SENmMfV+JhpZa3g7Ti1YwzX4pcXiVpm5zCwHJy2
-         //T3RGbeXOS1eg00yLhGpw40e0J+z6Vbv2371pXyRryPybXv5+iyVOc3K8ZtAjpeE4AU
-         y9M8XQEPUxUOCu3irM07erDFTLu8JaMvhbbDFxMApz5+s+WRDyJql7ptqENT58t+O0AU
-         rMwQ==
+        b=e7QuplqXy+N94MQXda2EpY1y3+SP1LOymzfj44x5MI4w8uRvvmuUMaHZ2N+IHXXdp9
+         DVWu1CV2BMMxdUH95dXn7tT6CoY3g5pO0wxhelHdg4lseSRIIwLIaMUZC0Ddpcm2eIBw
+         scGQdoHM7pFXQtloU+u2qwYCyFMxsgfmJ7cln7eU3DUu2ahvTivDijDzPrBXM55U/fRs
+         oAKwXNLZS2QwwGvnpdUfZXzuQN0Q/AGDIo51J68BZgCfRE3jcL+Qm3a1TSpsPB2LIm/K
+         t9wV7RsIOE6QzqwepSqljZI/MltT6GC1oFO3SfiNhB80DVEMs0QwyOL9yeKoN1AJ8zve
+         /x9A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=JPob8VyqNkY3wxyrYA8ieGO9YY9bgT4B4+Doj9q1pdo=;
-        b=IKz7o7KmrvJDL3TFKKzd+BtSUvpKdZmpipNIA2BbH3lXPOn7UR7kE3jwsapATC4+2+
-         PbTdcGbjaG0kPaa5blc6NsND/caID75pH6QWhzrWpQ+055z7R+gNKBu0ZC+zwB4fgXnc
-         AY276ZWKdlNKZPLKXAGiYRgpIN43vFGOtC4vlO+bIq98N8mLKzaca9poYSYNq5ZBjJHG
-         U+IINQnE6JK6M4IPLAO6m3MKtayySSUvnmitcehrGFwdcR7OPzk7LQoWn4gzSwGn0scN
-         X95SjbHI+OB6STVZ0+CVov4m29Sud9KX2hbxy/jJWZxQtBez7PbbmT9KvxrjJspimK2W
-         HrRg==
+         :list-id:mailing-list:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to
+         :subject:dkim-filter:sender:dkim-signature;
+        bh=pF0+mbmox3/hdhm9lKi7CSON+12AJdm0oLhwT/rCBR8=;
+        b=DGKrU7eo9CcKIpdhWn+lOBPdtZbfldbh819HaZDk0xWcmoakPmBKNLsQMTuGHYjMJy
+         e0kObxfCwz0RUdZTneHWo5mJPbBgWal3P247S0IbXQGr/VWHsFiv4m+xI11M1/qqqM+q
+         ISPwFggmaDIEKVEhSNF+5oERIEYJmO5d1/YfCN9QZhQBlCk3wajbnb7Hf+4JlPSEGQGa
+         SA4S1KNEKjZ/qeSvMTzkyzWLi2adUCwOln9H3IHlwwl2v8tvW+4xe/bQU9QlpzddRLu3
+         bf4H5zzup3SSIXDvG4Fo8/IrwyQmCYGgqBilWT6/3IhDYI72XnIhBO8fsFXXGxy3UVFN
+         2l7g==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=eyZNqkD+;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       dkim=pass header.i=@desy.de header.s=default header.b=eYHKOjia;
+       spf=pass (google.com: domain of ludwig.petrosyan@desy.de designates 2001:638:700:1038::1:9a as permitted sender) smtp.mailfrom=ludwig.petrosyan@desy.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :reply-to:precedence:mailing-list:list-id:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=JPob8VyqNkY3wxyrYA8ieGO9YY9bgT4B4+Doj9q1pdo=;
-        b=Au5IubK4m0KGtKGfJz+/BXh78SO9fJ5J+ohz/B0+t0i8O5MYZ9xPf6IYCez9Jo2HFq
-         gGzZyr7VoYZKaJ4l4utAdHZXm2+aWhtZxvMEeUc6IP2Pt4HRIPWs3COOjZ2/Sq0QmpRR
-         QBhUV14134RxM/PCqYd79oDHr549CqubrSJbngi/DA8v5zqGyZRvbhjItqDzb+5MgeVT
-         NwG8LvNHSuDv6RQld0jbWUo1Eybn6CLS5QTBf36eamDBI90E5ireFhLp4SvlEGjvoKQU
-         6iq+aODOA1QFYK0vCGMqtdsSn3dNVwQECJ4eRRTdE7FDdVLGcC4YwZIgB2Mnn0lfxqEf
-         A1PQ==
+        h=sender:dkim-filter:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=pF0+mbmox3/hdhm9lKi7CSON+12AJdm0oLhwT/rCBR8=;
+        b=d04uINHtfath0VXblLrHZF1jptuQF3yzdbJgYAzLyYFg3SDUW3VZ7LYKxQjIFBCLRt
+         +UEUV793y3mCCn2aFCYi/DeZ82OamhJgiyHcDkhOk5EEDzxsIb1ots60Oaj2l+hWMpld
+         5qnppQsnkUQzmWcgKRewlCaE9g3IgC+1mwSInIYDwTduRFLg2FMjYC2TVHOJCIY1AC9j
+         DRUaO5bjm4qiyzthLJ49LFF01tjD+bqyNQ4v6HEuXo4wcJ/QIv1HMeSLcN3VoPrVZdjS
+         +ZSosa9YMFp7YDs0EKgh/qCOOKagNfuvyc6ueElEhQSV7fAqtiif7rG1UwrSqyEEIHrG
+         Z2Vw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+        h=sender:x-gm-message-state:dkim-filter:subject:to:cc:references:from
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=JPob8VyqNkY3wxyrYA8ieGO9YY9bgT4B4+Doj9q1pdo=;
-        b=qnFwBUasY16UpoiGGckDWGnIbN3KYf3Nd8jgXaNCLSvQdO6CoYO34kJ2xD/tfLM4uj
-         vWvQJDIt2KdVRJIV05LGY/7AOQ5p5PDJuRFv+cGD+tqIpR1BYqd49RGU3s6DiQWh4bkk
-         Twjtb73ksB+ih+b2MfukDzaxwV354JPwGF7Gikzu+9Jf/6+lFhDVpDnpuqRSXdFrDjm1
-         x475ChxxLIny3Y8QM6JW9dTol7A2GX/Y0jiwPBmisXveyN4ali2rNs5eWBkxq5yatigU
-         q5NP6IQyQJWmyQyuwjNiaeWJDw3yJt8ceCaHRfckc3i8f2wcp3wvsZMRTAbwuc0tnDeb
-         HoaA==
-X-Gm-Message-State: APjAAAU3W692wl6+2lDHXlSkYHkAECa5YL6HLxQfU6WXjgm9Doi3+kbl
-	YfbAbIGubxuo5jwQUa+/vSk=
-X-Google-Smtp-Source: APXvYqwovr89cjz9FZMfEkVdcNb+3WZ96UbLm9onDAwH2AZHKxICwQnW+/ou9iYj4hiQvXkbNzJnXg==
-X-Received: by 2002:a65:404b:: with SMTP id h11mr2920384pgp.237.1569497526726;
-        Thu, 26 Sep 2019 04:32:06 -0700 (PDT)
+        bh=pF0+mbmox3/hdhm9lKi7CSON+12AJdm0oLhwT/rCBR8=;
+        b=mwfJaqzcS0Sq6yx2i+luhmna89tCfIO8wV1huuj2y7YBRfCP6TfXiUWSXqsYu6HAcy
+         VHfZZvzJzGP9rrZdtKB6Y+oqnFANP3g6fbnSmVSgOqRoeYFjyplmPoPxhrsNfQ3X/bHj
+         R6Cdlx/x9Kj9sZf3l+AqnZzRgmfroaAF9OJffoPZcppM+qqow952IVfp3pEpxrVtGjjF
+         e06y2J5iWLzhnIuL9PmBu/ZtPmiog0ZCofsyv0X9kWXR27E73WxCTUOQbrj1EsWzSvbP
+         IpC3h2T0zxrL6jZlUg4kB3hQeD/IL8Z2iEQ9Vuk3QQQZUlm7QZ976+ctqwETtTtfpcZz
+         lEtg==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: APjAAAURQGMo0ECF+lRW94/QfJSzczq8tO+z/lHETRYsY+87DjIoHlE5
+	1H42bwsEjhsCGVpFYmNUhVc=
+X-Google-Smtp-Source: APXvYqzdO79D31SDF7SR/opMVgN+H80mmovZIaW0f/DKkDdhuTJ1HkV9eIvfzbPgVK5QzFhd6pnvWA==
+X-Received: by 2002:a1c:cf8c:: with SMTP id f134mr2759425wmg.174.1569498328582;
+        Thu, 26 Sep 2019 04:45:28 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a65:4301:: with SMTP id j1ls94424pgq.14.gmail; Thu, 26 Sep
- 2019 04:32:06 -0700 (PDT)
-X-Received: by 2002:a62:1402:: with SMTP id 2mr3199136pfu.226.1569497526465;
-        Thu, 26 Sep 2019 04:32:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569497526; cv=none;
+Received: by 2002:a7b:ce16:: with SMTP id m22ls795037wmc.5.canary-gmail; Thu,
+ 26 Sep 2019 04:45:28 -0700 (PDT)
+X-Received: by 2002:a1c:3182:: with SMTP id x124mr2848402wmx.168.1569498328114;
+        Thu, 26 Sep 2019 04:45:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1569498328; cv=none;
         d=google.com; s=arc-20160816;
-        b=pNTgyRVhBstiJsFDvlg96oJCsu4m1S/0bwVRR8Csy/p1evmx9Fi00TOpQexnNXJ3nU
-         Cck8lHanfJiUEVIm1de3a6O3YV7dVTqKIfWXIZz9Xpv9UVDhKYn1ypuqduMfK+nKBxGs
-         Iakfr1jCtYCD6KIBEzg0RThLKGb7Yh8xQrPEpPL+vjcWFGRd5Gq3CeEBuSD46RGvrgZ3
-         gi4kBGaYgDmvis50hOIzoTKdD9A9qN9dVD2WnYv3fFXe4o8Qs7+aUPq16oyQpn5UKY0D
-         NKx9XH/Bb/18f4Tg4hjMpyVifnY93LKJ0kEcudFTi10SPf/KELR1sGYlmZWgEaQr5Lzy
-         Eihg==
+        b=qHX7YbRWIRoXya/C7m51RT5fHRLB79CnrtgPG+qPdv/p8BDYT3GoTstG1iHUfvzfqw
+         Z/aEQvInWe1JoRilsGNu6mHZhx5gLwzeUHWZUEJ9uIV8XrEswPdPS/Go3lmVFevhVPb2
+         owKVHgJBQjLdGpQg6tsthstw1NsnAvh/sUefEXGo95tw9bRg9cs2A3NpVS3NwbWC4s+I
+         sgSm2RpjQFMjKm1/N04QmtDEHl2WZptJ/kBF6+9dGStfdjbf0aYF/I2ls8WgpHstGt0u
+         cjvcNw1iDH6SnokwYQjVfKqlpy+V2gyMT9qt+Q4nBREUvMyKYZl6P7T1gHszIm9roH7N
+         Uzog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=88Xv9IRV7+oNSxAgr2jq3XB2+SHFQvDvj39xR9Z58mQ=;
-        b=eHYQYK7agTinwn7GSgk7tQO75FJOTgwk3LbnV1+AVYK0jK/rxl/9ZhtHqiVjlknT46
-         WQSS32ZDkhAvKqV8lQ/9di0SdOT1i5tQpzHeFZ5Ic1SCdzECy0MPB5rQjgPrcJ0w+i0u
-         EZqZhHM6I2KkHcrHaR1hwOSZpzEbLJGyCjG1y0cLOREGKEoc/CWXTeBYGlok0uGvHLRt
-         HCNhPluoFKl3YFWcgCWs61eA6MYVkMgcTzbYM8GtF6pXQwOcImPhcxaXy55Bp6Bz+uAl
-         lc5KFLoXWzRzm4g4SzGGQOHpuJA+nYV57avEeXXGxzIX1OzSOsOT9kB3HGwAPqU1xebL
-         Ix1g==
+        h=content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:dkim-signature:dkim-filter;
+        bh=f5IZx8Hv017A/h6QC83qVzhsPWe2wg9LZWsYWObbI2s=;
+        b=VMXNynzG9+zFvdrKVt90DnDPCKH15Z6pGwyyDQT/GRWgqwtHxt9nWnGGhMYyM7mSbu
+         2OMSP3TNx/BN8clonUAOOHpChcPRnc+h4rsmz57Yiu7vifbthifwEsk79mkTiXKff6Dz
+         VYiirCAEJGqYRlCZF1gs0pGnUTz08l+9s43zBtdmu+NWMAc6XW2cUOsRV64j1E1AsLlV
+         Qctu/rT8WGDhPuTEfZSHtE1SxUtv0R42xDbNwuwN0KqmvjXOzkpEySRzte1ymFLrBMN2
+         vrq7jyXn2k5Vn5AnStdcHJMo8pWkDg3wVtmA8q39+x08f8PhcXvNz7jhwTGtGFiCUpUW
+         zOog==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=eyZNqkD+;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
-        by gmr-mx.google.com with ESMTPS id 91si129737plf.0.2019.09.26.04.32.06
+       dkim=pass header.i=@desy.de header.s=default header.b=eYHKOjia;
+       spf=pass (google.com: domain of ludwig.petrosyan@desy.de designates 2001:638:700:1038::1:9a as permitted sender) smtp.mailfrom=ludwig.petrosyan@desy.de
+Received: from smtp-o-1.desy.de (smtp-o-1.desy.de. [2001:638:700:1038::1:9a])
+        by gmr-mx.google.com with ESMTPS id 5si503573wmf.1.2019.09.26.04.45.28
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 26 Sep 2019 04:32:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id x8QBW1d1026527;
-	Thu, 26 Sep 2019 06:32:01 -0500
-Received: from DLEE100.ent.ti.com (dlee100.ent.ti.com [157.170.170.30])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x8QBW1NA032455
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 26 Sep 2019 06:32:01 -0500
-Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE100.ent.ti.com
- (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Thu, 26
- Sep 2019 06:32:01 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Thu, 26 Sep 2019 06:31:54 -0500
-Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id x8QBUTkE069017;
-	Thu, 26 Sep 2019 06:31:57 -0500
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
-        Rob
- Herring <robh+dt@kernel.org>, Jon Mason <jdmason@kudzu.us>,
-        Dave Jiang
-	<dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
-        Lorenzo Pieralisi
-	<lorenzo.pieralisi@arm.com>
-CC: Mark Rutland <mark.rutland@arm.com>, <kishon@ti.com>,
-        <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <devicetree@vger.kernel.org>,
-        <linux-ntb@googlegroups.com>
-Subject: [RFC PATCH 21/21] NTB: tool: Enable the NTB/PCIe link on the local or remote side of bridge
-Date: Thu, 26 Sep 2019 16:59:33 +0530
-Message-ID: <20190926112933.8922-22-kishon@ti.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20190926112933.8922-1-kishon@ti.com>
+        Thu, 26 Sep 2019 04:45:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ludwig.petrosyan@desy.de designates 2001:638:700:1038::1:9a as permitted sender) client-ip=2001:638:700:1038::1:9a;
+Received: from smtp-buf-1.desy.de (smtp-buf-1.desy.de [IPv6:2001:638:700:1038::1:a4])
+	by smtp-o-1.desy.de (Postfix) with ESMTP id 9AB63E01F9
+	for <linux-ntb@googlegroups.com>; Thu, 26 Sep 2019 13:45:27 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 smtp-o-1.desy.de 9AB63E01F9
+Received: from smtp-m-1.desy.de (smtp-m-1.desy.de [IPv6:2001:638:700:1038::1:81])
+	by smtp-buf-1.desy.de (Postfix) with ESMTP id 86D9C1201DA;
+	Thu, 26 Sep 2019 13:45:27 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at desy.de
+Received: from [131.169.146.36] (mcspetros.desy.de [131.169.146.36])
+	by smtp-intra-1.desy.de (Postfix) with ESMTP id 3985FC008A;
+	Thu, 26 Sep 2019 13:45:27 +0200 (CEST)
+Subject: Re: [RFC PATCH 19/21] PCI: Add TI J721E device to pci ids
+To: Kishon Vijay Abraham I <kishon@ti.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
+ Rob Herring <robh+dt@kernel.org>, Jon Mason <jdmason@kudzu.us>,
+ Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+Cc: Mark Rutland <mark.rutland@arm.com>, linux-pci@vger.kernel.org,
+ linux-doc@vger.kernel.org, linux-kernel@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-ntb@googlegroups.com
 References: <20190926112933.8922-1-kishon@ti.com>
+ <20190926112933.8922-20-kishon@ti.com>
+From: Ludwig Petrosyan <ludwig.petrosyan@desy.de>
+Message-ID: <4832a387-c18a-8c04-98a0-cfc46db09243@desy.de>
+Date: Thu, 26 Sep 2019 13:45:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
+In-Reply-To: <20190926112933.8922-20-kishon@ti.com>
+Content-Type: multipart/alternative;
+ boundary="------------8D4AF1803FC2630C605144F9"
+Content-Language: en-GB
+X-Original-Sender: ludwig.petrosyan@desy.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=eyZNqkD+;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+ header.i=@desy.de header.s=default header.b=eYHKOjia;       spf=pass
+ (google.com: domain of ludwig.petrosyan@desy.de designates
+ 2001:638:700:1038::1:9a as permitted sender) smtp.mailfrom=ludwig.petrosyan@desy.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -153,30 +145,421 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Invoke ntb_link_enable() to enable the NTB/PCIe link on the local
-or remote side of the bridge.
+This is a multi-part message in MIME format.
+--------------8D4AF1803FC2630C605144F9
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: quoted-printable
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+Dear Linux kernel group
+
+We are using MTCA systems with Ubuntu Linux and PCIe as a central bus
+
+We got some problem:
+
+some times the memories of the PCIe endpoints not mapped and the lspci=20
+gives strange otput:
+
+uname -a : Linux mcscpudev6 4.15.0-45-generic #48~16.04.1-Ubuntu SMP Tue=20
+Jan 29 18:03:48 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+
+
+/lspci=C2=A0 -vvvv -s 05:00.0//
+//05:00.0 Signal processing controller: Xilinx Corporation Device 0088//
+//=C2=A0=C2=A0=C2=A0 Subsystem: Device 3300:0088//
+//=C2=A0=C2=A0=C2=A0 Physical Slot: 4//
+//=C2=A0=C2=A0=C2=A0 Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGAS=
+noop-=20
+ParErr- Stepping- SERR- FastB2B- DisINTx+//
+//=C2=A0=C2=A0=C2=A0 Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=3Dfas=
+t >TAbort-=20
+<TAbort- <MAbort- >SERR- <PERR- INTx-//
+//=C2=A0=C2=A0=C2=A0 Latency: 0, Cache Line Size: 64 bytes//
+//=C2=A0=C2=A0=C2=A0 Interrupt: pin A routed to IRQ 223//
+//_Region 0: Memory at <ignored> (32-bit, non-prefetchable)_/_/
+/__/=C2=A0=C2=A0=C2=A0 Region 1: Memory at <ignored> (32-bit, non-prefetcha=
+ble)/__/
+/__/=C2=A0=C2=A0=C2=A0 Region 2: Memory at <ignored> (32-bit, non-prefetcha=
+ble)/_/
+//=C2=A0=C2=A0=C2=A0 Expansion ROM at 71c00000 [disabled] [size=3D1M]//
+//=C2=A0=C2=A0=C2=A0 Capabilities: [40] Power Management version 3//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Flags: PMEClk- DSI- D1- D2- AuxCurr=
+ent=3D0mA=20
+PME(D0-,D1-,D2-,D3hot-,D3cold-)//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Status: D0 NoSoftRst- PME-Enable- D=
+Sel=3D0 DScale=3D0 PME-//
+//=C2=A0=C2=A0=C2=A0 Capabilities: [48] MSI: Enable+ Count=3D1/1 Maskable- =
+64bit+//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Address: 00000000fee00ef8=C2=A0 Dat=
+a: 0000//
+//=C2=A0=C2=A0=C2=A0 Capabilities: [60] Express (v1) Endpoint, MSI 00//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCap:=C2=A0=C2=A0=C2=A0 MaxPayloa=
+d 512 bytes, PhantFunc 1, Latency L0s=20
+unlimited, L1 unlimited//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 ExtTag+ AttnBtn-=
+ AttnInd- PwrInd- RBE+ FLReset-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCtl:=C2=A0=C2=A0=C2=A0 Report er=
+rors: Correctable- Non-Fatal- Fatal-=20
+Unsupported-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 RlxdOrd+ ExtTag+=
+ PhantFunc- AuxPwr- NoSnoop+//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 MaxPayload 256 b=
+ytes, MaxReadReq 512 bytes//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevSta:=C2=A0=C2=A0=C2=A0 CorrErr- =
+UncorrErr- FatalErr- UnsuppReq- AuxPwr-=20
+TransPend-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCap:=C2=A0=C2=A0=C2=A0 Port #0, =
+Speed 2.5GT/s, Width x4, ASPM L0s, Exit=20
+Latency L0s unlimited, L1 unlimited//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 ClockPM- Surpris=
+e- LLActRep- BwNot- ASPMOptComp-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCtl:=C2=A0=C2=A0=C2=A0 ASPM Disa=
+bled; RCB 64 bytes Disabled- CommClk-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 ExtSynch- ClockP=
+M- AutWidDis- BWInt- AutBWInt-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkSta:=C2=A0=C2=A0=C2=A0 Speed 2.5=
+GT/s, Width x4, TrErr- Train- SlotClk+=20
+DLActive- BWMgmt- ABWMgmt-//
+//=C2=A0=C2=A0=C2=A0 Capabilities: [100 v1] Device Serial Number 00-00-00-0=
+0-00-00-00-00//
+//=C2=A0=C2=A0=C2=A0 Kernel driver in use: pciedev//
+//=C2=A0=C2=A0=C2=A0 Kernel modules: pciedev//
+
+/
+
+but lspci with -H1:
+
+/lspci -H1 -vvvv -s 05:00.0//
+//05:00.0 Signal processing controller: Xilinx Corporation Device 0088//
+//=C2=A0=C2=A0=C2=A0 Subsystem: Device 3300:0088//
+//=C2=A0=C2=A0=C2=A0 Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGAS=
+noop-=20
+ParErr- Stepping- SERR- FastB2B- DisINTx+//
+//=C2=A0=C2=A0=C2=A0 Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=3Dfas=
+t >TAbort-=20
+<TAbort- <MAbort- >SERR- <PERR- INTx-//
+//=C2=A0=C2=A0=C2=A0 Latency: 0, Cache Line Size: 64 bytes//
+//=C2=A0=C2=A0=C2=A0 Interrupt: pin A routed to IRQ 10//
+////_Region 0: Memory at d8000000 (32-bit, non-prefetchable)_//_
+_//_=C2=A0=C2=A0=C2=A0 Region 1: Memory at d4000000 (32-bit, non-prefetchab=
+le)_//_
+_//_=C2=A0=C2=A0=C2=A0 Region 2: Memory at dc000000 (32-bit, non-prefetchab=
+le)_//
+//=C2=A0=C2=A0=C2=A0 Expansion ROM at dd000000 [disabled]//
+//=C2=A0=C2=A0=C2=A0 Capabilities: [40] Power Management version 3//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Flags: PMEClk- DSI- D1- D2- AuxCurr=
+ent=3D0mA=20
+PME(D0-,D1-,D2-,D3hot-,D3cold-)//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Status: D0 NoSoftRst- PME-Enable- D=
+Sel=3D0 DScale=3D0 PME-//
+//=C2=A0=C2=A0=C2=A0 Capabilities: [48] MSI: Enable+ Count=3D1/1 Maskable- =
+64bit+//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Address: 00000000fee00ef8=C2=A0 Dat=
+a: 0000//
+//=C2=A0=C2=A0=C2=A0 Capabilities: [60] Express (v1) Endpoint, MSI 00//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCap:=C2=A0=C2=A0=C2=A0 MaxPayloa=
+d 512 bytes, PhantFunc 1, Latency L0s=20
+unlimited, L1 unlimited//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 ExtTag+ AttnBtn-=
+ AttnInd- PwrInd- RBE+ FLReset-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCtl:=C2=A0=C2=A0=C2=A0 Report er=
+rors: Correctable- Non-Fatal- Fatal-=20
+Unsupported-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 RlxdOrd+ ExtTag+=
+ PhantFunc- AuxPwr- NoSnoop+//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 MaxPayload 256 b=
+ytes, MaxReadReq 512 bytes//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevSta:=C2=A0=C2=A0=C2=A0 CorrErr- =
+UncorrErr- FatalErr- UnsuppReq- AuxPwr-=20
+TransPend-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCap:=C2=A0=C2=A0=C2=A0 Port #0, =
+Speed 2.5GT/s, Width x4, ASPM L0s, Exit=20
+Latency L0s unlimited, L1 unlimited//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 ClockPM- Surpris=
+e- LLActRep- BwNot- ASPMOptComp-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCtl:=C2=A0=C2=A0=C2=A0 ASPM Disa=
+bled; RCB 64 bytes Disabled- CommClk-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 ExtSynch- ClockP=
+M- AutWidDis- BWInt- AutBWInt-//
+//=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkSta:=C2=A0=C2=A0=C2=A0 Speed 2.5=
+GT/s, Width x4, TrErr- Train- SlotClk+=20
+DLActive- BWMgmt- ABWMgmt-/
+
+adding pci=3Drealloc=3Doff solves with problem.
+
+Is it in general a good idea to use "pci=3Drealloc=3Doff"?
+
+And what the problem? Would some body so kinde to explane what the problem?=
+!
+
+
+with best regards
+
+Ludwig Petrosyan
+
+
+On 9/26/19 1:29 PM, Kishon Vijay Abraham I wrote:
+> Add TI J721E device to the pci id database. Since this device has
+> a configurable PCIe endpoint, it could be used with different
+> drivers.
+>
+> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+> ---
+>   include/linux/pci_ids.h | 1 +
+>   1 file changed, 1 insertion(+)
+>
+> diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+> index d157983b84cf..b2820a834a5e 100644
+> --- a/include/linux/pci_ids.h
+> +++ b/include/linux/pci_ids.h
+> @@ -868,6 +868,7 @@
+>   #define PCI_DEVICE_ID_TI_X620		0xac8d
+>   #define PCI_DEVICE_ID_TI_X420		0xac8e
+>   #define PCI_DEVICE_ID_TI_XX20_FM	0xac8f
+> +#define PCI_DEVICE_ID_TI_J721E		0xb00d
+>   #define PCI_DEVICE_ID_TI_DRA74x		0xb500
+>   #define PCI_DEVICE_ID_TI_DRA72x		0xb501
+>  =20
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/4832a387-c18a-8c04-98a0-cfc46db09243%40desy.de.
+
+--------------8D4AF1803FC2630C605144F9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+">
+  </head>
+  <body text=3D"#000000" bgcolor=3D"#FFFFFF">
+    <div class=3D"moz-text-html" lang=3D"x-unicode">
+      <p>Dear Linux kernel group</p>
+      <p>We are using MTCA systems with Ubuntu Linux and PCIe as a
+        central bus</p>
+      <p>We got some problem:</p>
+      <p>some times the memories of the PCIe endpoints not mapped and
+        the lspci gives strange otput:</p>
+      <p>uname -a : Linux mcscpudev6 4.15.0-45-generic
+        #48~16.04.1-Ubuntu SMP Tue Jan 29 18:03:48 UTC 2019 x86_64
+        x86_64 x86_64 GNU/Linux</p>
+      <p><br>
+      </p>
+      <p><i>lspci=C2=A0 -vvvv -s 05:00.0</i><i><br>
+        </i><i>05:00.0 Signal processing controller: Xilinx Corporation
+          Device 0088</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Subsystem: Device 3300:0088</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Physical Slot: 4</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Control: I/O+ Mem+ BusMaster+ SpecCycle- =
+MemWINV-
+          VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Status: Cap+ 66MHz- UDF- FastB2B- ParErr-=
+ DEVSEL=3Dfast
+          &gt;TAbort- &lt;TAbort- &lt;MAbort- &gt;SERR- &lt;PERR- INTx-</i>=
+<i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Latency: 0, Cache Line Size: 64 bytes</i>=
+<i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Interrupt: pin A routed to IRQ 223</i><i>=
+<br>
+        </i><i>=C2=A0=C2=A0=C2=A0 <u>Region 0: Memory at &lt;ignored&gt; (3=
+2-bit,
+            non-prefetchable)</u></i><u><i><br>
+          </i></u><u><i>=C2=A0=C2=A0=C2=A0 Region 1: Memory at &lt;ignored&=
+gt; (32-bit,
+            non-prefetchable)</i></u><u><i><br>
+          </i></u><u><i>=C2=A0=C2=A0=C2=A0 Region 2: Memory at &lt;ignored&=
+gt; (32-bit,
+            non-prefetchable)</i></u><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Expansion ROM at 71c00000 [disabled] [siz=
+e=3D1M]</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Capabilities: [40] Power Management versi=
+on 3</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Flags: PMEClk- DSI- D1=
+- D2- AuxCurrent=3D0mA
+          PME(D0-,D1-,D2-,D3hot-,D3cold-)</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Status: D0 NoSoftRst- =
+PME-Enable- DSel=3D0 DScale=3D0
+          PME-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Capabilities: [48] MSI: Enable+ Count=3D1=
+/1 Maskable-
+          64bit+</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Address: 00000000fee00=
+ef8=C2=A0 Data: 0000</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Capabilities: [60] Express (v1) Endpoint,=
+ MSI 00</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCap:=C2=A0=C2=A0=C2=
+=A0 MaxPayload 512 bytes, PhantFunc 1,
+          Latency L0s unlimited, L1 unlimited</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Ext=
+Tag+ AttnBtn- AttnInd- PwrInd- RBE+
+          FLReset-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCtl:=C2=A0=C2=A0=C2=
+=A0 Report errors: Correctable- Non-Fatal-
+          Fatal- Unsupported-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Rlx=
+dOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Max=
+Payload 256 bytes, MaxReadReq 512 bytes</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevSta:=C2=A0=C2=A0=C2=
+=A0 CorrErr- UncorrErr- FatalErr-
+          UnsuppReq- AuxPwr- TransPend-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCap:=C2=A0=C2=A0=C2=
+=A0 Port #0, Speed 2.5GT/s, Width x4, ASPM
+          L0s, Exit Latency L0s unlimited, L1 unlimited</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Clo=
+ckPM- Surprise- LLActRep- BwNot-
+          ASPMOptComp-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCtl:=C2=A0=C2=A0=C2=
+=A0 ASPM Disabled; RCB 64 bytes Disabled-
+          CommClk-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Ext=
+Synch- ClockPM- AutWidDis- BWInt-
+          AutBWInt-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkSta:=C2=A0=C2=A0=C2=
+=A0 Speed 2.5GT/s, Width x4, TrErr- Train-
+          SlotClk+ DLActive- BWMgmt- ABWMgmt-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Capabilities: [100 v1] Device Serial Numb=
+er
+          00-00-00-00-00-00-00-00</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Kernel driver in use: pciedev</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Kernel modules: pciedev</i><i><br>
+          <br>
+        </i></p>
+      <p>but lspci with -H1:</p>
+      <p><i>lspci -H1 -vvvv -s 05:00.0</i><i><br>
+        </i><i>05:00.0 Signal processing controller: Xilinx Corporation
+          Device 0088</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Subsystem: Device 3300:0088</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Control: I/O+ Mem+ BusMaster+ SpecCycle- =
+MemWINV-
+          VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Status: Cap+ 66MHz- UDF- FastB2B- ParErr-=
+ DEVSEL=3Dfast
+          &gt;TAbort- &lt;TAbort- &lt;MAbort- &gt;SERR- &lt;PERR- INTx-</i>=
+<i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Latency: 0, Cache Line Size: 64 bytes</i>=
+<i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Interrupt: pin A routed to IRQ 10</i><i><=
+br>
+        </i><i>=C2=A0=C2=A0=C2=A0 </i><i><u>Region 0: Memory at d8000000 (3=
+2-bit,
+            non-prefetchable)</u></i><i><u><br>
+          </u></i><i><u>=C2=A0=C2=A0=C2=A0 Region 1: Memory at d4000000 (32=
+-bit,
+            non-prefetchable)</u></i><i><u><br>
+          </u></i><i><u>=C2=A0=C2=A0=C2=A0 Region 2: Memory at dc000000 (32=
+-bit,
+            non-prefetchable)</u></i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Expansion ROM at dd000000 [disabled]</i><=
+i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Capabilities: [40] Power Management versi=
+on 3</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Flags: PMEClk- DSI- D1=
+- D2- AuxCurrent=3D0mA
+          PME(D0-,D1-,D2-,D3hot-,D3cold-)</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Status: D0 NoSoftRst- =
+PME-Enable- DSel=3D0 DScale=3D0
+          PME-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Capabilities: [48] MSI: Enable+ Count=3D1=
+/1 Maskable-
+          64bit+</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Address: 00000000fee00=
+ef8=C2=A0 Data: 0000</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 Capabilities: [60] Express (v1) Endpoint,=
+ MSI 00</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCap:=C2=A0=C2=A0=C2=
+=A0 MaxPayload 512 bytes, PhantFunc 1,
+          Latency L0s unlimited, L1 unlimited</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Ext=
+Tag+ AttnBtn- AttnInd- PwrInd- RBE+
+          FLReset-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevCtl:=C2=A0=C2=A0=C2=
+=A0 Report errors: Correctable- Non-Fatal-
+          Fatal- Unsupported-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Rlx=
+dOrd+ ExtTag+ PhantFunc- AuxPwr- NoSnoop+</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Max=
+Payload 256 bytes, MaxReadReq 512 bytes</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 DevSta:=C2=A0=C2=A0=C2=
+=A0 CorrErr- UncorrErr- FatalErr-
+          UnsuppReq- AuxPwr- TransPend-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCap:=C2=A0=C2=A0=C2=
+=A0 Port #0, Speed 2.5GT/s, Width x4, ASPM
+          L0s, Exit Latency L0s unlimited, L1 unlimited</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Clo=
+ckPM- Surprise- LLActRep- BwNot-
+          ASPMOptComp-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkCtl:=C2=A0=C2=A0=C2=
+=A0 ASPM Disabled; RCB 64 bytes Disabled-
+          CommClk-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 Ext=
+Synch- ClockPM- AutWidDis- BWInt-
+          AutBWInt-</i><i><br>
+        </i><i>=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 LnkSta:=C2=A0=C2=A0=C2=
+=A0 Speed 2.5GT/s, Width x4, TrErr- Train-
+          SlotClk+ DLActive- BWMgmt- ABWMgmt-</i><br>
+        <br>
+        adding pci=3Drealloc=3Doff solves with problem.</p>
+      <p>Is it in general a good idea to use "pci=3Drealloc=3Doff"?</p>
+      <p>And what the problem? Would some body so kinde to explane what
+        the problem?!</p>
+      <p><br>
+      </p>
+      <p>with best regards</p>
+      <p>Ludwig Petrosyan<br>
+      </p>
+      <p><br>
+      </p>
+    </div>
+    <div class=3D"moz-cite-prefix">On 9/26/19 1:29 PM, Kishon Vijay
+      Abraham I wrote:<br>
+    </div>
+    <blockquote type=3D"cite"
+      cite=3D"mid:20190926112933.8922-20-kishon@ti.com">
+      <pre class=3D"moz-quote-pre" wrap=3D"">Add TI J721E device to the pci=
+ id database. Since this device has
+a configurable PCIe endpoint, it could be used with different
+drivers.
+
+Signed-off-by: Kishon Vijay Abraham I <a class=3D"moz-txt-link-rfc2396E" hr=
+ef=3D"mailto:kishon@ti.com">&lt;kishon@ti.com&gt;</a>
 ---
- drivers/ntb/test/ntb_tool.c | 1 +
+ include/linux/pci_ids.h | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/drivers/ntb/test/ntb_tool.c b/drivers/ntb/test/ntb_tool.c
-index d592c0ffbd19..04138e6a371b 100644
---- a/drivers/ntb/test/ntb_tool.c
-+++ b/drivers/ntb/test/ntb_tool.c
-@@ -1638,6 +1638,7 @@ static int tool_probe(struct ntb_client *self, struct ntb_dev *ntb)
- 
- 	tool_setup_dbgfs(tc);
- 
-+	ntb_link_enable(ntb, NTB_SPEED_AUTO, NTB_WIDTH_AUTO);
- 	return 0;
- 
- err_clear_mws:
--- 
-2.17.1
+diff --git a/include/linux/pci_ids.h b/include/linux/pci_ids.h
+index d157983b84cf..b2820a834a5e 100644
+--- a/include/linux/pci_ids.h
++++ b/include/linux/pci_ids.h
+@@ -868,6 +868,7 @@
+ #define PCI_DEVICE_ID_TI_X620		0xac8d
+ #define PCI_DEVICE_ID_TI_X420		0xac8e
+ #define PCI_DEVICE_ID_TI_XX20_FM	0xac8f
++#define PCI_DEVICE_ID_TI_J721E		0xb00d
+ #define PCI_DEVICE_ID_TI_DRA74x		0xb500
+ #define PCI_DEVICE_ID_TI_DRA72x		0xb501
+=20
+</pre>
+    </blockquote>
+  </body>
+</html>
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190926112933.8922-22-kishon%40ti.com.
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/4832a387-c18a-8c04-98a0-cfc46db09243%40desy.de?utm_med=
+ium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid/linux-nt=
+b/4832a387-c18a-8c04-98a0-cfc46db09243%40desy.de</a>.<br />
+
+--------------8D4AF1803FC2630C605144F9--
