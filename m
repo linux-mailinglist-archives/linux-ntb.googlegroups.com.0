@@ -1,128 +1,133 @@
-Return-Path: <linux-ntb+bncBDTZTRGMXIFBBQUEZ3WAKGQE5DYRUKI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCW7ZP6MSEMRBQVN4PWAKGQEIPGLXLI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd3c.google.com (mail-io1-xd3c.google.com [IPv6:2607:f8b0:4864:20::d3c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 543DEC3B50
-	for <lists+linux-ntb@lfdr.de>; Tue,  1 Oct 2019 18:43:47 +0200 (CEST)
-Received: by mail-io1-xd3c.google.com with SMTP id w8sf39467381iod.21
-        for <lists+linux-ntb@lfdr.de>; Tue, 01 Oct 2019 09:43:47 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1569948226; cv=pass;
+Received: from mail-ed1-x538.google.com (mail-ed1-x538.google.com [IPv6:2a00:1450:4864:20::538])
+	by mail.lfdr.de (Postfix) with ESMTPS id 8C248CCBC1
+	for <lists+linux-ntb@lfdr.de>; Sat,  5 Oct 2019 19:45:38 +0200 (CEST)
+Received: by mail-ed1-x538.google.com with SMTP id l9sf6190980edi.8
+        for <lists+linux-ntb@lfdr.de>; Sat, 05 Oct 2019 10:45:38 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1570297538; cv=pass;
         d=google.com; s=arc-20160816;
-        b=PCZWpPBE+Y+zqAMGyU9Vnr3Oz3GLfx0VFt3Ti7E7fFBbh24C6hgUBMWtCKnX0xZWhk
-         7YO0pRnXyzkUqNGGA+uDsR6hz1WboKlix2Fiq3zit8bYJaWHOgVQjMOIDC58oANc12bC
-         cRKMipnRozp7G+sRAO65faHZXLvrOVHqXBDhA4bhp4qWEHEOq9nVArY6vGc+GdhF4ivn
-         V9kZEJyNdtsK3r231rz8Bm6bFNOtPMt7qtPHnIN6jyO0jm5ynegzMGCqykwznCxP5xI6
-         pHI0+PyyspBgJ6o/UXjbCGLGVMoZJXFV6FDOo+RrozylvV4rTo4sWdxYEbAau3iNC9OL
-         pivg==
+        b=Vet2zxQEaj9Z9WDWsMtFgsfowxlBSAcR4nhCh3MH77P0odPnPb2hIN8bRvWyJtmVcn
+         Zkuwe/SnN1cyc2mD7SGy9hnmz5N/5QSa5lvyL93WRpGq4KWZTYGTnSHbOxgOeXM/pCrP
+         u2jAjAPUNJzt5S0u8uZQOkZQx6tt3fJ7s2BdO948pQQfon/7p1i3sZMJpgaOEbOY3gMt
+         qhVeV69um1B7k5fbbQgNHtS5Sbg518QRiSgmIFEeouckPyCmUZhJZCMpXOh8Iaewfeoa
+         chPUV7/7fxyFicw7rRcLtckWxR7Ca7uztjI4lIYn56/7btpgoiCJbgT+WFzusIdXIQK0
+         aEZQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=oBdxIzXyLOoYo8KIycrygK/xc5vb8cMf3gcAWDLV7m4=;
-        b=fmWdpq1bAZ8e63ZozdpnfsLwS8FIFXOJR2uHPISZxe6n3nCgHm3tJbAjtNmSVWB6Q2
-         ljPt6LkWlzZ7sQRB3Q65yccDtwRaCY1gOVOKAffF98Y+mW/yqOrvukRXZTs19qzj5gZt
-         AHHkDjt9IQ51bYfDBRd2b8XIW29WqALGDsQgVDro3QwoJOjn3KqGy0/DRxdJwjoM0Vmi
-         IiE7DUGVO4Vy0vpu2FkfZzGJGRRRtBPPKHWco6NjidI4LNwd9cKRUAwFYcgyIXgTzokC
-         IDeb8E51RaGMxtdY8Cj1KL+vbqtEpkwhrP2c8pvjXQEkatbVLVmqILnofEXg9Z1Bu/zJ
-         /v6A==
+         :list-id:mailing-list:precedence:reply-to:mime-version:subject
+         :message-id:from:date:dkim-signature;
+        bh=cthBA3zb7N511qO1Z5PbOGt8yr0JK0gdmAa1O3sZ56E=;
+        b=dRzuayK2NDyljX+RxXh9JWafKpnYKc8DvfkdFjjledNIcNEOETQpH7DFOhk9wsqV53
+         y2Nd+WgY9LJGkULbm3b08g8b2sRNiBihPTCCwEgYllbAqgPGYjvhfNEnSTsK3N9MpQyC
+         XI4il3NPgEryvM1GJsLEj7lWnA5+lClgDTEvgJNks0eZcJv+Lx4ohgAj2qWmbxhM1yf+
+         lvBMI34Fm99K6HG5XClimTW3YMOKCE9ndS98LEXlo+9eq1cc3Q5few9AeZvNarDFKPPJ
+         B8yr06Jun2EOySdS8RvrfbYD3+8P/DFZb61LQBQ2Jg0pJO7tg7nRRm2Uh31OQ+u8G8oV
+         K5rQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mMepMnnK;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=GxF1iNEI;
+       spf=pass (google.com: domain of jpmorganchasebank.ny13@yahoo.com designates 87.248.110.31 as permitted sender) smtp.mailfrom=jpmorganchasebank.ny13@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=oBdxIzXyLOoYo8KIycrygK/xc5vb8cMf3gcAWDLV7m4=;
-        b=NL/vHQa4iP9R8RaqlAOP/qjXc/t9s57bZrd1yJVIf2OlSvprojz5VDXq8fU0OLa0VJ
-         b4H7X2wtjrffMMT6kRIDsg/1AvZ3rol32RofRkRTv9c7T939G3kNkEE50vRdcG1lg1U1
-         JhrC3iDm4LmtNNGSqJKliGcszcZuf9Ati1oasEG9GHKTG2h45LCec8p8rtqBDs8Ddwh6
-         1/pXuv6peP3Z2gUFMW4le9sSdSZZ54W0fYVxh3gtj8HM0CGSheUUARWwlv135Gtp2erL
-         JEnAHctikjAhztJW1qXGFwidg6mo48e0LhbHAnucTxWnu0ZIpDlmRuM9VUzZTik2dNPG
-         HEOw==
+        h=date:from:message-id:subject:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=cthBA3zb7N511qO1Z5PbOGt8yr0JK0gdmAa1O3sZ56E=;
+        b=OE6IYb9qD9z38tpS2ZhMIixa5tilij4s4jwpRDpaynP71FzsqFx2uHvpQRAiP5F4mK
+         Wso179qCIb4mmFgVDOGFcezrampFoSWc9g8hG7qjrgyhGKbpnqa2jeLuJWQF63WfitGk
+         UkZWsbeYl4fPhAk7IlInXGrt5WH18/i7bItQRFadkIaIVkWCbQVhQjxVSBS/yqZysACI
+         2zBbJfbm+Xz6XixHUkKSJyKHR8lUmOyooATZIihvAMiSvTvoy2pSfWiEB+Sm0wJGqsR8
+         l3yQYhWdyUBO4p9iiDlfPGAG7YCPeYPOzS9374Ox1fEWz/Kj2AyJbS5AWPA9ObXdMRyf
+         ml2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=oBdxIzXyLOoYo8KIycrygK/xc5vb8cMf3gcAWDLV7m4=;
-        b=QVzN/T2j5+H0eCuJS0R93Oqrh2hW1gvYRizQDv49+a+rX+MXxW3ux2vGBZQVur1Ryb
-         qiy2ldx4twM4DUcBJmgKL7JW3dSiX2nU6VLYw031QtGYNPeJzE01UPYdjqcWV5HEyZ3D
-         P5kq1d/B8/kuNGPIYOw3ELgSe/duNF+MCYMlMGa9SzP04AXW68j9cVQtPsQf41qH7sTT
-         9YtF6STSFZL1oY9nxscacOoLTAMsq8M9i439i3recQRkUp2doMmtPvVZ0KZKhnKC4k9b
-         9N3UPX5uZEHUwJJDlvE5SMOkthvNOjvGqEnrE5phIMHAWUcHvz72waYq9lyPaF8RLMTr
-         tHpg==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAU1wwp9z0c10X3vbNb7R6Xpiey2bzBtmTTf1Y86YizYi2gF3tEq
-	XkT1/MnXRx8B0o16LlvvGs0=
-X-Google-Smtp-Source: APXvYqznZiLvVqpK8johTAGQfHMrRjA4HndneflLOjjYRMh/Xfhn5L53GZtURVKM/RpL6Ew+iSzfqg==
-X-Received: by 2002:a5d:85cc:: with SMTP id e12mr16901497ios.243.1569948226284;
-        Tue, 01 Oct 2019 09:43:46 -0700 (PDT)
+        h=x-gm-message-state:date:from:message-id:subject:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=cthBA3zb7N511qO1Z5PbOGt8yr0JK0gdmAa1O3sZ56E=;
+        b=qdh1uqKkr6kNAUfdZCosbQrq3siPMZqrY3JGDCgyd+twovZlwHoqzu/imgxo2w9uCA
+         /6M/WHBQ5etBLOPpGeDiSL7WLPAubPXimlXaf9EPvhC0Qgb9YZr5n/tHQcZIQt+zQYcj
+         T7cgIUesxUFEtRW7z/LV1aQ1Q3ywDSBnohrlLwvutH6d4g3z6N95Qf1pQoSuaTo+O1hd
+         ZzPKvNxpGm/oUydBKJFhILYRljCVd+0ulyoQdEH6kGJXHX5y5TGfO0zrhVDBqtQ1X81d
+         HSMUlXTDO2+SHe5nrc94AojfVGkhaabHc4yqo5JQcmjxdzN9S9VaTvE/kskFYdo+QdYi
+         migQ==
+X-Gm-Message-State: APjAAAXaxqiNsPc3f75vSOGubb3jh01px1WkVfEHl5bXrnWeBKuA7s1U
+	rgiTGwCg08xcMIPF3jFwRGc=
+X-Google-Smtp-Source: APXvYqwiWP/QMvTP6xZrlCcUxQCKq+fp4Wqjb6cT+7Ha4A6NDQNJo8wUJTNhubXCoy1EZNPeWkkcWg==
+X-Received: by 2002:a05:6402:383:: with SMTP id o3mr7141488edv.205.1570297538276;
+        Sat, 05 Oct 2019 10:45:38 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a6b:3b84:: with SMTP id i126ls3451975ioa.0.gmail; Tue, 01
- Oct 2019 09:43:45 -0700 (PDT)
-X-Received: by 2002:a5e:de01:: with SMTP id e1mr5785069iok.195.1569948225967;
-        Tue, 01 Oct 2019 09:43:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1569948225; cv=none;
+Received: by 2002:a05:6402:b02:: with SMTP id bm2ls3245184edb.5.gmail; Sat, 05
+ Oct 2019 10:45:37 -0700 (PDT)
+X-Received: by 2002:a50:d0d5:: with SMTP id g21mr21545620edf.204.1570297537899;
+        Sat, 05 Oct 2019 10:45:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1570297537; cv=none;
         d=google.com; s=arc-20160816;
-        b=lP3+cB3pLpp9bLvemm/x9gAIamXB+B1Fece2XWgrfy2HeXbPkei04aeDR+DXIyWr+O
-         brgRRt+tvgbWm/G+8Bb9qHUdiK9CzfJaf6RLZNqxN/BG6/2+6F3tA2TTNjj9GVvoh7j+
-         TSGj8jmz9xWd3Tkh3I8jX2GqOMw4ZnyyzL01gUhuL0dczcwC1uVwgYWFSVlscBopAM34
-         8oyfoCKtjSbk1w8d6fWMxfGc/r9bINo2HjIXTxaoD4JZGyqzCBTZPUgJGUoPBVOw+Xad
-         1Gq3T+d4Zo6/FzNyHfKUbIktX+IPn0di0vEeZHRwRzlHoD7fz2/2w/eDUo9mf7ZJE98A
-         yJ7A==
+        b=UuXO6qq+L/g2yKAgrzqVzoDe2XaYw00S4pKtDtZzQLOPbzDJuw+uhd1pcwzZkaNHdx
+         G/L+5l2WveOtwmazflK5tLWCxmCf9r908WVK/ogtKo6Y196yGswa5NTBpQTvl/fRJ83G
+         Ed7j/W7xW4cyioh2T1AyDK29ATsNtiLiuJ3Wo1bPV5RKmH5S6oyg4SoJct8/hHh5ht/b
+         C27yUvr12yzzhbz6o67V1E9EZT9dWROZ6py3GGuviZZRD/D4NjhanO0nGL3/HEoPNwN7
+         bY2ljhWLBAoS3k75+jz6wfC0YeGt1/A9p28kh90wX8U3BMQIj4ma8iZy/HQKMQMqLEUd
+         AWQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Eb0/vqPVWmEe6q3Nvb40k0nnML2FtnsYAgWL0YAmDVM=;
-        b=mstHw37yvsjcvKjqKOH0AM39IUH5AG/FzdAATKGTKw1uXG08A9iHeR/LOeIg6pHnpG
-         dv4R/GocgYnmkpei0GJJLscllsyLz/0SUMOw4yT6FDcMtGoM/1FlLjq28TUyy1I8OG9v
-         a2UI625qyKO56NBeWNjoZfOJgXCyZmBLw8rK1ULQGpXUULF4i9/sWK7fPQhBkWtzeQAp
-         XFJ5fospC9FMLd0yAobB0hDOxWvvOgcCM8AFrPCNswfgUJptwyYP67gowt/ieMEIsULs
-         uUyMCUCR2XekEOxPQaH1FD6GztEH/4uSQvIK4eLQFMjoxxzjlgHe/cMuzGyKRlPur9Om
-         wtng==
+        h=content-transfer-encoding:mime-version:subject:message-id:from:date
+         :dkim-signature;
+        bh=EE/TQ1hKDPvej/sSUj8etfyy6efGFy8mQqgJL+ozwaw=;
+        b=bcpZOkLtxkk7XCw5+rqVjhWMOr2rvOQGesl5PLt5p4wubZoK4yuKzqKXX1rRMTvM2K
+         xRKBhZ+N0dMVvCPVdVbMDxLUfl9UljdZwr77WBEjgnpP2sB2ocf2glSbTQCRhER8CIIk
+         QQDALaWUTFgpNHLPVWvIzqBtM8YY8cYd34UuDYOYR4k2KkVg8TT5ixGEywajZTZo92Bg
+         LfWiFio22JlS33ueRx54jq3WAyHwxZ9dQgE7ADoE0P3IZcRNHDYLRZHJPKv58En+TdU2
+         nJBH6eWX4Muq1UPCHy99eO8Dy/NSnMmhESZPFNJewHia7ordIujB/Mxc1EPkD3uhO3lg
+         J7kw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mMepMnnK;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id q207si907235iod.5.2019.10.01.09.43.45
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=GxF1iNEI;
+       spf=pass (google.com: domain of jpmorganchasebank.ny13@yahoo.com designates 87.248.110.31 as permitted sender) smtp.mailfrom=jpmorganchasebank.ny13@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Received: from sonic307-54.consmr.mail.ir2.yahoo.com (sonic307-54.consmr.mail.ir2.yahoo.com. [87.248.110.31])
+        by gmr-mx.google.com with ESMTPS id q8si953062edn.5.2019.10.05.10.45.37
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 01 Oct 2019 09:43:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id B03BF2168B;
-	Tue,  1 Oct 2019 16:43:44 +0000 (UTC)
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: Sanjay R Mehta <sanju.mehta@amd.com>,
-	Jon Mason <jdmason@kudzu.us>,
-	Sasha Levin <sashal@kernel.org>,
-	linux-ntb@googlegroups.com
-Subject: [PATCH AUTOSEL 4.19 23/43] ntb: point to right memory window index
-Date: Tue,  1 Oct 2019 12:42:51 -0400
-Message-Id: <20191001164311.15993-23-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20191001164311.15993-1-sashal@kernel.org>
-References: <20191001164311.15993-1-sashal@kernel.org>
+        Sat, 05 Oct 2019 10:45:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jpmorganchasebank.ny13@yahoo.com designates 87.248.110.31 as permitted sender) client-ip=87.248.110.31;
+X-YMail-OSG: vbQ5TX8VM1nkmpNJpE.SVxgxwvyBNw3zIl3X785oC2Kibqq21YNyr47RKUBUP6D
+ rokeHo_z06xdU3TunBksECF152SZjNgnsInJUYo2Hsfh_.Y1uH6ICz9VYMWyrS09AS6_rmwS1zgm
+ cTGeTdExAdMm8UurUx9vkRV6PhkSfNxgS8oANs8W9xQnbqsf0x3KUCA9CIukimoU.GwguSvQVynM
+ Vv5onSPKEbX70MAdL4AB.kOESc_KtQR2.AQ56Iq76pLBil.an9WGEoi5STqt6L3JxPurq1wmb1cE
+ tgtYYmBCK0_E607MTwFjcZjEufsN82yXZBI1A.DldTH0s8fYBv_yvwdWnqKtIdoqMtFoaV8dbTbp
+ .JKZZKF1SLV1w1FwRm8CnAT9Xn3WwftPzbamSMt0Eat2pg5ZFNgw8V1R91GdBcTpIjE.f6rarS07
+ O2l9u2S2t3mPBKf.im5ZKSlNEVtirt2yFGkDw2prRTTp1UgQ7ARzyK4iDbCjAka0BU39oVxmcvsb
+ R7.9B9sEyO9QEdbio3dTejaj.f5Wmfr072k67tSF8CRSdIoZgR6EzTf4qy6G6N6h5zxA.ytkL2m0
+ rxlkinHhr91TbNTthhFH1YQzC20D_iFHEnIAtSdVtp.DP.22pQ1NQbgMf3wZZ7V55.pfiYPqoIcI
+ mqjoBc7IiufCz8p7TMSRyuVf66woa6zh798PAlGSVD.OP6dzG.L4AJw1WHx.4yWrz7c1eE7LgFI4
+ F6XttPTOUPW5.eLJP9O.P8Ez76JPApj2YMq6oAjjkrukf4mCphS2e5Oqej7pw0TGm_cnQ7XQTzu9
+ epqMtiZ7cpz9Cb52bbEe_QhThwjNTZ8Z7eMHsegjSwGzVei5N6RmiOYz31LHlODx1Rah8MJmL6qg
+ xAtRth7FD9_QtHPQNW9SnbRC3GdxaJrcPyswJJn9Nez0qatZk2tv7SjRZl1AGCNk0GW9GBfTSs0O
+ ECT1s5fIq.W7pLaJnRYDw_Wl6uBbOJULnKK8SYIDZDnRw8def25eICowJ.4vHyvk4Jwa8QflZsHI
+ YGGt.7PRwzaBkxRfC2fg81Zaz3PjSCdOdAlf7g8Gq8tO4TXf.DKNO7e5f1LITFh3VkQNKjomnQas
+ fUakjtOL3evLnDefB7gtIKSdPpuHi7hcTnFuZHzZ3OKGS5rj53qRWxXhd8A_8wtfj2Tx7fubMDB8
+ 4xa34Vxe60wgnaWyHBaD1NMLDj7WiCEtmWppevXEPe_q33meo0QqcrZMwWEde7znBH8DWa9YAQxa
+ NzwO_8ztfn0VFOYTWGYf4gfMwnRTOmpvJRhhds7XnIOtkKHE2GhQIZIIIfu5IoRiXKJOnuy_Od_b
+ AsmqXCOk-
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic307.consmr.mail.ir2.yahoo.com with HTTP; Sat, 5 Oct 2019 17:45:37 +0000
+Date: Sat, 5 Oct 2019 17:45:35 +0000 (UTC)
+From: "jpmorganchasebank.ny13 via linux-ntb" <linux-ntb@googlegroups.com>
+Message-ID: <679597762.5751901.1570297535564@mail.yahoo.com>
+Subject: Happy to inform you, CONTACT WALMART TRANSFER To pick up $8000.00
+ sent to you this morning.
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-Original-Sender: sashal@kernel.org
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=mMepMnnK;       spf=pass
- (google.com: domain of sashal@kernel.org designates 198.145.29.99 as
- permitted sender) smtp.mailfrom=sashal@kernel.org;       dmarc=pass (p=NONE
- sp=NONE dis=NONE) header.from=kernel.org
 Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: jpmorganchasebank.ny13@yahoo.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@yahoo.com header.s=s2048 header.b=GxF1iNEI;       spf=pass
+ (google.com: domain of jpmorganchasebank.ny13@yahoo.com designates
+ 87.248.110.31 as permitted sender) smtp.mailfrom=jpmorganchasebank.ny13@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+X-Original-From: jpmorganchasebank.ny13@yahoo.com
+Reply-To: jpmorganchasebank.ny13@yahoo.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -135,55 +140,44 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-From: Sanjay R Mehta <sanju.mehta@amd.com>
+Attn Dear Beneficiary.
+Happy to inform you, CONTACT WALMART TRANSFER To pick up $8000.00 sent to you this morning.
 
-[ Upstream commit ae89339b08f3fe02457ec9edd512ddc3d246d0f8 ]
+I have deposited your payment funds $2.500,000MillionUS Dollars
+With Walmart international money transfers.
+Receive the Money with Walmart | MoneyGram service.
+Walmart partners with MoneyGram to allow customers
+easily receive money transfers abroad,
+Contact Walmart international money transfers office -Benin
+Receive your approval payment funds $10.500,000MillionUS Dollars
+HERE IS WALMART CONTACT INFORMATIONS.
+Contact person. Mrs. Mary Anderson,Dir. Walmart transfers-Benin
+Email: walmart.b100263@gmail.com
+Telephone. +229 68823234
+Text Her on this international phone line. (256) 284-4886 
 
-second parameter of ntb_peer_mw_get_addr is pointing to wrong memory
-window index by passing "peer gidx" instead of "local gidx".
-
-For ex, "local gidx" value is '0' and "peer gidx" value is '1', then
-
-on peer side ntb_mw_set_trans() api is used as below with gidx pointing to
-local side gidx which is '0', so memroy window '0' is chosen and XLAT '0'
-will be programmed by peer side.
-
-    ntb_mw_set_trans(perf->ntb, peer->pidx, peer->gidx, peer->inbuf_xlat,
-                    peer->inbuf_size);
-
-Now, on local side ntb_peer_mw_get_addr() is been used as below with gidx
-pointing to "peer gidx" which is '1', so pointing to memory window '1'
-instead of memory window '0'.
-
-    ntb_peer_mw_get_addr(perf->ntb,  peer->gidx, &phys_addr,
-                        &peer->outbuf_size);
-
-So this patch pass "local gidx" as parameter to ntb_peer_mw_get_addr().
-
-Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
-Signed-off-by: Jon Mason <jdmason@kudzu.us>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/ntb/test/ntb_perf.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
-index 2a9d6b0d1f193..80508da3c8b5c 100644
---- a/drivers/ntb/test/ntb_perf.c
-+++ b/drivers/ntb/test/ntb_perf.c
-@@ -1373,7 +1373,7 @@ static int perf_setup_peer_mw(struct perf_peer *peer)
- 	int ret;
- 
- 	/* Get outbound MW parameters and map it */
--	ret = ntb_peer_mw_get_addr(perf->ntb, peer->gidx, &phys_addr,
-+	ret = ntb_peer_mw_get_addr(perf->ntb, perf->gidx, &phys_addr,
- 				   &peer->outbuf_size);
- 	if (ret)
- 		return ret;
--- 
-2.20.1
+Ask Mrs. Mary Anderson,Dir. Walmart transfers-Benin to send the transfer
+as i instructed.
+we agreed to keep sending the transfer to you $8000.00 daily.
+Until you received your total payment $10.500,000 from the office
+Once again,
+make sure you contact Mrs. Mary Anderson,Dir. Walmart transfers-Benin
+today including your infos.
+(1) Your  Full Name==============
+(2) house address=============
+(3) Your Phone Numbers=============
+Urgent to receive your transfer now without any further delay.
+Finally, Send your first payment transfer fees to Walmart office on below address
+Receiver's Name====== ALAN UDE
+Country=====BENIN
+City=======COTONOU
+AMOUNT =====$58.00 only. Your first payment $8000.00 transfer fee.
+Question======God
+Answer=========Creator
+Thanks
+DR.Mike Benz
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20191001164311.15993-23-sashal%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/679597762.5751901.1570297535564%40mail.yahoo.com.
