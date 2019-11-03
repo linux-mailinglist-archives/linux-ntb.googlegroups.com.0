@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBAABBEOO7TWQKGQEHSLWJRI@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBF6P7TWQKGQEM6OKTCQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa40.google.com (mail-vk1-xa40.google.com [IPv6:2607:f8b0:4864:20::a40])
-	by mail.lfdr.de (Postfix) with ESMTPS id AEC33ED450
-	for <lists+linux-ntb@lfdr.de>; Sun,  3 Nov 2019 20:14:26 +0100 (CET)
-Received: by mail-vk1-xa40.google.com with SMTP id f73sf2257146vka.4
-        for <lists+linux-ntb@lfdr.de>; Sun, 03 Nov 2019 11:14:26 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1572808465; cv=pass;
+Received: from mail-il1-x13c.google.com (mail-il1-x13c.google.com [IPv6:2607:f8b0:4864:20::13c])
+	by mail.lfdr.de (Postfix) with ESMTPS id C8257ED454
+	for <lists+linux-ntb@lfdr.de>; Sun,  3 Nov 2019 20:16:40 +0100 (CET)
+Received: by mail-il1-x13c.google.com with SMTP id c19sf13936095ilf.14
+        for <lists+linux-ntb@lfdr.de>; Sun, 03 Nov 2019 11:16:40 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1572808599; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zXNqxzGK3UXOErcS7+qvu0I63npI+Ciy0U9SHiceVwEXR1nxKRQnNpkcZcAN/g3L1F
-         7E8BGJ9Jcfc3cgJ4oADd9ekrcc3p4btBXOmcx6LsXtSbS5zCcS0ZXalvTlwVEDSwQFOl
-         ol/4ncS87oQYgmRhxwcwM0CBSq3wZD17cvtBCvf2beA9WsIkJC2dxg1tg8jVvXM9mOe4
-         8W+ehWiwUorwarFNru+FkTLKuRMcGiY1hYGRgm63/hSfmHK3zcHUn+9vwx+9ywVlY7Od
-         gG/YGrygHi6JDROBo/25ev1mM3bJB0lthuX3fU1iV2Wtshulfx7nXs0GIijF2nYq/1Cg
-         VQ5Q==
+        b=qhyyutSlDnNRNN2O8dvCEhW5265cqU2JW6QTNeW6y5MRKb+JP2YB1MlrAxtpNbD4lY
+         2Nr34wKIhE4pZmKzkkmY5L4XPrWwUdg0Vs7yfwTmoadoGhQfbiySfvh+DJOOMLfbwVxw
+         jWDIUrokneAdHdgpupeSyzvpJad+Mc4aDvq3ydLEl1XPtRlgpDpYsf3ppHrXT1mwWcYd
+         eLpMDUPTk3EGC2dAR4YX1wUpNbMF2Dyggt0EpDEFvtt6BhrU4FfxFl89Bvg5HMf2Mo5a
+         N0ea4Kg04y6m/g3TpWNaIBtxrXSYdocxxuqaMMK6agC099SsQp0bDg6cyMcm0nMfC+II
+         OegA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-transfer-encoding
          :mime-version:subject:message-id:to:from:date:sender:dkim-signature;
-        bh=kcv6b50XcMtdl2l+zaR6Csv8eK/5Zl4nfOAeGnh1C6g=;
-        b=ZdxoWnvkCVmdjE4hoUhHKFW0vAgwpI/gEh55HqgaeOerEJkY+7hLOZ8ebaFE8MoqBn
-         HKkRoo4EJYJ3jPncl+IW+DXOJr8Sk0VAUfiRnAkyrQRSb8NYl7W91pXLPVMKCM+85yK6
-         2CbQ07gnWxhxW5PmqMecIP246WWEsPfcMhnwuQCpKwx55yzjh1l+MDqZhIdLWiAWn+J9
-         EaXAb52j8lOTfIaYLFs4n7Q8qP0aWyxHUSIz6VyGHmfHVWwDWuFUgI306ujculiKWngd
-         4kXz3Xnleman/6ZxlWHaYxuRJwyISbrAYHde7QgHHwUYflcF+TW4GojtDQ3DkG0ITRPH
-         cJmw==
+        bh=8Z82TcxCQL5kUIA9CuJgORfs8Y4XGxp0fZTMiRI5QbA=;
+        b=jvfkAdiTZQ+ZH+v1sSdxXD3au2NZGYEJsMPNr+CcNHKAJ7SPrYnloL6suYTkLz436F
+         TvKtg9un9sc7rlQktxNRoRPSOwnnnwtqy9eobOJ8/QiK0wC8nrhml8hyqg6c/SzZcFuY
+         j0V/Gz1z+2uP24SgzqD/XexehlL+x6Fa40SSyLri8bbPH+bZEl/+eO9DAn7HVyJxBUSt
+         PhN5p00ySe+gT1VGtOoviLUaVayTBmwjHc+GtQXUPO3vHvtNehqxTqsrGY4ouFI/LlZF
+         /JP9KME1MNhE+uUC3dw4hea5HTLj64Ol4CRDVKOCPGk8VdYnqnWPNkK0d2cXAWBjlpkF
+         UPew==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of manami1234@daum.net designates 203.133.181.10 as permitted sender) smtp.mailfrom=manami1234@daum.net;
+       spf=pass (google.com: domain of manami1234@daum.net designates 203.133.181.12 as permitted sender) smtp.mailfrom=manami1234@daum.net;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=daum.net
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -34,13 +34,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :content-transfer-encoding:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=kcv6b50XcMtdl2l+zaR6Csv8eK/5Zl4nfOAeGnh1C6g=;
-        b=lICM6IHEeqitVWfGvxZkP7Bh/yr7rVbemNQLmNF+XBbi1zqbNwkQDoIhXVgzz0PI0F
-         vMIsk9VXMNhJkYxfUWAJ2teRqLAeJ35t6wzYDU9kP7bDFMSEWu78hW78uFgDhRjVu8j5
-         8MWWADop75tryK+rzDjXrAzpx2LQ/h9+bcksz/Whp3SpvTTJ5e1ddW6rmItqrSOsI48e
-         S1FNyQhT1uEa6EKc2fcHOnbSP7O8KbtYbqin9akX9nifT9e6D5Hm7vBtSo9bM73GophX
-         RrxlbmQhShKZpACVW4KcQt4jgXAWc9/m1FgyPiFc/ARZkBWAHHx7HZzd4x32Q69/LZid
-         9l2g==
+        bh=8Z82TcxCQL5kUIA9CuJgORfs8Y4XGxp0fZTMiRI5QbA=;
+        b=UOAHNmGqobzsd4tyWF8gmBWe2cN2vvpXety4p1pCDvX3ds6oEq8fHK9bOfFvEOBJBI
+         GwUHscMkcQfsLJ6K5ncfwLu/nZEAmj+obIWqJApHmk71/yxXn9yFQZQ7eSCGJj7N1Wpr
+         6lQgv/iWgyFecCTLP/uj7eeEL7FSBZRqwZDMJnaJBRsSzJR1KKvbIu7c3NLB5M4oVU1e
+         0y4qaga+m7QiHrjGCGMLjWktF9MgxNgIhXpTRNTiXzeR8wqxDZcmp7J92jEFHN4IFsqy
+         sYiMrZWsFFYV1Y5rahPgYsEmQDWE4zZkZWq0fUx9LFwRT8l0+rchWek/EJUJc3cjSUIo
+         RdDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:date:from:to:message-id:subject
@@ -48,59 +48,59 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=kcv6b50XcMtdl2l+zaR6Csv8eK/5Zl4nfOAeGnh1C6g=;
-        b=hcB9GPWhK+cmxvXE+kc6C5QtEJcLPLf6S1r1tiVp/mdTVO4scLkM1cp3ULyengWtjS
-         JVLzhSDvEL9jj34V9DnItbNa4WjtpRDMo2rFFgSZbFVP2S8x+m0jHlMmkX2cjAmZJw5/
-         jPw6M69LEACJs9pJyr4uMVvZOgHO1mgo4OAb1zSOXTNsbUUoOQkbRXoZ/CE4PEYiZL9+
-         s2LKYllLKKR5TpilwuloDAtM9uLEfY1nH6xwxNYm81bvwDNqCBzvXgeWadMCVY6rPsd1
-         3WI1XqnTOZiQ8yET5RUZ7s0ydSoFF0q2Ys/g4vad1AmFB4UTQhHMl/k7OGVftcYSRDaC
-         vnCg==
+        bh=8Z82TcxCQL5kUIA9CuJgORfs8Y4XGxp0fZTMiRI5QbA=;
+        b=WmtE3kIM/X5l19Rlwv62a7HCCjUb3zmtgL6iFn3qiwV9SN5NTFh2FIITUTk+mPow/g
+         jKvD5F+Kfon0+zQKrHn0whQ1yUvBb9jtn9Z521AWrr0ayWLBLSBTtZUYHKJEa2cLmV2i
+         p+wXpHq/VW21G44T0yuU19tvJJTxYIK+l+OV/gBaxjN3zDgXYREabc7adpl3a2ESg4kc
+         790wF9wNyT7qVv91v4q+GSnidTunJZyyGmoXhnpfOilKMG8uOdTC4JXGLmfKJ6X1qKIz
+         tyIylgA6k1VY5ExIFMsK0IZRHY8sRs2td+/BSBAuUJPo1scuFHmWvka9HB1+BqAW04Qe
+         DiRg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWDMQIX1MVmoNHNPevIxP0x+4lLW9y0+5qXfL0RHlONxBsaQWeb
-	ZWVFPayrAQpDYj83+05T1u4=
-X-Google-Smtp-Source: APXvYqzeZa9/uHzI597UU0dugi0Md91xZumFbN5DlSS9dNCNZ2YfjqRyeoqqal5z2A6zoPxFr2JWpw==
-X-Received: by 2002:a67:7346:: with SMTP id o67mr1989129vsc.72.1572808465530;
-        Sun, 03 Nov 2019 11:14:25 -0800 (PST)
+X-Gm-Message-State: APjAAAVYXXCEYn72FkN0+18aAEmCD5UmZlyWB1FtJk4+dm1RqYTHr/EM
+	+gcJAAco891ULQub52OA0AM=
+X-Google-Smtp-Source: APXvYqzbh2RtluDayUjHDAYC/HW0mOcjLnMeQbtWTAty3+Vj+xBwpax/qKfnz7rv6B+O8gwIwvpwtA==
+X-Received: by 2002:a5e:d80d:: with SMTP id l13mr1701019iok.248.1572808599378;
+        Sun, 03 Nov 2019 11:16:39 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6102:5d8:: with SMTP id v24ls992495vsf.6.gmail; Sun, 03
- Nov 2019 11:14:25 -0800 (PST)
-X-Received: by 2002:a67:2e90:: with SMTP id u138mr11481093vsu.207.1572808465174;
-        Sun, 03 Nov 2019 11:14:25 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1572808465; cv=none;
+Received: by 2002:a6b:7004:: with SMTP id l4ls1327912ioc.12.gmail; Sun, 03 Nov
+ 2019 11:16:39 -0800 (PST)
+X-Received: by 2002:a6b:f80b:: with SMTP id o11mr13681862ioh.46.1572808599060;
+        Sun, 03 Nov 2019 11:16:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572808599; cv=none;
         d=google.com; s=arc-20160816;
-        b=ex9/mvGMdF+PpCweYRtS37nX+7vgOp98SaYXkBXBlqOsuCLSBl8i/30zsFzAHdaxZ/
-         C1ZqpWwyKVNuBcVA+2Tw3LPj4TB4JyVz1AsJvpzqxMk1kxVcVl/GRH0UUEPg9TW0yEVf
-         L3VBXJ8DPXphbBXvLt0SjG7bKyxiR1Qx0k1MU0jJSnuQujWV9O/o8jTfURKFJ9s+fSU8
-         Rdg67g+0d4VbbcYKSrCKLkyFswJvTXbpdDTisd55V279MR2pRAkC1SY0uAMwNQCowMfd
-         /n8m14ssQ+AkQ0gpA77UWevO9lSPwqarVh3PztKPbhx9/ZtSQLkqgo22N26VHWE+LyUD
-         oENg==
+        b=IQBX/KWNBncd2B9D6t9EKEvBnn9XWzVm8GGqmmoh56uEKI32Xah9ccy1D27Ih9O10U
+         w1os8/5VmASM1lcmw21khwpV3SytZIiWvzMBaZlbvwZwICCwEG0amBnyt+/j/U9q90Tw
+         9Az0+1rEZU3qm7vFcnx2yhw7XW6vDTWwXu/oA/Y/9J59jYu/Ii6TjiJ59BG40RnNSdU9
+         seNv/4K5Z6yG34OPd1CTYvYtKyMW6IKyKGm5ZnbrImy3y5dwB2EowjhlFsv5K10oBAE5
+         /n1moL6aHzjifFZXzhcHdKMBD8LBw7ugCw/eL8sP+yohvdW/yWWMShSfqZNJPl5aQ9Uo
+         xphg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:subject:message-id:to:from
          :date;
-        bh=iGKkMuIqFTNUBB2NbOvVwSynDpxh+omdu80PJtErwqY=;
-        b=SzdMrcb2gv0EhjT72nUFfxhuTRdqOUO4I3yBVeOPIer1QhydwqfgKVNQVdNai5ik9B
-         Xxqkp7DdeBxy0RquOtBdl2fvUjW5ENalvnmR7PHNMJt1TSe56Ej9KbxyP7zqN+y+M/nN
-         r+v5J0hrYiHWyDL9NJkhi/YQlpSPNysjIp8+OWL9KyIZ9MzHU20zbtKNrZ0JpDLGAbdl
-         lps4hNnYWmaEu9Wqm5FhnTWO1sovbBv2PFRhNbUk1jWdzyk3JU5vAY0cTUyO+5/HMt5h
-         XwSgi7o1ewaewUMOHSwTw54ZlMMOGnRB8fd6mAdbZAiBHE+wutFHz198kulJNXBjWyS3
-         rY3A==
+        bh=5FGzJwn+9RSHWleYmYdBWQ/YZYBK1oGExCoJYU2xnWs=;
+        b=duf8Og28wU6OahbdJF4+X5I5psckUI9SX9cwNG+lMSy5Fec3yo2hXZUIB1+YDL5Udv
+         FaXXBIjX4m5/FpWP4cawU0ysxsmJZANJGcJCP2ISEsPn7FoQ30ruZ1y1Ahg8rRvQI/zd
+         7wokZPwcnZ92QbA43iQq2lysh4VwGYa+dfJ2E1tggIxcWIjuNTM0yaOWvjVB3oczOLZr
+         Z/qUnhOdMSBX8mC+67/+b9GFEXuu5NV6snAwfZx8J2119HVkwhCecYCj5Eoa05tkWhhu
+         ctGruGDRbcAlkO0hNkv5bPcocMg2sWGAihd6on+cEvzRXvE/P1JvREx2qZUjGrMqviKH
+         nGOw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of manami1234@daum.net designates 203.133.181.10 as permitted sender) smtp.mailfrom=manami1234@daum.net;
+       spf=pass (google.com: domain of manami1234@daum.net designates 203.133.181.12 as permitted sender) smtp.mailfrom=manami1234@daum.net;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=daum.net
-Received: from mail-smail-vm52.hanmail.net (mail-smail-vm52.daum.net. [203.133.181.10])
-        by gmr-mx.google.com with ESMTPS id c126si958007vkb.3.2019.11.03.11.14.24
+Received: from mail-smail-vm54.hanmail.net (mail-smail-vm54.daum.net. [203.133.181.12])
+        by gmr-mx.google.com with ESMTPS id a17si768672iok.0.2019.11.03.11.16.38
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 03 Nov 2019 11:14:25 -0800 (PST)
-Received-SPF: pass (google.com: domain of manami1234@daum.net designates 203.133.181.10 as permitted sender) client-ip=203.133.181.10;
-Received: from mail-hmail-was1 ([10.197.6.172])
-        by mail-smail-vm52.hanmail.net (8.13.8/8.9.1) with SMTP id xA3JDx86011240
-        for <linux-ntb@googlegroups.com>; Mon, 4 Nov 2019 04:13:59 +0900
-X-Hermes-Message-Id: nA44BQXYZ1371643347
-Date: Mon, 4 Nov 2019 04:11:25 +0900 (KST)
+        Sun, 03 Nov 2019 11:16:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of manami1234@daum.net designates 203.133.181.12 as permitted sender) client-ip=203.133.181.12;
+Received: from mail-hmail-was4 ([10.197.10.46])
+        by mail-smail-vm54.hanmail.net (8.13.8/8.9.1) with SMTP id xA3JGAZ2007384
+        for <linux-ntb@googlegroups.com>; Mon, 4 Nov 2019 04:16:10 +0900
+X-Hermes-Message-Id: nA44Da98f949802936
+Date: Mon, 4 Nov 2019 04:13:35 +0900 (KST)
 From: ACCOUNTING OFFICER <manami1234@daum.net>
-To: info.20187777777@gmail.com
-Message-ID: <20191104041125.NbW9B14XQEmlFOLHvbSW5w@manami1234.hanmail.net>
+To: temmyj48@gmail.com
+Message-ID: <20191104041335.-2AFOSZ0RGOHl8FFSK_LJg@manami1234.hanmail.net>
 Subject: FROM THE ATTORNEY GENERAL FEDERAL REPUBLIC OF NIGERIA. E-mail:
  abubakarmanami@rediffmail.com
 MIME-Version: 1.0
@@ -108,11 +108,11 @@ Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-Mailer: Daum Mint Web 1.0
 X-Originating-IP: [197.210.44.21]
-X-HM-UT: F2wJHMKgMswsdzahE2TsduOyvwRqoW6DrgWMVLVAkXo=
-Received: from mail-hammer-was7.s2.krane.9rum.cc ([10.197.10.40]) by hermes of mail-hmail-was3 (10.197.6.229) with ESMTP id nA44BQXYZ1371643347 for <linux-ntb@googlegroups.com>; Mon, 04 Nov 2019 04:11:26 +0900 (KST)
+X-HM-UT: F2wJHMKgMsywFZA4vMIKVOOyvwRqoW6DrgWMVLVAkXo=
+Received: from mail-hammer-was3.s2.krane.9rum.cc ([10.197.7.233]) by hermes of mail-hmail-was5 (10.197.10.47) with ESMTP id nA44Da98f949802936 for <linux-ntb@googlegroups.com>; Mon, 04 Nov 2019 04:13:36 +0900 (KST)
 X-Original-Sender: manami1234@daum.net
 X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of manami1234@daum.net designates 203.133.181.10 as
+ (google.com: domain of manami1234@daum.net designates 203.133.181.12 as
  permitted sender) smtp.mailfrom=manami1234@daum.net;       dmarc=pass (p=NONE
  sp=NONE dis=NONE) header.from=daum.net
 Precedence: list
@@ -138,52 +138,74 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 =3D"0" width=3D"100%"><tr><td class=3D"txc-wrapper-td"><div class=3D"txc-co=
 ntent-wrapper" style=3D"color:#111;font-family:Apple SD Gothic Neo,Malgun G=
 othic,'=EB=A7=91=EC=9D=80 =EA=B3=A0=EB=94=95',sans-serif;font-size:10pt;lin=
-e-height:1.5;"><b>FROM THE ATTORNEY GENERAL FEDERAL REPUBLIC OF NIGERIA. E-=
-mail: abubakarmanami@rediffmail.com<br><br>Supreme Court of Nigeria<br>Addr=
-ess: Federal Ministry of Justice HQ<br>Plot 71B Shehu Shagari Way,Maitama A=
-buja,<br></b><div><b>E-mail: abubakarmanami@rediffmail.com</b></div><div><b=
->=EF=BB=BF</b><b>info.20187777777@gmail.com</b><b><br></b></div><b><br>Dear=
-: Unpaid Beneficiary,<br><br>This is to inform you that in the course of my=
- investigation as director of payment verification / implementation committ=
-ee I came across&nbsp; your name as unpaid fund beneficiary in the record o=
-f the central bank of Nigeria and other banks that are suppose to get your =
-funds&nbsp; released to you. My committee was set up by the payment reconci=
-liation committee to verify and scrutinize all&nbsp;&nbsp;&nbsp; outstandin=
-g debts owed to&nbsp;&nbsp; our foreign beneficiaries in accordance to the =
-information received from the United States government and other countries =
-over unpaid &nbsp;<br>huge debts owed to Foreigners.<br><br>Having seen you=
-r file and my further questioning to the officials of the central of Nigeri=
-a bank and ministry of finance as to why your&nbsp;&nbsp; payment is still =
-pending reveals the rot and corruption in the&nbsp;&nbsp; system. The bank =
-officials told me that the reason why you haven't&nbsp;&nbsp; received your=
- payment is due to your inability to pay for the required charges for trans=
-fer of funds to your account. When I asked them&nbsp;&nbsp; why they didn't=
- deduct the said charges from your principal sum, I was given the flimsy ex=
-cuse that you never authorized them to do so.&nbsp;&nbsp; When I put the qu=
-estion across to them if they ever advised you that such charges could be d=
-educted from your principal fund,the answer I&nbsp; got was no. Now, if you=
- do not tell this beneficiary that&nbsp;&nbsp;&nbsp; such charges could be =
-deducted from his or her principal fund, how will he or&nbsp;&nbsp; she kno=
-w that such options are available for such beneficiaries. From my investiga=
-tion I discovered that these bank&nbsp;&nbsp;&nbsp; officials&nbsp; deliber=
-ately refused to let the charges be deducted from your principal fund&nbsp;=
- because they want your fund to remain trapped in the bank, <br><br>while t=
-hey continue to extort money from beneficiaries under some flimsy&nbsp; exc=
-use. You do not need to pay any money to any official, all&nbsp; you are re=
-quired to do is swear to an affidavit at the federal&nbsp;&nbsp; high court=
-&nbsp; of Nigeria, authorizing the bank to deduct all charges from&nbsp; yo=
-ur principal fund and transfer the balance of funds after deduction to your=
-&nbsp; bank account. If you have spent any money in&nbsp;&nbsp; the past in=
- your quest for payment, kindly let me know so that I can follow this up. Y=
-ou can&nbsp;&nbsp; reach me on my phone or email for directive on how you&n=
-bsp; can get the deduction done as soon as possible&nbsp; and get your paym=
-ent also.<br><br>Yours sincerely,<br><br>Barr. Abubakar Malami (SAN)<br>E-m=
-ail: abubakarmanami@rediffmail.com<br>ATTORNEY GENERAL FEDERAL<br>REPUBLIC =
-OF NIGERIA.</b><p><b><br></b></p></div></td></tr></table>
+e-height:1.5;"><p><b>FROM THE ATTORNEY GENERAL FEDERAL REPUBLIC OF NIGERIA.=
+ E-mail: abubakarmanami@rediffmail.com<br><br>Supreme Court of Nigeria<br>A=
+ddress: Federal Ministry of Justice HQ<br>Plot 71B Shehu Shagari Way,Maitam=
+a Abuja,<br></b></p><div><b>E-mail: abubakarmanami@rediffmail.com</b></div>=
+<div>temmyj48@gmail.com<b><br></b></div><p><b><br>Dear: Unpaid Beneficiary,=
+<br><br>This
+ is to inform you that in the course of my investigation as director of=20
+payment verification / implementation committee I came across&nbsp; your na=
+me
+ as unpaid fund beneficiary in the record of the central bank of Nigeria
+ and other banks that are suppose to get your funds&nbsp; released to you. =
+My
+ committee was set up by the payment reconciliation committee to verify=20
+and scrutinize all&nbsp;&nbsp;&nbsp; outstanding debts owed to&nbsp;&nbsp; =
+our foreign=20
+beneficiaries in accordance to the information received from the United=20
+States government and other countries over unpaid &nbsp;<br>huge debts owed=
+ to Foreigners.<br><br>Having
+ seen your file and my further questioning to the officials of the=20
+central of Nigeria bank and ministry of finance as to why your&nbsp;&nbsp; =
+payment
+ is still pending reveals the rot and corruption in the&nbsp;&nbsp; system.=
+ The=20
+bank officials told me that the reason why you haven't&nbsp;&nbsp; received=
+ your=20
+payment is due to your inability to pay for the required charges for=20
+transfer of funds to your account. When I asked them&nbsp;&nbsp; why they d=
+idn't=20
+deduct the said charges from your principal sum, I was given the flimsy=20
+excuse that you never authorized them to do so.&nbsp;&nbsp; When I put the=
+=20
+question across to them if they ever advised you that such charges could
+ be deducted from your principal fund,the answer I&nbsp; got was no. Now, i=
+f=20
+you do not tell this beneficiary that&nbsp;&nbsp;&nbsp; such charges could =
+be deducted=20
+from his or her principal fund, how will he or&nbsp;&nbsp; she know that su=
+ch=20
+options are available for such beneficiaries. From my investigation I=20
+discovered that these bank&nbsp;&nbsp;&nbsp; officials&nbsp; deliberately r=
+efused to let the
+ charges be deducted from your principal fund&nbsp; because they want your=
+=20
+fund to remain trapped in the bank, <br><br>while they continue to=20
+extort money from beneficiaries under some flimsy&nbsp; excuse. You do not=
+=20
+need to pay any money to any official, all&nbsp; you are required to do is=
+=20
+swear to an affidavit at the federal&nbsp;&nbsp; high court&nbsp; of Nigeri=
+a,=20
+authorizing the bank to deduct all charges from&nbsp; your principal fund a=
+nd
+ transfer the balance of funds after deduction to your&nbsp; bank account. =
+If
+ you have spent any money in&nbsp;&nbsp; the past in your quest for payment=
+,=20
+kindly let me know so that I can follow this up. You can&nbsp;&nbsp; reach =
+me on=20
+my phone or email for directive on how you&nbsp; can get the deduction done=
+=20
+as soon as possible&nbsp; and get your payment also.<br><br>Yours sincerely=
+,<br><br>Barr. Abubakar Malami (SAN)<br>E-mail: abubakarmanami@rediffmail.c=
+om<br>ATTORNEY GENERAL FEDERAL<br>REPUBLIC OF NIGERIA.</b></p>
+<p><b><br></b></p></div></td></tr></table>
 </body>
 </html>
 <img src=3D"https://confirm.mail.daum.net/confirmapi/v1/users/manami1234%40=
-hanmail%2Enet/cmails/20191104041125%2ENbW9B14XQEmlFOLHvbSW5w%40manami1234%2=
+hanmail%2Enet/cmails/20191104041335%2E-2AFOSZ0RGOHl8FFSK_LJg%40manami1234%2=
 Ehanmail%2Enet/recipients/linux-ntb%40googlegroups%2Ecom">
 
 <p></p>
@@ -195,7 +217,7 @@ To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 +unsubscribe@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/20191104041125.NbW9B14XQEmlFOLHvbSW5w%40manami1234.han=
+om/d/msgid/linux-ntb/20191104041335.-2AFOSZ0RGOHl8FFSK_LJg%40manami1234.han=
 mail.net?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
-d/msgid/linux-ntb/20191104041125.NbW9B14XQEmlFOLHvbSW5w%40manami1234.hanmai=
+d/msgid/linux-ntb/20191104041335.-2AFOSZ0RGOHl8FFSK_LJg%40manami1234.hanmai=
 l.net</a>.<br />
