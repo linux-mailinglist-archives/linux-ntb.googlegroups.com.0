@@ -1,153 +1,120 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBD6BTLWQKGQEINCSVAQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBEOO7TWQKGQEHSLWJRI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3f.google.com (mail-vk1-xa3f.google.com [IPv6:2607:f8b0:4864:20::a3f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9E60DD879E
-	for <lists+linux-ntb@lfdr.de>; Wed, 16 Oct 2019 06:46:08 +0200 (CEST)
-Received: by mail-vk1-xa3f.google.com with SMTP id u123sf9175130vkf.8
-        for <lists+linux-ntb@lfdr.de>; Tue, 15 Oct 2019 21:46:08 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1571201167; cv=pass;
+Received: from mail-vk1-xa40.google.com (mail-vk1-xa40.google.com [IPv6:2607:f8b0:4864:20::a40])
+	by mail.lfdr.de (Postfix) with ESMTPS id AEC33ED450
+	for <lists+linux-ntb@lfdr.de>; Sun,  3 Nov 2019 20:14:26 +0100 (CET)
+Received: by mail-vk1-xa40.google.com with SMTP id f73sf2257146vka.4
+        for <lists+linux-ntb@lfdr.de>; Sun, 03 Nov 2019 11:14:26 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1572808465; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ALELFEY9AeaEnH2VgCY1d6w+SrtKarlCWl9s3sup9ZK4CwO1l1M0vbXFjfdUl0hi7R
-         GKKTfavVK0rUitedZVI9VnZJ9EsNPjBGa/qLkIWSEsmCSvLcvQ7C2Aw6aSsKUnFg/UyV
-         IaIFB+AB5UBJ/FvtmMsFGVwd4k3G7eMw8FF0edmQKaaLLEHqZdGcdtC0X3kPT6XPDLdz
-         X0AgJ02tRI96Q69m/ADtJYxVBga80SyyVVLxRWcXHQGxPsp+TuhvVRgA0TocpRhsf7sx
-         XGFjWmxBomwZumN4Mo+13CZ5SkycZ+/MlXB5PWEVvm3Hv5vhUSnFl9Q2QeKCD+7L0naX
-         T5tQ==
+        b=zXNqxzGK3UXOErcS7+qvu0I63npI+Ciy0U9SHiceVwEXR1nxKRQnNpkcZcAN/g3L1F
+         7E8BGJ9Jcfc3cgJ4oADd9ekrcc3p4btBXOmcx6LsXtSbS5zCcS0ZXalvTlwVEDSwQFOl
+         ol/4ncS87oQYgmRhxwcwM0CBSq3wZD17cvtBCvf2beA9WsIkJC2dxg1tg8jVvXM9mOe4
+         8W+ehWiwUorwarFNru+FkTLKuRMcGiY1hYGRgm63/hSfmHK3zcHUn+9vwx+9ywVlY7Od
+         gG/YGrygHi6JDROBo/25ev1mM3bJB0lthuX3fU1iV2Wtshulfx7nXs0GIijF2nYq/1Cg
+         VQ5Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=JStNUhoTR7/lERDHP7UqYsZem3u8R8WyKWTOh40b0wA=;
-        b=mcBNuSsj3/UfKeoc5abdjKIvfLET3fn6vaAZXX5xa/1Z4dCS5Xy9eHpItrSQ9m+5K6
-         myKIhxuc2eC9hS91+mlkGVp0JSfKuaX0Lif/XE0PklMlCVH8aVGGzGZDH2iMOlQWfdat
-         aeUSl+hdu2GtfW46HYd9Iug6OogtnUVue24avBLpNpB7Vf86nFfMfkWInEQhreWNZkl+
-         vsfrKmPzDSDvFOG1pV/op7ZPeV4zne+Chi3BCf4Rd0eS7gfannGzq78cYSEDN46eIM8A
-         QTBLcgSpHG86h4vsX2osz7o3E5FQEAXFbWhU8Hv+AoFltmRRVwwINxTWCXZNFroD6Vh+
-         th2g==
+         :list-id:mailing-list:precedence:content-transfer-encoding
+         :mime-version:subject:message-id:to:from:date:sender:dkim-signature;
+        bh=kcv6b50XcMtdl2l+zaR6Csv8eK/5Zl4nfOAeGnh1C6g=;
+        b=ZdxoWnvkCVmdjE4hoUhHKFW0vAgwpI/gEh55HqgaeOerEJkY+7hLOZ8ebaFE8MoqBn
+         HKkRoo4EJYJ3jPncl+IW+DXOJr8Sk0VAUfiRnAkyrQRSb8NYl7W91pXLPVMKCM+85yK6
+         2CbQ07gnWxhxW5PmqMecIP246WWEsPfcMhnwuQCpKwx55yzjh1l+MDqZhIdLWiAWn+J9
+         EaXAb52j8lOTfIaYLFs4n7Q8qP0aWyxHUSIz6VyGHmfHVWwDWuFUgI306ujculiKWngd
+         4kXz3Xnleman/6ZxlWHaYxuRJwyISbrAYHde7QgHHwUYflcF+TW4GojtDQ3DkG0ITRPH
+         cJmw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=SfJcnijl;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       spf=pass (google.com: domain of manami1234@daum.net designates 203.133.181.10 as permitted sender) smtp.mailfrom=manami1234@daum.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=daum.net
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:list-post:list-help:list-archive:list-subscribe
-         :list-unsubscribe;
-        bh=JStNUhoTR7/lERDHP7UqYsZem3u8R8WyKWTOh40b0wA=;
-        b=IOcb9ElLBLlByzoW8yoc0x4Gagw9+ATwXBHXG3Nhzorj9c6Sw2H15SgeAuFygSruGD
-         5ESjDsCwgUvWXVvt18XH0u0KIGLSvmO7o12p+pXsmjpk9WN/XLbcKphEmzWfmiIwMtTD
-         XETnNthIhJbvyChelt1RYEjM8F7Dhn1QVbncWa8df52HF+FbPirzdEJCsm+nkDTsaM43
-         1Js680gkR9hVSY0OQtHYPRFW37x1Zz7FKlbU9usNa1pd/NYUfJjAs1PxTiRnSnXewEaV
-         sMZ7vmBqnLRHRXWCPgqa9+G12cIElewGLEu/N4N2WLesJqtpxx5kiFy6kfZidhMFWEKT
-         s80Q==
+        h=sender:date:from:to:message-id:subject:mime-version
+         :content-transfer-encoding:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=kcv6b50XcMtdl2l+zaR6Csv8eK/5Zl4nfOAeGnh1C6g=;
+        b=lICM6IHEeqitVWfGvxZkP7Bh/yr7rVbemNQLmNF+XBbi1zqbNwkQDoIhXVgzz0PI0F
+         vMIsk9VXMNhJkYxfUWAJ2teRqLAeJ35t6wzYDU9kP7bDFMSEWu78hW78uFgDhRjVu8j5
+         8MWWADop75tryK+rzDjXrAzpx2LQ/h9+bcksz/Whp3SpvTTJ5e1ddW6rmItqrSOsI48e
+         S1FNyQhT1uEa6EKc2fcHOnbSP7O8KbtYbqin9akX9nifT9e6D5Hm7vBtSo9bM73GophX
+         RrxlbmQhShKZpACVW4KcQt4jgXAWc9/m1FgyPiFc/ARZkBWAHHx7HZzd4x32Q69/LZid
+         9l2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:reply-to
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=JStNUhoTR7/lERDHP7UqYsZem3u8R8WyKWTOh40b0wA=;
-        b=PP2sg/Lx47CXZ+uXOYxnLDCk42fylOa62waUkCG753VT1tyIgeGY7yzeKANdm44oY7
-         g11ZafKWMgkVz7NMbqJkS7ta08wYlOGFE7AiplZvNKSggQGleYNxqcNRiK9TzW+PkNwh
-         5Z8x685L0eQxhM7FIbXPoBUw3r3J0N797yxf898ja7uWssYkbMFt3mfZbQLRI3KTlqgx
-         SD7KnpaQzO8r7WgH2uZ7+aZ9zF6uc+hpCzITA6qd8ANA9PM6NWjoqjyFO4LfziMh0UmB
-         q9Ffg7Gn1RF6aTfKC3DaXlWz6ldsytpcAQGb4BB35Ge4d4JJlclkTdVjPgFJQUsU+FEU
-         cWSg==
-X-Gm-Message-State: APjAAAV5lVItWl2pFUX4QDQjoWYUQAJ0B0r8xHhZFzJsRHdvCBANSSe5
-	JgQwWTkWADbsMJWpPxbBsBo=
-X-Google-Smtp-Source: APXvYqyEBEv1kmJRQO254codGP6MJPNSyxZ9sMtOhYZwysUe6c87loG4IUZ/FwdkVXWM3VxNMWqk1g==
-X-Received: by 2002:a05:6102:313b:: with SMTP id f27mr23311127vsh.22.1571201167377;
-        Tue, 15 Oct 2019 21:46:07 -0700 (PDT)
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:content-transfer-encoding:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=kcv6b50XcMtdl2l+zaR6Csv8eK/5Zl4nfOAeGnh1C6g=;
+        b=hcB9GPWhK+cmxvXE+kc6C5QtEJcLPLf6S1r1tiVp/mdTVO4scLkM1cp3ULyengWtjS
+         JVLzhSDvEL9jj34V9DnItbNa4WjtpRDMo2rFFgSZbFVP2S8x+m0jHlMmkX2cjAmZJw5/
+         jPw6M69LEACJs9pJyr4uMVvZOgHO1mgo4OAb1zSOXTNsbUUoOQkbRXoZ/CE4PEYiZL9+
+         s2LKYllLKKR5TpilwuloDAtM9uLEfY1nH6xwxNYm81bvwDNqCBzvXgeWadMCVY6rPsd1
+         3WI1XqnTOZiQ8yET5RUZ7s0ydSoFF0q2Ys/g4vad1AmFB4UTQhHMl/k7OGVftcYSRDaC
+         vnCg==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: APjAAAWDMQIX1MVmoNHNPevIxP0x+4lLW9y0+5qXfL0RHlONxBsaQWeb
+	ZWVFPayrAQpDYj83+05T1u4=
+X-Google-Smtp-Source: APXvYqzeZa9/uHzI597UU0dugi0Md91xZumFbN5DlSS9dNCNZ2YfjqRyeoqqal5z2A6zoPxFr2JWpw==
+X-Received: by 2002:a67:7346:: with SMTP id o67mr1989129vsc.72.1572808465530;
+        Sun, 03 Nov 2019 11:14:25 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a1f:4f86:: with SMTP id d128ls747275vkb.5.gmail; Tue, 15 Oct
- 2019 21:46:07 -0700 (PDT)
-X-Received: by 2002:ac5:c95a:: with SMTP id s26mr12704359vkm.6.1571201167029;
-        Tue, 15 Oct 2019 21:46:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1571201167; cv=none;
+Received: by 2002:a05:6102:5d8:: with SMTP id v24ls992495vsf.6.gmail; Sun, 03
+ Nov 2019 11:14:25 -0800 (PST)
+X-Received: by 2002:a67:2e90:: with SMTP id u138mr11481093vsu.207.1572808465174;
+        Sun, 03 Nov 2019 11:14:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1572808465; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q3CU+7Ke2oMqyPqcJx0TOqY9b/eJVoyMBhIuijrRrOB0dXfwGCY3bYKffQ5608HZw0
-         QjskN3fP25QbSk6SRGVXrj5bkk62z84iYz3XDpTc3x1e5TfH/tijKNfSmwZOGYPnlzjs
-         mJ2+8W/eyUyvw+22ku9en0vCBjo49zkHIp4N/necr//Y/nBfeBwgUwijM0AkMMqO/3ii
-         Q6B4q/LTOnOqhk+2a6lAEycwjJxAdpdkVfvUUSLIW02RpRAR8eztAPStL0uPcZrC0zSl
-         V9l2OQ0oguPUGfiPG4loZU0XNMELqxpztDTVcvf1fiKbjpT2zmdzOxEcg3IpLPFjZknj
-         Qb/A==
+        b=ex9/mvGMdF+PpCweYRtS37nX+7vgOp98SaYXkBXBlqOsuCLSBl8i/30zsFzAHdaxZ/
+         C1ZqpWwyKVNuBcVA+2Tw3LPj4TB4JyVz1AsJvpzqxMk1kxVcVl/GRH0UUEPg9TW0yEVf
+         L3VBXJ8DPXphbBXvLt0SjG7bKyxiR1Qx0k1MU0jJSnuQujWV9O/o8jTfURKFJ9s+fSU8
+         Rdg67g+0d4VbbcYKSrCKLkyFswJvTXbpdDTisd55V279MR2pRAkC1SY0uAMwNQCowMfd
+         /n8m14ssQ+AkQ0gpA77UWevO9lSPwqarVh3PztKPbhx9/ZtSQLkqgo22N26VHWE+LyUD
+         oENg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=2e1ep+jz9ThULjwuPHURE/WBfxKsgQ0iJmPcL/PVeZo=;
-        b=JzPrD2uFh1dvHhJNm3LzNRe4PaEajCdT97CjWdTujlUXA4sVX6ybIJkTjoxrQi5XPs
-         aTrISDLyHL/bssxJ/NHZwn6oAT9vVx4dqKotXkgxEr5KtYAylIhALPi3wemtABBtgsQh
-         Rtgovsgj/eqDVNkme7ktDyoPRhtmGVKWIucc906fZN0JYkXvXtFpgWhe+RW4zuYz3rZx
-         Y5ww1BoLLz7JiSk3cQyxxKO78NhBCB3eZHuoOekbE+7WiYiK56BA2XE2IL0n2kQmBeZ6
-         6HMsWp8/IEDQ6KLozVk/iPkNM31IQiJBry3Fhi0hEMeo+DlaZwa+AAgiNrZFaUoyqVor
-         qj1g==
+        h=content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date;
+        bh=iGKkMuIqFTNUBB2NbOvVwSynDpxh+omdu80PJtErwqY=;
+        b=SzdMrcb2gv0EhjT72nUFfxhuTRdqOUO4I3yBVeOPIer1QhydwqfgKVNQVdNai5ik9B
+         Xxqkp7DdeBxy0RquOtBdl2fvUjW5ENalvnmR7PHNMJt1TSe56Ej9KbxyP7zqN+y+M/nN
+         r+v5J0hrYiHWyDL9NJkhi/YQlpSPNysjIp8+OWL9KyIZ9MzHU20zbtKNrZ0JpDLGAbdl
+         lps4hNnYWmaEu9Wqm5FhnTWO1sovbBv2PFRhNbUk1jWdzyk3JU5vAY0cTUyO+5/HMt5h
+         XwSgi7o1ewaewUMOHSwTw54ZlMMOGnRB8fd6mAdbZAiBHE+wutFHz198kulJNXBjWyS3
+         rY3A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=SfJcnijl;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id p18si217155vsn.1.2019.10.15.21.46.06
+       spf=pass (google.com: domain of manami1234@daum.net designates 203.133.181.10 as permitted sender) smtp.mailfrom=manami1234@daum.net;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=daum.net
+Received: from mail-smail-vm52.hanmail.net (mail-smail-vm52.daum.net. [203.133.181.10])
+        by gmr-mx.google.com with ESMTPS id c126si958007vkb.3.2019.11.03.11.14.24
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 15 Oct 2019 21:46:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id x9G4k1Q9130349;
-	Tue, 15 Oct 2019 23:46:01 -0500
-Received: from DLEE101.ent.ti.com (dlee101.ent.ti.com [157.170.170.31])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id x9G4k1NQ001573
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 15 Oct 2019 23:46:01 -0500
-Received: from DLEE107.ent.ti.com (157.170.170.37) by DLEE101.ent.ti.com
- (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5; Tue, 15
- Oct 2019 23:45:54 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE107.ent.ti.com
- (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1713.5 via
- Frontend Transport; Tue, 15 Oct 2019 23:46:00 -0500
-Received: from [172.24.190.233] (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id x9G4jqTh107770;
-	Tue, 15 Oct 2019 23:45:54 -0500
-Subject: Re: [RFC PATCH 02/21] dt-bindings: PCI: Endpoint: Add DT bindings for
- PCI EPF Device
-To: Rob Herring <robh@kernel.org>
-CC: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
-        Jon
- Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
-        Allen Hubbe
-	<allenbh@gmail.com>,
-        Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-        Mark
- Rutland <mark.rutland@arm.com>, <linux-pci@vger.kernel.org>,
-        <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <devicetree@vger.kernel.org>, <linux-ntb@googlegroups.com>
-References: <20190926112933.8922-1-kishon@ti.com>
- <20190926112933.8922-3-kishon@ti.com> <20191015184243.GA10228@bogus>
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-Message-ID: <af3483e0-0533-4b13-64d1-b2cd6fedf514@ti.com>
-Date: Wed, 16 Oct 2019 10:15:23 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.8.0
+        Sun, 03 Nov 2019 11:14:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of manami1234@daum.net designates 203.133.181.10 as permitted sender) client-ip=203.133.181.10;
+Received: from mail-hmail-was1 ([10.197.6.172])
+        by mail-smail-vm52.hanmail.net (8.13.8/8.9.1) with SMTP id xA3JDx86011240
+        for <linux-ntb@googlegroups.com>; Mon, 4 Nov 2019 04:13:59 +0900
+X-Hermes-Message-Id: nA44BQXYZ1371643347
+Date: Mon, 4 Nov 2019 04:11:25 +0900 (KST)
+From: ACCOUNTING OFFICER <manami1234@daum.net>
+To: info.20187777777@gmail.com
+Message-ID: <20191104041125.NbW9B14XQEmlFOLHvbSW5w@manami1234.hanmail.net>
+Subject: FROM THE ATTORNEY GENERAL FEDERAL REPUBLIC OF NIGERIA. E-mail:
+ abubakarmanami@rediffmail.com
 MIME-Version: 1.0
-In-Reply-To: <20191015184243.GA10228@bogus>
-Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=SfJcnijl;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Mailer: Daum Mint Web 1.0
+X-Originating-IP: [197.210.44.21]
+X-HM-UT: F2wJHMKgMswsdzahE2TsduOyvwRqoW6DrgWMVLVAkXo=
+Received: from mail-hammer-was7.s2.krane.9rum.cc ([10.197.10.40]) by hermes of mail-hmail-was3 (10.197.6.229) with ESMTP id nA44BQXYZ1371643347 for <linux-ntb@googlegroups.com>; Mon, 04 Nov 2019 04:11:26 +0900 (KST)
+X-Original-Sender: manami1234@daum.net
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of manami1234@daum.net designates 203.133.181.10 as
+ permitted sender) smtp.mailfrom=manami1234@daum.net;       dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=daum.net
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -160,96 +127,75 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+<html>
+<head>
+    <style>
+        p{margin-top:0;margin-bottom:0}
+    </style>
+</head>
+<body>
+    <table class=3D"txc-wrapper" border=3D"0" cellspacing=3D"0" cellpadding=
+=3D"0" width=3D"100%"><tr><td class=3D"txc-wrapper-td"><div class=3D"txc-co=
+ntent-wrapper" style=3D"color:#111;font-family:Apple SD Gothic Neo,Malgun G=
+othic,'=EB=A7=91=EC=9D=80 =EA=B3=A0=EB=94=95',sans-serif;font-size:10pt;lin=
+e-height:1.5;"><b>FROM THE ATTORNEY GENERAL FEDERAL REPUBLIC OF NIGERIA. E-=
+mail: abubakarmanami@rediffmail.com<br><br>Supreme Court of Nigeria<br>Addr=
+ess: Federal Ministry of Justice HQ<br>Plot 71B Shehu Shagari Way,Maitama A=
+buja,<br></b><div><b>E-mail: abubakarmanami@rediffmail.com</b></div><div><b=
+>=EF=BB=BF</b><b>info.20187777777@gmail.com</b><b><br></b></div><b><br>Dear=
+: Unpaid Beneficiary,<br><br>This is to inform you that in the course of my=
+ investigation as director of payment verification / implementation committ=
+ee I came across&nbsp; your name as unpaid fund beneficiary in the record o=
+f the central bank of Nigeria and other banks that are suppose to get your =
+funds&nbsp; released to you. My committee was set up by the payment reconci=
+liation committee to verify and scrutinize all&nbsp;&nbsp;&nbsp; outstandin=
+g debts owed to&nbsp;&nbsp; our foreign beneficiaries in accordance to the =
+information received from the United States government and other countries =
+over unpaid &nbsp;<br>huge debts owed to Foreigners.<br><br>Having seen you=
+r file and my further questioning to the officials of the central of Nigeri=
+a bank and ministry of finance as to why your&nbsp;&nbsp; payment is still =
+pending reveals the rot and corruption in the&nbsp;&nbsp; system. The bank =
+officials told me that the reason why you haven't&nbsp;&nbsp; received your=
+ payment is due to your inability to pay for the required charges for trans=
+fer of funds to your account. When I asked them&nbsp;&nbsp; why they didn't=
+ deduct the said charges from your principal sum, I was given the flimsy ex=
+cuse that you never authorized them to do so.&nbsp;&nbsp; When I put the qu=
+estion across to them if they ever advised you that such charges could be d=
+educted from your principal fund,the answer I&nbsp; got was no. Now, if you=
+ do not tell this beneficiary that&nbsp;&nbsp;&nbsp; such charges could be =
+deducted from his or her principal fund, how will he or&nbsp;&nbsp; she kno=
+w that such options are available for such beneficiaries. From my investiga=
+tion I discovered that these bank&nbsp;&nbsp;&nbsp; officials&nbsp; deliber=
+ately refused to let the charges be deducted from your principal fund&nbsp;=
+ because they want your fund to remain trapped in the bank, <br><br>while t=
+hey continue to extort money from beneficiaries under some flimsy&nbsp; exc=
+use. You do not need to pay any money to any official, all&nbsp; you are re=
+quired to do is swear to an affidavit at the federal&nbsp;&nbsp; high court=
+&nbsp; of Nigeria, authorizing the bank to deduct all charges from&nbsp; yo=
+ur principal fund and transfer the balance of funds after deduction to your=
+&nbsp; bank account. If you have spent any money in&nbsp;&nbsp; the past in=
+ your quest for payment, kindly let me know so that I can follow this up. Y=
+ou can&nbsp;&nbsp; reach me on my phone or email for directive on how you&n=
+bsp; can get the deduction done as soon as possible&nbsp; and get your paym=
+ent also.<br><br>Yours sincerely,<br><br>Barr. Abubakar Malami (SAN)<br>E-m=
+ail: abubakarmanami@rediffmail.com<br>ATTORNEY GENERAL FEDERAL<br>REPUBLIC =
+OF NIGERIA.</b><p><b><br></b></p></div></td></tr></table>
+</body>
+</html>
+<img src=3D"https://confirm.mail.daum.net/confirmapi/v1/users/manami1234%40=
+hanmail%2Enet/cmails/20191104041125%2ENbW9B14XQEmlFOLHvbSW5w%40manami1234%2=
+Ehanmail%2Enet/recipients/linux-ntb%40googlegroups%2Ecom">
 
+<p></p>
 
-On 16/10/19 12:12 AM, Rob Herring wrote:
-> On Thu, Sep 26, 2019 at 04:59:14PM +0530, Kishon Vijay Abraham I wrote:
->> Add device tree bindings for PCI endpoint function device. The
->> nodes for PCI endpoint function device should be attached to
->> PCI endpoint function bus.
->>
->> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
->> ---
->>  .../bindings/pci/endpoint/pci-epf.txt         | 28 +++++++++++++++++++
->>  1 file changed, 28 insertions(+)
->>  create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf.txt
-> 
-> This and the previous patch for the bus should be combined and please 
-> convert to a schema.
-
-Sure Rob. Thanks for the review.
-
--Kishon
-> 
->>
->> diff --git a/Documentation/devicetree/bindings/pci/endpoint/pci-epf.txt b/Documentation/devicetree/bindings/pci/endpoint/pci-epf.txt
->> new file mode 100644
->> index 000000000000..f006395fd526
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/pci/endpoint/pci-epf.txt
->> @@ -0,0 +1,28 @@
->> +PCI Endpoint Function Device
->> +
->> +This describes the generic bindings to be used when a device has to be
->> +exposed to the remote host over PCIe. The device could be an actual
->> +peripheral in the platform or a virtual device created by the software.
->> +
->> +epcs : phandle to the endpoint controller device
->> +epc-names : the names of the endpoint controller device corresponding
->> +	    to the EPCs present in the *epcs* phandle
-> 
-> Other than the NTB case, I'd expect the parent device to be the 
-> controller. Let's make NTB the exception...
-> 
-> 
->> +vendor-id: used to identify device manufacturer
->> +device-id: used to identify a particular device
->> +baseclass-code: used to classify the type of function the device performs
->> +subclass-code: used to identify more specifically the function of the device
-> 
-> Are these codes standard?
-> 
-> Powerpc has "class-code" already...
-> 
->> +subsys-vendor-id: used to identify vendor of the add-in card or subsystem
-> 
-> Powerpc has "subsystem-vendor-id" already...
-> 
->> +subsys-id: used to specify an id that is specific to a vendor
->> +
->> +Example:
->> +Following is an example of NTB device exposed to the remote host.
->> +
->> +ntb {
-> 
-> This is going to need some sort of addressing (which implies 'reg')? If 
-> not, I don't understand why you have 2 levels.
-> 
->> +	compatible = "pci-epf-ntb";
->> +	epcs = <&pcie0_ep>, <&pcie1_ep>;
->> +	epc-names = "primary", "secondary";
->> +	vendor-id = /bits/ 16 <0x104c>;
->> +	device-id = /bits/ 16 <0xb00d>;
-> 
-> These have a long history in OF and should be 32-bits (yes, we've let 
-> some cases of 16-bit creep in).
-> 
->> +	num-mws = <4>;
-> 
-> Doesn't this apply to more than NTB?
-> 
-> Can't you just get the length of 'mws-size'?
-> 
->> +	mws-size = <0x100000>, <0x100000>, <0x100000>, <0x100000>;
-> 
-> Need to support 64-bit sizes?
-> 
->> +};
->> -- 
->> 2.17.1
->>
-
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/af3483e0-0533-4b13-64d1-b2cd6fedf514%40ti.com.
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/20191104041125.NbW9B14XQEmlFOLHvbSW5w%40manami1234.han=
+mail.net?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/=
+d/msgid/linux-ntb/20191104041125.NbW9B14XQEmlFOLHvbSW5w%40manami1234.hanmai=
+l.net</a>.<br />
