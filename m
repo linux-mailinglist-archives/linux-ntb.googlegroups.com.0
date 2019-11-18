@@ -1,123 +1,140 @@
-Return-Path: <linux-ntb+bncBCS4BDN7YUCRBF5WY7XAKGQEC74HRHY@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABB7HAZHXAKGQEM4JX6HY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-oi1-x23e.google.com (mail-oi1-x23e.google.com [IPv6:2607:f8b0:4864:20::23e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1AD63FFC51
-	for <lists+linux-ntb@lfdr.de>; Mon, 18 Nov 2019 00:43:21 +0100 (CET)
-Received: by mail-oi1-x23e.google.com with SMTP id c198sf3247808oig.2
-        for <lists+linux-ntb@lfdr.de>; Sun, 17 Nov 2019 15:43:21 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1574034199; cv=pass;
+Received: from mail-ot1-x338.google.com (mail-ot1-x338.google.com [IPv6:2607:f8b0:4864:20::338])
+	by mail.lfdr.de (Postfix) with ESMTPS id F07D3100243
+	for <lists+linux-ntb@lfdr.de>; Mon, 18 Nov 2019 11:20:47 +0100 (CET)
+Received: by mail-ot1-x338.google.com with SMTP id h15sf9866814otr.11
+        for <lists+linux-ntb@lfdr.de>; Mon, 18 Nov 2019 02:20:47 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1574072446; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ukCJFmxhwQS9gb+rhy9ooSWOzP7d+m4I4XeZr9V9vlErd6m2Wkgdxzub3QoRn7WoSD
-         TmY9eMIVheYqmp+6i90wfmS2N80/78o2SV1SA0d2YOUgc+ewuY7MUwLd2T/zNccxgs0B
-         lOdgiEglOup3Cggw/Am/flOTMdrPnGTAvCXqN09GZPnbEUxTEvTXI7l+pl0R+C8K5iOQ
-         KpLbH3Yx1Co0SLKjxEaoUgjkT1Q/8DpKqK9+8JQW38AsNZ5jZg1cjjV/3yxAXvZgkNEX
-         P/V/fqaNd/5IYxszWaIE7MQxbDsFE6ygbAZ2noPuKReR+Z8k4oCmxkmpuJsw/qUVk5YJ
-         Xu5Q==
+        b=wwDWfmbFe9JhNuHIdbfUGbeoCik5dUjPY2d8rWtm+R0q+JnViY7rRni2kCpEW1+EMy
+         LBTQszb8icxTe+QaELrw2NLpgDJDm5d+qB8uMkg4FEw9gf9VTuivytuHPODPiVZL8B0e
+         U4dalCN7NdQbufB8s+46Z5oElj6pDJ3XD7zMgFfbhbtfCt1uVKycpUjT5TNGWj+uHy/g
+         EqmnSXOBguOU6syaWbzd5nrl+iXdWQAXeEozI9fJB69HYQkoNGy+qCKMpdOnh0BbU+bA
+         Eyy1+iyeEne0V5ynbHbxoHONWA2+luW34d8ZolZKOONjLH7eirrgLJOAFHerIDH4x3w5
+         1ymA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:sender:dkim-signature;
-        bh=1bxlAlA89SdgOkioz63xfli594NBYnwvTdVvrpf3mXA=;
-        b=l1cB6T+B67izRCyUsnfzgzlWXzm6qDm1MuUyr+m3jmwcvV8RBowd93TWyZj1dJdzJq
-         R4sFp/t0BSuteQ/Hi3cPwJDOk3xrE1FCQqyPjoCYU0Bc1tFxD1Mo7XSCt0gGp2NBzRgq
-         5lgQ2SglqbBpmIs9dBIaJRsLXqvEUosXcU3lr3icvVGVwks9JdrdDkXC9SQDeUDUgRAE
-         OrLVj0MdRdORtw6sSmPxTgpZo6JNqiH5coNamG6mxWTQBorM/Si24DW1b6XbRM0wAZAy
-         nRiBybDM1MLHlHcY2rLMKtbwdYFe7tjc1lNcTGF9Rl9qcHcmUTtYU5P9p21BJxGjxN0v
-         ruAw==
+         :list-id:mailing-list:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to
+         :subject:sender:dkim-signature;
+        bh=NHEP5RMJ1ebVvaraVVMhq8eFOy83R8NSxefkocmU96Q=;
+        b=YXcC3z6Zl/mCAxgQnoCUoNKW3E2RCNuc9F+30R8+tzWj27PyJkLa5MMkL3r+qND9x7
+         ExNK6yKqxWou4zP8ugAXt2zC9ReFTx2pUUXuB3mq+bPgI2T06Af8Veey3ttoc6tmT3zS
+         11RdsaJivcQFMraAtCOfrpZy+1IJ9RlDCraEaZ5RJR/ryYlw+GbpKflGWPnsUONm9W/m
+         vx3n5nLRvOFMzwAywlunAA8FG60JEPHqyaDxLY5cMKNJTDvQDBRXm5SosHZjUmS+gHBN
+         kg+N/HH8MgCYSsqwF3IENY/5XHUXvr0cQllmmZOYC/tjx2Bw6HSZ5JhWsjL4CpaBOdAR
+         RFGA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b="Az+/I7lH";
-       spf=neutral (google.com: 2607:f8b0:4864:20::d42 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+       spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:references:in-reply-to:from:date:message-id
-         :subject:to:cc:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=1bxlAlA89SdgOkioz63xfli594NBYnwvTdVvrpf3mXA=;
-        b=sLUlsFe0jO1ac/9UANCFgBWdUyabo5iWvJ15Tv5sPZyOyaY9xTTLWQp3uBK1ZjNSAn
-         GNzKJgGiDnoR9ZRw9MeD08H3lmHSM93tTNnCcXVKTazu+NLM+uBloyIc+s465hOrRFtg
-         pA7u5Hne9+kWTdVkfjUI6kp+VQwub+crFxg4JGc0PbgE+9G06/ScqLz0W/3n9lnNsKgG
-         klp9SS5r5zrZITqC1c87Rb52lBt7v5r2sRkxZ0CL+NKuMCjizJlAbCsDhve3mC82Spib
-         xVU4hwnFmHzdgAfwBTdycXBJ4y6j7uI0UC8xpwt0KyRChucX54GQBqlK4RF2/JRymi6Y
-         Frgg==
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=NHEP5RMJ1ebVvaraVVMhq8eFOy83R8NSxefkocmU96Q=;
+        b=Kj9ZsXibTDkN0q2xBdo0m5HNaglQVhSAl3s1fL277TE9SfodkwXqoVv5xQxa6+h7QE
+         n5BVS1cSXi+uP0AmWFLkoEff/hAUMBLSfxWk1eXmcX8TXMlUHRnBJN/ySXf6rRsKiQPb
+         FZgH2tx9RJVrfVf0BLfBpUQwVAxqnVy/gj7ZuWUVhi8CSselg4xiv538KL4ofhwxWmfm
+         yrywFlduU/OvVFGTgY89xLruf6DREE4QxaYA32aGu/UEuk4m7xKqmivz3GV+5Rl4vtwn
+         qrFqfpEs3O7HE3fCgWooG3FrWcsedbQ6DeveFiMGCbA0AO05Yp3pBHAMqHhYedmmZYZd
+         FiNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
-         :date:message-id:subject:to:cc:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=1bxlAlA89SdgOkioz63xfli594NBYnwvTdVvrpf3mXA=;
-        b=PjCdjUGH94o36jEnHoiPruhVjjPfrFk/avThwXSby+dQhPflSGYb/oZOx9/rdSBEBj
-         BPMMH+NnqR6/Z10JWR61u0GgkKREmgU+9r1Onojdegh/zvIZhd4roUwcvrdagySY9Ar1
-         9Zn1Txh7EcjAtX4KRCJFOHgOQ5qUDhH3oNrz2DRZEq/SAe4l5phv42BLxE/Vsi0RX1wO
-         yoDUkIRaWaqjfUoXAUE4vArKyNUNBEyX11iyArp2+r//HBRW5sno0mz43pbPd+sw7qHi
-         sUPWNsVAj8KPyzeW+nYnZHQ6FB83K8iqB9yyRpKPsqFVPwszkZzwlhr9VgYt4iCk6P9e
-         20Cw==
+        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=NHEP5RMJ1ebVvaraVVMhq8eFOy83R8NSxefkocmU96Q=;
+        b=gMHqWLr/xam/HGvKDKdxxjv08JOisv9UEmDEeGeULdkbckyiWLVXQroItvUy/UfCDo
+         8h0qQ/YdszzM0nlTsx7VmycK2JnAcuLkcQHPOX/MHYAy0apX4ZyRDcWjBIiYaxRQeGDn
+         BpYSTUo3nKHG1ChHJr0akI1lCj836ss460Wtifdrppk4d+izFEMnYhqB20QisZnC1GrR
+         YwZuuIWnVHWT6syZP2DXp3NpNfZ+EQYO1QCRmNKRr+SmxdJgdwYWvNGXcfOtmtag16ZW
+         4vwzRnYlFPJDfQ5dGJdzSjKJ2P4/YyIE9dD6diWAecxOnBpWb9MkMTRIo5nrQQHY6a2X
+         3LpA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWiYp45CV1WCKzlD8yApgS5KSaxo9Huzs98VeqeKhYnu1PpnWol
-	N6owaaEgNQO3q3Luk2JB9HY=
-X-Google-Smtp-Source: APXvYqw7JbA/Z5xl2T+wrrQwahKoFA1l3c4EusqwfrTqM6FrajwTVxmfBUdNLQOJi4QBoVGQVsEtNw==
-X-Received: by 2002:aca:4d05:: with SMTP id a5mr18108857oib.170.1574034199604;
-        Sun, 17 Nov 2019 15:43:19 -0800 (PST)
+X-Gm-Message-State: APjAAAVRcOp4ckHvZnDo94/r8p+AcRvi0Fo+FPnMtw1p4gpv4Sc9UZOl
+	5deFD8MwL/U/9a59ojb1+dA=
+X-Google-Smtp-Source: APXvYqzt99+baMnPnkOX6FsLacT1Dsz2760RNtZ6+NkWBw+6OVZZqkWLvinnoET/RIq5fr5NOuBRFg==
+X-Received: by 2002:a9d:469d:: with SMTP id z29mr18466832ote.309.1574072444452;
+        Mon, 18 Nov 2019 02:20:44 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a9d:7e8f:: with SMTP id m15ls236863otp.13.gmail; Sun, 17 Nov
- 2019 15:43:19 -0800 (PST)
-X-Received: by 2002:a9d:7094:: with SMTP id l20mr20247886otj.275.1574034199227;
-        Sun, 17 Nov 2019 15:43:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574034199; cv=none;
+Received: by 2002:a05:6808:2c1:: with SMTP id a1ls4254472oid.5.gmail; Mon, 18
+ Nov 2019 02:20:44 -0800 (PST)
+X-Received: by 2002:a05:6808:a0c:: with SMTP id n12mr19845231oij.16.1574072444148;
+        Mon, 18 Nov 2019 02:20:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574072444; cv=none;
         d=google.com; s=arc-20160816;
-        b=By5LobIJTq/SbN2fkCdul2Xg7na7sHt8XhaQATWgrxer3IVNWaxQUWKx1mUI4jvt/Y
-         QB7SQL56acRmlk/i0Mpqw+5RadLB9RF8l4F/hy+HP1kkMsWe1Sxzdo/qJsvdwKQy1m8U
-         GMQncIGs9tdhcZp2vDAFLXlivTItW2au3prOFrdETwVrLaNlZ3QNHDnp0wXItf5Zfr8o
-         h4peYExn7ZX50F/tY4MYkK5kLrA2J/NOufvHx93Dsw/qKoo2LH+WIP6VLke2WK/lznU6
-         nFOf1f9L6Xc6wvHfkbNqVCMsxhz/NlvIHaW5EGfMaL9sNA+th9aOUY4IWTFLtz1NeSeK
-         NvKw==
+        b=epKLFIX+4w267f8ZhxLrrJnv+nbWnPw2ev3ny971oY4JWu6rNBEwyCh56yFUWhXn5V
+         pBMK37GxKUMCvRsn0I9x61hA83msyfSj+P9nY51rI0PkXv9Ah+jgWryJVOva8d76cWzQ
+         /OQdZ05et6KrVkQwE66IFCyWE6rmjn/41RPGte8B81JLNu9Qw3tE3HinOJOigz6pZ15e
+         MV4mp+nLiPe0dXJkrk6YrSMF9APXljVnpq0CCBUhQ0bPyBET3viWVBO/2+wp3/rymJJM
+         VtQAXP8l93dx4ARjBBdmLP+xsBi2pxpm/miG0oBEd05ttrjaLBC3UijGT0Qq3f34ChPx
+         z4CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=gO7JzUs1xTIM39SPuA1vE59ZvFKWnOGozjWoKCw6sXM=;
-        b=B5S/aNuhxBDdnDMKC2fjWKkbKmsORhAe6Xq8pYtz7JLSXUoPl4VYPpfuD8EbsZ/QZW
-         GO6XHFB6xQBMEVNs1c2tF8Dfy1rAm/t99YhRDQ6bwiFHDn8/h53lNra833+a+BAKwXjs
-         LlxxWKOy9L4TgMyy6oEYmge8+Z32ZGOr5ddfeZ1wOk/MAOtPubDpPsO9w6AcHH+5i5Db
-         D1mbxXqPwyXWy954UH9KGH6DcZlpvFV8xRyYLbjwzU3wezd+1p59ktgqlVwd/yw6LY8p
-         yYQaukhxiRnj6Voi/pvTd9iXJv2kxITiHgcFYHp22cG8MBoHU6xJ3L1gQ7dhWCvgZXU1
-         Jl8w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=4fFGbbmJSsJDE/UYgH0ePHRqLQ/gGGqveSqqhIRcvrg=;
+        b=ORkJSlQVyJP/Y/S5TGyK2vPHK9NJS9KJnwkCSSJPB8kcRf9xNn3X0RQhdztqfXslYn
+         49ttQoGlvtfpLBNnbYPb8vwvVS8LuR4pD092DOipsCNafTrtbOofXGTdXJMigOCttU46
+         VdGeC+iseu49k9h+bEQNUfIZSr7xVHyG7DbircGalVDsz6IBQF+9yXbYGKxEb5BeZIxX
+         bPQLCM66lM0mUwPdlNyllUhIpiaM6GCDNrn7X2dV0jv8BxzHX3UfVXRsYdDEbI6GlUcD
+         xZX0GiNzuqBqmpN4Xt2jw+zOESaHSFs/eiNt7bUyrm1IQ4shOIbijBuO6yGkt+5E8iq9
+         04tQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b="Az+/I7lH";
-       spf=neutral (google.com: 2607:f8b0:4864:20::d42 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
-Received: from mail-io1-xd42.google.com (mail-io1-xd42.google.com. [2607:f8b0:4864:20::d42])
-        by gmr-mx.google.com with ESMTPS id x65si781911oig.5.2019.11.17.15.43.19
+       spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
+Received: from spam1.hygon.cn ([110.188.70.11])
+        by gmr-mx.google.com with ESMTPS id 5si562419otu.2.2019.11.18.02.20.42
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 17 Nov 2019 15:43:19 -0800 (PST)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::d42 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::d42;
-Received: by mail-io1-xd42.google.com with SMTP id i13so16686773ioj.5
-        for <linux-ntb@googlegroups.com>; Sun, 17 Nov 2019 15:43:19 -0800 (PST)
-X-Received: by 2002:a5d:938d:: with SMTP id c13mr5053836iol.159.1574034198746;
- Sun, 17 Nov 2019 15:43:18 -0800 (PST)
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 18 Nov 2019 02:20:42 -0800 (PST)
+Received-SPF: permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) client-ip=110.188.70.11;
+Received: from MK-FE.hygon.cn ([172.23.18.61])
+	by spam1.hygon.cn with ESMTP id xAIAKXCl085098;
+	Mon, 18 Nov 2019 18:20:33 +0800 (GMT-8)
+	(envelope-from linjiasen@hygon.cn)
+Received: from cncheex01.Hygon.cn ([172.23.18.10])
+	by MK-FE.hygon.cn with ESMTP id xAIAKNwP014116;
+	Mon, 18 Nov 2019 18:20:23 +0800 (GMT-8)
+	(envelope-from linjiasen@hygon.cn)
+Received: from [172.20.21.12] (172.23.18.44) by cncheex01.Hygon.cn
+ (172.23.18.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1466.3; Mon, 18 Nov
+ 2019 18:20:28 +0800
+Subject: Re: [PATCH] NTB: Fix an error in get link status
+To: Jon Mason <jdmason@kudzu.us>
+CC: "S-k, Shyam-sundar" <Shyam-sundar.S-k@amd.com>,
+        Dave Jiang
+	<dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+        linux-kernel
+	<linux-kernel@vger.kernel.org>,
+        linux-ntb <linux-ntb@googlegroups.com>, <linjiasen007@gmail.com>
+References: <1573119336-107732-1-git-send-email-linjiasen@hygon.cn>
+ <CAPoiz9wAJz=Hqb6Os=9AHHv_NGpZ8uCaAuOC=aUTkASKdfs9WQ@mail.gmail.com>
+From: Jiasen Lin <linjiasen@hygon.cn>
+Message-ID: <933f74c7-7249-618c-13dc-9e4e47ad75d7@hygon.cn>
+Date: Mon, 18 Nov 2019 18:17:38 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.2.2
 MIME-Version: 1.0
-References: <20190926112933.8922-1-kishon@ti.com>
-In-Reply-To: <20190926112933.8922-1-kishon@ti.com>
-From: Jon Mason <jdmason@kudzu.us>
-Date: Sun, 17 Nov 2019 18:43:08 -0500
-Message-ID: <CAPoiz9x1LsXEeK2n98+4Rm9oTCiowrMUO5d6PPtc4SQG3mP9uA@mail.gmail.com>
-Subject: Re: [RFC PATCH 00/21] Implement NTB Controller using multiple PCI
-To: Kishon Vijay Abraham I <kishon@ti.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>, 
-	Rob Herring <robh+dt@kernel.org>, Dave Jiang <dave.jiang@intel.com>, 
-	Allen Hubbe <allenbh@gmail.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
-	Mark Rutland <mark.rutland@arm.com>, linux-pci@vger.kernel.org, linux-doc@vger.kernel.org, 
-	linux-kernel <linux-kernel@vger.kernel.org>, devicetree@vger.kernel.org, 
-	linux-ntb <linux-ntb@googlegroups.com>
-Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: jdmason@kudzu.us
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
- header.b="Az+/I7lH";       spf=neutral (google.com: 2607:f8b0:4864:20::d42 is
- neither permitted nor denied by best guess record for domain of
- jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+In-Reply-To: <CAPoiz9wAJz=Hqb6Os=9AHHv_NGpZ8uCaAuOC=aUTkASKdfs9WQ@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Language: en-US
+X-Originating-IP: [172.23.18.44]
+X-ClientProxiedBy: cncheex01.Hygon.cn (172.23.18.10) To cncheex01.Hygon.cn
+ (172.23.18.10)
+X-MAIL: spam1.hygon.cn xAIAKXCl085098
+X-DNSRBL: 
+X-Original-Sender: linjiasen@hygon.cn
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=permerror
+ (google.com: permanent error in processing during lookup of
+ linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -130,171 +147,112 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Thu, Sep 26, 2019 at 7:30 AM 'Kishon Vijay Abraham I' via linux-ntb
-<linux-ntb@googlegroups.com> wrote:
->
-> This series is sent as RFC since this series is dependent on
-> [1] (cannot be merged before that series) and to get early review
-> comments.
->
-> I'll also split this series into smaller chunk when I post the
-> next revision.
->
-> This series is about implementing SW defined NTB using
-> multiple endpoint instances. This series has been tested using
-> 2 endpoint instances in J7 connected to two DRA7 boards.
->
-> This was presented in Linux Plumbers Conference. The presentation
-> can be found @ [2]
->
-> This series:
->   *) Add support to define endpoint function using device tree
->   *) Add a specification for implementing NTB controller using
->      multiple endpoint instances.
->   *) Add a NTB endpoint function driver and a NTB host side PCI
->      driver that follows the specification.
->   *) Add support in PCIe endpoint core to support secondary
->      interface.
->   *) Add a device tree overlay file to configure J7 as NTB
->
-> The test setup is something like below
->    +-------------+                                   +-------------+
->    |             |                                   |             |
->    |    DRA72    |                                   |    DRA76    |
->    |             |                                   |             |
->    +------^------+                                   +------^------+
->           |                                                 |
->           |                                                 |
-> +---------|-------------------------------------------------|---------+
-> |  +------v------+                                   +------v------+  |
-> |  |             |                                   |             |  |
-> |  |     EP      |                                   |     EP      |  |
-> |  | CONTROLLER1 |                                   | CONTROLLER2 |  |
-> |  |             <----------------------------------->             |  |
-> |  |             |                                   |             |  |
-> |  |             |                                   |             |  |
-> |  |             |                 J7                |             |  |
-> |  |             |  (Configured using NTB Function)  |             |  |
-> |  +-------------+                                   +-------------+  |
-> +---------------------------------------------------------------------+
->
-> Here DRA72 and DRA76 could be replaced with *any* PCI host.
->
-> EP side (J7):
-> =============
->
-> In the kernel:
->         cd /sys/kernel/config/pci_ep/
->         echo 1 > controllers/d800000.pcie-ep/start
->         echo 1 > controllers/d000000.pcie-ep/start
->
-> RC side (DRA7):
-> ===============
->         echo 0000:01:00.0 > /sys/bus/pci/devices/0000\:01\:00.0/driver/unbind
->         echo 0000:01:00.0 > /sys/bus/pci/drivers/ntb_hw_epf/bind
->         modprobe ntb_transport
->         modprobe ntb_netdev
->
-> On each of the hosts Ethernet Interface will be created.
->
-> Provide an IP address to each of the hosts:
-> HOST1 (dra72):
-> ifconfig eth2 192.168.1.2 up
->
-> HOST2 (dra76):
-> ifconfig eth2 192.168.1.1 up
->
-> Once this is done standard network utilities like ping or iperf can be
-> used.
->
-> root@dra7xx-evm:~# iperf -c 192.168.1.2
-> ------------------------------------------------------------
-> Client connecting to 192.168.1.2, TCP port 5001
-> TCP window size: 2.50 MByte (default)
-> ------------------------------------------------------------
-> [  3] local 192.168.1.1 port 60814 connected with 192.168.1.2 port 5001
-> [ ID] Interval       Transfer     Bandwidth
-> [  3]  0.0-10.0 sec   705 MBytes   591 Mbits/sec
->
-> [1] -> http://lore.kernel.org/r/20190604131516.13596-1-kishon@ti.com
-> [2] -> https://www.linuxplumbersconf.org/event/4/contributions/395/attachments/284/481/Implementing_NTB_Controller_Using_PCIe_Endpoint_-_final.pdf
 
 
-I had a few nits, but I think this series looks good enough to be sent
-out for inclusion.
+On 2019/11/18 7:00, Jon Mason wrote:
+> On Thu, Nov 7, 2019 at 4:37 AM Jiasen Lin <linjiasen@hygon.cn> wrote:
+>>
+>> The offset of PCIe Capability Header for AMD and HYGON NTB is 0x64,
+>> but the macro which named "AMD_LINK_STATUS_OFFSET" is defined as 0x68.
+>> It is offset of Device Capabilities Reg rather than Link Control Reg.
+>>
+>> This code trigger an error in get link statsus:
+>>
+>>          cat /sys/kernel/debug/ntb_hw_amd/0000:43:00.1/info
+>>                  LNK STA -               0x8fa1
+>>                  Link Status -           Up
+>>                  Link Speed -            PCI-E Gen 0
+>>                  Link Width -            x0
+>>
+>> This patch use pcie_capability_read_dword to get link status.
+>> After fix this issue, we can get link status accurately:
+>>
+>>          cat /sys/kernel/debug/ntb_hw_amd/0000:43:00.1/info
+>>                  LNK STA -               0x11030042
+>>                  Link Status -           Up
+>>                  Link Speed -            PCI-E Gen 3
+>>                  Link Width -            x16
+> 
+> No response from AMD maintainers, but it looks like you are correct.
+> 
+> This needs a "Fixes:" line here.  I took the liberty of adding one to
+> this patch.
+> 
+
+Thank you for your suggestions. Yes, this patch fix the commit id: 
+a1b3695 ("NTB: Add support for AMD PCI-Express Non-Transparent Bridge").
+
+>> Signed-off-by: Jiasen Lin <linjiasen@hygon.cn>
+>> ---
+>>   drivers/ntb/hw/amd/ntb_hw_amd.c | 5 +++--
+>>   drivers/ntb/hw/amd/ntb_hw_amd.h | 1 -
+>>   2 files changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
+>> index 156c2a1..ae91105 100644
+>> --- a/drivers/ntb/hw/amd/ntb_hw_amd.c
+>> +++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
+>> @@ -855,8 +855,8 @@ static int amd_poll_link(struct amd_ntb_dev *ndev)
+>>
+>>          ndev->cntl_sta = reg;
+>>
+>> -       rc = pci_read_config_dword(ndev->ntb.pdev,
+>> -                                  AMD_LINK_STATUS_OFFSET, &stat);
+>> +       rc = pcie_capability_read_dword(ndev->ntb.pdev,
+>> +                                  PCI_EXP_LNKCTL, &stat);
+>>          if (rc)
+>>                  return 0;
+>>          ndev->lnk_sta = stat;
+>> @@ -1139,6 +1139,7 @@ static const struct ntb_dev_data dev_data[] = {
+>>   static const struct pci_device_id amd_ntb_pci_tbl[] = {
+>>          { PCI_VDEVICE(AMD, 0x145b), (kernel_ulong_t)&dev_data[0] },
+>>          { PCI_VDEVICE(AMD, 0x148b), (kernel_ulong_t)&dev_data[1] },
+>> +       { PCI_VDEVICE(HYGON, 0x145b), (kernel_ulong_t)&dev_data[0] },
+> 
+> This should be a separate patch.  I took the liberty of splitting it
+> off into a unique patch and attributing it to you.  I've pushed them
+> to the ntb-next branch on
+> https://github.com/jonmason/ntb
+>
+Thank you for your comment. We appreciate the time and effort you have 
+spent to split it off, I will test it ASAP.
+
+> Please verify everything looks acceptable to you (given the changes I
+> did above that are attributed to you).  Also, testing of the latest
+> code is always appreciated.
+> 
+> Thanks,
+> Jon
+> 
+> 
+>>          { 0, }
+>>   };
+>>   MODULE_DEVICE_TABLE(pci, amd_ntb_pci_tbl);
+>> diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.h b/drivers/ntb/hw/amd/ntb_hw_amd.h
+>> index 139a307..39e5d18 100644
+>> --- a/drivers/ntb/hw/amd/ntb_hw_amd.h
+>> +++ b/drivers/ntb/hw/amd/ntb_hw_amd.h
+>> @@ -53,7 +53,6 @@
+>>   #include <linux/pci.h>
+>>
+>>   #define AMD_LINK_HB_TIMEOUT    msecs_to_jiffies(1000)
+>> -#define AMD_LINK_STATUS_OFFSET 0x68
+>>   #define NTB_LIN_STA_ACTIVE_BIT 0x00000002
+>>   #define NTB_LNK_STA_SPEED_MASK 0x000F0000
+>>   #define NTB_LNK_STA_WIDTH_MASK 0x03F00000
+>> --
+>> 2.7.4
+>>
+>> --
+>> You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+>> To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+>> To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1573119336-107732-1-git-send-email-linjiasen%40hygon.cn.
 
 Thanks,
-Jon
 
-> Kishon Vijay Abraham I (21):
->   dt-bindings: PCI: Endpoint: Add DT bindings for PCI EPF Bus
->   dt-bindings: PCI: Endpoint: Add DT bindings for PCI EPF Device
->   dt-bindings: PCI: Endpoint: Add DT bindings for PCI EPF NTB Device
->   Documentation: PCI: Add specification for the *PCI NTB* function
->     device
->   PCI: endpoint: Add API to get reference to EPC from device-tree
->   PCI: endpoint: Add API to create EPF device from device tree
->   PCI: endpoint: Add "pci-epf-bus" driver
->   PCI: endpoint: Make *_get_first_free_bar() take into account 64 bit
->     BAR
->   PCI: endpoint: Add helper API to get the 'next' unreserved BAR
->   PCI: endpoint: Make pci_epf_driver ops optional
->   PCI: endpoint: Add helper API to populate header with values from DT
->   PCI: endpoint: Add support to associate secondary EPC with EPF
->   PCI: endpoint: Add pci_epc_ops to map MSI irq
->   PCI: cadence: Implement ->msi_map_irq() ops
->   PCI: endpoint: Remove unused pci_epf_match_device()
->   PCI: endpoint: Fix missing mutex_unlock in error case
->   PCI: endpoint: *_free_bar() to return error codes on failure
->   PCI: endpoint: Add EP function driver to provide NTB functionality
->   PCI: Add TI J721E device to pci ids
->   NTB: Add support for EPF PCI-Express Non-Transparent Bridge
->   NTB: tool: Enable the NTB/PCIe link on the local or remote side of
->     bridge
->
->  Documentation/PCI/endpoint/pci-test-ntb.txt   |  315 +++++
->  .../bindings/pci/endpoint/pci-epf-bus.txt     |   27 +
->  .../bindings/pci/endpoint/pci-epf-ntb.txt     |   31 +
->  .../bindings/pci/endpoint/pci-epf.txt         |   28 +
->  drivers/ntb/hw/Kconfig                        |    1 +
->  drivers/ntb/hw/Makefile                       |    1 +
->  drivers/ntb/hw/epf/Kconfig                    |    5 +
->  drivers/ntb/hw/epf/Makefile                   |    1 +
->  drivers/ntb/hw/epf/ntb_hw_epf.c               |  648 ++++++++++
->  drivers/ntb/test/ntb_tool.c                   |    1 +
->  drivers/pci/controller/pcie-cadence-ep.c      |   59 +
->  drivers/pci/endpoint/Makefile                 |    3 +-
->  drivers/pci/endpoint/functions/Kconfig        |   12 +
->  drivers/pci/endpoint/functions/Makefile       |    1 +
->  drivers/pci/endpoint/functions/pci-epf-ntb.c  | 1143 +++++++++++++++++
->  drivers/pci/endpoint/functions/pci-epf-test.c |   12 +-
->  drivers/pci/endpoint/pci-ep-cfs.c             |    6 +-
->  drivers/pci/endpoint/pci-epc-core.c           |  221 +++-
->  drivers/pci/endpoint/pci-epf-bus.c            |   54 +
->  drivers/pci/endpoint/pci-epf-core.c           |  133 +-
->  include/linux/pci-epc.h                       |   42 +-
->  include/linux/pci-epf.h                       |   35 +-
->  include/linux/pci_ids.h                       |    1 +
->  23 files changed, 2715 insertions(+), 65 deletions(-)
->  create mode 100644 Documentation/PCI/endpoint/pci-test-ntb.txt
->  create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.txt
->  create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.txt
->  create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf.txt
->  create mode 100644 drivers/ntb/hw/epf/Kconfig
->  create mode 100644 drivers/ntb/hw/epf/Makefile
->  create mode 100644 drivers/ntb/hw/epf/ntb_hw_epf.c
->  create mode 100644 drivers/pci/endpoint/functions/pci-epf-ntb.c
->  create mode 100644 drivers/pci/endpoint/pci-epf-bus.c
->
-> --
-> 2.17.1
->
-> --
-> You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20190926112933.8922-1-kishon%40ti.com.
+Jiasen Lin
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAPoiz9x1LsXEeK2n98%2B4Rm9oTCiowrMUO5d6PPtc4SQG3mP9uA%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/933f74c7-7249-618c-13dc-9e4e47ad75d7%40hygon.cn.
