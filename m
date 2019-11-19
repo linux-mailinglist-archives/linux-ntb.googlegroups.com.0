@@ -1,134 +1,123 @@
-Return-Path: <linux-ntb+bncBAABB7HAZHXAKGQEM4JX6HY@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBC6UZXXAKGQEYE7VJ7A@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ot1-x338.google.com (mail-ot1-x338.google.com [IPv6:2607:f8b0:4864:20::338])
-	by mail.lfdr.de (Postfix) with ESMTPS id F07D3100243
-	for <lists+linux-ntb@lfdr.de>; Mon, 18 Nov 2019 11:20:47 +0100 (CET)
-Received: by mail-ot1-x338.google.com with SMTP id h15sf9866814otr.11
-        for <lists+linux-ntb@lfdr.de>; Mon, 18 Nov 2019 02:20:47 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1574072446; cv=pass;
+Received: from mail-pg1-x540.google.com (mail-pg1-x540.google.com [IPv6:2607:f8b0:4864:20::540])
+	by mail.lfdr.de (Postfix) with ESMTPS id 12A6B101254
+	for <lists+linux-ntb@lfdr.de>; Tue, 19 Nov 2019 05:05:33 +0100 (CET)
+Received: by mail-pg1-x540.google.com with SMTP id k7sf14789050pgq.10
+        for <lists+linux-ntb@lfdr.de>; Mon, 18 Nov 2019 20:05:32 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1574136331; cv=pass;
         d=google.com; s=arc-20160816;
-        b=wwDWfmbFe9JhNuHIdbfUGbeoCik5dUjPY2d8rWtm+R0q+JnViY7rRni2kCpEW1+EMy
-         LBTQszb8icxTe+QaELrw2NLpgDJDm5d+qB8uMkg4FEw9gf9VTuivytuHPODPiVZL8B0e
-         U4dalCN7NdQbufB8s+46Z5oElj6pDJ3XD7zMgFfbhbtfCt1uVKycpUjT5TNGWj+uHy/g
-         EqmnSXOBguOU6syaWbzd5nrl+iXdWQAXeEozI9fJB69HYQkoNGy+qCKMpdOnh0BbU+bA
-         Eyy1+iyeEne0V5ynbHbxoHONWA2+luW34d8ZolZKOONjLH7eirrgLJOAFHerIDH4x3w5
-         1ymA==
+        b=dxFOAnnC6HKEfWqBSeeZdjtZc+H8JTsIqO6J5ubP+cnP0PwKw3ia0UzbmpKpKeRcWB
+         ooCkeGalpwMrHJ8tDyecIbMaDQ2tosXw3AfEeuJcQWIw5ke+FpxdG3e0EnthS+lkVuit
+         qgZao5s4Zs/bKCbWNBGS8IB9BT0Mn7y1dMdlZ+vzisyGH8V4RBBp2zsb4tkr+XFWTEpM
+         PYwI+V6Xcbha1dZvNMuDLEmfU+eY6ApRED27NfFT/wnNSRIBLP67HhOPZm8WamM0x/ko
+         Z2E5dhqtU89K/N3aWVx5UBENB2RRfyrooq/KdlsMsDyU04TBNgtIOdkjFy/dk7ArfJW0
+         263g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to
-         :subject:sender:dkim-signature;
-        bh=NHEP5RMJ1ebVvaraVVMhq8eFOy83R8NSxefkocmU96Q=;
-        b=YXcC3z6Zl/mCAxgQnoCUoNKW3E2RCNuc9F+30R8+tzWj27PyJkLa5MMkL3r+qND9x7
-         ExNK6yKqxWou4zP8ugAXt2zC9ReFTx2pUUXuB3mq+bPgI2T06Af8Veey3ttoc6tmT3zS
-         11RdsaJivcQFMraAtCOfrpZy+1IJ9RlDCraEaZ5RJR/ryYlw+GbpKflGWPnsUONm9W/m
-         vx3n5nLRvOFMzwAywlunAA8FG60JEPHqyaDxLY5cMKNJTDvQDBRXm5SosHZjUmS+gHBN
-         kg+N/HH8MgCYSsqwF3IENY/5XHUXvr0cQllmmZOYC/tjx2Bw6HSZ5JhWsjL4CpaBOdAR
-         RFGA==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=ubF9M16l4bTjFegvRXucxpc4+WrD0lraZ63EzTTZ8o8=;
+        b=vSGRqj3YStbM2L14d2FW124dK5Xa1f5DBM7b8jQbmvduilq14p83TppTwInbwJ/eot
+         yoNJ+Vpu3AE4czIkC1yVtI/KrfqmOC8+GIMs3ygDwVq7JjdaiTJzkt8WuucrNIdYL0mf
+         TNIqkPBtILJQPcEiC/mPa1tYYwxTJfE1J+8qQMxwjRGUfHPQvq+i7iaFbK0A9AqCgoF/
+         YwFY/ZNbkCVPDj/IFTitmFkEkF9fFl3/UnYC5hF9TllRSDm2fMvV6gcFah4UTlHsB5yj
+         jiglPB+oiXCjHE8Y7dSwx54qEOwOJ21UMTLqWA9IXkc5ksLmLYen7b1jYAl4tieHStmm
+         JyPQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
        spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=NHEP5RMJ1ebVvaraVVMhq8eFOy83R8NSxefkocmU96Q=;
-        b=Kj9ZsXibTDkN0q2xBdo0m5HNaglQVhSAl3s1fL277TE9SfodkwXqoVv5xQxa6+h7QE
-         n5BVS1cSXi+uP0AmWFLkoEff/hAUMBLSfxWk1eXmcX8TXMlUHRnBJN/ySXf6rRsKiQPb
-         FZgH2tx9RJVrfVf0BLfBpUQwVAxqnVy/gj7ZuWUVhi8CSselg4xiv538KL4ofhwxWmfm
-         yrywFlduU/OvVFGTgY89xLruf6DREE4QxaYA32aGu/UEuk4m7xKqmivz3GV+5Rl4vtwn
-         qrFqfpEs3O7HE3fCgWooG3FrWcsedbQ6DeveFiMGCbA0AO05Yp3pBHAMqHhYedmmZYZd
-         FiNA==
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=ubF9M16l4bTjFegvRXucxpc4+WrD0lraZ63EzTTZ8o8=;
+        b=VMLes631F5U2KT+puf6br3EfbMct9GVw+F5+qw5YICpqWx1rlqEJ5U2b0uTY569Vn4
+         pVliMdqE/PX49taYf8pBJ4mtxA3BPGERNOZJFBcNyASSHyVT7U/X5HJlLJQ6mmUzgwzv
+         HcfSNa6gDJDO+/yQbMsqBD16J3El410e8ZGYtgRYSZzO9FG3rno0aGeCR2DFHlarrpZS
+         TF8NbtFW9dCtS1Cu4UOiDb3oTQXp/AlQ39bfekw1gslYbTsaQrNmxZh4vNGhEVIpvT4D
+         OiourJoulHYBEGAV/GG1yWHsk1hxHYBYk3PlIWKu18hegEVPpnB9lMmtdcj9D5ALTDF7
+         KD+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=NHEP5RMJ1ebVvaraVVMhq8eFOy83R8NSxefkocmU96Q=;
-        b=gMHqWLr/xam/HGvKDKdxxjv08JOisv9UEmDEeGeULdkbckyiWLVXQroItvUy/UfCDo
-         8h0qQ/YdszzM0nlTsx7VmycK2JnAcuLkcQHPOX/MHYAy0apX4ZyRDcWjBIiYaxRQeGDn
-         BpYSTUo3nKHG1ChHJr0akI1lCj836ss460Wtifdrppk4d+izFEMnYhqB20QisZnC1GrR
-         YwZuuIWnVHWT6syZP2DXp3NpNfZ+EQYO1QCRmNKRr+SmxdJgdwYWvNGXcfOtmtag16ZW
-         4vwzRnYlFPJDfQ5dGJdzSjKJ2P4/YyIE9dD6diWAecxOnBpWb9MkMTRIo5nrQQHY6a2X
-         3LpA==
+        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=ubF9M16l4bTjFegvRXucxpc4+WrD0lraZ63EzTTZ8o8=;
+        b=pCn53PbAakauV9DMHH4vePsNB1o+CEqW6g0fO6k9qKVK0MCHA2WXWM2AQGyw6ThO7T
+         CCVv998uod4VpR4W1p8UOYU0h/4+gNaoNG0gJgWL8h6bb2v8MGBvE4ODZO7JhnGfZxXs
+         iMuPr/h4aUJZu95+brS7UTG8mb36GFKlx/KeyrmoDMOupiPc3UjEOmoU0YmsN1gDOyon
+         RhMk1v6fn3hzy3KfbsOy3R8736KRfigKgcOrumhmgnUEeihDa4V91vmlyA8HBNw6s4dy
+         vHs125CCfn2DnSpP91ZrRLVlKFFYaA86/rzul6RsOMbxClEo7po32+gOgAhMzyDnxW15
+         2CRQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAVRcOp4ckHvZnDo94/r8p+AcRvi0Fo+FPnMtw1p4gpv4Sc9UZOl
-	5deFD8MwL/U/9a59ojb1+dA=
-X-Google-Smtp-Source: APXvYqzt99+baMnPnkOX6FsLacT1Dsz2760RNtZ6+NkWBw+6OVZZqkWLvinnoET/RIq5fr5NOuBRFg==
-X-Received: by 2002:a9d:469d:: with SMTP id z29mr18466832ote.309.1574072444452;
-        Mon, 18 Nov 2019 02:20:44 -0800 (PST)
+X-Gm-Message-State: APjAAAXEu2bg5fZ75XZ5e5IKtlpZ+SC9A/CqqNReH/3VbcQb0kWop4Iy
+	jP6Xapo4z1bJdRp/hLX26ng=
+X-Google-Smtp-Source: APXvYqzrhQcXVucgHsrGOxQzd9qmIrzsNbebC3YwUCMlvK3UiY1X503+bFUPhJVS9vamuHmaiu2/fA==
+X-Received: by 2002:a63:25c7:: with SMTP id l190mr3158891pgl.429.1574136331256;
+        Mon, 18 Nov 2019 20:05:31 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6808:2c1:: with SMTP id a1ls4254472oid.5.gmail; Mon, 18
- Nov 2019 02:20:44 -0800 (PST)
-X-Received: by 2002:a05:6808:a0c:: with SMTP id n12mr19845231oij.16.1574072444148;
-        Mon, 18 Nov 2019 02:20:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1574072444; cv=none;
+Received: by 2002:a17:90a:1ae6:: with SMTP id p93ls615999pjp.2.canary-gmail;
+ Mon, 18 Nov 2019 20:05:30 -0800 (PST)
+X-Received: by 2002:a17:90a:bb82:: with SMTP id v2mr3518339pjr.62.1574136330967;
+        Mon, 18 Nov 2019 20:05:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1574136330; cv=none;
         d=google.com; s=arc-20160816;
-        b=epKLFIX+4w267f8ZhxLrrJnv+nbWnPw2ev3ny971oY4JWu6rNBEwyCh56yFUWhXn5V
-         pBMK37GxKUMCvRsn0I9x61hA83msyfSj+P9nY51rI0PkXv9Ah+jgWryJVOva8d76cWzQ
-         /OQdZ05et6KrVkQwE66IFCyWE6rmjn/41RPGte8B81JLNu9Qw3tE3HinOJOigz6pZ15e
-         MV4mp+nLiPe0dXJkrk6YrSMF9APXljVnpq0CCBUhQ0bPyBET3viWVBO/2+wp3/rymJJM
-         VtQAXP8l93dx4ARjBBdmLP+xsBi2pxpm/miG0oBEd05ttrjaLBC3UijGT0Qq3f34ChPx
-         z4CQ==
+        b=MUWwBBlHEgwORiGNugtEC2e+3VcGNMxk8ZRXz9GOpnJIw06Z9u3LD6sobo/Y6VPhaU
+         HdvI6wVZTr9QbPttfd8asphZObMPhRCfo0cNSbX7mD7hdCau8ovjklKs2jY2SEkuGgxO
+         l+FVv8aCzjaEXyAjqPNiIBRPbkXl3rMwvgoXx+NNQqji8KLSjGBeALeuF4ib+t6SG2YM
+         aswoYQL6BL1WKWhjSdqkKX9DGCdeYEdctZS9gfwtKqaNwvBVzAy1DMOutOm7ymVxg2fK
+         UlD2Q8x+WFCkVQtH57CZISvUcSq4zHNAkDgr9pPIFg5vrcK6CKtRmbBtoGVArInHeUb8
+         q1wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=4fFGbbmJSsJDE/UYgH0ePHRqLQ/gGGqveSqqhIRcvrg=;
-        b=ORkJSlQVyJP/Y/S5TGyK2vPHK9NJS9KJnwkCSSJPB8kcRf9xNn3X0RQhdztqfXslYn
-         49ttQoGlvtfpLBNnbYPb8vwvVS8LuR4pD092DOipsCNafTrtbOofXGTdXJMigOCttU46
-         VdGeC+iseu49k9h+bEQNUfIZSr7xVHyG7DbircGalVDsz6IBQF+9yXbYGKxEb5BeZIxX
-         bPQLCM66lM0mUwPdlNyllUhIpiaM6GCDNrn7X2dV0jv8BxzHX3UfVXRsYdDEbI6GlUcD
-         xZX0GiNzuqBqmpN4Xt2jw+zOESaHSFs/eiNt7bUyrm1IQ4shOIbijBuO6yGkt+5E8iq9
-         04tQ==
+        h=mime-version:message-id:date:subject:cc:to:from;
+        bh=31mO7+qt9QYjpyYdb+BG89Gla8eTEqENvCGyYxBI8n8=;
+        b=OBb/ihF0+4U12+po3z+NfVGYUF/K6aF9IJg2CDiVBr+j6JuPjuZrwFNJPV4MmhHJvq
+         ZaXJ3CsPSMWBxBiznKHv2WQhKMwcCohkD5oMi9I1qp69uuthzvNUhmf59WU5qElJQV2M
+         NbJVSV6DbtAq2utSEJIBqXnCaolgIHEc9t17fQOMM42Da5B2S38flCX9LGaWErqmlIyX
+         FFSSovKQGBk2Nso85MiNdgCVT0glMf3QzgpUL/X9WgDprukeznTnxaozFC0nZw5bbTkf
+         XzwebMq0K3ZYsUJfltSkY5EIfMpyUsUdpOE7RHvaUJSkLwkOAM/v4oTdvBm4Y85xGzkV
+         yEJg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
 Received: from spam1.hygon.cn ([110.188.70.11])
-        by gmr-mx.google.com with ESMTPS id 5si562419otu.2.2019.11.18.02.20.42
+        by gmr-mx.google.com with ESMTPS id 62si355550pld.2.2019.11.18.20.05.29
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 18 Nov 2019 02:20:42 -0800 (PST)
+        Mon, 18 Nov 2019 20:05:30 -0800 (PST)
 Received-SPF: permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) client-ip=110.188.70.11;
-Received: from MK-FE.hygon.cn ([172.23.18.61])
-	by spam1.hygon.cn with ESMTP id xAIAKXCl085098;
-	Mon, 18 Nov 2019 18:20:33 +0800 (GMT-8)
+Received: from MK-DB.hygon.cn ([172.23.18.60])
+	by spam1.hygon.cn with ESMTP id xAJ42Tvq043165;
+	Tue, 19 Nov 2019 12:02:29 +0800 (GMT-8)
 	(envelope-from linjiasen@hygon.cn)
 Received: from cncheex01.Hygon.cn ([172.23.18.10])
-	by MK-FE.hygon.cn with ESMTP id xAIAKNwP014116;
-	Mon, 18 Nov 2019 18:20:23 +0800 (GMT-8)
+	by MK-DB.hygon.cn with ESMTP id xAJ42Sc9010582;
+	Tue, 19 Nov 2019 12:02:28 +0800 (GMT-8)
 	(envelope-from linjiasen@hygon.cn)
-Received: from [172.20.21.12] (172.23.18.44) by cncheex01.Hygon.cn
+Received: from ubuntu.localdomain (172.23.18.44) by cncheex01.Hygon.cn
  (172.23.18.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1466.3; Mon, 18 Nov
- 2019 18:20:28 +0800
-Subject: Re: [PATCH] NTB: Fix an error in get link status
-To: Jon Mason <jdmason@kudzu.us>
-CC: "S-k, Shyam-sundar" <Shyam-sundar.S-k@amd.com>,
-        Dave Jiang
-	<dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
-        linux-kernel
-	<linux-kernel@vger.kernel.org>,
-        linux-ntb <linux-ntb@googlegroups.com>, <linjiasen007@gmail.com>
-References: <1573119336-107732-1-git-send-email-linjiasen@hygon.cn>
- <CAPoiz9wAJz=Hqb6Os=9AHHv_NGpZ8uCaAuOC=aUTkASKdfs9WQ@mail.gmail.com>
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1466.3; Tue, 19 Nov
+ 2019 12:02:28 +0800
 From: Jiasen Lin <linjiasen@hygon.cn>
-Message-ID: <933f74c7-7249-618c-13dc-9e4e47ad75d7@hygon.cn>
-Date: Mon, 18 Nov 2019 18:17:38 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.2.2
+To: <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>,
+        <jdmason@kudzu.us>
+CC: <allenbh@gmail.com>, <dave.jiang@intel.com>, <logang@deltatee.com>,
+        <linjiasen@hygon.cn>
+Subject: [PATCH v2] NTB: ntb_perf: Fix address err in perf_copy_chunk
+Date: Mon, 18 Nov 2019 20:02:01 -0800
+Message-ID: <1574136121-7941-1-git-send-email-linjiasen@hygon.cn>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-In-Reply-To: <CAPoiz9wAJz=Hqb6Os=9AHHv_NGpZ8uCaAuOC=aUTkASKdfs9WQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset="UTF-8"
 X-Originating-IP: [172.23.18.44]
-X-ClientProxiedBy: cncheex01.Hygon.cn (172.23.18.10) To cncheex01.Hygon.cn
+X-ClientProxiedBy: cncheex02.Hygon.cn (172.23.18.12) To cncheex01.Hygon.cn
  (172.23.18.10)
-X-MAIL: spam1.hygon.cn xAIAKXCl085098
+X-MAIL: spam1.hygon.cn xAJ42Tvq043165
 X-DNSRBL: 
 X-Original-Sender: linjiasen@hygon.cn
 X-Original-Authentication-Results: gmr-mx.google.com;       spf=permerror
@@ -147,112 +136,190 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+peer->outbuf is a virtual address which is get by ioremap, it can not
+be converted to a physical address by virt_to_page and page_to_phys.
+This conversion will result in DMA error, because the destination address
+which is converted by page_to_phys is invalid.
 
+This patch save the MMIO address of NTB BARx in perf_setup_peer_mw,
+and map the BAR space to DMA address after we assign the DMA channel.
+Then fill the destination address of DMA descriptor with this DMA address
+to guarantee that the address of memory write requests fall into
+memory window of NBT BARx with IOMMU enabled and disabled.
 
-On 2019/11/18 7:00, Jon Mason wrote:
-> On Thu, Nov 7, 2019 at 4:37 AM Jiasen Lin <linjiasen@hygon.cn> wrote:
->>
->> The offset of PCIe Capability Header for AMD and HYGON NTB is 0x64,
->> but the macro which named "AMD_LINK_STATUS_OFFSET" is defined as 0x68.
->> It is offset of Device Capabilities Reg rather than Link Control Reg.
->>
->> This code trigger an error in get link statsus:
->>
->>          cat /sys/kernel/debug/ntb_hw_amd/0000:43:00.1/info
->>                  LNK STA -               0x8fa1
->>                  Link Status -           Up
->>                  Link Speed -            PCI-E Gen 0
->>                  Link Width -            x0
->>
->> This patch use pcie_capability_read_dword to get link status.
->> After fix this issue, we can get link status accurately:
->>
->>          cat /sys/kernel/debug/ntb_hw_amd/0000:43:00.1/info
->>                  LNK STA -               0x11030042
->>                  Link Status -           Up
->>                  Link Speed -            PCI-E Gen 3
->>                  Link Width -            x16
-> 
-> No response from AMD maintainers, but it looks like you are correct.
-> 
-> This needs a "Fixes:" line here.  I took the liberty of adding one to
-> this patch.
-> 
+Changes since v1:
+  * Map NTB BARx MMIO address to DMA address after assign the DMA channel,
+    to ensure the destination address in valid. (per suggestion from Logan)
 
-Thank you for your suggestions. Yes, this patch fix the commit id: 
-a1b3695 ("NTB: Add support for AMD PCI-Express Non-Transparent Bridge").
+Fixes: 5648e56d03fa ("NTB: ntb_perf: Add full multi-port NTB API support")
+Signed-off-by: Jiasen Lin <linjiasen@hygon.cn>
+---
+ drivers/ntb/test/ntb_perf.c | 69 ++++++++++++++++++++++++++++++++++++---------
+ 1 file changed, 56 insertions(+), 13 deletions(-)
 
->> Signed-off-by: Jiasen Lin <linjiasen@hygon.cn>
->> ---
->>   drivers/ntb/hw/amd/ntb_hw_amd.c | 5 +++--
->>   drivers/ntb/hw/amd/ntb_hw_amd.h | 1 -
->>   2 files changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
->> index 156c2a1..ae91105 100644
->> --- a/drivers/ntb/hw/amd/ntb_hw_amd.c
->> +++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
->> @@ -855,8 +855,8 @@ static int amd_poll_link(struct amd_ntb_dev *ndev)
->>
->>          ndev->cntl_sta = reg;
->>
->> -       rc = pci_read_config_dword(ndev->ntb.pdev,
->> -                                  AMD_LINK_STATUS_OFFSET, &stat);
->> +       rc = pcie_capability_read_dword(ndev->ntb.pdev,
->> +                                  PCI_EXP_LNKCTL, &stat);
->>          if (rc)
->>                  return 0;
->>          ndev->lnk_sta = stat;
->> @@ -1139,6 +1139,7 @@ static const struct ntb_dev_data dev_data[] = {
->>   static const struct pci_device_id amd_ntb_pci_tbl[] = {
->>          { PCI_VDEVICE(AMD, 0x145b), (kernel_ulong_t)&dev_data[0] },
->>          { PCI_VDEVICE(AMD, 0x148b), (kernel_ulong_t)&dev_data[1] },
->> +       { PCI_VDEVICE(HYGON, 0x145b), (kernel_ulong_t)&dev_data[0] },
-> 
-> This should be a separate patch.  I took the liberty of splitting it
-> off into a unique patch and attributing it to you.  I've pushed them
-> to the ntb-next branch on
-> https://github.com/jonmason/ntb
->
-Thank you for your comment. We appreciate the time and effort you have 
-spent to split it off, I will test it ASAP.
-
-> Please verify everything looks acceptable to you (given the changes I
-> did above that are attributed to you).  Also, testing of the latest
-> code is always appreciated.
-> 
-> Thanks,
-> Jon
-> 
-> 
->>          { 0, }
->>   };
->>   MODULE_DEVICE_TABLE(pci, amd_ntb_pci_tbl);
->> diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.h b/drivers/ntb/hw/amd/ntb_hw_amd.h
->> index 139a307..39e5d18 100644
->> --- a/drivers/ntb/hw/amd/ntb_hw_amd.h
->> +++ b/drivers/ntb/hw/amd/ntb_hw_amd.h
->> @@ -53,7 +53,6 @@
->>   #include <linux/pci.h>
->>
->>   #define AMD_LINK_HB_TIMEOUT    msecs_to_jiffies(1000)
->> -#define AMD_LINK_STATUS_OFFSET 0x68
->>   #define NTB_LIN_STA_ACTIVE_BIT 0x00000002
->>   #define NTB_LNK_STA_SPEED_MASK 0x000F0000
->>   #define NTB_LNK_STA_WIDTH_MASK 0x03F00000
->> --
->> 2.7.4
->>
->> --
->> You received this message because you are subscribed to the Google Groups "linux-ntb" group.
->> To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
->> To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1573119336-107732-1-git-send-email-linjiasen%40hygon.cn.
-
-Thanks,
-
-Jiasen Lin
+diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
+index e9b7c2d..dfca7e1 100644
+--- a/drivers/ntb/test/ntb_perf.c
++++ b/drivers/ntb/test/ntb_perf.c
+@@ -149,7 +149,8 @@ struct perf_peer {
+ 	u64 outbuf_xlat;
+ 	resource_size_t outbuf_size;
+ 	void __iomem *outbuf;
+-
++	phys_addr_t out_phys_addr;
++	dma_addr_t dma_dst_addr;
+ 	/* Inbound MW params */
+ 	dma_addr_t inbuf_xlat;
+ 	resource_size_t inbuf_size;
+@@ -776,7 +777,8 @@ static void perf_dma_copy_callback(void *data)
+ }
+ 
+ static int perf_copy_chunk(struct perf_thread *pthr,
+-			   void __iomem *dst, void *src, size_t len)
++			   void __iomem *dst, void *src, size_t len,
++			   dma_addr_t dst_dma_addr)
+ {
+ 	struct dma_async_tx_descriptor *tx;
+ 	struct dmaengine_unmap_data *unmap;
+@@ -807,8 +809,7 @@ static int perf_copy_chunk(struct perf_thread *pthr,
+ 	}
+ 	unmap->to_cnt = 1;
+ 
+-	unmap->addr[1] = dma_map_page(dma_dev, virt_to_page(dst),
+-		offset_in_page(dst), len, DMA_FROM_DEVICE);
++	unmap->addr[1] = dst_dma_addr;
+ 	if (dma_mapping_error(dma_dev, unmap->addr[1])) {
+ 		ret = -EIO;
+ 		goto err_free_resource;
+@@ -865,6 +866,7 @@ static int perf_init_test(struct perf_thread *pthr)
+ {
+ 	struct perf_ctx *perf = pthr->perf;
+ 	dma_cap_mask_t dma_mask;
++	struct perf_peer *peer = pthr->perf->test_peer;
+ 
+ 	pthr->src = kmalloc_node(perf->test_peer->outbuf_size, GFP_KERNEL,
+ 				 dev_to_node(&perf->ntb->dev));
+@@ -882,15 +884,33 @@ static int perf_init_test(struct perf_thread *pthr)
+ 	if (!pthr->dma_chan) {
+ 		dev_err(&perf->ntb->dev, "%d: Failed to get DMA channel\n",
+ 			pthr->tidx);
+-		atomic_dec(&perf->tsync);
+-		wake_up(&perf->twait);
+-		kfree(pthr->src);
+-		return -ENODEV;
++		goto err_free;
++	}
++	peer->dma_dst_addr =
++		dma_map_resource(pthr->dma_chan->device->dev,
++				 peer->out_phys_addr, peer->outbuf_size,
++				 DMA_FROM_DEVICE, 0);
++	if (dma_mapping_error(pthr->dma_chan->device->dev,
++			      peer->dma_dst_addr)) {
++		dev_err(pthr->dma_chan->device->dev, "%d: Failed to map DMA addr\n",
++			pthr->tidx);
++		peer->dma_dst_addr = 0;
++		dma_release_channel(pthr->dma_chan);
++		goto err_free;
+ 	}
++	dev_dbg(pthr->dma_chan->device->dev, "%d: Map MMIO %pa to DMA addr %pad\n",
++			pthr->tidx,
++			&peer->out_phys_addr,
++			&peer->dma_dst_addr);
+ 
+ 	atomic_set(&pthr->dma_sync, 0);
+-
+ 	return 0;
++
++err_free:
++	atomic_dec(&perf->tsync);
++	wake_up(&perf->twait);
++	kfree(pthr->src);
++	return -ENODEV;
+ }
+ 
+ static int perf_run_test(struct perf_thread *pthr)
+@@ -901,6 +921,8 @@ static int perf_run_test(struct perf_thread *pthr)
+ 	u64 total_size, chunk_size;
+ 	void *flt_src;
+ 	int ret = 0;
++	dma_addr_t flt_dma_addr;
++	dma_addr_t bnd_dma_addr;
+ 
+ 	total_size = 1ULL << total_order;
+ 	chunk_size = 1ULL << chunk_order;
+@@ -910,11 +932,15 @@ static int perf_run_test(struct perf_thread *pthr)
+ 	bnd_dst = peer->outbuf + peer->outbuf_size;
+ 	flt_dst = peer->outbuf;
+ 
++	flt_dma_addr = peer->dma_dst_addr;
++	bnd_dma_addr = peer->dma_dst_addr + peer->outbuf_size;
++
+ 	pthr->duration = ktime_get();
+ 
+ 	/* Copied field is cleared on test launch stage */
+ 	while (pthr->copied < total_size) {
+-		ret = perf_copy_chunk(pthr, flt_dst, flt_src, chunk_size);
++		ret = perf_copy_chunk(pthr, flt_dst, flt_src, chunk_size,
++				flt_dma_addr);
+ 		if (ret) {
+ 			dev_err(&perf->ntb->dev, "%d: Got error %d on test\n",
+ 				pthr->tidx, ret);
+@@ -925,8 +951,15 @@ static int perf_run_test(struct perf_thread *pthr)
+ 
+ 		flt_dst += chunk_size;
+ 		flt_src += chunk_size;
+-		if (flt_dst >= bnd_dst || flt_dst < peer->outbuf) {
++		flt_dma_addr += chunk_size;
++
++		if (flt_dst >= bnd_dst ||
++		    flt_dst < peer->outbuf ||
++		    flt_dma_addr >= bnd_dma_addr ||
++		    flt_dma_addr < peer->dma_dst_addr) {
++
+ 			flt_dst = peer->outbuf;
++			flt_dma_addr = peer->dma_dst_addr;
+ 			flt_src = pthr->src;
+ 		}
+ 
+@@ -978,8 +1011,13 @@ static void perf_clear_test(struct perf_thread *pthr)
+ 	 * We call it anyway just to be sure of the transfers completion.
+ 	 */
+ 	(void)dmaengine_terminate_sync(pthr->dma_chan);
+-
+-	dma_release_channel(pthr->dma_chan);
++	if (pthr->perf->test_peer->dma_dst_addr)
++		dma_unmap_resource(pthr->dma_chan->device->dev,
++				   pthr->perf->test_peer->dma_dst_addr,
++				   pthr->perf->test_peer->outbuf_size,
++				   DMA_FROM_DEVICE, 0);
++	if (pthr->dma_chan)
++		dma_release_channel(pthr->dma_chan);
+ 
+ no_dma_notify:
+ 	atomic_dec(&perf->tsync);
+@@ -1195,6 +1233,9 @@ static ssize_t perf_dbgfs_read_info(struct file *filep, char __user *ubuf,
+ 			"\tOut buffer addr 0x%pK\n", peer->outbuf);
+ 
+ 		pos += scnprintf(buf + pos, buf_size - pos,
++			"\tOut buff phys addr %pa[p]\n", &peer->out_phys_addr);
++
++		pos += scnprintf(buf + pos, buf_size - pos,
+ 			"\tOut buffer size %pa\n", &peer->outbuf_size);
+ 
+ 		pos += scnprintf(buf + pos, buf_size - pos,
+@@ -1388,6 +1429,8 @@ static int perf_setup_peer_mw(struct perf_peer *peer)
+ 	if (!peer->outbuf)
+ 		return -ENOMEM;
+ 
++	peer->out_phys_addr = phys_addr;
++
+ 	if (max_mw_size && peer->outbuf_size > max_mw_size) {
+ 		peer->outbuf_size = max_mw_size;
+ 		dev_warn(&peer->perf->ntb->dev,
+-- 
+2.7.4
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/933f74c7-7249-618c-13dc-9e4e47ad75d7%40hygon.cn.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1574136121-7941-1-git-send-email-linjiasen%40hygon.cn.
