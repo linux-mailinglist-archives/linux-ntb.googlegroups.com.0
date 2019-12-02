@@ -1,167 +1,68 @@
-Return-Path: <linux-ntb+bncBAABBB756TXAKGQE5WAC4LY@googlegroups.com>
+Return-Path: <linux-ntb+bncBC2JZAF5RIIBB3OYSTXQKGQEWZ5AXGQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63e.google.com (mail-pl1-x63e.google.com [IPv6:2607:f8b0:4864:20::63e])
-	by mail.lfdr.de (Postfix) with ESMTPS id AF06D10A0EC
-	for <lists+linux-ntb@lfdr.de>; Tue, 26 Nov 2019 16:02:32 +0100 (CET)
-Received: by mail-pl1-x63e.google.com with SMTP id a11sf7962714plp.21
-        for <lists+linux-ntb@lfdr.de>; Tue, 26 Nov 2019 07:02:32 -0800 (PST)
-ARC-Seal: i=3; a=rsa-sha256; t=1574780551; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=ahac+JR3tlFNkeXgKmkR7e2MH5lJdN2yIuVCMzNvWCXGk2xMbBjJswHeqpCFnIYGxy
-         4DWkFEtY7yCDJPeaWlvgHbC5OMhgyptoF47zP/RvCQGNXE/pLB5FWDdEGvlYINMKPRuO
-         MnmPd5q9D2aQkaTjG2kC30yMZ0DkKntDIYedcx/MZ+U1zuAX9jAsg6eUwRIFjS7IF0+s
-         Epvhrf1DPhWh1KMb3+2j4iBPsQlUSlgQAPh/ijBSNki2I/z5IxiE0EsOghzJCngs72hF
-         atH45Ehf0IuGXaQZFX/jBn5rxI18XmTf9QC3XUrGK9pbABMONai0Q9ZxbuBFJVQpuUeV
-         m0cg==
-ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :subject:cc:to:from:sender:dkim-signature;
-        bh=LeXwHh0TrMiaSSFrBM/uRfLgkH1NgnUCMK6FC0m3Uoc=;
-        b=GELy0dwP1He2ByGgiDHwtNcorWQMYiaV2q1Rne0T500NRae0iH/TDqIff1AYSht8QQ
-         8wl5pebPu3C+7FW98O+y1tdMaC5z6Du2ZDpMgG4rl6XgzAj9tYanfIQEWnGUvzQTYXH2
-         utC6sylL0Vvg+bOis9YzIecWnBk8T/MWpr97nHAMfy0mlDENvFfzg3JsxkUjaL5wakBB
-         IJ4id/QlOMMaHXBPr7uHT+rlytsUncL2bB2hdu3d3uY/nc1Poknaa5N95+XhEY9Rvl7G
-         Xrx7HHFZX7IGszAejaF7/XNmjZzWRNQfjPLVjWpC9z37GFYLH+TNwm6XUeN2o6g7m1Te
-         lYvw==
-ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=hr+cdaiU;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.72.46 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+Received: from mail-yb1-xb40.google.com (mail-yb1-xb40.google.com [IPv6:2607:f8b0:4864:20::b40])
+	by mail.lfdr.de (Postfix) with ESMTPS id BDEE010EC3C
+	for <lists+linux-ntb@lfdr.de>; Mon,  2 Dec 2019 16:23:26 +0100 (CET)
+Received: by mail-yb1-xb40.google.com with SMTP id n80sf10426030ybf.18
+        for <lists+linux-ntb@lfdr.de>; Mon, 02 Dec 2019 07:23:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:mime-version
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:date:from:to:message-id:subject:mime-version
+         :x-original-sender:precedence:mailing-list:list-id:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=B5BZNwYX8+S4NF0oEapO8Ymi00ifQqQPulf1qbGGd8c=;
+        b=r/sggV5+Rw1DR29RdVqOQ3+Uy1mA7e4AY+Uh1tkmRhsrdcWl61Er28cgdGu9Bv8wEi
+         ikC99PLtYQX1RkIMUPE9Dn+DCUOaE0h5WMWP9sNxkehh8KuEvh1AtC8XhFZ3c+MUfJNI
+         W1LHOZAIMtSIctaB8j6D141d3u0IAjp6S3OqHJShxTTM0fle5L/WUj3fScIZVRX5gMBq
+         g8A7LvGfN4316aAYXY2fYcAACuEwqN0tpn2U7dsOM3foNd3oB/qrXJ90jeAc/+FgUfDP
+         6eDLSuY+6+tc2yfrdRYlBG0b9JJr/K3gDB2auLWUUhC06I+X9TW7gelfgVXFPAplYbZr
+         952A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:message-id:subject:mime-version:x-original-sender
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=LeXwHh0TrMiaSSFrBM/uRfLgkH1NgnUCMK6FC0m3Uoc=;
-        b=o+dd5ZzI/eG4W0f9m9s43G5yRxD3vstTSa9krelOgcvKXidjfX3lAiTeqtNPJsrfFe
-         apTtSTQXMd7N5DqQs7VkpHNUuDipFUc3JbZ85oaca7CQ15wWlG+HKM3NpKyaXIOviF0n
-         56gu0vVBZVVIT1OzBKkfscTzT4ks4AT/e6fvUW6NB9DVrMXF6UZME8VNDu+ahOxNnaB9
-         JQSwtaMIDr42gRJG+lFmsNlHCPY7rh/7pBcXIXMtcaaoul4IL/v3jIjuVs+yv/kRzYjp
-         ATyVh+WnN77PiIKR26R0N8liNye7h8PbYHguIo5CCkpLU/ZZ70bjwkXwarjlmLBwBwiK
-         aPPg==
+        bh=B5BZNwYX8+S4NF0oEapO8Ymi00ifQqQPulf1qbGGd8c=;
+        b=gnRJ75L4k9QcGpgqJ7gnVGcApBVQL28jyjMyR4Nz6rnq0b7azgi4jjnRRc8uELfY/a
+         zdG/AMnt7KcAeIBgMfBIRu1MHio7i21V+cCg+qeb1BV0fKc6Vxigt5YTRtaWisiWaS9f
+         hVKzZuUht/7yZdSHsQ4P5lG5my3+72LpDuQsnUxbbsFdCs//em4HwKEnSl0epSmNfttS
+         XSQIJ6KchM3c+/IdBnY0UmCKLBKSugwWrWjmCNLu0aMiwoEhL6yyZmwoEfQxnnSxlXcc
+         KIUoBn198VQDybe9QkR/4u4sYi3tpih8s5L9XyWR0wfMk+CCOgEOmOIrQhVeou7K+/5u
+         zSEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=LeXwHh0TrMiaSSFrBM/uRfLgkH1NgnUCMK6FC0m3Uoc=;
-        b=mW3599b5gNL7Lg1Cmjz29avRZxDTOQK+Lhl7nHIbsvJUMwO0a95vnyUQpffGUkrSiT
-         taJk1WwRq/hTwyYjENmWfUGO3qo2K+f3x1E8q19jklzyAqjHV0gGZ2xkSUoF+ZFFAMGw
-         q0GOGYjd1v/3HY0j9Z6ZZc0mOAI2w2YQJIjMk0lM2sQ5RF51aYhzL8wmSkqLMie5mz4b
-         0BlkQraRqfHo+1ylFxSzkD4C5vXHRZwvU/UDowPTkGa7LY62GC0fQ8dTqCpQDaDcKtQP
-         o4FQ23VlcRhSTGGJNGHa+hSGP5ivwv7E9Nxl0L3xXwwqC2xIxHG3FBz0zwDS/RHuxtXl
-         u6kg==
+        h=sender:x-gm-message-state:date:from:to:message-id:subject
+         :mime-version:x-original-sender:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=B5BZNwYX8+S4NF0oEapO8Ymi00ifQqQPulf1qbGGd8c=;
+        b=OXSZwdaNnFdxr4j/5uwZyqVZWrdi77YMOVjP03U4fCW/4nsFvHQ7w8h19CYtIYS+15
+         Z833lSGUdCHhsogYusV7f/MgKjZ03iqgbgdXM8hB3skLx67qlNTAh/r6QangnJhQ7RQx
+         5kwNI0jaIC8RNo/qCqUxRPthIjWe+Pfnd4hePKnkz3HYd4uFhE8dsPtxlODOePpDyQdH
+         Cx+afbNsSh1fXWy3VK/cH+eNckhbfD1DlX0cjO7OcRT57R/1SPw6SowXp53kSnpTSKLw
+         3mrPugHGf2Xz6DlBteGsi6kWwCvlveyvF8gH1wCmXYsDPRbX5aWCBshMQIctS71btw+A
+         8x1g==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUyyNty6NjY8O9NMwy7l5URslE71W7MtfGLg7zPx/RxV0gOBTbf
-	bKPkAwsgEhMkYkN0hG0oKak=
-X-Google-Smtp-Source: APXvYqzAh5w10Ag7Z0s32lqQZkGX+uF28i5LngF7Hfh/KuKoiIs6/baRorf/w9q12pnK6SAIVC159w==
-X-Received: by 2002:a17:90a:8995:: with SMTP id v21mr7562770pjn.109.1574780551298;
-        Tue, 26 Nov 2019 07:02:31 -0800 (PST)
+X-Gm-Message-State: APjAAAUbNcEqojU7d5NGw/4DZd4pxvXklEfZweHDpavbPggnqWG9QIzS
+	npSTyzk8CoFqRiFbuNJjLYU=
+X-Google-Smtp-Source: APXvYqyrIUtbnl2RmyJ0G4dzatDJfRfFXE/RdjGFI4iW8J5bJD/lsXzN136zn7EKZJ3X51gxXdvmjg==
+X-Received: by 2002:a0d:e10b:: with SMTP id k11mr8222318ywe.105.1575300205336;
+        Mon, 02 Dec 2019 07:23:25 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:90a:2e08:: with SMTP id q8ls948462pjd.0.gmail; Tue, 26
- Nov 2019 07:02:30 -0800 (PST)
-X-Received: by 2002:a17:902:8a8e:: with SMTP id p14mr9536033plo.72.1574780550876;
-        Tue, 26 Nov 2019 07:02:30 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1574780550; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=D3up0EU5Qwjpy5gF3LXSFy0Dz2vGTP/ofKWRqmf2+Zt43Rztu3Qk0tgx3I9pd6cmgf
-         p7Hwu2hWq+VYK/fbybAcD8dgzIv3jO/k5Qm+NctHfLgtt5fbOPDvUtIy7oFAAnpyKG0R
-         uczELiiVAGljlO8Cz63y3yxiM+fC70JJbJAi4uvOhc2XitEcMPhmorgcn0ufvMrCfE7U
-         Xu2wRlZU/uVJmORATBakBtxfpOx3ptHUxeDbR4njRW0d33dfAuLM9r5TEz0Z6dHceI/x
-         llEMuIycscDosyGNQMm1WNNH4z86GHiEWu2YXdbw5jeT9RvXzrQk5lzs4x0X+BWMkE9O
-         sEUA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=Ybb6ak0lL/TnI7k8HEVFxKgIOsXWvEhizwQp4rOuq68=;
-        b=IDACk1zjJEJjkWCAOhVQf4py3NfgwF7CSB+rFaG0gSfYIA+DFxSFWc0sh6BTwhJw6l
-         pN0OvRbv3hRW8xNeLT18Mhg+wADI9udze+mAxersqbCdVY2yt/mLMytZZEbWfsJRJgCJ
-         YxmjkfhWCbxZ47A4/8GYCv8oJ+t1FAlEkGC0QdzbGN20Edk8qiicnJTeHh9CFVzFITHw
-         0flMllqLO439jjbr/wQjnJ2Ujk9fcxO04EQtwLjtabAyS4f0tEmdgKwkI0XB7uPN4tNT
-         Zb5fc3z1IdD/OnyMb5OwiLLn8kcIBcE2t8AbnqWxGr/PaCAHBXAfPkSXYkN16kB2QoGm
-         W/UA==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=hr+cdaiU;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.72.46 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
-Received: from NAM05-CO1-obe.outbound.protection.outlook.com (mail-eopbgr720046.outbound.protection.outlook.com. [40.107.72.46])
-        by gmr-mx.google.com with ESMTPS id m11si63086pjb.0.2019.11.26.07.02.30
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 26 Nov 2019 07:02:30 -0800 (PST)
-Received-SPF: neutral (google.com: 40.107.72.46 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) client-ip=40.107.72.46;
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=imGfv7f/YVQS/7A2u4mDLcMhXYHkxg4K3XceZlUpp3ZraMhC7h6scPHJov9SeT6/40dInbLPSDjyFWtwOhBl9vaK3XMi/9ytRjRYEjJfBa++TYeQCi+LHhtSjp2Dl7pfTysmQP11Nx6jsr/H5hHw+pKlF3zhSt8udcNzhLnmRpVY9YWa3bt7qt+bY7fU/ocy4/xbSmpB/SrXQ1QHh2QQ5T2NahgqzjR3Yjvy8ng0nPE+0t85OmLWp3k0MczFG7XI/O02sFE1ZozXBZdcZ5z4FCmkzhRj2BeWPkECt7W0kFduHVshHvZStgISHtXI2aKHnE6lcBk3Ttt9WPd5BUBVAA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ybb6ak0lL/TnI7k8HEVFxKgIOsXWvEhizwQp4rOuq68=;
- b=l/i1JCP6w1j7FeBps3m9aI0tervL9RqmS63t2itUNkOr79WoFLifYAiaV09TRKTtAsc7dwCV9BvCF+YRrwr946yelR0uB6dDbAcdr6e14UhhI4/57/fVG7JXCSn3JPh7xmjrXJxZ1CMzC4bE4xKulWEphFujs2D/ec5/Djs/GkH0JWtAHhz5y++Tzmjm08e4c+5nayc9d11tUVxm8QF9rWveH8irHeajvFOvbuiaRzoD7EBhuAUlgl+DR/hk5rXsiHGwbsmmB/MWdfCK2ReuIszkAcwlFi4BwkZ40dxgm5elQI+e29QmcIb2dZJBLh3JtOlLBq6LLlUngnXg+faSkg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from MN2PR12MB3455.namprd12.prod.outlook.com (20.178.244.22) by
- MN2PR12MB3119.namprd12.prod.outlook.com (20.178.242.146) with Microsoft SMTP
- Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2495.18; Tue, 26 Nov 2019 15:02:29 +0000
-Received: from MN2PR12MB3455.namprd12.prod.outlook.com
- ([fe80::b927:9d83:f11:941b]) by MN2PR12MB3455.namprd12.prod.outlook.com
- ([fe80::b927:9d83:f11:941b%6]) with mapi id 15.20.2474.023; Tue, 26 Nov 2019
- 15:02:28 +0000
-From: Sanjay R Mehta <Sanju.Mehta@amd.com>
-To: Shyam-sundar.S-k@amd.com,
-	linjiasen@hygon.cn,
-	arindam.nath@amd.com,
-	jdmason@kudzu.us,
-	dave.jiang@intel.com,
-	allenbh@gmail.com
-Cc: linux-ntb@googlegroups.com,
-	linux-kernel@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>
-Subject: [PATCH] NTB: Fix access to link status and control register
-Date: Tue, 26 Nov 2019 09:01:16 -0600
-Message-Id: <1574780476-4423-1-git-send-email-Sanju.Mehta@amd.com>
-X-Mailer: git-send-email 2.7.4
-Content-Type: text/plain; charset="UTF-8"
-X-ClientProxiedBy: MA1PR01CA0103.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:1::19) To MN2PR12MB3455.namprd12.prod.outlook.com
- (2603:10b6:208:d0::22)
+Received: by 2002:a81:3dc7:: with SMTP id k190ls5766205ywa.8.gmail; Mon, 02
+ Dec 2019 07:23:25 -0800 (PST)
+X-Received: by 2002:a81:7606:: with SMTP id r6mr23157068ywc.418.1575300204598;
+        Mon, 02 Dec 2019 07:23:24 -0800 (PST)
+Date: Mon, 2 Dec 2019 07:23:23 -0800 (PST)
+From: lravich@gmail.com
+To: linux-ntb <linux-ntb@googlegroups.com>
+Message-Id: <e71c7a5d-ad80-46c4-b76c-7a6fba4fe666@googlegroups.com>
+Subject: Physical continues memory for NTB
 MIME-Version: 1.0
-X-Mailer: git-send-email 2.7.4
-X-Originating-IP: [165.204.156.251]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: b7bcbdb1-6fca-47fc-68d5-08d77281a7c7
-X-MS-TrafficTypeDiagnostic: MN2PR12MB3119:|MN2PR12MB3119:|MN2PR12MB3119:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MN2PR12MB3119E3C933D8979776347BAAE5450@MN2PR12MB3119.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:7219;
-X-Forefront-PRVS: 0233768B38
-X-Forefront-Antispam-Report: SFV:NSPM;SFS:(10009020)(4636009)(39860400002)(136003)(366004)(376002)(346002)(396003)(199004)(189003)(186003)(5660300002)(66556008)(26005)(66476007)(48376002)(66946007)(50466002)(14454004)(386003)(6506007)(51416003)(52116002)(478600001)(6666004)(99286004)(305945005)(7736002)(16586007)(316002)(2616005)(81156014)(86362001)(66066001)(8936002)(50226002)(6512007)(47776003)(6116002)(4326008)(3846002)(6486002)(2906002)(36756003)(6436002)(25786009)(8676002)(81166006);DIR:OUT;SFP:1101;SCL:1;SRVR:MN2PR12MB3119;H:MN2PR12MB3455.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
-Received-SPF: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Fz8jzWTL8IlYLnTDQP51i0t+0LMkGpKAvY/ZbNHS8Gn3S311jDFjqSqTRqHLSVn6cVscsfSOdtnEUPtG4vF69gTIFlUcqbJgbtr4m4nPsDzi0up8+m0Ig8/VYE4YNjxmWKqgIzXSBSaNjYu7ZZxFWoiMlbD4WhTrceOTK/BVml0BvCh+V+21xH/HsD0AyWV9GLlBazBnCFHQvj0g6ICMPfmYlGBxpgiu8QIaWZcosu4SrCd02yeaoAaA1UbzXl40qhRHlZCQy0eiuSwhoBYRMtVEmP/eD+WQkmYaQjL1xaGerz6gYWW+NdfPCEjBagJroUGeQdhODPTrzJSO2NaQhK+mY6OLMUgHDlwd0hEiHOYhaIsxnaszCIfc7gzT26TsZfTr2icCdbT73ninbmgSuIp2QKixSf4EC15Is+zCFQFivsUWIFAIYIqffHvvXmIc
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b7bcbdb1-6fca-47fc-68d5-08d77281a7c7
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Nov 2019 15:02:28.9454
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3kBnLU213OxhIstOlDyV/nB0gjmnS9SYpOPgdLs1v0fmVnkzswXMfaejGXeWTd3SDnboE4fJmE43e+HYuWHeKw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3119
-X-Original-Sender: sanju.mehta@amd.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com
- header.b=hr+cdaiU;       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass
- dkdomain=amd.com dmarc=pass fromdomain=amd.com);       spf=neutral
- (google.com: 40.107.72.46 is neither permitted nor denied by best guess
- record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_4163_1075273769.1575300203965"
+X-Original-Sender: lravich@gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -174,90 +75,93 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-From: Sanjay R Mehta <sanju.mehta@amd.com>
+------=_Part_4163_1075273769.1575300203965
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_4164_479213502.1575300203965"
 
-The design of AMD NTB implementation is such that
-the NTB secondary endpoint is behind a combination
-of Upstream Switch (SWUS) and a Downstream Switch
-(SWDS). The link training happens on the SWUS and
-not on the secondary endpoint. So to correctly
-return the link status on the NTB secondary, we
-need to read the link status of the SWUS.
+------=_Part_4164_479213502.1575300203965
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Jiasen Lin <linjiasen@hygon.cn>
-Signed-off-by: Arindam Nath <arindam.nath@amd.com>
-Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
----
- drivers/ntb/hw/amd/ntb_hw_amd.c | 45 +++++++++++++++++++++++++++++++++++++----
- 1 file changed, 41 insertions(+), 4 deletions(-)
+Hi guys , 
 
-diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
-index ae91105..758f748 100644
---- a/drivers/ntb/hw/amd/ntb_hw_amd.c
-+++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
-@@ -842,6 +842,9 @@ static inline void ndev_init_struct(struct amd_ntb_dev *ndev,
- static int amd_poll_link(struct amd_ntb_dev *ndev)
- {
- 	void __iomem *mmio = ndev->peer_mmio;
-+	struct pci_dev *pdev = NULL;
-+	struct pci_dev *pci_swds = NULL;
-+	struct pci_dev *pci_swus = NULL;
- 	u32 reg, stat;
- 	int rc;
- 
-@@ -855,10 +858,44 @@ static int amd_poll_link(struct amd_ntb_dev *ndev)
- 
- 	ndev->cntl_sta = reg;
- 
--	rc = pcie_capability_read_dword(ndev->ntb.pdev,
--				   PCI_EXP_LNKCTL, &stat);
--	if (rc)
--		return 0;
-+	if (ndev->ntb.topo == NTB_TOPO_SEC) {
-+		/*
-+		 * Locate the pointer to Downstream Switch for
-+		 * this device
-+		 */
-+		pci_swds = pci_upstream_bridge(ndev->ntb.pdev);
-+		if (pci_swds) {
-+			/*
-+			 * Locate the pointer to Upstream Switch for
-+			 * this device
-+			 */
-+			pci_swus = pci_upstream_bridge(pci_swds);
-+			if (pci_swus) {
-+				/*
-+				 * Read the PCIe Link Control and
-+				 * Status register
-+				 */
-+				rc = pcie_capability_read_dword(pci_swus,
-+						PCI_EXP_LNKCTL, &stat);
-+				if (rc)
-+					return 0;
-+			} else {
-+				return 0;
-+			}
-+		} else {
-+			return 0;
-+		}
-+	} else if (ndev->ntb.topo == NTB_TOPO_PRI) {
-+		/*
-+		 * For NTB primary, we simply read the Link Status and control
-+		 * register of the NTB device itself.
-+		 */
-+		pdev = ndev->ntb.pdev;
-+		rc = pcie_capability_read_dword(pdev, PCI_EXP_LNKCTL, &stat);
-+		if (rc)
-+			return 0;
-+	}
-+
- 	ndev->lnk_sta = stat;
- 
- 	return 1;
--- 
-2.7.4
+I would like to get your opinion regarding NTB memory windows usage in a 
+production , 
+most of my experience is on Intel Skylake NTB which is limited to 2 NTB 
+memory windows and has hard  restrictions
+
+the naive way to use NTB is to set translate windows to all the physical 
+memory rage, this way entire physical memory will be exposed to peer node , 
+call me a paranoid but I not feeling this is the way to go , 
+the other way is to expose only relevant part of memory  but such memory 
+should be physical continues memory  (trying to avoid going to IOMMU 
+direction) to get such physical continues memory I cant use 
+kmalloc  or other slob friends because they are limited in max size and 
+anyway the chance to get such a big chunk after init is low, so the only 
+way I see is to reserve the memory on kernel init , 
+
+currently known to me technics to go this way:
+1) "out of kernel memory" (memmap boot parameter) , this is the easiest way 
+to go but we getting out of kernel memory , which has its disadvantages ex: 
+there is many flows in kernel based on pining memory with get_user_pages 
+which will fail with  "out of kernel memory" 
+2)  CMA -  this feature support only generic memory region allocation with 
+boot parameters  which will be shared by all dma allocs in kernel (at least 
+for Intel) , anyway looks like overkill for my simple requirements.
+
+love to hear your opinion guys , 
+
+Thanks
+Leonid 
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1574780476-4423-1-git-send-email-Sanju.Mehta%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6fba4fe666%40googlegroups.com.
+
+------=_Part_4164_479213502.1575300203965
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi guys ,=C2=A0<div><br></div><div>I would like to get you=
+r opinion regarding NTB memory windows usage in a production ,=C2=A0</div><=
+div>most of my experience is on Intel Skylake NTB which is limited to 2 NTB=
+ memory windows and has hard=C2=A0 <span style=3D"color: rgb(51, 51, 51); f=
+ont-family: Assistant; font-size: 14px;">restrictions</span></div><div><br>=
+</div><div>the naive way to use NTB is to set translate windows to all the =
+physical memory rage, this way entire physical memory will be exposed to pe=
+er node , call me a paranoid but I not feeling this is the way to go ,=C2=
+=A0</div><div>the other way is to expose only relevant part of memory=C2=A0=
+ but such memory should be physical continues memory=C2=A0 (trying to avoid=
+ going to IOMMU direction) to get such physical continues memory I cant use=
+=C2=A0</div><div>kmalloc=C2=A0 or other slob friends because they are limit=
+ed in max size and anyway the chance to get such a big chunk after init is =
+low, so the only way I see is to reserve the memory on kernel init ,=C2=A0<=
+/div><div><br></div><div>currently known to me technics to go this way:</di=
+v><div>1) &quot;out of kernel memory&quot; (memmap boot parameter) , this i=
+s the easiest way to go but we getting out of kernel memory , which has its=
+ disadvantages ex: there is many flows in kernel based on pining memory wit=
+h get_user_pages which will fail with=C2=A0 &quot;out of kernel memory&quot=
+;=C2=A0</div><div>2)=C2=A0 CMA -=C2=A0 this feature support only generic me=
+mory region allocation with boot parameters=C2=A0 which will be shared by a=
+ll dma allocs in kernel (at least for Intel) , anyway looks like overkill f=
+or my simple requirements.</div><div><br></div><div>love to hear your opini=
+on guys ,=C2=A0</div><div><br></div><div>Thanks</div><div>Leonid=C2=A0</div=
+></div>
+
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6fba4fe666%40googlegroups.co=
+m?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid=
+/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6fba4fe666%40googlegroups.com</a>.<br =
+/>
+
+------=_Part_4164_479213502.1575300203965--
+
+------=_Part_4163_1075273769.1575300203965--
