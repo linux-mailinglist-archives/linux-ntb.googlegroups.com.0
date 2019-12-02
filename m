@@ -1,68 +1,128 @@
-Return-Path: <linux-ntb+bncBC2JZAF5RIIBB3OYSTXQKGQEWZ5AXGQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDXYVT6AR4MRBTUBSXXQKGQE5BEASNI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb40.google.com (mail-yb1-xb40.google.com [IPv6:2607:f8b0:4864:20::b40])
-	by mail.lfdr.de (Postfix) with ESMTPS id BDEE010EC3C
-	for <lists+linux-ntb@lfdr.de>; Mon,  2 Dec 2019 16:23:26 +0100 (CET)
-Received: by mail-yb1-xb40.google.com with SMTP id n80sf10426030ybf.18
-        for <lists+linux-ntb@lfdr.de>; Mon, 02 Dec 2019 07:23:26 -0800 (PST)
+Received: from mail-pf1-x43a.google.com (mail-pf1-x43a.google.com [IPv6:2607:f8b0:4864:20::43a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6441A10ED80
+	for <lists+linux-ntb@lfdr.de>; Mon,  2 Dec 2019 17:50:24 +0100 (CET)
+Received: by mail-pf1-x43a.google.com with SMTP id 2sf198940pfx.11
+        for <lists+linux-ntb@lfdr.de>; Mon, 02 Dec 2019 08:50:24 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1575305423; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=aX8GkixHevoQnHl0b4d/r9I20sazq3AS3fMSgrEju0yp+vzm+XAzGxkJHvekRYYktM
+         pgf8oP/mwtpkYY/znwxAhq9sMq5LBFMZ8r5sX+XJYXLYpWO9lzHIQAx4mvJcD2bGC5As
+         HpWrtPjiPW8MMs5HfNp21Eqc0JtPYMdG449l4e8CWiv+0P0dAgzfNCaf9c4mIE6fwke3
+         +TdQjojmb5h6dqRVE9pPAVi3ayxY+nZ/vTqYbfxzQIs9Dt2PEvG5mkvulplK5Fr1qznE
+         j+nvDuLGoXX7WR3R7FM3H0TD4EY77trrnOayxylKbAcJZ4kboBAxQ3Y1qTcVhPG4A9XC
+         YJhg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:sender:dkim-signature;
+        bh=qZnlp8z48Kh/4xY/l3qHisspe/p7nHw/YYvTj0x5YiU=;
+        b=mbWIKMqhYMBUWjv5kA+JGSjpgXqL9btXYYD9PHNfBsJpkbB9aY7IRyb8+ZsHPU685W
+         06NAtvOKYavrXT8bxQniBDbCzo8ErZW8AfXIrVQinycTFR/CjU2cyay3LYlnkefcbjXK
+         elRv4iZEd6N9fpLM4MlL6fVlWLWf68EtZVAClcEuxQnPD7X6Acdr9idJV2/QFSi/YUUK
+         ou2uCh1cDdz3K+hJLCtPIfj9iIzpntzodAxWVkCl1n2ePhuiR51o9UFuIs49O75PXa69
+         3ZtuNtJPUh3LpyKzqBuxImqipD7hFmNsNdZtiYnZo2m2K9KjLNz8gPjWXxhv/XmWY5cr
+         grNg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:message-id:subject:mime-version
-         :x-original-sender:precedence:mailing-list:list-id:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=B5BZNwYX8+S4NF0oEapO8Ymi00ifQqQPulf1qbGGd8c=;
-        b=r/sggV5+Rw1DR29RdVqOQ3+Uy1mA7e4AY+Uh1tkmRhsrdcWl61Er28cgdGu9Bv8wEi
-         ikC99PLtYQX1RkIMUPE9Dn+DCUOaE0h5WMWP9sNxkehh8KuEvh1AtC8XhFZ3c+MUfJNI
-         W1LHOZAIMtSIctaB8j6D141d3u0IAjp6S3OqHJShxTTM0fle5L/WUj3fScIZVRX5gMBq
-         g8A7LvGfN4316aAYXY2fYcAACuEwqN0tpn2U7dsOM3foNd3oB/qrXJ90jeAc/+FgUfDP
-         6eDLSuY+6+tc2yfrdRYlBG0b9JJr/K3gDB2auLWUUhC06I+X9TW7gelfgVXFPAplYbZr
-         952A==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:message-id:subject:mime-version:x-original-sender
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:subject:to:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=B5BZNwYX8+S4NF0oEapO8Ymi00ifQqQPulf1qbGGd8c=;
-        b=gnRJ75L4k9QcGpgqJ7gnVGcApBVQL28jyjMyR4Nz6rnq0b7azgi4jjnRRc8uELfY/a
-         zdG/AMnt7KcAeIBgMfBIRu1MHio7i21V+cCg+qeb1BV0fKc6Vxigt5YTRtaWisiWaS9f
-         hVKzZuUht/7yZdSHsQ4P5lG5my3+72LpDuQsnUxbbsFdCs//em4HwKEnSl0epSmNfttS
-         XSQIJ6KchM3c+/IdBnY0UmCKLBKSugwWrWjmCNLu0aMiwoEhL6yyZmwoEfQxnnSxlXcc
-         KIUoBn198VQDybe9QkR/4u4sYi3tpih8s5L9XyWR0wfMk+CCOgEOmOIrQhVeou7K+/5u
-         zSEA==
+        bh=qZnlp8z48Kh/4xY/l3qHisspe/p7nHw/YYvTj0x5YiU=;
+        b=ZO65asB6PhGLR9WSwcjUC3CXwgpqfpZsvgQAhd7byYbI7+KPmADluxeloTUe0rrYY2
+         +6M/I87z+yx8WK0PEOuHD0N9gfTDo7eBZrJrPC+6MFa7LdCmYzjOqQOY7PdwEh+zWKhc
+         3laLqdsYhv+AUW55M8GgBFHt8pu6RKeRgKV9lAgOuxi5gpfw/7161isMQWrKaYY21Qs5
+         0NJHE+4NrMr/UQfUEmMJ/YNdrdqW9EQHThcNXK1R9l63BsdLXX7I7IGpioESRE2682Wx
+         7ypJI1u2RqANH3gXdGLUPxjEqoQNRnFai/aetnoYF4v5wNMkPNIE4To0z7fRjrB279s9
+         n2oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:message-id:subject
-         :mime-version:x-original-sender:precedence:mailing-list:list-id
+        h=sender:x-gm-message-state:subject:to:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=B5BZNwYX8+S4NF0oEapO8Ymi00ifQqQPulf1qbGGd8c=;
-        b=OXSZwdaNnFdxr4j/5uwZyqVZWrdi77YMOVjP03U4fCW/4nsFvHQ7w8h19CYtIYS+15
-         Z833lSGUdCHhsogYusV7f/MgKjZ03iqgbgdXM8hB3skLx67qlNTAh/r6QangnJhQ7RQx
-         5kwNI0jaIC8RNo/qCqUxRPthIjWe+Pfnd4hePKnkz3HYd4uFhE8dsPtxlODOePpDyQdH
-         Cx+afbNsSh1fXWy3VK/cH+eNckhbfD1DlX0cjO7OcRT57R/1SPw6SowXp53kSnpTSKLw
-         3mrPugHGf2Xz6DlBteGsi6kWwCvlveyvF8gH1wCmXYsDPRbX5aWCBshMQIctS71btw+A
-         8x1g==
+        bh=qZnlp8z48Kh/4xY/l3qHisspe/p7nHw/YYvTj0x5YiU=;
+        b=NM2uW8q8W7HhiA0P5TtxUvht2DQ9X+qNALWuN+zt1Cd+zQ0Bd309DaPvRt4phXTabu
+         wyDgoGc8XFZKe7bj2QqnKJWCxro8UpWNfKX3NWUnnkIUErxLOinoowA2GzHGfnG2ICdM
+         ZuPyoC9TZsHbwweereugSjuGfYl8Itrroza1LfY8zZ/RLfqA3kVsJlY1gDzMV6MVYg63
+         InE7q0AYJ2NSpPKp4iQKpHDKG5WsKTM8Nl0erVeyqB94jO5eO8hM9Uljyiwpi0B64hTy
+         NIeFMAU3Z4qOSQE62k/t+fJm1TCrpX5zB/MV3JYiyO5O6xwDrgO7mmA9Jt0yh7VXFWL0
+         3SKA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUbNcEqojU7d5NGw/4DZd4pxvXklEfZweHDpavbPggnqWG9QIzS
-	npSTyzk8CoFqRiFbuNJjLYU=
-X-Google-Smtp-Source: APXvYqyrIUtbnl2RmyJ0G4dzatDJfRfFXE/RdjGFI4iW8J5bJD/lsXzN136zn7EKZJ3X51gxXdvmjg==
-X-Received: by 2002:a0d:e10b:: with SMTP id k11mr8222318ywe.105.1575300205336;
-        Mon, 02 Dec 2019 07:23:25 -0800 (PST)
+X-Gm-Message-State: APjAAAXq5EshQP+eluBk8zFUpM13HBrXEd7mrv8L13kTSXIlVvQ3Jhbp
+	Ot4LhGnpGXwRaOEYpxSHfEE=
+X-Google-Smtp-Source: APXvYqyeM4FdwWg4w7yCWsNT74Dn80ZH8WlWOKZnqpD1eTQehM6YJXg0SNXTwurdyXlIMz828ROIqA==
+X-Received: by 2002:a63:1b5c:: with SMTP id b28mr32294400pgm.69.1575305422691;
+        Mon, 02 Dec 2019 08:50:22 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a81:3dc7:: with SMTP id k190ls5766205ywa.8.gmail; Mon, 02
- Dec 2019 07:23:25 -0800 (PST)
-X-Received: by 2002:a81:7606:: with SMTP id r6mr23157068ywc.418.1575300204598;
-        Mon, 02 Dec 2019 07:23:24 -0800 (PST)
-Date: Mon, 2 Dec 2019 07:23:23 -0800 (PST)
-From: lravich@gmail.com
-To: linux-ntb <linux-ntb@googlegroups.com>
-Message-Id: <e71c7a5d-ad80-46c4-b76c-7a6fba4fe666@googlegroups.com>
-Subject: Physical continues memory for NTB
+Received: by 2002:a17:902:a70b:: with SMTP id w11ls71514plq.3.gmail; Mon, 02
+ Dec 2019 08:50:22 -0800 (PST)
+X-Received: by 2002:a17:90b:d89:: with SMTP id bg9mr170890pjb.75.1575305422308;
+        Mon, 02 Dec 2019 08:50:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575305422; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ylWOKO8HL4VqEDkJ3fgdRyZwLbOBUkO8Jj7eO3mqqcYx2ee1PJEi7NO6s3N2WvBLX9
+         WIbBemxIPYE198S5UllVD5/+0ENmbnYojqvnD9EqLL6+ReNkZBsmGfZjnnnqBoc8Qy22
+         Z5OEOUxjvDkzfuIkAspZejLeM5teit/lBIX3o0Cg6vuOfgTCRZT3lhx2+Yx8T3u0cZbR
+         LI1291C6DcDsZiTfmQbmotW2kzhOSMe4DsaW5CtYh05cEUP7PrZo9GiltPFhhgmikymA
+         3dguGqI4TVqkNkscD3L4CHZOPNUFN8u6HdAam9jh0YrdCidCzWVwCk69MdM15cSlf4zP
+         fEpg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject;
+        bh=NOUjUauZJAiEVTD6fCq1QWC+PfwdrxZPLI1zgA+UKEo=;
+        b=CQuVYc7vEDoQ3Kx9ICKWvbAXW9yVZBqEc74NSnIlkiDlARiVbFo2jznaG5/F95pBNE
+         tHZF3/2bAxwjvneLAsYKeQrL9PdeE64JE2h8SrIf4zHMD29CvZG+/IEW4WgeQfwCHniK
+         YNG6BrfK2CJmW7eABe9mnctdwtt+R1/yEjSCymUkXIF0NfSDJiFsiEp8NWVXQzw1LEwJ
+         ByrUiv6Z1+JpYqQgLOfU2aKd/loCN/tBVvNKpVtzAfMOWGh7g2tk8f7xJakDvomQEZ7O
+         ukuS6+ptvxBWdgj+n0NMuGwnIMNxt7hoxr1khLwunwpqm0E9hvptm/x4bIogl7RIwgsO
+         DrcQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from mga12.intel.com (mga12.intel.com. [192.55.52.136])
+        by gmr-mx.google.com with ESMTPS id t34si11563pjb.3.2019.12.02.08.50.22
+        for <linux-ntb@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 02 Dec 2019 08:50:22 -0800 (PST)
+Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.136 as permitted sender) client-ip=192.55.52.136;
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from fmsmga007.fm.intel.com ([10.253.24.52])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/DHE-RSA-AES256-GCM-SHA384; 02 Dec 2019 08:50:10 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.69,268,1571727600"; 
+   d="scan'208";a="208186048"
+Received: from djiang5-desk3.ch.intel.com ([143.182.136.137])
+  by fmsmga007.fm.intel.com with ESMTP; 02 Dec 2019 08:50:09 -0800
+Subject: Re: Physical continues memory for NTB
+To: lravich@gmail.com, linux-ntb <linux-ntb@googlegroups.com>
+References: <e71c7a5d-ad80-46c4-b76c-7a6fba4fe666@googlegroups.com>
+From: Dave Jiang <dave.jiang@intel.com>
+Message-ID: <35f6d119-f98d-3b4c-e005-da92f83e9f75@intel.com>
+Date: Mon, 2 Dec 2019 09:50:09 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.1.1
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_4163_1075273769.1575300203965"
-X-Original-Sender: lravich@gmail.com
+In-Reply-To: <e71c7a5d-ad80-46c4-b76c-7a6fba4fe666@googlegroups.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: quoted-printable
+X-Original-Sender: dave.jiang@intel.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of dave.jiang@intel.com designates 192.55.52.136 as
+ permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -75,93 +135,72 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-------=_Part_4163_1075273769.1575300203965
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_4164_479213502.1575300203965"
 
-------=_Part_4164_479213502.1575300203965
-Content-Type: text/plain; charset="UTF-8"
 
-Hi guys , 
+On 12/2/19 8:23 AM, lravich@gmail.com wrote:
+> Hi guys ,
+>=20
+> I would like to get your opinion regarding NTB memory windows usage in a=
+=20
+> production ,
+> most of my experience is on Intel Skylake NTB which is limited to 2 NTB=
+=20
+> memory windows and has hard restrictions
+>=20
+> the naive way to use NTB is to set translate windows to all the physical=
+=20
+> memory rage, this way entire physical memory will be exposed to peer=20
+> node , call me a paranoid but I not feeling this is the way to go ,
+> the other way is to expose only relevant part of memory=C2=A0 but such me=
+mory=20
+> should be physical continues memory=C2=A0 (trying to avoid going to IOMMU=
+=20
+> direction) to get such physical continues memory I cant use
+> kmalloc=C2=A0 or other slob friends because they are limited in max size =
+and=20
+> anyway the chance to get such a big chunk after init is low, so the only=
+=20
+> way I see is to reserve the memory on kernel init ,
+>=20
+> currently known to me technics to go this way:
+> 1) "out of kernel memory" (memmap boot parameter) , this is the easiest=
+=20
+> way to go but we getting out of kernel memory , which has its=20
+> disadvantages ex: there is many flows in kernel based on pining memory=20
+> with get_user_pages which will fail with=C2=A0 "out of kernel memory"
 
-I would like to get your opinion regarding NTB memory windows usage in a 
-production , 
-most of my experience is on Intel Skylake NTB which is limited to 2 NTB 
-memory windows and has hard  restrictions
+I wonder if you can try it with memmap=3DNN!MM and map them as DAX device=
+=20
+memory and manage it through that. It might work? Worth a try.
 
-the naive way to use NTB is to set translate windows to all the physical 
-memory rage, this way entire physical memory will be exposed to peer node , 
-call me a paranoid but I not feeling this is the way to go , 
-the other way is to expose only relevant part of memory  but such memory 
-should be physical continues memory  (trying to avoid going to IOMMU 
-direction) to get such physical continues memory I cant use 
-kmalloc  or other slob friends because they are limited in max size and 
-anyway the chance to get such a big chunk after init is low, so the only 
-way I see is to reserve the memory on kernel init , 
+> 2)=C2=A0 CMA -=C2=A0 this feature support only generic memory region allo=
+cation=20
+> with boot parameters=C2=A0 which will be shared by all dma allocs in kern=
+el=20
+> (at least for Intel) , anyway looks like overkill for my simple=20
+> requirements.
+>=20
+> love to hear your opinion guys ,
+>=20
+> Thanks
+> Leonid
+>=20
+> --=20
+> You received this message because you are subscribed to the Google=20
+> Groups "linux-ntb" group.
+> To unsubscribe from this group and stop receiving emails from it, send=20
+> an email to linux-ntb+unsubscribe@googlegroups.com=20
+> <mailto:linux-ntb+unsubscribe@googlegroups.com>.
+> To view this discussion on the web visit=20
+> https://groups.google.com/d/msgid/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6fb=
+a4fe666%40googlegroups.com=20
+> <https://groups.google.com/d/msgid/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6f=
+ba4fe666%40googlegroups.com?utm_medium=3Demail&utm_source=3Dfooter>.
 
-currently known to me technics to go this way:
-1) "out of kernel memory" (memmap boot parameter) , this is the easiest way 
-to go but we getting out of kernel memory , which has its disadvantages ex: 
-there is many flows in kernel based on pining memory with get_user_pages 
-which will fail with  "out of kernel memory" 
-2)  CMA -  this feature support only generic memory region allocation with 
-boot parameters  which will be shared by all dma allocs in kernel (at least 
-for Intel) , anyway looks like overkill for my simple requirements.
-
-love to hear your opinion guys , 
-
-Thanks
-Leonid 
-
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6fba4fe666%40googlegroups.com.
-
-------=_Part_4164_479213502.1575300203965
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi guys ,=C2=A0<div><br></div><div>I would like to get you=
-r opinion regarding NTB memory windows usage in a production ,=C2=A0</div><=
-div>most of my experience is on Intel Skylake NTB which is limited to 2 NTB=
- memory windows and has hard=C2=A0 <span style=3D"color: rgb(51, 51, 51); f=
-ont-family: Assistant; font-size: 14px;">restrictions</span></div><div><br>=
-</div><div>the naive way to use NTB is to set translate windows to all the =
-physical memory rage, this way entire physical memory will be exposed to pe=
-er node , call me a paranoid but I not feeling this is the way to go ,=C2=
-=A0</div><div>the other way is to expose only relevant part of memory=C2=A0=
- but such memory should be physical continues memory=C2=A0 (trying to avoid=
- going to IOMMU direction) to get such physical continues memory I cant use=
-=C2=A0</div><div>kmalloc=C2=A0 or other slob friends because they are limit=
-ed in max size and anyway the chance to get such a big chunk after init is =
-low, so the only way I see is to reserve the memory on kernel init ,=C2=A0<=
-/div><div><br></div><div>currently known to me technics to go this way:</di=
-v><div>1) &quot;out of kernel memory&quot; (memmap boot parameter) , this i=
-s the easiest way to go but we getting out of kernel memory , which has its=
- disadvantages ex: there is many flows in kernel based on pining memory wit=
-h get_user_pages which will fail with=C2=A0 &quot;out of kernel memory&quot=
-;=C2=A0</div><div>2)=C2=A0 CMA -=C2=A0 this feature support only generic me=
-mory region allocation with boot parameters=C2=A0 which will be shared by a=
-ll dma allocs in kernel (at least for Intel) , anyway looks like overkill f=
-or my simple requirements.</div><div><br></div><div>love to hear your opini=
-on guys ,=C2=A0</div><div><br></div><div>Thanks</div><div>Leonid=C2=A0</div=
-></div>
-
-<p></p>
-
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6fba4fe666%40googlegroups.co=
-m?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid=
-/linux-ntb/e71c7a5d-ad80-46c4-b76c-7a6fba4fe666%40googlegroups.com</a>.<br =
-/>
-
-------=_Part_4164_479213502.1575300203965--
-
-------=_Part_4163_1075273769.1575300203965--
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/35f6d119-f98d-3b4c-e005-da92f83e9f75%40intel.com.
