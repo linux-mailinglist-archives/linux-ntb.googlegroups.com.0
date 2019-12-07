@@ -1,127 +1,124 @@
-Return-Path: <linux-ntb+bncBC63BL75QIBRBHEAVLXQKGQEE3JNHWA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCS4BDN7YUCRBVNZWDXQKGQE4XCBXHQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x439.google.com (mail-pf1-x439.google.com [IPv6:2607:f8b0:4864:20::439])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7B44211550A
-	for <lists+linux-ntb@lfdr.de>; Fri,  6 Dec 2019 17:21:50 +0100 (CET)
-Received: by mail-pf1-x439.google.com with SMTP id w127sf4240780pfb.13
-        for <lists+linux-ntb@lfdr.de>; Fri, 06 Dec 2019 08:21:50 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1575649308; cv=pass;
+Received: from mail-yw1-xc3c.google.com (mail-yw1-xc3c.google.com [IPv6:2607:f8b0:4864:20::c3c])
+	by mail.lfdr.de (Postfix) with ESMTPS id A1475115ED2
+	for <lists+linux-ntb@lfdr.de>; Sat,  7 Dec 2019 22:42:46 +0100 (CET)
+Received: by mail-yw1-xc3c.google.com with SMTP id b70sf8608500ywa.15
+        for <lists+linux-ntb@lfdr.de>; Sat, 07 Dec 2019 13:42:46 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1575754965; cv=pass;
         d=google.com; s=arc-20160816;
-        b=nWRxrziByZ3J5yOmdftI/fb2shs8rNq669RfgiLzenJU2opuztVdnyuexjKWoxptV7
-         GjH4dzFC1/f2hABXgfvdHVtMbKci7t+56/sP/G3M37GXsXO2YRerkmroQ6zpnRuddWqK
-         ZMSJDuw/mL4R90NpaMgsYOeq62LL6m5y3ehOzrYA8viwy5awXz9238ZUDgrwrGT4GwRr
-         8F4sjSPkgzMI73Ga+2XAAPnLzvOMsvP9z8MU8ChhUAA5sx662Odq2E7Bqropz6cdZQZa
-         MiHs/EXzpPjFU2QcbUIWLYgT0p49TWuJaYXVptzh6shEus6w/mqIFOCWEutyVxnS0KvD
-         YfMA==
+        b=FsOegqbEdbnivXYxQ+35Fni7bXpOeK9GEOoEaRPEsuepW8mSX3h36nr54Fn2NxVrR6
+         GDrsKXEboeQxaqLzKwESpGuNFQO9woy3qf5oJvJFXJ0PfnNP2vAyr/n3DVkvrw0KRMaR
+         Y7pDBX3HtaqiAcpyvHmFjgnRLP0pZBJqQqqEjasXPPtU2tPbzuJY2cvsOnBAd6faEUFo
+         B8wb/fB7vXGLT4g1zwL6W6c7P7nv6zhn9cyH1VTqOuaqiXSLJUiYTvVlPo9InN0r3FY9
+         8X1jF8pYDnm4b9WZ98SBzsQBGCPBnBWKqxDSekCP2jfkBrF60mdKIIqxjZe+0/HoNfa+
+         zseQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:to:subject:message-id:date:from
-         :mime-version:sender:dkim-signature:dkim-signature;
-        bh=Z5Iz9gcHYAb9LACmfYOjEvrdmoRxbFJ+VwTYSd68MkE=;
-        b=ot1BBm9R3kQNk8CFscLKMaDtGJguALvT4L5+lZUYLZJ5RpV54fF9d/A4WCinZ1Wrrn
-         bmcKUTbL/yHR9ZqqJlRSiGGZnS0/m+aRhrbXiC4qAEENHhN7gPRqruKKx+di9dQ+pAqh
-         JepJzfwLWytaHQUqTzp052o9mjRG5I2syHnFO0hDGY1cuFuyDAyMJ3kpKCc5xapxrw7T
-         Ad0ZkIp02tuCs+S5u58r2ctvnxwGrh0ikgW5zHP9NDDMQCIom328IIo1ijKIg6BSOdP6
-         0y10K2wYbaj7rROTeD0bHAqWqHZ6nyfOjoBEuvVNYTJRxAYebfZfl2zHv/Bx6m3YEhQo
-         jXgQ==
+         :list-id:mailing-list:precedence:user-agent:content-disposition
+         :mime-version:message-id:subject:cc:to:date:from:sender
+         :dkim-signature;
+        bh=Bq8PFdh/5K8GIBL6Orbah5JKMuMhgw0/GrUEvtVbIP4=;
+        b=pvtxsra7ZWAcA5ZtDcSaQ1JPks0ZdRxm6lfNvfg/HWJ2wpYcWsf/p7e3ZH6Ux/R7d9
+         0h/ypFuj6zcqR6tyEzABEIQj2NBZSpwrBI7RzBDZw9zFWDW5GbDZtmCRByjiqdWjQyfT
+         KttdBt7NbWR07EbWGtIwPZWE51zYwqxtIu9W80Rtl67T2f+b0YUVlsjv9XBSRYZNjvc0
+         XRLPv3mPp+TZWcRHBiXTS1JIC2yhQmNKQDnwuQdOPnR3LA0hzZ0gyIwEP0jICeeEoAjt
+         giwJ2h5AH4EeTVj0Dx+VBrGwtmhyr6RzFlGsWeQRPc+s6g6ThhGQ5raZqdaNPSFXsNaA
+         jJuQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kK9OimSa;
-       spf=pass (google.com: domain of vermasachin09@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) smtp.mailfrom=vermasachin09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=ufHC+NWg;
+       spf=neutral (google.com: 2607:f8b0:4864:20::830 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:from:date:message-id:subject:to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=Z5Iz9gcHYAb9LACmfYOjEvrdmoRxbFJ+VwTYSd68MkE=;
-        b=VU0vYHCS5TVuHuxyMNPWQGFajjrqE8iIzFbtutph4MijSuV3xhYMjrWrmHH6Gg+9aH
-         wrnHfZx40vwn8dcBOI/9pA7NXnmY0YO8l89nUYptS4dhbzxDbRseRu3MBZW5f6sX81L3
-         EXX2tpINY+bVhLm8Me+gjgOnlMDtnp9djEUUkj0Zbybn+hHWHsjskknl+yH7p8ZSUJfN
-         FzJX9M9sTpgaUtVGcHuo3OS88oQa3qib/4pXBwYN4qlMMp5ZuTBmzUf4jPYFPRQc+TL1
-         bK339FcTBI1c2wYAJPU40RQ6Nw2WRZq2XrbNMiq4Z6zYao3hw/htJW0wBRDOSOqS4n/5
-         j0WQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to:x-original-sender
+        h=sender:from:date:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=Z5Iz9gcHYAb9LACmfYOjEvrdmoRxbFJ+VwTYSd68MkE=;
-        b=DJy2JfvHZHAO0319inJEYi5Sr6kytkkkyy4TRPZAxNeLOtYFCqH7eUUxBRtqjQ4uyv
-         BLEsDJ1uKjtUWgGsVaL6VogGH8HJVhqQAtl1xs0EBCqr2OG0LW5JqKYJ7KosmIKRvAaI
-         bjjFR6N4F923XlmaZ8nzsx3xB+w7BzGEGC8XqF6HsrbyA6IoEkHkx+agQpEa7ZcIjdy2
-         5mzQ96ElSY9gXF0e5IOuU5OTeSrymklc6bYpT/plE9t5bQtRWWB7z9FqX7YF4Tkre3OW
-         0VsohxfgOd3uEDtJUbKt5jQmpQrn+IMJnR+K5JNdGZX+zvUgDjBoo5CWIMLjmw4g7v0I
-         oFew==
+        bh=Bq8PFdh/5K8GIBL6Orbah5JKMuMhgw0/GrUEvtVbIP4=;
+        b=fzt6Cqg5+QViVJtIw8atl23x4D/PEGoblKnMDkZVuT8h02wDtprHI0+w0AKzIHdfQ8
+         SCZGvkwfKuf/0X0et8TZ0kTedIGvFQlmVLwlE3xJFTY/TBwUuZSfzRHMf+KV5JqXmsZr
+         56F8yPODWmCY43Brw/S/StjLehbyMivhPHv75TDNN8U1P+APNTV4f7Sq+IFskjazAW2G
+         ksqKcp9daPt/T+xczgxSy65DQqUdW1I71aQltS545fw7iolHtk1RC0xOumnM8M+COR1v
+         PDFp4AQHlnnVYtQ4tONV7Ml/HQYeBfDyfc+sjBDg1yW5V7YJrxYcvZx2X1OMtqbHC6r1
+         j2eQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
-         :to:x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=Z5Iz9gcHYAb9LACmfYOjEvrdmoRxbFJ+VwTYSd68MkE=;
-        b=p8i0GJlrgvJa3GUn9+8qK/HoAQAiN2jUvdUZUk//Bheg1kPKaHw99OoPlNYPNkq16i
-         Ft8Sv2ZHXV0BOX2m8oEt3wpQHAH3jjgb5oMpsp5tIsJd7Fe1+kK0ooJaeSmusnHbgt90
-         4CtxGDSPvyqVCgF5PD/vbcV5H/BPF4fPVnmKvX3LzqUDbT9sxkmgVLsqUufFcZ1IAMHQ
-         rv14TKL71dLRKnrS8qKn1HUbt8pyxnccWrrHGNgNYktrx6zWIPYA7lVj4Tyax9iUngjb
-         NAESnDktFtLL9cxySXzCK3ragl3Lz1wRxE3HCWxS2ZNKaHLjMs108pve61UR1JrbOTaT
-         7KdA==
+        h=sender:x-gm-message-state:from:date:to:cc:subject:message-id
+         :mime-version:content-disposition:user-agent:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=Bq8PFdh/5K8GIBL6Orbah5JKMuMhgw0/GrUEvtVbIP4=;
+        b=oO3eoO7kEZe7vAkYrkTRzFdsVGn/lA9gVzUPf3SvkICk5vyJBvoSRLHna7p8dvHGVW
+         islGIbRNFj2JAnyCLcZfmWsKi9Oll10zwLptGHhAGq5ZfQiJFSE7uqdnkgOrKalJBXT5
+         dCjBO30G2ETxiTP8hYJt1V93369lamyeEXEa+HCQis2ymUciobuyRoVO4yLgpxbftDuf
+         6krjlSl5CII0PPOIlsW7Pp72ufzl8yd8+SXO1OPnbUhREecmSMEQ2njbB1NzX/f5QWiy
+         oksfBsCo7vWpNOqspjP/6+hTZG4js20Yjh4jUNjXWtyyso0Fr0wZcwuwEW0xuBgsI6ix
+         4zfg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXhPxepLsjZcXLhf+j6Srn9QX50kg7zApWpAN462dK53C/rJk7K
-	ObXpqn+wli3s9yQ7vat7xuU=
-X-Google-Smtp-Source: APXvYqxPLlzzr1EhHu2dZ3Af3RLD6F9iNbtZFtAEb0wHFNoY4EOqS2FkoP/6Dx8YoXx4KhvtGEf2SQ==
-X-Received: by 2002:a17:90a:e64b:: with SMTP id ep11mr16930804pjb.58.1575649308585;
-        Fri, 06 Dec 2019 08:21:48 -0800 (PST)
+X-Gm-Message-State: APjAAAV4zG+yIQ40nxXmy5T3FmcDhd2Bhx42yhmfGMybaL9ey+nSpUPi
+	5EcmxZxQUrtrCQ8bjJYSQGY=
+X-Google-Smtp-Source: APXvYqxKogZIjzQrZaZQ9R9BgihwsRJlKoLEVGD95RWHtMKXCVdBaebY/S/GW/B+tM7R6r7bfFmexg==
+X-Received: by 2002:a25:bc8c:: with SMTP id e12mr14775739ybk.487.1575754965356;
+        Sat, 07 Dec 2019 13:42:45 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:aa97:: with SMTP id d23ls1804494plr.12.gmail; Fri,
- 06 Dec 2019 08:21:48 -0800 (PST)
-X-Received: by 2002:a17:90a:3aaf:: with SMTP id b44mr16940967pjc.9.1575649308213;
-        Fri, 06 Dec 2019 08:21:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1575649308; cv=none;
+Received: by 2002:a0d:e851:: with SMTP id r78ls1401169ywe.12.gmail; Sat, 07
+ Dec 2019 13:42:44 -0800 (PST)
+X-Received: by 2002:a81:78d7:: with SMTP id t206mr16412522ywc.104.1575754964822;
+        Sat, 07 Dec 2019 13:42:44 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1575754964; cv=none;
         d=google.com; s=arc-20160816;
-        b=qliYG/2OZXOic4NM9+JrL/RvEoY1r0n6GyoyyYRKW0ggL+zamycUeEtmyNiwbYsZCU
-         +uBoWwNY1BTlIPgNH3GoG2Gc1gG2rIU5pLxbTds11WxgLC3RwT6u3VhVmQXQB0cADwQ1
-         eT8SOWH5wzWWr4Quh72QrCtb7rfMWabpRGCCJFuhepXojEhnH2yPXTb4sugNvCxI4Pbw
-         WYNOu+WMSpfT4CgsasgkZd/Vh1az1X2m3KB9rsbnZlNqc+7UAT++05XFL3hQh/7MZsOt
-         nXETZMA/M7w4apESK31Plp+3uPFSU97bEHcrqbvDvD8bA1eooXLWqIlB3rRvA+qZt++d
-         MeXw==
+        b=Ka+PKpG56lXBtMuw6nDvB9iJJ9kIPbKYqsrwtYJ6lsfrjk+9NBlGYTr0dfopfnD21H
+         XQWEL2cFX0p03Jk0NnqJQ3CBEobcK9ZyQ7XHyHgzFXwdVE01DI/cKjIhnbtQyLPJIBqt
+         gU8r4TZLWvzoUQomnVrV15YRXK2iocwQwanZnrKhbzrFzJYK2LgLSxdSFWFiA0gYOtlW
+         GwcuWzu3gzkPiQl3I8VL9+6vgSuwvZDMmlOi6EpjFhFTy93iRUCIkWsWedEOF/HMOV6d
+         RKoLjQ10bnH+tGiGsOQLctF4hz0obkVsgVkhj+lH1g3yJ98rM8a1cQeB8SgbUpTVdZFL
+         DJIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=Ff7cEEUlORqgwaoTuF7lBsqX9NejKmYzFGOm1lP3aT0=;
-        b=E10a4L1z1d2N2kqBYPqJ6qvPIdkvw2jZ//USiJOwy2CWmfmXZg06d8Znj0Vc4Di2dZ
-         dsbz/0IUA9VE506YKsQbiKJY1lvuImOpPSZdU/VcqoNTA3j/CjwgqVpk7X/XomPk/qTE
-         yLuflKLVs/ceLmqJwLfKbi7TIelBRmLgrLENhBNtNwGhdkPKyJJy1GGmzfYibgTY1tny
-         NG+1oILkn9ypIJ4xgChHYF0U9ExYkyusvok+/T8F9T5JCXp2Sb35BX7JukcHzUaVVpEU
-         0BkMpM+25aSDgCF7jiwn3wFkJtb2HbMgBTZJ0uWXZspU7GOWEor5TaDVe/rtYyrckMKJ
-         40pQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:date:from:dkim-signature;
+        bh=/FNfGO9/5GkHxo/iV/FuELwfPIwUxQkTsttLHMUCdbo=;
+        b=ovJxSWdKVrooIob6/jFXo4n5MV9+zDCixJw0QQ+GnzTHpzuHLjEoDKR3/3toO/BBTB
+         wAmqDLkR9JdYCdkfbnGkY35V5ZxqbCx6dFmaMW0Vify7qeCHAGe+2KgZtOzY7DqHDg33
+         XeuMl8gWeLJFcwJY2whucfv93B4aAY6zWa5Ltfiz+VKaFmQLKa0fVYSKaM+yWsCbPqbz
+         MSSJ6WGQoWQOURIYULttF5Sp9x8GPBBc10E5zwYmrSdx/q2vH/aTkNOW8ZBPWFj9AR+d
+         Qv4xFs3Pnw6+Xw1Id63EPB6dxstF7qdBDP0eNW+SOYiDfydggf9dPhuCt1Ar9h3z2dqk
+         4F4Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kK9OimSa;
-       spf=pass (google.com: domain of vermasachin09@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) smtp.mailfrom=vermasachin09@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-il1-x136.google.com (mail-il1-x136.google.com. [2607:f8b0:4864:20::136])
-        by gmr-mx.google.com with ESMTPS id i131si710847pfe.3.2019.12.06.08.21.48
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=ufHC+NWg;
+       spf=neutral (google.com: 2607:f8b0:4864:20::830 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+Received: from mail-qt1-x830.google.com (mail-qt1-x830.google.com. [2607:f8b0:4864:20::830])
+        by gmr-mx.google.com with ESMTPS id v64si781021ywa.4.2019.12.07.13.42.44
+        for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 06 Dec 2019 08:21:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of vermasachin09@gmail.com designates 2607:f8b0:4864:20::136 as permitted sender) client-ip=2607:f8b0:4864:20::136;
-Received: by mail-il1-x136.google.com with SMTP id u17so6736283ilq.5;
-        Fri, 06 Dec 2019 08:21:48 -0800 (PST)
-X-Received: by 2002:a92:3602:: with SMTP id d2mr14855994ila.7.1575649307325;
- Fri, 06 Dec 2019 08:21:47 -0800 (PST)
+        Sat, 07 Dec 2019 13:42:44 -0800 (PST)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::830 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::830;
+Received: by mail-qt1-x830.google.com with SMTP id g17so5200860qtp.11
+        for <linux-ntb@googlegroups.com>; Sat, 07 Dec 2019 13:42:44 -0800 (PST)
+X-Received: by 2002:aed:376a:: with SMTP id i97mr19224853qtb.44.1575754964477;
+        Sat, 07 Dec 2019 13:42:44 -0800 (PST)
+Received: from graymalkin ([2605:a601:a609:c200:eb24:d1e6:7c8f:65d0])
+        by smtp.gmail.com with ESMTPSA id m6sm7368023qke.80.2019.12.07.13.42.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 07 Dec 2019 13:42:44 -0800 (PST)
+From: Jon Mason <jdmason@kudzu.us>
+Received: by graymalkin (sSMTP sendmail emulation); Sat, 07 Dec 2019 16:42:42 -0500
+Date: Sat, 7 Dec 2019 16:42:42 -0500
+To: torvalds@linux-foundation.org
+Cc: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
+Subject: [GIT PULL] NTB patches for v5.5
+Message-ID: <20191207214242.GA22441@graymalkin>
 MIME-Version: 1.0
-From: sachin verma <vermasachin09@gmail.com>
-Date: Fri, 6 Dec 2019 21:51:36 +0530
-Message-ID: <CA+YOsKJ-ejSNp8htq3+r2kmdW=9Q7UAsb0fLugyX_1VbzmaRfA@mail.gmail.com>
-Subject: Flashed Kernel for Pixel2 but changes not appears
-To: kasan-dev@googlegroups.com, linux-kbuild@vger.kernel.org, 
-	linux-ntb@googlegroups.com, android-building@googlegroups.com
-Content-Type: multipart/alternative; boundary="00000000000040faea05990b71d8"
-X-Original-Sender: vermasachin09@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Disposition: inline
+User-Agent: Mutt/1.12.1 (2019-06-15)
+X-Original-Sender: jdmason@kudzu.us
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=kK9OimSa;       spf=pass
- (google.com: domain of vermasachin09@gmail.com designates 2607:f8b0:4864:20::136
- as permitted sender) smtp.mailfrom=vermasachin09@gmail.com;       dmarc=pass
- (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
+ header.b=ufHC+NWg;       spf=neutral (google.com: 2607:f8b0:4864:20::830 is
+ neither permitted nor denied by best guess record for domain of
+ jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -134,119 +131,37 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---00000000000040faea05990b71d8
-Content-Type: text/plain; charset="UTF-8"
-
-Hi,
-I have flashed android10 kernel for Pixel 2 with some changes(additional
-logs) but the logs are not appearing in kmsg or dmesg, *Even I have append
-the existing log(the logs which are printing on original build) but could
-not get modified logs only original's one printing.* It Seems modified code
-(modified logs) not flashing in the system.
-
-
-*Here are the steps I am doing:*
-
-Downloaded AOSP10 and build for aosp_walleye-userdebug
-Downloaded the kernel code from *repo branch android-msm-wahoo-4.4-*
-*android10-qpr1*.
-Compile the kernel by *build/build.sh *from kernel root directory.
-Copy the Image.lz4-dtb file generated with build/build.sh to the AOSP
-kernel folder of my device i.e /device/google/wahoo-kernel, substituting
-the existing one.
-run m bootimage to generate boot.img
-adb reboot bootloader
-fastboot flashall -w to flash the build
-Now I can see the kernel build which shows the latest date of kernel build
-in device Settings, means kernel flash is successful. But my changes are
-not appearing means modified logs are not appearing.
-
-
-Here are the files I have added/modified the logs
-drivers/staging/qca-wifi-host-cmn/wmi/src/wmi_unified_tlv.c
-drivers/staging/qcacld-3.0/Kbuild
-drivers/staging/qcacld-3.0/core/hdd/src/wlan_hdd_cfg80211.c
-drivers/staging/qcacld-3.0/core/hdd/src/wlan_hdd_main.c
-drivers/staging/qcacld-3.0/core/wma/src/wma_dev_if.c
-drivers/staging/qcacld-3.0/core/wma/src/wma_mgmt.c
-
-
-*One example of my changes(append msg in existing log):*
--       hdd_info("Disabling queues, adapter device mode:
-%s(%d)",hdd_device_mode_to_string(adapter->device_mode),
-                 adapter->device_mode);   *---->*
-+       hdd_info("*Modified* ...Disabling queues, adapter device mode:
-%s(%d)",hdd_device_mode_to_string(adapter->device_mode),
-                 adapter->device_mode);
-So I am not getting modified versions. while I have checked in kernel
-source there's no other place for this log.
-
-Please let me know if any prebuilt binary are there in kernel source for
-*staging* module or If I am missing some configuration during compilation.
+Hello Linus,
+Here is the NTB pull request for v5.5.  It only contains a simple patch to add a new NTB Device ID.  Please consider pulling it.
 
 Thanks,
-Sachin
+Jon
+
+
+
+The following changes since commit 54ecb8f7028c5eb3d740bb82b0f1d90f2df63c5c:
+
+  Linux 5.4-rc1 (2019-09-30 10:35:40 -0700)
+
+are available in the Git repository at:
+
+  git://github.com/jonmason/ntb tags/ntb-5.5
+
+for you to fetch changes up to 9b5b99a89f641555d9d00452afb0a8aea4471eba:
+
+  NTB: Add Hygon Device ID (2019-12-07 16:29:44 -0500)
+
+----------------------------------------------------------------
+Add Hygon Device ID to the AMD NTB device driver
+
+----------------------------------------------------------------
+Jiasen Lin (1):
+      NTB: Add Hygon Device ID
+
+ drivers/ntb/hw/amd/ntb_hw_amd.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CA%2BYOsKJ-ejSNp8htq3%2Br2kmdW%3D9Q7UAsb0fLugyX_1VbzmaRfA%40mail.gmail.com.
-
---00000000000040faea05990b71d8
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi,</div><div>I have flashed android10 kernel for Pix=
-el 2 with some changes(additional logs) but the logs are not appearing in k=
-msg or dmesg, <b>Even I have append the existing log(the logs which are pri=
-nting on original build) but could not get modified logs only original&#39;=
-s one printing.</b> It Seems modified code (modified logs) not flashing in =
-the system.</div><div><b><br></b></div><div><b><br></b></div><div><b>Here a=
-re the steps I am doing:</b></div><div><b><br></b></div><div>Downloaded AOS=
-P10 and build for aosp_walleye-userdebug</div><div>Downloaded the kernel co=
-de from <b>repo branch android-msm-wahoo-4.4-</b><b>android10-qpr1</b>.</di=
-v><div>Compile the kernel by <b>build/build.sh </b>from kernel root directo=
-ry.<b><br></b></div><div>Copy the Image.lz4-dtb file generated with build/b=
-uild.sh to the
-AOSP kernel folder of my device i.e /device/google/wahoo-kernel, substituti=
-ng the existing one.</div><div>run m bootimage to generate boot.img <br></d=
-iv><div>adb reboot bootloader</div><div>fastboot flashall -w to flash the b=
-uild</div><div>Now I can see the kernel build which shows the latest date o=
-f kernel build in device Settings, means kernel flash is successful. But my=
- changes are not appearing means modified logs are not appearing.</div><div=
-><br></div><div><br></div><div>Here are the files I have added/modified the=
- logs</div><div>	drivers/staging/qca-wifi-host-cmn/wmi/src/wmi_unified_tlv.=
-c<br>	drivers/staging/qcacld-3.0/Kbuild<br>drivers/staging/qcacld-3.0/core/=
-hdd/src/wlan_hdd_cfg80211.c<br>drivers/staging/qcacld-3.0/core/hdd/src/wlan=
-_hdd_main.c<br>	drivers/staging/qcacld-3.0/core/wma/src/wma_dev_if.c<br>	dr=
-ivers/staging/qcacld-3.0/core/wma/src/wma_mgmt.c</div><div><br></div><div><=
-br></div><div><b>One example of my changes(append msg in existing log):</b>=
-<br></div><div>- =C2=A0 =C2=A0 =C2=A0 hdd_info(&quot;Disabling queues, adap=
-ter device mode: %s(%d)&quot;,hdd_device_mode_to_string(adapter-&gt;device_=
-mode),<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ada=
-pter-&gt;device_mode);=C2=A0=C2=A0 <b>----&gt;</b><br>+ =C2=A0 =C2=A0 =C2=
-=A0 hdd_info(&quot;<b>Modified</b> ...Disabling queues, adapter device mode=
-: %s(%d)&quot;,hdd_device_mode_to_string(adapter-&gt;device_mode),<br>=C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0adapter-&gt;devi=
-ce_mode);</div><div>So I am not getting modified versions. while I have che=
-cked in kernel source there&#39;s no other place for this log.</div><div><b=
-r></div><div>Please let me know if any prebuilt binary are there in kernel =
-source for <b>staging</b> module or If I am missing some configuration duri=
-ng compilation.</div><div><br></div><div>Thanks,</div><div>Sachin<br></div>=
-<div> <br></div><div><br></div><br>=C2=A0<br></div>
-
-<p></p>
-
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CA%2BYOsKJ-ejSNp8htq3%2Br2kmdW%3D9Q7UAsb0fLugyX_1Vbzma=
-RfA%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups=
-.google.com/d/msgid/linux-ntb/CA%2BYOsKJ-ejSNp8htq3%2Br2kmdW%3D9Q7UAsb0fLug=
-yX_1VbzmaRfA%40mail.gmail.com</a>.<br />
-
---00000000000040faea05990b71d8--
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20191207214242.GA22441%40graymalkin.
