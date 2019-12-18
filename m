@@ -1,128 +1,136 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBHEL4TXQKGQER7CXRBA@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBKVN47XQKGQEMFRJ6QY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd39.google.com (mail-io1-xd39.google.com [IPv6:2607:f8b0:4864:20::d39])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3445B1232C0
-	for <lists+linux-ntb@lfdr.de>; Tue, 17 Dec 2019 17:43:10 +0100 (CET)
-Received: by mail-io1-xd39.google.com with SMTP id a22sf1482109iol.21
-        for <lists+linux-ntb@lfdr.de>; Tue, 17 Dec 2019 08:43:10 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1576600989; cv=pass;
+Received: from mail-yb1-xb3b.google.com (mail-yb1-xb3b.google.com [IPv6:2607:f8b0:4864:20::b3b])
+	by mail.lfdr.de (Postfix) with ESMTPS id C1C06124067
+	for <lists+linux-ntb@lfdr.de>; Wed, 18 Dec 2019 08:35:07 +0100 (CET)
+Received: by mail-yb1-xb3b.google.com with SMTP id 63sf742979ybz.11
+        for <lists+linux-ntb@lfdr.de>; Tue, 17 Dec 2019 23:35:07 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1576654506; cv=pass;
         d=google.com; s=arc-20160816;
-        b=gGugH7pXzg2F3Uy1sCbPrj5DsQIPr11r6KFVCal9bZtssHjHqxRl40laG/TO0CaGMe
-         PFfCt0+SGSdfO5U9oS+OUFgCU4jHCH0y3tCVHHw8Rzzoa2FJC8Y+dHFcvdLM4hP5dcf/
-         4LEvrcF25w77Y42AsWm6OYodA36s9CbhKnDJaDkSWf+LbquHDzmvTWNzTrMEdRPwEzhe
-         twLIKTW6hwK80cbd1i1dWwoqIoaRX1M+YAbaiVfOYJqkETyyEAXjbfd4wYbMkxYLUN91
-         A2AyywT1IFTYzL7uRlIldQWFlgEgQhBI80tiuPCcarGRfctnFSXnKDBLJtGxkLYgCuj3
-         3Wzw==
+        b=0wuS62jJAkzgmTfditFGKeTuTKrP5U0dDj+nLGCiHVe2CwjX8vPs2ovEoXSnOeCqvO
+         H9Umwr42yeiVpdgPP6yAj71dUXgoK+XeBOoF+VDLUaLcD/MBGIBz8NDvO+cUDpYeiuNn
+         EkgbFC/X9r2EBZ66nvP64vy4sS4cNVqF4g0QfWL8R7FyZriHSg1OK5EMbaDbzF8PcSI+
+         tmfMWTBWclhkDHqXtrGBYl3K3KeKvMq03wycnm9QXSeOilNIezAalhdxVw1sbo+0Awaw
+         0KMs3YKsAEvCf2hx6lt79jePqyPC91neZ7abfY29/5F4AdE0rWbQjO39Qv6BvtXSHqUr
+         +jeg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:subject:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:sender:dkim-signature;
-        bh=6HJ2FaKkX/D+AT9OrHLfisp9QaPnnkjfCEAq/elSBuM=;
-        b=mkI7AEDmsWlLopVzmVo0o2C8GekgZs4TacRryqvfyuduX+jlDS26Bp9rfM3pJpZSMG
-         DTWPqYGpIQrB40NQIztKDXhdRBkd0EaiTEoJc9EWOBiig/XMwS/J45Hp2xC/Xxvz7J5P
-         KfDFAbnEHXXQ4fBOMwoCm32nHLj/MpeA+qoTro8UqWBqJAF4t4GD014ZBiZfFZC6dUeS
-         xBu/OQwJQooR5rQt+TYveAkOj3p6m3h99VPAsG6TBwxK6Ok+ux1moOiPSclajhargVZq
-         Os3lwZVLUC7+NijJzmoP4d+tu6JeH+zVPPSPsAVdAMU7GPTNfeXWTUc9RVUoWqGp3oVt
-         TAiQ==
+         :list-id:mailing-list:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to
+         :subject:sender:dkim-signature;
+        bh=IXm1PXVXTqUnvbwoI1RYuhulCcmiSpCuS/1AiHhcUqE=;
+        b=KOOaBRfBa3uCzSjxrpjFYGm9tRShwoKDN0ZzQHvQfOcVntRePaQgCyHQDl50IzE/Qr
+         7Yz/ol79ccfYR1pdDC71tAOHOguSOmylCHwiaUg8P0HQfxR4RTFR1WWdhmqOo8PsIuea
+         iro5mdut6QBkJTIb9zF3syGVVlvc8F3eUxpe9bjxra/QQ+uC38AH93GLZNNKMCAt/b7u
+         BvV9E8IZDqF8E2N0bFPFFK7ekxOLZYLM0lN0FRwQ80ErXFWLnSrm6Pz/FXZYH0D0IZiY
+         z1uZIsLI3WcHs7uBWSDVNWUqdwRY1eoSvLtOL9LpOXy1ykYzwX1lAwrDhVCDyz4UoNPw
+         TCWQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+       spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:subject:x-original-sender
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=6HJ2FaKkX/D+AT9OrHLfisp9QaPnnkjfCEAq/elSBuM=;
-        b=G/Xj+LhOSA3SbulAeGsvv4+QPcVj4AWnViP4AaAGVwFHmFsqZlNyHpzparI6AiEJfZ
-         w9rDA5izOAUcX0LJ6Ob0xie32dQCck1YYSLlnvk6C2GUuPfY22C1DLut+3DajePTJnoG
-         H3iagIfzVj8UxhUWCa7XXjkOVOgsSo0oBLhF/TkSNBDCxh2aOWAt4rdj7fvLc2H0/Lj7
-         TVHGVj1RHf3e6lZKtv4FUmhv1KW/eIZ1ezwOxZKhXF1OFDnTXJoUSGIHSp4M/ZXMZ7NA
-         FIPkteMP9IefgcYe1SzcGZ+NvC/AsfEegBI7qG4tRXksm4VUhDkMJyWYf+k4lIoFdeBR
-         5TrA==
+        bh=IXm1PXVXTqUnvbwoI1RYuhulCcmiSpCuS/1AiHhcUqE=;
+        b=dM5yGM8l4UKnynX5aRGy9NUCzPo0EiRyqsmAYj5Vrp6PNiyt9h2BH5SqQ6HABWIB3O
+         F19Ly44ZKC0v/jRLZaCtgNFcvdDbHHWIDwq6Z34T/EyuTztYCyF2PSMVq9iHELGnQllp
+         lhqspIUFQBqaXy8hF+NNQ0DddU8fyiQvOqN4LgfYqzIIvK6KUKN04KjdHnv4wdx/aDqM
+         PflzwZI1rEU3LjL58uEsvBN0UJcwYyq+LK0AYvFNyARBcjc7HCM+uqwidY0/NadoQ0eO
+         +e5+SGI/r0pUJSn6/w+Gn0E2aWxPjm8T8CSN1MkgAowT7BqeVLOblIL350I9HI5IKr9K
+         hFig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language:subject
+        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=6HJ2FaKkX/D+AT9OrHLfisp9QaPnnkjfCEAq/elSBuM=;
-        b=QvKwnfUuL72O0ZmEWDrlG1Q6i3mfxRId3EsHhmxyLihbWw4qFFRm/v/J145hsfUpP/
-         dwtEARv6dZcB8uPMBJzx1gdWwzK3nFsasCOVqMK5i/ranjeBL171+AgTG+IDCdQqitcM
-         waWSgVjAyRxie2FEVuMOivk8hVoOje1q//QdWqpA3o2pQi8ENkoFX3tDvHDc3HXbplU5
-         jqEUF0+itlGJKsmonIJIDH/eaKr5fxY2QL0jXFu2cFZMPJUwu7NC6L6Id4pi3QVJ/sTG
-         ezsC0ZqpJ9wJFRxIT3E1e1QEIhjJe7JFFid6MORpnD70+bvbk4IHNcjD1698rtp0D/qs
-         qaog==
+        bh=IXm1PXVXTqUnvbwoI1RYuhulCcmiSpCuS/1AiHhcUqE=;
+        b=g9zNuXMdJO3j1A4B0Sevjay3qxtJ8Cw9yfsAqqeGN9lB+gL+tTjNw1mqkmFbaz/Vne
+         GlG7SmnDSYdBEI0036EiV0gE+dE4xHNqgJhpeFBdCJRgS1bi3MC9oH/qqRvB6CY8OgKb
+         VLvPY1aqGdlBUdWzG5yqTf7QgI+HP5X6tubr7gta2Vkw7Itp2y3zwQfvvZoueLRwgcrh
+         KEAPD5UwI8AZpUh9XiMJt9sZfVUgPCVPLoViW5T0S/uqoSpxJ3lm4dkmdBWDwSE5QdMl
+         a4GbQCeLuAZqtsbNbNuoy45HkGMRropMyJyU9oKkG43pJB4DvmUosi4Mf7ZV9bwKO9jr
+         iK5w==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUAnmeuXDh8umuXSxctrAKK0ratjDrf/T0qQ+kmlN5/wHymCIi+
-	r1rkeulI7KdoG8Ylp3XHsVs=
-X-Google-Smtp-Source: APXvYqz9hUfFEvd1n70rwyyoua1Ywl29FA8Momof8A9pHRegbkmdKnSd4QPzsD6AmfT9nz0UTJESXg==
-X-Received: by 2002:a92:10cb:: with SMTP id 72mr17443576ilq.17.1576600988800;
-        Tue, 17 Dec 2019 08:43:08 -0800 (PST)
+X-Gm-Message-State: APjAAAV3835TGqSMCHwZLV8Rh9KHGh6vs5VX7x3GdUx4zxsGkSYyQZq1
+	zEnIQ75B49J5gpvVpGbUZxk=
+X-Google-Smtp-Source: APXvYqxpCkq0Dcgmeu8RulUfUVaP7taJGEOJDkOqvrGHEjlLeZwUzqH24Chho5xflZOlI6OdiIJakQ==
+X-Received: by 2002:a81:2f16:: with SMTP id v22mr961251ywv.399.1576654506464;
+        Tue, 17 Dec 2019 23:35:06 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a92:3d16:: with SMTP id k22ls2095471ila.12.gmail; Tue, 17
- Dec 2019 08:43:08 -0800 (PST)
-X-Received: by 2002:a92:3cd4:: with SMTP id j81mr12799049ilf.77.1576600988194;
-        Tue, 17 Dec 2019 08:43:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576600988; cv=none;
+Received: by 2002:a25:7a87:: with SMTP id v129ls206061ybc.1.gmail; Tue, 17 Dec
+ 2019 23:35:06 -0800 (PST)
+X-Received: by 2002:a25:c42:: with SMTP id 63mr773058ybm.425.1576654506126;
+        Tue, 17 Dec 2019 23:35:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576654506; cv=none;
         d=google.com; s=arc-20160816;
-        b=oboTkAxPbhyakhD4LdJ0ski8Z8TyoD9XTDHgoUdAg4alsFDMIOCP3A54rlG7y6TY25
-         rM4dWEohPR5QZEa5gn8TG7eiLmvl6A4ImZhvlMdvQoVPD5JF5FeD/8l8Ra65aBCx/R9v
-         1X2m0ztR0eHuytVsBO2sJI6C7af8e1XbJn/NfxjZUiybnJzN5DlmwnpnkXmRsy3OfryT
-         y/6LD28jZpt7PxKqx5IwKJG4KQNkQBArZGZarix/H66hJWfflrIwf5qlZc4+n98DB2bT
-         jd/M34Yf0ComV7BMJwWt4va+aJDSu528WAcps2par5g8XrcZmQ+1uUUjQIzo0zOV0YWu
-         uMUg==
+        b=K0W7L1Qqp6roG2lTHzskV9MhqyT8E56KeEFx7frnzAa5yFIaVmoyHKvYs3I9+AiLDc
+         ULVvDWJnMxMpbCn9haxg/vGaX2VCMbPBv/jM5wrYvQP/dt2WSqJxyXj7n6blc2uUqsmM
+         K1ISTxvrPTfamk2lohOjsTuv/d5A1v73mR9LOrSnBgHl7Lm8eMUZVzwGLf5xfP4+6ufy
+         XboaGgU1yBLTifFM6aQGwrxplZ0g9pI4XpQPEC1Mk8ZmscqHxOUIUPUgVoJr0Q3F/haA
+         UJUbLt38Gg5nd7kvJOcxxpnFHiSldMGKL8shSGP+g4noHoqO3xlHyETjYw9xixBy36pq
+         nw6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to;
-        bh=s3Br0VyPu56Qdmqts8VKGGaHfUT5UJSSk8LwnW7g8X4=;
-        b=kTMxC2nAuxeO5+eb4EPAfBT1PUT99dp2UADQvoLdo217oZr0SIgjJwpWA+FcQYlQ3e
-         EY70VYMkW8EYGRXW5GPMyNPhzUbaRVTw1z2ucv0ah9xbesd0GUzrWt9qqrryAR9qe6mr
-         aQo1G7zv4oov/O/fydHxNy0+8btqVbL/jXsaP01/9WywPG3/fI/WyhL7JJYss5uNqngN
-         lNCRwPGYhsZLG8REEdSf+fEHV2qQcoQ0BTe9vKNog+SOEoGhatq7F9Xht0phknE3VRFx
-         EkH1FFUIX1wXi00BwqqwP0WsQsKafjoyNHBarMxiN63S3uLvvnw4BStg4LawhI7vmZsY
-         8vrA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=K8ERmAaCoWP0DapvLmH/TGOHmrfV1dbS39VGNQRziDU=;
+        b=VIHK4cCVAW54dCpcXvHln7RLIYYwblOuWrXffbMSmWMO+VHYJsCBT2Hn4PC/gxhZDm
+         ZBy55KfGsZ0H+DM0Hc4wYuGAiy0ddayLapqCak9KHHjkwQw5ksmt93GgqRWlth0SyT9k
+         9Old7Q7FTtpo1SY39xmXRbGpNNBDee8a0tTB5B4b0w9EhHxeoQAc9qQxRJGVQPu6jBDW
+         pjDVD6Q5grtoxWYL4hHuBrUNduTo9tsWAyXa6dV+tk8G5Yj6n6F0VLTo1V2lsyunkXOR
+         n378xMka4XMIjMiGpwxim5dbOYs6kmaqTE+hWcRNOXlMiuEQ06/GIshzNllOcqF1TTA2
+         dKQg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
-Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
-        by gmr-mx.google.com with ESMTPS id v82si584017ili.0.2019.12.17.08.43.07
+       spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
+Received: from spam2.hygon.cn ([110.188.70.11])
+        by gmr-mx.google.com with ESMTPS id z5si68151ywg.5.2019.12.17.23.35.04
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Dec 2019 08:43:07 -0800 (PST)
-Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
-Received: from guinness.priv.deltatee.com ([172.16.1.162])
-	by ale.deltatee.com with esmtp (Exim 4.92)
-	(envelope-from <logang@deltatee.com>)
-	id 1ihFw1-0003ae-Q9; Tue, 17 Dec 2019 09:42:58 -0700
-To: Jiasen Lin <linjiasen@hygon.cn>, linux-kernel@vger.kernel.org,
- linux-ntb@googlegroups.com, jdmason@kudzu.us
-Cc: allenbh@gmail.com, dave.jiang@intel.com, sanju.mehta@amd.com
-References: <1576550536-84697-1-git-send-email-linjiasen@hygon.cn>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <d4f679cd-739b-fd80-8344-7da475937835@deltatee.com>
-Date: Tue, 17 Dec 2019 09:42:48 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
-MIME-Version: 1.0
-In-Reply-To: <1576550536-84697-1-git-send-email-linjiasen@hygon.cn>
-Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-CA
-X-SA-Exim-Connect-IP: 172.16.1.162
-X-SA-Exim-Rcpt-To: sanju.mehta@amd.com, dave.jiang@intel.com, allenbh@gmail.com, jdmason@kudzu.us, linux-ntb@googlegroups.com, linux-kernel@vger.kernel.org, linjiasen@hygon.cn
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=5.0 tests=ALL_TRUSTED,BAYES_00
-	autolearn=ham autolearn_force=no version=3.4.2
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 17 Dec 2019 23:35:05 -0800 (PST)
+Received-SPF: permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) client-ip=110.188.70.11;
+Received: from MK-DB.hygon.cn ([172.23.18.60])
+	by spam2.hygon.cn with ESMTP id xBI7YsLc029176;
+	Wed, 18 Dec 2019 15:34:54 +0800 (GMT-8)
+	(envelope-from linjiasen@hygon.cn)
+Received: from cncheex01.Hygon.cn ([172.23.18.10])
+	by MK-DB.hygon.cn with ESMTP id xBI7YjaX044964;
+	Wed, 18 Dec 2019 15:34:45 +0800 (GMT-8)
+	(envelope-from linjiasen@hygon.cn)
+Received: from [172.20.21.12] (172.23.18.44) by cncheex01.Hygon.cn
+ (172.23.18.10) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1466.3; Wed, 18 Dec
+ 2019 15:34:54 +0800
 Subject: Re: [PATCH] NTB: ntb_perf: Add more debugfs entries for ntb_perf
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-Original-Sender: logang@deltatee.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
- permitted sender) smtp.mailfrom=logang@deltatee.com
+To: Logan Gunthorpe <logang@deltatee.com>, <linux-kernel@vger.kernel.org>,
+        <linux-ntb@googlegroups.com>, <jdmason@kudzu.us>
+CC: <allenbh@gmail.com>, <dave.jiang@intel.com>, <sanju.mehta@amd.com>
+References: <1576550536-84697-1-git-send-email-linjiasen@hygon.cn>
+ <d4f679cd-739b-fd80-8344-7da475937835@deltatee.com>
+From: Jiasen Lin <linjiasen@hygon.cn>
+Message-ID: <fd3efeba-40f0-3933-af48-d74486ddea86@hygon.cn>
+Date: Wed, 18 Dec 2019 15:32:11 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.3.0
+MIME-Version: 1.0
+In-Reply-To: <d4f679cd-739b-fd80-8344-7da475937835@deltatee.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Language: en-US
+X-Originating-IP: [172.23.18.44]
+X-ClientProxiedBy: cncheex02.Hygon.cn (172.23.18.12) To cncheex01.Hygon.cn
+ (172.23.18.10)
+X-MAIL: spam2.hygon.cn xBI7YsLc029176
+X-DNSRBL: 
+X-Original-Sender: linjiasen@hygon.cn
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=permerror
+ (google.com: permanent error in processing during lookup of
+ linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -137,24 +145,49 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 
 
 
-On 2019-12-16 7:42 p.m., Jiasen Lin wrote:
-> Currently, read input and output buffer is not supported yet in
-> debugfs of ntb_perf. We can not confirm whether the output data is
-> transmitted to the input buffer at peer memory through NTB.
+On 2019/12/18 0:42, Logan Gunthorpe wrote:
 > 
-> This patch add new entries in debugfs which implement interface to read
-> a part of input and out buffer. User can dump output and input data at
-> local and peer system by hexdump command, and then compare them manually.
+> 
+> On 2019-12-16 7:42 p.m., Jiasen Lin wrote:
+>> Currently, read input and output buffer is not supported yet in
+>> debugfs of ntb_perf. We can not confirm whether the output data is
+>> transmitted to the input buffer at peer memory through NTB.
+>>
+>> This patch add new entries in debugfs which implement interface to read
+>> a part of input and out buffer. User can dump output and input data at
+>> local and peer system by hexdump command, and then compare them manually.
+> 
+> Do we even initialize inbuf and outbuf? Probably not a good idea to
+> expose them to userspace if it's not initialized.
+> 
 
-Do we even initialize inbuf and outbuf? Probably not a good idea to
-expose them to userspace if it's not initialized.
+Good catch! Input buffer(peer->inbuf) should be initialized after call
+dma_alloc_coherent in perf_setup_inbuf, but output buffer(peer->outbuf)
+that point to NTB BARx MMIO address can not be initialized. The address 
+of memory request that fall in NTB memory windown will be translated 
+into an address that point to input buffer at peer memory system through 
+NTB XLAT register in ntb_perf. In other words, only input buffer should 
+be initialized.
+Will fix it for v2 as a separate patch.
 
-Really, ntb_tool should be used to check if memory windows work,
-ntb_perf is just to see the maximum transfer rate.
+> Really, ntb_tool should be used to check if memory windows work,
+> ntb_perf is just to see the maximum transfer rate.
+> 
 
-Logan
+Yes, you are right! ntb_tool could be used to check memory window
+by hexdmup mw and peer_mw after write mw_trans and peer_mw_trans,
+but this is only one ntb client be probed although we can insmod both
+ntb_tool.ko and ntb_perf.ko, That's to say, only one modulue can create
+files in debugFS. So, I suggest that add debugfs entries that can read
+input and output buffer in ntb_perf.
+
+Thanks,
+Jiasen Lin
+
+> Logan
+> 
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/d4f679cd-739b-fd80-8344-7da475937835%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/fd3efeba-40f0-3933-af48-d74486ddea86%40hygon.cn.
