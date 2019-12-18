@@ -1,136 +1,136 @@
-Return-Path: <linux-ntb+bncBAABBKVN47XQKGQEMFRJ6QY@googlegroups.com>
+Return-Path: <linux-ntb+bncBCZ3V5MFGUILZBHJ54CRUBAYUGNNQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb3b.google.com (mail-yb1-xb3b.google.com [IPv6:2607:f8b0:4864:20::b3b])
-	by mail.lfdr.de (Postfix) with ESMTPS id C1C06124067
-	for <lists+linux-ntb@lfdr.de>; Wed, 18 Dec 2019 08:35:07 +0100 (CET)
-Received: by mail-yb1-xb3b.google.com with SMTP id 63sf742979ybz.11
-        for <lists+linux-ntb@lfdr.de>; Tue, 17 Dec 2019 23:35:07 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1576654506; cv=pass;
+Received: from mail-pg1-x537.google.com (mail-pg1-x537.google.com [IPv6:2607:f8b0:4864:20::537])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9A89A124B12
+	for <lists+linux-ntb@lfdr.de>; Wed, 18 Dec 2019 16:14:06 +0100 (CET)
+Received: by mail-pg1-x537.google.com with SMTP id r30sf1361001pgm.8
+        for <lists+linux-ntb@lfdr.de>; Wed, 18 Dec 2019 07:14:06 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1576682045; cv=pass;
         d=google.com; s=arc-20160816;
-        b=0wuS62jJAkzgmTfditFGKeTuTKrP5U0dDj+nLGCiHVe2CwjX8vPs2ovEoXSnOeCqvO
-         H9Umwr42yeiVpdgPP6yAj71dUXgoK+XeBOoF+VDLUaLcD/MBGIBz8NDvO+cUDpYeiuNn
-         EkgbFC/X9r2EBZ66nvP64vy4sS4cNVqF4g0QfWL8R7FyZriHSg1OK5EMbaDbzF8PcSI+
-         tmfMWTBWclhkDHqXtrGBYl3K3KeKvMq03wycnm9QXSeOilNIezAalhdxVw1sbo+0Awaw
-         0KMs3YKsAEvCf2hx6lt79jePqyPC91neZ7abfY29/5F4AdE0rWbQjO39Qv6BvtXSHqUr
-         +jeg==
+        b=WHrFFAqL2tp4LMDOhzHbb0ND9i1b/9eKbdssjIGLOk96MAAOTHGpyGNoG/plBAkexb
+         BQmVfZE+rEQ2tULLnDCzWPHrEGws+OGiOjKtj1hCAhncP6pMUBb8Izjjpv8Hh4ClJmy5
+         mkvb69mA29+J8JGyldkKR2kMi313RsclxoIXPnhRuz2y5zCFTCxfOysIBrS5og0z7jgY
+         1/EWB/7wnHL9Xw3uDAk+u3pe2Q/5hDRJBMfWQb4lf3ehPlkwsNfK1O9tcTa1SkPbPZUJ
+         b09hY9vZP8YB9GhczmpqcwjZy10I6JxUthFLjENkDPXo9TrB4IHExvwBND/uz9KzCtJV
+         +ktw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to
-         :subject:sender:dkim-signature;
-        bh=IXm1PXVXTqUnvbwoI1RYuhulCcmiSpCuS/1AiHhcUqE=;
-        b=KOOaBRfBa3uCzSjxrpjFYGm9tRShwoKDN0ZzQHvQfOcVntRePaQgCyHQDl50IzE/Qr
-         7Yz/ol79ccfYR1pdDC71tAOHOguSOmylCHwiaUg8P0HQfxR4RTFR1WWdhmqOo8PsIuea
-         iro5mdut6QBkJTIb9zF3syGVVlvc8F3eUxpe9bjxra/QQ+uC38AH93GLZNNKMCAt/b7u
-         BvV9E8IZDqF8E2N0bFPFFK7ekxOLZYLM0lN0FRwQ80ErXFWLnSrm6Pz/FXZYH0D0IZiY
-         z1uZIsLI3WcHs7uBWSDVNWUqdwRY1eoSvLtOL9LpOXy1ykYzwX1lAwrDhVCDyz4UoNPw
-         TCWQ==
+         :list-id:mailing-list:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:reply-to:mime-version:sender
+         :dkim-signature:dkim-signature;
+        bh=67BXEm/cWcchxpcAVQ09MMn4HqRBZdA++KHUV04K6d0=;
+        b=LkPkfdJJhOg+SMW0k2r7IAhqRYnyIMgEEGrtJ/jC+vjxbJDdYIQYO0FYxN4gbGJea1
+         x+Ix1f/ehLEUELJ/nuFRDyNRqQqX1JWZfSsw1Cje9nlSto34NyJy3WbbjQH+bRQa+QTC
+         G3AcaqqOGl27cXC18O4cjGmHeQMkyrHRLgGPXQXIvNdg3brDYduQvytDRXQQ9SKbHpjG
+         Le7NN3U5lHXSfufhTHOB8kxVsqT9SAu8lKY97DQfgwWZOp/ovp9QaTHpxdR7a1w7ZJnS
+         lt3tYhTDmxWfcgls0BQbUGz/d1fKsP6I6bdcbRaSaDaFUnrD4b8O4rez2PjGQNYk0Gb3
+         SwXA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RfaUJbE6;
+       spf=pass (google.com: domain of info.zennitbankplcnigerian@gmail.com designates 2607:f8b0:4864:20::d42 as permitted sender) smtp.mailfrom=info.zennitbankplcnigerian@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
+        h=sender:mime-version:reply-to:from:date:message-id:subject:to
+         :content-transfer-encoding:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=IXm1PXVXTqUnvbwoI1RYuhulCcmiSpCuS/1AiHhcUqE=;
-        b=dM5yGM8l4UKnynX5aRGy9NUCzPo0EiRyqsmAYj5Vrp6PNiyt9h2BH5SqQ6HABWIB3O
-         F19Ly44ZKC0v/jRLZaCtgNFcvdDbHHWIDwq6Z34T/EyuTztYCyF2PSMVq9iHELGnQllp
-         lhqspIUFQBqaXy8hF+NNQ0DddU8fyiQvOqN4LgfYqzIIvK6KUKN04KjdHnv4wdx/aDqM
-         PflzwZI1rEU3LjL58uEsvBN0UJcwYyq+LK0AYvFNyARBcjc7HCM+uqwidY0/NadoQ0eO
-         +e5+SGI/r0pUJSn6/w+Gn0E2aWxPjm8T8CSN1MkgAowT7BqeVLOblIL350I9HI5IKr9K
-         hFig==
+        bh=67BXEm/cWcchxpcAVQ09MMn4HqRBZdA++KHUV04K6d0=;
+        b=X1VACcZ7BKBpb5ufBZU7ky03kJ+VL3Xg3lw1eSoQvxccv5N5C/nNIzF1hK12w410LO
+         DOshHh/XFzAOT49O/bCNhMfRZOS0Yh/ykLw2hax/2vB6siyuLFteoWAQS2v2PrZgeGnK
+         IKuUlYdnQ/RJ2bSF/jEX+TaMxDyxDgASWymuGccg+hR9LsYQpJB6nS9rpP9Fbt5CuN8l
+         BQma+AjlAUsHjJy2z9Fc8maGZOtTXrrHS07YPluTAsUGIkEkUAJXcEqk7ZuDWP2jIyC3
+         +/PlHP+0Y3vMwnveBaA6Rphn2Fq4EYg7jTzAwEiaF9Q+GMzL9fwHRDhFar+EuRhXvbbs
+         fHuw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:reply-to:from:date:message-id:subject:to
+         :content-transfer-encoding:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=67BXEm/cWcchxpcAVQ09MMn4HqRBZdA++KHUV04K6d0=;
+        b=b3JhzlmLcx8aojk/FIltUvm8sxqzJ78JYHULuXBZirKV8s4JQklHngZiI/eEQvh72J
+         ORyQRH+kDa/y0pSMmFjD7HjVtoIbQq73NNk1gcVxwjmTedD+ij+HnTgyYs8fR0rcNpIH
+         ytiLOinriaHngCp19bvGFlYok5X6p+t6Q9wSAv4GBAL4ebSnJrQ4q1xmtYPTXuQ/xPcs
+         GK0uDZVkaeWya0x2ggsChPQi6z1AXYbEYkZb3UZaNwDuUV2GtF5FkmOX1ske4DTZAap9
+         3zjQfnZKHOLnFU+emzo+h36/m4SxuimVeKXKBYodBj6mLYltBUeurhDoBlnPiO6ywm3a
+         ikCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=IXm1PXVXTqUnvbwoI1RYuhulCcmiSpCuS/1AiHhcUqE=;
-        b=g9zNuXMdJO3j1A4B0Sevjay3qxtJ8Cw9yfsAqqeGN9lB+gL+tTjNw1mqkmFbaz/Vne
-         GlG7SmnDSYdBEI0036EiV0gE+dE4xHNqgJhpeFBdCJRgS1bi3MC9oH/qqRvB6CY8OgKb
-         VLvPY1aqGdlBUdWzG5yqTf7QgI+HP5X6tubr7gta2Vkw7Itp2y3zwQfvvZoueLRwgcrh
-         KEAPD5UwI8AZpUh9XiMJt9sZfVUgPCVPLoViW5T0S/uqoSpxJ3lm4dkmdBWDwSE5QdMl
-         a4GbQCeLuAZqtsbNbNuoy45HkGMRropMyJyU9oKkG43pJB4DvmUosi4Mf7ZV9bwKO9jr
-         iK5w==
+        h=sender:x-gm-message-state:mime-version:reply-to:from:date
+         :message-id:subject:to:content-transfer-encoding:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=67BXEm/cWcchxpcAVQ09MMn4HqRBZdA++KHUV04K6d0=;
+        b=fom8aX93avAfwjPPoO4BjP2ONLKoKX+HsCx9SG2J29kh5fWDgWAnjOHI2G+8pVCtKy
+         WtFMIYPIMAJGS8a226RyBljvS6IikZbMVdVobwWGt1n87Co/9LBYbOuCs+03n8T6lJ1C
+         401+NCShX3cT8q1E7MNdEZhVef2HnWbYTvwixRpp/DeimYDqyFnz18dTI86M6YPI0ITs
+         QA4zjiN1FQgnQiP3zJfhWcGN8J1aFqAJZlqA41NJPiiq77LHvccIAQIAzUjJ383urnig
+         SpHrvC8fmz/t7NDgpKDigSt2dIpukwwqoQTK0ZPxMpI+TXIDkFFOU/A1Kp5qsZ9zD6mp
+         rKAQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAV3835TGqSMCHwZLV8Rh9KHGh6vs5VX7x3GdUx4zxsGkSYyQZq1
-	zEnIQ75B49J5gpvVpGbUZxk=
-X-Google-Smtp-Source: APXvYqxpCkq0Dcgmeu8RulUfUVaP7taJGEOJDkOqvrGHEjlLeZwUzqH24Chho5xflZOlI6OdiIJakQ==
-X-Received: by 2002:a81:2f16:: with SMTP id v22mr961251ywv.399.1576654506464;
-        Tue, 17 Dec 2019 23:35:06 -0800 (PST)
+X-Gm-Message-State: APjAAAXxkCJywzr52V0BKjzMXa+iqUZnecAz3aSHKyIykvC2spMKvXh6
+	zMHc69u4RwtB7KsB0c1brrg=
+X-Google-Smtp-Source: APXvYqx+0pfdDnq7U9HvmOi0OIJdMqjcvbwuYOvW2I9thO99lFLb2cZek4XhHLjhwblZa31mHwiaiA==
+X-Received: by 2002:a63:ff52:: with SMTP id s18mr3649107pgk.253.1576682044951;
+        Wed, 18 Dec 2019 07:14:04 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a25:7a87:: with SMTP id v129ls206061ybc.1.gmail; Tue, 17 Dec
- 2019 23:35:06 -0800 (PST)
-X-Received: by 2002:a25:c42:: with SMTP id 63mr773058ybm.425.1576654506126;
-        Tue, 17 Dec 2019 23:35:06 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1576654506; cv=none;
+Received: by 2002:a17:902:8c8c:: with SMTP id t12ls665828plo.9.gmail; Wed, 18
+ Dec 2019 07:14:04 -0800 (PST)
+X-Received: by 2002:a17:902:48:: with SMTP id 66mr3338007pla.182.1576682044428;
+        Wed, 18 Dec 2019 07:14:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1576682044; cv=none;
         d=google.com; s=arc-20160816;
-        b=K0W7L1Qqp6roG2lTHzskV9MhqyT8E56KeEFx7frnzAa5yFIaVmoyHKvYs3I9+AiLDc
-         ULVvDWJnMxMpbCn9haxg/vGaX2VCMbPBv/jM5wrYvQP/dt2WSqJxyXj7n6blc2uUqsmM
-         K1ISTxvrPTfamk2lohOjsTuv/d5A1v73mR9LOrSnBgHl7Lm8eMUZVzwGLf5xfP4+6ufy
-         XboaGgU1yBLTifFM6aQGwrxplZ0g9pI4XpQPEC1Mk8ZmscqHxOUIUPUgVoJr0Q3F/haA
-         UJUbLt38Gg5nd7kvJOcxxpnFHiSldMGKL8shSGP+g4noHoqO3xlHyETjYw9xixBy36pq
-         nw6A==
+        b=WckHmjQF2XfodHqZLnQMA6SKNT+Qba9pQrlqQwYZOqGCYMjfoVSmi4lwZ7PHSE1a4V
+         uNb2KJz13soGTCYYGFSprBUz2+mkPsxo6UDPZVJbN73cCaNNaup96F47mdaWKzZMq17d
+         PWhEgox1OVljf52yUtBPV4rNy4rT/LlOExuA/V9lgesEAqnMn/1ho3Z3M64zUQFDpT5V
+         aqtLEAnzOkbM+s98QQ52TOj8rNr6tK2Niw5pjTTgF8M4qOpNFXVteRs/1Biu9Uj8KCEg
+         J785J3jbhjx6ySzYvwfXTxswn3Smm/4hZ1HaNFa10u5JWayuFEGpoz+/TumvbqUmMs8W
+         cjjQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=K8ERmAaCoWP0DapvLmH/TGOHmrfV1dbS39VGNQRziDU=;
-        b=VIHK4cCVAW54dCpcXvHln7RLIYYwblOuWrXffbMSmWMO+VHYJsCBT2Hn4PC/gxhZDm
-         ZBy55KfGsZ0H+DM0Hc4wYuGAiy0ddayLapqCak9KHHjkwQw5ksmt93GgqRWlth0SyT9k
-         9Old7Q7FTtpo1SY39xmXRbGpNNBDee8a0tTB5B4b0w9EhHxeoQAc9qQxRJGVQPu6jBDW
-         pjDVD6Q5grtoxWYL4hHuBrUNduTo9tsWAyXa6dV+tk8G5Yj6n6F0VLTo1V2lsyunkXOR
-         n378xMka4XMIjMiGpwxim5dbOYs6kmaqTE+hWcRNOXlMiuEQ06/GIshzNllOcqF1TTA2
-         dKQg==
+        h=content-transfer-encoding:to:subject:message-id:date:from:reply-to
+         :mime-version:dkim-signature;
+        bh=R9l9mbjTMtC+3agOxuj88vgGSGUSi1shzIvbtHPQHDA=;
+        b=moOSMvXGstL6DsyzgaeUe6Mj3sZqb1ztDCX9apLjvV6uotZqh4ojpxPeIveuDoJIX1
+         FVU8wPEnmaAGkfpFGXzkZL3i4XPsjnFQHOp3+OW6uu/6ipOc7ecBueCWxs0ggvsUG9wv
+         tS8QKlc5W6afhhdqWh33dcupgET9NbR6yI3LbfW5RxPivMACcc3OCeftDhKVvQvRX72Z
+         Ukaa5DRVXJLAckfEa5TrsrDZimbZKG68a9DrgiCro567DHWdicYJiDiVjdliqLYpcwRt
+         Nzc31JJt3i4wxTFXFPlzOc9VGgI7HHq6j6+Zz6ZUuV3vY8qCRrfRyOKf4UVQvOOIqnPA
+         ko/w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
-Received: from spam2.hygon.cn ([110.188.70.11])
-        by gmr-mx.google.com with ESMTPS id z5si68151ywg.5.2019.12.17.23.35.04
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=RfaUJbE6;
+       spf=pass (google.com: domain of info.zennitbankplcnigerian@gmail.com designates 2607:f8b0:4864:20::d42 as permitted sender) smtp.mailfrom=info.zennitbankplcnigerian@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-io1-xd42.google.com (mail-io1-xd42.google.com. [2607:f8b0:4864:20::d42])
+        by gmr-mx.google.com with ESMTPS id x13si109477pgt.3.2019.12.18.07.14.04
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 17 Dec 2019 23:35:05 -0800 (PST)
-Received-SPF: permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) client-ip=110.188.70.11;
-Received: from MK-DB.hygon.cn ([172.23.18.60])
-	by spam2.hygon.cn with ESMTP id xBI7YsLc029176;
-	Wed, 18 Dec 2019 15:34:54 +0800 (GMT-8)
-	(envelope-from linjiasen@hygon.cn)
-Received: from cncheex01.Hygon.cn ([172.23.18.10])
-	by MK-DB.hygon.cn with ESMTP id xBI7YjaX044964;
-	Wed, 18 Dec 2019 15:34:45 +0800 (GMT-8)
-	(envelope-from linjiasen@hygon.cn)
-Received: from [172.20.21.12] (172.23.18.44) by cncheex01.Hygon.cn
- (172.23.18.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1466.3; Wed, 18 Dec
- 2019 15:34:54 +0800
-Subject: Re: [PATCH] NTB: ntb_perf: Add more debugfs entries for ntb_perf
-To: Logan Gunthorpe <logang@deltatee.com>, <linux-kernel@vger.kernel.org>,
-        <linux-ntb@googlegroups.com>, <jdmason@kudzu.us>
-CC: <allenbh@gmail.com>, <dave.jiang@intel.com>, <sanju.mehta@amd.com>
-References: <1576550536-84697-1-git-send-email-linjiasen@hygon.cn>
- <d4f679cd-739b-fd80-8344-7da475937835@deltatee.com>
-From: Jiasen Lin <linjiasen@hygon.cn>
-Message-ID: <fd3efeba-40f0-3933-af48-d74486ddea86@hygon.cn>
-Date: Wed, 18 Dec 2019 15:32:11 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.0
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 18 Dec 2019 07:14:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of info.zennitbankplcnigerian@gmail.com designates 2607:f8b0:4864:20::d42 as permitted sender) client-ip=2607:f8b0:4864:20::d42;
+Received: by mail-io1-xd42.google.com with SMTP id z193so2353332iof.1
+        for <linux-ntb@googlegroups.com>; Wed, 18 Dec 2019 07:14:04 -0800 (PST)
+X-Received: by 2002:a05:6638:950:: with SMTP id f16mr2789501jad.107.1576682043767;
+ Wed, 18 Dec 2019 07:14:03 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <d4f679cd-739b-fd80-8344-7da475937835@deltatee.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Language: en-US
-X-Originating-IP: [172.23.18.44]
-X-ClientProxiedBy: cncheex02.Hygon.cn (172.23.18.12) To cncheex01.Hygon.cn
- (172.23.18.10)
-X-MAIL: spam2.hygon.cn xBI7YsLc029176
-X-DNSRBL: 
-X-Original-Sender: linjiasen@hygon.cn
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=permerror
- (google.com: permanent error in processing during lookup of
- linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
+Received: by 2002:a02:6603:0:0:0:0:0 with HTTP; Wed, 18 Dec 2019 07:14:03
+ -0800 (PST)
+Reply-To: dhl.expresscourier102156@outlook.fr
+From: "MS. MARYANNA B. THOMASON" <info.zennitbankplcnigerian@gmail.com>
+Date: Wed, 18 Dec 2019 16:14:03 +0100
+Message-ID: <CABHzvr=Pq7-TqhY8TPvFCsr+5-DhDQy=XOg-TM13qqbFWeemfQ@mail.gmail.com>
+Subject: =?UTF-8?Q?Urgent_delivery_Notification_of_your_ATM_MASTER_CARD?=
+	=?UTF-8?Q?_Amount=2C=2415=2E800=E2=80=99000=E2=80=9900=2C?=
+To: undisclosed-recipients:;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Original-Sender: info.zennitbankplcnigerian@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=RfaUJbE6;       spf=pass
+ (google.com: domain of info.zennitbankplcnigerian@gmail.com designates
+ 2607:f8b0:4864:20::d42 as permitted sender) smtp.mailfrom=info.zennitbankplcnigerian@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -143,51 +143,48 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+Attn Dear.
 
+Urgent delivery Notification of your ATM MASTER CARD, Dhl-Benin is
+ready for delivery of your ATM Master card worth $15.800=E2=80=99000=E2=80=
+=9900, as
+approved this morning, Date, 18/12/2019. Through the Intruction from
+INTERNATIONAL MONETARY FUNDS, I.M.F official Directors.
 
-On 2019/12/18 0:42, Logan Gunthorpe wrote:
-> 
-> 
-> On 2019-12-16 7:42 p.m., Jiasen Lin wrote:
->> Currently, read input and output buffer is not supported yet in
->> debugfs of ntb_perf. We can not confirm whether the output data is
->> transmitted to the input buffer at peer memory through NTB.
->>
->> This patch add new entries in debugfs which implement interface to read
->> a part of input and out buffer. User can dump output and input data at
->> local and peer system by hexdump command, and then compare them manually.
-> 
-> Do we even initialize inbuf and outbuf? Probably not a good idea to
-> expose them to userspace if it's not initialized.
-> 
+REGISTRATION NO :EG58945
+PARCEL NUMBER: 140479
+Delivery Schuleded now,
+Finally all we required from you is your ATM Card Proccessing Delivery
+fees $19.00 only which you must send to this DHL service to enable us
+dispatch the parcel to your destination today.
 
-Good catch! Input buffer(peer->inbuf) should be initialized after call
-dma_alloc_coherent in perf_setup_inbuf, but output buffer(peer->outbuf)
-that point to NTB BARx MMIO address can not be initialized. The address 
-of memory request that fall in NTB memory windown will be translated 
-into an address that point to input buffer at peer memory system through 
-NTB XLAT register in ntb_perf. In other words, only input buffer should 
-be initialized.
-Will fix it for v2 as a separate patch.
+Here is our receiving payment details.
+You are advised to send it Via Money Gram Service.
 
-> Really, ntb_tool should be used to check if memory windows work,
-> ntb_perf is just to see the maximum transfer rate.
-> 
+Receiver's Name--------Alan Ude
+Country-------Benin Republic.
+City/ Address--------Cotonou
+Test Question--------In God
+Answer-------We Trust
+Amount------------$US19.00 only
+Mtcn-------------
+Sender's Name-------
 
-Yes, you are right! ntb_tool could be used to check memory window
-by hexdmup mw and peer_mw after write mw_trans and peer_mw_trans,
-but this is only one ntb client be probed although we can insmod both
-ntb_tool.ko and ntb_perf.ko, That's to say, only one modulue can create
-files in debugFS. So, I suggest that add debugfs entries that can read
-input and output buffer in ntb_perf.
+Your delivery  ATM card worth $15.800=E2=80=99000=E2=80=9900,
+Is Due for delivery to your address today upon confirmation of
+required fee from you asap.
 
-Thanks,
-Jiasen Lin
+Call us on this phone number for any inquiry. +229 62819378
+Awaiting your urgent response.
 
-> Logan
-> 
+MS. MARYANNA B. THOMASON, Shipment director, DHL Express
+Courier Company-Benin
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/fd3efeba-40f0-3933-af48-d74486ddea86%40hygon.cn.
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/CABHzvr%3DPq7-TqhY8TPvFCsr%2B5-DhDQy%3DXOg-TM13qqbFWeemfQ%40mail.=
+gmail.com.
