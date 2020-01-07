@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBC6JD5V23ENBBSHP2LYAKGQE7X2TCCY@googlegroups.com>
+Return-Path: <linux-ntb+bncBC6JD5V23ENBBUXP2LYAKGQEWGQWQSA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd3c.google.com (mail-io1-xd3c.google.com [IPv6:2607:f8b0:4864:20::d3c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 33B74132BC7
-	for <lists+linux-ntb@lfdr.de>; Tue,  7 Jan 2020 17:54:34 +0100 (CET)
-Received: by mail-io1-xd3c.google.com with SMTP id i8sf257316ioi.0
-        for <lists+linux-ntb@lfdr.de>; Tue, 07 Jan 2020 08:54:34 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1578416073; cv=pass;
+Received: from mail-il1-x13f.google.com (mail-il1-x13f.google.com [IPv6:2607:f8b0:4864:20::13f])
+	by mail.lfdr.de (Postfix) with ESMTPS id 26E9D132BDE
+	for <lists+linux-ntb@lfdr.de>; Tue,  7 Jan 2020 17:54:43 +0100 (CET)
+Received: by mail-il1-x13f.google.com with SMTP id n6sf41068ile.6
+        for <lists+linux-ntb@lfdr.de>; Tue, 07 Jan 2020 08:54:43 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1578416082; cv=pass;
         d=google.com; s=arc-20160816;
-        b=nD4Z0zggy0cDi76KsSOYXzy6UNYZSN/vBBjGxLkHNnqdGMXIndKsh3kLGbQ9DO/QUw
-         8TqNs7g3sDU7Yp0Jxlw4GkDywI6IT//b+nifZd4mPj7x1HLdpqIi9XjEET0HWVwp2s+o
-         5AK+KFqObTg4pnYVrr9KZbgLaCJehBpMrMm2virD/PxNUh51A6KeLPxoTCRu6jiFw7T1
-         zjG2kZAH8mmi8EMjknoT96RVvzUX0vLBABNGgcF9HezgS1aGsyDqyeIW9zk/487AD/F7
-         NqA69/c9h9FeHaNJam+MzJcR0d5Us/+ww2A1BxZFJHta/qYaDxwA7IzIPUzOswQ5nOfp
-         Cf1A==
+        b=pQ7QCkE5N3lzSQgGEdFt5pWjgPYiKItS6MiiRJl65+bgXo6wlVEPELF8OepAaeM5RX
+         JiV1VvRr+Kmq4rQ+rAboNtj/mUkMokCLCNXUp0AOTJhZnolHsMUxiuJIV7l7L3cc5fbY
+         4VsGw0DPwLSuxj2JwsJnQKyCTL+PctmohMx1DaTQiaOKOAR2lhTdSdqfFQtoPrW8GCO8
+         h4FX6WlOPfbcUg2CvTAFKVWj9PosLyy1guFol6noI4ZLiua6dXILAy1wfdPeKDvaX+Pc
+         qBIeUhKYRdlmtj3OsrR13OjSgeONXrSreewS44ysxC6fDrR9rZCefdRzArIiAaGwGfae
+         nnww==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:mime-version:sender:dkim-signature;
-        bh=LUPerZA5nQuCqTauPegb/BMTqJqw1BU5rLjex0zbDus=;
-        b=wjAvnkXHmCNgxzEXcCrTvHvd0Fyo5DwAgpy5G87s/lXJZt1n0HZDnIXDOz6igJuGk6
-         0r/kjM56apAFdY3k4Me0lKHiSpw1L8iwjk79YC2bZUlEND3cYU6Bvwwv4YrDqsj8Gvt4
-         z9w6bgbIQsKuV7FjUa5GOy+5kPXaJm0TMCB3L3P3cm8JnLfVnhUpLIYOb9cz91s1d9uv
-         PeMRt7xYXxipGKMPETWvcwEjPEFTahE4R2SzoQWat3H/PwhWPVfqxKlXceTgkGJMGy06
-         BkXFiWavA6ed5IlpyKuqe1eTxRk9sflJfzIQPHX4CJCONTnD1Up0FFAxihiLjvJnSmwS
-         qJhA==
+        bh=fHIxFB35lJsJNwf5YUgBgwJ8plr1lg9+xfjVn5Q8LeQ=;
+        b=wTXI5ofZ/w4Q7ZedLijSU1JMvh/U+YgJXO1BYbHUDbztNQeL7M0dvVCozSd9Q38Cjb
+         ymQT6drjBTPDphsW4fvf/B1zZjQJ2WuI4aZ0f5btkHqywsGGRKf8jK2y9C9bTrx6TGWw
+         6JxP2mBp4ruS+OEkGUVptuaZE3pgSSSTEJFlX9G325qU2rVOpT+eof1lh6fHaGpesZBV
+         CuUTjruWFCpy3Y/unc6WWjFY+v5Kst2x0FtcqwX32kA7AGWowPPgHewqkhSr9hJRUZAk
+         EU2Qjljtu6TMsYIOXM/6XO2STGDSAgV/MMv2q0SDygmoVqjfrju3EWWppX7CtoppipCa
+         a3sQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=nPI0cC7r;
+       dkim=pass header.i=@kernel.org header.s=default header.b=MyjPtgAp;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :references:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=LUPerZA5nQuCqTauPegb/BMTqJqw1BU5rLjex0zbDus=;
-        b=Idp0d5tDFSbLq3DQ9W9S8BGJ+vh5CRgQVcvd19Yus2bzsLiO3uDNlJAeVjSWoe4IQS
-         k1F3rgCa5w+E03/8yWAxiSCqrYLc3+WhlTpzffhabJbXUCyNuuPpl69rU1NK7UI+6R1I
-         0Vtga3OxYkWLEsBQsj4wFKW+chHGDBvMgoMDdBIo6BUwwOPoxyCbANlG2KayWHQ0hT4r
-         JszZZ6PBrbz1Rwnu6nsV7B4IoJHgSgi2qdL86mVMBxjahYpi8FHU5msb8sICBwXapCKz
-         nNpkk2jrKayA6z/11bbg8EqUV1WLLNVflBL5GOU+JkOwmdYH7yRw7qeK+a8GDzBs5KU6
-         OlaA==
+        bh=fHIxFB35lJsJNwf5YUgBgwJ8plr1lg9+xfjVn5Q8LeQ=;
+        b=G7Fr0CFs1dNHWKuXzy4TTasuRH7E0+y7W3jowH2TpAO7KNKr4ewAqSAs5s9UadaWVr
+         3LnuHIKpMBlLDCasPFOhZ1hiEPZ73U1PaYPtKT/WxZjJblm2yqGk3nntPHCIo3rVWQ7g
+         sQT7iQo0s2OOGAJu9wuYjbEIFRDUgjgrqaKahRNu0Ttr2PaQuLPzOxxUaXTJGvJo4T6H
+         yAx4E099PXGbsJ61tbvu60plzFopnmen2rFt65CPhxh4RIK42IKhCOvrys9AlIUzYRHC
+         e8YZ/q3a2jtgzIfJxu+hdWrIM4UrBUhihZIeYfWv8DTxAKyyHbVdsd/026HZVFMSBYTF
+         a4Kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:to:cc:subject:date
@@ -49,58 +49,58 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=LUPerZA5nQuCqTauPegb/BMTqJqw1BU5rLjex0zbDus=;
-        b=eqYmgFkJ8GY74iAR0NNvebnzyskXGncGhRER3gAn32jWTLH/nEiJ4IpOVbrimMge4o
-         TtHE+ZXPNcni3hYQTK5ti9+6xFw+LdGC5+/S/qP4MLwv1aUeFfKHlZvK46jBVoGGptVR
-         SAuV5OsYoAk9PnFHALT4LPzocqBrsKegAnx4SbMQI6UofRpAvY4bjJ7lAi5cJVkB8TGf
-         X4uc3qC0F1c3ORpWx6It0XYtawkI/FgrlwhrGcrmqCU1+cC9Qzx+eo6C/WBLLdUeu63k
-         v/aHLudwKqczeiGDk5O/N6id2JNzSgRpc+fDXW35kNdnLg/U2l4BFJB/5UeylCspyPPN
-         HsgA==
+        bh=fHIxFB35lJsJNwf5YUgBgwJ8plr1lg9+xfjVn5Q8LeQ=;
+        b=rlF+/r2emirbsCwowD1EOwMHfpMVzZ3he5r2XqxnbhNeXaxwZjiSM/k0sErWTl1bvb
+         xJLVFLafZWbwapppFnZkU1kwxMtRxwp05g4MAKlXTBHyG3lWSvxQ16OBB3CZJ/R+IoHt
+         eu46LoLQCWjfonwTswtWuOBxFJ23ELs2k2NRU7H4WD3vgu89qVnHscYGgaF8LI5joFWd
+         Zbuem6Tcu+7CPKwSU3jTL1HsBSvlmDMNEObd1odkvkwsvANtDa3YZ0hrAdFGBGvX7Z5+
+         3XNzPzO7yvRlC1kgKTgOFd2RcfCwMNkGV6fp9DrdzhVmxq/Ngp+1znXBLbej6X0gAnJY
+         VH7g==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAU6ZYGauL4nqUw9/7/eUn/u7F+Y/7U0jSNO5gijvC0fwgISInMk
-	smeRQjY8YFDUasVYY/7XV30=
-X-Google-Smtp-Source: APXvYqwSXgnP0DpnH8IQg07s0AflSLvKCnhWoecU/HBdJNsnl1Wp57Fe3c1QHhYIWyICYH5rqFqA4w==
-X-Received: by 2002:a5e:de04:: with SMTP id e4mr75244957iok.47.1578416072978;
-        Tue, 07 Jan 2020 08:54:32 -0800 (PST)
+X-Gm-Message-State: APjAAAUDsknGqkO7Ul4bfUbAmD4GLFdhtW2vkr59FhkO7w3xMlruORUh
+	HFgLB+vgJjkv8lM0jcbK8Xc=
+X-Google-Smtp-Source: APXvYqzh+xhvPV9u8eqksOo4BAFaAhb4PIGmuVZ7upwCX4yrO1N7WgBTw5xPCFnVK+EwjCUKNuZtkw==
+X-Received: by 2002:a92:15c1:: with SMTP id 62mr24148ilv.216.1578416082110;
+        Tue, 07 Jan 2020 08:54:42 -0800 (PST)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a6b:8d49:: with SMTP id p70ls8574iod.1.gmail; Tue, 07 Jan
- 2020 08:54:32 -0800 (PST)
-X-Received: by 2002:a6b:b20a:: with SMTP id b10mr74045863iof.87.1578416072652;
-        Tue, 07 Jan 2020 08:54:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578416072; cv=none;
+Received: by 2002:a92:ce86:: with SMTP id r6ls53110ilo.13.gmail; Tue, 07 Jan
+ 2020 08:54:41 -0800 (PST)
+X-Received: by 2002:a92:b712:: with SMTP id k18mr90214741ili.259.1578416081827;
+        Tue, 07 Jan 2020 08:54:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578416081; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xd9VLa+Eu1cY0TaZNNuG31lue0o/0PGH11lsOzDi2Qq4rX7MfrNXi1rUxu8/OAxTYh
-         WJw32KV60E9IOrEVq/DeeEDcDI65Iq4EVvIof/XegdrVR8LS3a+HPoipWf8jgMz0qDPI
-         72A/bOxvPXVr56BRM7fsZdKKnj+aWmpFF9gPQhtXd/uqJQuWkW6aJKi2S+1iiynMBlEq
-         22DGPFKKb7R4lndAv2pVipFly3CeU61GlqzybXyHkTCveRoeURXFGIiPk8fUyRf0mBhV
-         i+V4vmdIfIvFTkSacOshBB8hCyX5IE0ylDglmvu9X6bcgTFGNPqM/h8t5G3v8pPFbJHX
-         Hwtw==
+        b=meo5q6QyRrcweu+RGNHRrFQFZkTKECV/S0uERsnPRcs+1npodejVDaFC345arRmZLo
+         4YGq++EzQyK8QXanonHcK6Er8aMX3FaibFBoC/YFnnnryDSOKaPZnq1ff8MLI9oPGg1e
+         PE2FOaoE/snXyYaLblYXfNL9sC3/3xtUlPJ6hpdbumnK1DPt/jue1hqk4lVzrFBJlbko
+         bshQzjCijgMKOSWY0h8JOB7n9TSIrNOc9rFJMEbfzfbc5hCRj9ZJ+K6jQxz5UP7E4L+u
+         NZHb1dP2hDcgo80nCPT6FC5rb54J6cNDP+oyt0hjznmbHlsNsBkdiV+JeZRBYYc75sPc
+         hMeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=98P2japITKvXoEGBa1BHDwsKsjjjRb42UE97jN6j27k=;
-        b=IW1EogAeO2X9fKkVwPWDqU4gpTeXO7bIRVkV7j7HW3VxnX44ALmG2GrLkcB2MIwR06
-         R1yVn3d2p9/lYLL0HC746N4QjrEW/fNsTIacVRMr/XKlDlYlw+rOH0pdVZnEQLnGQwuY
-         HYRum7WNhJas1Ki6aJcWbT1nrIsj3JEzDm8M8adKHbe+99E+GwcQAhvYUiyEi+HjP7OW
-         v5SVsg6h1UWP8Gvj0CZtmbAxFKsu60bH5vMrnL5MFwl0PWgXNxrjJskOBs3EpzmoXGPd
-         XpTWNT6xHD2LTwPjhc+dQfJKWMSJyVjUGYZlmDa+rSj7bpKVE2wTTSETdn9CIst8rLHM
-         xlFQ==
+        bh=07KcwXxzXkAH3nTG1Hr65r9/NqYBl6VuiH2SaFmm/xI=;
+        b=d288Wp2ByEwpi889uKUjotdTvKcSLIsMXc5GpqXRlPr8I4OBxJPeoUlISrKlG/BTaJ
+         uIRa62tpq5nl+k4OYC5mOesXVFw250jiUOFefzL9i8YN+UT6RGY5WyWNwlYmYZmfZUpv
+         L/TToc2JrlxnGvd5E7ePtfkrxdZs/NxoJX9rUOk3QCq6lCpRTbQ44p6I5kOG6rQ0Vimf
+         8tIWW1ZvedbtvFrvC7pIWxntUid09wO2RIH/WgckoBZleMW4NDoK49kd4U5XrXGQIZO2
+         8BOyq1LgZnMhJKOw1kl/j69/kFW/OGxyQf+hb+8sRPmwu/zW3BkYDbIQhGFZsr1Yyir0
+         1VPQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=nPI0cC7r;
+       dkim=pass header.i=@kernel.org header.s=default header.b=MyjPtgAp;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id k9si19768ili.4.2020.01.07.08.54.32
+        by gmr-mx.google.com with ESMTPS id i4si15608ioi.1.2020.01.07.08.54.41
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Jan 2020 08:54:32 -0800 (PST)
+        Tue, 07 Jan 2020 08:54:41 -0800 (PST)
 Received-SPF: pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Received: from PC-kkoz.proceq.com (unknown [213.160.61.66])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 6B861214D8;
-	Tue,  7 Jan 2020 16:54:24 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4E4BC24676;
+	Tue,  7 Jan 2020 16:54:32 +0000 (UTC)
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Richard Henderson <rth@twiddle.net>,
 	Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
@@ -148,15 +148,15 @@ To: Richard Henderson <rth@twiddle.net>,
 	virtualization@lists.linux-foundation.org,
 	linux-arch@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [RFT 05/13] powerpc: Constify ioreadX() iomem argument (as in generic implementation)
-Date: Tue,  7 Jan 2020 17:53:04 +0100
-Message-Id: <1578415992-24054-8-git-send-email-krzk@kernel.org>
+Subject: [RFT 06/13] arc: Constify ioreadX() iomem argument (as in generic implementation)
+Date: Tue,  7 Jan 2020 17:53:05 +0100
+Message-Id: <1578415992-24054-9-git-send-email-krzk@kernel.org>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1578415992-24054-1-git-send-email-krzk@kernel.org>
 References: <1578415992-24054-1-git-send-email-krzk@kernel.org>
 X-Original-Sender: krzk@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=nPI0cC7r;       spf=pass
+ header.i=@kernel.org header.s=default header.b=MyjPtgAp;       spf=pass
  (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted
  sender) smtp.mailfrom=krzk@kernel.org;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=kernel.org
@@ -176,86 +176,41 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 The ioreadX() helpers have inconsistent interface.  On some architectures
 void *__iomem address argument is a pointer to const, on some not.
 
-Implementations of ioreadX() do not modify the memory under the address
-so they can be converted to a "const" version for const-safety and
-consistency among architectures.
+Implementations of ioreadX() do not modify the memory under the
+address so they can be converted to a "const" version for const-safety
+and consistency among architectures.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 ---
- arch/powerpc/kernel/iomap.c | 22 +++++++++++-----------
- 1 file changed, 11 insertions(+), 11 deletions(-)
+ arch/arc/plat-axs10x/axs10x.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/arch/powerpc/kernel/iomap.c b/arch/powerpc/kernel/iomap.c
-index 5ac84efc6ede..de8da1c3496f 100644
---- a/arch/powerpc/kernel/iomap.c
-+++ b/arch/powerpc/kernel/iomap.c
-@@ -15,23 +15,23 @@
-  * Here comes the ppc64 implementation of the IOMAP 
-  * interfaces.
-  */
--unsigned int ioread8(void __iomem *addr)
-+unsigned int ioread8(const void __iomem *addr)
- {
- 	return readb(addr);
+diff --git a/arch/arc/plat-axs10x/axs10x.c b/arch/arc/plat-axs10x/axs10x.c
+index 63ea5a606ecd..180c260a8221 100644
+--- a/arch/arc/plat-axs10x/axs10x.c
++++ b/arch/arc/plat-axs10x/axs10x.c
+@@ -84,7 +84,7 @@ static void __init axs10x_print_board_ver(unsigned int creg, const char *str)
+ 		unsigned int val;
+ 	} board;
+ 
+-	board.val = ioread32((void __iomem *)creg);
++	board.val = ioread32((const void __iomem *)creg);
+ 	pr_info("AXS: %s FPGA Date: %u-%u-%u\n", str, board.d, board.m,
+ 		board.y);
  }
--unsigned int ioread16(void __iomem *addr)
-+unsigned int ioread16(const void __iomem *addr)
- {
- 	return readw(addr);
- }
--unsigned int ioread16be(void __iomem *addr)
-+unsigned int ioread16be(const void __iomem *addr)
- {
- 	return readw_be(addr);
- }
--unsigned int ioread32(void __iomem *addr)
-+unsigned int ioread32(const void __iomem *addr)
- {
- 	return readl(addr);
- }
--unsigned int ioread32be(void __iomem *addr)
-+unsigned int ioread32be(const void __iomem *addr)
- {
- 	return readl_be(addr);
- }
-@@ -41,27 +41,27 @@ EXPORT_SYMBOL(ioread16be);
- EXPORT_SYMBOL(ioread32);
- EXPORT_SYMBOL(ioread32be);
- #ifdef __powerpc64__
--u64 ioread64(void __iomem *addr)
-+u64 ioread64(const void __iomem *addr)
- {
- 	return readq(addr);
- }
--u64 ioread64_lo_hi(void __iomem *addr)
-+u64 ioread64_lo_hi(const void __iomem *addr)
- {
- 	return readq(addr);
- }
--u64 ioread64_hi_lo(void __iomem *addr)
-+u64 ioread64_hi_lo(const void __iomem *addr)
- {
- 	return readq(addr);
- }
--u64 ioread64be(void __iomem *addr)
-+u64 ioread64be(const void __iomem *addr)
- {
- 	return readq_be(addr);
- }
--u64 ioread64be_lo_hi(void __iomem *addr)
-+u64 ioread64be_lo_hi(const void __iomem *addr)
- {
- 	return readq_be(addr);
- }
--u64 ioread64be_hi_lo(void __iomem *addr)
-+u64 ioread64be_hi_lo(const void __iomem *addr)
- {
- 	return readq_be(addr);
- }
+@@ -95,7 +95,7 @@ static void __init axs10x_early_init(void)
+ 	char mb[32];
+ 
+ 	/* Determine motherboard version */
+-	if (ioread32((void __iomem *) CREG_MB_CONFIG) & (1 << 28))
++	if (ioread32((const void __iomem *) CREG_MB_CONFIG) & (1 << 28))
+ 		mb_rev = 3;	/* HT-3 (rev3.0) */
+ 	else
+ 		mb_rev = 2;	/* HT-2 (rev2.0) */
 -- 
 2.7.4
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1578415992-24054-8-git-send-email-krzk%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1578415992-24054-9-git-send-email-krzk%40kernel.org.
