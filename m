@@ -1,45 +1,45 @@
-Return-Path: <linux-ntb+bncBCQJP74GSUDRB2U423YAKGQEYNAE74A@googlegroups.com>
+Return-Path: <linux-ntb+bncBCQJP74GSUDRBC4623YAKGQENPQVFKY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3d.google.com (mail-vk1-xa3d.google.com [IPv6:2607:f8b0:4864:20::a3d])
-	by mail.lfdr.de (Postfix) with ESMTPS id AA1F2133CA9
-	for <lists+linux-ntb@lfdr.de>; Wed,  8 Jan 2020 09:10:19 +0100 (CET)
-Received: by mail-vk1-xa3d.google.com with SMTP id y28sf814164vkl.23
-        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 00:10:19 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1578471018; cv=pass;
+Received: from mail-io1-xd39.google.com (mail-io1-xd39.google.com [IPv6:2607:f8b0:4864:20::d39])
+	by mail.lfdr.de (Postfix) with ESMTPS id C6FC4133CC4
+	for <lists+linux-ntb@lfdr.de>; Wed,  8 Jan 2020 09:13:00 +0100 (CET)
+Received: by mail-io1-xd39.google.com with SMTP id p206sf1560415iod.13
+        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 00:13:00 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1578471179; cv=pass;
         d=google.com; s=arc-20160816;
-        b=kC8N9M8bk8xBLy/78U/iBgwn++4PPZbH5NJl4Q+oc2FL6WD9ZiYeWFFXXFZmMbwlyW
-         rmTBM0RH0B4fFgA/riXBBSYwbHzK0q51XQ1H1FLW0tisjv05nO6NXTwM1/KTerDYc1/M
-         ob9rdY+RR0Q14o/7o91WnSIntn8jIXd66VivltRufyqSsn8+/VTpj0+WNtXW4gx9cGof
-         l4Luvrc21WDtwcVGA4qTcSNo1ptsKu82yPAcSWRuIOMBsJzNAj18eLAK/1AYkWqUV5Pi
-         w8KslpzdbzaSaDK4Ksmo4j/KeuE9UOw8B6pMfiiDjc/in07RwU9KOfYh9dXukbpUEwEb
-         hFow==
+        b=r0CZIWzHdALCTWNEvYFRvh1N0CHl+nVJe2SjhLL4mEGyogdirwbJ/m6AkvayEQ8+Oz
+         c3ed7pXTaIgCUFjZVRXohYr838Ue6HpaP01xvV7NMZ8xKpn1halCm6GJQJBPaxxsnFW0
+         OZkmcKh1e6A2mgnvbBNap60q4SbOqDD/truaz6Cn1ENpkkQEzGFheYA8YF8uJALsk6bT
+         dXv40RKiwBIyYc08GEKOxx0XJ0tIF//GKpP2VOoRV6SN+6vAoWp668QZnVp+AGtLx2/t
+         aPOmxUbb3yAsyZbx7Yham5ql9c6x9wTLAR2NbQFrbw1oi8ZLwAwlnM281FA9UkKEs4z8
+         p7Cw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:sender:dkim-signature;
-        bh=FOJ2N5HsKWnOjVp7JMOYQyQiDsb/sYxRBIMqbLO421I=;
-        b=cqV9Ni1WKmH5mdbt9Vydq4Qv2wtx0KkA1rf425YgwcedTQmMJ5tTdAMsF1pjeSFjYW
-         ZVzlIMyQjmn6x7BnuSAeuZkSIX+FORe81FHxAEA0JWCQ/Ip2hYqG5DZmZnO1hy82FBhI
-         CWtFThsIn/0OC/PSl4cJsEJRrdeYy+VF/GcVm8bv4iEZvelK088E/+v7xNgbT4g9mdYx
-         xEICAwLeb7AGxc7SsDOmc9yUmWaAmuH1m71QNmHw8iXZyKqQ0Ai4cRs+hF4ZtIuWkdWq
-         KbEgJ/SXHkKI+sjet3I2/WEzMF3+h8pP3fQ+wcYttXBMYV0AWIEmYFqLpcIQtaSQJTaG
-         XT3Q==
+        bh=F6MlOQglDz+r+y6rdN1X7/iLcfiGheRr/h9TAZN+mls=;
+        b=ldk0AAFdFCoUn9MmcbeBsXUOXOh39H8L88erj2WHuvGwCEHs7Qljwk8u1X6ifLmbus
+         hMwM8706LOEWKbBsfiIkUC9eS9LrzyhrePeedfV3SFl3554pevuvr8Cn4w2XiZ5U323c
+         Jpu4ejt73wnDz27YwFtGoX00ybvdnKsR4hTQvXCz7TVf1Z0+b3nUmKj8Gm3Ap6XhCbmd
+         0+KQZ+tSm0n6aZgAcqjh3U67uB0PFeFMcFck/QM6n8DGMwKwjUFOcoP2fK1b4MWQ8fIn
+         oPa8CbE2dM6R6XM71yW8XXzYC8qJ3i/3AHkhMqWtNcRbfr7Gm1Z8S727+q+SPt+2wVIC
+         uz+A==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
+       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.68 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
         h=sender:mime-version:references:in-reply-to:from:date:message-id
          :subject:to:cc:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=FOJ2N5HsKWnOjVp7JMOYQyQiDsb/sYxRBIMqbLO421I=;
-        b=qHbi7k6YXhBg/41Up+R+k2YBixwenRobvmG0+HdpIWqIir3FjX0o7yFRT76HEJNuia
-         sLZSnpKyLrTgcE4HSVZjnjMvRMCp3HQgFqRhUCnm+qk/ydrNLp1lwcoc2EOkzrpI9RJ4
-         BaDfX6GsKhYwIkBuygM2Dy7r4oLkZA2um9ivx2j0f+nK+r94aV6RlAClqTeC0tp+2byY
-         4c7JkEwc4czvh5kKI3pdFj+K5cJz21gL2KAHkI7tn6DiIYfpU+x8utos4GSkUk0tbDZm
-         X1oGNmZt4jOGaELPUjzT0X4/leAPnH+qTCgzN8JhnTRqztDGDXIN9Zf6UVAnhFasKBCx
-         4W+g==
+        bh=F6MlOQglDz+r+y6rdN1X7/iLcfiGheRr/h9TAZN+mls=;
+        b=eUi92nQ455IsozJVEXzCFH6vSVqs0Zv2z9XVjyR4mRq6NxWwkKKzxC8GQAVd81gelB
+         goPu4WDYGFAlFEZJrUf9sj9Ng9TlsX/ga2QTydldwWMD4PYZ6ao7P+fPRgOHMG6sIyUL
+         dr2iUB6veB5M2kdPWaspmt43mcBoCohS3bYoBeRSdG5WcwSque9J93zrpaHc6wtc9p50
+         5PuKhiBCNK7E0HDfZbjgaTZBpRHfXwxlu09ggh3cPSmHkKT67vdmtpf3ICS75tcbrM/M
+         qKkLzzx1nkhTalb2gqtM3zC/r2q97ePEL6hwjddzgW5POWwcNvZ1fn2d1cVIpFZMcKJb
+         h9Aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
@@ -47,62 +47,61 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=FOJ2N5HsKWnOjVp7JMOYQyQiDsb/sYxRBIMqbLO421I=;
-        b=LgZGaiKG+HnZ/0ryCrdmskhuvZQob9N0CIETMhNk2HH2QF+bLuM6C/qxznX/wsPzvj
-         3Ci+8v38gsey2EL4ji5bN2vLOIgoHxUF7LrwtmSkuqMxo5yZfkC/AwW2hZNAzAdoZu/j
-         wQBvUOAMVCLnXMsXCufzpIGVCV/nNUgyj1YJ6YO0T3H4nHUvoNgA7AJ1e7aTdTgO7Q40
-         6+yg1ptmapYS1izs7ea+GOeB+oCZYjJVL1qeov66dPbHyXI904daFkemOzsdLer8izhS
-         g/WoHnzFteZS1wcT3594vsIolItVzoCdf3mSDtLo6WRFytchO0faaGLn7t9VYdVnAknl
-         is5A==
+        bh=F6MlOQglDz+r+y6rdN1X7/iLcfiGheRr/h9TAZN+mls=;
+        b=B2C3exgJn2gboxn+PLr86saBZDQLMzLWulyGaERDwPVd+UCd0Q05O/tmpkxVoFEGe+
+         O5pSJ5iss9g3YB+J0M+ej7Mfc2ar1diLN11UInXWhjFbAI8DaxmtiMJxoVjBMnu0ePQV
+         inVhl1rnpqh50nQGUm9G1kkALrycNuO6vY3fHw5qnZejAcsq+zg2O53Vt51idjbDvsX/
+         e7VN3fHqxe+ubvvw2JiAnz4HptQGMAQsvG23neCSww+2KM3eCycrzM64RTOMX2+nkYaT
+         VGt//Ozi6vjQto63lOYEfays0wAoaRb7g2VmUG/o/mce+MkYyExgPTpiQm73EChUt8mK
+         2uVA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXSWh2Xbe4uIA/ubZHlFxcM/MhP3Tkb3jTmqPYh/7Ez8l67Hj7z
-	3dX+NDPKhxGBouMlFh9wTEg=
-X-Google-Smtp-Source: APXvYqzR7QZYVSB0Uqvde07eYq+VrHQDPrSatKWtVbwQLFhm/SGZ0TzV/BefYSAxOImaTbzA8g+bYw==
-X-Received: by 2002:a67:800f:: with SMTP id b15mr1992594vsd.123.1578471018477;
-        Wed, 08 Jan 2020 00:10:18 -0800 (PST)
+X-Gm-Message-State: APjAAAXY+4Zn3XQ5sgpqGQirjbD8B2lQI2UUSWX7A/7nVSMId8YFyu0C
+	xNKBHSigFXJBgHCgfsVP4Vw=
+X-Google-Smtp-Source: APXvYqxb1fj6OAKfnCMXFNQCflTH0LLZop+bxbXPaJC/+jZ+cT/jngJ2gZ578ONCvLTN+AA68UqL8A==
+X-Received: by 2002:a5e:920a:: with SMTP id y10mr2415332iop.292.1578471179572;
+        Wed, 08 Jan 2020 00:12:59 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ab0:664b:: with SMTP id b11ls144192uaq.3.gmail; Wed, 08 Jan
- 2020 00:10:18 -0800 (PST)
-X-Received: by 2002:ab0:6894:: with SMTP id t20mr2459323uar.100.1578471018094;
-        Wed, 08 Jan 2020 00:10:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578471018; cv=none;
+Received: by 2002:a92:1504:: with SMTP id v4ls429698ilk.16.gmail; Wed, 08 Jan
+ 2020 00:12:59 -0800 (PST)
+X-Received: by 2002:a05:6e02:8e2:: with SMTP id n2mr2962569ilt.167.1578471179181;
+        Wed, 08 Jan 2020 00:12:59 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578471179; cv=none;
         d=google.com; s=arc-20160816;
-        b=IY8GTRmcrmAzRlkyNCCWQPyeg4y0DO1vfjVf9gGZpHHJeCwZEYnmkzY/msdYNx4BgE
-         Gje1j4ozjY/FLdAB1S7MCYi+HSzC94AvFgGc1w/2qJiFlkKKth7acmBqvA694Ti9rhRu
-         ZxSRHcOkRjXGNBR3Kxqa8u466ZYD+zZmt4rot0anT+jP9BXV2xeZgWsDjSRkohZF/4aj
-         NtpltzSifu37+gCddiH646tLYKSAfecMHFEXdHtWo+N64ZH/DCI9GOA2KdZ/HekTsMHK
-         FC6oKSTIhjP8FZsNd99S1JEOzlm7UeGgP9A8TCrYLhPkYKORRGpzR8QVg8UDpN52gVKz
-         uMcw==
+        b=WG8TafPDoMJ+KPl3pG3pMaBYd5xv3O3+Xd1hgQOK5UwhzELwJCPacMp1W+UCcxpgWX
+         +GfxDYk00K0T8i/mat8Ww5GMc179ckqeOJHk+r85RhziBJBfKh5lSf6KK7AoLJCklq5X
+         foyHUtZcnD9wgDlSebY1SGS7f0CLG10WzCrm2tG4yEZmh6kfCBa/3kEREIIcy7WKpSjj
+         QSnbYerP4axW0d89tuzLfvKugql6Ct2OrJyJl1JQ4EjZ9H+Lhnn8c5CVzSt7SvwbDEvu
+         5c7mGoCpDchq4lX0onH1v0WIBgItETyO1NorvK/VLmhV/wToOTdSV83Y4g2isgnBg7gz
+         Ky0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version;
-        bh=zSvatSaXmaDcygklTO+AiD7URC1DncR275ZO9qcviaY=;
-        b=i9bhx+GNtGxNmF6MHEH/HqtCPohiFEfaJd/Qk6X8dHcoGdWCu9TNmTUqz83wjODEVR
-         QxlPVXapqCAZB3ibbBaQXnC1ObAPYg7czW21oMgifXgCed04c48IAgF07Obo1/yU183P
-         HRdG3+s4tZQ7IPKMlfHROr9c26NcWnWDvFx17/H00b1+50TR1YUFYtRBbH3PMq0tDO/w
-         Joy/gSbfb0JVTcxem/4D1btVcrlqFj0T3uV1142yvs916RT9NxyNswMGDK53DNM5jyNH
-         QWx8aNi2lkN3gugF1P6eHAk/dNPqHOKvFSh/IzgPmEG6TuMkkdA2Uz97AqHNc1TlkSOg
-         q/EQ==
+        bh=fbJJB3WrQSG/aLI6W0tp/gWGqaTYGmXXjnwzN3HgNmk=;
+        b=G6pR9at/241/nyTWjC/qzBRyErJ9yTjjFl3f62Zr/nxwd34dHyG1SFx58790psMWRA
+         Zjyc6lJhqq9djq34WBAh7i9YD8bR9kK/V18F4SOdvKhkalnHcE++S8rmTBXanU8iW1GH
+         bO+6H3IY1VK/r3QRxgVMnaVGLp/jx+FGQ++6X7Vg/byPhfTOZob0ds55ahDDPvp47o8o
+         CK2MJLY8AwJ69czfARNohsaipeXBw61yBI+yvL9wT7IMN2x6Dwc14TeUFkoHTuEnXKhE
+         0J5zUBS41/3iPR3bNyqlFh+OOeAXvfRPlY/O3PIZexGtBEnNx+1Yryrbzipgv1T7YTrg
+         OeUg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com. [209.85.167.193])
-        by gmr-mx.google.com with ESMTPS id h7si151238vsm.1.2020.01.08.00.10.17
+       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.68 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
+Received: from mail-ot1-f68.google.com (mail-ot1-f68.google.com. [209.85.210.68])
+        by gmr-mx.google.com with ESMTPS id z7si157954ilz.1.2020.01.08.00.12.59
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 08 Jan 2020 00:10:17 -0800 (PST)
-Received-SPF: pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193 as permitted sender) client-ip=209.85.167.193;
-Received: by mail-oi1-f193.google.com with SMTP id i1so1880688oie.8
-        for <linux-ntb@googlegroups.com>; Wed, 08 Jan 2020 00:10:17 -0800 (PST)
-X-Received: by 2002:a05:6808:292:: with SMTP id z18mr2042282oic.131.1578471017446;
- Wed, 08 Jan 2020 00:10:17 -0800 (PST)
+        Wed, 08 Jan 2020 00:12:59 -0800 (PST)
+Received-SPF: pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.68 as permitted sender) client-ip=209.85.210.68;
+Received: by mail-ot1-f68.google.com with SMTP id r9so2711606otp.13
+        for <linux-ntb@googlegroups.com>; Wed, 08 Jan 2020 00:12:59 -0800 (PST)
+X-Received: by 2002:a9d:dc1:: with SMTP id 59mr3308976ots.250.1578471178824;
+ Wed, 08 Jan 2020 00:12:58 -0800 (PST)
 MIME-Version: 1.0
-References: <1578415992-24054-1-git-send-email-krzk@kernel.org> <1578415992-24054-3-git-send-email-krzk@kernel.org>
-In-Reply-To: <1578415992-24054-3-git-send-email-krzk@kernel.org>
+References: <1578415992-24054-1-git-send-email-krzk@kernel.org> <CAMuHMdW4ek0OYQDrrbcpZjNUTTP04nSbwkmiZvBmKcU=PQM9qA@mail.gmail.com>
+In-Reply-To: <CAMuHMdW4ek0OYQDrrbcpZjNUTTP04nSbwkmiZvBmKcU=PQM9qA@mail.gmail.com>
 From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Wed, 8 Jan 2020 09:10:06 +0100
-Message-ID: <CAMuHMdXHhF6GhS1W8qS4j7Jv5YnxXjcRopT5QSA=+trc8qwFng@mail.gmail.com>
-Subject: Re: [RFT 02/13] alpha: Constify ioreadX() iomem argument (as in
- generic implementation)
+Date: Wed, 8 Jan 2020 09:12:47 +0100
+Message-ID: <CAMuHMdUBmYtJKtSYzS_5u67hVZOqcKSgFY1rDGme6gLNRBJ_gA@mail.gmail.com>
+Subject: Re: [RFT 00/13] iomap: Constify ioreadX() iomem argument
 To: Krzysztof Kozlowski <krzk@kernel.org>
 Cc: Richard Henderson <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>, 
 	Matt Turner <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, 
@@ -130,7 +129,7 @@ Cc: Richard Henderson <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.
 Content-Type: text/plain; charset="UTF-8"
 X-Original-Sender: geert@linux-m68k.org
 X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193
+ (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.68
  as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
@@ -146,37 +145,23 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 
 Hi Krzysztof,
 
-On Tue, Jan 7, 2020 at 5:53 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> The ioreadX() helpers have inconsistent interface.  On some architectures
-> void *__iomem address argument is a pointer to const, on some not.
+On Wed, Jan 8, 2020 at 9:07 AM Geert Uytterhoeven <geert@linux-m68k.org> wrote:
+> On Tue, Jan 7, 2020 at 5:53 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
+> > The ioread8/16/32() and others have inconsistent interface among the
+> > architectures: some taking address as const, some not.
+> >
+> > It seems there is nothing really stopping all of them to take
+> > pointer to const.
 >
-> Implementations of ioreadX() do not modify the memory under the address
-> so they can be converted to a "const" version for const-safety and
-> consistency among architectures.
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> Shouldn't all of them take const volatile __iomem pointers?
+> It seems the "volatile" is missing from all but the implementations in
+> include/asm-generic/io.h.
 
-> --- a/arch/alpha/include/asm/io.h
-> +++ b/arch/alpha/include/asm/io.h
-> @@ -151,9 +151,9 @@ static inline void generic_##NAME(TYPE b, QUAL void __iomem *addr)  \
->         alpha_mv.mv_##NAME(b, addr);                                    \
->  }
->
-> -REMAP1(unsigned int, ioread8, /**/)
-> -REMAP1(unsigned int, ioread16, /**/)
-> -REMAP1(unsigned int, ioread32, /**/)
-> +REMAP1(unsigned int, ioread8, const)
-> +REMAP1(unsigned int, ioread16, const)
-> +REMAP1(unsigned int, ioread32, const)
+As my "volatile" comment applies to iowrite*(), too, probably that should be
+done in a separate patch.
 
-If these would become "const volatile", there would no longer be a need
-for the last parameter of the REMAP1() macro.
-
->  REMAP1(u8, readb, const volatile)
->  REMAP1(u16, readw, const volatile)
->  REMAP1(u32, readl, const volatile)
-
-Same for REMAP2() macro below, for iowrite*().
+Hence with patches 1-5 squashed, and for patches 11-13:
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
 
 Gr{oetje,eeting}s,
 
@@ -192,4 +177,4 @@ when I'm talking to journalists I just say "programmer" or something like that.
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAMuHMdXHhF6GhS1W8qS4j7Jv5YnxXjcRopT5QSA%3D%2Btrc8qwFng%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAMuHMdUBmYtJKtSYzS_5u67hVZOqcKSgFY1rDGme6gLNRBJ_gA%40mail.gmail.com.
