@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBC6JD5V23ENBBN7M3DYAKGQEM4JDXAI@googlegroups.com>
+Return-Path: <linux-ntb+bncBC6JD5V23ENBBQHM3DYAKGQEELU7CIY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qk1-x73a.google.com (mail-qk1-x73a.google.com [IPv6:2607:f8b0:4864:20::73a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1969F134C71
-	for <lists+linux-ntb@lfdr.de>; Wed,  8 Jan 2020 21:06:17 +0100 (CET)
-Received: by mail-qk1-x73a.google.com with SMTP id g28sf2654055qkl.6
-        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 12:06:17 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1578513975; cv=pass;
+Received: from mail-qk1-x738.google.com (mail-qk1-x738.google.com [IPv6:2607:f8b0:4864:20::738])
+	by mail.lfdr.de (Postfix) with ESMTPS id A76A0134C79
+	for <lists+linux-ntb@lfdr.de>; Wed,  8 Jan 2020 21:06:25 +0100 (CET)
+Received: by mail-qk1-x738.google.com with SMTP id a73sf2682198qkg.5
+        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 12:06:25 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1578513984; cv=pass;
         d=google.com; s=arc-20160816;
-        b=VBKPPn9lwxEfvSuqOqa8QgPSrnlUOTzn2XCTPzyquSXQWnoFhTHjsEbcWNT9c1A8WO
-         mdjhKy1G5Qa55VphmtmaQXvjSMmOBXe50EKyR7d6mbwrexNSKAWZxGOFBqeUxaw31uUG
-         7VfZqQrQiMzuIaHh7wZAg3wZM25sxqOOwW4IT/esSNesVEeij9wQyGTHRjzu8zfIJ8ln
-         0OWvxL2RR9gyF+ZdVKOlmP2zhLBnQrfJR63Q5AopkyDoazsLf0W7cOXljcIPSGJjZGGT
-         mU/tyKK5BT7ufx964uW3WN2dSnzQEC0FHAhdNPBPtYunyOc202G/x7CCUZ9OYf+zTa6X
-         xKqA==
+        b=YYHRfbOJjPkr7q2kDyycFVgTpLFhzU2hpLDONz1GWkIhSyQq2M6/nXqFbXZ5EGg3IU
+         tc4yx5iKIjsdRjtQZ2FffI+5cVNrMhApdlQfU0l3XhDVtJjFxp6bMXJ7dTKWGx2X+ce0
+         KM3vzCKAqWvKQyz7otW8Bu+uS3Yv9xHm3U4PcBKHnqyVcnYJ9ffh1YsRT9P9c3OhWLJ2
+         yGmU7XzFOgFmz+xLDk7i3VxXXjqnWpFDplcIg+faQSJxUUjh0HId7pHo9pxrJxNsMFVD
+         FWrWqauLewLXXSmcy2blgWBAcRmzUb4hbYF0XpPbhNa2Y+rYJlAs4Awh+5y09yJzQiEj
+         cwhQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:references:in-reply-to:message-id
          :date:subject:to:from:mime-version:sender:dkim-signature;
-        bh=TZVhxnkyYSZrQZBsalQesbsISQbTjasdDLUi3mEONis=;
-        b=HavQNYlAg2h6Xzt4d1+B7j6pWCVCenG4zx2jKVEp0F7RXcv+fAQyVouwReM7UmMuhW
-         uL8/6I5kdwgHhc307jOVg17aO0/byaV6d4b8u+6k4nsfcuadrBk5r+fGUYA/NNSlBQIY
-         pvTwk2OxDKG9h7YjpLSKREEZ0iI+yXM9gV0nrEb7jYXkP0dnPeHAqPGmtVSeBJgVG2ku
-         CjMfze7lKyNHLxeXLziOsQ9RNSi9DWVSRhJ6T6NTgfRbDihdcv3cNQHfF9CTedwE5wjQ
-         ypYfvnBjn7oiYssfr318YKDsiaQwwspI1gx3ktEmG9/nqQ9cfmcptwcBRs0yHfQUcVjf
-         4+tg==
+        bh=kLfwUh2EAAqRTjxT+9DaDKhOBmN/a/D2LuXd/e8mmUU=;
+        b=BRC0tCQpJTWHwE8Xvr7OHYkymFosOpN0mjIbllqrHyiC+32d4XEV79Mlc3xKSKt3SK
+         lXv0chsgwbZFZ2T8GWbmZwkOP6d4kclc8T5nfWkVyWqb54PKBgdzIArpjicYudbPhIo1
+         7ahW2vwzgF4YDwaSxxHUko7il8nMJvJnEN7InzU4XerGY+k8uNZ0YSXgUE4+jSdeInav
+         FYqJNR91C4+0bWkMklpEj01b7rjcgMV9cPiYeRBqOMhw6asfKsCwNrcXZSIYXFDRs3eI
+         YrNZKCSDB1H7m88C25H92XWjvAsM2Oii8IYT6Y8Mw8ZDXB/Vu5PqU2T8+SPrngbL9aEs
+         vOsg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=PY+oqH9c;
+       dkim=pass header.i=@kernel.org header.s=default header.b=kZmAdTXA;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :references:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=TZVhxnkyYSZrQZBsalQesbsISQbTjasdDLUi3mEONis=;
-        b=Adtfvj/bINp3BSO6XJpDyt9nNaYnPgyZgubIrs5a7qC74LiLGAFaefBF+KudJZYqj6
-         Yy48XDiCS2IzKPrTRUYkNarEgaZ9mmZUJs55c8zgGDQ0sT8N9ecKnQARRRWk3ZzgMrPv
-         3gvL0gN5NQODs9J1K7JpKWf2vQrOhLahh7mUU6r+lVcXUt/nwnggClAd7yM+dTuia2ix
-         IVDJLAdgHcU6CtFQ9XtFyRevJJyBwzQDo4YzgmCf5id6Jihopq/7leMakbuquY88Euq9
-         o1CLPAWuWNaD+A9bM3+eG6ASt8ZUIGSmb/NXiym6fCirY1dss+EjIWdkDYEE6fO+xGhC
-         klCw==
+        bh=kLfwUh2EAAqRTjxT+9DaDKhOBmN/a/D2LuXd/e8mmUU=;
+        b=f5LnRdB9v6ks13mVSHGQYE8GT0AkpdGjUmY7rzGSoH/sZ9UlBZnvAWAtos3z3DXyBD
+         gWBj2Odvmlawb+FXUZh4FeyRum2CSaGJKolJFvJpovNDIWjOZd+t3XGgmCSLbsQu+547
+         Cz3iR4Kd647M2o5r1Q/TzkUgGKR3cKxZ4B3X3jd5KhOEx4Gn6Q3NhuKdAwaZZwHFj1kD
+         QfENzm9cYI7vHZpao/bU4k7+9C2b2/08GuspH7mIRnyRrViAOxEeGaA/Ns9OBn2W9+sw
+         wgXf9Vqk3JGiBDanBPnPyAsV0OILE4sB64fqH7Pq9iRNxWlE5nZksyrUDHnhmUVUt8iw
+         SFfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:to:subject:date
@@ -49,58 +49,58 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=TZVhxnkyYSZrQZBsalQesbsISQbTjasdDLUi3mEONis=;
-        b=p5HCVejPNMC4O/qi+XqzHDUYbfSpZ/RZ4I+ziPLYwoZEGD6pa+6pvan5IB3qjMWPw9
-         Ntb+M8Y1WI1I/SIIyHMIwfvw93LgCPfDXGUSblUWdWvQGn/CTzgdhadrio9q4dTgff5f
-         KJ1vMZW6sE6V2uJedTpJlGv16SNag80qy7pdiznUG+B5V4nFeS+Mi5OK8wAL+dwho7U5
-         q6NuHTxriYfabyPYT04EyCLHkOo7tz4EuXPoOHtwHRQYySistcyroA9AGf/ENKMCUwK9
-         Gv33Iqd+Ms6z04CvuWX2T9AkkcRj9ksXaz5rwe8Kz02IBjqiSi+so+PAnmCAq8J9H0Qz
-         OlUQ==
+        bh=kLfwUh2EAAqRTjxT+9DaDKhOBmN/a/D2LuXd/e8mmUU=;
+        b=giheDKTkDjU//zw2bX863f6+WppLr1YfEAQWMJq36fhNXaj3rXxawwZw5N3PwXbo1/
+         AkwYTZCwRd42WRTZG+MNZOqAYxyRhlgaECFgsFXMKbHHLpPnh/SX7p0/hoPFT3ib3s95
+         FhgiTMmAnQS2XX+hN7+XQ2XqR0tmJVcIoiz+wEryqFOj+SvcjSkL3H4KUAmUx+Qlh4Ay
+         LiYNARnwNjrF1hjA3ApMn5ajl2TF7ucspfAvhH+RXz/GTkIQFxEMQ+6JaGg/zf8Drvma
+         Dgo/pTLr2a2VKFXEjF2Ku5BzsmEU4RXTZB05XQRKY7KKIrJGTa1TplT1IlgW4IQpxGxf
+         hZQA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXBGOhQPo4xDZSMCgrxowxIZQQr1C0o6ACUyj19bu8FZIXBVCsW
-	7IdwNOvco0iUNkDFTu4ryRk=
-X-Google-Smtp-Source: APXvYqziMj2GSGI4TtM0nQ/wGaE5OLfCYjZLNY+WtcNw1akp8sAaenu6xw67a9j8JqXjoPIHJJ3pmw==
-X-Received: by 2002:ad4:45b1:: with SMTP id y17mr5631292qvu.245.1578513975608;
-        Wed, 08 Jan 2020 12:06:15 -0800 (PST)
+X-Gm-Message-State: APjAAAVVGbGzVV2rQubpcvmMHjVesGJ9hz9Is/B03FHEyVFIYreY41Lk
+	Mw22D526/Y7UCzsfK39cB6A=
+X-Google-Smtp-Source: APXvYqwMdTjqsfjuaTxUP1Z2M5u8MS7MehkkJ+c+bxPTE4E8dkg/KD76aQmznA9YuxqfIxrEt38LWQ==
+X-Received: by 2002:ac8:1769:: with SMTP id u38mr5010954qtk.160.1578513984611;
+        Wed, 08 Jan 2020 12:06:24 -0800 (PST)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6214:1021:: with SMTP id k1ls750008qvr.4.gmail; Wed, 08
- Jan 2020 12:06:15 -0800 (PST)
-X-Received: by 2002:a05:6214:8cb:: with SMTP id da11mr5486163qvb.228.1578513975260;
-        Wed, 08 Jan 2020 12:06:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578513975; cv=none;
+Received: by 2002:a37:9f92:: with SMTP id i140ls1652362qke.11.gmail; Wed, 08
+ Jan 2020 12:06:24 -0800 (PST)
+X-Received: by 2002:a37:6fc4:: with SMTP id k187mr5871131qkc.21.1578513984293;
+        Wed, 08 Jan 2020 12:06:24 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578513984; cv=none;
         d=google.com; s=arc-20160816;
-        b=TuUawgqXWuHsoTUcTLyarC9e4AYgRYWFGzcyVuLRU/4CgdWJgcR/RU4ugUEUa5Myik
-         00btgPrucp/iA3Ngwlo5PEDFzXszy8Ktfqe0kBwrjRNiy3ghuD6RYC40UOBgK0CZUpZs
-         l82nvbmvzNUsHOM3syC+7RLhUbJgNgehOiF1n99CofCWsQljlIghQdbDfhSMH6ET7twu
-         EtKML0uK6ZzRiVWr0OrFtq9VEBEobqkgnVam8oBJY1KtMn+okjXdI9w4V22/vCQxtUwD
-         vVLThypMgEIfaHOlPDh30Pgfa/6g9ji+nYmdgtBcqUpbvdNIpASvTzHXqF/dkie2af2M
-         LISw==
+        b=WIS1l91R3w0n5nZmtI32H76FaXgF0W3IS5/G1aI4/8Sc4nZsF4thWMVSta8cCBjsLj
+         OQZuCPwEXtRC7GC9iq8C60zEkAKx+qns+zewiXsbj5rQwzobKmnCteVufjlvQ4kmDD3H
+         4CmvlYcsDAFPF8RCJZJL2OW28y/2xmjAA3r7uOoiH9XwhQ4hLedN3Nt6Zk/uDpKTNUZi
+         u53FwJRg8IVu5fFXxIhCdfaz8/7HqQkPqVjHZbD/ab6tG7JecHXEAI863o31fB9Hwtrg
+         lTh0GLp/sSZMDWxoXuxOqVGDYMVEgRQUz+j1DRHdTNJngaDSlG5A6PLsRBinNtFGR5Zj
+         ZZSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=HDRCc3IhdlUQfkIcyY3NdGL2XXgPoOrjEbcJ9wq2V+k=;
-        b=u9/hy7SJ13AhSaZAbcnASnMh2CBhhiNo04vEbWVsEhxHQGh+maRc0jiTZs8zpfgazx
-         lxADXz3ZQXldYy4C/jxxKq+IljFjB5wI8FFG1MbVYSxVP2FVXGTZOQ0NL11gs8oHr2Fe
-         /sl+Pje5j1dO3cWEsxU7AaN+RTNOW3D7xlWVdOiI7b2+quDc52Jg/ixF4EUZzT0wnlUb
-         2rxIR7HSV7X4cv0OG8Y/r7Ry5yzRZjxyFNE2WDyRfbD6OrOgSj2EzFzIa3Xe1+22NBPZ
-         xSUdPWs9dJrv1fwiD2mQi90HFTqVBY01Gkwm3oS/HI+ZQ84R9obcEHyYBIgXG3Et7dQl
-         89SA==
+        bh=mQMIBEfElIB3kvBnOsuCEqCsG8lgAhZ47Rfx4ZM1zmQ=;
+        b=Y0CfY1ckpgkYamhArrCdTEmuAGxljwst8KlHwP/8+QFd8eoIRiQ1ErqiHd3alhH1Pt
+         /SJiukMy1ddNGJA/LtMuHcGOcnw8JVsdYlCrnJJzFILfak3/q5vNm29++cxXdJ8pN2zg
+         muYec8tl7ICGBGN7tKFk5A1ddVUqBVVG/cKAtURN9VqXfzeuGbfEJcBXyYKNMgtZlTPD
+         l8rJg7zvbv6wuNgtk33ATHh2yjFpV9gmA6hG+QrVh0I0EG8xfeXcD0HmGXnsdpdQsz8U
+         uNnKxkdPiGPd7FxLyz8J05ZS41N7q7Q+fIoxbV3FIjL56mRySCXtDu18wlkpt3UmCnck
+         qjHw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=PY+oqH9c;
+       dkim=pass header.i=@kernel.org header.s=default header.b=kZmAdTXA;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id r62si135824qkc.6.2020.01.08.12.06.15
+        by gmr-mx.google.com with ESMTPS id l9si242672qkg.5.2020.01.08.12.06.24
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Jan 2020 12:06:15 -0800 (PST)
+        Wed, 08 Jan 2020 12:06:24 -0800 (PST)
 Received-SPF: pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Received: from localhost.localdomain (unknown [83.218.167.187])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id A25EE2072A;
-	Wed,  8 Jan 2020 20:06:05 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id D0CD320705;
+	Wed,  8 Jan 2020 20:06:14 +0000 (UTC)
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Richard Henderson <rth@twiddle.net>,
 	Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
@@ -147,15 +147,15 @@ To: Richard Henderson <rth@twiddle.net>,
 	linux-ntb@googlegroups.com,
 	virtualization@lists.linux-foundation.org,
 	linux-arch@vger.kernel.org
-Subject: [PATCH v2 3/9] ntb: intel: Constify ioreadX() iomem argument (as in generic implementation)
-Date: Wed,  8 Jan 2020 21:05:22 +0100
-Message-Id: <20200108200528.4614-4-krzk@kernel.org>
+Subject: [PATCH v2 4/9] virtio: pci: Constify ioreadX() iomem argument (as in generic implementation)
+Date: Wed,  8 Jan 2020 21:05:23 +0100
+Message-Id: <20200108200528.4614-5-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200108200528.4614-1-krzk@kernel.org>
 References: <20200108200528.4614-1-krzk@kernel.org>
 X-Original-Sender: krzk@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=PY+oqH9c;       spf=pass
+ header.i=@kernel.org header.s=default header.b=kZmAdTXA;       spf=pass
  (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted
  sender) smtp.mailfrom=krzk@kernel.org;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=kernel.org
@@ -187,54 +187,37 @@ Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
 Changes since v1:
 1. Add Geert's review.
 ---
- drivers/ntb/hw/intel/ntb_hw_gen1.c  | 2 +-
- drivers/ntb/hw/intel/ntb_hw_gen3.h  | 2 +-
- drivers/ntb/hw/intel/ntb_hw_intel.h | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ drivers/virtio/virtio_pci_modern.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/ntb/hw/intel/ntb_hw_gen1.c b/drivers/ntb/hw/intel/ntb_hw_gen1.c
-index bb57ec239029..9202502a9787 100644
---- a/drivers/ntb/hw/intel/ntb_hw_gen1.c
-+++ b/drivers/ntb/hw/intel/ntb_hw_gen1.c
-@@ -1202,7 +1202,7 @@ int intel_ntb_peer_spad_write(struct ntb_dev *ntb, int pidx, int sidx,
- 			       ndev->peer_reg->spad);
+diff --git a/drivers/virtio/virtio_pci_modern.c b/drivers/virtio/virtio_pci_modern.c
+index 7abcc50838b8..fc58db4ab6c3 100644
+--- a/drivers/virtio/virtio_pci_modern.c
++++ b/drivers/virtio/virtio_pci_modern.c
+@@ -26,16 +26,16 @@
+  * method, i.e. 32-bit accesses for 32-bit fields, 16-bit accesses
+  * for 16-bit fields and 8-bit accesses for 8-bit fields.
+  */
+-static inline u8 vp_ioread8(u8 __iomem *addr)
++static inline u8 vp_ioread8(const u8 __iomem *addr)
+ {
+ 	return ioread8(addr);
+ }
+-static inline u16 vp_ioread16 (__le16 __iomem *addr)
++static inline u16 vp_ioread16 (const __le16 __iomem *addr)
+ {
+ 	return ioread16(addr);
  }
  
--static u64 xeon_db_ioread(void __iomem *mmio)
-+static u64 xeon_db_ioread(const void __iomem *mmio)
+-static inline u32 vp_ioread32(__le32 __iomem *addr)
++static inline u32 vp_ioread32(const __le32 __iomem *addr)
  {
- 	return (u64)ioread16(mmio);
+ 	return ioread32(addr);
  }
-diff --git a/drivers/ntb/hw/intel/ntb_hw_gen3.h b/drivers/ntb/hw/intel/ntb_hw_gen3.h
-index 75fb86ca27bb..d1455f24ec99 100644
---- a/drivers/ntb/hw/intel/ntb_hw_gen3.h
-+++ b/drivers/ntb/hw/intel/ntb_hw_gen3.h
-@@ -91,7 +91,7 @@
- #define GEN3_DB_TOTAL_SHIFT		33
- #define GEN3_SPAD_COUNT			16
- 
--static inline u64 gen3_db_ioread(void __iomem *mmio)
-+static inline u64 gen3_db_ioread(const void __iomem *mmio)
- {
- 	return ioread64(mmio);
- }
-diff --git a/drivers/ntb/hw/intel/ntb_hw_intel.h b/drivers/ntb/hw/intel/ntb_hw_intel.h
-index e071e28bca3f..3c0a5a2da241 100644
---- a/drivers/ntb/hw/intel/ntb_hw_intel.h
-+++ b/drivers/ntb/hw/intel/ntb_hw_intel.h
-@@ -102,7 +102,7 @@ struct intel_ntb_dev;
- struct intel_ntb_reg {
- 	int (*poll_link)(struct intel_ntb_dev *ndev);
- 	int (*link_is_up)(struct intel_ntb_dev *ndev);
--	u64 (*db_ioread)(void __iomem *mmio);
-+	u64 (*db_ioread)(const void __iomem *mmio);
- 	void (*db_iowrite)(u64 db_bits, void __iomem *mmio);
- 	unsigned long			ntb_ctl;
- 	resource_size_t			db_size;
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200108200528.4614-4-krzk%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200108200528.4614-5-krzk%40kernel.org.
