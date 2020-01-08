@@ -1,174 +1,139 @@
-Return-Path: <linux-ntb+bncBCXLBLOA7IGBB4FI23YAKGQEXTN5RNQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCQJP74GSUDRBJFM23YAKGQEGNAGJ5Q@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x23b.google.com (mail-lj1-x23b.google.com [IPv6:2a00:1450:4864:20::23b])
-	by mail.lfdr.de (Postfix) with ESMTPS id CE3E7133D3F
-	for <lists+linux-ntb@lfdr.de>; Wed,  8 Jan 2020 09:36:01 +0100 (CET)
-Received: by mail-lj1-x23b.google.com with SMTP id w9sf200725ljj.8
-        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 00:36:01 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1578472561; cv=pass;
+Received: from mail-pg1-x53c.google.com (mail-pg1-x53c.google.com [IPv6:2607:f8b0:4864:20::53c])
+	by mail.lfdr.de (Postfix) with ESMTPS id ADF7B133D63
+	for <lists+linux-ntb@lfdr.de>; Wed,  8 Jan 2020 09:43:18 +0100 (CET)
+Received: by mail-pg1-x53c.google.com with SMTP id i21sf1383095pgm.21
+        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 00:43:18 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1578472997; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lT0egy7NVqtIkeoJPNDR0ZejjXxRfvXKKE+ZBnu1yGjlkB0W3MDX18EFQDnVsz5gjq
-         uorGC5yI9auNctof36VFhrsyJfFnl5YGdhGwZe8NMs2rt1c42v+QHvPPP3f15VU+Eu/Q
-         TX+clpmbXNNa+d9/BTXaJy/6AHdg4R3BpjI2PEGsZNrmpgVQgva9ZDs++IJvch1BgIqF
-         JYGHBtWwtAW+L4wWPZlYR0t/kKKGTnZYFVAoeqyHyzvTzqxrs6fEwaagMn71Rc8aZPML
-         nwU+EDgmVppsD5oV3mw9Vkdgb4CJLtTXi2yS1pE33m0obrZtmRIK5D2u3u0DLDHIAFFa
-         jzzw==
+        b=sS0+tGvi58lzcCMBg2/oYhznXSh2//LiM4MsSf7oZ1FhBpdSucCfdFfmOeLT5PJLJ/
+         /ulL+yKlsNKZF5KYAmsz+FVsUgGN7D9pXpMuKzrn9VS1v8ojJkowqOzVAZX5IKdEhrBW
+         12SOnGDnusEfbThn9FouhOlZdHA2kyyCbYYDA3P3sv/JJ+BUMbEz7CMv/irMHkjWhBn3
+         0f7L7WT2mOGxO9Vf953EKsOhJKuoiepAvzR1cMQ6h+LiQw9I9yJsjhaJ+3GZvtTUYF7p
+         0ST3hGPpTbpFX53XG7ZunbPvXExRKWJOwM1UvR6Z5/payd4cODfd0M7VKhrp5ed6y3GR
+         Wg1A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:sender:dkim-signature;
-        bh=RQP/UHuw2QxfeF0/C+BpqK/nxo9mKf7NzZm4V4nljbQ=;
-        b=lryDwpJyItYcp1ihNdrS+4sbrR1uC0BP2RwcDB+SQ80t7HsOeCWwxQ3kJLmrhjNOA3
-         SMHF/Lyb6H/d26DeM/i3JxtWxvE4i1v34JC/UHpMTwP/XCqbuvY+Za02g4926ce/9pqZ
-         eTEXGoRpdAZKrI2A+WS1iPVXcC4yNEF9MOXGee2McEYuZmfAPHUvOaP6D7UwVyyyC+RQ
-         Uqnsu8E8WzIxkDPEMIZ6hjl0VwcpMblJlQA+nEHHrOSTrct95R3HvAN0jnVwPbiP5MKQ
-         XjMqpsZWEHwc8ZR5Z3oSwO3zR9+sYju8Fr/l950DART9lg5KYT8oofd7BI1AlWGUruFT
-         fkww==
+         :list-id:mailing-list:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :sender:dkim-signature;
+        bh=si5OzybqrC6FEu3t7lrgiL7X3A0oggm9VFjQZUT5We0=;
+        b=j7uS3f/hkNrX+PM8r0/bbfG16IjNgCO4HsLWG8QNnYLHSVyrOF5anA2IVkm1/qYi10
+         nI/YGU5bjKt7LdrW2eNrVZ/1yPlKWe0uNMEae5r/tmm8lBVND4PGCHRUyb5ON7LE1jQd
+         OAhC6eh75rKxWh6oHZ52VqtWIBeWfSKGYNLf55LA8lFyYXbdyKbzUz+Y1BWRJJZmu8k+
+         2MyvqYuYNRtd0+uMO3ECbI8qBoftssiZoabGpxxK/QMQ6NW5itBqjU5mvWBqemc6STIb
+         fd/MrGaxA45Yjm0x4w3o1+y0nNL8wggA2PxOYoemVx7HTT1gefwfjUa/4YgeOgcURC5g
+         0ckg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@c-s.fr header.s=mail header.b=fxUelGuu;
-       spf=pass (google.com: domain of christophe.leroy@c-s.fr designates 93.17.236.30 as permitted sender) smtp.mailfrom=christophe.leroy@c-s.fr
+       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.66 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=RQP/UHuw2QxfeF0/C+BpqK/nxo9mKf7NzZm4V4nljbQ=;
-        b=c5OnuBwCqxOie4URj1MTxr4aBQoPi/A8TwvLrt5UNBPCDdJZvEWH/1AANp3bEVEnRV
-         cAsTu6YDYsGn8YdkmfdZF8zI3qLm3IOb7kUWri9FwY2n82PFhHUUtRAG4Ep67WU6WXLa
-         V2xPC75odrHZNybozMyILh8Kk1LCLW/AwjF7rxMb7CnbxBVxJBlaFBKdYKkiEJohPDCq
-         ozQdUJan5TnkdlEfo7yABusniiATcHhdQtKswkhAz5JfrYjrRuLH+DgOoKUxPjb/A1g9
-         nkCor+B8/9PC5REG064VuqV1nk0/U112iMFKpPv2BRTzivUjrqy09i1asv1FFYhPh1NM
-         I8Lg==
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:cc:content-transfer-encoding:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=si5OzybqrC6FEu3t7lrgiL7X3A0oggm9VFjQZUT5We0=;
+        b=jaPV3EMZ46hIYj1e36uEm2KuRZICJpodxdenRdnGRcEZs5vyG6IHOpnsQybYSnRFKm
+         lvc0t3dXuI+v+ONzoxncGKBP10O3pUCViSg/qVh1jfm0RRnmUQV7dV7a69LjPwsFHAgZ
+         7BEQknhldTgMwSfTnV8o3D2xFEjZABaaEpmIN4rElVxNU+zjX3IL1VHQtXRgqWHW6wYO
+         tRw+qHJ1JVtPwKSqruG4MAJd+L2EGnRlvDJ4zPJ4WNC40fwFF5cqoP57QIlEEboP+n89
+         cuTbSxgbIuFGEn6zb4Vf5FyTEsgmlJNnrSzj1jE4f0YWQbAtN8FlM3L9Qh9EDJnRmH1u
+         rhqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=RQP/UHuw2QxfeF0/C+BpqK/nxo9mKf7NzZm4V4nljbQ=;
-        b=cRuBXX6D27x5g0g0mCysj5zOomQN3/+pj1qKG5Ae1Hpok5Ndwk+fAnnmAM7ZLZr6r8
-         mABcXAcg3KIMXxAsQrj5SJUfjr5ecQB9qf88qoG+/imwDt1DsoVpXCwCHsJJqBN+EwWM
-         meV7Gjjp2WY2lANS2JF+2q1wXKvCyOvNFDI1KPgmt5D8qNNb8cAqZEEiuZ0qoSfDPPVs
-         Flkl2gkcc5QbiAP/S3goAOXO14PslJpy8m505Z+4VPce9PWZ/IRBLWWKUC3rLWNe1ffX
-         KvpfYsQ/nnC5L45fxZHLIBKk0HYyjcWUL+gSA/mPX+9LZccofjyauwzKuS6QHaMO0IVT
-         D1yw==
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:cc:content-transfer-encoding
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=si5OzybqrC6FEu3t7lrgiL7X3A0oggm9VFjQZUT5We0=;
+        b=C3sqPGpbcUjhx0dnj/74dtiNCN02pp2+3XEJ7bMpg479KHztuV36qRxg8fuuz6Pb7T
+         2getw+61rKy5y5YwjjBTYGirKVqWLOOLUjKwJxMEEg/B3Y7jPWNEjDnY2iMh+axgFMMc
+         krcnKv/mypwSFUdAWt7d1Wj1P0jLMXAose4dnydygRxCkdPxkao/6WQKEaL4Nyt5ldvy
+         +KeYptM4JIrzKZ1r0y4jeuakpkXt0Z5kCfukhr77FNbaDtB9tBVwDHe4gKmH3ho6Y4q0
+         XygafhXSNmoAW3BnGWb3IuVR7yGW3P6Bh/zP23N2mYG9BtHO9RJuWadpx0WqGNWDPJOp
+         lFJw==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAWGDxuuHm/mpAnh0RKAlAnQN8+t9i0zDRCynbnE41vNkoPAZgid
-	4TSRyxoT62ZraVPw3VWcFiE=
-X-Google-Smtp-Source: APXvYqyMbDOzpiOeHaseXbWHis3YCZXpFWyVq2fuIsoSMmpZ57GX9sdqj4c35dMAoVkBEM6F1D8JCw==
-X-Received: by 2002:a2e:9d89:: with SMTP id c9mr2233484ljj.129.1578472561215;
-        Wed, 08 Jan 2020 00:36:01 -0800 (PST)
+X-Gm-Message-State: APjAAAVTgI8ln4IRIkKIMNRn6h60B1lCbc2l/vRp7VF8mPBnnvKTSqtt
+	rVxz++aRVV/sar3hiNDZn1E=
+X-Google-Smtp-Source: APXvYqy+H3iJVWnd9GIXCpgYA0++aOUwerEU/emus7UtEEYsGHvpixtRWOE1ILZ0frgXzBm4uslYQg==
+X-Received: by 2002:a65:4c06:: with SMTP id u6mr4169785pgq.412.1578472996634;
+        Wed, 08 Jan 2020 00:43:16 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:651c:1051:: with SMTP id x17ls271561ljm.8.gmail; Wed, 08
- Jan 2020 00:36:00 -0800 (PST)
-X-Received: by 2002:a2e:9883:: with SMTP id b3mr2269417ljj.80.1578472560366;
-        Wed, 08 Jan 2020 00:36:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578472560; cv=none;
+Received: by 2002:a17:902:864b:: with SMTP id y11ls718861plt.2.gmail; Wed, 08
+ Jan 2020 00:43:16 -0800 (PST)
+X-Received: by 2002:a17:902:b104:: with SMTP id q4mr4385499plr.132.1578472996117;
+        Wed, 08 Jan 2020 00:43:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578472996; cv=none;
         d=google.com; s=arc-20160816;
-        b=ImsF0GpgxtwxUcDATscsQc0IRFAAVHednoHThtCheNtPjnVuFF4Y4ON9pm9dfey3Xa
-         F5ois1ot+dSqydgva+A45zy8gHtu+psCo3pmh4sJl1a3y3hZIeMPuDTXrvMpFe7nmAg7
-         O1OnJojI2x8KPSbVbfsVu0NpD5ITd8DHpfGdWcnZk+B0YoSu1HAXm+d6I5eQk+Qtpk4w
-         s5dPN7AnU+Ul4ZWVGXeoYT9TCLeucin5ALBzij2ZO4FbiCEN4Qt4HuezQ1iJJF3C/YIK
-         piOwKSBsu3aRT/+/Uel5eI376A3hiqmFs1/CIyB5rioR1muWfbg59MFHkzZ2Gi57mP2d
-         PRaw==
+        b=a7/gLtBU/NmWWd92CvOptwhKv3GLS7oaK4H5xKWe8AcpBqNJJb31aKa27Dtzc6x/1P
+         TYfXn1VX2Nl83N8N7mzwYSIvCQPi0ZhTfCWoyQzVBdfDhky1ClVpfwpR8zKQJNDTS6+9
+         r418hhqE6NJf3DahW8G0K1/GYAlL3QCjWCJUrLsc8Oxvs0hJwQJ2ovT13NtN50yr0jWm
+         ydEyn67HrUL1BjOZKQMUVxscChtibaT0gsRFhqvScHNrzVZYk5vdrS9BpGhvdnvSIU8g
+         wnNXZehW/2WW885VGfBJM4SxrsDnNqJl3BmZcr6pLrJdgIfaVckj+nRZez5YEAWv9wta
+         c6Sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=pyCqgPPZ7kRofrDb80nScePrylWdxYR2l2/ULCClPrs=;
-        b=OJtONOsjwUFuiubPlF0w+HYnlmqMKCQB0e7EkLThy6QsojZN+9yOSPjv00kWeAabca
-         yWM7oWeuEXxckWc4qN21bek617bxfVbCDKb0t6G+cjm/fm/rlPi6C+07CJzB2pZDOTsW
-         z6yb/SWt3L/sqiBEaBKq0ccnzBiqgUbOhQPvBRYW/8FbNq6BYXVMaxcH+P3PjQRHUPnO
-         jt4IVunon9Le8yRzmJJrn8IhIOaEIHgNjZaLlsZT7Mrp9nLPFfdWX9bUvHKxgXG+uT4f
-         tAEIGaGCkI5TOh2sQjGvvAVQ3UCAAjFmbSpZNc691jNM7FTQEZKXI7VAQD58aqbNSOhm
-         na7Q==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=7cWBGOss6IZmXIImkX09JkN+lqirutcjNONiaHMIXk4=;
+        b=MOCrFESQV28OHs4XeYUyT4/1+kk9NoCw4abTxkPsEfkLIJIRkAReKUSk+R7oAmhoiu
+         l3Rw2dKjPN8fJ9gbuMb6HaGOwZ4u55xNqJQIdbrQX4QK21zFO57mX/gk5lJ31EEDajmg
+         Zqvaa/k3Q/CNiFFCkUj0oMC5KqdVYxag9gCv+aOuEMsYyBbc9ax1VXEI4cviyQoYtNLS
+         gDd06EqgEMH+wpR07XUAOl2+5I39AkpUo9Wq4134jzscBmEdj15R9SSxEVzaqqW8kOz6
+         1DyaZ/tM61V8VCl4C0X/MyFqclikxpAoJS8q3ZyZE5JHRHxr1Lr38V/r0HDlk4GE/nK4
+         TicQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@c-s.fr header.s=mail header.b=fxUelGuu;
-       spf=pass (google.com: domain of christophe.leroy@c-s.fr designates 93.17.236.30 as permitted sender) smtp.mailfrom=christophe.leroy@c-s.fr
-Received: from pegase1.c-s.fr (pegase1.c-s.fr. [93.17.236.30])
-        by gmr-mx.google.com with ESMTPS id 68si96063lfi.3.2020.01.08.00.36.00
+       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.66 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
+Received: from mail-ot1-f66.google.com (mail-ot1-f66.google.com. [209.85.210.66])
+        by gmr-mx.google.com with ESMTPS id s12si32797pjo.0.2020.01.08.00.43.15
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Jan 2020 00:36:00 -0800 (PST)
-Received-SPF: pass (google.com: domain of christophe.leroy@c-s.fr designates 93.17.236.30 as permitted sender) client-ip=93.17.236.30;
-Received: from localhost (mailhub1-int [192.168.12.234])
-	by localhost (Postfix) with ESMTP id 47t2dP2tfYz9v3gf;
-	Wed,  8 Jan 2020 09:35:53 +0100 (CET)
-X-Virus-Scanned: Debian amavisd-new at c-s.fr
-Received: from pegase1.c-s.fr ([192.168.12.234])
-	by localhost (pegase1.c-s.fr [192.168.12.234]) (amavisd-new, port 10024)
-	with ESMTP id I0TjIRBHFA-4; Wed,  8 Jan 2020 09:35:53 +0100 (CET)
-Received: from messagerie.si.c-s.fr (messagerie.si.c-s.fr [192.168.25.192])
-	by pegase1.c-s.fr (Postfix) with ESMTP id 47t2dP1Xwtz9v3gS;
-	Wed,  8 Jan 2020 09:35:53 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
-	by messagerie.si.c-s.fr (Postfix) with ESMTP id 2FF4A8B7EC;
-	Wed,  8 Jan 2020 09:35:54 +0100 (CET)
-X-Virus-Scanned: amavisd-new at c-s.fr
-Received: from messagerie.si.c-s.fr ([127.0.0.1])
-	by localhost (messagerie.si.c-s.fr [127.0.0.1]) (amavisd-new, port 10023)
-	with ESMTP id PkGUzhhRpTGx; Wed,  8 Jan 2020 09:35:54 +0100 (CET)
-Received: from [172.25.230.100] (po15451.idsi0.si.c-s.fr [172.25.230.100])
-	by messagerie.si.c-s.fr (Postfix) with ESMTP id BE1C98B7EA;
-	Wed,  8 Jan 2020 09:35:53 +0100 (CET)
-Subject: Re: [RFT 00/13] iomap: Constify ioreadX() iomem argument
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Rich Felker <dalias@libc.org>, Jiri Slaby <jirislaby@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, David Airlie <airlied@linux.ie>,
- Jason Wang <jasowang@redhat.com>,
- DRI Development <dri-devel@lists.freedesktop.org>,
- virtualization@lists.linux-foundation.org,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- netdev <netdev@vger.kernel.org>, Paul Mackerras <paulus@samba.org>,
- Linux-Arch <linux-arch@vger.kernel.org>, Dave Jiang <dave.jiang@intel.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Helge Deller <deller@gmx.de>,
- Linux-sh list <linux-sh@vger.kernel.org>,
- Alexey Brodkin <abrodkin@synopsys.com>, Ben Skeggs <bskeggs@redhat.com>,
- nouveau@lists.freedesktop.org, Dave Airlie <airlied@redhat.com>,
- Matt Turner <mattst88@gmail.com>, arcml
- <linux-snps-arc@lists.infradead.org>, Nick Kossifidis <mickflemm@gmail.com>,
- Allen Hubbe <allenbh@gmail.com>, Arnd Bergmann <arnd@arndb.de>,
- alpha <linux-alpha@vger.kernel.org>,
- Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
- Thomas Gleixner <tglx@linutronix.de>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Kalle Valo
- <kvalo@codeaurora.org>, Richard Henderson <rth@twiddle.net>,
- Parisc List <linux-parisc@vger.kernel.org>,
- Vineet Gupta <vgupta@synopsys.com>,
- linux-wireless <linux-wireless@vger.kernel.org>,
- Linux Kernel Mailing List <linux-kernel@vger.kernel.org>,
- Luis Chamberlain <mcgrof@kernel.org>, Daniel Vetter <daniel@ffwll.ch>,
- Jon Mason <jdmason@kudzu.us>, linux-ntb@googlegroups.com,
- Andrew Morton <akpm@linux-foundation.org>,
- Linux Media Mailing List <linux-media@vger.kernel.org>,
- linuxppc-dev <linuxppc-dev@lists.ozlabs.org>,
- "David S. Miller" <davem@davemloft.net>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 08 Jan 2020 00:43:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.66 as permitted sender) client-ip=209.85.210.66;
+Received: by mail-ot1-f66.google.com with SMTP id a15so2864369otf.1
+        for <linux-ntb@googlegroups.com>; Wed, 08 Jan 2020 00:43:15 -0800 (PST)
+X-Received: by 2002:a9d:6a84:: with SMTP id l4mr3302303otq.145.1578472995351;
+ Wed, 08 Jan 2020 00:43:15 -0800 (PST)
+MIME-Version: 1.0
 References: <1578415992-24054-1-git-send-email-krzk@kernel.org>
  <CAMuHMdW4ek0OYQDrrbcpZjNUTTP04nSbwkmiZvBmKcU=PQM9qA@mail.gmail.com>
  <CAMuHMdUBmYtJKtSYzS_5u67hVZOqcKSgFY1rDGme6gLNRBJ_gA@mail.gmail.com>
- <CAJKOXPfq9vS4kSyx1jOPHBvi9_HjviRv0LU2A8ZwdmqgUuebHQ@mail.gmail.com>
-From: Christophe Leroy <christophe.leroy@c-s.fr>
-Message-ID: <2355489c-a207-1927-54cf-85c04b62f18f@c-s.fr>
-Date: Wed, 8 Jan 2020 09:35:54 +0100
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.1
-MIME-Version: 1.0
-In-Reply-To: <CAJKOXPfq9vS4kSyx1jOPHBvi9_HjviRv0LU2A8ZwdmqgUuebHQ@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Language: fr
+ <CAJKOXPfq9vS4kSyx1jOPHBvi9_HjviRv0LU2A8ZwdmqgUuebHQ@mail.gmail.com> <2355489c-a207-1927-54cf-85c04b62f18f@c-s.fr>
+In-Reply-To: <2355489c-a207-1927-54cf-85c04b62f18f@c-s.fr>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Wed, 8 Jan 2020 09:43:04 +0100
+Message-ID: <CAMuHMdV=-m-eN4rOa=XQhk2oBDZZwgXXMU6RMVQRVsc6ALyeoA@mail.gmail.com>
+Subject: Re: [RFT 00/13] iomap: Constify ioreadX() iomem argument
+To: Christophe Leroy <christophe.leroy@c-s.fr>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Rich Felker <dalias@libc.org>, Jiri Slaby <jirislaby@gmail.com>, 
+	"Michael S. Tsirkin" <mst@redhat.com>, David Airlie <airlied@linux.ie>, Jason Wang <jasowang@redhat.com>, 
+	DRI Development <dri-devel@lists.freedesktop.org>, virtualization@lists.linux-foundation.org, 
+	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, netdev <netdev@vger.kernel.org>, 
+	Paul Mackerras <paulus@samba.org>, Linux-Arch <linux-arch@vger.kernel.org>, 
+	Dave Jiang <dave.jiang@intel.com>, Yoshinori Sato <ysato@users.sourceforge.jp>, 
+	Helge Deller <deller@gmx.de>, Linux-sh list <linux-sh@vger.kernel.org>, 
+	Alexey Brodkin <abrodkin@synopsys.com>, Ben Skeggs <bskeggs@redhat.com>, 
+	nouveau@lists.freedesktop.org, Dave Airlie <airlied@redhat.com>, 
+	Matt Turner <mattst88@gmail.com>, arcml <linux-snps-arc@lists.infradead.org>, 
+	Nick Kossifidis <mickflemm@gmail.com>, Allen Hubbe <allenbh@gmail.com>, Arnd Bergmann <arnd@arndb.de>, 
+	alpha <linux-alpha@vger.kernel.org>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>, 
+	Thomas Gleixner <tglx@linutronix.de>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+	Kalle Valo <kvalo@codeaurora.org>, Richard Henderson <rth@twiddle.net>, 
+	Parisc List <linux-parisc@vger.kernel.org>, Vineet Gupta <vgupta@synopsys.com>, 
+	linux-wireless <linux-wireless@vger.kernel.org>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Luis Chamberlain <mcgrof@kernel.org>, 
+	Daniel Vetter <daniel@ffwll.ch>, Jon Mason <jdmason@kudzu.us>, linux-ntb@googlegroups.com, 
+	Andrew Morton <akpm@linux-foundation.org>, 
+	Linux Media Mailing List <linux-media@vger.kernel.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, 
+	"David S. Miller" <davem@davemloft.net>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Original-Sender: christophe.leroy@c-s.fr
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@c-s.fr header.s=mail header.b=fxUelGuu;       spf=pass (google.com:
- domain of christophe.leroy@c-s.fr designates 93.17.236.30 as permitted
- sender) smtp.mailfrom=christophe.leroy@c-s.fr
+X-Original-Sender: geert@linux-m68k.org
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.210.66
+ as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -181,51 +146,66 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+Hi Christophe,
 
+On Wed, Jan 8, 2020 at 9:35 AM Christophe Leroy <christophe.leroy@c-s.fr> w=
+rote:
+> Le 08/01/2020 =C3=A0 09:18, Krzysztof Kozlowski a =C3=A9crit :
+> > On Wed, 8 Jan 2020 at 09:13, Geert Uytterhoeven <geert@linux-m68k.org> =
+wrote:
+> >> On Wed, Jan 8, 2020 at 9:07 AM Geert Uytterhoeven <geert@linux-m68k.or=
+g> wrote:
+> >>> On Tue, Jan 7, 2020 at 5:53 PM Krzysztof Kozlowski <krzk@kernel.org> =
+wrote:
+> >>>> The ioread8/16/32() and others have inconsistent interface among the
+> >>>> architectures: some taking address as const, some not.
+> >>>>
+> >>>> It seems there is nothing really stopping all of them to take
+> >>>> pointer to const.
+> >>>
+> >>> Shouldn't all of them take const volatile __iomem pointers?
+> >>> It seems the "volatile" is missing from all but the implementations i=
+n
+> >>> include/asm-generic/io.h.
+> >>
+> >> As my "volatile" comment applies to iowrite*(), too, probably that sho=
+uld be
+> >> done in a separate patch.
+> >>
+> >> Hence with patches 1-5 squashed, and for patches 11-13:
+> >> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+> >
+> > I'll add to this one also changes to ioreadX_rep() and add another
+> > patch for volatile for reads and writes. I guess your review will be
+> > appreciated once more because of ioreadX_rep()
+>
+> volatile should really only be used where deemed necessary:
+>
+> https://www.kernel.org/doc/html/latest/process/volatile-considered-harmfu=
+l.html
+>
+> It is said: " ...  accessor functions might use volatile on
+> architectures where direct I/O memory access does work. Essentially,
+> each accessor call becomes a little critical section on its own and
+> ensures that the access happens as expected by the programmer."
 
-Le 08/01/2020 =C3=A0 09:18, Krzysztof Kozlowski a =C3=A9crit=C2=A0:
-> On Wed, 8 Jan 2020 at 09:13, Geert Uytterhoeven <geert@linux-m68k.org> wr=
-ote:
->>
->> Hi Krzysztof,
->>
->> On Wed, Jan 8, 2020 at 9:07 AM Geert Uytterhoeven <geert@linux-m68k.org>=
- wrote:
->>> On Tue, Jan 7, 2020 at 5:53 PM Krzysztof Kozlowski <krzk@kernel.org> wr=
-ote:
->>>> The ioread8/16/32() and others have inconsistent interface among the
->>>> architectures: some taking address as const, some not.
->>>>
->>>> It seems there is nothing really stopping all of them to take
->>>> pointer to const.
->>>
->>> Shouldn't all of them take const volatile __iomem pointers?
->>> It seems the "volatile" is missing from all but the implementations in
->>> include/asm-generic/io.h.
->>
->> As my "volatile" comment applies to iowrite*(), too, probably that shoul=
-d be
->> done in a separate patch.
->>
->> Hence with patches 1-5 squashed, and for patches 11-13:
->> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
->=20
-> I'll add to this one also changes to ioreadX_rep() and add another
-> patch for volatile for reads and writes. I guess your review will be
-> appreciated once more because of ioreadX_rep()
->=20
+That is exactly the use case here: all above are accessor functions.
 
-volatile should really only be used where deemed necessary:
+Why would ioreadX() not need volatile, while readY() does?
 
-https://www.kernel.org/doc/html/latest/process/volatile-considered-harmful.=
-html
+Gr{oetje,eeting}s,
 
-It is said: " ...  accessor functions might use volatile on=20
-architectures where direct I/O memory access does work. Essentially,=20
-each accessor call becomes a little critical section on its own and=20
-ensures that the access happens as expected by the programmer."
+                        Geert
 
-Christophe
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds
 
 --=20
 You received this message because you are subscribed to the Google Groups "=
@@ -233,4 +213,5 @@ linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to linux-ntb+unsubscribe@googlegroups.com.
 To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/2355489c-a207-1927-54cf-85c04b62f18f%40c-s.fr.
+linux-ntb/CAMuHMdV%3D-m-eN4rOa%3DXQhk2oBDZZwgXXMU6RMVQRVsc6ALyeoA%40mail.gm=
+ail.com.
