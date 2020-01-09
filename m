@@ -1,170 +1,256 @@
-Return-Path: <linux-ntb+bncBAABB7EE3PYAKGQERA7ESWY@googlegroups.com>
+Return-Path: <linux-ntb+bncBCNYF77OWEBRBTM63PYAKGQEMAZCC3I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wr1-x43b.google.com (mail-wr1-x43b.google.com [IPv6:2a00:1450:4864:20::43b])
-	by mail.lfdr.de (Postfix) with ESMTPS id 017AA135302
-	for <lists+linux-ntb@lfdr.de>; Thu,  9 Jan 2020 07:04:45 +0100 (CET)
-Received: by mail-wr1-x43b.google.com with SMTP id i9sf2458377wru.1
-        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 22:04:44 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1578549884; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=hyNtat8u5Xoezug/6+vefoUSyZlbG4RvMKCtoQkJZUicQJdx9Kh8eEb+XjRI+iWp1B
-         qFflPE60NiI4x67lOcgn4o22LCnAKrCfIQoxS+76VR4n3iOUsiqQ7d4sK64cZR+el29e
-         /G64p3YBZwtjhIDkD5EosDq8etmKzqASQYI7TBLAKospGLXO8941q2YPTENX9oJkuPoD
-         wFe6yZH0EP3+RnaFcbp4XPUA4lUtWMtSp4RbMRgcUBOZLBKe+fBGnrC3qO485ORkXn0t
-         CD/0oIrkKDjCnaasQdDLReydbCQ7jYCdtt9J9WALR9Wqv/3GgR4nijxUHGcLLtr1BOMK
-         IDKg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to:mime-version:user-agent
-         :date:message-id:autocrypt:from:references:to:subject:sender
-         :dkim-signature;
-        bh=yfHH32nPVSCFlQW3TfOaNtTuUd6FvwtBMt2nUBcps3k=;
-        b=Vg3u75+cQztTO2Q9sqYZ+PREahwXKHAw/QXGM1++pNhhrK9FMsRz6CJ6pL3wzDIUYL
-         5N/qcA83VnYhXOtonlF2KN/EAed0X4AgOh6tc0lMTANewtfo7kbX64gbyZ4GxSxPY+8A
-         jfHDMo17MUSWjvSYyNBjhtZETRlz3tIJb66U60oW1J0Qk8xVaAVgb2PVu0a6BND90r5t
-         8KLp3sSrKdwqUEm3ELHAGRRucXMtvXylYTLX3DlKDmH6RauDUdUcQkUll+AHM7Qm0QLd
-         /ckzw62IRejNYfajJPJflhYdpLI7+ziPvyliVo8JLra3cQ9x9TRUluTw3pRnFz+x+b7K
-         IDmg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=tzimmermann@suse.de
+Received: from mail-lf1-x140.google.com (mail-lf1-x140.google.com [IPv6:2a00:1450:4864:20::140])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5043913536E
+	for <lists+linux-ntb@lfdr.de>; Thu,  9 Jan 2020 07:59:26 +0100 (CET)
+Received: by mail-lf1-x140.google.com with SMTP id i29sf1394049lfc.18
+        for <lists+linux-ntb@lfdr.de>; Wed, 08 Jan 2020 22:59:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:references:from:autocrypt:message-id:date
-         :user-agent:mime-version:in-reply-to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=yfHH32nPVSCFlQW3TfOaNtTuUd6FvwtBMt2nUBcps3k=;
-        b=KWs9jmyAo5brBcjnp0qMER6LJaTjqmQKScjeERRC2kU3iVLm3MeHi2y2wNE5NPFaoS
-         qN6Ob44phCXBcmqgyj2pmMriAsIkRFNkO+Q4jPGWoKa5To7jXK/FbTUqGLRz1hX2ZgNK
-         2Jo//CJipiRqItcLQ15QOcysSnTZolKPNyHXUHmHrNMBpvPoh+cJGhR7mPsvhdBwk9ob
-         R2Np3uG1DrEZ6y8bMZoQQlPIRsZ8wTLKOBW1F12vNGqkwwkNQ++5FWQPnMQAwat8GzdX
-         7UuNGNKOzWBm9+TNQhNleSPRFNUD6oR/UYdl8/ELWUMwL3bX1cpyX/tqJgLbncO0crWn
-         hadw==
+        h=sender:from:to:cc:subject:thread-topic:thread-index:date:message-id
+         :references:in-reply-to:accept-language:content-language
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=kVePdXB7CnDwMSl/jRzD9gSBwDJgEymXp+r5mZL9Pe4=;
+        b=k/wSQpEpV61vyFpRsznn0UIlMh9NoIB/mj89RRSoeOBhQk2nPQnBd6FuBBirQxirVQ
+         PQUrFxXuIK47G30mfNUORq1KJFfNMakkiTwg4ygXRJ7CVI7CQ7VC2TJnVxFnzyB6xQaz
+         n1ttrACggUCPyFzy0VW1xNkc+FvleclLQLKsWMFPHDATXv8W0rLiqivqD24nfy+e4UGi
+         N/SXTYq0lbJhaxxgAVqQPCHsq2uawj4dUVCzNzy9J7nDpQZwkFFDIEjKwMvmgK+iXWVl
+         p9nEBnQKzzWTp8yl83VjhalWzdlYRqI3Sh7F16b2JH8UBjMwLUSm1vzEkiT07m90xarR
+         LX+A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:references:from:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=yfHH32nPVSCFlQW3TfOaNtTuUd6FvwtBMt2nUBcps3k=;
-        b=fUirkzJcBTi3gaXDnLasacKxK13J4BAqBJlYUXj+hlh9kVrD56YVrP9cWALL7RUzyc
-         DpVU8c7NQ0JwWE4Qkldu7FZrlkBB5faG8WyMwyHOtx+wfjX8PrNzaN3n92FweheAYnPE
-         HEA1UVaiQhmblpKYsybavyVGCYOiNo5lGuyiveYitHy67n+a38WZrzFGXFVqOiXlXH5P
-         0azmVx+kN/0wR7nYi6Vw3+kna/1rb/5VSWCe16MGL96a45e7zVoATZ3X4Oegg2825VOV
-         kmKnzbig7KMXuQoe0ykB1oBucNN+FI7zLZlUavXerWa6LAWu4EO7xZDz7QxYL/dMErmx
-         aNig==
+        h=sender:x-gm-message-state:from:to:cc:subject:thread-topic
+         :thread-index:date:message-id:references:in-reply-to:accept-language
+         :content-language:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=kVePdXB7CnDwMSl/jRzD9gSBwDJgEymXp+r5mZL9Pe4=;
+        b=sRYCs9tODiCVBT2GeK0c9Q2iKZ4UNhKBO4RddEKeSEKC12NCSt1Kxe8Q5kkR1ySXpW
+         7Zx5RBje1Mei5YCqZQwo0OBPIrKTXHMu6RcH8C7ECQ3m3vEhXu5yMwFd6HNj/TkEz/h0
+         ZyhkB4y9D/YrTey2DVrckQB4O2z8Ku0/CJWzDnzPoUCOkW+AYhp/rrZAnerc6Wae0wEX
+         OpstWAB7XW9WT1KCsMRdEaydRQvh9qd9ZKDD8bJzkDQw3okgyK+oLhxPmpiykFGoIKBx
+         jjvZ3iZlIOwJK33deyJ4Yrrx/kZxE2ORGRfYwuzVfy9xGMQQGsQg26QV3q+yFe3wYcd9
+         kclQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUnWFe6IIWOkN2Lo+6PSOKpFToFzz4ZCNNQF48GYaMsM1ZS13S5
-	PM7R4OnendZTu6i+xJ5VFzg=
-X-Google-Smtp-Source: APXvYqy3HA+K7eD1FD9t6ickkJic78tZW85TbexlO3cZT9jIWpxpSAZWxe0mSxCEunAMu4v9deiJpw==
-X-Received: by 2002:a1c:61d6:: with SMTP id v205mr2708806wmb.91.1578549884651;
-        Wed, 08 Jan 2020 22:04:44 -0800 (PST)
+X-Gm-Message-State: APjAAAWTuu6jXiSbtLumt6+07M8qT69PKgptwJRbjgV3e7T5dNz6oUVf
+	LYu7Vk5EcMdNcZ9dDO21MsE=
+X-Google-Smtp-Source: APXvYqxUjZoDPwbgdx6R0OxhGEG2MV2K01F3JdZc9dwpHSH7TBiIFX/QuMISB8UVOb27EE7MKmVUew==
+X-Received: by 2002:a2e:909a:: with SMTP id l26mr5570787ljg.209.1578553165867;
+        Wed, 08 Jan 2020 22:59:25 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:f403:: with SMTP id g3ls272816wro.3.gmail; Wed, 08 Jan
- 2020 22:04:44 -0800 (PST)
-X-Received: by 2002:adf:a109:: with SMTP id o9mr9396103wro.189.1578549884302;
-        Wed, 08 Jan 2020 22:04:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578549884; cv=none;
-        d=google.com; s=arc-20160816;
-        b=sEJNNk1uUdlcjoMwmtud+JtoK3IF6R2JxoW8sqc2rxbnFFfrOBKA3BiYXcIAfLJb3H
-         YHlb5YpqiWxWDrqfctGTTPWZbTsgRjtrPL/w9kNOnFPF57BKw1RPRp5R9WY1NHeI9Nqb
-         KJCZbOLAcSe4Lo01IysVTbln9+5AFpMlRywNANG60bW4YxuPT7IG/Zch/T0pKBCvk1Z2
-         q81gV5OSLEVvPbP5LG+rfaSXKojcLaUdLYID1Egv3/FJN2vpa/oBto4rWtv7mzodMaRI
-         43LJ9/oXPdhZ/U5H7kKZXVFcljay+65OqpXo91YjtLvAtzMzrdTNM4z/Q9pGpDl7rZaK
-         MFOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:mime-version:user-agent:date:message-id:autocrypt:from
-         :references:to:subject;
-        bh=9tno1FiGey+sJHbY0i45TFCtBUgzMnPdSnfH9NDEgDU=;
-        b=hsKXY43Wy+oT6WZ0xaTf38evWTo5o3IF+HdkgpooDVVkV2D085DbHthk4EcEFPIJJt
-         g7P+j8jatddOgsofZq1d6N6XjEgmlkG47m9+BNY96huk3lwXI0FPgWtC0oqLjFI+12uc
-         y/+P+Crvwv0mPugJUCKJc656McGd9FvpDR1EsFFokMzXPwjVMpY8GaoDA6S+Ghhb9YRP
-         EAFucTJHTKhyAoQEeYHnoyxrgY3I04Tv4kCmQVFT8JVxnihPACxRKwsZyDQgC7S0pcAH
-         ZfqGZa1kkDpfneXdhTfh00Xbc04HKIZaAqHMwPsZQDLchvxp2fTu/v/Otg1Pj7MCBOOR
-         ga7w==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=tzimmermann@suse.de
-Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
-        by gmr-mx.google.com with ESMTPS id y185si47001wmg.0.2020.01.08.22.04.44
+Received: by 2002:a05:651c:1051:: with SMTP id x17ls121910ljm.8.gmail; Wed, 08
+ Jan 2020 22:59:25 -0800 (PST)
+X-Received: by 2002:a2e:9d89:: with SMTP id c9mr5491679ljj.129.1578553165384;
+        Wed, 08 Jan 2020 22:59:25 -0800 (PST)
+Received: from smtprelay-out1.synopsys.com (us03-smtprelay2.synopsys.com. [149.117.87.133])
+        by gmr-mx.google.com with ESMTPS id v16si253433lfd.2.2020.01.08.22.59.24
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 08 Jan 2020 22:04:44 -0800 (PST)
-Received-SPF: pass (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id DF4A4AEE0;
-	Thu,  9 Jan 2020 06:04:42 +0000 (UTC)
-Subject: Re: [PATCH v2 6/9] drm/mgag200: Constify ioreadX() iomem argument (as
- in generic implementation)
-To: Krzysztof Kozlowski <krzk@kernel.org>, Richard Henderson
- <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
- Matt Turner <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>,
- Vineet Gupta <vgupta@synopsys.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Helge Deller <deller@gmx.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Rich Felker <dalias@libc.org>,
- Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Ben Skeggs <bskeggs@redhat.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Jiri Slaby
- <jirislaby@gmail.com>, Nick Kossifidis <mickflemm@gmail.com>,
- Luis Chamberlain <mcgrof@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
- "David S. Miller" <davem@davemloft.net>, Dave Jiang <dave.jiang@intel.com>,
- Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Arnd Bergmann <arnd@arndb.de>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Thomas Gleixner <tglx@linutronix.de>, linux-alpha@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-parisc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-sh@vger.kernel.org, dri-devel@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-media@vger.kernel.org,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-ntb@googlegroups.com, virtualization@lists.linux-foundation.org,
- linux-arch@vger.kernel.org
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 08 Jan 2020 22:59:24 -0800 (PST)
+Received-SPF: pass (google.com: domain of alexey.brodkin@synopsys.com designates 149.117.87.133 as permitted sender) client-ip=149.117.87.133;
+Received: from mailhost.synopsys.com (badc-mailhost1.synopsys.com [10.192.0.17])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtprelay-out1.synopsys.com (Postfix) with ESMTPS id 18D87C009F;
+	Thu,  9 Jan 2020 06:59:13 +0000 (UTC)
+Received: from US01WEHTC3.internal.synopsys.com (us01wehtc3.internal.synopsys.com [10.15.84.232])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mailhost.synopsys.com (Postfix) with ESMTPS id AC426A0083;
+	Thu,  9 Jan 2020 06:59:06 +0000 (UTC)
+Received: from us01hybrid1.internal.synopsys.com (10.200.27.51) by
+ US01WEHTC3.internal.synopsys.com (10.15.84.232) with Microsoft SMTP Server
+ (TLS) id 14.3.408.0; Wed, 8 Jan 2020 22:59:05 -0800
+Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.202.3.67) by
+ mrs.synopsys.com (10.200.27.51) with Microsoft SMTP Server (TLS) id
+ 14.3.408.0; Wed, 8 Jan 2020 22:59:05 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=cshDnWFcL3vz2YIk/LsskhD22ozYAL1lqFzfe3F+fLO8Vd4nOftatgoNBw4osWVEFPhP/cWMW5KUwy1QHAoEaZA9hCHWcF0qxJfzedoasDUmPIN1SFQVBx9HdJWNSjFJ7ss/0oyYD5uRp0PSZ61pQESoPWadkv7fPBrIH9ykzeToJJYCRTUeslsglvuGaFZRexwzZt/StfzSqImmWeG6oLSnXwPIrCvCa6SJ51pVYnEEe+L/ZQbZKLUMWMbsqb0QWPBlzFzuIvjbX523iRTdmfNCikNpg996Ru5zdkIoWOrQLF0Gd4Jrla/G5f2HaSeyu6XjpD4BrrPBkfrtEs/5kw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=y8gmFjR/b1fGaQAM2gOqn8nmQPkcV93ur6tT+xau3hk=;
+ b=HgIizoKlI2r0tjlSM9SHuXnac13qnrWBaZk9StULCjuHqkOoa5eyhT8iGmanpB6RGakG0XbbciTXol3XyFTJnJ5PXaGwXOB3VmQF0csxKpYnJ2scd5x30Zl/2wULBxIzkllhqdow8vRfkoKPjL8zlnNHOFJd390CFsPMpJIN5hrHiRQ5yhKjpo4y/8xpODXTPxRXax3DJaL/8TJ6DNwuhuNu/CPeRikCzxQTq7vqOS8heEOqfOxwK91t2kucwuNnchQPy6eXT+Np8cBeDP3YnGUhdTzRBkLV3zj3zQq3R2jEWijD5Me8sO+lRYuOjDwxmSdAf9rF3AQGSPOzFdTqLA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=synopsys.com; dmarc=pass action=none header.from=synopsys.com;
+ dkim=pass header.d=synopsys.com; arc=none
+Received: from CY4PR1201MB0120.namprd12.prod.outlook.com (10.172.78.14) by
+ CY4PR1201MB0054.namprd12.prod.outlook.com (10.172.77.21) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.20.2602.15; Thu, 9 Jan 2020 06:59:03 +0000
+Received: from CY4PR1201MB0120.namprd12.prod.outlook.com
+ ([fe80::3977:e2ba:ce57:f79a]) by CY4PR1201MB0120.namprd12.prod.outlook.com
+ ([fe80::3977:e2ba:ce57:f79a%5]) with mapi id 15.20.2602.017; Thu, 9 Jan 2020
+ 06:59:03 +0000
+From: Alexey Brodkin <Alexey.Brodkin@synopsys.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+CC: Richard Henderson <rth@twiddle.net>,
+	Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
+	Matt Turner <mattst88@gmail.com>,
+	Vineet Gupta <Vineet.Gupta1@synopsys.com>,
+	"James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+	Helge Deller <deller@gmx.de>,
+	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+	Paul Mackerras <paulus@samba.org>,
+	Michael Ellerman <mpe@ellerman.id.au>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Rich Felker <dalias@libc.org>, Dave Airlie <airlied@redhat.com>,
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+	Ben Skeggs <bskeggs@redhat.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Jiri Slaby <jirislaby@gmail.com>,
+	Nick Kossifidis <mickflemm@gmail.com>,
+	Luis Chamberlain <mcgrof@kernel.org>,
+	Kalle Valo <kvalo@codeaurora.org>,
+	"David S. Miller" <davem@davemloft.net>,
+	Dave Jiang <dave.jiang@intel.com>, Jon Mason <jdmason@kudzu.us>,
+	Allen Hubbe <allenbh@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	Jason Wang <jasowang@redhat.com>, Arnd Bergmann <arnd@arndb.de>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Thomas Gleixner <tglx@linutronix.de>,
+	"linux-alpha@vger.kernel.org" <linux-alpha@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-snps-arc@lists.infradead.org" <linux-snps-arc@lists.infradead.org>,
+	"linux-parisc@vger.kernel.org" <linux-parisc@vger.kernel.org>,
+	"linuxppc-dev@lists.ozlabs.org" <linuxppc-dev@lists.ozlabs.org>,
+	"linux-sh@vger.kernel.org" <linux-sh@vger.kernel.org>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"nouveau@lists.freedesktop.org" <nouveau@lists.freedesktop.org>,
+	"linux-media@vger.kernel.org" <linux-media@vger.kernel.org>,
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
+	"netdev@vger.kernel.org" <netdev@vger.kernel.org>,
+	"linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>,
+	"virtualization@lists.linux-foundation.org" <virtualization@lists.linux-foundation.org>,
+	"linux-arch@vger.kernel.org" <linux-arch@vger.kernel.org>
+Subject: RE: [PATCH v2 5/9] arc: Constify ioreadX() iomem argument (as in
+ generic implementation)
+Thread-Topic: [PATCH v2 5/9] arc: Constify ioreadX() iomem argument (as in
+ generic implementation)
+Thread-Index: AQHVxl82ysx9hNAdrEOd7vUo3yqzKKfh5x8g
+Date: Thu, 9 Jan 2020 06:59:03 +0000
+Message-ID: <CY4PR1201MB01201F44C7EBC54F6AA86446A1390@CY4PR1201MB0120.namprd12.prod.outlook.com>
 References: <20200108200528.4614-1-krzk@kernel.org>
- <20200108200528.4614-7-krzk@kernel.org>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- mQENBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAG0J1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPokBVAQTAQgAPhYh
- BHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsDBQkDwmcABQsJCAcCBhUKCQgLAgQWAgMB
- Ah4BAheAAAoJEGgNwR1TC3ojR80H/jH+vYavwQ+TvO8ksXL9JQWc3IFSiGpuSVXLCdg62AmR
- irxW+qCwNncNQyb9rd30gzdectSkPWL3KSqEResBe24IbA5/jSkPweJasgXtfhuyoeCJ6PXo
- clQQGKIoFIAEv1s8l0ggPZswvCinegl1diyJXUXmdEJRTWYAtxn/atut1o6Giv6D2qmYbXN7
- mneMC5MzlLaJKUtoH7U/IjVw1sx2qtxAZGKVm4RZxPnMCp9E1MAr5t4dP5gJCIiqsdrVqI6i
- KupZstMxstPU//azmz7ZWWxT0JzgJqZSvPYx/SATeexTYBP47YFyri4jnsty2ErS91E6H8os
- Bv6pnSn7eAq5AQ0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRH
- UE9eosYbT6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgT
- RjP+qbU63Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+R
- dhgATnWWGKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zb
- ehDda8lvhFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r
- 12+lqdsAEQEAAYkBPAQYAQgAJhYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsMBQkD
- wmcAAAoJEGgNwR1TC3ojpfcIAInwP5OlcEKokTnHCiDTz4Ony4GnHRP2fXATQZCKxmu4AJY2
- h9ifw9Nf2TjCZ6AMvC3thAN0rFDj55N9l4s1CpaDo4J+0fkrHuyNacnT206CeJV1E7NYntxU
- n+LSiRrOdywn6erjxRi9EYTVLCHcDhBEjKmFZfg4AM4GZMWX1lg0+eHbd5oL1as28WvvI/uI
- aMyV8RbyXot1r/8QLlWldU3NrTF5p7TMU2y3ZH2mf5suSKHAMtbE4jKJ8ZHFOo3GhLgjVrBW
- HE9JXO08xKkgD+w6v83+nomsEuf6C6LYrqY/tsZvyEX6zN8CtirPdPWu/VXNRYAl/lat7lSI
- 3H26qrE=
-Message-ID: <ff03b149-b825-47f3-f92e-100899bb05fd@suse.de>
-Date: Thu, 9 Jan 2020 07:04:36 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.3.1
+ <20200108200528.4614-6-krzk@kernel.org>
+In-Reply-To: <20200108200528.4614-6-krzk@kernel.org>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-dg-ref: =?us-ascii?Q?PG1ldGE+PGF0IG5tPSJib2R5LnR4dCIgcD0iYzpcdXNlcnNcYWJyb2RraW5c?=
+ =?us-ascii?Q?YXBwZGF0YVxyb2FtaW5nXDA5ZDg0OWI2LTMyZDMtNGE0MC04NWVlLTZiODRi?=
+ =?us-ascii?Q?YTI5ZTM1Ylxtc2dzXG1zZy04MzJjMmY1Yi0zMmFkLTExZWEtODAwMS04OGIx?=
+ =?us-ascii?Q?MTFjZGUyMTdcYW1lLXRlc3RcODMyYzJmNWQtMzJhZC0xMWVhLTgwMDEtODhi?=
+ =?us-ascii?Q?MTExY2RlMjE3Ym9keS50eHQiIHN6PSI1NzUiIHQ9IjEzMjIzMDI2NzQwOTc2?=
+ =?us-ascii?Q?MzY3NSIgaD0iTll5SFZoTlMzUGh4UWxnWXV0YmErY21FVTdJPSIgaWQ9IiIg?=
+ =?us-ascii?Q?Ymw9IjAiIGJvPSIxIiBjaT0iY0FBQUFFUkhVMVJTUlVGTkNnVUFBQlFKQUFC?=
+ =?us-ascii?Q?YmpZTkZ1c2JWQVRwcEg3YXorOVhTT21rZnRyUDcxZElPQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUhBQUFBQ2tDQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUVBQVFBQkFBQUFSWDJrMUFBQUFBQUFBQUFBQUFBQUFKNEFBQUJtQUdrQWJn?=
+ =?us-ascii?Q?QmhBRzRBWXdCbEFGOEFjQUJzQUdFQWJnQnVBR2tBYmdCbkFGOEFkd0JoQUhR?=
+ =?us-ascii?Q?QVpRQnlBRzBBWVFCeUFHc0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?RUFBQUFBQUFBQUFnQUFBQUFBbmdBQUFHWUFid0IxQUc0QVpBQnlBSGtBWHdC?=
+ =?us-ascii?Q?d0FHRUFjZ0IwQUc0QVpRQnlBSE1BWHdCbkFHWUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVFBQUFBQUFBQUFDQUFB?=
+ =?us-ascii?Q?QUFBQ2VBQUFBWmdCdkFIVUFiZ0JrQUhJQWVRQmZBSEFBWVFCeUFIUUFiZ0Js?=
+ =?us-ascii?Q?QUhJQWN3QmZBSE1BWVFCdEFITUFkUUJ1QUdjQVh3QmpBRzhBYmdCbUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUJBQUFBQUFBQUFBSUFBQUFBQUo0QUFBQm1BRzhB?=
+ =?us-ascii?Q?ZFFCdUFHUUFjZ0I1QUY4QWNBQmhBSElBZEFCdUFHVUFjZ0J6QUY4QWN3QmhB?=
+ =?us-ascii?Q?RzBBY3dCMUFHNEFad0JmQUhJQVpRQnpBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFFQUFBQUFBQUFBQWdBQUFBQUFuZ0FBQUdZQWJ3QjFBRzRBWkFCeUFIa0FY?=
+ =?us-ascii?Q?d0J3QUdFQWNnQjBBRzRBWlFCeUFITUFYd0J6QUcwQWFRQmpBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUUFBQUFBQUFBQUNB?=
+ =?us-ascii?Q?QUFBQUFDZUFBQUFaZ0J2QUhVQWJnQmtBSElBZVFCZkFIQUFZUUJ5QUhRQWJn?=
+ =?us-ascii?Q?QmxBSElBY3dCZkFITUFkQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQkFBQUFBQUFBQUFJQUFBQUFBSjRBQUFCbUFH?=
+ =?us-ascii?Q?OEFkUUJ1QUdRQWNnQjVBRjhBY0FCaEFISUFkQUJ1QUdVQWNnQnpBRjhBZEFC?=
+ =?us-ascii?Q?ekFHMEFZd0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUVBQUFBQUFBQUFBZ0FBQUFBQW5nQUFBR1lBYndCMUFHNEFaQUJ5QUhr?=
+ =?us-ascii?Q?QVh3QndBR0VBY2dCMEFHNEFaUUJ5QUhNQVh3QjFBRzBBWXdBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFRQUFBQUFBQUFB?=
+ =?us-ascii?Q?Q0FBQUFBQUNlQUFBQVp3QjBBSE1BWHdCd0FISUFid0JrQUhVQVl3QjBBRjhB?=
+ =?us-ascii?Q?ZEFCeUFHRUFhUUJ1QUdrQWJnQm5BQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFCQUFBQUFBQUFBQUlBQUFBQUFKNEFBQUJ6?=
+ =?us-ascii?Q?QUdFQWJBQmxBSE1BWHdCaEFHTUFZd0J2QUhVQWJnQjBBRjhBY0FCc0FHRUFi?=
+ =?us-ascii?Q?Z0FBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBRUFBQUFBQUFBQUFnQUFBQUFBbmdBQUFITUFZUUJzQUdVQWN3QmZB?=
+ =?us-ascii?Q?SEVBZFFCdkFIUUFaUUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQVFBQUFBQUFB?=
+ =?us-ascii?Q?QUFDQUFBQUFBQ2VBQUFBY3dCdUFIQUFjd0JmQUd3QWFRQmpBR1VBYmdCekFH?=
+ =?us-ascii?Q?VUFYd0IwQUdVQWNnQnRBRjhBTVFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUJBQUFBQUFBQUFBSUFBQUFBQUo0QUFB?=
+ =?us-ascii?Q?QnpBRzRBY0FCekFGOEFiQUJwQUdNQVpRQnVBSE1BWlFCZkFIUUFaUUJ5QUcw?=
+ =?us-ascii?Q?QVh3QnpBSFFBZFFCa0FHVUFiZ0IwQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFFQUFBQUFBQUFBQWdBQUFBQUFuZ0FBQUhZQVp3QmZBR3NBWlFC?=
+ =?us-ascii?Q?NUFIY0Fid0J5QUdRQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFB?=
+ =?us-ascii?Q?QUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUUFBQUFB?=
+ =?us-ascii?Q?QUFBQUNBQUFBQUFBPSIvPjwvbWV0YT4=3D?=
+x-dg-rorf: true
+x-originating-ip: [84.204.78.101]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 63c7ca27-ecc9-4075-3e51-08d794d16992
+x-ms-traffictypediagnostic: CY4PR1201MB0054:
+x-ms-exchange-transport-forked: True
+x-microsoft-antispam-prvs: <CY4PR1201MB00543E76A1688BDB5A9E77E0A1390@CY4PR1201MB0054.namprd12.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:8273;
+x-forefront-prvs: 02778BF158
+x-forefront-antispam-report: SFV:NSPM;SFS:(10019020)(366004)(346002)(396003)(39860400002)(376002)(136003)(189003)(199004)(478600001)(81156014)(81166006)(54906003)(8676002)(7696005)(5660300002)(33656002)(52536014)(86362001)(186003)(8936002)(6506007)(26005)(316002)(9686003)(55016002)(66556008)(4744005)(7406005)(4326008)(7416002)(2906002)(6916009)(66446008)(71200400001)(66476007)(64756008)(66946007)(76116006)(41533002);DIR:OUT;SFP:1102;SCL:1;SRVR:CY4PR1201MB0054;H:CY4PR1201MB0120.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;MX:1;A:1;
+received-spf: None (protection.outlook.com: synopsys.com does not designate
+ permitted sender hosts)
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: YMnlrJ7QW7WllT9PHw0N7N/gksJdOFPnYmPrWGBpV4B2xWzTTWoE5SjnGdXn/GhSH84HlQTd5YrMSC8KwopriiY3mk4tA0bxu4BYIESOCSVErNvcLooGe1ef02ikuLwhzKVLfZMrE4/dWyGA2rP9xCN7UH3BsoT4XkEi1zAIOe4qtWUsTa9sAeVMv6Mvl1mN0+kw7g5/eLkaXIVZMeX5y6CVZ69YB4Mz5BsGpSehNFiikdcOQruE/Cq2uuFmZ7AeK2FZ9iShJBrxvMoMrtvaSNK0771l3Nvrb52VzRg3xuR7dy3SkTsPQynDSW8QJECknGAj3J1eWVXRchvRL7TcPLybZLCtx2Ml1CVTlTbDwtZ8gJIjjV3ZbffySH2pbevRVCbkcGigoDSX0rw0MwvB6MIFzIgL8Usl8KMedyr6rg3qusTVuDnRFeweo81NEw6sxx2+Fw2qSBJbp8eRVlvNQUK9L9upUX/qxF/ePPJIQDk=
+Content-Type: text/plain; charset="UTF-8"
 MIME-Version: 1.0
-In-Reply-To: <20200108200528.4614-7-krzk@kernel.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="3rd3nqEKmviIlgYXLgxkt4GDz8CFTZqke"
-X-Original-Sender: tzimmermann@suse.de
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as
- permitted sender) smtp.mailfrom=tzimmermann@suse.de
+X-MS-Exchange-CrossTenant-Network-Message-Id: 63c7ca27-ecc9-4075-3e51-08d794d16992
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jan 2020 06:59:03.4083
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: c33c9f88-1eb7-4099-9700-16013fd9e8aa
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: FDpz17WNzPjlQTfYttFBIyOQWptuLfICcdYscr9HUoeY4oXUU7Arulrz6WM3qjUuFFCOBmTrAP0aTEo3sd/3EQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY4PR1201MB0054
+X-OriginatorOrg: synopsys.com
+X-Original-Sender: alexey.brodkin@synopsys.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@synopsys.com header.s=mail header.b=WQEGVbEl;       dkim=fail
+ header.i=@synopsys.onmicrosoft.com header.s=selector2-synopsys-onmicrosoft-com
+ header.b=ElhTNwP2;       arc=fail (signature failed);       spf=pass
+ (google.com: domain of alexey.brodkin@synopsys.com designates 149.117.87.133
+ as permitted sender) smtp.mailfrom=Alexey.Brodkin@synopsys.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=synopsys.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -177,121 +263,20 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---3rd3nqEKmviIlgYXLgxkt4GDz8CFTZqke
-Content-Type: multipart/mixed; boundary="EqxkoMtfePcRgHH0AtAZfgeT52t9h5L9b";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Richard Henderson
- <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
- Matt Turner <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>,
- Vineet Gupta <vgupta@synopsys.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Helge Deller <deller@gmx.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Rich Felker <dalias@libc.org>,
- Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Ben Skeggs <bskeggs@redhat.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Jiri Slaby
- <jirislaby@gmail.com>, Nick Kossifidis <mickflemm@gmail.com>,
- Luis Chamberlain <mcgrof@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
- "David S. Miller" <davem@davemloft.net>, Dave Jiang <dave.jiang@intel.com>,
- Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Arnd Bergmann <arnd@arndb.de>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Thomas Gleixner <tglx@linutronix.de>, linux-alpha@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-parisc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-sh@vger.kernel.org, dri-devel@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-media@vger.kernel.org,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-ntb@googlegroups.com, virtualization@lists.linux-foundation.org,
- linux-arch@vger.kernel.org
-Message-ID: <ff03b149-b825-47f3-f92e-100899bb05fd@suse.de>
-Subject: Re: [PATCH v2 6/9] drm/mgag200: Constify ioreadX() iomem argument (as
- in generic implementation)
-References: <20200108200528.4614-1-krzk@kernel.org>
- <20200108200528.4614-7-krzk@kernel.org>
-In-Reply-To: <20200108200528.4614-7-krzk@kernel.org>
+Hi Krzysztof,
 
---EqxkoMtfePcRgHH0AtAZfgeT52t9h5L9b
-Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
-
-Hi
-
-Am 08.01.20 um 21:05 schrieb Krzysztof Kozlowski:
 > The ioreadX() helpers have inconsistent interface.  On some architectures
 > void *__iomem address argument is a pointer to const, on some not.
->=20
-> Implementations of ioreadX() do not modify the memory under the address
-> so they can be converted to a "const" version for const-safety and
-> consistency among architectures.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+> 
+> Implementations of ioreadX() do not modify the memory under the
+> address so they can be converted to a "const" version for const-safety
+> and consistency among architectures.
 
-Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
+Thanks for this clean-up. Looks good to me, so ...
 
-> ---
->  drivers/gpu/drm/mgag200/mgag200_drv.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/mgag200/mgag200_drv.h b/drivers/gpu/drm/mgag=
-200/mgag200_drv.h
-> index aa32aad222c2..6512b3af4fb7 100644
-> --- a/drivers/gpu/drm/mgag200/mgag200_drv.h
-> +++ b/drivers/gpu/drm/mgag200/mgag200_drv.h
-> @@ -34,9 +34,9 @@
-> =20
->  #define MGAG200FB_CONN_LIMIT 1
-> =20
-> -#define RREG8(reg) ioread8(((void __iomem *)mdev->rmmio) + (reg))
-> +#define RREG8(reg) ioread8(((const void __iomem *)mdev->rmmio) + (reg))
->  #define WREG8(reg, v) iowrite8(v, ((void __iomem *)mdev->rmmio) + (reg))
-> -#define RREG32(reg) ioread32(((void __iomem *)mdev->rmmio) + (reg))
-> +#define RREG32(reg) ioread32(((const void __iomem *)mdev->rmmio) + (reg)=
-)
->  #define WREG32(reg, v) iowrite32(v, ((void __iomem *)mdev->rmmio) + (reg=
-))
-> =20
->  #define ATTR_INDEX 0x1fc0
->=20
+Acked-by: Alexey Brodkin <abrodkin@synopsys.com>
 
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
---=20
-You received this message because you are subscribed to the Google Groups "=
-linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/ff03b149-b825-47f3-f92e-100899bb05fd%40suse.de.
-
---EqxkoMtfePcRgHH0AtAZfgeT52t9h5L9b--
-
---3rd3nqEKmviIlgYXLgxkt4GDz8CFTZqke
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl4WwngACgkQaA3BHVML
-eiOKNgf/dNIJuZ1NzHHcf9BEmT/BV7QlRe6/FHHA4aiJdqTNYEZ4xQWzoZBT3FUD
-+t1ZzbPtJWF3dx/Bi2AyeI9UK9D5lqSqMPpjgfAgMdT60DkhStpiz4k80WtBG7NY
-dDcotCOrSeaYxImtCFAchwYcIw0l/cAD/ohiQYTfXx3FRj2Sb2hRIKx2h5Mr7k6G
-3lSOqlEt69S2/G/Xlb37VeI2f07RsVR+b89pQPgS5WWUyITa5ukgxWrI5sc7Sn5U
-ogamIdJCPT06fCNVF1JRsOBlI4qw+LNh5Z63REuA8V0qPytUKOW9kdxMwUlhkZJ/
-bQNkg8ibheQ3Xn8Bq6EjM/UUSS7XyQ==
-=C0TM
------END PGP SIGNATURE-----
-
---3rd3nqEKmviIlgYXLgxkt4GDz8CFTZqke--
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CY4PR1201MB01201F44C7EBC54F6AA86446A1390%40CY4PR1201MB0120.namprd12.prod.outlook.com.
