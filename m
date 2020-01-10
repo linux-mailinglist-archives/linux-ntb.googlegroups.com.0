@@ -1,137 +1,123 @@
-Return-Path: <linux-ntb+bncBCQJP74GSUDRB5FL3TYAKGQEHGFN6TI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCQYFH77QIORB4HZ4HYAKGQEZNDCQTY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qt1-x83f.google.com (mail-qt1-x83f.google.com [IPv6:2607:f8b0:4864:20::83f])
-	by mail.lfdr.de (Postfix) with ESMTPS id B5C3C1358B2
-	for <lists+linux-ntb@lfdr.de>; Thu,  9 Jan 2020 13:00:53 +0100 (CET)
-Received: by mail-qt1-x83f.google.com with SMTP id o24sf4033725qtr.17
-        for <lists+linux-ntb@lfdr.de>; Thu, 09 Jan 2020 04:00:53 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1578571252; cv=pass;
+Received: from mail-pf1-f188.google.com (mail-pf1-f188.google.com [209.85.210.188])
+	by mail.lfdr.de (Postfix) with ESMTPS id 02396136E21
+	for <lists+linux-ntb@lfdr.de>; Fri, 10 Jan 2020 14:32:34 +0100 (CET)
+Received: by mail-pf1-f188.google.com with SMTP id u13sf1242691pfl.15
+        for <lists+linux-ntb@lfdr.de>; Fri, 10 Jan 2020 05:32:33 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1578663152; cv=pass;
         d=google.com; s=arc-20160816;
-        b=BhEmhRvZ7CvboAAlCPS6eaN3fsLfvPJQfNPE44jSEMrj2fRD5aKdpyE31mE0lZg8mh
-         LvdJqDUC5xsqgt4NRejvuZfhLMPr2cPJOwoTzvxs2xhFuAYqUFh2iU2tBQsEML3xcUZv
-         UsEwf7fAcgA2pRBNmpK6khw0XJa91EfRteH7uUoxt7CrN5MWylPE9ulBV1oTf2IMKEIq
-         TlBiKMRkSmMu/vYjTtha/a87XT/UbbBiV7/noOO55yA4zyR++8lbR8UF9sTfjZ/V/7nw
-         Q2Vd2Or0QYWdWTRqNYLQmnFt6Tbz0rXBvn0DEdKyU2Jy2Lx+hScef946gBEEezA94hHv
-         C0RA==
+        b=js/mCE2i5sWVmoTyvxwI5TPkUtIOUoKvxCGRoE5RB79K3cGajWyjIMi/Kj5tAIuiwh
+         2RRYsIx7+L/5dtaq+cuqoOvr7Sgc/jffvSiKxzWpNhM/SeyNuBSztsYVw2XBGXqwh2Gs
+         aGVWp5tVCKuU1ya+j2IxNttk2W3tSkcmNrj4H2jyCqCcCT/z6zA5m+NPICO4klOpANr5
+         01Oz8Eft9RFKYXYqxUxXAiTitva6LDfUYDets0+MpuZw9tiaW6avjUvQKkjH+enct/7m
+         ft5/oZomXgu2hpJD8NwkHy5RVzVOhCngFXf1qI2dbhXfyfaN0JMX68jWHEWNf9CynWLr
+         lHyw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:sender:dkim-signature;
-        bh=abBTc+y1pZVOH326ti5Prr62ThcVGojZDZaFt309MpU=;
-        b=xIcAxozfqz66Ja1pGyHvipPEofrE2Lh2lC6ICo8VK1+6YG0PGrNTXc4/K8Bpa6gkyE
-         TIf5qmzXFMqyTRLIzBSKW3wpcnA5aMyH8THJN6LlJW82xqb0wDTZjxCuiiiGFAaqmAcv
-         1GYBlE3glzpWvNp+3kat27Hw05yamwuJVcr4ZF8fFrFtCjnB2n+dceDA1tF5OOLRZ52a
-         of0Q2Mmn9Iq8aiU7Lm7BqaAFENOCq+v2CX5l9ARLLlISmNa4T2cwyzGTj9oPGLXpC56S
-         UHSXgM7FkByI+wE3wSa6KUdRDBxTBohg27FOC5Rmh7+/52JPcyfIMbTTSnOgmZXtCLtf
-         RGEQ==
+         :list-id:mailing-list:precedence:mime-version:user-agent:message-id
+         :in-reply-to:date:references:subject:cc:to:from:dmarc-filter:sender;
+        bh=gU8HDfkd8JQXTH514ZmsGPskRC5BhJSe7a9lSVqHcrg=;
+        b=r4DiY1n6+5mIKBzIUZxxdBtoh5CINazQPCJcy5AHcK0uQiI0osfjRut4O74BLDX6bc
+         +C+wKrukUrJf+Ci6bcazW44cHbcAeDidj09a6ZxQzkqZbEsuvghJ5SkUgcKh4VARQyG6
+         7Eqb6Z0HzaVCYon5Td8MLQBU/0VH4mRRgTqFTsNGIt+TdmcYD7f6z/HOON+K2S6mtdpd
+         SgRbgDOvuEoYAfzP1b5084pPXhfw6zTxdheKxK4moPh9k26B/7Oe3FB8qNGlHwNrUlJg
+         bvYvNUsKJPAD3P2KxX+GF9fbeqBsgkgemgjv1F6mAUwvhahKMlaWsRZub2T+SZ9quPkA
+         2zJQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=googlegroups.com; s=20161025;
-        h=sender:mime-version:references:in-reply-to:from:date:message-id
-         :subject:to:cc:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=abBTc+y1pZVOH326ti5Prr62ThcVGojZDZaFt309MpU=;
-        b=Gx9Ej87zeZhxJdEjigCGwOog7+CfiBfeUKHfBLn+GHU0HDZPGra/YAq8oX+BN+7YOz
-         XzJ6T5noIbatCf76pzixm+YnW6bridBk029uXB6WZO2mV+9UzKUsdGkngEoxAI8MJuMl
-         JhyI76Bfwb4S7KwzcXiEqg48Cvon6IkIdjnZPy+dpFvcUwwF/FplQTRkoyPDnUBrB02c
-         iBbccNpmjtxFCvv0QNul+6QE20UWjwjiDj0I+oY9A0t/K+CcL46iRsPZUOI4TvkRzi7S
-         Tl5EK4IUW4RZNMMLddfO1eylRUBKFnwNbavOyozdhzhRBZbHONYxkJDk8RDX/i5sYyTu
-         3PUw==
+       dkim=pass header.i=@mg.codeaurora.org header.s=smtp header.b=Xoyyqp4k;
+       spf=pass (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org designates 104.130.122.25 as permitted sender) smtp.mailfrom="bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org"
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
-         :date:message-id:subject:to:cc:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=abBTc+y1pZVOH326ti5Prr62ThcVGojZDZaFt309MpU=;
-        b=SYX3hM68kQZExqM8U5zYy7UEKytBqUntzXqQ65D6/C9rPCC1TSnoH+xdJDlrz6/FKj
-         UyDP8CfmLD4b1QQChd7THCLy03oFxYIuyOBIetmmw8QyrT/4k/e1C4PtxSf2T4iBFQvF
-         zFTYRX8zttWG5MEnPFmMDvm6WCtnQ3FBER8zq2aGJVpD6rPCQ3ECAXpEqHq5jtSjW5E/
-         QV4ML6wA6mZIlcIyWhOTzryUgOaQvQBsK5j2b7FrZhJT11Ri0mBinydqANB7BglgENwu
-         nUQQw9qnSJKbfxNvFkcMphzKyYhkticSF57mQv7OJJi/kMm3cGH6bvOwW+avluPQIhJE
-         npJQ==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAU84mn1l9Z8yUGGgB+JvEIietpNrmIaD2OaMh2A67z8LdJjDTUq
-	m42xOdiMBkXp5AzvNeCYCfQ=
-X-Google-Smtp-Source: APXvYqyYrhO6cNFO2z8w9a/dHcaJrsvqa8xx+zI4heA+ERM1GngMN2jIzA+zZJbHsJ/5jsx5hLJuow==
-X-Received: by 2002:ad4:4250:: with SMTP id l16mr8497908qvq.143.1578571252731;
-        Thu, 09 Jan 2020 04:00:52 -0800 (PST)
+        h=x-gm-message-state:sender:dmarc-filter:from:to:cc:subject
+         :references:date:in-reply-to:message-id:user-agent:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=gU8HDfkd8JQXTH514ZmsGPskRC5BhJSe7a9lSVqHcrg=;
+        b=TP+WUp6GREScUsF7Cv17BljOzsENeUSTOcnAFW0qWTs/oEqj7gNLXbn6SZuwxm9juu
+         V2PrkvvWvUHXQhSDs4nCvmAkoKQfdUFexeGGR4yYjopbEBQ60qYUMnB1WMQeVrC0r5e5
+         NfjDbBgTRG0j4AzpDap/lpZ5bMIi+UQMRT1nOpGZxsSp0l3YyQC2G+0RDJMmnwS/+k+F
+         1qKp828yrpWru9XyAkZGFDO6vsVTrhlSTCsFuj7k2TNIvpVb3a+0Lv/gA9qix/hh66S+
+         nAxlwBQs3F4SwOaQs23fDMXL8+HLoftV8MvBvnr84SpmgjbOwV2znimXUdCbAqtdNloR
+         LgVA==
+X-Gm-Message-State: APjAAAVKTfPrAy+8fkEyH4AuVigV0Xq0E2t/rbezVgtk5sGiu7dKw/0b
+	GUamX4epac+O2yLNtG4pR+w=
+X-Google-Smtp-Source: APXvYqz8CreNnrYU2K6B5vMMQIJbZcxBsuzEuo0UCHKMG9x1bcQcLGOlSDdanwOKDMP4rWlK0Qg2lg==
+X-Received: by 2002:a62:b508:: with SMTP id y8mr4087325pfe.251.1578663152504;
+        Fri, 10 Jan 2020 05:32:32 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6214:1763:: with SMTP id et3ls302991qvb.5.gmail; Thu, 09
- Jan 2020 04:00:52 -0800 (PST)
-X-Received: by 2002:a05:6214:9d2:: with SMTP id dp18mr8328096qvb.98.1578571252232;
-        Thu, 09 Jan 2020 04:00:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578571252; cv=none;
+Received: by 2002:a65:6389:: with SMTP id h9ls1428121pgv.10.gmail; Fri, 10 Jan
+ 2020 05:32:32 -0800 (PST)
+X-Received: by 2002:aa7:8f3d:: with SMTP id y29mr4216761pfr.183.1578663152036;
+        Fri, 10 Jan 2020 05:32:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1578663152; cv=none;
         d=google.com; s=arc-20160816;
-        b=o+9HOshmHh5oOw6G9KSxuQnI/KC/dLXsxgl+5WOMLrEzG5mhQokSGk2tJg+hgMO+Ne
-         rUxv9dghTQ6xggQDu4wtMVC72OfaeuAmUtxIHKvxOS9ds61MM8jbfTMPncmPLzY4cUU6
-         Vu64hzhLeVXIUEs0ChN5GmP3jhE4bUQMalgN5lrdZYfetOf1buhvrAxY8NAMbmKpjZMS
-         HfrugN0UZPWEH7Rgm/SvOsDdYkl+IllwhbB6W15T9C1b3B1R9cF3q+VPs2rao8wlnn5N
-         PvHcq6ziAyQNF+izLZyt5XFTJansNlADzVfa9cY4YHgXwJ9xtE28sdv29RSJZDiiHOEU
-         NW+g==
+        b=kwCYh7wx9dOeANDhRdSX8NMYJFQ9d8xV6K51GIa7hbYdYuQWKn7ymrxprWv+MBCQea
+         E1LP3faKUyTxwPUc/d5YGG1HeHSVnQjzldxjsa95ek6gHXGwCS8jW1yDZCTmTaC0xOuI
+         2IwAUzOPzBUe5MH2DjB77eB2gt9ORlA8oFNJ6Biiq9jmsn50BfVPMe4RkPxmIxtgAdWg
+         VoM8OhOEHPwOUROCnIu9o7a1PkQlsHzHHLOQ+xxzyQug93Vhra6A31R6+0NbIA2WgcMX
+         5wlbaeAvsv5UwlMqvHUbOLZQR1TZ39Upni149EVPW31T6T3BFAWMvO5yF8ixSWh8kIlC
+         sKaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version;
-        bh=nZfyuOmXpaLxOTcihxRatR1N5b6cV8bkVUYtr9LoScQ=;
-        b=wIRSCFcS5RJemabIWu7cHPe2zsN9kLp67SqgxtcQwA8x9PEoW6aK/RgJgHAu/PSoUm
-         BCpkWxA0nHSxueTGU6YFmhWSu0AsBAbIrA/TbLdkq41sCEFiAp0kSyMlBItG+5TF19K1
-         2UzUcNVrl9lp12Hj4YIFP3oLfNpboYlpj2w25C244tuDR6x8/+CwHIcABUV6QMnfrofg
-         AQuNlLXr+adodRUzfqLcHmS4CM/79VqUYrt6ikyS3/XL0+MSgV9TbaH0dgEdS2W8XRXb
-         MFJsmuxci/vhAm4dlqM53hRLH5fevqyxFUaJolGoc9Aoqe9uiKP9HQSdRx7FiI1EO0gI
-         xIaw==
+        h=mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:cc:to:from:dmarc-filter:sender:dkim-signature;
+        bh=KvNC+ZtmcyAhVZ56ZMn6CaYYHAi0RWpQoUQ7isluNMU=;
+        b=uT/CxdaYQw6xJZXOASExyXXxKOu+s3wOKVl4mmto0zGLNfVXpZdsi6eK3MuwWOJKCc
+         7b3ilYRJwla01gBZy8VZgoxu/b0Wk7h05QX4EIy5YynaNLCpixoS1HhqjwZYUv84f34T
+         3E+b40m+SaznHZd/jFM8RFobR8V8F7Hkiws1cbOw+T5STvsUK727cXgwKjNrbxM9ltIY
+         0sqw0nVS8QgCpoEQfvmoxVd6Z560I+SaKPoDOQSTvm/V5fsE1u7NKJnsMOD16k44mRVO
+         4Q1mKN2Jb6OYx6Y1olQ9zgSP/sz+tRe0PvjLtHMoFUOBJqvc8ksfGMB3TfMIPKlaFTfI
+         R06w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193 as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
-Received: from mail-oi1-f193.google.com (mail-oi1-f193.google.com. [209.85.167.193])
-        by gmr-mx.google.com with ESMTPS id i53si302696qte.2.2020.01.09.04.00.52
+       dkim=pass header.i=@mg.codeaurora.org header.s=smtp header.b=Xoyyqp4k;
+       spf=pass (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org designates 104.130.122.25 as permitted sender) smtp.mailfrom="bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org"
+Received: from mail25.static.mailgun.info (mail25.static.mailgun.info. [104.130.122.25])
+        by gmr-mx.google.com with UTF8SMTPS id d12si287383pjv.0.2020.01.10.05.32.31
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 09 Jan 2020 04:00:52 -0800 (PST)
-Received-SPF: pass (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193 as permitted sender) client-ip=209.85.167.193;
-Received: by mail-oi1-f193.google.com with SMTP id i1so5597281oie.8
-        for <linux-ntb@googlegroups.com>; Thu, 09 Jan 2020 04:00:52 -0800 (PST)
-X-Received: by 2002:aca:eb83:: with SMTP id j125mr2637148oih.153.1578571251757;
- Thu, 09 Jan 2020 04:00:51 -0800 (PST)
-MIME-Version: 1.0
-References: <20200108200528.4614-1-krzk@kernel.org> <20200108200528.4614-2-krzk@kernel.org>
-In-Reply-To: <20200108200528.4614-2-krzk@kernel.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Thu, 9 Jan 2020 13:00:40 +0100
-Message-ID: <CAMuHMdV8NYiq0744EGw2zit7DZc5=rOpL7en_NeCx2GTD3F3ZQ@mail.gmail.com>
-Subject: Re: [PATCH v2 1/9] iomap: Constify ioreadX() iomem argument (as in
- generic implementation)
+        Fri, 10 Jan 2020 05:32:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org designates 104.130.122.25 as permitted sender) client-ip=104.130.122.25;
+X-Mailgun-Sending-Ip: 104.130.122.25
+X-Mailgun-Sid: WyJlN2RjOSIsICJsaW51eC1udGJAZ29vZ2xlZ3JvdXBzLmNvbSIsICJiZTllNGEiXQ==
+Sender: kvalo=codeaurora.org@mg.codeaurora.org
+Received: from smtp.codeaurora.org (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
+ by mxa.mailgun.org with ESMTP id 5e187cee.7fe3e119cea0-smtp-out-n03;
+ Fri, 10 Jan 2020 13:32:30 -0000 (UTC)
+Received: by smtp.codeaurora.org (Postfix, from userid 1001)
+	id 8D611C447A4; Fri, 10 Jan 2020 13:32:28 +0000 (UTC)
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	aws-us-west-2-caf-mail-1.web.codeaurora.org
+X-Spam-Level: 
+X-Spam-Status: No, score=-1.0 required=2.0 tests=ALL_TRUSTED,SPF_NONE
+	autolearn=unavailable autolearn_force=no version=3.4.0
+Received: from x230.qca.qualcomm.com (unknown [83.145.195.18])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	(No client certificate requested)
+	(Authenticated sender: kvalo)
+	by smtp.codeaurora.org (Postfix) with ESMTPSA id 1C016C43383;
+	Fri, 10 Jan 2020 13:32:15 +0000 (UTC)
+DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 1C016C43383
+From: Kalle Valo <kvalo@codeaurora.org>
 To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Richard Henderson <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>, 
-	Matt Turner <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, 
-	Vineet Gupta <vgupta@synopsys.com>, 
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, Helge Deller <deller@gmx.de>, 
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>, Paul Mackerras <paulus@samba.org>, 
-	Michael Ellerman <mpe@ellerman.id.au>, Yoshinori Sato <ysato@users.sourceforge.jp>, 
-	Rich Felker <dalias@libc.org>, Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>, 
-	Daniel Vetter <daniel@ffwll.ch>, Ben Skeggs <bskeggs@redhat.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Jiri Slaby <jirislaby@gmail.com>, 
-	Nick Kossifidis <mickflemm@gmail.com>, Luis Chamberlain <mcgrof@kernel.org>, 
-	Kalle Valo <kvalo@codeaurora.org>, "David S. Miller" <davem@davemloft.net>, 
-	Dave Jiang <dave.jiang@intel.com>, Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, Arnd Bergmann <arnd@arndb.de>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Thomas Gleixner <tglx@linutronix.de>, 
-	alpha <linux-alpha@vger.kernel.org>, 
-	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, arcml <linux-snps-arc@lists.infradead.org>, 
-	Parisc List <linux-parisc@vger.kernel.org>, linuxppc-dev <linuxppc-dev@lists.ozlabs.org>, 
-	Linux-sh list <linux-sh@vger.kernel.org>, 
-	DRI Development <dri-devel@lists.freedesktop.org>, nouveau@lists.freedesktop.org, 
-	Linux Media Mailing List <linux-media@vger.kernel.org>, 
-	linux-wireless <linux-wireless@vger.kernel.org>, netdev <netdev@vger.kernel.org>, 
-	linux-ntb@googlegroups.com, virtualization@lists.linux-foundation.org, 
-	Linux-Arch <linux-arch@vger.kernel.org>
+Cc: Richard Henderson <rth@twiddle.net>,  Ivan Kokshaysky <ink@jurassic.park.msu.ru>,  Matt Turner <mattst88@gmail.com>,  Alexey Brodkin <abrodkin@synopsys.com>,  Vineet Gupta <vgupta@synopsys.com>,  "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,  Helge Deller <deller@gmx.de>,  Benjamin Herrenschmidt <benh@kernel.crashing.org>,  Paul Mackerras <paulus@samba.org>,  Michael Ellerman <mpe@ellerman.id.au>,  Yoshinori Sato <ysato@users.sourceforge.jp>,  Rich Felker <dalias@libc.org>,  Dave Airlie <airlied@redhat.com>,  David Airlie <airlied@linux.ie>,  Daniel Vetter <daniel@ffwll.ch>,  Ben Skeggs <bskeggs@redhat.com>,  Mauro Carvalho Chehab <mchehab@kernel.org>,  Jiri Slaby <jirislaby@gmail.com>,  Nick Kossifidis <mickflemm@gmail.com>,  Luis Chamberlain <mcgrof@kernel.org>,  "David S. Miller" <davem@davemloft.net>,  Dave Jiang <dave.jiang@intel.com>,  Jon Mason <jdmason@kudzu.us>,  Allen Hubbe <allenbh@gmail.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Jason Wang <jasow
+ ang@redhat.com>,  Arnd Bergmann <arnd@arndb.de>,  Geert Uytterhoeven <geert+renesas@glider.be>,  Thomas Gleixner <tglx@linutronix.de>,  linux-alpha@vger.kernel.org,  linux-kernel@vger.kernel.org,  linux-snps-arc@lists.infradead.org,  linux-parisc@vger.kernel.org,  linuxppc-dev@lists.ozlabs.org,  linux-sh@vger.kernel.org,  dri-devel@lists.freedesktop.org,  nouveau@lists.freedesktop.org,  linux-media@vger.kernel.org,  linux-wireless@vger.kernel.org,  netdev@vger.kernel.org,  linux-ntb@googlegroups.com,  virtualization@lists.linux-foundation.org,  linux-arch@vger.kernel.org
+Subject: Re: [PATCH v2 2/9] net: wireless: rtl818x: Constify ioreadX() iomem argument (as in generic implementation)
+References: <20200108200528.4614-1-krzk@kernel.org>
+	<20200108200528.4614-3-krzk@kernel.org>
+Date: Fri, 10 Jan 2020 15:32:13 +0200
+In-Reply-To: <20200108200528.4614-3-krzk@kernel.org> (Krzysztof Kozlowski's
+	message of "Wed, 8 Jan 2020 21:05:21 +0100")
+Message-ID: <87imljsahu.fsf@codeaurora.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: geert@linux-m68k.org
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of geert.uytterhoeven@gmail.com designates 209.85.167.193
- as permitted sender) smtp.mailfrom=geert.uytterhoeven@gmail.com
+X-Original-Sender: kvalo@codeaurora.org
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@mg.codeaurora.org header.s=smtp header.b=Xoyyqp4k;       spf=pass
+ (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org
+ designates 104.130.122.25 as permitted sender) smtp.mailfrom="bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org"
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -144,33 +130,38 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Wed, Jan 8, 2020 at 9:05 PM Krzysztof Kozlowski <krzk@kernel.org> wrote:
-> The ioreadX() and ioreadX_rep() helpers have inconsistent interface.  On
-> some architectures void *__iomem address argument is a pointer to const,
-> on some not.
+Krzysztof Kozlowski <krzk@kernel.org> writes:
+
+> The ioreadX() helpers have inconsistent interface.  On some architectures
+> void *__iomem address argument is a pointer to const, on some not.
 >
 > Implementations of ioreadX() do not modify the memory under the address
 > so they can be converted to a "const" version for const-safety and
 > consistency among architectures.
 >
-> Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
 > Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 > Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+>
+> ---
+>
+> Changes since v1:
+> 1. Add Geert's review.
+> ---
+>  drivers/net/wireless/realtek/rtl818x/rtl8180/rtl8180.h | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+No need to have "net: wireless: " in the title, this is enough.
 
-Gr{oetje,eeting}s,
+rtl818x: Constify ioreadX() iomem argument (as in generic implementation)
 
-                        Geert
+I assume someone else will take this so here's my ack:
+
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
 
 -- 
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k.org
-
-In personal conversations with technical people, I call myself a hacker. But
-when I'm talking to journalists I just say "programmer" or something like that.
-                                -- Linus Torvalds
+https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAMuHMdV8NYiq0744EGw2zit7DZc5%3DrOpL7en_NeCx2GTD3F3ZQ%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87imljsahu.fsf%40codeaurora.org.
