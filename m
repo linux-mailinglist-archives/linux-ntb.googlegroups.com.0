@@ -1,123 +1,142 @@
-Return-Path: <linux-ntb+bncBCQYFH77QIORBKX24HYAKGQEJ6ZTRGY@googlegroups.com>
+Return-Path: <linux-ntb+bncBC23VB5X54DBBDNK7DYAKGQEXKOBDLA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-f191.google.com (mail-pl1-f191.google.com [209.85.214.191])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0F036136E25
-	for <lists+linux-ntb@lfdr.de>; Fri, 10 Jan 2020 14:33:32 +0100 (CET)
-Received: by mail-pl1-f191.google.com with SMTP id 30sf1155030plc.23
-        for <lists+linux-ntb@lfdr.de>; Fri, 10 Jan 2020 05:33:31 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1578663210; cv=pass;
+Received: from mail-lf1-x13c.google.com (mail-lf1-x13c.google.com [IPv6:2a00:1450:4864:20::13c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0721313B2E6
+	for <lists+linux-ntb@lfdr.de>; Tue, 14 Jan 2020 20:22:54 +0100 (CET)
+Received: by mail-lf1-x13c.google.com with SMTP id z3sf2899562lfq.22
+        for <lists+linux-ntb@lfdr.de>; Tue, 14 Jan 2020 11:22:54 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1579029773; cv=pass;
         d=google.com; s=arc-20160816;
-        b=U4Xi/7gt7Z6xXSMiiC0TFM7GRI8qrIJGz45/3I7zCpglzWuEsh0iGDy9oY1T9Hkcwr
-         VSainInsjOJquowfWGkkeRoxF1KbQn+2lfsGrZOkFZA4ShJRhoaJh/XmSsYrfAvFo+cv
-         VP0YFfD8INlKpBfWOz6S5+7Zv4mfE9GTc0UyrPDF+yyNyyy4T0V6lvRqJHJDEDI27/SY
-         aVomYOS07uqfu/PaKuWSLGO3Xz0Lm3Dh0Gw319Y48u9MTfq2E8DoR0Bo82+BbLTkDAMt
-         XD4DU0STUVTlpGiljPpx9eFAakYoJiZT0QsdWOUMHzDXPA3bk/XdZyiii3IR8cizz/RJ
-         bRWw==
+        b=JQ4A0wVzv08X3PtswhTXxe062oa2EREqb+yZhV0NuO1nDUzVAQvmPFIdTPdFeGmdlp
+         gfKoeOH0H5opmbTXXc/a0Ag2ud5Tk98an0abADm6VoP0ZKdUZWMyLgOs8C3G6yP7j3f4
+         y4dBbnVhSu7Z1UAQr1Kkkde+aKR0LLFpPX09QneuYUqfgw21owRMr6h1sVBA2r9Ya0GW
+         lNG6nwgpgFAGYn0kKb9kHbicfD2olwQ2uvp+Jx4Iu8RoGTGFBqWznhLfkm/Mkq+d56l6
+         rKaogcaks7/uuBjq3Ta954/HoNnH2uAKDvlmeFiIke55DETqZk0ZRLko6pW08HHns16g
+         YCGQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:user-agent:message-id
-         :in-reply-to:date:references:subject:cc:to:from:dmarc-filter:sender;
-        bh=sEbrftPRnLF5OyG3x29QOFuexc93VY/nsnUU2C2QJ08=;
-        b=tbu1Fp73mRCgvzWzfZvmARd8j74vhjP6Xg7gJ8KZdAL2lyBuE+98rdnqKpcjY/n8Pn
-         TqAutAkoVBVs+sPq5VdIHv+TbOp4CwuMmrbIFkJxGTV0DvgKOVz6HQc85236vSXp8LMv
-         7NK3W9+jvYMAV1X5AV6jgN4ofAk7sTx/nB1ASOR+00kM9wn/J/L270+X4po5EoSkTpE1
-         CVN3XTHPCL0w66r++0Dh9M9M2SL7C644bT2ARwJUbveu1TZ5iF2ARDV5d/flC0mkf11/
-         Rtj4E6T3xYlXSSECmMbBWxR/7c3MMTj1LHPOjXLPjNKvoI79HvthNsXqraOudn5kkcW2
-         BqGQ==
+         :list-id:mailing-list:precedence:content-disposition:mime-version
+         :message-id:subject:cc:to:from:date:sender:dkim-signature;
+        bh=0pP6uYQmmGf3gTttGaxLFyURNLF/UcqQ6eSVPS6+jpc=;
+        b=Hu4Ao5JR7EGnLuzmxOOMB0ZEK6qBWPMam3Ilvfw8IraRsBQDrTxpRYcYjNcKJ3mpFr
+         l80YXUi+ye00i/GjcHeZK5KjRvq0ukwB5SHKbtrCMCwXt6IxaWaq5kkYrGJsjjGEQ7qH
+         7kvWHyDU0Sk7vd700OGG2H3irMiQR/KX20uubNIxjB3taG2iCt33nOB6K7neV9m4D3jt
+         8pNQA7ARIvADdEeNPfctXx4Re+TbdmDRY2SpVjwK1D5DCnaNblEFRnuljdBX3Qde2wzG
+         scG4UpsnnlwZaO2qXRMV7xcA9AYStF08ORthnCGQeHxffe1rPqkXOO3OMWbBpwa7Adun
+         UyNg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@mg.codeaurora.org header.s=smtp header.b=wCHeVgsD;
-       spf=pass (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org designates 104.130.122.26 as permitted sender) smtp.mailfrom="bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org"
+       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b="g5wL/jH6";
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) smtp.mailfrom=deller@gmx.de
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=googlegroups.com; s=20161025;
+        h=sender:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=0pP6uYQmmGf3gTttGaxLFyURNLF/UcqQ6eSVPS6+jpc=;
+        b=br7YusX5Nnv2QipEQjxWv+iKWWc+w3UwyUmqNVZTISucSZbX8P9hac1hCMGkwdq7mb
+         SgrbTT/uz4V32XcNHdCjpTxdDq39VHZULh7WhHuKdv6kbLtoV7mnvg/pYx3c2c2U+pOb
+         wIgMH9TYopPT1P7mGf86XmRb4PeyfwFyuTFUNiFsypBguiTmzaz77Brq0gFc5lOKuFp0
+         gXVkE4q879ryU8GtIUnTXcguzTS2AjTG3KrWVj9zBhLHcQW432eic9qLvGC5No6jQJ9W
+         R2IfP5llhjEKQCho74JDIk+tp7I+5xj33gyk71KMi7UhP+Y5QR34odJLK2FlHKWAW716
+         GMpA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:dmarc-filter:from:to:cc:subject
-         :references:date:in-reply-to:message-id:user-agent:mime-version
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=sEbrftPRnLF5OyG3x29QOFuexc93VY/nsnUU2C2QJ08=;
-        b=XXOPL5iHXj73I/t1m1KyK1C+tZJmfphoPioa2aKgLWToAG99Hhd7Oq5mrW3AiurQYO
-         fJzrr7NIIPkNvfdvTxeZX19Z2q2fL6ewHPqm7UrEBT/FOjQCKPm4kzF0fPOzAicYe3vh
-         ySF2knb7M4NApf0WG/0AslaVqJUZYL5Vt+4MSsFadCuMVF8m89S5HP1QGGe10ep1WBkn
-         PZxR25Ls88ZmbegEIhSKz0NNgUcVD016KKmCEzV0nJklnxJwJheQZWVxcDu1bk+RdcdX
-         hAFQ0lObWlvDOEPi2AsxwacCMB3fNZxdBiIeY+aXeLXuHhmnfhVtc3EPp/Bzj7Car20o
-         fdLg==
-X-Gm-Message-State: APjAAAUvgbbZwcjNIlOZ1c6mxpu2qvVF83hDNgfyGPbEvD09vv073iLZ
-	T0FiZ/rJus2V89o6G5ZQu2w=
-X-Google-Smtp-Source: APXvYqwgBzTKi2ceGRhpxAi/xufBz9sNnIc51HnHOurSoFM1u3ldXafuRSIZ8N1lSQP8nSrplrnOhQ==
-X-Received: by 2002:a62:342:: with SMTP id 63mr4129349pfd.19.1578663210432;
-        Fri, 10 Jan 2020 05:33:30 -0800 (PST)
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :mime-version:content-disposition:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=0pP6uYQmmGf3gTttGaxLFyURNLF/UcqQ6eSVPS6+jpc=;
+        b=qJ44FxuRTJgzg/p4FqJk0Zmx9an92X3C7FucnBPxYTUPbvSaOo2WL5sEtLmcyichFP
+         uf/CtEv/mmPRF4D12od084mJ9DP/tVYtQd/XU/UKf/e3lab0k578zHekPft7ObExzTyf
+         ZGzYtAxsxPvcrdm7tEGBAIc1XeOoCtr1yJmKMFzxucJggTkg5W6vwsAUWhzX4vsp+NrU
+         cxEDGOVV+EqdvlRBnb8HspmFQ11B6lybKSpLydcga9SglvIZngwcWkjb3azTcC/vVOm4
+         pDuIe2Unif4t2ZLVGsK+kYvRM61dtCK6lAB1VSWCgZFJ9opjaV2oIw3GoNj8RjRxy2WQ
+         QCTA==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: APjAAAVSILFmm7144X8IIgQTZ1CP70/zPgxNxD5zq2XRwbwcQ4ENdW+F
+	uEROFERPp/0WQyVqdQmVJhU=
+X-Google-Smtp-Source: APXvYqy4ZjDjeLAKy3pOiReaUnMiD8UXwh2rYzx2u+oDoSYOkAm5QNLYl25taPyN+oRPfUOMvf//6w==
+X-Received: by 2002:a2e:80cc:: with SMTP id r12mr15426007ljg.154.1579029773628;
+        Tue, 14 Jan 2020 11:22:53 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:ac97:: with SMTP id h23ls1497521plr.14.gmail; Fri,
- 10 Jan 2020 05:33:30 -0800 (PST)
-X-Received: by 2002:a17:902:7e4d:: with SMTP id a13mr4394900pln.281.1578663210047;
-        Fri, 10 Jan 2020 05:33:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1578663210; cv=none;
+Received: by 2002:a19:c74d:: with SMTP id x74ls1578900lff.12.gmail; Tue, 14
+ Jan 2020 11:22:52 -0800 (PST)
+X-Received: by 2002:a19:7b0a:: with SMTP id w10mr2712935lfc.90.1579029772939;
+        Tue, 14 Jan 2020 11:22:52 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579029772; cv=none;
         d=google.com; s=arc-20160816;
-        b=jrEVjPwgfbKJYykVk0L69szC8uOooGlid1e2g/CUcUacpsl2Fo3Qa1+d7G2oibZOuN
-         HyPi1TSxQpR9kbfV+o8skMu7XXAp85Cy641uvh1GpWrkZGKWKz2FJQbvVsHCtakou27T
-         2sLURdos9Z1Jw3Hs+ZHxmIl+Hra63DZ8keNdCypZJA21IOGYihe5DwKa9qWDpnWMV59H
-         JyY7AyeF02EZSy5fNCdUAVSUi9KL8x44GjpuanXF4Uwi+++2UxdPtQ1/f3+6ztUbnxEN
-         1kWQLyy2C2w8sPtE0SsurQx8398l+ixhcMSO6lDGeXZ3UTMVvrge/HPRj/Bef9hwVEeR
-         jjYg==
+        b=xtHJ08PyJYSvVwdLmG5865zBfwy7NG5WE+KcZISq8mMNYwz9o4Fgls1HiwOxir/h/8
+         Qto4TUXXG7el2aidjZBTNezGNPBDLxR34Z3AgActPEdjP8zld0U7sfLBQJUO4fAu3ish
+         tnFdf8ivcO1Nzgs247pmSx2f5fkI8TneIPKQ2eBNBt6s9tSkY3q86xlOeYh0v0jeK1pD
+         I4BuABAT8Xi8b2bjfFrGnzUcFBkas/2REtS/l14IXwT9eHHOV92BeP7TS/8aAx6ez5CZ
+         KUeBRahM+ET435D0LwyLwsWrjmNKcWqOqwg+IgjAHfNXnnDXy3jciybw46m6CqQhB05f
+         d5Ng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:cc:to:from:dmarc-filter:sender:dkim-signature;
-        bh=R0YUROCJJ/dav0PwJDeXKOS0FaitFefZwp9Lb2TmZvI=;
-        b=kKhaIVuU7gYYCwuoIkhNUrH+dhjBL76w3l2oc6rVN6KddILEyFaSG8j32AzsFVas7v
-         bGdfQqDZmkVHeGTp5QWPFzF2rccRUMdMzLgo51CBTRHgXLEn9/eUidsArd7M26oFMWIB
-         FEfjEtzttuB/NsZnUpTceJ3wOWkZ1jsF1ScmbIn/BG0KrAK/e1bLUgMhiwaTGomgOX2S
-         Bu1Yvm1/JhyPfBGZ1hNyCmkdpymTbCLCZhTtmUt758lgB60PzAmPI4cS+cugV4voAvf2
-         ju4Oapp4HV/QkwjJ5YmK8yKV5JuWvPQz31pYxK98Jte9+3+fsoWwdlP46E+s5RiUXDif
-         mwbw==
+        h=content-transfer-encoding:content-disposition:mime-version
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=CwcNvjLQyx8wn557+WkF8h5u4WzE1PqPepJhyIFCG8A=;
+        b=EhtjYHTg++dPGSlV0reuaiqAKSHz/bV07acNcbcN8I+s0s+yk3sqpqwvnkysqxL+Nv
+         Ug+wqWiyYyyHAlTEBUMCCiHnaIk6/6aB+D8W237NSR9eeGFMgiu1Ri35O/lmBzYoOg3J
+         el76k0adSXRzmi2QR/LgO6RHCoeGvnS7lrzC+xd/U1L4ZIMESKLBTFQBLtZ+BGXSBUu9
+         bKaPFNL42YZFl6E/KutedYvbh50JKfn68XgAbkrtH5gETlovDUn1DqOggjchmUzVZ2bc
+         Y5u1wMHn2ZthrY6sC0D9FgpK3ylnQNP6FWZuAY2J8k3xLAF8zVCHVjoy/k1PijSTnGDZ
+         4wAA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@mg.codeaurora.org header.s=smtp header.b=wCHeVgsD;
-       spf=pass (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org designates 104.130.122.26 as permitted sender) smtp.mailfrom="bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org"
-Received: from mail26.static.mailgun.info (mail26.static.mailgun.info. [104.130.122.26])
-        by gmr-mx.google.com with UTF8SMTPS id d14si60742pfo.4.2020.01.10.05.33.29
+       dkim=pass header.i=@gmx.net header.s=badeba3b8450 header.b="g5wL/jH6";
+       spf=pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) smtp.mailfrom=deller@gmx.de
+Received: from mout.gmx.net (mout.gmx.net. [212.227.17.22])
+        by gmr-mx.google.com with ESMTPS id z16si593399ljk.0.2020.01.14.11.22.52
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 10 Jan 2020 05:33:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org designates 104.130.122.26 as permitted sender) client-ip=104.130.122.26;
-X-Mailgun-Sending-Ip: 104.130.122.26
-X-Mailgun-Sid: WyJlN2RjOSIsICJsaW51eC1udGJAZ29vZ2xlZ3JvdXBzLmNvbSIsICJiZTllNGEiXQ==
-Sender: kvalo=codeaurora.org@mg.codeaurora.org
-Received: from smtp.codeaurora.org (ec2-35-166-182-171.us-west-2.compute.amazonaws.com [35.166.182.171])
- by mxa.mailgun.org with ESMTP id 5e187d27.7fad59c47110-smtp-out-n02;
- Fri, 10 Jan 2020 13:33:27 -0000 (UTC)
-Received: by smtp.codeaurora.org (Postfix, from userid 1001)
-	id 7BD7CC447B3; Fri, 10 Jan 2020 13:33:25 +0000 (UTC)
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
-	aws-us-west-2-caf-mail-1.web.codeaurora.org
-X-Spam-Level: 
-X-Spam-Status: No, score=-1.0 required=2.0 tests=ALL_TRUSTED,SPF_NONE
-	autolearn=unavailable autolearn_force=no version=3.4.0
-Received: from x230.qca.qualcomm.com (unknown [83.145.195.18])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	(Authenticated sender: kvalo)
-	by smtp.codeaurora.org (Postfix) with ESMTPSA id 80C82C43383;
-	Fri, 10 Jan 2020 13:33:13 +0000 (UTC)
-DMARC-Filter: OpenDMARC Filter v1.3.2 smtp.codeaurora.org 80C82C43383
-From: Kalle Valo <kvalo@codeaurora.org>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Richard Henderson <rth@twiddle.net>,  Ivan Kokshaysky <ink@jurassic.park.msu.ru>,  Matt Turner <mattst88@gmail.com>,  Alexey Brodkin <abrodkin@synopsys.com>,  Vineet Gupta <vgupta@synopsys.com>,  "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,  Helge Deller <deller@gmx.de>,  Benjamin Herrenschmidt <benh@kernel.crashing.org>,  Paul Mackerras <paulus@samba.org>,  Michael Ellerman <mpe@ellerman.id.au>,  Yoshinori Sato <ysato@users.sourceforge.jp>,  Rich Felker <dalias@libc.org>,  Dave Airlie <airlied@redhat.com>,  David Airlie <airlied@linux.ie>,  Daniel Vetter <daniel@ffwll.ch>,  Ben Skeggs <bskeggs@redhat.com>,  Mauro Carvalho Chehab <mchehab@kernel.org>,  Jiri Slaby <jirislaby@gmail.com>,  Nick Kossifidis <mickflemm@gmail.com>,  Luis Chamberlain <mcgrof@kernel.org>,  "David S. Miller" <davem@davemloft.net>,  Dave Jiang <dave.jiang@intel.com>,  Jon Mason <jdmason@kudzu.us>,  Allen Hubbe <allenbh@gmail.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Jason Wang <jasow
- ang@redhat.com>,  Arnd Bergmann <arnd@arndb.de>,  Geert Uytterhoeven <geert+renesas@glider.be>,  Thomas Gleixner <tglx@linutronix.de>,  linux-alpha@vger.kernel.org,  linux-kernel@vger.kernel.org,  linux-snps-arc@lists.infradead.org,  linux-parisc@vger.kernel.org,  linuxppc-dev@lists.ozlabs.org,  linux-sh@vger.kernel.org,  dri-devel@lists.freedesktop.org,  nouveau@lists.freedesktop.org,  linux-media@vger.kernel.org,  linux-wireless@vger.kernel.org,  netdev@vger.kernel.org,  linux-ntb@googlegroups.com,  virtualization@lists.linux-foundation.org,  linux-arch@vger.kernel.org
-Subject: Re: [PATCH v2 9/9] net: wireless: ath5k: Constify ioreadX() iomem argument (as in generic implementation)
-References: <20200108200528.4614-1-krzk@kernel.org>
-	<20200108200528.4614-10-krzk@kernel.org>
-Date: Fri, 10 Jan 2020 15:33:11 +0200
-In-Reply-To: <20200108200528.4614-10-krzk@kernel.org> (Krzysztof Kozlowski's
-	message of "Wed, 8 Jan 2020 21:05:28 +0100")
-Message-ID: <87eew7sag8.fsf@codeaurora.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/24.5 (gnu/linux)
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 14 Jan 2020 11:22:52 -0800 (PST)
+Received-SPF: pass (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted sender) client-ip=212.227.17.22;
+X-UI-Sender-Class: 01bb95c1-4bf8-414a-932a-4f6e2808ef9c
+Received: from ls3530.fritz.box ([92.116.171.104]) by mail.gmx.com (mrgmx105
+ [212.227.17.168]) with ESMTPSA (Nemesis) id 1MnakX-1jYmom2w3J-00jdli; Tue, 14
+ Jan 2020 20:22:49 +0100
+Date: Tue, 14 Jan 2020 20:22:47 +0100
+From: Helge Deller <deller@gmx.de>
+To: Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com,
+	Serge Semin <fancer.lancer@gmail.com>
+Cc: linux-kernel@vger.kernel.org
+Subject: [PATCH] ntb_tool: Fix printk format
+Message-ID: <20200114192247.GA30840@ls3530.fritz.box>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: kvalo@codeaurora.org
+Content-Disposition: inline
+X-Provags-ID: V03:K1:cqTwOqVIQYt3IB2/nbO2/Luf1hWf6voFM2wcMONjNhcxwkzE5lC
+ 13ZcewEVHh+aQnf2xsKUYsyEgPjdxFHofbLhKgp+KOQ1nsIWZTE/ci9cSDjf6CHCZkRXkXT
+ lC4kUszKHhrVK9J1sxM2naso06sxpHuqBcSKXcKc3sFSl27WoHM9BUFmbf9Z+aPyUrWJNVf
+ Ho685sHT0PeWOquU6rHPQ==
+X-Spam-Flag: NO
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wyHYgapCZjo=:roclqpz9XbEmK9svrJhxpv
+ L4UiUpakxKhuu8HIUITvo0Kak2YkvO5+b4hIZEHbnRqJZXYEe7EJc1pYLBx5+oDGZ2n7EOg0Y
+ koZMOyb4UyhPYhCYM66dlfqsmJBSmCgJR/jwKWvS0gzjv5HVWhMzZOtnmQ+oIBeqWDkNuuhBK
+ WCf5enuIwAjCEc5fcD2K64dPHh0brL3wmd9EIkdKbx/wAxrpU6PcwAuPYS1p3OyoEiwSs1/8y
+ E5oDYZRDTYdOLdE7rqCXR070dVUutM9Bn8/qFw4/Z/vEEpMSCoUEMH7agVxaE8za0jb2PyLJk
+ 264IDe/57kFISEEpMJjehlgW7m+LU+kgg9uKBt7ml1RANiw2Vu3BuywAnGZRc6cEUiJ+1Xi+e
+ e7ZgCsYUG34yvFHGV02chVWZCUIhAk7RizTYKz8EO61moM7m5RFCm5SLLA5sjz6IP4zZKfxZ9
+ v2BxLjRofIIhLytEsBFSgIMpaiWGH0JTqjnxMIVbIDPAIp4zhyortTargGPK7tBhASCmK1UbC
+ VnM0TVlHcRaQNV2h9ZWtsupuF4Ae7moIZVs62U/wuLqtODRAV8jv5fob7823ky6pRtTSHMmrE
+ 9TL8HMC0xYsBpUalEe5nmO+hOvUXxVHGex4MD+P/0Gz+jqGyRZ6GtnTuAY5F2bhgZqW7icg91
+ EDoYUE84Wnp2VSLRoLLasu9J7hOoFvI+LpUm9SrGgpZTAHcOoom2iQgifBCQ1LqdD3h4fOHOU
+ zz+tuxxbbeQAjG/LQHdj5SUrngEtXg+NI929vX9No5mLqA1pVC8Iezw8Y7ZI0rRCTxGqpdIoK
+ ctWa1VjjrvyW1taHa5Z3lOUBp4hVA8oNSGQQta+FP7U5qJe0UXSTqRSGYUJFcEkUhyZBfBNAk
+ zSmJRkeLhoGmiu4Uu7tG6u2GBI/6Sj9ymutc0y/E/OF10GJ3my18UMS6GgB5V89pXv/XdNj2m
+ qIgW0tmJRproK0vlD6SF43ERKJiWI4/mSbLn7T47BuqVHChrPFxCeINLSXixPtZ7pkYlJSF5Z
+ 6ic5oI9wBGQC3wGWkhcPRoCpUGVZsQ+F0v8dFbzt9Gn4pYWkwkGZ1ZstkLlGDWmdcRSohB81Z
+ YsWUgBcf/d37yqxfS2uCnRtJQZdaTT5/7hOJwKHNLykq8fjJ4ktXluIkIMbN/ixRJjX/guqar
+ MFRT7cRYOPPGz+pamRhFs1Mb32UmUgK9E9GD74k49TiOvECBGn2k/qtJNPtL/3t4ebfcDAzMe
+ Pcot8cSGsycwPG/6jEeRyHQi4XrbVGCz/K2Id7w==
+X-Original-Sender: deller@gmx.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@mg.codeaurora.org header.s=smtp header.b=wCHeVgsD;       spf=pass
- (google.com: domain of bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org
- designates 104.130.122.26 as permitted sender) smtp.mailfrom="bounce+688589.be9e4a-linux-ntb=googlegroups.com@mg.codeaurora.org"
+ header.i=@gmx.net header.s=badeba3b8450 header.b="g5wL/jH6";       spf=pass
+ (google.com: domain of deller@gmx.de designates 212.227.17.22 as permitted
+ sender) smtp.mailfrom=deller@gmx.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -130,28 +149,61 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Krzysztof Kozlowski <krzk@kernel.org> writes:
+The correct printk format is %pa or %pap, but not %pa[p].
 
-> The ioreadX() helpers have inconsistent interface.  On some architectures
-> void *__iomem address argument is a pointer to const, on some not.
->
-> Implementations of ioreadX() do not modify the memory under the address
-> so they can be converted to a "const" version for const-safety and
-> consistency among architectures.
->
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> ---
->  drivers/net/wireless/ath/ath5k/ahb.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+Signed-off-by: Helge Deller <deller@gmx.de>
+Fixes: 7f46c8b3a5523 ("NTB: ntb_tool: Add full multi-port NTB API support")
 
-No need to have "net: wireless: " in the title, otherwise looks good.
+diff --git a/drivers/ntb/test/ntb_tool.c b/drivers/ntb/test/ntb_tool.c
+index d592c0ffbd19..69da758fe64c 100644
+--- a/drivers/ntb/test/ntb_tool.c
++++ b/drivers/ntb/test/ntb_tool.c
+@@ -678,19 +678,19 @@ static ssize_t tool_mw_trans_read(struct file *filep, char __user *ubuf,
+ 			 &inmw->dma_base);
 
-Acked-by: Kalle Valo <kvalo@codeaurora.org>
+ 	off += scnprintf(buf + off, buf_size - off,
+-			 "Window Size    \t%pa[p]\n",
++			 "Window Size    \t%pap\n",
+ 			 &inmw->size);
 
--- 
-https://wireless.wiki.kernel.org/en/developers/documentation/submittingpatches
+ 	off += scnprintf(buf + off, buf_size - off,
+-			 "Alignment      \t%pa[p]\n",
++			 "Alignment      \t%pap\n",
+ 			 &addr_align);
+
+ 	off += scnprintf(buf + off, buf_size - off,
+-			 "Size Alignment \t%pa[p]\n",
++			 "Size Alignment \t%pap\n",
+ 			 &size_align);
+
+ 	off += scnprintf(buf + off, buf_size - off,
+-			 "Size Max       \t%pa[p]\n",
++			 "Size Max       \t%pap\n",
+ 			 &size_max);
+
+ 	ret = simple_read_from_buffer(ubuf, size, offp, buf, off);
+@@ -907,16 +907,16 @@ static ssize_t tool_peer_mw_trans_read(struct file *filep, char __user *ubuf,
+ 			 "Virtual address     \t0x%pK\n", outmw->io_base);
+
+ 	off += scnprintf(buf + off, buf_size - off,
+-			 "Phys Address        \t%pa[p]\n", &map_base);
++			 "Phys Address        \t%pap\n", &map_base);
+
+ 	off += scnprintf(buf + off, buf_size - off,
+-			 "Mapping Size        \t%pa[p]\n", &map_size);
++			 "Mapping Size        \t%pap\n", &map_size);
+
+ 	off += scnprintf(buf + off, buf_size - off,
+ 			 "Translation Address \t0x%016llx\n", outmw->tr_base);
+
+ 	off += scnprintf(buf + off, buf_size - off,
+-			 "Window Size         \t%pa[p]\n", &outmw->size);
++			 "Window Size         \t%pap\n", &outmw->size);
+
+ 	ret = simple_read_from_buffer(ubuf, size, offp, buf, off);
+ 	kfree(buf);
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87eew7sag8.fsf%40codeaurora.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200114192247.GA30840%40ls3530.fritz.box.
