@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBDTZTRGMXIFBBTFNQLYQKGQEBNJP6RQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDTZTRGMXIFBBFNRQLYQKGQEJ3FCVJQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd37.google.com (mail-io1-xd37.google.com [IPv6:2607:f8b0:4864:20::d37])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4361D13E33C
-	for <lists+linux-ntb@lfdr.de>; Thu, 16 Jan 2020 18:01:02 +0100 (CET)
-Received: by mail-io1-xd37.google.com with SMTP id w22sf8337320ior.6
-        for <lists+linux-ntb@lfdr.de>; Thu, 16 Jan 2020 09:01:02 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1579194061; cv=pass;
+Received: from mail-il1-x13f.google.com (mail-il1-x13f.google.com [IPv6:2607:f8b0:4864:20::13f])
+	by mail.lfdr.de (Postfix) with ESMTPS id 817E113E470
+	for <lists+linux-ntb@lfdr.de>; Thu, 16 Jan 2020 18:08:38 +0100 (CET)
+Received: by mail-il1-x13f.google.com with SMTP id i68sf16526187ill.23
+        for <lists+linux-ntb@lfdr.de>; Thu, 16 Jan 2020 09:08:38 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1579194517; cv=pass;
         d=google.com; s=arc-20160816;
-        b=mIuiiXIbRIEDdw7a4BDObMEvxpmDmEIDPU2bl1Og2ZGE1Qi3L4r0KgiRHsW69Qsg7y
-         EJhsoeKxC0wkPkc7AM6e22qNUreOISiO8w+i8q3yJfK38PmrGVHPTC0gvxt0gZ5zyXn3
-         yi0JruXvlvvEgOwSngfpKkq2iXmr7GBp8QWP2MDfeSKdjn6ZQlzOjlmF/HowOCtdQnjA
-         IoZ5d3dRjKDufnTGMgENuvUDWziCCth9tv2Vuj4sGD5uEpynpTwnXJrBGlV8umhKums3
-         h+XEjkVq70x1rqWAsAqmcPfvimNIBxvPSKOtmIOUgSp2GpksBOUaT4jjIZPY6JMcwWZ3
-         KW6w==
+        b=TsiakVroZFKptcLLmj3oTlxFuvB6gbxr7POtTChCXf3TjveUTHWae3k1ZgX2sneCJg
+         UTKHYy5NYUP+YJfR6u/D+PGt0QBfSmAdNMTirR1CQ2Aw1CuyfkRDbimSk+ugCp38+g9V
+         yTXPnRLqYenwPsG96jlzitJj3KuQe018B2PpwNnJBG7Mn8f4bVx2xzTaklXYt69jDwtT
+         Zbd3zBbE+F3xT9bxFcZxdjXq7Zj26C1mxJ0hoiu1EACRCr3OVAcSXCEpx/pawGW8Wf2w
+         zUnXXA//PGYPl/98Qd1qU4DQj+AYJ6Z1spCcDuxbAYunCNtJ0HI+3lio7/UJ20h66cP1
+         ksDQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=nTyKjq9fQsPaUJN00cBt3mHDmasMkyjCHRp4bUtAi/g=;
-        b=hZYgcPbeuNWe3/rfueYgHP+MSyYMk/PiBa0cPmZOIw8tSWMGa2i8Z+e66QJL0UCxOD
-         221JurtlEJ2mPqCyZdrWJ6CnffAmeycWSodpIfLhargZ+5I9efrZitJ3uCznZJp0/uoK
-         bR17MbiZydMCoJMOL7468b3RLtisG4e1S43bOAZuPT49EzOwpW529N1q+K1vPundpFSK
-         hBrGO8EpXFXjerIsja95pvN5fEz7BFNrWCHJyWK4VFCYXrIUEH5a4D7rE574qVwu5f3f
-         mXCsVOd+Oo1jh8Aitn5uxuq/ktKjLjtXm1d0a3/rMBX1jHAZI49OwLKTJLVTmvqXglZn
-         5+xw==
+        bh=8Hm/HHwCL8N+3dMudgvy7IOCp54PsYVzFHfkJ2YuaU4=;
+        b=ec16GN5kfxctHIRilPLXIMb53jDqL9/g15H1hXfC2kl/d4PzhqRbbTXav8IuZ3EK0n
+         HdFhHndtQldUOiEojmtWmtClJ6neuD8XsqXSIbXp6rw3d3AVNdLyf9Nii04eH1xMX7Es
+         /f5Q4XhROqHC8DC6Z7sVbDziF26VKCj1j2Rbzh2QDm4ahLi2IhPCU9rOz47dxKWUkec5
+         TsSJ9JCrFIvOQmNQFEWlyeQ4dqAOWUtj195Xx5PDqlizEwvc76r/KgEEsrEXSMUcSaiW
+         niJAdYBH6K/zt/sDY0CAiaTGrkVneulvrhwgZxOXVk1RsAMx7EuJN13YJUrB9DtyRXPk
+         mwKA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=DLdZDnCL;
+       dkim=pass header.i=@kernel.org header.s=default header.b="WVe/z2gN";
        spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=nTyKjq9fQsPaUJN00cBt3mHDmasMkyjCHRp4bUtAi/g=;
-        b=ro8+ReFz9TR5nx9ZWw0A4ccaIXGchRZdfNBi+U84pWj/I6/bz20vAG4j+TfzL39KJB
-         yZl3rN8xzK92zZCYzBdP03tUKSg13P1ibpkYPI96XUcl6cKPy+WjwVfqC/ng9TShoVNM
-         24e9dOvz0VtggwsKWMelydWb756bTwul9eT4JiqP9Ut7RVK4prh7KBQvxnItEgX81HQi
-         fWHFlXFL/LbJeWj2iboiOeQWutfWFkIzMphR3RWgr+hqrTfOKeLOfTC3SnrLAPQNI2DA
-         ULS+3ekCSosiK/CYEVqKCiTO3zEVPa8yUMlmCCrWsq1N/AHQpfATiRUYufVoHL6o8TIi
-         fjZw==
+        bh=8Hm/HHwCL8N+3dMudgvy7IOCp54PsYVzFHfkJ2YuaU4=;
+        b=p+GY74CNmbv7JG06VB6Zjx8mdf58ED8qaelCUpmYHLwP/S68hgYUQQ3rBpgIbSJl1D
+         v1vAd7OQo+Y+ZTZwF/I5DEaDcdeH/Uzb0/ufBhJiHltGok+dgEPTYgSl9rN3kstdYI0V
+         oZo/7KLxnQ5ttGFJHYhBuc0STe3USiF+EusL/vHkMyoB7GWQ8xFra+9FpHuZdWA3BsR6
+         h1TkG+01JJDxzMFQm1HVf4K8rMMM03SUznXW/LRK/hV++sFnX2+pG19ZbVXWr6TKuU9E
+         yIsJ8DOmngad/1416I0Julo2R0mTP9KtB57/abxvShANm+c2yBKSps4V6tVDBduwGk/C
+         bEsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
@@ -49,79 +49,78 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=nTyKjq9fQsPaUJN00cBt3mHDmasMkyjCHRp4bUtAi/g=;
-        b=ZskbTrDTtFAuB4O0fjIQYCFJkacv4ybJDDaZA3zQ0alSt33m0Z/DpNTJWuZvuiP628
-         5FtzsI6clRX1OZX857Ctnzld3jyrLMTPLRbqznwJwmUsgYqxcqqKQaIP3sD0++GK5Tjx
-         vYp8BX9j4kXzx+7j5n4Km5dpTfx6PKa4cbOmioyaSqDZRX4C390HLayG+hksvO2K8M08
-         TDLMO8m7LqzA19tidta2t93Ed1gZr/etUANIaafi0MBLbUMf2wmitSSwkEF/6JbNfGDc
-         Zcwk+UVPdXJHsLtP+/LvIMlJAbNTyBzzEyJhryzjLT2AcybLkf6E5rg2IDk+uMOktZoN
-         R1AA==
+        bh=8Hm/HHwCL8N+3dMudgvy7IOCp54PsYVzFHfkJ2YuaU4=;
+        b=VGtXg584YeGHkKvRVQpf/WI8xM4o3ozOxS0VMvBhZGesoEv7mcjCmlQ6ujJdKNEJ6B
+         mBgzbIto2p12UhZA6S8J+Tv6nDzCbSzxMdSppIBJhHGd8WKTXHvGZ6EfgQEOZlHBpxe5
+         kk2ngQriAnGJ/3MLyAXh8hEwvQOc6p4spjU1MA1cPqmFD/j+mmbBFDkuRPnzWh9hYMAl
+         Gkt3ZSuzoRJVk6to3ImiXYufAmSKFk5jaAZPjfmmlOm3xoxkjLFJba+edc61gFUyPvy/
+         dIqJGCtzJYOJB5QsP4BLG19qy3WN8Lc/ZLvBVCNoN45jvCQ6O1sBa+55e+0HlXxh8j7n
+         6cEw==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXQFzyKuFBt0ko6rgDvedrVmhhCq6jVnewdKC1N/J0XwlofVnqa
-	UYQfxa0Lm9bZOqU6CMhA/T4=
-X-Google-Smtp-Source: APXvYqyufq5SHp+Lf6fbzk2IGWfV90tubByxg62NSHGT5wB0+b2szLq3m7zOAKhGC4gcwLJBK1ywHg==
-X-Received: by 2002:a6b:2b41:: with SMTP id r62mr16243235ior.189.1579194061090;
-        Thu, 16 Jan 2020 09:01:01 -0800 (PST)
+X-Gm-Message-State: APjAAAUFuc1QBn6SDddMgSZTfPSAWlV/gqUzIYtx21NFCwAKy6voUekp
+	CIvFSQzTRfTSS8dt4V9WUYQ=
+X-Google-Smtp-Source: APXvYqwz8BpaRSDLxkoy2JkRJKjv6nZUUwcYaIV+oNUEJ7yT4dTpmo6bL5m1FYLw8bBK2w+uENwxWw==
+X-Received: by 2002:a92:9e97:: with SMTP id s23mr4733094ilk.139.1579194517502;
+        Thu, 16 Jan 2020 09:08:37 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6e02:8f2:: with SMTP id n18ls4058413ilt.15.gmail; Thu,
- 16 Jan 2020 09:01:00 -0800 (PST)
-X-Received: by 2002:a92:d610:: with SMTP id w16mr4179550ilm.283.1579194060681;
-        Thu, 16 Jan 2020 09:01:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579194060; cv=none;
+Received: by 2002:a92:ba5b:: with SMTP id o88ls4062146ili.2.gmail; Thu, 16 Jan
+ 2020 09:08:37 -0800 (PST)
+X-Received: by 2002:a92:d2:: with SMTP id 201mr4637173ila.22.1579194517140;
+        Thu, 16 Jan 2020 09:08:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579194517; cv=none;
         d=google.com; s=arc-20160816;
-        b=w6b4MP2MnqN31KQA8YdN+RLDjE1MDeNQlWdrU8g/gohNmyJlEsky13SPYAjpQPPz46
-         5aM7C70OPC8AUtyuDwErXkV1xJIEAynquKDD0SsuzdeFcmhAAfF9jrwXlOx+A43btHGc
-         dWGZMJGYFxfK5lVufhHjYf6fRB6+2AiKPdkf6a6d/Kbly8inV/ky/h9CE/d63GEEXVKk
-         DP85gb1h7IEdQncxSnRfs7JBJ7+pJvJ4+wDnTv/kZJS5EMQo1t5CSUpmWoHqG3W/bjct
-         Ebe+ri0Dxaec/u1rE/7gcHQmRXV8HzjE3fz7Zd+9Wo2VG0YKq2q7KA6DAr73LVSWYa1j
-         27eQ==
+        b=kvN6hUXT1THeUElvbIxp9j6jLijGiH3dGAotWEgglvfWy4eLAlIhqJweBTSrQSjxL1
+         oVQLtM9ApBgSnpMV37Mhl1+75EEYgRjYTk8NX4HuBdeX+AsK+hyL9p8UID3DXzYbnYzQ
+         9UEdNMIt+q7H4aaEK8Gd9tyC6ZJv6jozY/mmtvOYV0oYZ2zNAwZS3U/gB5ECsZt6iQMo
+         Vp+72QIoiH3Guzl7Niak6SYYE3S5ehxNYryvMlWovsa1IPlhADW8XVLXN71qWnD/FeyI
+         N6qUktfdHPLzK5i3q3brTkvMvZuiAV7t6PdL3Rv24bmOE/6pBGdwf+ocHdjsUH7UK7GA
+         TDdA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=aWkVXWlR/hnCYJMUTPxNVrfiTpBaFhGPBh9bdZ1umAo=;
-        b=ZOnXiX0J5/PDlZAs5V27iLMjsEsU2WpHWEdtFxs+ppCKpC1DUBLnuoMpeaCjKIChuy
-         /ejx016y+Z6w6KRgd/CP//twZIP1PflRt69xCs8oy8wLmk01Bi1eQLsAWFFbW9HOwg4q
-         MSmZ2pd2QkvcM+sVy8ursr78EVYb9gV/b7JRgkHf3VK3p29L+rZEtKhW9FvUJzFquxDu
-         s/taZMt5JdShufUSLjNGYnpRLmRsW7JrTWHHb4sXZD5urbO956Elqu6BRG+ZGf4lWBmH
-         uE5kbbEaUI9u8P64dbfKG+gimuCFgTU8YsJPvJ7+CZGQ7wFlNkw0RlR79CmpvApDcr8y
-         BMmA==
+        bh=OUWjqWDPMB7u3jWNrIWL3uBbsT8AwZQh8/L5QrASf8g=;
+        b=ULCtV4ryyuHByLCxgZrqvQB1/XqmftZpf8ybgAOZOvUI6zDTfIucSOg52qkSBH+Vg5
+         sLkkKKnLA/Awx4flmPOzJR6H+GMH8dkufkNMab53ejxSgYuejzImM6FKGKJXZp9KeIe1
+         ALHnXjvt6kzAftqK+3Bww7glYL2Tr1thcvwY2/JU+068hIwGQuAcwWfwXD+oESBH5Pl9
+         knTlGLPY0SxkiRsjxyt55p6ueFf37XX5JSvcCiaYdyj4jZ4/BVCrawaMy5C4hMYOWPRl
+         bHKxnQYHLKi9qNG45fn4urWeEGW3VLVrrt0Ipr32FZ1TA/9sibISof0hrOnaj27BOfmb
+         W7+Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=DLdZDnCL;
+       dkim=pass header.i=@kernel.org header.s=default header.b="WVe/z2gN";
        spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id k9si1065049ili.4.2020.01.16.09.01.00
+        by gmr-mx.google.com with ESMTPS id f85si1077771ilg.2.2020.01.16.09.08.37
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Jan 2020 09:01:00 -0800 (PST)
+        Thu, 16 Jan 2020 09:08:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 0BEA520730;
-	Thu, 16 Jan 2020 17:00:58 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id 51ED7217F4;
+	Thu, 16 Jan 2020 17:08:35 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
-Cc: Paul Selles <paul.selles@microchip.com>,
-	Wesley Sheng <wesley.sheng@microchip.com>,
+Cc: Dan Carpenter <dan.carpenter@oracle.com>,
 	Logan Gunthorpe <logang@deltatee.com>,
 	Jon Mason <jdmason@kudzu.us>,
 	Sasha Levin <sashal@kernel.org>,
 	linux-pci@vger.kernel.org,
 	linux-ntb@googlegroups.com
-Subject: [PATCH AUTOSEL 4.19 172/671] ntb_hw_switchtec: debug print 64bit aligned crosslink BAR Numbers
-Date: Thu, 16 Jan 2020 11:51:21 -0500
-Message-Id: <20200116165940.10720-55-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 4.19 409/671] ntb_hw_switchtec: potential shift wrapping bug in switchtec_ntb_init_sndev()
+Date: Thu, 16 Jan 2020 12:00:47 -0500
+Message-Id: <20200116170509.12787-146-sashal@kernel.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200116165940.10720-1-sashal@kernel.org>
-References: <20200116165940.10720-1-sashal@kernel.org>
+In-Reply-To: <20200116170509.12787-1-sashal@kernel.org>
+References: <20200116170509.12787-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-Original-Sender: sashal@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=DLdZDnCL;       spf=pass
+ header.i=@kernel.org header.s=default header.b="WVe/z2gN";       spf=pass
  (google.com: domain of sashal@kernel.org designates 198.145.29.99 as
  permitted sender) smtp.mailfrom=sashal@kernel.org;       dmarc=pass (p=NONE
  sp=NONE dis=NONE) header.from=kernel.org
@@ -138,17 +137,20 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-From: Paul Selles <paul.selles@microchip.com>
+From: Dan Carpenter <dan.carpenter@oracle.com>
 
-[ Upstream commit cce8e04cf79e47809455215744685e8eb56f94bb ]
+[ Upstream commit ff148d8ac53e59802645bd3200c811620317eb9f ]
 
-Switchtec NTB crosslink BARs are 64bit addressed but they are printed as
-32bit addressed BARs. Fix debug log to increment the BAR numbers by 2 to
-reflect the 64bit address alignment.
+This code triggers a Smatch warning:
 
-Fixes: 017525018202 ("ntb_hw_switchtec: Add initialization code for crosslink")
-Signed-off-by: Paul Selles <paul.selles@microchip.com>
-Signed-off-by: Wesley Sheng <wesley.sheng@microchip.com>
+    drivers/ntb/hw/mscc/ntb_hw_switchtec.c:884 switchtec_ntb_init_sndev()
+    warn: should '(1 << sndev->peer_partition)' be a 64 bit type?
+
+The "part_map" and "tpart_vec" variables are u64 type so this seems like
+a valid warning.
+
+Fixes: 3df54c870f52 ("ntb_hw_switchtec: Allow using Switchtec NTB in multi-partition setups")
+Signed-off-by: Dan Carpenter <dan.carpenter@oracle.com>
 Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
 Signed-off-by: Jon Mason <jdmason@kudzu.us>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
@@ -157,22 +159,22 @@ Signed-off-by: Sasha Levin <sashal@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
-index 5ee5f40b4dfc..9916bc5b6759 100644
+index 9916bc5b6759..313f6258c424 100644
 --- a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
 +++ b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
-@@ -1120,7 +1120,7 @@ static int crosslink_enum_partition(struct switchtec_ntb *sndev,
+@@ -899,7 +899,7 @@ static int switchtec_ntb_init_sndev(struct switchtec_ntb *sndev)
+ 		}
  
- 		dev_dbg(&sndev->stdev->dev,
- 			"Crosslink BAR%d addr: %llx\n",
--			i, bar_addr);
-+			i*2, bar_addr);
- 
- 		if (bar_addr != bar_space * i)
- 			continue;
+ 		sndev->peer_partition = ffs(tpart_vec) - 1;
+-		if (!(part_map & (1 << sndev->peer_partition))) {
++		if (!(part_map & (1ULL << sndev->peer_partition))) {
+ 			dev_err(&sndev->stdev->dev,
+ 				"ntb target partition is not NT partition\n");
+ 			return -ENODEV;
 -- 
 2.20.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200116165940.10720-55-sashal%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200116170509.12787-146-sashal%40kernel.org.
