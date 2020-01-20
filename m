@@ -1,128 +1,134 @@
-Return-Path: <linux-ntb+bncBDTZTRGMXIFBBNNVQLYQKGQET32B7MI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCVL5GMC3MJBBWUATDYQKGQEEVDGBYA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-il1-x13f.google.com (mail-il1-x13f.google.com [IPv6:2607:f8b0:4864:20::13f])
-	by mail.lfdr.de (Postfix) with ESMTPS id E1F1813E5CE
-	for <lists+linux-ntb@lfdr.de>; Thu, 16 Jan 2020 18:17:42 +0100 (CET)
-Received: by mail-il1-x13f.google.com with SMTP id u14sf16585445ilq.15
-        for <lists+linux-ntb@lfdr.de>; Thu, 16 Jan 2020 09:17:42 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1579195062; cv=pass;
+Received: from mail-ed1-x54d.google.com (mail-ed1-x54d.google.com [IPv6:2a00:1450:4864:20::54d])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F095143252
+	for <lists+linux-ntb@lfdr.de>; Mon, 20 Jan 2020 20:32:43 +0100 (CET)
+Received: by mail-ed1-x54d.google.com with SMTP id d21sf211912edy.3
+        for <lists+linux-ntb@lfdr.de>; Mon, 20 Jan 2020 11:32:43 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1579548762; cv=pass;
         d=google.com; s=arc-20160816;
-        b=XVA4bvahBI1YgfN9rmTM6PO/uwc9T4tnhO0DOQziDe15FoOe1l5mi3JP0a7Drphp48
-         1Bv7onlGrTkHTWbReNaGNdd34LJ4tw/XsqNCmp49JS9avRPIe/IeT0+1kn0/sTpMrP28
-         JLnBYa/72SRbAI5solj3v4S5khnILMp9xagnxj3Eby7WOYHGZY3XzqijdrnErr3egtm5
-         jKn1rljdj5LnLxu5n29fCSJGKMBj3+Sa6M4XPVqDitCZs78y0XC2P6gC9ifKk0IquEjP
-         n9EQByA8ftrGwBqPXC63VnaWgltvHrVic3cy+0Z5HvkBxtHbYCPDPyez/R8xN+7kgTrZ
-         S38Q==
+        b=HSFKo0VGot+/SjoLxEAPNZpV+niAn8eKAmAj3QztQ7hsSRY7xbjlImPpjjueYsFKrY
+         EyU4j8daZtmABdDgk9D2srxl1345+kxFIjcnaev+i8Rw7iCe5hSeW7mQhf2jyxZrf66g
+         EslQPn0lRVnnhpBVRtkXnINY1bvrc2MBCO/lvcG29KPkpUwukrtO97ATIWf5AW1Ddlt+
+         VVvAcUm8zjvFAU+xT1B6M0J3nD2c89FhsvLGMjaWregreIBOmzFYeH+Fixt/vNMT3BaV
+         b5/STnmRTxksI9/IICwu4VOaNN3D7y3YMx7mkDFtvAbyaKW0TsoG8/3HCHRGmLhSiVgy
+         tjfQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=F/9c+mgB+e5PBB4Pz+W6zrZGt5sGG9+HpjZ6Y6HgZnk=;
-        b=gFuHq9FRLOvIkpCpkUxL0T/yF+KOEpHG0x2cPQq7MTOronrT7g6R/u75zHPqOHow5P
-         bbg1A7Jc9vNeNsbY6QP8ZEf6ju2fKRDQXuMIlH02jnSaBCZHvjeQEiIoMY+Qia42VIJN
-         uHnSHtHZCjqeD87PsgM50yx5Q37IeJ4mF1C+FllssIW7C9bD8azXru/Qru6m/8EJMEdW
-         9gkIx3GZ1EBBR7bshjc0pl6ZoqyHQdgOsBSg0Ven+QK1CU04/3SU7SV4Ox0FspqD+EIy
-         vDFr/x3kxEQ6mgLyFNB3SJmdOp+E29NVd75sG+VR+6Tl3U4AWLQLnrdCu4iebK9hTfxV
-         +r3A==
+         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :reply-to:mime-version:sender:dkim-signature:dkim-signature;
+        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
+        b=rczum7XWgyDNS9D6YPA8qDwzsKDO9vP+q5G1ngfgnbXqRALYuidANIwy0cTwQa6pAI
+         RYaYYcwP61+++tjhz+UhRo6/Ir0bq3CaxgQF4y1ImGVWsKcDXgJLo9IQl4eGyugLD+uA
+         JMFQorXcbO5ZOYhU7tcqI+SjpPq/hBXCvdjtBCQvRmf4Zq0Jxyq6wE7qM5TcSCIX+T2U
+         ME3M81Bmo8o3ZEcWi/xUWFB0IPtD+Zn9nDMkRaMsvZvzEoNqcnNzJSGt/PccA8lZcPc+
+         AKNPe35hFUZPNm38etaNLcPPBEpfp5tiOUg63YCVgyjYCD3hZI6CDcO7Z1bys7UINKKR
+         I/fA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=uiwISQ4M;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I1roYPqx;
+       spf=pass (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) smtp.mailfrom=eco.bank1204@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:mime-version:reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=F/9c+mgB+e5PBB4Pz+W6zrZGt5sGG9+HpjZ6Y6HgZnk=;
-        b=FKFr4Fi2wFK2AaPTVHZfFCxXwOIAy4mvh+buN8dyVg9dej7GpCRzQhIe1stH8KSqON
-         IAlIbM8BPBPd7VAoG7n9nFvtNLDkUtX9aRHfO6Ki32nnSIaXR2GrJAo7pcaZix46R1cv
-         oXfZ3gkGLMy3QqmemXJxcnFbUVHpMC46FYT9SBsAFUFYoXQgKHgaXYNQmKNDlTvswQmI
-         1JSPtMmt/Na3hMILaTs6CYsJaqIaWyBllIBfpi2JZSUTnd0hT5cN5p8F6pR3YQlMA6NZ
-         bcHjK+9gz7H3oFL4Aayfc537FVNcNfEtV3lHUN9b1wQOmTPn5qwsTp2LQsOVhJT7u6xJ
-         LYsQ==
+        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
+        b=bzjsUf4zuqIZ92FzAvmzQRMx0bpKnWiem0R8v8SQQTNpycmarCud5faHqKIoTDGNTb
+         2qRssUlv/2y9b9wtC/EK/z9QZd7V8ZtCWDm6IkaTluxQjnzcOKrWJWwYsSCk6lhM5Iv8
+         uH3yP72J1QjyK/KNIHt2CRPIgUfaRqrQuWAirNVkOsn6qnuYhr6MVaJaEis77xsoeC+S
+         nk/Uba3ekPagkNbG1VTQKywzhIEvMIhT4uDiCbL7lIuZLYcXnd3RLeebLeSE0Ps6tIty
+         kyFC3JBr29dSxBDmJ0/w6nf/q0RLdTdJQ3z8HHwHMeTCmfN/Gr01vW0ZFsi9ENBzAB8X
+         Gxfw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
+        b=SMo9ttGfqIzGKF7VuuzPbbmAzaIjPzefWt9cvpdzUkItBEG2dU+7goIjlV3nLBfshL
+         PDFIQhIofEVWrNDFlGzW6bE31qxa32esdshuKjw9lkGWL8opfqYN1krEsAFGTyUyLxxq
+         Kki7qpboEsaUA9oa2M8qsMiTIAoedwqn2jovPp9KwgkTm/sFppCCsaDIHbHWIp3Up++B
+         7VPaxaTJjpydLvLpY/MUFuzeLDpe3ggHzN92TWjNHZTUVrHqJ9UCbqGrSyUgoUDUtflJ
+         na85VRBG5aoZ0nJZFNYcY8eYWAIT44npSkeyUepSQqrqVP3xp7HgDf5QELXWGRemPdFK
+         iiaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:x-original-sender
+        h=sender:x-gm-message-state:mime-version:reply-to:from:date
+         :message-id:subject:to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=F/9c+mgB+e5PBB4Pz+W6zrZGt5sGG9+HpjZ6Y6HgZnk=;
-        b=abe/TEsu/d6XDzsDvBJCTUFReezPvBMFD9kASrC6Qx4v70g8s44ybiYPj8G8+rOtxt
-         YSAmC7i3DxcmO5pOt+CGgKP6f73jkIFocpgZF8OwsjBdTEGwnEoH2mqkkf82TV35aEgp
-         LTz8VI6l6WEc9RyQlDVtGD8+Nn8T5x4OdSSvYHRXe164P/yvqO+4ckFjl1tw9HXzaHVf
-         HCA7LORa+1pDIa8Xn4alItYuGvH7fX/78EhDEsj7cWOYTerIYSnkvAHWB4UmQteippiH
-         Z5lnfbpU2oAOh6Km53c5VUg5U8G7mbLUVfOa5HhLBLA1hvZLFUyOfhmCtO2LAbhQ43fd
-         wTgg==
+        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
+        b=ByJJsvwW7bGcJoh+SBAp5b0gNtZuajn16fRpLw5safZ8e9AnW0DZdNfoKzhbMeNI0Q
+         l77t1c5U4duV24fp8DQNGOjLasA81RLu5SbVKAP67BjuqRRqkZe5xpecfVOOviKFaD21
+         cAP24jLN28I6iQBE+cBeEWX/THVDxlLYQ0LnbLXsFjDScBVYqLmPYBmsw2GI/cQ4BcKB
+         J1sfTm0A5pFvp8SRmEiqf3oisM5Fw/u1RjV+B213DJiKBT8fI/e09xrean3STiG0nFkH
+         GWscBXbYXcdZjiSo0FwGGE1kZG3qqt3X8gmQXQOxtQ9V/ygkTvw1d4NDlH6D3WZfHZxZ
+         60VQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXTLMGX6ZiJ1m6gTR5otZ0iF489d0kR3OruQmSItIFiadi90Xb2
-	DiNusFacy9QEX8o8FKen+6Q=
-X-Google-Smtp-Source: APXvYqz1dK1PVIZAXAcjoxKunt90ZMv0LFlfwDb+fMx3/j9Mun2H6qFvu+HfLSNHF/+7E8cqAVtc0g==
-X-Received: by 2002:a92:d7c6:: with SMTP id g6mr4278123ilq.282.1579195061944;
-        Thu, 16 Jan 2020 09:17:41 -0800 (PST)
+X-Gm-Message-State: APjAAAXDhs5KkK3IqVEYtvTlxamTi3i4f+z1HLosd9c0JQR7XkPSL3V+
+	gMciB04DmhqTRQPKunhGw8w=
+X-Google-Smtp-Source: APXvYqxkN141gRmqt4zXDAIpIB1t1ugy9+TgxVypGe6bebqXMTQwrhtAXiytxZyVp2JNT7LbOR02CQ==
+X-Received: by 2002:a17:906:687:: with SMTP id u7mr904499ejb.171.1579548762803;
+        Mon, 20 Jan 2020 11:32:42 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a6b:c411:: with SMTP id y17ls3633039ioa.8.gmail; Thu, 16 Jan
- 2020 09:17:41 -0800 (PST)
-X-Received: by 2002:a5e:c606:: with SMTP id f6mr11603527iok.71.1579195061566;
-        Thu, 16 Jan 2020 09:17:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579195061; cv=none;
+Received: by 2002:a05:6402:177c:: with SMTP id da28ls8329773edb.8.gmail; Mon,
+ 20 Jan 2020 11:32:42 -0800 (PST)
+X-Received: by 2002:aa7:df09:: with SMTP id c9mr633755edy.133.1579548761966;
+        Mon, 20 Jan 2020 11:32:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579548761; cv=none;
         d=google.com; s=arc-20160816;
-        b=xSq2S8//wwqpXMcEBI9+6CwAzxmLmQzPSalnzcfiR3NzYVczWAF5kIFRu3LKDP37T7
-         sHQDxJOhkuZKUC5voM+VvapXCyf5tgFKDN2ot//4qVaYVUAoCm+ab1zSCNy1oPDNAZaP
-         FvuD9ACzq4Ps9teVH5rbvY00ZOZeWdB1HXfcMiMf0lJ7Y0ieFxeMZo0rZCc46w03aYqA
-         acIF63MVqkQ4ZgydlrBqz/6RrnXWKLOmwqtLchWJ/IvrwplTUUZfDAdXQTflirtsYc8E
-         oZEvQiZ1rjSwhAEGxJwcrstq9yEZ/j885+8bXQBQBbcaDk/1MRT48d1Z5Mvjl+P5LW8y
-         ayiQ==
+        b=zFnzivNlAJM5erM3wDW6OdeSLqBVFXP8OnOPBvCXzbe7g8irTgaUp415RI1AqdbgHj
+         5iNQnBqYeXwCWeN+wZlojBU0sYH7BRUCTjgYYD6Gwrt4Ru+zDiI3IbIl7T1jNEWfKB4I
+         2Q+haTteWLgfU+Njn3KCAWJ+drehn61v6LQ2l/AG3B7ZNXkqQrjp4cdn78GHSrTTHLOC
+         Egoi1JcPfu3ekgrSL6UTvXRsiKwdJ+ZwwqpnzHtwgyasdjCNth3Lk/P6IA4c9S1iRB+2
+         49mXqDvqB2skOnUY7eJdQoXOzI41N9yMRIxtbqfsdJztX8Cg0JBClGrWyuzwkz4dTchm
+         7Pfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=rvFYnZVknwiqXuZHTGfy1RTK3dfLh8VT6Z4ocZCnSFw=;
-        b=ugV6NyJP0y6Fu4BBbvESfWrBa5Gj1aknIAxkTJcqycpSSLjccCNfPLBmd4VCzQefKh
-         iXMH/dZCDJMHVQ1f7zeXLXYKoS5im8mXaR+cZeB1mxdOviIDZZkgCGW23blF0fxXNosr
-         N/33LasND40SSkCEzgHMdgc8Zfyr3+ms1V73JGs7GCXGglChFvAKkzNTxhJCWrdHENuW
-         YyRASxabF7+6KwpLFle01gorE8AJ3mIde4/qm83+FyArwhf6QkZuztRIoS7aRWuVaMzi
-         DnU9q+B3VSgsHxpOLLqp2l0Qj3V0d6ztONr1k++yWQdRp+82wsCFHKl37nekcdsOmB5M
-         Ipdg==
+        h=to:subject:message-id:date:from:reply-to:mime-version
+         :dkim-signature;
+        bh=z7I/Kq2V0EnXiuoACdRbnwoAql3KZ080nwyXVjlruyU=;
+        b=iXsYZNQgZedf4kZ3Fz1K04TJzp4MG04CGCM4kKp/lzYvMih0/BS6oA7x5QwLKj2u7H
+         /jJWIEYZn/53aAFIJ9AaouBdg7HiMo/DvYH9YkvHtC9N2vZauBkhWVrWy531ruSwrB0b
+         hidEJ8g0OTD2ciLIuAQTF1z9HFHk50o1LLAggQHQsBJBqHqWFRkA8U24oeKwMv/2g8Ej
+         BRy1Ce6SdfYnSoE62BP4juVo099EdZFwMMOr36oVST+KhGzdw3/sPCZWt+5Kq+vu4oVQ
+         hvCU4Uz/119QPe/Wi/9KJkMQHuQxipahnrCLhCgDF0U7Byb9DxqI5JL5Yi7NoKwoc/at
+         0MuQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=uiwISQ4M;
-       spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id f85si1078991ilg.2.2020.01.16.09.17.41
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I1roYPqx;
+       spf=pass (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) smtp.mailfrom=eco.bank1204@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-ed1-x541.google.com (mail-ed1-x541.google.com. [2a00:1450:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id ba12si1424414edb.3.2020.01.20.11.32.41
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 16 Jan 2020 09:17:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
-	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 4798024693;
-	Thu, 16 Jan 2020 17:17:40 +0000 (UTC)
-From: Sasha Levin <sashal@kernel.org>
-To: linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Cc: "Gustavo A. R. Silva" <gustavo@embeddedor.com>,
-	Jon Mason <jdmason@kudzu.us>,
-	Sasha Levin <sashal@kernel.org>,
-	linux-ntb@googlegroups.com
-Subject: [PATCH AUTOSEL 4.14 016/371] NTB: ntb_hw_idt: replace IS_ERR_OR_NULL with regular NULL checks
-Date: Thu, 16 Jan 2020 12:11:24 -0500
-Message-Id: <20200116171719.16965-16-sashal@kernel.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200116171719.16965-1-sashal@kernel.org>
-References: <20200116171719.16965-1-sashal@kernel.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 20 Jan 2020 11:32:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) client-ip=2a00:1450:4864:20::541;
+Received: by mail-ed1-x541.google.com with SMTP id f8so627529edv.2
+        for <linux-ntb@googlegroups.com>; Mon, 20 Jan 2020 11:32:41 -0800 (PST)
+X-Received: by 2002:a17:906:1fcd:: with SMTP id e13mr898516ejt.333.1579548761316;
+ Mon, 20 Jan 2020 11:32:41 -0800 (PST)
 MIME-Version: 1.0
-X-stable: review
-X-Patchwork-Hint: Ignore
-X-Original-Sender: sashal@kernel.org
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=uiwISQ4M;       spf=pass
- (google.com: domain of sashal@kernel.org designates 198.145.29.99 as
- permitted sender) smtp.mailfrom=sashal@kernel.org;       dmarc=pass (p=NONE
- sp=NONE dis=NONE) header.from=kernel.org
+Received: by 2002:a05:6402:22dc:0:0:0:0 with HTTP; Mon, 20 Jan 2020 11:32:40
+ -0800 (PST)
+Reply-To: mcclainejohn.13@gmail.com
+From: "Prof, William Roberts" <eco.bank1204@gmail.com>
+Date: Mon, 20 Jan 2020 20:32:40 +0100
+Message-ID: <CAOE+jABpcHQWZWhtskhDFbtTqfBe7h065WE2kC1G+jQD+tQiTA@mail.gmail.com>
+Subject: Contact Diplomatic Agent, Mr. Mcclaine John to receive your ATM CARD
+ valued the sum of $12.8Million United States Dollars
+To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: eco.bank1204@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20161025 header.b=I1roYPqx;       spf=pass
+ (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541
+ as permitted sender) smtp.mailfrom=eco.bank1204@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -135,56 +141,46 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-From: "Gustavo A. R. Silva" <gustavo@embeddedor.com>
+Attn: Dear Beneficiary,
 
-[ Upstream commit 1b7619828d0c341612f58683e73f279c37e70bbc ]
+I wish to inform you that the diplomatic agent conveying your ATM CARD
+valued the sum of $12.8Million United States Dollars has misplaced
+your address and he is currently stranded at (George Bush
+International Airport) Houston Texas USA now
+We required you to reconfirm the following information's below to him
+so that he can deliver your Payment CARD to you today or tomorrow
+morning as information provided with open communications via email and
+telephone for security reasons.
+HERE IS THE DETAILS  HE NEED FROM YOU URGENT
+YOUR FULL NAME:========
+ADDRESS:========
+MOBILE NO:========
+NAME OF YOUR NEAREST AIRPORT:========
+A COPY OF YOUR IDENTIFICATION :========
 
-Both devm_kcalloc() and devm_kzalloc() return NULL on error. They
-never return error pointers.
+Note; do contact the diplomatic agent immediately through the
+information's listed below
+Contact Person: Diplomatic Agent, Mr. Mcclaine John
+EMAIL: mcclainejohn.13@gmail.com
+Tel:(223) 777-7518
 
-The use of IS_ERR_OR_NULL is currently applied to the wrong
-context.
+Contact the diplomatic agent immediately
+because he is waiting to hear from you today with the needed information's.
 
-Fix this by replacing IS_ERR_OR_NULL with regular NULL checks.
+NOTE: The Diplomatic agent does not know that the content of the
+consignment box is $12.800,000,00 Million United States Dollars and on
+no circumstances should you let him know the content. The consignment
+was moved from here as family treasures, so never allow him to open
+the box. Please I have paid delivery fees for you but the only money
+you must send to Mcclaine John is your ATM CARD delivery fee $25.00
+only. text Him as you contact Him Immediately
 
-Fixes: bf2a952d31d2 ("NTB: Add IDT 89HPESxNTx PCIe-switches support")
-Signed-off-by: Gustavo A. R. Silva <gustavo@embeddedor.com>
-Signed-off-by: Jon Mason <jdmason@kudzu.us>
-Signed-off-by: Sasha Levin <sashal@kernel.org>
----
- drivers/ntb/hw/idt/ntb_hw_idt.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/ntb/hw/idt/ntb_hw_idt.c b/drivers/ntb/hw/idt/ntb_hw_idt.c
-index d44d7ef38fe8..b68e2cad74cc 100644
---- a/drivers/ntb/hw/idt/ntb_hw_idt.c
-+++ b/drivers/ntb/hw/idt/ntb_hw_idt.c
-@@ -1105,9 +1105,9 @@ static struct idt_mw_cfg *idt_scan_mws(struct idt_ntb_dev *ndev, int port,
- 	}
- 
- 	/* Allocate memory for memory window descriptors */
--	ret_mws = devm_kcalloc(&ndev->ntb.pdev->dev, *mw_cnt,
--				sizeof(*ret_mws), GFP_KERNEL);
--	if (IS_ERR_OR_NULL(ret_mws))
-+	ret_mws = devm_kcalloc(&ndev->ntb.pdev->dev, *mw_cnt, sizeof(*ret_mws),
-+			       GFP_KERNEL);
-+	if (!ret_mws)
- 		return ERR_PTR(-ENOMEM);
- 
- 	/* Copy the info of detected memory windows */
-@@ -2393,7 +2393,7 @@ static struct idt_ntb_dev *idt_create_dev(struct pci_dev *pdev,
- 
- 	/* Allocate memory for the IDT PCIe-device descriptor */
- 	ndev = devm_kzalloc(&pdev->dev, sizeof(*ndev), GFP_KERNEL);
--	if (IS_ERR_OR_NULL(ndev)) {
-+	if (!ndev) {
- 		dev_err(&pdev->dev, "Memory allocation failed for descriptor");
- 		return ERR_PTR(-ENOMEM);
- 	}
--- 
-2.20.1
+Thanks,
+with Regards.
+Prof, William Roberts
+Director DHL COURIER SERVICES-Benin
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200116171719.16965-16-sashal%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAOE%2BjABpcHQWZWhtskhDFbtTqfBe7h065WE2kC1G%2BjQD%2BtQiTA%40mail.gmail.com.
