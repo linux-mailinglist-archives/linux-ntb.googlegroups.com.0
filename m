@@ -1,133 +1,139 @@
-Return-Path: <linux-ntb+bncBCVL5GMC3MJBBWUATDYQKGQEEVDGBYA@googlegroups.com>
+Return-Path: <linux-ntb+bncBDE55XUH3UHRBYUVUHYQKGQERZCG5BY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ed1-x54d.google.com (mail-ed1-x54d.google.com [IPv6:2a00:1450:4864:20::54d])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F095143252
-	for <lists+linux-ntb@lfdr.de>; Mon, 20 Jan 2020 20:32:43 +0100 (CET)
-Received: by mail-ed1-x54d.google.com with SMTP id d21sf211912edy.3
-        for <lists+linux-ntb@lfdr.de>; Mon, 20 Jan 2020 11:32:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1579548762; cv=pass;
+Received: from mail-lf1-x13d.google.com (mail-lf1-x13d.google.com [IPv6:2a00:1450:4864:20::13d])
+	by mail.lfdr.de (Postfix) with ESMTPS id A890D1454E5
+	for <lists+linux-ntb@lfdr.de>; Wed, 22 Jan 2020 14:15:15 +0100 (CET)
+Received: by mail-lf1-x13d.google.com with SMTP id i24sf2139569lfj.17
+        for <lists+linux-ntb@lfdr.de>; Wed, 22 Jan 2020 05:15:15 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1579698915; cv=pass;
         d=google.com; s=arc-20160816;
-        b=HSFKo0VGot+/SjoLxEAPNZpV+niAn8eKAmAj3QztQ7hsSRY7xbjlImPpjjueYsFKrY
-         EyU4j8daZtmABdDgk9D2srxl1345+kxFIjcnaev+i8Rw7iCe5hSeW7mQhf2jyxZrf66g
-         EslQPn0lRVnnhpBVRtkXnINY1bvrc2MBCO/lvcG29KPkpUwukrtO97ATIWf5AW1Ddlt+
-         VVvAcUm8zjvFAU+xT1B6M0J3nD2c89FhsvLGMjaWregreIBOmzFYeH+Fixt/vNMT3BaV
-         b5/STnmRTxksI9/IICwu4VOaNN3D7y3YMx7mkDFtvAbyaKW0TsoG8/3HCHRGmLhSiVgy
-         tjfQ==
+        b=PlczCDNa/e42xcwY+iJSKk8RWWomnqGGSn5nJ3kBz0Sm0wah4dpn5kwi4OJXzP3AcG
+         Xez5R3dIrSpq13Sx+mkt59okEu/mQt9ubDFyPn6omvsRZw6fuuTXmOb/of7hVNVrTX/g
+         S5y4RrrHUcKKUktBDLKrDlPf/31BFTf2wT46IE1HoDUXrhJeJQpUVFr2KCo1SXRsBbWS
+         Vf3zyG+c0iI4wOZCqnyK8sBwu5DzaFPhY8GUnomSLPck/UX5u1vzn3oDkIKuTNpBZz6K
+         L072IxJOOWFPeLyOXPxNuETyU5ZPuA3SHmsBzCiSUoDZ5rUHFHRhjPSCeQE8FWjFHetP
+         rlpg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:to:subject:message-id:date:from
-         :reply-to:mime-version:sender:dkim-signature:dkim-signature;
-        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
-        b=rczum7XWgyDNS9D6YPA8qDwzsKDO9vP+q5G1ngfgnbXqRALYuidANIwy0cTwQa6pAI
-         RYaYYcwP61+++tjhz+UhRo6/Ir0bq3CaxgQF4y1ImGVWsKcDXgJLo9IQl4eGyugLD+uA
-         JMFQorXcbO5ZOYhU7tcqI+SjpPq/hBXCvdjtBCQvRmf4Zq0Jxyq6wE7qM5TcSCIX+T2U
-         ME3M81Bmo8o3ZEcWi/xUWFB0IPtD+Zn9nDMkRaMsvZvzEoNqcnNzJSGt/PccA8lZcPc+
-         AKNPe35hFUZPNm38etaNLcPPBEpfp5tiOUg63YCVgyjYCD3hZI6CDcO7Z1bys7UINKKR
-         I/fA==
+         :list-id:mailing-list:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :dkim-signature:dkim-signature;
+        bh=xrMPiwDAzuO42zCecynwnUoL9UjwWxqDpWFyVbgftZQ=;
+        b=zYe8Gp/M3awmxHbDjlKIkpYPnK9jUYzu+ZjYGvypAA1gdu4JT+P6FmDKVA3Ces1h6p
+         cPmh8mXpKKOdjPn42oJEwzpp7Evp9l3vKpi+i3ITVE6BHnc0bMXp/IRQMObvnN3bjs+Q
+         YbknxM4//WWwguR0+gCGwQ/smlinVJfo2K78kBYisgxqYvpny50DtFBBAVXFnCnAPKLn
+         6C6PUOX508I9Zrvp7HeQgprIrRvKvASyPyfZjEHGj7tnIMIZevN0h8xm70mMEdVl/Jbm
+         uI+MAeJJ+tcCkK2YZl7u1tlx3HNwwzn7lH4hM6GWLpAHhDXFn5knvF0uoT1d6cfRcK4l
+         R9aA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I1roYPqx;
-       spf=pass (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) smtp.mailfrom=eco.bank1204@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eW0+pZuA;
+       spf=pass (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=fomichev.ru@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:reply-to:from:date:message-id:subject:to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
-        b=bzjsUf4zuqIZ92FzAvmzQRMx0bpKnWiem0R8v8SQQTNpycmarCud5faHqKIoTDGNTb
-         2qRssUlv/2y9b9wtC/EK/z9QZd7V8ZtCWDm6IkaTluxQjnzcOKrWJWwYsSCk6lhM5Iv8
-         uH3yP72J1QjyK/KNIHt2CRPIgUfaRqrQuWAirNVkOsn6qnuYhr6MVaJaEis77xsoeC+S
-         nk/Uba3ekPagkNbG1VTQKywzhIEvMIhT4uDiCbL7lIuZLYcXnd3RLeebLeSE0Ps6tIty
-         kyFC3JBr29dSxBDmJ0/w6nf/q0RLdTdJQ3z8HHwHMeTCmfN/Gr01vW0ZFsi9ENBzAB8X
-         Gxfw==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=xrMPiwDAzuO42zCecynwnUoL9UjwWxqDpWFyVbgftZQ=;
+        b=pO79JHfYig0DYv/NIYH/Wtb2HupelHhUTAROh5F4FA0Kws47YLFyg8cb0vHuNwQGy8
+         8m1u2tnxiQ6iNQtMwhMYozau4d9tpuhotTSq4qyBVHqqOsNNaOmFlVO6CeHQ+74FDZtK
+         Z354u6aTHiaVo4HTA+23PQ/MSn/0VwOa31oPpwno5gUAcD4+HPU06hszOwS+kSgNBHRw
+         U9Es/DxYyX2WK4phSxZgtw5PSl571NIQ1W3BDEcAGgpGCbI9B6QJgHOdtkkNF2dl/oOr
+         WnnZnM05qRwE0hTcr85HTBTk8w4Q1EQXb+QRcLDk5k3+DMl8reI8pwU+Iiky+M5GXyeR
+         LMCA==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:reply-to:from:date:message-id:subject:to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
-        b=SMo9ttGfqIzGKF7VuuzPbbmAzaIjPzefWt9cvpdzUkItBEG2dU+7goIjlV3nLBfshL
-         PDFIQhIofEVWrNDFlGzW6bE31qxa32esdshuKjw9lkGWL8opfqYN1krEsAFGTyUyLxxq
-         Kki7qpboEsaUA9oa2M8qsMiTIAoedwqn2jovPp9KwgkTm/sFppCCsaDIHbHWIp3Up++B
-         7VPaxaTJjpydLvLpY/MUFuzeLDpe3ggHzN92TWjNHZTUVrHqJ9UCbqGrSyUgoUDUtflJ
-         na85VRBG5aoZ0nJZFNYcY8eYWAIT44npSkeyUepSQqrqVP3xp7HgDf5QELXWGRemPdFK
-         iiaQ==
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=xrMPiwDAzuO42zCecynwnUoL9UjwWxqDpWFyVbgftZQ=;
+        b=rI0Ub35SN4ZLcqYpzIlKvlk2wsiR1WcaFIITyynvozdFI4Fq2FQz1NPstYbwTN5HSp
+         89Zi7pGwqVFBZgeByNqYphKzeJ13dnhkW+5Fj4q+9LLyKiBOxouEsmt9xiYJhyaSFY31
+         MTHLEEwLDsTPIBJTT1jHanGc1KqE53Ag0u6lTakYY0OLHxGJn8lmk9IIEfeJXWqCtRve
+         9mVr4wCe0BAbydjSCozP7cxLKisBOVo+N5gj/qVID557n9ieFoAiU+naP+RTTudX+DFS
+         q4n40x6cgLJJdp3ILjeOWl5k3x0e5rrPGiE+Teo3icsapSLYm8I3Va3bgnXEM2hyDRF6
+         JB8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:reply-to:from:date
-         :message-id:subject:to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=hTYviDUJSlaFJROMEQvxqcaTbYNnc1NVFvSAmfAQ8YY=;
-        b=ByJJsvwW7bGcJoh+SBAp5b0gNtZuajn16fRpLw5safZ8e9AnW0DZdNfoKzhbMeNI0Q
-         l77t1c5U4duV24fp8DQNGOjLasA81RLu5SbVKAP67BjuqRRqkZe5xpecfVOOviKFaD21
-         cAP24jLN28I6iQBE+cBeEWX/THVDxlLYQ0LnbLXsFjDScBVYqLmPYBmsw2GI/cQ4BcKB
-         J1sfTm0A5pFvp8SRmEiqf3oisM5Fw/u1RjV+B213DJiKBT8fI/e09xrean3STiG0nFkH
-         GWscBXbYXcdZjiSo0FwGGE1kZG3qqt3X8gmQXQOxtQ9V/ygkTvw1d4NDlH6D3WZfHZxZ
-         60VQ==
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=xrMPiwDAzuO42zCecynwnUoL9UjwWxqDpWFyVbgftZQ=;
+        b=FGoK3uUh4yOfUqdnpF1hGZ0EJBbN+18LSF3VCkqRJtisf+1oHyuwfJhpLbwcwjtrYA
+         WJipPyn4MRYrYN47mz/NZgNHANd7JlOtHv59vdVOrGNuqD2JZ/e0sfRMvJHMDA+cnxFe
+         T/6QHL/2rxIqAIbZ3Gs10/pf87UARHbAA6/jEKQhLp7brENE6UTU8+Xsum/TlyGf+Kwj
+         acuGZLFK6U4PBztbKQO80ZLAOwDDK9jCj7N8puRHPDEYaPH3EwsnLi6NXyh0vykklG+i
+         x7ve3k+YRnf00ELoeEbWNRgx2Qm3cO0w2w+nmLRJ4TO9hiZeWic7ZilxbITYDUfkLaqC
+         0X1A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAXDhs5KkK3IqVEYtvTlxamTi3i4f+z1HLosd9c0JQR7XkPSL3V+
-	gMciB04DmhqTRQPKunhGw8w=
-X-Google-Smtp-Source: APXvYqxkN141gRmqt4zXDAIpIB1t1ugy9+TgxVypGe6bebqXMTQwrhtAXiytxZyVp2JNT7LbOR02CQ==
-X-Received: by 2002:a17:906:687:: with SMTP id u7mr904499ejb.171.1579548762803;
-        Mon, 20 Jan 2020 11:32:42 -0800 (PST)
+X-Gm-Message-State: APjAAAW9g99Y0z8aXGqq3fEc5u8IoqrTHEHX1n5iBkllEq2qHeeIH8vw
+	iuPtcv6o0QLaQDnFug0tW4w=
+X-Google-Smtp-Source: APXvYqySnLyycuTJ6dTJb5h5z6jp//Ou76/ajLtMD0EojsBsLIXlRiT6wve57dphv3gzB/Cqle2/wA==
+X-Received: by 2002:ac2:58cf:: with SMTP id u15mr1793300lfo.62.1579698914966;
+        Wed, 22 Jan 2020 05:15:14 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6402:177c:: with SMTP id da28ls8329773edb.8.gmail; Mon,
- 20 Jan 2020 11:32:42 -0800 (PST)
-X-Received: by 2002:aa7:df09:: with SMTP id c9mr633755edy.133.1579548761966;
-        Mon, 20 Jan 2020 11:32:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1579548761; cv=none;
+Received: by 2002:a05:651c:1051:: with SMTP id x17ls5420676ljm.8.gmail; Wed,
+ 22 Jan 2020 05:15:14 -0800 (PST)
+X-Received: by 2002:a05:651c:102c:: with SMTP id w12mr19223796ljm.53.1579698914110;
+        Wed, 22 Jan 2020 05:15:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1579698914; cv=none;
         d=google.com; s=arc-20160816;
-        b=zFnzivNlAJM5erM3wDW6OdeSLqBVFXP8OnOPBvCXzbe7g8irTgaUp415RI1AqdbgHj
-         5iNQnBqYeXwCWeN+wZlojBU0sYH7BRUCTjgYYD6Gwrt4Ru+zDiI3IbIl7T1jNEWfKB4I
-         2Q+haTteWLgfU+Njn3KCAWJ+drehn61v6LQ2l/AG3B7ZNXkqQrjp4cdn78GHSrTTHLOC
-         Egoi1JcPfu3ekgrSL6UTvXRsiKwdJ+ZwwqpnzHtwgyasdjCNth3Lk/P6IA4c9S1iRB+2
-         49mXqDvqB2skOnUY7eJdQoXOzI41N9yMRIxtbqfsdJztX8Cg0JBClGrWyuzwkz4dTchm
-         7Pfg==
+        b=qIUsGZeJUoGkDUcsTlTQ0LfQ2ManCyd1ruWJeu9EGIdq5sUg7NKJk1qVFsuc4EwZRZ
+         i8Gnnfvg3N6cIyDk5bo144CSOdeAMGicM3AEmyHNMS/LDnCwHknGuypy4KYeriO3tTsA
+         rECmK4ubSfsjKCiQf2OZrm1Q9pI/88uzz1+B80gpX3AIotdQ5DM3ljZ3C6RjaAhtmQ7x
+         hC9UzvfP1eA35EJ2LSpGLmI+r+SxQGnC4QrefhzhMAoHxRbamYXTz1nQkqAFPBCR/cXG
+         xGzL+CVVdzVUds4Izzl6DSrbk72greMEaWHJah1p5VS9NpxMI0r/FuGRko6P3XLxPDJt
+         N2BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:reply-to:mime-version
-         :dkim-signature;
-        bh=z7I/Kq2V0EnXiuoACdRbnwoAql3KZ080nwyXVjlruyU=;
-        b=iXsYZNQgZedf4kZ3Fz1K04TJzp4MG04CGCM4kKp/lzYvMih0/BS6oA7x5QwLKj2u7H
-         /jJWIEYZn/53aAFIJ9AaouBdg7HiMo/DvYH9YkvHtC9N2vZauBkhWVrWy531ruSwrB0b
-         hidEJ8g0OTD2ciLIuAQTF1z9HFHk50o1LLAggQHQsBJBqHqWFRkA8U24oeKwMv/2g8Ej
-         BRy1Ce6SdfYnSoE62BP4juVo099EdZFwMMOr36oVST+KhGzdw3/sPCZWt+5Kq+vu4oVQ
-         hvCU4Uz/119QPe/Wi/9KJkMQHuQxipahnrCLhCgDF0U7Byb9DxqI5JL5Yi7NoKwoc/at
-         0MuQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=Faj6KZwbywL/fDhwIy1bk+O7WVLH18b9dyX96AmRRQ0=;
+        b=AA1rKITtdtUJcYLpU1Wx2HWsu/eugrZWrhFFKxwzAQw/3cFJMHrfgEEZL94YKYWLQh
+         cEtGre853yd5S51IQE0Am8Lw1m5RJgGLct4O2Wl+hwshaYYphcp33dUldStVDageh8Jn
+         DJXy6a3lessq1gu657D6p0WjNVyVj2O2FTbShd9WIQZN0y1mDM/Z1teRopSXJ1ky5X1G
+         ZU1BfL8H3f6x6ac1tzNXqb9dP50w9oWN9LCk+GxL0N/r3i9uzOOXWwgce54F2dmjKC5S
+         QyQvfHxLymkNK2RpnGO7E5IcRnSYUXYnBG1JcjzvVEH0WLO73+PLHU7SkqnRc3He8VjN
+         cnsA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=I1roYPqx;
-       spf=pass (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) smtp.mailfrom=eco.bank1204@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=eW0+pZuA;
+       spf=pass (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) smtp.mailfrom=fomichev.ru@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-ed1-x541.google.com (mail-ed1-x541.google.com. [2a00:1450:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id ba12si1424414edb.3.2020.01.20.11.32.41
+Received: from mail-lj1-x241.google.com (mail-lj1-x241.google.com. [2a00:1450:4864:20::241])
+        by gmr-mx.google.com with ESMTPS id p20si2010148lji.1.2020.01.22.05.15.14
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 20 Jan 2020 11:32:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541 as permitted sender) client-ip=2a00:1450:4864:20::541;
-Received: by mail-ed1-x541.google.com with SMTP id f8so627529edv.2
-        for <linux-ntb@googlegroups.com>; Mon, 20 Jan 2020 11:32:41 -0800 (PST)
-X-Received: by 2002:a17:906:1fcd:: with SMTP id e13mr898516ejt.333.1579548761316;
- Mon, 20 Jan 2020 11:32:41 -0800 (PST)
+        Wed, 22 Jan 2020 05:15:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::241 as permitted sender) client-ip=2a00:1450:4864:20::241;
+Received: by mail-lj1-x241.google.com with SMTP id y4so6733150ljj.9
+        for <linux-ntb@googlegroups.com>; Wed, 22 Jan 2020 05:15:14 -0800 (PST)
+X-Received: by 2002:a05:651c:1032:: with SMTP id w18mr18256340ljm.61.1579698913553;
+        Wed, 22 Jan 2020 05:15:13 -0800 (PST)
+Received: from localhost ([89.207.88.249])
+        by smtp.gmail.com with ESMTPSA id q13sm19970691ljm.68.2020.01.22.05.15.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 22 Jan 2020 05:15:12 -0800 (PST)
+Date: Wed, 22 Jan 2020 16:15:10 +0300
+From: Alexander Fomichev <fomichev.ru@gmail.com>
+To: linux-ntb@googlegroups.com, linux-pci@vger.kernel.org
+Cc: linux@yadro.com, Logan Gunthorpe <logang@deltatee.com>
+Subject: Re: [PATCH RESEND] ntb_hw_switchtec: Fix ntb_mw_clear_trans
+ returning error if size == 0
+Message-ID: <20200122131510.d5ckfj22idh56ef5@yadro.com>
+References: <20190710084427.7iqrhapxa7jo5v6y@yadro.com>
 MIME-Version: 1.0
-Received: by 2002:a05:6402:22dc:0:0:0:0 with HTTP; Mon, 20 Jan 2020 11:32:40
- -0800 (PST)
-Reply-To: mcclainejohn.13@gmail.com
-From: "Prof, William Roberts" <eco.bank1204@gmail.com>
-Date: Mon, 20 Jan 2020 20:32:40 +0100
-Message-ID: <CAOE+jABpcHQWZWhtskhDFbtTqfBe7h065WE2kC1G+jQD+tQiTA@mail.gmail.com>
-Subject: Contact Diplomatic Agent, Mr. Mcclaine John to receive your ATM CARD
- valued the sum of $12.8Million United States Dollars
-To: undisclosed-recipients:;
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: eco.bank1204@gmail.com
+Content-Disposition: inline
+In-Reply-To: <20190710084427.7iqrhapxa7jo5v6y@yadro.com>
+X-Original-Sender: fomichev.ru@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=I1roYPqx;       spf=pass
- (google.com: domain of eco.bank1204@gmail.com designates 2a00:1450:4864:20::541
- as permitted sender) smtp.mailfrom=eco.bank1204@gmail.com;       dmarc=pass
+ header.i=@gmail.com header.s=20161025 header.b=eW0+pZuA;       spf=pass
+ (google.com: domain of fomichev.ru@gmail.com designates 2a00:1450:4864:20::241
+ as permitted sender) smtp.mailfrom=fomichev.ru@gmail.com;       dmarc=pass
  (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
@@ -141,46 +147,41 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Attn: Dear Beneficiary,
+Somehow this patch was lost. The problem is still actual.
+Please, add to upstream.
 
-I wish to inform you that the diplomatic agent conveying your ATM CARD
-valued the sum of $12.8Million United States Dollars has misplaced
-your address and he is currently stranded at (George Bush
-International Airport) Houston Texas USA now
-We required you to reconfirm the following information's below to him
-so that he can deliver your Payment CARD to you today or tomorrow
-morning as information provided with open communications via email and
-telephone for security reasons.
-HERE IS THE DETAILS  HE NEED FROM YOU URGENT
-YOUR FULL NAME:========
-ADDRESS:========
-MOBILE NO:========
-NAME OF YOUR NEAREST AIRPORT:========
-A COPY OF YOUR IDENTIFICATION :========
+On Wed, Jul 10, 2019 at 11:44:27AM +0300, Alexander Fomichev wrote:
+> ntb_mw_set_trans should work as ntb_mw_clear_trans when size == 0 and/or
+> addr == 0. But error in xlate_pos checking condition prevents this.
+> Fix the condition to make ntb_mw_clear_trans working.
+> 
+> Signed-off-by: Alexander Fomichev <fomichev.ru@gmail.com>
+> Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
+> ---
+>  drivers/ntb/hw/mscc/ntb_hw_switchtec.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> index 1e2f627d3bac..19d46af19650 100644
+> --- a/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> +++ b/drivers/ntb/hw/mscc/ntb_hw_switchtec.c
+> @@ -299,7 +299,7 @@ static int switchtec_ntb_mw_set_trans(struct ntb_dev *ntb, int pidx, int widx,
+>  	if (widx >= switchtec_ntb_mw_count(ntb, pidx))
+>  		return -EINVAL;
+>  
+> -	if (xlate_pos < 12)
+> +	if (size != 0 && xlate_pos < 12)
+>  		return -EINVAL;
+>  
+>  	if (!IS_ALIGNED(addr, BIT_ULL(xlate_pos))) {
+> -- 
+> 2.17.1
 
-Note; do contact the diplomatic agent immediately through the
-information's listed below
-Contact Person: Diplomatic Agent, Mr. Mcclaine John
-EMAIL: mcclainejohn.13@gmail.com
-Tel:(223) 777-7518
-
-Contact the diplomatic agent immediately
-because he is waiting to hear from you today with the needed information's.
-
-NOTE: The Diplomatic agent does not know that the content of the
-consignment box is $12.800,000,00 Million United States Dollars and on
-no circumstances should you let him know the content. The consignment
-was moved from here as family treasures, so never allow him to open
-the box. Please I have paid delivery fees for you but the only money
-you must send to Mcclaine John is your ATM CARD delivery fee $25.00
-only. text Him as you contact Him Immediately
-
-Thanks,
-with Regards.
-Prof, William Roberts
-Director DHL COURIER SERVICES-Benin
+-- 
+Regards,
+  Alexander
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAOE%2BjABpcHQWZWhtskhDFbtTqfBe7h065WE2kC1G%2BjQD%2BtQiTA%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200122131510.d5ckfj22idh56ef5%40yadro.com.
