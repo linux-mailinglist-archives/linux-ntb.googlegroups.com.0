@@ -1,130 +1,121 @@
-Return-Path: <linux-ntb+bncBCHK3VHCYUIBB5WK5PYQKGQEIIVAZDQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCHK3VHCYUIBBM7R5PYQKGQE6EAB6EY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ua1-x938.google.com (mail-ua1-x938.google.com [IPv6:2607:f8b0:4864:20::938])
-	by mail.lfdr.de (Postfix) with ESMTPS id 97FAB1534C4
-	for <lists+linux-ntb@lfdr.de>; Wed,  5 Feb 2020 16:55:35 +0100 (CET)
-Received: by mail-ua1-x938.google.com with SMTP id i21sf700537uac.10
-        for <lists+linux-ntb@lfdr.de>; Wed, 05 Feb 2020 07:55:35 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1580918134; cv=pass;
+Received: from mail-ua1-x93e.google.com (mail-ua1-x93e.google.com [IPv6:2607:f8b0:4864:20::93e])
+	by mail.lfdr.de (Postfix) with ESMTPS id 21C3315362B
+	for <lists+linux-ntb@lfdr.de>; Wed,  5 Feb 2020 18:17:41 +0100 (CET)
+Received: by mail-ua1-x93e.google.com with SMTP id b10sf798594uaq.3
+        for <lists+linux-ntb@lfdr.de>; Wed, 05 Feb 2020 09:17:41 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1580923060; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Fom/HjikBFwEjKIWDHYpxqlQINC0A+YwYHYrTTF0xJV592Oy3vm9uKM6Q6xXholWGD
-         TJHjqTrMFf2TE9HD4x+gANxioxIIprFnTa9HAA+K9PfGN6244fSvlOzcmvG3YNZPZDyc
-         2+lIeYwQRFq0KJXcrWKdA1MbyZdEkWrgluPaM8exVjfWwpS2lou9XPi2ZqSmp557eM3k
-         P+kZWYAb3NSD7zymhS4XKo8Q7XBLLnbMwdrz5VDLF2vy8ooPzgKtBjl2SK9/dcnAGOfU
-         L8QDTDWukLmkXQdqNEomMSSV34i0HQcQv98LdApSRwSUYNfT0/o7X0aDp2jGILYKFZ3s
-         zQzg==
+        b=Od5KPNNmobpLF9lI5kGPFBicx/NMVrthvjSNRU8kFWTmMYgfp3zqljjVvjYmbgTMlW
+         YWHYHR+EGOSfoJn0il9baNXpFwYKwe4PvzM4NkS76z3ML2/wpgEvMjnVDBhxEiMCx+1r
+         JcNsK9sbjdGvzOXNqIB95XBrWD86GsFF1hJkyG5BqIjRbZJZvX6ABt9Fiza8TqtQf6HW
+         5eFoCWmJfi4YCCiKjNIlV+MprDLN4Iz6Z/Sc20crYEjGn6cyfZULpeNZuPmklB8SxCGO
+         O+xNWaHUJ/GpWYxowtrrJq69K+IlYXEadp3qhb15DQnQomKAxqu1a5XclKBgsYhkBuaw
+         q/EA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:references:in-reply-to:references
-         :in-reply-to:message-id:date:subject:cc:to:from:sender:mime-version
-         :dkim-signature;
-        bh=go+YFFtpMxVOaArJO4gFzEfZzOYuX2smYUiXvjrfPfA=;
-        b=TB6nIdVtmMHWXb4/QdLX/RL45R8EG1AfpDp3ElV0/jkccPInvqTBOCcPGTDDtHfUhH
-         q+zmgqjKERgvnWmgFtarGCnbO8QM/3CLe2DrbBdHXamxLJGHanAcLHJ9HfAM2X2rc1j8
-         OU1O04J32zEvkThbl6voi0vdl0YB/usLNT8Fs6g4YWR+ivqtXFkS/Qa24wYM0GiAVNXj
-         dXlSb3d8qsK0cnVZFaJVqFzS0SqgP6oTSOmdqQpuOBUuIatjlzfbpi3PZQJ1/+/eqiIA
-         D2a/7now4MawfA+mRD+qKsOXMfK7znQAqRSCokSiuBXPQyaKmpreg6tPkZ0lD5hf1kks
-         AhEw==
+         :list-id:mailing-list:precedence:message-id:date:subject:cc:to:from
+         :sender:mime-version:dkim-signature;
+        bh=8AG3y4HY2ZGxc6MdiMqhpOrWFHG8/lgXJhjiuY3D+vM=;
+        b=sD/nLt5xL8a7yJpyRb8ib5GsB8vchDJQ+jdPaBsvUbJnTnf4I8sjO4rIUZZneoD9rP
+         jjndoRSQNQttlyxhFWRBAcuO7E/0pBCICkr07ZPdrEcZBK8M5Cc/5xOYZii8u3hsymTb
+         pdxJHRfxw/lZoIkMZOpRbFxVK2NAW5MAHtRJ3lR5Cl4bvbNp8r/HMH4lXlBL6oHvGRzI
+         WGcEnw5pA2p+LaYQweLa9TwfFi3Vk+pVDI+2MXZnxKmt+0O9rR7Nmf9CZfWSOeDw4bjE
+         G/F/Y/CXnRfZZ6M7RoTA6YC5aXW1TLETgR6znzK8zIndClfakG/xDkgeUF4+2QGMaTBx
+         gcRA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=upPG+0IT;
-       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SjedPgum;
+       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:sender:from:to:cc:subject:date:message-id:in-reply-to
-         :references:in-reply-to:references:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=go+YFFtpMxVOaArJO4gFzEfZzOYuX2smYUiXvjrfPfA=;
-        b=BinL2e81RaqV1yuAKm1Is7TeLatrBgizr7rea9vsOMHGPfrLCXXb15wJJLm//RmLH4
-         tW4fDYLgtO8yP7i+gum1sPZIuI93iHxBPYsWTLYhGRuMoavGOXMJMr/qgDmPWvJGBSpH
-         zCtEEyNIrOOic21JRvm8OlMIwmS4A7tuHsdm/m9/zvjPdPbPZPUJd5FgfYjcMU3tEeg8
-         1KcpwnNpnbWYNW9LmaUcXJoBtUGFRfuL9wU6PoXDNyhAPx74/DtDxwQj5w2yHufbE75J
-         hjm6mPxf1Fy6/N3VLj5Tx3JJerE5GGj1rGJRNPwYtRq0lMS0ynXAfTis3jOARpsbGOr7
-         TS+w==
+        h=mime-version:sender:from:to:cc:subject:date:message-id
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=8AG3y4HY2ZGxc6MdiMqhpOrWFHG8/lgXJhjiuY3D+vM=;
+        b=XrZ+RVmegd5PMyznbQMuXKLDFMqrespukn4V8nKhrEH9rOz1TqBCejR8ooPfYcgZBa
+         5zXTXiYl14uG4i1He3S0SJemyoGVVxiOVmhmdn5/5GyWGdrUCUk1kjFEgH3wG5jCj2Qm
+         s7zIcm/zEMbhxUhE4lQeJZJ/1kW9hKi/Ftz7c0u1ypAFjJ/tcvxCeZ3JKJWeLADupC2j
+         rQhTPowuwoadWRSjd4aTjkJZk+fZgW/lRP3/5jf6blPfplfOgAeF6l0UpihaPOq1V2wc
+         8IW0F5HYpolZQumeV/TOXvQ0KeaLCbtM62c0cFNiD1HzeYBtRAhtTUAGc0CXODuNdeqj
+         b6fA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:sender:from:to:cc:subject:date
-         :message-id:in-reply-to:references:in-reply-to:references
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=go+YFFtpMxVOaArJO4gFzEfZzOYuX2smYUiXvjrfPfA=;
-        b=tJK4EbjWhqFy2PFvquPhzwEChb3+robMxpSrmYgLCX1/Tn9/K98HpdqwszCwzQ9qpS
-         yzuTef0zugHVO/zkQTdpf5jpu0boq6eTmrauWJGgHBHdHYQ2wK5S4NTyGiy/xmSUGv8l
-         T20yplUre5PlwTH5B9657THfDOyoog5Wh1X6NXiCjzsh3vARtPliHzzGBq6V+EBrGq9C
-         uM+hoJ5AkbzPnHiMhNdF0VlsePL3KWQ7oSfSF5bSa9Za3uk0fDlQLE6SKmetzgDz5aU0
-         r2MzjGxHMm3luy9y8YGy4WHDSZfbI3ekMpHFMjH+XEDVB3R20gp3tj+yUweir33njGMj
-         9BEA==
-X-Gm-Message-State: APjAAAUcal3CyGxx2tqervIT7UTy8Raty56+RrvR/9fYgGnS+Z3S9WgJ
-	wW3gLQlFk4VXriMWrVuCSDk=
-X-Google-Smtp-Source: APXvYqygVrJ98p/4wSlLYkUfRvwAWp4xQ0eD0D3JHw3m9PXqD66UE8EwaWEzpiq8ObXWhqIL3Xc7dg==
-X-Received: by 2002:a67:8704:: with SMTP id j4mr23517270vsd.106.1580918134613;
-        Wed, 05 Feb 2020 07:55:34 -0800 (PST)
+         :message-id:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=8AG3y4HY2ZGxc6MdiMqhpOrWFHG8/lgXJhjiuY3D+vM=;
+        b=NeCWxEqHQAekOcCqwZPti+yjcPYsdIta6ULH0YKTGTAh8bZRXVk/7yESiNlqkj/HSu
+         YufyMQ/pL7/NkoxT5DnRgdT7TIjMNW7BOn/sO7PIfgyZDR5MmaEjIKnc+s+X+9f0lzLE
+         Q7fJI/dLeiHmWOG6qiaDjUWNcGGK7spWERMEFsXlTxwgqhvoKaqKFnvSvCOl1KFxCMXF
+         JbJiPKLrTA4KkL3epJecayQmr5fFGtaCtPmOE50LaN/UFqa2cDZ8xcv9uQCjL8LzSD9b
+         nbLkLO3pTZEPdPo6hCoEPKg5svkTWZh/4TGPqyg1o0TlCS+fS2BKB7LpUoC1PvhEXEhF
+         UPQg==
+X-Gm-Message-State: APjAAAXyATewwhJq5IA0lFQ56xNdG6q/rFZBFhTpmMNmxSBukTxHGyb7
+	13bXPiHNIUvvchdMkamcaeA=
+X-Google-Smtp-Source: APXvYqwHBYJckv+h6PDXmGIi38vOuzA2RVvAnfR87x/GI7Azkur9xindUItqnWHTHIWHg+JNo6Qz5g==
+X-Received: by 2002:a67:f102:: with SMTP id n2mr24055964vsk.138.1580923060124;
+        Wed, 05 Feb 2020 09:17:40 -0800 (PST)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ab0:664b:: with SMTP id b11ls193029uaq.3.gmail; Wed, 05 Feb
- 2020 07:55:34 -0800 (PST)
-X-Received: by 2002:ab0:1d6:: with SMTP id 80mr7901122ual.131.1580918134045;
-        Wed, 05 Feb 2020 07:55:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580918134; cv=none;
+Received: by 2002:a67:cb82:: with SMTP id h2ls389687vsl.3.gmail; Wed, 05 Feb
+ 2020 09:17:39 -0800 (PST)
+X-Received: by 2002:a67:fc96:: with SMTP id x22mr22308174vsp.33.1580923059566;
+        Wed, 05 Feb 2020 09:17:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580923059; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pki9CVUNAwDd3KJFE+Y55ih9ryLRwP0zpZ5DwI6KPEuft+BK3HBZ+oEhCwYaWJ7xuL
-         72hO26d0tguPAgdPXxwqCqwhyU0obhlg7WB7r8IZ/r0k5ykQzmfrvdkHHUY+UN19siZa
-         Kj5dz+EADHekH8+3OAdLj6dp5tTKNkbHEtQJZy/DM3eTFj/jweNszvN3Wp6njGUT6wrd
-         LXKYttisQFsX9/ISGxipOYOqQTGzPGuOCFcQhZTWM93pFjhuyDZbC/2tL/dKUfzEz29+
-         BJqfDQug1KJ6tQYNnANFPkuLlsT5TXBgk6VzVVuxvda2fLOO9FYmVNCnJh69vjtSU9Pr
-         xkOA==
+        b=PXlRiNUFC6jKDmdfC0eMoGYLD7lutHEbuKrbjQIPoLuoP5UOWivsfgrxhIIL9/USLV
+         90ULv/o1US+juGvbhWAN9t+qlk9sXSQGJ7sN1HOCSsKrumOFO5vLPh8UgoQ7/q5dldMM
+         nNhBh8ZdQmBgOu7ecbpiWnw4xSL+Ttb48FYP1CY/OgQ6Yvt035+L3fHHthP/fRVB9pTc
+         SfigwM+UopwAlzFPSyly7MtN+etk+BTd6DV04zYIGQOk3AITzeB3uqP+hyFfw80C5QvC
+         65K/36X+5VSjsoqdW6nmBRD1P6i8IJaLRJSdoFSxPkgej/8W5TAHxUfMKSyUSQ6gmiHM
+         zltg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:references:in-reply-to:message-id:date
-         :subject:cc:to:from:sender:dkim-signature;
-        bh=g1IIx60amrgjfE57qozlHgEQ8/enUuSyOSjIAvt32+w=;
-        b=dRauBD2T3eRocQD03VbqZ1ay/UMbgZnMvf+CywX+y8RwwpOgTeWDPL261ESUB1yfl8
-         7TtAKpVMXGMiB3tcwI+psADUTHJJBnGCY1PI/mtzhJNo/jN8KBueTsunHWhglmmY8nZZ
-         1OTOxLQsdzk6R1XBZCmRb69hB1Jr47xvIun/AK++DCUynwQilR/4D8981AnUgs4TXJ+2
-         s4pu0Eq3FLLsBVdEk1kVX3J+yJQZyPxO+ET24ubegWcprzJl3L0xrL4xda24naPnKYEx
-         MPQvQvoJ+0OYjGBkVJh8OAHwzVBEkro9ZJF8T8UoCFBgnmEnQHooyCVGZoQz1ESpnwKx
-         R0rQ==
+        h=message-id:date:subject:cc:to:from:sender:dkim-signature;
+        bh=fJZwWhExGC98e9aHuYaOiWB7cCCXGncBoKgbfkR3SFw=;
+        b=kl0M6i7kndTn0b5HlEApSs9XxpuwFItcQN2Jr4NND74xF53GuS6NDyv6jofp7spL/p
+         nsOjK99vqP9pfQQ8mEXXvYMiEePKI+Rrz8D6rwGrWCO/vxYyP7rdfLrrK2Y+5PCf5m7J
+         l+FEWuLywa3MB+VRxFKxg12qyEOFjurg2vsaP7a9LVDzvCaDhkPggza1HRVUGSiE89Ug
+         8sT4s3SUK3zem7xASvpZWxuR4+egSH4W8Jzg6CSUKpYhRbB/okMyMwP4yZDyNh6TQnvU
+         fES88+fEpSKmwRYzUbqNEjqpKfoNAYFR1Kyz8yrgv1w7u5DPRHtCOmGu45IUxZxtEzbv
+         B94A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=upPG+0IT;
-       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id h6si3804vkc.3.2020.02.05.07.55.34
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SjedPgum;
+       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
+Received: from mail-pj1-x1042.google.com (mail-pj1-x1042.google.com. [2607:f8b0:4864:20::1042])
+        by gmr-mx.google.com with ESMTPS id o19si14368vka.4.2020.02.05.09.17.39
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Feb 2020 07:55:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
-Received: by mail-pj1-x1044.google.com with SMTP id ep11so1150031pjb.2
-        for <linux-ntb@googlegroups.com>; Wed, 05 Feb 2020 07:55:33 -0800 (PST)
-X-Received: by 2002:a17:90a:d804:: with SMTP id a4mr6272089pjv.11.1580918133166;
-        Wed, 05 Feb 2020 07:55:33 -0800 (PST)
+        Wed, 05 Feb 2020 09:17:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1042 as permitted sender) client-ip=2607:f8b0:4864:20::1042;
+Received: by mail-pj1-x1042.google.com with SMTP id n96so1245831pjc.3
+        for <linux-ntb@googlegroups.com>; Wed, 05 Feb 2020 09:17:39 -0800 (PST)
+X-Received: by 2002:a17:902:8682:: with SMTP id g2mr35181161plo.336.1580923058663;
+        Wed, 05 Feb 2020 09:17:38 -0800 (PST)
 Received: from emb-wallaby.amd.com ([165.204.156.251])
-        by smtp.gmail.com with ESMTPSA id z10sm195678pgz.88.2020.02.05.07.55.30
+        by smtp.gmail.com with ESMTPSA id l8sm357945pjy.24.2020.02.05.09.17.35
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2020 07:55:32 -0800 (PST)
+        Wed, 05 Feb 2020 09:17:37 -0800 (PST)
 Sender: Arindam Nath <anath.amd@gmail.com>
 From: Arindam Nath <arindam.nath@amd.com>
-To: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
-	Jon Mason <jdmason@kudzu.us>,
+To: Jon Mason <jdmason@kudzu.us>,
 	Dave Jiang <dave.jiang@intel.com>,
 	Allen Hubbe <allenbh@gmail.com>,
-	Jiasen Lin <linjiasen@hygon.cn>,
 	Sanjay R Mehta <sanju.mehta@amd.com>
 Cc: linux-ntb@googlegroups.com,
 	linux-kernel@vger.kernel.org,
 	Arindam Nath <arindam.nath@amd.com>
-Subject: [PATCH 15/15] NTB: add pci shutdown handler for AMD NTB
-Date: Wed,  5 Feb 2020 21:24:32 +0530
-Message-Id: <6c943711a14cd79bd6f3b392787f09da2cfb3711.1580914232.git.arindam.nath@amd.com>
+Subject: [PATCH 0/4] ntb perf and ntb tool improvements
+Date: Wed,  5 Feb 2020 22:46:54 +0530
+Message-Id: <cover.1580921119.git.arindam.nath@amd.com>
 X-Mailer: git-send-email 2.17.1
-In-Reply-To: <cover.1580914232.git.arindam.nath@amd.com>
-References: <cover.1580914232.git.arindam.nath@amd.com>
-In-Reply-To: <cover.1580914232.git.arindam.nath@amd.com>
-References: <cover.1580914232.git.arindam.nath@amd.com>
 X-Original-Sender: arindam.nath@amd.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=upPG+0IT;       spf=pass
- (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044
+ header.i=@gmail.com header.s=20161025 header.b=SjedPgum;       spf=pass
+ (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1042
  as permitted sender) smtp.mailfrom=anath.amd@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Precedence: list
@@ -139,58 +130,35 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-The PCI shutdown handler is invoked in response
-to system reboot or shutdown. A data transfer
-might still be in flight when this happens. So
-the very first action we take here is to send
-a link down notification, so that any pending
-data transfer is terminated. Rest of the actions
-are same as that of PCI remove handler.
+This patch series modifies the ntb perf code to
+have separate functions for CPU and DMA transfers.
+It also adds handling for -EAGAIN error code so
+that we re-try sending commands later.
 
-Signed-off-by: Arindam Nath <arindam.nath@amd.com>
----
- drivers/ntb/hw/amd/ntb_hw_amd.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+Fixes have been made to ntb_perf and ntb_tool
+to use 'struct device' associated with 'struct
+pci_dev' rather than 'struct ntb_dev'.
 
-diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
-index c6cea0005553..9e310e1ad4d0 100644
---- a/drivers/ntb/hw/amd/ntb_hw_amd.c
-+++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
-@@ -1296,6 +1296,22 @@ static void amd_ntb_pci_remove(struct pci_dev *pdev)
- 	kfree(ndev);
- }
- 
-+static void amd_ntb_pci_shutdown(struct pci_dev *pdev)
-+{
-+	struct amd_ntb_dev *ndev = pci_get_drvdata(pdev);
-+
-+	/* Send link down notification */
-+	ntb_link_event(&ndev->ntb);
-+
-+	amd_deinit_side_info(ndev);
-+	ntb_peer_db_set(&ndev->ntb, BIT_ULL(ndev->db_last_bit));
-+	ntb_unregister_device(&ndev->ntb);
-+	ndev_deinit_debugfs(ndev);
-+	amd_deinit_dev(ndev);
-+	amd_ntb_deinit_pci(ndev);
-+	kfree(ndev);
-+}
-+
- static const struct file_operations amd_ntb_debugfs_info = {
- 	.owner = THIS_MODULE,
- 	.open = simple_open,
-@@ -1326,6 +1342,7 @@ static struct pci_driver amd_ntb_pci_driver = {
- 	.id_table	= amd_ntb_pci_tbl,
- 	.probe		= amd_ntb_pci_probe,
- 	.remove		= amd_ntb_pci_remove,
-+	.shutdown	= amd_ntb_pci_shutdown,
- };
- 
- static int __init amd_ntb_pci_driver_init(void)
+The patches are based on Linus' tree,
+
+git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+
+Arindam Nath (2):
+  ntb_perf: refactor code for CPU and DMA transfers
+  ntb_perf: send command in response to EAGAIN
+
+Sanjay R Mehta (2):
+  ntb_perf: pass correct struct device to dma_alloc_coherent
+  ntb_tool: pass correct struct device to dma_alloc_coherent
+
+ drivers/ntb/test/ntb_perf.c | 168 ++++++++++++++++++++++++++----------
+ drivers/ntb/test/ntb_tool.c |   6 +-
+ 2 files changed, 126 insertions(+), 48 deletions(-)
+
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/6c943711a14cd79bd6f3b392787f09da2cfb3711.1580914232.git.arindam.nath%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/cover.1580921119.git.arindam.nath%40amd.com.
