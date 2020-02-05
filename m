@@ -1,47 +1,47 @@
-Return-Path: <linux-ntb+bncBCHK3VHCYUIBB46K5PYQKGQEZJ46ODA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCHK3VHCYUIBB5WK5PYQKGQEIIVAZDQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63c.google.com (mail-pl1-x63c.google.com [IPv6:2607:f8b0:4864:20::63c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9722C1534C3
-	for <lists+linux-ntb@lfdr.de>; Wed,  5 Feb 2020 16:55:32 +0100 (CET)
-Received: by mail-pl1-x63c.google.com with SMTP id y2sf1375801plt.7
-        for <lists+linux-ntb@lfdr.de>; Wed, 05 Feb 2020 07:55:32 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1580918131; cv=pass;
+Received: from mail-ua1-x938.google.com (mail-ua1-x938.google.com [IPv6:2607:f8b0:4864:20::938])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97FAB1534C4
+	for <lists+linux-ntb@lfdr.de>; Wed,  5 Feb 2020 16:55:35 +0100 (CET)
+Received: by mail-ua1-x938.google.com with SMTP id i21sf700537uac.10
+        for <lists+linux-ntb@lfdr.de>; Wed, 05 Feb 2020 07:55:35 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1580918134; cv=pass;
         d=google.com; s=arc-20160816;
-        b=WHnKuMGOJyRyzsllaBRnog6UGdaKGaUiVXc/U1RKYbmDfBK0eOlRNo1Ps06PBFl2JW
-         rexNpQtgzU6p+F2GQNCqPHAdOlkXX82ssiL0RDyXzMQR8uMz+5XlKvWQiWmJ8mx777Hy
-         HgviJqYO5xU2tN48J05CO6eDInIdMoo/wbE43/1KdnaxWzN3HLHmSbQ7Rjp5lbpqLBOS
-         WVFMuOk7xerE5afLdGH7RpFiM9QlGT2LKZB4jjUoxc/vkrw725DdlWU2w5J7XNQT0OcK
-         uspyG2AxCYn9aLAPjqKSycGgkRVZ4m5UdpP8naIkG8BeMsp+Xx7yBtU2YCgkb+8/khdI
-         e6zw==
+        b=Fom/HjikBFwEjKIWDHYpxqlQINC0A+YwYHYrTTF0xJV592Oy3vm9uKM6Q6xXholWGD
+         TJHjqTrMFf2TE9HD4x+gANxioxIIprFnTa9HAA+K9PfGN6244fSvlOzcmvG3YNZPZDyc
+         2+lIeYwQRFq0KJXcrWKdA1MbyZdEkWrgluPaM8exVjfWwpS2lou9XPi2ZqSmp557eM3k
+         P+kZWYAb3NSD7zymhS4XKo8Q7XBLLnbMwdrz5VDLF2vy8ooPzgKtBjl2SK9/dcnAGOfU
+         L8QDTDWukLmkXQdqNEomMSSV34i0HQcQv98LdApSRwSUYNfT0/o7X0aDp2jGILYKFZ3s
+         zQzg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:references:in-reply-to:references
          :in-reply-to:message-id:date:subject:cc:to:from:sender:mime-version
          :dkim-signature;
-        bh=rgaRMwA5+jB4R8r44310ETfmG0v0wMwo7W1KBWMo3y0=;
-        b=sQYxqmI1ctLYFyFr7PXkzSQyBrVr04/3dF9LKIrUuIAN2bKalHRpl/5APsph6CKZPC
-         S+2kXYgcyugM43IMFZA8TOvCQox+Jvdn6YXs3YfIua2Yw7+XQnLcSBoAUAyprwe+buYn
-         oMhst6H2TbSoCR4LggOflyrpejRgRXOmzhwObgHrqclrUBMN8sM1eqcMK2lgwKKFYWA+
-         PbxY1IeRe1JVhHkqBtwZ2D2KYUHuCYpYGu/5r1wf3F6C547hCHjMAIHPY2yCb8WyvD+/
-         g4KolNEmQYI3E0THFcY/9eSY0Jz03MlwPhsswwhUe8vPqkelrBQWBojTuJrpgyK7A81a
-         EsrA==
+        bh=go+YFFtpMxVOaArJO4gFzEfZzOYuX2smYUiXvjrfPfA=;
+        b=TB6nIdVtmMHWXb4/QdLX/RL45R8EG1AfpDp3ElV0/jkccPInvqTBOCcPGTDDtHfUhH
+         q+zmgqjKERgvnWmgFtarGCnbO8QM/3CLe2DrbBdHXamxLJGHanAcLHJ9HfAM2X2rc1j8
+         OU1O04J32zEvkThbl6voi0vdl0YB/usLNT8Fs6g4YWR+ivqtXFkS/Qa24wYM0GiAVNXj
+         dXlSb3d8qsK0cnVZFaJVqFzS0SqgP6oTSOmdqQpuOBUuIatjlzfbpi3PZQJ1/+/eqiIA
+         D2a/7now4MawfA+mRD+qKsOXMfK7znQAqRSCokSiuBXPQyaKmpreg6tPkZ0lD5hf1kks
+         AhEw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KcUUVv3V;
-       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=upPG+0IT;
+       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:sender:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=rgaRMwA5+jB4R8r44310ETfmG0v0wMwo7W1KBWMo3y0=;
-        b=dFIzVXppE1JFDnUTixYmZPle7jWZR8DYrx2Cm/EdgFgxfZ/1Y+kVXJXk2tgryfFIVB
-         BNxTWVLUnqW8EoilIIIZPq4Pd6bORaJIDJfnp25rdvwQ5tXBCRpsoAEvgQMxJqILzchn
-         usb4lY9NR93IA3iyk6eNj13HP0cMP0ipxBri4S7VIKmff4N8RbCJUAd1epHUCELJDO3g
-         v9jmZk5jiLKdbIJY6UmRh+PE1ycQ+ejX4cROT2NkV/veFbIec8xztmOQaytPqQtzhVkV
-         QToLsHUlGnmuMth6X3PkseCKyCR4LmOBMSLubZuaQPw24yC5X85bBHqj886iDr2J2okJ
-         jW3Q==
+        bh=go+YFFtpMxVOaArJO4gFzEfZzOYuX2smYUiXvjrfPfA=;
+        b=BinL2e81RaqV1yuAKm1Is7TeLatrBgizr7rea9vsOMHGPfrLCXXb15wJJLm//RmLH4
+         tW4fDYLgtO8yP7i+gum1sPZIuI93iHxBPYsWTLYhGRuMoavGOXMJMr/qgDmPWvJGBSpH
+         zCtEEyNIrOOic21JRvm8OlMIwmS4A7tuHsdm/m9/zvjPdPbPZPUJd5FgfYjcMU3tEeg8
+         1KcpwnNpnbWYNW9LmaUcXJoBtUGFRfuL9wU6PoXDNyhAPx74/DtDxwQj5w2yHufbE75J
+         hjm6mPxf1Fy6/N3VLj5Tx3JJerE5GGj1rGJRNPwYtRq0lMS0ynXAfTis3jOARpsbGOr7
+         TS+w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:sender:from:to:cc:subject:date
@@ -49,59 +49,59 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=rgaRMwA5+jB4R8r44310ETfmG0v0wMwo7W1KBWMo3y0=;
-        b=Kq0lr7qsGGtheRjK0Apfgirdc2C/SgQgaqfmcJWftYYXOtuy49znO/AwKIE9XkpvId
-         QKwzi605niknPj+ki+Qu7xyOiWwWqHHCMUFlBNvHy4kIQWrdmIkVYA66d0xosA74numA
-         gER/P8ZEXvpNYpoXQ3ByZKjupBwds0XQ7ALkj6rkVPdgJghwdgd2496nyEH9p8Db662C
-         CLHfSOPDJ6UtLfYLcwAzhgOPJB3hOrgkDr/O47fJpnOW6e1DsdinxMHXz1ttK2Pu5ZCc
-         PGxIledkHfYHFhl8qBhI1MQl4ljTU1yOx+8ZUlS0/CHUNGakniw+Mn8qaQ+PNq9A/9lT
-         lfbA==
-X-Gm-Message-State: APjAAAXEBloK6pF/xJdwzdaEBu97VpLN/DGxdoG5cadHpzcX5o/6gXE9
-	ipomfmiqxMKyv0SLSNmqSiI=
-X-Google-Smtp-Source: APXvYqw37LEPStRTHEqSeL3UkidYS43MkoNJB0DQTkEr7XRmCekgT45qnKgc+DXWeDoc/AGTeqRmHw==
-X-Received: by 2002:a63:7a1a:: with SMTP id v26mr718923pgc.51.1580918131257;
-        Wed, 05 Feb 2020 07:55:31 -0800 (PST)
+        bh=go+YFFtpMxVOaArJO4gFzEfZzOYuX2smYUiXvjrfPfA=;
+        b=tJK4EbjWhqFy2PFvquPhzwEChb3+robMxpSrmYgLCX1/Tn9/K98HpdqwszCwzQ9qpS
+         yzuTef0zugHVO/zkQTdpf5jpu0boq6eTmrauWJGgHBHdHYQ2wK5S4NTyGiy/xmSUGv8l
+         T20yplUre5PlwTH5B9657THfDOyoog5Wh1X6NXiCjzsh3vARtPliHzzGBq6V+EBrGq9C
+         uM+hoJ5AkbzPnHiMhNdF0VlsePL3KWQ7oSfSF5bSa9Za3uk0fDlQLE6SKmetzgDz5aU0
+         r2MzjGxHMm3luy9y8YGy4WHDSZfbI3ekMpHFMjH+XEDVB3R20gp3tj+yUweir33njGMj
+         9BEA==
+X-Gm-Message-State: APjAAAUcal3CyGxx2tqervIT7UTy8Raty56+RrvR/9fYgGnS+Z3S9WgJ
+	wW3gLQlFk4VXriMWrVuCSDk=
+X-Google-Smtp-Source: APXvYqygVrJ98p/4wSlLYkUfRvwAWp4xQ0eD0D3JHw3m9PXqD66UE8EwaWEzpiq8ObXWhqIL3Xc7dg==
+X-Received: by 2002:a67:8704:: with SMTP id j4mr23517270vsd.106.1580918134613;
+        Wed, 05 Feb 2020 07:55:34 -0800 (PST)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:567:: with SMTP id 94ls1284416plf.8.gmail; Wed, 05
- Feb 2020 07:55:30 -0800 (PST)
-X-Received: by 2002:a17:90a:d789:: with SMTP id z9mr6433207pju.5.1580918130625;
-        Wed, 05 Feb 2020 07:55:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580918130; cv=none;
+Received: by 2002:ab0:664b:: with SMTP id b11ls193029uaq.3.gmail; Wed, 05 Feb
+ 2020 07:55:34 -0800 (PST)
+X-Received: by 2002:ab0:1d6:: with SMTP id 80mr7901122ual.131.1580918134045;
+        Wed, 05 Feb 2020 07:55:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580918134; cv=none;
         d=google.com; s=arc-20160816;
-        b=a0Ll1oyoBn82tl6eU71spqFfrmCwqhFDZhY1zPJJJJwEETZdf7xgnuJp3C6TijksiM
-         AD62rWjS7PykGiPoJ1D8aORfTQtdCkCoHrQBSZ4v1zcq4fwJ2LqgM5YhZ/+xVSxT7gtT
-         72E8VMl4iQPENOIEXKA06g3LoNyuHtNncQ5M72acsjEtqwiaB+rpr08xDExrq9gbEDyq
-         0MRb3sh6TtB9Qj7Fyxcskp4K1wBE5Ti1bamQELVfQ4XYBAdFV70CsHjhLDJREI1zhWz7
-         D2Fr7ReUA/czMyxhZMsa/gnG9D/ejhIZ/d75neUHXnD7rDStGA5mHRuAtYpCYczfl7uc
-         nsIA==
+        b=Pki9CVUNAwDd3KJFE+Y55ih9ryLRwP0zpZ5DwI6KPEuft+BK3HBZ+oEhCwYaWJ7xuL
+         72hO26d0tguPAgdPXxwqCqwhyU0obhlg7WB7r8IZ/r0k5ykQzmfrvdkHHUY+UN19siZa
+         Kj5dz+EADHekH8+3OAdLj6dp5tTKNkbHEtQJZy/DM3eTFj/jweNszvN3Wp6njGUT6wrd
+         LXKYttisQFsX9/ISGxipOYOqQTGzPGuOCFcQhZTWM93pFjhuyDZbC/2tL/dKUfzEz29+
+         BJqfDQug1KJ6tQYNnANFPkuLlsT5TXBgk6VzVVuxvda2fLOO9FYmVNCnJh69vjtSU9Pr
+         xkOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:sender:dkim-signature;
-        bh=RZ6Ct4Oj3K0GAue+qavlZN4QrXIm9tOhLLMRLW/Kj14=;
-        b=jTdQc01lV6dq5qmL5mSPtnRXO+WsqkkWsewsFz2UNnkGzioMkV1EH5oVhsvG3FhKBm
-         3tRYWz92Cl9jp3NwTGUiGMOKzMSbrSNCzYwpUNjvrNrWZlQli4O9jj8NPzAsGsVQN/GN
-         Wrf49khMncNV/Y90ThLTbZfkr5gGSoweoYc7X8ryAGymRpk1HBQQkb/Trq8uXBfrnW8x
-         DCy4fsEa2iDZbhlCn6vn7wul7Zm1iyqmhDC12uocd4NaxqmL6ZmDLswUnCK+Ab0d3RvY
-         ZgxS6aWiDwB7l48R7u/Z5kzbyc01w5n1RfWHE4YOpmNdfMlALibG8PD/LEF+RwTyRNXY
-         cdsA==
+        bh=g1IIx60amrgjfE57qozlHgEQ8/enUuSyOSjIAvt32+w=;
+        b=dRauBD2T3eRocQD03VbqZ1ay/UMbgZnMvf+CywX+y8RwwpOgTeWDPL261ESUB1yfl8
+         7TtAKpVMXGMiB3tcwI+psADUTHJJBnGCY1PI/mtzhJNo/jN8KBueTsunHWhglmmY8nZZ
+         1OTOxLQsdzk6R1XBZCmRb69hB1Jr47xvIun/AK++DCUynwQilR/4D8981AnUgs4TXJ+2
+         s4pu0Eq3FLLsBVdEk1kVX3J+yJQZyPxO+ET24ubegWcprzJl3L0xrL4xda24naPnKYEx
+         MPQvQvoJ+0OYjGBkVJh8OAHwzVBEkro9ZJF8T8UoCFBgnmEnQHooyCVGZoQz1ESpnwKx
+         R0rQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KcUUVv3V;
-       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
-Received: from mail-pl1-x644.google.com (mail-pl1-x644.google.com. [2607:f8b0:4864:20::644])
-        by gmr-mx.google.com with ESMTPS id v13si3978pga.4.2020.02.05.07.55.30
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=upPG+0IT;
+       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id h6si3804vkc.3.2020.02.05.07.55.34
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Feb 2020 07:55:30 -0800 (PST)
-Received-SPF: pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::644 as permitted sender) client-ip=2607:f8b0:4864:20::644;
-Received: by mail-pl1-x644.google.com with SMTP id c23so1045279plz.4
-        for <linux-ntb@googlegroups.com>; Wed, 05 Feb 2020 07:55:30 -0800 (PST)
-X-Received: by 2002:a17:90a:950b:: with SMTP id t11mr6216301pjo.79.1580918130305;
-        Wed, 05 Feb 2020 07:55:30 -0800 (PST)
+        Wed, 05 Feb 2020 07:55:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+Received: by mail-pj1-x1044.google.com with SMTP id ep11so1150031pjb.2
+        for <linux-ntb@googlegroups.com>; Wed, 05 Feb 2020 07:55:33 -0800 (PST)
+X-Received: by 2002:a17:90a:d804:: with SMTP id a4mr6272089pjv.11.1580918133166;
+        Wed, 05 Feb 2020 07:55:33 -0800 (PST)
 Received: from emb-wallaby.amd.com ([165.204.156.251])
-        by smtp.gmail.com with ESMTPSA id z10sm195678pgz.88.2020.02.05.07.55.27
+        by smtp.gmail.com with ESMTPSA id z10sm195678pgz.88.2020.02.05.07.55.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2020 07:55:29 -0800 (PST)
+        Wed, 05 Feb 2020 07:55:32 -0800 (PST)
 Sender: Arindam Nath <anath.amd@gmail.com>
 From: Arindam Nath <arindam.nath@amd.com>
 To: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
@@ -113,9 +113,9 @@ To: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
 Cc: linux-ntb@googlegroups.com,
 	linux-kernel@vger.kernel.org,
 	Arindam Nath <arindam.nath@amd.com>
-Subject: [PATCH 14/15] NTB: send DB event when driver is loaded or un-loaded
-Date: Wed,  5 Feb 2020 21:24:31 +0530
-Message-Id: <e2f6de21a4faf6a44e18dd5f6429b6150913f324.1580914232.git.arindam.nath@amd.com>
+Subject: [PATCH 15/15] NTB: add pci shutdown handler for AMD NTB
+Date: Wed,  5 Feb 2020 21:24:32 +0530
+Message-Id: <6c943711a14cd79bd6f3b392787f09da2cfb3711.1580914232.git.arindam.nath@amd.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1580914232.git.arindam.nath@amd.com>
 References: <cover.1580914232.git.arindam.nath@amd.com>
@@ -123,8 +123,8 @@ In-Reply-To: <cover.1580914232.git.arindam.nath@amd.com>
 References: <cover.1580914232.git.arindam.nath@amd.com>
 X-Original-Sender: arindam.nath@amd.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=KcUUVv3V;       spf=pass
- (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::644
+ header.i=@gmail.com header.s=20161025 header.b=upPG+0IT;       spf=pass
+ (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::1044
  as permitted sender) smtp.mailfrom=anath.amd@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Precedence: list
@@ -139,142 +139,58 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-When the driver on the local side is loaded, it sets
-SIDE_READY bit in SIDE_INFO register. Likewise, when
-it is un-loaded, it clears the bit.
-
-Also just after being loaded, the driver polls for
-peer SIDE_READY bit to be set. Since that bit is set
-when the peer side driver has loaded, the polling on
-local side breaks as soon as this condition is met.
-
-But the situation is different when the driver is
-un-loaded. Since the polling has already been stopped
-as mentioned before, if the peer side driver gets
-un-loaded, the driver on the local side is not notified
-implicitly.
-
-So, we improvise using existing doorbell mechanism.
-We reserve the highest order bit of the DB register to
-send a notification to peer when the driver on local
-side is un-loaded. This also means that now we are one
-short of 16 DB events and that is taken care of in the
-valid DB mask.
+The PCI shutdown handler is invoked in response
+to system reboot or shutdown. A data transfer
+might still be in flight when this happens. So
+the very first action we take here is to send
+a link down notification, so that any pending
+data transfer is terminated. Rest of the actions
+are same as that of PCI remove handler.
 
 Signed-off-by: Arindam Nath <arindam.nath@amd.com>
 ---
- drivers/ntb/hw/amd/ntb_hw_amd.c | 57 +++++++++++++++++++++++++++++++--
- drivers/ntb/hw/amd/ntb_hw_amd.h |  1 +
- 2 files changed, 56 insertions(+), 2 deletions(-)
+ drivers/ntb/hw/amd/ntb_hw_amd.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
 diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
-index 04be1482037b..c6cea0005553 100644
+index c6cea0005553..9e310e1ad4d0 100644
 --- a/drivers/ntb/hw/amd/ntb_hw_amd.c
 +++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
-@@ -647,6 +647,36 @@ static void amd_handle_event(struct amd_ntb_dev *ndev, int vec)
- 	writel(status, mmio + AMD_INTSTAT_OFFSET);
+@@ -1296,6 +1296,22 @@ static void amd_ntb_pci_remove(struct pci_dev *pdev)
+ 	kfree(ndev);
  }
  
-+static void amd_handle_db_event(struct amd_ntb_dev *ndev, int vec)
++static void amd_ntb_pci_shutdown(struct pci_dev *pdev)
 +{
-+	struct device *dev = &ndev->ntb.pdev->dev;
-+	u64 status;
++	struct amd_ntb_dev *ndev = pci_get_drvdata(pdev);
 +
-+	status = amd_ntb_db_read(&ndev->ntb);
++	/* Send link down notification */
++	ntb_link_event(&ndev->ntb);
 +
-+	dev_dbg(dev, "status = 0x%llx and vec = %d\n", status, vec);
-+
-+	/*
-+	 * Since we had reserved highest order bit of DB for signaling peer of
-+	 * a special event, this is the only status bit we should be concerned
-+	 * here now.
-+	 */
-+	if (status & BIT(ndev->db_last_bit)) {
-+		ntb_db_clear(&ndev->ntb, BIT(ndev->db_last_bit));
-+		/* send link down event notification */
-+		ntb_link_event(&ndev->ntb);
-+
-+		/*
-+		 * If we are here, that means the peer has signalled a special
-+		 * event which notifies that the peer driver has been
-+		 * un-loaded for some reason. Since there is a chance that the
-+		 * peer will load its driver again sometime, we schedule link
-+		 * polling routine.
-+		 */
-+		schedule_delayed_work(&ndev->hb_timer, AMD_LINK_HB_TIMEOUT);
-+	}
-+}
-+
- static irqreturn_t ndev_interrupt(struct amd_ntb_dev *ndev, int vec)
- {
- 	dev_dbg(&ndev->ntb.pdev->dev, "vec %d\n", vec);
-@@ -654,8 +684,10 @@ static irqreturn_t ndev_interrupt(struct amd_ntb_dev *ndev, int vec)
- 	if (vec > (AMD_DB_CNT - 1) || (ndev->msix_vec_count == 1))
- 		amd_handle_event(ndev, vec);
- 
--	if (vec < AMD_DB_CNT)
-+	if (vec < AMD_DB_CNT) {
-+		amd_handle_db_event(ndev, vec);
- 		ntb_db_event(&ndev->ntb, vec);
-+	}
- 
- 	return IRQ_HANDLED;
- }
-@@ -1096,6 +1128,21 @@ static int amd_init_dev(struct amd_ntb_dev *ndev)
- 		return rc;
- 	}
- 
-+	ndev->db_valid_mask = BIT_ULL(ndev->db_count) - 1;
-+	/*
-+	 * We reserve the highest order bit of the DB register which will
-+	 * be used to notify peer when the driver on this side is being
-+	 * un-loaded.
-+	 */
-+	ndev->db_last_bit =
-+			find_last_bit((unsigned long *)&ndev->db_valid_mask,
-+				      hweight64(ndev->db_valid_mask));
-+	writew((u16)~BIT(ndev->db_last_bit), mmio + AMD_DBMASK_OFFSET);
-+	/*
-+	 * Since now there is one less bit to account for, the DB count
-+	 * and DB mask should be adjusted accordingly.
-+	 */
-+	ndev->db_count -= 1;
- 	ndev->db_valid_mask = BIT_ULL(ndev->db_count) - 1;
- 
- 	/* Enable Link-Up and Link-Down event interrupts */
-@@ -1235,9 +1282,15 @@ static void amd_ntb_pci_remove(struct pci_dev *pdev)
- {
- 	struct amd_ntb_dev *ndev = pci_get_drvdata(pdev);
- 
-+	/*
-+	 * Clear the READY bit in SIDEINFO register before sending DB event
-+	 * to the peer. This will make sure that when the peer handles the
-+	 * DB event, it correctly reads this bit as being 0.
-+	 */
 +	amd_deinit_side_info(ndev);
 +	ntb_peer_db_set(&ndev->ntb, BIT_ULL(ndev->db_last_bit));
- 	ntb_unregister_device(&ndev->ntb);
- 	ndev_deinit_debugfs(ndev);
--	amd_deinit_side_info(ndev);
- 	amd_deinit_dev(ndev);
- 	amd_ntb_deinit_pci(ndev);
- 	kfree(ndev);
-diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.h b/drivers/ntb/hw/amd/ntb_hw_amd.h
-index 73959c0b9972..5f337b1572a0 100644
---- a/drivers/ntb/hw/amd/ntb_hw_amd.h
-+++ b/drivers/ntb/hw/amd/ntb_hw_amd.h
-@@ -193,6 +193,7 @@ struct amd_ntb_dev {
++	ntb_unregister_device(&ndev->ntb);
++	ndev_deinit_debugfs(ndev);
++	amd_deinit_dev(ndev);
++	amd_ntb_deinit_pci(ndev);
++	kfree(ndev);
++}
++
+ static const struct file_operations amd_ntb_debugfs_info = {
+ 	.owner = THIS_MODULE,
+ 	.open = simple_open,
+@@ -1326,6 +1342,7 @@ static struct pci_driver amd_ntb_pci_driver = {
+ 	.id_table	= amd_ntb_pci_tbl,
+ 	.probe		= amd_ntb_pci_probe,
+ 	.remove		= amd_ntb_pci_remove,
++	.shutdown	= amd_ntb_pci_shutdown,
+ };
  
- 	u64 db_valid_mask;
- 	u64 db_mask;
-+	u64 db_last_bit;
- 	u32 int_mask;
- 
- 	struct msix_entry *msix;
+ static int __init amd_ntb_pci_driver_init(void)
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/e2f6de21a4faf6a44e18dd5f6429b6150913f324.1580914232.git.arindam.nath%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/6c943711a14cd79bd6f3b392787f09da2cfb3711.1580914232.git.arindam.nath%40amd.com.
