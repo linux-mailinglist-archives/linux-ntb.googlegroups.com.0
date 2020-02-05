@@ -1,47 +1,47 @@
-Return-Path: <linux-ntb+bncBCHK3VHCYUIBBUWK5PYQKGQENNKARKI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCHK3VHCYUIBBVOK5PYQKGQEPMQBE2Q@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd38.google.com (mail-io1-xd38.google.com [IPv6:2607:f8b0:4864:20::d38])
-	by mail.lfdr.de (Postfix) with ESMTPS id A1AF91534AA
-	for <lists+linux-ntb@lfdr.de>; Wed,  5 Feb 2020 16:54:59 +0100 (CET)
-Received: by mail-io1-xd38.google.com with SMTP id q24sf1734051iot.20
-        for <lists+linux-ntb@lfdr.de>; Wed, 05 Feb 2020 07:54:59 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1580918098; cv=pass;
+Received: from mail-io1-xd3b.google.com (mail-io1-xd3b.google.com [IPv6:2607:f8b0:4864:20::d3b])
+	by mail.lfdr.de (Postfix) with ESMTPS id CADDF1534AB
+	for <lists+linux-ntb@lfdr.de>; Wed,  5 Feb 2020 16:55:02 +0100 (CET)
+Received: by mail-io1-xd3b.google.com with SMTP id v11sf1741450iop.16
+        for <lists+linux-ntb@lfdr.de>; Wed, 05 Feb 2020 07:55:02 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1580918101; cv=pass;
         d=google.com; s=arc-20160816;
-        b=NVbiRXjwmkkBARzwYMWQOf3oFQ/uGngb3v/rcVkL96dpR93OYTAZJ62N1gSZBz6qv9
-         SxGkpdoCbfseWGFqoidm+G05btW0l5oxnog87jhHra3s+vxZwxp9v1N7UjN434/dWPo7
-         7RchqFZJbog/OqdiWtfHvpX9HUpxCLzO2xAFiiZSZ3y3K9mitgXpk3lFr9npJcWVVgpO
-         aMaTpQytZyv8Lts5U/4LeuFPxdXZhR+kjjlu/KNrPvbb2PQ+nPHUwzPDU5FxiFH0SWho
-         6mdnGvRZTJ/u6w0OUf3j6PZHyv5FtmxehLSgyWVgQjSzIuU/saYam+jyz1OXhTTFknOy
-         Pe3w==
+        b=pORNFAzypP1ml3KfAAvHijFukYbJTWtt7jwk1uYY45a61eNZm1TsKIOopXxmJTJ9hZ
+         R8CjOeO0ND5BhR7N1eNtb9dhY93ZyGKqqyjg5ab5t4Nl9mt9ezFPkcG6Z5DFSz+ie5Gd
+         wzUmUfMfIx156vixwRe3CRu+59Xxffq2GpzqDqevfmVPHRaTfCWMTH0OkM2DLhJxNqBG
+         Z9J+0WoKffbR4mWJyofL+LETvh5znaxJ8UJ2E+IdEw+wyvtFlkYEygR27RC/77emf4lX
+         HQ/jstfESk7RI6BgjPMegzyNLJtKUXtV4WRSk2Hssi0ngq0bB7vd/MNuvvepk0pTibcI
+         1SnA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:references:in-reply-to:references
          :in-reply-to:message-id:date:subject:cc:to:from:sender:mime-version
          :dkim-signature;
-        bh=+atV+R6kKE3qqfN3QRW5h5QpDt/3yykuNiHg7FF3kpo=;
-        b=oLhOuCbKTLLHdzH79N6tHCgiZCwmCmaiwwms57NujFArG3SScO+6z7mbGrsK3KUH8f
-         ejk+B2BCy1rJcw7VK0VJ/lRVCmGN10qSVQkWows4Nqek6hVd5Bs9naTPqeKf9uZ5TLX5
-         3sH7DbGpyJx7q81FsGY5F95Hspj0g3ofwN8pFd+3R5vwnUgwgvB6wYSyue1zOFeXVcQc
-         +0w6zJCK2Qf8rX0gFFqaDqGAebiWrDnDl1cn1OvVn/JBbAZbQlcETDJ9SJUvyzQTwT78
-         Kb3FBdVEmgUUs+z3LDwvSj0b8dgKSi+BA6AGuMPzu0EWnQzKfSdht+4pwQlDVdpsXwKA
-         XSPw==
+        bh=BRbYkZAPzrdQbnF7HEP+5aBCIATcu9oZIyvIoz6liC8=;
+        b=KUUGVspVcPZlVICxJAiUqXz9fi6yy9UtZNS97HSd3DpSrUNuh21P3K/+LfFzEfQjj3
+         nH5gGV4hba3amyZacqo95/mlxc6MrsMzwbSik4iqzXorLJ0acmbzklWqasJxXrtYdl69
+         nAUf5Y5MIMkBeB4gRb4djbKf0BL6HUXqZdZCP1WIoeiMkDWdDJ1K/8fpCTi7IhN8Sdq/
+         bJIvPbZEt1Yjx/Yc3/5NrIAq4Nd/foJugdXS9QKp8nJuQiFgYS/AGKzLoXH/DiMudb/x
+         xckg6VsIXyPFR5+RVXAuewAacg8dsb/h8CHWCZBCzfRZwBpmNIGnNFxXk+4mvyz/Y5Lu
+         SlMg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tSxQWHB0;
-       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WDdm+HKO;
+       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:sender:from:to:cc:subject:date:message-id:in-reply-to
          :references:in-reply-to:references:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=+atV+R6kKE3qqfN3QRW5h5QpDt/3yykuNiHg7FF3kpo=;
-        b=oyIgn63K7fv8qOm2yXKs20YmPjBjDveMdUlpn7J7PVuhC6tgUJt/MksUQKbXDdvXl5
-         iqLtDaz1GcfQUd1wQ9NE7aGTq4RxfzdAVyxeZMRUZ7ibg77/9d7WOwUl83dLDjmkNYR9
-         VrWrJ+qMKcXr42Y8P5Yfj73VCuTSrXcAZEwhdGrpQ0h/QDwOqAPoyipxJkuhTsZdlUCn
-         KVBv1ERbHzBApq0c2H/Dh4t4gJN7ogWT/7KAaGkMc24QYIx7YqjRKU69LTR+uRbmc6Qa
-         umes6uKUtUe5/Kpg4J3NHaM2rAo7deggi8s2cdWsoX8vFO1NlTTrS7NET99wd4e2ZVFy
-         +hqQ==
+        bh=BRbYkZAPzrdQbnF7HEP+5aBCIATcu9oZIyvIoz6liC8=;
+        b=DFjNCokvKuVUasbaSB07jkOZIkZFpZML9ytll3OUcpR9wk7SxYzCxRCT3eoTY2LHzD
+         DqbnsJpGqrTxBymUMU9wriIQ+OX0eORG96iCtpBuMV4qCs14cD5jyVp+NEFwttaPcIWp
+         8r1NxLg2gMxQVKWO+VQqQseFzslyRDzlrss4g1rDrwjExpTN/tOeZrTBFxyqe53+caon
+         FmPRkDM5D1OISJKZRkhju2aMedviVTWHgvQssKqqzTnn8dhpVD18flXpuXSeChnUpMT+
+         DFsVVCQGzwBlaG4oKzTJlvK1RSGR3/8QPWCFp8hQSUBaCJ5+xX88woFSbt/vetPdlgdt
+         ajJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:sender:from:to:cc:subject:date
@@ -49,59 +49,59 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=+atV+R6kKE3qqfN3QRW5h5QpDt/3yykuNiHg7FF3kpo=;
-        b=qcDm/Iq0Nv3FciSS0KqESeNyxl/Q2NoMO2T7RxeuDhNZqwoHXVhju+q4e/CfLsnQwh
-         DnuUBnP3SeIXup1hhMzQz+Mrs0dsJXSlMjZgffF9WBH9gdqACOj63t3zVHbN0I1rcvE2
-         50m0g/DDoRvDdw1uZqWQac81X0dn8g58FmDKYre0Smc6z9dtmCW/dzmC01sHHugeVM7H
-         aQVTfxbCoYbR73bbwCXYckteyzVJLJ/Ty7MxpTnFZjSVSeyPEY/jpD2lmLe69u9ZVs2Y
-         P5pE/Z3Oay3un8yhii4LfKg6OVAhsSBH/WfI6zOpLnrXVF9EmRc3x6Wg7rvf5kQg1Ail
-         2cuQ==
-X-Gm-Message-State: APjAAAXiZKOWJn7B3Z8cXWO7FmQAMwN9SWFtVJzaneruYEIvZi2/AomO
-	3s9fyUGEpld0aXP9f3Q1GyE=
-X-Google-Smtp-Source: APXvYqwt+/IpyC53Xtn9GHH+Lio9H2jVEBCkztEyrxRfyM0AUrCpBNbBHAhF+5aOcrmlRWb+E2JRlg==
-X-Received: by 2002:a6b:2c95:: with SMTP id s143mr28116517ios.308.1580918098647;
-        Wed, 05 Feb 2020 07:54:58 -0800 (PST)
+        bh=BRbYkZAPzrdQbnF7HEP+5aBCIATcu9oZIyvIoz6liC8=;
+        b=H9y7ItHGBcJhYupzkWaGAhyUfvjl4VLGw6wBCaaKO3cygzktSVMmvwMa+qqjp1+F/h
+         YqHH2s6ojhXHVwK6uBtL0Ymo8un7nm/+9yUxUolSaObMVbwPwYavjRPJWMVcl0HDllJ8
+         abDDja9puEoVAD8SQpfrpEXag5CGva7ahfaTrAFDCJPXCj0EFUtU2VmNjNTZQAaxGTLL
+         0iwx6d0Z5owyB2vGs13+co7781SlV055Rj/RGWpsupTqUpEaQCSHbMR85VYXSqlZ7Nfs
+         RrWJGoZ/XbTFXXIEkjjt5FyBkFIZN/MMWqBCL/PM9+fijY9xByLG5wZvjLArSvXn+gT7
+         cQBA==
+X-Gm-Message-State: APjAAAVkSgpu280A77m5sUzef7c/prTyC0pepY6jXqX9UzZbyNAnt4C/
+	sbEdr1TCacnR6SUkR0M41eE=
+X-Google-Smtp-Source: APXvYqwJfyW8HYxgFrgRGrFeaEYFVkU6y1WtguxEXrYzkHabV4poMtZQUY8kKvgp7Pt4LOwyGcKftA==
+X-Received: by 2002:a6b:6103:: with SMTP id v3mr29370032iob.49.1580918101786;
+        Wed, 05 Feb 2020 07:55:01 -0800 (PST)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a92:aad5:: with SMTP id p82ls682662ill.9.gmail; Wed, 05 Feb
- 2020 07:54:58 -0800 (PST)
-X-Received: by 2002:a92:c52d:: with SMTP id m13mr27602332ili.233.1580918098193;
-        Wed, 05 Feb 2020 07:54:58 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1580918098; cv=none;
+Received: by 2002:a6b:6216:: with SMTP id f22ls527107iog.6.gmail; Wed, 05 Feb
+ 2020 07:55:01 -0800 (PST)
+X-Received: by 2002:a6b:c703:: with SMTP id x3mr17577292iof.118.1580918101306;
+        Wed, 05 Feb 2020 07:55:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1580918101; cv=none;
         d=google.com; s=arc-20160816;
-        b=vbiBlg98RZre9TFf7Q1zEWnrgMyWpigriamjrZcDn+XDgFtuQLnw4sRLWoiFGDnnSV
-         NJb/zSrO8o7jZp6bnMh1d/CtpdrBrTd71yUwx2x9dl7z4MSwiXtIq9tcWlkzDrhBD4UZ
-         DbSW0CtAT/74ZnM29TqWWRXThWM3OScORmgkIUl6Xe2yJCTeay6Iq4l7Zf+fEb4CNCB2
-         /V8Aq78734C6OH04ZUtCIzHDmR+egAyWJh2Qij/3BlMO4z2Bcj0jW2N0107W6HqCX9kd
-         lV8Yo7TCg7AVPfzwo9HN2+JBSvNN6HTHtG7W1c1mbOQDyPmnWnAi5vJ2Tl9r/dIFJyvJ
-         jE0w==
+        b=RrGazYPoxmE5TvKIhCr/7v7aaeYcNam093APWlUGiUp++9fAa/+gNr2EvoWq1vOuV6
+         lytW/QaVeU7u4e2iZyJWaeBFjHufyn6tR+k+edh9bEg5ffpPg7AEnZs9elvfMD/n25fh
+         O8PnaRAn9XbtkwPNrgeAQA/Yx9EHmDX1JZj5yh33/I6Jv01WP6nPhkIB/PUNb1tuMLoI
+         SvGeQCnSLsa3Hlj1llZNJUQp/xlQwFTRlZFL2HSJjMm/S3ISDrZSOYD05yelBYtuyeKs
+         4+AxvtQuzdGJFsImGkH/JGm49g9VQK9gkPOJEm2R3F35UVWNdj4S51u6R3DrWAWZL64k
+         jWXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:references:in-reply-to:message-id:date
          :subject:cc:to:from:sender:dkim-signature;
-        bh=OeTbs3cyKvuyu1XTWoXkCtNxO0aHwZN3JCJHavQfBCU=;
-        b=ntfsvknqbRUjapV1fOSGl06RJ5q47gf+xHQrXi+1wpiGu3RUo/tK/6i6EfgGrnKbPc
-         ocvseiRaETH16kIYAdNGl0YV3xFeA2F4tUyDvclhAOLUt9g1xJ6709kTn9WIg8qrRGjN
-         9TVW4WHEUA1pEwQe5S4yoav8cXS+VtokIbQ1A3uDCeOXNEsDjPuDyKEfvLt8SzRxjzJL
-         w4q1xUOF2ZBoAx9yR1G27qPTyAvQvUE8iibzSHFjbHE4U5zMWCQt7/TcKJ92BaUF/DUs
-         gC8Bz16RjAm3N3bxN/8lpaEIOHluix/pJOQ8QojZjYg++FEE9Yn4qiQ0lIH0DuzOEqzB
-         fSGw==
+        bh=bsdxDvHxmIPg1xvhhe9AqHP+aRx23QetwzZU7QbbYOc=;
+        b=Ll64UKri2SpfmmrhdQCEbcfptLkDFrYxea1nGc61L02MwhXUI9aTIt4LvkE7mJnGQr
+         sTXxwdrQVszvyZJL+XirAMM5Re+JwbMc4i2Y+Cobe31vZMM4SMXC/wi8aLk8n65S2XPV
+         ev76n2kGPusWazJ4ji3l2jysZxtrKDSZv/yVzXAVWqJYUkWm2WGThI9P2gABm53jweEP
+         xH0RvYzkm67zxuw905nBS17fX/OcBwqkESThIJGMW6sjRbS3crKCAb4LtPKa8+cG86cf
+         CwQecCEOvla+KVZ9yn/IwxYXegwxOgS6P4OeGsSK1KuDQkLqV8gb9AE9WaurxNAPo2fY
+         W2cw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tSxQWHB0;
-       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
-Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
-        by gmr-mx.google.com with ESMTPS id h4si10648ilf.3.2020.02.05.07.54.58
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=WDdm+HKO;
+       spf=pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) smtp.mailfrom=anath.amd@gmail.com
+Received: from mail-pg1-x543.google.com (mail-pg1-x543.google.com. [2607:f8b0:4864:20::543])
+        by gmr-mx.google.com with ESMTPS id z20si8186ill.5.2020.02.05.07.55.01
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Feb 2020 07:54:58 -0800 (PST)
-Received-SPF: pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
-Received: by mail-pg1-x541.google.com with SMTP id u131so1149508pgc.10
-        for <linux-ntb@googlegroups.com>; Wed, 05 Feb 2020 07:54:58 -0800 (PST)
-X-Received: by 2002:a63:1101:: with SMTP id g1mr35938303pgl.435.1580918097602;
-        Wed, 05 Feb 2020 07:54:57 -0800 (PST)
+        Wed, 05 Feb 2020 07:55:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::543 as permitted sender) client-ip=2607:f8b0:4864:20::543;
+Received: by mail-pg1-x543.google.com with SMTP id w21so1155489pgl.9
+        for <linux-ntb@googlegroups.com>; Wed, 05 Feb 2020 07:55:01 -0800 (PST)
+X-Received: by 2002:aa7:9816:: with SMTP id e22mr37938712pfl.229.1580918100653;
+        Wed, 05 Feb 2020 07:55:00 -0800 (PST)
 Received: from emb-wallaby.amd.com ([165.204.156.251])
-        by smtp.gmail.com with ESMTPSA id z10sm195678pgz.88.2020.02.05.07.54.54
+        by smtp.gmail.com with ESMTPSA id z10sm195678pgz.88.2020.02.05.07.54.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Feb 2020 07:54:57 -0800 (PST)
+        Wed, 05 Feb 2020 07:55:00 -0800 (PST)
 Sender: Arindam Nath <anath.amd@gmail.com>
 From: Arindam Nath <arindam.nath@amd.com>
 To: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
@@ -113,9 +113,9 @@ To: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
 Cc: linux-ntb@googlegroups.com,
 	linux-kernel@vger.kernel.org,
 	Arindam Nath <arindam.nath@amd.com>
-Subject: [PATCH 03/15] NTB: Enable link up and down event notification
-Date: Wed,  5 Feb 2020 21:24:20 +0530
-Message-Id: <1fb68eb0ee7ee636ab92bb0b3b7340c56f4a20c3.1580914232.git.arindam.nath@amd.com>
+Subject: [PATCH 04/15] NTB: define a new function to get link status
+Date: Wed,  5 Feb 2020 21:24:21 +0530
+Message-Id: <d775a8653d3f4550adfdbfaaf03c269ad2896273.1580914232.git.arindam.nath@amd.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <cover.1580914232.git.arindam.nath@amd.com>
 References: <cover.1580914232.git.arindam.nath@amd.com>
@@ -123,8 +123,8 @@ In-Reply-To: <cover.1580914232.git.arindam.nath@amd.com>
 References: <cover.1580914232.git.arindam.nath@amd.com>
 X-Original-Sender: arindam.nath@amd.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=tSxQWHB0;       spf=pass
- (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::541
+ header.i=@gmail.com header.s=20161025 header.b=WDdm+HKO;       spf=pass
+ (google.com: domain of anath.amd@gmail.com designates 2607:f8b0:4864:20::543
  as permitted sender) smtp.mailfrom=anath.amd@gmail.com
 Content-Type: text/plain; charset="UTF-8"
 Precedence: list
@@ -139,43 +139,137 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Link-Up and Link-Down events can occur irrespective
-of whether a data transfer is in progress or not.
-So we need to enable the interrupt delivery for
-these events early during driver load.
+Since getting the status of link is a logically separate
+operation, we simply create a new function which will
+store the link status to be used later.
 
 Signed-off-by: Arindam Nath <arindam.nath@amd.com>
 ---
- drivers/ntb/hw/amd/ntb_hw_amd.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/ntb/hw/amd/ntb_hw_amd.c | 93 ++++++++++++++++++---------------
+ 1 file changed, 50 insertions(+), 43 deletions(-)
 
 diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
-index 150e4db11485..111f33ff2bd7 100644
+index 111f33ff2bd7..f50537e0917b 100644
 --- a/drivers/ntb/hw/amd/ntb_hw_amd.c
 +++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
-@@ -994,6 +994,7 @@ static enum ntb_topo amd_get_topo(struct amd_ntb_dev *ndev)
- 
- static int amd_init_dev(struct amd_ntb_dev *ndev)
- {
-+	void __iomem *mmio = ndev->self_mmio;
- 	struct pci_dev *pdev;
- 	int rc = 0;
- 
-@@ -1015,6 +1016,10 @@ static int amd_init_dev(struct amd_ntb_dev *ndev)
- 
- 	ndev->db_valid_mask = BIT_ULL(ndev->db_count) - 1;
- 
-+	/* Enable Link-Up and Link-Down event interrupts */
-+	ndev->int_mask &= ~(AMD_LINK_UP_EVENT | AMD_LINK_DOWN_EVENT);
-+	writel(ndev->int_mask, mmio + AMD_INTMASK_OFFSET);
-+
+@@ -195,6 +195,54 @@ static int amd_ntb_mw_set_trans(struct ntb_dev *ntb, int pidx, int idx,
  	return 0;
  }
  
++static int amd_ntb_get_link_status(struct amd_ntb_dev *ndev)
++{
++	struct pci_dev *pdev = NULL;
++	struct pci_dev *pci_swds = NULL;
++	struct pci_dev *pci_swus = NULL;
++	u32 stat;
++	int rc;
++
++	if (ndev->ntb.topo == NTB_TOPO_SEC) {
++		/* Locate the pointer to Downstream Switch for this device */
++		pci_swds = pci_upstream_bridge(ndev->ntb.pdev);
++		if (pci_swds) {
++			/*
++			 * Locate the pointer to Upstream Switch for
++			 * the Downstream Switch.
++			 */
++			pci_swus = pci_upstream_bridge(pci_swds);
++			if (pci_swus) {
++				rc = pcie_capability_read_dword(pci_swus,
++								PCI_EXP_LNKCTL,
++								&stat);
++				if (rc)
++					return 0;
++			} else {
++				return 0;
++			}
++		} else {
++			return 0;
++		}
++	} else if (ndev->ntb.topo == NTB_TOPO_PRI) {
++		/*
++		 * For NTB primary, we simply read the Link Status and control
++		 * register of the NTB device itself.
++		 */
++		pdev = ndev->ntb.pdev;
++		rc = pcie_capability_read_dword(pdev, PCI_EXP_LNKCTL, &stat);
++		if (rc)
++			return 0;
++	} else {
++		/* Catch all for everything else */
++		return 0;
++	}
++
++	ndev->lnk_sta = stat;
++
++	return 1;
++}
++
+ static int amd_link_is_up(struct amd_ntb_dev *ndev)
+ {
+ 	if (!ndev->peer_sta)
+@@ -845,11 +893,7 @@ static inline void ndev_init_struct(struct amd_ntb_dev *ndev,
+ static int amd_poll_link(struct amd_ntb_dev *ndev)
+ {
+ 	void __iomem *mmio = ndev->peer_mmio;
+-	struct pci_dev *pdev = NULL;
+-	struct pci_dev *pci_swds = NULL;
+-	struct pci_dev *pci_swus = NULL;
+-	u32 reg, stat;
+-	int rc;
++	u32 reg;
+ 
+ 	reg = readl(mmio + AMD_SIDEINFO_OFFSET);
+ 	reg &= NTB_LIN_STA_ACTIVE_BIT;
+@@ -861,44 +905,7 @@ static int amd_poll_link(struct amd_ntb_dev *ndev)
+ 
+ 	ndev->cntl_sta = reg;
+ 
+-	if (ndev->ntb.topo == NTB_TOPO_SEC) {
+-		/* Locate the pointer to Downstream Switch for this device */
+-		pci_swds = pci_upstream_bridge(ndev->ntb.pdev);
+-		if (pci_swds) {
+-			/*
+-			 * Locate the pointer to Upstream Switch for
+-			 * the Downstream Switch.
+-			 */
+-			pci_swus = pci_upstream_bridge(pci_swds);
+-			if (pci_swus) {
+-				rc = pcie_capability_read_dword(pci_swus,
+-								PCI_EXP_LNKCTL,
+-								&stat);
+-				if (rc)
+-					return 0;
+-			} else {
+-				return 0;
+-			}
+-		} else {
+-			return 0;
+-		}
+-	} else if (ndev->ntb.topo == NTB_TOPO_PRI) {
+-		/*
+-		 * For NTB primary, we simply read the Link Status and control
+-		 * register of the NTB device itself.
+-		 */
+-		pdev = ndev->ntb.pdev;
+-		rc = pcie_capability_read_dword(pdev, PCI_EXP_LNKCTL, &stat);
+-		if (rc)
+-			return 0;
+-	} else {
+-		/* Catch all for everything else */
+-		return 0;
+-	}
+-
+-	ndev->lnk_sta = stat;
+-
+-	return 1;
++	return amd_ntb_get_link_status(ndev);
+ }
+ 
+ static void amd_link_hb(struct work_struct *work)
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1fb68eb0ee7ee636ab92bb0b3b7340c56f4a20c3.1580914232.git.arindam.nath%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/d775a8653d3f4550adfdbfaaf03c269ad2896273.1580914232.git.arindam.nath%40amd.com.
