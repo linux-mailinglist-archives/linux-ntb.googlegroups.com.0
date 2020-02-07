@@ -1,222 +1,166 @@
-Return-Path: <linux-ntb+bncBCHK3VHCYUIBBBOF6TYQKGQEXU5I6QA@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBUGY6TYQKGQENMAY26I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53d.google.com (mail-pg1-x53d.google.com [IPv6:2607:f8b0:4864:20::53d])
-	by mail.lfdr.de (Postfix) with ESMTPS id 94A331553CE
-	for <lists+linux-ntb@lfdr.de>; Fri,  7 Feb 2020 09:40:39 +0100 (CET)
-Received: by mail-pg1-x53d.google.com with SMTP id i8sf1182184pgs.3
-        for <lists+linux-ntb@lfdr.de>; Fri, 07 Feb 2020 00:40:39 -0800 (PST)
-ARC-Seal: i=3; a=rsa-sha256; t=1581064838; cv=pass;
+Received: from mail-yw1-xc3a.google.com (mail-yw1-xc3a.google.com [IPv6:2607:f8b0:4864:20::c3a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 79E37155466
+	for <lists+linux-ntb@lfdr.de>; Fri,  7 Feb 2020 10:22:25 +0100 (CET)
+Received: by mail-yw1-xc3a.google.com with SMTP id q130sf1320894ywh.11
+        for <lists+linux-ntb@lfdr.de>; Fri, 07 Feb 2020 01:22:25 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1581067344; cv=pass;
         d=google.com; s=arc-20160816;
-        b=c5RMHHxlxGG7hukyVTrvJpfMAbmlnJIVGGSlxtLsSRCCAcm5NRRsT6CJkInkflyplN
-         0GL4wvIcdBmviRfLp/I7UthfHaMYTwLSSS4TRldEA+LoKSdb2+aMI/nK5iAVSssP9a0n
-         IbVnwUE8ahVMqdQ6y02gfMV4aQ5IgXEB1EWu1Wzq7YoysEiS+vZ5ivq/qZAFJEQXj0dh
-         Qnwy6+LK4IFvfWlJxC4sZhxX90OfpiT5D6MC09kI1HV4JafOqyRsPuoCZe0M6YCUouan
-         vUE0RieUlH5HuyJNPi8gB97hNbXhqqG6Srhe0/AwIQUxxI5IUYWabfeoBhibTG8LZIHB
-         QF6A==
+        b=ev0/NC0YFcEGYhNA1mMVk4o0mAiI3RP9MhIvFobASbWTg9mcXXNy8nBmZoAo/r/f+C
+         5ZYNsoopqgGtmIaavJzWpH5yxp+laWcZyCyhPu18fMli5hzJeeOVPG50hfwlyS9ry5mF
+         T9zfP5LjfjCRtZqbbZcUxHa6xlQ2H7DdoZ+yuW90H+XhQ40uB+LsP1yMLEkGLTY9Xel9
+         r5E7EunmIboqYpkjUosECd0J6TVvwn/Rl+k7vW4aPufO+6jvZ2w6wL5AV8Zcxk8mHam9
+         UlApBcWGgS2FloSzlK5RFI9Zl7bgMUgUDsa6qQRezMlkTttt4MeocVSEdnRs9wHlg1aV
+         xqjg==
 ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_contentbits
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_actionid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_siteid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_name
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_method
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_setdate
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_enabled:msip_labels
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:sender
-         :dkim-signature;
-        bh=QJ7RSV6ezzHCLnMx5ZyIf9+sT9vPq4z1KvV0eLYFt6A=;
-        b=fE7vmIVyMP6HC2550GxUsV6u+8UyWYnzW6N+7NFXHgfIDdItmrVTRogbwU4PPVTTqC
-         +MiQerArrsuFBqwKpSqzdVVrext6rbf1mGJQ0h/k7Cz9vHbcDvq0pf0P8RKhJ46CHnhM
-         0d3Yq0FIdM4advhHQwGQ1RQ0uphLwbBgLF5RvxcBV76eGZUuOA+bosX/wfhMYKsGs+oP
-         UBVIw5HqsPZ/pVvdS2yrEaNzL6nuca+wKb4l2tHMhtu0idoORooLJfjuvx4xlib6N50B
-         GSAQ1dZv5PHhZJHLKKBrTgYJvRrAT6d/BJ0wPLvAy5Azy0bDSv1ckJXfXhr0mZzsvago
-         i0ig==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=S5GqOgsq3itaE5rAq9g0hHP4kgQJyk3YPBOBolSr6Zc=;
+        b=wfX2C2XIIr2p76fxq6YH12ZDYBR2PttAuEbbVq8xtKpr2BFcwKF/sJlacDFx69N4k0
+         xGHYmZGcgOv6Mk5RMepJXJNbcVGKj7ecJoehtxwhpG63dUPd04tGw6fmv4qPtleUxeCc
+         y34vgB+xCSF/ZqN3kg4A8XcYmLj+B3Ji5ZH7ScKbBSzDCgLWPX5j+QsZo9DabQrzdQtv
+         qs9J1OdtLKsVreeA1qGuiEY8hxEWXkzoYPahQFlDNDIIKXTpLfKk0ufGY9k/kQ+FOLn1
+         ck1t9EnaJvY+u7JOTQdbyGmA11JYNUGekflR+8ud43ShTDb3mtLuUuF8gPc23xlgx2Yb
+         qjkA==
 ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=2sFce6uw;
+       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=UDQZ1bHL;
        arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 2a01:111:f400:fe5b::620 is neither permitted nor denied by best guess record for domain of arindam.nath@amd.com) smtp.mailfrom=Arindam.Nath@amd.com
+       spf=neutral (google.com: 40.107.236.45 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:thread-topic:thread-index:date:message-id
-         :references:in-reply-to:accept-language:content-language:msip_labels
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_enabled
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_setdate
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_method
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_name
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_siteid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_actionid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_contentbits
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=QJ7RSV6ezzHCLnMx5ZyIf9+sT9vPq4z1KvV0eLYFt6A=;
-        b=tLMnU8m0cjmqhnJxCdJHu+mcfRZN+zphaE9qOAF94Zceexsf2lUW06nf+wXSsBqkdX
-         HrequnNxLwsZynPq/mtT9U7hPKkhItds3kU3VusItpAu5zDz3+2YBBA1ZNWhdXc8N6mg
-         04UBo9Zag0KU/wo6qT89VFlEj3xpnOIQ7OmHs3bAoUGb+0x96fAbMO154/XUr953r7WA
-         qrBCImix1fJ2ICHdIC+urzvP2ewcpi/wP4ZPBL9FLt08XoYbQ9Rsb8jnh/JAcdBdRzPx
-         /5OOP+yqhgiJLR6ZX5ts5jDnRn3KouA2f9EvG9CapS1aUGBfawziyHbZyHhsV4Up5mCL
-         xo0g==
+        bh=S5GqOgsq3itaE5rAq9g0hHP4kgQJyk3YPBOBolSr6Zc=;
+        b=sgH0+u8sf7ren5LGuhOYQj8fQnKt6NG+ThgZsXJ5vvI9zdweiAH+FQtEwwdVONpoIT
+         ygeF3TQHe97KxTEdH+RAhtZsPB7ZXNwwpoujvP1/4mCVxyQPZSocWKSON+K/j6my8qHn
+         RhvKMVIi/bOOTOb17Rq39vBfDoYCNOe7Y2jPzpyPDCn2l7bv0WtBgSMkEoh0U3K3ZWue
+         Jy08ZhSVCrIeULV5+NCWvHTR5/d7KxaIxJzl/z/lcZbMNO/FVWmHBqTsBB9AO63Grf2v
+         RzAiV2sz4KHFocgbDp61+DSbvSOOs3OqwhRIdIILubBk9z8YvS5y0DYgNK0ZG1Ifi6Bz
+         wc/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:thread-topic
-         :thread-index:date:message-id:references:in-reply-to:accept-language
-         :content-language:msip_labels
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_enabled
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_setdate
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_method
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_name
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_siteid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_actionid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_contentbits
+        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
          :mime-version:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
          :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=QJ7RSV6ezzHCLnMx5ZyIf9+sT9vPq4z1KvV0eLYFt6A=;
-        b=jPbbXgkYzMJqhXVEdU4h4tAODqlq0MFLhl2LthgKIFeSge7UdzEwCD9SA5pvfE4cXk
-         yAJFEB5gsVyk++gPJZesNGKHs4X146UEfn2Q3+VFMQxgMUwNOY/SP7CqVKeUIDbDQQhK
-         tAIcOCI3CugevSDC/KNFo5TNg1DBCqLgXXMfh5ujQwuPNKWKTGvcP9iDigVz9LFwJF9L
-         L1Lq9IaJzTIVgjpDIQVVWuRXBgVrF9TNq4+4j1Ge1GmCTjuIDA9/ydDy4MBjkz0JEelo
-         PzXpn1xtRrV2tnyC9qb3sa1GG1TNkK/7uJ9KDTIm3NVWhh3nMKfqXPSl8d4IGUwTJgSW
-         CrLw==
+        bh=S5GqOgsq3itaE5rAq9g0hHP4kgQJyk3YPBOBolSr6Zc=;
+        b=EeYlaN8J/SvrTmsIQw+h70rWowvZwh2Mn/c1YkaXhY3J9fHNlLo+KzjVFl65YRvDJE
+         DKeH4F6FY+vWO++T6xIoyTh/GD3wRR+YXGA7e40+2qEywMRWddVXw8AgdEenuF6em6Wn
+         aWliBtyoSa5H9BV2IHiS7fQElalBZxtPkJ2KUDAmQRaVJJCSgFFtuCcVfKDxYPSnRCSc
+         iBXmVX2oiV+mvG50Vz434ikttnzTM+4lpDvsSymtgsvL12cJAZMbeQqR26m7MtBfYXe2
+         YKxEyB1LN/FX4g+EBA0IZsX8WuOFc23befTC2+Id/hsrPSIXOdzoIj24XctbfRY+O7vV
+         fmnQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAW5ZjCFDl4oHGRhH7SAFE7Rf9uYjFI48Lj9TJ1h7Ai7z/g+SpPS
-	FErO70Bmkh4w1vV/GQVFjfI=
-X-Google-Smtp-Source: APXvYqzdy9AnKzbO6c/cZ5FR4o+ejNIkEsnMTg2qtSCBrcduKQN4L9rmpzXjZmGDdhug/g0KsDv22A==
-X-Received: by 2002:a63:213:: with SMTP id 19mr8508888pgc.160.1581064837944;
-        Fri, 07 Feb 2020 00:40:37 -0800 (PST)
+X-Gm-Message-State: APjAAAUGU2O5CO3C9NhZH5y5Ql10/gn+CZ45bjr+t3x+FZQam+sTjrw8
+	C94f5pCVhk92R8qd4lUIDTo=
+X-Google-Smtp-Source: APXvYqyWzYEwZ6kpN6xu66pH6BcagUpEVD/AzASoxAlQk9jpYs27P/jFZrutde2l/jxuRgvP1byYzQ==
+X-Received: by 2002:a81:9c06:: with SMTP id m6mr6926242ywa.328.1581067344219;
+        Fri, 07 Feb 2020 01:22:24 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:ab86:: with SMTP id f6ls4928291plr.10.gmail; Fri, 07
- Feb 2020 00:40:37 -0800 (PST)
-X-Received: by 2002:a17:902:7442:: with SMTP id e2mr8907625plt.158.1581064837418;
-        Fri, 07 Feb 2020 00:40:37 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1581064837; cv=pass;
+Received: by 2002:a0d:fc04:: with SMTP id m4ls2080891ywf.8.gmail; Fri, 07 Feb
+ 2020 01:22:23 -0800 (PST)
+X-Received: by 2002:a81:4896:: with SMTP id v144mr7472993ywa.236.1581067343886;
+        Fri, 07 Feb 2020 01:22:23 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1581067343; cv=pass;
         d=google.com; s=arc-20160816;
-        b=kdFpjCwSYyYPxoPwfUUfdv5uRvosqMD5zwGTjfa+IuWkTY0818Fslra5R0Uu7b0b4g
-         5GTijgvYarVx+0SVU4z+Yfi9x71996+9kv+b6FybnaKLpyFP2d8S4doTBDBmqE2INQvB
-         2CG0cnxzP863cR4dMeLUdSkauVN5McjCmdv6HkHuRwqFq6c6wUIbcSHTwmBmuHKP6DYj
-         tuMq7Br7S38eD00w/yoygP2ZL9AASR+EEzQ2fpMjV05NxyzEyUVZis6511+IrZVPVcSH
-         2dvKbvSCq1mZtFtu6GXeG/W4PUU9wbhxvpa1Xyg6rmmV4c+bLLO1h1uEtBG/iYHfr0rZ
-         crNw==
+        b=FkKhDri+HYJwMScp0oaaWJiW5Hi64s8Y6sSekdwPdBuUciauHFYwhyz+2RJAaFWaxi
+         g/mCdodo1BykbxXyVb8C0YwXCMoYDanr51jDmoHQpfMH2VqJEam2Mgm9hsGTqB89ZX7r
+         Ut8+ehTcCtTWtuizshCWTjUBW7YkbBit7bh5IOXbCMgrYyMrM+G9fab5f6s3lLVFsN7A
+         J+ntsB3HJqfIjWt2ORF+I/p9SdaNGwO9ZgMijmom5LKB+HaQAtfyVHKUMF9tC0eIRJvV
+         6O+R5HR3SKsLRHInm9jO6aewWckWZq8Vr4cVhq12mP0Ag60EKp8bb74mkPfFOrnnEyKE
+         0BLg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_contentbits
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_actionid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_siteid
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_name
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_method
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_setdate
-         :msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_enabled:msip_labels
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:dkim-signature;
-        bh=oeX/cWXYGdyYQL6EmQprmMPsfiIjuqEs8zKuZrK2nH8=;
-        b=vt2MBtx4KRFM8+wmWsNzLvEiTPKGHLnop8hX52x35zubAX39XeqChWmAWde3ZI6s66
-         cc+M0LbLcAJ4WhIPTfgx73jXdxdI93hW0k2g2mrpzsX4jeV4l5cHOyMFStDmaOPDVURw
-         Jll6Z07rrw1CbKF42LYQU+FtA/mYVkLre43t7PIaM4CTEN12hLdTGt0qVoR8/QtlV/Xz
-         q8RvN0cM5Zkxzj6ahKCTYu6HGJqNe6ZSZDS9t/MxD4QH9tvHfuAgtKTO37Af78sWh7kO
-         +VH4ttzJk8g8QWmixc/RjnG08BkKre7iF9c/siK+dYkyotruNII84lh6xZzEKSXA8FDD
-         H4DQ==
+        h=mime-version:content-transfer-encoding:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=07f0cI0GmQTJEGwYTbHa5UJQxIVJ9iQWZdvQaLfpFVo=;
+        b=sVikBK6OWdwlGHs9hGlkdhqVfmtwdMYjEqnZqoe3EEi/B+IYUkMZwLKAosVAl0bxpF
+         ndEqYi+EgpSZKdWEqaYUr8T4lar7/+CygJELQ258jkZajWm1olglet1TWzopo+mj7uA5
+         k7DtHd9v2scwaaEF8QhGQumOm125FUbx1tOum/tkKHLG3ekmt/woM04Pg+fdkYEkirLa
+         dh2O+xB8mPqWeCQQuh/hOqvj743b3+DZLS3vHtm/yHuKV3WERZik/FLFlaXDoVBkqtVX
+         H9eVRT2vmRta2PxEEBWQddoPj0mM5ekUPjbjB9sH/P/vBCPPSItecMZ5CVkHaVf/3pXa
+         k5Iw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=2sFce6uw;
+       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=UDQZ1bHL;
        arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 2a01:111:f400:fe5b::620 is neither permitted nor denied by best guess record for domain of arindam.nath@amd.com) smtp.mailfrom=Arindam.Nath@amd.com
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (mail-bn8nam12on20620.outbound.protection.outlook.com. [2a01:111:f400:fe5b::620])
-        by gmr-mx.google.com with ESMTPS id f3si350407pjw.0.2020.02.07.00.40.36
+       spf=neutral (google.com: 40.107.236.45 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on2045.outbound.protection.outlook.com. [40.107.236.45])
+        by gmr-mx.google.com with ESMTPS id i200si132156ywa.3.2020.02.07.01.22.23
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 07 Feb 2020 00:40:36 -0800 (PST)
-Received-SPF: neutral (google.com: 2a01:111:f400:fe5b::620 is neither permitted nor denied by best guess record for domain of arindam.nath@amd.com) client-ip=2a01:111:f400:fe5b::620;
+        Fri, 07 Feb 2020 01:22:23 -0800 (PST)
+Received-SPF: neutral (google.com: 40.107.236.45 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) client-ip=40.107.236.45;
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Nai1NKUeg+lGQ77alJx/QsvLnNVZKwDLqlltzhi+NCFh1dOVYNomelYAcV3WurpJO87KbkogJJHr0k0ciV58JvM13jK6lH1snOmguAdOnjwPoArHYOPhghDRccN0cNFbAixWjtJx4/V2p6a+gzw0JA8NhhJZ4Yd0kD3WpkP4ZqCRBHnt9aGh7I4ad0nqfN6OGsIgx6DPrX4E9o07lb9NRpXS/YG6d+NLJfboH7qAPtra7Q6icGE1hwviyrMx1Sz+4blbMDhUKFI7H0Q+ZRbp2/IywyVA9zxKx7ZkZ1Bf6lMNaXDlE5cz2HHMorypr/x1dFed87ngLu1AmHU4238irQ==
+ b=QgQUyOfmQMQ6LGgdbfU32xR2AXGMrYI8i76MGg7ln8rGq7/y3CoCzpac3eTT8mYQaUuUx0lsmoszIAoY9wahaQTgnv47f+QsDQ4JsKF0Jp0MXO44SOvV8M9O//QNNOSibJ+VJAReBa244QpaCuDS/vvOagmldSZkV/1l1QHhKwmuxPHyC3lfi6HtT1RhHr93CzCIQjgvMBWM/LVSRjCog6KmOWGsSkgNu8qs+OBtKLpBBumZng8sSdr7neq3O6X6HJ3V9GF5baZlcfrrbU6+mW2E0ZWmcDEo+Q56XRHJi7hq6OF7sV4l+KON4SUlzqv+e2VF4Lpjf8PoqyqS9uZBbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=oeX/cWXYGdyYQL6EmQprmMPsfiIjuqEs8zKuZrK2nH8=;
- b=X9ptcVCvMm9jxd7r/HrClQ+qILTNA3vySscfdnX5ROhHFxANZJW7kuA294fbT5mV5eLrSFQQD8l3oZs9tgjD/ZMyUYFKrKAhDxPSWJ1Lkr1zO3x6nNxWA1xtsXNe8942VqvsWSlR2nE+42Z9aVtVviVSkE7V4ERZDaMEjeD4ygIYtCSF5pyzSJ6RHpHVjm+UbFBmBTT5xBZ9C17lyxwAquYExwpgdx4iPKtiKr1p24ILsOyKQ4+LRng+zFM3AQ987cn4DDqcXehgsWrU0tFi7Cblhw+01VcQM2qf6ncqzdE945QbzxM+ICwNtR8SWbyrnoo2ErmgH7u6ebG47whfwg==
+ bh=07f0cI0GmQTJEGwYTbHa5UJQxIVJ9iQWZdvQaLfpFVo=;
+ b=X6HMH/WOo+T8lpE83KkjA280bCW93IAxZs3PM58IYNfzeZ5qgWSMhd4Z871CvmVqKNlgCOUoGHBxW4lVFIiyf0Q8j1b6ipdgNCLKPYAGchYSulldVuOqNdIa5ZCekadbRm/TOjSVgY2+r8BhPT3MeGsL84QqobNNH7c9993sJrZE74oEdeBC9o3Ja1cxkQYvk5RD1Sa0rZmFNx5BHUNIEEJvDKNM0DOhfmrcOeejUpsfrV5XU6Pjq8OiVCFPLVm/K16JnRL7jQaEEDh580//ByIUSuaVI9OKuQ5CMK9MeHMTVSDowVLS5WY+vGJMG4wWwB6KWRDc+ijySR+8uyf5VA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
  header.d=amd.com; arc=none
-Received: from MN2PR12MB3232.namprd12.prod.outlook.com (20.179.80.221) by
- MN2PR12MB4125.namprd12.prod.outlook.com (52.135.50.9) with Microsoft SMTP
+Received: from MN2PR12MB3455.namprd12.prod.outlook.com (20.178.244.22) by
+ MN2PR12MB3168.namprd12.prod.outlook.com (20.179.81.210) with Microsoft SMTP
  Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2707.23; Fri, 7 Feb 2020 08:40:34 +0000
-Received: from MN2PR12MB3232.namprd12.prod.outlook.com
- ([fe80::d8f:800:975a:b8c]) by MN2PR12MB3232.namprd12.prod.outlook.com
- ([fe80::d8f:800:975a:b8c%6]) with mapi id 15.20.2707.024; Fri, 7 Feb 2020
- 08:40:34 +0000
-From: "Nath, Arindam" <Arindam.Nath@amd.com>
-To: Logan Gunthorpe <logang@deltatee.com>, Jon Mason <jdmason@kudzu.us>, Dave
- Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>, "Mehta, Sanju"
-	<Sanju.Mehta@amd.com>
-CC: "linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: RE: [PATCH 3/4] ntb_perf: pass correct struct device to
- dma_alloc_coherent
-Thread-Topic: [PATCH 3/4] ntb_perf: pass correct struct device to
- dma_alloc_coherent
-Thread-Index: AQHV3EgxqGrkcNoh8EaPHAUSJUkGoKgM7+uAgAJ7LEA=
-Date: Fri, 7 Feb 2020 08:40:34 +0000
-Message-ID: <MN2PR12MB323292771789FEBE5EEFCD439C1C0@MN2PR12MB3232.namprd12.prod.outlook.com>
-References: <cover.1580921119.git.arindam.nath@amd.com>
- <aa4e69feffab2fd3cd846569e0546c5cf8f8f6b4.1580921119.git.arindam.nath@amd.com>
- <761e76e0-2e5e-6c71-3384-1ec10dcf8e88@deltatee.com>
-In-Reply-To: <761e76e0-2e5e-6c71-3384-1ec10dcf8e88@deltatee.com>
-Accept-Language: en-IN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_76546daa-41b6-470c-bb85-f6f40f044d7f_Enabled=true;
- MSIP_Label_76546daa-41b6-470c-bb85-f6f40f044d7f_SetDate=2020-02-07T08:40:29Z;
- MSIP_Label_76546daa-41b6-470c-bb85-f6f40f044d7f_Method=Standard;
- MSIP_Label_76546daa-41b6-470c-bb85-f6f40f044d7f_Name=Internal Use Only -
- Unrestricted;
- MSIP_Label_76546daa-41b6-470c-bb85-f6f40f044d7f_SiteId=3dd8961f-e488-4e60-8e11-a82d994e183d;
- MSIP_Label_76546daa-41b6-470c-bb85-f6f40f044d7f_ActionId=8c756baa-bfa7-4db6-bc0c-0000d7812d4a;
- MSIP_Label_76546daa-41b6-470c-bb85-f6f40f044d7f_ContentBits=1
-msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_enabled: true
-msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_setdate: 2020-02-07T08:40:29Z
-msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_method: Standard
-msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_name: Internal Use Only -
- Unrestricted
-msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_siteid: 3dd8961f-e488-4e60-8e11-a82d994e183d
-msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_actionid: e91af601-e38c-44fb-8ae2-0000148709d9
-msip_label_76546daa-41b6-470c-bb85-f6f40f044d7f_contentbits: 0
-x-originating-ip: [122.182.243.148]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: fd302c4c-6740-4129-41ef-08d7aba965ee
-x-ms-traffictypediagnostic: MN2PR12MB4125:|MN2PR12MB4125:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR12MB41251174A36F50F0C8F8FC549C1C0@MN2PR12MB4125.namprd12.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:9508;
-x-forefront-prvs: 0306EE2ED4
-x-forefront-antispam-report: SFV:NSPM;SFS:(10001)(10009020)(4636009)(136003)(346002)(376002)(366004)(396003)(39860400002)(199004)(189003)(86362001)(2906002)(6636002)(66946007)(64756008)(66446008)(5660300002)(55016002)(66556008)(4326008)(9686003)(45080400002)(54906003)(66476007)(966005)(7696005)(478600001)(52536014)(76116006)(81166006)(81156014)(110136005)(33656002)(71200400001)(316002)(6506007)(53546011)(8676002)(8936002)(26005)(186003);DIR:OUT;SFP:1101;SCL:1;SRVR:MN2PR12MB4125;H:MN2PR12MB3232.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
-received-spf: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: yKLd5P1WXtgHBcVJsmgis6u1xGEHPnB0mpyzr7tRBDuUpf54vwtz6EIeqLdl+Lh3JqCSJr5sec+Vv2mSmOnfZfjdqCiEhCLUJ+oC61665l5e4j0Rma5SV9bzZmTeseJWOH3+tjnFy0MfXHzWNijj7/y5KrI34tEZR8luWwSio3hQ+j4F06cENvXHCKiizphlCm2i5ot6XK+2MvldF0wZBtfY9jeZUSzJxx9FxQooagL0mnluPk8HZbKrIgch0ssO5d26R0/Zj3B2HCaavrWZdGNDODWg6EO50SiRDHl1gYo49lwj/JzrSkaNwqJ5v3Qg/X+jfuYDZPrMUGKlQhw+1ve5pXeM/CZcDs19A2Fmjjt4kCzfsPmwZU/OxzB1o341keC3wxzPaCe4s9XdYE5C6vNI6tjvUcJMFjSoBs90vOEY6+3WTYy2G0FBCDeK7tL1qeRRMF+lmO0sW1mT9ywZkP12OtQhDngV4mqL2ibEh5/vX4elil8m3HqpmelNUbK1/nnxa7NJrDapKuN9YXgonzj2z6dcpeMAwvLdfA4UYIaLOM/g2K7M5a7ou55tAWKamIj9wCaAhrQNerec4mnRrBD/5XEci2EfDIx3dedf/Bp2qpfHAh2Pzm5Kwm/QtY9T
-x-ms-exchange-antispam-messagedata: 8ezXFcgspD+rNXPQwc4OIOvu9C6dPUFZaZgcaG1NuiyRTbhpWor6iQQDlxs3o62FWQzeeENWyfETiCGYDkPPiSsrMIvb3Nattdbl+rW9BNqBLzG5LwMJFJf+7U5rZVW6NlObSH/1MIEnLPlAL0H21g==
+ 15.20.2686.32; Fri, 7 Feb 2020 09:22:21 +0000
+Received: from MN2PR12MB3455.namprd12.prod.outlook.com
+ ([fe80::1900:6cb7:12ff:11c]) by MN2PR12MB3455.namprd12.prod.outlook.com
+ ([fe80::1900:6cb7:12ff:11c%4]) with mapi id 15.20.2707.024; Fri, 7 Feb 2020
+ 09:22:21 +0000
+From: Sanjay R Mehta <Sanju.Mehta@amd.com>
+To: Shyam-sundar.S-k@amd.com,
+	jdmason@kudzu.us
+Cc: linux-ntb@googlegroups.com,
+	linux-kernel@vger.kernel.org,
+	Sanjay R Mehta <sanju.mehta@amd.com>
+Subject: [PATCH] MAINTAINERS: update maintainer list for AMD NTB driver
+Date: Fri,  7 Feb 2020 03:21:58 -0600
+Message-Id: <1581067318-103927-1-git-send-email-Sanju.Mehta@amd.com>
+X-Mailer: git-send-email 2.7.4
 Content-Type: text/plain; charset="UTF-8"
+X-ClientProxiedBy: MA1PR0101CA0001.INDPRD01.PROD.OUTLOOK.COM
+ (2603:1096:a00:21::11) To MN2PR12MB3455.namprd12.prod.outlook.com
+ (2603:10b6:208:d0::22)
 MIME-Version: 1.0
+Received: from sanjuamdntb2.amd.com (165.204.156.251) by MA1PR0101CA0001.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:21::11) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.20.2707.21 via Frontend Transport; Fri, 7 Feb 2020 09:22:18 +0000
+X-Mailer: git-send-email 2.7.4
+X-Originating-IP: [165.204.156.251]
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-Office365-Filtering-Correlation-Id: 1582d2a2-f224-4aa4-8056-08d7abaf3ba0
+X-MS-TrafficTypeDiagnostic: MN2PR12MB3168:|MN2PR12MB3168:
+X-MS-Exchange-Transport-Forked: True
+X-Microsoft-Antispam-PRVS: <MN2PR12MB3168AF361A45AF5198722F23E51C0@MN2PR12MB3168.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:296;
+X-Forefront-PRVS: 0306EE2ED4
+X-Forefront-Antispam-Report: SFV:NSPM;SFS:(10009020)(4636009)(376002)(346002)(39860400002)(396003)(366004)(136003)(199004)(189003)(2616005)(956004)(6486002)(86362001)(8936002)(316002)(52116002)(7696005)(81166006)(2906002)(8676002)(81156014)(66556008)(36756003)(66476007)(186003)(6666004)(4326008)(4744005)(5660300002)(66946007)(16526019)(478600001)(26005);DIR:OUT;SFP:1101;SCL:1;SRVR:MN2PR12MB3168;H:MN2PR12MB3455.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
+Received-SPF: None (protection.outlook.com: amd.com does not designate
+ permitted sender hosts)
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 0Q2sQtW474kroca7ryGxUtZPcZDs/+CSAi/UHRmW5ftXY/9S0smXxu0G1oZfhch68rK1bUF8NFl3PF7vPbxiH3pZFlnIzbkJoK75Cjx8d47NgkgbzyvbjzEslhpoy+6/j9bUoR/hl9A0IoAVbdFDJ3UibvX2mzC6TyaexYMd6qCfIuRiaMjVHQkaLsKs+XJQQP1G2Owr4NzSj5gELJfMs5VNgU8qXjN5y8DydbQaq9dLQEFJ0aQ5NttWPJlsnGCzIpdmfEevR9MhITN8/9JAn9V6I6wV9JGvrbh9OhkfS45wGY7FO4E2KGBbBXAmHjOh2kDWT0PuaoHsIjPxs/8NKSfuQSARL+EAzFjnRcoJggavx+2zbV363TiOtC84HkAcWMJdBVsf651znCgpPRgcX2Umlyz60yQROcx0GjYCDWWQeiCOc5p/cHWxMfJS2k00
+X-MS-Exchange-AntiSpam-MessageData: p0M72BWB4B09pb92fSsMf9uD8hbKOh8oY8llQ7AMIyvFBVAfk2bIeyTxdS0n7NUXLVOk8Eyv3HMt9oUboPpuF9zsrnrAHeI1SsYm04Vcdq2ZP2uy1YWq8maZtlvVlPHEN2SLY81m9HuEhfsrcbsGiw==
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fd302c4c-6740-4129-41ef-08d7aba965ee
-X-MS-Exchange-CrossTenant-originalarrivaltime: 07 Feb 2020 08:40:34.2021
+X-MS-Exchange-CrossTenant-Network-Message-Id: 1582d2a2-f224-4aa4-8056-08d7abaf3ba0
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Feb 2020 09:22:21.3870
  (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Kc7xMh1TWOSJaaeq2UYIVrvENvmqlWqUHLPR8zi7h1ck88sBjb5wlm3Eubo3Obse
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4125
-X-Original-Sender: arindam.nath@amd.com
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: ZrfVLgLE+VSudLqEPgi56/9XMyLFEg1k9C1G01Gm9fLf52RY3hEgM+Lp7SctF5jneoBxoKIFg2VIQFrqJRtxVg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3168
+X-Original-Sender: sanju.mehta@amd.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
  header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com
- header.b=2sFce6uw;       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass
+ header.b=UDQZ1bHL;       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass
  dkdomain=amd.com dmarc=pass fromdomain=amd.com);       spf=neutral
- (google.com: 2a01:111:f400:fe5b::620 is neither permitted nor denied by best
- guess record for domain of arindam.nath@amd.com) smtp.mailfrom=Arindam.Nath@amd.com
+ (google.com: 40.107.236.45 is neither permitted nor denied by best guess
+ record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -229,71 +173,32 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-[AMD Official Use Only - Internal Distribution Only]
+From: Sanjay R Mehta <sanju.mehta@amd.com>
 
-> -----Original Message-----
-> From: Logan Gunthorpe <logang@deltatee.com>
-> Sent: Thursday, February 6, 2020 00:14
-> To: Nath, Arindam <Arindam.Nath@amd.com>; Jon Mason
-> <jdmason@kudzu.us>; Dave Jiang <dave.jiang@intel.com>; Allen Hubbe
-> <allenbh@gmail.com>; Mehta, Sanju <Sanju.Mehta@amd.com>
-> Cc: linux-ntb@googlegroups.com; linux-kernel@vger.kernel.org
-> Subject: Re: [PATCH 3/4] ntb_perf: pass correct struct device to
-> dma_alloc_coherent
-> 
-> 
-> 
-> On 2020-02-05 10:16 a.m., Arindam Nath wrote:
-> > From: Sanjay R Mehta <sanju.mehta@amd.com>
-> >
-> > Currently, ntb->dev is passed to dma_alloc_coherent
-> > and dma_free_coherent calls. The returned dma_addr_t
-> > is the CPU physical address. This works fine as long
-> > as IOMMU is disabled. But when IOMMU is enabled, we
-> > need to make sure that IOVA is returned for dma_addr_t.
-> > So the correct way to achieve this is by changing the
-> > first parameter of dma_alloc_coherent() as ntb->pdev->dev
-> > instead.
-> >
-> > Fixes: 5648e56 ("NTB: ntb_perf: Add full multi-port NTB API support")
-> > Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
-> > Signed-off-by: Arindam Nath <arindam.nath@amd.com>
-> 
-> Ugh, this has been fixed repeatedly and independently by a number of
-> people. I sent a fix[1] in more than a year ago and Sanjay repeated the
-> effort a couple months ago[2].
-> 
-> I have the same feed back for you that I had for him: once we fix the
-> bug we should also go in and remove the now unnecessary
-> dma_coerce_mask_and_coherent() calls in the drivers at the same time
-> seeing it no longer makes any sense. My patch did this already.
+updating with my email address.
 
-Thanks Logan. I will include your patches in my next version of the set,
-and mention you in the "From" tag.
+Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
+Signed-off-by: Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+---
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-Arindam
-
-> 
-> Thanks,
-> 
-> Logan
-> 
-> [1]
-> https://nam11.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.
-> kernel.org%2Flkml%2F20190109192233.5752-3-
-> logang%40deltatee.com%2F&amp;data=02%7C01%7Carindam.nath%40amd.
-> com%7Cabc7298c86c54b82db1a08d7aa6b66aa%7C3dd8961fe4884e608e11a82
-> d994e183d%7C0%7C0%7C637165251004193969&amp;sdata=52DOTHpKjseZjv
-> E6jmWWVVLQLeRiaykbVTQipGQbLT0%3D&amp;reserved=0
-> [2]
-> https://nam11.safelinks.protection.outlook.com/?url=https%3A%2F%2Flore.
-> kernel.org%2Flkml%2F1575983255-70377-1-git-send-email-
-> Sanju.Mehta%40amd.com%2F&amp;data=02%7C01%7Carindam.nath%40am
-> d.com%7Cabc7298c86c54b82db1a08d7aa6b66aa%7C3dd8961fe4884e608e11a
-> 82d994e183d%7C0%7C0%7C637165251004193969&amp;sdata=RFR%2BLFp5a
-> ON1MA4Erx4soqL9pLHc%2BLWVNuLY0%2B0zcbo%3D&amp;reserved=0
+diff --git a/MAINTAINERS b/MAINTAINERS
+index b9a8d15..040ac53 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -11734,6 +11734,7 @@ F:	scripts/nsdeps
+ F:	Documentation/core-api/symbol-namespaces.rst
+ 
+ NTB AMD DRIVER
++M:	Sanjay R Mehta <sanju.mehta@amd.com>
+ M:	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>
+ L:	linux-ntb@googlegroups.com
+ S:	Supported
+-- 
+2.7.4
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/MN2PR12MB323292771789FEBE5EEFCD439C1C0%40MN2PR12MB3232.namprd12.prod.outlook.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1581067318-103927-1-git-send-email-Sanju.Mehta%40amd.com.
