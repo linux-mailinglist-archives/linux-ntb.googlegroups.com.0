@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBC6JD5V23ENBBY7LWXZAKGQEKZYLHQI@googlegroups.com>
+Return-Path: <linux-ntb+bncBC6JD5V23ENBB4PLWXZAKGQEVKT6PYQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb37.google.com (mail-yb1-xb37.google.com [IPv6:2607:f8b0:4864:20::b37])
-	by mail.lfdr.de (Postfix) with ESMTPS id A17F0164CEB
-	for <lists+linux-ntb@lfdr.de>; Wed, 19 Feb 2020 18:52:36 +0100 (CET)
-Received: by mail-yb1-xb37.google.com with SMTP id e84sf1022123ybe.5
-        for <lists+linux-ntb@lfdr.de>; Wed, 19 Feb 2020 09:52:36 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1582134755; cv=pass;
+Received: from mail-pj1-x1040.google.com (mail-pj1-x1040.google.com [IPv6:2607:f8b0:4864:20::1040])
+	by mail.lfdr.de (Postfix) with ESMTPS id A11AB164CF5
+	for <lists+linux-ntb@lfdr.de>; Wed, 19 Feb 2020 18:52:50 +0100 (CET)
+Received: by mail-pj1-x1040.google.com with SMTP id c31sf581448pje.9
+        for <lists+linux-ntb@lfdr.de>; Wed, 19 Feb 2020 09:52:50 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1582134769; cv=pass;
         d=google.com; s=arc-20160816;
-        b=loH02lIztp3aOZ7gLVtTtU01hokDtGO6t9SRgCvKyiorTzkL6jcvAykLn5I692zNWC
-         +S4g6FFw3RA84BhT+NOU1pco05K21pPC3Frblh5Z0KWGNOyUUA7NM+rG0xiw+7JsFZH8
-         GzwgykH167FMTV9uOV4UnR6z1BFykryTfr366KVFfkn8GkU0U0vpedB7aPyKIvdX7IrN
-         dHYtPgQCDDICCw3PGNkfRYeJOt0sFExqPZKwcFjcIoLOSG2EGYU4G4UAUUzFQ6j70t4x
-         ZneE8LdjD7nfJul9pZtRHe29y756Sx61rOtymIYjua4nf23xconR+5MvMuwdQ7HRmMPY
-         o+tg==
+        b=wjrW6er1GcHJedURFpApm45K3a8+vK0dIBQnZ09dpHTrHduXi71Q6Zw5DDRz0etEAo
+         e5z8gtYwbwdEfNVelPFXgHEG9dtK+uw33Q9I9da42BXhpD6/QQ2lZHZwqLygwWcPm86F
+         rdj5cTAsf9HhiESZGLlMpENfJoBfjHTPtLDSt1bvRenOwl5h67IIIdp2bTYvc4+Sc4Lb
+         ZmwJgqNhTm7FgJyoVNAalmCw9ZcE5UNMEz7tIBSNl82vLTgkzzQKMRVcTjXTksbJ0nQq
+         X2c4XAZKqqAd6ICQXgtfw+/RxWxiwMR2CQ2z8HfP2XtlcGUn2OYG+U6m4/BDhEDonmGC
+         10nQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:mime-version:sender:dkim-signature;
-        bh=KvoRCY5I+iUZgQiQf9x71i3i0rg0Ldzm3DhJAaepRKw=;
-        b=AWn0EOyYgjrqChG4Z+5WXhAqLtr4aRGiJbTi2wCskAkb85nTZLbyw80BJZOtRMImSe
-         w1Ka9/iz6eFLTrJhUrbIwnjPZbSDvjNrh0ifiHM/2UbGDTjfrHHBGkhGLlGmIGmw/dl1
-         NSVi9vGkSj1bb9eDpBkomRWwpDvzi4nm7UwWiLpHDMMVg/A8hT0VQzCOnTDWOa/cJhmm
-         U2DEJE4oiejxvf1bsHu/ybU1Zox4RB7v0D7eboulu0ZBDl2NIxyOPAxLF9ddhTdJBxU8
-         h2UQ0RU/yBYklPlViB8pcolF+q6oTwZDOFm3Q72gxAZ1RcHqw4XKMl1ixkfzQVch/MvA
-         rJhQ==
+        bh=7IjU6W2/vFyuA/wXlkYfhz4srrTWjFncO0JiaxnDaa4=;
+        b=XWga4Tfs+4paRTaRN8tIwfymI1klr/cfd3/wB1Z9XPenOxaXsGFAgG6b0nnkPvgnQV
+         HX8NwpxiY/z6gAqt26aNru2NMHeouinEYFyepMr+OyGjcNEU1sMOsVC0mVySv5wIAnSs
+         HbtJjoIJr0KS/XKCFTE/a3ubRrXibsZtniOS5TjU8u/7r4Vi4rO6tmMwCYbzU7Tn/mkF
+         HPnCC/l0NHnzYDtlORmsbynlmE92AtzYVj7zTgoYgu0MD4CBL38ZFz1pjSqy0aLuTqxP
+         3kzRHJZhVq9wrRnJ6RdR2AAp0HliLbc8EZgKkIIAwSeUCCrU3qAiklVayikKS+e1oVVY
+         y8JA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mWeABfyO;
+       dkim=pass header.i=@kernel.org header.s=default header.b=O8OazZxy;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :references:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=KvoRCY5I+iUZgQiQf9x71i3i0rg0Ldzm3DhJAaepRKw=;
-        b=j0DMvBv5y00K22XCa6y/QDlRknT0ujmE5OfoGgx1XRB5u8arEI06m6xTTvkiCuLK0m
-         GxagxieUfGc0HiUKNTcK9XYeV0tvTCHSyl/8eOdaZeo6jjrz39wQdKCdS3486JfWlF29
-         JOWfay9xWgCLyvQWbsvcJWwfWTCrlW52pME/knXQ9w57Y1gPvYuqDBx/Yu2ZaLzMrUYc
-         eaK4mlEBhEjvkZ4Qpre526uq2ba+g+33z4+KO0RkBLASHwdaHO/HqM6J/zWxoVR07G5X
-         C7UVrDWE5FBS9Q6P94VnvMB7pU5MWiIlP1WS93YzmQwV1M30snfWCqFPz4FbD8rbshcT
-         VYQg==
+        bh=7IjU6W2/vFyuA/wXlkYfhz4srrTWjFncO0JiaxnDaa4=;
+        b=HAwBigOyigFbv+1VLzteExnZfFzPDTpg294TPL9mVt5deZi2NH+D319fbwi/BZP0XT
+         DCC57uQnWAp0g7CmhV6uF2tPBuaZYNk97kx3taRoEor4F7jylLNvoEePMF3vaANZXBdc
+         4d0XXUh6SVfxEre+M+dFgWoDQ/2h/zpvyGc0ORCLj23owRXQobyZS8B2xuuVcjJ8/7Q9
+         qb6rLRN2scULrEpWzDUBpljcnfZXv5lSMHhtn/1QcRvzLliMaB65zGlk7SwCCTjGt8en
+         UMsf6itVniuIrfNPLRyqNl7S9TmkbJK782kAHcznUiXtA/lTAA4g3n43MseejV0g30kA
+         OWhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:to:cc:subject:date
@@ -49,58 +49,58 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=KvoRCY5I+iUZgQiQf9x71i3i0rg0Ldzm3DhJAaepRKw=;
-        b=r9z372KbahgzCyL2cegJx1JejM+kueGNUY7nsElhChwLPtk9mMq4NY9zxeb1OGlT1W
-         tiMCRrw43oAa3r3KD7VMxnWt8j0SINzJo+9VK268fR2HrcHORfC8WMPnm8Wt4KOmfT/L
-         cOqpvV7yiQhGDAfRV8xBVkAhzf+nA9xwliY8m9dDWV6NXG7uXJiSRR0k6hiLULaY7SPg
-         38od+F9+ff7gcwl+/Kz9BDcidMwrFujCDE0FneT/gs1uCUXu/OYq552+3gEpnSm5O38h
-         pId/JOPPoZsy/Oqq7/q21/uQUJrucq3s5xnGezjVjIoOASFmjo9DGlqyFulz1Fja27e1
-         cQjg==
+        bh=7IjU6W2/vFyuA/wXlkYfhz4srrTWjFncO0JiaxnDaa4=;
+        b=G/39U2rnMG1jRqXouf2caBBE604Svv2B3EkoFQEqdsUX916MS/XxvPwkgELhck58VT
+         kXU0hXNuqGx8ROEsIpcDp9zT7ofKd3FR/LUtGbMsFhoVTgsKmXlcKnzbV6bL3m4z4Rt6
+         wdegS7Fdw/6s/yWhR0IxYOVfM6YUYLVWFKEhp6nyGnf3RRx4o06u0WLB1g5hw6IQ7GS1
+         5LoxwLoLUhep2en42QFB9LwBE6NZjV95eIc+8fKFB92QBJ6pflc+SyH519II4gjDTsn0
+         2yB1B3d28DFn9fHTB49camXaNNvDDxNyJQ3YOJZOWWHDpHwsKJfDHIk6O1U6q356jwIG
+         fxBQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: APjAAAUiVFCja6rW/QJ2yRaLeNx219qsKoqJ7qw7RTDWRJkl729kXqK/
-	U7jCIGgUxi4bUuh92cntx3o=
-X-Google-Smtp-Source: APXvYqwAWFkCzoCul/tRN7+C6WZAUHYRZbO8umAGK1E7RMHSZs8SukVQxKm+9cErJ9/FiAMnTcFTvw==
-X-Received: by 2002:a81:2392:: with SMTP id j140mr21407205ywj.361.1582134755433;
-        Wed, 19 Feb 2020 09:52:35 -0800 (PST)
+X-Gm-Message-State: APjAAAUgp1lo+l5TJkUn6JwaXD8wByJqO0N1oRzzbSx7w04y0HnDTcYd
+	V5SXIgIEa9J5TgO/rH/ZnUw=
+X-Google-Smtp-Source: APXvYqxwjCo5NhQEoe/McCvEipb8JYOw17LZKbDjbcn43vyUl2p7DJQpwuOSboyeVt/kDT86tf96Gg==
+X-Received: by 2002:a17:90a:1785:: with SMTP id q5mr10284749pja.143.1582134769342;
+        Wed, 19 Feb 2020 09:52:49 -0800 (PST)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a25:8012:: with SMTP id m18ls64940ybk.9.gmail; Wed, 19 Feb
- 2020 09:52:35 -0800 (PST)
-X-Received: by 2002:a25:3106:: with SMTP id x6mr22353508ybx.496.1582134755064;
-        Wed, 19 Feb 2020 09:52:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1582134755; cv=none;
+Received: by 2002:a17:90a:6644:: with SMTP id f4ls3172855pjm.2.gmail; Wed, 19
+ Feb 2020 09:52:49 -0800 (PST)
+X-Received: by 2002:a17:90a:1e63:: with SMTP id w90mr10058726pjw.36.1582134769001;
+        Wed, 19 Feb 2020 09:52:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1582134768; cv=none;
         d=google.com; s=arc-20160816;
-        b=Iz1iFLqnwDyhf/S8QgQtmOWJTMGlEY0uhdpPKCUiHh/QC5HASARsBd+NLzWgGh5jfK
-         57DTt9OvYD3MBkHehpBb3eObfhDStP8g2I9VBgMNsb0Fm3WXmeJsHexa26EVePlOjihC
-         fbpoUwVUpB+rk1VI5S+OsUHf4iPt/cNE8Q+dysl195AbyyKYHW5T67KpyXaCpCCozj/R
-         cPBqD3Ds9KcUIcWbJLai0xyl+/F5M/RuAYjGkoLJ/ZbNzUMnB2dmvT/bPpaPYNcK1YN5
-         gFXw/z+sdOhwThFmD77oECbcvR/mKYds+d99HqoDCy4UCDGaLG5WHRNewIRLB9zvngJB
-         oB0g==
+        b=Lg7Xbunz4xa6Neo0aXMfx5J/eD4rqChSrsKDT3W3RYnNiOJ50OvwLkzDyGB4fzA42r
+         /2rh0yLQiCn5Bsxhq+rkrSr5jrH/aMnBLyfUmJssyy0Vb//LExMilYGyAHiZcmljQPFt
+         msR95DbD1VNsTxB7BQsSdFYr+PSvzNpG3id0QLn1mxRYeH/eYLi3k3TgUHz9+xJotEg7
+         rvOEOpOSk+b+9Bk82OedZfGZi0X5FxPqxKiliZ8r4xnZBwvmYAN0A0mR4w8PPzcCo4Zh
+         fCZcPKJDf3SimJrR54lMzV3nAVwQUkRb7SIR8q3+qGjzCeWK/44B+jxtHsfvH1BIG4hB
+         3tQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=Dpv5vCQ4bdVkF/ckiAevk1Q0QwlRloArr6NdVH8CWFs=;
-        b=j8AMD2hgoI3x8iUt/6k22aq2zsa0iOlI9Vbg8/laJOyDRvGnWKena+af3sSCj5pxYY
-         tA58YScp/n68bWFe8w7x0Cjd+DyBfX1jns2DrIs4tefDRrvXmmakqc9irW4mEaEeTwjA
-         zyoKTUkTSUWAee8AneX57fiGErzjaW1Naz8D6oOxElFb/XgGPr5B3RTEEr+PdOF39yxI
-         K24v+V/YeBUuizLFVa2He0+tua3277FLLxP2thGVmNywvHEmkqCZv0xzs3NF8c8ebHFV
-         Xmq6hX82PVcj1myWIlrTvHTqkyZZhmUWv1AwFpz5T/zn+mSGnPm01XD8wLUHiMK7Sw1U
-         d0Aw==
+        bh=uvAlVduTAljZEnm7HrRWLbUdDjNy6TWY9Rhsall6Yhs=;
+        b=uhmQkepidYLh5fasT/ehUNLKsvF5ga7MXndalKZrLHQE00D2UfMPJngPCicydVxF7Y
+         zS4S/siHaMjyjn6G4FBgVyuWIe5rMTn2O2rzGvcqasMYxMsd8YDFmawffmKFi62NSoo0
+         Pp3V69rTRuurjIYUtlQub0Gla6fdoiLAQhlXZlQWCTAAoAlLrEWree6rkLHxPxH9Gpsn
+         vzjRxL1EpMg7isQ0BkUg3HiQuNJ5IXYs/kdJmAZ2Qgn3yNkf+CpasWA90e6Cxd/lxk1U
+         kQW0+EM4Gogge60x60gpFslev5jkaq2XtLnWxhHJ0mk9cpRt+BQ9xO73QMtAlCF0SKiw
+         yx6g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=mWeABfyO;
+       dkim=pass header.i=@kernel.org header.s=default header.b=O8OazZxy;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id d78si71304ybh.3.2020.02.19.09.52.34
+        by gmr-mx.google.com with ESMTPS id s6si46431pgq.4.2020.02.19.09.52.48
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 19 Feb 2020 09:52:35 -0800 (PST)
+        Wed, 19 Feb 2020 09:52:48 -0800 (PST)
 Received-SPF: pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Received: from localhost.localdomain (unknown [194.230.155.125])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 6BEF824672;
-	Wed, 19 Feb 2020 17:52:23 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id AB78B2467A;
+	Wed, 19 Feb 2020 17:52:34 +0000 (UTC)
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Richard Henderson <rth@twiddle.net>,
 	Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
@@ -148,15 +148,15 @@ To: Richard Henderson <rth@twiddle.net>,
 	virtualization@lists.linux-foundation.org,
 	linux-arch@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [RESEND PATCH v2 8/9] media: fsl-viu: Constify ioreadX() iomem argument (as in generic implementation)
-Date: Wed, 19 Feb 2020 18:50:06 +0100
-Message-Id: <20200219175007.13627-9-krzk@kernel.org>
+Subject: [RESEND PATCH v2 9/9] ath5k: Constify ioreadX() iomem argument (as in generic implementation)
+Date: Wed, 19 Feb 2020 18:50:07 +0100
+Message-Id: <20200219175007.13627-10-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200219175007.13627-1-krzk@kernel.org>
 References: <20200219175007.13627-1-krzk@kernel.org>
 X-Original-Sender: krzk@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=mWeABfyO;       spf=pass
+ header.i=@kernel.org header.s=default header.b=O8OazZxy;       spf=pass
  (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted
  sender) smtp.mailfrom=krzk@kernel.org;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=kernel.org
@@ -181,27 +181,56 @@ so they can be converted to a "const" version for const-safety and
 consistency among architectures.
 
 Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Acked-by: Kalle Valo <kvalo@codeaurora.org>
 ---
- drivers/media/platform/fsl-viu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/ath/ath5k/ahb.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/media/platform/fsl-viu.c b/drivers/media/platform/fsl-viu.c
-index 81a8faedbba6..991d9dc82749 100644
---- a/drivers/media/platform/fsl-viu.c
-+++ b/drivers/media/platform/fsl-viu.c
-@@ -34,7 +34,7 @@
- /* Allow building this driver with COMPILE_TEST */
- #if !defined(CONFIG_PPC) && !defined(CONFIG_MICROBLAZE)
- #define out_be32(v, a)	iowrite32be(a, (void __iomem *)v)
--#define in_be32(a)	ioread32be((void __iomem *)a)
-+#define in_be32(a)	ioread32be((const void __iomem *)a)
- #endif
+diff --git a/drivers/net/wireless/ath/ath5k/ahb.c b/drivers/net/wireless/ath/ath5k/ahb.c
+index 2c9cec8b53d9..8bd01df369fb 100644
+--- a/drivers/net/wireless/ath/ath5k/ahb.c
++++ b/drivers/net/wireless/ath/ath5k/ahb.c
+@@ -138,18 +138,18 @@ static int ath_ahb_probe(struct platform_device *pdev)
  
- #define BUFFER_TIMEOUT		msecs_to_jiffies(500)  /* 0.5 seconds */
+ 	if (bcfg->devid >= AR5K_SREV_AR2315_R6) {
+ 		/* Enable WMAC AHB arbitration */
+-		reg = ioread32((void __iomem *) AR5K_AR2315_AHB_ARB_CTL);
++		reg = ioread32((const void __iomem *) AR5K_AR2315_AHB_ARB_CTL);
+ 		reg |= AR5K_AR2315_AHB_ARB_CTL_WLAN;
+ 		iowrite32(reg, (void __iomem *) AR5K_AR2315_AHB_ARB_CTL);
+ 
+ 		/* Enable global WMAC swapping */
+-		reg = ioread32((void __iomem *) AR5K_AR2315_BYTESWAP);
++		reg = ioread32((const void __iomem *) AR5K_AR2315_BYTESWAP);
+ 		reg |= AR5K_AR2315_BYTESWAP_WMAC;
+ 		iowrite32(reg, (void __iomem *) AR5K_AR2315_BYTESWAP);
+ 	} else {
+ 		/* Enable WMAC DMA access (assuming 5312 or 231x*/
+ 		/* TODO: check other platforms */
+-		reg = ioread32((void __iomem *) AR5K_AR5312_ENABLE);
++		reg = ioread32((const void __iomem *) AR5K_AR5312_ENABLE);
+ 		if (to_platform_device(ah->dev)->id == 0)
+ 			reg |= AR5K_AR5312_ENABLE_WLAN0;
+ 		else
+@@ -202,12 +202,12 @@ static int ath_ahb_remove(struct platform_device *pdev)
+ 
+ 	if (bcfg->devid >= AR5K_SREV_AR2315_R6) {
+ 		/* Disable WMAC AHB arbitration */
+-		reg = ioread32((void __iomem *) AR5K_AR2315_AHB_ARB_CTL);
++		reg = ioread32((const void __iomem *) AR5K_AR2315_AHB_ARB_CTL);
+ 		reg &= ~AR5K_AR2315_AHB_ARB_CTL_WLAN;
+ 		iowrite32(reg, (void __iomem *) AR5K_AR2315_AHB_ARB_CTL);
+ 	} else {
+ 		/*Stop DMA access */
+-		reg = ioread32((void __iomem *) AR5K_AR5312_ENABLE);
++		reg = ioread32((const void __iomem *) AR5K_AR5312_ENABLE);
+ 		if (to_platform_device(ah->dev)->id == 0)
+ 			reg &= ~AR5K_AR5312_ENABLE_WLAN0;
+ 		else
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200219175007.13627-9-krzk%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200219175007.13627-10-krzk%40kernel.org.
