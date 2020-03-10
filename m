@@ -1,175 +1,131 @@
-Return-Path: <linux-ntb+bncBAABBTH5T7ZQKGQERVOAHSY@googlegroups.com>
+Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBQEJUDZQKGQETRHGYHA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x539.google.com (mail-pg1-x539.google.com [IPv6:2607:f8b0:4864:20::539])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6C65D1809A2
-	for <lists+linux-ntb@lfdr.de>; Tue, 10 Mar 2020 21:55:42 +0100 (CET)
-Received: by mail-pg1-x539.google.com with SMTP id x16sf9341130pgg.5
-        for <lists+linux-ntb@lfdr.de>; Tue, 10 Mar 2020 13:55:42 -0700 (PDT)
-ARC-Seal: i=3; a=rsa-sha256; t=1583873741; cv=pass;
+Received: from mail-yw1-xc3f.google.com (mail-yw1-xc3f.google.com [IPv6:2607:f8b0:4864:20::c3f])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0D923180A3A
+	for <lists+linux-ntb@lfdr.de>; Tue, 10 Mar 2020 22:21:06 +0100 (CET)
+Received: by mail-yw1-xc3f.google.com with SMTP id m8sf241030ywd.11
+        for <lists+linux-ntb@lfdr.de>; Tue, 10 Mar 2020 14:21:06 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1583875265; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ah9pNSVWqFId3WhzkrqzbidbnSjJEQejLC+GyTZl8EC3DMT5FeTNBXP48GJA4FF77W
-         ikPQQ5BxjAyUj8a1qPEU5zxJRm0Mj82onwYDrxfJAhOhbzcCmoTlqYSVzOC8h+nNFoSj
-         ADesCQkP5qKAvuywaWV3PGfCOl3kZf/fwpkbLjFuPsYEBJdMIhtNqyQz3ETx10voy2ts
-         wt8/tgY4vVdwmrDiNY6oZnY1tM1JKAcW+xaJEPHX1X2yd74nhpJm3yRNhs41Z8j3flnY
-         vdP1v511bJ26ernJhKp9lFTPu2AOlmCOv0uhJtL54yscNZenivkFOU2eJb29JVw6Wsiz
-         jJ8A==
-ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=nRXI4tI+2iXBVtNvgW+UJ5TVXML5qDIdleHVkCOlGT9Gs/8sukPhw7nc++MBsPj4ot
+         TpcYgFbFPrxEiw2FyRO8mzZfN2DhlUdLH7KSJyLoORNRBEscF08Z+7galWa5K9E4ju/e
+         6TBVh68BpmLmVBz4NpCcR84b7cME7CQHjJI8aD2UNy/8u30etRdNUO6jOhu30eeJ28h9
+         36mjGHBurIPCoue4BSY4mUfXZnV9NSAhx2GgbQsmiSnt4BnWy07+d6wl7uwlUlSJM02t
+         wkX4uXw20n+5rxkWiQu6sDDCEE0kVHcb8UO3zzOFLWndqSaLqwsePqT1FYlpdXSJ7dFG
+         Q3iw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=bx1ZCzPvoUSfA4m5X3cT4InRmNMupIP7kRys9BKvFZk=;
-        b=hip7IAP5MNufF/NPDllZYs/I9Ob8B/+LWaurj9pwqEhfqqgXLIwCW/NDRaF6hoCJ53
-         2ijSBRbDwUMTleyzgoCF5qPDTouyNZGU6cH6OXr6Rgp/zI6b6CeCo4koysYr12hBH+uC
-         DEKgs9VHWfTPxTqdjYQqlYVdxr3nJ2D4t2s3M0Pfatp/xUXYDsl8Ng6Wmwz0rYCx3L8Q
-         Vw7mG6Zb2W8xDHQG//aNW7uS4SvG7Xxiy6yUwUN25EyQJUn0zZzdLp7EZA8RYCO00X2N
-         fCJPvhZbH+Fl6cpgT3z1pFKGekkY+Dq4OPqgDobf8OLJq0+N8n/xBgcAIYGiCujlAqAU
-         BOkw==
-ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=i9w8VsHi;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.93.50 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+         :list-id:mailing-list:precedence:subject:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:sender:dkim-signature;
+        bh=wgoBaQ19iUdsh2/fSDG8CL0ejgPhaF/MjnF5N5y6a9A=;
+        b=ZemfU9WZOGXLPbuMDC3sjgZKj32vUPsWd4VkjpM9KniD8SOwk67IMD2X440ymh0mQ6
+         KLErSnS1HwUpJAM9KKWqHJC2E39Zhr26wHFJQH0WIEfEPAEqD2NpUNXpIN49kytbY3jr
+         BtgNRX7JRiQaXTC5RJQGC+32PVqfok3HBL2sOcb/A7HVJyZKL4indXT0fIik8t9lXGQs
+         gioxB6//PkqbJNl5vk8F9MxWMdoHds4Wj4FIAn2soYsUcZKT+BScZ9I8KfcmHuXyqju4
+         ehGlhmVnLxvMGp5mM5vdB4t/jUZbecIKaS1W3RjlL1N19h/DEl/dnd7swYOcMevqoME2
+         uTLw==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=bx1ZCzPvoUSfA4m5X3cT4InRmNMupIP7kRys9BKvFZk=;
-        b=F8SHVfLAy9CI9jwJ+NPaeQlin4q0Y81qdruSXnE2Vy5gdkV6z5qKPHNLB5ph588Pan
-         HNnEIFHhr/3MTKNx+aWarVX+NTtPy13xkJnVmbODekAWueYHalWc5WTNn3mnyURoxE/y
-         7cCgtk/H5p/9e02FsPvKz1tMHXbCLGuoj9V1yRaICGK0MlktzSer3ZUFBNXdzFKo8g+n
-         9iEaFIE8tmSBQICzb/0UCDPqqJGFP3y837jb0Bj5ss3SZP2lDy/l1hKf/9h1QpyNAYZY
-         fQZcy1+AhxYGcxs2KvIvPFa0Y6175pUypqxUWptwmhQE839oojLt3YPEOyZzk8f/7/uU
-         uhLA==
+        h=sender:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:subject:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=wgoBaQ19iUdsh2/fSDG8CL0ejgPhaF/MjnF5N5y6a9A=;
+        b=I6eMwTabq87vAuPZg8zGE+VQsuHkpi5B+XXNYZwVN8xBZaS/h65JQvGl/T9v2D6MSt
+         SQzKQaO9heFdSYvNZi7BCy4m4okHWTLbeBAqBbtZRxMf4zF/GW5gfxQSIvgf96QtorEH
+         +k9vGZOOPby8FcbpwXISSOzCnFmzjW2rtHzuUsWGSZ8q3u1ampd5byk1AjAq6TV6As53
+         CDnKeKRrLFg7t4qLn9/1nZAX1NGbPhKlEzC/S4l2x/otf+cOBpny7vy8FFz4iXeOo8zD
+         8QTesEy3wamL9JZ2q61803CFiBqBq1cp1bzwHLoNHG6KjTsKS9he0uArBqIdLnVLggTT
+         gNFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=bx1ZCzPvoUSfA4m5X3cT4InRmNMupIP7kRys9BKvFZk=;
-        b=BAgaRCknm07gpE3wWFBawYTnpwLXKTvmofXVkf3KzwaquIdCNd+H8EU3Q3ZSNC9Mc5
-         MeOlC+K2fHJ2J6LJa9e33MhsOh1V9o6/jcHBd+MMSMt7cXccNm3Pdov7cLWNhyU6tL+Y
-         ELQM2EGJ2c6AA8ZsucmqBjLan/9AKZZX7WxfDsPOnCRw9qKGB12Xf9r1R9/h749Tojx4
-         SoQdiy3ehVYviv2nVQHmydpJGzeu4IHGcEWhBuR0QumS02n/RPqHDywcTtavBTO+nVgc
-         P/PBtawA4N1Oiwv/LA+d6ZIJudjz9cxdv0mAQjP7uiGZclkCyR/xxZxsuuZCayWLr/OT
-         e0lw==
+        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language:subject
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=wgoBaQ19iUdsh2/fSDG8CL0ejgPhaF/MjnF5N5y6a9A=;
+        b=jRPumbwJXUxAfx8CWji7FU7ggIL4Z4n2fCqVfXQ4Hy6RTzhSH42r1kXE29j1fgS4wq
+         pIGbi+f7Fo76gOLK76qA0jzWivmPKply1iMAw83jPeZQ0bnLUxJXDWo9/bilgzQG422/
+         ipd7aN3dcGiA7i3CAiH7u36euZuH2/e+fLgyNuGaLR0BCgiTD1H9rZTEsK+c7PwFlabB
+         2NVJP6u+/0QjUHAV6Y5h9rOdPeWE2nfTBWNlxQmvDWqQ3+qIcY8cKwHhbvcMoyyR4Ikw
+         NfbWKybEQX++84KtU57EZRcXIR+IWzgVnjaDpc4Di14epARIeySY0f9q5dMWxWIt0IZ4
+         +new==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ANhLgQ0YU86/Pgb0XICu8kXcNfcDEI3PRGJbmxnrDVPF884SwPq0tRae
-	UF50AiyexOdS/HUFAU/w9q4=
-X-Google-Smtp-Source: ADFU+vsSZXjxLs2ern6FVlbUcAH76S68At85J6cN0692bI4ULM3zLHPFLxbPm6TmGAZ6AjpVvooPMw==
-X-Received: by 2002:a63:b216:: with SMTP id x22mr1222376pge.198.1583873741077;
-        Tue, 10 Mar 2020 13:55:41 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ3gmC/tA1Ft/+qFLn3CdeCfLSLV+MpR2YvMHlsm2RDovgMrA8KG
+	Ln5rT43SnL8RvwUJLGBu6aA=
+X-Google-Smtp-Source: ADFU+vvmGqzP0LfnGtK0xTAEZ5q5VDwQuP449spZn6GhsFfznMiRkpXEVj8NsqzWlB5oKjLNyWnojg==
+X-Received: by 2002:a81:a456:: with SMTP id b83mr15165975ywh.166.1583875265027;
+        Tue, 10 Mar 2020 14:21:05 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:90b:3851:: with SMTP id nl17ls773677pjb.1.canary-gmail;
- Tue, 10 Mar 2020 13:55:40 -0700 (PDT)
-X-Received: by 2002:a17:902:7d94:: with SMTP id a20mr8044028plm.307.1583873740659;
-        Tue, 10 Mar 2020 13:55:40 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1583873740; cv=pass;
+Received: by 2002:a25:5789:: with SMTP id l131ls4020376ybb.9.gmail; Tue, 10
+ Mar 2020 14:21:04 -0700 (PDT)
+X-Received: by 2002:a25:3f43:: with SMTP id m64mr26306857yba.217.1583875264523;
+        Tue, 10 Mar 2020 14:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1583875264; cv=none;
         d=google.com; s=arc-20160816;
-        b=1I9P+DxjZ9BpCuxDmwCS56Dr9YUB0ZaKnr5gFFWEcZ9hJsrE6KTJfS3uoxPcaKTMgP
-         TY8iMcHomU13Zo+kGX8IIU/ijQVmCijK2GaDvTgZF8Sb0KwK5EomXLbpiMEsJ2CHL0u8
-         hSg1/VREBzeJG3/OysQqflhUlbWhwADzv1XE0h3DJInaD3iumDfWZFLLTdVohWvCBre+
-         /9JjOWJjBNxQ6lqwzc2Q4Uq4b1/ujKjGC5PsSYb4qoIQS08PdcD+/WWHiR204muzdgNv
-         H5Hi2J+u93BiRjAiJLYpeJVjKDg08+7VonfUpFrEEpJEJ2ZK/GGl+Ka4/0HgaISPttoz
-         5AaA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=/NH075+zFNvlnqWVy1IhzqbRw6HT0o832CSe1PdyReY=;
-        b=D7yuOkbS1TaRFey42bRYjB1IjUnnHR7j0xCsao2odsLElkxJCgcICrenKzCrlJGUIH
-         XVVZQMcJnlWvYe/O9A6kLn2vlCJNv+sXSpAbbzsKzaAtusOdQ+d40M/eDnPXIsomtAHa
-         x45S/WR+T42gmdpbOmU9p5gZMVNKR9zjkKxHeMiTAU2uHiLvMX33OLszhtE410P3BnWb
-         5rdnfBoOqOGSzzCXeIXwCPOF33aJgLMSLIZGhAQX+hkF44/QAH2EIiS4WlBe4H9W6L4/
-         tfBwFwQfmfAb4Q1vDoE8/0MrI9hUNBr8a8/6My+XyuQzA0t2RSL+UQX4e5hTwjWrwUbI
-         HAlg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=i9w8VsHi;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.93.50 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
-Received: from NAM10-DM6-obe.outbound.protection.outlook.com (mail-dm6nam10on2050.outbound.protection.outlook.com. [40.107.93.50])
-        by gmr-mx.google.com with ESMTPS id j12si1734pfr.2.2020.03.10.13.55.40
+        b=mUIpF3loPkx/dTvnumcOtTJvp5pD6LsiitgedH4x4GQXFb8Ximnnb+egmLaWyBL8bw
+         J/7I9cpxvfY+yMFgn4W6YGHwN5v9vQLazPLpBCE2sS5kGxYm6v4EuymuLKcJdZhEOmrq
+         MkUIm6Y1ePYfRQ8VcoJBor/wsxWrerCnCXfa/uvJTiIoIxyOrtMV9+ws3shoL9gSn0/u
+         k6kCqTRy2iFDcaOr3UUUCNqV4FSawFijFa5/q4ufZtfuLuSmCBdW/xohojrdpX4ZUN8x
+         /qdDKcg4gd4VPb7cO9XZyEarWUFSpoLO7TOu7g5gMY0LkWFJayq2sGdE7h8+Vp2oWlFA
+         ubLQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=subject:content-transfer-encoding:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to;
+        bh=EamQKgWrw7melBHCFNxNkNYRUYyseHvljE7jMXfZWSw=;
+        b=PPE7rA+xOkkxB9j/iPrERkKi3nvIwv1ghiJwVRAUkdAwSgdJiBuT5kfAnwEkdYluBJ
+         tKfRFoHySwfP4TugIZTBcH/SeCtD1mLVBkqPSjdbrQJqUdC2+9sZN1l8blysw/lktrVA
+         Bu3rcb884KhMgMeZb63wLgNuOBWtK2Gjgg47oeR8G8bIkuuCi9svJj5HcTvkBcg1fnVE
+         BTebYHbcP/7fdVZpu7kmJWJ15aCXDD3E6vGd0W3m+xFKQVLrf0Uihky86gOW/8OKKq6N
+         DRDiOxbEhKbBzTcpYGOP/YvwrS4Fws6UYJ4DsLMApEp6rFtxSFkuPA4P/HlXs0u58SvW
+         OAMA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
+        by gmr-mx.google.com with ESMTPS id e124si215537ywb.4.2020.03.10.14.21.04
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Mar 2020 13:55:40 -0700 (PDT)
-Received-SPF: neutral (google.com: 40.107.93.50 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) client-ip=40.107.93.50;
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=IYnlnLapU9noPEjK/9RWf2/74LAjnfElUDyTFaB/MQ8LbkD3nlsKG6o1Tn/2XRyLYPafPanickeEtAMvJoNhfCaMUaq8QXr27ZoWA+TxDEYuURs/sxHs6cmME4bQGrW1k9xZAvhBe/A/J1AiswHosv5Zzprei6m6SVpSsclW+H0Rag8krN+uz47dWnFzpKDLt5UUbSu4RpOJyvarEJm/jCYZXF/X0YUTQbzha1ylY529avf4s4zq+3LwLoDZw2RlhxtBZOF0KiM+D6+GBXwY0QkqiSBH/e1e0/JQwTwTPvsxzHEh13XG5Xb6DK655gRMg+hsqfYt2Korn423BlGc8g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=/NH075+zFNvlnqWVy1IhzqbRw6HT0o832CSe1PdyReY=;
- b=VaTMqCOnzzMUfzXs98Cvk2oL9fbWWAGWn6C/yyd/jPZR/67X0eeal0C9qYsfB8BDhOzx6L/oU2h/Q2I/0hd7ENvlfviUg7KorlsTDPINzzEn+EdBU6pYPxYMe6MaqO0fYce4C9LXO9N9ClL1rJj8qhu+d+AEYW3JEwajDfXW9T88PmqvH8e15dgvb6FYo6gKv5WyDgv4aG65neltx2fYFysoe04YkWPld6A0SnEPdYy4MXobzAIq91kIot+IxhZ0HDwWl7SUAREpieaMlfL5NTAb0MPVMu2QbqXvebYJlwWoZ48YZl+DVhxSBI/ibE5tFw7IQHJXCDNyZ3CMssXE8A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from MN2PR12MB3455.namprd12.prod.outlook.com (2603:10b6:208:d0::22)
- by MN2PR12MB4031.namprd12.prod.outlook.com (2603:10b6:208:16e::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.15; Tue, 10 Mar
- 2020 20:55:39 +0000
-Received: from MN2PR12MB3455.namprd12.prod.outlook.com
- ([fe80::f19a:d981:717:3cb6]) by MN2PR12MB3455.namprd12.prod.outlook.com
- ([fe80::f19a:d981:717:3cb6%2]) with mapi id 15.20.2793.013; Tue, 10 Mar 2020
- 20:55:39 +0000
-From: Sanjay R Mehta <sanju.mehta@amd.com>
-To: jdmason@kudzu.us,
-	dave.jiang@intel.com,
-	allenbh@gmail.com,
-	arindam.nath@amd.com,
-	logang@deltatee.com,
-	Shyam-sundar.S-k@amd.com
-Cc: linux-ntb@googlegroups.com,
-	linux-kernel@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>
-Subject: [PATCH v2 5/5] ntb: hw: remove the code that sets the DMA mask
-Date: Tue, 10 Mar 2020 15:54:54 -0500
-Message-Id: <1583873694-19151-6-git-send-email-sanju.mehta@amd.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1583873694-19151-1-git-send-email-sanju.mehta@amd.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Mar 2020 14:21:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
+Received: from guinness.priv.deltatee.com ([172.16.1.162])
+	by ale.deltatee.com with esmtp (Exim 4.92)
+	(envelope-from <logang@deltatee.com>)
+	id 1jBmJB-0001Qz-EH; Tue, 10 Mar 2020 15:21:02 -0600
+To: Sanjay R Mehta <sanju.mehta@amd.com>, jdmason@kudzu.us,
+ dave.jiang@intel.com, allenbh@gmail.com, arindam.nath@amd.com,
+ Shyam-sundar.S-k@amd.com
+Cc: linux-ntb@googlegroups.com, linux-kernel@vger.kernel.org
 References: <1583873694-19151-1-git-send-email-sanju.mehta@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-X-ClientProxiedBy: MA1PR0101CA0038.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:22::24) To MN2PR12MB3455.namprd12.prod.outlook.com
- (2603:10b6:208:d0::22)
+ <1583873694-19151-2-git-send-email-sanju.mehta@amd.com>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <e700a5f6-1929-0d65-b204-c5bfde58f5f7@deltatee.com>
+Date: Tue, 10 Mar 2020 15:21:00 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from sanjuamdntb2.amd.com (165.204.156.251) by MA1PR0101CA0038.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:22::24) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.20.2793.14 via Frontend Transport; Tue, 10 Mar 2020 20:55:36 +0000
-X-Mailer: git-send-email 2.7.4
-X-Originating-IP: [165.204.156.251]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: e056d8b7-da72-45a9-5d0b-08d7c53563b4
-X-MS-TrafficTypeDiagnostic: MN2PR12MB4031:|MN2PR12MB4031:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <MN2PR12MB4031BC4DD1FAEBE837F83A39E5FF0@MN2PR12MB4031.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:3276;
-X-Forefront-PRVS: 033857D0BD
-X-Forefront-Antispam-Report: SFV:NSPM;SFS:(10009020)(4636009)(396003)(366004)(39860400002)(376002)(136003)(346002)(199004)(189003)(86362001)(316002)(66946007)(6636002)(8936002)(956004)(8676002)(5660300002)(81166006)(66476007)(66556008)(52116002)(7696005)(2616005)(4326008)(478600001)(6666004)(6486002)(2906002)(81156014)(26005)(36756003)(16526019)(186003);DIR:OUT;SFP:1101;SCL:1;SRVR:MN2PR12MB4031;H:MN2PR12MB3455.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;MX:1;
-Received-SPF: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 5Psv0qwJXY1m3r+5g6js0LtU+d+WTjLEDu42Pp9w9oUX2cq9omnLQ4PFh/UTXOhEqWjE3NxoZ5bZsubj878LnQrFnClfOztVcJv9LzrmYA4TuNQhxsjKDvGxEw2IP/yUvWUMLTwL9SDdR2JX+bWGv2kjGfNdkZBF8+JKhGSpozP7M64A3STFnxE5+FZlQFXavCoRBs7RuPAXEMgFaHLEfBKmLbcoSDk0daXI4JL9u4FYp8A+RbwhiyTA7psmo8Z2fw7xFpEixTFAbegX8OBs9ymSy7qmo6/s8ULFKy29+UmpIAIThoIhmgA/+8bTC4ljENDPiaoNjTxQnPs86jiJ2+LDL8NU6mfy1WY+j4Vkf0sXC4E18Bnx6Xh0JSuQvOMkR2tSeZVkugjpX7huUrttfuaSSLRJlN6uksLTwGUoV6bYQjS6m0Xo4I1hXb44V+aY
-X-MS-Exchange-AntiSpam-MessageData: P1W37DlnuRM+XKiDl9mvcBsIDmU4Imx//VH45ibVk8XRiMQa3hZgbluURwV/8V6J5CCNeTtftSWPjMUYuiA+9fw9MODdJvr3rKE6St3GKSStwUW1Q+d0uLtx+YvaCiK3jnP+ysS9q6zl3KuCEXa6Ng==
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e056d8b7-da72-45a9-5d0b-08d7c53563b4
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Mar 2020 20:55:39.4436
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: JJWy9a4mFivTx5w8wziyhYAaoBwb8vgecIoZyo+qWdCxEYXUrWWYo6LH7DTGm2I82fYeYAF+meyp9XZp4gbPAQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4031
-X-Original-Sender: sanju.mehta@amd.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com
- header.b=i9w8VsHi;       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass
- dkdomain=amd.com dmarc=pass fromdomain=amd.com);       spf=neutral
- (google.com: 40.107.93.50 is neither permitted nor denied by best guess
- record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+In-Reply-To: <1583873694-19151-2-git-send-email-sanju.mehta@amd.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Language: en-CA
+X-SA-Exim-Connect-IP: 172.16.1.162
+X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com, Shyam-sundar.S-k@amd.com, arindam.nath@amd.com, allenbh@gmail.com, dave.jiang@intel.com, jdmason@kudzu.us, sanju.mehta@amd.com
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+	GREYLIST_ISWHITE,URIBL_BLOCKED autolearn=ham autolearn_force=no
+	version=3.4.2
+Subject: Re: [PATCH v2 1/5] ntb_perf: refactor code for CPU and DMA transfers
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+X-Original-Sender: logang@deltatee.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
+ permitted sender) smtp.mailfrom=logang@deltatee.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -182,72 +138,180 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-From: Logan Gunthorpe <logang@deltatee.com>
 
-This patch removes the code that sets the DMA mask as it no longer
-makes sense to do this.
 
-Fixes: 7f46c8b3a552 ("NTB: ntb_tool: Add full multi-port NTB API support")
-Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
-Tested-by: Alexander Fomichev <fomichev.ru@gmail.com>
-Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
----
- drivers/ntb/hw/amd/ntb_hw_amd.c    | 4 ----
- drivers/ntb/hw/idt/ntb_hw_idt.c    | 6 ------
- drivers/ntb/hw/intel/ntb_hw_gen1.c | 4 ----
- 3 files changed, 14 deletions(-)
+On 2020-03-10 2:54 p.m., Sanjay R Mehta wrote:
+> From: Arindam Nath <arindam.nath@amd.com>
+> 
+> This patch creates separate function to handle CPU
+> and DMA transfers. Since CPU transfers use memcopy
+> and DMA transfers use dmaengine APIs, these changes
+> not only allow logical separation between the two,
+> but also allows someone to clearly see the difference
+> in the way the two are handled.
+> 
+> In the case of DMA, we DMA from system memory to the
+> memory window(MW) of NTB, which is a MMIO region, we
+> should not use dma_map_page() for mapping MW. The
+> correct way to map a MMIO region is to use
+> dma_map_resource(), so the code is modified
+> accordingly.
+> 
+> dma_map_resource() expects physical address of the
+> region to be mapped for DMA, we add a new field,
+> outbuf_phys_addr, to struct perf_peer, and also
+> another field, outbuf_dma_addr, to store the
+> corresponding mapped address returned by the API.
+> 
+> Since the MW is contiguous, rather than mapping
+> chunk-by-chunk, we map the entire MW before the
+> actual DMA transfer happens. Then for each chunk,
+> we simply pass offset into the mapped region and
+> DMA to that region. Then later, we unmap the MW
+> during perf_clear_test().
+> 
+> The above means that now we need to have different
+> function parameters to deal with in the case of
+> CPU and DMA transfers. In the case of CPU transfers,
+> we simply need the CPU virtual addresses for memcopy,
+> but in the case of DMA, we need dma_addr_t, which
+> will be different from CPU physical address depending
+> on whether IOMMU is enabled or not. Thus we now
+> have two separate functions, perf_copy_chunk_cpu(),
+> and perf_copy_chunk_dma() to take care of above
+> consideration.
+> 
+> Signed-off-by: Arindam Nath <arindam.nath@amd.com>
+> Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
+> ---
+>  drivers/ntb/test/ntb_perf.c | 141 +++++++++++++++++++++++++++++++++-----------
+>  1 file changed, 105 insertions(+), 36 deletions(-)
+> 
+> diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
+> index e9b7c2d..6d16628 100644
+> --- a/drivers/ntb/test/ntb_perf.c
+> +++ b/drivers/ntb/test/ntb_perf.c
+> @@ -149,6 +149,8 @@ struct perf_peer {
+>  	u64 outbuf_xlat;
+>  	resource_size_t outbuf_size;
+>  	void __iomem *outbuf;
+> +	phys_addr_t outbuf_phys_addr;
+> +	dma_addr_t outbuf_dma_addr;
+>  
+>  	/* Inbound MW params */
+>  	dma_addr_t inbuf_xlat;
+> @@ -775,26 +777,24 @@ static void perf_dma_copy_callback(void *data)
+>  	wake_up(&pthr->dma_wait);
+>  }
+>  
+> -static int perf_copy_chunk(struct perf_thread *pthr,
+> -			   void __iomem *dst, void *src, size_t len)
+> +static int perf_copy_chunk_cpu(struct perf_thread *pthr,
+> +			       void __iomem *dst, void *src, size_t len)
+> +{
+> +	memcpy_toio(dst, src, len);
+> +
+> +	return likely(atomic_read(&pthr->perf->tsync) > 0) ? 0 : -EINTR;
+> +}
+> +
+> +static int perf_copy_chunk_dma(struct perf_thread *pthr,
+> +			       dma_addr_t dst, void *src, size_t len)
+>  {
+>  	struct dma_async_tx_descriptor *tx;
+>  	struct dmaengine_unmap_data *unmap;
+>  	struct device *dma_dev;
+>  	int try = 0, ret = 0;
+>  
+> -	if (!use_dma) {
+> -		memcpy_toio(dst, src, len);
+> -		goto ret_check_tsync;
+> -	}
+> -
+>  	dma_dev = pthr->dma_chan->device->dev;
+> -
+> -	if (!is_dma_copy_aligned(pthr->dma_chan->device, offset_in_page(src),
+> -				 offset_in_page(dst), len))
+> -		return -EIO;
 
-diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
-index e52b300..a3ae59a 100644
---- a/drivers/ntb/hw/amd/ntb_hw_amd.c
-+++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
-@@ -1020,10 +1020,6 @@ static int amd_ntb_init_pci(struct amd_ntb_dev *ndev,
- 			goto err_dma_mask;
- 		dev_warn(&pdev->dev, "Cannot DMA consistent highmem\n");
- 	}
--	rc = dma_coerce_mask_and_coherent(&ndev->ntb.dev,
--					  dma_get_mask(&pdev->dev));
--	if (rc)
--		goto err_dma_mask;
- 
- 	ndev->self_mmio = pci_iomap(pdev, 0, 0);
- 	if (!ndev->self_mmio) {
-diff --git a/drivers/ntb/hw/idt/ntb_hw_idt.c b/drivers/ntb/hw/idt/ntb_hw_idt.c
-index dcf2346..a86600d 100644
---- a/drivers/ntb/hw/idt/ntb_hw_idt.c
-+++ b/drivers/ntb/hw/idt/ntb_hw_idt.c
-@@ -2660,12 +2660,6 @@ static int idt_init_pci(struct idt_ntb_dev *ndev)
- 		dev_warn(&pdev->dev,
- 			"Cannot set consistent DMA highmem bit mask\n");
- 	}
--	ret = dma_coerce_mask_and_coherent(&ndev->ntb.dev,
--					   dma_get_mask(&pdev->dev));
--	if (ret != 0) {
--		dev_err(&pdev->dev, "Failed to set NTB device DMA bit mask\n");
--		return ret;
--	}
- 
- 	/*
- 	 * Enable the device advanced error reporting. It's not critical to
-diff --git a/drivers/ntb/hw/intel/ntb_hw_gen1.c b/drivers/ntb/hw/intel/ntb_hw_gen1.c
-index bb57ec2..e053012 100644
---- a/drivers/ntb/hw/intel/ntb_hw_gen1.c
-+++ b/drivers/ntb/hw/intel/ntb_hw_gen1.c
-@@ -1783,10 +1783,6 @@ static int intel_ntb_init_pci(struct intel_ntb_dev *ndev, struct pci_dev *pdev)
- 			goto err_dma_mask;
- 		dev_warn(&pdev->dev, "Cannot DMA consistent highmem\n");
- 	}
--	rc = dma_coerce_mask_and_coherent(&ndev->ntb.dev,
--					  dma_get_mask(&pdev->dev));
--	if (rc)
--		goto err_dma_mask;
- 
- 	ndev->self_mmio = pci_iomap(pdev, 0, 0);
- 	if (!ndev->self_mmio) {
--- 
-2.7.4
+Can you please split this patch into multiple patches? It is hard to
+review and part of the reason this code is such a mess is because we
+merged large patches with a bunch of different changes rolled into one,
+many of which didn't get sufficient reviewer attention.
+
+Patches that refactor things shouldn't be making functional changes
+(like adding dma_map_resources()).
+
+
+> -static int perf_run_test(struct perf_thread *pthr)
+> +static int perf_run_test_cpu(struct perf_thread *pthr)
+>  {
+>  	struct perf_peer *peer = pthr->perf->test_peer;
+>  	struct perf_ctx *perf = pthr->perf;
+> @@ -914,7 +903,7 @@ static int perf_run_test(struct perf_thread *pthr)
+>  
+>  	/* Copied field is cleared on test launch stage */
+>  	while (pthr->copied < total_size) {
+> -		ret = perf_copy_chunk(pthr, flt_dst, flt_src, chunk_size);
+> +		ret = perf_copy_chunk_cpu(pthr, flt_dst, flt_src, chunk_size);
+>  		if (ret) {
+>  			dev_err(&perf->ntb->dev, "%d: Got error %d on test\n",
+>  				pthr->tidx, ret);
+> @@ -937,6 +926,74 @@ static int perf_run_test(struct perf_thread *pthr)
+>  	return 0;
+>  }
+>  
+> +static int perf_run_test_dma(struct perf_thread *pthr)
+> +{
+> +	struct perf_peer *peer = pthr->perf->test_peer;
+> +	struct perf_ctx *perf = pthr->perf;
+> +	struct device *dma_dev;
+> +	dma_addr_t flt_dst, bnd_dst;
+> +	u64 total_size, chunk_size;
+> +	void *flt_src;
+> +	int ret = 0;
+> +
+> +	total_size = 1ULL << total_order;
+> +	chunk_size = 1ULL << chunk_order;
+> +	chunk_size = min_t(u64, peer->outbuf_size, chunk_size);
+> +
+> +	/* Map MW for DMA */
+> +	dma_dev = pthr->dma_chan->device->dev;
+> +	peer->outbuf_dma_addr = dma_map_resource(dma_dev,
+> +						 peer->outbuf_phys_addr,
+> +						 peer->outbuf_size,
+> +						 DMA_FROM_DEVICE, 0);
+> +	if (dma_mapping_error(dma_dev, peer->outbuf_dma_addr)) {
+> +		dma_unmap_resource(dma_dev, peer->outbuf_dma_addr,
+> +				   peer->outbuf_size, DMA_FROM_DEVICE, 0);
+> +		return -EIO;
+> +	}
+> +
+> +	flt_src = pthr->src;
+> +	bnd_dst = peer->outbuf_dma_addr + peer->outbuf_size;
+> +	flt_dst = peer->outbuf_dma_addr;
+> +
+> +	pthr->duration = ktime_get();
+> +	/* Copied field is cleared on test launch stage */
+> +	while (pthr->copied < total_size) {
+> +		ret = perf_copy_chunk_dma(pthr, flt_dst, flt_src, chunk_size);
+> +		if (ret) {
+> +			dev_err(&perf->ntb->dev, "%d: Got error %d on test\n",
+> +				pthr->tidx, ret);
+> +			return ret;
+> +		}
+> +
+
+Honestly, this doesn't seem like a good approach to me. Duplicating the
+majority of the perf_run_test() function is making the code more
+complicated and harder to maintain.
+
+You should be able to just selectively call dma_map_resources() in
+perf_run_test(), or even in perf_setup_peer_mw() without needing to add
+so much extra duplicate code.
+
+Logan
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1583873694-19151-6-git-send-email-sanju.mehta%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/e700a5f6-1929-0d65-b204-c5bfde58f5f7%40deltatee.com.
