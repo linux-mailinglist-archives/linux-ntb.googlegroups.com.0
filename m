@@ -1,171 +1,142 @@
-Return-Path: <linux-ntb+bncBAABBK5HVDZQKGQE7NTVH7Y@googlegroups.com>
+Return-Path: <linux-ntb+bncBCR5PSMFZYORBR5KVDZQKGQE4BIA6KA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x338.google.com (mail-wm1-x338.google.com [IPv6:2a00:1450:4864:20::338])
-	by mail.lfdr.de (Postfix) with ESMTPS id AFD8B182E24
-	for <lists+linux-ntb@lfdr.de>; Thu, 12 Mar 2020 11:49:15 +0100 (CET)
-Received: by mail-wm1-x338.google.com with SMTP id a13sf1968504wme.7
-        for <lists+linux-ntb@lfdr.de>; Thu, 12 Mar 2020 03:49:15 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1584010155; cv=pass;
+Received: from mail-qk1-x73d.google.com (mail-qk1-x73d.google.com [IPv6:2607:f8b0:4864:20::73d])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CB29182E58
+	for <lists+linux-ntb@lfdr.de>; Thu, 12 Mar 2020 11:56:09 +0100 (CET)
+Received: by mail-qk1-x73d.google.com with SMTP id e10sf3619998qkg.8
+        for <lists+linux-ntb@lfdr.de>; Thu, 12 Mar 2020 03:56:09 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1584010568; cv=pass;
         d=google.com; s=arc-20160816;
-        b=kS5PEbhg9bIKU6VTkgTSGl8ji4TGwvRGAUhI9G9dWLaEaoU0VINEzU21Jvq0hCoaQb
-         k0FEU814YllqY0t6YD/TgE4ahxVsMBDlB4X2F/LY1Bt+AWFVFOV68qlaqj5GUOhndydj
-         JqO9+FiAIoRORxmODxNCjewQMGnZvvM6pR/87JEh8/o3aoFvK4p86UG21y94Epl40QHr
-         S+o1LtgLN4Cf2AnR/bZdPKb7avXrpOfQ3N8Esykgc1JNCLLQ1WS0GrMMtcqX7CxecOro
-         Tx3E46l8pzhG7suXZaRvGgcLzeaXwyh0Cf0GU88btr1A5cKjx9csXRtI3iyfqrrnFPJz
-         dtBQ==
+        b=kgu4U/Mf5R8pzDpoigJ3GE8/DMIx0r3COwCHZs52zKSHBud81zoDABpQKOu+G169/N
+         6kARDvlAcxsU6gb0KAcH7XXUdQMKwrW/cDtXAASZfG3IgiRKEBXYnsCjA34r4w7UqwB6
+         u8ehaa9XWJDdM4mviqrOz7IQVPQ2QDPmDPUb3AkjxH3yiuRDjPVwcMEM0AcTj3W5n7P1
+         OvEXETjkP8N7Or+O5wLWOdRiycVTjSECiyKXfhI5tDuTxwXVXMYCNb6RkXL5EW86PsJI
+         q8L320Ok3LRqqpwsVD3kI4+GOf26iZl7pSgUoZaPygmqECFfTcPEGBh6UAEc1LRNiEwa
+         NakQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to:mime-version:user-agent
-         :date:message-id:autocrypt:from:references:to:subject:sender
-         :dkim-signature;
-        bh=bW55dDbDs3dHLpZFGvPIHons3lsj6u5Q2B1k0KzyQe4=;
-        b=jk983PwZVlGEacehUIHYwf9gJ85++VPiSR2yP66yJ82Ey7aRmxkdLdpktlRc/2RUyK
-         jRbdvXTkb3kHmLsJ+EXxaFvjgmS3zVcEVEprPEQn91pSKCsSPHKFl/NNMrJYzDhLqXW+
-         ZFRBRElNu9G3ZeGvsI7UmKUpsm2IpaY38nBX7aNMgXdiuqrjaxz5sJON5OdnU+iYj/cq
-         8MGYNOWwNxYscczYEBhdjgbsq5Fo/OFutnq5sK2hwoQf3Laa60wcjTBX++7OdDY+ahrZ
-         QSn1KES2BndiZUbzNcX07LT+dmq3c0/nbnDWvadCEfWiMQVDIqc1aenrUmrjIz/bkhhe
-         cTLA==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
+        bh=VmurZ4IGL8Ke2gd/Vj6hJxuw63qlCgwRGATN19rwI7o=;
+        b=dFCrwimwPHg3dcHZSD7146Mz8wsPSOBB47Jl3oloSrqAF9qmy95WevXmulNydEx5Cw
+         96FKDHFKrzjFvlaQ2g7zZzZgXv5uhq01mNxVSHF54qKnIZkYu/21VXPGzfpkWvZ/SS2p
+         aMhq367O9VrF8Gnm2jqClAxo578McW7VfNgwqd2zMXJRkPXH5OyQkC/voJxXvr2iNoGo
+         TT5NgYFwHAivdp0Vmte4FGhLeYdSFmEiGm0HazurLtxwM+kicLim/na2Qr4rqDxTh7O8
+         6mZNFUwDAkjg3QriGOKlVl5moPSEtlQjgxjKeNftdlniqrNntbpXY3eHiVPPWhp5gjpZ
+         ssyw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=tzimmermann@suse.de
+       dkim=pass header.i=@ellerman.id.au header.s=201909 header.b=kjtDKke2;
+       spf=pass (google.com: domain of mpe@ellerman.id.au designates 203.11.71.1 as permitted sender) smtp.mailfrom=mpe@ellerman.id.au
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:references:from:autocrypt:message-id:date
-         :user-agent:mime-version:in-reply-to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=bW55dDbDs3dHLpZFGvPIHons3lsj6u5Q2B1k0KzyQe4=;
-        b=DsafDi6kE40WwPvBRypaxA/+oz4J94APxXydmmTeYa/rPsiavS2W14psXEhKmL73sK
-         KWN3Pwm+EZQ8UK5zjbhz4P6YDgntAKddOWo7zB6HtneXEQZuaiAKqmjXwf2SGs+m5fus
-         +u4DcCpgl4BrTn9VGVcS3rAkyyR0s3u1r8UyfA47NIu5wAsy//kKLBJu67wemsP0N5B8
-         a2NPbohtIv3uhzciMvELSWA1fka78vFzj7HtJPzy0pqjWL6BU/JjOuqToUKFbY8On2qs
-         hhQpWE6UIy6EDwJnzZGEvquSInEBLsjSZkiEJx49QImeuimH3VgTDdUItZ/mJGM2SWK/
-         efrA==
+        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=VmurZ4IGL8Ke2gd/Vj6hJxuw63qlCgwRGATN19rwI7o=;
+        b=kI7TBGuU+AX9hkQaAG10YypADgKkmbS3lG0I0G4lFXXKNmMyy9/+MaHdjN9kVDml5X
+         Mvf90q4NX0L6lxFIWNa+ltjCqTd3xbHYL4gwgoTdlz/e8nJzpeijhjISQEYdRWEp4zgO
+         0hUVNNTC0X04N0ddD6YAK04D//2HS+8N1rKukxHGp3rii2kAU5iVRqCqghFrVAczbgpF
+         9zmMn41ysJB7CtpLwFO6tJXL9uWlKZR28rve6tlnB62ZtnZLxiKKKTB7Q/6KLMPYhUvu
+         o4nZVw1AEDxaGMf5vNqiF6GZIkMpDyjxWs0+viD3bkX9NEaNBjiIPXgWrPXtch75saw9
+         b+xQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:references:from:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=bW55dDbDs3dHLpZFGvPIHons3lsj6u5Q2B1k0KzyQe4=;
-        b=fB1n6DUjzkvnojermwlheVHC6OYh5P57mjBrVV9gY1WTyNrQBraf0xmItths4g60Do
-         xvvu7mNuwxlz6U3McK9a6AtxCB4oLfzzSX665Ur58bbx/pjw74Yxqc1Yp0Rv9WO2Gf7r
-         AXTOtEdBn+QKSX7hbYPFXcVU30cCzuf13i+y/w40DsOVJE1AKNFVXOSj7A3Swzkv0U1H
-         S3Sj4Nt27e8UO5uUcIG10oL9ak2AKR73+X8gxpXxVwpcVuLUyRKQ/lvvUNT191kqybJY
-         +73rnG4vfBWkdoAC7KPkVSvNiJwH5mCbkn0vKE4YT5rP77XPjVjfTCEI3MwW7RtfqmBb
-         tDQg==
+        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
+         :date:message-id:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=VmurZ4IGL8Ke2gd/Vj6hJxuw63qlCgwRGATN19rwI7o=;
+        b=AnQqiZ/0B/MYg0t+XrKkSnc8+4A0Wjopjqw1aye+QqQzQTjMtoBxlVZ6LG2gNZSHIc
+         zLXcYrirLN9is9ELZPYghgbesmNinQWXznfMfh+PmVIFHWUVt73u5rSwpt03J3AjR9MD
+         tCyneWKuH3fzhgy126rUX/r15NwJenE8ijJCKzk0FNSMThaXBzn56iSw6eP8ELoXiR56
+         ooM3LSk5NEQ0ARm2iI7TLJ7TK7rDTm/1V3r9YH5lHMT1SFQXYNjeR5q1nDArP1zQRDN3
+         S+hCnciUXzewmvd3e+a+IR+luv9jwNlnCfz1+fsZ+RwDu6wITlLTttZ1ODQeFiJPH6Gb
+         HKPg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ANhLgQ100wqTAfQkNoM7/GG7nhxr5P1pvsBgxXApgu4Kd9/eXwnWMEkq
-	9QAPXjlGxVa4Jmgr63oPlTU=
-X-Google-Smtp-Source: ADFU+vuOspRI2rUIulH1Q7wGAwMFLDc3H086Lgr0hCab2NzQ9FbWrJHh88prwmCkXcBJwQjyOqybpA==
-X-Received: by 2002:a1c:7f86:: with SMTP id a128mr4491285wmd.185.1584010155354;
-        Thu, 12 Mar 2020 03:49:15 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ0FRCkQQtVEV/R8QDU2zrOp3vrPEg9/47GqmDgRgDXiHRNDjfrf
+	ifDdXgbglCbd0s/oUh+uAos=
+X-Google-Smtp-Source: ADFU+vuI9N2ZrLK6OtXsu0xWk3TIIQs/gPZXGkQS5ARLLJwSo2cmnS1Ni3n278i1jZkKZv0VUvOH7A==
+X-Received: by 2002:a25:d7d7:: with SMTP id o206mr7423843ybg.287.1584010568058;
+        Thu, 12 Mar 2020 03:56:08 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a1c:660a:: with SMTP id a10ls349844wmc.0.gmail; Thu, 12 Mar
- 2020 03:49:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:258c:: with SMTP id 12mr4426894wmh.140.1584010154960;
-        Thu, 12 Mar 2020 03:49:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584010154; cv=none;
+Received: by 2002:a25:5cc:: with SMTP id 195ls713983ybf.10.gmail; Thu, 12 Mar
+ 2020 03:56:07 -0700 (PDT)
+X-Received: by 2002:a25:b8cc:: with SMTP id g12mr7849284ybm.485.1584010567457;
+        Thu, 12 Mar 2020 03:56:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584010567; cv=none;
         d=google.com; s=arc-20160816;
-        b=OufopaRb2rHCWx4AB+NTFzgEpv0qa+9ZRAy2IGZzMWJ5eNKNhmth7hGBL2ZJo7gkq9
-         /NSYMv/9uMEbRQ8lEZ8RpZx6/6IG/fXHRsP3wqWUM1G2QuMDvukZFnoJ3Gc+r46msq9q
-         5BpZsblG1jtbDE6PFPf1ms0r3yo7KX0gYp8ULeZeGpPcwstJBGIkRvYsbDb9pEbJTEu4
-         gnHiyfkwDPNQuReIO74gmBx3YEfdeZbvPnATwWiYejlmnhYvHLZMAhX4i8IJwINtGLMP
-         46NXj9ltkV8ybin6bEJ3ed3MkYM3GqF6MBJL2jlZ1NAuO9Peh9css0a0bpEX4IiJBcQ6
-         jklQ==
+        b=CAje+0q+5FvPfK8lc0du2GSjeaKgluGVtEngWK4R3V0zeQbZB9nPE9Gtz0N2Wf2CNc
+         vVutXb0XOMn/DmKWqip4PfPMf4W5fHt94s040UknETMX5H/GzhE87HQtbElLh9TOp5F/
+         Gv94vJKyz6s2NUEbUnORx3vKsfgZAHj0D8fklkA2hN0kLEgJwKvr/9wv9mftIMwe0C0p
+         a3DIAU1LSMmMKQRSTPucNNK3AowqwTDm0wf/aoGDcAuTtlpQjb1Yqzug2pSBJ4EN5mb+
+         IhaKRhfHqvr3HomO11SbW0yEseuLwLG2mfp7uCiVJBPy+7q5M5QTDTx1oyeUxG7bnEXE
+         ARXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:mime-version:user-agent:date:message-id:autocrypt:from
-         :references:to:subject;
-        bh=C5i3vpTqpTYDWxfPuhxAtCyaTu5AoPeJey9jXQpLsD8=;
-        b=JBGvpETkfUthPtbC6NYB1Ph2p9U5MKPexwlbsLnH0CqA1z5/mO2+kiqU9jRJeVO5Vn
-         a4IZXL48DZNMC32D1wLN7xjCShBTyLYQ3RlJ0Z8ux5z+pUK4cgxaP/oGyF5IFCpvDyfs
-         fcCQ2qX9XPwNWxdqY/Wm2jZ1BFVs3JXikTmdz6nZldjpS6UcoD++pRvon61Ha9vShR2C
-         l6XoLbRA3znZS6lZVROakNJ/4us9CjioQDzu9DrEAGUZlGX67Q9iR303iCFcC+PhYhXN
-         ZaSPTI8TyyPD9xiATRbHVNUBH/TUOa7tZrbR5MFoiS6t/h2sZZKSvc+FpZKht26DeWG+
-         8X1w==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature;
+        bh=WGqnnihGJ5YJvSKH0AmLoP2QM0ZTfXic/UkN3KPSDb4=;
+        b=O+jqGjmhGaMZrgmbpWMzvy4hDFIOXfqG23xHWXClGxX6EQomh/CLc++WiRCfQCFMnr
+         A+tCdR4naG44YelGcOXGkVHgSi9eE+6yUBWcl9Tam28U8yBqniLkWDAlTUv7ieOoNTcz
+         43PIzig5neIBewbnYs9GJ4mFaKFJV7AvyXdnFR6VnvWOWUICOOXeprWUCM1DauXRK5Ti
+         VdIuUc8YrgzqY2UZuLtWBxdubCSk4jW1MBZpuIiwVqNpKoODaUgNa/5+tX4lXzCNDKyu
+         iVCPKexMn76LLA280Hf9SSyCCLehGc7lwTmiTzMgUvIhTF9FZpEnTC0uBHL3AuB6sCLt
+         o3sg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=tzimmermann@suse.de
-Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
-        by gmr-mx.google.com with ESMTPS id n7si412203wmc.1.2020.03.12.03.49.14
+       dkim=pass header.i=@ellerman.id.au header.s=201909 header.b=kjtDKke2;
+       spf=pass (google.com: domain of mpe@ellerman.id.au designates 203.11.71.1 as permitted sender) smtp.mailfrom=mpe@ellerman.id.au
+Received: from ozlabs.org (bilbo.ozlabs.org. [203.11.71.1])
+        by gmr-mx.google.com with ESMTPS id l1si156735ybt.2.2020.03.12.03.56.07
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 12 Mar 2020 03:49:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
-X-Virus-Scanned: by amavisd-new at test-mx.suse.de
-Received: from relay2.suse.de (unknown [195.135.220.254])
-	by mx2.suse.de (Postfix) with ESMTP id 62A77B1EC;
-	Thu, 12 Mar 2020 10:49:11 +0000 (UTC)
-Subject: Re: [RESEND PATCH v2 6/9] drm/mgag200: Constify ioreadX() iomem
- argument (as in generic implementation)
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 12 Mar 2020 03:56:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mpe@ellerman.id.au designates 203.11.71.1 as permitted sender) client-ip=203.11.71.1;
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 48dQjL3pfwz9sPF;
+	Thu, 12 Mar 2020 21:55:50 +1100 (AEDT)
+From: Michael Ellerman <mpe@ellerman.id.au>
 To: Krzysztof Kozlowski <krzk@kernel.org>, Richard Henderson
- <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
- Matt Turner <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>,
- Vineet Gupta <vgupta@synopsys.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Helge Deller <deller@gmx.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Rich Felker <dalias@libc.org>,
- Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Ben Skeggs <bskeggs@redhat.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Jiri Slaby
- <jirislaby@gmail.com>, Nick Kossifidis <mickflemm@gmail.com>,
- Luis Chamberlain <mcgrof@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
- "David S. Miller" <davem@davemloft.net>, Dave Jiang <dave.jiang@intel.com>,
- Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Arnd Bergmann <arnd@arndb.de>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Andrew Morton <akpm@linux-foundation.org>,
- Thomas Gleixner <tglx@linutronix.de>, linux-alpha@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-parisc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-sh@vger.kernel.org, dri-devel@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-media@vger.kernel.org,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-ntb@googlegroups.com, virtualization@lists.linux-foundation.org,
- linux-arch@vger.kernel.org
-References: <20200219175007.13627-1-krzk@kernel.org>
- <20200219175007.13627-7-krzk@kernel.org>
-From: Thomas Zimmermann <tzimmermann@suse.de>
-Autocrypt: addr=tzimmermann@suse.de; keydata=
- mQENBFs50uABCADEHPidWt974CaxBVbrIBwqcq/WURinJ3+2WlIrKWspiP83vfZKaXhFYsdg
- XH47fDVbPPj+d6tQrw5lPQCyqjwrCPYnq3WlIBnGPJ4/jreTL6V+qfKRDlGLWFjZcsrPJGE0
- BeB5BbqP5erN1qylK9i3gPoQjXGhpBpQYwRrEyQyjuvk+Ev0K1Jc5tVDeJAuau3TGNgah4Yc
- hdHm3bkPjz9EErV85RwvImQ1dptvx6s7xzwXTgGAsaYZsL8WCwDaTuqFa1d1jjlaxg6+tZsB
- 9GluwvIhSezPgnEmimZDkGnZRRSFiGP8yjqTjjWuf0bSj5rUnTGiyLyRZRNGcXmu6hjlABEB
- AAG0J1Rob21hcyBaaW1tZXJtYW5uIDx0emltbWVybWFubkBzdXNlLmRlPokBVAQTAQgAPhYh
- BHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsDBQkDwmcABQsJCAcCBhUKCQgLAgQWAgMB
- Ah4BAheAAAoJEGgNwR1TC3ojR80H/jH+vYavwQ+TvO8ksXL9JQWc3IFSiGpuSVXLCdg62AmR
- irxW+qCwNncNQyb9rd30gzdectSkPWL3KSqEResBe24IbA5/jSkPweJasgXtfhuyoeCJ6PXo
- clQQGKIoFIAEv1s8l0ggPZswvCinegl1diyJXUXmdEJRTWYAtxn/atut1o6Giv6D2qmYbXN7
- mneMC5MzlLaJKUtoH7U/IjVw1sx2qtxAZGKVm4RZxPnMCp9E1MAr5t4dP5gJCIiqsdrVqI6i
- KupZstMxstPU//azmz7ZWWxT0JzgJqZSvPYx/SATeexTYBP47YFyri4jnsty2ErS91E6H8os
- Bv6pnSn7eAq5AQ0EWznS4AEIAMYmP4M/V+T5RY5at/g7rUdNsLhWv1APYrh9RQefODYHrNRH
- UE9eosYbT6XMryR9hT8XlGOYRwKWwiQBoWSDiTMo/Xi29jUnn4BXfI2px2DTXwc22LKtLAgT
- RjP+qbU63Y0xnQN29UGDbYgyyK51DW3H0If2a3JNsheAAK+Xc9baj0LGIc8T9uiEWHBnCH+R
- dhgATnWWGKdDegUR5BkDfDg5O/FISymJBHx2Dyoklv5g4BzkgqTqwmaYzsl8UxZKvbaxq0zb
- ehDda8lvhFXodNFMAgTLJlLuDYOGLK2AwbrS3Sp0AEbkpdJBb44qVlGm5bApZouHeJ/+n+7r
- 12+lqdsAEQEAAYkBPAQYAQgAJhYhBHIX+6yM6c9jRKFo5WgNwR1TC3ojBQJbOdLgAhsMBQkD
- wmcAAAoJEGgNwR1TC3ojpfcIAInwP5OlcEKokTnHCiDTz4Ony4GnHRP2fXATQZCKxmu4AJY2
- h9ifw9Nf2TjCZ6AMvC3thAN0rFDj55N9l4s1CpaDo4J+0fkrHuyNacnT206CeJV1E7NYntxU
- n+LSiRrOdywn6erjxRi9EYTVLCHcDhBEjKmFZfg4AM4GZMWX1lg0+eHbd5oL1as28WvvI/uI
- aMyV8RbyXot1r/8QLlWldU3NrTF5p7TMU2y3ZH2mf5suSKHAMtbE4jKJ8ZHFOo3GhLgjVrBW
- HE9JXO08xKkgD+w6v83+nomsEuf6C6LYrqY/tsZvyEX6zN8CtirPdPWu/VXNRYAl/lat7lSI
- 3H26qrE=
-Message-ID: <90baef2d-25fe-fac4-6a7e-b103b4b6721e@suse.de>
-Date: Thu, 12 Mar 2020 11:49:05 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>, Matt Turner
+ <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>, Vineet Gupta
+ <vgupta@synopsys.com>, "James E.J. Bottomley"
+ <James.Bottomley@HansenPartnership.com>, Helge Deller <deller@gmx.de>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>, Paul Mackerras
+ <paulus@samba.org>, Yoshinori Sato <ysato@users.sourceforge.jp>, Rich
+ Felker <dalias@libc.org>, Dave Airlie <airlied@redhat.com>, David Airlie
+ <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Ben Skeggs
+ <bskeggs@redhat.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, Jiri
+ Slaby <jirislaby@gmail.com>, Nick Kossifidis <mickflemm@gmail.com>, Luis
+ Chamberlain <mcgrof@kernel.org>, Kalle Valo <kvalo@codeaurora.org>, "David
+ S. Miller" <davem@davemloft.net>, Dave Jiang <dave.jiang@intel.com>, Jon
+ Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>, "Michael S.
+ Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, Arnd Bergmann
+ <arnd@arndb.de>, Geert Uytterhoeven <geert+renesas@glider.be>, Andrew
+ Morton <akpm@linux-foundation.org>, Thomas Gleixner <tglx@linutronix.de>,
+ linux-alpha@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-snps-arc@lists.infradead.org, linux-parisc@vger.kernel.org,
+ linuxppc-dev@lists.ozlabs.org, linux-sh@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ linux-media@vger.kernel.org, linux-wireless@vger.kernel.org,
+ netdev@vger.kernel.org, linux-ntb@googlegroups.com,
+ virtualization@lists.linux-foundation.org, linux-arch@vger.kernel.org
+Cc: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [RESEND PATCH v2 1/9] iomap: Constify ioreadX() iomem argument (as in generic implementation)
+In-Reply-To: <20200219175007.13627-2-krzk@kernel.org>
+References: <20200219175007.13627-1-krzk@kernel.org> <20200219175007.13627-2-krzk@kernel.org>
+Date: Thu, 12 Mar 2020 21:55:44 +1100
+Message-ID: <87ftedj0zz.fsf@mpe.ellerman.id.au>
 MIME-Version: 1.0
-In-Reply-To: <20200219175007.13627-7-krzk@kernel.org>
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature";
- boundary="8zb502i0uNK5UHJJl43MN65Z2VSqAtFfM"
-X-Original-Sender: tzimmermann@suse.de
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of tzimmermann@suse.de designates 195.135.220.15 as
- permitted sender) smtp.mailfrom=tzimmermann@suse.de
+Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: mpe@ellerman.id.au
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@ellerman.id.au header.s=201909 header.b=kjtDKke2;       spf=pass
+ (google.com: domain of mpe@ellerman.id.au designates 203.11.71.1 as permitted
+ sender) smtp.mailfrom=mpe@ellerman.id.au
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -178,132 +149,101 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This is an OpenPGP/MIME signed message (RFC 4880 and 3156)
---8zb502i0uNK5UHJJl43MN65Z2VSqAtFfM
-Content-Type: multipart/mixed; boundary="UnbV06xuRFGsh6csSeVcRA5al48ja8xJK";
- protected-headers="v1"
-From: Thomas Zimmermann <tzimmermann@suse.de>
-To: Krzysztof Kozlowski <krzk@kernel.org>, Richard Henderson
- <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
- Matt Turner <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>,
- Vineet Gupta <vgupta@synopsys.com>,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Helge Deller <deller@gmx.de>,
- Benjamin Herrenschmidt <benh@kernel.crashing.org>,
- Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Rich Felker <dalias@libc.org>,
- Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, Ben Skeggs <bskeggs@redhat.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Jiri Slaby
- <jirislaby@gmail.com>, Nick Kossifidis <mickflemm@gmail.com>,
- Luis Chamberlain <mcgrof@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
- "David S. Miller" <davem@davemloft.net>, Dave Jiang <dave.jiang@intel.com>,
- Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Arnd Bergmann <arnd@arndb.de>, Geert Uytterhoeven <geert+renesas@glider.be>,
- Andrew Morton <akpm@linux-foundation.org>,
- Thomas Gleixner <tglx@linutronix.de>, linux-alpha@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-snps-arc@lists.infradead.org,
- linux-parisc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
- linux-sh@vger.kernel.org, dri-devel@lists.freedesktop.org,
- nouveau@lists.freedesktop.org, linux-media@vger.kernel.org,
- linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
- linux-ntb@googlegroups.com, virtualization@lists.linux-foundation.org,
- linux-arch@vger.kernel.org
-Message-ID: <90baef2d-25fe-fac4-6a7e-b103b4b6721e@suse.de>
-Subject: Re: [RESEND PATCH v2 6/9] drm/mgag200: Constify ioreadX() iomem
- argument (as in generic implementation)
-References: <20200219175007.13627-1-krzk@kernel.org>
- <20200219175007.13627-7-krzk@kernel.org>
-In-Reply-To: <20200219175007.13627-7-krzk@kernel.org>
+Krzysztof Kozlowski <krzk@kernel.org> writes:
+> diff --git a/arch/powerpc/kernel/iomap.c b/arch/powerpc/kernel/iomap.c
+> index 5ac84efc6ede..9fe4fb3b08aa 100644
+> --- a/arch/powerpc/kernel/iomap.c
+> +++ b/arch/powerpc/kernel/iomap.c
+> @@ -15,23 +15,23 @@
+>   * Here comes the ppc64 implementation of the IOMAP 
+>   * interfaces.
+>   */
+> -unsigned int ioread8(void __iomem *addr)
+> +unsigned int ioread8(const void __iomem *addr)
+>  {
+>  	return readb(addr);
+>  }
+> -unsigned int ioread16(void __iomem *addr)
+> +unsigned int ioread16(const void __iomem *addr)
+>  {
+>  	return readw(addr);
+>  }
+> -unsigned int ioread16be(void __iomem *addr)
+> +unsigned int ioread16be(const void __iomem *addr)
+>  {
+>  	return readw_be(addr);
+>  }
+> -unsigned int ioread32(void __iomem *addr)
+> +unsigned int ioread32(const void __iomem *addr)
+>  {
+>  	return readl(addr);
+>  }
+> -unsigned int ioread32be(void __iomem *addr)
+> +unsigned int ioread32be(const void __iomem *addr)
+>  {
+>  	return readl_be(addr);
+>  }
+> @@ -41,27 +41,27 @@ EXPORT_SYMBOL(ioread16be);
+>  EXPORT_SYMBOL(ioread32);
+>  EXPORT_SYMBOL(ioread32be);
+>  #ifdef __powerpc64__
+> -u64 ioread64(void __iomem *addr)
+> +u64 ioread64(const void __iomem *addr)
+>  {
+>  	return readq(addr);
+>  }
+> -u64 ioread64_lo_hi(void __iomem *addr)
+> +u64 ioread64_lo_hi(const void __iomem *addr)
+>  {
+>  	return readq(addr);
+>  }
+> -u64 ioread64_hi_lo(void __iomem *addr)
+> +u64 ioread64_hi_lo(const void __iomem *addr)
+>  {
+>  	return readq(addr);
+>  }
+> -u64 ioread64be(void __iomem *addr)
+> +u64 ioread64be(const void __iomem *addr)
+>  {
+>  	return readq_be(addr);
+>  }
+> -u64 ioread64be_lo_hi(void __iomem *addr)
+> +u64 ioread64be_lo_hi(const void __iomem *addr)
+>  {
+>  	return readq_be(addr);
+>  }
+> -u64 ioread64be_hi_lo(void __iomem *addr)
+> +u64 ioread64be_hi_lo(const void __iomem *addr)
+>  {
+>  	return readq_be(addr);
+>  }
+> @@ -139,15 +139,15 @@ EXPORT_SYMBOL(iowrite64be_hi_lo);
+>   * FIXME! We could make these do EEH handling if we really
+>   * wanted. Not clear if we do.
+>   */
+> -void ioread8_rep(void __iomem *addr, void *dst, unsigned long count)
+> +void ioread8_rep(const void __iomem *addr, void *dst, unsigned long count)
+>  {
+>  	readsb(addr, dst, count);
+>  }
+> -void ioread16_rep(void __iomem *addr, void *dst, unsigned long count)
+> +void ioread16_rep(const void __iomem *addr, void *dst, unsigned long count)
+>  {
+>  	readsw(addr, dst, count);
+>  }
+> -void ioread32_rep(void __iomem *addr, void *dst, unsigned long count)
+> +void ioread32_rep(const void __iomem *addr, void *dst, unsigned long count)
+>  {
+>  	readsl(addr, dst, count);
+>  }
 
---UnbV06xuRFGsh6csSeVcRA5al48ja8xJK
-Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-Content-Transfer-Encoding: quoted-printable
+This looks OK to me.
 
-Hi Krzysztof,
+Acked-by: Michael Ellerman <mpe@ellerman.id.au> (powerpc)
 
-I just received a resend email from 3 weeks ago :/
+cheers
 
-Do you want me to merge the mgag200 patch into drm-misc-next?
-
-Best regards
-Thomas
-
-Am 19.02.20 um 18:50 schrieb Krzysztof Kozlowski:
-> The ioreadX() helpers have inconsistent interface.  On some architectures
-> void *__iomem address argument is a pointer to const, on some not.
->=20
-> Implementations of ioreadX() do not modify the memory under the address
-> so they can be converted to a "const" version for const-safety and
-> consistency among architectures.
->=20
-> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
-> Reviewed-by: Thomas Zimmermann <tzimmermann@suse.de>
->=20
-> ---
->=20
-> Changes since v1:
-> 1. Add Thomas' review.
-> ---
->  drivers/gpu/drm/mgag200/mgag200_drv.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/drivers/gpu/drm/mgag200/mgag200_drv.h b/drivers/gpu/drm/mgag=
-200/mgag200_drv.h
-> index aa32aad222c2..6512b3af4fb7 100644
-> --- a/drivers/gpu/drm/mgag200/mgag200_drv.h
-> +++ b/drivers/gpu/drm/mgag200/mgag200_drv.h
-> @@ -34,9 +34,9 @@
-> =20
->  #define MGAG200FB_CONN_LIMIT 1
-> =20
-> -#define RREG8(reg) ioread8(((void __iomem *)mdev->rmmio) + (reg))
-> +#define RREG8(reg) ioread8(((const void __iomem *)mdev->rmmio) + (reg))
->  #define WREG8(reg, v) iowrite8(v, ((void __iomem *)mdev->rmmio) + (reg))
-> -#define RREG32(reg) ioread32(((void __iomem *)mdev->rmmio) + (reg))
-> +#define RREG32(reg) ioread32(((const void __iomem *)mdev->rmmio) + (reg)=
-)
->  #define WREG32(reg, v) iowrite32(v, ((void __iomem *)mdev->rmmio) + (reg=
-))
-> =20
->  #define ATTR_INDEX 0x1fc0
->=20
-
---=20
-Thomas Zimmermann
-Graphics Driver Developer
-SUSE Software Solutions Germany GmbH
-Maxfeldstr. 5, 90409 N=C3=BCrnberg, Germany
-(HRB 36809, AG N=C3=BCrnberg)
-Gesch=C3=A4ftsf=C3=BChrer: Felix Imend=C3=B6rffer
-
---=20
-You received this message because you are subscribed to the Google Groups "=
-linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/90baef2d-25fe-fac4-6a7e-b103b4b6721e%40suse.de.
-
---UnbV06xuRFGsh6csSeVcRA5al48ja8xJK--
-
---8zb502i0uNK5UHJJl43MN65Z2VSqAtFfM
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: OpenPGP digital signature
-Content-Disposition: attachment; filename="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEchf7rIzpz2NEoWjlaA3BHVMLeiMFAl5qE6QACgkQaA3BHVML
-eiOp7Af/Z24gM/vp7wuoDOu1s9VJhDHNRqfYcrpjv+SeE5E7jsj4gBCwwLJxuyKf
-5DIzeOH97Mrv5fgfIx97Af8C372d1sRW46TwvSXFm8ywyTvigM4cWdRapf9cXozZ
-AiQUCqkrkGEL6FhofMuHqZ2arL+6NooRluvXmoeX9bXA+itrwOhU4YhoIUwTJnUc
-7UrcNFXhCKIZrEGfkHGZrnbC/Lr9g+tBLcEcQJf69SUMc56aboUZf47aOcpw67lj
-3TpHOqEJwqnxnQlKSO0cL4BgwEzZWt3ahVqFdDlM+QfSlJO65N7Y6s8CismBxubN
-bGiOW37w7Bmi4mVHO5RWa3uelcwjoA==
-=D9Sa
------END PGP SIGNATURE-----
-
---8zb502i0uNK5UHJJl43MN65Z2VSqAtFfM--
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87ftedj0zz.fsf%40mpe.ellerman.id.au.
