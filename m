@@ -1,222 +1,163 @@
-Return-Path: <linux-ntb+bncBCHK3VHCYUIBB2HJUTZQKGQEFEKDKMI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCW73DN2RYFBBY6YU7ZQKGQE2H6TZ5I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ot1-x33e.google.com (mail-ot1-x33e.google.com [IPv6:2607:f8b0:4864:20::33e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2DFCA18215F
-	for <lists+linux-ntb@lfdr.de>; Wed, 11 Mar 2020 19:58:50 +0100 (CET)
-Received: by mail-ot1-x33e.google.com with SMTP id g63sf1804931otb.22
-        for <lists+linux-ntb@lfdr.de>; Wed, 11 Mar 2020 11:58:50 -0700 (PDT)
-ARC-Seal: i=3; a=rsa-sha256; t=1583953129; cv=pass;
+Received: from mail-lj1-x23e.google.com (mail-lj1-x23e.google.com [IPv6:2a00:1450:4864:20::23e])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35D55182A14
+	for <lists+linux-ntb@lfdr.de>; Thu, 12 Mar 2020 09:01:40 +0100 (CET)
+Received: by mail-lj1-x23e.google.com with SMTP id a14sf671591ljj.15
+        for <lists+linux-ntb@lfdr.de>; Thu, 12 Mar 2020 01:01:40 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1584000099; cv=pass;
         d=google.com; s=arc-20160816;
-        b=FR8Q5KpKWcuvWySlay8IsB7RgWx+LTpkkN6n88o4pBPx8hexnNFiy+ANmsr4yVY01f
-         nk8qZ5jXsHK8VxO/jFrPOm8oOSGcJpKHp1dVOcnpqvp7HGSulK+FSTOj+y9JAiamK3ff
-         eAoYhmlKNvhNE6ufIFOQSKc7R1NYBdvT8Z4KWOBg5Hd1ltS0/VZ7rAX4ih7TcdySfvoq
-         0szs7TF4lGARgfmExwL4F7RZImvt7MXpbPHf8MCoWkclNZMZTjbPwS/cYbsb/UmOBcn6
-         APTNFn3kuJN1IKc0KFoFlL/oaBe5lBIIIeMW5R3XZpoZ+kVN9/ZQxudELTi7QhIUFJfe
-         2jKA==
-ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=JBAgDU/S1BNi8BuStqTb2bbsnmMQzLwDMRJkfuU2GVBrMQhUjti8JEKZRdEKmGTOmj
+         uKV8QhRC3EQQyTgyTfGQZUglcRmqLC7toSihRxNBy0T6lOQQwnHmyZ3x1vX1Ljw1lxyz
+         HsJgevcNuWuTrfIYLqU8F7/jwyGQbLBrzz/Ov1i9lSm29v0x7sWaWn1cThGzhXFDz0Co
+         caPUoUnWot2IMbjQiV5H8o2TN/FvszLgfsV4B7tXCM/oL+CN799v3soHkyvRWBtlALQk
+         oTh/cNWT0fy4cVxbXyYJXwB3K5lmf2uUsOF5pq6DUQttsPj4jqPJlWT+qnwxV5A/UrhR
+         vo1g==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_contentbits
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_actionid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_siteid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_name
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_method
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_setdate
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_enabled:msip_labels
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:sender
-         :dkim-signature;
-        bh=BIgnTR/BQ6pMO3MLjNwHDpB+RieNfAaWE7Z4O+G0Ubk=;
-        b=OrvavddhZwY+uCf8R1L7HD22ar8CRaeNXaLiB+P00Gy3TG7pKeea8iUSz0L44pr0Ez
-         81xXd+29aDmImqr50lF2LhJNb5fBLcB4nKkK3zZtxEQpJn3/grydJSRuZG04pvaJLOvA
-         UFo3RtT8kxItO/5WzFtT3nZKRJk154tsI2fHR3j3mMfqoiwAbThSkSSSD239b3ivQP+1
-         ClsfQ7ZqaZj46nfTsQPZL8mOv+Wu8VHrjXsvyd9alNdE4qIMjv206Smms4Ix09ZNSNKl
-         JQ824OrfGREOrZYILwsHjoaF9wCmL1bw1fHSdnuqEw65nOw6YTQazfiVVYDY4MiBxIhJ
-         ro0Q==
-ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=TZEg8AJ6;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.243.41 is neither permitted nor denied by best guess record for domain of arindam.nath@amd.com) smtp.mailfrom=Arindam.Nath@amd.com
+         :list-id:mailing-list:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:to:subject
+         :sender:dkim-signature;
+        bh=MC/Ldm9YGsQUkcjVOabtH778AfqaQ17hkR3t9CyCIes=;
+        b=kthhQYn2Q0fGhUaGuALSwLQXqUuCpcz84orpF5qK39aJDDXUJUOlwKzGHmWtWK6MaO
+         EzvM58ChhfxWHGTLHW4QPn5KoDuaE4y3mQUScaACs7G61T2h1TeOkR0CIicAlalV5S0O
+         WEL83LMEJ6X5JtTquNuSoQxQ9WLv24npFj/BQKUn4nxafsBeRzYSHhbxwvVNFLe/xlC0
+         YL9AGet3mQSAuPqpJUrBk3VPzDqL33KiTbAwg81BCZFLF/3vHAqSPpCzm4rVBJXFsiPE
+         JkhmW33UMUxjN7N9zo7TXqoVlKnYUEm70qgZs2IYXS9cAUVdlCfZgTLqTJot80MNJhpo
+         4vVQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@xs4all.nl header.s=s1 header.b=S5pQfgbO;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.22 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:thread-topic:thread-index:date:message-id
-         :references:in-reply-to:accept-language:content-language:msip_labels
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_enabled
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_setdate
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_method
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_name
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_siteid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_actionid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_contentbits
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=BIgnTR/BQ6pMO3MLjNwHDpB+RieNfAaWE7Z4O+G0Ubk=;
-        b=FzZ/3IpwEu7fcBXvyj1EdTYOI7wVp3QcMRUzZ07Bo7cirYm7+O04TIYBXV4KlSh+kF
-         kScU+/Q14eiMXhrB/AhjNPsUh7PS1dw9IPphxK9DxPhFeE0s7wkmefphY9EG6HcErvTg
-         Q8yC/DNTalBc9pXKomuPyhGgChZSaQlRXhS+JY64Vbt3FyicQN0MXAWgh/8xqzjJioFO
-         AmXRmKK4IVw2h3SL8qj50oWN6jVM/mTN6A/s2G/5YsNpflI6IwL0prHl0Xwnn02ggXOW
-         uo8F/8ILbPdmKGuXch4JKKWifF6L91Gidq/e61sFqGlsxQB+3eYeWTBlMkFerdPr0gHJ
-         d0ZA==
+        h=sender:subject:to:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=MC/Ldm9YGsQUkcjVOabtH778AfqaQ17hkR3t9CyCIes=;
+        b=phkhrTUDnm3bpyaM4UVrTUEq57WL8BeiED32WNowdTLcrUnlrRAeCN6RVz9BkR9IOz
+         KjWj1A5PvNDz1xUZ1zYYLC2otmOWmmP0sGuPOyOccKKi0IPgVbJZJh7D6FUaU65XumX0
+         ICz7vzunoPRjQudSViu54vfJd/9gmAScCfQx8JfZSn/KK/hSOicabeRKwdDj3Flif41n
+         4UwIOZh1VlKqqln8CKqUr3Bs0nBkzl5BsvfDCLDnBuMW3YsO4+PxbhSDDVaI24vctPgN
+         oLLLGZpR5c9GSRrjl6B7WDDyoBmipWmc2dZ5rVvZ26vxNEehwnK4rxOsCnnUClX3YmrD
+         UiXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:thread-topic
-         :thread-index:date:message-id:references:in-reply-to:accept-language
-         :content-language:msip_labels
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_enabled
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_setdate
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_method
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_name
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_siteid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_actionid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_contentbits
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=BIgnTR/BQ6pMO3MLjNwHDpB+RieNfAaWE7Z4O+G0Ubk=;
-        b=JbVxslBMgexens3vaOO5QHPnGkRCfk6pkynY0kE7UWlch7854KsEE8e8DRhbRGcBHD
-         Ajo6QPfrSN4qrMBpzgMmjIjaxJtevOS/ghD2xN4HKQD1ZVDW4OJ+E0T74f/KS7hhO+xG
-         51mixl1UODSR1vn3PS0Rhe+LfTtdKsC2s5pRLfNDLzlSDUtnqi07gSO1J0L5miDFiF9Q
-         iCnbGC6bQN5Uzn8mqnWM9uGGvzIkHZtdRl8QqxocmtlTTOKLURZHIjV2u5AAP7G4GdQ9
-         yoLywoNV9E0Q5CCacI+GCIfUPCfgcqM7w5W2IkPkVdAia4J+9g02k1a0I1YF5bKM5pqn
-         JzNQ==
+        h=sender:x-gm-message-state:subject:to:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=MC/Ldm9YGsQUkcjVOabtH778AfqaQ17hkR3t9CyCIes=;
+        b=sEy+Sw1fD/p7+zQl9k80x0hYDCF7rPFye34o5hBf+dfmhXq2jq8XBW8zjuTtbEJMWx
+         G2GnVWOEW6cGQqtqpQnAQjaTWINIiXKlo3JYv/ocqsPPPkFiXCRKGafJJWfh9vZ9O344
+         2C3zo4ghjcI3QjVBI2lX3Rz6oYuugXcrzqa45V1lE2pQS/wCkUv7PvXBbQd+gmlrvXsA
+         RzDLlsoqCVmGp6GI0SBbRmKrLZ1bYf30vGY2461Wms2z24aQcl61iT19TvNzEVVrTaUs
+         LLXU2zaoDZp6Gc9XlGYBWT/EnDOX//qSOBVmNamV9dH60l1w5ZgemCI6ipd+1SWI4F3K
+         DXyA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ANhLgQ3TTimFHX1B0/UGKDXt/Nvwp4i7Lf5BVvkVOnQmjh099nXzKc+N
-	GNFN32v4CD0o+EdgjXCiIaY=
-X-Google-Smtp-Source: ADFU+vsc/IwjIg3/dBd1d6ZA7DLMsDrxtKepzzEJMoO3g7fTj9PqQP+GzzYZ2XQUZwE6shsNLA7FSQ==
-X-Received: by 2002:a9d:6197:: with SMTP id g23mr3542327otk.239.1583953129006;
-        Wed, 11 Mar 2020 11:58:49 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ2PgVg1WGva49tHuIPsNsy7j6yrDnXWhpWfjhJ9RNXb47Xc0JYS
+	RbET3qX1mTL61DB3/j/bP90=
+X-Google-Smtp-Source: ADFU+vsBWTdDe5urqAkofyviqXo6l2N01hleERZrKVwI8qtI08FNkiUdOrPWHVH/y31MpbLqZmVxhw==
+X-Received: by 2002:a05:651c:112c:: with SMTP id e12mr4657285ljo.7.1584000099706;
+        Thu, 12 Mar 2020 01:01:39 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a9d:4042:: with SMTP id o2ls823471oti.4.gmail; Wed, 11 Mar
- 2020 11:58:48 -0700 (PDT)
-X-Received: by 2002:a9d:5e8a:: with SMTP id f10mr3570930otl.143.1583953128646;
-        Wed, 11 Mar 2020 11:58:48 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1583953128; cv=pass;
+Received: by 2002:a2e:b5d9:: with SMTP id g25ls900536ljn.9.gmail; Thu, 12 Mar
+ 2020 01:01:38 -0700 (PDT)
+X-Received: by 2002:a2e:6a12:: with SMTP id f18mr4582587ljc.71.1584000098788;
+        Thu, 12 Mar 2020 01:01:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584000098; cv=none;
         d=google.com; s=arc-20160816;
-        b=bDF7K7LSXrku6nB1YUou0i3K3MCZqUd/TYjyJ4Cfv3EzLU9kVnfkM8jVJ8eRXL2EKf
-         qC6HLIb8JCBx8ie7hImRqBWfmdpQsg+yuFdiNXhkJleCtGc59RF9K44ByZKJPW6QFIBX
-         7WL96a6Z4Z8Rf65hcpeFzE/8g+19GgYKaAkSCDGMTBXV+K9DxZiWZmiczPWdxu2pMfA5
-         ftlMyaUUu1uriflADWhIsPvxAnfBy5WTQLp5QnQkW+DqUxaUqNjgmw+p18WcH9VW5vdz
-         /ZQnbxr+QgEWdJCm1aCbzjyJiiXdjQfTA20LrYeWOTaGYugPKGiKwnw8jb7iF/MWAnG5
-         YSqA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_contentbits
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_actionid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_siteid
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_name
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_method
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_setdate
-         :msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_enabled:msip_labels
-         :content-language:accept-language:in-reply-to:references:message-id
-         :date:thread-index:thread-topic:subject:cc:to:from:dkim-signature;
-        bh=JkK+K/Ywk92epmU3JHAJ7WyswuhUK4h0VFLrRbHFoiQ=;
-        b=n1k/oH+vqKJPOOKo6OKSkx3QePG6E3iXPXQkbV6uKdXwZMloFes2Xcv58amlC7kqo3
-         SgOdxCSDn+pXE1O18wxsGjDuB733uU6J5S0gzsH03c5ppd+uhmqhEOwjrhpSrY0o2MoO
-         NxEixBnOUh1RCjSGyB/qh2Z4f3Zf/Y4RTsdmVTtO66xVtqM9HHt/ZxP1D2xnz+hUU8z8
-         wTYr5IK89nnsTyspgxK3FQ8uBJWWoCDJIYY04o2Tv6C+quYCtGQdrJYYSbLH1a1xDEQR
-         D7A0brwog5Jpjb4R4gTqbd28GyzkZa22bB2y3T5KKzmw5UNcQK5QVHvLsrYB5W0cEL/u
-         pwqg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=TZEg8AJ6;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.243.41 is neither permitted nor denied by best guess record for domain of arindam.nath@amd.com) smtp.mailfrom=Arindam.Nath@amd.com
-Received: from NAM12-DM6-obe.outbound.protection.outlook.com (mail-dm6nam12on2041.outbound.protection.outlook.com. [40.107.243.41])
-        by gmr-mx.google.com with ESMTPS id o11si204722otk.0.2020.03.11.11.58.48
+        b=HhjyARFTASHhG3dDOTeR85Gx9jNDWHgbutXNMjP4uZcwC3rpcX2SUox/HQ+ZMXQnI5
+         4M+tfgsT2JnSNyikWoRKFkOG5BFyJ3J7xbO5NSTAzB0ySXnmPZ0lqTtQJj0qfNYr99W7
+         QIV4MLgdr9L40EEygUq9agW1TVWR6sAqywJXHEw01mal6PuZjeIHLT7UygFk//WJ0/j7
+         id6YzBHy+lOvvftF+ppw4KUfF5bh//evbp17X60+qQWXGyGHsqzUBad+OEfK9sOmNbi4
+         MR5Zb442Tj+pRZl5HqNssekp6ZkFOUcPL6VvVF+D/hQaqd/jIIJVdc/00MlI3yHkL2f4
+         J4Ug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:to:subject
+         :dkim-signature;
+        bh=rlvXrsquCgOAoL6m3j4naIDiZk45jPg5qzfaHkH6ylc=;
+        b=E/RnYZ+3hrtQbDAW7glrynbmhfrPlPaRovPUd56rifcvUqSJO4ilzRt4b5zNK9S9SA
+         xqjru1BiUU7HkGbyM31QMisHfz2Qle7T2VtxkjWZ+XCkrQ/XYhNYf3FxJgCVc31c7lSF
+         BsXwq09oXi7GK3DV1OKLKGo0/cQBCXoQu5GmSkZ88B68jhei9nyt/UNGccO0iFapMSsX
+         B4FHgPeomXC8GcK10ArJOZQwLMHOuhXy4Mkz01olFkWXg7TayDECCcmSER04c14yEp0C
+         Kfy+UKXFRbGm+wx1L38uORXG3BmQX2YA3yxpnCETdeUOKJjy6p8XgtVec0XKxqX5CrYK
+         RnuQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@xs4all.nl header.s=s1 header.b=S5pQfgbO;
+       spf=pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.22 as permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
+Received: from lb1-smtp-cloud9.xs4all.net (lb1-smtp-cloud9.xs4all.net. [194.109.24.22])
+        by gmr-mx.google.com with ESMTPS id d12si222768lfi.2.2020.03.12.01.01.38
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 11 Mar 2020 11:58:48 -0700 (PDT)
-Received-SPF: neutral (google.com: 40.107.243.41 is neither permitted nor denied by best guess record for domain of arindam.nath@amd.com) client-ip=40.107.243.41;
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=MS8XvPO5QmXItMSuDBT0EL+ChtrhTBtOqX0qBcmcKPGfUs1CSoIJmHT6XPnGM9PX3x87R3NC0HzjLcMjUiIRDnoDiIb/zqzk2pzzIzkdkYy3IuxiRgXSMNOMEpWH71d6Dy5AS/pnKs+cgf5zAmebg+r1bE7wwCbik22k2M0K+xmJ4hyGTfDPkYF4NiguAB5xySnBxqsV7TW6UOqjNub+ga/Je3wJCuwLdPDCqcsrfGWWvd1a6PfXFJC3cckzTZ/1LrbOn0KLYcL6j5acDg3QvEu8BkS75PzjBUBdkQofnwtyhWqhZmxo4cSCqmZlCZOJGI+ylOLsuGWkafp5brDKIA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=JkK+K/Ywk92epmU3JHAJ7WyswuhUK4h0VFLrRbHFoiQ=;
- b=m2oxH9Bm44psDanu8Y0KtrxWBXIte4cpVNzN9ny16D5soXSwbQ1iJLU0n5Z//IYTeeJJvwuZAMyON/t7sA6758K9gy2sqAS+0G525X1D2AK1pMGAZPZ1AvU3B63YpUWQZ2t803grFiUzay+s+dk31azszrXQC+rEz+HkJ6Bg8QDHFvJxXaypB/I2GM34UndyCQmAnPojMwmO1JhfVVBmeREMSVyotPA3liOaFB6AZQbafYWPAntsGpdzPXMVrn6IWvrnM4hCR8JVkn4Bf7/Fq/v6xmEg052uAmiRdStwMivyZfr/8K81NQyMMYL/EqY1DXnilkSQC2CCEaClS0rAWQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from MN2PR12MB3232.namprd12.prod.outlook.com (2603:10b6:208:ab::29)
- by MN2PR12MB3789.namprd12.prod.outlook.com (2603:10b6:208:16a::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.2793.17; Wed, 11 Mar
- 2020 18:58:47 +0000
-Received: from MN2PR12MB3232.namprd12.prod.outlook.com
- ([fe80::d8f:800:975a:b8c]) by MN2PR12MB3232.namprd12.prod.outlook.com
- ([fe80::d8f:800:975a:b8c%6]) with mapi id 15.20.2814.007; Wed, 11 Mar 2020
- 18:58:46 +0000
-From: "Nath, Arindam" <Arindam.Nath@amd.com>
-To: Logan Gunthorpe <logang@deltatee.com>, "Mehta, Sanju"
-	<Sanju.Mehta@amd.com>, "jdmason@kudzu.us" <jdmason@kudzu.us>,
-	"dave.jiang@intel.com" <dave.jiang@intel.com>, "allenbh@gmail.com"
-	<allenbh@gmail.com>, "S-k, Shyam-sundar" <Shyam-sundar.S-k@amd.com>
-CC: "linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Subject: RE: [PATCH v2 2/5] ntb_perf: send command in response to EAGAIN
-Thread-Topic: [PATCH v2 2/5] ntb_perf: send command in response to EAGAIN
-Thread-Index: AQHV9x46fcHb8CAMpEy5Z6V8Vk8yLqhCWDIAgAFURNCAABBOgIAAAo4w
-Date: Wed, 11 Mar 2020 18:58:46 +0000
-Message-ID: <MN2PR12MB323290836319B3E7032D91369CFC0@MN2PR12MB3232.namprd12.prod.outlook.com>
-References: <1583873694-19151-1-git-send-email-sanju.mehta@amd.com>
- <1583873694-19151-3-git-send-email-sanju.mehta@amd.com>
- <3c350277-8fe6-04b2-673e-7d4c8fb6ce24@deltatee.com>
- <MN2PR12MB3232AD3D784F07645D7115609CFC0@MN2PR12MB3232.namprd12.prod.outlook.com>
- <214f3ef3-853d-6b0d-0fed-5bb6c1f1de1f@deltatee.com>
-In-Reply-To: <214f3ef3-853d-6b0d-0fed-5bb6c1f1de1f@deltatee.com>
-Accept-Language: en-IN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-msip_labels: MSIP_Label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_Enabled=true;
- MSIP_Label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_SetDate=2020-03-11T18:56:34Z;
- MSIP_Label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_Method=Privileged;
- MSIP_Label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_Name=Non-Business;
- MSIP_Label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_SiteId=3dd8961f-e488-4e60-8e11-a82d994e183d;
- MSIP_Label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_ActionId=bdd72418-470b-430a-b19a-000077161765;
- MSIP_Label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_ContentBits=0
-msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_enabled: true
-msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_setdate: 2020-03-11T18:58:43Z
-msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_method: Privileged
-msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_name: Non-Business
-msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_siteid: 3dd8961f-e488-4e60-8e11-a82d994e183d
-msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_actionid: 24b98547-7f7c-4e75-a9ed-00006e09ab9a
-msip_label_f2ed062d-8486-4f50-a4f1-3cce0dd00d64_contentbits: 0
-x-originating-ip: [165.204.159.242]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-ht: Tenant
-x-ms-office365-filtering-correlation-id: 5c996abd-7c36-427e-dc17-08d7c5ee3a76
-x-ms-traffictypediagnostic: MN2PR12MB3789:|MN2PR12MB3789:
-x-ms-exchange-transport-forked: True
-x-microsoft-antispam-prvs: <MN2PR12MB37898BF44EE0E30CF74F83629CFC0@MN2PR12MB3789.namprd12.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:8273;
-x-forefront-prvs: 0339F89554
-x-forefront-antispam-report: SFV:NSPM;SFS:(10009020)(4636009)(346002)(366004)(396003)(376002)(39860400002)(136003)(199004)(26005)(186003)(76116006)(2906002)(66946007)(7696005)(71200400001)(9686003)(6506007)(53546011)(4326008)(81166006)(55016002)(54906003)(6636002)(110136005)(8676002)(81156014)(86362001)(52536014)(66446008)(66556008)(478600001)(316002)(64756008)(33656002)(66476007)(5660300002)(8936002);DIR:OUT;SFP:1101;SCL:1;SRVR:MN2PR12MB3789;H:MN2PR12MB3232.namprd12.prod.outlook.com;FPR:;SPF:None;LANG:en;PTR:InfoNoRecords;A:1;
-received-spf: None (protection.outlook.com: amd.com does not designate
- permitted sender hosts)
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: taifC88R4y1Qo4jLLOwq+BWQxtSVnY0AttchPO2K9U3nFGem4FDNyB1daXeZkX07diYp7G1kPkI5kIvQXuW0b648vKrvRnU6u837uINIcAJGEmIUnct11m6wGTJ8bfPzAQRVP+p/mtR4pe8l4QbIp70SqF/YUHp+2JxYA0D77mlcJJBfLRNj/NRrqw/U6MOvPjHYMjnlwxBZ1T2Skjurciij3kKGwM75f+PM4y2QeNqO/jq4Y9CqnZ0vMhvKpIBqvZ2XXugurBx3Ho3hAQ2C0fABJJkpZZ14YfXqgHpmWe1s1NJPvXqZRN10awYlB7c2JYwcXTkEgLeNkoVKqGqiCNsFSUgAmxo3+1ePm2wR4vi3jgZywpK8vbUvRzajsI2+1r3X5jznMA0A2nZR3/PY4YJNrWToYB4LAQbbJYfaaRV1Ff3Ji5x/9ehp/Zepfmuz
-x-ms-exchange-antispam-messagedata: 3a4DGhdau1vY11zToDYJFFMwIt/lLc/8Y6sZrMTfd2iqaW3lfPE80/B7lIIbF4g8yb7UqcO4lIfX5cRyod605Y0fYj7QPdshdyVGUAfrEkg+Kb8m4E9AVoCQuUpMKPfVLHKnHhYNQa5tzjs8a0MG1Q==
-Content-Type: text/plain; charset="UTF-8"
+        Thu, 12 Mar 2020 01:01:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.22 as permitted sender) client-ip=194.109.24.22;
+Received: from [192.168.2.10] ([46.9.234.233])
+	by smtp-cloud9.xs4all.net with ESMTPA
+	id CImQjXGct9Im2CImTjipFx; Thu, 12 Mar 2020 09:01:37 +0100
+Subject: Re: [RESEND PATCH v2 8/9] media: fsl-viu: Constify ioreadX() iomem
+ argument (as in generic implementation)
+To: Krzysztof Kozlowski <krzk@kernel.org>, Richard Henderson
+ <rth@twiddle.net>, Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
+ Matt Turner <mattst88@gmail.com>, Alexey Brodkin <abrodkin@synopsys.com>,
+ Vineet Gupta <vgupta@synopsys.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Helge Deller <deller@gmx.de>,
+ Benjamin Herrenschmidt <benh@kernel.crashing.org>,
+ Paul Mackerras <paulus@samba.org>, Michael Ellerman <mpe@ellerman.id.au>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, Rich Felker <dalias@libc.org>,
+ Dave Airlie <airlied@redhat.com>, David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>, Ben Skeggs <bskeggs@redhat.com>,
+ Mauro Carvalho Chehab <mchehab@kernel.org>, Jiri Slaby
+ <jirislaby@gmail.com>, Nick Kossifidis <mickflemm@gmail.com>,
+ Luis Chamberlain <mcgrof@kernel.org>, Kalle Valo <kvalo@codeaurora.org>,
+ "David S. Miller" <davem@davemloft.net>, Dave Jiang <dave.jiang@intel.com>,
+ Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Arnd Bergmann <arnd@arndb.de>, Geert Uytterhoeven <geert+renesas@glider.be>,
+ Andrew Morton <akpm@linux-foundation.org>,
+ Thomas Gleixner <tglx@linutronix.de>, linux-alpha@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-snps-arc@lists.infradead.org,
+ linux-parisc@vger.kernel.org, linuxppc-dev@lists.ozlabs.org,
+ linux-sh@vger.kernel.org, dri-devel@lists.freedesktop.org,
+ nouveau@lists.freedesktop.org, linux-media@vger.kernel.org,
+ linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
+ linux-ntb@googlegroups.com, virtualization@lists.linux-foundation.org,
+ linux-arch@vger.kernel.org
+References: <20200219175007.13627-1-krzk@kernel.org>
+ <20200219175007.13627-9-krzk@kernel.org>
+From: Hans Verkuil <hverkuil@xs4all.nl>
+Message-ID: <1c4a11b5-5ca6-7555-de3c-ff30f707fac7@xs4all.nl>
+Date: Thu, 12 Mar 2020 09:01:22 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5c996abd-7c36-427e-dc17-08d7c5ee3a76
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Mar 2020 18:58:46.8931
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: cWqbPxgmyiPOuLBLrT/X7gexF7EcJYPti8rCth9V1Jo7FnRV5qj0xGI6xZ4xghms
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB3789
-X-Original-Sender: arindam.nath@amd.com
+In-Reply-To: <20200219175007.13627-9-krzk@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Language: en-US
+X-CMAE-Envelope: MS4wfB1zxMJIE7wElbGm4sdMecyYLJ6LdsDMDpZDeSQuVKwPm0HLBt9h+mOdrGXFuIDkCI9Ox7ukCv0Xr+wsEhOQPNuuqPOa2tbCK6oF1PNdZVqk6thKvC3h
+ xE4aE9bNSUWOFhWxTazaeGPVr5hr0AhveAgdpPWZHpjhg5PxgtKgtRwcEM0X31YjusYjKeuEG9QF/4JOHzjohAIjiR+oAI0nyED+Jez9yI4FW1ZB3LXkp8TH
+ 7MMndY8iJadjMhsV5+oGTHeP7z8vzm/dZU83psQzhxRsPonohHX17/JsKF2l5MFAT9+97UKYOiKAsfrv1Cpys4Ae5wkTvdw4qsE49ssk4hjAoyha0QB9BVju
+ 9SGy1FrSenK0frRjbC8NaYY9ZERWNSiNH5LA36WXT5yWf3v+Qcv3MkgEimaOp41P2nlVLuOjtsbM7Oc0IE2oIVVfFA700ZJiP3znlyaVddewRuZDpRVP7LaM
+ BmiWSHGXgw8YtQmC7z4+FTtlDdPcaOnURURbGtwGqrG9ypYOfWaczdFyon9cFrdpqrNkvqRjWmqFa6YgsB57xqLqvFfcZaXIx/5GPRUQudUCvZPJzisakVQc
+ uttKYb/aM3WYuhJM4Wb1Pv6BrMYMIVXGCFsOBd7W/xp0N3iMBGSYj0Aa0rPNR8hHdzbHBC2fjWlNKKBiBqoznNqCGZ0CiVQoEM+QtyRRgiYnx6PeAm5PLOc4
+ VNFQmhkOpnD9IFKzOg7MDbXsSwg+OAG64qEuG/VscrSiDVQ1yjv5knp7CxhKGvYM4OpGHYT1Er7Bdx2FCmXu/yAwSbBDRagCD0kotDKUph18wrkxxeFljDJA
+ LSc1aSxY7WzE0MoB4x1WWy+jz94FDlyhtSMwiZ6y0dJP3+c2+Q5En242uHE069S9l+7oW8v5MGbWOStqt5f3vSjCb7LIzWN87JmuP89GFWwWLJsughS7GMyf
+ 9DHMMrFLvERXtynUPrxsXWOFJFYcfPWtUSuDRlT6lyW4OqviXxQxmuwWWPzBiEuN74qNtI+js8zLo4yvgjsgXCeSGNoTx+kuEqyjk5W1UzIpidGK0CRrnVbE
+ 6hD9Y/vETMZdaCRGTPOlU05njcJF+46w8BJ3SNj0Py3qBk1dX7c6nBfbFypmWYBFmuncdfgfV+GvZgph5pgPHOoQxVCf/tLCrfA6lP3T+1yMX4df+BQFRKLS
+ O4WmDF2MxF8KloewGsYz/rsmgB25E6V0YSDc8EvmqseT2P6A01f6bsdZt1AJnufocp+H44s+qhBR6buNUUMphP9KyIyYuNbtmFvkGTyK649jUP2q8Nik1rK1
+ 3AqiAYrtsks7Dqmq5Qj7chR5DBva/WjXbTAi9lRBeyrc1LiDTAHtFBMmOGm8QJ0PstgU+Qss/H31YuyO+vowQc/YkfqDiEmsIU7MZy0525QlKJCDuomrR9k/
+ pt0L69OpaODhDI2GKeTabUJfloUo1rGwDFifFZ3GiczPZsdGrTGULzWF8ZqXdk44Vxmf+o40QJa4goBPwv+YDuim0xPrbohAaaGJnTcviLLAbx0Be2IOpJK7
+ 066IFrJvKfz7/Wp2S67JJX5FtbO7VF+IrVN/N63uvfJb+FM6hLMjwGqczE7h5AhCTMRfIsHhAU9mTIYVyLN+UBlZ3WL3ahk0SjumGQqE2df8rbpt41Yx3WFA
+ IW77guEXBH/AFWkGJEIg2a3N91fXva0TdPJAF0YzlkCOnwCmb9/Naw==
+X-Original-Sender: hverkuil@xs4all.nl
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com
- header.b=TZEg8AJ6;       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass
- dkdomain=amd.com dmarc=pass fromdomain=amd.com);       spf=neutral
- (google.com: 40.107.243.41 is neither permitted nor denied by best guess
- record for domain of arindam.nath@amd.com) smtp.mailfrom=Arindam.Nath@amd.com
+ header.i=@xs4all.nl header.s=s1 header.b=S5pQfgbO;       spf=pass
+ (google.com: domain of hverkuil@xs4all.nl designates 194.109.24.22 as
+ permitted sender) smtp.mailfrom=hverkuil@xs4all.nl
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -229,105 +170,42 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-> -----Original Message-----
-> From: Logan Gunthorpe <logang@deltatee.com>
-> Sent: Thursday, March 12, 2020 00:17
-> To: Nath, Arindam <Arindam.Nath@amd.com>; Mehta, Sanju
-> <Sanju.Mehta@amd.com>; jdmason@kudzu.us; dave.jiang@intel.com;
-> allenbh@gmail.com; S-k, Shyam-sundar <Shyam-sundar.S-k@amd.com>
-> Cc: linux-ntb@googlegroups.com; linux-kernel@vger.kernel.org
-> Subject: Re: [PATCH v2 2/5] ntb_perf: send command in response to EAGAIN
+On 2/19/20 6:50 PM, Krzysztof Kozlowski wrote:
+> The ioreadX() helpers have inconsistent interface.  On some architectures
+> void *__iomem address argument is a pointer to const, on some not.
 > 
+> Implementations of ioreadX() do not modify the memory under the address
+> so they can be converted to a "const" version for const-safety and
+> consistency among architectures.
 > 
-> 
-> On 2020-03-11 12:11 p.m., Nath, Arindam wrote:
-> >> -----Original Message-----
-> >> From: Logan Gunthorpe <logang@deltatee.com>
-> >> Sent: Wednesday, March 11, 2020 03:01
-> >> To: Mehta, Sanju <Sanju.Mehta@amd.com>; jdmason@kudzu.us;
-> >> dave.jiang@intel.com; allenbh@gmail.com; Nath, Arindam
-> >> <Arindam.Nath@amd.com>; S-k, Shyam-sundar <Shyam-sundar.S-
-> >> k@amd.com>
-> >> Cc: linux-ntb@googlegroups.com; linux-kernel@vger.kernel.org
-> >> Subject: Re: [PATCH v2 2/5] ntb_perf: send command in response to
-> EAGAIN
-> >>
-> >>
-> >>
-> >> On 2020-03-10 2:54 p.m., Sanjay R Mehta wrote:
-> >>> From: Arindam Nath <arindam.nath@amd.com>
-> >>>
-> >>> perf_spad_cmd_send() and perf_msg_cmd_send() return
-> >>> -EAGAIN after trying to send commands for a maximum
-> >>> of MSG_TRIES re-tries. But currently there is no
-> >>> handling for this error. These functions are invoked
-> >>> from perf_service_work() through function pointers,
-> >>> so rather than simply call these functions is not
-> >>> enough. We need to make sure to invoke them again in
-> >>> case of -EAGAIN. Since peer status bits were cleared
-> >>> before calling these functions, we set the same status
-> >>> bits before queueing the work again for later invocation.
-> >>> This way we simply won't go ahead and initialize the
-> >>> XLAT registers wrongfully in case sending the very first
-> >>> command itself fails.
-> >>
-> >> So what happens if there's an actual non-recoverable error that causes
-> >> perf_msg_cmd_send() to fail? Are you proposing it just requeues high
-> >> priority work forever?
-> >
-> > The intent of the patch is to handle -EAGAIN, since the error code is
-> > an indication that we need to try again later. Currently there is a very
-> > small time frame during which ntb_perf should be loaded on both sides
-> > (primary and secondary) to have XLAT registers configured correctly.
-> > Failing that the code will still fall through without properly initializing the
-> > XLAT registers and there is no indication of that either until we have
-> > actually tried to perform 'echo 0 > /sys/kernel/debug/.../run'.
-> >
-> > With the changes proposed in this patch, we do not have to depend
-> > on whether the drivers at both ends are loaded within a fixed time
-> > duration. So we can simply load the driver at one side, and at a later
-> > time load the driver on the other, and still the XLAT registers would
-> > be set up correctly.
-> >
-> > Looking at perf_spad_cmd_send() and perf_msg_cmd_send(), if the
-> > concern is that ntb_peer_spad_read()/ntb_msg_read_sts() fail because
-> > of some non-recoverable error and we still schedule a high priority
-> > work, that is a valid concern. But isn't it still better than simply falling
-> > through and initializing XLAT register with incorrect values?
-> 
-> I don't think it's ever acceptable to get into an infinite loop.
-> Especially when you're running on the system's high priority work queue...
-> 
-> At the very least schedule a delayed work item to try again in some
-> number of seconds or something. Essentially just have more retires,
-> perhaps with longer delays in between.
+> Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
 
-Sounds like a good idea. Thanks for the suggestion.
+Acked-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
 
-Arindam
+Regards,
 
+	Hans
+
+> ---
+>  drivers/media/platform/fsl-viu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Falling through and continuing with the wrong values is certainly wrong.
-> I didn't notice that. If an error occurs, it shouldn't continue, it
-> should print an error to dmesg and stop.
+> diff --git a/drivers/media/platform/fsl-viu.c b/drivers/media/platform/fsl-viu.c
+> index 81a8faedbba6..991d9dc82749 100644
+> --- a/drivers/media/platform/fsl-viu.c
+> +++ b/drivers/media/platform/fsl-viu.c
+> @@ -34,7 +34,7 @@
+>  /* Allow building this driver with COMPILE_TEST */
+>  #if !defined(CONFIG_PPC) && !defined(CONFIG_MICROBLAZE)
+>  #define out_be32(v, a)	iowrite32be(a, (void __iomem *)v)
+> -#define in_be32(a)	ioread32be((void __iomem *)a)
+> +#define in_be32(a)	ioread32be((const void __iomem *)a)
+>  #endif
+>  
+>  #define BUFFER_TIMEOUT		msecs_to_jiffies(500)  /* 0.5 seconds */
 > 
-> >
-> >>
-> >> I never really reviewed this stuff properly but it looks like it has a
-> >> bunch of problems. Using the high priority work queue for some low
-> >> priority setup work seems wrong, at the very least. The spad and msg
-> >> send loops also look like they have a bunch of inter-host race condition
-> >> problems as well. Yikes.
-> >
-> > I am not very sure what the design considerations were when having
-> > a high priority work queue, but perhaps we can all have a discussion
-> > on this.
-> 
-> I'd change it. Seems completely wrong to me.
-> 
-> Logan
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/MN2PR12MB323290836319B3E7032D91369CFC0%40MN2PR12MB3232.namprd12.prod.outlook.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1c4a11b5-5ca6-7555-de3c-ff30f707fac7%40xs4all.nl.
