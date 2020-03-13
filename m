@@ -1,128 +1,131 @@
-Return-Path: <linux-ntb+bncBCS4BDN7YUCRBZEQV3ZQKGQEMULGZTQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDZ7FZ7G3ULBBGWCV3ZQKGQE2HFFU6I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ot1-x340.google.com (mail-ot1-x340.google.com [IPv6:2607:f8b0:4864:20::340])
-	by mail.lfdr.de (Postfix) with ESMTPS id A12CD1847DD
-	for <lists+linux-ntb@lfdr.de>; Fri, 13 Mar 2020 14:19:33 +0100 (CET)
-Received: by mail-ot1-x340.google.com with SMTP id h22sf5646126otj.4
-        for <lists+linux-ntb@lfdr.de>; Fri, 13 Mar 2020 06:19:33 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1584105572; cv=pass;
+Received: from mail-oi1-x238.google.com (mail-oi1-x238.google.com [IPv6:2607:f8b0:4864:20::238])
+	by mail.lfdr.de (Postfix) with ESMTPS id 772EA184A2D
+	for <lists+linux-ntb@lfdr.de>; Fri, 13 Mar 2020 16:05:00 +0100 (CET)
+Received: by mail-oi1-x238.google.com with SMTP id w186sf3777833oia.13
+        for <lists+linux-ntb@lfdr.de>; Fri, 13 Mar 2020 08:05:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1584111899; cv=pass;
         d=google.com; s=arc-20160816;
-        b=dn7MkuBF4wtbZdbkrMrsUU2NK2rvqCDYVBUNDtmZ1APYPLOj9bnxI7wDiwf3Cym0Wm
-         9VhNcd88yqpGjGyXrLLd/C/39Z1qmUVF47mDx5IVLbU2W2Jrokm7JZRVDX7T5lZVugPi
-         B+PqGmNGyLpufwJjePUpH1Kbo//D8wYsRDKN9p7OGOZZqm2gdUZxsuSte7ZZBoeDG2Tl
-         o0m3bxACKEj941hy8GoYOch5jbLMqrKc0TIqsXV3F5gaDFSn1RUt/cTLA/Sh6ngddhpS
-         ZSVcnuyCEU394/NStX70nQ/kohvDaCBo6na0igKjP1xbBuk24sp15NfW4xPvH/ZrGVxd
-         jz6w==
+        b=kULrzD/ogsKqCyt9DxeLje8seikBPF2wgKdoVg0aNyKwFF5Jvy2qqhEM38xrEXvvpv
+         2C9g6KuWM2GtMZbS91FF9v+vVQYX5gt3GUS8GugkFjM8W8BuaySZDSb8BFuIe0WTbFh4
+         vfLz8aEnZu+agHUHnoaP03nsn6JF+fWWS35aFqDOxyAbphoKRSOOpxpMhiHFPKXxB74a
+         dvzwfcbOc7ylajPniltqnfYIawT3Yu4/BelneVp1SnLIjv1u1UTKaAxfJjTvAwxERn12
+         jhXMCTByhCxxZBq6rkF2SzHdRj5H1NHKNhxNQdIl6ctXuT+MYrLCQvpsCd9SOvpTsPaR
+         zviQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:cc
-         :to:from:date:sender:dkim-signature;
-        bh=yXSS7HodQZ+TeLxx2Cey/fqh8DpeI/nAdpodkE3/zW0=;
-        b=WZPPP3u0XlBPRaU2Vsi48Du+NMdJ5ftSRsnEEkaFdIGZyAZBYyITFqu/75zPM2pemF
-         +bf1trBylDqfGyOlHd6MQjg59QZSOpAs9x+j0bWosa4fvwm0krWTXmnmHKDl5vmcZOly
-         UwvODjSgofLBKV5tFWhgUCAC31ypm/pbR89lHXPmv2XwsQR6h5kNDqOi+9I4hnPGG3cW
-         ILzL3xa3aDUebLGv5PPcY4zn4VrqMEXrDaHbPRU7t8ziffdZT0dTyayvXDG/7wuWcKTH
-         0k5EFxxx3ZRC1VyuASCvfKWKvyUCjmiPkgZUzDGsbNl0OWyedtaRmD/fovoWYhC2AcWT
-         oIoQ==
+         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :reply-to:mime-version:sender:dkim-signature:dkim-signature;
+        bh=yRabv4aZKVnywBXK0lLVkKPCxOdN40J4/MiEEsm/n9c=;
+        b=mWtymXXAXNvMGj4JtPGtH8x/WYB6ovxjTwlO4ssUKDLPdEn8FVbfXalw7MgWNZJW8A
+         wb8qSgNrRvOw+YuRiI+u4qSxHy7wiEv5T+3p780EU8R8sygV//5v0uOGF/fv5BkNnyl6
+         KvJ3JxrpVrG24rzRMUX/yJipByUIn1ieRhx6vdXdtMwiOCU0XSScVhYDlTZhWnZY8lMV
+         PJerMkJ/qYLIxu+v/tVBpJJKgSDEMRxt03E8JNFggyU1QGGfkxAjgOBqhvxJVnhabzHz
+         DfX+r3iZfFspLd9xLCn8C54Mauw28WyJ0sQ/CBHal16DMBYX2X2DajAyVPhFXg2jVy2F
+         u6hA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=CDvKwq6X;
-       spf=neutral (google.com: 2607:f8b0:4864:20::841 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QDxQO+D2;
+       spf=pass (google.com: domain of ogbonna100@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=ogbonna100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:user-agent:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=yXSS7HodQZ+TeLxx2Cey/fqh8DpeI/nAdpodkE3/zW0=;
-        b=ssicyMcYxB4EYKoVCruiprI7NLdVH26I4kk2WwTPfgB0WWK9UIZi6u7jbrzRKYLDV+
-         JHuUIgDHEFUpmXjkeG3ToXIaF29w1rdO7gWPkX99e5mKhcREcrwcsCa9T8ujEbVfR222
-         G0ZDvO8wpju43taDfouhiUyvksQLScUSiLvZKqOPIgD41WfTi9yuOUCRmanPid9KjYp7
-         SV7FptmqRAe5bcG0I6DyQRwU7/+kT6bEDnGfMR4UrbDI66QTmGZRiBz0M4pHLJXtKrye
-         IRz3TtDGaY5L9DzLAoYPxHHGma7ky6mZRfPH556uYcCazVY4YwsTwcw+U64+Vm5HZq2+
-         BkrQ==
+        h=sender:mime-version:reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=yRabv4aZKVnywBXK0lLVkKPCxOdN40J4/MiEEsm/n9c=;
+        b=KMQVr98CfTRQX8IgVCMTNiPNjGDOSuM6XikyW5joMRS0USO7LgWlZlP6VzZUTkm9wR
+         F1AdjLTzSmtCDmVPQxC+q4uQ4UOYhZClxbrH5AdXomImHyFddeddpWdVyq5jtZ2UruRH
+         bZx5YPN9TkGMUD3UB3OL11I/yV9uOT9N2zpS8vpIHla6FC9hsdSvX9l5TiaKMJGqz/a1
+         bT5uWOFSG9OK9MxaXW1BSpW151N7MEi3hCYUZcLzvtYF98PslG+goGi18z9SF8j4WVEq
+         byo+rWuY2DM3kvvPDJMqQoifKjWKl8D38PCiSsPUNcL4Y5/i6TpPEb0ij4KtADCflFc3
+         trkw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:reply-to:from:date:message-id:subject:to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=yRabv4aZKVnywBXK0lLVkKPCxOdN40J4/MiEEsm/n9c=;
+        b=YpHnVdvXrnNgWSKi7g41ZOd4hgAQnXaZaW9+0vBZjJ3bZVhURVSPmHQpQ5DhlqpLHv
+         l5v5TQs3lvTZ50IGr6uJMPdKd4IUrJ5QnjgShzSSGIdYT24SDUiZMCRFpwAjFEX0I3Tc
+         uT1cgmlkMfNJRqp9XP3cYxtickBWjpSC0UVOjcJivN2o8Jz7lO+RBAzkrjE/eSOHBd3d
+         bCmJ/wMLz+/3AsQH4gv3S3nNCMGj+EuTzad2oWpt0FociEPWNG3Fqzy2ozZLLvrckKwb
+         Bw3VGoR3HDKkqoFNNzxf3p1hUB6kmNXoVuBdiSQKG3mIcUFz2QjFwXUDCr+uUe0t6k4S
+         Pwvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to:user-agent
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=yXSS7HodQZ+TeLxx2Cey/fqh8DpeI/nAdpodkE3/zW0=;
-        b=FoDw5utsXfTjex7QBQ7e/I3fPmVdemZdyFouXZ8LOBXmHsKfvaQrNKa9fr5lf5G6td
-         W1Fml1VuKruj24FXpSHkSMrxOdJobTwbnqLwl9hjZrPhHY9rXITPXR6s7Z7vNkE7BVDF
-         i5ajaUJeGjCG25iscHuHafkoLCR+9GcaImcZutcNAGBNomggqf5g1/mVq2Qh3mCcSgNj
-         4QdkMyo9NtCJXda04vfMZyoopRUG1WgW4g2poiAwruEXNUe2iAOKnmcfkBwOD3kyK5UG
-         qJPP5zN3FAu/s6KGhPhAEB57I0PzGeORRnJWTAy2YWIkwPQZEFuLwdY2RBUMZI8pftcq
-         ilmQ==
+        h=sender:x-gm-message-state:mime-version:reply-to:from:date
+         :message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=yRabv4aZKVnywBXK0lLVkKPCxOdN40J4/MiEEsm/n9c=;
+        b=EY+bqP6Y2LImMtgMC6jlCOkoWdN+jpbY4sEC9c0qxhl9nd5qqdZzeu92CiIQteLw0d
+         yOpnyo1dnZMj8iheFvEr+jSw1hW4hA4Xsgh0Dg+XMOPuapGD600iAGOoWhLNt2xiZ4Sd
+         +CVorwrDZTLuaErxBmtLOCaVYHa1bcWOSunyecUOJHY/0syD2A5ZW35eEhLpfba94BJK
+         UYZHWzSqcYYSCIQ82kuS5fP5hO8sEX4GsmZGWZJX1hPXZ59fwTE6mPFJucBiYgFSAvNN
+         HuxD3vjBddFYdi79UxZBiyTBmrMDGJYXSbwp4rCQWzZ+RXp1wOwmySzBbUzwB41uNMHB
+         Krjw==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ANhLgQ1XrnuwnuqopEB1fOpLcRxx9jSCkpof/ulCX3JTeenm4/TIsn0m
-	bgaj9YFZXRIshhnYYSOJa9s=
-X-Google-Smtp-Source: ADFU+vvHTNrmf1HFdOhNYXv/ZQYI+EGypmbxtVApEdRjXjGtL7cRm4hobqkMRp8QglgIJERi8Q6ROQ==
-X-Received: by 2002:a9d:3435:: with SMTP id v50mr9544498otb.19.1584105572604;
-        Fri, 13 Mar 2020 06:19:32 -0700 (PDT)
+X-Gm-Message-State: ANhLgQ28tdtgcAvd7cLVybu+oyjkDDJNjYCHIHx0v/71PDH2W9VbYFhm
+	JO7/UB1uK9xkVaGjDvW4c1E=
+X-Google-Smtp-Source: ADFU+vtjiamHcq/U6KrqRtP9tftRKZC8dEHVxerz/74d/T3AqLoNNdzFO2Afuiziw2aLXrcQNXh4fA==
+X-Received: by 2002:a9d:750d:: with SMTP id r13mr11527644otk.321.1584111898501;
+        Fri, 13 Mar 2020 08:04:58 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:aca:b98a:: with SMTP id j132ls1481932oif.3.gmail; Fri, 13
- Mar 2020 06:19:32 -0700 (PDT)
-X-Received: by 2002:a05:6808:b2d:: with SMTP id t13mr7104124oij.107.1584105572245;
-        Fri, 13 Mar 2020 06:19:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1584105572; cv=none;
+Received: by 2002:a9d:787:: with SMTP id 7ls3018772oto.3.gmail; Fri, 13 Mar
+ 2020 08:04:58 -0700 (PDT)
+X-Received: by 2002:a9d:4c05:: with SMTP id l5mr740117otf.371.1584111898178;
+        Fri, 13 Mar 2020 08:04:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1584111898; cv=none;
         d=google.com; s=arc-20160816;
-        b=X5/f/MxYNOeBtydwofoUU5Dd0jUITJeRFE/zKEa4OwgUdoArhBpIdyYbCeCTVyk7mT
-         8SuIt5MctWPk2PTw6bMImoppG8FQG8oBSWMwzIzZCcMl7BaaY1GSEAbDicGEH4e8sxEu
-         cjXU8nD4v4pOjQ8VRPVN+hlDsM89fcTzXpOwVv+TfvO4YYHNDK2DXKtI7OI9oNghJIVP
-         36omziAkMLYdohvsD2G4+8mWc1PauYR/ak81bVBvju3xKBWSzqL+QfbmyjMpYWwbUkvj
-         R4oFjOsJTG0rUnglahBqk38JpdeQVqKKlQ8etdT0AJFBPAedms/hQFtiC0oGyNHchAte
-         5Wkg==
+        b=EsWH/F4MBXRlTQ8L3odBnX36JuKMG14eXOp53+5QJF8d+R0WNcpKltsw32DKylEBqR
+         UNioE/i+op8xN85bjA/m7/AUnzDYTQSY+wgmwg29acyys6rM+ECZVFFrnE0CNxNgZy2I
+         KUlsMEvFFbXPYMPHBY8ogistx2jlbyTjmf9bY7nC44vOE2gfNp6Gycnufnkm4P9rhtrP
+         tFTXC9u9L4GSQK93zZzNsakg4neCUw2BHRsccmcOOG7ZYY6lrqDpVKqGRT7wlqmUkZcf
+         TlcuwdaNzrMNTb3NYQ9fIHwGLVV9eQZqZ5uYxGf8Sgni+eg1ch1uB7jL3QIX7BsR0jDr
+         SN1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:in-reply-to:content-disposition:mime-version:references
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=cgD9btST/2n08HEcsI46jTRfluoRgQLxezxCTZBz+M4=;
-        b=jWCerEZPyP8MP6kry7GC6kUqO//vik948m//R47ki3OAg/3AW+DN3b+ieolGFsA53Q
-         8FkSQ31djWFqnhb5vhrBFSYDyBn66Th2T2A+s52LuF6a6M46pj6yQzOMbenbNmZf9mbe
-         WM1JtT9SzByvQif+iYAR2wvRmeo9e3cx7cpATzsUJPI58zdh8gV2US6kFeW5bacLmz1e
-         7pZRibjzQPRlRy6BhI+DNsbGRu8WEU1l0S4gAuv3njxSVdoa3279peXFEKNWCcPHzvhJ
-         y2NNMMYKlPxfeuVffrKdbWkn0a6HP1Y1xN3SzhLZ3kh4wOHVVz5f+WmLGPGMpZMMFqK6
-         tNCg==
+        h=to:subject:message-id:date:from:reply-to:mime-version
+         :dkim-signature;
+        bh=j2QEI9qhE499vmlTCneDpKaQfUXMxdNli1p0sYnTZJ8=;
+        b=Yzk7KrGVdxO8wTGogWldLM+1PfkeDDFdmKRI3VHkW1TeFmquiGwRDP5FX6A3Jam4WN
+         8l1gr3ZCUzeB3wAGWH1QxSmBEey5Oblz77OUNyjP1WgdNSZUsQKrjZdelrO9yLM2lHa/
+         KsIpkl3f7ovU1/FcUeqgvLYa98J5Q58ziKATp3+ipcfvh6sQ8Z05YA9BeY+4vDEsf6g2
+         R1T68aHuO0sv8EhdoZmTEVtgvADVgAzQwfBo1aH5hzbuv4tnNmIYs/uNmc1FtaTGevyg
+         4gK51plFNCQ91JPvOoAmHIRbwAf6nVr1VEdyCHG9ySvG7NXVNmwGG/jTQTspgnGsp2F+
+         6NuA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=CDvKwq6X;
-       spf=neutral (google.com: 2607:f8b0:4864:20::841 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
-Received: from mail-qt1-x841.google.com (mail-qt1-x841.google.com. [2607:f8b0:4864:20::841])
-        by gmr-mx.google.com with ESMTPS id b1si322805ots.2.2020.03.13.06.19.32
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=QDxQO+D2;
+       spf=pass (google.com: domain of ogbonna100@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) smtp.mailfrom=ogbonna100@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-qk1-x742.google.com (mail-qk1-x742.google.com. [2607:f8b0:4864:20::742])
+        by gmr-mx.google.com with ESMTPS id v19si609044oth.1.2020.03.13.08.04.58
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 13 Mar 2020 06:19:32 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::841 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::841;
-Received: by mail-qt1-x841.google.com with SMTP id h16so7384298qtr.11
-        for <linux-ntb@googlegroups.com>; Fri, 13 Mar 2020 06:19:32 -0700 (PDT)
-X-Received: by 2002:ac8:44c7:: with SMTP id b7mr12649904qto.366.1584105571605;
-        Fri, 13 Mar 2020 06:19:31 -0700 (PDT)
-Received: from kudzu.us ([2605:a601:a664:2e00:38a9:cfd2:746b:b1f5])
-        by smtp.gmail.com with ESMTPSA id r29sm7761724qkk.85.2020.03.13.06.19.30
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Mar 2020 06:19:31 -0700 (PDT)
-Date: Fri, 13 Mar 2020 09:19:29 -0400
-From: Jon Mason <jdmason@kudzu.us>
-To: Logan Gunthorpe <logang@deltatee.com>
-Cc: Takashi Iwai <tiwai@suse.de>, Dave Jiang <dave.jiang@intel.com>,
-	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com
-Subject: Re: [PATCH] NTB: ntb_transport: Use scnprintf() for avoiding
- potential buffer overflow
-Message-ID: <20200313131928.GC13046@kudzu.us>
-References: <20200311084917.18592-1-tiwai@suse.de>
- <03f25a1e-c72f-8fd8-d23e-f0da5e8d39b4@deltatee.com>
+        Fri, 13 Mar 2020 08:04:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ogbonna100@gmail.com designates 2607:f8b0:4864:20::742 as permitted sender) client-ip=2607:f8b0:4864:20::742;
+Received: by mail-qk1-x742.google.com with SMTP id x1so8130155qkx.10
+        for <linux-ntb@googlegroups.com>; Fri, 13 Mar 2020 08:04:58 -0700 (PDT)
+X-Received: by 2002:a05:620a:110c:: with SMTP id o12mr13231329qkk.87.1584111897959;
+ Fri, 13 Mar 2020 08:04:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
-In-Reply-To: <03f25a1e-c72f-8fd8-d23e-f0da5e8d39b4@deltatee.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Original-Sender: jdmason@kudzu.us
+Reply-To: atohmk225@gmail.com
+From: Komlaw Louis Atohm <ogbonna100@gmail.com>
+Date: Fri, 13 Mar 2020 16:04:46 +0100
+Message-ID: <CA+YdZB2exLknazr1-jME-r-zFK=-KOfrYB2XQJPHo-9C+z_c0g@mail.gmail.com>
+Subject: =?UTF-8?B?15TXkNedINeQ16rXlCDXoteT15nXmdefINee16nXqtee16kg15HXk9eV15Ai15wg15bXlA==?=
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000f660a405a0bdca4b"
+X-Original-Sender: ogbonna100@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
- header.b=CDvKwq6X;       spf=neutral (google.com: 2607:f8b0:4864:20::841 is
- neither permitted nor denied by best guess record for domain of
- jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+ header.i=@gmail.com header.s=20161025 header.b=QDxQO+D2;       spf=pass
+ (google.com: domain of ogbonna100@gmail.com designates 2607:f8b0:4864:20::742
+ as permitted sender) smtp.mailfrom=ogbonna100@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -135,152 +138,96 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Wed, Mar 11, 2020 at 11:08:11AM -0600, Logan Gunthorpe wrote:
-> 
-> 
-> On 2020-03-11 2:49 a.m., Takashi Iwai wrote:
-> > Since snprintf() returns the would-be-output size instead of the
-> > actual output size, the succeeding calls may go beyond the given
-> > buffer limit.  Fix it by replacing with scnprintf().
-> > 
-> > Signed-off-by: Takashi Iwai <tiwai@suse.de>
-> 
-> Makes sense. Looks good to me!
-> 
-> Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
-> 
-> Thanks!
+--000000000000f660a405a0bdca4b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
+
+157XlCDXqdec15XXnteaLA0KDQrXqNenINeo15XXpteUINec15DXqdeoINeQ150g15DXqteUINei
+15PXmdeZ158g157Xqdeq157XqSDXkdeb16rXldeR16og15PXldeQItecINeW15U/INeQ150g15vX
+nywg15DXoNeQINeU16nXkSDXnNeT15XXkNeoDQrXlNeQ15fXqNeV158g16nXqdec15fXqteZINeQ
+15zXmdeaLCDXoNeV16nXkCDXl9ep15XXkSDXqdeQ16DXmSDXqNeV16bXlCDXnNeT15XXnyDXkNeq
+15ouDQoNCtee16bXpNeUINec16nXnteV16Ig157XnteaLg0KDQrXotedINee16nXkNec15XXqteZ
+15og15TXmNeV15HXldeqINeR15nXldeq16ghDQoNCg0KQXRvaCBMb3VpcyBLb21sYWgNCg0KDQoN
+Cg0KDQpIb3cgYXJlIHlvdSwNCg0KIEp1c3Qgd2FudCB0byBjb25maXJtIGlmICB5b3UgU3RpbGwg
+dXNpbmcgdGhpcyBlbWFpbCBhZGRyZXNzPyBJZiBzbywgcGxlYXNlDQpyZXBseSB0byBteSBsYXN0
+IG1haWwgaSBzZW50IHlvdSwgYW4gaW1wb3J0YW50IGlzc3VlIEkgd291bGQgbGlrZSB0bw0KZGlz
+Y3VzcyB3aXRoIHlvdS4NCg0KTG9va2luZyBmb3J3YXJkIHRvIGhlYXJpbmcgZnJvbSB5b3UuDQoN
+CiBXaXRoIHlvdXIgYmVzdCB3aXNoZXMhDQoNCkF0b2ggTG91aXMgS29tbGFoDQoNCi0tIApZb3Ug
+cmVjZWl2ZWQgdGhpcyBtZXNzYWdlIGJlY2F1c2UgeW91IGFyZSBzdWJzY3JpYmVkIHRvIHRoZSBH
+b29nbGUgR3JvdXBzICJsaW51eC1udGIiIGdyb3VwLgpUbyB1bnN1YnNjcmliZSBmcm9tIHRoaXMg
+Z3JvdXAgYW5kIHN0b3AgcmVjZWl2aW5nIGVtYWlscyBmcm9tIGl0LCBzZW5kIGFuIGVtYWlsIHRv
+IGxpbnV4LW50Yit1bnN1YnNjcmliZUBnb29nbGVncm91cHMuY29tLgpUbyB2aWV3IHRoaXMgZGlz
+Y3Vzc2lvbiBvbiB0aGUgd2ViIHZpc2l0IGh0dHBzOi8vZ3JvdXBzLmdvb2dsZS5jb20vZC9tc2dp
+ZC9saW51eC1udGIvQ0ElMkJZZFpCMmV4TGtuYXpyMS1qTUUtci16RkslM0QtS09mcllCMlhRSlBI
+by05QyUyQnpfYzBnJTQwbWFpbC5nbWFpbC5jb20uCg==
+--000000000000f660a405a0bdca4b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">
+<pre class=3D"gmail-tw-data-text gmail-tw-text-large gmail-tw-ta" id=3D"gma=
+il-tw-target-text" style=3D"text-align:right" dir=3D"rtl"><span lang=3D"iw"=
+>=D7=9E=D7=94 =D7=A9=D7=9C=D7=95=D7=9E=D7=9A,
+
+=D7=A8=D7=A7 =D7=A8=D7=95=D7=A6=D7=94 =D7=9C=D7=90=D7=A9=D7=A8 =D7=90=D7=9D=
+ =D7=90=D7=AA=D7=94 =D7=A2=D7=93=D7=99=D7=99=D7=9F =D7=9E=D7=A9=D7=AA=D7=9E=
+=D7=A9 =D7=91=D7=9B=D7=AA=D7=95=D7=91=D7=AA =D7=93=D7=95=D7=90&quot;=D7=9C =
+=D7=96=D7=95? =D7=90=D7=9D =D7=9B=D7=9F, =D7=90=D7=A0=D7=90 =D7=94=D7=A9=D7=
+=91 =D7=9C=D7=93=D7=95=D7=90=D7=A8 =D7=94=D7=90=D7=97=D7=A8=D7=95=D7=9F =D7=
+=A9=D7=A9=D7=9C=D7=97=D7=AA=D7=99 =D7=90=D7=9C=D7=99=D7=9A, =D7=A0=D7=95=D7=
+=A9=D7=90 =D7=97=D7=A9=D7=95=D7=91 =D7=A9=D7=90=D7=A0=D7=99 =D7=A8=D7=95=D7=
+=A6=D7=94 =D7=9C=D7=93=D7=95=D7=9F =D7=90=D7=AA=D7=9A.
+
+=D7=9E=D7=A6=D7=A4=D7=94 =D7=9C=D7=A9=D7=9E=D7=95=D7=A2 =D7=9E=D7=9E=D7=9A.
+
+=D7=A2=D7=9D =D7=9E=D7=A9=D7=90=D7=9C=D7=95=D7=AA=D7=99=D7=9A =D7=94=D7=98=
+=D7=95=D7=91=D7=95=D7=AA =D7=91=D7=99=D7=95=D7=AA=D7=A8!
 
 
-Thanks for the patch (and review).  Since this is a fix, I had to add
-some "Fixes:" tags to the commit message.  Since this is touching a
-lot of lines added by a number of patches, it's a bit ugly.  But, here
-is what I added.
+Atoh Louis Komlah
 
-    Fixes: fce8a7bb5b4b (PCI-Express Non-Transparent Bridge Support)
-    Fixes: 282a2feeb9bf (NTB: Use DMA Engine to Transmit and Receive)
-    Fixes: a754a8fcaf38 (NTB: allocate number transport entries depending on size of ring size)
-    Fixes: d98ef99e378b (NTB: Clean up QP stats info)
-    Fixes: e74bfeedad08 (NTB: Add flow control to the ntb_netdev)
-    Fixes: 569410ca756c (NTB: Use unique DMA channels for TX and RX)
+</span></pre>
 
-I pulled it in to my ntb branch with the above change.
+<div><br></div><div><br></div><div><br></div><div>How are you,<br><br>=C2=
+=A0Just want to confirm if =C2=A0you Still using this email address? If so,=
+ please reply to my last mail i sent you, an important issue I would like t=
+o discuss with you. <br><br>Looking forward to hearing from you.<br><br>=C2=
+=A0With your best wishes!<br><br>Atoh Louis Komlah</div>
 
-Thanks,
-Jon
 
-> 
-> > ---
-> >  drivers/ntb/ntb_transport.c | 58 ++++++++++++++++++++++-----------------------
-> >  1 file changed, 29 insertions(+), 29 deletions(-)
-> > 
-> > diff --git a/drivers/ntb/ntb_transport.c b/drivers/ntb/ntb_transport.c
-> > index 00a5d5764993..e6d1f5b298f3 100644
-> > --- a/drivers/ntb/ntb_transport.c
-> > +++ b/drivers/ntb/ntb_transport.c
-> > @@ -481,70 +481,70 @@ static ssize_t debugfs_read(struct file *filp, char __user *ubuf, size_t count,
-> >  		return -ENOMEM;
-> >  
-> >  	out_offset = 0;
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "\nNTB QP stats:\n\n");
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_bytes - \t%llu\n", qp->rx_bytes);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_pkts - \t%llu\n", qp->rx_pkts);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_memcpy - \t%llu\n", qp->rx_memcpy);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_async - \t%llu\n", qp->rx_async);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_ring_empty - %llu\n", qp->rx_ring_empty);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_err_no_buf - %llu\n", qp->rx_err_no_buf);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_err_oflow - \t%llu\n", qp->rx_err_oflow);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_err_ver - \t%llu\n", qp->rx_err_ver);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_buff - \t0x%p\n", qp->rx_buff);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_index - \t%u\n", qp->rx_index);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_max_entry - \t%u\n", qp->rx_max_entry);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "rx_alloc_entry - \t%u\n\n", qp->rx_alloc_entry);
-> >  
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_bytes - \t%llu\n", qp->tx_bytes);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_pkts - \t%llu\n", qp->tx_pkts);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_memcpy - \t%llu\n", qp->tx_memcpy);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_async - \t%llu\n", qp->tx_async);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_ring_full - \t%llu\n", qp->tx_ring_full);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_err_no_buf - %llu\n", qp->tx_err_no_buf);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_mw - \t0x%p\n", qp->tx_mw);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_index (H) - \t%u\n", qp->tx_index);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "RRI (T) - \t%u\n",
-> >  			       qp->remote_rx_info->entry);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "tx_max_entry - \t%u\n", qp->tx_max_entry);
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "free tx - \t%u\n",
-> >  			       ntb_transport_tx_free_entry(qp));
-> >  
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "\n");
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "Using TX DMA - \t%s\n",
-> >  			       qp->tx_dma_chan ? "Yes" : "No");
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "Using RX DMA - \t%s\n",
-> >  			       qp->rx_dma_chan ? "Yes" : "No");
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "QP Link - \t%s\n",
-> >  			       qp->link_is_up ? "Up" : "Down");
-> > -	out_offset += snprintf(buf + out_offset, out_count - out_offset,
-> > +	out_offset += scnprintf(buf + out_offset, out_count - out_offset,
-> >  			       "\n");
-> >  
-> >  	if (out_offset > out_count)
-> > 
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200313131928.GC13046%40kudzu.us.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/CA%2BYdZB2exLknazr1-jME-r-zFK%3D-KOfrYB2XQJPHo-9C%2Bz_=
+c0g%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups=
+.google.com/d/msgid/linux-ntb/CA%2BYdZB2exLknazr1-jME-r-zFK%3D-KOfrYB2XQJPH=
+o-9C%2Bz_c0g%40mail.gmail.com</a>.<br />
+
+--000000000000f660a405a0bdca4b--
