@@ -1,123 +1,124 @@
-Return-Path: <linux-ntb+bncBCS4BDN7YUCRBW6CRX2AKGQE3RV7OZI@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBYVQR72AKGQEKWFMQBY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pj1-x103f.google.com (mail-pj1-x103f.google.com [IPv6:2607:f8b0:4864:20::103f])
-	by mail.lfdr.de (Postfix) with ESMTPS id EC63E19999B
-	for <lists+linux-ntb@lfdr.de>; Tue, 31 Mar 2020 17:27:25 +0200 (CEST)
-Received: by mail-pj1-x103f.google.com with SMTP id l9sf2398153pjq.8
-        for <lists+linux-ntb@lfdr.de>; Tue, 31 Mar 2020 08:27:25 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1585668444; cv=pass;
+Received: from mail-il1-x138.google.com (mail-il1-x138.google.com [IPv6:2607:f8b0:4864:20::138])
+	by mail.lfdr.de (Postfix) with ESMTPS id 31DBE19A2A4
+	for <lists+linux-ntb@lfdr.de>; Wed,  1 Apr 2020 01:55:16 +0200 (CEST)
+Received: by mail-il1-x138.google.com with SMTP id e5sf21788786ilg.3
+        for <lists+linux-ntb@lfdr.de>; Tue, 31 Mar 2020 16:55:16 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1585698915; cv=pass;
         d=google.com; s=arc-20160816;
-        b=L05+/qlCbn94qrv3jzFnhevMVDgoySVjCFL2i7USMjJyD/vO3K+/1yTKRdnC3ZDVVA
-         rEjZ+kAyFnMWQp6+guKhNEXKHVrmpZEoYeB71u17/LNBdzbUrt/0JxuEREubkR8wgo3W
-         nI38r1rseEDUzTBU2DR+UqRMqE16QtStf1ZsP2UUQrjZvHqWfRw4M14e5NU7zZytM5CR
-         bWSAUEVw0DAjIgDXKRIjRts0O2OZyqSaBNPsZwklbEADYRkYRwGqdCHAUYHNB8+cMdag
-         U/SlmZhHCVxa2IT8dbcZcVRTvIUkKput+Bl247Nil1DEokr1yITGfpNNqeSrirZWVB1V
-         viRQ==
+        b=rG82jYmCLBRG9Vp5G5lB2Nvhshv04AvBYTmwXPXKmzipF6ArrvP5RskQXZ/6nSVu0n
+         ybUCgA+OuqWnE3Udf5uJ2qofwgOziKtju4pP3xwRJ5QcKsyamKLLe4ERv2QZFmC/MU0r
+         M60QPKpjbaRM59Xl4ugaSoLTXEaNU0Xx3Y6yIcqCLmVFy9wwVDKMdKgkIza09WSYesvc
+         /Hi6uWYr+rAsUQqWoCHMOTVlagUXZ3OeNqGM9nldQbN2J2BOFz0CmQlt1J410i/q6S9y
+         JNZTCwTFjlmdeNcOrQkztva72iFT/qVXoTzgTHBUK+LBygTB5+uSxw7lKXjhtyYALq7M
+         Vz4A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:user-agent:content-disposition
-         :mime-version:message-id:subject:cc:to:date:from:sender
-         :dkim-signature;
-        bh=G+WbqOgEv79DvkPuNKVkV5X3Mo3jlgsOOiWDrQ/Z9Uw=;
-        b=DGbBZQQ6DTMUqjtpG06PAQYcbRygOi2Pf2hXD5thdxN63ASKiS7wdkFD0/8WBgRtRO
-         t8qrfHRRshL4ih2apL0xi1kIA2bkVPnJ60S5PHkbgOQpuC0tsy4DEzVi8himudwNQYnm
-         0nmVsIqqCRUcD7ORACqqSfkUQ7I/QNP1AAtugSmPGfOyZb/VcZyca8qMIDcfi53zyw2h
-         9+5IuSE4jEsg/fjYPw4zPPc+aLNBzjndJlMeVqwDbaTYzu/26cOilfBhmx0HT3V7/Snm
-         +XAKLNkeCMqfgZQRxoEH0KN0GBrJRagBuGfMg9VOk1gmQ4XqBBagqcg4h/cXQGGemPsT
-         2DmQ==
+         :list-id:mailing-list:precedence:cc:to:date:message-id:references
+         :in-reply-to:from:subject:mime-version:sender:dkim-signature;
+        bh=1mjQxWnhbIxR7iYMLHvnIxbdG5BIjxh1TMcPlrDqBxs=;
+        b=mopLYYQVi//DhZQb4Se3A4wzewNk4Ff8ASgFx+r3YzM2Fqz8fM1ysjm+M8TjoeCxZo
+         3aHZ3s/K/wUnbIpoFAqbeurNTVvSXOTC14rk0PioX2NsVU5Jlqwxgi73TgF4kH/mgE8I
+         754i2d1m5yeDBERqM6Nv2FWsX9XjgmarNUT7kkLJz1mYnQKsCem4AG2F2EdWkskxn4ra
+         nbwhM5SVNErVakm9HoOdyzguu+Dw00zF4sHUuwmAmVM2qdwOfj2pa794sumVB7w2Zspl
+         aHZLQD6F8fRXhVjIeflS0KrRwJhyZaCR7r4DiXHH5xZLUfg3W8iNGELXkJit22H4Y36e
+         aIng==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=xvsIaGxn;
-       spf=neutral (google.com: 2607:f8b0:4864:20::843 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+       dkim=pass header.i=@kernel.org header.s=default header.b=gkAJAf7g;
+       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:date:to:cc:subject:message-id:mime-version
-         :content-disposition:user-agent:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=G+WbqOgEv79DvkPuNKVkV5X3Mo3jlgsOOiWDrQ/Z9Uw=;
-        b=HnVPaXMWi98PUUTkibjaxtF1Dvw6W/083HgI7sZ8G6w/O2nKv0Im5w9ObX0AMuzKcf
-         snlpwYCZ9hkyaOapvsg/fHwYZ3xuCPJ6orU4WntCJbdx82+1cCc6mwgBecDDabCnSY+N
-         Io1fAfSG9OK8dh81Jd2xYM4d4gRwe/3Griwq67Fxtmm7dm0DOUQOf5t62eTlSNHsv2lT
-         cV2ArHAxpSGTY25i+1N++8PEv5uOIKvWiyvy7y3tZwdFusHgzTfMj4APvbihZCiK3QMi
-         /0C2x7E/UH4GMWPhQPPcWYn0jLpyGPoHzlN3VYgcIFNDdE+y4BCduPj9m+u1y7ALJr0o
-         68Aw==
+        h=sender:mime-version:subject:from:in-reply-to:references:message-id
+         :date:to:cc:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=1mjQxWnhbIxR7iYMLHvnIxbdG5BIjxh1TMcPlrDqBxs=;
+        b=pWCFv+1TVuQryt9plilCgI0fNUhAh8DAaAqO44Ln5WFZZcqMzG/4UtwfXgkZyre0Ye
+         M+FLcoLqn5aCsEqBtrbby2rTL6hnwuXJm+1XynclnImjrIgEfDV50GR+EH4yZSGurs4a
+         Pjwk6LZ8LjkWpoDQcsX6oIk9wFxE32EK2zfHSjYvlyfKjcaUAoigBTBTkSvhgsvmbMs5
+         H/F3H7RNP5TflusECmhEe3sC0AuqWD/28K11LuU0spHvi5yjigNp8j6PmdWX/kXEpRzq
+         ZpQXvPeUc3o5FcdqLPCGvvkBkOMduoP5dotJc9dheKRDBNh2FMWHaMJ15ppYRijmVtVt
+         hejg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:date:to:cc:subject:message-id
-         :mime-version:content-disposition:user-agent:x-original-sender
+        h=sender:x-gm-message-state:mime-version:subject:from:in-reply-to
+         :references:message-id:date:to:cc:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=G+WbqOgEv79DvkPuNKVkV5X3Mo3jlgsOOiWDrQ/Z9Uw=;
-        b=LFmmw7IwB/lGkDwM5shGUcFb41eETzAAxTMaxvam8RMMH1Q6n/xvP3mHBC8MUfDcbE
-         48eFd8UwAlR6jL/PI+5HS17QElp1fqC7XOVUjswUazOBNXnK9zBhr+/n484+LHP1kg5x
-         rkYZWmoxx8BIAh3zihLiKCzflmtL6YTPtnECUEgLtnQ5UHsXItHMkEEbAGt5Qb/v2+CC
-         9rY8Hu4BXvvZ8guWFMd6GQ2zM4Zwy+b09ngYGuRJmJ1OfOiCI1ZlWJwWTvJlgDgHbNww
-         8ybuLTsW5S+CD+KevjOxytJs/gRVH3ogjk0nbV6Gurl4FjAgS90qd03BP1Me1Qx2Ib5L
-         lIHQ==
+        bh=1mjQxWnhbIxR7iYMLHvnIxbdG5BIjxh1TMcPlrDqBxs=;
+        b=C4Xd2Ubf3rJpMkEFoxxG+fGllXjgzrFj3nJztgHhWOgZQF7sdjLpAbY6cg8AmqsQNc
+         uOOUoXWKwN38HU9ISg0e9T9tdpCNqAXKTDN5EcSm1MlG4vAEOp+zJAKwsKQwZWU4UTBn
+         HVPIBJBhRYHwoh9RqqG3EgPogdX+BW+1+AaaQEo5w5vN4biwhOIlUOFxGGX6UU9pg75Q
+         IruVkNAv0pS7PdBJqH8RZ/wNyDd1AmOjE2N6N4WB69dzFp0+BPhJRnuNYbMJmJa4jhUy
+         kekEgptSNJXuSHmaNQrFW0kNeZOGqD8/8ZB16BZpXQOpvhtag6gWK6F5JRxckH2SjD/x
+         bFuA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AGi0PuY3Yl2jO5HJbeVRnLTwMDC6VsSzPahitw4DXp6AssaOQQEs9vnY
-	V6CCEENNOuknKaXIn7DB260=
-X-Google-Smtp-Source: APiQypLlxhTOiUku6NbmCSo/j93KAWkguKjPzqAKu59NOOP6U17Gq6FbZIIM7jWUNQmOVS+3x5PT1w==
-X-Received: by 2002:a63:5453:: with SMTP id e19mr4522664pgm.96.1585668444063;
-        Tue, 31 Mar 2020 08:27:24 -0700 (PDT)
-X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:90a:9308:: with SMTP id p8ls3010179pjo.0.gmail; Tue, 31
- Mar 2020 08:27:23 -0700 (PDT)
-X-Received: by 2002:a17:90b:1985:: with SMTP id mv5mr4699540pjb.69.1585668443605;
-        Tue, 31 Mar 2020 08:27:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585668443; cv=none;
-        d=google.com; s=arc-20160816;
-        b=N8GV5jDNdr6FVzi1WwlODHUkDPjYdwR1YO041V6MvBHOozP8OhDIqicxa1jrg+Gg7I
-         7E51/f/YtmFOkJR4PqQAdToOJ3VsBP0Eu6VTAWX48iZXnAe1RYlcssGHYEwDg3BFOUEW
-         XyJHVTM8JslMnStvlIwo8zzrkHjmTIP/tw3Zio5B/D0x6aTv5tUrHivay9rPSq3F6BrG
-         n5ZFzah7ktmYgQI/b/x6cOfdHXOQg6tfSu8OI70S1L1vedlwtp8GNDRRFRuLnawK5idq
-         pi5McQWKH2vFYVKmUSHhpeV1fM7oOFLVWaeN12GKgkjHKqMJuT7+UwgQDNNqfn4bI7/8
-         8ycw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=user-agent:content-disposition:mime-version:message-id:subject:cc
-         :to:date:from:dkim-signature;
-        bh=VFmTu4uYulpUU5in51vToheYdVlAq1Y7eqMyGwDEhI8=;
-        b=zNVtCZPiIppye1pQj8YNp4Muzfuce8Ypl93ue6NIh7Ee6JQPbV9wNpcysVSNCgCOJB
-         n22HxMlodrd8gVRWtswtYrnpDES+d28tdl4tiElY1rSJepf48iozfcGSRp51YuR8bt3C
-         BC7mIY4F363ZfVWknAmpGYouxikX7SPEAZdgZjhPJf1qmw6BetwOBmw+/4IYE0YHGsyn
-         2pPUEyRc8E7xZKVVJ6kXIQL5DDyl/iPCknC0etFvfdhbBqwgL7tu61CWXUIrKaWlJkrN
-         Y/jsIvYBJyBdKJN6zhFORGTFk9qPnIyfAU2w9CAhrFw9SJ5t8v4tvnsdM8nS0lnT95aN
-         p6Ew==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=xvsIaGxn;
-       spf=neutral (google.com: 2607:f8b0:4864:20::843 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
-Received: from mail-qt1-x843.google.com (mail-qt1-x843.google.com. [2607:f8b0:4864:20::843])
-        by gmr-mx.google.com with ESMTPS id u14si222734pjn.2.2020.03.31.08.27.23
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 31 Mar 2020 08:27:23 -0700 (PDT)
-Received-SPF: neutral (google.com: 2607:f8b0:4864:20::843 is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::843;
-Received: by mail-qt1-x843.google.com with SMTP id c9so18640119qtw.7
-        for <linux-ntb@googlegroups.com>; Tue, 31 Mar 2020 08:27:23 -0700 (PDT)
-X-Received: by 2002:ac8:3072:: with SMTP id g47mr5590057qte.278.1585668442641;
-        Tue, 31 Mar 2020 08:27:22 -0700 (PDT)
-Received: from localhost ([2605:a601:a664:2e00:9c27:5ab0:8441:9150])
-        by smtp.gmail.com with ESMTPSA id r29sm14079899qtj.76.2020.03.31.08.27.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 31 Mar 2020 08:27:22 -0700 (PDT)
-From: Jon Mason <jdmason@kudzu.us>
-Date: Tue, 31 Mar 2020 11:27:21 -0400
-To: torvalds@linux-foundation.org
-Cc: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
-Subject: [GIT PULL] NTB bug fixes for v5.7
-Message-ID: <20200331152721.GA1719@athena.kudzu.us>
+X-Gm-Message-State: ANhLgQ2U0ngbG7JQC+n3euPPrZ/AKROJEV525B5ONULfE4lG7CjexEA5
+	vOtnjf/gTWOO7bWoCELeNAQ=
+X-Google-Smtp-Source: ADFU+vtRBIzcpQ0famNqJZBpzdrhSPMxuYr7iu6sYYA6c4KpuQrHS4Sk40GJBhkXLG7G4CpJzawmWA==
+X-Received: by 2002:a02:76c2:: with SMTP id z185mr17812941jab.76.1585698914788;
+        Tue, 31 Mar 2020 16:55:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-Original-Sender: jdmason@kudzu.us
+X-BeenThere: linux-ntb@googlegroups.com
+Received: by 2002:a05:6638:d2:: with SMTP id w18ls3173291jao.7.gmail; Tue, 31
+ Mar 2020 16:55:14 -0700 (PDT)
+X-Received: by 2002:a02:8c4:: with SMTP id 187mr17748134jac.50.1585698914468;
+        Tue, 31 Mar 2020 16:55:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1585698914; cv=none;
+        d=google.com; s=arc-20160816;
+        b=PbXwA99w3PbiutTIhrygTo2aCuA6VE69Pgvf6zAxiBDCU29KHtZe98AI0TnX6sNKvB
+         x7YPDisAslT/W0Bx8T9dXanhPk3bZxmOjmtHhLEPykp+1Ujds2hIAQtTopwxUNHIuY9b
+         kXMeSjmPIajyAs2g9TlnHL6J85ER1IHT7WGh2qdGjf0iheCY6ba/S2EP6flmM8lU4XwH
+         ICOWLW+CZxchrCs5EcoBaDiUYfiU4BkvriAGdUTs4sp7Awr3Xmsg5U6T2p82vHY6t7us
+         SRQBErbU13j2NiWEZNFM8w7D0itahkIepwVj4gXU8899hCZ6efxwgTrBrC35UJ3SBL1O
+         gFRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=cc:to:date:message-id:references:in-reply-to:from:dkim-signature
+         :subject;
+        bh=uUT5LM5+h/E5RA0F5XP4BfAM+i7bHO9Aj6DlYGMTgRU=;
+        b=U1Gd5+RJdFuO9nDBlHyWxciq4C5Z1W8W0w3xN8nAZXMi375BULQTkNMcOc0V2oLUVR
+         6ZAvJs1U/2CPjEPgOEkOrSpIG56jNtxDgLh+QQRLJtPIyBF7IWXkHMtyVAGPAoCMFFie
+         jbvJiQnX/u22Su2qwM1KC6K8Jal54VtoYfqeoaaOGRkDgEmYx8jqfEd45e5I1pspwVrp
+         JnRHuaB7hPHJGtf38YcKP8hzRsIaocgwjIg9N/4x1pSSDPyIfp8yrNS8fA94OGpfrhVl
+         aXHznGrhLDQtuUaS2p19iNvYUVagcmvbYgylfLFPY7I6AGVOY4Mzx18/Nw+Rlz9XK8bO
+         mIdA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@kernel.org header.s=default header.b=gkAJAf7g;
+       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id a3si27023iog.2.2020.03.31.16.55.14
+        for <linux-ntb@googlegroups.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 31 Mar 2020 16:55:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Subject: Re: [GIT PULL] NTB bug fixes for v5.7
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <20200331152721.GA1719@athena.kudzu.us>
+References: <20200331152721.GA1719@athena.kudzu.us>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <20200331152721.GA1719@athena.kudzu.us>
+X-PR-Tracked-Remote: git://github.com/jonmason/ntb tags/ntb-5.7
+X-PR-Tracked-Commit-Id: b350f0a3eb264962caefeb892af56c1b727ee03f
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: 56a451b780676bc1cdac011735fe2869fa2e9abf
+Message-Id: <158569891371.16027.14099209625031293428.pr-tracker-bot@kernel.org>
+Date: Tue, 31 Mar 2020 23:55:13 +0000
+To: Jon Mason <jdmason@kudzu.us>
+Cc: torvalds@linux-foundation.org, linux-kernel@vger.kernel.org,
+ linux-ntb@googlegroups.com
+X-Original-Sender: pr-tracker-bot@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
- header.b=xvsIaGxn;       spf=neutral (google.com: 2607:f8b0:4864:20::843 is
- neither permitted nor denied by best guess record for domain of
- jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+ header.i=@kernel.org header.s=default header.b=gkAJAf7g;       spf=pass
+ (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as
+ permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Content-Type: text/plain; charset="UTF-8"
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -130,75 +131,20 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hello Linus,
-Here are a few NTB bug fixes and AMD NTB driver changes for v5.7.  Please consider pulling them.
+The pull request you sent on Tue, 31 Mar 2020 11:27:21 -0400:
 
-Thanks,
-Jon
+> git://github.com/jonmason/ntb tags/ntb-5.7
 
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/56a451b780676bc1cdac011735fe2869fa2e9abf
 
+Thank you!
 
-The following changes since commit bb6d3fb354c5ee8d6bde2d576eb7220ea09862b9:
-
-  Linux 5.6-rc1 (2020-02-09 16:08:48 -0800)
-
-are available in the Git repository at:
-
-  git://github.com/jonmason/ntb tags/ntb-5.7
-
-for you to fetch changes up to b350f0a3eb264962caefeb892af56c1b727ee03f:
-
-  NTB: add pci shutdown handler for AMD NTB (2020-03-13 10:04:20 -0400)
-
-----------------------------------------------------------------
-Bug fixes for a few printing issues, link status detection bug on AMD
-hardware, and a DMA address issue with ntb_perf.  Also, large series of
-AMD NTB patches.
-
-----------------------------------------------------------------
-Alexander Fomichev (1):
-      ntb_hw_switchtec: Fix ntb_mw_clear_trans error if size == 0
-
-Arindam Nath (15):
-      NTB: Fix access to link status and control register
-      NTB: clear interrupt status register
-      NTB: Enable link up and down event notification
-      NTB: define a new function to get link status
-      NTB: return the side info status from amd_poll_link
-      NTB: set peer_sta within event handler itself
-      NTB: remove handling of peer_sta from amd_link_is_up
-      NTB: handle link down event correctly
-      NTB: handle link up, D0 and D3 events correctly
-      NTB: move ntb_ctrl handling to init and deinit
-      NTB: add helper functions to set and clear sideinfo
-      NTB: return link up status correctly for PRI and SEC
-      NTB: remove redundant setting of DB valid mask
-      NTB: send DB event when driver is loaded or un-loaded
-      NTB: add pci shutdown handler for AMD NTB
-
-Helge Deller (1):
-      ntb_tool: Fix printk format
-
-Jiasen Lin (2):
-      NTB: Fix an error in get link status
-      NTB: ntb_perf: Fix address err in perf_copy_chunk
-
-Sanjay R Mehta (1):
-      MAINTAINERS: update maintainer list for AMD NTB driver
-
-Takashi Iwai (1):
-      NTB: ntb_transport: Use scnprintf() for avoiding potential buffer overflow
-
- MAINTAINERS                            |   1 +
- drivers/ntb/hw/amd/ntb_hw_amd.c        | 290 +++++++++++++++++++++++++++------
- drivers/ntb/hw/amd/ntb_hw_amd.h        |   8 +-
- drivers/ntb/hw/mscc/ntb_hw_switchtec.c |   2 +-
- drivers/ntb/ntb_transport.c            |  58 +++----
- drivers/ntb/test/ntb_perf.c            |  57 +++++--
- drivers/ntb/test/ntb_tool.c            |  14 +-
- 7 files changed, 332 insertions(+), 98 deletions(-)
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.wiki.kernel.org/userdoc/prtracker
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200331152721.GA1719%40athena.kudzu.us.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/158569891371.16027.14099209625031293428.pr-tracker-bot%40kernel.org.
