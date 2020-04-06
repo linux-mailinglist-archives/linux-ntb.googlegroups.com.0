@@ -1,124 +1,146 @@
-Return-Path: <linux-ntb+bncBAABBYVQR72AKGQEKWFMQBY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDIZTUWNWICRBREPVT2AKGQEXQFORVQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-il1-x138.google.com (mail-il1-x138.google.com [IPv6:2607:f8b0:4864:20::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 31DBE19A2A4
-	for <lists+linux-ntb@lfdr.de>; Wed,  1 Apr 2020 01:55:16 +0200 (CEST)
-Received: by mail-il1-x138.google.com with SMTP id e5sf21788786ilg.3
-        for <lists+linux-ntb@lfdr.de>; Tue, 31 Mar 2020 16:55:16 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1585698915; cv=pass;
+Received: from mail-pj1-x1039.google.com (mail-pj1-x1039.google.com [IPv6:2607:f8b0:4864:20::1039])
+	by mail.lfdr.de (Postfix) with ESMTPS id C601E19F3B9
+	for <lists+linux-ntb@lfdr.de>; Mon,  6 Apr 2020 12:43:17 +0200 (CEST)
+Received: by mail-pj1-x1039.google.com with SMTP id l12sf13896236pjh.3
+        for <lists+linux-ntb@lfdr.de>; Mon, 06 Apr 2020 03:43:17 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1586169796; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rG82jYmCLBRG9Vp5G5lB2Nvhshv04AvBYTmwXPXKmzipF6ArrvP5RskQXZ/6nSVu0n
-         ybUCgA+OuqWnE3Udf5uJ2qofwgOziKtju4pP3xwRJ5QcKsyamKLLe4ERv2QZFmC/MU0r
-         M60QPKpjbaRM59Xl4ugaSoLTXEaNU0Xx3Y6yIcqCLmVFy9wwVDKMdKgkIza09WSYesvc
-         /Hi6uWYr+rAsUQqWoCHMOTVlagUXZ3OeNqGM9nldQbN2J2BOFz0CmQlt1J410i/q6S9y
-         JNZTCwTFjlmdeNcOrQkztva72iFT/qVXoTzgTHBUK+LBygTB5+uSxw7lKXjhtyYALq7M
-         Vz4A==
+        b=H+4MOpRat9Y+vqqQZVpQnKWs2/8VuyrC3CELg3wNvGXtlazq0vU8+lhCISu5wYNDCe
+         zGiA7Wld5Rthging/sxd3IWDYjYJg5KlsL7GtD+2ZiFnz6yQhi3AaMJoY47VGJar8KLo
+         PURRcpInFBeLbjhnUuIjbdnKSCKcfGfjKkfrpoaiuWwR4IHr/rzl934nIAqFOSxoATxK
+         iJ2Sh6qqSSML1M90goDU5K4ebs/o2+YKLOwc6M3U3e46okTIaGNAgWcfmGxOsfvH0AYn
+         sFey7myRwOu88z+euVCmoB3nSywdFFa6oruzigyRCYEB73HsUIAd8NOJ4++VeCjhRFwd
+         EvPA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:cc:to:date:message-id:references
-         :in-reply-to:from:subject:mime-version:sender:dkim-signature;
-        bh=1mjQxWnhbIxR7iYMLHvnIxbdG5BIjxh1TMcPlrDqBxs=;
-        b=mopLYYQVi//DhZQb4Se3A4wzewNk4Ff8ASgFx+r3YzM2Fqz8fM1ysjm+M8TjoeCxZo
-         3aHZ3s/K/wUnbIpoFAqbeurNTVvSXOTC14rk0PioX2NsVU5Jlqwxgi73TgF4kH/mgE8I
-         754i2d1m5yeDBERqM6Nv2FWsX9XjgmarNUT7kkLJz1mYnQKsCem4AG2F2EdWkskxn4ra
-         nbwhM5SVNErVakm9HoOdyzguu+Dw00zF4sHUuwmAmVM2qdwOfj2pa794sumVB7w2Zspl
-         aHZLQD6F8fRXhVjIeflS0KrRwJhyZaCR7r4DiXHH5xZLUfg3W8iNGELXkJit22H4Y36e
-         aIng==
+         :list-id:mailing-list:precedence:content-disposition:mime-version
+         :message-id:subject:cc:to:from:date:sender:dkim-signature;
+        bh=9wv8q5EQnvzY4roCdvHS9tPbdZ1tdv8O4PyMKWlzR3M=;
+        b=V2/cBV+vXYmc0khrh3pDVzB9w3vsQFdYXGoByc5ZEM5D5jlYE8K8zMc5FOKMDIw8On
+         TIqE19QD2GtGzPEt3sLt19/40y9aEA55iF29fO+glTfhTeTdbuxgSHF1Swrfvc8mj5xu
+         222Az2N7oWkIJ7oOirGTGb0aiKZjWZV+QpyB6yHgbpj52XOjdoJeueWEWQP927QcZpVS
+         Bk3yZj4cnM2WZnLAPJMvYq9Wt+wB4PC+ZujB1pbJb24fdyS9AOz9x/UUwOyzdFEdokiB
+         O+vLxx8+hcGTwPLTSWUg13vhurMQbUgocVLkLEZSPwK6CeL/iYBqAWPqkrMzH1YUbPkd
+         e9aQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=gkAJAf7g;
-       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=foDG5E5g;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:subject:from:in-reply-to:references:message-id
-         :date:to:cc:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=1mjQxWnhbIxR7iYMLHvnIxbdG5BIjxh1TMcPlrDqBxs=;
-        b=pWCFv+1TVuQryt9plilCgI0fNUhAh8DAaAqO44Ln5WFZZcqMzG/4UtwfXgkZyre0Ye
-         M+FLcoLqn5aCsEqBtrbby2rTL6hnwuXJm+1XynclnImjrIgEfDV50GR+EH4yZSGurs4a
-         Pjwk6LZ8LjkWpoDQcsX6oIk9wFxE32EK2zfHSjYvlyfKjcaUAoigBTBTkSvhgsvmbMs5
-         H/F3H7RNP5TflusECmhEe3sC0AuqWD/28K11LuU0spHvi5yjigNp8j6PmdWX/kXEpRzq
-         ZpQXvPeUc3o5FcdqLPCGvvkBkOMduoP5dotJc9dheKRDBNh2FMWHaMJ15ppYRijmVtVt
-         hejg==
+        h=sender:date:from:to:cc:subject:message-id:mime-version
+         :content-disposition:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=9wv8q5EQnvzY4roCdvHS9tPbdZ1tdv8O4PyMKWlzR3M=;
+        b=Fho4Z7FVb10+2Rz53CbCvpCfdLyTnCE83DxwDNdXsUjzTfPQ4lxkbxIfPDY3MQJ9iz
+         f4WrnRJX0TMK3q6MCoCgetILJqm6VWEH74p4qwheH5e5Mgj59QiEEk2mUT1wnLKCP55I
+         2E7C5cekW59++CyUjdDaIcuk8yUxmlssU+Zc7TeuqloCh6rZXwW81H4pbO7m8h+adHgg
+         jBkZ1yzrmoGUSW7Gp84CY0HnshEBZG5YQ0BDdzz0Gt8B3lZ/YZuLJmdwOrMZ/8C83+a0
+         x01YDisrPDccZmp0fa0qspamYhm2xKsOXLsmYQbPrqfE7eIymSEM/KQOJ0mkuC/Y79wp
+         9MQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:subject:from:in-reply-to
-         :references:message-id:date:to:cc:x-original-sender
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :mime-version:content-disposition:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=1mjQxWnhbIxR7iYMLHvnIxbdG5BIjxh1TMcPlrDqBxs=;
-        b=C4Xd2Ubf3rJpMkEFoxxG+fGllXjgzrFj3nJztgHhWOgZQF7sdjLpAbY6cg8AmqsQNc
-         uOOUoXWKwN38HU9ISg0e9T9tdpCNqAXKTDN5EcSm1MlG4vAEOp+zJAKwsKQwZWU4UTBn
-         HVPIBJBhRYHwoh9RqqG3EgPogdX+BW+1+AaaQEo5w5vN4biwhOIlUOFxGGX6UU9pg75Q
-         IruVkNAv0pS7PdBJqH8RZ/wNyDd1AmOjE2N6N4WB69dzFp0+BPhJRnuNYbMJmJa4jhUy
-         kekEgptSNJXuSHmaNQrFW0kNeZOGqD8/8ZB16BZpXQOpvhtag6gWK6F5JRxckH2SjD/x
-         bFuA==
+        bh=9wv8q5EQnvzY4roCdvHS9tPbdZ1tdv8O4PyMKWlzR3M=;
+        b=Mdbm/hZgc3bjUIzFJhKf8nJhrtexhT6hmDArvMwQa3SEioDdIMItjA5trPzX1y3ukL
+         gQgbMnrOT8v+NNvAh+nsMthMyzq7vdmlxoSvY1D6ei0Dpvcf/P5E63bys7ZOGXWkB6qI
+         FkM3Vo1Yy2hq80flek9g+ttTT+AGyIG+Tb38k5Z0U7BbcOXyqKIssWXG1XFblFgaYSVc
+         L449SSS6fViq3kpmdxST/F5ejv0aYV++xPqF1mL5PZ7xG5lpPdHoEfyEv70//FYuuY0R
+         GpEIuvQ8OjEi+eDeuTZa2SGSRF4NvA4gBrqYF6fXzDfYjldCrrCcvpSr30N8lDhIn94b
+         Ywng==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ANhLgQ2U0ngbG7JQC+n3euPPrZ/AKROJEV525B5ONULfE4lG7CjexEA5
-	vOtnjf/gTWOO7bWoCELeNAQ=
-X-Google-Smtp-Source: ADFU+vtRBIzcpQ0famNqJZBpzdrhSPMxuYr7iu6sYYA6c4KpuQrHS4Sk40GJBhkXLG7G4CpJzawmWA==
-X-Received: by 2002:a02:76c2:: with SMTP id z185mr17812941jab.76.1585698914788;
-        Tue, 31 Mar 2020 16:55:14 -0700 (PDT)
-MIME-Version: 1.0
+X-Gm-Message-State: AGi0PuatXIoPNFivtRfZ5SSEmyrEFqdpdxtDUN4/f7qtSm3QcePYLjgt
+	xAVZUdFhONgwXm9Qrrd55ms=
+X-Google-Smtp-Source: APiQypJVveluPuYH+ytgNmawX3jz/4ZgmdyuZb+p71xBUhQGuREn7Lr8wf53guW4l4RLNiu19CYgmQ==
+X-Received: by 2002:a63:8948:: with SMTP id v69mr20260878pgd.318.1586169796289;
+        Mon, 06 Apr 2020 03:43:16 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6638:d2:: with SMTP id w18ls3173291jao.7.gmail; Tue, 31
- Mar 2020 16:55:14 -0700 (PDT)
-X-Received: by 2002:a02:8c4:: with SMTP id 187mr17748134jac.50.1585698914468;
-        Tue, 31 Mar 2020 16:55:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1585698914; cv=none;
+Received: by 2002:a65:5c88:: with SMTP id a8ls10130060pgt.8.gmail; Mon, 06 Apr
+ 2020 03:43:15 -0700 (PDT)
+X-Received: by 2002:a63:5c02:: with SMTP id q2mr21861273pgb.262.1586169795916;
+        Mon, 06 Apr 2020 03:43:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586169795; cv=none;
         d=google.com; s=arc-20160816;
-        b=PbXwA99w3PbiutTIhrygTo2aCuA6VE69Pgvf6zAxiBDCU29KHtZe98AI0TnX6sNKvB
-         x7YPDisAslT/W0Bx8T9dXanhPk3bZxmOjmtHhLEPykp+1Ujds2hIAQtTopwxUNHIuY9b
-         kXMeSjmPIajyAs2g9TlnHL6J85ER1IHT7WGh2qdGjf0iheCY6ba/S2EP6flmM8lU4XwH
-         ICOWLW+CZxchrCs5EcoBaDiUYfiU4BkvriAGdUTs4sp7Awr3Xmsg5U6T2p82vHY6t7us
-         SRQBErbU13j2NiWEZNFM8w7D0itahkIepwVj4gXU8899hCZ6efxwgTrBrC35UJ3SBL1O
-         gFRQ==
+        b=jneaqctlXt9xuqwFvYmbuRJfZAN5tv3OBuzov34ee7RspWQWvSz+BSsRPRGx8yhywA
+         TzSYIUU7J4DCV8o96fYUBvwuRSC9aMPE25uxf0A/+sakgZpz5NU05afs8Lt9mEtWHsaV
+         RoYqucfYqmJnRfKzi6v7Lp/QE+iXq57gT9/N/8Rc8hVeNZ6arnh42MJJo63/LvcqSYz3
+         NUpDL4qPx8/578Nv1IMFSEHQGulGYCh2j195+KuoMlHae5Jat7NffpzAXL5y9h62JPAN
+         OFxEwDcmLUKiC521u1D5L492JOapYeTqTgLC9ieJBNOPtNmUUjsG1cB070HC0YwrVeeo
+         pXaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:date:message-id:references:in-reply-to:from:dkim-signature
-         :subject;
-        bh=uUT5LM5+h/E5RA0F5XP4BfAM+i7bHO9Aj6DlYGMTgRU=;
-        b=U1Gd5+RJdFuO9nDBlHyWxciq4C5Z1W8W0w3xN8nAZXMi375BULQTkNMcOc0V2oLUVR
-         6ZAvJs1U/2CPjEPgOEkOrSpIG56jNtxDgLh+QQRLJtPIyBF7IWXkHMtyVAGPAoCMFFie
-         jbvJiQnX/u22Su2qwM1KC6K8Jal54VtoYfqeoaaOGRkDgEmYx8jqfEd45e5I1pspwVrp
-         JnRHuaB7hPHJGtf38YcKP8hzRsIaocgwjIg9N/4x1pSSDPyIfp8yrNS8fA94OGpfrhVl
-         aXHznGrhLDQtuUaS2p19iNvYUVagcmvbYgylfLFPY7I6AGVOY4Mzx18/Nw+Rlz9XK8bO
-         mIdA==
+        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=p8C5wpTwRk6g1mekw1JmTiW65b1SzeLNT47JdsU4Dwk=;
+        b=JpqA3c214toX45sAh9oxGUdGnCg/NSql4VQPYKAEPRF6iX5TMO/7vSbo0n4792mL0g
+         9x4DkmXciWwZtL67Se9+xdvVa5bYVHQwDejPEYWkAFCaUrkld6JsXlY5hDm4jCFpzlAg
+         hH4cMPh80ScwO3m1JzcJsVQFnHoZjgNgew8eSGaZXwzlIzqhhjr0wKwFXYwnPTdOY65J
+         BDI7N+F6IY2MA2y6/UmOwuMQDpCzwF1Zih8J1nitRjZ9WLh6KssYmiGZTe2bY2lq8rIu
+         CSj9CagziIapw0OcUeFnh2Udur4Q+bkqYqaNwPLIeDpMHcqXITFiS8YSQuz9nW/DIYR/
+         2h4Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=gkAJAf7g;
-       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id a3si27023iog.2.2020.03.31.16.55.14
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=foDG5E5g;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from userp2130.oracle.com (userp2130.oracle.com. [156.151.31.86])
+        by gmr-mx.google.com with ESMTPS id 185si1088863pgh.3.2020.04.06.03.43.15
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 31 Mar 2020 16:55:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Subject: Re: [GIT PULL] NTB bug fixes for v5.7
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20200331152721.GA1719@athena.kudzu.us>
-References: <20200331152721.GA1719@athena.kudzu.us>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <20200331152721.GA1719@athena.kudzu.us>
-X-PR-Tracked-Remote: git://github.com/jonmason/ntb tags/ntb-5.7
-X-PR-Tracked-Commit-Id: b350f0a3eb264962caefeb892af56c1b727ee03f
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 56a451b780676bc1cdac011735fe2869fa2e9abf
-Message-Id: <158569891371.16027.14099209625031293428.pr-tracker-bot@kernel.org>
-Date: Tue, 31 Mar 2020 23:55:13 +0000
-To: Jon Mason <jdmason@kudzu.us>
-Cc: torvalds@linux-foundation.org, linux-kernel@vger.kernel.org,
- linux-ntb@googlegroups.com
-X-Original-Sender: pr-tracker-bot@kernel.org
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=gkAJAf7g;       spf=pass
- (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as
- permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+        Mon, 06 Apr 2020 03:43:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dan.carpenter@oracle.com designates 156.151.31.86 as permitted sender) client-ip=156.151.31.86;
+Received: from pps.filterd (userp2130.oracle.com [127.0.0.1])
+	by userp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036Ae2hn184229;
+	Mon, 6 Apr 2020 10:43:14 GMT
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+	by userp2130.oracle.com with ESMTP id 306hnqx2pq-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 06 Apr 2020 10:43:14 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+	by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 036AcgmW077740;
+	Mon, 6 Apr 2020 10:41:13 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by aserp3030.oracle.com with ESMTP id 3073spp3np-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 06 Apr 2020 10:41:13 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 036AfCFu025902;
+	Mon, 6 Apr 2020 10:41:13 GMT
+Received: from mwanda (/41.57.98.10)
+	by default (Oracle Beehive Gateway v4.0)
+	with ESMTP ; Mon, 06 Apr 2020 03:41:11 -0700
+Date: Mon, 6 Apr 2020 13:41:05 +0300
+From: Dan Carpenter <dan.carpenter@oracle.com>
+To: linjiasen@hygon.cn
+Cc: linux-ntb@googlegroups.com
+Subject: [bug report] NTB: ntb_perf: Fix address err in perf_copy_chunk
+Message-ID: <20200406104105.GA34519@mwanda>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+Content-Disposition: inline
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9582 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 phishscore=0 spamscore=0
+ malwarescore=0 suspectscore=3 adultscore=0 bulkscore=0 mlxlogscore=955
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2003020000
+ definitions=main-2004060092
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9582 signatures=668685
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0 phishscore=0 adultscore=0
+ priorityscore=1501 mlxscore=0 malwarescore=0 mlxlogscore=999
+ lowpriorityscore=0 spamscore=0 impostorscore=0 suspectscore=3
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2003020000 definitions=main-2004060092
+X-Original-Sender: dan.carpenter@oracle.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@oracle.com header.s=corp-2020-01-29 header.b=foDG5E5g;
+       spf=pass (google.com: domain of dan.carpenter@oracle.com designates
+ 156.151.31.86 as permitted sender) smtp.mailfrom=dan.carpenter@oracle.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -131,20 +153,39 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-The pull request you sent on Tue, 31 Mar 2020 11:27:21 -0400:
+Hello Jiasen Lin,
 
-> git://github.com/jonmason/ntb tags/ntb-5.7
+This is a semi-automatic email about new static checker warnings.
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/56a451b780676bc1cdac011735fe2869fa2e9abf
+The patch 99a06056124d: "NTB: ntb_perf: Fix address err in
+perf_copy_chunk" from Nov 20, 2019, leads to the following Smatch
+complaint:
 
-Thank you!
+    drivers/ntb/test/ntb_perf.c:1017 perf_clear_test()
+    warn: variable dereferenced before check 'pthr->dma_chan' (see line 1011)
 
--- 
-Deet-doot-dot, I am a bot.
-https://korg.wiki.kernel.org/userdoc/prtracker
+drivers/ntb/test/ntb_perf.c
+  1010		 */
+  1011		(void)dmaengine_terminate_sync(pthr->dma_chan);
+                                               ^^^^^^^^^^^^^^
+"pthr->dma_chan" is dereferenced inside the function.
+
+  1012		if (pthr->perf->test_peer->dma_dst_addr)
+  1013			dma_unmap_resource(pthr->dma_chan->device->dev,
+  1014					   pthr->perf->test_peer->dma_dst_addr,
+  1015					   pthr->perf->test_peer->outbuf_size,
+  1016					   DMA_FROM_DEVICE, 0);
+  1017		if (pthr->dma_chan)
+                    ^^^^^^^^^^^^^^
+This new NULL check is too late.
+
+  1018			dma_release_channel(pthr->dma_chan);
+  1019	
+
+regards,
+dan carpenter
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/158569891371.16027.14099209625031293428.pr-tracker-bot%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200406104105.GA34519%40mwanda.
