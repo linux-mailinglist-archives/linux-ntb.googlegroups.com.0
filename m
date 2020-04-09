@@ -1,128 +1,123 @@
-Return-Path: <linux-ntb+bncBAABBLNKWX2AKGQE6VUMAAY@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBRUWXP2AKGQEDT7QRJA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-il1-x13a.google.com (mail-il1-x13a.google.com [IPv6:2607:f8b0:4864:20::13a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35F551A1B14
-	for <lists+linux-ntb@lfdr.de>; Wed,  8 Apr 2020 06:38:06 +0200 (CEST)
-Received: by mail-il1-x13a.google.com with SMTP id h26sf5629648ilf.15
-        for <lists+linux-ntb@lfdr.de>; Tue, 07 Apr 2020 21:38:06 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1586320685; cv=pass;
+Received: from mail-ot1-x338.google.com (mail-ot1-x338.google.com [IPv6:2607:f8b0:4864:20::338])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC6631A2FD3
+	for <lists+linux-ntb@lfdr.de>; Thu,  9 Apr 2020 09:14:15 +0200 (CEST)
+Received: by mail-ot1-x338.google.com with SMTP id 61sf7467625otw.19
+        for <lists+linux-ntb@lfdr.de>; Thu, 09 Apr 2020 00:14:15 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1586416454; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rrT2TAFKNP08Bi/oNgl9q0PQsusLXs1HTTO5QhanIhfT5CPv1dLL0zV08gamgWqHts
-         j2X6l1FmDgwv58kfMWw7f9RMh8aT61Fy8SSmLSVwOz2aTJxazorQPf5Rsnkjhl88ikJG
-         11mvNCFC99KwEpiMaJgWiE7zssjeepoe5vRmgfNyjR+wJGt10vEtDPltGyTbcdkEEPso
-         0FmwFDIMgORBqM4lBD879FwAszQk9irDjvtS49u86leEebuqrpsfhc1+FaSPSczpnfOp
-         QOonjcISRpWenfl5MZyO0ysBRzs5Ud5pVs30TGX1X1d5eAYOIccH7SZwwcAZUxA/dJWg
-         X8cA==
+        b=X1ob+mMQUrZWM6NP2iydjASUOpnkJT+FadhtqOSC07D4MfU9LKu7sMo6R04BbGlpQx
+         0DFiQGxVdOdkIkllaABELhWFYV0dDI/SkQj6kpQSOI9OeO89D7MezJCv0jCmGZItj5yD
+         fNpSfct7NRwIgV3/LJosr0E/MUhIaDdc+CMLCKGRG81+vpwgVHXx7+vZHiqmxD9VCh52
+         SVEtC1rpv7a8U+QP7q621uwNFQLmNEeQnS9KPejnaA4WbLgVtdOffEzRZAsFiaPZLrO0
+         SdzBNk6LSbIUlwsDniwiTZwPO/Q/mLpLR8AmEL2ZwbLRpPfHI2IDV19RLGcqDEPSzbkS
+         LucA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to
-         :subject:sender:dkim-signature;
-        bh=C6zS7RSuf5tCNxMjTg5h+6xKIm6QcAsiKqdGD/V9M4U=;
-        b=r2h5dI2tFNQezs7frjM/VAyg9uAZtAXB2pzF0M4LP+4cwU6KiQwwz26rwtX0ZXvobd
-         f35Rs5jvJ2t+KFSotTGQl8F8xtw+aVKUkrK3/yYfrFgi5+Pf1vukykn3H1PXklsTkmvH
-         kU+ADKSJSt0akdH09xQC01K0Xc3m7KDMWTFo+UX/S/DMSnXfyPR+vbteTTeQ7XS++CWT
-         KxzsGFNH8qZjmz9bs4sjUqa/5m93b0HwFyXEzBnaN7YU2se+XmWSOiYz8U3q9QvVdnOE
-         o9HbKdLdmB1IJ9mPuNrUQptd6461MLsoQAyCKWJj0GdASAtbaLI7OZ296jy0QOGuYvUs
-         T/GA==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=zszjKoRRa+i25qqa3Mks7aLmGZcUCB/M4yJfGJjjzVI=;
+        b=1H5UEVxpeLcASHKz18VdXmSFcIPKF8l75andtJ7A/+tS5+FkWEiY0sXHlj5sqfrsro
+         iNWrYXFuGnrubkNXfJhTzZ+NAsWetDVimnq/JvOwtm+CbBdNdqd7jTp1m9UvIwX4bPmO
+         US2/yVdCUwDg+c75KoDr5cvD0Go2rERe/VX5lL5MObc8Cm0UeuVNULsJvI/71J0AYKcB
+         qyhJ0nsIYvpeHkOF7cktKxHFNjJfDLOq/1WcFooEd5MZEsjsvXE72plKzzofOR/kmqV4
+         oY1XKjkbsbxbql/6xlu/zjWnV6avKayz6TN3J4PToB3Gax21sndKIXBIiyjMmXWgg4FA
+         gXaQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
        spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=C6zS7RSuf5tCNxMjTg5h+6xKIm6QcAsiKqdGD/V9M4U=;
-        b=l3vlsbybdCaa7kRDddDIgmbvFV6/9CG0lE13KdEEmaJevTn5yMRc1leTTnlmAJ1bVn
-         cJYxNmviLyBU873FzSIKvsiM8F6Vylj16kAYuvIlNe6a/QvVF3Hf0B84ah5oEzKVUo4P
-         2G7m6JEzVkAeVz++FnLnQe38m6NP3PqqpwzNXc3wa3PDf/tqRSNbwzG0LPSJHQ2Vz0pi
-         CXWee0HK7iCcNnSRfedVGMIhFPdH/Engh1ErMg+vAVdYguxG48mGGKEgEEWDako28mrM
-         tKOovnnSpkJZqFy+DY2f1d7rzNvcKUSYPbPB3ku4nncV3ck4GybgYW/lqVccBVNdRwdW
-         Hvxw==
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=zszjKoRRa+i25qqa3Mks7aLmGZcUCB/M4yJfGJjjzVI=;
+        b=Ca5nHUCXsn5hbaPykcdYiRUFMj3g1qJ4Enk69maZR43so6gzgOyFtQnNU3/voCtOqS
+         ZEWzkaINrGMxuufY5LYDaEbkAC5BgJNd5tNVIz1c+KjTmvOOXT9eF2+vdlyvafbMNaFO
+         vPdc6P93waNZ+xFpGTzBWywReXcCPblbRsXqVRmWOKFHNBbG6TQ1Gkryo+NmtlU/UvXT
+         ZX0vDVVRaZzKuTQkhE004nP/qxhtwZk3reWPLl9qjb5Q6OLouHV6pBYOJ2eLJfpQn2sj
+         mcXA4pdy6j1tw/s8LEvqx0/+xA2rxcqIkyNVJSEQLA743I00Si+PXKtcfkFq2YSt0Rn/
+         TOgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=C6zS7RSuf5tCNxMjTg5h+6xKIm6QcAsiKqdGD/V9M4U=;
-        b=XDNWlN2pgpzHkKo2eem8/Vx6oAEkmIF4Mspseqpz5XoNnS0rlnAnplun2z4WidBpZG
-         ChGbqEu+kMDedcujw+aEGcnJVyyuhkVlRpQN1m/+tExDNAW8IBUO9VtD6vypvfrkq3th
-         tsghKXPRt33PIvJu2FRwp4q+GJTcsUl0JTn3m6+eJ+k9ODcv48AWrAKptm0qARVwBCEm
-         kTM3fuRdSBGI1gG9FIdMgWRdzJArp7EwIuUlgmliakA6l1u/62ZoXoM7vOXQqCRGiC/f
-         tgYW2OItVE3y87PeZC5U/bga62dhMX5MW47+rgNwjNIWErXmMsv5PQddduw29nRAkjnU
-         vUTw==
+        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=zszjKoRRa+i25qqa3Mks7aLmGZcUCB/M4yJfGJjjzVI=;
+        b=Nw3bYoK0pL6qhl7Nnt/PitkcqAlpHq2UucEHX5YfPK7BuoU2LVOLYyVeEjPB8KfbAU
+         wJXT/bNAPNb/7oBnKX9dpHodhtimWbFWEAhc052q2NrbRwSxQh8o97KcD2sR7JYaacDQ
+         OVkT+ShVqrkDCOjOhehuqTDcSKUMNkrhf29g+oUwQ+ENAmUWevRxE00hfBc9xbkE/e1g
+         g/2kvQPlyLtgmrcXnq/fJBDkbq15iXmm2rKmbFYNnVgglIKUEXlXotNMx20d2IvkBQwR
+         bV2n5U/y5TYmpOXK06AKB/u18GYJauYYJQOi/Z1SPjPyjdvF1sdAS+Gh1T2sebvB6pZc
+         M/Mg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AGi0PuZSwCZmhsrjOBLn7Up/nWYnQ8+YLJUgXKcZlKxCL1LLem1bSTi/
-	zgnx06rPLgAYO7mSR7TvT2A=
-X-Google-Smtp-Source: APiQypJgK8TQZYOj0MOZBg4RbE9xDkwTOJaNe2ap0mdUintY1xD3lSwXY2QNI9DeAIBqANH+jX1lcQ==
-X-Received: by 2002:a92:7a0d:: with SMTP id v13mr6369450ilc.175.1586320685216;
-        Tue, 07 Apr 2020 21:38:05 -0700 (PDT)
+X-Gm-Message-State: AGi0Pub75XxeJgeuMBR6NRxapP5jNKn4jDKc7XeDzqmsLIe3JMiZfnzf
+	icS48CZlwXgjKsmGXNDwnd8=
+X-Google-Smtp-Source: APiQypJSakglfumwWcOBHK24CuJzvKVHCzm5veQdX7XrZC4Z4I7bKOzeCXtODIOEHkv2wcUmTAv4gw==
+X-Received: by 2002:aca:b308:: with SMTP id c8mr2567879oif.106.1586416454479;
+        Thu, 09 Apr 2020 00:14:14 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a02:9a0c:: with SMTP id b12ls1313606jal.11.gmail; Tue, 07
- Apr 2020 21:38:04 -0700 (PDT)
-X-Received: by 2002:a05:6638:186:: with SMTP id a6mr5083963jaq.36.1586320684948;
-        Tue, 07 Apr 2020 21:38:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1586320684; cv=none;
+Received: by 2002:a9d:30c4:: with SMTP id r4ls3668988otg.9.gmail; Thu, 09 Apr
+ 2020 00:14:14 -0700 (PDT)
+X-Received: by 2002:a9d:1a3:: with SMTP id e32mr8919192ote.206.1586416454209;
+        Thu, 09 Apr 2020 00:14:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1586416454; cv=none;
         d=google.com; s=arc-20160816;
-        b=FEG1LFm80YRbpNUSMdzz2FtcciAtQmJVfTCcUO3+aPTFJbJ1kK32fV0NUkugqYGhCL
-         suzOtYLCr8wjY2/rcmO0wod4O74kkcMKzYaOakwnSzYmqq0ZCE+lCrB0wxhGGgiUuSKv
-         ef8IeKB5ja53DVg0DXtZaL0jr0wwwmFXvAJjrtGhaYEoeFZMixKrrnj/J9WGNV3+Rvlz
-         +qWtJHAS6yWiov+YUlOVE5EszMJkrfWNeBHVv7lDY5XsU1npIkhpujkPVby83td3Ulgq
-         WblC2ZTR4xNXaYeO1sUjnfmuT6Ti9l9DFd35IeZko7XE5EQMYiCFQizZeG7mPmGlh7aR
-         Vddg==
+        b=m81bcGOWKg2EgcNKbIfZxDI29vLsYwi3/s9cX3Vh0dvnZeM1I2+skhB3uIKyIwcgR3
+         nNjzhAA7SZfNBmLtg+G3+zRlTBewLUIdp2uFkbmYexOwp+j8FsUfas6ahJnQ1epRzP+R
+         xnaDOt//ymqlb5KPiW0hTflLW3TINR8JXnyTiwz4YtJPE88YxZQeJ8NZqikH0rdx4jJP
+         Y2Wbt0uzvNCdYF/u5fe06jJ5cX4NOFe/8A3K6+fcUfVTamexQ+VZ1BXv05W7oE3t1Epz
+         sZu4D4i7T7k+W82ecDW6wseS+xRKtxylFvMffMriPqSzs/Rl8bBc0r7hpWGNim7j9zon
+         2NuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=JeXlagqItF1qLfdtztt5Nn4Ugvzn6ApJUWjiUAeH5EE=;
-        b=MN3oEmkSViMg1wrNZy3cuiJ6aavz/d61A4gYlcRGfjzy7ZxvT0ojq9m9sHQ40QSS7M
-         nu97jH7VVo0dxrJyYf6NSoi9520e8iEiBB3oxc6MrL/4xm3m6xWglAhMjaJFTKJRHHZR
-         enmaa25wpzbwL5ZQKMFFR9gys0KEq1btPFGtQHH9rvUikgSaTRB5z8v7d+YEtQXqG2oo
-         4iT1kWRrZVW07RxHeKqomFkYxreGfjhJdHzrNjKd9mxD8E65YrgxcnO8VA6fqjWvKqSS
-         mvgWrTASchvs6llgJ7UYpEm2wud2P6aw9D8G+CQFHhpKISp6ULCRpwo+XEZomyJsrfnA
-         ohHA==
+        h=mime-version:message-id:date:subject:cc:to:from;
+        bh=jJhcvrbFk7xXiZPIk829fBi9xzbRLr8a72c1UEpJsNY=;
+        b=y3Ojz+nZuzMRceQCAx2T/kuotbFZWxuNRKJVhi77/5FCVrPjndTYNbjXYoShONWp0Q
+         7q7k2PmdrMFyrIQTVMAPC0LWXqhZLupUnA93Wks/3GwJ9pV0og78PJgHPjeCKYIfUag8
+         g1hY+cKhcHxlt0TOOCUdw3pZJExxFcbhn9RbZValI5AKOIPTvdTHGnk5BJKmFl4KYChJ
+         uRsvuZhpdrbWYIw+MSb6WU6sUFX8rwWnsw688ltPKxYPEIpCL25w41kJeTrOg5ySvaTZ
+         IcOTrqpn20M8d2ObLEfghIzWxhQAHEgOMoIPNlWf4SBLpieCW1GHd83LAPkWat4RwB6U
+         SMJw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) smtp.mailfrom=linjiasen@hygon.cn;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=hygon.cn
-Received: from spam1.hygon.cn ([110.188.70.11])
-        by gmr-mx.google.com with ESMTPS id t125si517141iof.4.2020.04.07.21.38.03
+Received: from spam2.hygon.cn ([110.188.70.11])
+        by gmr-mx.google.com with ESMTPS id v1si38117oia.0.2020.04.09.00.14.13
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 07 Apr 2020 21:38:04 -0700 (PDT)
+        Thu, 09 Apr 2020 00:14:13 -0700 (PDT)
 Received-SPF: permerror (google.com: permanent error in processing during lookup of linjiasen@hygon.cn: sfp.safenext.cn not found) client-ip=110.188.70.11;
-Received: from MK-DB.hygon.cn ([172.23.18.60])
-	by spam1.hygon.cn with ESMTP id 0384bnqF096570;
-	Wed, 8 Apr 2020 12:37:49 +0800 (GMT-8)
+Received: from MK-FE.hygon.cn ([172.23.18.61])
+	by spam2.hygon.cn with ESMTP id 0397CWCm024636;
+	Thu, 9 Apr 2020 15:12:32 +0800 (GMT-8)
 	(envelope-from linjiasen@hygon.cn)
 Received: from cncheex01.Hygon.cn ([172.23.18.10])
-	by MK-DB.hygon.cn with ESMTP id 0384bkNr000670;
-	Wed, 8 Apr 2020 12:37:46 +0800 (GMT-8)
+	by MK-FE.hygon.cn with ESMTP id 0397Ccjr052279;
+	Thu, 9 Apr 2020 15:12:38 +0800 (GMT-8)
 	(envelope-from linjiasen@hygon.cn)
-Received: from [172.20.21.12] (172.23.18.44) by cncheex01.Hygon.cn
+Received: from ubuntu.localdomain (172.23.18.44) by cncheex01.Hygon.cn
  (172.23.18.10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1466.3; Wed, 8 Apr 2020
- 12:37:26 +0800
-Subject: Re: [bug report] NTB: ntb_perf: Fix address err in perf_copy_chunk
-To: Dan Carpenter <dan.carpenter@oracle.com>
-CC: <linux-ntb@googlegroups.com>, <zhangpanyong@hygon.cn>
-References: <20200406104105.GA34519@mwanda>
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1466.3; Thu, 9 Apr 2020
+ 15:12:16 +0800
 From: Jiasen Lin <linjiasen@hygon.cn>
-Message-ID: <a00ff0fe-8451-67fc-7abf-53501cdc0fcd@hygon.cn>
-Date: Wed, 8 Apr 2020 12:33:04 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+To: <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>,
+        <jdmason@kudzu.us>, <dan.carpenter@oracle.com>
+CC: <allenbh@gmail.com>, <dave.jiang@intel.com>, <zhangpanyong@hygon.cn>,
+        <linjiasen@hygon.cn>
+Subject: [PATCH] NTB: Fix static check warning in perf_clear_test
+Date: Thu, 9 Apr 2020 00:11:24 -0700
+Message-ID: <1586416284-3246-1-git-send-email-linjiasen@hygon.cn>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
-In-Reply-To: <20200406104105.GA34519@mwanda>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Language: en-US
+Content-Type: text/plain; charset="UTF-8"
 X-Originating-IP: [172.23.18.44]
 X-ClientProxiedBy: cncheex02.Hygon.cn (172.23.18.12) To cncheex01.Hygon.cn
  (172.23.18.10)
-X-MAIL: spam1.hygon.cn 0384bnqF096570
+X-MAIL: spam2.hygon.cn 0397CWCm024636
 X-DNSRBL: 
 X-Original-Sender: linjiasen@hygon.cn
 X-Original-Authentication-Results: gmr-mx.google.com;       spf=permerror
@@ -141,52 +136,35 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+As pthr->dma_chan can't be NULL in this context, so there is
+no need to check pthr->dma_chan.
 
+Fixes: 99a06056124d ("NTB: ntb_perf: Fix address err in perf_copy_chunk")
+Reported-by: Dan Carpenter <dan.carpenter@oracle.com>
+Signed-off-by: Jiasen Lin <linjiasen@hygon.cn>
+---
+ drivers/ntb/test/ntb_perf.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-On 2020/4/6 18:41, Dan Carpenter wrote:
-> Hello Jiasen Lin,
-> 
-> This is a semi-automatic email about new static checker warnings.
-> 
-> The patch 99a06056124d: "NTB: ntb_perf: Fix address err in
-> perf_copy_chunk" from Nov 20, 2019, leads to the following Smatch
-> complaint:
-> 
->      drivers/ntb/test/ntb_perf.c:1017 perf_clear_test()
->      warn: variable dereferenced before check 'pthr->dma_chan' (see line 1011)
-> 
-> drivers/ntb/test/ntb_perf.c
->    1010		 */
->    1011		(void)dmaengine_terminate_sync(pthr->dma_chan);
->                                                 ^^^^^^^^^^^^^^
-> "pthr->dma_chan" is dereferenced inside the function.
-> 
->    1012		if (pthr->perf->test_peer->dma_dst_addr)
->    1013			dma_unmap_resource(pthr->dma_chan->device->dev,
->    1014					   pthr->perf->test_peer->dma_dst_addr,
->    1015					   pthr->perf->test_peer->outbuf_size,
->    1016					   DMA_FROM_DEVICE, 0);
->    1017		if (pthr->dma_chan)
->                      ^^^^^^^^^^^^^^
-> This new NULL check is too late.
-Hi Dan
-Nice catch!
-
-As pthr->dma_chan can't be NULL in this context, so there is no need to 
-check pthr->dma_chan.
-Will fix it in next patch.
-
-Thanks,
-Jiasen Lin
-> 
->    1018			dma_release_channel(pthr->dma_chan);
->    1019	
-> 
-> regards,
-> dan carpenter
-> 
+diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
+index 972f6d9..f73b126 100644
+--- a/drivers/ntb/test/ntb_perf.c
++++ b/drivers/ntb/test/ntb_perf.c
+@@ -1010,8 +1010,8 @@ static void perf_clear_test(struct perf_thread *pthr)
+ 				   pthr->perf->test_peer->dma_dst_addr,
+ 				   pthr->perf->test_peer->outbuf_size,
+ 				   DMA_FROM_DEVICE, 0);
+-	if (pthr->dma_chan)
+-		dma_release_channel(pthr->dma_chan);
++
++	dma_release_channel(pthr->dma_chan);
+ 
+ no_dma_notify:
+ 	atomic_dec(&perf->tsync);
+-- 
+2.7.4
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/a00ff0fe-8451-67fc-7abf-53501cdc0fcd%40hygon.cn.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1586416284-3246-1-git-send-email-linjiasen%40hygon.cn.
