@@ -1,172 +1,131 @@
-Return-Path: <linux-ntb+bncBAABBJPXZD2QKGQEWYAOJQA@googlegroups.com>
+Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBSVSZP2QKGQEBPSF4GA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3b.google.com (mail-vk1-xa3b.google.com [IPv6:2607:f8b0:4864:20::a3b])
-	by mail.lfdr.de (Postfix) with ESMTPS id 786371C66C2
-	for <lists+linux-ntb@lfdr.de>; Wed,  6 May 2020 06:23:02 +0200 (CEST)
-Received: by mail-vk1-xa3b.google.com with SMTP id j206sf121499vke.11
-        for <lists+linux-ntb@lfdr.de>; Tue, 05 May 2020 21:23:02 -0700 (PDT)
-ARC-Seal: i=3; a=rsa-sha256; t=1588738981; cv=pass;
+Received: from mail-vk1-xa3f.google.com (mail-vk1-xa3f.google.com [IPv6:2607:f8b0:4864:20::a3f])
+	by mail.lfdr.de (Postfix) with ESMTPS id 360661C7502
+	for <lists+linux-ntb@lfdr.de>; Wed,  6 May 2020 17:35:39 +0200 (CEST)
+Received: by mail-vk1-xa3f.google.com with SMTP id l188sf717633vke.23
+        for <lists+linux-ntb@lfdr.de>; Wed, 06 May 2020 08:35:39 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1588779338; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Mbx383hJCc7Zb4pnMc5ycluUNvbVvSOGTwjqoPq5OjrbRGg2caxI94+OzsM4A3Nm5R
-         BCa9qoseLnNRxYccmypmxGVwEFX06BjcvYC0xVUWF56isXVk1EZjrcokxsjzDraTDzmb
-         Vyot2NMI5Sed6QsSMlaLshnmw2yLSr/KLDjpyg+YwofFrOaYFcm87RXkcpV2Wz5vz9Nh
-         mali9+204xn65LdkQkvm44KJhtVXmUFXMn+DA8+i3DpWh8HvHI9tEMpiNPMwmOoPF7IG
-         G+nD/xjfp5n4qUx5NCXkCqeCCIcIuCDsq0CxjcsBrjY6nPN+KvrxEDwVHpVEdXTl85FO
-         OcYg==
-ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=uKqmBZEloWKdv9kFQL+NKyziy9pYFGGM+6ADuqkWUEGpsFaGUrm9dMbLVONpRu15aE
+         f41q8X2v6K2Pyj811nKVivNorZg1sPL6jHiBBmogIU2kMWRD7RnhBToZaQB1X3GHuAsy
+         Mel3zfhWTKjRM1/ZyJLmcqBMa1GXgfYyzJnsxsQZBcVTf3dIfKLnDugIOgWpWCd7uwan
+         81IDCYukdVaZ8NQCyynOhFkFP6E6HMpqu2fhOLRA4q3XoiXCELScviGIUIFysnTFvhAA
+         R3jWZQHOiKJcwObK/5UafVad1JTQUUAN72tvCRr2q4HeCf+rHpq2YhJH2USzwk/pnvTI
+         pzNg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=50I9uGG5GYYCTmzTIXtpYJN2RZ/4Erm5semQdri6mfI=;
-        b=QdKvpfXHxG4TL1uNbCpeGttPuBnDfIt4AmZJsKTLGOqfUTUd1ZMzln1udqf9vBslez
-         W6I+dJrMbR66i98qWMqb5rbXjakmQciqv+NZoS9//iDUdMks0XxL2cx3V/YzhrjOB+4n
-         ytBr7t15L81wY8DFIoM78slVDx1b16p/6mdaSp8eu4orfc+gxWP1JHXOsWFbN5fvGAlV
-         OzYyGjPFL2vynqk3WcXhoL4x3dcwMFQn08dkKaQh1j3l18EaKUxi/VlQ4+1yJTUjWWzY
-         Y8paPL+wlR955waMpaLKskDQe+bHMIsmJpmMzB8pBYYXHrS79K81Yu3j/8xUb3XHQudY
-         pF2A==
-ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=t9i98UIZ;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.223.78 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+         :list-id:mailing-list:precedence:subject:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:sender:dkim-signature;
+        bh=9ZqVhIMdtyhPrYyIADK4xnt3EGcjMWNETVV/yNIaRtc=;
+        b=LNoW52tTG/pEwILZmKzGfcG1pYmlaeCCl5K9UmFieN54ga3/Fd8yZTsNi+QI2FmEUF
+         BQ6tmOHMunfX1znHUDZpOe3MO1fa0ro2yxCWXiO7Zc86n3Xs9Ac+MEeD/u6G+kcxf6gz
+         jmHTT4RgoMWuNrnAZ5p16Gzzubu1vshSPOl98ED3/uu+unxjDP+lnjhWpsDp9pdXeE3n
+         /ORdQm92NxiBs9l7rBVscBcKnZ0/qlXmk5Z7xGHrN7D8KwAaKEAK02jbeCP7wh0+L99v
+         v9ijtnDyWP99obVYqPnqGseYvTth6Fpc+RUux8jDEiHhJUZixkNw8nPVdMrvWaWccz3X
+         HHTg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=50I9uGG5GYYCTmzTIXtpYJN2RZ/4Erm5semQdri6mfI=;
-        b=Sz5TJjFY4FJeG0SXtnrB8HMufkV9ycC+HKBCY1Xad/a+BkBDpgtQ/WiliOrycrN6nN
-         ZdmVzDvphnJDHH/sMS7U+/cY11Esz68dhh6ySQEdoEQ+1Lzw7537RxbVLM3ruHdv51tl
-         /e5tfc1XhK3T9iVYIg4fD6xsFKfzstf0HvUyxP72g94JsS3M4OQ58qLkRmumyS88bUJt
-         99XP25WT8mD46SWAJ+paQXnJFpH5TXdQobiYQ0ldmCG/WxR5Nm47DBIbujq8vIw9ApCR
-         Cyin8zBn5o9lNWYN0YH9gUycSlAFEtp80fX/njFBpumpUAKJTbppamRgqCQ5dP4ZDZMX
-         rR1Q==
+        h=sender:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:subject:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=9ZqVhIMdtyhPrYyIADK4xnt3EGcjMWNETVV/yNIaRtc=;
+        b=WqGDaEo08aWtnJNJQYA5bcf56fHKqfwY6QAE7rGTmCKViuUq48ZGCwzFfHm6k+4cRG
+         vwdyNaHhmOh1pI/jPqOdECarvv0MGaAjOhoVAS+AT/v17TTbTT/6lCyucVMF36ciLIbw
+         dExFs159Yc5m1hFBShxiYqUoHTUuYwLc+FWi4PRKorrrp/4ytdgRIWwwXZ80FIzYE8je
+         mr20s0TUo6x7JksBh8rBcdjR8Ya7btX8fCAzQtrVQOBwzTJockmq2m7CDyLoEJAGUrbq
+         kFrdDq4eL0c9ta3CrCwjdPlzs3xt70MnDB75cEimskny1sRDjPD7KpEaVhRVgJLWSKwt
+         Vn6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=50I9uGG5GYYCTmzTIXtpYJN2RZ/4Erm5semQdri6mfI=;
-        b=NrOEX4Vcn87N45WWiQw89DKzG61ZlHn3COLUBUr5dAlcO3OKPlqaCHEwzxoS93rm7G
-         O4cTzrXt+l3Dkxb4mQe6G2934KxJLf2Zmcuhyu5shIBi2C7/yH0p4SxM63Sey8/za3T1
-         HnRqpykyzhZyANWyIU/oBe0yWgOMMlMf24EAL4dJcgXhkpnUOM2VXNRut0tLMqh1ysQu
-         PAX6ExulzxUKQSvEi1DZyGbzDwH2dymB73f62dbwy/fdc0nEPFl79bQ93Yy2/FPi82xL
-         zlEJRr88o+9E1dWCMT13tOUouEOUB4Fw7AnyznqoWkiViqvlq6WEmVCX9gkLTwAX5z/7
-         1+mA==
+        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language:subject
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=9ZqVhIMdtyhPrYyIADK4xnt3EGcjMWNETVV/yNIaRtc=;
+        b=aJtWzCN+UGC6hJkLJCzzajBHgD3qelLkh2MQSj1utxjQ7fu6L7QY3zmw3JWAHdsvOM
+         MhehN0VsN8LFo+gtJWuJH0xXAnCt55uIlqjbG023B1Jl2gORWEGV8gRXYklyffn4BV0R
+         CR8vFCIIIbovfFJ6n5sgr76Hh+jZ/OqxBiJuqG2jwzFn1MzA9XEkcjgL8GrcorWvYJTk
+         WxNCxYsyFNw0nv1L2/RyttLsXsjLrcUP8qD3cqgDoqLd5TEjjHEZPd2k0rRmzAWYksxu
+         OA/HOfzOHoJqvGlbaWuJWVvgAWhQchHKeNENu1HwJqq+H4gWWb/os41Dm1mO9djEDiCt
+         /ZzQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AGi0PuaCNT+KEIgCWy70UsMLwbkFxcwVBkAvB/GzX/2o+KUu3E8veR95
-	KbTTMfSdr8P5gySFA70Jtko=
-X-Google-Smtp-Source: APiQypIdf9S5EXe4pbu+h5KBQtPLUdwgVH8Uoiq0qxB08shj/5sZDckxTV6Pn3P7mcT2PXR5NjJVRQ==
-X-Received: by 2002:a67:f254:: with SMTP id y20mr5975428vsm.177.1588738981556;
-        Tue, 05 May 2020 21:23:01 -0700 (PDT)
+X-Gm-Message-State: AGi0Puat53i2B/odooOFLK2ZhrwH0HWb+2T2m4yR50A5EhFSaHWQ4qu8
+	59wnQ53142p7dJXn9RGJARk=
+X-Google-Smtp-Source: APiQypJ/1KkUUhRFIFWNIXhAZXusBq+UXTU/eTqSpBtC/4PJ685YkoKHGUFi1e57qUTY3lgMweU3qg==
+X-Received: by 2002:a67:7cc5:: with SMTP id x188mr8100808vsc.26.1588779338172;
+        Wed, 06 May 2020 08:35:38 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ab0:2992:: with SMTP id u18ls49855uap.8.gmail; Tue, 05 May
- 2020 21:23:01 -0700 (PDT)
-X-Received: by 2002:ab0:5642:: with SMTP id z2mr5577301uaa.6.1588738981264;
-        Tue, 05 May 2020 21:23:01 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588738981; cv=pass;
+Received: by 2002:ab0:26d6:: with SMTP id b22ls205587uap.7.gmail; Wed, 06 May
+ 2020 08:35:37 -0700 (PDT)
+X-Received: by 2002:ab0:238f:: with SMTP id b15mr7801754uan.32.1588779337647;
+        Wed, 06 May 2020 08:35:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1588779337; cv=none;
         d=google.com; s=arc-20160816;
-        b=Vq0Ndi0nY+tEhZ9+7gvtJvoCd3YgdssEp8JdTlsOCKVwgi6YWfQPHc5Bbg2quq8Vjb
-         4ciH4jShPftb1+ucBChdE+lnAkIDQN+edyic/bWcgnSdvad9JgG21SAaZPCs+aB/Xxju
-         V5I0w9kRdXy+ijfgk424nESuplZcdsGWCDwOGpavZ/g4A3ARJ67skT4XdQsVBt7fhdth
-         GEiIHD9Yn6hHCzsAiZYdaqkSZBOsu2qqfxbc3dZ7Cs3K30E2JF4MK1cR/y0KmNQeIr3Q
-         oVLPqSI4jqPEY1Qtsd0L5KEiSLT7tbgclxNFQEDkxcECWu2T8e/rDp3eHA57vhKS5rsC
-         8OZA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-transfer-encoding:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=6n00zdWDFWbDv/3iaLNdZKLLmsOS+DWJVWgvHoNcbMk=;
-        b=NyxG2Zo5P4BlbV/W0ues9SXnhb5ldq+ry8X2ylCNEUjgQYRDVVDPsJB6NZ3j3teqN2
-         5EBFz1L2hD8Mg1CAMkU8RLHUZqRwZU/hoCtJT1idIWvO2wGpmwjNhK5e770Yrj88Z1GM
-         ebJLO7YMKq01lFuoHP0+TL90bLwfWFJAOgstQ5qdueeTdrAiPHtqz6Nx3XxaUcr/H4CW
-         9hl4boGd8Jx7Vr27JaRjKJzpN2vydQqflZbE5QT+RkC5hXmjaTt3gq+tVU8e0Bz1j9qW
-         7e1czlFEREUYWbczI/J0p2Qg/OcVYFTshT2SoRfshDQpSPaPWQ/AUQsfRPiuyW0ISzXc
-         Ww/w==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com header.b=t9i98UIZ;
-       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass dkdomain=amd.com dmarc=pass fromdomain=amd.com);
-       spf=neutral (google.com: 40.107.223.78 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
-Received: from NAM11-DM6-obe.outbound.protection.outlook.com (mail-dm6nam11on2078.outbound.protection.outlook.com. [40.107.223.78])
-        by gmr-mx.google.com with ESMTPS id y77si63834vky.0.2020.05.05.21.23.01
+        b=wJ4w/VXogrN8fxmJTzNTG/k11uPUlcq2HkypmkirISNk1dFMDQ96336bUO/cej27/f
+         iF4aPFq5Up+rq/9pGe+7QNXULc60gZLynI9EnGzEw3C/OH26rqnvDIwhanukZaj/2MkM
+         Jep6uY0gpvPs62zZUilJctNCGWvdZUnqsE74GLaV9q0YaBxm5V90InHsRUBs5FLRqmxX
+         LrJfyIvXtGYlHcVNjDMWHpKbBI8Bfoo9+IXs/Gp/IMzPTdPepPnUrcPWgOQ0EAq64ib9
+         F4xWbZYRyVnB5/CTJAU5w74NG12Btb2mEA3m43Hzao9Z7WfEKR6isu8uoa3Z8g5w45e4
+         QGIA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=subject:content-transfer-encoding:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to;
+        bh=sze7F0iIO0UZCvGL5LsMwDjxzfyQMarYK5/xPcKxqTg=;
+        b=FJyQOpqzWsd3Fod5EXhk5T9hte4kewYrsbnMioh6dAjWddMhV1toDWHWXOcgzJxa1F
+         swLy7SozZVj87YDYqauJD9QtKrwlSltD4JiENlnw23CpS+Erj/ilP6R8bULNDNm3S4oz
+         278riGTywUpu44reIF35MOOICTbbJ1sgNZ0OErisGmLQABQrp7C35ufWNmRxB2XlnE21
+         hJGIkWtyiCyp92nbfka+T4mKexax4MnhnN3J0+RPwhFzZQA2V3N3fh4JGijIBZ1+lbsI
+         2hHBpb567xpCguJDJoi8Of0yduGJY95hzXkBGUn9dk8uQGsPMr/Fo1sS1lGdxmWXccwm
+         o8xg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
+        by gmr-mx.google.com with ESMTPS id a205si171026vsd.2.2020.05.06.08.35.37
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 05 May 2020 21:23:01 -0700 (PDT)
-Received-SPF: neutral (google.com: 40.107.223.78 is neither permitted nor denied by best guess record for domain of sanju.mehta@amd.com) client-ip=40.107.223.78;
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=YrTBdxhEcgk9jhmk3shrJD2s0V4W+5fEOgjjEVWi0YrL4Vto5+7RfsBy/22Zihwg8Com2GpdNy4pIc748kRN+KHE0tI7Xhkys2e0zik8uK9MnyETCIbRnV1pgAbCV/AvPg5f1CW4ysQrSiwRoiRAskXhrcYDdEiWp3vRqH4c+smFuxiL8FSP0YkJ1sPZsxhxbyP7wQmFUorSUYheEM43K25fSAt+JRjwPvtMeHtC4ZJVhHamR/Iz2BDu8W0pogYyH00UMg7Qex/VBnkPdv5UN6BJqImsN15miOXY++IKH5k/xPU8cdUrhKCs+eriYuOiB33ElAit614+73iKC8heQg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=6n00zdWDFWbDv/3iaLNdZKLLmsOS+DWJVWgvHoNcbMk=;
- b=W0IGNVXaIIeuMPnfNBNAk9HYPLRahy+g+thF7LcNUf9wCfo09MaEdfEsqfUUfagkebE9SQBVyFEktuV7VSJ8zw8Z9BLOOobf/axONc91PIl74Sz+hC9orjStT0d15ygWG0kiTm3RvdImAslSfAKRqooQt1RoCSNjxSRf88e50OpOOAekU5FWUdDBJEOn0fd04zt7mk6kdDFzwCN3gj3Q8Y2DPdgukQDE7PMSGtG4UJiON+04Fb1f3I6uh/rh13My0JAT68X8CkblVIvXi6uD7tvfQbfSQRfZHlohz9RwPixOO/hXfL5b1kXo0fC8Q0DlAR+PlfI5uuHvQWTEaY2WAw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
- header.d=amd.com; arc=none
-Received: from DM6PR12MB3420.namprd12.prod.outlook.com (2603:10b6:5:3a::27) by
- DM6PR12MB4092.namprd12.prod.outlook.com (2603:10b6:5:214::14) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.2979.28; Wed, 6 May 2020 04:22:59 +0000
-Received: from DM6PR12MB3420.namprd12.prod.outlook.com
- ([fe80::7545:386:8328:18a0]) by DM6PR12MB3420.namprd12.prod.outlook.com
- ([fe80::7545:386:8328:18a0%6]) with mapi id 15.20.2958.030; Wed, 6 May 2020
- 04:22:59 +0000
-From: Sanjay R Mehta <sanju.mehta@amd.com>
-To: jdmason@kudzu.us,
-	dave.jiang@intel.com,
-	allenbh@gmail.com,
-	arindam.nath@amd.com,
-	logang@deltatee.com,
-	Shyam-sundar.S-k@amd.com
-Cc: linux-ntb@googlegroups.com,
-	linux-kernel@vger.kernel.org,
-	Sanjay R Mehta <sanju.mehta@amd.com>
-Subject: [PATCH v3 5/5] ntb_perf: avoid false dma unmap of destination address
-Date: Tue,  5 May 2020 23:21:52 -0500
-Message-Id: <1588738912-24827-6-git-send-email-sanju.mehta@amd.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1588738912-24827-1-git-send-email-sanju.mehta@amd.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 06 May 2020 08:35:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
+Received: from s0106602ad0811846.cg.shawcable.net ([68.147.191.165] helo=[192.168.0.12])
+	by ale.deltatee.com with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+	(Exim 4.92)
+	(envelope-from <logang@deltatee.com>)
+	id 1jWM58-0000e4-J6; Wed, 06 May 2020 09:35:36 -0600
+To: Sanjay R Mehta <sanju.mehta@amd.com>, jdmason@kudzu.us,
+ dave.jiang@intel.com, allenbh@gmail.com, arindam.nath@amd.com,
+ Shyam-sundar.S-k@amd.com
+Cc: linux-ntb@googlegroups.com, linux-kernel@vger.kernel.org
 References: <1588738912-24827-1-git-send-email-sanju.mehta@amd.com>
-Content-Type: text/plain; charset="UTF-8"
-X-ClientProxiedBy: MA1PR01CA0127.INDPRD01.PROD.OUTLOOK.COM
- (2603:1096:a00:35::21) To DM6PR12MB3420.namprd12.prod.outlook.com
- (2603:10b6:5:3a::27)
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <2197ff4b-be91-7c73-ad2e-f3849a088953@deltatee.com>
+Date: Wed, 6 May 2020 09:35:31 -0600
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from sanjuamdntb2.amd.com (165.204.156.251) by MA1PR01CA0127.INDPRD01.PROD.OUTLOOK.COM (2603:1096:a00:35::21) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.20.2979.26 via Frontend Transport; Wed, 6 May 2020 04:22:56 +0000
-X-Mailer: git-send-email 2.7.4
-X-Originating-IP: [165.204.156.251]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-Office365-Filtering-Correlation-Id: dc385fb0-cefc-46ef-76f6-08d7f17528d3
-X-MS-TrafficTypeDiagnostic: DM6PR12MB4092:|DM6PR12MB4092:
-X-MS-Exchange-Transport-Forked: True
-X-Microsoft-Antispam-PRVS: <DM6PR12MB4092AD5754DBAD0F49A72853E5A40@DM6PR12MB4092.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:4502;
-X-Forefront-PRVS: 03950F25EC
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: iwyqhVv19j54pC/wpzHNj5c/k48YVWjQ5QRJcXZ/ZNkRlUnBcNPckmMWk8f/tC9OsiGWtNiKCjew52xCBfkPbVyM3cjGcDpHplALc3Qan88A+aqWmqmGxDXhZL4TTKSY2v+f45MxUakz7b+NAl431Jqju6VGUW0cfxP3w1UIJASDJ8ow7RXb+L8M8YBJuvA8e6OURJqLrqURe6IqghwfFvt8pr+62bX2RPPBGcOCaXWrhJBoC6qN6BLCpT9UDPvJssYSyMXIMSjmiQTb4tAwW0SZvYt5swdp5eNdXt1Yi5N739r63sWbuyj1ixo1OT2DoalayjlfDXMwM6kxtdvoJYkEFjUoyCqihrJp4ACfpL5k234vht7VOCbFRceok0W1n2Dsp3lmiZkbBAxKkvgr4OASxhUwWtf0IWOqdJl8LR36vLKSkvkgPyYOPcbnOC/ME5M10BQgatvdjV6kkQN5hIpfjxNyNCVHT6Is0t4dXL8S2945Goi8+lrxro40/IprrspzV2XsMQYYBVMZmdoo2A==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR12MB3420.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFTY:;SFS:(4636009)(366004)(396003)(136003)(39860400002)(376002)(346002)(33430700001)(4326008)(33440700001)(956004)(2616005)(478600001)(5660300002)(2906002)(8936002)(36756003)(316002)(6636002)(66556008)(66476007)(6486002)(7696005)(66946007)(52116002)(26005)(8676002)(86362001)(6666004)(16526019)(186003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData: UyTYFEcgM7h3/E3QwKJXnlJrxW0O4h3QPdkB5itxNj4dmMgxqguOGNvzBVDe9v7NO8D9PCdRQ1EA+vBvGIr4YuuFYmxC4LkvE8oLsROPrYp3och31iyO+sSDXbIyC7Z8RE9j7kIsJ/6zjc7Gj9QACrtXCGEspgJ2jf88Vs9DRzEtcBXtloyV4o7r0nUXv1zxybfv01cC7WvvNV9sfjeHh+upnhp/memKX/a6zAPgAf2sdOEO/myJebxhzbGlRmjVlI03Bil4gaV7hbdvn/GbDpIyjO6bQWnjDn6b41X6p42Ol8hPGbEpw2r42qEjBhzPiaMKy0GnhnPwYpLj71jepsdmCtqBYsGi5GTh2a16y0K/XV0IMF3cY+EfstE8JKt7/ZZ2/3n6/fltiYjACixkxlQbS49ESbB4JLOA7D3dXSmrmb60FKMEl52kxehK21rL2PdCXrmEeDkRpffWVYkiJCHXQ9rjFAA6abbA05WFpEkR49KMLpaaL8XBM4pGhNrMwGXCX2ifV+nA3VlvO9UlqbWI5KIjgU/ioTvjRTi/ajgXUnxeKDUgd7a5ab2ZmDa2C6I9wlukD1Zfnk9dz+lOi7AFHdpZrQ4t5cje7zjATta6Cra81hF34hvr2KjJtkvcNZgr46x15IltOoz72QJ6ZkbQxqJ/d3ddLIWtsS0khyydC9SMt1RudJ92bu/3+Aakqp5HdykNRVM214gp2x5HmTmcDSDfAwpGAa48oh8psHQoA41NfTe5KMVm+zzlK68y5iWIjVgYGGg5rIA00se7Y3ZL2V4o5UvI3jje8e5QIYQUn9+4LDOKqUXuBaIFDTVb
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: dc385fb0-cefc-46ef-76f6-08d7f17528d3
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 May 2020 04:22:59.6158
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: S1GbMMbePl/ste9PTewMqCBf2OzrwX8F9SlE5KsnsX4KnSMYoYWhKRB4N8ua4gq9IsIOStIRgTOUpErb9pcgUw==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4092
-X-Original-Sender: sanju.mehta@amd.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@amdcloud.onmicrosoft.com header.s=selector2-amdcloud-onmicrosoft-com
- header.b=t9i98UIZ;       arc=pass (i=1 spf=pass spfdomain=amd.com dkim=pass
- dkdomain=amd.com dmarc=pass fromdomain=amd.com);       spf=neutral
- (google.com: 40.107.223.78 is neither permitted nor denied by best guess
- record for domain of sanju.mehta@amd.com) smtp.mailfrom=Sanju.Mehta@amd.com
+In-Reply-To: <1588738912-24827-1-git-send-email-sanju.mehta@amd.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Language: en-US
+X-SA-Exim-Connect-IP: 68.147.191.165
+X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com, Shyam-sundar.S-k@amd.com, arindam.nath@amd.com, allenbh@gmail.com, dave.jiang@intel.com, jdmason@kudzu.us, sanju.mehta@amd.com
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-5.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+	LR_URI_NUMERIC_ENDING,URIBL_BLOCKED autolearn=no autolearn_force=no
+	version=3.4.2
+Subject: Re: [PATCH v3 0/5] ntb perf, ntb tool and ntb-hw improvements
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+X-Original-Sender: logang@deltatee.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
+ permitted sender) smtp.mailfrom=logang@deltatee.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -179,51 +138,37 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-The DMA map and unmap of destination address is already being
-done in perf_init_test() and perf_clear_test() functions.
-Hence avoiding it by making necessary changes in perf_copy_chunk()
-function.
 
-Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
-Signed-off-by: Arindam Nath <arindam.nath@amd.com>
----
- drivers/ntb/test/ntb_perf.c | 11 ++---------
- 1 file changed, 2 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
-index dbcfdaa..95a0853 100644
---- a/drivers/ntb/test/ntb_perf.c
-+++ b/drivers/ntb/test/ntb_perf.c
-@@ -804,7 +804,7 @@ static int perf_copy_chunk(struct perf_thread *pthr,
- 	dst_vaddr = dst;
- 	dst_dma_addr = peer->dma_dst_addr + (dst_vaddr - vbase);
- 
--	unmap = dmaengine_get_unmap_data(dma_dev, 2, GFP_NOWAIT);
-+	unmap = dmaengine_get_unmap_data(dma_dev, 1, GFP_NOWAIT);
- 	if (!unmap)
- 		return -ENOMEM;
- 
-@@ -817,15 +817,8 @@ static int perf_copy_chunk(struct perf_thread *pthr,
- 	}
- 	unmap->to_cnt = 1;
- 
--	unmap->addr[1] = dst_dma_addr;
--	if (dma_mapping_error(dma_dev, unmap->addr[1])) {
--		ret = -EIO;
--		goto err_free_resource;
--	}
--	unmap->from_cnt = 1;
--
- 	do {
--		tx = dmaengine_prep_dma_memcpy(pthr->dma_chan, unmap->addr[1],
-+		tx = dmaengine_prep_dma_memcpy(pthr->dma_chan, dst_dma_addr,
- 			unmap->addr[0], len, DMA_PREP_INTERRUPT | DMA_CTRL_ACK);
- 		if (!tx)
- 			msleep(DMA_MDELAY);
--- 
-2.7.4
+On 2020-05-05 10:21 p.m., Sanjay R Mehta wrote:
+> v3: 
+> - Increased ntb_perf command re-try sleep time
+> - avoid false dma unmap of dst address.
+> 
+> v2: Incorporated improvements suggested by Logan Gunthorpe
+> 
+> Links of the review comments for v3:
+> 1. https://lkml.org/lkml/2020/3/11/981
+> 2. https://lkml.org/lkml/2020/3/10/1827
+> 
+> Logan Gunthorpe (1):
+>   ntb: hw: remove the code that sets the DMA mask
+> 
+> Sanjay R Mehta (4):
+>   ntb_perf: pass correct struct device to dma_alloc_coherent
+>   ntb_tool: pass correct struct device to dma_alloc_coherent
+>   ntb_perf: increase sleep time from one milli sec to one sec
+>   ntb_perf: avoid false dma unmap of destination address
+
+Looks good to me. For these 4 patches:
+
+Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
+
+Thanks!
+
+Logan
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1588738912-24827-6-git-send-email-sanju.mehta%40amd.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/2197ff4b-be91-7c73-ad2e-f3849a088953%40deltatee.com.
