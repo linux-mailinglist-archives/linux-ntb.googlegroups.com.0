@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBW526X2QKGQE5VEGIIQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRB5N26X2QKGQED7MQL7A@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pj1-x103d.google.com (mail-pj1-x103d.google.com [IPv6:2607:f8b0:4864:20::103d])
-	by mail.lfdr.de (Postfix) with ESMTPS id 70FF51D33E7
-	for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 17:01:49 +0200 (CEST)
-Received: by mail-pj1-x103d.google.com with SMTP id mt16sf5189534pjb.5
-        for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 08:01:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1589468508; cv=pass;
+Received: from mail-ua1-x93e.google.com (mail-ua1-x93e.google.com [IPv6:2607:f8b0:4864:20::93e])
+	by mail.lfdr.de (Postfix) with ESMTPS id 295DF1D33EA
+	for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 17:02:15 +0200 (CEST)
+Received: by mail-ua1-x93e.google.com with SMTP id o16sf1507026uar.14
+        for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 08:02:15 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1589468534; cv=pass;
         d=google.com; s=arc-20160816;
-        b=NoQRgzamAd7SN+UuBkkfHQZVgfc/tCAyUgur07tiG9E3okqM4nQFYHXY6gVIG6LvKJ
-         r9wekfGTng8E6rttd8oYfSZmuEODRu0RSxehPd6ERNhg9x+nnagGK/7tXs7i3C0+8jg2
-         LB8zCvmwrT41DAr8ny64i7wLwTTd+IlwJmc48KnHjVnWvZlfBqsw41tQTPB4xm13UrDM
-         6/e6IaOLM1C830CEPHiBGa46skuX99IhYe461Av1s+/BL2XnBSh99RhV1F3TdLISWC+0
-         Fs9rS6QaYVIAghMTYO9+NXlAYjRpv+jmASz/YaFHFSfzPR4MzgtUTDgg1h1GHoEILQDP
-         6e+g==
+        b=AZ0yG1vtnxEs/YQzE5oAlLI0uihe4wqcBwYjcJF+uLkp3JJqSRARO1bSm7D+i70wIY
+         yKWRrsaI4KXJiwo9RbmkdyEd+RzuQ2AS9H9mTqtT+RDrrFRojOFLWULvhw+iNEylOXml
+         6OqvbqZ2reQxGPIq9WtYN5nFkhSZ+GH33Mk5RLNoZHWShvp7ai5Tf4y5zgzSbZ5+Xd4l
+         7t+T5Z2LQTZ2OUEYPknTJO1WjHSsnrWNf4/fFt/wr0dAzXxZRdxhPKVwBtRtEIfxALR6
+         sIuZYH7HRjJd1UDpYGdt0z9+gtgNYWVC/Jaqz7TdISEgkhYhBB0D+Qlegaye36n6ttEW
+         5SxA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=klcgpDEEa/sa4lAyr911N7t6zZoXS1Hk7Zxlx771eeo=;
-        b=yx2KlV6RVpwXMW3KvCWo24RDAx+JaATHODGoqspZCaS70piPGkZRQhw73x7kYj6qtu
-         3HbZ3R4Q2GIEWO0ACUcgwGBqvpoDANG/intfD2az791vCBkJl0dwPxypH3zln2s/qxwU
-         /dGxTD/fP4eu8Z8OwJ7xGvQ5RsZ/75YII4o9slf8I+8bG9jI5nAViv8q7Q8p6w1IWKDV
-         p9ItVgj7h3qiGLKSY1uPpW0hBVg8if7UyggMdVF1325DEM9Rpy5tLswn7wYiFqDXpM6+
-         fnetNNHgmzyKyZ3km4vddVRQPd5pEHDXgg+IQPuYl0WNce7Ky4ZaH+eZJdVeoVXAXoRh
-         TOBQ==
+        bh=yFiKQeysFF2giLPRltX7n7i08VtWU4Gz+ZGR5TXumPw=;
+        b=Bpe/wnRZZcG1/OsY6ELl6h80fKX+kTbGt5g8ao8AtN1e0wTmphPoELEi1Cbi7WOT89
+         REPG7lypNsqlde29zYY41Jh3h6tCPFDaRqw1E+FGhqPAqbjjFD5Jkk/TmtZcrDITRLRg
+         ie0r2eLfgtIXVRnGUzRfyrvIEJq6sv57rhnE/RHurvIpLLnb5uLFoXK1X6SAXC1M15ZX
+         QzXzR4zzgVpVCHG5GFvaAvAZM2RUIQnwJz1zcnCCdrso7k8nqlPF1REJR6MmQh/ItTEH
+         CTZ6wFALNf+XdH1xJG5C1yOIhj9XvVbsH0gSAJigmgK1khZ2dOzN+lPSnbxoTbkkPKat
+         2m3A==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=TIlTUjBn;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=KG8A1qVY;
        spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=klcgpDEEa/sa4lAyr911N7t6zZoXS1Hk7Zxlx771eeo=;
-        b=RdMeL3TQVYIqzzwWeNBiie/OdL9YHA1oIPQsSnNgKOBRk0rRYjOjd1J3tLJP8AFb37
-         C5CWZE2KloXJv46llaJh3WNtK3kVzxlo3foTz1nLPwfeDDN1Df5oIa5fewgddS3Ub8yN
-         y+7Wgi7+iRDmbKhMJDobVxCBUirY4JBCYJfNQN6JO7+V5EJxxH02vHzWX+OOcUkx5xUW
-         rpuoqea+UQ5/SF2+vXxSJl1cNQO88jHEs2KOVNxnMLK0vITJNiVcs97C1Nv4ElTXns4/
-         lHV6jId8IARGeOkokob2UpwYtg6C9qWWXiqueNdctiKLn0ZY9eZgj59eqNXIhW0YBt9m
-         dJ7w==
+        bh=yFiKQeysFF2giLPRltX7n7i08VtWU4Gz+ZGR5TXumPw=;
+        b=C3v7ng9BQZb1f2uXeSzAqGhTcEhQ+HGwbeup3DZY1MyhiJeuOxpO4z9/GkdjavUo17
+         aKz44oEbDBd9ZmjCGYkArzZ+o00HSqt7R/+ZYgWZk+kGAbRe9vyOT/qa2jV+JDCKSmOV
+         VQWRGuAVJ+TzB7pdbxr9jri2WSvz8unxnW3SNS6KvHZT45wwkUt5MiJ6L+0fqck9DOnT
+         FD17sLzzU2z04zPOaaqHl+GyZXPPFoiW/XONNmShsOSmNQ7+rTE6vK+i8l+C7AhKwaQb
+         f8gGqXzt3JUvIixp4gbyXySL7tUpuXHNPJoKrJK8cqRuR5uxb7lFWSHGxq1MQn7zomtH
+         0NYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=klcgpDEEa/sa4lAyr911N7t6zZoXS1Hk7Zxlx771eeo=;
-        b=Dtzi7yTR27ZqIE553WMLWcfblnfkJ2NlGxlGxeIl4RxjGe4iErRAyj3fUdOFTqplcr
-         yGfOcX3QbLtI+H9PAi3q0Np9pgdrw/TUB/+yJbzjCFJJjtFZ8dg28kUmb2ToVmKG2qKr
-         FURMW9Dt/ilT9SpL2ESrXN2a80w2GAUN3bd5rYBVnJ8oP+jWiaJF6u4ojXyvLzXrHsra
-         X7u/nRD1HDmM1fv6uza6Y8bLeNTwzSXX436jtbRr4x4Twjo2LRpAgOOVITIVCiYCqrma
-         176oa6S9ylvT/mGq++YW7uewaNIZfzkIYOS+CQvhHmHYx2bK+e3u8SPcAC0bHBCAH/ev
-         vdvw==
-X-Gm-Message-State: AOAM53240RINpz0ShhhbofeqkIhOrFSh67oQV5bzG51xs/VQzVzIdII9
-	ikiUCf1zCj0nrfzb81XlzOQ=
-X-Google-Smtp-Source: ABdhPJwJpm6hm2tRZ2DipU71yy/B3g89eaif6Le+XzKngX8QvZ7X1Xa5/1yoLEtuDrifDZJ5AxNzYQ==
-X-Received: by 2002:aa7:9575:: with SMTP id x21mr4869670pfq.324.1589468507832;
-        Thu, 14 May 2020 08:01:47 -0700 (PDT)
+        bh=yFiKQeysFF2giLPRltX7n7i08VtWU4Gz+ZGR5TXumPw=;
+        b=iq8b3icINJEWqLXA0MGs2znmj2CGwDkh7mAsL2O+O98CryEMF5NJkcHFyfdpJf8P5m
+         c/rFUCElgQk7pseLg7OShcIHbl45lhajXtaUBx9lMU/PTUsDOYdNrr/hgQulB1LTJPp9
+         NSPF989iLGTwnjliGU6X/jazmg9UbSkSnVc+qPArsTopnLK58HjEWQVNQAZS9vZOtTx4
+         kVkB8vH9wmWiTD5USGQ9UViy4bkJss2eqGyyaO+g/oa8aLyN56QuyV2znfnER26fpFWq
+         thDmsdsTtUUI9nw68ZzzYmhLfs10kVra/w15YQ3F1KIYsClvhaXfGBospAuKOUd0iknp
+         VnNw==
+X-Gm-Message-State: AOAM533I8erli14QLUumgkmTTPFvM9UnwXRmp5gOM91Dl3fWqpRKuHYb
+	60xWws2mScWjl6ehHAv9e7M=
+X-Google-Smtp-Source: ABdhPJzNZWIyrpTFI1g78EoQUf3lyGfL9x7xKb7wL2vP0hVQuSQamrhjfJfWGThbK2N960gDm8DP1Q==
+X-Received: by 2002:a9f:35cb:: with SMTP id u11mr4524849uad.38.1589468533869;
+        Thu, 14 May 2020 08:02:13 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:aa7:9117:: with SMTP id 23ls1063613pfh.0.gmail; Thu, 14 May
- 2020 08:01:47 -0700 (PDT)
-X-Received: by 2002:aa7:9e92:: with SMTP id p18mr4768191pfq.195.1589468507316;
-        Thu, 14 May 2020 08:01:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589468507; cv=none;
+Received: by 2002:a67:b14c:: with SMTP id z12ls427600vsl.0.gmail; Thu, 14 May
+ 2020 08:02:13 -0700 (PDT)
+X-Received: by 2002:a67:ee0d:: with SMTP id f13mr4113112vsp.188.1589468532946;
+        Thu, 14 May 2020 08:02:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589468532; cv=none;
         d=google.com; s=arc-20160816;
-        b=iSiNbeO0AXaPsgnAJmO4WItDsWl1dxAgLhxtqkximWP0CVkgMWe/Tp67w6zpq2UiMn
-         84lP5p37Si5wrC6GeoE0laR5hproXGVDASyuun0ywnIfpxDG8Ouk1KQHH+ACbTfcupyq
-         y//3dmFqVhjiS2EpNpAGRgna/ITrYt/EHTEOWgtZojQdU2aI/nEOtg6RrQgTqZ/kmBjC
-         oyEELeOjb+uJO+rryNibL5ZVBFnqjoITYJdLAbAkFY/Gd3r7ynnBmqVbjc01ij0oPzFV
-         HxT5xGA0GYUcFVvsby38jPOaKidCzqlhC2Hn1WMN+vbi07zh0VofHieOIKILD9bykCpn
-         gs3Q==
+        b=u+ofCTXiMcTcO/vqyxClQmFbo36TcGT86yVtf6wz+S7lmNUlB++I9UnTj8FZokxY4R
+         OOocx8JU+SG1CbNDVZ1NgiOQfVOoNAsWUgKsxRKwsKPjq7rpTWoGiXC3K+RctTSnkbRq
+         Vv1UQD7sVSg366p9y/2+oPRjyEjHLndhdVsg6SJHOjApq8rY9xj3vVcJKO9us+7imqwF
+         zvEz39EhFiYzSAYetuSwqDIdE1T6EzC+H+pnasBjNegCin03uiQDLgH6IeggRfbEtWcr
+         Vvvm/qsWz0WIFouHRh68ZxDSqUgWbvJ6FQcVTK4GJxW5HbeHztE+8xO2iUGJ6nAIC4aG
+         WFng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=bjbvpTmM1atFHxC1fMsegIPQSlgplEAZfEUWKWe5dgA=;
-        b=l9MEIcX8RN0gzz0LGJ1F1ig5FWf3ptvlYbleuDggfcaV2a1TcISUOZG0DGWyrXFpYh
-         rc0k7SXjAXnSmuku3RDCIoyTzlImtvNN58A/LKfaRCxtZ8XkTKzuTnIZ8sp1LSJkyFXC
-         cRWNKfooXDBV0R4lbbm/AXzwcp3isSaI5K88noGUooMvK/BzW1MAvHfyAyQ2OexvMpb5
-         W+oycLUscOPY4Q6i/0JzUm+MZoALghaU9dxXvNK/e0aoeswy9ZTHDEgpMJ4pVBJHtaAB
-         e1K2us7zqpkh4UYrLb2hYMOqkHuukcJtIYexow5JALTmgvlC16drO6GyBlaBSn7hhMC/
-         +z4Q==
+        bh=4C0TWTfTSDRj2w7qQ6T4h7AbzhbqZ2/D2YKSd7EQANY=;
+        b=u715xlTdPJqE/qs+f+isCx1Y72USDsD6o3Xu1BKOtD4cWJM7hizSa+IzEO3RVXlbpS
+         8u4KWg8uuhwVDsGiID54E5iliWWa8jdjY7zzcM0zkIlfKZruT13BUOOJ8Sm3iDeLrQM/
+         KSNnujT5tAYc2O6ZSfIZ/TIxapcBhEnNXhaSDX3Pb20SQe+QouPPzkFvgqgLG/NHOWhL
+         yA9+356oYgPCMLnwWcj/pxL5dHkBL7GKh2aqlF14l3mbeIjLjE/quPlVFd3obQCtbONr
+         bUKSjXz+ceig/KZKHtJ9DNuY+cT5SLZBXZIvDWOhOKSU8ojwwnRPwd5nBvUS17rwW8Ia
+         oRsA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=TIlTUjBn;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=KG8A1qVY;
        spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
-        by gmr-mx.google.com with ESMTPS id ft5si361786pjb.3.2020.05.14.08.01.47
+        by gmr-mx.google.com with ESMTPS id a65si208622vki.2.2020.05.14.08.02.12
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 May 2020 08:01:47 -0700 (PDT)
+        Thu, 14 May 2020 08:02:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
 Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04EF1Dfd000684;
-	Thu, 14 May 2020 10:01:13 -0500
-Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04EF1DJ2104448
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04EF1I8J000696;
+	Thu, 14 May 2020 10:01:18 -0500
+Received: from DFLE105.ent.ti.com (dfle105.ent.ti.com [10.64.6.26])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04EF1IQG104549
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 14 May 2020 10:01:13 -0500
-Received: from DLEE111.ent.ti.com (157.170.170.22) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 14 May 2020 10:01:18 -0500
+Received: from DFLE103.ent.ti.com (10.64.6.24) by DFLE105.ent.ti.com
+ (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 14
- May 2020 10:01:12 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE111.ent.ti.com
- (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
+ May 2020 10:01:17 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE103.ent.ti.com
+ (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 14 May 2020 10:01:13 -0500
+ Frontend Transport; Thu, 14 May 2020 10:01:17 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04EExgB2019279;
-	Thu, 14 May 2020 10:01:08 -0500
+	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04EExgB3019279;
+	Thu, 14 May 2020 10:01:13 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
         Arnd Bergmann
@@ -128,9 +128,9 @@ CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
         <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <devicetree@vger.kernel.org>, <linux-ntb@googlegroups.com>,
         Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH 18/19] NTB: tool: Enable the NTB/PCIe link on the local or remote side of bridge
-Date: Thu, 14 May 2020 20:29:26 +0530
-Message-ID: <20200514145927.17555-19-kishon@ti.com>
+Subject: [PATCH 19/19] NTB: ntb_perf/ntb_tool: Use PCI device for dma_alloc_coherent()
+Date: Thu, 14 May 2020 20:29:27 +0530
+Message-ID: <20200514145927.17555-20-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200514145927.17555-1-kishon@ti.com>
 References: <20200514145927.17555-1-kishon@ti.com>
@@ -139,7 +139,7 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=TIlTUjBn;       spf=pass
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=KG8A1qVY;       spf=pass
  (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
@@ -157,30 +157,63 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Invoke ntb_link_enable() to enable the NTB/PCIe link on the local
-or remote side of the bridge.
+NTB device is not a real device and the piece of hardware actually
+doing the DMA is the PCI device itself. Fix ntb_perf.c and ntb_tool.c
+to use PCI device for dma_alloc_coherent() instead of NTB device.
+ntb_transport.c already uses PCI device for dma_alloc_coherent().
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/ntb/test/ntb_tool.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/ntb/test/ntb_perf.c | 3 ++-
+ drivers/ntb/test/ntb_tool.c | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
+index 972f6d984f6d..7f830a3e5b14 100644
+--- a/drivers/ntb/test/ntb_perf.c
++++ b/drivers/ntb/test/ntb_perf.c
+@@ -566,6 +566,7 @@ static int perf_setup_inbuf(struct perf_peer *peer)
+ {
+ 	resource_size_t xlat_align, size_align, size_max;
+ 	struct perf_ctx *perf = peer->perf;
++	struct pci_dev *pdev = perf->ntb->pdev;
+ 	int ret;
+ 
+ 	/* Get inbound MW parameters */
+@@ -586,7 +587,7 @@ static int perf_setup_inbuf(struct perf_peer *peer)
+ 
+ 	perf_free_inbuf(peer);
+ 
+-	peer->inbuf = dma_alloc_coherent(&perf->ntb->dev, peer->inbuf_size,
++	peer->inbuf = dma_alloc_coherent(&pdev->dev, peer->inbuf_size,
+ 					 &peer->inbuf_xlat, GFP_KERNEL);
+ 	if (!peer->inbuf) {
+ 		dev_err(&perf->ntb->dev, "Failed to alloc inbuf of %pa\n",
 diff --git a/drivers/ntb/test/ntb_tool.c b/drivers/ntb/test/ntb_tool.c
-index 69da758fe64c..4b4f9e2a2c43 100644
+index 4b4f9e2a2c43..5c9f034122b7 100644
 --- a/drivers/ntb/test/ntb_tool.c
 +++ b/drivers/ntb/test/ntb_tool.c
-@@ -1638,6 +1638,7 @@ static int tool_probe(struct ntb_client *self, struct ntb_dev *ntb)
+@@ -576,6 +576,7 @@ static int tool_setup_mw(struct tool_ctx *tc, int pidx, int widx,
+ {
+ 	resource_size_t size, addr_align, size_align;
+ 	struct tool_mw *inmw = &tc->peers[pidx].inmws[widx];
++	struct pci_dev *pdev = tc->ntb->pdev;
+ 	char buf[TOOL_BUF_LEN];
+ 	int ret;
  
- 	tool_setup_dbgfs(tc);
- 
-+	ntb_link_enable(ntb, NTB_SPEED_AUTO, NTB_WIDTH_AUTO);
- 	return 0;
- 
- err_clear_mws:
+@@ -590,7 +591,7 @@ static int tool_setup_mw(struct tool_ctx *tc, int pidx, int widx,
+ 	inmw->size = min_t(resource_size_t, req_size, size);
+ 	inmw->size = round_up(inmw->size, addr_align);
+ 	inmw->size = round_up(inmw->size, size_align);
+-	inmw->mm_base = dma_alloc_coherent(&tc->ntb->dev, inmw->size,
++	inmw->mm_base = dma_alloc_coherent(&pdev->dev, inmw->size,
+ 					   &inmw->dma_base, GFP_KERNEL);
+ 	if (!inmw->mm_base)
+ 		return -ENOMEM;
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200514145927.17555-19-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200514145927.17555-20-kishon%40ti.com.
