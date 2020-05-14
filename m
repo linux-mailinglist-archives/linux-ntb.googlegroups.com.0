@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRB4NZ6X2QKGQEVLDRZKQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRB6NZ6X2QKGQEGUTM6PQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x43d.google.com (mail-pf1-x43d.google.com [IPv6:2607:f8b0:4864:20::43d])
-	by mail.lfdr.de (Postfix) with ESMTPS id 90E811D33D1
-	for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 17:00:03 +0200 (CEST)
-Received: by mail-pf1-x43d.google.com with SMTP id y22sf2850426pfb.20
-        for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 08:00:03 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1589468402; cv=pass;
+Received: from mail-oo1-xc39.google.com (mail-oo1-xc39.google.com [IPv6:2607:f8b0:4864:20::c39])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6AE851D33D7
+	for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 17:00:11 +0200 (CEST)
+Received: by mail-oo1-xc39.google.com with SMTP id p33sf1774657ooi.11
+        for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 08:00:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1589468410; cv=pass;
         d=google.com; s=arc-20160816;
-        b=bHHTk/tBbYsB7SoqDR3ibM7hrOHYkxRoNifF2FvKDBYEETgYDzqdi+/6ledG01fQdQ
-         z4gOOgKUfm3kMR/XP60jpqMPYGf5fMr0s9kM0TJzt1dtVvwJIrpWwP42JZaZsuMA9kxI
-         kwlNbaJXOot07cA++wgbfaPiaPjuUEnwPZbKCz0rLTRMEfjW1uiPcoltPAI5YF3ycER1
-         r55GmMAwjzqF9WgOqEyiOg+oGkAoqOJIvF/7vJIMRAg4TdKVBuP+CVR/DlkevEXrTGX/
-         eQy1lRVvzPhBqxGEZJRZtbNCcgxmIJJgmHFVxpSLZb1uHXdKe+NHu5J8CxwXCavfztBq
-         VFAg==
+        b=A3uo++4vZLAumadoWADBqHBpvcnV/voMXn44peXURn6Qgp3lB0TIm7SH06OQg2wz5z
+         JYMFo+JQ32CWVbS4d8tkC4g4Uwl8ysDrorYB70VdaBiaARuLTM3rtJy/O7jq0JaK2xM0
+         5H3V0hkAZDqBvosgO9rmmQizcEF131IdG2brjpvlxZG1PeRQkISNgb7sExNeT6qvA3LL
+         kxpHtVnE8Sxoy7D3417Uk9/W6y+OW9zaC4ltabK2CbvMfEYNLjkpld1Gqf2/8ToAiie8
+         hvxjvNJwRDQfWktkcwKdwG8JgStgjFDphyoEGKJR7K5VhKtQh30YLds8XYGt+T9Mea3p
+         Iueg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O6msF2lhunHz7hEQ1/QvazIIBAczcKQfiCYaophdljc=;
-        b=nPJ4RWh0puP95Byw1QSMQm6TUTS5Jh9h07eM/4iB6TUn4HA1w3bcFnDN9vWWAoIgNZ
-         DMUrpho9pCySwK2wgc2IzNs2T0q656N2/F3L2vg9R9VxhpnaYDg1vw7ac6l0sfCyjJqP
-         dWcdlzv92VNMfgIvk3amTTTLqjNlIyIiFnTJvm6rst4lnT4S9xuuM1U8ouP2fxxxJB2F
-         WJLP+uXtWkjK2hZvcNEWgOtChEXbBTff0jUa/Mr1HDWGKGqzfkoLoS8aMizByxreinCT
-         uRx+lmUygFHyULWvTYE5ZWAfbVLqEtQqSxZAuMaAwC9pK6gGIe9mZrtwHJeRShFePFQX
-         NO+w==
+        bh=gNuSRZ4/td5gcPZdwRLd49b9PY1FlBPHvLx2TnZxkU8=;
+        b=ZxSP1NT3fGZ6vi/EKGo7rbO+53HvYyUrbe8H7rprA3jrPr5E3jBE2T95bDMFvgjqMG
+         FiiPxPvK4OtcnM2C+R6ujvx9JDnsEHaAHinjLKDfTpUmCkicvfsVXCAdxLPgmMmNN8Ai
+         bXW4u5BpGnKHH89ivVe30asTAI8uHu+NyfuAo9N344W51OwOu13tUlr8OoGuA5K90FcG
+         62dibpM/Mu3zb5+MhWqUx7H70FiOi+iJtLLFh7zvZTgzEcsNM18WXrWFJnJeMyKHS2HC
+         7Dg4reIlyklowzwSOAlnSZujw/IDz/BVCmQXwGidXDbTe5rAEDVvdoeNMHWTVZ4c5Kkg
+         QjdA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="X/Wl4Vbp";
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=gBKGQY9X;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=O6msF2lhunHz7hEQ1/QvazIIBAczcKQfiCYaophdljc=;
-        b=A/v+Q86LPcroKjspdbvM8grFnjj5qXIIYQtVHqKVBRHiQITWVJbvPL1BSU6vXrs9v6
-         DTea0XptAd3iZXji97MsG4VoX0pO2c3+8I4apcG03xiPf2T5jUOAwRqwAQr9Un0tk0Eb
-         ULdY2Nyf5fgq4IZfkRmCH9vbZ0yG3sH3/wFRF4Jj828Fw9BhiSim9iCqtPvXeuwWkx5r
-         pkGxvXOWVPXNmkwAkv7Y/wpjebad9vWCJRqn8Q7RQp2rLS1J9MYSOer8QXF3tjZFBj+0
-         BM3RF0c0fsv1bgC69++geO0vKFkVB61+CcEe1bXYi5AXMix41KNGhxtDJjrf6uyvNivS
-         sZAQ==
+        bh=gNuSRZ4/td5gcPZdwRLd49b9PY1FlBPHvLx2TnZxkU8=;
+        b=GmuAuOVfmuagUt+ife63HthWMWfs5YDLzYdCR77je5J8EP84ybnOPfpeewIHqy7czm
+         ehaVN6kjN5js0S8jZz6KfmoRqVy4kxcCAXjZ49/CFoYUY9vj8FazNREJbM0sFGcyMyc3
+         fVQuuSR97sUlEVqbsvP+hpZ4TqiQbwnpY6vfpzKpt+cEbSW7QxlWbNaQwbT04HC7ECUI
+         5J6PzLizYEvEUXl/Epg20aQT/16mkNsn13wc1DVk9l95VTELc+iFWtqWstHWmrp4RIoF
+         pyeogA+10H2qMYyZj2pC3candReshg19LrrunpJoPosvkSuceRe4OqFEJ6/Ez+7ixQUV
+         zs7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=O6msF2lhunHz7hEQ1/QvazIIBAczcKQfiCYaophdljc=;
-        b=umrO73HVvSZMpF2awAFG70gPBELT2jxNIRzOHwOZmr8IhtfnbnXv+ad1O+4z2U1dS2
-         bqzssUQVNYFrwDHlSckbrzII16YU6g70vMsw6DaJ+ug0byrmDx+jVHURn3sisQPY6URI
-         m026Ho/ptmFziIN1N0M4MTCBDDepBy+TNT5ih5df3RfcTHyLM2msxzniUnnlQvFFvA6a
-         EmEoHaelstzDJWsWw5cXQXusFwpJR0kM/UInwKasHTpPl5mSwd9NxQSBocjgP0hrUYzM
-         KmsO8/6RFcowXNMDomPpR3C4mjD31kU/iCoS9xxHfTFDwcxiFTRXBD4AMc+uFic00MPR
-         58MQ==
-X-Gm-Message-State: AOAM5300V/jD4SxrTsnnUjMfuqYbpPFq4ixpCDdyyY9hWQyQolp6slJl
-	qZNjkM/VFhBl2zDSwlqASGg=
-X-Google-Smtp-Source: ABdhPJz2z1vWQmMcRYap2KqMA9WqjFw71LPKVcn/oO2xxVv1YfRPWFMqBk24S/9NLnqBXWcgZAdRLQ==
-X-Received: by 2002:a05:6a00:c8:: with SMTP id e8mr4766509pfj.206.1589468402006;
-        Thu, 14 May 2020 08:00:02 -0700 (PDT)
+        bh=gNuSRZ4/td5gcPZdwRLd49b9PY1FlBPHvLx2TnZxkU8=;
+        b=T+QS1JReJnqpUN+wdpKjBJashn6RzKsWLWBylWrmS/19v0+rC1/FSUURMMqMkoKM9y
+         PIQ4Tp8V6YKRoC9qlJG9c/p0/+N3HHMhc5FC2Fo6YHwc1+pjOnCz+ElyiWmVryGk39S6
+         kt6le7o1fxWsGGYFPXUs61kR6ZLxUbH7JI23KRkWO3y0GrwDM7Fm/mZpNok3lhnuVmvh
+         AAON108HBfeHxlBlIYSp/auJTF0n0ptAQmjVFCbW0sCkLhwgqQnyG0ZN7PUTFDClLpeQ
+         PkJHUGzWPP0iA+FcLvXuE/7+4V06v/DryilniFWuwxoZTZL5ofNWmqe+JitPwRmxvgkF
+         BJqw==
+X-Gm-Message-State: AGi0PuY1GhMOPy/Bsu6hq35D1Iic3lxWQwvihXpuGFA2oSU9YB1zblQ3
+	V9hN8b5X2wo/f41ix5CcZwo=
+X-Google-Smtp-Source: APiQypJnyjBjHRu2z4DrfQlw1gNIM9ce/qeOTxshEXC0RW7z2Hoc5HcLza2TMjIkfSZ7eRyWMuisTQ==
+X-Received: by 2002:aca:b784:: with SMTP id h126mr16996741oif.106.1589468409083;
+        Thu, 14 May 2020 08:00:09 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:90b:3543:: with SMTP id lt3ls2878727pjb.3.gmail; Thu, 14
- May 2020 08:00:01 -0700 (PDT)
-X-Received: by 2002:a17:902:8303:: with SMTP id bd3mr4494786plb.217.1589468401606;
-        Thu, 14 May 2020 08:00:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589468401; cv=none;
+Received: by 2002:a9d:86a:: with SMTP id 97ls611922oty.9.gmail; Thu, 14 May
+ 2020 08:00:08 -0700 (PDT)
+X-Received: by 2002:a9d:d07:: with SMTP id 7mr3964668oti.338.1589468408718;
+        Thu, 14 May 2020 08:00:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589468408; cv=none;
         d=google.com; s=arc-20160816;
-        b=qPOr5kUwBQgU7z2YqJmcoW0GpmND4fTulxugB8CawvKGAxERRAs+fRZ9X4ec1WuGHm
-         I4zuDX0CHNTms3KHB2oJJoDmUMSOq+/Thz/SQeNs2RPsU/DU+J/iVjVkbr4TbiFp6I1G
-         ajOLZ2a+WuyNAPSKJcEYFJ6v9URKCzfHhYOxn8rXDqJgRfEfzP//MCnzjU8yTJt/tVpL
-         WvM8gGnePDGrY8hvSOQt3rgBgAG3qOn7dqWMibO69BM03C0RMLJUIxEfa/TNouKJlqse
-         gZv7TF1u1vGsmsECr11pzBoMgLTcTHC7+jd2LHiYivRgGMPEQwPoc+O2ZiEnte0fOktg
-         HdNQ==
+        b=re25xB+BERAcs5r2aZ8ayO1Or4k3f10LW34vrjR+gUes4VCUBcciWEZRxhgNU9TBx1
+         2VHppyqrTalT/a2WQMxbZ5FZHsneYzjPpvEUcKDAQ8kbPMy970AfMJlOnPKdlfghbZeG
+         EVdKY4YyT2Oa5Z3VWyqlm9rdZ+iMkFfshRDjv2kztggY+oLVRJ4Qxb8CntK7kYgz5XCO
+         ryOwOyF4JQCgSNjCDxTuQzZKBHNhH9iB9NMLCDaFzs+P3r4BzGqKx2imI6crtgshImEf
+         qU6NyNx9C/VsGa6BXGvjuTnZZgWiLk+uG0nqG/telpiegf+1j/Yh68ENl+yW3GpkVgLp
+         eJQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=Z+gfjunEdb+MDsFcXFEi3ESnDkoKrmf88fLI5DaHYFs=;
-        b=o4QObZdRuaDdcByYr0atS4HdIPfeo29GYnamw4eDGMND5KpO3iatJIUL64Yy1p56xf
-         jHUNmsQtMjXPTRoU2nb9NE+694LsOVElfiSoUbscCQHhvGbhrCqGoIsynYivPfvwh6Yc
-         EOiZ0VeeFeotctn2iqb7K60afFq9bnQkqUi3fJDbXNavvEKuAq9SMCQ7ZdaqH5NQj9Rn
-         tHaVFDmRMn/5TsWT9+ImvX2AckGikUruf5fomC2JdlMSJ0mf8lG3d1jETswEyJ09LYMB
-         NORoIIfags9sAPa3PZS3TplmXmP79aLWiKfOJpqcYFcjdEotC/KQ5YqeRiISrKpjYIUY
-         zdIw==
+        bh=P+37mJt9YrDEDpSiMSSixlIIbmpXp8JY1av4XG/9za0=;
+        b=NXS10BLn2/Nmdl1itmSlRWTSl5HLcXn8LzSzG1PXHabn8UYTXRcYeWTxJZBkNHtPoW
+         XaxHzCRGpe5E0wuNNyT1BCv5gtw9uCumGTq2CIx+MpZhXY274gEHuCIBZot+mFoboeQZ
+         mDqQsaJ56bLg1Obh8oeO8BgoZWHwcUGZKZEm/tJse9FjKpQKSp/VT3Zcgfeq20Hz0YW0
+         qXyvoqkwWd9akxRtOgvZup1dDYX8Kno9/Sso+t+asG4b7yMcLVao8T7n+3er2uSVewwP
+         JH816oaU+ctKzlFncQq+VzsW8CXQNmBJTFmgwMBMM7BTfNm9hmMmOqZT0WoJMy1snNHZ
+         Af8Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="X/Wl4Vbp";
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=gBKGQY9X;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
-        by gmr-mx.google.com with ESMTPS id c14si322700pfr.6.2020.05.14.08.00.01
+Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
+        by gmr-mx.google.com with ESMTPS id w196si1130226oif.4.2020.05.14.08.00.08
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 14 May 2020 08:00:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04EExqYf028904;
-	Thu, 14 May 2020 09:59:52 -0500
-Received: from DLEE100.ent.ti.com (dlee100.ent.ti.com [157.170.170.30])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04EExqUd117212
+        Thu, 14 May 2020 08:00:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04EExvBg130907;
+	Thu, 14 May 2020 09:59:57 -0500
+Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04EExvbJ058295
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 14 May 2020 09:59:52 -0500
-Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE100.ent.ti.com
- (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 14 May 2020 09:59:57 -0500
+Received: from DFLE106.ent.ti.com (10.64.6.27) by DFLE103.ent.ti.com
+ (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 14
- May 2020 09:59:51 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE101.ent.ti.com
- (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ May 2020 09:59:56 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE106.ent.ti.com
+ (10.64.6.27) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 14 May 2020 09:59:51 -0500
+ Frontend Transport; Thu, 14 May 2020 09:59:56 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04EExgAj019279;
-	Thu, 14 May 2020 09:59:47 -0500
+	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04EExgAk019279;
+	Thu, 14 May 2020 09:59:52 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
         Arnd Bergmann
@@ -128,9 +128,9 @@ CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
         <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <devicetree@vger.kernel.org>, <linux-ntb@googlegroups.com>,
         Kishon Vijay Abraham I <kishon@ti.com>
-Subject: [PATCH 01/19] dt-bindings: PCI: Endpoint: Add DT bindings for PCI EPF NTB Device
-Date: Thu, 14 May 2020 20:29:09 +0530
-Message-ID: <20200514145927.17555-2-kishon@ti.com>
+Subject: [PATCH 02/19] Documentation: PCI: Add specification for the *PCI NTB* function device
+Date: Thu, 14 May 2020 20:29:10 +0530
+Message-ID: <20200514145927.17555-3-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200514145927.17555-1-kishon@ti.com>
 References: <20200514145927.17555-1-kishon@ti.com>
@@ -139,8 +139,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b="X/Wl4Vbp";       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=gBKGQY9X;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -157,224 +157,380 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add device tree schema for PCI endpoint function bus to which
-endpoint function devices should be attached. Then add device tree
-schema for PCI endpoint function device to include bindings thats
-generic to all endpoint functions. Finally add device tree schema
-for PCI endpoint NTB function device by including the generic
-device tree schema for PCIe endpoint function.
+Add specification for the *PCI NTB* function device. The endpoint function
+driver and the host PCI driver should be created based on this
+specification.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- .../bindings/pci/endpoint/pci-epf-bus.yaml    | 42 +++++++++++
- .../bindings/pci/endpoint/pci-epf-device.yaml | 69 +++++++++++++++++++
- .../bindings/pci/endpoint/pci-epf-ntb.yaml    | 68 ++++++++++++++++++
- 3 files changed, 179 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml
- create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml
- create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml
+ Documentation/PCI/endpoint/index.rst        |   1 +
+ Documentation/PCI/endpoint/pci-test-ntb.rst | 344 ++++++++++++++++++++
+ 2 files changed, 345 insertions(+)
+ create mode 100644 Documentation/PCI/endpoint/pci-test-ntb.rst
 
-diff --git a/Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml
+diff --git a/Documentation/PCI/endpoint/index.rst b/Documentation/PCI/endpoint/index.rst
+index d114ea74b444..33c19746cdaa 100644
+--- a/Documentation/PCI/endpoint/index.rst
++++ b/Documentation/PCI/endpoint/index.rst
+@@ -11,3 +11,4 @@ PCI Endpoint Framework
+    pci-endpoint-cfs
+    pci-test-function
+    pci-test-howto
++   pci-test-ntb
+diff --git a/Documentation/PCI/endpoint/pci-test-ntb.rst b/Documentation/PCI/endpoint/pci-test-ntb.rst
 new file mode 100644
-index 000000000000..1c504f2e85e4
+index 000000000000..28027ad7ec4f
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml
-@@ -0,0 +1,42 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+# Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/endpoint/pci-epf-bus.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++++ b/Documentation/PCI/endpoint/pci-test-ntb.rst
+@@ -0,0 +1,344 @@
++.. SPDX-License-Identifier: GPL-2.0
 +
-+title: PCI Endpoint Function Bus
++=================
++PCI NTB Function
++=================
 +
-+maintainers:
-+  - Kishon Vijay Abraham I <kishon@ti.com>
++:Author: Kishon Vijay Abraham I <kishon@ti.com>
 +
-+properties:
-+  compatible:
-+    const: pci-epf-bus
++PCI NTB Function allows two different systems (or hosts) to communicate
++with each other by configurig the endpoint instances in such a way that
++transactions from one system is routed to the other system.
 +
-+patternProperties:
-+  "^func@[0-9a-f]+$":
-+    type: object
-+    description: |
-+      PCI Endpoint Function Bus node should have subnodes for each of
-+      the implemented endpoint function. It should follow the bindings
-+      specified for endpoint function in
-+      Documentation/devicetree/bindings/pci/endpoint/
++In the below diagram, PCI NTB function configures the SoC with multiple
++PCIe Endpoint (EP) instances in such a way that transaction from one EP
++controller is routed to the other EP controller. Once PCI NTB function
++configures the SoC with multiple EP instances, HOST1 and HOST2 can
++communicate with each other using SoC as a bridge.
 +
-+examples:
-+  - |
-+    epf_bus {
-+      compatible = "pci-epf-bus";
++.. code-block:: text
 +
-+      func@0 {
-+        compatible = "pci-epf-ntb";
-+        epcs = <&pcie0_ep>, <&pcie1_ep>;
-+        epc-names = "primary", "secondary";
-+        reg = <0>;
-+        epf,vendor-id = /bits/ 16 <0x104c>;
-+        epf,device-id = /bits/ 16 <0xb00d>;
-+        num-mws = <4>;
-+        mws-size = <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>;
-+      };
-+    };
-+...
-diff --git a/Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml
-new file mode 100644
-index 000000000000..cee72864c8ca
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml
-@@ -0,0 +1,69 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+# Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/endpoint/pci-epf-device.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++    +-------------+                                   +-------------+
++    |             |                                   |             |
++    |    HOST1    |                                   |    HOST2    |
++    |             |                                   |             |
++    +------^------+                                   +------^------+
++           |                                                 |
++           |                                                 |
++ +---------|-------------------------------------------------|---------+
++ |  +------v------+                                   +------v------+  |
++ |  |             |                                   |             |  |
++ |  |     EP      |                                   |     EP      |  |
++ |  | CONTROLLER1 |                                   | CONTROLLER2 |  |
++ |  |             <----------------------------------->             |  |
++ |  |             |                                   |             |  |
++ |  |             |                                   |             |  |
++ |  |             |  SoC With Multiple EP Instances   |             |  |
++ |  |             |  (Configured using NTB Function)  |             |  |
++ |  +-------------+                                   +-------------+  |
++ +---------------------------------------------------------------------+
 +
-+title: PCI Endpoint Function Device
++Constructs used for Implementing NTB
++====================================
 +
-+maintainers:
-+  - Kishon Vijay Abraham I <kishon@ti.com>
++	1) Config Region
++	2) Self Scratchpad Registers
++	3) Peer Scratchpad Registers
++	4) Doorbell Registers
++	5) Memory Window
 +
-+properties:
-+  compatible:
-+    const: pci-epf-bus
 +
-+properties:
-+  $nodename:
-+    pattern: "^func@"
++Config Region:
++--------------
 +
-+  epcs:
-+    description:
-+      Phandle to the endpoint controller device. Should have "2" entries for
-+      NTB endpoint function and "1" entry for others.
-+    minItems: 1
-+    maxItems: 2
++Config Region is a construct that is specific to NTB implemented using NTB
++Endpoint Function Driver. The host and endpoint side NTB function driver will
++exchange information with each other using this region. Config Region has
++Control/Status Registers for configuring the Endpoint Controller. Host can
++write into this region for configuring the outbound ATU and to indicate the
++link status. Endpoint can indicate the status of commands issued be host in
++this region. Endpoint can also indicate the scratchpad offset, number of
++memory windows to the host using this region.
 +
-+  epc-names:
-+    description:
-+      Must contain an entry for each entry in "epcs" when "epcs" have more than
-+      one entry.
++The format of Config Region is given below. Each of the fields here are 32
++bits.
 +
-+  reg:
-+    maxItems: 0
-+    description: Must contain the index number of the function.
++.. code-block:: text
 +
-+  epf,vendor-id:
-+    description:
-+      The PCI vendor ID
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint16
++	+------------------------+
++	|         COMMAND        |
++	+------------------------+
++	|         ARGUMENT       |
++	+------------------------+
++	|         STATUS         |
++	+------------------------+
++	|         TOPOLOGY       |
++	+------------------------+
++	|    ADDRESS (LOWER 32)  |
++	+------------------------+
++	|    ADDRESS (UPPER 32)  |
++	+------------------------+
++	|           SIZE         |
++	+------------------------+
++	|   NO OF MEMORY WINDOW  |
++	+------------------------+
++	|  MEMORY WINDOW1 OFFSET |
++	+------------------------+
++	|       SPAD OFFSET      |
++	+------------------------+
++	|        SPAD COUNT      |
++	+------------------------+
++	|      DB ENTRY SIZE     |
++	+------------------------+
++	|         DB DATA        |
++	+------------------------+
++	|            :           |
++	+------------------------+
++	|            :           |
++	+------------------------+
++	|         DB DATA        |
++	+------------------------+
 +
-+  epf,device-id:
-+    description:
-+      The PCI device ID
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint16
 +
-+  epf,baseclass-code:
-+    description: Code to classify the type of operation the function performs
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint8
++  COMMAND:
 +
-+  epf,subclass-code:
-+    description:
-+      Specifies a base class sub-class, which identifies more specifically the
-+      operation of the Function
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint8
++	NTB function supports three commands:
 +
-+  epf,subsys-vendor-id:
-+    description: Code to identify vendor of the add-in card or subsystem
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint16
++	  CMD_CONFIGURE_DOORBELL (0x1): Command to configure doorbell. Before
++	invoking this command, the host should allocate and initialize
++	MSI/MSI-X vectors (i.e initialize the MSI/MSI-X capability in the
++	Endpoint). The endpoint on receiving this command will configure
++	the outbound ATU such that transaction to DB BAR will be routed
++	to the MSI/MSI-X address programmed by the host. The ARGUMENT
++	register should be populated with number of DBs to configure (in the
++	lower 16 bits) and if MSI or MSI-X should be configured (BIT 16).
++	(TODO: Add support for MSI-X).
 +
-+  epf,subsys-id:
-+    description: Code to specify an id that is specific to a vendor
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint16
-diff --git a/Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml
-new file mode 100644
-index 000000000000..92c2e522b9e5
---- /dev/null
-+++ b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml
-@@ -0,0 +1,68 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+# Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/pci/endpoint/pci-epf-ntb.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
++	  CMD_CONFIGURE_MW (0x2): Command to configure memory window. The
++	host invokes this command after allocating a buffer that can be
++	accessed by remote host. The allocated address should be programmed
++	in the ADDRESS register (64 bit), the size should be programmed in
++	the SIZE register and the memory window index should be programmed
++	in the ARGUMENT register. The endpoint on receiving this command
++	will configure the outbound ATU such that trasaction to MW BAR
++	will be routed to the address provided by the host.
 +
-+title: PCI Endpoint NTB Function Device
++	  CMD_LINK_UP (0x3): Command to indicate an NTB application is
++	bound to the EP device on the host side. Once the endpoint
++	receives this command from both the hosts, the endpoint will
++	raise an LINK_UP event to both the hosts to indicate the hosts
++	can start communicating with each other.
 +
-+maintainers:
-+  - Kishon Vijay Abraham I <kishon@ti.com>
++  ARGUMENT:
 +
-+allOf:
-+  - $ref: "pci-epf-device.yaml#"
++	The value of this register is based on the commands issued in
++	command register. See COMMAND section for more information.
 +
-+properties:
-+  compatible:
-+    const: pci-epf-ntb
++  TOPOLOGY:
 +
-+  epcs:
-+    minItems: 2
-+    maxItems: 2
++	Set to NTB_TOPO_B2B_USD for Primary interface
++	Set to NTB_TOPO_B2B_DSD for Secondary interface
 +
-+  epc-names:
-+    items:
-+      - const: primary
-+      - const: secondary
++  ADDRESS/SIZE:
 +
-+  num-mws:
-+    description:
-+      Specify the number of memory windows
-+    allOf:
-+      - $ref: /schemas/types.yaml#/definitions/uint8
-+    minimum: 1
-+    maximum: 4
++	Address and Size to be used while configuring the memory window.
++	See "CMD_CONFIGURE_MW" for more info.
 +
-+  mws-size:
-+    description:
-+      List of 'num-mws' entries containing size of each memory window.
-+    minItems: 1
-+    maxItems: 4
++  MEMORY WINDOW1 OFFSET:
 +
-+required:
-+  - compatible
-+  - epcs
-+  - epc-names
-+  - epf,vendor-id
-+  - epf,device-id
-+  - num-mws
-+  - mws-size
++	Memory Window 1 and Doorbell registers are packed together in the
++	same BAR. The initial portion of the region will have doorbell
++	registers and the latter portion of the region is for memory window 1.
++	This register will specify the offset of the memory window 1.
 +
-+examples:
-+  - |
-+    epf_bus {
-+      compatible = "pci-epf-bus";
++  NO OF MEMORY WINDOW:
 +
-+      func@0 {
-+        compatible = "pci-epf-ntb";
-+        reg = <0>;
-+        epcs = <&pcie0_ep>, <&pcie1_ep>;
-+        epc-names = "primary", "secondary";
-+        epf,vendor-id = /bits/ 16 <0x104c>;
-+        epf,device-id = /bits/ 16 <0xb00d>;
-+        num-mws = <4>;
-+        mws-size = <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>;
-+      };
-+    };
-+...
++	Specifies the number of memory windows supported by the NTB device.
++
++  SPAD OFFSET:
++
++	Self scratchpad region and config region are packed together in the
++	same BAR. The initial portion of the region will have config region
++	and the latter portion of the region is for self scratchpad. This
++	register will specify the offset of the self scratchpad registers.
++
++  SPAD COUNT:
++
++	Specifies the number of scratchpad registers supported by the NTB
++	device.
++
++  DB ENTRY SIZE:
++
++	Used to determine the offset within the DB BAR that should be written
++	in order to raise doorbell. EPF NTB can use either MSI/MSI-X to
++	ring doorbell (MSI-X support will be added later). MSI uses same
++	address for all the interrupts and MSI-X can provide different
++	addresses for different interrupts. The MSI/MSI-X address is provided
++	by the host and the address it gives is based on the MSI/MSI-X
++	implementation supported by the host. For instance, ARM platform
++	using GIC ITS will have same MSI-X address for all the interrupts.
++	In order to support all the combinations and use the same mechanism
++	for both MSI and MSI-X, EPF NTB allocates separate region in the
++	Outbound Address Space for each of the interrupts. This region will
++	be mapped to the MSI/MSI-X address provided by the host. If a host
++	provides the same address for all the interrupts, all the regions
++	will be translated to the same address. If a host provides different
++	address, the regions will be translated to different address. This
++	will ensure there is no difference while raising the doorbell.
++
++  DB DATA:
++
++	EPF NTB supports 32 interrupts. So there are 32 DB DATA registers.
++	This holds the MSI/MSI-X data that has to be written to MSI address
++	for raising doorbell interrupt. This will be populated by EPF NTB
++	while invoking CMD_CONFIGURE_DOORBELL.
++
++Scratchpad Registers:
++---------------------
++
++  Each host has it's own register space allocated in the memory of NTB EPC.
++  They are both readable and writable from both sides of the bridge. They
++  are used by applications built over NTB and can be used to pass control
++  and status information between both sides of a device.
++
++  Scratchpad registers has 2 parts
++	1) Self Scratchpad: Host's own register space
++	2) Peer Scratchpad: Remote host's register space.
++
++Doorbell Registers:
++-------------------
++
++  Registers using which one host can interrupt the other host.
++
++Memory Window:
++--------------
++
++  Actual transfer of data between the two hosts will happen using the
++  memory window.
++
++Modeling Constructs:
++====================
++
++There are 5 or more distinct regions (config, self scratchpad, peer
++scratchpad, doorbell, one or more memory windows) to be modeled to achieve
++NTB functionality. Atleast one memory window is required while more than
++one is permitted. All these regions should be mapped to BAR for hosts to
++access these regions.
++
++If one 32-bit BAR is allocated for each of these regions, the scheme would
++look like
++
++======  ===============
++BAR NO  CONSTRUCTS USED
++======  ===============
++BAR0    Config Region
++BAR1    Self Scratchpad
++BAR2    Peer Scratchpad
++BAR3    Doorbell
++BAR4    Memory Window 1
++BAR5    Memory Window 2
++======  ===============
++
++However if we allocate a separate BAR for each of the region, there would not
++be enough BARs for all the regions in a platform that supports only 64-bit
++BAR.
++
++In order to be be supported by most of the platforms, the regions should be
++packed and mapped to BARs in a way that provides NTB functionality and
++also making sure the hosts doesn't access any region that it is not supposed
++to.
++
++The following scheme is used in EPF NTB Function
++
++======  ===============================
++BAR NO  CONSTRUCTS USED
++======  ===============================
++BAR0    Config Region + Self Scratchpad
++BAR1    Peer Scratchpad
++BAR2    Doorbell + Memory Window 1
++BAR3    Memory Window 2
++BAR4    Memory Window 3
++BAR5    Memory Window 4
++======  ===============================
++
++With this scheme, for the basic NTB functionality 3 BARs should be sufficient.
++
++Modeling Config/Scratchpad Region:
++----------------------------------
++
++.. code-block:: text
++
++ +-----------------+------->+------------------+        +-----------------+
++ |       BAR0      |        |  CONFIG REGION   |        |       BAR0      |
++ +-----------------+----+   +------------------+<-------+-----------------+
++ |       BAR1      |    |   |SCRATCHPAD REGION |        |       BAR1      |
++ +-----------------+    +-->+------------------+<-------+-----------------+
++ |       BAR2      |            Local Memory            |       BAR2      |
++ +-----------------+                                    +-----------------+
++ |       BAR3      |                                    |       BAR3      |
++ +-----------------+                                    +-----------------+
++ |       BAR4      |                                    |       BAR4      |
++ +-----------------+                                    +-----------------+
++ |       BAR5      |                                    |       BAR5      |
++ +-----------------+                                    +-----------------+
++   EP CONTROLLER 1                                        EP CONTROLLER 2
++
++Above diagram shows Config region + Scratchpad region for HOST1 (connected to
++EP controller 1) allocated in local memory. The HOST1 can access the config
++region and scratchpad region (self scratchpad) using BAR0 of EP controller 1.
++The peer host (HOST2 connected to EP controller 2) can also access this
++scratchpad region (peer scratchpad) using BAR1 of EP controller 2. This
++diagram shows the case where Config region and Scratchpad region is allocated
++for HOST1, however the same is applicable for HOST2.
++
++Modeling Doorbell/Memory Window 1:
++----------------------------------
++
++.. code-block:: text
++
++ +-----------------+    +----->+----------------+-----------+-----------------+
++ |       BAR0      |    |      |   Doorbell 1   +-----------> MSI-X ADDRESS 1 |
++ +-----------------+    |      +----------------+           +-----------------+
++ |       BAR1      |    |      |   Doorbell 2   +---------+ |                 |
++ +-----------------+----+      +----------------+         | |                 |
++ |       BAR2      |           |   Doorbell 3   +-------+ | +-----------------+
++ +-----------------+----+      +----------------+       | +-> MSI-X ADDRESS 2 |
++ |       BAR3      |    |      |   Doorbell 4   +-----+ |   +-----------------+
++ +-----------------+    |      |----------------+     | |   |                 |
++ |       BAR4      |    |      |                |     | |   +-----------------+
++ +-----------------+    |      |      MW1       +---+ | +-->+ MSI-X ADDRESS 3||
++ |       BAR5      |    |      |                |   | |     +-----------------+
++ +-----------------+    +----->-----------------+   | |     |                 |
++   EP CONTROLLER 1             |                |   | |     +-----------------+
++                               |                |   | +---->+ MSI-X ADDRESS 4 |
++                               +----------------+   |       +-----------------+
++                                EP CONTROLLER 2     |       |                 |
++                                  (OB SPACE)        |       |                 |
++                                                    +------->      MW1        |
++                                                            |                 |
++                                                            |                 |
++                                                            +-----------------+
++                                                            |                 |
++                                                            |                 |
++                                                            |                 |
++                                                            |                 |
++                                                            |                 |
++                                                            +-----------------+
++                                                             PCI Address Space
++                                                             (Managed by HOST2)
++
++Above diagram shows how the doorbell and memory window 1 is mapped so that
++HOST1 can raise doorbell interrupt on HOST2 and also how HOST1 can access
++buffers exposed by HOST2 using memory window1 (MW1). Here doorbell and
++memory window 1 regions are allocated in EP controller 2 outbound (OB) address
++space. Allocating and configuring BARs for doorbell and memory window1
++is done during the initialization phase of NTB endpoint function driver.
++Mapping from EP controller 2 OB space to PCI address space is done when HOST2
++sends CMD_CONFIGURE_MW/CMD_CONFIGURE_DOORBELL. The commands are explained
++below.
++
++Modeling Optional Memory Windows:
++---------------------------------
++
++This is modeled the same was as MW1 but each of the additional memory windows
++is mapped to separate BARs.
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200514145927.17555-2-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200514145927.17555-3-kishon%40ti.com.
