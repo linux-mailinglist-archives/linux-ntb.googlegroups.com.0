@@ -1,131 +1,145 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBSVSZP2QKGQEBPSF4GA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRB3NZ6X2QKGQEFISCKNI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3f.google.com (mail-vk1-xa3f.google.com [IPv6:2607:f8b0:4864:20::a3f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 360661C7502
-	for <lists+linux-ntb@lfdr.de>; Wed,  6 May 2020 17:35:39 +0200 (CEST)
-Received: by mail-vk1-xa3f.google.com with SMTP id l188sf717633vke.23
-        for <lists+linux-ntb@lfdr.de>; Wed, 06 May 2020 08:35:39 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1588779338; cv=pass;
+Received: from mail-ua1-x937.google.com (mail-ua1-x937.google.com [IPv6:2607:f8b0:4864:20::937])
+	by mail.lfdr.de (Postfix) with ESMTPS id 76E831D33CE
+	for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 16:59:58 +0200 (CEST)
+Received: by mail-ua1-x937.google.com with SMTP id q10sf1483887uar.23
+        for <lists+linux-ntb@lfdr.de>; Thu, 14 May 2020 07:59:58 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1589468397; cv=pass;
         d=google.com; s=arc-20160816;
-        b=uKqmBZEloWKdv9kFQL+NKyziy9pYFGGM+6ADuqkWUEGpsFaGUrm9dMbLVONpRu15aE
-         f41q8X2v6K2Pyj811nKVivNorZg1sPL6jHiBBmogIU2kMWRD7RnhBToZaQB1X3GHuAsy
-         Mel3zfhWTKjRM1/ZyJLmcqBMa1GXgfYyzJnsxsQZBcVTf3dIfKLnDugIOgWpWCd7uwan
-         81IDCYukdVaZ8NQCyynOhFkFP6E6HMpqu2fhOLRA4q3XoiXCELScviGIUIFysnTFvhAA
-         R3jWZQHOiKJcwObK/5UafVad1JTQUUAN72tvCRr2q4HeCf+rHpq2YhJH2USzwk/pnvTI
-         pzNg==
+        b=PF5v1snxm0RMus72+J3sJk3I2zlDX1GGiLEJm/9CPl6hNlPWYBaHV9M+6yWoczaMnB
+         jqHDimhtetHQeU4nCeNDDHh1lkXGAiSPw402qCz/jSBmq+jV1BYYDz5CBgOwitGLkHfi
+         p4qtGzu+5ALhFFtfK7zbEIrUbfRY8kziki3qhay8BfBriWRaZ7dzIjiuYheFVgbPA9DA
+         T+QmdkHmEinvekGKLel+YSLslCmqyQkUtPIVcEXwclzf0AZag9YsVdVy6Kj47tRdIbOp
+         zsC1JdFgobYX0g9w0gBWfkgBeOKSkcsryrA1tBiFwuMk3P1k3IUzsONEXAF8NxDpow0x
+         YdMA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:subject:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:sender:dkim-signature;
-        bh=9ZqVhIMdtyhPrYyIADK4xnt3EGcjMWNETVV/yNIaRtc=;
-        b=LNoW52tTG/pEwILZmKzGfcG1pYmlaeCCl5K9UmFieN54ga3/Fd8yZTsNi+QI2FmEUF
-         BQ6tmOHMunfX1znHUDZpOe3MO1fa0ro2yxCWXiO7Zc86n3Xs9Ac+MEeD/u6G+kcxf6gz
-         jmHTT4RgoMWuNrnAZ5p16Gzzubu1vshSPOl98ED3/uu+unxjDP+lnjhWpsDp9pdXeE3n
-         /ORdQm92NxiBs9l7rBVscBcKnZ0/qlXmk5Z7xGHrN7D8KwAaKEAK02jbeCP7wh0+L99v
-         v9ijtnDyWP99obVYqPnqGseYvTth6Fpc+RUux8jDEiHhJUZixkNw8nPVdMrvWaWccz3X
-         HHTg==
+         :list-id:mailing-list:precedence:reply-to:mime-version:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=0l3oNovnUD+o2sRHOQAhaVpm6E+Qetbf7YJpUFKEszY=;
+        b=ZT3Pt5WThLvJ4wNypqZ0XXVeRK8QpzpsHx54KI8PlynbiK47QPT/kRk1NQ1s2AkxH5
+         UrFfCZrfj2+Vp8YutGH3UW2bdxcpP8UfSieFxHsAOdcqEkKuN2Lb1lX5TpnxQ14ARyc5
+         +/Ev+MGUIoNXD1NJQFT5PdGRzFLXg6eYsXp3i54CFpfU4gGThR8oZTrpWXNd0CFZbSxI
+         2cXC6xXZXSl/EvPR6FdF7NXnLH6PTvXnaMSYeNCnm1XTr3uu8vkXuYoISJIT7IWOPIjs
+         7uS5QHa3W2LehuDLGTWon0DmGfdGtI3YoJveQtqx3/VGsx2L0PIZrcMrQKrmUJfEqcT3
+         ECdA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=i+2ydMI+;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:subject:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=9ZqVhIMdtyhPrYyIADK4xnt3EGcjMWNETVV/yNIaRtc=;
-        b=WqGDaEo08aWtnJNJQYA5bcf56fHKqfwY6QAE7rGTmCKViuUq48ZGCwzFfHm6k+4cRG
-         vwdyNaHhmOh1pI/jPqOdECarvv0MGaAjOhoVAS+AT/v17TTbTT/6lCyucVMF36ciLIbw
-         dExFs159Yc5m1hFBShxiYqUoHTUuYwLc+FWi4PRKorrrp/4ytdgRIWwwXZ80FIzYE8je
-         mr20s0TUo6x7JksBh8rBcdjR8Ya7btX8fCAzQtrVQOBwzTJockmq2m7CDyLoEJAGUrbq
-         kFrdDq4eL0c9ta3CrCwjdPlzs3xt70MnDB75cEimskny1sRDjPD7KpEaVhRVgJLWSKwt
-         Vn6Q==
+        h=from:to:cc:subject:date:message-id:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=0l3oNovnUD+o2sRHOQAhaVpm6E+Qetbf7YJpUFKEszY=;
+        b=St8hC1bPwtHZZqkFu4vTRPxiohPVQ1Cj9HFXn0UmT6tew5l2R0nItFzmaJl5gIfcVN
+         eSn1Hu7zOwcO5SUHYRghA0lVZU61FPbcY5OZoMt1xWPyXLa2HUwH1pgsicGgrzM9Qtgn
+         0cI9NnqMsqOjwesxDgzUYWKaQ5nFFEpAjr6MBePCn0rse5IewrLOZnbLWf7bPF+ESHF0
+         U1Rrg6Lc72GplB9RDpgWbgIIcUJAQ4F+NCaFdTqDOytPMjCxBcUY1oLjAp+CJCQ40Z6u
+         fK17eeDBKI1sq/U/oGSIVZRdWHYHa1ShFLIAGkQuJ6uP7ylR8HRXSS/pSjQj8Y+mWF9V
+         qnuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language:subject
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=9ZqVhIMdtyhPrYyIADK4xnt3EGcjMWNETVV/yNIaRtc=;
-        b=aJtWzCN+UGC6hJkLJCzzajBHgD3qelLkh2MQSj1utxjQ7fu6L7QY3zmw3JWAHdsvOM
-         MhehN0VsN8LFo+gtJWuJH0xXAnCt55uIlqjbG023B1Jl2gORWEGV8gRXYklyffn4BV0R
-         CR8vFCIIIbovfFJ6n5sgr76Hh+jZ/OqxBiJuqG2jwzFn1MzA9XEkcjgL8GrcorWvYJTk
-         WxNCxYsyFNw0nv1L2/RyttLsXsjLrcUP8qD3cqgDoqLd5TEjjHEZPd2k0rRmzAWYksxu
-         OA/HOfzOHoJqvGlbaWuJWVvgAWhQchHKeNENu1HwJqq+H4gWWb/os41Dm1mO9djEDiCt
-         /ZzQ==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AGi0Puat53i2B/odooOFLK2ZhrwH0HWb+2T2m4yR50A5EhFSaHWQ4qu8
-	59wnQ53142p7dJXn9RGJARk=
-X-Google-Smtp-Source: APiQypJ/1KkUUhRFIFWNIXhAZXusBq+UXTU/eTqSpBtC/4PJ685YkoKHGUFi1e57qUTY3lgMweU3qg==
-X-Received: by 2002:a67:7cc5:: with SMTP id x188mr8100808vsc.26.1588779338172;
-        Wed, 06 May 2020 08:35:38 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=0l3oNovnUD+o2sRHOQAhaVpm6E+Qetbf7YJpUFKEszY=;
+        b=JVVZkZB4FskhdUxus0X9MhQ188uceYLM1mVzfGgkWMVWewfE1m6VaFIUAvi+D6PhLV
+         0uEo0GAtob45rCSn1dLUSyWWM6A4AmL97Y9uxB6eCcrNf3Gq1D40R2jgjvesgK91dd+u
+         +v5lktHrQ04Y3aJyMNd84vv0VpmcK9IspK7GOxWqMF08HRyHjNdSRvsNw6Afbodlgk3y
+         8gwTZzz2g2c8djJ83HsZLSzffhrkYUXhOQLjURJyO4Nk5LreE3eLeasw6Sl8UvTALbiH
+         EXk8NHbLnshmNdDmaLaIVAMyqGojdAnSExMvwoj8q2WwA/wRze/UT+24WfUPgwsQBzp5
+         z1Iw==
+X-Gm-Message-State: AOAM5336HP8Gdag7HRHPbrWEhbljJXNptwsyTwGjmjnZ5tgR8MGVCFMx
+	pkyZxVQnJogvK96MZ+NJtdc=
+X-Google-Smtp-Source: ABdhPJy5FXMNe1qTrHphrIF1UKd/ZGoBU1Z6/LVb+0AsbLhaWs3P1G+cwLSlUTDDUrEQ05oy9mf9BQ==
+X-Received: by 2002:a05:6102:409:: with SMTP id d9mr3618652vsq.220.1589468397450;
+        Thu, 14 May 2020 07:59:57 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ab0:26d6:: with SMTP id b22ls205587uap.7.gmail; Wed, 06 May
- 2020 08:35:37 -0700 (PDT)
-X-Received: by 2002:ab0:238f:: with SMTP id b15mr7801754uan.32.1588779337647;
-        Wed, 06 May 2020 08:35:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588779337; cv=none;
+Received: by 2002:ab0:70cb:: with SMTP id r11ls250215ual.5.gmail; Thu, 14 May
+ 2020 07:59:57 -0700 (PDT)
+X-Received: by 2002:ab0:5ad5:: with SMTP id x21mr772274uae.89.1589468396941;
+        Thu, 14 May 2020 07:59:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1589468396; cv=none;
         d=google.com; s=arc-20160816;
-        b=wJ4w/VXogrN8fxmJTzNTG/k11uPUlcq2HkypmkirISNk1dFMDQ96336bUO/cej27/f
-         iF4aPFq5Up+rq/9pGe+7QNXULc60gZLynI9EnGzEw3C/OH26rqnvDIwhanukZaj/2MkM
-         Jep6uY0gpvPs62zZUilJctNCGWvdZUnqsE74GLaV9q0YaBxm5V90InHsRUBs5FLRqmxX
-         LrJfyIvXtGYlHcVNjDMWHpKbBI8Bfoo9+IXs/Gp/IMzPTdPepPnUrcPWgOQ0EAq64ib9
-         F4xWbZYRyVnB5/CTJAU5w74NG12Btb2mEA3m43Hzao9Z7WfEKR6isu8uoa3Z8g5w45e4
-         QGIA==
+        b=EPQFOuBlbq21SyTHXg38uTP+nG93eCEawflhai4lmzEOKnQcNgAVudPzGFLZ4fcqnJ
+         p3MCdwDwh6y7EpyhJWAniiBJJFX/hHcTypmtpIIDUrLilrJ13oLtC6DCDyfJ8fSak/S7
+         EpCGea3xSULmQYKLSggtWXfylOwmdK/T9iJkd7yp0CWYPLLmgvJ91SYPpZXmYh58yEml
+         j5PQad22Vc9E2cV9KKgMlNK+IlahMs5kM4cNeajdCijm0vurh2gKHUfPVXbwd1u6NvNx
+         NTbiWVTjfSw9jX+WxfjAgjNiIZmNW/tYRG4Ksf+NDyc8696FYczMQOKjRz3HY2UBCaao
+         yTJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to;
-        bh=sze7F0iIO0UZCvGL5LsMwDjxzfyQMarYK5/xPcKxqTg=;
-        b=FJyQOpqzWsd3Fod5EXhk5T9hte4kewYrsbnMioh6dAjWddMhV1toDWHWXOcgzJxa1F
-         swLy7SozZVj87YDYqauJD9QtKrwlSltD4JiENlnw23CpS+Erj/ilP6R8bULNDNm3S4oz
-         278riGTywUpu44reIF35MOOICTbbJ1sgNZ0OErisGmLQABQrp7C35ufWNmRxB2XlnE21
-         hJGIkWtyiCyp92nbfka+T4mKexax4MnhnN3J0+RPwhFzZQA2V3N3fh4JGijIBZ1+lbsI
-         2hHBpb567xpCguJDJoi8Of0yduGJY95hzXkBGUn9dk8uQGsPMr/Fo1sS1lGdxmWXccwm
-         o8xg==
+        h=mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=s/fQErzjm3QWmzuHGPvhu9iIxEqXqRByZCvFxc1DEN4=;
+        b=Oa7B3R0t1f8FX4pEqAnn3z/SZaSt/zsVGCRkNtJAG3d6/nTn9orSzhtfTQcsBE0/Lo
+         MscoYTjwmblUaxgtCapQ6uhUoouBV9Us7s3l8C2HUZnKS/xPHle3GPeWMu3PQAyrd7vl
+         IzAq/eVOXKfWHg6aIXNGWHZQSTbbPt0CLwBeTM3/nkVKrIpAM+JM2FME/8G47CYRoxz7
+         PFaD8QTtCaaOu6OlO/KzcalNXJdJWDgihscYVQhUvBk4lbGXwBNWlN9iqxGvo1I6y6RL
+         Hbq6wJHPk3ywh8MXZrEI8ctA7jjcEgC681v3KiIEwdKHLanLnSmfhCAPmbUzG9wMeahm
+         I23g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) smtp.mailfrom=logang@deltatee.com
-Received: from ale.deltatee.com (ale.deltatee.com. [207.54.116.67])
-        by gmr-mx.google.com with ESMTPS id a205si171026vsd.2.2020.05.06.08.35.37
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=i+2ydMI+;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
+        by gmr-mx.google.com with ESMTPS id 132si254169vkb.1.2020.05.14.07.59.56
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 06 May 2020 08:35:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of logang@deltatee.com designates 207.54.116.67 as permitted sender) client-ip=207.54.116.67;
-Received: from s0106602ad0811846.cg.shawcable.net ([68.147.191.165] helo=[192.168.0.12])
-	by ale.deltatee.com with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
-	(Exim 4.92)
-	(envelope-from <logang@deltatee.com>)
-	id 1jWM58-0000e4-J6; Wed, 06 May 2020 09:35:36 -0600
-To: Sanjay R Mehta <sanju.mehta@amd.com>, jdmason@kudzu.us,
- dave.jiang@intel.com, allenbh@gmail.com, arindam.nath@amd.com,
- Shyam-sundar.S-k@amd.com
-Cc: linux-ntb@googlegroups.com, linux-kernel@vger.kernel.org
-References: <1588738912-24827-1-git-send-email-sanju.mehta@amd.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <2197ff4b-be91-7c73-ad2e-f3849a088953@deltatee.com>
-Date: Wed, 6 May 2020 09:35:31 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 14 May 2020 07:59:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04EExlpp130892;
+	Thu, 14 May 2020 09:59:47 -0500
+Received: from DFLE105.ent.ti.com (dfle105.ent.ti.com [10.64.6.26])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04EExlHx127031;
+	Thu, 14 May 2020 09:59:47 -0500
+Received: from DFLE100.ent.ti.com (10.64.6.21) by DFLE105.ent.ti.com
+ (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 14
+ May 2020 09:59:47 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE100.ent.ti.com
+ (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Thu, 14 May 2020 09:59:47 -0500
+Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
+	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04EExgAi019279;
+	Thu, 14 May 2020 09:59:42 -0500
+From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+        Arnd Bergmann
+	<arnd@arndb.de>, Jon Mason <jdmason@kudzu.us>,
+        Dave Jiang
+	<dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+        Tom Joseph
+	<tjoseph@cadence.com>, Bjorn Helgaas <bhelgaas@google.com>,
+        Rob Herring
+	<robh+dt@kernel.org>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Jonathan Corbet
+	<corbet@lwn.net>, <linux-pci@vger.kernel.org>,
+        <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-ntb@googlegroups.com>,
+        Kishon Vijay Abraham I <kishon@ti.com>
+Subject: [PATCH 00/19] Implement NTB Controller using multiple PCI EP
+Date: Thu, 14 May 2020 20:29:08 +0530
+Message-ID: <20200514145927.17555-1-kishon@ti.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <1588738912-24827-1-git-send-email-sanju.mehta@amd.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-SA-Exim-Connect-IP: 68.147.191.165
-X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com, Shyam-sundar.S-k@amd.com, arindam.nath@amd.com, allenbh@gmail.com, dave.jiang@intel.com, jdmason@kudzu.us, sanju.mehta@amd.com
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-5.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
-	LR_URI_NUMERIC_ENDING,URIBL_BLOCKED autolearn=no autolearn_force=no
-	version=3.4.2
-Subject: Re: [PATCH v3 0/5] ntb perf, ntb tool and ntb-hw improvements
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-Original-Sender: logang@deltatee.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of logang@deltatee.com designates 207.54.116.67 as
- permitted sender) smtp.mailfrom=logang@deltatee.com
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-Original-Sender: kishon@ti.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=i+2ydMI+;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
+ sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
+ dis=NONE) header.from=ti.com
+X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
+Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -138,37 +152,98 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+This series is about implementing SW defined NTB using
+multiple endpoint instances. This series has been tested using
+2 endpoint instances in J7 connected to two DRA7 boards. However there
+is nothing platform specific for the NTB functionality.
 
+This was presented in Linux Plumbers Conference. The presentation
+can be found @ [1]
 
-On 2020-05-05 10:21 p.m., Sanjay R Mehta wrote:
-> v3: 
-> - Increased ntb_perf command re-try sleep time
-> - avoid false dma unmap of dst address.
-> 
-> v2: Incorporated improvements suggested by Logan Gunthorpe
-> 
-> Links of the review comments for v3:
-> 1. https://lkml.org/lkml/2020/3/11/981
-> 2. https://lkml.org/lkml/2020/3/10/1827
-> 
-> Logan Gunthorpe (1):
->   ntb: hw: remove the code that sets the DMA mask
-> 
-> Sanjay R Mehta (4):
->   ntb_perf: pass correct struct device to dma_alloc_coherent
->   ntb_tool: pass correct struct device to dma_alloc_coherent
->   ntb_perf: increase sleep time from one milli sec to one sec
->   ntb_perf: avoid false dma unmap of destination address
+RFC patch series can be found @ [2]
 
-Looks good to me. For these 4 patches:
+This series has been validated after applying [3] and [4]
 
-Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
+Changes from RFC:
+1) Converted the DT binding patches to YAML schema and merged the
+   DT binding patches together
+2) NTB documentation is converted to .rst
+3) One HOST can now interrupt the other HOST using MSI-X interrupts
+4) Added support for teardown of memory window and doorbell
+   configuration
+5) Add support to provide support 64-bit memory window size from
+   DT
 
-Thanks!
+[1] -> https://www.linuxplumbersconf.org/event/4/contributions/395/attachments/284/481/Implementing_NTB_Controller_Using_PCIe_Endpoint_-_final.pdf
+[2] -> http://lore.kernel.org/r/20190926112933.8922-1-kishon@ti.com
+[3] -> http://lore.kernel.org/r/20200508130646.23939-1-kishon@ti.com
+[4] -> http://lore.kernel.org/r/20200506151429.12255-1-kishon@ti.com
 
-Logan
+Kishon Vijay Abraham I (19):
+  dt-bindings: PCI: Endpoint: Add DT bindings for PCI EPF NTB Device
+  Documentation: PCI: Add specification for the *PCI NTB* function
+    device
+  PCI: endpoint: Add API to get reference to EPC from device-tree
+  PCI: endpoint: Add API to create EPF device from device tree
+  PCI: endpoint: Add "pci-epf-bus" driver
+  PCI: endpoint: Make *_get_first_free_bar() take into account 64 bit
+    BAR
+  PCI: endpoint: Add helper API to get the 'next' unreserved BAR
+  PCI: endpoint: Make *_free_bar() to return error codes on failure
+  PCI: endpoint: Remove unused pci_epf_match_device()
+  PCI: endpoint: Make pci_epf_driver ops optional
+  PCI: endpoint: Add helper API to populate header with values from DT
+  PCI: endpoint: Add support to associate secondary EPC with EPF
+  PCI: endpoint: Add pci_epc_ops to map MSI irq
+  PCI: cadence: Implement ->msi_map_irq() ops
+  PCI: endpoint: Add EP function driver to provide NTB functionality
+  PCI: Add TI J721E device to pci ids
+  NTB: Add support for EPF PCI-Express Non-Transparent Bridge
+  NTB: tool: Enable the NTB/PCIe link on the local or remote side of
+    bridge
+  NTB: ntb_perf/ntb_tool: Use PCI device for dma_alloc_coherent()
+
+ Documentation/PCI/endpoint/index.rst          |    1 +
+ Documentation/PCI/endpoint/pci-test-ntb.rst   |  344 +++
+ .../bindings/pci/endpoint/pci-epf-bus.yaml    |   42 +
+ .../bindings/pci/endpoint/pci-epf-device.yaml |   69 +
+ .../bindings/pci/endpoint/pci-epf-ntb.yaml    |   68 +
+ drivers/misc/pci_endpoint_test.c              |    1 -
+ drivers/ntb/hw/Kconfig                        |    1 +
+ drivers/ntb/hw/Makefile                       |    1 +
+ drivers/ntb/hw/epf/Kconfig                    |    5 +
+ drivers/ntb/hw/epf/Makefile                   |    1 +
+ drivers/ntb/hw/epf/ntb_hw_epf.c               |  752 ++++++
+ drivers/ntb/test/ntb_perf.c                   |    3 +-
+ drivers/ntb/test/ntb_tool.c                   |    4 +-
+ .../pci/controller/cadence/pcie-cadence-ep.c  |   50 +
+ drivers/pci/endpoint/Makefile                 |    3 +-
+ drivers/pci/endpoint/functions/Kconfig        |   12 +
+ drivers/pci/endpoint/functions/Makefile       |    1 +
+ drivers/pci/endpoint/functions/pci-epf-ntb.c  | 2038 +++++++++++++++++
+ drivers/pci/endpoint/functions/pci-epf-test.c |   13 +-
+ drivers/pci/endpoint/pci-ep-cfs.c             |    6 +-
+ drivers/pci/endpoint/pci-epc-core.c           |  216 +-
+ drivers/pci/endpoint/pci-epf-bus.c            |   54 +
+ drivers/pci/endpoint/pci-epf-core.c           |  137 +-
+ include/linux/pci-epc.h                       |   43 +-
+ include/linux/pci-epf.h                       |   26 +-
+ include/linux/pci_ids.h                       |    1 +
+ 26 files changed, 3823 insertions(+), 69 deletions(-)
+ create mode 100644 Documentation/PCI/endpoint/pci-test-ntb.rst
+ create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml
+ create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml
+ create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml
+ create mode 100644 drivers/ntb/hw/epf/Kconfig
+ create mode 100644 drivers/ntb/hw/epf/Makefile
+ create mode 100644 drivers/ntb/hw/epf/ntb_hw_epf.c
+ create mode 100644 drivers/pci/endpoint/functions/pci-epf-ntb.c
+ create mode 100644 drivers/pci/endpoint/pci-epf-bus.c
+
+-- 
+2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/2197ff4b-be91-7c73-ad2e-f3849a088953%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200514145927.17555-1-kishon%40ti.com.
