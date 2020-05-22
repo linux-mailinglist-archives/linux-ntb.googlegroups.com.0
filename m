@@ -1,126 +1,156 @@
-Return-Path: <linux-ntb+bncBDXYVT6AR4MRBKO3SH3AKGQEXOOAZFA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRB6WRTX3AKGQENNAP66I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qt1-x839.google.com (mail-qt1-x839.google.com [IPv6:2607:f8b0:4864:20::839])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6723F1DA5AE
-	for <lists+linux-ntb@lfdr.de>; Wed, 20 May 2020 01:37:14 +0200 (CEST)
-Received: by mail-qt1-x839.google.com with SMTP id c8sf1652882qtk.13
-        for <lists+linux-ntb@lfdr.de>; Tue, 19 May 2020 16:37:14 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1589931433; cv=pass;
+Received: from mail-vk1-xa39.google.com (mail-vk1-xa39.google.com [IPv6:2607:f8b0:4864:20::a39])
+	by mail.lfdr.de (Postfix) with ESMTPS id DECC11DDF80
+	for <lists+linux-ntb@lfdr.de>; Fri, 22 May 2020 07:54:03 +0200 (CEST)
+Received: by mail-vk1-xa39.google.com with SMTP id s199sf2918474vkd.5
+        for <lists+linux-ntb@lfdr.de>; Thu, 21 May 2020 22:54:03 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1590126842; cv=pass;
         d=google.com; s=arc-20160816;
-        b=wJfIBRd7i6PJvaGQZxx/MlXliOFm2VKHhG3VTsdI5a/5sfNxTPDFgJ9ffQjLwA36R2
-         tOXFlPblOyItNlde9MGK2xAAC7JnsbakWsP/+ZL7ur3k5UlR+uQdglFlJJchCJLqiZRX
-         AD4UJAEmFbAP7nXPuIClpjTGdCsxW58PSocIQN63nRLiqDqjSj0LBogOydJEYEVcH9Q5
-         nCmj5RQZR5rG3LxhDZJqcr3wq37PbuFfy4hjeRVps1hJ6reeAduRKNyZ1Uf/ecWCfsoB
-         lFHDnydhtQJVwFgEf7FVBgEu7oQohSgc7jN0UXhxIyP8rQxhlJ7Wq07qpiXCT2JTLXXS
-         DZ6A==
+        b=SFtWWtIVeLkR+dyv/R50o+JLu+zffOmKu1aB+8al7ynRJvGdePPS7sobMfctddHuSv
+         e5qhRlEw1KpVvObkkqkY1OwDlfNJqYd1KicnMIoTYw+jZC5AJwdtaGjjs1YCcWlaM4Pb
+         NaLRAFwzFP33Q7sRMukhjXXs6oNp06pLyPLi2d0A+9E4wd6gFt4m/cU3MIDQdUYDAJhe
+         lCTnobDBPedwHvvW+gxMeFaQwQkrEGW8zLgB1w3dxHcPzvMBMwEzMt+XYeFoJfw4i/4t
+         BFWQKjbgBBjimsetTJKPNLnjolqK0zMibUWFv4khvynrcTYq274pYUF0tEyR+ELqkEho
+         T7RQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:user-agent:message-id
-         :date:cc:to:from:subject:ironport-sdr:ironport-sdr:sender
-         :dkim-signature;
-        bh=pIP4dLzl/q9reTKw5kHzmCqhoZgU7hxwd6AySfK+BQE=;
-        b=rUrhzQNMN1pFbA0MH2AYk57gLAu1Xr+S4FZYF5qnla13YiahM1BvIThj330AkGC/+y
-         +xhd1orqosR0Fd5yNo1JYRPY2CBls7Pi52zskV4KL9LQ5rwMCz3VnAG3AKnSQfPAjysO
-         UQGls4kebceLpYtfjK+BRr/BsJwfgP0CpclBsg2V2higjpO696f2792c/HlwLDwGXfdX
-         9Snwl4S2K3SwSndqKrOaBCNJVwPaLdljiCyM95C8zDPw6kV+WHVvDyqMfOiGVlDlm75D
-         s7E78PGf8L/esE+3q5NevD9Pzi/zgXs0+GojfZpYRjpSAcvhbXexg9JMXnzw92+r9MAQ
-         Z6Bg==
+         :list-id:mailing-list:precedence:reply-to:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=kAmy9kG6hxDSC46QadGElYeLCiAPhGqF0DDYNtVNK5I=;
+        b=Af3ygsktKcG3aUJsDA9lt6k1tGwXf4t00xgqj4DgqbLg5+Hqy9sTjWWuWPRQjC+z+x
+         CpCToVrk7cMjiVm+opSJqeV0UaZWvdcv9AZ7iasOtpxyeEmqjo97oeP0RqiF/Q96OcX8
+         dBojJfEW/lLNjhzo79FZFTJMTajDFHA1kK5Xns8M8x5GU/8/wiPNAcIpatRkHsDTaXV5
+         uBZDkQ6l96L8Rt8aDMHNndhLWnNPm2R9AQ8mQeRV2YQuBsfduUr+fybunYFi11ZBmJwl
+         fSB5nGmibXiS/rhpjH7NYUmsFQZFCOh5n2w3urLTX1imH6gusuCA+jQeeqSs74AWTKBr
+         3TMw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=AYQq070J;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:ironport-sdr:ironport-sdr:subject:from:to:cc:date:message-id
-         :user-agent:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=pIP4dLzl/q9reTKw5kHzmCqhoZgU7hxwd6AySfK+BQE=;
-        b=b424DXCmFhpE+b2YKv2+ugbcj05TOrsxq0L+FkgWllvCXp6NlFBsMdRLu279OomhS/
-         uGeJdw6YbBJ3nGrNbQqL+zOW625ikjnqbEalRJAKynH1MfaHH4ITbaq2Nk1/m8HVWqj9
-         AnIcIEKMRCwacux/Ldqao0XmuJf4UXJWCDnF9ZNHe3rAS010KFKvxMpm7R5H7Db5rqY7
-         MlkKxdtZ2rorr7toClM0DliULbzALVczpe/JymBqRbqYxogPLi2t1rQzL9YEHNNy3oNk
-         9k7n0LB4IS/KTtddSswALvA9lcbAAYjHEeWXQBMb998MDzhzWLfFycsZfTf1Q7aVPutm
-         8Vzg==
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=kAmy9kG6hxDSC46QadGElYeLCiAPhGqF0DDYNtVNK5I=;
+        b=pwXG33arpuQDGF/nILR3Ka0oYvXEMyvxM+KkzNZ7w8j6VL+vJdLaIrlJf2EUNLKRy/
+         9gdKlLdjGXWzmaXcm3u0VDRF7a1fjoXAzDW8BjuF0atTqkNuoQOfc8H7dvQzhTuyzxFQ
+         zXgvuudbpJTkWvXOm0gkJpTzhI3UiYipjsCobhGTAOc6Sr0COU07bh8eYZWaWHpKLRip
+         FWpKVfOrbQ7TlJFeuMureygCp4OTfjSZyIAWgkX/zzsWbbiEQ1x6+j0lmZyKzO9XAkoL
+         G+1LP5TyTQ33YPGkqfQr7+wWSDdu9Kbr26TL7C6WzZOIae8YwWgrdxFHJEGpGrsNnQmp
+         CAlQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:subject:from:to
-         :cc:date:message-id:user-agent:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=pIP4dLzl/q9reTKw5kHzmCqhoZgU7hxwd6AySfK+BQE=;
-        b=ZtSX+PSFpoj3tcklsM9HEhJ6ExQoP0qxwTABxaWkcdFtGcAS+p9iQSy5fxL5fqIqrr
-         wfRl7Yjsc1rAu/cGItpmnifW8UI/0EXJttr5dMSE4wgktkFQzy7TJFzb2SdXCDEEEQb0
-         86ZrZ7BraAVBrbV6gw2xMP+M/2SgsDsQSwp4WzUYn01PD2fNSgMqlbplhzZWI2v7uy+z
-         8oFDMwM3aXIQD53OnY1vfhkIiabZ9tBNkw895FZqfDbfCpZCY1ww1MOhd3taywdzijn7
-         R+Vj3wenlWnQNksstPhK/Tme3KyMGAO6PDLl55YQC6JgvZbQAyOms4N0fChaLVUEQWuC
-         q+yQ==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5314557z3eSYNnQzeuj4qhMqxtcOQjNoSv6zDqHpzM7ZBd77Bx6y
-	/XpNw+7dngBNwvSZ4QyH2i4=
-X-Google-Smtp-Source: ABdhPJwIUheJZTsy0D6jqgf0xkZHRbSt4hHnCBA64hB0t19BaTrrjqcaJ+dFMAQNHq4UEoVBR4HO+w==
-X-Received: by 2002:a05:6214:3e4:: with SMTP id cf4mr2246787qvb.33.1589931433325;
-        Tue, 19 May 2020 16:37:13 -0700 (PDT)
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=kAmy9kG6hxDSC46QadGElYeLCiAPhGqF0DDYNtVNK5I=;
+        b=CoK3mClU88vg2MPYif3nMBafp6DsNVWLMkNJ/2dwv0PWd8GvatukWW9/7jv5ZUOUiH
+         2SYaSTu16gdKcGlTlUdSuHmUvwBUt+6Q7mn+YWu4SP4Y+y8uKY0/pbouFZ/w2VnmsbNe
+         zEd7SJL/6lnvIMOxBuFF/9Fp5JwoaNEJ+FDLGq6lXI5K6h4dYah5D8vUdv+rY4ObhYRP
+         VT6cuHIH4033pxLOmJJh6HSrqFEY9QrDeHbqainkG/vjAuiY2xxqP1ApdYQtzWwX9RPt
+         h3o3xXACnbjnotIcFeXyIxMn/SLhe4yAUoy7axp5crdgVs857nW1xEuuzX2RNaDHNA5K
+         WfCw==
+X-Gm-Message-State: AOAM530x+bVHfAqIkMfOXRrooFPKgQnh2Z7fAJKZa0g6YRhdXBf+B/cw
+	/hGAldAkYDgy2WAwPZqHkXU=
+X-Google-Smtp-Source: ABdhPJycT7GU5lGgMBYYkJ215QUzeHWDyEppY989c2NgGXjYOngryXgtbMgClVA6TcO367AqmoBoYQ==
+X-Received: by 2002:a67:11c4:: with SMTP id 187mr4992838vsr.96.1590126842369;
+        Thu, 21 May 2020 22:54:02 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ac8:4b53:: with SMTP id e19ls644982qts.5.gmail; Tue, 19 May
- 2020 16:37:13 -0700 (PDT)
-X-Received: by 2002:aed:3242:: with SMTP id y60mr2611578qtd.127.1589931432950;
-        Tue, 19 May 2020 16:37:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589931432; cv=none;
+Received: by 2002:a05:6102:418:: with SMTP id d24ls18050vsq.7.gmail; Thu, 21
+ May 2020 22:54:02 -0700 (PDT)
+X-Received: by 2002:a67:32c5:: with SMTP id y188mr9371780vsy.27.1590126841923;
+        Thu, 21 May 2020 22:54:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590126841; cv=none;
         d=google.com; s=arc-20160816;
-        b=rnDvC/ip5iFlgbTFJGydPjLuidzZ4+ZvIiTaxrNsCNCN5oZG0oM2bcwddYvacKTWsM
-         Ti4cIuV1r4XR+jHmb7l5JWdU5TkN7h1rpQW/H5IpCDf2xl+dZDqwgpGMZcvRbKaa4eY7
-         SxsJAr2RUkLajPFnDFaxyCDyOOiUY92lCqVtZ8A4ovA+EO5wg92THbNBXXzjiAuObvFS
-         Lz68WeVIQgRFCNuvV3DlU0OKkxFXRJPYSLuC75Gm48O3Vta2PKWJwEyrH8btDXyGnHkP
-         fMPCs6ZYv0L83gHqsmH2J1U6xgZUleZA31Qvv3YcASErj7GIkRZblVnaOSFPcgovqqr1
-         8ypA==
+        b=AxRLA5OHIx0A1tEsIU1bVv2BSdyTF+x/6LUyS1sQi8Oi01SPy95XvpdpRmImeiMG5b
+         UTIIv3v0dLmE2Es7J3swZg5eTOyOFF7tzRvjBufF3FB3xOebGb7iis85TD7MV9KoI14D
+         hWm/fuiKLpf/eHlWkScFKiZ8tg3eHiyjHwCKAq2UUSIOW9ORHkjz5kg0DKg//oqTegQH
+         hgWiHlUl6VEQE8IDr3OfmsgQX06cH7LybVsNYVoEGYI7Oh4kFoQeGdFLChOXU8EzbmRW
+         mpwlzfiQxw5EvB1TS706fyasI+OyBuy7ZrTFQcJauobygVN2jcFIQh6dFUHvnJ7fXjac
+         ujYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :cc:to:from:subject:ironport-sdr:ironport-sdr;
-        bh=XvZ++SXcr6QbRXyDiDcKPOA8vYV6Cn+jMvgtSxVK0w4=;
-        b=ghe1hTBTqspuQY2MOfBD+hS5J7pr4E80Kl0KLWnN94BL1m/M3gKToWgB18ayAC2Bo3
-         t3Ovb2Yh5K/tPwAlPb9iiA/oWOq3T3NSwn8iZStlNEBpq0vuRHsQ8gEeq017OCEAyo/G
-         F7HEqUv2NULXYjUDXTWmdKIRltuVNCBDkPcGnUstqWv7fDqGjzl4FTKFrr0rrTgpnStb
-         JcgWWAWayu72Vk3ZESTTViwkUwoIl4pzhWZIzjpOevC3qqwir5ch6mVpQiBa4zN0Gfeu
-         PkjUX/VamTZTfvfsUvotgxIHGqtMFXaDi6jWtj4/SiOxu7W9nmJN3MTw3E2cPW8jsPSo
-         0rgQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=NshuB9n7qwMmk0C1n2A19PvAX8raMBe1CgqKMTbZRv8=;
+        b=qgM3xay3RGw4OLoB+YymSKojtL50DRgAd3cOciy8RVu8o9UdgnGrfe5Cc1kkX5QqGa
+         RMiJngpzfpLj8Q+/76aVGF9RBEFQ/WKhbhRdzyx9GxsV8cARW2Yy4KJ5Bk+nVfGsdda5
+         A5g7mNWPfElEYCvNX5Kz5KuUirrQy0/rQD8g+ktjcVQajsAercdrSlfHNictw2McPW+d
+         S78nvn7IsdmTplWOteXo7eBOzLdZNQgFA+Ygoxf9dwWEMI4jcF1Lqp+iN+D9CXeE71El
+         gd3b4MFGmtpwQY3Xpp5XoJSRv4rfUYllrAhNuvVZ06uK7RiUrEEuyORKdQsOiA7S7r78
+         hYYQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.88 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga01.intel.com (mga01.intel.com. [192.55.52.88])
-        by gmr-mx.google.com with ESMTPS id n23si93087qtv.0.2020.05.19.16.37.12
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=AYQq070J;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
+        by gmr-mx.google.com with ESMTPS id d84si310426vsc.0.2020.05.21.22.54.01
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 May 2020 16:37:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.88 as permitted sender) client-ip=192.55.52.88;
-IronPort-SDR: X6Of0k3O9HHfCSx4aa5jpzuzN4aPJAufx9JBnHmYSdiL0sZzE3aaVTW5GC0bEz75G0JLsezKJR
- 2KfjQMZP+JRg==
-X-Amp-Result: SKIPPED(no attachment in message)
-X-Amp-File-Uploaded: False
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
-  by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 19 May 2020 16:37:11 -0700
-IronPort-SDR: +q0eh7BDDO7xd40iidmu5wNYNhC7PyCL1R60Ac17lOYV5RZUClSI6VLBWlxs3lbe0Gp6XCgK6y
- MUFX5FuzEF/w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.73,411,1583222400"; 
-   d="scan'208";a="373890032"
-Received: from djiang5-desk3.ch.intel.com ([143.182.136.137])
-  by fmsmga001.fm.intel.com with ESMTP; 19 May 2020 16:37:11 -0700
-Subject: [PATCH] ntb: intel: add revision lockdown for Icelake NTB driver
-From: Dave Jiang <dave.jiang@intel.com>
-To: jdmason@kudzu.us
-Cc: linux-ntb@googlegroups.com, allenbh@gmail.com
-Date: Tue, 19 May 2020 16:37:11 -0700
-Message-ID: <158993143119.41853.10657616792966099233.stgit@djiang5-desk3.ch.intel.com>
-User-Agent: StGit/unknown-version
+        Thu, 21 May 2020 22:54:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 04M5rquC068318;
+	Fri, 22 May 2020 00:53:52 -0500
+Received: from DLEE107.ent.ti.com (dlee107.ent.ti.com [157.170.170.37])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 04M5rqub091641
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Fri, 22 May 2020 00:53:52 -0500
+Received: from DLEE103.ent.ti.com (157.170.170.33) by DLEE107.ent.ti.com
+ (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Fri, 22
+ May 2020 00:53:51 -0500
+Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE103.ent.ti.com
+ (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Fri, 22 May 2020 00:53:51 -0500
+Received: from [10.250.233.85] (ileax41-snat.itg.ti.com [10.172.224.153])
+	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 04M5rlfU114971;
+	Fri, 22 May 2020 00:53:47 -0500
+Subject: Re: [PATCH 01/19] dt-bindings: PCI: Endpoint: Add DT bindings for PCI
+ EPF NTB Device
+To: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+        Arnd Bergmann
+	<arnd@arndb.de>, Jon Mason <jdmason@kudzu.us>,
+        Dave Jiang
+	<dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+        Tom Joseph
+	<tjoseph@cadence.com>, Bjorn Helgaas <bhelgaas@google.com>,
+        Rob Herring
+	<robh+dt@kernel.org>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Jonathan Corbet
+	<corbet@lwn.net>, <linux-pci@vger.kernel.org>,
+        <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+        <devicetree@vger.kernel.org>, <linux-ntb@googlegroups.com>
+References: <20200514145927.17555-1-kishon@ti.com>
+ <20200514145927.17555-2-kishon@ti.com>
+From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
+Message-ID: <73193475-5244-554d-df71-df600f70c0d9@ti.com>
+Date: Fri, 22 May 2020 11:23:46 +0530
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
+In-Reply-To: <20200514145927.17555-2-kishon@ti.com>
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: dave.jiang@intel.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of dave.jiang@intel.com designates 192.55.52.88 as
- permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Content-Language: en-US
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-Original-Sender: kishon@ti.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=AYQq070J;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
+ sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
+ dis=NONE) header.from=ti.com
+X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
+Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -133,63 +163,239 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add PCI device revision during probe to ensure that the driver only runs
-on intended CPU steppings for Icelake.
+Hi RobH,
 
-Signed-off-by: Dave Jiang <dave.jiang@intel.com>
----
- drivers/ntb/hw/intel/ntb_hw_gen4.c |    6 ++++++
- drivers/ntb/hw/intel/ntb_hw_gen4.h |   13 +++++++++++++
- 2 files changed, 19 insertions(+)
+On 5/14/2020 8:29 PM, Kishon Vijay Abraham I wrote:
+> Add device tree schema for PCI endpoint function bus to which
+> endpoint function devices should be attached. Then add device tree
+> schema for PCI endpoint function device to include bindings thats
+> generic to all endpoint functions. Finally add device tree schema
+> for PCI endpoint NTB function device by including the generic
+> device tree schema for PCIe endpoint function.
+> 
+> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+> ---
+>  .../bindings/pci/endpoint/pci-epf-bus.yaml    | 42 +++++++++++
+>  .../bindings/pci/endpoint/pci-epf-device.yaml | 69 +++++++++++++++++++
+>  .../bindings/pci/endpoint/pci-epf-ntb.yaml    | 68 ++++++++++++++++++
+>  3 files changed, 179 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml
+>  create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml
+>  create mode 100644 Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml
+> new file mode 100644
+> index 000000000000..1c504f2e85e4
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-bus.yaml
+> @@ -0,0 +1,42 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +# Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/endpoint/pci-epf-bus.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: PCI Endpoint Function Bus
+> +
+> +maintainers:
+> +  - Kishon Vijay Abraham I <kishon@ti.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: pci-epf-bus
+> +
+> +patternProperties:
+> +  "^func@[0-9a-f]+$":
+> +    type: object
+> +    description: |
+> +      PCI Endpoint Function Bus node should have subnodes for each of
+> +      the implemented endpoint function. It should follow the bindings
+> +      specified for endpoint function in
+> +      Documentation/devicetree/bindings/pci/endpoint/
+> +
+> +examples:
+> +  - |
+> +    epf_bus {
+> +      compatible = "pci-epf-bus";
+> +
+> +      func@0 {
+> +        compatible = "pci-epf-ntb";
+> +        epcs = <&pcie0_ep>, <&pcie1_ep>;
+> +        epc-names = "primary", "secondary";
+> +        reg = <0>;
 
-diff --git a/drivers/ntb/hw/intel/ntb_hw_gen4.c b/drivers/ntb/hw/intel/ntb_hw_gen4.c
-index ed6574d8fcc6..dcbd6d3cf7ae 100644
---- a/drivers/ntb/hw/intel/ntb_hw_gen4.c
-+++ b/drivers/ntb/hw/intel/ntb_hw_gen4.c
-@@ -221,6 +221,12 @@ int gen4_init_dev(struct intel_ntb_dev *ndev)
- 	u16 lnkctl;
- 	int rc;
- 
-+	if (!pdev_is_ICX(pdev)) {
-+		dev_warn(&pdev->dev,
-+			 "Incorrect device revision: %d.\n", pdev->revision);
-+		return -ENODEV;
-+	}
-+
- 	ndev->reg = &gen4_reg;
- 
- 	ppd1 = ioread32(ndev->self_mmio + GEN4_PPD1_OFFSET);
-diff --git a/drivers/ntb/hw/intel/ntb_hw_gen4.h b/drivers/ntb/hw/intel/ntb_hw_gen4.h
-index 10f3ddf2ad30..c2ff5ed86d7d 100644
---- a/drivers/ntb/hw/intel/ntb_hw_gen4.h
-+++ b/drivers/ntb/hw/intel/ntb_hw_gen4.h
-@@ -46,6 +46,10 @@
- 
- #include "ntb_hw_intel.h"
- 
-+/* Supported PCI device revision range for ICX */
-+#define PCI_DEVICE_REVISION_ICX_MIN	0x2
-+#define PCI_DEVICE_REVISION_ICX_MAX	0x7
-+
- /* Intel Gen4 NTB hardware */
- /* PCIe config space */
- #define GEN4_IMBAR23SZ_OFFSET		0x00c4
-@@ -125,4 +129,13 @@ ssize_t ndev_ntb4_debugfs_read(struct file *filp, char __user *ubuf,
- 
- extern const struct ntb_dev_ops intel_ntb4_ops;
- 
-+static inline int pdev_is_ICX(struct pci_dev *pdev)
-+{
-+	if (pdev_is_gen4(pdev) &&
-+	    pdev->revision >= PCI_DEVICE_REVISION_ICX_MIN &&
-+	    pdev->revision <= PCI_DEVICE_REVISION_ICX_MAX)
-+		return 1;
-+	return 0;
-+}
-+
- #endif
+I'm not sure how to represent "reg" property properly for cases like this where
+it represents ID and not a memory resource. I seem to get warning for
+"reg_format" even after adding address-cells and size-cells property in
+epf_bus. Can you give some hints here please?
+
+> +        epf,vendor-id = /bits/ 16 <0x104c>;
+
+I want to make vendor-id and device-id as 16 bits from the beginning at-least
+for PCIe endpoint. So I'm prefixing these properties with "epf,". However I get
+this "do not match any of the regexes:". Can we add "epf" as a standard prefix?
+
+Thanks
+Kishon
+> +        epf,device-id = /bits/ 16 <0xb00d>;
+> +        num-mws = <4>;
+> +        mws-size = <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>;
+> +      };
+> +    };
+> +...
+> diff --git a/Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml
+> new file mode 100644
+> index 000000000000..cee72864c8ca
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-device.yaml
+> @@ -0,0 +1,69 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +# Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/endpoint/pci-epf-device.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: PCI Endpoint Function Device
+> +
+> +maintainers:
+> +  - Kishon Vijay Abraham I <kishon@ti.com>
+> +
+> +properties:
+> +  compatible:
+> +    const: pci-epf-bus
+> +
+> +properties:
+> +  $nodename:
+> +    pattern: "^func@"
+> +
+> +  epcs:
+> +    description:
+> +      Phandle to the endpoint controller device. Should have "2" entries for
+> +      NTB endpoint function and "1" entry for others.
+> +    minItems: 1
+> +    maxItems: 2
+> +
+> +  epc-names:
+> +    description:
+> +      Must contain an entry for each entry in "epcs" when "epcs" have more than
+> +      one entry.
+> +
+> +  reg:
+> +    maxItems: 0
+> +    description: Must contain the index number of the function.
+> +
+> +  epf,vendor-id:
+> +    description:
+> +      The PCI vendor ID
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint16
+> +
+> +  epf,device-id:
+> +    description:
+> +      The PCI device ID
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint16
+> +
+> +  epf,baseclass-code:
+> +    description: Code to classify the type of operation the function performs
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint8
+> +
+> +  epf,subclass-code:
+> +    description:
+> +      Specifies a base class sub-class, which identifies more specifically the
+> +      operation of the Function
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint8
+> +
+> +  epf,subsys-vendor-id:
+> +    description: Code to identify vendor of the add-in card or subsystem
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint16
+> +
+> +  epf,subsys-id:
+> +    description: Code to specify an id that is specific to a vendor
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint16
+> diff --git a/Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml
+> new file mode 100644
+> index 000000000000..92c2e522b9e5
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pci/endpoint/pci-epf-ntb.yaml
+> @@ -0,0 +1,68 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +# Copyright (C) 2020 Texas Instruments Incorporated - http://www.ti.com/
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pci/endpoint/pci-epf-ntb.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: PCI Endpoint NTB Function Device
+> +
+> +maintainers:
+> +  - Kishon Vijay Abraham I <kishon@ti.com>
+> +
+> +allOf:
+> +  - $ref: "pci-epf-device.yaml#"
+> +
+> +properties:
+> +  compatible:
+> +    const: pci-epf-ntb
+> +
+> +  epcs:
+> +    minItems: 2
+> +    maxItems: 2
+> +
+> +  epc-names:
+> +    items:
+> +      - const: primary
+> +      - const: secondary
+> +
+> +  num-mws:
+> +    description:
+> +      Specify the number of memory windows
+> +    allOf:
+> +      - $ref: /schemas/types.yaml#/definitions/uint8
+> +    minimum: 1
+> +    maximum: 4
+> +
+> +  mws-size:
+> +    description:
+> +      List of 'num-mws' entries containing size of each memory window.
+> +    minItems: 1
+> +    maxItems: 4
+> +
+> +required:
+> +  - compatible
+> +  - epcs
+> +  - epc-names
+> +  - epf,vendor-id
+> +  - epf,device-id
+> +  - num-mws
+> +  - mws-size
+> +
+> +examples:
+> +  - |
+> +    epf_bus {
+> +      compatible = "pci-epf-bus";
+> +
+> +      func@0 {
+> +        compatible = "pci-epf-ntb";
+> +        reg = <0>;
+> +        epcs = <&pcie0_ep>, <&pcie1_ep>;
+> +        epc-names = "primary", "secondary";
+> +        epf,vendor-id = /bits/ 16 <0x104c>;
+> +        epf,device-id = /bits/ 16 <0xb00d>;
+> +        num-mws = <4>;
+> +        mws-size = <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>, <0x0 0x100000>;
+> +      };
+> +    };
+> +...
+> 
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/158993143119.41853.10657616792966099233.stgit%40djiang5-desk3.ch.intel.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/73193475-5244-554d-df71-df600f70c0d9%40ti.com.
