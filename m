@@ -1,127 +1,120 @@
-Return-Path: <linux-ntb+bncBCI7LDNNRUPBB74Z2H3AKGQEI77TTKI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCQ6FHMJVICRB6XD2L3AKGQEIXDFUUY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x437.google.com (mail-pf1-x437.google.com [IPv6:2607:f8b0:4864:20::437])
-	by mail.lfdr.de (Postfix) with ESMTPS id DAA4D1E9B00
-	for <lists+linux-ntb@lfdr.de>; Mon,  1 Jun 2020 02:34:08 +0200 (CEST)
-Received: by mail-pf1-x437.google.com with SMTP id w24sf4398520pfq.10
-        for <lists+linux-ntb@lfdr.de>; Sun, 31 May 2020 17:34:08 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1590971647; cv=pass;
+Received: from mail-il1-x140.google.com (mail-il1-x140.google.com [IPv6:2607:f8b0:4864:20::140])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5D4961E9F71
+	for <lists+linux-ntb@lfdr.de>; Mon,  1 Jun 2020 09:45:00 +0200 (CEST)
+Received: by mail-il1-x140.google.com with SMTP id w65sf8275649ilk.14
+        for <lists+linux-ntb@lfdr.de>; Mon, 01 Jun 2020 00:45:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1590997499; cv=pass;
         d=google.com; s=arc-20160816;
-        b=IDnNr8tAjcnVaIbUfCZE8KFcqtiyaPBbiY/jgmkOnAaWN9o+mO/NwBQ6gLy5D1CH/9
-         XZi7woYyGIqY031rteyP6tId1fSyB96g3MqnV1CsRSm/NS8/ly3rNJKBIQYapYDO5CBF
-         HYxKijy9bkwrli6RgpIVw4KHwzmsrv9F/XMD8ePekwBoLKeqLdx8cpS4bCstZ/oIwaJt
-         kD6xzubCcr15/9uKfw1VXSl1ls1pANZfpJoHpQ01GE+4MSya6d11QwbB1AY0OMnUQsRE
-         sJrirLDfgYmrSTyaHWWOeiR9OWTzqlQRAB+LYZTitGKy8pGyk5d+famLALISUjUcwC83
-         idYQ==
+        b=mNQEwJa2e9QSGxAeCcgiqPbs3FJnAMUPupJG2m6ZY4a+gRENi3XucDL2nnSPj19hTm
+         09+HV7mz5F6jn4sNZk0wSCWmRlXAEZfDkK88FIJft7X3+EA5wH/rRDua7SU4ip/h5a5k
+         C53OFRVyN6UXsZU1QMaJQytL+KdXwgPZUaEwd1f6ovj3soPk1/hrdrLFOt5eWa3uLrNa
+         ptZzvHlbCKinDLcqgoyt1rXqm3M3VY89qudDhuxJEvfXcFj43wA29urvsoBF768rKrf3
+         H3c6yZCs9nGHBiZNO4cvcjjZAL6BGFQ+U0LST3XKkcC1qQjitItQrea/aAPhFoGAQT/L
+         xlrA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:to:subject:message-id:date:from
-         :mime-version:sender:dkim-signature:dkim-signature;
-        bh=C+KA9YRa36qup/jLg0IM+0LgmqLiR5zGEMbGzhVDL+E=;
-        b=uDlXio/TMw3LIbRq5yOPjrZCz/LXe67XjbNwX7S7NlIpTu686u0876XRoHiamPF2ET
-         3j1K3PpXqJ/PDGXU8lVIBGrVo3AcTeQ0rDIR8KpxeM5khCdYCPw5gRfQBJpS4KaDubHd
-         qZcyVw7ky1lIuqbGxklV3bIxqI4HpNiJ96NzToUXfI6kimqvmZYHCOS28ovj/Rykea/T
-         85jZdMonARqkSoU1Ac713mJMUhykCjAQu81iUfgX0s0Oh9oHXPwLiFIm86RoxwDx1vwd
-         oYpMgA+I942cW7Xne1xHeM4YNFdABOxvf6feiWzSSc+Ofn9nrw5D7q4VRj4bKkiaWYCu
-         NbUQ==
+         :list-id:mailing-list:precedence:mime-version:message-id:subject:cc
+         :to:from:date:sender:dkim-signature;
+        bh=zzewIpaB8xA7vZNv0WhYARBiBbaJtB6Ffbzle3MpegU=;
+        b=dxxMqMD2W0d8sTrNYSkPQuC9Wv3rtxQ7QHyIHGlnSo4UnpdayS9Bpvj7OENRIQVb6P
+         rTwi1qmaLUvEw5x+CISint+NLKkQ3y6Xb1L1AdfFVNwbCAOY8sQygxoX4RYdj5t0YWb9
+         7L6uic+y3wA9YjrWC+eVDnQop5Owq02ExGEp0+XT5ZokaKDOoTTPNp3dqzNQ0pRtqgAq
+         Fm2kFKpMlvqTu4Jqc9hD0+je27GSOFyLnGz7fHKQHH48QgMr96rnLpk2H3ikt+UmrJj0
+         LsdewRySdynmrzLbv8ZIzcdaF240F8EhGBnoOanlvIngWCUmqzs9m607UVWMtGEpL9hG
+         gHjw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OnCeMlCv;
-       spf=pass (google.com: domain of neswgood@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=neswgood@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@canb.auug.org.au header.s=201702 header.b=twTD2F4G;
+       spf=pass (google.com: domain of sfr@canb.auug.org.au designates 203.11.71.1 as permitted sender) smtp.mailfrom=sfr@canb.auug.org.au
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:from:date:message-id:subject:to
+        h=sender:date:from:to:cc:subject:message-id:mime-version
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=C+KA9YRa36qup/jLg0IM+0LgmqLiR5zGEMbGzhVDL+E=;
-        b=eXZR3xo/tHWobjpmq8T1U/iupUrCbtj4ehIw/jtYXxQZOYw6I4aTw4YBAIdlzCezx1
-         I+VGc4OXSyjM22kcyStOl2jnnTGAS+p/lG2SqiFVVYexMjAvRJIDy+GwGRWTr/t2Otpt
-         T/ClO0yyD9kIS9DE7SMDmUr3B5BbveU5e/z2oUfFkUbq5n79DP1+e/0d/mPF6I8S+JIy
-         C0+LdstAFr7p1sNVTZGahZ+Ld+xT9a7QJIAJrxeNpnN01dWh41RvSIJT8nykWEfbZ48y
-         TCSalCkbMz1s5+TeTpv69mn5SFxRmISw0J1mPPKKkF2/P8P1aMDcKkO57atRKTOfJ9xT
-         pDcQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=C+KA9YRa36qup/jLg0IM+0LgmqLiR5zGEMbGzhVDL+E=;
-        b=nwoISkZP4RxIT4CqVUqfz9In72nQSwaI4wnDcKZeKkDMNG1m+AC3YBVhQgOZ3s0mt0
-         FX0TzeTk6CouSfF+Z8de53P1EvuBBssGbuX0Rje7PzH8kMwExOMb9ktxxcwoMHODb57b
-         GD6kksWfSyiAwlXph+hpMFCLMomFqz2iXLq4GM8kEjXnVcQnmZC0R/UGX8W0CroDxIzf
-         t4wyJnteak7vGZ+rCqTQNGG4RF3S8DgzrGqrN5v6/i77RD+1yEtDsxIZs0lr23J78rIp
-         GwRlTx5N++mROnIa5gIkCQBBPSfyR0VajYw9GklgGQhTeQ+HXrcQGZ2aiKYe3GA+6rEu
-         OwYg==
+        bh=zzewIpaB8xA7vZNv0WhYARBiBbaJtB6Ffbzle3MpegU=;
+        b=qeBUFslNWIl07tF9uuFdYpEG29Bs30Pi7DR8mgJaBFF59C82N5jRYIozz7rl+/KHgr
+         y0IW4Vij/qNYzFOdsyOag9v0yxFpfkTCYHjegwh+j41rXFsk96xa9g+6EqKyW5yTbMyf
+         OAn5s+hksBoYprVD6bGyeckmoJcUQzaUQ2NaWTbrJ+t3xqQUYp2VG63HAHH3uacpLXop
+         s57WcVowa7qsBw7hYoRwLil7NfeIGyElAH9Rw25b3iq2OMz5uASW1NnqG7EwrwZwA03k
+         5Y/zv0FjOr4qj89UD9AniN6mFlyvl8HXBq0CNJ1bnwhMfhPgGx2kUx0LMWYmRA+mEek3
+         hwiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
-         :to:x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=C+KA9YRa36qup/jLg0IM+0LgmqLiR5zGEMbGzhVDL+E=;
-        b=q8v+Fd28f4hVVlXhpb6AXVSfFsrhI6pseKPNTdYS1FipRO6VCYGKVMDTXaJ1puUIFj
-         ioZQYmvf6UbSKmmFR/7HJc9Dl+sBBKfEUCagL7tQefmfOTJy7U450z0OOtJKAIW2h9A5
-         cZnsPkjH4X0BabmyjE+9Ch8QZjWuk5dABMWLGcNk/LsgUxt+D9sL4zsfM8n2wdC86+E6
-         pLOzrr3gqCqkTDezwb7BO7Z8e1YVX+1UIhbPmf5/Bu6fQ3Jxkncv2O/pO2Yo8Ke91rGM
-         ajxwVXTTWx7qSDBMEwOS9LuPGrIzk03cs27I5BEZgKGGUfZlfJWfOTMq6h3vWqUMTpng
-         WzTA==
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=zzewIpaB8xA7vZNv0WhYARBiBbaJtB6Ffbzle3MpegU=;
+        b=bG8GnJL28UEZWVetX3n+8BGf+T1fR6tinzAUJzgq69SpS0xKew/Cr5xIYqjBVu8udv
+         i0JbxY/mYSLIS9ccnzSv1HQ9NzcS+kSYAQdG82qdfCZDcsmBtHoS7228taJyFCdRKeCl
+         T0+MsUJnvFVu5v79YqhU8UUq2E8VXIxtGIWACLtCrnsOQSqN5ruJwQRwUqgxY7gHtOpM
+         Ri/1Bs/LtEL9/i2qmlO/3nVNONiFAie9Om5MgP/YLLRp8G0xAtjnosTGl0TW0psym7ko
+         xefgHKIScwEMZ3ERdnvfPTGIpnHv+Ir/fPzzO1pqu7RmpKSdxUdDgvFSVELRoHVG+eTy
+         7LBg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533HC2P+XTCL/GntNEQhqY+KWeACpV9IDXxZcOKt29I/QRGxXtfP
-	XIFGu9L1Sn0so6u82LjJNhQ=
-X-Google-Smtp-Source: ABdhPJx1Fc1EcY306CrRSdeEkHC7xQ3VoYxlNerNg4MS8skwMgJYG7kZWTd6oNJJNYoysmpsRxprQA==
-X-Received: by 2002:a63:7906:: with SMTP id u6mr17656941pgc.220.1590971647587;
-        Sun, 31 May 2020 17:34:07 -0700 (PDT)
+X-Gm-Message-State: AOAM532b2F/cqM6aGJSrafGRV+dwMIT7v+FVYV0U+vOeV8ZYNT8bXkkO
+	LmEPLkuyVF3Ex2NQYNoBBrg=
+X-Google-Smtp-Source: ABdhPJwnGT+BwSB3BWbW1BG1Sztz5m1Y/q06TeYPk7/Fe5l3bA1ritdZPexHXpAyV+UOtu5sBAdfOQ==
+X-Received: by 2002:a05:6e02:f44:: with SMTP id y4mr14082673ilj.237.1590997499078;
+        Mon, 01 Jun 2020 00:44:59 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:d90e:: with SMTP id c14ls5006728plz.0.gmail; Sun, 31
- May 2020 17:34:07 -0700 (PDT)
-X-Received: by 2002:a17:90a:f696:: with SMTP id cl22mr22037689pjb.170.1590971647006;
-        Sun, 31 May 2020 17:34:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1590971647; cv=none;
+Received: by 2002:a05:6602:1584:: with SMTP id e4ls2036608iow.0.gmail; Mon, 01
+ Jun 2020 00:44:58 -0700 (PDT)
+X-Received: by 2002:a6b:91d4:: with SMTP id t203mr16256241iod.149.1590997498574;
+        Mon, 01 Jun 2020 00:44:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1590997498; cv=none;
         d=google.com; s=arc-20160816;
-        b=UtOVWvkg5qLXSWT18L4vLhTMIr2LFtRaEB4O1JNfarBDG7gu7VCHqlw8q6RfAvJe2T
-         TRBn2YWPFDL18+BqkZAupVokKD13VtnK1kMEbI2iO7emSMHVkH+4s33kRRrRZTC5dAJP
-         8qVTJ7bf19Q+mTmgLGj7+D5VlqKUfCdcsZDneSXH2uiLfQXy9fZin+K1vWH4iE1RZhYs
-         YlVa2j9NK3+JyE62v7aprZChyGtGukDGIYXSKMB1Qxj74Zzk+aNePzKm8KKshb/0vwVK
-         ZSBo/gHE2jzcISMVSf8iy5gV81l8RcG5boWm49pmTRQeMMm4tmw6utEx8zXSNhCp6+T4
-         Zzyg==
+        b=WvZ9cLzsNkUvUe/2h1jvZz+kOsyaqDtigRWspi4X7JSO7UmACg2+A78vupz/ZRjbV9
+         XJDIbm/NqA3K9c1ilqT0Ct6l/hoXWyiBugIV8h5wwNWZmYdNcdtOkppTKSGaXgmCxPL7
+         9mR5+iF6R8rKq0JbpEheuOI3NgFimMvHKPjpXvDKkc4k0jMVM+jFY4XHw1UQ4HS6B0vB
+         MkNMdh1LbkCkBWp5QbFTqFFA9TIE95Jyjb2jz6I6z/pPN8+ZeSmwUY6yM4OSWe3jpvdL
+         K7lmCwyaAIlJRevXEBomEQ4XJ24/wtCxb8GwWDnpScjFJoHDFVm+4QSL0G7zGYH6y2pQ
+         pTRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=j5JLGSRikCUH+V0A/Lf7NwSnEAbSEXCBhF653jz7udA=;
-        b=jneXFT9GGd0yA36w+S8r/WF4D1sAfj4k+IIuMn8x5SscEkyR5qS5IkoLjd2rySZp6W
-         k6zOiQ3Z8TrVw8ujV5x0UVF03k4qRkxmutFsCn5NsxE9RDfnlBQuQWCf/CXeFG+O3f1u
-         Tf3d1xTHmagyKiAiyKZZLvbyjvBwM8Znwxjzz1MscclHjw3/Cktj8SQLg//tjaoe1Zas
-         XqUBQz73YADxhSi62QAAtwIpk0zZlDVBTtMjVdfwRUMyoI3CTkignLkfsE6wGtYkKV98
-         EuheJZoFyw7uTki5neXKOW4a388n9251Tc1pFk/OipqnieR43D8ZW+NuJx8SzX1zAcwF
-         QXEw==
+        h=mime-version:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=D2xSfrLj7HSiAR6RoFB/ukXvUGQ/E8U4R/DLm2h27GQ=;
+        b=uy/3l0s2SoyOwTGGtGOh6UWlt/eQG4f1lRJg2LrahdSpBoCIYxlK4hI07XVPz2AcNy
+         m8TR4zmTPIuz4539xqELUBtalHtuQ2vg+PElJtXD82h6qOhf7aK4/+KCBiQlUwtEF43x
+         XjRXkPNbW/dpmmdytFZeFj7cNUcecLPla/9tXXorPZT69LL0sr0RN/llRes9hRfr1ORi
+         C8/Lj1U3yATEg/OOCNoFvBvuOTYAQtovvy7V+ljGF4mHJnmxbZHv6XZZPgOvZevs2LI8
+         IDTZEOkR/YiRqRTB8G1dhdR4gV6kj1/gudu+KD+0KlE0lWqxIYp1TVA52ttqIKucl0jy
+         YynQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=OnCeMlCv;
-       spf=pass (google.com: domain of neswgood@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) smtp.mailfrom=neswgood@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-oi1-x243.google.com (mail-oi1-x243.google.com. [2607:f8b0:4864:20::243])
-        by gmr-mx.google.com with ESMTPS id q19si138946plr.1.2020.05.31.17.34.06
+       dkim=pass header.i=@canb.auug.org.au header.s=201702 header.b=twTD2F4G;
+       spf=pass (google.com: domain of sfr@canb.auug.org.au designates 203.11.71.1 as permitted sender) smtp.mailfrom=sfr@canb.auug.org.au
+Received: from ozlabs.org (bilbo.ozlabs.org. [203.11.71.1])
+        by gmr-mx.google.com with ESMTPS id k1si777534ilr.0.2020.06.01.00.44.57
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 31 May 2020 17:34:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of neswgood@gmail.com designates 2607:f8b0:4864:20::243 as permitted sender) client-ip=2607:f8b0:4864:20::243;
-Received: by mail-oi1-x243.google.com with SMTP id v128so7618065oia.7
-        for <linux-ntb@googlegroups.com>; Sun, 31 May 2020 17:34:06 -0700 (PDT)
-X-Received: by 2002:aca:3c82:: with SMTP id j124mr12823528oia.62.1590971646475;
- Sun, 31 May 2020 17:34:06 -0700 (PDT)
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 01 Jun 2020 00:44:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of sfr@canb.auug.org.au designates 203.11.71.1 as permitted sender) client-ip=203.11.71.1;
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by mail.ozlabs.org (Postfix) with ESMTPSA id 49b6dc0W4Kz9sRN;
+	Mon,  1 Jun 2020 17:44:52 +1000 (AEST)
+Date: Mon, 1 Jun 2020 17:44:50 +1000
+From: Stephen Rothwell <sfr@canb.auug.org.au>
+To: Jon Mason <jdmason@kudzu.us>, NTB Mailing List
+ <linux-ntb@googlegroups.com>
+Cc: Linux Next Mailing List <linux-next@vger.kernel.org>, Linux Kernel
+ Mailing List <linux-kernel@vger.kernel.org>, Sanjay R Mehta
+ <sanju.mehta@amd.com>, Arindam Nath <arindam.nath@amd.com>, Logan Gunthorpe
+ <logang@deltatee.com>
+Subject: linux-next: Fixes tag needs some work in the ntb tree
+Message-ID: <20200601174450.7a0d79a3@canb.auug.org.au>
 MIME-Version: 1.0
-From: Marvella Kodji <marvellapatrick1@gmail.com>
-Date: Mon, 1 Jun 2020 01:33:36 +0100
-Message-ID: <CAF0CuhAcxohMOLT5Zh75YYnXkATPe4tBLO1UHXFZFm8XxgBkrg@mail.gmail.com>
-Subject: 
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000d6024e05a6faf394"
-X-Original-Sender: marvellapatrick1@gmail.com
+Content-Type: multipart/signed; boundary="Sig_/EeKjYcGmKX4jJPzaAOqAoiG";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
+X-Original-Sender: sfr@canb.auug.org.au
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=OnCeMlCv;       spf=pass
- (google.com: domain of neswgood@gmail.com designates 2607:f8b0:4864:20::243
- as permitted sender) smtp.mailfrom=neswgood@gmail.com;       dmarc=pass
- (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@canb.auug.org.au header.s=201702 header.b=twTD2F4G;       spf=pass
+ (google.com: domain of sfr@canb.auug.org.au designates 203.11.71.1 as
+ permitted sender) smtp.mailfrom=sfr@canb.auug.org.au
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -134,36 +127,62 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---000000000000d6024e05a6faf394
+--Sig_/EeKjYcGmKX4jJPzaAOqAoiG
 Content-Type: text/plain; charset="UTF-8"
 
-How are you doing
+Hi all,
+
+In commit
+
+  eb3eabb28cf2 ("ntb_tool: pass correct struct device to dma_alloc_coherent")
+
+Fixes tag
+
+  Fixes: 5648e56 ("NTB: ntb_perf: Add full multi-port NTB API support")
+
+has these problem(s):
+
+  - SHA1 should be at least 12 digits long
+    Can be fixed by setting core.abbrev to 12 (or more) or (for git v2.11
+    or later) just making sure it is not set (or set to "auto").
+
+In commit
+
+  55480afb82bd ("ntb_perf: pass correct struct device to dma_alloc_coherent")
+
+Fixes tag
+
+  Fixes: 5648e56 ("NTB: ntb_perf: Add full multi-port NTB API support")
+
+has these problem(s):
+
+  - SHA1 should be at least 12 digits long
+    Can be fixed by setting core.abbrev to 12 (or more) or (for git v2.11
+    or later) just making sure it is not set (or set to "auto").
+
+-- 
+Cheers,
+Stephen Rothwell
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAF0CuhAcxohMOLT5Zh75YYnXkATPe4tBLO1UHXFZFm8XxgBkrg%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200601174450.7a0d79a3%40canb.auug.org.au.
 
---000000000000d6024e05a6faf394
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+--Sig_/EeKjYcGmKX4jJPzaAOqAoiG
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
 
-<div dir=3D"ltr"><br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_sig=
-nature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr"><span>How are y=
-ou doing</span></div></div></div></div>
+-----BEGIN PGP SIGNATURE-----
 
-<p></p>
+iQEzBAEBCAAdFiEENIC96giZ81tWdLgKAVBC80lX0GwFAl7UsfIACgkQAVBC80lX
+0GwnUAgAld9zNIu4OOr4xLt8SJSe3C8ofwKBmAZesfM8K1oLwVyng98JFfPKLbfu
+fjpwyOrUAODbPL30urB8GTq92N2S8/mbC3LAYCg70raHKM6Vts055hh9Mj2s69EB
++fRJ8Kr9ttfDEw52xGy9CZTw1akgg+8+a7Xe4p8Xhvm5vwppMV9BlTKNFC+PLipD
+PPNSBUf1upfdOpt2SKmcsjAGJ1LFmnFXXRVeDcVUanzOTR5i14SmzYkZxJKaRO5C
+i1fpSQlQx8N2KGGem7wxcaBDvX3Ra54+QHLS1POoCyhzlsKklE2ZhwqYwKhscxgv
+Y6ehfvtLoytjtf+HIztYmxTPppLlZQ==
+=CPSM
+-----END PGP SIGNATURE-----
 
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CAF0CuhAcxohMOLT5Zh75YYnXkATPe4tBLO1UHXFZFm8XxgBkrg%40=
-mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.googl=
-e.com/d/msgid/linux-ntb/CAF0CuhAcxohMOLT5Zh75YYnXkATPe4tBLO1UHXFZFm8XxgBkrg=
-%40mail.gmail.com</a>.<br />
-
---000000000000d6024e05a6faf394--
+--Sig_/EeKjYcGmKX4jJPzaAOqAoiG--
