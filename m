@@ -1,124 +1,144 @@
-Return-Path: <linux-ntb+bncBAABBN7M6X3AKGQEFYUTZXQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBJOYRD3QKGQEYYIEIAI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ua1-x937.google.com (mail-ua1-x937.google.com [IPv6:2607:f8b0:4864:20::937])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4C831F1060
-	for <lists+linux-ntb@lfdr.de>; Mon,  8 Jun 2020 01:20:24 +0200 (CEST)
-Received: by mail-ua1-x937.google.com with SMTP id d14sf6029778uam.9
-        for <lists+linux-ntb@lfdr.de>; Sun, 07 Jun 2020 16:20:24 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1591572024; cv=pass;
+Received: from mail-il1-x13b.google.com (mail-il1-x13b.google.com [IPv6:2607:f8b0:4864:20::13b])
+	by mail.lfdr.de (Postfix) with ESMTPS id 97D1C1F688C
+	for <lists+linux-ntb@lfdr.de>; Thu, 11 Jun 2020 15:05:42 +0200 (CEST)
+Received: by mail-il1-x13b.google.com with SMTP id n2sf3956929ilq.4
+        for <lists+linux-ntb@lfdr.de>; Thu, 11 Jun 2020 06:05:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1591880741; cv=pass;
         d=google.com; s=arc-20160816;
-        b=CQLSmM9qWKdkKu+N7XS4Ud7XXLuzSzhUK+OONh/9yyY6tVSKF0pckqxTC9IDvURHlu
-         qEvykPFpGLoT9t4muv6wfRWorV+TIbtrmylxP4CvB7QXXu7l6x+f80AJJke0pIwdQ1Si
-         /Anuj7SRjYSFnldiUeQLOSsm4CL362xdOtDoa09u6ZZRaVMO3gi9go8LTTl/WT79Pf7b
-         kMV714eT9cwphYKBpgEVoffFYA96mwEdw4w4JzvA/G2MXUKv2UrRAXVj6n/VRYC9ksBC
-         Z2FohvVL43v9WDIsaHdhdPm4W4GfCSofYY+e3IgoPXHumWmzf+69SiZWGE6f5oYonkSP
-         rK5A==
+        b=s8ddC8vycOZSeQm+/+xZTC71BEPJreUsKksLN0gbxEBuLhXb/UCJXp23F0X47nuBnC
+         0s49Wk5Zgkv8HW/wd4dBOAi3mI+INDHEl1bFem3YfDikojyHpvm5Om63KzvypDhnrIls
+         PtbmQQYhG8NZ74Vhnm3I9RUpsjV0R/OwsiDXLQbTaoPuMOjNe1+wHfX4sInpgXSNx32q
+         e0bmn3eIOArXHDpHyxw4Jh0B2yLhnssSE4ZctORdErybHabMPJfXUNKIASIerTzT7XeJ
+         VWO6a8VnW5E5LNcZIVDMnEzX73f/z/QrNZ+qHMmhFSQdiTdHZ7na3WFfvQjtl38vAc5Y
+         zb/w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:cc:to:date:message-id:references
-         :in-reply-to:from:subject:mime-version:sender:dkim-signature;
-        bh=V04WL1iChFStyAANCxhwYMS29H/G+bGzfo4ui4yGIeE=;
-        b=MPhqef9sqBQI8aenqCfkgPjaiXf9mrRkMycRLqKXaEB0bx0cnT8nYoLYG9NGurqGdA
-         8H/bXwTqeV53EEly4FCfLPEYpAgAVz4AdMWrP85sTb+e+onuCdGKQdLCSfeOISv6ADw0
-         oN8ffubfz8dPcxq4UoxtEsWtDPIVbBv460Urf3cAaBeJRVFEGEa2gsPMpwH82qN3q06t
-         Fi85PYGmypvOhfeqRkhBZ68ft2mpAO1qwG9IcOpvJ1Rv7CjlKBb+Seyqp4BMH0KX0bg/
-         vOJtqbuGJwEBB39ApKl6vDQ0bH33zuj0U+ggTaREuu2wLXl1tPraTwY6dpqFptORVVvK
-         1Dkg==
+         :list-id:mailing-list:precedence:reply-to:mime-version:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=c9pWJAomDKzO3ssecsJ3uuW1p16JVWKOF82tJpYbpbo=;
+        b=rxjnh6Rp2Iw/i0B7z7q8B5sFl20KKWeQS8zlWr+qplyq6MA8/Z94x//smvp9gDnb3M
+         CpaydnDfgwLX03XgvqslIGoJZI+a9rJPsTWG5f973GHumj8kGYEHqGjy//jorjAIsLUE
+         HoD8fNT8XA6u6TBKrJu1ryVa4j3mBR9LhNpBEpebrVoC+NyWuINqMsE2tMvIQYDcTTzz
+         awCKwpXpxdb3yOTx8pkpvgbPj0/Do1ajc+nnk/hV4hjctL6NJkUumUcJiayUZTZM8hjr
+         0ltyBUkO4x1dgdH3bYkE4LGA9QXCtbagaNLhcmn3Zj7Fin0tmm6TyX+o6FKjCqK/0cEw
+         CWag==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=f+4BeVE9;
-       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=kTm4GKAR;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:subject:from:in-reply-to:references:message-id
-         :date:to:cc:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=V04WL1iChFStyAANCxhwYMS29H/G+bGzfo4ui4yGIeE=;
-        b=CxVPlri7FJv8iMqpuFUf4BuyEbJ2Cw3txpC9mTxGt+sOsBoBxPUoSo33v/rU+tdi5J
-         eKOanD8Pqq+BHzSCbudCAcHW3tfa68qGjYfLUoNVdARFc+xerNVMTN9PXtMhm/xU0L1G
-         tMwaKasPeK1fYK6+npsd++OvtEG+Wg4HZMpawlwj06gycIrgmAGQ4a34PGaRkhLeNQaY
-         PrwExREj980lOl+cMiFBqDj9esaAfKcyIBNEmyXIAHGLQ9YWVPB4b+aObU3NloE1MyRO
-         TpK/HdZgDXyuapM3mGDSm72Dtp+7JWEvtMPrJ2FvuPd0TvkBVvoe6fOysb7jvUYyP5aq
-         6T+Q==
+        h=from:to:cc:subject:date:message-id:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=c9pWJAomDKzO3ssecsJ3uuW1p16JVWKOF82tJpYbpbo=;
+        b=IWsXdcTC3I+0CL+8pxj8PQyo0mlDsOY7mBycCO3728g0+QCYyrhiktEXKL53eZkcHx
+         tZ4EA448gghogd/Xtru9jXeU4ivhDtTyzenMuCb0hFSyAuRzIckpvjr+TpaEl1U0cWB/
+         VCLarj68yZkt3PKH16qaDoI67+xR73DvI8yfTLvp96b0Le+pHNHFyoN32GI5RhH/FAhD
+         bCXIzXbSgCR6xaA7FyA/7dpRuGsi4nFB+gmrJrFxUJ1nTehARC2SP5t69FN91UqrUt4b
+         ZNou1SRENRIngiw7Bb2lHZTJwdIJlZlL+XVZaM+wc6fWjhoDPcLyVqyogq8fUsQYnnDG
+         z92A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:subject:from:in-reply-to
-         :references:message-id:date:to:cc:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=V04WL1iChFStyAANCxhwYMS29H/G+bGzfo4ui4yGIeE=;
-        b=GvHyUjgalqMKldg0rjS2BSjeyyC3EczntQedyIIlpgWsXk1sEx/1qZ102LvKhC5Ez/
-         24pzf4PHCco3+HXNd03JE9Pe7ppg4Q5xda3rFdeEUWbCdqs+y3ohFVFqteNjarIhnnz4
-         TGtKYouV/w7GKNI0Uj9KJszc1mMS98tffB1Ow2QBedI7B9dO6Z+18PDdOa6QtSukD/Y4
-         zSRSGow9Max4CLGsgEKX1WtuW7IJgnw9i7aOV9+2fZcUIz8Nupxkr2aY6mBhyTPNHc4Z
-         t0wMuKV6l92lv++wfENftXPBWpmo30S1NSycnqW1OcPLUcX7BP9t8bZx2+1DJURJwoKN
-         Nceg==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5310AiYr6zXrxfIbNcIOLtm7RZKHJqJVyuvWZmHff/9kNRhc+yV8
-	AWs4TGnyXspwdC/oqCfpQBI=
-X-Google-Smtp-Source: ABdhPJxTyxCi5e5qG5iccxP6jgCAfqeHrX+dDbyEokK2IcHs7/HeH+uzwBptBIg61yZyBx0l0fLwbg==
-X-Received: by 2002:ab0:204a:: with SMTP id g10mr14269594ual.97.1591572023802;
-        Sun, 07 Jun 2020 16:20:23 -0700 (PDT)
-MIME-Version: 1.0
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=c9pWJAomDKzO3ssecsJ3uuW1p16JVWKOF82tJpYbpbo=;
+        b=h2mkcnV4B/mukzMm5nAgTa9KDUuEt2oY61zAHwQkaWBfnqVw8YlknB9qGo3Ra9gMmZ
+         /8cL2qx97B25LBaUi6pVF11qJEQBFhHOUmcr/u+dpGI68kNFf2NZI7gQKzyanXFbm02k
+         qy9mX+1OMJJ9NuBAlq79UqOQPOAwm2dFU214l/Co2+bFeAyjuUJVoxRfn5G6zPqIHtUQ
+         bTkc1sgwh5CBpTtIxynXLxgWEo5mBlCX0vxkxbwpsoqI94EhZTRjYE7TrLRPtTlOU3X3
+         5NFStIwi7k4wrS4XkQ1u3lhD35snoxSR6sHIB10e0vG9IsmqSrMrJ/Q4XOYx/RDj0Iwd
+         XUqw==
+X-Gm-Message-State: AOAM532qJCRicSHcGbD5ALYDPg8pr/tDUsD7FaJMBQdva7goXt5ziB6w
+	Ac3OsCF9FI3irQeKUBzbDJo=
+X-Google-Smtp-Source: ABdhPJzJCzRABINv1iQqOJvmTJaRUVYTPtxKcsj08BX/cc0LtYb3bNBV0vkk3ccb4mzmbOlSxv/O7A==
+X-Received: by 2002:a5e:dd0a:: with SMTP id t10mr8608107iop.9.1591880741170;
+        Thu, 11 Jun 2020 06:05:41 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a67:f993:: with SMTP id b19ls268796vsq.5.gmail; Sun, 07 Jun
- 2020 16:20:23 -0700 (PDT)
-X-Received: by 2002:a67:b741:: with SMTP id l1mr14181473vsh.180.1591572023515;
-        Sun, 07 Jun 2020 16:20:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591572023; cv=none;
+Received: by 2002:a02:c80c:: with SMTP id p12ls301620jao.7.gmail; Thu, 11 Jun
+ 2020 06:05:40 -0700 (PDT)
+X-Received: by 2002:a02:3501:: with SMTP id k1mr3108619jaa.14.1591880740847;
+        Thu, 11 Jun 2020 06:05:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591880740; cv=none;
         d=google.com; s=arc-20160816;
-        b=JbJ6/X4tPnk9iLyFPj7iEjjtOVrNfaqd/DkuwqRKCdbOyrunrjV3bL7vKIHVAtbENG
-         zqFMSYvNLVA5yrnSr4x+mZua15cchqOKEgSZ61fl66cD9NK5KmzMMwbp6PqZ3xm9FAUZ
-         GBFamhQcv0k0cb+xeCWIGXqb0/95VMzLP+wzVY7G9AMLT+F90j8WgqQJvLn/JTb3NZjx
-         EMQ2ZwOdVDIhiohLqvPSponUDVt6BjEvhn0ZTv3YUAf3vMndFX3isZSPKW0saV29mdrY
-         Gx6FdKfjcq9nLzZ0FJI+NWdbQjF9gt89WTIoxLz1BQWQ8IcQj26ojlSEF2mV3+LQt5ih
-         mu8A==
+        b=Tm3x7u5Qp/IC1zYDA35Q34bVBpCOPmjNdQhKX2IJMt0dMvam+T2RC2gsCAagZCZ/ez
+         KCnHpoY0KMiv5jmnegtrIBodVh7WDsipP7q9JSwIbzqGepntkE6lb5G5p0oskTAVlpsR
+         FdvqhWCGlH2oEFKKKe+BhUYwk09yyodK4yONOEIwDl0ANpfrGZm2uPkUpEojdbTreBgl
+         qy51+ZKduwDG9sQe/FXr6UadIW1GyXeKWdCW9UL+ApzpXRTsDPPjrsrEtJw+ThJoU+nM
+         gJgE95IizoliCh+t/4rHt0PRLBp0Mi/c3WQUA1Zz76SUlPo1/J201c3upmJjxu9ReR8w
+         c/wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:date:message-id:references:in-reply-to:from:dkim-signature
-         :subject;
-        bh=Paj0/yi1XEA3jEuhZX/MZ8yFvsAFz4FeaMrckE2SdBM=;
-        b=LSAZemWwSXdbxy0qXnihLGLm25SSpOJyEf6/4q/cSQOOppwN8TLoPyz9UGrZydA3Mi
-         TASmePhtmrKZfezQTwhdOOMR8kzcisW+5RLA0wrBUbyj0t2Z35ef9gNYy7bhKMzJCRv1
-         qJ0qKP4xMmUY11+vE2CrscTsvjm3Em8Vaojeaz1aVl0QCZuifC5+5c3E+OZyp8gmz/pl
-         IDHrBlF/CaeoDaF+jjDDRMKDPg7rorFU0wHo3n3yYWXljvBBdh6MBb7T5dhJeMYlso0H
-         CSH2/AHqix9UW5GNWRxtzz9wByGhzu+IaWvriNMtrwTDORyy2uWioyqsXMxW3A92xMFN
-         XBcQ==
+        h=mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=eZaXefos8k87hXiBiwwHXrlf1ORnBoagl4rNRyZ30dY=;
+        b=zRXaxvw9+GPSUioO+7FwoPUXyjb9C5LP+L+yoyb3VFaRW8sF4CP9IPS7Rq3H7sPC1J
+         gI3gIQREGmG3BLzYROiFNoGTQ6zgl+PJYtL44fD0trtoT3lMoitHRlMzPYs0MDRN8+Zi
+         FRYNojD72Dsw1YPyZX/3DsIyFmVXIZ8WfWRdaeQoACf0WUrG3ge9+CbUQJoWbMNgjyrr
+         YDMaj4z4+Utwb1d1GMMJWR5aPao+uzhXP+T69KeqCgrx2NL3nKqSZ1UJAWmEjal7Aj1K
+         y7so7dcIJjfKwUrPHZBmxe8iUyQSyv3JVaTzBOUMzfF88MTMufKy5WYFpY04mSzV95E+
+         82cg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=f+4BeVE9;
-       spf=pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id e10si723545vkp.4.2020.06.07.16.20.23
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=kTm4GKAR;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
+        by gmr-mx.google.com with ESMTPS id y22si176685ioc.0.2020.06.11.06.05.40
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 07 Jun 2020 16:20:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Subject: Re: [GIT PULL] NTB patches for v5.8
-From: pr-tracker-bot@kernel.org
-In-Reply-To: <20200607165501.GA7336@athena.kudzu.us>
-References: <20200607165501.GA7336@athena.kudzu.us>
-X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
-X-PR-Tracked-Message-Id: <20200607165501.GA7336@athena.kudzu.us>
-X-PR-Tracked-Remote: git://github.com/jonmason/ntb tags/ntb-5.8
-X-PR-Tracked-Commit-Id: 2130c0ba69d69bb21f5c52787f2587db00d13d8a
-X-PR-Merge-Tree: torvalds/linux.git
-X-PR-Merge-Refname: refs/heads/master
-X-PR-Merge-Commit-Id: 787f74fc5050c77e29a96f480f40421336eed5ac
-Message-Id: <159157202243.17419.801679395194811680.pr-tracker-bot@kernel.org>
-Date: Sun, 07 Jun 2020 23:20:22 +0000
-To: Jon Mason <jdmason@kudzu.us>
-Cc: torvalds@linux-foundation.org, linux-kernel@vger.kernel.org,
- linux-ntb@googlegroups.com
-X-Original-Sender: pr-tracker-bot@kernel.org
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=f+4BeVE9;       spf=pass
- (google.com: domain of pr-tracker-bot@kernel.org designates 198.145.29.99 as
- permitted sender) smtp.mailfrom=pr-tracker-bot@kernel.org;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+        Thu, 11 Jun 2020 06:05:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 05BD5UiW107435;
+	Thu, 11 Jun 2020 08:05:30 -0500
+Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 05BD5UiP121161
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Thu, 11 Jun 2020 08:05:30 -0500
+Received: from DFLE111.ent.ti.com (10.64.6.32) by DFLE100.ent.ti.com
+ (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 11
+ Jun 2020 08:05:30 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE111.ent.ti.com
+ (10.64.6.32) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
+ Frontend Transport; Thu, 11 Jun 2020 08:05:30 -0500
+Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 05BD5PZ1082585;
+	Thu, 11 Jun 2020 08:05:26 -0500
+From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
+To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
+        Kishon Vijay Abraham I <kishon@ti.com>,
+        Lorenzo Pieralisi
+	<lorenzo.pieralisi@arm.com>,
+        Arnd Bergmann <arnd@arndb.de>, Jon Mason
+	<jdmason@kudzu.us>,
+        Dave Jiang <dave.jiang@intel.com>, Allen Hubbe
+	<allenbh@gmail.com>,
+        Tom Joseph <tjoseph@cadence.com>, Rob Herring
+	<robh@kernel.org>
+CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
+        <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
+Subject: [PATCH v2 00/14] Implement NTB Controller using multiple PCI EP
+Date: Thu, 11 Jun 2020 18:35:11 +0530
+Message-ID: <20200611130525.22746-1-kishon@ti.com>
+X-Mailer: git-send-email 2.17.1
+MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
+X-Original-Sender: kishon@ti.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=kTm4GKAR;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
+ sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
+ dis=NONE) header.from=ti.com
+X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
+Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -131,20 +151,93 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-The pull request you sent on Sun, 7 Jun 2020 12:55:01 -0400:
+This series is about implementing SW defined NTB using
+multiple endpoint instances. This series has been tested using
+2 endpoint instances in J7 connected to two DRA7 boards. However there
+is nothing platform specific for the NTB functionality.
 
-> git://github.com/jonmason/ntb tags/ntb-5.8
+This was presented in Linux Plumbers Conference. The presentation
+can be found @ [1]
 
-has been merged into torvalds/linux.git:
-https://git.kernel.org/torvalds/c/787f74fc5050c77e29a96f480f40421336eed5ac
+RFC patch series can be found @ [2]
+v1 patch series can be found @ [3]
 
-Thank you!
+This series has been validated after applying [4]
+
+Changes from v1:
+1) As per Rob's comment, removed support for creating NTB function
+   device from DT
+2) Add support to create NTB EPF device using configfs (added support in
+   configfs to associate primary and secondary EPC with EPF.
+
+Changes from RFC:
+1) Converted the DT binding patches to YAML schema and merged the
+   DT binding patches together
+2) NTB documentation is converted to .rst
+3) One HOST can now interrupt the other HOST using MSI-X interrupts
+4) Added support for teardown of memory window and doorbell
+   configuration
+5) Add support to provide support 64-bit memory window size from
+   DT
+
+[1] -> https://www.linuxplumbersconf.org/event/4/contributions/395/attachments/284/481/Implementing_NTB_Controller_Using_PCIe_Endpoint_-_final.pdf
+[2] -> http://lore.kernel.org/r/20190926112933.8922-1-kishon@ti.com
+[3] -> http://lore.kernel.org/r/20200514145927.17555-1-kishon@ti.com
+[4] -> http://lore.kernel.org/r/20200522033631.32574-1-kishon@ti.com
+
+Kishon Vijay Abraham I (14):
+  Documentation: PCI: Add specification for the *PCI NTB* function
+    device
+  PCI: endpoint: Make *_get_first_free_bar() take into account 64 bit
+    BAR
+  PCI: endpoint: Add helper API to get the 'next' unreserved BAR
+  PCI: endpoint: Make *_free_bar() to return error codes on failure
+  PCI: endpoint: Remove unused pci_epf_match_device()
+  PCI: endpoint: Add support to associate secondary EPC with EPF
+  PCI: endpoint: Add support in configfs to associate two EPCs with EPF
+  PCI: endpoint: Add pci_epc_ops to map MSI irq
+  PCI: cadence: Implement ->msi_map_irq() ops
+  PCI: endpoint: Add EP function driver to provide NTB functionality
+  PCI: Add TI J721E device to pci ids
+  NTB: Add support for EPF PCI-Express Non-Transparent Bridge
+  NTB: tool: Enable the NTB/PCIe link on the local or remote side of
+    bridge
+  Documentation: PCI: Add userguide for PCI endpoint NTB function
+
+ Documentation/PCI/endpoint/index.rst          |    2 +
+ .../PCI/endpoint/pci-endpoint-cfs.rst         |   10 +
+ .../PCI/endpoint/pci-ntb-function.rst         |  344 +++
+ Documentation/PCI/endpoint/pci-ntb-howto.rst  |  141 ++
+ drivers/misc/pci_endpoint_test.c              |    1 -
+ drivers/ntb/hw/Kconfig                        |    1 +
+ drivers/ntb/hw/Makefile                       |    1 +
+ drivers/ntb/hw/epf/Kconfig                    |    6 +
+ drivers/ntb/hw/epf/Makefile                   |    1 +
+ drivers/ntb/hw/epf/ntb_hw_epf.c               |  750 ++++++
+ drivers/ntb/test/ntb_tool.c                   |    1 +
+ .../pci/controller/cadence/pcie-cadence-ep.c  |   50 +
+ drivers/pci/endpoint/functions/Kconfig        |   12 +
+ drivers/pci/endpoint/functions/Makefile       |    1 +
+ drivers/pci/endpoint/functions/pci-epf-ntb.c  | 2151 +++++++++++++++++
+ drivers/pci/endpoint/functions/pci-epf-test.c |   13 +-
+ drivers/pci/endpoint/pci-ep-cfs.c             |  154 +-
+ drivers/pci/endpoint/pci-epc-core.c           |  131 +-
+ drivers/pci/endpoint/pci-epf-core.c           |   73 +-
+ include/linux/pci-epc.h                       |   38 +-
+ include/linux/pci-epf.h                       |   23 +-
+ include/linux/pci_ids.h                       |    1 +
+ 22 files changed, 3838 insertions(+), 67 deletions(-)
+ create mode 100644 Documentation/PCI/endpoint/pci-ntb-function.rst
+ create mode 100644 Documentation/PCI/endpoint/pci-ntb-howto.rst
+ create mode 100644 drivers/ntb/hw/epf/Kconfig
+ create mode 100644 drivers/ntb/hw/epf/Makefile
+ create mode 100644 drivers/ntb/hw/epf/ntb_hw_epf.c
+ create mode 100644 drivers/pci/endpoint/functions/pci-epf-ntb.c
 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.wiki.kernel.org/userdoc/prtracker
+2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/159157202243.17419.801679395194811680.pr-tracker-bot%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200611130525.22746-1-kishon%40ti.com.
