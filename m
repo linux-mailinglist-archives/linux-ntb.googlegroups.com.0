@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBS6YRD3QKGQESCGH5ZA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBUOYRD3QKGQEJYEXORY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qv1-xf38.google.com (mail-qv1-xf38.google.com [IPv6:2607:f8b0:4864:20::f38])
-	by mail.lfdr.de (Postfix) with ESMTPS id C9C171F68A2
-	for <lists+linux-ntb@lfdr.de>; Thu, 11 Jun 2020 15:06:20 +0200 (CEST)
-Received: by mail-qv1-xf38.google.com with SMTP id w12sf4313553qvh.13
-        for <lists+linux-ntb@lfdr.de>; Thu, 11 Jun 2020 06:06:20 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1591880779; cv=pass;
+Received: from mail-pj1-x103e.google.com (mail-pj1-x103e.google.com [IPv6:2607:f8b0:4864:20::103e])
+	by mail.lfdr.de (Postfix) with ESMTPS id A2D8D1F68A8
+	for <lists+linux-ntb@lfdr.de>; Thu, 11 Jun 2020 15:06:27 +0200 (CEST)
+Received: by mail-pj1-x103e.google.com with SMTP id l62sf4234623pje.9
+        for <lists+linux-ntb@lfdr.de>; Thu, 11 Jun 2020 06:06:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1591880786; cv=pass;
         d=google.com; s=arc-20160816;
-        b=eYkySoTIerOhghF6nJYwSwmdBjpEqWMLi0EX6Qx8ZVlkjFKdw9tU467RRhNwAHmnz6
-         1ByLEbiCPX3Wz3yrHYZBNLdDXJ3Zi+vR4vqPMH2nHnyFdImI013xYaEaw6MQmd1axYb4
-         YL9W6r3CckAk590TNj8xunndiIV5xmkgS3DcPDocZW2mCYjqB4kdTHXTuZNlws2hi147
-         SUObKIlBb2bmDPRO+wjuu4MD6/TpOpv9h2vhL/i4tlg0smSuei5IRFSsKZ4c7Gt0jkW/
-         hQS4HRG8MUcDXtADr7HpagD2xo9UlysqT5wSatCeoxVQFnZsjwMoHv7bct82w8Yulry4
-         gd0Q==
+        b=lcJ5SA8DYPFyUQpwFP2iXV0uVUjCilpERPIkQH9u9UtdL94X9XzxyeMJAmbf7xHbmm
+         UcMnjPSNm0vYyeS2Zsx+v8x3L+LryK8PkJ+nV1JOVKpjxsetVMWXRV8dWLXX6hKWTrBc
+         D3/qxggnd2OnlCKLR0iYgp/D/b62bxVh/HpvbnphvEpV/DTSEYplUp8RHwwFSeuFchq3
+         SCyARyTASoCHWLYumto+clqJfh4beBTLe55GFq3sXTQlIGmgDxtlHrK3dX1oUuVNcSkY
+         mBKfrwnlp0uYjNjU7NiBmEkJJ1RqOCKerBSxCR3J1olrYHQYJtmuFi1h0ScdJINw3yoh
+         CkYA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=iIJc9u8YZi/6Av3DbULER+5aSbpoMxgobPx5N9NRuK8=;
-        b=Ywz05Tzu08OguvzlJg+zSwLeCVGJuacwktQtTENdh3sepiaZRWeSnQjX9aaNJiiseN
-         8+ncO256nc5iUL6s4W/dVgaYpqiqXeZsmpdOLZAt56HjslnesnjgaxBI7Rc/AFehKPx1
-         0gQkyj6VD1hODQMz6QItOcx5yb2DZZmH/H7nWeL0ZZ/7X0dx7DnrMNk+C79rgUmWeCS4
-         9NO0nIQKdLsShFb5U7LsehLL83U5TgMh3q8E1IiSARaP5xkZHSQsNl8CCXskEJmGHCfb
-         HXsWdat0vglDrkm50RyfTDiRwyHNYyEOaqxXZGhz0Ikb/9ClRnOA4xpWh4YUlKR7f34C
-         WKHw==
+        bh=7kGK/MDM6fbHjeTawIxUNL5h8vAqizwVGHzxMkv9/EI=;
+        b=Z7otNs5RYTVSXFSAdSpkLyOVKSQSpJpRC3ZR3D8IfrCKQbm4EGeAuQgapCjc21qzEc
+         wcS0MF1yqe3aqtgt53S+uc8uG0ReWfHl32X2ubjcLrzAlGtlDDTTY3Cg7iVA9lCtW+F9
+         g4EYhLQri7bONU06hDwWZd5eBeLtI0jwMpoAzKQLHdGQT0wzRkDSP9YFlF+gwuQN7gyI
+         7KusgNDhEhXXLOw1aWxhwUbdWtwE7eTUBiD3RWS2FGH8bYPShm/ueif31VLsrCVUbx2J
+         D9M4BSgCkpcgub7k3xl6bEmruuzcMAPWlclCsr5rcsp1YSs3NkVGrs5O6v7p0Vzr5jpR
+         8Kpg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vvB5yJNN;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=DSSr2u+D;
        spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=iIJc9u8YZi/6Av3DbULER+5aSbpoMxgobPx5N9NRuK8=;
-        b=GLsghiE35/BiisgtpCKrw1TLsRSAUOsaXdx4eihEVMYrKXV97j1raJTICbfLm69cXo
-         U4Jn6+Qg9n3EsQ1S/x5/Zf5dZWDRBnEaClQTDLaDmVfBQNhx1KkVoKd3LHBvnXHLutlj
-         yaLbNWW/w2dWKbkVa/FndMQoNPMEhXM/d6KzVtp42loxOtgy0zo+NeaoMKEEhfkF4Tec
-         RtBnVq5SQR++M2a7Xdwzmqmbz/73uI8VYLEpe50S3T10rbri3WAD8qnwQGq6UGexHzxj
-         7flQzax7xgR8r2Aa1Keczhx0EI1oDCci/IiLQlNQWGSQBdpynYFfSwpiRROyq2uVWBWs
-         Ii4g==
+        bh=7kGK/MDM6fbHjeTawIxUNL5h8vAqizwVGHzxMkv9/EI=;
+        b=ocjfNs50rnZHpeDOFm2XIrfvuCC788TpVGmWLCOHReHSgjBzVHopKFr46ZM5e2l5XR
+         Gikk+vUDAfR/1T6tI+Sh7J+olsMGDfgd02FeaNGus5YjqTPOne6aGbCeC3B2u/j2XHr6
+         2+QvlZa3xxQJ6T2Tl/wkOSDGhb19qriKNYw54ZoM1Hzmp755zRH9xvWuynsJJ6mPhRSx
+         H+Vo5TNP/DI+P88974tb4Ms2tY+61xTj2xoV1TPcaCVU3d+ZXkc1QZpTw5fhdqTYrUGy
+         X1AK8b5xzA3bsehPGQbg8bU+3K61KHcZtTmjNBemmd2bMVr2sZKGf/HEV4weDuyFurEh
+         EJsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,68 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=iIJc9u8YZi/6Av3DbULER+5aSbpoMxgobPx5N9NRuK8=;
-        b=gh6nPvrOd1HybkUeSXjsZ9Hygy2AfNoxk4CUMWFvvxRuD8JuscyWVjmmxHe6w3u2dI
-         qObEdq6t+2+mbEG942liiAIW0Wt+XIc+a3iX0iEVgNkNDqoHlCmLPncuiVRb8in69EjV
-         +wmvmk/WmBaUmbXOdnT5BqQ5Yar4Z6Mr9vXWMwbouzrmUxhM1ZxWLcEiNYFGbBy4/4Sj
-         8SqBvDrC3wMwss/oJtUUmoUc6Owt5myvFuiRUc95M4c10Fn7qMWQ1a00g5p22bkc3dA5
-         HF67bh8b7cC268kys2L6NpjqT0TVTiaTJgAIwZ3cYGN59+cujZGJRix5iHszBQfBFlhy
-         jU3g==
-X-Gm-Message-State: AOAM531WyPg6eWdrwvn5N82upjR+q7fu5zHp/dj5TnFHLGnFSekkSrXR
-	86wHwcEdV0l+E8hAF1es/js=
-X-Google-Smtp-Source: ABdhPJyNBqNNMpBqGGZzxqVRmVI7vZnabGUw+mur5RUeGYpENgmrPF7uJawMbOuIQHXZ8zKhubJ9Mg==
-X-Received: by 2002:a37:850:: with SMTP id 77mr8117474qki.498.1591880779512;
-        Thu, 11 Jun 2020 06:06:19 -0700 (PDT)
+        bh=7kGK/MDM6fbHjeTawIxUNL5h8vAqizwVGHzxMkv9/EI=;
+        b=tZkY19E7oQ++3O9mEAp/cu0HCYSyoy8GySrdLH8fdL8ytxWzat2PjZ5ipzQ9tGverN
+         BcmOgXMon/gevO8VFC8VZxYe0YamR6n7P9ZsTkF5+mr02rq7NfrIznRvR757BozjrWVN
+         0vuMiVRlf1OGdH8im5r3KOs+fgSWC3WmFaL/wi9CCaCtO36zV4kJNu3/+GkmLGAm5qxw
+         bOoQHGgpoNd2ZfybA4zCwTagWi5FzkHqyAAmYRUOXCDPltB3fQBvgLo16xCMThQ2CkUz
+         rjQApADTUHksaFK0xadHEmOq0TgmBa20SELcN5s4e5lBBRItKpj0aabdvNBEH4wNxxZC
+         iWSg==
+X-Gm-Message-State: AOAM532Mh/brnaBsgKDDD9NSGAnNqZWPJZiEPt1cyMwM2P+c/nKgrc9q
+	lj6zDI3btNWgJO1nckLBVhA=
+X-Google-Smtp-Source: ABdhPJzD82tbr1ztKMUXeYzGEhatRM1VEZHqUczGTzSMV/7J9xwNFjBgg55G7f+ynAZwe9Yw5trFmQ==
+X-Received: by 2002:a17:90a:25cc:: with SMTP id k70mr8488563pje.174.1591880786087;
+        Thu, 11 Jun 2020 06:06:26 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:aed:21d0:: with SMTP id m16ls870169qtc.11.gmail; Thu, 11 Jun
- 2020 06:06:19 -0700 (PDT)
-X-Received: by 2002:ac8:70da:: with SMTP id g26mr7881426qtp.333.1591880779067;
-        Thu, 11 Jun 2020 06:06:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591880779; cv=none;
+Received: by 2002:a17:90a:718c:: with SMTP id i12ls1001745pjk.1.canary-gmail;
+ Thu, 11 Jun 2020 06:06:25 -0700 (PDT)
+X-Received: by 2002:a17:902:7c8f:: with SMTP id y15mr6978419pll.95.1591880785531;
+        Thu, 11 Jun 2020 06:06:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1591880785; cv=none;
         d=google.com; s=arc-20160816;
-        b=pnrChpcDwZrA/VJt+Any99ywz17R/Pts9U4/93W8DnDudAyZTG2QyJHefxs9DouweX
-         mXpgBjd6l7Z71WBE6uuULyx2c8eckd7TdSbnUoG1oInSdesk3Gb8dHHk+KNTmkDL13nM
-         pC08Evz6DwjCsCoFl+zYFLfwG9/9z0HNB3KvzTdVrI0907Qgb0WZDWiQCSUbYaCVu0Xz
-         9lhRCwpvDbf959D80hYzQzJnetFq7Fgc/Kr02vmzWfA2gV/SskNUVWh7GRzFPVkhWSoY
-         eaB6JzMpfITvwVr67sq7eRqIL1tEzRpT5RSR1KRnuyOFyo+LMdMmEVrIXFYGnYXJNr3P
-         TOIw==
+        b=uao8yF53Eaa3+obM+8DlDDnqZlpup5NjgPtbWnByiocuYjhkxUvOB1cBqfk7EOf8az
+         3SDekIfRRY6Qi1N9lN7ZCKV/n4YwZ8yopUNyJ6sbynPZflRZ7FzDKaRu7kzVK+kiJ8p9
+         NrwbbjqYYz/iUrxDppsStBhrGVSCc9erMFcohWy4GSHQS3X9MSsatpq+Lj9rolO1YqMX
+         9+VCqyZ24Vo1xSByuDe8KHCaCBVj978GoBBEu2oxhES9dvXWfMM3dChoX4P4BryiOW00
+         tMTzoF+OH76QnFIrxFofMlOo00PBYOtFq884QnFOJZJMMW5xIgqw1wOgDxRC6vX6gndu
+         c3Ow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=wiVFLMiCiHqr+OoF6qdjMxuLb4BOlzsU1bAqODzlruM=;
-        b=Orih0dyqjnSU49eo7NY3Iu6pozriRTt6DnFPqKPsEhF8y+WZ5XMp1Gi+agj+/wCzRG
-         rBe9vXC1ONg48eya32RTaRwDV7FmHs5+DLeUWw7Si3NEP36HAJIVlRhM7uXrfVSBKuq5
-         PoPrFr7HTZIFnW0NU+9Ef/ZPBnuluvjdkrPJpCCienUsrMVg3361BkCIJafEJ11HnjuY
-         N4AADFf0VDog048PVoHlPgn/9ab+konP6B9HB6R1u96rHMAiOPR957XKYBtO2z40zDDv
-         PNQzuPF2HrFkEuyxI3SFk4X+CBkX/kTDFZFhbj9gMp+NGFgUrpDxxYvnmOoWuEV8bSoM
-         pYrw==
+        bh=PSh0q4JRjcK1nArVSTCivY/ssRJQRL2S1ElY2hkmgIM=;
+        b=wsHiqTndYn5kiA3HshRhDkytqx/kXyUZCLn9WHtZyGwJ7dbBCHuKnooX/5wT2uomEk
+         ET1c6GkusZuWcl68rCjw2AQiVOUUe0f2CVuh4VdzxTWzm7YFwrtlTEhUJ2DTnwOkKP9i
+         F5NSyCeVKXKaTmRyuKuYNHwGW4qUowFHppCGNLPb24H7lrQ2qN4c3C2oMSp4b7nMagSg
+         RujPlnPjAh/Sl75eq7tSsfB32oWRi3MStJaDiePPGCnD/MkPgdw1ArNLcPVDwr38zMf8
+         IBV3KqC0MEhY4ucQ7iGMDLxxTS7qZ20vFj6/jf8U6ZB7PBaKXhorw0Rg8DoxDCDa1F3Z
+         0AHA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vvB5yJNN;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=DSSr2u+D;
        spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
-        by gmr-mx.google.com with ESMTPS id d3si113165qtg.0.2020.06.11.06.06.18
+        by gmr-mx.google.com with ESMTPS id l137si231423pfd.3.2020.06.11.06.06.25
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Jun 2020 06:06:19 -0700 (PDT)
+        Thu, 11 Jun 2020 06:06:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 05BD6BAt107682;
-	Thu, 11 Jun 2020 08:06:11 -0500
-Received: from DLEE102.ent.ti.com (dlee102.ent.ti.com [157.170.170.32])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 05BD6BZa007067;
-	Thu, 11 Jun 2020 08:06:11 -0500
-Received: from DLEE114.ent.ti.com (157.170.170.25) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 05BD6GHj107704;
+	Thu, 11 Jun 2020 08:06:16 -0500
+Received: from DFLE105.ent.ti.com (dfle105.ent.ti.com [10.64.6.26])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 05BD6Gcp082019
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Thu, 11 Jun 2020 08:06:16 -0500
+Received: from DFLE114.ent.ti.com (10.64.6.35) by DFLE105.ent.ti.com
+ (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 11
- Jun 2020 08:06:11 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+ Jun 2020 08:06:15 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE114.ent.ti.com
+ (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 11 Jun 2020 08:06:11 -0500
+ Frontend Transport; Thu, 11 Jun 2020 08:06:15 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 05BD5PZA082585;
-	Thu, 11 Jun 2020 08:06:07 -0500
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 05BD5PZB082585;
+	Thu, 11 Jun 2020 08:06:11 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
         Kishon Vijay Abraham I <kishon@ti.com>,
@@ -125,9 +126,9 @@ To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
 CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
         <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
-Subject: [PATCH v2 09/14] PCI: cadence: Implement ->msi_map_irq() ops
-Date: Thu, 11 Jun 2020 18:35:20 +0530
-Message-ID: <20200611130525.22746-10-kishon@ti.com>
+Subject: [PATCH v2 10/14] PCI: endpoint: Add EP function driver to provide NTB functionality
+Date: Thu, 11 Jun 2020 18:35:21 +0530
+Message-ID: <20200611130525.22746-11-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200611130525.22746-1-kishon@ti.com>
 References: <20200611130525.22746-1-kishon@ti.com>
@@ -136,7 +137,7 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=vvB5yJNN;       spf=pass
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=DSSr2u+D;       spf=pass
  (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
@@ -154,140 +155,2236 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Implement ->msi_map_irq() ops in order to map physical address to
-MSI address and return MSI data.
+Add a new endpoint function driver to provide NTB functionality
+using multiple PCIe endpoint instances.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- .../pci/controller/cadence/pcie-cadence-ep.c  | 50 +++++++++++++++++++
- drivers/pci/endpoint/pci-epc-core.c           |  7 ++-
- include/linux/pci-epc.h                       |  2 +-
- 3 files changed, 54 insertions(+), 5 deletions(-)
+ drivers/pci/endpoint/functions/Kconfig       |   12 +
+ drivers/pci/endpoint/functions/Makefile      |    1 +
+ drivers/pci/endpoint/functions/pci-epf-ntb.c | 2151 ++++++++++++++++++
+ include/linux/pci-epf.h                      |    3 +
+ 4 files changed, 2167 insertions(+)
+ create mode 100644 drivers/pci/endpoint/functions/pci-epf-ntb.c
 
-diff --git a/drivers/pci/controller/cadence/pcie-cadence-ep.c b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-index e6588a0cd705..74d36fb9ea5d 100644
---- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
-+++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
-@@ -380,6 +380,54 @@ static int cdns_pcie_ep_send_msi_irq(struct cdns_pcie_ep *ep, u8 fn,
- 	return 0;
- }
+diff --git a/drivers/pci/endpoint/functions/Kconfig b/drivers/pci/endpoint/functions/Kconfig
+index 8820d0f7ec77..55ac7bb2d469 100644
+--- a/drivers/pci/endpoint/functions/Kconfig
++++ b/drivers/pci/endpoint/functions/Kconfig
+@@ -12,3 +12,15 @@ config PCI_EPF_TEST
+ 	   for PCI Endpoint.
  
-+static int cdns_pcie_ep_map_msi_irq(struct pci_epc *epc, u8 fn,
-+				    phys_addr_t addr, u8 interrupt_num,
-+				    u32 entry_size, u32 *msi_data)
+ 	   If in doubt, say "N" to disable Endpoint test driver.
++
++config PCI_EPF_NTB
++	tristate "PCI Endpoint NTB driver"
++	depends on PCI_ENDPOINT
++	help
++	   Select this configuration option to enable the NTB driver
++	   for PCI Endpoint. NTB driver implements NTB controller
++	   functionality using multiple PCIe endpoint instances. It
++	   can support NTB endpoint function devices created using
++	   device tree.
++
++	   If in doubt, say "N" to disable Endpoint NTB driver.
+diff --git a/drivers/pci/endpoint/functions/Makefile b/drivers/pci/endpoint/functions/Makefile
+index d6fafff080e2..96ab932a537a 100644
+--- a/drivers/pci/endpoint/functions/Makefile
++++ b/drivers/pci/endpoint/functions/Makefile
+@@ -4,3 +4,4 @@
+ #
+ 
+ obj-$(CONFIG_PCI_EPF_TEST)		+= pci-epf-test.o
++obj-$(CONFIG_PCI_EPF_NTB)		+= pci-epf-ntb.o
+diff --git a/drivers/pci/endpoint/functions/pci-epf-ntb.c b/drivers/pci/endpoint/functions/pci-epf-ntb.c
+new file mode 100644
+index 000000000000..f67a865de955
+--- /dev/null
++++ b/drivers/pci/endpoint/functions/pci-epf-ntb.c
+@@ -0,0 +1,2151 @@
++// SPDX-License-Identifier: GPL-2.0
++/**
++ * Endpoint Function Driver to implement Non-Transparent Bridge functionality
++ *
++ * Copyright (C) 2020 Texas Instruments
++ * Author: Kishon Vijay Abraham I <kishon@ti.com>
++ */
++
++/*
++ *The PCI NTB function driver configures the SoC with multiple PCIe Endpoint(EP)
++ *controller instances (see diagram below) in such a way that transaction from
++ *one EP controller is routed to the other EP controller. Once PCI NTB function
++ *driver configures the SoC with multiple EP instances, HOST1 and HOST2 can
++ *communicate with each other using SoC as a bridge.
++ *
++ *   +-------------+                                   +-------------+
++ *   |             |                                   |             |
++ *   |    HOST1    |                                   |    HOST2    |
++ *   |             |                                   |             |
++ *   +------^------+                                   +------^------+
++ *          |                                                 |
++ *          |                                                 |
++ *+---------|-------------------------------------------------|---------+
++ *|  +------v------+                                   +------v------+  |
++ *|  |             |                                   |             |  |
++ *|  |     EP      |                                   |     EP      |  |
++ *|  | CONTROLLER1 |                                   | CONTROLLER2 |  |
++ *|  |             <----------------------------------->             |  |
++ *|  |             |                                   |             |  |
++ *|  |             |                                   |             |  |
++ *|  |             |  SoC With Multiple EP Instances   |             |  |
++ *|  |             |  (Configured using NTB Function)  |             |  |
++ *|  +-------------+                                   +-------------+  |
++ *+---------------------------------------------------------------------+
++ */
++
++#include <linux/delay.h>
++#include <linux/io.h>
++#include <linux/module.h>
++#include <linux/slab.h>
++
++#include <linux/pci-epc.h>
++#include <linux/pci-epf.h>
++
++static struct workqueue_struct *kpcintb_workqueue;
++
++#define COMMAND_CONFIGURE_DOORBELL	1
++#define COMMAND_TEARDOWN_DOORBELL	2
++#define COMMAND_CONFIGURE_MW		3
++#define COMMAND_TEARDOWN_MW		4
++#define COMMAND_LINK_UP			5
++#define COMMAND_LINK_DOWN		6
++
++#define COMMAND_STATUS_OK		1
++#define COMMAND_STATUS_ERROR		2
++
++#define LINK_STATUS_UP			BIT(0)
++
++#define SPAD_COUNT			64
++#define DB_COUNT			4
++#define NTB_MW_OFFSET			2
++#define DB_COUNT_MASK			GENMASK(15, 0)
++#define MSIX_ENABLE			BIT(16)
++#define MAX_DB_COUNT			32
++#define MAX_MW				4
++
++enum epf_ntb_bar {
++	BAR_CONFIG,
++	BAR_PEER_SPAD,
++	BAR_DB_MW1,
++	BAR_MW2,
++	BAR_MW3,
++	BAR_MW4,
++};
++
++struct epf_ntb {
++	u32 num_mws;
++	u32 db_count;
++	u32 spad_count;
++	struct pci_epf *epf;
++	u64 mws_size[MAX_MW];
++	struct config_group group;
++	struct epf_ntb_epc *epc[2];
++	struct delayed_work cfs_work;
++};
++
++#define to_epf_ntb(epf_group) container_of((epf_group), struct epf_ntb, group)
++
++struct epf_ntb_epc {
++	u8 func_no;
++	bool linkup;
++	bool is_msix;
++	int msix_bar;
++	u32 spad_size;
++	struct pci_epc *epc;
++	struct epf_ntb *epf_ntb;
++	void __iomem *mw_addr[6];
++	size_t msix_table_offset;
++	struct epf_ntb_ctrl *reg;
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno epf_ntb_bar[6];
++	struct delayed_work cmd_handler;
++	enum pci_epc_interface_type type;
++	const struct pci_epc_features *epc_features;
++};
++
++struct epf_ntb_ctrl {
++	u32	command;
++	u32	argument;
++	u16	command_status;
++	u16	link_status;
++	u32	topology;
++	u64	addr;
++	u64	size;
++	u32	num_mws;
++	u32	mw1_offset;
++	u32	spad_offset;
++	u32	spad_count;
++	u32	db_entry_size;
++	u32	db_data[MAX_DB_COUNT];
++} __packed;
++
++static struct pci_epf_header epf_ntb_header = {
++	.vendorid	= PCI_ANY_ID,
++	.deviceid	= PCI_ANY_ID,
++	.baseclass_code	= PCI_BASE_CLASS_MEMORY,
++	.interrupt_pin	= PCI_INTERRUPT_INTA,
++};
++
++/**
++ * epf_ntb_link_up() - Raise link_up interrupt to both the hosts
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @link_up: true or false indicating Link is UP or Down
++ *
++ * Once NTB function in HOST1 and the NTB function in HOST2 invoke
++ * ntb_link_enable(), this NTB function driver will trigger a link event to
++ * the NTB client in both the hosts.
++ */
++static int epf_ntb_link_up(struct epf_ntb *ntb, bool link_up)
 +{
-+	struct cdns_pcie_ep *ep = epc_get_drvdata(epc);
-+	u32 cap = CDNS_PCIE_EP_FUNC_MSI_CAP_OFFSET;
-+	struct cdns_pcie *pcie = &ep->pcie;
-+	u16 flags, mme, data, data_mask;
-+	u8 msi_count;
-+	u64 pci_addr;
++	enum pci_epc_interface_type type;
++	enum pci_epc_irq_type irq_type;
++	struct epf_ntb_epc *ntb_epc;
++	struct epf_ntb_ctrl *ctrl;
++	bool is_msix;
++	u8 func_no;
 +	int ret;
-+	int i;
 +
-+	/* Check whether the MSI feature has been enabled by the PCI host. */
-+	flags = cdns_pcie_ep_fn_readw(pcie, fn, cap + PCI_MSI_FLAGS);
-+	if (!(flags & PCI_MSI_FLAGS_ENABLE))
-+		return -EINVAL;
-+
-+	/* Get the number of enabled MSIs */
-+	mme = (flags & PCI_MSI_FLAGS_QSIZE) >> 4;
-+	msi_count = 1 << mme;
-+	if (!interrupt_num || interrupt_num > msi_count)
-+		return -EINVAL;
-+
-+	/* Compute the data value to be written. */
-+	data_mask = msi_count - 1;
-+	data = cdns_pcie_ep_fn_readw(pcie, fn, cap + PCI_MSI_DATA_64);
-+	data = data & ~data_mask;
-+
-+	/* Get the PCI address where to write the data into. */
-+	pci_addr = cdns_pcie_ep_fn_readl(pcie, fn, cap + PCI_MSI_ADDRESS_HI);
-+	pci_addr <<= 32;
-+	pci_addr |= cdns_pcie_ep_fn_readl(pcie, fn, cap + PCI_MSI_ADDRESS_LO);
-+	pci_addr &= GENMASK_ULL(63, 2);
-+
-+	for (i = 0; i < interrupt_num; i++) {
-+		ret = cdns_pcie_ep_map_addr(epc, fn, addr, pci_addr,
-+					    entry_size);
-+		if (ret)
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ntb_epc = ntb->epc[type];
++		func_no = ntb_epc->func_no;
++		is_msix = ntb_epc->is_msix;
++		ctrl = ntb_epc->reg;
++		if (link_up)
++			ctrl->link_status |= LINK_STATUS_UP;
++		else
++			ctrl->link_status &= ~LINK_STATUS_UP;
++		irq_type = is_msix ? PCI_EPC_IRQ_MSIX : PCI_EPC_IRQ_MSI;
++		ret = pci_epc_raise_irq(ntb_epc->epc, func_no, irq_type,
++					1);
++		if (ret < 0) {
++			WARN(1, "%s intf: Failed to raise Link Up IRQ\n",
++			     pci_epc_interface_string(type));
 +			return ret;
-+		addr = addr + entry_size;
++		}
 +	}
-+
-+	*msi_data = data;
 +
 +	return 0;
 +}
 +
- static int cdns_pcie_ep_send_msix_irq(struct cdns_pcie_ep *ep, u8 fn,
- 				      u16 interrupt_num)
- {
-@@ -480,6 +528,7 @@ static const struct pci_epc_features cdns_pcie_epc_features = {
- 	.linkup_notifier = false,
- 	.msi_capable = true,
- 	.msix_capable = true,
-+	.align = 256,
- };
++/**
++ * epf_ntb_configure_mw() - Configure the Outbound Address Space for one host
++ *   to access the memory window of other host
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ * @mw: Index of the memory window (either 0, 1, 2 or 3)
++ *
++ *+-----------------+    +----->+----------------+-----------+-----------------+
++ *|       BAR0      |    |      |   Doorbell 1   +-----------> MSI|X ADDRESS 1 |
++ *+-----------------+    |      +----------------+           +-----------------+
++ *|       BAR1      |    |      |   Doorbell 2   +---------+ |                 |
++ *+-----------------+----+      +----------------+         | |                 |
++ *|       BAR2      |           |   Doorbell 3   +-------+ | +-----------------+
++ *+-----------------+----+      +----------------+       | +-> MSI|X ADDRESS 2 |
++ *|       BAR3      |    |      |   Doorbell 4   +-----+ |   +-----------------+
++ *+-----------------+    |      |----------------+     | |   |                 |
++ *|       BAR4      |    |      |                |     | |   +-----------------+
++ *+-----------------+    |      |      MW1       +---+ | +-->+ MSI|X ADDRESS 3||
++ *|       BAR5      |    |      |                |   | |     +-----------------+
++ *+-----------------+    +----->-----------------+   | |     |                 |
++ *  EP CONTROLLER 1             |                |   | |     +-----------------+
++ *                              |                |   | +---->+ MSI|X ADDRESS 4 |
++ *                              +----------------+   |       +-----------------+
++ *                     (A)       EP CONTROLLER 2     |       |                 |
++ *                                 (OB SPACE)        |       |                 |
++ *                                                   +------->      MW1        |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                   (B)     +-----------------+
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           +-----------------+
++ *                                                           PCI Address Space
++ *                                                           (Managed by HOST2)
++ *
++ * This function performs stage (B) in the above diagram (see MW1) i.e map OB
++ * address space of memory window to PCI address space.
++ *
++ * This operation requires 3 parameters
++ *  1) Address in the outbound address space
++ *  2) Address in the PCIe Address space
++ *  3) Size of the address region that is requested to be mapped
++ *
++ * The address in the outbound address space (for MW1, MW2, MW3 and MW4) is
++ * stored in epf_bar corresponding to BAR_DB_MW1 for MW1 and BAR_MW2, BAR_MW3
++ * BAR_MW4 for rest of the BARs of epf_ntb_epc that is connected to HOST1. This
++ * is populated in epf_ntb_alloc_peer_mem() in this driver.
++ *
++ * The address and size of the PCIe address region that has to be mapped would
++ * be provided by HOST2 in ctrl->addr and ctrl->size of epf_ntb_epc that is
++ * connected to HOST2.
++ *
++ * Please note Memory window1 (MW1) and Doorbell registers together will be
++ * mapped to a single BAR (BAR2) above for 32-bit BARs. The exact BAR that's
++ * used for Memory window (MW) can be obtained from epf_ntb_bar[BAR_DB_MW1],
++ * epf_ntb_bar[BAR_MW2], epf_ntb_bar[BAR_MW2], epf_ntb_bar[BAR_MW2].
++ */
++static int
++epf_ntb_configure_mw(struct epf_ntb *ntb, enum pci_epc_interface_type type,
++		     u32 mw)
++{
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	struct pci_epf_bar *peer_epf_bar;
++	enum pci_barno peer_barno;
++	struct epf_ntb_ctrl *ctrl;
++	phys_addr_t phys_addr;
++	struct pci_epc *epc;
++	u64 addr, size;
++	int ret = 0;
++	u8 func_no;
++
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[mw + NTB_MW_OFFSET];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++
++	phys_addr = peer_epf_bar->phys_addr;
++	ctrl = ntb_epc->reg;
++	addr = ctrl->addr;
++	size = ctrl->size;
++	if (mw + NTB_MW_OFFSET == BAR_DB_MW1)
++		phys_addr += ctrl->mw1_offset;
++
++	if (size > ntb->mws_size[mw]) {
++		WARN(1, "%s intf: MW: %d Req Sz:%llxx > Supported Sz:%llx\n",
++		     pci_epc_interface_string(type), mw, size,
++		     ntb->mws_size[mw]);
++		ret = -EINVAL;
++		goto err_invalid_size;
++	}
++
++	func_no = ntb_epc->func_no;
++
++	ret = pci_epc_map_addr(epc, func_no, phys_addr, addr, size);
++	WARN(ret < 0, "%s intf: Failed to map memory window %d address\n",
++	     pci_epc_interface_string(type), mw);
++
++err_invalid_size:
++
++	return ret;
++}
++
++/**
++ * epf_ntb_teardown_mw() - Teardown the configured OB ATU
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ * @mw: Index of the memory window (either 0, 1, 2 or 3)
++ *
++ * Teardown the configured OB ATU configured in epf_ntb_configure_mw() using
++ * pci_epc_unmap_addr()
++ */
++static void
++epf_ntb_teardown_mw(struct epf_ntb *ntb, enum pci_epc_interface_type type,
++		    u32 mw)
++{
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	struct pci_epf_bar *peer_epf_bar;
++	enum pci_barno peer_barno;
++	struct epf_ntb_ctrl *ctrl;
++	phys_addr_t phys_addr;
++	struct pci_epc *epc;
++	u8 func_no;
++
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[mw + NTB_MW_OFFSET];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++
++	phys_addr = peer_epf_bar->phys_addr;
++	ctrl = ntb_epc->reg;
++	if (mw + NTB_MW_OFFSET == BAR_DB_MW1)
++		phys_addr += ctrl->mw1_offset;
++	func_no = ntb_epc->func_no;
++
++	pci_epc_unmap_addr(epc, func_no, phys_addr);
++}
++
++/**
++ * epf_ntb_configure_msi() - Map OB address space to MSI address
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ * @db_count: Number of doorbell interrupts to map
++ *
++ *+-----------------+    +----->+----------------+-----------+-----------------+
++ *|       BAR0      |    |      |   Doorbell 1   +---+------->   MSI ADDRESS   |
++ *+-----------------+    |      +----------------+   |       +-----------------+
++ *|       BAR1      |    |      |   Doorbell 2   +---+       |                 |
++ *+-----------------+----+      +----------------+   |       |                 |
++ *|       BAR2      |           |   Doorbell 3   +---+       |                 |
++ *+-----------------+----+      +----------------+   |       |                 |
++ *|       BAR3      |    |      |   Doorbell 4   +---+       |                 |
++ *+-----------------+    |      |----------------+           |                 |
++ *|       BAR4      |    |      |                |           |                 |
++ *+-----------------+    |      |      MW1       |           |                 |
++ *|       BAR5      |    |      |                |           |                 |
++ *+-----------------+    +----->-----------------+           |                 |
++ *  EP CONTROLLER 1             |                |           |                 |
++ *                              |                |           |                 |
++ *                              +----------------+           +-----------------+
++ *                     (A)       EP CONTROLLER 2             |                 |
++ *                                 (OB SPACE)                |                 |
++ *                                                           |      MW1        |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                   (B)     +-----------------+
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           +-----------------+
++ *                                                           PCI Address Space
++ *                                                           (Managed by HOST2)
++ *
++ *
++ * This function performs stage (B) in the above diagram (see Doorbell 1,
++ * Doorbell 2, Doorbell 3, Doorbell 4) i.e map OB address space corresponding to
++ * doorbell to MSI address in PCI address space.
++ *
++ * This operation requires 3 parameters
++ *  1) Address reserved for doorbell in the outbound address space
++ *  2) MSI-X address in the PCIe Address space
++ *  3) Number of MSI-X interrupts that has to be configured
++ *
++ * The address in the outbound address space (for the Doorbell) is stored in
++ * epf_bar corresponding to BAR_DB_MW1 of epf_ntb_epc that is connected to
++ * HOST1. This is populated in epf_ntb_alloc_peer_mem() in this driver along
++ * with address for MW1.
++ *
++ * pci_epc_map_msi_irq() takes the MSI address from MSI capability register
++ * and maps the OB address (obtained in epf_ntb_alloc_peer_mem()) to the MSI
++ * address.
++ *
++ * epf_ntb_configure_msi() also stores the MSI data to raise each interrupt
++ * in db_data of the peer's control region. This helps the peer to raise
++ * doorbell of the other host by writing db_data to the BAR corresponding to
++ * BAR_DB_MW1.
++ */
++static int
++epf_ntb_configure_msi(struct epf_ntb *ntb, enum pci_epc_interface_type type,
++		      u16 db_count)
++{
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	struct pci_epf_bar *peer_epf_bar;
++	struct epf_ntb_ctrl *peer_ctrl;
++	u32 db_entry_size, db_data;
++	enum pci_barno peer_barno;
++	phys_addr_t phys_addr;
++	struct pci_epc *epc;
++	u8 func_no;
++	int ret, i;
++
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[BAR_DB_MW1];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++	peer_ctrl = peer_ntb_epc->reg;
++	db_entry_size = peer_ctrl->db_entry_size;
++
++	phys_addr = peer_epf_bar->phys_addr;
++	func_no = ntb_epc->func_no;
++
++	ret = pci_epc_map_msi_irq(epc, func_no, phys_addr, db_count,
++				  db_entry_size, &db_data);
++	if (ret < 0) {
++		WARN(1, "%s intf: Failed to map MSI IRQ\n",
++		     pci_epc_interface_string(type));
++		return ret;
++	}
++
++	for (i = 0; i < db_count; i++)
++		peer_ctrl->db_data[i] = db_data | i;
++
++	return 0;
++}
++
++/**
++ * epf_ntb_configure_msix() - Map OB address space to MSI-X address
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ * @db_count: Number of doorbell interrupts to map
++ *
++ *+-----------------+    +----->+----------------+-----------+-----------------+
++ *|       BAR0      |    |      |   Doorbell 1   +-----------> MSI-X ADDRESS 1 |
++ *+-----------------+    |      +----------------+           +-----------------+
++ *|       BAR1      |    |      |   Doorbell 2   +---------+ |                 |
++ *+-----------------+----+      +----------------+         | |                 |
++ *|       BAR2      |           |   Doorbell 3   +-------+ | +-----------------+
++ *+-----------------+----+      +----------------+       | +-> MSI-X ADDRESS 2 |
++ *|       BAR3      |    |      |   Doorbell 4   +-----+ |   +-----------------+
++ *+-----------------+    |      |----------------+     | |   |                 |
++ *|       BAR4      |    |      |                |     | |   +-----------------+
++ *+-----------------+    |      |      MW1       +     | +-->+ MSI-X ADDRESS 3||
++ *|       BAR5      |    |      |                |     |     +-----------------+
++ *+-----------------+    +----->-----------------+     |     |                 |
++ *  EP CONTROLLER 1             |                |     |     +-----------------+
++ *                              |                |     +---->+ MSI-X ADDRESS 4 |
++ *                              +----------------+           +-----------------+
++ *                     (A)       EP CONTROLLER 2             |                 |
++ *                                 (OB SPACE)                |                 |
++ *                                                           |      MW1        |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                   (B)     +-----------------+
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           +-----------------+
++ *                                                           PCI Address Space
++ *                                                           (Managed by HOST2)
++ *
++ * This function performs stage (B) in the above diagram (see Doorbell 1,
++ * Doorbell 2, Doorbell 3, Doorbell 4) i.e map OB address space corresponding to
++ * doorbell to MSI-X address in PCI address space.
++ *
++ * This operation requires 3 parameters
++ *  1) Address reserved for doorbell in the outbound address space
++ *  2) MSI-X address in the PCIe Address space
++ *  3) Number of MSI-X interrupts that has to be configured
++ *
++ * The address in the outbound address space (for the Doorbell) is stored in
++ * epf_bar corresponding to BAR_DB_MW1 of epf_ntb_epc that is connected to
++ * HOST1. This is populated in epf_ntb_alloc_peer_mem() in this driver along
++ * with address for MW1.
++ * The MSI-X address is in the MSI-X table of EP CONTROLLER 2 and
++ * the count of doorbell is in ctrl->argument of epf_ntb_epc that is connected
++ * to HOST2. MSI-X table is stored memory mapped to ntb_epc->msix_bar and the
++ * offset is in ntb_epc->msix_table_offset. From this epf_ntb_configure_msix()
++ * gets the MSI-X address and MSI-X data
++ *
++ * epf_ntb_configure_msix() also stores the MSI-X data to raise each interrupt
++ * in db_data of the peer's control region. This helps the peer to raise
++ * doorbell of the other host by writing db_data to the BAR corresponding to
++ * BAR_DB_MW1.
++ */
++static int epf_ntb_configure_msix(struct epf_ntb *ntb,
++				  enum pci_epc_interface_type type,
++				  u16 db_count)
++{
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	struct pci_epf_bar *peer_epf_bar, *epf_bar;
++	struct pci_epf_msix_tbl *msix_tbl;
++	struct epf_ntb_ctrl *peer_ctrl;
++	u32 db_entry_size, msg_data;
++	enum pci_barno peer_barno;
++	phys_addr_t phys_addr;
++	struct pci_epc *epc;
++	u64 msg_addr;
++	u8 func_no;
++	int ret, i;
++
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	epf_bar = &ntb_epc->epf_bar[ntb_epc->msix_bar];
++	msix_tbl = epf_bar->addr + ntb_epc->msix_table_offset;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[BAR_DB_MW1];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++	phys_addr = peer_epf_bar->phys_addr;
++	peer_ctrl = peer_ntb_epc->reg;
++
++	func_no = ntb_epc->func_no;
++	db_entry_size = peer_ctrl->db_entry_size;
++
++	for (i = 0; i < db_count; i++) {
++		msg_addr = msix_tbl[i].msg_addr;
++		msg_data = msix_tbl[i].msg_data;
++		ret = pci_epc_map_addr(epc, func_no, phys_addr, msg_addr,
++				       db_entry_size);
++		if (ret)
++			return ret;
++		phys_addr = phys_addr + db_entry_size;
++		peer_ctrl->db_data[i] = msg_data;
++	}
++	ntb_epc->is_msix = true;
++
++	return 0;
++}
++
++/**
++ * epf_ntb_configure_db() - Configure the Outbound Address Space for one host
++ *   to ring the doorbell of other host
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ * @db_count: Count of the number of doorbells that has to be configured
++ * @msix: Indicates whether MSI-X or MSI should be used
++ *
++ * Invokes epf_ntb_configure_msix() or epf_ntb_configure_msi() required for
++ * one HOST to ring the doorbell of other HOST.
++ */
++static int
++epf_ntb_configure_db(struct epf_ntb *ntb, enum pci_epc_interface_type type,
++		     u16 db_count, bool msix)
++{
++	int ret;
++
++	if (db_count > MAX_DB_COUNT)
++		return -EINVAL;
++
++	if (msix)
++		ret = epf_ntb_configure_msix(ntb, type, db_count);
++	else
++		ret = epf_ntb_configure_msi(ntb, type, db_count);
++
++	WARN(ret < 0, "%s intf: Failed to configure DB\n",
++	     pci_epc_interface_string(type));
++
++	return ret;
++}
++
++/**
++ * epf_ntb_teardown_db() - Unmap address in OB address space to MSI/MSI-X
++ *   address
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Invoke pci_epc_unmap_addr() to unmap OB address to MSI/MSI-X address.
++ */
++static void
++epf_ntb_teardown_db(struct epf_ntb *ntb, enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	struct pci_epf_bar *peer_epf_bar;
++	enum pci_barno peer_barno;
++	phys_addr_t phys_addr;
++	struct pci_epc *epc;
++	u8 func_no;
++
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[BAR_DB_MW1];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++	phys_addr = peer_epf_bar->phys_addr;
++	func_no = ntb_epc->func_no;
++
++	pci_epc_unmap_addr(epc, func_no, phys_addr);
++}
++
++/**
++ * epf_ntb_cmd_handler() - Handle commands provided by the NTB Host
++ * @work: work_struct for the two epf_ntb_epc (PRIMARY and SECONDARY)
++ *
++ * Workqueue function that gets invoked for the two epf_ntb_epc
++ * periodically (once every 5ms) to see if it has received any commands
++ * from NTB host. The host can send commands to configure doorbell or
++ * configure memory window or to update link status.
++ */
++static void epf_ntb_cmd_handler(struct work_struct *work)
++{
++	enum pci_epc_interface_type type;
++	struct epf_ntb_epc *ntb_epc;
++	struct epf_ntb_ctrl *ctrl;
++	u32 command, argument;
++	struct epf_ntb *ntb;
++	struct device *dev;
++	u16 db_count;
++	bool is_msix;
++	int ret;
++
++	ntb_epc = container_of(work, struct epf_ntb_epc, cmd_handler.work);
++	ctrl = ntb_epc->reg;
++	command = ctrl->command;
++	if (!command)
++		goto reset_handler;
++	argument = ctrl->argument;
++
++	ctrl->command = 0;
++	ctrl->argument = 0;
++
++	ctrl = ntb_epc->reg;
++	type = ntb_epc->type;
++	ntb = ntb_epc->epf_ntb;
++	dev = &ntb->epf->dev;
++
++	switch (command) {
++	case COMMAND_CONFIGURE_DOORBELL:
++		db_count = argument & DB_COUNT_MASK;
++		is_msix = argument & MSIX_ENABLE;
++		ret = epf_ntb_configure_db(ntb, type, db_count, is_msix);
++		if (ret < 0)
++			ctrl->command_status = COMMAND_STATUS_ERROR;
++		else
++			ctrl->command_status = COMMAND_STATUS_OK;
++		break;
++	case COMMAND_TEARDOWN_DOORBELL:
++		epf_ntb_teardown_db(ntb, type);
++		ctrl->command_status = COMMAND_STATUS_OK;
++		break;
++	case COMMAND_CONFIGURE_MW:
++		ret = epf_ntb_configure_mw(ntb, type, argument);
++		if (ret < 0)
++			ctrl->command_status = COMMAND_STATUS_ERROR;
++		else
++			ctrl->command_status = COMMAND_STATUS_OK;
++		break;
++	case COMMAND_TEARDOWN_MW:
++		epf_ntb_teardown_mw(ntb, type, argument);
++		ctrl->command_status = COMMAND_STATUS_OK;
++		break;
++	case COMMAND_LINK_UP:
++		ntb_epc->linkup = true;
++		if (ntb->epc[PRIMARY_INTERFACE]->linkup &&
++		    ntb->epc[SECONDARY_INTERFACE]->linkup) {
++			ret = epf_ntb_link_up(ntb, true);
++			if (ret < 0)
++				ctrl->command_status = COMMAND_STATUS_ERROR;
++			else
++				ctrl->command_status = COMMAND_STATUS_OK;
++			goto reset_handler;
++		}
++		ctrl->command_status = COMMAND_STATUS_OK;
++		break;
++	case COMMAND_LINK_DOWN:
++		ntb_epc->linkup = false;
++		ret = epf_ntb_link_up(ntb, false);
++		if (ret < 0)
++			ctrl->command_status = COMMAND_STATUS_ERROR;
++		else
++			ctrl->command_status = COMMAND_STATUS_OK;
++		break;
++	default:
++		dev_err(dev, "%s intf UNKNOWN command: %d\n",
++			pci_epc_interface_string(type), command);
++		break;
++	}
++
++reset_handler:
++	queue_delayed_work(kpcintb_workqueue, &ntb_epc->cmd_handler,
++			   msecs_to_jiffies(5));
++}
++
++/**
++ * epf_ntb_peer_spad_bar_clear() - Clears Peer Scratchpad BAR
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ *+-----------------+------->+------------------+        +-----------------+
++ *|       BAR0      |        |  CONFIG REGION   |        |       BAR0      |
++ *+-----------------+----+   +------------------+<-------+-----------------+
++ *|       BAR1      |    |   |SCRATCHPAD REGION |        |       BAR1      |
++ *+-----------------+    +-->+------------------+<-------+-----------------+
++ *|       BAR2      |            Local Memory            |       BAR2      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR3      |                                    |       BAR3      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR4      |                                    |       BAR4      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR5      |                                    |       BAR5      |
++ *+-----------------+                                    +-----------------+
++ *  EP CONTROLLER 1                                        EP CONTROLLER 2
++ *
++ * It clears BAR1 of EP CONTROLLER 2 which contains the HOST2's peer scratchpad
++ * region. While BAR1 is the default peer scratchpad BAR, an NTB could have
++ * other BARs for peer scratchpad (because of 64-bit BARs or reserved BARs).
++ * This function can get the exact BAR used for peer scratchpad from
++ * epf_ntb_bar[BAR_PEER_SPAD].
++ *
++ * Since HOST2's peer scratchpad is also HOST1's self scratchpad, this function
++ * gets the address of peer scratchpad from
++ * peer_ntb_epc->epf_ntb_bar[BAR_CONFIG]
++ */
++static void epf_ntb_peer_spad_bar_clear(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++	u8 func_no;
++
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++	barno = ntb_epc->epf_ntb_bar[BAR_PEER_SPAD];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	pci_epc_clear_bar(epc, func_no, epf_bar);
++}
++
++/**
++ * epf_ntb_peer_spad_bar_set() - Sets peer scratchpad BAR
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ *+-----------------+------->+------------------+        +-----------------+
++ *|       BAR0      |        |  CONFIG REGION   |        |       BAR0      |
++ *+-----------------+----+   +------------------+<-------+-----------------+
++ *|       BAR1      |    |   |SCRATCHPAD REGION |        |       BAR1      |
++ *+-----------------+    +-->+------------------+<-------+-----------------+
++ *|       BAR2      |            Local Memory            |       BAR2      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR3      |                                    |       BAR3      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR4      |                                    |       BAR4      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR5      |                                    |       BAR5      |
++ *+-----------------+                                    +-----------------+
++ *  EP CONTROLLER 1                                        EP CONTROLLER 2
++ *
++ * It sets BAR1 of EP CONTROLLER 2 which contains the HOST2's peer scratchpad
++ * region. While BAR1 is the default peer scratchpad BAR, an NTB could have
++ * other BARs for peer scratchpad (because of 64-bit BARs or reserved BARs).
++ * This function can get the exact BAR used for peer scratchpad from
++ * epf_ntb_bar[BAR_PEER_SPAD].
++ *
++ * Since HOST2's peer scratchpad is also HOST1's self scratchpad, this function
++ * gets the address of peer scratchpad from
++ * peer_ntb_epc->epf_ntb_bar[BAR_CONFIG]
++ */
++static int
++epf_ntb_peer_spad_bar_set(struct epf_ntb *ntb, enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	struct pci_epf_bar *peer_epf_bar, *epf_bar;
++	enum pci_barno peer_barno, barno;
++	u32 peer_spad_offset;
++	struct pci_epc *epc;
++	struct device *dev;
++	u8 func_no;
++	int ret;
++
++	dev = &ntb->epf->dev;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_barno = peer_ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	peer_epf_bar = &peer_ntb_epc->epf_bar[peer_barno];
++
++	ntb_epc = ntb->epc[type];
++	barno = ntb_epc->epf_ntb_bar[BAR_PEER_SPAD];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	func_no = ntb_epc->func_no;
++	epc = ntb_epc->epc;
++
++	peer_spad_offset = peer_ntb_epc->reg->spad_offset;
++	epf_bar->phys_addr = peer_epf_bar->phys_addr + peer_spad_offset;
++	epf_bar->size = peer_ntb_epc->spad_size;
++	epf_bar->barno = barno;
++	epf_bar->flags = PCI_BASE_ADDRESS_MEM_TYPE_32;
++
++	ret = pci_epc_set_bar(ntb_epc->epc, func_no, epf_bar);
++	if (ret) {
++		dev_err(dev, "%s intf: peer SPAD BAR set failed\n",
++			pci_epc_interface_string(type));
++		return ret;
++	}
++
++	return 0;
++}
++
++/**
++ * epf_ntb_config_sspad_bar_clear() - Clears Config + Self scratchpad BAR
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ *+-----------------+------->+------------------+        +-----------------+
++ *|       BAR0      |        |  CONFIG REGION   |        |       BAR0      |
++ *+-----------------+----+   +------------------+<-------+-----------------+
++ *|       BAR1      |    |   |SCRATCHPAD REGION |        |       BAR1      |
++ *+-----------------+    +-->+------------------+<-------+-----------------+
++ *|       BAR2      |            Local Memory            |       BAR2      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR3      |                                    |       BAR3      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR4      |                                    |       BAR4      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR5      |                                    |       BAR5      |
++ *+-----------------+                                    +-----------------+
++ *  EP CONTROLLER 1                                        EP CONTROLLER 2
++ *
++ * It clears BAR0 of EP CONTROLLER 1 which contains the HOST1's config and
++ * self scratchpad region (removes inbound ATU configuration). While BAR0 is
++ * the default self scratchpad BAR, an NTB could have other BARs for self
++ * scratchpad (because of reserved BARs). This function can get the exact BAR
++ * used for self scratchpad from epf_ntb_bar[BAR_CONFIG].
++ *
++ * Please note the self scratchpad region and config region is combined to
++ * a single region and mapped using the same BAR. Also note HOST2's peer
++ * scratchpad is HOST1's self scratchpad.
++ */
++static void epf_ntb_config_sspad_bar_clear(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++	u8 func_no;
++
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++	barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	pci_epc_clear_bar(epc, func_no, epf_bar);
++}
++
++/**
++ * epf_ntb_config_sspad_bar_set() - Sets Config + Self scratchpad BAR
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ *+-----------------+------->+------------------+        +-----------------+
++ *|       BAR0      |        |  CONFIG REGION   |        |       BAR0      |
++ *+-----------------+----+   +------------------+<-------+-----------------+
++ *|       BAR1      |    |   |SCRATCHPAD REGION |        |       BAR1      |
++ *+-----------------+    +-->+------------------+<-------+-----------------+
++ *|       BAR2      |            Local Memory            |       BAR2      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR3      |                                    |       BAR3      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR4      |                                    |       BAR4      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR5      |                                    |       BAR5      |
++ *+-----------------+                                    +-----------------+
++ *  EP CONTROLLER 1                                        EP CONTROLLER 2
++ *
++ * It maps BAR0 of EP CONTROLLER 1 which contains the HOST1's config and
++ * self scratchpad region. While BAR0 is the default self scratchpad BAR, an
++ * NTB could have other BARs for self scratchpad (because of reserved BARs).
++ * This function can get the exact BAR used for self scratchpad from
++ * epf_ntb_bar[BAR_CONFIG].
++ *
++ * Please note the self scratchpad region and config region is combined to
++ * a single region and mapped using the same BAR. Also note HOST2's peer
++ * scratchpad is HOST1's self scratchpad.
++ */
++static int epf_ntb_config_sspad_bar_set(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	enum pci_barno barno;
++	struct epf_ntb *ntb;
++	struct pci_epc *epc;
++	struct device *dev;
++	u8 func_no;
++	int ret;
++
++	ntb = ntb_epc->epf_ntb;
++	dev = &ntb->epf->dev;
++
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++	barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	epf_bar = &ntb_epc->epf_bar[barno];
++
++	ret = pci_epc_set_bar(epc, func_no, epf_bar);
++	if (ret) {
++		dev_err(dev, "%s inft: Config/Status/SPAD BAR set failed\n",
++			pci_epc_interface_string(ntb_epc->type));
++		return ret;
++	}
++
++	return 0;
++}
++
++/**
++ * epf_ntb_config_spad_bar_free() - Free the physical memory associated with
++ *   config + scratchpad region
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ *+-----------------+------->+------------------+        +-----------------+
++ *|       BAR0      |        |  CONFIG REGION   |        |       BAR0      |
++ *+-----------------+----+   +------------------+<-------+-----------------+
++ *|       BAR1      |    |   |SCRATCHPAD REGION |        |       BAR1      |
++ *+-----------------+    +-->+------------------+<-------+-----------------+
++ *|       BAR2      |            Local Memory            |       BAR2      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR3      |                                    |       BAR3      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR4      |                                    |       BAR4      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR5      |                                    |       BAR5      |
++ *+-----------------+                                    +-----------------+
++ *  EP CONTROLLER 1                                        EP CONTROLLER 2
++ *
++ * This function frees the Local Memory mentioned in the above diagram. After
++ * invoking this function, any of config + self scrathpad region of HOST1 or
++ * peer scratchpad region of HOST2 should not be accessed.
++ */
++static void epf_ntb_config_spad_bar_free(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct epf_ntb_epc *ntb_epc;
++	enum pci_barno barno;
++	struct pci_epf *epf;
++
++	epf = ntb->epf;
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ntb_epc = ntb->epc[type];
++		barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++		if (ntb_epc->reg)
++			pci_epf_free_space(epf, ntb_epc->reg, barno, type);
++	}
++}
++
++/**
++ * epf_ntb_config_spad_bar_alloc() - Allocate memory for config + scratchpad
++ *   region
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ *+-----------------+------->+------------------+        +-----------------+
++ *|       BAR0      |        |  CONFIG REGION   |        |       BAR0      |
++ *+-----------------+----+   +------------------+<-------+-----------------+
++ *|       BAR1      |    |   |SCRATCHPAD REGION |        |       BAR1      |
++ *+-----------------+    +-->+------------------+<-------+-----------------+
++ *|       BAR2      |            Local Memory            |       BAR2      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR3      |                                    |       BAR3      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR4      |                                    |       BAR4      |
++ *+-----------------+                                    +-----------------+
++ *|       BAR5      |                                    |       BAR5      |
++ *+-----------------+                                    +-----------------+
++ *  EP CONTROLLER 1                                        EP CONTROLLER 2
++ *
++ * This function allocates the Local Memory mentioned in the above diagram.
++ * The size of CONFIG REGION is sizeof(struct epf_ntb_ctrl) and size of
++ * SCRATCHPAD REGION is obtained from "spad-count" device tree property.
++ *
++ * The size of both config region and scratchpad region has to be aligned,
++ * since the scratchpad region will also be mapped as PEER SCRATCHPAD of
++ * other host using a separate BAR.
++ */
++static int
++epf_ntb_config_spad_bar_alloc(struct epf_ntb *ntb,
++			      enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *peer_epc_features, *epc_features;
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	size_t msix_table_size, pba_size, align;
++	enum pci_barno peer_barno, barno;
++	struct epf_ntb_ctrl *ctrl;
++	u32 spad_size, ctrl_size;
++	u64 size, peer_size;
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++	struct device *dev;
++	bool msix_capable;
++	u32 spad_count;
++	void *base;
++
++	epf = ntb->epf;
++	dev = &epf->dev;
++	ntb_epc = ntb->epc[type];
++	epc = ntb_epc->epc;
++
++	epc_features = ntb_epc->epc_features;
++	barno = ntb_epc->epf_ntb_bar[BAR_CONFIG];
++	size = epc_features->bar_fixed_size[barno];
++	align = epc_features->align;
++
++	peer_ntb_epc = ntb->epc[!type];
++	peer_epc_features = peer_ntb_epc->epc_features;
++	peer_barno = ntb_epc->epf_ntb_bar[BAR_PEER_SPAD];
++	peer_size = peer_epc_features->bar_fixed_size[barno];
++
++	/* Check if epc_features is populated incorrectly */
++	if ((!IS_ALIGNED(size, align)))
++		return -EINVAL;
++
++	spad_count = ntb->spad_count;
++
++	ctrl_size = sizeof(struct epf_ntb_ctrl);
++	spad_size = spad_count * 4;
++
++	msix_capable = epc_features->msix_capable;
++	if (msix_capable) {
++		msix_table_size = PCI_MSIX_ENTRY_SIZE * ntb->db_count;
++		ctrl_size = ALIGN(ctrl_size, 8);
++		ntb_epc->msix_table_offset = ctrl_size;
++		ntb_epc->msix_bar = barno;
++		/* Align to QWORD or 8 Bytes */
++		pba_size = ALIGN(DIV_ROUND_UP(ntb->db_count, 8), 8);
++		ctrl_size = ctrl_size + msix_table_size + pba_size;
++	}
++
++	if (!align) {
++		ctrl_size = roundup_pow_of_two(ctrl_size);
++		spad_size = roundup_pow_of_two(spad_size);
++	} else {
++		ctrl_size = ALIGN(ctrl_size, align);
++		spad_size = ALIGN(spad_size, align);
++	}
++
++	if (peer_size) {
++		if (peer_size < spad_size)
++			spad_count = peer_size / 4;
++		spad_size = peer_size;
++	}
++
++	/*
++	 * In order to make sure SPAD offset is aligned to its size,
++	 * expand control region size to the size of SPAD if SPAD size
++	 * is greater than control region size.
++	 */
++	if (spad_size > ctrl_size)
++		ctrl_size = spad_size;
++
++	if (!size)
++		size = ctrl_size + spad_size;
++	else if (size < ctrl_size + spad_size)
++		return -EINVAL;
++
++	base = pci_epf_alloc_space(epf, size, barno, align, type);
++	if (!base) {
++		dev_err(dev, "%s intf: Config/Status/SPAD alloc region fail\n",
++			pci_epc_interface_string(type));
++		return -ENOMEM;
++	}
++
++	ntb_epc->reg = base;
++
++	ctrl = ntb_epc->reg;
++	ctrl->spad_offset = ctrl_size;
++	ctrl->spad_count = spad_count;
++	ctrl->num_mws = ntb->num_mws;
++	ctrl->db_entry_size = align ? align : 4;
++	ntb_epc->spad_size = spad_size;
++
++	return 0;
++}
++
++/**
++ * epf_ntb_config_spad_bar_alloc_interface() - Allocate memory for config +
++ *   scratchpad region for each of PRIMARY and SECONDARY interface
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ * Wrapper for epf_ntb_config_spad_bar_alloc() which allocates memory for
++ * config + scratchpad region for a specific interface
++ */
++static int epf_ntb_config_spad_bar_alloc_interface(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct device *dev;
++	int ret;
++
++	dev = &ntb->epf->dev;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ret = epf_ntb_config_spad_bar_alloc(ntb, type);
++		if (ret) {
++			dev_err(dev, "%s intf: Config/SPAD BAR alloc failed\n",
++				pci_epc_interface_string(type));
++			return ret;
++		}
++	}
++
++	return 0;
++}
++
++/**
++ * epf_ntb_free_peer_mem() - Free's memory allocated in peers outbound address
++ *   space
++ * @ntb_epc: EPC associated with one of the HOST which holds peers outbound
++ *   address regions
++ *
++ *+-----------------+    +----->+----------------+-----------+-----------------+
++ *|       BAR0      |    |      |   Doorbell 1   +-----------> MSI|X ADDRESS 1 |
++ *+-----------------+    |      +----------------+           +-----------------+
++ *|       BAR1      |    |      |   Doorbell 2   +---------+ |                 |
++ *+-----------------+----+      +----------------+         | |                 |
++ *|       BAR2      |           |   Doorbell 3   +-------+ | +-----------------+
++ *+-----------------+----+      +----------------+       | +-> MSI|X ADDRESS 2 |
++ *|       BAR3      |    |      |   Doorbell 4   +-----+ |   +-----------------+
++ *+-----------------+    |      |----------------+     | |   |                 |
++ *|       BAR4      |    |      |                |     | |   +-----------------+
++ *+-----------------+    |      |      MW1       +---+ | +-->+ MSI|X ADDRESS 3||
++ *|       BAR5      |    |      |                |   | |     +-----------------+
++ *+-----------------+    +----->-----------------+   | |     |                 |
++ *  EP CONTROLLER 1             |                |   | |     +-----------------+
++ *                              |                |   | +---->+ MSI|X ADDRESS 4 |
++ *                              +----------------+   |       +-----------------+
++ *                     (A)       EP CONTROLLER 2     |       |                 |
++ *                                 (OB SPACE)        |       |                 |
++ *                                                   +------->      MW1        |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                   (B)     +-----------------+
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           +-----------------+
++ *                                                           PCI Address Space
++ *                                                           (Managed by HOST2)
++ *
++ * This function frees memory allocated in EP CONTROLLER 2 (OB SPACE) in the
++ * above diagram. It'll free Doorbell 1, Doorbell 2, Doorbell 3, Doorbell 4,
++ * MW1 (and MW2, MW3, MW4).
++ */
++static void epf_ntb_free_peer_mem(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	void __iomem *mw_addr;
++	phys_addr_t phys_addr;
++	enum epf_ntb_bar bar;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++	size_t size;
++
++	epc = ntb_epc->epc;
++
++	for (bar = BAR_DB_MW1; bar < BAR_MW4; bar++) {
++		barno = ntb_epc->epf_ntb_bar[bar];
++		mw_addr = ntb_epc->mw_addr[barno];
++		epf_bar = &ntb_epc->epf_bar[barno];
++		phys_addr = epf_bar->phys_addr;
++		size = epf_bar->size;
++		if (mw_addr) {
++			pci_epc_mem_free_addr(epc, phys_addr, mw_addr, size);
++			ntb_epc->mw_addr[barno] = NULL;
++		}
++	}
++}
++
++/**
++ * epf_ntb_db_mw_bar_clear() - Clears doorbell and memory BAR
++ * @ntb_epc: EPC associated with one of the HOST which holds peers outbound
++ *   address
++ *
++ *+-----------------+    +----->+----------------+-----------+-----------------+
++ *|       BAR0      |    |      |   Doorbell 1   +-----------> MSI|X ADDRESS 1 |
++ *+-----------------+    |      +----------------+           +-----------------+
++ *|       BAR1      |    |      |   Doorbell 2   +---------+ |                 |
++ *+-----------------+----+      +----------------+         | |                 |
++ *|       BAR2      |           |   Doorbell 3   +-------+ | +-----------------+
++ *+-----------------+----+      +----------------+       | +-> MSI|X ADDRESS 2 |
++ *|       BAR3      |    |      |   Doorbell 4   +-----+ |   +-----------------+
++ *+-----------------+    |      |----------------+     | |   |                 |
++ *|       BAR4      |    |      |                |     | |   +-----------------+
++ *+-----------------+    |      |      MW1       +---+ | +-->+ MSI|X ADDRESS 3||
++ *|       BAR5      |    |      |                |   | |     +-----------------+
++ *+-----------------+    +----->-----------------+   | |     |                 |
++ *  EP CONTROLLER 1             |                |   | |     +-----------------+
++ *                              |                |   | +---->+ MSI|X ADDRESS 4 |
++ *                              +----------------+   |       +-----------------+
++ *                     (A)       EP CONTROLLER 2     |       |                 |
++ *                                 (OB SPACE)        |       |                 |
++ *                                                   +------->      MW1        |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                   (B)     +-----------------+
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           +-----------------+
++ *                                                           PCI Address Space
++ *                                                           (Managed by HOST2)
++ *
++ * This function clears doorbell and memory BARs (remove inbound ATU
++ * configuration). In the above diagram it clears BAR2 TO BAR5 of EP
++ * CONTROLLER 1 (Doorbell BAR, MW1 BAR, MW2 BAR, MW3 BAR and MW4 BAR).
++ */
++static void epf_ntb_db_mw_bar_clear(struct epf_ntb_epc *ntb_epc)
++{
++	struct pci_epf_bar *epf_bar;
++	enum epf_ntb_bar bar;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++	u8 func_no;
++
++	epc = ntb_epc->epc;
++
++	func_no = ntb_epc->func_no;
++
++	for (bar = BAR_DB_MW1; bar < BAR_MW4; bar++) {
++		barno = ntb_epc->epf_ntb_bar[bar];
++		epf_bar = &ntb_epc->epf_bar[barno];
++		pci_epc_clear_bar(epc, func_no, epf_bar);
++	}
++}
++
++/**
++ * epf_ntb_db_mw_bar_cleanup() - Clears doorbell/memory BAR and free memory
++ *   allocated in peers outbound address space
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * This function is a wrapper for epf_ntb_db_mw_bar_clear() which clears
++ * HOST1's BAR and epf_ntb_free_peer_mem() which frees up HOST2 outbound
++ * memory.
++ */
++static void epf_ntb_db_mw_bar_cleanup(struct epf_ntb *ntb,
++				      enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++
++	ntb_epc = ntb->epc[type];
++	peer_ntb_epc = ntb->epc[!type];
++
++	epf_ntb_db_mw_bar_clear(ntb_epc);
++	epf_ntb_free_peer_mem(peer_ntb_epc);
++}
++
++/**
++ * epf_ntb_configure_interrupt() - Configure MSI/MSI-X capaiblity
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Configures MSI/MSI-X capability for each interface with number of
++ * interrupts equal to "db-count" device tree parameter.
++ */
++static int epf_ntb_configure_interrupt(struct epf_ntb *ntb,
++				       enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	bool msix_capable, msi_capable;
++	struct epf_ntb_epc *ntb_epc;
++	struct pci_epc *epc;
++	struct device *dev;
++	u32 db_count;
++	u8 func_no;
++	int ret;
++
++	ntb_epc = ntb->epc[type];
++	dev = &ntb->epf->dev;
++
++	epc_features = ntb_epc->epc_features;
++	msix_capable = epc_features->msix_capable;
++	msi_capable = epc_features->msi_capable;
++
++	if (!(msix_capable || msi_capable)) {
++		dev_err(dev, "MSI or MSI-X is required for doorbell\n");
++		return -EINVAL;
++	}
++
++	func_no = ntb_epc->func_no;
++
++	db_count = ntb->db_count;
++	if (db_count > MAX_DB_COUNT) {
++		dev_err(dev, "DB count cannot be more than %d\n", MAX_DB_COUNT);
++		return -EINVAL;
++	}
++
++	ntb->db_count = db_count;
++	epc = ntb_epc->epc;
++
++	if (msi_capable) {
++		ret = pci_epc_set_msi(epc, func_no, db_count);
++		if (ret) {
++			dev_err(dev, "%s intf: MSI configuration failed\n",
++				pci_epc_interface_string(type));
++			return ret;
++		}
++	}
++
++	if (msix_capable) {
++		ret = pci_epc_set_msix(epc, func_no, db_count,
++				       ntb_epc->msix_bar,
++				       ntb_epc->msix_table_offset);
++		if (ret) {
++			dev_err(dev, "MSI configuration failed\n");
++			return ret;
++		}
++	}
++
++	return 0;
++}
++
++/**
++ * epf_ntb_alloc_peer_mem() - Allocate memory in peers outbound address space
++ * @ntb_epc: EPC associated with one of the HOST whose BAR holds peers outbound
++ *   address
++ * @bar: BAR of @ntb_epc in for which memory has to be allocated (could be
++ *   BAR_DB_MW1, BAR_MW2, BAR_MW3, BAR_MW4)
++ * @peer_ntb_epc: EPC associated with HOST whose outbound address space is
++ *   used by @ntb_epc
++ * @size: Size of the address region that has to be allocated in peers OB SPACE
++ *
++ *
++ *+-----------------+    +----->+----------------+-----------+-----------------+
++ *|       BAR0      |    |      |   Doorbell 1   +-----------> MSI|X ADDRESS 1 |
++ *+-----------------+    |      +----------------+           +-----------------+
++ *|       BAR1      |    |      |   Doorbell 2   +---------+ |                 |
++ *+-----------------+----+      +----------------+         | |                 |
++ *|       BAR2      |           |   Doorbell 3   +-------+ | +-----------------+
++ *+-----------------+----+      +----------------+       | +-> MSI|X ADDRESS 2 |
++ *|       BAR3      |    |      |   Doorbell 4   +-----+ |   +-----------------+
++ *+-----------------+    |      |----------------+     | |   |                 |
++ *|       BAR4      |    |      |                |     | |   +-----------------+
++ *+-----------------+    |      |      MW1       +---+ | +-->+ MSI|X ADDRESS 3||
++ *|       BAR5      |    |      |                |   | |     +-----------------+
++ *+-----------------+    +----->-----------------+   | |     |                 |
++ *  EP CONTROLLER 1             |                |   | |     +-----------------+
++ *                              |                |   | +---->+ MSI|X ADDRESS 4 |
++ *                              +----------------+   |       +-----------------+
++ *                     (A)       EP CONTROLLER 2     |       |                 |
++ *                                 (OB SPACE)        |       |                 |
++ *                                                   +------->      MW1        |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                   (B)     +-----------------+
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           |                 |
++ *                                                           +-----------------+
++ *                                                           PCI Address Space
++ *                                                           (Managed by HOST2)
++ *
++ * This function allocates memory in OB space of EP CONTROLLER 2 in the
++ * above diagram. It'll allocate for Doorbell 1, Doorbell 2, Doorbell 3,
++ * Doorbell 4, MW1 (and MW2, MW3, MW4).
++ */
++static int
++epf_ntb_alloc_peer_mem(struct device *dev, struct epf_ntb_epc *ntb_epc,
++		       enum epf_ntb_bar bar, struct epf_ntb_epc *peer_ntb_epc,
++		       size_t size)
++{
++	const struct pci_epc_features *epc_features;
++	struct pci_epf_bar *epf_bar;
++	struct pci_epc *peer_epc;
++	phys_addr_t phys_addr;
++	void __iomem *mw_addr;
++	enum pci_barno barno;
++	size_t align;
++
++	epc_features = ntb_epc->epc_features;
++	align = epc_features->align;
++
++	if (size < 128)
++		size = 128;
++
++	if (align)
++		size = ALIGN(size, align);
++	else
++		size = roundup_pow_of_two(size);
++
++	peer_epc = peer_ntb_epc->epc;
++	mw_addr = pci_epc_mem_alloc_addr(peer_epc, &phys_addr, size);
++	if (!mw_addr) {
++		dev_err(dev, "%s intf: Failed to allocate OB address\n",
++			pci_epc_interface_string(peer_ntb_epc->type));
++		return -ENOMEM;
++	}
++
++	barno = ntb_epc->epf_ntb_bar[bar];
++	epf_bar = &ntb_epc->epf_bar[barno];
++	ntb_epc->mw_addr[barno] = mw_addr;
++
++	epf_bar->phys_addr = phys_addr;
++	epf_bar->size = size;
++	epf_bar->barno = barno;
++	epf_bar->flags = PCI_BASE_ADDRESS_MEM_TYPE_32;
++
++	return 0;
++}
++
++/**
++ * epf_ntb_db_mw_bar_init() - Configure Doorbell and Memory window BARs
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Wrapper for epf_ntb_alloc_peer_mem() and pci_epc_set_bar() that allocates
++ * memory in OB address space of HOST2 and configures BAR of HOST1
++ */
++static int epf_ntb_db_mw_bar_init(struct epf_ntb *ntb,
++				  enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	struct epf_ntb_epc *peer_ntb_epc, *ntb_epc;
++	struct pci_epf_bar *epf_bar;
++	struct epf_ntb_ctrl *ctrl;
++	u32 num_mws, db_count;
++	enum epf_ntb_bar bar;
++	enum pci_barno barno;
++	struct pci_epc *epc;
++	struct device *dev;
++	size_t align;
++	int ret, i;
++	u8 func_no;
++	u64 size;
++
++	ntb_epc = ntb->epc[type];
++	peer_ntb_epc = ntb->epc[!type];
++
++	dev = &ntb->epf->dev;
++	epc_features = ntb_epc->epc_features;
++	align = epc_features->align;
++	func_no = ntb_epc->func_no;
++	epc = ntb_epc->epc;
++	num_mws = ntb->num_mws;
++	db_count = ntb->db_count;
++
++	for (bar = BAR_DB_MW1, i = 0; i < num_mws; bar++, i++) {
++		if (bar == BAR_DB_MW1) {
++			align = align ? align : 4;
++			size = db_count * align;
++			size = ALIGN(size, ntb->mws_size[i]);
++			ctrl = ntb_epc->reg;
++			ctrl->mw1_offset = size;
++			size += ntb->mws_size[i];
++		} else {
++			size = ntb->mws_size[i];
++		}
++
++		ret = epf_ntb_alloc_peer_mem(dev, ntb_epc, bar,
++					     peer_ntb_epc, size);
++		if (ret)
++			goto err_alloc_peer_mem;
++
++		barno = ntb_epc->epf_ntb_bar[bar];
++		epf_bar = &ntb_epc->epf_bar[barno];
++
++		ret = pci_epc_set_bar(epc, func_no, epf_bar);
++		if (ret) {
++			dev_err(dev, "%s intf: DoorBell BAR set failed\n",
++				pci_epc_interface_string(type));
++			goto err_alloc_peer_mem;
++		}
++	}
++
++	return 0;
++
++err_alloc_peer_mem:
++	epf_ntb_db_mw_bar_cleanup(ntb, type);
++
++	return ret;
++}
++
++/**
++ * epf_ntb_epc_destroy_interface() - Cleanup NTB EPC interface
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Unbind NTB function device from EPC and Relinquish reference to pci_epc
++ * for each of the interface.
++ */
++static void epf_ntb_epc_destroy_interface(struct epf_ntb *ntb,
++					  enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *ntb_epc;
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++
++	if (type < 0)
++		return;
++
++	epf = ntb->epf;
++	ntb_epc = ntb->epc[type];
++	if (!ntb_epc)
++		return;
++	epc = ntb_epc->epc;
++	pci_epc_remove_epf(epc, epf, type);
++	pci_epc_put(epc);
++}
++
++/**
++ * epf_ntb_epc_destroy() - Cleanup NTB EPC interface
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ * Wrapper for epf_ntb_epc_destroy_interface() to cleanup all the NTB interfaces
++ */
++static void epf_ntb_epc_destroy(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++)
++		epf_ntb_epc_destroy_interface(ntb, type);
++}
++
++/**
++ * epf_ntb_epc_create_interface() - Create and initialize NTB EPC interface
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @epc: struct pci_epc to which a particular NTB interface should be associated
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Allocate memory for NTB EPC interface and initialize it.
++ */
++static int
++epf_ntb_epc_create_interface(struct epf_ntb *ntb, struct pci_epc *epc,
++			     enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	struct pci_epf_bar *epf_bar;
++	struct epf_ntb_epc *ntb_epc;
++	struct pci_epf *epf;
++	struct device *dev;
++	u8 func_no;
++
++	dev = &ntb->epf->dev;
++
++	ntb_epc = devm_kzalloc(dev, sizeof(*ntb_epc), GFP_KERNEL);
++	if (!ntb_epc)
++		return -ENOMEM;
++
++	epf = ntb->epf;
++	if (type == PRIMARY_INTERFACE) {
++		func_no = epf->func_no;
++		epf_bar = epf->bar;
++	} else {
++		func_no = epf->sec_epc_func_no;
++		epf_bar = epf->sec_epc_bar;
++	}
++
++	ntb_epc->linkup = false;
++	ntb_epc->epc = epc;
++	ntb_epc->func_no = func_no;
++	ntb_epc->type = type;
++	ntb_epc->epf_bar = epf_bar;
++	ntb_epc->epf_ntb = ntb;
++
++	epc_features = pci_epc_get_features(epc, func_no);
++	if (!epc_features)
++		return -EINVAL;
++	ntb_epc->epc_features = epc_features;
++
++	ntb->epc[type] = ntb_epc;
++
++	return 0;
++}
++
++/**
++ * epf_ntb_epc_create() - Create and initialize NTB EPC interface
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ * Get a reference to EPC device and bind NTB function device to that EPC
++ * for each of the interface. It is also a wrapper to
++ * epf_ntb_epc_create_interface() to allocate memory for NTB EPC interface
++ * and initialize it
++ */
++static int epf_ntb_epc_create(struct epf_ntb *ntb)
++{
++	struct pci_epf *epf;
++	struct device *dev;
++	int ret;
++
++	epf = ntb->epf;
++	dev = &epf->dev;
++
++	ret = epf_ntb_epc_create_interface(ntb, epf->epc, PRIMARY_INTERFACE);
++	if (ret) {
++		dev_err(dev, "PRIMARY intf: Fail to create NTB EPC\n");
++		return ret;
++	}
++
++	ret = epf_ntb_epc_create_interface(ntb, epf->sec_epc,
++					   SECONDARY_INTERFACE);
++	if (ret) {
++		dev_err(dev, "SECONDARY intf: Fail to create NTB EPC\n");
++		goto err_epc_create;
++	}
++
++	return 0;
++
++err_epc_create:
++	epf_ntb_epc_destroy_interface(ntb, PRIMARY_INTERFACE);
++
++	return ret;
++}
++
++/**
++ * epf_ntb_init_epc_bar_interface() - Identify BARs to be used for each of
++ *   the NTB constructs (scratchpad region, doorbell, memorywindow)
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Identify the free BAR's to be used for each of BAR_CONFIG, BAR_PEER_SPAD,
++ * BAR_DB_MW1, BAR_MW2, BAR_MW3 and BAR_MW4.
++ */
++static int epf_ntb_init_epc_bar_interface(struct epf_ntb *ntb,
++					  enum pci_epc_interface_type type)
++{
++	const struct pci_epc_features *epc_features;
++	struct epf_ntb_epc *ntb_epc;
++	enum pci_barno barno;
++	enum epf_ntb_bar bar;
++	struct device *dev;
++	u32 num_mws;
++	int i;
++
++	barno = BAR_0;
++	ntb_epc = ntb->epc[type];
++	num_mws = ntb->num_mws;
++	dev = &ntb->epf->dev;
++	epc_features = ntb_epc->epc_features;
++
++	/* These are required BARs which are mandatory for NTB functionality */
++	for (bar = BAR_CONFIG; bar <= BAR_DB_MW1; bar++, barno++) {
++		barno = pci_epc_get_next_free_bar(epc_features, barno);
++		if (barno < 0) {
++			dev_err(dev, "%s intf: Fail to get NTB function BAR\n",
++				pci_epc_interface_string(type));
++			return barno;
++		}
++		ntb_epc->epf_ntb_bar[bar] = barno;
++	}
++
++	/* These are optional BARs which doesn't impact NTB functionality */
++	for (bar = BAR_MW2, i = 1; i < num_mws; bar++, barno++, i++) {
++		barno = pci_epc_get_next_free_bar(epc_features, barno);
++		if (barno < 0) {
++			ntb->num_mws = i;
++			dev_dbg(dev, "BAR not available for > MW%d\n", i + 1);
++		}
++		ntb_epc->epf_ntb_bar[bar] = barno;
++	}
++
++	return 0;
++}
++
++/**
++ * epf_ntb_init_epc_bar() - Identify BARs to be used for each of the NTB
++ * constructs (scratchpad region, doorbell, memorywindow)
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Wrapper to epf_ntb_init_epc_bar_interface() to identify the free BAR's
++ * to be used for each of BAR_CONFIG, BAR_PEER_SPAD, BAR_DB_MW1, BAR_MW2,
++ * BAR_MW3 and BAR_MW4 for all the interfaces.
++ */
++static int epf_ntb_init_epc_bar(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct device *dev;
++	int ret;
++
++	dev = &ntb->epf->dev;
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ret = epf_ntb_init_epc_bar_interface(ntb, type);
++		if (ret) {
++			dev_err(dev, "Fail to init EPC bar for %s interface\n",
++				pci_epc_interface_string(type));
++			return ret;
++		}
++	}
++
++	return 0;
++}
++
++/**
++ * epf_ntb_epc_init_interface() - Initialize NTB interface
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Wrapper to initialize a particular EPC interface and start the workqueue
++ * to check for commands from host. This function will write to the
++ * EP controller HW for configuring it.
++ */
++static int epf_ntb_epc_init_interface(struct epf_ntb *ntb,
++				      enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *ntb_epc;
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++	struct device *dev;
++	u8 func_no;
++	int ret;
++
++	ntb_epc = ntb->epc[type];
++	epf = ntb->epf;
++	dev = &epf->dev;
++	epc = ntb_epc->epc;
++	func_no = ntb_epc->func_no;
++
++	ret = epf_ntb_config_sspad_bar_set(ntb->epc[type]);
++	if (ret) {
++		dev_err(dev, "%s intf: Config/self SPAD BAR init failed\n",
++			pci_epc_interface_string(type));
++		return ret;
++	}
++
++	ret = epf_ntb_peer_spad_bar_set(ntb, type);
++	if (ret) {
++		dev_err(dev, "%s intf: Peer SPAD BAR init failed\n",
++			pci_epc_interface_string(type));
++		goto err_peer_spad_bar_init;
++	}
++
++	ret = epf_ntb_configure_interrupt(ntb, type);
++	if (ret) {
++		dev_err(dev, "%s intf: Interrupt configuration failed\n",
++			pci_epc_interface_string(type));
++		goto err_peer_spad_bar_init;
++	}
++
++	ret = epf_ntb_db_mw_bar_init(ntb, type);
++	if (ret) {
++		dev_err(dev, "%s intf: DB/MW BAR init failed\n",
++			pci_epc_interface_string(type));
++		goto err_db_mw_bar_init;
++	}
++
++	ret = pci_epc_write_header(epc, func_no, epf->header);
++	if (ret) {
++		dev_err(dev, "%s intf: Configuration header write failed\n",
++			pci_epc_interface_string(type));
++		goto err_write_header;
++	}
++
++	INIT_DELAYED_WORK(&ntb->epc[type]->cmd_handler, epf_ntb_cmd_handler);
++	queue_work(kpcintb_workqueue, &ntb->epc[type]->cmd_handler.work);
++
++	return 0;
++
++err_write_header:
++	epf_ntb_db_mw_bar_cleanup(ntb, type);
++
++err_db_mw_bar_init:
++	epf_ntb_peer_spad_bar_clear(ntb->epc[type]);
++
++err_peer_spad_bar_init:
++	epf_ntb_config_sspad_bar_clear(ntb->epc[type]);
++
++	return ret;
++}
++
++/**
++ * epf_ntb_epc_cleanup_interface() - Cleanup NTB interface
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @type: PRIMARY interface or SECONDARY interface
++ *
++ * Wrapper to cleanup a particular NTB interface.
++ */
++static void epf_ntb_epc_cleanup_interface(struct epf_ntb *ntb,
++					  enum pci_epc_interface_type type)
++{
++	struct epf_ntb_epc *ntb_epc;
++
++	if (type < 0)
++		return;
++
++	ntb_epc = ntb->epc[type];
++	cancel_delayed_work(&ntb_epc->cmd_handler);
++	epf_ntb_db_mw_bar_cleanup(ntb, type);
++	epf_ntb_peer_spad_bar_clear(ntb_epc);
++	epf_ntb_config_sspad_bar_clear(ntb_epc);
++}
++
++/**
++ * epf_ntb_epc_cleanup() - Cleanup all NTB interfaces
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ * Wrapper to cleanup all NTB interfaces.
++ */
++static void epf_ntb_epc_cleanup(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++)
++		epf_ntb_epc_cleanup_interface(ntb, type);
++}
++
++/**
++ * epf_ntb_epc_init() - Initialize all NTB interfaces
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ *
++ * Wrapper to initialize all NTB interface and start the workqueue
++ * to check for commands from host.
++ */
++static int epf_ntb_epc_init(struct epf_ntb *ntb)
++{
++	enum pci_epc_interface_type type;
++	struct device *dev;
++	int ret;
++
++	dev = &ntb->epf->dev;
++
++	for (type = PRIMARY_INTERFACE; type <= SECONDARY_INTERFACE; type++) {
++		ret = epf_ntb_epc_init_interface(ntb, type);
++		if (ret) {
++			dev_err(dev, "%s intf: Failed to initialize\n",
++				pci_epc_interface_string(type));
++			goto err_init_type;
++		}
++	}
++
++	return 0;
++
++err_init_type:
++	epf_ntb_epc_cleanup_interface(ntb, type - 1);
++
++	return ret;
++}
++
++/**
++ * epf_ntb_bind() - Invoked when a EPC is bound to NTB EPF device
++ * @epf: NTB endpoint function device
++ *
++ * This is invoked when a primary interface or secondary interface is
++ * bound to EPC device. This function will complete only when EPC is bound
++ * to both the interfaces. This initializes both the endpoint controllers
++ * associated with NTB function device.
++ */
++static int epf_ntb_bind(struct pci_epf *epf)
++{
++	struct epf_ntb *ntb = epf_get_drvdata(epf);
++	struct device *dev = &epf->dev;
++	int ret;
++
++	if (!epf->epc) {
++		dev_dbg(dev, "PRIMARY EPC interface not yet bound\n");
++		return 0;
++	}
++
++	if (!epf->sec_epc) {
++		dev_dbg(dev, "SECONDARY EPC interface not yet bound\n");
++		return 0;
++	}
++
++	ret = epf_ntb_epc_create(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to create NTB EPC\n");
++		return ret;
++	}
++
++	ret = epf_ntb_init_epc_bar(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to create NTB EPC\n");
++		goto err_bar_init;
++	}
++
++	ret = epf_ntb_config_spad_bar_alloc_interface(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to allocate BAR memory\n");
++		goto err_bar_alloc;
++	}
++
++	ret = epf_ntb_epc_init(ntb);
++	if (ret) {
++		dev_err(dev, "Failed to initialize EPC\n");
++		goto err_bar_alloc;
++	}
++
++	epf_set_drvdata(epf, ntb);
++
++	return 0;
++
++err_bar_alloc:
++	epf_ntb_config_spad_bar_free(ntb);
++
++err_bar_init:
++	epf_ntb_epc_destroy(ntb);
++
++	return ret;
++}
++
++/**
++ * epf_ntb_unbind() - Cleanup the initialization from epf_ntb_bind()
++ * @epf: NTB endpoint function device
++ *
++ * Cleanup the initialization from epf_ntb_bind()
++ */
++static void epf_ntb_unbind(struct pci_epf *epf)
++{
++	struct epf_ntb *ntb = epf_get_drvdata(epf);
++
++	epf_ntb_epc_cleanup(ntb);
++	epf_ntb_config_spad_bar_free(ntb);
++	epf_ntb_epc_destroy(ntb);
++}
++
++#define EPF_NTB_R(_name)						\
++static ssize_t epf_ntb_##_name##_show(struct config_item *item,		\
++				      char *page)			\
++{									\
++	struct config_group *group = to_config_group(item);		\
++	struct epf_ntb *ntb = to_epf_ntb(group);			\
++									\
++	return sprintf(page, "%d\n", ntb->_name);			\
++}
++
++#define EPF_NTB_W(_name)						\
++static ssize_t epf_ntb_##_name##_store(struct config_item *item,	\
++				       const char *page, size_t len)	\
++{									\
++	struct config_group *group = to_config_group(item);		\
++	struct epf_ntb *ntb = to_epf_ntb(group);			\
++	u32 val;							\
++	int ret;							\
++									\
++	ret = kstrtou32(page, 0, &val);					\
++	if (ret)							\
++		return ret;						\
++									\
++	ntb->_name = val;						\
++									\
++	return len;							\
++}
++
++#define EPF_NTB_MW_R(_name)						\
++static ssize_t epf_ntb_##_name##_show(struct config_item *item,		\
++				      char *page)			\
++{									\
++	struct config_group *group = to_config_group(item);		\
++	struct epf_ntb *ntb = to_epf_ntb(group);			\
++	int win_no;							\
++									\
++	sscanf(#_name, "mw%d", &win_no);				\
++									\
++	return sprintf(page, "%lld\n", ntb->mws_size[win_no - 1]);	\
++}
++
++#define EPF_NTB_MW_W(_name)						\
++static ssize_t epf_ntb_##_name##_store(struct config_item *item,	\
++				       const char *page, size_t len)	\
++{									\
++	struct config_group *group = to_config_group(item);		\
++	struct epf_ntb *ntb = to_epf_ntb(group);			\
++	struct device *dev = &ntb->epf->dev;				\
++	int win_no;							\
++	u64 val;							\
++	int ret;							\
++									\
++	ret = kstrtou64(page, 0, &val);					\
++	if (ret)							\
++		return ret;						\
++									\
++	if (sscanf(#_name, "mw%d", &win_no) != 1)			\
++		return -EINVAL;						\
++									\
++	if (ntb->num_mws < win_no) {					\
++		dev_err(dev, "Invalid num_nws: %d value\n", ntb->num_mws); \
++		return -EINVAL;						\
++	}								\
++									\
++	ntb->mws_size[win_no - 1] = val;				\
++									\
++	return len;							\
++}
++
++static ssize_t epf_ntb_num_mws_store(struct config_item *item,
++				     const char *page, size_t len)
++{
++	struct config_group *group = to_config_group(item);
++	struct epf_ntb *ntb = to_epf_ntb(group);
++	u32 val;
++	int ret;
++
++	ret = kstrtou32(page, 0, &val);
++	if (ret)
++		return ret;
++
++	if (val > MAX_MW)
++		return -EINVAL;
++
++	ntb->num_mws = val;
++
++	return len;
++}
++
++EPF_NTB_R(spad_count)
++EPF_NTB_W(spad_count)
++EPF_NTB_R(db_count)
++EPF_NTB_W(db_count)
++EPF_NTB_R(num_mws)
++EPF_NTB_MW_R(mw1)
++EPF_NTB_MW_W(mw1)
++EPF_NTB_MW_R(mw2)
++EPF_NTB_MW_W(mw2)
++EPF_NTB_MW_R(mw3)
++EPF_NTB_MW_W(mw3)
++EPF_NTB_MW_R(mw4)
++EPF_NTB_MW_W(mw4)
++
++CONFIGFS_ATTR(epf_ntb_, spad_count);
++CONFIGFS_ATTR(epf_ntb_, db_count);
++CONFIGFS_ATTR(epf_ntb_, num_mws);
++CONFIGFS_ATTR(epf_ntb_, mw1);
++CONFIGFS_ATTR(epf_ntb_, mw2);
++CONFIGFS_ATTR(epf_ntb_, mw3);
++CONFIGFS_ATTR(epf_ntb_, mw4);
++
++static struct configfs_attribute *epf_ntb_attrs[] = {
++	&epf_ntb_attr_spad_count,
++	&epf_ntb_attr_db_count,
++	&epf_ntb_attr_num_mws,
++	&epf_ntb_attr_mw1,
++	&epf_ntb_attr_mw2,
++	&epf_ntb_attr_mw3,
++	&epf_ntb_attr_mw4,
++	NULL,
++};
++
++static const struct config_item_type ntb_group_type = {
++	.ct_attrs	= epf_ntb_attrs,
++	.ct_owner	= THIS_MODULE,
++};
++
++/**
++ * epf_ntb_add_cfs() - Add configfs directory specific to NTB
++ * @ntb: NTB device that facilitates communication between HOST1 and HOST2
++ * @group: Configfs group corresponding to the directory created by user
++ * to instantiate NTB pci_epf device
++ *
++ * Add configfs directory specific to NTB. This directory will hold
++ * NTB specific properties like db_count, spad_count, num_mws etc.,
++ */
++static int epf_ntb_add_cfs(struct epf_ntb *ntb, struct config_group *group)
++{
++	struct config_group *ntb_group = &ntb->group;
++	struct pci_epf *epf = ntb->epf;
++	struct device *dev = &epf->dev;
++	int ret = 0;
++
++	config_group_init_type_name(ntb_group, dev_name(dev), &ntb_group_type);
++	ret = configfs_register_group(group, ntb_group);
++	if (ret)
++		dev_err(dev, "Failed to add %s configfs directory\n",
++			dev_name(dev));
++
++	return ret;
++}
++
++/**
++ * epf_ntb_cfs_work() - Work to create configfs directory specific to NTB
++ * @work: Embedded work structure within epf_ntb to get reference to epf_ntb
++ *
++ * Work to create configfs directory specific to NTB. This directory will hold
++ * NTB specific properties like db_count, spad_count, num_mws etc.,
++ */
++static void epf_ntb_cfs_work(struct work_struct *work)
++{
++	struct epf_ntb *ntb = container_of(work, struct epf_ntb, cfs_work.work);
++	struct pci_epf *epf = ntb->epf;
++
++	if (!epf->group) {
++		queue_delayed_work(kpcintb_workqueue, &ntb->cfs_work,
++				   msecs_to_jiffies(1));
++		return;
++	}
++
++	epf_ntb_add_cfs(ntb, epf->group);
++}
++
++/**
++ * epf_ntb_probe() - Probe NTB function driver
++ * @epf: NTB endpoint function device
++ *
++ * Probe NTB function driver when endpoint function bus detects a NTB
++ * endpoint function.
++ */
++static int epf_ntb_probe(struct pci_epf *epf)
++{
++	struct epf_ntb *ntb;
++	struct device *dev;
++
++	dev = &epf->dev;
++
++	ntb = devm_kzalloc(dev, sizeof(*ntb), GFP_KERNEL);
++	if (!ntb)
++		return -ENOMEM;
++
++	epf->header = &epf_ntb_header;
++	ntb->epf = epf;
++	epf_set_drvdata(epf, ntb);
++	INIT_DELAYED_WORK(&ntb->cfs_work, epf_ntb_cfs_work);
++	queue_delayed_work(kpcintb_workqueue, &ntb->cfs_work,
++			   msecs_to_jiffies(1));
++	return 0;
++}
++
++/**
++ * epf_ntb_remove() - Cleanup the initialization from epf_ntb_probe()
++ * @epf: NTB endpoint function device
++ *
++ * Cleanup the initialization from epf_ntb_probe()
++ */
++static int epf_ntb_remove(struct pci_epf *epf)
++{
++	struct epf_ntb *ntb = epf_get_drvdata(epf);
++
++	cancel_delayed_work(&ntb->cfs_work);
++
++	return 0;
++}
++
++static struct pci_epf_ops epf_ntb_ops = {
++	.bind	= epf_ntb_bind,
++	.unbind	= epf_ntb_unbind,
++};
++
++static const struct pci_epf_device_id epf_ntb_ids[] = {
++	{
++		.name = "pci_epf_ntb",
++	},
++	{},
++};
++
++static struct pci_epf_driver epf_ntb_driver = {
++	.driver.name	= "pci_epf_ntb",
++	.probe		= epf_ntb_probe,
++	.remove		= epf_ntb_remove,
++	.id_table	= epf_ntb_ids,
++	.ops		= &epf_ntb_ops,
++	.owner		= THIS_MODULE,
++};
++
++static int __init epf_ntb_init(void)
++{
++	int ret;
++
++	kpcintb_workqueue = alloc_workqueue("kpcintb", WQ_MEM_RECLAIM |
++					    WQ_HIGHPRI, 0);
++	ret = pci_epf_register_driver(&epf_ntb_driver);
++	if (ret) {
++		pr_err("Failed to register pci epf ntb driver --> %d\n", ret);
++		return ret;
++	}
++
++	return 0;
++}
++module_init(epf_ntb_init);
++
++static void __exit epf_ntb_exit(void)
++{
++	pci_epf_unregister_driver(&epf_ntb_driver);
++}
++module_exit(epf_ntb_exit);
++
++MODULE_DESCRIPTION("PCI EPF NTB DRIVER");
++MODULE_AUTHOR("Kishon Vijay Abraham I <kishon@ti.com>");
++MODULE_LICENSE("GPL v2");
+diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
+index 1dc66824f5a8..6ad7c62fe73e 100644
+--- a/include/linux/pci-epf.h
++++ b/include/linux/pci-epf.h
+@@ -9,6 +9,7 @@
+ #ifndef __LINUX_PCI_EPF_H
+ #define __LINUX_PCI_EPF_H
  
- static const struct pci_epc_features*
-@@ -499,6 +548,7 @@ static const struct pci_epc_ops cdns_pcie_epc_ops = {
- 	.set_msix	= cdns_pcie_ep_set_msix,
- 	.get_msix	= cdns_pcie_ep_get_msix,
- 	.raise_irq	= cdns_pcie_ep_raise_irq,
-+	.map_msi_irq	= cdns_pcie_ep_map_msi_irq,
- 	.start		= cdns_pcie_ep_start,
- 	.get_features	= cdns_pcie_ep_get_features,
- };
-diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index ce012c6a2cec..6111156d908e 100644
---- a/drivers/pci/endpoint/pci-epc-core.c
-+++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -235,7 +235,6 @@ EXPORT_SYMBOL_GPL(pci_epc_raise_irq);
-  *                         MSI data
-  * @epc: the EPC device which has the MSI capability
-  * @func_no: the physical endpoint function number in the EPC device
-- * @vfunc_no: the virtual endpoint function number in the physical function
-  * @phys_addr: the physical address of the outbound region
-  * @interrupt_num: the MSI interrupt number
-  * @entry_size: Size of Outbound address region for each interrupt
-@@ -249,7 +248,7 @@ EXPORT_SYMBOL_GPL(pci_epc_raise_irq);
-  * physical address (in outbound region) of the other interface to ring
-  * doorbell.
++#include <linux/configfs.h>
+ #include <linux/device.h>
+ #include <linux/mod_devicetable.h>
+ #include <linux/pci.h>
+@@ -125,6 +126,7 @@ struct pci_epf_bar {
+  *   EPC device
+  * @sec_epc_bar: represents the BAR of EPF device associated with secondary EPC
+  * @sec_epc_func_no: unique (physical) function number within the secondary EPC
++ * @group: configfs group associated with the EPF device
   */
--int pci_epc_map_msi_irq(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
-+int pci_epc_map_msi_irq(struct pci_epc *epc, u8 func_no,
- 			phys_addr_t phys_addr, u8 interrupt_num, u32 entry_size,
- 			u32 *msi_data)
- {
-@@ -262,8 +261,8 @@ int pci_epc_map_msi_irq(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
- 		return -EINVAL;
+ struct pci_epf {
+ 	struct device		dev;
+@@ -147,6 +149,7 @@ struct pci_epf {
+ 	struct list_head	sec_epc_list;
+ 	struct pci_epf_bar	sec_epc_bar[6];
+ 	u8			sec_epc_func_no;
++	struct config_group	*group;
+ };
  
- 	mutex_lock(&epc->lock);
--	ret = epc->ops->map_msi_irq(epc, func_no, vfunc_no, phys_addr,
--				    interrupt_num, entry_size, msi_data);
-+	ret = epc->ops->map_msi_irq(epc, func_no, phys_addr, interrupt_num,
-+				    entry_size, msi_data);
- 	mutex_unlock(&epc->lock);
- 
- 	return ret;
-diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
-index 88284f3a0698..61f2cebcd272 100644
---- a/include/linux/pci-epc.h
-+++ b/include/linux/pci-epc.h
-@@ -78,7 +78,7 @@ struct pci_epc_ops {
- 	int	(*get_msix)(struct pci_epc *epc, u8 func_no);
- 	int	(*raise_irq)(struct pci_epc *epc, u8 func_no,
- 			     enum pci_epc_irq_type type, u16 interrupt_num);
--	int	(*map_msi_irq)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
-+	int	(*map_msi_irq)(struct pci_epc *epc, u8 func_no,
- 			       phys_addr_t phys_addr, u8 interrupt_num,
- 			       u32 entry_size, u32 *msi_data);
- 	int	(*start)(struct pci_epc *epc);
+ /**
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200611130525.22746-10-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200611130525.22746-11-kishon%40ti.com.
