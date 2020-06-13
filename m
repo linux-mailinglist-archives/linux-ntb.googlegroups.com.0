@@ -1,153 +1,138 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBG5GRT3QKGQEDOLYAAI@googlegroups.com>
+Return-Path: <linux-ntb+bncBDCOXMNUBQIKJ2ET64CRUBBPWTZ36@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ot1-x33e.google.com (mail-ot1-x33e.google.com [IPv6:2607:f8b0:4864:20::33e])
-	by mail.lfdr.de (Postfix) with ESMTPS id D27471F7380
-	for <lists+linux-ntb@lfdr.de>; Fri, 12 Jun 2020 07:31:08 +0200 (CEST)
-Received: by mail-ot1-x33e.google.com with SMTP id m5sf3722367otp.18
-        for <lists+linux-ntb@lfdr.de>; Thu, 11 Jun 2020 22:31:08 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1591939867; cv=pass;
+Received: from mail-ej1-x637.google.com (mail-ej1-x637.google.com [IPv6:2a00:1450:4864:20::637])
+	by mail.lfdr.de (Postfix) with ESMTPS id 37E921F83FF
+	for <lists+linux-ntb@lfdr.de>; Sat, 13 Jun 2020 17:43:38 +0200 (CEST)
+Received: by mail-ej1-x637.google.com with SMTP id ch1sf5471967ejb.18
+        for <lists+linux-ntb@lfdr.de>; Sat, 13 Jun 2020 08:43:38 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1592063013; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ufFZxD4r+Md3litS/AVHrC2Gr7E5vhc+1AYFAAmYabPo+vRcjP7l4qw1f1FepaDqNc
-         M+F6rKIdRH3b6gTxV26ulyLeyCeKRXh7ct7fNfgCLEbHL5cvQe7W0Ztr6kmXZnxkA7au
-         FMmadLGJQ2NM5s6WbMd/bUN89nMIwIIeYjSHtn0xEAB4Gvsm74y1uPiLSNAze3gtdRDK
-         49H9tZvFHc5U7i92dTpCG5IOUbTm3MHqQ3vLYfzYGT4gz08GF2cdyDvRYLGs0pWKJMPT
-         NkGIGWZ4htmbw8R9GE3daKpj0HsG/0uMQmhNJ9AotExh2cBBSwqEPnaVRyZXw2vsvrs6
-         TYaQ==
+        b=VcrJFmoghtCfgM5yWB9ij9kdIKNp4dZzIgOUGMmPwy6pf4/aPF4OCtZuVP8Ddl1h4G
+         fC7kYJZeJtmEWysw4lYaS7oeU2pGtyMUGggpboQxG548BjLT881KWvAmEbr6Ls7dfm6G
+         ri4AmL1Lo18NCr5gfuUK/SK7X5SUzq0tJVjpO/9/0NE+vC980Kyr2FSXbzylntYh+u9m
+         G3vQ0ILzxdjW9cXvqnhq0T2wRb9pLw3XV2FxdSQdUHuWX8vRV7R48TA4XKoZwjV1cYDx
+         xnCvnuhuz8z1lVdfGL3mAiLIZOWVBQCcIFzv4NzE1AM8YhAfm1sJsa/az4oCwTfnHjFo
+         BxKQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=cLdp0EjQBB6d+qlzAEXdO89UBdT43635QkLXtgiJxWk=;
-        b=j/uohZm2V/FIMcM4BpKbRGSupXUDhys2uHLcPW4NYw/Hr5b67UFEU5zaR048quSyRK
-         0YG19y5MIFuHwDC2RVE1dvq/3T/rjn4Wh4S0vXhODmdzHJ+O/+WTVoLU4dBNgXFx7H9s
-         bnUOkdhRP4+SuLHFmlZV/hFBOUpzkQcxT8JQkh/TIA/hgKofbzHA07EeRwIV27jGyILD
-         kHL8eEf6ZAgg/6KsT73IAdLM9erPsOLF2Jd0p9A7KRTdkyv+IvQmaguA+i4qOt/78m4z
-         vs8OzKN2yw3RySn71CJFltkXWrGrSHrvfZomI3i4E2vwfaTIfPO7ODaTqpO0IQKPSHfb
-         TUWw==
+         :list-id:mailing-list:precedence:reply-to:references
+         :content-transfer-encoding:mime-version:subject:message-id:to:from
+         :date:dkim-signature;
+        bh=VM+gGxSxZUW2NY/nTJw+afO4JKT7vBfV/p4aynKCfQY=;
+        b=sOCYRCN8n5ASFoubiY4IDZ8D//VcXMQmaTBE8w+aOKycrjyBplVmH2RmBAdk4Cpv4E
+         bMGO2Vga++ZsaWbomag2AG2o8YLzz/mtTOaQfrL8u74TnJpXbuSAoBm7KooycZ0Acadr
+         lzac4MpRwG7ob/dQjkduxt9AUQmaaOx+SGa4DQXM1jy1F82WUKLHCeGL9JTAwl18/lwi
+         dqUaAR91ZPIyOcxr9rJJBQpMJJvnWVrsSrg8s94bvKg0MXSNPk3WyeKb0POec4nBATKm
+         oUusFVuiAgCdzrZ0rOdax7L6qGQAfFtjj7KUJ3e7SohH1ppvibgteP15r3H2/Mlbe15m
+         YvYw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=Cg2p8vyd;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=eqKtCIPL;
+       spf=pass (google.com: domain of rose_gomoo101@yahoo.com designates 77.238.176.98 as permitted sender) smtp.mailfrom=rose_gomoo101@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
+        h=date:from:to:message-id:subject:mime-version
+         :content-transfer-encoding:references:x-original-sender
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:list-post:list-help:list-archive:list-subscribe
          :list-unsubscribe;
-        bh=cLdp0EjQBB6d+qlzAEXdO89UBdT43635QkLXtgiJxWk=;
-        b=WX8QYMcuGcL8sdViAeabh31tUD2spdDNi7oHj4RfcHWR8I49cLM45Qh06cCSMC0tj+
-         gmBRuIHRTUZ+jDB7g8Yl1X+texnvaKFNW0PyvRMZQKq++GrbTSjQiWKHSGXja3DF3CjO
-         RRxPrrd+fEz+gYvgXpXHlUMP9ZgK4pLW88g5MUjaXvgY9iiDUU0nF4e7NgMHs77ZEniK
-         /v35eTHaMWiCToINlHog7urZKk9o6C1CUB9wUisSGpjwDXL+IUPf0t/OD8mg2SGRggMF
-         yG+Q+bHuoUd78fbhPq5IeWseQqWAJL/NbFBEnXKXbvtDmCHexx20fIGozIOuGtzTfUh0
-         VOEA==
+        bh=VM+gGxSxZUW2NY/nTJw+afO4JKT7vBfV/p4aynKCfQY=;
+        b=bbPiVLGJB/uUjfQaW0wtbYQmpKqQ74imfyHoQPZgLUXduGS7yqscwzCDRzM1C9kdLj
+         iwph7GZuZgQg0JtB6nd91rByVgBl1rmWMKmEJdaGM1kl6Etci4bC7v/DWQ/HQMMQapVl
+         AMKZ67Fdcgby2aawm2NcGspJcEeZVa52YmhesUlSRtVOUxkoApU+i/n8MXz5UsVtUYHt
+         +l1QulN8dEb79zJSr3ldNxFdmBGWh758b2mhO7t7HIFxbIO8ZDgAo/Ma5QuCrvyxzsj5
+         RU+H9dBrYgBB9ewfZ2CcvFxb/qqXsC8euP+WP/nn87cCO9w5NJPixhuEfhl5nKoZ0C82
+         8fLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:reply-to
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=cLdp0EjQBB6d+qlzAEXdO89UBdT43635QkLXtgiJxWk=;
-        b=sYBIiu1IirHpUClTwzSGsmu/8RiOLg/oIkmeDUkmTPUxc4aap8W9pen13EpQHI/iMS
-         QCCkt+NEmcBe+sn2HkNKjvnWApTXdDkAQsco52LWoWIE5Uyti2M6jbV7yzpdTN6pTJMe
-         ejjdsXj2VpzPkWPTomxaTH2chg/YszWyPCZ2T2NpUQRMeo0ht5N7nyn1rE22oQEguv01
-         QcOUiTY12NfuiMtOXLzq3RQddJ/b1vmBuDZYqA1WDbFY7ssomhQ4hZl1iOMGIyoPX+6c
-         fJuWF1l15L4ITFRkK+QTZx3hDjFs/rapMXfr5gCrfqhXWM5SDUb6PvjH5Fi5xivFn+EH
-         7ygQ==
-X-Gm-Message-State: AOAM530MUe4h1VH+v5zbG2Vcc9+GiKArNSe6iSGkIrIPyClHEHUZRn+1
-	esSrXaXfP+M/X/JFNpYzJxA=
-X-Google-Smtp-Source: ABdhPJyaqfsbaNdcLpP6Yf+aF3ATbCHTbOLGfyczsCVvdiohyDjwPY/OgWolzswnil0ps36JOlhC8Q==
-X-Received: by 2002:a54:4015:: with SMTP id x21mr703599oie.161.1591939867480;
-        Thu, 11 Jun 2020 22:31:07 -0700 (PDT)
+        h=x-gm-message-state:date:from:to:message-id:subject:mime-version
+         :content-transfer-encoding:references:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=VM+gGxSxZUW2NY/nTJw+afO4JKT7vBfV/p4aynKCfQY=;
+        b=Kx9Wu16n4db5yl88OGnVaH1UFcIrx7vRN0S5vE2yZ5KYYYWHWhyn7ItTVAmydIj8Yd
+         qkY46fsKLCTIxNqJwrt52+D8EY6QCrvQoQIxLf5TgFonSjJjDpSm5HCyCVbqkZMQ5wDr
+         t2Yit6xo5gjIaCoxs59pVc9qajVhKElZtmoDW2Bs7nPPoPofMgQUznEdc25oCwkWt+F7
+         uA69pT3cZwCtXJANLkP58vvOBQNTAX5a3yHGR/besf0eaRSPfnAL/bySbU8hX2NoJYz4
+         6vRwEQQXYwZvNA3XvCNKgJ/2jtRsAvWwS44Nxlnfj8OJqkPFzqk4D13eYrz6mXjp0yl6
+         plHA==
+X-Gm-Message-State: AOAM531lTAPGOg5JVwmdbZ3Qa7sr73niVPAyczYfK3bHLMtGE0Mf5+8p
+	DjnN8hbfoPw0VFfiWzykaPI=
+X-Google-Smtp-Source: ABdhPJyl121rBhwY5RI2bZQ7HqB/1dS9HTHyKmrFfqkQ3ZdVsmTjXkdOwI5Gtx17KP0FRw3rXSLlDA==
+X-Received: by 2002:a17:906:9397:: with SMTP id l23mr19153185ejx.79.1592063012940;
+        Sat, 13 Jun 2020 08:43:32 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a54:460f:: with SMTP id p15ls900952oip.7.gmail; Thu, 11 Jun
- 2020 22:31:07 -0700 (PDT)
-X-Received: by 2002:aca:af82:: with SMTP id y124mr1035149oie.98.1591939867223;
-        Thu, 11 Jun 2020 22:31:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1591939867; cv=none;
+Received: by 2002:a50:8c22:: with SMTP id p31ls8514467edp.0.gmail; Sat, 13 Jun
+ 2020 08:43:32 -0700 (PDT)
+X-Received: by 2002:aa7:da17:: with SMTP id r23mr17099177eds.261.1592063012428;
+        Sat, 13 Jun 2020 08:43:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592063012; cv=none;
         d=google.com; s=arc-20160816;
-        b=upvCW4GK6rhj/a6TgDMw2r/DSETEMGdws8yPXS8WdoP2qQoWNY+w3+uOuggjYDAURp
-         6GimsyOakGfejHN5G5vbrhUjp7QB2tpsGdt27FIR0pVUUHbkQ0w5cJ22G4TXU7M07dIV
-         1+YQIcvFwdJdebZff2XuHkkUiTOFfq38zKkzj9pSezYuAn8173e5BuvCdRs1ZCpewc7P
-         7bQmPVnQ4HsKqLIoNVc/aksrrEgScs7Ulr+SLFluBaur2cc8IUORi+Ck+SIiea6rpTYm
-         aPTKyEiE0Zj/8gkn5SmZ84fIoKM4SvyGI+HVqGvPrYul/V1aCp9m8KtcKmt8/sI5IJl+
-         6DDg==
+        b=r75gsXh4qIX4FQzs81dzQZR6Ybw1Tib2yPKOqaTKXC3Y+W+wf2XoEAxP7i8jpDhVLQ
+         tth4C36zY4AwdVOdTz2UK+/whhHn7WyFHkqvpaGICoPeRenReBmK4ENx460WrT8ESYMg
+         Id5CRsCxgqoH8tgQjiWBwRqntGPV66ld979S64sOvePXcad9nckE4PR71UbWTKlaXqXV
+         wLUF3Q/DcpBeSSRKd/Wwil4dexqi6FuiIMLjZGHbxB/J7E5sOtIEBa7ssAnjt5K5LnKK
+         z3nv5UfqrWp0AGY19RPps5Ev/dtnbizGolrCdZJL1foCbT8bikakUVT/DLSvKMTCNRta
+         eA4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=CsA12+jay5u2Gva3INtQk/dUmPirKLYO9bGaNjt4rNo=;
-        b=J7AiRsa6YfqmDMvkEZh8HVNCrLXfyRrkHl/QJbtQptblWkRNNSZOoWFWJbl0zqKThd
-         S2e00owTvt95nU2k4Fzo4IK/XlV/USEGpBAXoCk2bDcJLCZNjleY0ohCbniYz/OfMs1p
-         JnPOFJtkqk+ldyUt6K5ABECeXd2h5CeTzgJhapZ0NX1VM4eIbbMfurcZRBgkg4LkStkI
-         qKMeqq7fGs7kcLkT9y/HR0jh0s/DD0uAQVRUgZLn1sZWBdIvj0M5EiC+tYkTJLxRVW9o
-         9wZPHg4FyfXacUpwbkXNgIZa2bG0fWln2xE/kvTgxzn+VXftuisRsRN7mQJnJiFT2aeI
-         92sQ==
+        h=references:content-transfer-encoding:mime-version:subject
+         :message-id:to:from:date:dkim-signature;
+        bh=EdQ6J0sRRv3XBxt3j7IlulUVvRg4uKdicik//r5GkY8=;
+        b=KWQF9puoKhFT4LYEHu4E2yDf5+0sAKRx37NDZa8IJQpnyWE6XaRgDlmRqzRZkcz7Ci
+         JJ8xU4QiTejuLUjHryJm6C87ZPY2OM+vLEqWAD8iNT5J768Xmr94JeSnThmn/R9qtXpj
+         kEbBOMAidUks7CPSY5o8FZ869kE7Tuumf6vLxywZn4qVOWmgZihCI6Kfhpufox9+/4Dr
+         UeSovloia+Epsp85rGyAbjnN92zwXeMdM7/YP8JtcLjPUiUmwrKVr3h3ytNQATaX6AYr
+         h22swnNVc9XK9/nik9KPINUruoVDTbFWwqxa3lPv3te5gyNtp1931knRjS/CpqAMxje7
+         C4Dw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=Cg2p8vyd;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id y198si144335oie.1.2020.06.11.22.31.07
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=eqKtCIPL;
+       spf=pass (google.com: domain of rose_gomoo101@yahoo.com designates 77.238.176.98 as permitted sender) smtp.mailfrom=rose_gomoo101@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Received: from sonic301-21.consmr.mail.ir2.yahoo.com (sonic301-21.consmr.mail.ir2.yahoo.com. [77.238.176.98])
+        by gmr-mx.google.com with ESMTPS id r19si482054eja.1.2020.06.13.08.43.32
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 11 Jun 2020 22:31:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 05C5UxHv105841;
-	Fri, 12 Jun 2020 00:30:59 -0500
-Received: from DFLE115.ent.ti.com (dfle115.ent.ti.com [10.64.6.36])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 05C5UxcF111764;
-	Fri, 12 Jun 2020 00:30:59 -0500
-Received: from DFLE110.ent.ti.com (10.64.6.31) by DFLE115.ent.ti.com
- (10.64.6.36) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Fri, 12
- Jun 2020 00:30:58 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE110.ent.ti.com
- (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Fri, 12 Jun 2020 00:30:58 -0500
-Received: from [10.250.233.85] (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 05C5UsBx060089;
-	Fri, 12 Jun 2020 00:30:54 -0500
-Subject: Re: [PATCH v2 01/14] Documentation: PCI: Add specification for the
- *PCI NTB* function device
-To: Matthew Wilcox <willy@infradead.org>
-CC: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
-        Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-        Arnd Bergmann <arnd@arndb.de>, Jon Mason <jdmason@kudzu.us>,
-        Dave Jiang <dave.jiang@intel.com>, Allen Hubbe
-	<allenbh@gmail.com>,
-        Tom Joseph <tjoseph@cadence.com>, Rob Herring
-	<robh@kernel.org>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
-References: <20200611130525.22746-1-kishon@ti.com>
- <20200611130525.22746-2-kishon@ti.com>
- <20200611151301.GB8681@bombadil.infradead.org>
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-Message-ID: <c8a5d63a-7026-2b40-4b26-5f4e481f7df4@ti.com>
-Date: Fri, 12 Jun 2020 11:00:53 +0530
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 13 Jun 2020 08:43:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rose_gomoo101@yahoo.com designates 77.238.176.98 as permitted sender) client-ip=77.238.176.98;
+X-YMail-OSG: LPRBtNsVM1nCmhVC1amy5jcW7SC4kovqhhhyZo_ouicxjxcyZ6QkT6O3_3THinP
+ _ySqGi7Z7mErY_JZutb1DXbTo7zAxl7FMbm3oHaBQl2.miOr2_eMRI9pk1Q3bokXZc33U7zHs05a
+ MaDXot7nNfT7r1pY57evKeikrvCxuZ7x3hAIvz5xjrtIZ2qsjl0bWQKI7Mox1Vjz7Mm29McsuJsM
+ y.Ga_QM1AMKZa3odD_HcjZ_bxGnNtBvvTl63iBl_SLWfKxH5vIdGrXhUgvsSNq3ounCyQ1o3Qnp2
+ XCsqYIUj5sQ2ez3xKYAqC1lLD.gy_NRcAGPjjHkQFAVsj_HeVU5hPbis9fQpiUJ63tmjwaUtwbmk
+ giShiFzMF.8kryE4YX8MFgoQM6AnD7xm0YUOtJ1bGMrzt7IdVq9qOZ62pIErqR86KCqxADzwgC7i
+ N2LMiKu_Ug0lM5YKDiT7bU9WnWuOyQ4DmEOe_JjRcBm_ToCl.Jb9euw6QP.i31J3z4m7ju8yLYze
+ GgtjOX_Nz.wQ62kR.pG4qW0cociGvlLDgR1I22hkqBorAt9ZDgti8VW1u3yq7i5hxqASq1QUt1s1
+ ev6cdDjG.MCYVi4dhCMY5WVJ9RHmQNkBC6YlSsnUzJ8bU3IpgkwVlr2kl8aBoOxr8HN_UqAVCdGE
+ nwg7dqOePh1dJEw4VjpyGihgoWz4onIe.OzBOYnKvzowDQx5But.wehGmOtPOVaV_4SzQLVSLYSj
+ 5Vj2INA9v472fNk8aXzIQgCXvHB5C.1StRGgAi1QXu8a9lImLV03CyBmg7xIzz4VnvrDzjc52tsc
+ NEL3eDVGgzNYyzbNMDkE4Wu1Q8xNd05GqyeFGMGguHcdofTKGS8xjOCbYQh_Z.D41Lu7vTFQgMgY
+ Q94362CVLeJEnd1XTaxtHXzyqF7bSlc8Qn1CzrTy_PiGaARNyHELC9I09P511j6Gw2MXWA9p05LP
+ imiIHhoTUw.3moqflnWwQ1lYsq5IoSDskY4y2hT4JCUpcGRuqAORuC5uCCByQAQ3qp98JJjcnabI
+ sNO98Rh9gM218W0yuuXwFWTosmaOEsXbzxdqKoYXHW2VV3OreCVJKiXO0e1rkhAuezqrejJuihq3
+ mR6Ce00XrL9PbOy5w1dTCwf8WFesNbe6afVxyEucZK4AoqcJF5w_1Mo1z7vCoNPAXUg11zcM3VTx
+ SxokaQBEhufTXbvxJS9hHOz55xFS5IJS3JjOns3SJZTu_o24QloK2GhFd.sq5ETxjof1XkFxd9pT
+ jE.4LGGr1TeePEqh.uT6vyXwtf4ZxrPy08hq9FcW4xPcOrVenvSL.TV7tRQhxZvU2RQ--
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic301.consmr.mail.ir2.yahoo.com with HTTP; Sat, 13 Jun 2020 15:43:32 +0000
+Date: Sat, 13 Jun 2020 15:43:27 +0000 (UTC)
+From: "'Rose Gomo' via linux-ntb" <linux-ntb@googlegroups.com>
+To: rose_gomoo101@yahoo.com
+Message-ID: <7709890.448665.1592063007309@mail.yahoo.com>
+Subject: Dear Good Friend.
 MIME-Version: 1.0
-In-Reply-To: <20200611151301.GB8681@bombadil.infradead.org>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
+Content-Transfer-Encoding: quoted-printable
+References: <7709890.448665.1592063007309.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16119 YMailNodin Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; GTB7.5; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; InfoPath.2)
+X-Original-Sender: rose_gomoo101@yahoo.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=Cg2p8vyd;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+ header.i=@yahoo.com header.s=s2048 header.b=eqKtCIPL;       spf=pass
+ (google.com: domain of rose_gomoo101@yahoo.com designates 77.238.176.98 as
+ permitted sender) smtp.mailfrom=rose_gomoo101@yahoo.com;       dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+X-Original-From: Rose Gomo <rose_gomoo101@yahoo.com>
+Reply-To: Rose Gomo <rose_gomoo101@yahoo.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -160,48 +145,23 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hi Matthew,
+Dear Good Friend.
 
-On 6/11/2020 8:43 PM, Matthew Wilcox wrote:
-> On Thu, Jun 11, 2020 at 06:35:12PM +0530, Kishon Vijay Abraham I wrote:
->> +++ b/Documentation/PCI/endpoint/pci-ntb-function.rst
->> @@ -0,0 +1,344 @@
->> +.. SPDX-License-Identifier: GPL-2.0
->> +
->> +=================
->> +PCI NTB Function
->> +=================
->> +
->> +:Author: Kishon Vijay Abraham I <kishon@ti.com>
->> +
->> +PCI NTB Function allows two different systems (or hosts) to communicate
->> +with each other by configurig the endpoint instances in such a way that
->> +transactions from one system is routed to the other system.
-> 
-> At no point in this document do you expand "NTB" into Non-Transparent
-> Bridge.  The above paragraph probably also needs to say something like "By
-> making each host appear as a device to the other host".  Although maybe
-> that's not entirely accurate?  It's been a few years since I last played
-> with NTBs.
-> 
-> So how about the following opening paragraph:
-> 
-> PCI Non Transparent Bridges (NTB) allow two host systems to communicate
-> with each other by exposing each host as a device to the other host.
-> NTBs typically support the ability to generate interrupts on the remote
-> machine, expose memory ranges as BARs and perform DMA.  They also support
-> scratchpads which are areas of memory within the NTB that are accessible
-> from both machines.
-> 
-> ... feel free to fix that up if my memory is out of date or corrupted.
+Please can you help me to receive the fund I inherited from my father to yo=
+ur account in your country for business investment? Right now the fund is i=
+n the bank here where my father deposited it before he died and the amount =
+is =E2=82=AC2.5million Euros (Two Million Five Hundred Thousand Euros)
 
-I think that's accurate. I'll wait for review comments on the rest of the
-series and I'll fix this one in my next revision.
+Please if you are interested you can contact me as soon as possible for mor=
+e details.
 
-Thanks
-Kishon
+Best regards
+Rose Gomo.
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/c8a5d63a-7026-2b40-4b26-5f4e481f7df4%40ti.com.
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/7709890.448665.1592063007309%40mail.yahoo.com.
