@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBDTZTRGMXIFBBK4DVP3QKGQEO2O5RSQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDTZTRGMXIFBBBMEVP3QKGQEO7US4II@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ua1-x938.google.com (mail-ua1-x938.google.com [IPv6:2607:f8b0:4864:20::938])
-	by mail.lfdr.de (Postfix) with ESMTPS id 4FC471FDCBA
-	for <lists+linux-ntb@lfdr.de>; Thu, 18 Jun 2020 03:21:48 +0200 (CEST)
-Received: by mail-ua1-x938.google.com with SMTP id a20sf1448163uao.19
-        for <lists+linux-ntb@lfdr.de>; Wed, 17 Jun 2020 18:21:48 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1592443307; cv=pass;
+Received: from mail-qk1-x73b.google.com (mail-qk1-x73b.google.com [IPv6:2607:f8b0:4864:20::73b])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2B7B61FDCD7
+	for <lists+linux-ntb@lfdr.de>; Thu, 18 Jun 2020 03:23:18 +0200 (CEST)
+Received: by mail-qk1-x73b.google.com with SMTP id x68sf3324196qkd.1
+        for <lists+linux-ntb@lfdr.de>; Wed, 17 Jun 2020 18:23:18 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1592443397; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qbRs+6vUeTJMW0e3SOMD9GYBi2xD22J3B5Tz1EhHM7Y6iXiDok2o05aHRZvE7iD5CX
-         YruK+NVCjaqPySS17nDwZAhpZItYvLZA8F/u10nL9ZtUyGnSz7PgonC3uTQnMsbBntvf
-         C3BH+5c01ZHjoxU6hxRL2GhnvKSn8eGXDD2ZxAUAwakKiEidTho5oiFIJF22O7uujP7w
-         PRDTBasJJ4Rvkq3JTiSzAvu4j1XHQh7cW5gBnItbo3MiBiSl14hTqRazRULapVN9yUvf
-         19Za2nImD0wso0STBYYePvo4eq19cQgZoJxGBJD8dWnWoertZEMrRfBJbvCaLj8bJOEw
-         jqJQ==
+        b=BnQXfsYP74fsnodnxkq3hk46BoMJvDL48qmQp3QyGWdA8bFfvYUdCXxigWqN2bRPyN
+         URB4/gRB5ccoq446pQ7MoYefeoo07t3HBPo35m5EG2ivexgA42/TjheI6CwXwTb/LWKc
+         yv/a9KEp7vQHVR1YGaUMJSkyu/+fc5grKC9rF9VJM1yJTMuQu9w0Ez28UwSPTzg7Yczk
+         1dAtttW4SoChDwdAPyIndrONEgNbAme8u5wgL1QadL0Q6lhrchU+Nv/BL0MZw9dEuMhH
+         CQ3VH8CUHuFviA4oWLtDd3X1iOxvb9Gke3F4D+AK38OCPhJ9NvcFCSGA/JM9svokMmUi
+         uoaQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=IFyxhQ3WilntSz1CgQMfn+0wyzkyVxtcQ3qv3cGucFE=;
-        b=nkVP6HFLCDqfaTCoQj1ujcDrBuGWQ+j6NlIvAWGQE8SJie8K4CHoyeGgUk72aY397U
-         wTczPQV3LFZ5L/zGuJHFirW9Lp9N+rdQN0kDB9ull6SqG/GptttuFiGCHsW28drZ7uEU
-         R4kRIYAKhHWrUuJ9BBlwyb+7HLR/efQsaNpAczBdREfyp8IRYYfIJZqctHBruYaAqeRj
-         zkle3Gv/yQDG6mbBgOtSdv+VTUct6We2s9vsoxvAu+mVRsLaS+SFC+iZYJOUk8gt010B
-         dnKkGTBLDdkfYy40O8501bq4krUFPcr0Fn1YiRHwb4M7UyYVPg2u/QK+JA3HtSzvpmxD
-         jDjA==
+        bh=t8M22tP7zzYCrB5GvqTsw/zdKREG9I1vPqCx5/IhQNw=;
+        b=WvwwNNm9qP2dhHNik/V5FaUuqLOVLoetLeFBgNk9JAbnIg2UA/5yGrP5w/LSTCE1l8
+         nF+oUuEseEtVdeV/JAiuNS5YZZIDYMaO3LQdEbqE0rumXYxfkrq3st4odAR/vKF+4TrV
+         06qCCbFjI83j7nQ1jGNHF58Jcko6KhhcWnPcwI+OFmm3Y4D2zK83cPLkwHFWS8WRISNf
+         CNqDDT7WedFHDPfSrHiuRlXGGPNb+sUS6SehEVksbH1qtAswQp+/Z7ePe2iEf1YB7hoS
+         uZ63ehAa4WxKlMVOX4HLkeI1jaNI7AuhhNHnL/fII+em2ch4OYfuRzg78vDzWJ+1l1KH
+         bwDg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=k4jWxLmQ;
+       dkim=pass header.i=@kernel.org header.s=default header.b=pzYbYkFt;
        spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=IFyxhQ3WilntSz1CgQMfn+0wyzkyVxtcQ3qv3cGucFE=;
-        b=G5z3sVebQc2fhYoBDIKuZJfqQ7djEhX9kfydyy35p6ZBC6fT1z3cwhQcwwzUROxI1o
-         cs10zGq12rdwQGhInD+lRH6LR9YbmB87Li3fdPbXB0mDQiR4cGs6QDJ4Pd4+ri/auqFt
-         BB6lyEJQdeE+FLNdARCCi1xCo4O7Q76fsx455SOhHmo26ogPK24a45Ue43yPGvgOExFG
-         wxiFcakJXFMQJi+E7zLfsEnCZrD2o2iL1KyEkNiKr6ZxY50cVEoXIPwFrMDAmcD2nRDR
-         AZj8d+RiKtID/Hji9QW16mh+03ng8zTRFPCuWA1smG5rRyAxi+U2wDPWGM/vhqOW8C1m
-         Vc6g==
+        bh=t8M22tP7zzYCrB5GvqTsw/zdKREG9I1vPqCx5/IhQNw=;
+        b=AIn1lCSEKNmQNfXBVWQ+eoLQlKwMtClOUrDvnLIfaVWVtMfCWQDqs3P7rJvFFBJTFB
+         AFwOP6H0FpP5yyX0ZvekZdx5664SArqB0mJGJJWeKg5GP6Qxy1q+lnfkKWcSzFI0VMkg
+         8Eh5JBeXzsCoiPjpwFK9+QhzGihNAiIa5HM/Okn/9teW5EMq/BuSeT6eamOvlEGCXwOp
+         wGkRP0cLri/M2v1hfXSDR1aH0CaSyocWg4mQ3f4ppi0jlkPdgkBvAbLJrfSQ2k60BrCu
+         cPSXUqn0JcWNpt2gh4ubY1mV4TkgYR+W1YNoCPaQatfs8TJIl+JrpppNQ3S9wqDuVEvb
+         6jsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
@@ -49,57 +49,57 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=IFyxhQ3WilntSz1CgQMfn+0wyzkyVxtcQ3qv3cGucFE=;
-        b=P2MHu+wyYYtRqe4HGGRHi0hMukRZ+7NFZ+HxZaCX1g1dBNtiLNkssOdbMswr6Xbx1S
-         C2ewdmHW+Ere2MEpALLkPRgu1bhrYfOWm//oW1YJkqwg+5JhQzlsc9NdnI1XYE9PCbYW
-         Wnval7UJ92kc6venxTyUuVlEBHsyywYkdGCDVl78IzNLvUmZ8F1EIe8IW1vFEEhQNZVt
-         luxf6hnmxhLCDLGEf/fbRYxa7t/D7D745Pv89TgvAr+Rr0bPwm2M8jkUa+KBnrwgSbsh
-         ZMNMpKzMa2+3jcDpdT+fspgIfs6JCzmcgC49K9lccDi3StuBkX23ulpXjXMNoTfY3He1
-         a7WQ==
+        bh=t8M22tP7zzYCrB5GvqTsw/zdKREG9I1vPqCx5/IhQNw=;
+        b=KLVkxX2q/3UTwr8MwvXQrESFFKGX5IPjTz3oU1gNaBFxa+mTq4257NpuWXquk0vuim
+         /CVh3xPf+xcSCp0nIhbGW5Yf5sC0XDBFGdOdFkKO+/LYzZ2OOtqXOLQBXa99Da4p23Gs
+         H+phx3L1q05Ef6jVJ1RXdJlPqYLC2xoesAJS6gal7VY3byaT1k0Lwy7frNhVbCy/FPzu
+         zFkztiM45oiQASaNSWxm6yspsyjtBQMk0KcMZSj+WzlAfXhP8PQRCO+iPOIpqrRuwWoU
+         tKW2MVBYFYiFawFN6AB3ObDf/188alBCZevmXwlXPvo895ENZ0EFIMnyzsFW/9aRSwH9
+         SEmA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530DmS8bMTbxiXhmx7O5LdmIdbUdIAXfIxCZ47AE+k/CLQV6KnAP
-	4rY8xcdrnB/1kGJ0Apr4NtE=
-X-Google-Smtp-Source: ABdhPJwnB6WiyNGmXw8iZUApnj073DHMIQNXjlK1kasYcFK+AnnNRcSEjqRR+lhtikCIs02Iyo1NWQ==
-X-Received: by 2002:a9f:2581:: with SMTP id 1mr1414210uaf.18.1592443307351;
-        Wed, 17 Jun 2020 18:21:47 -0700 (PDT)
+X-Gm-Message-State: AOAM533kSv38WMoPcqrVdlJTNPz5640Ss9CvDM0lbvECqhi/0VSX+PcI
+	7aR48IdBqvoX0MNYuNDkvxM=
+X-Google-Smtp-Source: ABdhPJzgwYFqIfV5rzyfpW7LehQyY7Zd3Ez+34hsMW2vmGE/m5wwygeRnpzh9wpfHr0jxiTYO4lTDQ==
+X-Received: by 2002:ad4:4baa:: with SMTP id i10mr1488250qvw.163.1592443397231;
+        Wed, 17 Jun 2020 18:23:17 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a67:f993:: with SMTP id b19ls528189vsq.5.gmail; Wed, 17 Jun
- 2020 18:21:47 -0700 (PDT)
-X-Received: by 2002:a67:1703:: with SMTP id 3mr1702447vsx.169.1592443307075;
-        Wed, 17 Jun 2020 18:21:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1592443307; cv=none;
+Received: by 2002:a37:2756:: with SMTP id n83ls1966182qkn.1.gmail; Wed, 17 Jun
+ 2020 18:23:17 -0700 (PDT)
+X-Received: by 2002:a37:4a90:: with SMTP id x138mr1571762qka.74.1592443396972;
+        Wed, 17 Jun 2020 18:23:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1592443396; cv=none;
         d=google.com; s=arc-20160816;
-        b=BLuApiooU1A0/wSw3jQSWkbgmgBGPwmlsLHmFjs7TKmkxm1hjGJr3ygwtBi1FEcWnf
-         8p6sSX9x+4jfMSU3tB9SjCWBxFgSIZiTVCXw+avEIz+663wY8VaLzT9cZxGptTEcChbp
-         BgBkQZL8r/WqstMdpB27fAXo4DK8EJczKwkJNHorqjeDejwPySnoVDy3Nmmng30Tsg0u
-         5ICT7S4iLFkmF7ALB0pPK6UyKEm3y1hyF0mSQFOANT+RE1Uuy+JzXF2TCj6NNFWPIWqd
-         HvO/gILfLl4LdytmxAxhKrCYNAkJBz9zViFpnKJNiA0nOmwonwz5Az/yB5aC+OEqADqj
-         5sow==
+        b=FnY8O9iUYvBNAYJJjuEG3j0ww6tK0Okjp+qgRcQkziths1uPls0IKqRkUc4GSumBfk
+         gA6VPpNTfocLjirhqVQD6Am5F+bRz3H/o66q0t0E1P7KR2jXz4el4GjHGyPjzH1RwVdc
+         xelPkqkg+mlxSLBUHdwsMhyZfQrYNBsU1PiN7ig4ZVrqWh36dgwviU4rYi1Q6FVpn/+x
+         QNBdjrhq3OARwqt2ZFaScdmiaVD6MkGtlLhd1PH1o+RCk5ZPJLPiwqJyExks7CqVR5Zp
+         hjtbQ1g/EjCXizyYHAzugf2rLnvzYc2x+DllOBYft0t6WQeVjIPhszVZP/fI50ODwKQb
+         jlnQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=xQcrMcnkarMx9RUd6mTr0dNMUm6dOUJAqeY1Q0BY3J0=;
-        b=A0CYPZMRA4bczRDkUJEH9sR1uj0w91MBTXVxMorLi6Gosh80Cxz7JBtnuWylMoffmG
-         8OKHanKjeS2rXCEQdzMFtGnXfKtlH84loF06k71sw+LpWDgnusCy/QZT64iMV8GV/6F2
-         H9YPV5xbpPCX8seDzY5ipfL7fJmtnQwHJiXBSi3cw35SbG/Rl112fGe0neDvRO9yWiJH
-         yHm8qfYM3x44nhyOn4iqYIiFMVn12zdEeS8Ff4pNmflX4l0cIwcRv7xzVzBHe59Clem4
-         XD8CHUpj2LP/Aj6ZqSt2kIk6GFQKhXV4KF01k2bxr6vNvPrcEFlxOnn1FkVnXvNeSQ+x
-         bNVA==
+        bh=VbP/gDnBV+uhcbekMn1Ga3uktdTc82KV2bSgv8S9rIs=;
+        b=MmvOhy1fv+3Qxkb44INoafAWgYdebypIK6tGC4HaDlpOnIaX2JokE8yeHkqY9HNj1c
+         ji9o94/ZqedDMxQnX+H7rCUQI/BnEZWqIzS1O9IIovWbtzADSjwzRgU1ZexQBNr/9tuF
+         eIT4zFyboJGZV1Wbj15kxad8f9BBVzkP1uaXtdxZi0a5cnBLQ77wc20hpfIvQpdRAdCS
+         HAaSytyI5Z7DkUJAXkao17L3LoTIjJuCwXZbx3Wmdw8ugaYka59XFj0AH9FU7sXBzYd5
+         a4ERdYBeljvVMIyHy+bupiMxTtFzpdAHKGLLeTs8ozxXqLYgIsz8egHyOza+ECBHvZjE
+         dRnQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=k4jWxLmQ;
+       dkim=pass header.i=@kernel.org header.s=default header.b=pzYbYkFt;
        spf=pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=sashal@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id t24si95878uaq.0.2020.06.17.18.21.46
+        by gmr-mx.google.com with ESMTPS id a72si71266qkb.0.2020.06.17.18.23.16
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 17 Jun 2020 18:21:47 -0700 (PDT)
+        Wed, 17 Jun 2020 18:23:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of sashal@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Received: from sasha-vm.mshome.net (c-73-47-72-35.hsd1.nh.comcast.net [73.47.72.35])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 654E820FC3;
-	Thu, 18 Jun 2020 01:21:45 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id 4BA3F21927;
+	Thu, 18 Jun 2020 01:23:15 +0000 (UTC)
 From: Sasha Levin <sashal@kernel.org>
 To: linux-kernel@vger.kernel.org,
 	stable@vger.kernel.org
@@ -108,20 +108,19 @@ Cc: Logan Gunthorpe <logang@deltatee.com>,
 	Alexander Fomichev <fomichev.ru@gmail.com>,
 	Jon Mason <jdmason@kudzu.us>,
 	Sasha Levin <sashal@kernel.org>,
-	linux-ntb@googlegroups.com,
-	linux-kselftest@vger.kernel.org
-Subject: [PATCH AUTOSEL 5.4 244/266] NTB: ntb_test: Fix bug when counting remote files
-Date: Wed, 17 Jun 2020 21:16:09 -0400
-Message-Id: <20200618011631.604574-244-sashal@kernel.org>
+	linux-ntb@googlegroups.com
+Subject: [PATCH AUTOSEL 4.19 042/172] NTB: ntb_pingpong: Choose doorbells based on port number
+Date: Wed, 17 Jun 2020 21:20:08 -0400
+Message-Id: <20200618012218.607130-42-sashal@kernel.org>
 X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200618011631.604574-1-sashal@kernel.org>
-References: <20200618011631.604574-1-sashal@kernel.org>
+In-Reply-To: <20200618012218.607130-1-sashal@kernel.org>
+References: <20200618012218.607130-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
 X-Original-Sender: sashal@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=k4jWxLmQ;       spf=pass
+ header.i=@kernel.org header.s=default header.b=pzYbYkFt;       spf=pass
  (google.com: domain of sashal@kernel.org designates 198.145.29.99 as
  permitted sender) smtp.mailfrom=sashal@kernel.org;       dmarc=pass (p=NONE
  sp=NONE dis=NONE) header.from=kernel.org
@@ -140,39 +139,71 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 
 From: Logan Gunthorpe <logang@deltatee.com>
 
-[ Upstream commit 2130c0ba69d69bb21f5c52787f2587db00d13d8a ]
+[ Upstream commit ca93c45755da98302c93abdd788fc09113baf9e0 ]
 
-When remote files are counted in get_files_count, without using SSH,
-the code returns 0 because there is a colon prepended to $LOC. $VPATH
-should have been used instead of $LOC.
+This commit fixes pingpong support for existing drivers that do not
+implement ntb_default_port_number() and ntb_default_peer_port_number().
+This is required for hardware (like the crosslink topology of
+switchtec) which cannot assign reasonable port numbers to each port due
+to its perfect symmetry.
 
-Fixes: 06bd0407d06c ("NTB: ntb_test: Update ntb_tool Scratchpad tests")
+Instead of picking the doorbell to use based on the the index of the
+peer, we use the peer's port number. This is a bit clearer and easier
+to understand.
+
+Fixes: c7aeb0afdcc2 ("NTB: ntb_pp: Add full multi-port NTB API support")
 Signed-off-by: Logan Gunthorpe <logang@deltatee.com>
 Acked-by: Allen Hubbe <allenbh@gmail.com>
 Tested-by: Alexander Fomichev <fomichev.ru@gmail.com>
 Signed-off-by: Jon Mason <jdmason@kudzu.us>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
- tools/testing/selftests/ntb/ntb_test.sh | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/ntb/test/ntb_pingpong.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
 
-diff --git a/tools/testing/selftests/ntb/ntb_test.sh b/tools/testing/selftests/ntb/ntb_test.sh
-index 9c60337317c6..020137b61407 100755
---- a/tools/testing/selftests/ntb/ntb_test.sh
-+++ b/tools/testing/selftests/ntb/ntb_test.sh
-@@ -241,7 +241,7 @@ function get_files_count()
- 	split_remote $LOC
+diff --git a/drivers/ntb/test/ntb_pingpong.c b/drivers/ntb/test/ntb_pingpong.c
+index 65865e460ab8..18d00eec7b02 100644
+--- a/drivers/ntb/test/ntb_pingpong.c
++++ b/drivers/ntb/test/ntb_pingpong.c
+@@ -121,15 +121,14 @@ static int pp_find_next_peer(struct pp_ctx *pp)
+ 	link = ntb_link_is_up(pp->ntb, NULL, NULL);
  
- 	if [[ "$REMOTE" == "" ]]; then
--		echo $(ls -1 "$LOC"/${NAME}* 2>/dev/null | wc -l)
-+		echo $(ls -1 "$VPATH"/${NAME}* 2>/dev/null | wc -l)
- 	else
- 		echo $(ssh "$REMOTE" "ls -1 \"$VPATH\"/${NAME}* | \
- 		       wc -l" 2> /dev/null)
+ 	/* Find next available peer */
+-	if (link & pp->nmask) {
++	if (link & pp->nmask)
+ 		pidx = __ffs64(link & pp->nmask);
+-		out_db = BIT_ULL(pidx + 1);
+-	} else if (link & pp->pmask) {
++	else if (link & pp->pmask)
+ 		pidx = __ffs64(link & pp->pmask);
+-		out_db = BIT_ULL(pidx);
+-	} else {
++	else
+ 		return -ENODEV;
+-	}
++
++	out_db = BIT_ULL(ntb_peer_port_number(pp->ntb, pidx));
+ 
+ 	spin_lock(&pp->lock);
+ 	pp->out_pidx = pidx;
+@@ -303,7 +302,7 @@ static void pp_init_flds(struct pp_ctx *pp)
+ 			break;
+ 	}
+ 
+-	pp->in_db = BIT_ULL(pidx);
++	pp->in_db = BIT_ULL(lport);
+ 	pp->pmask = GENMASK_ULL(pidx, 0) >> 1;
+ 	pp->nmask = GENMASK_ULL(pcnt - 1, pidx);
+ 
+@@ -435,4 +434,3 @@ static void __exit pp_exit(void)
+ 	debugfs_remove_recursive(pp_dbgfs_topdir);
+ }
+ module_exit(pp_exit);
+-
 -- 
 2.25.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200618011631.604574-244-sashal%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200618012218.607130-42-sashal%40kernel.org.
