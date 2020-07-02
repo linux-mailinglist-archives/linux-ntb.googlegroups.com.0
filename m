@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRB2FS633QKGQEYCAPNCA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRB3NS633QKGQEPOKEJJQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x637.google.com (mail-pl1-x637.google.com [IPv6:2607:f8b0:4864:20::637])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0818B211E30
-	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:23:06 +0200 (CEST)
-Received: by mail-pl1-x637.google.com with SMTP id bb8sf7814207plb.16
-        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:23:05 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593678184; cv=pass;
+Received: from mail-pg1-x53f.google.com (mail-pg1-x53f.google.com [IPv6:2607:f8b0:4864:20::53f])
+	by mail.lfdr.de (Postfix) with ESMTPS id 17024211E33
+	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:23:11 +0200 (CEST)
+Received: by mail-pg1-x53f.google.com with SMTP id x184sf19984463pgb.7
+        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:23:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593678190; cv=pass;
         d=google.com; s=arc-20160816;
-        b=dXM1FDKKmRkoeGIJMraF0mJzrFYuz3ouPBsYDPWbuO74iycJkdv71lgGCRLJV0OmIl
-         hdaVBP/0m+6TRfWkvzaO9/40FK46HFLZYsJLZFQj9gxEH+hXQm5zVZea9ZhX4TBTJG75
-         pjjvjLAn0sYKIPVP3tN6NYaBtKnGRfeCUj3VO69ra3DIL6K/Y2CHJbOQq7mqW1gFkmzR
-         o9eoxZVv7sIBH1Z0wlLiCHv8WwYk8fYvLEuFmf1cDpGux9rRUSRI0coYnD0D4PgRuEKD
-         JsJwRw7kpx6deEAZNZiEOw5rkM3j6LoBxVaoj9yqcOBNCetyQCS9NV/UhUkkblfUgQmj
-         ueGQ==
+        b=aET98POngBIsl6jAiooSISO2shtxJCK0IE7X7MYScnGNzEb51BWu84zoUsoDrNAZpT
+         co8AgV2N5/9+pVB5Si2M6vVHWkBRzh2Q3f12lFGbrR0Lz/OcIsgaaeAatcxNl4OJU/nJ
+         e7PrqIX5aO0gie9ddobaqhw/3anr3KXPrdsrkXhD9qWGF3s19j4Y0+2JrnUx2avDRo8l
+         LX1nm2eVqyzTQu8nj0HN1p0BTkF7o9cK7Zu63VkhD9yen8UIgNzZCAAdce7aAY6JCYqJ
+         SBcRFFgRZDW1dFsjkm+cOvbahCIDLj3Ge9MgAzmSJQmt2/hL6MdTCOCs6250jZJViD0G
+         Butw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=BgfyDSnkbmEp73lwG7N1rfgyP3+CnPtzEvPGD8vtK4A=;
-        b=QPvcTT6+hOIu1TV31yPARB5BjwQBflHsIXMwDPSWdrsGTeN3GC3Dfscu9nOek3PMZl
-         rsnKRzHrb/R/4RlkpNQXPvgMLrAXTxjlN+/bdB/sD2DU9M3R3snSuqSJQ9sA/p56yYlV
-         b4lnYQsY6avr2S/ru5LhsNIm9pDkAnG6STu3z90D810Ja6tldEPtUjareCVEdxcO8ZEn
-         4pWt2eVqvIO4mGiwmssBb85YqNODb8UWeBi0B/0kl3u3o8MxH38a3Y7IqajyH/2Bbp0+
-         6LLD7NDWT4ABDCRjyS70HIhaFEf7yWLPd6ylJbLVueVpIzPjHZ8MyccKjQPNxlLGPCgS
-         KKQQ==
+        bh=Ee1nHeomEnqgSQgIY/yJ4CqO5Gek13vnezyP8tK7eCs=;
+        b=pIyvme9wq2+oZYHlcEAZfLuhq0Vrg3V92TLYe/SCpxaYxr+Xdo32xxh7VHmnzRw8Sr
+         XMYu5LGIQzgb/YSKuDHCTkXcnpSSm92VJw2INBODEVj3p/OlaA2Xv9LOAdU6Z9Sb0kMQ
+         VUI44xhMSv9o7uCaQqoAh176bznfxEsAQwJtW4MB5ZOITgn2IiORtm+6TkUy7y+HZVrf
+         +Mw83bvizcWGPZosXKo4/asA7mLkXblYmj9VREBuoGwHTS1gSYpMIWDIydgDtqOsTo0G
+         Z2vbUShV/VRIDF+rX9mmJvTqgXO1RwITJ/wLHodx8yE0lYOIhC4XqyaO9nnm6ggwCIY6
+         4Qeg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=NTB4WUvW;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vw7QPSUT;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=BgfyDSnkbmEp73lwG7N1rfgyP3+CnPtzEvPGD8vtK4A=;
-        b=EEnkXn9P8fkJAcAEvNHw939zqAQfJnT1NfQyN1yd7efMHnyWJlPqfzkdiwfirp3KiC
-         uqVBQcgyWWl72ug4dL42UeKAlXJhmypxxiBXUrPrB4B5LlCCfcwvofFptx/CwmhwOaft
-         UGq9LoyHJTrWO4sCREg54j+BI/4bOnFt0lB4gRT6TxXqsSwPGsGq5Il5ZAgxnYFOBfId
-         9jnNxU406JK3fBvVngFgm4MOopc06JdWzRGsJ2D4uRQ6gSpiMOKh6sfkrZPIeAUWGBux
-         tczZSAt2CE65qqBEMsvKE4Z7pFqk9H9u5M1wGocYKOK4i5pVSw2IvB2sPnpTh2375Nb9
-         5+GQ==
+        bh=Ee1nHeomEnqgSQgIY/yJ4CqO5Gek13vnezyP8tK7eCs=;
+        b=rWTJ/6j49asdFmIAGt6Z8ovnPANHb31JgAVa28Ob3GB6rKc3fCgClsmMfVMkIAzZVZ
+         o3Q4H+e/K1IRFRxa+v8f7ckL/UXoYaUDTFAXE1IrfdCv5aHf+MViTWQs6ZxJRJ3Yh22m
+         1VDDnMQq/46r+tn0cE4IilbhcSI4LqJYBuDISBwZ+8j30QVbR+YodMgYDPMILTCwFnDy
+         CRYv9cg4h8QFlvuHy6hTROhUEUw8XHL4thHQBQ8tDfWffMZ852gqNQBKehip0d3xZTtL
+         pcUcmMfCNic/9fCBMbVDsgVGEt7brv2mrHNXZ583ed07XD+5tCwDozCw78jR4CgVUeTI
+         7L5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=BgfyDSnkbmEp73lwG7N1rfgyP3+CnPtzEvPGD8vtK4A=;
-        b=BdCTyxtoQ9GRA0C5xi+iR4JZMyjyKV8PCzLxockfc7X1XPGxUU+gZ1tyaGIKvoAjFC
-         oPeMEbgbHnnPeAdC0UkVngWNWn5iZnCnXElmtVMTv856M+uuLJaCkkRwSHt0Po7iA9AH
-         ODFyHW94FWMTsDLoPPgwH8mEUbCM+f5DZKZ5A4ZIvnEHW0ywfyBIWQg+loRkYLdr0o75
-         +CrLwRLSpNWncGuDHYKouT0fUf8qX+bmd92SG/ZA/C2uITkCzohOzoO/3sPldwUsFhXQ
-         NvWlXJ5J8EgQ8Qtw08et5iLbeeSmcd1G8pnHj31XOcp6XqCdoyjnwRmva2oY1hGH4qk0
-         Gdaw==
-X-Gm-Message-State: AOAM5304wHfnR9zq7vb54+O5GZLEqk3aNDp8Yfe9T4V4Rqab/ADq+N7v
-	CQbbOMO9KlL2Vuhq4jnWV5w=
-X-Google-Smtp-Source: ABdhPJxuVdGnMeMHpuof+SW4JqrS9VTh/JF5Y6JhfH6stZd9ygbcmj7hBjurpidWiwfd8fGINhf3mQ==
-X-Received: by 2002:a17:90b:4c8b:: with SMTP id my11mr31968294pjb.153.1593678184366;
-        Thu, 02 Jul 2020 01:23:04 -0700 (PDT)
+        bh=Ee1nHeomEnqgSQgIY/yJ4CqO5Gek13vnezyP8tK7eCs=;
+        b=eawvfvUWPm4VGMg97M0ouK0ChMayOH811m+siCt0X0Sh9+/SakumhY/ezpbvQxxCgN
+         OTsOd6jMr4wzGBn2Q6dgxJTNgFvhJ8/VG0OnKBmKunlkeGMsfB5OUfqvoRswdOGWRvVK
+         YF9Q/v7mUG85Lm0pz9f/f+oIiSKgX9gbJU+HxhazciGnziRDPjyUPBMmoRoMHvdI9LWj
+         PGd3e9sBdzI+eJm/NRcEWoaS2oBtYdcC0JBfT9L0py5IdNsqYh9C+3EcCYrhz60Jnds2
+         VqSewlLX/g1bpVPn3OjZtzXw7YWMQR+CXGm+KthS/2xukD7WxF4mzB7s8AMRdrJ25zre
+         b+Xg==
+X-Gm-Message-State: AOAM532JyUV3U1f8uhiYRhOqTxTocv3dRS/s7gOLXA8AlATy0mv5nhBg
+	4gR5Y4tT0zaCSCKt04SEQ/w=
+X-Google-Smtp-Source: ABdhPJxSdK0bFCRbv3DxdrOllWe6uDNquubBlFBfW1fFmc5B5T4GY42hlWCU6mfVuaxXX0b+VSs1Qw==
+X-Received: by 2002:a63:6c1:: with SMTP id 184mr24218766pgg.262.1593678189795;
+        Thu, 02 Jul 2020 01:23:09 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:6b02:: with SMTP id o2ls2001283plk.7.gmail; Thu, 02
- Jul 2020 01:23:04 -0700 (PDT)
-X-Received: by 2002:a17:902:8649:: with SMTP id y9mr26416990plt.60.1593678184001;
-        Thu, 02 Jul 2020 01:23:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593678183; cv=none;
+Received: by 2002:a62:170b:: with SMTP id 11ls1616381pfx.3.gmail; Thu, 02 Jul
+ 2020 01:23:09 -0700 (PDT)
+X-Received: by 2002:a63:7c5:: with SMTP id 188mr24164347pgh.48.1593678189415;
+        Thu, 02 Jul 2020 01:23:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593678189; cv=none;
         d=google.com; s=arc-20160816;
-        b=FBGbWhiQv6KQiyJx24YNeJyHH6bFO+O3hyQVEWE3BpNe1xhfDtG1TH/fP6/sO4Qqbs
-         tD8hgou73OjgTgKyMwzDC5yeh9FO/IPvTxRGEvQWoBgcs1xdZM3kPU6OFAOgiiY/5LP7
-         b5eEV7UVPteOuai3y+pb+BSMAk0OUKCeHnXc5C0JwALZ/gz5wgHEvAQ/OkZw+jpqhAUL
-         6+vDCq7UxFErnfS8s0sWORtbys9+pqfusO+PL1eT/hvBbxp1sM692KWJJZ2emX6I0Kde
-         exDLFJHJAdYR+KgfbT9f9QGi8WqTA0kOmzQlYbORwoiTfNCghiruFeslBCdxikdg1nkd
-         Xjyw==
+        b=XMnV0aKF/PaD7tRKPNW5APhN4dlaIKmFco4fehnAQvydH2OTswJ+Okk9cOn7qErJKX
+         60JSSdTeZ8OhYxOcfL2Sb1CupeVwtrmzgbSwsrIN/nvEgJ6rzWt6vgNqI+2mTLG7+VM/
+         9x/hEpA1ar/2PtvqUt/Nqj8ys+ARJYORWsQnzMXf32brDLrRubUG82McS5ZTU8S4Kw2i
+         vZy4XYJ/uzXwMTtMJdlfI9xsyQacZT7PXakbyZTZzLCwMISe5bk5NfB4VySBERaPHt2A
+         9sFS0AgZREtUY472Y74qMjTa+s7hcY+bxEmFGFhSAqXFpMEGpQGfDTjpG8s4PgvPgUfw
+         7r0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=JPB+vJhEmEbr7wwXfNji0ZXjBCp2o1x06a2a2R9o46s=;
-        b=L+eXTHniZCESUcpbo176uoOHe3/C78A7quPkMm8XJommPl945tVznt147f77aI5BVf
-         uz8/Hwqof4LcVRyHdCjvNme/aLiadQRjWiHbLgFO7Y+tzc3VjNz++IslG8WgwSOqX2zG
-         s9ctVsaWnRPfaW3+sD0cDzf3LwAyUWvfF/HqGMg6XzhLQo/iV8+Dmzd5f2VtTOuO5f05
-         bSvdzjgDJbKwNkJaPSpO5op2KMhv6VuKqmgO+jgEC/lqvwQumOxOnr++7VZegMRgqdmQ
-         OAY1aPzBjzRx+5rm3z/93XkVEIZQM8c6fXTxOGlAe+4YDScrd8HWHYSutd5wIfID3HMz
-         qmvA==
+        bh=33BgNyAskD4tPtltq/G/c+6YM0cxUZYr1ZA8AxsWt2I=;
+        b=Qx5XeE9oHT2bvloLyFzzQWbvxFK/NKp/johkQVDsD2C0GqcakL2HlcYUCwCMhPD1HD
+         0X5LcwkuzinvuFuYSjx+qk8OX5uMZhFL/O1UOUASuTgUg5itwD6smqL8K2OgI7GwrkPn
+         quRf7zX6I+avMv6mCXqYO526zL4WrC/Jc2YSxzAtSo5MMRY/tE1jI2gb13KCU0n8S6FV
+         iPFcLrWrYCuaKvO5GDPcV20diVobsfETRSZGfdKWRQOhO8JzrllSxfwTQ+jgccjN1ZRj
+         m/L68NpKEftxsZLQsbxNYe7bitGt7+ZcXOyB375N/l1bDliUXjLZtiJ1/hez7l58TDet
+         vuFw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=NTB4WUvW;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vw7QPSUT;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
-        by gmr-mx.google.com with ESMTPS id cp21si498760pjb.3.2020.07.02.01.23.03
+Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
+        by gmr-mx.google.com with ESMTPS id d16si432385pgk.2.2020.07.02.01.23.09
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Jul 2020 01:23:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
+        Thu, 02 Jul 2020 01:23:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
 Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628MwtA042318;
-	Thu, 2 Jul 2020 03:22:58 -0500
-Received: from DFLE110.ent.ti.com (dfle110.ent.ti.com [10.64.6.31])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0628Mw7t031199
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628N4OM017422;
+	Thu, 2 Jul 2020 03:23:04 -0500
+Received: from DFLE113.ent.ti.com (dfle113.ent.ti.com [10.64.6.34])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0628N4t0031613
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 2 Jul 2020 03:22:58 -0500
-Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE110.ent.ti.com
- (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 2 Jul 2020 03:23:04 -0500
+Received: from DFLE101.ent.ti.com (10.64.6.22) by DFLE113.ent.ti.com
+ (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 2 Jul
- 2020 03:22:58 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ 2020 03:23:04 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE101.ent.ti.com
+ (10.64.6.22) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 2 Jul 2020 03:22:58 -0500
+ Frontend Transport; Thu, 2 Jul 2020 03:23:03 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYO006145;
-	Thu, 2 Jul 2020 03:22:53 -0500
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYP006145;
+	Thu, 2 Jul 2020 03:22:58 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Ohad Ben-Cohen <ohad@wizery.com>,
         Bjorn Andersson
@@ -133,9 +133,9 @@ CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-remoteproc@vger.kernel.org>, <linux-ntb@googlegroups.com>,
         <linux-pci@vger.kernel.org>, <kvm@vger.kernel.org>,
         <virtualization@lists.linux-foundation.org>, <netdev@vger.kernel.org>
-Subject: [RFC PATCH 12/22] virtio: Add ops to allocate and free buffer
-Date: Thu, 2 Jul 2020 13:51:33 +0530
-Message-ID: <20200702082143.25259-13-kishon@ti.com>
+Subject: [RFC PATCH 13/22] rpmsg: virtio_rpmsg_bus: Use virtio_alloc_buffer() and virtio_free_buffer()
+Date: Thu, 2 Jul 2020 13:51:34 +0530
+Message-ID: <20200702082143.25259-14-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200702082143.25259-1-kishon@ti.com>
 References: <20200702082143.25259-1-kishon@ti.com>
@@ -144,8 +144,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=NTB4WUvW;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=vw7QPSUT;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -162,95 +162,78 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add ops to allocate and free buffer in struct virtio_config_ops.
-Certain vhost devices can have restriction on the range of memory
-it can access on the virtio. The virtio drivers attached to
-such vhost devices reserves memory that can be accessed by
-vhost. This function allocates buffer for such reserved region.
-
-For instance when virtio-vhost is used by two hosts connected to
-NTB, the vhost can access only memory exposed by memory windows
-and the size of the memory window can be limited. Here the NTB
-virtio driver can reserve a small region (few MBs) and provide
-buffer address from this pool whenever requested by virtio client
-driver.
+Use virtio_alloc_buffer() and virtio_free_buffer() to allocate and free
+memory buffer respectively. Only if buffer allocation using
+virtio_alloc_buffer() try using dma_alloc_coherent(). This is required
+for devices like NTB to use rpmsg for communicating with other host.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- include/linux/virtio_config.h | 42 +++++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ drivers/rpmsg/virtio_rpmsg_bus.c | 32 ++++++++++++++++++++++----------
+ 1 file changed, 22 insertions(+), 10 deletions(-)
 
-diff --git a/include/linux/virtio_config.h b/include/linux/virtio_config.h
-index bb4cc4910750..419f733017c2 100644
---- a/include/linux/virtio_config.h
-+++ b/include/linux/virtio_config.h
-@@ -65,6 +65,9 @@ struct irq_affinity;
-  *      the caller can then copy.
-  * @set_vq_affinity: set the affinity for a virtqueue (optional).
-  * @get_vq_affinity: get the affinity for a virtqueue (optional).
-+ * @alloc_buffer: Allocate and provide buffer addresses that can be
-+ *      accessed by both virtio and vhost
-+ * @free_buffer: Free the allocated buffer address
-  */
- typedef void vq_callback_t(struct virtqueue *);
- struct virtio_config_ops {
-@@ -88,6 +91,9 @@ struct virtio_config_ops {
- 			       const struct cpumask *cpu_mask);
- 	const struct cpumask *(*get_vq_affinity)(struct virtio_device *vdev,
- 			int index);
-+	void * (*alloc_buffer)(struct virtio_device *vdev, size_t size);
-+	void (*free_buffer)(struct virtio_device *vdev, void *addr,
-+			    size_t size);
- };
+diff --git a/drivers/rpmsg/virtio_rpmsg_bus.c b/drivers/rpmsg/virtio_rpmsg_bus.c
+index f91143b25af7..2b25a8ae1539 100644
+--- a/drivers/rpmsg/virtio_rpmsg_bus.c
++++ b/drivers/rpmsg/virtio_rpmsg_bus.c
+@@ -882,13 +882,16 @@ static int rpmsg_probe(struct virtio_device *vdev)
  
- /* If driver didn't advertise the feature, it will never appear. */
-@@ -232,6 +238,42 @@ const char *virtio_bus_name(struct virtio_device *vdev)
- 	return vdev->config->bus_name(vdev);
+ 	total_buf_space = vrp->num_bufs * vrp->buf_size;
+ 
+-	/* allocate coherent memory for the buffers */
+-	bufs_va = dma_alloc_coherent(vdev->dev.parent,
+-				     total_buf_space, &vrp->bufs_dma,
+-				     GFP_KERNEL);
++	bufs_va = virtio_alloc_buffer(vdev, total_buf_space);
+ 	if (!bufs_va) {
+-		err = -ENOMEM;
+-		goto vqs_del;
++		/* allocate coherent memory for the buffers */
++		bufs_va = dma_alloc_coherent(vdev->dev.parent,
++					     total_buf_space, &vrp->bufs_dma,
++					     GFP_KERNEL);
++		if (!bufs_va) {
++			err = -ENOMEM;
++			goto vqs_del;
++		}
+ 	}
+ 
+ 	dev_dbg(&vdev->dev, "buffers: va %pK, dma %pad\n",
+@@ -951,8 +954,13 @@ static int rpmsg_probe(struct virtio_device *vdev)
+ 	return 0;
+ 
+ free_coherent:
+-	dma_free_coherent(vdev->dev.parent, total_buf_space,
+-			  bufs_va, vrp->bufs_dma);
++	if (!vrp->bufs_dma) {
++		virtio_free_buffer(vdev, bufs_va, total_buf_space);
++	} else {
++		dma_free_coherent(vdev->dev.parent, total_buf_space,
++				  bufs_va, vrp->bufs_dma);
++	}
++
+ vqs_del:
+ 	vdev->config->del_vqs(vrp->vdev);
+ free_vrp:
+@@ -986,8 +994,12 @@ static void rpmsg_remove(struct virtio_device *vdev)
+ 
+ 	vdev->config->del_vqs(vrp->vdev);
+ 
+-	dma_free_coherent(vdev->dev.parent, total_buf_space,
+-			  vrp->rbufs, vrp->bufs_dma);
++	if (!vrp->bufs_dma) {
++		virtio_free_buffer(vdev, vrp->rbufs, total_buf_space);
++	} else {
++		dma_free_coherent(vdev->dev.parent, total_buf_space,
++				  vrp->rbufs, vrp->bufs_dma);
++	}
+ 
+ 	kfree(vrp);
  }
- 
-+/**
-+ * virtio_alloc_buffer - Allocate buffer from the reserved memory
-+ * @vdev: Virtio device which manages the reserved memory
-+ * @size: Size of the buffer to be allocated
-+ *
-+ * Certain vhost devices can have restriction on the range of memory
-+ * it can access on the virtio. The virtio drivers attached to
-+ * such vhost devices reserves memory that can be accessed by
-+ * vhost. This function allocates buffer for such reserved region.
-+ */
-+static inline void *
-+virtio_alloc_buffer(struct virtio_device *vdev, size_t size)
-+{
-+	if (!vdev->config->alloc_buffer)
-+		return NULL;
-+
-+	return vdev->config->alloc_buffer(vdev, size);
-+}
-+
-+/**
-+ * virtio_free_buffer - Free the allocated buffer
-+ * @vdev: Virtio device which manages the reserved memory
-+ * @addr: Address returned by virtio_alloc_buffer()
-+ * @size: Size of the buffer that has to be freed
-+ *
-+ * Free the allocated buffer address given by virtio_alloc_buffer().
-+ */
-+static inline void
-+virtio_free_buffer(struct virtio_device *vdev, void *addr, size_t size)
-+{
-+	if (!vdev->config->free_buffer)
-+		return;
-+
-+	return vdev->config->free_buffer(vdev, addr, size);
-+}
-+
- /**
-  * virtqueue_set_affinity - setting affinity for a virtqueue
-  * @vq: the virtqueue
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-13-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-14-kishon%40ti.com.
