@@ -1,33 +1,33 @@
 Return-Path: <linux-ntb+bncBCOOP4VF5IDRBQFS633QKGQEMRR5TYI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53e.google.com (mail-pg1-x53e.google.com [IPv6:2607:f8b0:4864:20::53e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7D0EA211E12
-	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:22:26 +0200 (CEST)
-Received: by mail-pg1-x53e.google.com with SMTP id x184sf19983226pgb.7
-        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:22:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593678145; cv=pass;
+Received: from mail-oo1-xc3d.google.com (mail-oo1-xc3d.google.com [IPv6:2607:f8b0:4864:20::c3d])
+	by mail.lfdr.de (Postfix) with ESMTPS id 451AD211E11
+	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:22:25 +0200 (CEST)
+Received: by mail-oo1-xc3d.google.com with SMTP id l193sf2334168ooc.5
+        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:22:25 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593678144; cv=pass;
         d=google.com; s=arc-20160816;
-        b=PWsMwPUvQ83kiRjgaIduuVKK8lhNZzMFbMMxHav8QNGabTBKl5PaUnNxYAWr3+tilf
-         BYqP72ebjs2uIwgIeizxf7yfWh68/zfRirZlnubtSmJ0bZTupCA0N0kgaHaXSyPJwKw3
-         8RXXuIbg6h0fUV7HzuaYoteFaxBsddAOB3KH5VRKJTwOdSonpl43DQjZJa4a0Jx3NinJ
-         2eyVHYKfBVAxfV/r9jM6X8GcIAJvq99X3kdwki28vu8ZDcr32glSLvsQ9rvhLADjppkM
-         1V6vtc0PUj1fch1+/3moMERoLbXr5uDifcW/tg1vTmgLqVBDySE73GdBCy07GbPwN4uj
-         OoMw==
+        b=J6f67wU/kc5f1/ryH8JGBM0U2Ed3cCRAVI844KAhI5vLTeiAxA0dplqM3ds1byIaRM
+         wHvjX7C0FB+mAvFozdUVABQmZwNxb0WCC8IpKVBFA+8yCcGMcJb/95CxQ1IMHQEabLbv
+         FARrdkds12LW0k03pfTqgj7KMo85rg9qSyiWr0cC6XU7CDidAT5XPa6wU11PmQpMiB3o
+         TEGpbObcMxQb384ullO0bISzvyKiYUVgMzF628/9hxB4SXfyVfEmyDyoZaAoO+U/xLS7
+         33ndQK6lZsgrck1emWNeMV7roVe1bMBfCdmzuhshZO+uxjsBRCiur5Xnj3RiO6pOcaNr
+         +n/Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=KQIPwJa4iancishmxsWzoZBT7McTuwqgBaOwm2cjg7M=;
-        b=otirLYLZEbRuVmlXP3zWEXfh9ATQZcLk+iguShuRD8pMva2tCA7Y3Z1k1dsRJEyiXT
-         0b5MCJipOhOh+oF+Ypvo8e1ogAtSO+unB2H8WlUsUBwFKqIk341PPd0cVbcsXhsidVuR
-         StjF4M3jEE1yKDFa1+E0sHsF45BR9PB1uSzfLxtt51Yd43jMTL4Gk13ERUyhxzvroA5H
-         diXdWxGHisaGP/JJforCnbgeR7HmjSnpxDLpHWaepKxWPZpRLTDTaScsZr5YVmxGQN2g
-         o0jev4YAqlKJn79XoOzYSANj5c3POuK7ofoU6MngKYOoXsNI05GXw8XLnKr8GObeFvHb
-         OpLQ==
+        bh=1lAt1SGTjGWXvwWvXhHTLT4mzUbk6/fD7Runzm08dwQ=;
+        b=em1Ku8vbgQ7NsrMGb7pG99gU8LB1Y4mLXET8S2weUhlehpPUeoLLW9JaAHVGgWrgta
+         Iwo558QB2KVlwtttQ4DpSciM7RT9I5x25Zi3/auktskzcYy59CUG5hHUKQ3Onv5KDdPz
+         BKR/reiiTwtr6X51CuktxUX6QzMJTRliOiRCp8ZU7fRcTz0/zXHR/Jykr34DnXgm1fqL
+         cEOkw8efQFozB9m1nK5P+HG7x0ht5cxpdv81G2tfHPUoWBzT+iRL0QNzVX02n+8GuuDm
+         XfTPu+m68mZAe2gE2vdkhJLYCAO56ybuI8BWYhlzXGd8BduGySdcuf5IxWRRwtySd8C1
+         qsBg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=a5rx8XCu;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=UC+AmEhN;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=KQIPwJa4iancishmxsWzoZBT7McTuwqgBaOwm2cjg7M=;
-        b=YQ28UpZ7aLBNCWtrtd0Lwuqwy/Fi+JwtjhZQiA9X4inCuWysxuNt4F11X2Gjofqumq
-         k1zOLzsNRt4pQduSq7kgu89EM0QSv15ylYdR9JZZ/h9dtrXwga3syb/PNA2hWUQfN2Ns
-         tiFvxZtZJxme8QvO3J2WoWj34AUbnvdM8Z+ryGRz5oUA6IhdGcvBWOHOIpR9lP+2KYRw
-         92iARU+SJ5+BxRJNBIw2s0HNS9LP4RGwTa8vWd/WYKjNlollbQNrr2dIyEiwDfxp7AbR
-         n0Tdb9QNCMW+/7m6kSK/bU/rDu8836/w+0PgvuxBLKgLGsa9VFXgbhqsHOTzQ1JSaynt
-         K/DA==
+        bh=1lAt1SGTjGWXvwWvXhHTLT4mzUbk6/fD7Runzm08dwQ=;
+        b=V7QEGuTyDigm69rnEIDhf+Sb27XHE32zljBbN6h5BJwTm/ZfJ4hKfSEU3hlFnUcgoc
+         HWR2E2S/IdmQQ7gJvZewl4hMVVFAIjCCW0zmooznKGs4H9lV5DOEwNM01LRIERGxKMuo
+         aEN+fduFnJmGfwILDPKGv1dvsFaNHb55Nex5k0XpfDY4EPqcW+qT1j9m88kJlTepflyR
+         1rou6BnWcMMqV4uF3pFjsXs2VA1CgzYp1Hp2L9ZURgGZti+RajaUCuEZ0f89MjvItumK
+         aoXcb9ED053DKCU0v5fGBb95lRlHok1RFgJqHR+cugeNjVq6WiPLtxeQPpJ3oI76g2pd
+         tRww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=KQIPwJa4iancishmxsWzoZBT7McTuwqgBaOwm2cjg7M=;
-        b=Z+QlyChz0gYZwJL4Hy+NpdxLyYufY41GOHTr9sW2eCeZiDMsNb4JuRazFv2pRfiUjo
-         ToRiLY/eGIGo2Jplx6Ixx/VWcnhe+WYVCE34RJ0osA1dvOLXerxe1GS9E3qg5+Z48hLG
-         rwiT62gy1zAUUF4mNusTM4Xlv+QAXl5ya7z3j5gxRPFC9Z4kNfk8WLk2HhrDY+sPugzB
-         xpVqSTC32zmDpBDHS2Z8iRc/LVYVQzw6zQSWh64JdXYS76vabWgCpoAdZMV/kil3WfFX
-         +eeLzA6RoEEncZjDVigENGeC/vUOPkW7uU9qxNic7gLQO3E4cLB8SRPcl5Qh6Kc3RCkw
-         ZNbg==
-X-Gm-Message-State: AOAM530CqzjR7RlTM0LpAkYW3NoZwQQgEQ47lVO40ZDG/o3scdh2q9OL
-	gCdYHovDuHaht4DLwxIrg74=
-X-Google-Smtp-Source: ABdhPJyauMhT3qjWU0VmZwbKiol5R/DYEY4lAGqcwhBOyalKm6yMw098YrHm17vGDTa0r+NGaDsDxg==
-X-Received: by 2002:a17:90a:6acb:: with SMTP id b11mr20977052pjm.71.1593678144855;
+        bh=1lAt1SGTjGWXvwWvXhHTLT4mzUbk6/fD7Runzm08dwQ=;
+        b=tNfKJhrBMAq/RsMCg5nGb+7aRuby4rUOIFeOKXHiQWLSPUmolaxRDBZLdLUlsqNwAZ
+         myOJDw9ayB4sA91jwX50ZJyPCa+baKsA2aOM8MiIfFtw1qniWKRR6njKV9Ajt7da9y4W
+         HnO+2jyNfBVYBw+Gn0XG320+MvChRXKBDpEKE+PYp1yXkrqACBFGlF7KbkoivSOqtiQ3
+         9CpL+12jtLmlnl1XrhvJgfXFdzARW3tYMdEKu0GGRIhEZ2i+BwppdjQC5yUbmCyTy4Fs
+         5xZxORGaKjMmZjppms3s4uW2LdtX9KybFetFoZAVeXARAfEwzWOsvqF5qVVHAmoMVVPW
+         w5sg==
+X-Gm-Message-State: AOAM531msXXr9lzBaEtkZyRh+vv5jlLqF4uPMuf29bt8VtroIPoZCJEK
+	3jMI5bw44JX/oR6/hRV40pE=
+X-Google-Smtp-Source: ABdhPJyrcPihlA2DO4K2BGXE7VnBZwQ/2cw2j68gCPtzt5EVDcPm39YEVe+1eIg8XRtLMgQuMyXQRQ==
+X-Received: by 2002:a9d:7d86:: with SMTP id j6mr8446527otn.12.1593678144201;
         Thu, 02 Jul 2020 01:22:24 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a62:1bce:: with SMTP id b197ls1609613pfb.10.gmail; Thu, 02
- Jul 2020 01:22:24 -0700 (PDT)
-X-Received: by 2002:a05:6a00:1592:: with SMTP id u18mr27494273pfk.26.1593678144373;
-        Thu, 02 Jul 2020 01:22:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593678144; cv=none;
+Received: by 2002:aca:520f:: with SMTP id g15ls1109408oib.7.gmail; Thu, 02 Jul
+ 2020 01:22:23 -0700 (PDT)
+X-Received: by 2002:a54:408e:: with SMTP id i14mr11676025oii.175.1593678143855;
+        Thu, 02 Jul 2020 01:22:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593678143; cv=none;
         d=google.com; s=arc-20160816;
-        b=vIrEinIMF+Q86eiO71++3+LQ4+8QAlKZZUUAIMvIHwTU7Z9QwsBb5NDPb6ZoeJdxOF
-         dc5ogj0T6+bYIGd1pcZsF2C7tAawylQuGgXrM3jGP+agEq3STpYrsoqN/ubir+d2Nfjo
-         NkRZhODlNNBSoEjE+o8Riw0sNYswRSfCkFA8TSolXU5OFsVY8yyfHQ/yjzTeE6zBvkO1
-         zS3HvxmAnFzNEOY+fGiAgwL+L7sCpyLeuH9MmffPvRvvcZFPtSubGQEYywkskaEeXsC6
-         HrEWXAEPpjOACMFxfICVwNhMCAW3gR4KM+KV7lLxA0OFLVhkN7U13K678KyhgAePl+2S
-         C4Mw==
+        b=ZytzeMk9rxVeZR4KkAX16cjUv4f4ZZJurpxqqwdwIpdfKulOeR8cHZfkovH+Hl2MlZ
+         HEJRXt6B042GIiYmmOP8WAnD5lnMyWxWtykluCFqwL88mWQJEjnNwx83TNcbEZj3NJbc
+         PeFFXwrzzunkU5jKu0D3Q1ONIapjomjBu4TzAO0Nuk+1nmSnqhJk9tW8jEyuYjwllGHg
+         nFtkVFNecTPQOV6DYauIWlmTr4XDnlXugixz/C4B/vZ+9MgdjEEvQTyzuxSjjX5HX51r
+         NcyvN/W8lzvmPNZC1AdzkJXW7RCI4JaM1uyQmSGjnInt0BriraqHWqzTeNRfc1rI6+KG
+         kz6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=N2Gbtsq8k3jkbnqxN/KZBC1QC1TkA9iW5uvR+twVvhg=;
-        b=DzmMCDrUx4CnZ2n+4zUtxMAS3rvkLTzQK9RYIane9a7O3GxYSKe5ii7Z4oSgeYtGpj
-         qisI0MlO8qkhrOc44Tn08CK542573UkqBAD6Y+CPj+cMv4mVwAac3xY7okaD5ZG5nxXE
-         HhxpF2iUQHWE1eBKbjbyClv8pWpJjS110X4K78f+Mmqdlr6EK5BwfSWVf5DrW8i5HRKG
-         NAkxGltMEjEDh84YizZvn6bo7etqQkI1MUu91+5IfvXXKBabeGw8ilbLoL0op4hYGkzK
-         VbFEDPVGc21+EoXq3HUYpjOWJYpK2J2xvq+U89D33K+VxFzDxRve0l3E2Q+bPtnsexPT
-         jmPQ==
+        bh=Uhwq7t9xmJ09dppFbQNiaS41cCziAqDB/ZcJ4oUfEXo=;
+        b=t9I3QRPGM+MDlJGCt+YsDJSHN9bxGxXeDmEO0C6/7OnU85rY8tHuzAxlVcq04yy/y6
+         WApHeFPt8Csoa+FijVtc0JoB+Q8iQmalc5yI4wtBrx5dqsMJXnoSjZKrWIUt7K+z+QD5
+         AHczzJRMd5XxliQ2P/8d1YrWuKX8uJKHNuqr9dEyl6rklhF9kgJRFEq285tfb8eRtAWR
+         aA9ahgiOm7KZUXhkdGWy4jIDyiBox063GZW+EU+uvDbgIs0xunm/brj0KR9TCWLbTNtT
+         jAnfMboWwwhdADC05zeHItJTYMI31vgasUawOH9oigr9fC1vYc6A1WJ1lnMEWnQH2Yd2
+         QMCg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=a5rx8XCu;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=UC+AmEhN;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
-        by gmr-mx.google.com with ESMTPS id s7si459488pjq.2.2020.07.02.01.22.24
+Received: from lelv0143.ext.ti.com (lelv0143.ext.ti.com. [198.47.23.248])
+        by gmr-mx.google.com with ESMTPS id n6si344706oor.1.2020.07.02.01.22.23
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Jul 2020 01:22:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628MD3P017061;
-	Thu, 2 Jul 2020 03:22:13 -0500
-Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0628MDP2030503
+        Thu, 02 Jul 2020 01:22:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted sender) client-ip=198.47.23.248;
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by lelv0143.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628MJuo042209;
+	Thu, 2 Jul 2020 03:22:19 -0500
+Received: from DLEE103.ent.ti.com (dlee103.ent.ti.com [157.170.170.33])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0628MJW0065146
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 2 Jul 2020 03:22:13 -0500
-Received: from DLEE109.ent.ti.com (157.170.170.41) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 2 Jul 2020 03:22:19 -0500
+Received: from DLEE104.ent.ti.com (157.170.170.34) by DLEE103.ent.ti.com
+ (157.170.170.33) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 2 Jul
- 2020 03:22:13 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE109.ent.ti.com
- (157.170.170.41) with Microsoft SMTP Server (version=TLS1_2,
+ 2020 03:22:18 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE104.ent.ti.com
+ (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 2 Jul 2020 03:22:13 -0500
+ Frontend Transport; Thu, 2 Jul 2020 03:22:18 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYG006145;
-	Thu, 2 Jul 2020 03:22:08 -0500
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYH006145;
+	Thu, 2 Jul 2020 03:22:13 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Ohad Ben-Cohen <ohad@wizery.com>,
         Bjorn Andersson
@@ -133,9 +133,9 @@ CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-remoteproc@vger.kernel.org>, <linux-ntb@googlegroups.com>,
         <linux-pci@vger.kernel.org>, <kvm@vger.kernel.org>,
         <virtualization@lists.linux-foundation.org>, <netdev@vger.kernel.org>
-Subject: [RFC PATCH 04/22] vringh: Add helpers to access vring in MMIO
-Date: Thu, 2 Jul 2020 13:51:25 +0530
-Message-ID: <20200702082143.25259-5-kishon@ti.com>
+Subject: [RFC PATCH 05/22] vhost: Add MMIO helpers for operations on vhost virtqueue
+Date: Thu, 2 Jul 2020 13:51:26 +0530
+Message-ID: <20200702082143.25259-6-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200702082143.25259-1-kishon@ti.com>
 References: <20200702082143.25259-1-kishon@ti.com>
@@ -144,8 +144,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=a5rx8XCu;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=UC+AmEhN;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.23.248 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -162,455 +162,391 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add helpers to access vring in memory mapped IO. This would require
-using IO accessors to access vring and the addresses populated by
-virtio driver (in the descriptor) should be directly given to the
-vhost client driver. Even if the vhost runs in 32 bit system, it
-can access 64 bit address provided by the virtio if the vhost device
-supports translation.
+Add helpers for VHOST drivers to read descriptor data from
+vhost_virtqueue for IN transfers or write descriptor data to
+vhost_virtqueue for OUT transfers respectively. Also add
+helpers to enable callback, disable callback and notify remote
+virtio for events on virtqueue.
 
-This is in preparation for adding VHOST devices (PCIe Endpoint or
-Host in NTB) to access vrings created by VIRTIO devices (PCIe RC or
-Host in NTB) over memory mapped IO.
+This adds helpers only for virtqueue in MMIO (helpers for virtqueue
+in kernel space and user space can be added later).
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/vhost/vringh.c | 332 +++++++++++++++++++++++++++++++++++++++++
- include/linux/vringh.h |  46 ++++++
- 2 files changed, 378 insertions(+)
+ drivers/vhost/Kconfig |   1 +
+ drivers/vhost/vhost.c | 292 ++++++++++++++++++++++++++++++++++++++++++
+ include/linux/vhost.h |  22 ++++
+ 3 files changed, 315 insertions(+)
 
-diff --git a/drivers/vhost/vringh.c b/drivers/vhost/vringh.c
-index ba8e0d6cfd97..b3f1910b99ec 100644
---- a/drivers/vhost/vringh.c
-+++ b/drivers/vhost/vringh.c
-@@ -5,6 +5,7 @@
-  * Since these may be in userspace, we use (inline) accessors.
-  */
- #include <linux/compiler.h>
-+#include <linux/io.h>
- #include <linux/module.h>
- #include <linux/vringh.h>
- #include <linux/virtio_ring.h>
-@@ -188,6 +189,32 @@ static int move_to_indirect(const struct vringh *vrh,
- 	return 0;
- }
+diff --git a/drivers/vhost/Kconfig b/drivers/vhost/Kconfig
+index c4f273793595..77e195a38469 100644
+--- a/drivers/vhost/Kconfig
++++ b/drivers/vhost/Kconfig
+@@ -24,6 +24,7 @@ config VHOST_DPN
  
-+static int resize_mmiovec(struct vringh_mmiov *iov, gfp_t gfp)
-+{
-+	unsigned int flag, new_num = (iov->max_num & ~VRINGH_IOV_ALLOCATED) * 2;
-+	struct mmiovec *new;
-+
-+	if (new_num < 8)
-+		new_num = 8;
-+
-+	flag = (iov->max_num & VRINGH_IOV_ALLOCATED);
-+	if (flag) {
-+		new = krealloc(iov->iov, new_num * sizeof(struct iovec), gfp);
-+	} else {
-+		new = kmalloc_array(new_num, sizeof(struct iovec), gfp);
-+		if (new) {
-+			memcpy(new, iov->iov,
-+			       iov->max_num * sizeof(struct iovec));
-+			flag = VRINGH_IOV_ALLOCATED;
-+		}
-+	}
-+	if (!new)
-+		return -ENOMEM;
-+	iov->iov = new;
-+	iov->max_num = (new_num | flag);
-+	return 0;
-+}
-+
- static int resize_iovec(struct vringh_kiov *iov, gfp_t gfp)
- {
- 	struct kvec *new;
-@@ -261,6 +288,142 @@ static int slow_copy(struct vringh *vrh, void *dst, const void *src,
- 	return 0;
+ config VHOST
+ 	tristate
++	select VHOST_RING
+ 	select VHOST_IOTLB
+ 	help
+ 	  This option is selected by any driver which needs to access
+diff --git a/drivers/vhost/vhost.c b/drivers/vhost/vhost.c
+index f959abb0b1bb..8a3ad4698393 100644
+--- a/drivers/vhost/vhost.c
++++ b/drivers/vhost/vhost.c
+@@ -2558,6 +2558,298 @@ struct vhost_msg_node *vhost_dequeue_msg(struct vhost_dev *dev,
  }
+ EXPORT_SYMBOL_GPL(vhost_dequeue_msg);
  
-+static inline int
-+__vringh_mmiov(struct vringh *vrh, u16 i, struct vringh_mmiov *riov,
-+	       struct vringh_mmiov *wiov,
-+	       bool (*rcheck)(struct vringh *vrh, u64 addr, size_t *len,
-+			      struct vringh_range *range,
-+			      bool (*getrange)(struct vringh *, u64,
-+					       struct vringh_range *)),
-+	       bool (*getrange)(struct vringh *, u64, struct vringh_range *),
-+	       gfp_t gfp,
-+	       int (*copy)(const struct vringh *vrh,
-+			   void *dst, const void *src, size_t len))
++/**
++ * vhost_virtqueue_disable_cb_mmio() - Write to used ring in virtio accessed
++ *   using MMIO to stop notification
++ * @vq: vhost_virtqueue for which callbacks have to be disabled
++ *
++ * Write to used ring in virtio accessed using MMIO to stop sending notification
++ * to the vhost virtqueue.
++ */
++static void vhost_virtqueue_disable_cb_mmio(struct vhost_virtqueue *vq)
 +{
-+	int err, count = 0, up_next, desc_max;
-+	struct vring_desc desc, *descs;
-+	struct vringh_range range = { -1ULL, 0 }, slowrange;
-+	bool slow = false;
++	struct vringh *vringh;
 +
-+	/* We start traversing vring's descriptor table. */
-+	descs = vrh->vring.desc;
-+	desc_max = vrh->vring.num;
-+	up_next = -1;
-+
-+	if (riov) {
-+		riov->i = 0;
-+		riov->used = 0;
-+	} else if (wiov) {
-+		wiov->i = 0;
-+		wiov->used = 0;
-+	} else {
-+		/* You must want something! */
-+		WARN_ON(1);
-+	}
-+
-+	for (;;) {
-+		u64 addr;
-+		struct vringh_mmiov *iov;
-+		size_t len;
-+
-+		if (unlikely(slow))
-+			err = slow_copy(vrh, &desc, &descs[i], rcheck, getrange,
-+					&slowrange, copy);
-+		else
-+			err = copy(vrh, &desc, &descs[i], sizeof(desc));
-+		if (unlikely(err))
-+			goto fail;
-+
-+		if (unlikely(desc.flags &
-+			     cpu_to_vringh16(vrh, VRING_DESC_F_INDIRECT))) {
-+			/* VRING_DESC_F_INDIRECT is not supported */
-+			err = -EINVAL;
-+			goto fail;
-+		}
-+
-+		if (count++ == vrh->vring.num) {
-+			vringh_bad("Descriptor loop in %p", descs);
-+			err = -ELOOP;
-+			goto fail;
-+		}
-+
-+		if (desc.flags & cpu_to_vringh16(vrh, VRING_DESC_F_WRITE)) {
-+			iov = wiov;
-+		} else {
-+			iov = riov;
-+			if (unlikely(wiov && wiov->i)) {
-+				vringh_bad("Readable desc %p after writable",
-+					   &descs[i]);
-+				err = -EINVAL;
-+				goto fail;
-+			}
-+		}
-+
-+		if (!iov) {
-+			vringh_bad("Unexpected %s desc",
-+				   !wiov ? "writable" : "readable");
-+			err = -EPROTO;
-+			goto fail;
-+		}
-+
-+again:
-+		/* Make sure it's OK, and get offset. */
-+		len = vringh32_to_cpu(vrh, desc.len);
-+		if (!rcheck(vrh, vringh64_to_cpu(vrh, desc.addr), &len, &range,
-+			    getrange)) {
-+			err = -EINVAL;
-+			goto fail;
-+		}
-+		addr = vringh64_to_cpu(vrh, desc.addr) + range.offset;
-+
-+		if (unlikely(iov->used == (iov->max_num & ~VRINGH_IOV_ALLOCATED))) {
-+			err = resize_mmiovec(iov, gfp);
-+			if (err)
-+				goto fail;
-+		}
-+
-+		iov->iov[iov->used].iov_base = addr;
-+		iov->iov[iov->used].iov_len = len;
-+		iov->used++;
-+
-+		if (unlikely(len != vringh32_to_cpu(vrh, desc.len))) {
-+			desc.len =
-+				cpu_to_vringh32(vrh,
-+						vringh32_to_cpu(vrh, desc.len)
-+						- len);
-+			desc.addr =
-+				cpu_to_vringh64(vrh,
-+						vringh64_to_cpu(vrh, desc.addr)
-+						+ len);
-+			goto again;
-+		}
-+
-+		if (desc.flags & cpu_to_vringh16(vrh, VRING_DESC_F_NEXT)) {
-+			i = vringh16_to_cpu(vrh, desc.next);
-+		} else {
-+			/* Just in case we need to finish traversing above. */
-+			if (unlikely(up_next > 0)) {
-+				i = return_from_indirect(vrh, &up_next,
-+							 &descs, &desc_max);
-+				slow = false;
-+			} else {
-+				break;
-+			}
-+		}
-+
-+		if (i >= desc_max) {
-+			vringh_bad("Chained index %u > %u", i, desc_max);
-+			err = -EINVAL;
-+			goto fail;
-+		}
-+	}
-+
-+	return 0;
-+
-+fail:
-+	return err;
-+}
-+
- static inline int
- __vringh_iov(struct vringh *vrh, u16 i,
- 	     struct vringh_kiov *riov,
-@@ -833,6 +996,175 @@ int vringh_need_notify_user(struct vringh *vrh)
- }
- EXPORT_SYMBOL(vringh_need_notify_user);
- 
-+/* MMIO access helpers */
-+static inline int getu16_mmio(const struct vringh *vrh,
-+			      u16 *val, const __virtio16 *p)
-+{
-+	*val = vringh16_to_cpu(vrh, readw(p));
-+	return 0;
-+}
-+
-+static inline int putu16_mmio(const struct vringh *vrh, __virtio16 *p, u16 val)
-+{
-+	writew(cpu_to_vringh16(vrh, val), p);
-+	return 0;
-+}
-+
-+static inline int copydesc_mmio(const struct vringh *vrh,
-+				void *dst, const void *src, size_t len)
-+{
-+	memcpy_fromio(dst, src, len);
-+	return 0;
-+}
-+
-+static inline int putused_mmio(const struct vringh *vrh,
-+			       struct vring_used_elem *dst,
-+			       const struct vring_used_elem *src,
-+			       unsigned int num)
-+{
-+	memcpy_toio(dst, src, num * sizeof(*dst));
-+	return 0;
++	vringh = &vq->vringh;
++	vringh_notify_disable_mmio(vringh);
 +}
 +
 +/**
-+ * vringh_init_mmio - initialize a vringh for a MMIO vring.
-+ * @vrh: the vringh to initialize.
-+ * @features: the feature bits for this ring.
-+ * @num: the number of elements.
-+ * @weak_barriers: true if we only need memory barriers, not I/O.
-+ * @desc: the userpace descriptor pointer.
-+ * @avail: the userpace avail pointer.
-+ * @used: the userpace used pointer.
++ * vhost_virtqueue_disable_cb() - Write to used ring in virtio to stop
++ *   notification
++ * @vq: vhost_virtqueue for which callbacks have to be disabled
 + *
-+ * Returns an error if num is invalid.
++ * Wrapper to write to used ring in virtio to stop sending notification
++ * to the vhost virtqueue.
 + */
-+int vringh_init_mmio(struct vringh *vrh, u64 features,
-+		     unsigned int num, bool weak_barriers,
-+		     struct vring_desc *desc,
-+		     struct vring_avail *avail,
-+		     struct vring_used *used)
++void vhost_virtqueue_disable_cb(struct vhost_virtqueue *vq)
 +{
-+	/* Sane power of 2 please! */
-+	if (!num || num > 0xffff || (num & (num - 1))) {
-+		vringh_bad("Bad ring size %u", num);
-+		return -EINVAL;
-+	}
++	enum vhost_type type;
 +
-+	vrh->little_endian = (features & (1ULL << VIRTIO_F_VERSION_1));
-+	vrh->event_indices = (features & (1 << VIRTIO_RING_F_EVENT_IDX));
-+	vrh->weak_barriers = weak_barriers;
-+	vrh->completed = 0;
-+	vrh->last_avail_idx = 0;
-+	vrh->last_used_idx = 0;
-+	vrh->vring.num = num;
-+	vrh->vring.desc = desc;
-+	vrh->vring.avail = avail;
-+	vrh->vring.used = used;
-+	return 0;
++	type = vq->type;
++
++	/* TODO: Add support for other VHOST TYPES */
++	if (type == VHOST_TYPE_MMIO)
++		return vhost_virtqueue_disable_cb_mmio(vq);
 +}
-+EXPORT_SYMBOL(vringh_init_mmio);
++EXPORT_SYMBOL_GPL(vhost_virtqueue_disable_cb);
 +
 +/**
-+ * vringh_getdesc_mmio - get next available descriptor from MMIO ring.
-+ * @vrh: the MMIO vring.
-+ * @riov: where to put the readable descriptors (or NULL)
-+ * @wiov: where to put the writable descriptors (or NULL)
-+ * @head: head index we received, for passing to vringh_complete_mmio().
-+ * @gfp: flags for allocating larger riov/wiov.
++ * vhost_virtqueue_enable_cb_mmio() - Write to used ring in virtio accessed
++ *   using MMIO to enable notification
++ * @vq: vhost_virtqueue for which callbacks have to be enabled
 + *
-+ * Returns 0 if there was no descriptor, 1 if there was, or -errno.
-+ *
-+ * Note that on error return, you can tell the difference between an
-+ * invalid ring and a single invalid descriptor: in the former case,
-+ * *head will be vrh->vring.num.  You may be able to ignore an invalid
-+ * descriptor, but there's not much you can do with an invalid ring.
-+ *
-+ * Note that you may need to clean up riov and wiov, even on error!
++ * Write to used ring in virtio accessed using MMIO to enable notification
++ * to the vhost virtqueue.
 + */
-+int vringh_getdesc_mmio(struct vringh *vrh,
-+			struct vringh_mmiov *riov,
-+			struct vringh_mmiov *wiov,
-+			u16 *head,
-+			gfp_t gfp)
++static bool vhost_virtqueue_enable_cb_mmio(struct vhost_virtqueue *vq)
 +{
-+	int err;
++	struct vringh *vringh;
 +
-+	err = __vringh_get_head(vrh, getu16_mmio, &vrh->last_avail_idx);
-+	if (err < 0)
-+		return err;
++	vringh = &vq->vringh;
++	return vringh_notify_enable_mmio(vringh);
++}
 +
-+	/* Empty... */
-+	if (err == vrh->vring.num)
++/**
++ * vhost_virtqueue_enable_cb() - Write to used ring in virtio to enable
++ *   notification
++ * @vq: vhost_virtqueue for which callbacks have to be enabled
++ *
++ * Wrapper to write to used ring in virtio to enable notification to the
++ * vhost virtqueue.
++ */
++bool vhost_virtqueue_enable_cb(struct vhost_virtqueue *vq)
++{
++	enum vhost_type type;
++
++	type = vq->type;
++
++	/* TODO: Add support for other VHOST TYPES */
++	if (type == VHOST_TYPE_MMIO)
++		return vhost_virtqueue_enable_cb_mmio(vq);
++
++	return false;
++}
++EXPORT_SYMBOL_GPL(vhost_virtqueue_enable_cb);
++
++/**
++ * vhost_virtqueue_notify() - Send notification to the remote virtqueue
++ * @vq: vhost_virtqueue that sends the notification
++ *
++ * Invokes ->notify() callback to send notification to the remote virtqueue.
++ */
++void vhost_virtqueue_notify(struct vhost_virtqueue *vq)
++{
++	if (!vq->notify)
++		return;
++
++	vq->notify(vq);
++}
++EXPORT_SYMBOL_GPL(vhost_virtqueue_notify);
++
++/**
++ * vhost_virtqueue_kick_mmio() - Check if the remote virtqueue has enabled
++ *   notification (by reading available ring in virtio accessed using MMIO)
++ *   before sending notification
++ * @vq: vhost_virtqueue that sends the notification
++ *
++ * Check if the remote virtqueue has enabled notification (by reading available
++ * ring in virtio accessed using MMIO) and then invoke vhost_virtqueue_notify()
++ * to send notification to the remote virtqueue.
++ */
++static void vhost_virtqueue_kick_mmio(struct vhost_virtqueue *vq)
++{
++	if (vringh_need_notify_mmio(&vq->vringh))
++		vhost_virtqueue_notify(vq);
++}
++
++/**
++ * vhost_virtqueue_kick() - Check if the remote virtqueue has enabled
++ *   notification before sending notification
++ * @vq: vhost_virtqueue that sends the notification
++ *
++ * Wrapper to send notification to the remote virtqueue using
++ * vhost_virtqueue_kick_mmio() that checks if the remote virtqueue has
++ * enabled notification before sending the notification.
++ */
++void vhost_virtqueue_kick(struct vhost_virtqueue *vq)
++{
++	enum vhost_type type;
++
++	type = vq->type;
++
++	/* TODO: Add support for other VHOST TYPES */
++	if (type == VHOST_TYPE_MMIO)
++		return vhost_virtqueue_kick_mmio(vq);
++}
++EXPORT_SYMBOL_GPL(vhost_virtqueue_kick);
++
++/**
++ * vhost_virtqueue_callback() - Invoke vhost virtqueue callback provided by
++ *   vhost client driver
++ * @vq: vhost_virtqueue for which the callback is invoked
++ *
++ * Invoked by the driver that creates vhost device when the remote virtio
++ * driver sends notification to this virtqueue.
++ */
++void vhost_virtqueue_callback(struct vhost_virtqueue *vq)
++{
++	if (!vq->callback)
++		return;
++
++	vq->callback(vq);
++}
++EXPORT_SYMBOL_GPL(vhost_virtqueue_callback);
++
++/**
++ * vhost_virtqueue_get_outbuf_mmio() - Get the output buffer address by reading
++ *   virtqueue descriptor accessed using MMIO
++ * @vq: vhost_virtqueue used to access the descriptor
++ * @head: head index for passing to vhost_virtqueue_put_buf()
++ * @len: Length of the buffer
++ *
++ * Get the output buffer address by reading virtqueue descriptor accessed using
++ * MMIO.
++ */
++static u64 vhost_virtqueue_get_outbuf_mmio(struct vhost_virtqueue *vq,
++					   u16 *head, int *len)
++{
++	struct vringh_mmiov wiov;
++	struct mmiovec *mmiovec;
++	struct vringh *vringh;
++	int desc;
++
++	vringh = &vq->vringh;
++	vringh_mmiov_init(&wiov, NULL, 0);
++
++	desc = vringh_getdesc_mmio(vringh, NULL, &wiov, head, GFP_KERNEL);
++	if (!desc)
++		return 0;
++	mmiovec = &wiov.iov[0];
++
++	*len = mmiovec->iov_len;
++	return mmiovec->iov_base;
++}
++
++/**
++ * vhost_virtqueue_get_outbuf() - Get the output buffer address by reading
++ *   virtqueue descriptor
++ * @vq: vhost_virtqueue used to access the descriptor
++ * @head: head index for passing to vhost_virtqueue_put_buf()
++ * @len: Length of the buffer
++ *
++ * Wrapper to get the output buffer address by reading virtqueue descriptor.
++ */
++u64 vhost_virtqueue_get_outbuf(struct vhost_virtqueue *vq, u16 *head, int *len)
++{
++	enum vhost_type type;
++
++	type = vq->type;
++
++	/* TODO: Add support for other VHOST TYPES */
++	if (type == VHOST_TYPE_MMIO)
++		return vhost_virtqueue_get_outbuf_mmio(vq, head, len);
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(vhost_virtqueue_get_outbuf);
++
++/**
++ * vhost_virtqueue_get_inbuf_mmio() - Get the input buffer address by reading
++ *   virtqueue descriptor accessed using MMIO
++ * @vq: vhost_virtqueue used to access the descriptor
++ * @head: Head index for passing to vhost_virtqueue_put_buf()
++ * @len: Length of the buffer
++ *
++ * Get the input buffer address by reading virtqueue descriptor accessed using
++ * MMIO.
++ */
++static u64 vhost_virtqueue_get_inbuf_mmio(struct vhost_virtqueue *vq,
++					  u16 *head, int *len)
++{
++	struct vringh_mmiov riov;
++	struct mmiovec *mmiovec;
++	struct vringh *vringh;
++	int desc;
++
++	vringh = &vq->vringh;
++	vringh_mmiov_init(&riov, NULL, 0);
++
++	desc = vringh_getdesc_mmio(vringh, &riov, NULL, head, GFP_KERNEL);
++	if (!desc)
 +		return 0;
 +
-+	*head = err;
-+	err = __vringh_mmiov(vrh, *head, riov, wiov, no_range_check, NULL,
-+			     gfp, copydesc_mmio);
-+	if (err)
-+		return err;
++	mmiovec = &riov.iov[0];
 +
-+	return 1;
++	*len = mmiovec->iov_len;
++	return mmiovec->iov_base;
 +}
-+EXPORT_SYMBOL(vringh_getdesc_mmio);
 +
 +/**
-+ * vringh_complete_mmio - we've finished with descriptor, publish it.
-+ * @vrh: the vring.
-+ * @head: the head as filled in by vringh_getdesc_mmio.
-+ * @len: the length of data we have written.
++ * vhost_virtqueue_get_inbuf() - Get the input buffer address by reading
++ *   virtqueue descriptor
++ * @vq: vhost_virtqueue used to access the descriptor
++ * @head: head index for passing to vhost_virtqueue_put_buf()
++ * @len: Length of the buffer
 + *
-+ * You should check vringh_need_notify_mmio() after one or more calls
-+ * to this function.
++ * Wrapper to get the input buffer address by reading virtqueue descriptor.
 + */
-+int vringh_complete_mmio(struct vringh *vrh, u16 head, u32 len)
++u64 vhost_virtqueue_get_inbuf(struct vhost_virtqueue *vq, u16 *head, int *len)
 +{
-+	struct vring_used_elem used;
++	enum vhost_type type;
 +
-+	used.id = cpu_to_vringh32(vrh, head);
-+	used.len = cpu_to_vringh32(vrh, len);
++	type = vq->type;
 +
-+	return __vringh_complete(vrh, &used, 1, putu16_mmio, putused_mmio);
++	/* TODO: Add support for other VHOST TYPES */
++	if (type == VHOST_TYPE_MMIO)
++		return vhost_virtqueue_get_inbuf_mmio(vq, head, len);
++
++	return 0;
 +}
-+EXPORT_SYMBOL(vringh_complete_mmio);
++EXPORT_SYMBOL_GPL(vhost_virtqueue_get_inbuf);
 +
 +/**
-+ * vringh_notify_enable_mmio - we want to know if something changes.
-+ * @vrh: the vring.
++ * vhost_virtqueue_put_buf_mmio() - Publish to the remote virtio (update
++ * used ring in virtio using MMIO) to indicate the buffer has been processed
++ * @vq: vhost_virtqueue used to update the used ring
++ * @head: Head index receive from vhost_virtqueue_get_*()
++ * @len: Length of the buffer
 + *
-+ * This always enables notifications, but returns false if there are
-+ * now more buffers available in the vring.
++ * Publish to the remote virtio (update used ring in virtio using MMIO) to
++ * indicate the buffer has been processed
 + */
-+bool vringh_notify_enable_mmio(struct vringh *vrh)
++static void vhost_virtqueue_put_buf_mmio(struct vhost_virtqueue *vq,
++					 u16 head, int len)
 +{
-+	return __vringh_notify_enable(vrh, getu16_mmio, putu16_mmio);
++	struct vringh *vringh;
++
++	vringh = &vq->vringh;
++
++	vringh_complete_mmio(vringh, head, len);
 +}
-+EXPORT_SYMBOL(vringh_notify_enable_mmio);
 +
 +/**
-+ * vringh_notify_disable_mmio - don't tell us if something changes.
-+ * @vrh: the vring.
++ * vhost_virtqueue_put_buf() - Publish to the remote virtio to indicate the
++ *   buffer has been processed
++ * @vq: vhost_virtqueue used to update the used ring
++ * @head: Head index receive from vhost_virtqueue_get_*()
++ * @len: Length of the buffer
 + *
-+ * This is our normal running state: we disable and then only enable when
-+ * we're going to sleep.
++ * Wrapper to publish to the remote virtio to indicate the buffer has been
++ * processed.
 + */
-+void vringh_notify_disable_mmio(struct vringh *vrh)
++void vhost_virtqueue_put_buf(struct vhost_virtqueue *vq, u16 head, int len)
 +{
-+	__vringh_notify_disable(vrh, putu16_mmio);
-+}
-+EXPORT_SYMBOL(vringh_notify_disable_mmio);
++	enum vhost_type type;
 +
-+/**
-+ * vringh_need_notify_mmio - must we tell the other side about used buffers?
-+ * @vrh: the vring we've called vringh_complete_mmio() on.
-+ *
-+ * Returns -errno or 0 if we don't need to tell the other side, 1 if we do.
-+ */
-+int vringh_need_notify_mmio(struct vringh *vrh)
-+{
-+	return __vringh_need_notify(vrh, getu16_mmio);
-+}
-+EXPORT_SYMBOL(vringh_need_notify_mmio);
++	type = vq->type;
 +
- /* Kernelspace access helpers. */
- static inline int getu16_kern(const struct vringh *vrh,
- 			      u16 *val, const __virtio16 *p)
-diff --git a/include/linux/vringh.h b/include/linux/vringh.h
-index 9e2763d7c159..0ba63a72b124 100644
---- a/include/linux/vringh.h
-+++ b/include/linux/vringh.h
-@@ -99,6 +99,23 @@ struct vringh_kiov {
- 	unsigned i, used, max_num;
++	/* TODO: Add support for other VHOST TYPES */
++	if (type == VHOST_TYPE_MMIO)
++		return vhost_virtqueue_put_buf_mmio(vq, head, len);
++}
++EXPORT_SYMBOL_GPL(vhost_virtqueue_put_buf);
++
+ /**
+  * vhost_create_vqs() - Invoke vhost_config_ops to create virtqueue
+  * @vdev: Vhost device that provides create_vqs() callback to create virtqueue
+diff --git a/include/linux/vhost.h b/include/linux/vhost.h
+index b22a19c66109..8efb9829c1b1 100644
+--- a/include/linux/vhost.h
++++ b/include/linux/vhost.h
+@@ -10,6 +10,7 @@
+ #include <linux/uio.h>
+ #include <linux/virtio_config.h>
+ #include <linux/virtio_ring.h>
++#include <linux/vringh.h>
+ #include <linux/atomic.h>
+ #include <linux/vhost_iotlb.h>
+ #include <uapi/linux/vhost.h>
+@@ -60,9 +61,20 @@ enum vhost_uaddr_type {
+ 	VHOST_NUM_ADDRS = 3,
  };
  
-+struct mmiovec {
-+	u64 iov_base;
-+	size_t iov_len;
++enum vhost_type {
++	VHOST_TYPE_UNKNOWN,
++	VHOST_TYPE_USER,
++	VHOST_TYPE_KERN,
++	VHOST_TYPE_MMIO,
 +};
 +
-+/**
-+ * struct vringh_mmiov - mmiovec mangler.
-+ *
-+ * Mangles mmiovec in place, and restores it.
-+ * Remaining data is iov + i, of used - i elements.
-+ */
-+struct vringh_mmiov {
-+	struct mmiovec *iov;
-+	size_t consumed; /* Within iov[i] */
-+	unsigned int i, used, max_num;
-+};
-+
- /* Flag on max_num to indicate we're kmalloced. */
- #define VRINGH_IOV_ALLOCATED 0x8000000
+ /* The virtqueue structure describes a queue attached to a device. */
+ struct vhost_virtqueue {
+ 	struct vhost_dev *dev;
++	enum vhost_type type;
++	struct vringh vringh;
++	void (*callback)(struct vhost_virtqueue *vq);
++	void (*notify)(struct vhost_virtqueue *vq);
  
-@@ -213,6 +230,35 @@ void vringh_notify_disable_kern(struct vringh *vrh);
+ 	/* The actual ring of buffers. */
+ 	struct mutex mutex;
+@@ -235,6 +247,16 @@ u8 vhost_get_status(struct vhost_dev *vdev);
  
- int vringh_need_notify_kern(struct vringh *vrh);
+ int vhost_register_notifier(struct vhost_dev *vdev, struct notifier_block *nb);
  
-+/* Helpers for kernelspace vrings. */
-+int vringh_init_mmio(struct vringh *vrh, u64 features,
-+		     unsigned int num, bool weak_barriers,
-+		     struct vring_desc *desc,
-+		     struct vring_avail *avail,
-+		     struct vring_used *used);
++u64 vhost_virtqueue_get_outbuf(struct vhost_virtqueue *vq, u16 *head, int *len);
++u64 vhost_virtqueue_get_inbuf(struct vhost_virtqueue *vq, u16 *head, int *len);
++void vhost_virtqueue_put_buf(struct vhost_virtqueue *vq, u16 head, int len);
 +
-+static inline void vringh_mmiov_init(struct vringh_mmiov *mmiov,
-+				     struct mmiovec *mmiovec, unsigned int num)
-+{
-+	mmiov->used = 0;
-+	mmiov->i = 0;
-+	mmiov->consumed = 0;
-+	mmiov->max_num = num;
-+	mmiov->iov = mmiovec;
-+}
++void vhost_virtqueue_disable_cb(struct vhost_virtqueue *vq);
++bool vhost_virtqueue_enable_cb(struct vhost_virtqueue *vq);
++void vhost_virtqueue_notify(struct vhost_virtqueue *vq);
++void vhost_virtqueue_kick(struct vhost_virtqueue *vq);
++void vhost_virtqueue_callback(struct vhost_virtqueue *vq);
 +
-+int vringh_getdesc_mmio(struct vringh *vrh,
-+			struct vringh_mmiov *riov,
-+			struct vringh_mmiov *wiov,
-+			u16 *head,
-+			gfp_t gfp);
-+
-+int vringh_complete_mmio(struct vringh *vrh, u16 head, u32 len);
-+
-+bool vringh_notify_enable_mmio(struct vringh *vrh);
-+void vringh_notify_disable_mmio(struct vringh *vrh);
-+int vringh_need_notify_mmio(struct vringh *vrh);
-+
- /* Notify the guest about buffers added to the used ring */
- static inline void vringh_notify(struct vringh *vrh)
- {
+ bool vhost_exceeds_weight(struct vhost_virtqueue *vq, int pkts, int total_len);
+ void vhost_dev_init(struct vhost_dev *, struct vhost_virtqueue **vqs,
+ 		    int nvqs, int iov_limit, int weight, int byte_weight,
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-5-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-6-kishon%40ti.com.
