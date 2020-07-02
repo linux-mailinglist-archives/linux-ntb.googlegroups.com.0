@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBKNS633QKGQEYNLPRGA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBMFS633QKGQEZBALXVQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qv1-xf38.google.com (mail-qv1-xf38.google.com [IPv6:2607:f8b0:4864:20::f38])
-	by mail.lfdr.de (Postfix) with ESMTPS id EEA76211E05
-	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:22:02 +0200 (CEST)
-Received: by mail-qv1-xf38.google.com with SMTP id e6sf8851700qva.2
-        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:22:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593678121; cv=pass;
+Received: from mail-qv1-xf40.google.com (mail-qv1-xf40.google.com [IPv6:2607:f8b0:4864:20::f40])
+	by mail.lfdr.de (Postfix) with ESMTPS id 254A0211E07
+	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:22:09 +0200 (CEST)
+Received: by mail-qv1-xf40.google.com with SMTP id g17sf16112332qvw.0
+        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:22:09 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593678128; cv=pass;
         d=google.com; s=arc-20160816;
-        b=fKz1VzqvGPihHCQrOjbvMGMVhwinb1DbzsOevjMHRBy5BsZwD6CTJ7X9MJud7mJUsv
-         hGCeyu3iFQtWWun7bmsyNl2E3RYPnfUgsxv1cJX7pvtGPA1yd9z2PbufkUxV77MhrGWZ
-         QoJO9yhQbEAYfwyO5I06Wy0g10Rnn9NctQvUq5RvDk43ggFkTEQByHSPtSTXV8tPV3ub
-         TPnQwsH6B9+IS0Ap8CETyoxx0KJqB4DCgv1chP5EQUm7XbY3lGTNGAAyUKPSjVNMy++O
-         t+bp9l4biXAXmJNqPo2qMDgomgB+liIKIXB7kVXWz5qu9jxJ14rteo6iwlQb+CnJM6pN
-         38ww==
+        b=amm7Yp79htbMYzGWsq4P3uk7oOJABol841XkWwZJKsdhgAr1tJDFvugzwK3kdlfG4F
+         W2oWJP5Wz+ucU+MN6ww+itUrb6X12XApMtz/Urf8v8dZ+HhwZKxyV5h0iR27I7NGAVtZ
+         0WtFDwJCrxAYUPSg+vcYFYdttu1c2hR62h8dnPfd5b9wOuKpDW4t+coOKm6iafRvictr
+         gd9WM9aBJddBa8wdr+LKiiaB8hOzOuHMde8RxdJLBku0ONE/1Xzt0az8yg1kdOFDAawH
+         reA5Ulys6id/tVPTtslvLAvFjYGZTjfzgD9wcnwQS06uAXSBZWVO+oOKUVy37Y6Bf9+0
+         vixQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=acCMMHTnNwmayFTDt5ivBVZIvaiPYZVQisrYj2dXfcM=;
-        b=rECBpcyPJvVPlqOF76OKOnf5uQehHGaYXg6bHSUJDSoLR5R40Z4olrKN4GWDuU8jTu
-         CrTAaEuROuwtFJLf4opHk6evPhWpYuwyadK86W2bzN3Ahtusl3SyAlgn5LA72NoKC13A
-         XOlxvACd6XcZJ+cvIQN8TRftECOS9Ncfa1jPSeFrpV+sEHB/sEkeLn+xrU4Xr5PNLOql
-         HAbvEjCvre5KN7pN9nA0C9QyhxJd7Q3hANcczgfu4aIwLeBvbKcqS2piE2kgqvaOhCOw
-         GelVQUMn394xyJu3XM84cSMxxcHsnrZ6mBKA/9i70HBSSQHmhuG6/RLfcT6eyxcSn5pQ
-         7Rrg==
+        bh=SuFZ+HH/1Dm0hwyJM8Cq3eeL5NdFwF5S21gQwtTSF6c=;
+        b=lxJotxyABUowrjjD+2FoAplbfs6M+p3C3MnZIH05s8u96BsG910VKbBhDecPuT4yVR
+         glNERtT/YIfFm4RMpf50SuUrn5IFYYrQL7Up2gNhD8IaJEuYxN67b0qHpbxoQ8yy4T4K
+         MD35YyqlL8uG3ONnPKzd+GGEw8cHcG7t463jLTYkL/p7pREiRG+S0nPhQBO2XzP4a9dC
+         JYaeS1b+DduFaETxz94mzrPQrFfXJD0Vwz5o9XsJ9LMi3CWqn14ffdcDy1cCiJ9rAeL1
+         VyUowPn1Vw0ueMFCW5QOmFhSF/fSIe0jvs7nigDxrvA3L8N1djvgdAaN8mPMce0WLkbF
+         lA+g==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=yXQ+RTwS;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=XSyOgQSE;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=acCMMHTnNwmayFTDt5ivBVZIvaiPYZVQisrYj2dXfcM=;
-        b=ifAXoGz9zDiYLDHdTLxPW/rdJK4c+7wTYGaboLcFcXyi8dRYU5pBiv0O/iRLusZx7l
-         vDAjzg6hIQ/z7r8ToveuNRWyfAZS8G7BqC/Kv2mm3fZKK1XH+rKz8R5vL+ekNfHLW1sd
-         2SYDv2nYfMa4bV2QR5c7o2gDtICrFdxoqmw55OARF5nahzJ+h3EE3pEYZLJzzPZDLTxP
-         g33dNq5VnNMlJTmxbMSNJe9uXVQF2N+4VLpfOzaiomI5IbPdxfsh3x98YS7hh71ln0IS
-         CKEq8ZibSqKMydf9+3wMpCJsnbNmsexsDjBOEmw+3czGmA1Z/7Lyji91qOwFnVbxpwQx
-         GwvQ==
+        bh=SuFZ+HH/1Dm0hwyJM8Cq3eeL5NdFwF5S21gQwtTSF6c=;
+        b=Gb6JuJ2jTFj+tMonnODtUhBuvfZiy0HUcHopzSuZrJP2KMQJK6lv0Nur7EkSzgBdT/
+         qQhJtX6BeLJ36K+dIM+SC1WiNrbHaamDKIvCZE/g/bng+Wxrp1ThQBJhqX88mMHi0kvw
+         E/GuSN60xEyx2Fw7aRKdi/9Hqm7tR8KMLnRGKFq6QfhsFOyYpLV+eB0bfahVLKR3bZi/
+         bkOUz+NYuq8DTM3WCRhg977RaJOSXP9GMYMqXcWeFcy5w6OFM3vBag04k9/+hnuy7GMy
+         M7sCVYY9ZNKd9Ahp+I6pNnMbugp66nCO1crj9YV1ENiOJ1K7bIVwYAjNNQfaA7r6/rul
+         4DaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=acCMMHTnNwmayFTDt5ivBVZIvaiPYZVQisrYj2dXfcM=;
-        b=h4xe81JVkOC8bGAXLaW0ABN6JnvZGt4VhdI/kGb/zOe6UYTOmrmXHH0A+uX6hp/aVK
-         lfMgc5B5GGut0yg5xHyUPkMmv5vQCrps5jZBHfpwK1crxMnhfG/6KVugOqYsMJA53sUW
-         vDD1VQPFgMceGj6kby1ruudewIdaxoKo/oXLzVje19B9iR+2GFnMlYJXZpqXrUAiUMok
-         JZfrGKGTQ491hg1eDnxrKtH8hmFvI/oggFsqHBTEWFEMZm4jl3KOkV+JkToJP/T61l8c
-         TbDawEIvZR/dmTTInjavpnhkapkXr0fxmoXYW+IpTG0FyOZwcKcCdzeNWfr/V4mGdhF9
-         yy+g==
-X-Gm-Message-State: AOAM532j/zabLPyq1hfh3T+zFFAuz4SFAX9A/9u/NE5B249OtjFAuwkB
-	+G9hL8kf6ZNvSsLa70XvV10=
-X-Google-Smtp-Source: ABdhPJydm2qG6g24ZkEqvP3StJlmdzxy6i1jlsutAq+E6gD0cqnMsWeDCC5j+FxCskkSuCU2BaUEJw==
-X-Received: by 2002:a37:a251:: with SMTP id l78mr10974667qke.313.1593678121638;
-        Thu, 02 Jul 2020 01:22:01 -0700 (PDT)
+        bh=SuFZ+HH/1Dm0hwyJM8Cq3eeL5NdFwF5S21gQwtTSF6c=;
+        b=BQga5mKfeSW6FFHZritjmfU6yzSYo02J8a9ISpnZFttZtd0/aUeWRVysHOT7qyF7Xr
+         LBG7STZ4WJ4gFaGahsbtB962qRs+LA+Uqrq47H5BaCZeWHOVYgxbKL3DarGHLDUpgViw
+         6Pf9ikciMQJKG43bE2jgTuVnsWkgs3bGw38sM72vMxroW74druA1IyaqBP3ezVzmx9Ub
+         2QTWKlLDFtI9MbztCXZlVUNkhMoTgcHwkCrBBDFbXdNlD7JRCiEjkImtsN6I88HgR2uJ
+         1rPGDO8G6XdbRvU8SxPBVyTBUwM7z3YJxnKNqwQlvAtKw/aeo2hm+iSDK8R8zSsDHBGL
+         ATCw==
+X-Gm-Message-State: AOAM531Lmym5e9efU9IPTszad5jmmgcjYXZZdo+Vs46GvLsRiwh1wbyj
+	TFdfPzSBwVfJgtNoZF/ZH+w=
+X-Google-Smtp-Source: ABdhPJzeH86yzgRtYLSPFHWs4GPQUuW2g/VnUuFA2KbPW5r/OE2xXqircEelcEmlKsQHu38HdrCB1A==
+X-Received: by 2002:a05:620a:629:: with SMTP id 9mr29832335qkv.353.1593678128153;
+        Thu, 02 Jul 2020 01:22:08 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ae9:e415:: with SMTP id q21ls2346417qkc.9.gmail; Thu, 02 Jul
- 2020 01:22:01 -0700 (PDT)
-X-Received: by 2002:a37:4ccb:: with SMTP id z194mr8396191qka.312.1593678121266;
-        Thu, 02 Jul 2020 01:22:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593678121; cv=none;
+Received: by 2002:ae9:ea09:: with SMTP id f9ls2357220qkg.1.gmail; Thu, 02 Jul
+ 2020 01:22:07 -0700 (PDT)
+X-Received: by 2002:a05:620a:2284:: with SMTP id o4mr15154335qkh.115.1593678127813;
+        Thu, 02 Jul 2020 01:22:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593678127; cv=none;
         d=google.com; s=arc-20160816;
-        b=NT09wMJcZ0FNLRXJbPaWq+/DSVK7jtXIbbRhEPEHa8GfKUuWLtIFFa9dkCXM4Ter5I
-         51+9WC0M2wO0YmCOfvUzYmrjVfI9Wf1BBWKt0UODV9QxL3EcH+Le7Ppwz77u7fP9EfX5
-         VuJDvet8NBkCbOBIjGMtJNJCzqLT0xycbLVHNJOVRQgk5TBdBInJVUR8tU9tu8Z1An4n
-         OJChs0Xpz6H3BJywI/+5y22DOpgLqwgTrkvv3FqFJVJC3PGiHiYtB+OuCe5vJy1D6YhJ
-         jS/NdBJoYNEs/Ntjc4sziT+rNG2g9BhxEmgb8Cusb/ZU0CPBzElV778FUsNB6kGryi3k
-         SndQ==
+        b=wahN0dXnZTzq2dJcDmyl+f0iLqpbx0QlmRyl5ud5CvNamVRoQ9hqYeOZE6Da1NEIF4
+         2XYOBAl5PIpYmo8LlogV5jH0cD6CCHAwWkKtjBAT5vbsJQTr1pcYmEaPsarzA6iRZdy2
+         SHX2ZwOtJeETpX3BM64Wh82DvDzD7oVCvyeZ+4tSI/jQQq69vpPADNbsdFyGV4nc69gi
+         4Jo2Hdku8ZHMW1yiuzU//EVitLDO7ApI1rtZ7EZVB2Y0OWi4DLx+ob/1sMoZgCcXO7pG
+         48WdVtmQJZzjjtZpWv8qjeUMF7z9TLxx7M18B5LGxugblkpqe6fIWfHBuky8SRRy1BKI
+         Gv+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=ABGiAo420c56SSOxSDxeuSuOeuV6cI8PSAJ9Fas2di4=;
-        b=Nj2V+3EzDcEjfjMO7JREZIp5ubIPjviZs+7XBCGXsXYryBFMvQaWmBokolivTuxUgu
-         iCqrT9f6jUfItJmUL2q5h6iz5dINw1yLjNoUMI77czaRbtCQgIcvgZbCtNX/MTYVYyY1
-         VSgy681uMhlpOjLbtZ+NZLjelKovnDAJ888ift60RHlEkX3V9z5Ks0gUrJGMCPpOfWms
-         SfFdRc3Gup5Emh9WhMRFWn4E7Jpg4oS4tMXoHOyUmwyqoxZQ+azxBbqXuHZXu8bvD1Br
-         MuRkn9f13oH2m+BH0JALwkIdrv1/ZL+q0PFI663hWpsEhmQDz6okho2/LrB4Qs47X72G
-         FjQw==
+        bh=+aGJiU5V4G+i0lcwnv8aYxc6DjyYC/equHpyXkZ20Wk=;
+        b=efYK1QwP5itATkbfCjseQzHJmZGSwr6kFBtVHqfF9VmOr1xAoas2sKcxL4gYCfhe20
+         Ge55h1tZ/beG1mokgMC4zitdBPHBgfVm8A/X4tWwJJDr6LD/I8f3dD8FcLZdZP3gLWMW
+         Lx6eRxssCXPyRIImayJvWzIfuzcd1uzFOm+Y8Sh2tUglgkesa4kV0QryhfJaMyEPmrrQ
+         CKg1t47jfIBROCLXeXqP0NFsgnQqzwNPVakpxdtdJZ79jDE+LKkd0C5p0mUGOajCWNji
+         DHctnMT7AWK+MNAWtfm47qUo76YQg/DgooU48MOG3S+FFic6QMtgcsOkeukQlYI3PalI
+         0rNw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=yXQ+RTwS;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=XSyOgQSE;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
-        by gmr-mx.google.com with ESMTPS id w64si136760qkb.7.2020.07.02.01.22.01
+Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com. [198.47.23.249])
+        by gmr-mx.google.com with ESMTPS id j9si247953qkg.6.2020.07.02.01.22.07
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Jul 2020 01:22:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628LuLH016993;
-	Thu, 2 Jul 2020 03:21:56 -0500
-Received: from DLEE114.ent.ti.com (dlee114.ent.ti.com [157.170.170.25])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0628Lu9h029608
+        Thu, 02 Jul 2020 01:22:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) client-ip=198.47.23.249;
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628M2Op081717;
+	Thu, 2 Jul 2020 03:22:02 -0500
+Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0628M21U065272
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 2 Jul 2020 03:21:56 -0500
-Received: from DLEE110.ent.ti.com (157.170.170.21) by DLEE114.ent.ti.com
- (157.170.170.25) with Microsoft SMTP Server (version=TLS1_2,
+	Thu, 2 Jul 2020 03:22:02 -0500
+Received: from DLEE112.ent.ti.com (157.170.170.23) by DLEE104.ent.ti.com
+ (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 2 Jul
- 2020 03:21:56 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE110.ent.ti.com
- (157.170.170.21) with Microsoft SMTP Server (version=TLS1_2,
+ 2020 03:22:01 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE112.ent.ti.com
+ (157.170.170.23) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 2 Jul 2020 03:21:56 -0500
+ Frontend Transport; Thu, 2 Jul 2020 03:22:02 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYD006145;
-	Thu, 2 Jul 2020 03:21:51 -0500
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYE006145;
+	Thu, 2 Jul 2020 03:21:56 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Ohad Ben-Cohen <ohad@wizery.com>,
         Bjorn Andersson
@@ -133,9 +133,9 @@ CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-remoteproc@vger.kernel.org>, <linux-ntb@googlegroups.com>,
         <linux-pci@vger.kernel.org>, <kvm@vger.kernel.org>,
         <virtualization@lists.linux-foundation.org>, <netdev@vger.kernel.org>
-Subject: [RFC PATCH 01/22] vhost: Make _feature_ bits a property of vhost device
-Date: Thu, 2 Jul 2020 13:51:22 +0530
-Message-ID: <20200702082143.25259-2-kishon@ti.com>
+Subject: [RFC PATCH 02/22] vhost: Introduce standard Linux driver model in VHOST
+Date: Thu, 2 Jul 2020 13:51:23 +0530
+Message-ID: <20200702082143.25259-3-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200702082143.25259-1-kishon@ti.com>
 References: <20200702082143.25259-1-kishon@ti.com>
@@ -144,8 +144,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=yXQ+RTwS;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=XSyOgQSE;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -162,346 +162,385 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-No functional change intended. The feature bits defined in virtio
-specification is associated with virtio device and not virtqueue.
-In order to correctly reflect this in the vhost backend, remove
-"acked_features" from struct vhost_virtqueue and add "features" in
-struct vhost_dev. This will also make it look symmetrical to virtio
-in guest.
+Introduce standard driver model in VHOST. This will facilitate using
+multiple VHOST drivers (like net, scsi etc.,) over different VHOST
+devices using MMIO (like PCIe or NTB), using kernel pointers (like
+platform devices) or using userspace pointers.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/vhost/net.c   |  7 ++++---
- drivers/vhost/scsi.c  | 22 ++++++++--------------
- drivers/vhost/test.c  | 14 +++++---------
- drivers/vhost/vhost.c | 33 +++++++++++++++++++++------------
- drivers/vhost/vhost.h |  6 +++---
- drivers/vhost/vsock.c | 18 ++++++------------
- 6 files changed, 47 insertions(+), 53 deletions(-)
+ drivers/vhost/net.c                      |   3 +-
+ drivers/vhost/scsi.c                     |   2 +-
+ drivers/vhost/test.c                     |   3 +-
+ drivers/vhost/vdpa.c                     |   2 +-
+ drivers/vhost/vhost.c                    | 157 ++++++++++++++++++++++-
+ drivers/vhost/vsock.c                    |   2 +-
+ include/linux/mod_devicetable.h          |   6 +
+ {drivers/vhost => include/linux}/vhost.h |  22 +++-
+ tools/virtio/virtio_test.c               |   2 +-
+ 9 files changed, 190 insertions(+), 9 deletions(-)
+ rename {drivers/vhost => include/linux}/vhost.h (93%)
 
 diff --git a/drivers/vhost/net.c b/drivers/vhost/net.c
-index 516519dcc8ff..437126219116 100644
+index 437126219116..3c57c345cbfd 100644
 --- a/drivers/vhost/net.c
 +++ b/drivers/vhost/net.c
-@@ -1137,9 +1137,9 @@ static void handle_rx(struct vhost_net *net)
- 	vhost_hlen = nvq->vhost_hlen;
- 	sock_hlen = nvq->sock_hlen;
+@@ -18,6 +18,7 @@
+ #include <linux/slab.h>
+ #include <linux/sched/clock.h>
+ #include <linux/sched/signal.h>
++#include <linux/vhost.h>
+ #include <linux/vmalloc.h>
  
--	vq_log = unlikely(vhost_has_feature(vq, VHOST_F_LOG_ALL)) ?
-+	vq_log = unlikely(vhost_has_feature(&net->dev, VHOST_F_LOG_ALL)) ?
- 		vq->log : NULL;
--	mergeable = vhost_has_feature(vq, VIRTIO_NET_F_MRG_RXBUF);
-+	mergeable = vhost_has_feature(&net->dev, VIRTIO_NET_F_MRG_RXBUF);
+ #include <linux/net.h>
+@@ -33,7 +34,7 @@
+ #include <net/sock.h>
+ #include <net/xdp.h>
  
- 	do {
- 		sock_len = vhost_net_rx_peek_head_len(net, sock->sk,
-@@ -1633,6 +1633,7 @@ static int vhost_net_set_backend_features(struct vhost_net *n, u64 features)
- static int vhost_net_set_features(struct vhost_net *n, u64 features)
- {
- 	size_t vhost_hlen, sock_hlen, hdr_len;
-+	struct vhost_dev *vdev = &n->dev;
- 	int i;
+-#include "vhost.h"
++#include <uapi/linux/vhost.h>
  
- 	hdr_len = (features & ((1ULL << VIRTIO_NET_F_MRG_RXBUF) |
-@@ -1658,9 +1659,9 @@ static int vhost_net_set_features(struct vhost_net *n, u64 features)
- 			goto out_unlock;
- 	}
- 
-+	vdev->features = features;
- 	for (i = 0; i < VHOST_NET_VQ_MAX; ++i) {
- 		mutex_lock(&n->vqs[i].vq.mutex);
--		n->vqs[i].vq.acked_features = features;
- 		n->vqs[i].vhost_hlen = vhost_hlen;
- 		n->vqs[i].sock_hlen = sock_hlen;
- 		mutex_unlock(&n->vqs[i].vq.mutex);
+ static int experimental_zcopytx = 0;
+ module_param(experimental_zcopytx, int, 0444);
 diff --git a/drivers/vhost/scsi.c b/drivers/vhost/scsi.c
-index 8b104f76f324..f5138379659e 100644
+index f5138379659e..06898b7ce7dd 100644
 --- a/drivers/vhost/scsi.c
 +++ b/drivers/vhost/scsi.c
-@@ -921,7 +921,7 @@ vhost_scsi_handle_vq(struct vhost_scsi *vs, struct vhost_virtqueue *vq)
- 	int ret, prot_bytes, c = 0;
- 	u16 lun;
- 	u8 task_attr;
--	bool t10_pi = vhost_has_feature(vq, VIRTIO_SCSI_F_T10_PI);
-+	bool t10_pi = vhost_has_feature(&vs->dev, VIRTIO_SCSI_F_T10_PI);
- 	void *cdb;
+@@ -47,7 +47,7 @@
+ #include <linux/llist.h>
+ #include <linux/bitmap.h>
  
- 	mutex_lock(&vq->mutex);
-@@ -1573,26 +1573,20 @@ vhost_scsi_clear_endpoint(struct vhost_scsi *vs,
+-#include "vhost.h"
++#include <uapi/linux/vhost.h>
  
- static int vhost_scsi_set_features(struct vhost_scsi *vs, u64 features)
- {
--	struct vhost_virtqueue *vq;
--	int i;
-+	struct vhost_dev *vdev = &vs->dev;
- 
- 	if (features & ~VHOST_SCSI_FEATURES)
- 		return -EOPNOTSUPP;
- 
--	mutex_lock(&vs->dev.mutex);
-+	mutex_lock(&vdev->mutex);
- 	if ((features & (1 << VHOST_F_LOG_ALL)) &&
--	    !vhost_log_access_ok(&vs->dev)) {
--		mutex_unlock(&vs->dev.mutex);
-+	    !vhost_log_access_ok(vdev)) {
-+		mutex_unlock(&vdev->mutex);
- 		return -EFAULT;
- 	}
- 
--	for (i = 0; i < VHOST_SCSI_MAX_VQ; i++) {
--		vq = &vs->vqs[i].vq;
--		mutex_lock(&vq->mutex);
--		vq->acked_features = features;
--		mutex_unlock(&vq->mutex);
--	}
--	mutex_unlock(&vs->dev.mutex);
-+	vdev->features = features;
-+	mutex_unlock(&vdev->mutex);
- 	return 0;
- }
- 
-@@ -1789,7 +1783,7 @@ vhost_scsi_do_plug(struct vhost_scsi_tpg *tpg,
- 
- 	vq = &vs->vqs[VHOST_SCSI_VQ_EVT].vq;
- 	mutex_lock(&vq->mutex);
--	if (vhost_has_feature(vq, VIRTIO_SCSI_F_HOTPLUG))
-+	if (vhost_has_feature(&vs->dev, VIRTIO_SCSI_F_HOTPLUG))
- 		vhost_scsi_send_evt(vs, tpg, lun,
- 				   VIRTIO_SCSI_T_TRANSPORT_RESET, reason);
- 	mutex_unlock(&vq->mutex);
+ #define VHOST_SCSI_VERSION  "v0.1"
+ #define VHOST_SCSI_NAMELEN 256
 diff --git a/drivers/vhost/test.c b/drivers/vhost/test.c
-index 9a3a09005e03..6518b48c0633 100644
+index 6518b48c0633..07508526182f 100644
 --- a/drivers/vhost/test.c
 +++ b/drivers/vhost/test.c
-@@ -247,19 +247,15 @@ static long vhost_test_reset_owner(struct vhost_test *n)
+@@ -14,9 +14,10 @@
+ #include <linux/workqueue.h>
+ #include <linux/file.h>
+ #include <linux/slab.h>
++#include <linux/vhost.h>
++#include <uapi/linux/vhost.h>
  
- static int vhost_test_set_features(struct vhost_test *n, u64 features)
+ #include "test.h"
+-#include "vhost.h"
+ 
+ /* Max number of bytes transferred before requeueing the job.
+  * Using this limit prevents one virtqueue from starving others. */
+diff --git a/drivers/vhost/vdpa.c b/drivers/vhost/vdpa.c
+index 0968361e3b77..61d90100db89 100644
+--- a/drivers/vhost/vdpa.c
++++ b/drivers/vhost/vdpa.c
+@@ -22,7 +22,7 @@
+ #include <linux/vhost.h>
+ #include <linux/virtio_net.h>
+ 
+-#include "vhost.h"
++#include <uapi/linux/vhost.h>
+ 
+ enum {
+ 	VHOST_VDPA_FEATURES =
+diff --git a/drivers/vhost/vhost.c b/drivers/vhost/vhost.c
+index 3c2633fb519d..fa2bc6e68be2 100644
+--- a/drivers/vhost/vhost.c
++++ b/drivers/vhost/vhost.c
+@@ -32,8 +32,6 @@
+ #include <linux/nospec.h>
+ #include <linux/kcov.h>
+ 
+-#include "vhost.h"
+-
+ static ushort max_mem_regions = 64;
+ module_param(max_mem_regions, ushort, 0444);
+ MODULE_PARM_DESC(max_mem_regions,
+@@ -43,6 +41,9 @@ module_param(max_iotlb_entries, int, 0444);
+ MODULE_PARM_DESC(max_iotlb_entries,
+ 	"Maximum number of iotlb entries. (default: 2048)");
+ 
++static DEFINE_IDA(vhost_index_ida);
++static DEFINE_MUTEX(vhost_index_mutex);
++
+ enum {
+ 	VHOST_MEMORY_F_LOG = 0x1,
+ };
+@@ -2557,14 +2558,166 @@ struct vhost_msg_node *vhost_dequeue_msg(struct vhost_dev *dev,
+ }
+ EXPORT_SYMBOL_GPL(vhost_dequeue_msg);
+ 
++static inline int vhost_id_match(const struct vhost_dev *vdev,
++				 const struct vhost_device_id *id)
++{
++	if (id->device != vdev->id.device && id->device != VIRTIO_DEV_ANY_ID)
++		return 0;
++
++	return id->vendor == VIRTIO_DEV_ANY_ID || id->vendor == vdev->id.vendor;
++}
++
++static int vhost_dev_match(struct device *dev, struct device_driver *drv)
++{
++	struct vhost_driver *driver = to_vhost_driver(drv);
++	struct vhost_dev *vdev = to_vhost_dev(dev);
++	const struct vhost_device_id *ids;
++	int i;
++
++	ids = driver->id_table;
++	for (i = 0; ids[i].device; i++)
++		if (vhost_id_match(vdev, &ids[i]))
++			return 1;
++
++	return 0;
++}
++
++static int vhost_dev_probe(struct device *dev)
++{
++	struct vhost_driver *driver = to_vhost_driver(dev->driver);
++	struct vhost_dev *vdev = to_vhost_dev(dev);
++
++	if (!driver->probe)
++		return -ENODEV;
++
++	vdev->driver = driver;
++
++	return driver->probe(vdev);
++}
++
++static int vhost_dev_remove(struct device *dev)
++{
++	struct vhost_driver *driver = to_vhost_driver(dev->driver);
++	struct vhost_dev *vdev = to_vhost_dev(dev);
++	int ret = 0;
++
++	if (driver->remove)
++		ret = driver->remove(vdev);
++	vdev->driver = NULL;
++
++	return ret;
++}
++
++static struct bus_type vhost_bus_type = {
++	.name  = "vhost",
++	.match = vhost_dev_match,
++	.probe = vhost_dev_probe,
++	.remove = vhost_dev_remove,
++};
++
++/**
++ * vhost_register_driver() - Register a vhost driver
++ * @driver: Vhost driver that has to be registered
++ *
++ * Register a vhost driver.
++ */
++int vhost_register_driver(struct vhost_driver *driver)
++{
++	int ret;
++
++	driver->driver.bus = &vhost_bus_type;
++
++	ret = driver_register(&driver->driver);
++	if (ret)
++		return ret;
++
++	return 0;
++}
++EXPORT_SYMBOL_GPL(vhost_register_driver);
++
++/**
++ * vhost_unregister_driver() - Unregister a vhost driver
++ * @driver: Vhost driver that has to be un-registered
++ *
++ * Unregister a vhost driver.
++ */
++void vhost_unregister_driver(struct vhost_driver *driver)
++{
++	driver_unregister(&driver->driver);
++}
++EXPORT_SYMBOL_GPL(vhost_unregister_driver);
++
++/**
++ * vhost_register_device() - Register vhost device
++ * @vdev: Vhost device that has to be registered
++ *
++ * Allocate a ID and register vhost device.
++ */
++int vhost_register_device(struct vhost_dev *vdev)
++{
++	struct device *dev = &vdev->dev;
++	int ret;
++
++	mutex_lock(&vhost_index_mutex);
++	ret = ida_simple_get(&vhost_index_ida, 0, 0, GFP_KERNEL);
++	mutex_unlock(&vhost_index_mutex);
++	if (ret < 0)
++		return ret;
++
++	vdev->index = ret;
++	dev->bus = &vhost_bus_type;
++	device_initialize(dev);
++
++	dev_set_name(dev, "vhost%u", ret);
++
++	ret = device_add(dev);
++	if (ret) {
++		put_device(dev);
++		goto err;
++	}
++
++	return 0;
++
++err:
++	mutex_lock(&vhost_index_mutex);
++	ida_simple_remove(&vhost_index_ida, vdev->index);
++	mutex_unlock(&vhost_index_mutex);
++
++	return ret;
++}
++EXPORT_SYMBOL_GPL(vhost_register_device);
++
++/**
++ * vhost_unregister_device() - Un-register vhost device
++ * @vdev: Vhost device that has to be un-registered
++ *
++ * Un-register vhost device and free the allocated ID.
++ */
++void vhost_unregister_device(struct vhost_dev *vdev)
++{
++	device_unregister(&vdev->dev);
++	mutex_lock(&vhost_index_mutex);
++	ida_simple_remove(&vhost_index_ida, vdev->index);
++	mutex_unlock(&vhost_index_mutex);
++}
++EXPORT_SYMBOL_GPL(vhost_unregister_device);
+ 
+ static int __init vhost_init(void)
  {
--	struct vhost_virtqueue *vq;
-+	struct vhost_dev *vdev = &n->dev;
- 
--	mutex_lock(&n->dev.mutex);
-+	mutex_lock(&vdev->mutex);
- 	if ((features & (1 << VHOST_F_LOG_ALL)) &&
--	    !vhost_log_access_ok(&n->dev)) {
--		mutex_unlock(&n->dev.mutex);
-+	    !vhost_log_access_ok(vdev)) {
-+		mutex_unlock(&vdev->mutex);
- 		return -EFAULT;
- 	}
--	vq = &n->vqs[VHOST_TEST_VQ];
--	mutex_lock(&vq->mutex);
--	vq->acked_features = features;
--	mutex_unlock(&vq->mutex);
--	mutex_unlock(&n->dev.mutex);
-+	mutex_unlock(&vdev->mutex);
++	int ret;
++
++	ret = bus_register(&vhost_bus_type);
++	if (ret) {
++		pr_err("failed to register vhost bus --> %d\n", ret);
++		return ret;
++	}
++
  	return 0;
  }
  
-diff --git a/drivers/vhost/vhost.c b/drivers/vhost/vhost.c
-index 21a59b598ed8..3c2633fb519d 100644
---- a/drivers/vhost/vhost.c
-+++ b/drivers/vhost/vhost.c
-@@ -104,12 +104,14 @@ static long vhost_get_vring_endian(struct vhost_virtqueue *vq, u32 idx,
- 
- static void vhost_init_is_le(struct vhost_virtqueue *vq)
+ static void __exit vhost_exit(void)
  {
-+	struct vhost_dev *vdev = vq->dev;
-+
- 	/* Note for legacy virtio: user_be is initialized at reset time
- 	 * according to the host endianness. If userspace does not set an
- 	 * explicit endianness, the default behavior is native endian, as
- 	 * expected by legacy virtio.
- 	 */
--	vq->is_le = vhost_has_feature(vq, VIRTIO_F_VERSION_1) || !vq->user_be;
-+	vq->is_le = vhost_has_feature(vdev, VIRTIO_F_VERSION_1) || !vq->user_be;
++	bus_unregister(&vhost_bus_type);
  }
- #else
- static void vhost_disable_cross_endian(struct vhost_virtqueue *vq)
-@@ -129,7 +131,9 @@ static long vhost_get_vring_endian(struct vhost_virtqueue *vq, u32 idx,
  
- static void vhost_init_is_le(struct vhost_virtqueue *vq)
- {
--	vq->is_le = vhost_has_feature(vq, VIRTIO_F_VERSION_1)
-+	struct vhost_dev *vdev = vq->dev;
+ module_init(vhost_init);
+diff --git a/drivers/vhost/vsock.c b/drivers/vhost/vsock.c
+index 8317ad026e3d..5753048b7405 100644
+--- a/drivers/vhost/vsock.c
++++ b/drivers/vhost/vsock.c
+@@ -17,7 +17,7 @@
+ #include <linux/hashtable.h>
+ 
+ #include <net/af_vsock.h>
+-#include "vhost.h"
++#include <uapi/linux/vhost.h>
+ 
+ #define VHOST_VSOCK_DEFAULT_HOST_CID	2
+ /* Max number of bytes transferred before requeueing the job.
+diff --git a/include/linux/mod_devicetable.h b/include/linux/mod_devicetable.h
+index 8d764aab29de..c7df018989e3 100644
+--- a/include/linux/mod_devicetable.h
++++ b/include/linux/mod_devicetable.h
+@@ -430,6 +430,12 @@ struct virtio_device_id {
+ };
+ #define VIRTIO_DEV_ANY_ID	0xffffffff
+ 
++/* VHOST */
++struct vhost_device_id {
++	__u32 device;
++	__u32 vendor;
++};
 +
-+	vq->is_le = vhost_has_feature(vdev, VIRTIO_F_VERSION_1)
- 		|| virtio_legacy_is_little_endian();
- }
- #endif /* CONFIG_VHOST_CROSS_ENDIAN_LEGACY */
-@@ -310,7 +314,6 @@ static void vhost_vq_reset(struct vhost_dev *dev,
- 	vq->log_used = false;
- 	vq->log_addr = -1ull;
- 	vq->private_data = NULL;
--	vq->acked_features = 0;
- 	vq->acked_backend_features = 0;
- 	vq->log_base = NULL;
- 	vq->error_ctx = NULL;
-@@ -428,8 +431,9 @@ EXPORT_SYMBOL_GPL(vhost_exceeds_weight);
- static size_t vhost_get_avail_size(struct vhost_virtqueue *vq,
- 				   unsigned int num)
- {
-+	struct vhost_dev *vdev = vq->dev;
- 	size_t event __maybe_unused =
--	       vhost_has_feature(vq, VIRTIO_RING_F_EVENT_IDX) ? 2 : 0;
-+	       vhost_has_feature(vdev, VIRTIO_RING_F_EVENT_IDX) ? 2 : 0;
- 
- 	return sizeof(*vq->avail) +
- 	       sizeof(*vq->avail->ring) * num + event;
-@@ -438,8 +442,9 @@ static size_t vhost_get_avail_size(struct vhost_virtqueue *vq,
- static size_t vhost_get_used_size(struct vhost_virtqueue *vq,
- 				  unsigned int num)
- {
-+	struct vhost_dev *vdev = vq->dev;
- 	size_t event __maybe_unused =
--	       vhost_has_feature(vq, VIRTIO_RING_F_EVENT_IDX) ? 2 : 0;
-+	       vhost_has_feature(vdev, VIRTIO_RING_F_EVENT_IDX) ? 2 : 0;
- 
- 	return sizeof(*vq->used) +
- 	       sizeof(*vq->used->ring) * num + event;
-@@ -468,6 +473,7 @@ void vhost_dev_init(struct vhost_dev *dev,
- 	dev->iotlb = NULL;
- 	dev->mm = NULL;
- 	dev->worker = NULL;
-+	dev->features = 0;
- 	dev->iov_limit = iov_limit;
- 	dev->weight = weight;
- 	dev->byte_weight = byte_weight;
-@@ -738,14 +744,15 @@ static inline void __user *vhost_vq_meta_fetch(struct vhost_virtqueue *vq,
- static bool memory_access_ok(struct vhost_dev *d, struct vhost_iotlb *umem,
- 			     int log_all)
- {
-+	bool log;
- 	int i;
- 
-+	log = log_all || vhost_has_feature(d, VHOST_F_LOG_ALL);
-+
- 	for (i = 0; i < d->nvqs; ++i) {
- 		bool ok;
--		bool log;
- 
- 		mutex_lock(&d->vqs[i]->mutex);
--		log = log_all || vhost_has_feature(d->vqs[i], VHOST_F_LOG_ALL);
- 		/* If ring is inactive, will check when it's enabled. */
- 		if (d->vqs[i]->private_data)
- 			ok = vq_memory_access_ok(d->vqs[i]->log_base,
-@@ -1329,8 +1336,10 @@ EXPORT_SYMBOL_GPL(vhost_log_access_ok);
- static bool vq_log_access_ok(struct vhost_virtqueue *vq,
- 			     void __user *log_base)
- {
-+	struct vhost_dev *vdev = vq->dev;
-+
- 	return vq_memory_access_ok(log_base, vq->umem,
--				   vhost_has_feature(vq, VHOST_F_LOG_ALL)) &&
-+				   vhost_has_feature(vdev, VHOST_F_LOG_ALL)) &&
- 		(!vq->log_used || log_access_ok(log_base, vq->log_addr,
- 				  vhost_get_used_size(vq, vq->num)));
- }
-@@ -2376,11 +2385,11 @@ static bool vhost_notify(struct vhost_dev *dev, struct vhost_virtqueue *vq)
- 	 * interrupts. */
- 	smp_mb();
- 
--	if (vhost_has_feature(vq, VIRTIO_F_NOTIFY_ON_EMPTY) &&
-+	if (vhost_has_feature(dev, VIRTIO_F_NOTIFY_ON_EMPTY) &&
- 	    unlikely(vq->avail_idx == vq->last_avail_idx))
- 		return true;
- 
--	if (!vhost_has_feature(vq, VIRTIO_RING_F_EVENT_IDX)) {
-+	if (!vhost_has_feature(dev, VIRTIO_RING_F_EVENT_IDX)) {
- 		__virtio16 flags;
- 		if (vhost_get_avail_flags(vq, &flags)) {
- 			vq_err(vq, "Failed to get flags");
-@@ -2459,7 +2468,7 @@ bool vhost_enable_notify(struct vhost_dev *dev, struct vhost_virtqueue *vq)
- 	if (!(vq->used_flags & VRING_USED_F_NO_NOTIFY))
- 		return false;
- 	vq->used_flags &= ~VRING_USED_F_NO_NOTIFY;
--	if (!vhost_has_feature(vq, VIRTIO_RING_F_EVENT_IDX)) {
-+	if (!vhost_has_feature(dev, VIRTIO_RING_F_EVENT_IDX)) {
- 		r = vhost_update_used_flags(vq);
- 		if (r) {
- 			vq_err(vq, "Failed to enable notification at %p: %d\n",
-@@ -2496,7 +2505,7 @@ void vhost_disable_notify(struct vhost_dev *dev, struct vhost_virtqueue *vq)
- 	if (vq->used_flags & VRING_USED_F_NO_NOTIFY)
- 		return;
- 	vq->used_flags |= VRING_USED_F_NO_NOTIFY;
--	if (!vhost_has_feature(vq, VIRTIO_RING_F_EVENT_IDX)) {
-+	if (!vhost_has_feature(dev, VIRTIO_RING_F_EVENT_IDX)) {
- 		r = vhost_update_used_flags(vq);
- 		if (r)
- 			vq_err(vq, "Failed to enable notification at %p: %d\n",
-diff --git a/drivers/vhost/vhost.h b/drivers/vhost/vhost.h
-index f8403bd46b85..5d1d00363e79 100644
+ /*
+  * For Hyper-V devices we use the device guid as the id.
+  */
+diff --git a/drivers/vhost/vhost.h b/include/linux/vhost.h
+similarity index 93%
+rename from drivers/vhost/vhost.h
+rename to include/linux/vhost.h
+index 5d1d00363e79..16c374a8fa12 100644
 --- a/drivers/vhost/vhost.h
-+++ b/drivers/vhost/vhost.h
-@@ -111,7 +111,6 @@ struct vhost_virtqueue {
- 	struct vhost_iotlb *umem;
- 	struct vhost_iotlb *iotlb;
- 	void *private_data;
--	u64 acked_features;
- 	u64 acked_backend_features;
- 	/* Log write descriptors */
- 	void __user *log_base;
-@@ -140,6 +139,7 @@ struct vhost_dev {
++++ b/include/linux/vhost.h
+@@ -3,7 +3,6 @@
+ #define _VHOST_H
+ 
+ #include <linux/eventfd.h>
+-#include <linux/vhost.h>
+ #include <linux/mm.h>
+ #include <linux/mutex.h>
+ #include <linux/poll.h>
+@@ -13,6 +12,7 @@
+ #include <linux/virtio_ring.h>
+ #include <linux/atomic.h>
+ #include <linux/vhost_iotlb.h>
++#include <uapi/linux/vhost.h>
+ 
+ struct vhost_work;
+ typedef void (*vhost_work_fn_t)(struct vhost_work *work);
+@@ -135,7 +135,20 @@ struct vhost_msg_node {
+   struct list_head node;
+ };
+ 
++struct vhost_driver {
++	struct device_driver driver;
++	struct vhost_device_id *id_table;
++	int (*probe)(struct vhost_dev *dev);
++	int (*remove)(struct vhost_dev *dev);
++};
++
++#define to_vhost_driver(drv) (container_of((drv), struct vhost_driver, driver))
++
+ struct vhost_dev {
++	struct device dev;
++	struct vhost_driver *driver;
++	struct vhost_device_id id;
++	int index;
  	struct mm_struct *mm;
  	struct mutex mutex;
  	struct vhost_virtqueue **vqs;
-+	u64 features;
- 	int nvqs;
- 	struct eventfd_ctx *log_ctx;
- 	struct llist_head work_list;
-@@ -258,9 +258,9 @@ static inline void *vhost_vq_get_backend(struct vhost_virtqueue *vq)
- 	return vq->private_data;
- }
+@@ -158,6 +171,13 @@ struct vhost_dev {
+ 			   struct vhost_iotlb_msg *msg);
+ };
  
--static inline bool vhost_has_feature(struct vhost_virtqueue *vq, int bit)
-+static inline bool vhost_has_feature(struct vhost_dev *vdev, int bit)
- {
--	return vq->acked_features & (1ULL << bit);
-+	return vdev->features & (1ULL << bit);
- }
++#define to_vhost_dev(d) container_of((d), struct vhost_dev, dev)
++
++int vhost_register_driver(struct vhost_driver *driver);
++void vhost_unregister_driver(struct vhost_driver *driver);
++int vhost_register_device(struct vhost_dev *vdev);
++void vhost_unregister_device(struct vhost_dev *vdev);
++
+ bool vhost_exceeds_weight(struct vhost_virtqueue *vq, int pkts, int total_len);
+ void vhost_dev_init(struct vhost_dev *, struct vhost_virtqueue **vqs,
+ 		    int nvqs, int iov_limit, int weight, int byte_weight,
+diff --git a/tools/virtio/virtio_test.c b/tools/virtio/virtio_test.c
+index b427def67e7e..b13434d6c976 100644
+--- a/tools/virtio/virtio_test.c
++++ b/tools/virtio/virtio_test.c
+@@ -13,9 +13,9 @@
+ #include <fcntl.h>
+ #include <stdbool.h>
+ #include <linux/virtio_types.h>
+-#include <linux/vhost.h>
+ #include <linux/virtio.h>
+ #include <linux/virtio_ring.h>
++#include <uapi/linux/vhost.h>
+ #include "../../drivers/vhost/test.h"
  
- static inline bool vhost_backend_has_feature(struct vhost_virtqueue *vq, int bit)
-diff --git a/drivers/vhost/vsock.c b/drivers/vhost/vsock.c
-index fb4e944c4d0d..8317ad026e3d 100644
---- a/drivers/vhost/vsock.c
-+++ b/drivers/vhost/vsock.c
-@@ -757,26 +757,20 @@ static int vhost_vsock_set_cid(struct vhost_vsock *vsock, u64 guest_cid)
- 
- static int vhost_vsock_set_features(struct vhost_vsock *vsock, u64 features)
- {
--	struct vhost_virtqueue *vq;
--	int i;
-+	struct vhost_dev *vdev = &vsock->dev;
- 
- 	if (features & ~VHOST_VSOCK_FEATURES)
- 		return -EOPNOTSUPP;
- 
--	mutex_lock(&vsock->dev.mutex);
-+	mutex_lock(&vdev->mutex);
- 	if ((features & (1 << VHOST_F_LOG_ALL)) &&
--	    !vhost_log_access_ok(&vsock->dev)) {
--		mutex_unlock(&vsock->dev.mutex);
-+	    !vhost_log_access_ok(vdev)) {
-+		mutex_unlock(&vdev->mutex);
- 		return -EFAULT;
- 	}
- 
--	for (i = 0; i < ARRAY_SIZE(vsock->vqs); i++) {
--		vq = &vsock->vqs[i];
--		mutex_lock(&vq->mutex);
--		vq->acked_features = features;
--		mutex_unlock(&vq->mutex);
--	}
--	mutex_unlock(&vsock->dev.mutex);
-+	vdev->features = features;
-+	mutex_unlock(&vdev->mutex);
- 	return 0;
- }
- 
+ /* Unused */
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-2-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-3-kishon%40ti.com.
