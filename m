@@ -1,154 +1,148 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBH5T633QKGQELKENINI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCQYDA7264GRBKW4633QKGQEANWDFAI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-oo1-xc38.google.com (mail-oo1-xc38.google.com [IPv6:2607:f8b0:4864:20::c38])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9211B211E55
-	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:24:00 +0200 (CEST)
-Received: by mail-oo1-xc38.google.com with SMTP id i9sf4359900oom.6
-        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:24:00 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593678239; cv=pass;
+Received: from mail-qk1-x740.google.com (mail-qk1-x740.google.com [IPv6:2607:f8b0:4864:20::740])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA4BE212057
+	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 11:51:39 +0200 (CEST)
+Received: by mail-qk1-x740.google.com with SMTP id a205sf19080399qkc.16
+        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 02:51:39 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593683499; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rXcKzuakmTsIfjEHuR8kaeYs2mvSUaZQyhOVKSTHrbysWg2qnmeIC8D1+54r/ftQB7
-         N/Odb+vppR0j66ux1MhQiv5ZFZGExDHk7TW8dtLC81tWIR7f9kXkcJRfN/IX6yMbIEs3
-         7cK+9KfYuejKcLGC+50gA/8Pe1s717zQaa/BiHHuJQkkYAkyN9qYh+kgpaSZ3Og3tLEQ
-         926+nwVznDE54n3KoLhJeIg5xzP0bff2nCQIPPgxAMYfDHJd1c+vxLINFp9HPTf/R3nm
-         WKm3C1i8K49FlevaR5LzoRrBSJk2qY29wQfoX/hbhPTyXnvR8Q/OdVoa+uOO0VoNNCHz
-         X+Vg==
+        b=B6HR9bGZLJyxY+/yA2WxlIPH/Qq59GyiYE755UykUdeVKTdW3ihVxvQXushEB5QCYB
+         7l+jVXw3ys0fQIl8Dd8nJLfn4TBkZFRiBNCXyxfThLkFFigR9k1CgOidJ9tj1Adci9T7
+         5huIQBrKo8Q3Ygb0CXm9xEteVuq2BUTTQ9AEkLR9vlifDBRjdCzJot9P8FrvUgw8+r9Z
+         lmyIJWlyYYN7YkBmnXklQZSE2Iytr69t7ChI2U3PDRGwDRBg7Mnct8/TQ3OXXr+TC9wb
+         GHA9F+fhOlhaOFt5WbYisrEwT29TvdN4br0E8tvb+kRewIj3LaBpqq+FnU4xi+CVwG93
+         8zAA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8Edg4wxIDRCJ3KljXNP5/PnbuTje5MdxQodRmNxMOMw=;
-        b=AUI7bSz9HLl4NbL4wsI/lv7NIfFXdtQjrYLIomt14I+WbVMtStuOwqFyFyM+3hGeTm
-         JPRpqAB70ABKmhAI6e98H+m+Z93mt7pqKoS+dcIcUPcpml8rNB62hnMpPT6gkjpGnwTE
-         1SI6N8/V2BioO/+vRwDzL6H5yyu6xzgAVcnsFoxVnM6ASnRqGVkMTupNfLmaN030tJ9o
-         xZyYChTAgI3jxyTtBOCi/TSouU457YLwgfj46ZR6dwkreafxiK+lKSfU+i8W+vmzpODF
-         NxRFz0GlS4nnsTZlI60QI5zGFBR5o1mtgvKtt/vcs+NwEMAEHi+6YmvZSOhYx3r3Fjlm
-         n75w==
+         :list-id:mailing-list:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :dkim-signature;
+        bh=Tn+H6RUcd96NYZfqX7O5e5tNLFbSkUCtsxaq5j+HsLc=;
+        b=lV7a8W0eLLJTZpYvZCHxEcsjlbU/zfl7SpdRbVgQX/mbtzwwRIX21uOpl8Qf4Hh4rx
+         CT7gKfTEZoKh4WQu0B14yMznw+6T710rzyxm+llCH5Wzca19sI4vj3oT61zSsUi7Wgzg
+         vAhw3soqb95FOrJFWux6522/JDYmzMZmM+C8c0/ab4tHZeGW1hOKAEiXHSX8MwYubZ/o
+         YisUIbaQCyIYqOCkK4tGtC5nWtqBMWh0mET4k0wOoopgaLvY6v0Os6rHx4hC5TwRJio0
+         Abbovyp2Qy7ZbrlfOjrTuPSl90O73+g7XUSxRIFkMu469xPSP2LlBJQBIJ7fuLCG8o6k
+         62lQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=iCY0E9W7;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hJZ6Gs8v;
+       spf=pass (google.com: domain of mst@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :reply-to:precedence:mailing-list:list-id:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=8Edg4wxIDRCJ3KljXNP5/PnbuTje5MdxQodRmNxMOMw=;
-        b=mVybuWkyiq5kBLzU+fOC3uha5jvaajzJgecVGaYfyBeTmNTRq0Ida0eFcUcF/scA+j
-         o1fj8ZCi2oQfjUxb2NhEjfEF4n4MvnqeFAxLqPuu8hxfVH9bQDVOLgk9k5PUa6h8/5CA
-         FWoihcE8xYtOEXZV5Xf6H39kzjlyvJI1oYjFtX+rgYFWqNi0BgvQWagHJwS5fpp7/UMo
-         sa7UhdtPtK0P04qxSl4G8ol3CnOgL7WwCK94Msku/pg+DABRc10DeboijC0H3UgAsEWD
-         pUHcl8n46fG54lPI1wS+GldAoLQgj8N8gVWa/YOLEyiiXSS8iJOVlwVhR1wuayETABB+
-         fbVg==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :in-reply-to:content-disposition:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=Tn+H6RUcd96NYZfqX7O5e5tNLFbSkUCtsxaq5j+HsLc=;
+        b=V3b1431x5p/XMRReS9hisuNPZ+Vf3Z279CeYI0x93+jxOIOxwiht3bZER8rCu2oA1I
+         +R3aabRipssN7mJIf2Oyev3oEquS+SY5xKqxjZST6Pu2bhMUQZ0kNW/WeGcRyO29+DhE
+         8NZ8BKDs0kVs4rdMlMcUommVtYtmda4X/Cko2KbNY0/r4uisdHMjiun+FNSbORKqMBkT
+         UDJxDDbcP6+vSbj0kiWi251pqr5VJvMNa7AVcbFDNorU6RD5ftFn9HHNmo+pVkhpCkGp
+         WTXgMfe2ogxZIQwwrlrcQJ6fA/zSa0z0w/fxtCOheirVXaeJUwl1KxI5T1e+CIcxVxSu
+         oLqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=8Edg4wxIDRCJ3KljXNP5/PnbuTje5MdxQodRmNxMOMw=;
-        b=g/z7o2rqyBVktoZhARrvx4xEBDioaZ8Q5DYXovWF+Ym1BdV8O+Hkga9nw5Icyz6Fot
-         UIV51e5V+jR8Yy3CyCb0ZUOZmRMIS/WfnvjKUKNoDjDyNgGXTvsHrWt3II2psxiCoTkj
-         s7SfODp1ktBr+/gvVkM7EIkyxA+/R/NKv2Mj8YCOkedIQ4AnwAC9SA+jd4RqkbT+RJg9
-         hgZBeBxeR1Ft8dndjsVplYbmZP9wpCKzNbOi0zSxK9tGbZmTcpkWwomSjC2ajXR2JOEk
-         bhT80hbjcjhyHaYh0IOrXWLs0CZGFqi2k0XDq/vJ+ib3arzlTF2XDlA2sB56lVrpa3/q
-         isRg==
-X-Gm-Message-State: AOAM533zgA+fgV3le6jwKNKWIT9tnzMxe6CUX4zoICScl2SWNso1w6r6
-	I6jweE6x2uGXXB7ilmqj/t4=
-X-Google-Smtp-Source: ABdhPJyR5RUHF1M0kv5G0L7N005CuG6WH1FV9jCzfnKpIfAwNKv8qTWDEksSfRYXypNp26HJrJvDeQ==
-X-Received: by 2002:a4a:be14:: with SMTP id l20mr26151489oop.46.1593678239579;
-        Thu, 02 Jul 2020 01:23:59 -0700 (PDT)
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :references:mime-version:in-reply-to:content-disposition
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=Tn+H6RUcd96NYZfqX7O5e5tNLFbSkUCtsxaq5j+HsLc=;
+        b=lHg8nZkvqPD1Jrvse+uQXTLKZ16cmt1m5B/EChSqwxUT8fArjZACRfru/B+YyuCZ6j
+         iV+Wohn8Thsiku4CdN0EShic0J3zg6y/EMExYP277eYXASNexxNa4m0ZotkvZNrFKtlX
+         i5YqNR3vbZGmGZfd8nvi68+kMmuBQZJHHrJH8Sv2KAieXFQj0EhejJHV0/Sg3mWfqiXD
+         7exE8erqSCMjC2bohV0H9h9pg7VBkbky6aBy2nQbFnuvDEqcnA1x4f+yD1dsQEz/zO8b
+         s+MOroHnODs422ueM8ljm9PkWYQzI7SaAvOyoCaLTSA8Y29fV05ScNtwyCmz4L7ftMqG
+         0ICg==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM533ZDHRnuni9DgaO2Eio3l40wQJksCNSyFJ4pzMiUiAMHhD7pxzP
+	3VcKnkJiVgkvgg/vOVHUiQI=
+X-Google-Smtp-Source: ABdhPJwmLmeIdjfi68Dwf7H57LpPWJXnjvmgxCFGmeQd9lQKrHH4p7Ovf0YxTJwCFEt3HOC+TDXvBA==
+X-Received: by 2002:a0c:d7c9:: with SMTP id g9mr15760983qvj.83.1593683498744;
+        Thu, 02 Jul 2020 02:51:38 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a9d:4549:: with SMTP id p9ls1136545oti.11.gmail; Thu, 02 Jul
- 2020 01:23:59 -0700 (PDT)
-X-Received: by 2002:a9d:3b1:: with SMTP id f46mr21794686otf.154.1593678239318;
-        Thu, 02 Jul 2020 01:23:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593678239; cv=none;
+Received: by 2002:ac8:507:: with SMTP id u7ls2119952qtg.10.gmail; Thu, 02 Jul
+ 2020 02:51:38 -0700 (PDT)
+X-Received: by 2002:ac8:f6f:: with SMTP id l44mr29146774qtk.4.1593683498405;
+        Thu, 02 Jul 2020 02:51:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593683498; cv=none;
         d=google.com; s=arc-20160816;
-        b=auXIV+XXWCgwmSByRCus2OEqOW8wVjL9nCrEBzIs8P+mQZHYM2I1D4jxZ/f489icKv
-         MJYBLKxYsUvorPDxX3XCkYQ+9NIyfNgoH8Qs4+ZF7BdvJZDrVn+Zacy26t3i7u39NXW2
-         TNzWYRSvw3v6dJXEDSe8lSJJqHBSSYhDc8DCeMRTpwJpbl0iGU2VoC/lLp3OemvuH7BC
-         VEhLPOWa+EfoiEKa9iHXcciMY+6wAHKODJIB2ml1Iy37Rk99vwukIse1dOVfJblJasF3
-         dC0jC8EQXviKRI4nZ+MqDpClKS9DbSAUrnFFYeo/y6uMGua6azH3x7nBu8XlUy0GgOvA
-         hLrQ==
+        b=Xgw8Ay11Wr60liVvayJrbfSaCv1FlPOHqV6kytlHwbsMZmulzbQieCNT3r2FAdk5iu
+         6jjJLkTaZivuzB0ZtJYp5t4Z848JGqfJ1XIgBCzRQbGWRGhSnLP2exSwZTlaSgJ5Rxzv
+         eHxuRSszUhEp3vzEDIV+m0G2kGGi8hZyT1AsSptleCn6ZXf+LjYztD92DnyDTxXtHK7L
+         TLMizibsXeN6Fk59ZOLrtpRIrv+5dHt6aUQm7XN1t3SKr8TzHWPuMrtFVKpWeCZQDGF6
+         9DjYw2B3OWc/dF6BOs9J/0UJjPsXAjKaTDTve02qk2gMXVF/8hbo7dOY7tKFOxxsQKgA
+         Kh7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=2Ps3sR9VF/LqByb34nV2fM7x0C723HV4lrdTJSaPtuA=;
-        b=c7pjiuj3iZoMMjSvFgFAhTz0GmouFl4MN3Bh873KoUPQ7NmhN8s879BgaQlnZMLsWk
-         0/oOUsnE/63eCPGIG0EztxS8aDUJA9FaLPP4rX4RXpzW5Bc4kRhn3hzfDV2jD0OCQN8l
-         52W/EsLA/FcFNa4s6FSVl1GEcg160n7ldvFTr98y0WL+VRj9VqX+SCCsmnMS4ClsEWy2
-         4oNK6JxF8GWbzhuUmP+i0pret6MAKDrmkhExt8EGSp738W4YRv+EmHDcu39ICHj6Q7Gf
-         vJGhMYSg9ec1rL6i4/EXNmDxfB3SZ4sP2DWbZZP/borEXrg6d45uqBHsJ0jUSnEUTwsi
-         8ymg==
+        h=content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=bHogEYB9LdYLmlRRtpVvkwg/X8GA9U3ZCoLaT+Iq1ZM=;
+        b=IIHJ2SSK8RrmQJsi3rSkul6cGFCJE5FC69qHHpkHkB9NLKKMaEigM0LCPX5fw7ptO6
+         V8KoSeN6OLsDvsW07/LxS4l82418H7fVdHOJCWybqb13N703XPrYBiQiBe3o8CU6jZM+
+         t/eOa3SOe1agkGJoPyWBXW73Sk9+kSTO2A9kSTqaWc4JYdGkfcIyQkRn5FJO0BM4NQFo
+         sWdxdA6OIgZ81npzDfXXmYBIkDNPUZPUn4glj9TFD1ORRcKPOWMWbb/z2+byZmClkKzn
+         dUmtNpqmiyTqVt8KiQH6a/n5Ys35i+e825qujFomkHwJHgrLOB3WzvpIZVjqgMa2X7Fr
+         91Pw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=iCY0E9W7;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com. [198.47.23.249])
-        by gmr-mx.google.com with ESMTPS id y16si301018oot.2.2020.07.02.01.23.59
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hJZ6Gs8v;
+       spf=pass (google.com: domain of mst@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-1.mimecast.com. [205.139.110.61])
+        by gmr-mx.google.com with ESMTPS id y21si470058qka.2.2020.07.02.02.51.38
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Jul 2020 01:23:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) client-ip=198.47.23.249;
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628Nt6b082238;
-	Thu, 2 Jul 2020 03:23:55 -0500
-Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628NtLg087605;
-	Thu, 2 Jul 2020 03:23:55 -0500
-Received: from DFLE111.ent.ti.com (10.64.6.32) by DFLE103.ent.ti.com
- (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 2 Jul
- 2020 03:23:54 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE111.ent.ti.com
- (10.64.6.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 2 Jul 2020 03:23:54 -0500
-Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYY006145;
-	Thu, 2 Jul 2020 03:23:49 -0500
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-To: Ohad Ben-Cohen <ohad@wizery.com>,
-        Bjorn Andersson
-	<bjorn.andersson@linaro.org>,
-        Jon Mason <jdmason@kudzu.us>, Dave Jiang
-	<dave.jiang@intel.com>,
-        Allen Hubbe <allenbh@gmail.com>,
-        Lorenzo Pieralisi
-	<lorenzo.pieralisi@arm.com>,
-        Bjorn Helgaas <bhelgaas@google.com>,
-        "Michael S.
- Tsirkin" <mst@redhat.com>,
-        Jason Wang <jasowang@redhat.com>, Paolo Bonzini
-	<pbonzini@redhat.com>,
-        Stefan Hajnoczi <stefanha@redhat.com>,
-        Stefano
- Garzarella <sgarzare@redhat.com>
-CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-remoteproc@vger.kernel.org>, <linux-ntb@googlegroups.com>,
-        <linux-pci@vger.kernel.org>, <kvm@vger.kernel.org>,
-        <virtualization@lists.linux-foundation.org>, <netdev@vger.kernel.org>
-Subject: [RFC PATCH 22/22] NTB: Describe ntb_virtio and ntb_vhost client in the documentation
-Date: Thu, 2 Jul 2020 13:51:43 +0530
-Message-ID: <20200702082143.25259-23-kishon@ti.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200702082143.25259-1-kishon@ti.com>
+        Thu, 02 Jul 2020 02:51:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mst@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-176-KobuPRtxPZmMkzSRlxWF9w-1; Thu, 02 Jul 2020 05:51:36 -0400
+X-MC-Unique: KobuPRtxPZmMkzSRlxWF9w-1
+Received: by mail-wm1-f71.google.com with SMTP id q20so17877157wme.3
+        for <linux-ntb@googlegroups.com>; Thu, 02 Jul 2020 02:51:36 -0700 (PDT)
+X-Received: by 2002:a5d:6a01:: with SMTP id m1mr32647448wru.115.1593683494974;
+        Thu, 02 Jul 2020 02:51:34 -0700 (PDT)
+X-Received: by 2002:a5d:6a01:: with SMTP id m1mr32647426wru.115.1593683494694;
+        Thu, 02 Jul 2020 02:51:34 -0700 (PDT)
+Received: from redhat.com ([93.157.82.4])
+        by smtp.gmail.com with ESMTPSA id 138sm4695866wmb.1.2020.07.02.02.51.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 02 Jul 2020 02:51:33 -0700 (PDT)
+Date: Thu, 2 Jul 2020 05:51:29 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Ohad Ben-Cohen <ohad@wizery.com>,
+	Bjorn Andersson <bjorn.andersson@linaro.org>,
+	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>,
+	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jason Wang <jasowang@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Stefan Hajnoczi <stefanha@redhat.com>,
+	Stefano Garzarella <sgarzare@redhat.com>, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-remoteproc@vger.kernel.org,
+	linux-ntb@googlegroups.com, linux-pci@vger.kernel.org,
+	kvm@vger.kernel.org, virtualization@lists.linux-foundation.org,
+	netdev@vger.kernel.org
+Subject: Re: [RFC PATCH 00/22] Enhance VHOST to enable SoC-to-SoC
+ communication
+Message-ID: <20200702055026-mutt-send-email-mst@kernel.org>
 References: <20200702082143.25259-1-kishon@ti.com>
 MIME-Version: 1.0
+In-Reply-To: <20200702082143.25259-1-kishon@ti.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
+Content-Disposition: inline
+X-Original-Sender: mst@redhat.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=iCY0E9W7;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+ header.i=@redhat.com header.s=mimecast20190719 header.b=hJZ6Gs8v;
+       spf=pass (google.com: domain of mst@redhat.com designates
+ 205.139.110.61 as permitted sender) smtp.mailfrom=mst@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -161,40 +155,181 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add a blurb in Documentation/ntb.txt to describe the ntb_virtio and
-ntb_vhost client
+On Thu, Jul 02, 2020 at 01:51:21PM +0530, Kishon Vijay Abraham I wrote:
+> This series enhances Linux Vhost support to enable SoC-to-SoC
+> communication over MMIO. This series enables rpmsg communication between
+> two SoCs using both PCIe RC<->EP and HOST1-NTB-HOST2
+> 
+> 1) Modify vhost to use standard Linux driver model
+> 2) Add support in vring to access virtqueue over MMIO
+> 3) Add vhost client driver for rpmsg
+> 4) Add PCIe RC driver (uses virtio) and PCIe EP driver (uses vhost) for
+>    rpmsg communication between two SoCs connected to each other
+> 5) Add NTB Virtio driver and NTB Vhost driver for rpmsg communication
+>    between two SoCs connected via NTB
+> 6) Add configfs to configure the components
+> 
+> UseCase1 :
+> 
+>  VHOST RPMSG                     VIRTIO RPMSG
+>       +                               +
+>       |                               |
+>       |                               |
+>       |                               |
+>       |                               |
+> +-----v------+                 +------v-------+
+> |   Linux    |                 |     Linux    |
+> |  Endpoint  |                 | Root Complex |
+> |            <----------------->              |
+> |            |                 |              |
+> |    SOC1    |                 |     SOC2     |
+> +------------+                 +--------------+
+> 
+> UseCase 2:
+> 
+>      VHOST RPMSG                                      VIRTIO RPMSG
+>           +                                                 +
+>           |                                                 |
+>           |                                                 |
+>           |                                                 |
+>           |                                                 |
+>    +------v------+                                   +------v------+
+>    |             |                                   |             |
+>    |    HOST1    |                                   |    HOST2    |
+>    |             |                                   |             |
+>    +------^------+                                   +------^------+
+>           |                                                 |
+>           |                                                 |
+> +---------------------------------------------------------------------+
+> |  +------v------+                                   +------v------+  |
+> |  |             |                                   |             |  |
+> |  |     EP      |                                   |     EP      |  |
+> |  | CONTROLLER1 |                                   | CONTROLLER2 |  |
+> |  |             <----------------------------------->             |  |
+> |  |             |                                   |             |  |
+> |  |             |                                   |             |  |
+> |  |             |  SoC With Multiple EP Instances   |             |  |
+> |  |             |  (Configured using NTB Function)  |             |  |
+> |  +-------------+                                   +-------------+  |
+> +---------------------------------------------------------------------+
+> 
+> Software Layering:
+> 
+> The high-level SW layering should look something like below. This series
+> adds support only for RPMSG VHOST, however something similar should be
+> done for net and scsi. With that any vhost device (PCI, NTB, Platform
+> device, user) can use any of the vhost client driver.
+> 
+> 
+>     +----------------+  +-----------+  +------------+  +----------+
+>     |  RPMSG VHOST   |  | NET VHOST |  | SCSI VHOST |  |    X     |
+>     +-------^--------+  +-----^-----+  +-----^------+  +----^-----+
+>             |                 |              |              |
+>             |                 |              |              |
+>             |                 |              |              |
+> +-----------v-----------------v--------------v--------------v----------+
+> |                            VHOST CORE                                |
+> +--------^---------------^--------------------^------------------^-----+
+>          |               |                    |                  |
+>          |               |                    |                  |
+>          |               |                    |                  |
+> +--------v-------+  +----v------+  +----------v----------+  +----v-----+
+> |  PCI EPF VHOST |  | NTB VHOST |  |PLATFORM DEVICE VHOST|  |    X     |
+> +----------------+  +-----------+  +---------------------+  +----------+
+> 
+> This was initially proposed here [1]
+> 
+> [1] -> https://lore.kernel.org/r/2cf00ec4-1ed6-f66e-6897-006d1a5b6390@ti.com
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
----
- Documentation/driver-api/ntb.rst | 11 +++++++++++
- 1 file changed, 11 insertions(+)
 
-diff --git a/Documentation/driver-api/ntb.rst b/Documentation/driver-api/ntb.rst
-index 87d1372da879..f84b81625397 100644
---- a/Documentation/driver-api/ntb.rst
-+++ b/Documentation/driver-api/ntb.rst
-@@ -227,6 +227,17 @@ test client is interacted with through the debugfs filesystem:
- 	specified peer. That peer's interrupt's occurrence file
- 	should be incremented.
- 
-+NTB Vhost Client (ntb\_vhost) and NTB Virtio Client (ntb\_virtio)
-+------------------------------------------------------------------
-+
-+When two hosts are connected via NTB, one of the hosts should use NTB Vhost
-+Client and the other host should use NTB Virtio Client. The NTB Vhost client
-+interfaces with the Linux Vhost Framework and lets it to be used with any
-+vhost client driver. The NTB Virtio client interfaces with the Linux Virtio
-+Framework and lets it to be used with any virtio client driver. The Vhost
-+client driver and Virtio client driver creates a logic cink to exchange data
-+with each other.
-+
- NTB Hardware Drivers
- ====================
- 
--- 
-2.17.1
+I find this very interesting. A huge patchset so will take a bit
+to review, but I certainly plan to do that. Thanks!
+
+> 
+> Kishon Vijay Abraham I (22):
+>   vhost: Make _feature_ bits a property of vhost device
+>   vhost: Introduce standard Linux driver model in VHOST
+>   vhost: Add ops for the VHOST driver to configure VHOST device
+>   vringh: Add helpers to access vring in MMIO
+>   vhost: Add MMIO helpers for operations on vhost virtqueue
+>   vhost: Introduce configfs entry for configuring VHOST
+>   virtio_pci: Use request_threaded_irq() instead of request_irq()
+>   rpmsg: virtio_rpmsg_bus: Disable receive virtqueue callback when
+>     reading messages
+>   rpmsg: Introduce configfs entry for configuring rpmsg
+>   rpmsg: virtio_rpmsg_bus: Add Address Service Notification support
+>   rpmsg: virtio_rpmsg_bus: Move generic rpmsg structure to
+>     rpmsg_internal.h
+>   virtio: Add ops to allocate and free buffer
+>   rpmsg: virtio_rpmsg_bus: Use virtio_alloc_buffer() and
+>     virtio_free_buffer()
+>   rpmsg: Add VHOST based remote processor messaging bus
+>   samples/rpmsg: Setup delayed work to send message
+>   samples/rpmsg: Wait for address to be bound to rpdev for sending
+>     message
+>   rpmsg.txt: Add Documentation to configure rpmsg using configfs
+>   virtio_pci: Add VIRTIO driver for VHOST on Configurable PCIe Endpoint
+>     device
+>   PCI: endpoint: Add EP function driver to provide VHOST interface
+>   NTB: Add a new NTB client driver to implement VIRTIO functionality
+>   NTB: Add a new NTB client driver to implement VHOST functionality
+>   NTB: Describe the ntb_virtio and ntb_vhost client in the documentation
+> 
+>  Documentation/driver-api/ntb.rst              |   11 +
+>  Documentation/rpmsg.txt                       |   56 +
+>  drivers/ntb/Kconfig                           |   18 +
+>  drivers/ntb/Makefile                          |    2 +
+>  drivers/ntb/ntb_vhost.c                       |  776 +++++++++++
+>  drivers/ntb/ntb_virtio.c                      |  853 ++++++++++++
+>  drivers/ntb/ntb_virtio.h                      |   56 +
+>  drivers/pci/endpoint/functions/Kconfig        |   11 +
+>  drivers/pci/endpoint/functions/Makefile       |    1 +
+>  .../pci/endpoint/functions/pci-epf-vhost.c    | 1144 ++++++++++++++++
+>  drivers/rpmsg/Kconfig                         |   10 +
+>  drivers/rpmsg/Makefile                        |    3 +-
+>  drivers/rpmsg/rpmsg_cfs.c                     |  394 ++++++
+>  drivers/rpmsg/rpmsg_core.c                    |    7 +
+>  drivers/rpmsg/rpmsg_internal.h                |  136 ++
+>  drivers/rpmsg/vhost_rpmsg_bus.c               | 1151 +++++++++++++++++
+>  drivers/rpmsg/virtio_rpmsg_bus.c              |  184 ++-
+>  drivers/vhost/Kconfig                         |    1 +
+>  drivers/vhost/Makefile                        |    2 +-
+>  drivers/vhost/net.c                           |   10 +-
+>  drivers/vhost/scsi.c                          |   24 +-
+>  drivers/vhost/test.c                          |   17 +-
+>  drivers/vhost/vdpa.c                          |    2 +-
+>  drivers/vhost/vhost.c                         |  730 ++++++++++-
+>  drivers/vhost/vhost_cfs.c                     |  341 +++++
+>  drivers/vhost/vringh.c                        |  332 +++++
+>  drivers/vhost/vsock.c                         |   20 +-
+>  drivers/virtio/Kconfig                        |    9 +
+>  drivers/virtio/Makefile                       |    1 +
+>  drivers/virtio/virtio_pci_common.c            |   25 +-
+>  drivers/virtio/virtio_pci_epf.c               |  670 ++++++++++
+>  include/linux/mod_devicetable.h               |    6 +
+>  include/linux/rpmsg.h                         |    6 +
+>  {drivers/vhost => include/linux}/vhost.h      |  132 +-
+>  include/linux/virtio.h                        |    3 +
+>  include/linux/virtio_config.h                 |   42 +
+>  include/linux/vringh.h                        |   46 +
+>  samples/rpmsg/rpmsg_client_sample.c           |   32 +-
+>  tools/virtio/virtio_test.c                    |    2 +-
+>  39 files changed, 7083 insertions(+), 183 deletions(-)
+>  create mode 100644 drivers/ntb/ntb_vhost.c
+>  create mode 100644 drivers/ntb/ntb_virtio.c
+>  create mode 100644 drivers/ntb/ntb_virtio.h
+>  create mode 100644 drivers/pci/endpoint/functions/pci-epf-vhost.c
+>  create mode 100644 drivers/rpmsg/rpmsg_cfs.c
+>  create mode 100644 drivers/rpmsg/vhost_rpmsg_bus.c
+>  create mode 100644 drivers/vhost/vhost_cfs.c
+>  create mode 100644 drivers/virtio/virtio_pci_epf.c
+>  rename {drivers/vhost => include/linux}/vhost.h (66%)
+> 
+> -- 
+> 2.17.1
+> 
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-23-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702055026-mutt-send-email-mst%40kernel.org.
