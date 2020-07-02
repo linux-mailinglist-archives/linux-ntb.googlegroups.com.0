@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBGVT633QKGQE7MZY4CI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBH5T633QKGQELKENINI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb3f.google.com (mail-yb1-xb3f.google.com [IPv6:2607:f8b0:4864:20::b3f])
-	by mail.lfdr.de (Postfix) with ESMTPS id EE5A8211E54
-	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:23:55 +0200 (CEST)
-Received: by mail-yb1-xb3f.google.com with SMTP id l9sf28301079ybm.20
-        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:23:55 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593678235; cv=pass;
+Received: from mail-oo1-xc38.google.com (mail-oo1-xc38.google.com [IPv6:2607:f8b0:4864:20::c38])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9211B211E55
+	for <lists+linux-ntb@lfdr.de>; Thu,  2 Jul 2020 10:24:00 +0200 (CEST)
+Received: by mail-oo1-xc38.google.com with SMTP id i9sf4359900oom.6
+        for <lists+linux-ntb@lfdr.de>; Thu, 02 Jul 2020 01:24:00 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593678239; cv=pass;
         d=google.com; s=arc-20160816;
-        b=wuoNypLUDd4Hwvy2eBNjTgZHzJURwrAxYjE55BGF92xXPNCkDAy2uaHSRc9PZJpLK3
-         hq+XtQFr4AgZvt6heswBvbmE1m30fT9A9HyoSQXAI7YnMb6Nvl2BkIBQ2I/ydQ/BKsZ3
-         6mCQf4l+WSrjaTWU97J1v3pWG8LCIvYLzcheaELLFfA9UXAmd/kiSNDzgwjzK0pn6kD7
-         ZFVnORcupGufaZnEe/BLpT6gfXhfqih9Gq9h0D1Spam+Z6WFy76ih1IUokbNFljUA6zm
-         N79ymRVDN8tUYz/NveXyRIJmN6QKG/GxjLt9TI1e4KSwgkcvxuUkfJXuVJezO+OYmt3d
-         LILQ==
+        b=rXcKzuakmTsIfjEHuR8kaeYs2mvSUaZQyhOVKSTHrbysWg2qnmeIC8D1+54r/ftQB7
+         N/Odb+vppR0j66ux1MhQiv5ZFZGExDHk7TW8dtLC81tWIR7f9kXkcJRfN/IX6yMbIEs3
+         7cK+9KfYuejKcLGC+50gA/8Pe1s717zQaa/BiHHuJQkkYAkyN9qYh+kgpaSZ3Og3tLEQ
+         926+nwVznDE54n3KoLhJeIg5xzP0bff2nCQIPPgxAMYfDHJd1c+vxLINFp9HPTf/R3nm
+         WKm3C1i8K49FlevaR5LzoRrBSJk2qY29wQfoX/hbhPTyXnvR8Q/OdVoa+uOO0VoNNCHz
+         X+Vg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vinQIs/9Q0d4YNKH25K7RUa+dQ/MMgQGp8qUOsVhyBI=;
-        b=p/S+BzXdHqerLEIxx3axWzb6+MJ+2tz/GsbDYhcgobj7/GYmJerCo5R21AWsTBq/Ia
-         a0V+NMJvBZGZ6uBtuamNZ7E4iY26w48qOfDj899pQzDRYrrv56gT7IXzoOjNCpkHty6e
-         OaZqJ8S26+KmGb7MR/CJ93K8OOtoJRxEVMBmI4tlKAtj2v07+v/55PxVDxuuAqUZVGiY
-         7d9rJz+gAqUfgtQzBfWxOYm5V75jbN+5Pb2J0oMW6+ZAm8oiIgY26gzlkWt+c43Zv4wG
-         cxkuPaJ4ZglKjtMu0ndl4aldQAYvlf1J3kM1nLpe1MKTcnIfWy+FbSSkUz4XzRLo0MLI
-         oarQ==
+        bh=8Edg4wxIDRCJ3KljXNP5/PnbuTje5MdxQodRmNxMOMw=;
+        b=AUI7bSz9HLl4NbL4wsI/lv7NIfFXdtQjrYLIomt14I+WbVMtStuOwqFyFyM+3hGeTm
+         JPRpqAB70ABKmhAI6e98H+m+Z93mt7pqKoS+dcIcUPcpml8rNB62hnMpPT6gkjpGnwTE
+         1SI6N8/V2BioO/+vRwDzL6H5yyu6xzgAVcnsFoxVnM6ASnRqGVkMTupNfLmaN030tJ9o
+         xZyYChTAgI3jxyTtBOCi/TSouU457YLwgfj46ZR6dwkreafxiK+lKSfU+i8W+vmzpODF
+         NxRFz0GlS4nnsTZlI60QI5zGFBR5o1mtgvKtt/vcs+NwEMAEHi+6YmvZSOhYx3r3Fjlm
+         n75w==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="ufbuqB/i";
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=iCY0E9W7;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=vinQIs/9Q0d4YNKH25K7RUa+dQ/MMgQGp8qUOsVhyBI=;
-        b=JNkr2SJFPkzvwyEgL1ZdWyzO3frYYaO1bNosIH2deljdEhhfQwsDpSmKsaCT40ZHLH
-         YfCaKl5IBWbBmYSbHW+x+/ye4E8kuHBtCkk+UOAbKir/jleOnr0nj9RcgzmiwY2VAPpd
-         JTrKIAdusrUQkPegsqB12YtvzWfQJ0IxTZz18PhzZIZLC9krSM5JYiDy7Lvwk2puvIHh
-         UQ+HmRKm9DNO5yKcg0ZTOwDK4vm3PkumlxQ7zQLr8Hq1fuWldtlHMSGwlIfKSmsqAvEP
-         uhahsDs67M9fpM8vc7Anudj0axzH/S0/q8O42cAF/9IY+Z9RrwIiIDPHEY9gm9NMt+Cp
-         s5pQ==
+        bh=8Edg4wxIDRCJ3KljXNP5/PnbuTje5MdxQodRmNxMOMw=;
+        b=mVybuWkyiq5kBLzU+fOC3uha5jvaajzJgecVGaYfyBeTmNTRq0Ida0eFcUcF/scA+j
+         o1fj8ZCi2oQfjUxb2NhEjfEF4n4MvnqeFAxLqPuu8hxfVH9bQDVOLgk9k5PUa6h8/5CA
+         FWoihcE8xYtOEXZV5Xf6H39kzjlyvJI1oYjFtX+rgYFWqNi0BgvQWagHJwS5fpp7/UMo
+         sa7UhdtPtK0P04qxSl4G8ol3CnOgL7WwCK94Msku/pg+DABRc10DeboijC0H3UgAsEWD
+         pUHcl8n46fG54lPI1wS+GldAoLQgj8N8gVWa/YOLEyiiXSS8iJOVlwVhR1wuayETABB+
+         fbVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,68 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=vinQIs/9Q0d4YNKH25K7RUa+dQ/MMgQGp8qUOsVhyBI=;
-        b=qOLauAwo6nxl369fYYFmqQebcs766TlBfeyNE8D16TimbMG/toD/TGKVE+cLFz0IAU
-         zGJnOva9ZyhB91u1esd3xlsi8gzkKxxPyDnBwtuVwCAossqKoK2kGKHdZktuPnkG0LmJ
-         17lwRosF2fPDNs2b11zQrQM/6ebjvAn1y1PkUPYLZp0LtmFNfHKu+L2xOJLSmmBHSY19
-         /I/riav6DAn7+QcRksxLe+MJHdvMXEGOjJk4WIdHkLzxyWF/VJjLxsi+V+9gIMaeZP4M
-         UR5WqZbYD3k1PuzmJnMnMwe/dAJxEyW0SLuF6Le+pgWBck8TuT4wej6Ru+dPKDlsUQLR
-         2rjA==
-X-Gm-Message-State: AOAM530Oxh+fehxrHtUPe141m/nrY6931s54lxzwc9NPMU/2tMDLjodZ
-	ylrzCgkXXa5T1nQM/+pk8CE=
-X-Google-Smtp-Source: ABdhPJwNtmcNhJKAXahccvJKaGQfUqDR40Dy++5RqQ98MLNryOnODpbu++3y7qXZAaSEpMfu3Wrlqg==
-X-Received: by 2002:a25:2f55:: with SMTP id v82mr45392121ybv.157.1593678234917;
-        Thu, 02 Jul 2020 01:23:54 -0700 (PDT)
+        bh=8Edg4wxIDRCJ3KljXNP5/PnbuTje5MdxQodRmNxMOMw=;
+        b=g/z7o2rqyBVktoZhARrvx4xEBDioaZ8Q5DYXovWF+Ym1BdV8O+Hkga9nw5Icyz6Fot
+         UIV51e5V+jR8Yy3CyCb0ZUOZmRMIS/WfnvjKUKNoDjDyNgGXTvsHrWt3II2psxiCoTkj
+         s7SfODp1ktBr+/gvVkM7EIkyxA+/R/NKv2Mj8YCOkedIQ4AnwAC9SA+jd4RqkbT+RJg9
+         hgZBeBxeR1Ft8dndjsVplYbmZP9wpCKzNbOi0zSxK9tGbZmTcpkWwomSjC2ajXR2JOEk
+         bhT80hbjcjhyHaYh0IOrXWLs0CZGFqi2k0XDq/vJ+ib3arzlTF2XDlA2sB56lVrpa3/q
+         isRg==
+X-Gm-Message-State: AOAM533zgA+fgV3le6jwKNKWIT9tnzMxe6CUX4zoICScl2SWNso1w6r6
+	I6jweE6x2uGXXB7ilmqj/t4=
+X-Google-Smtp-Source: ABdhPJyR5RUHF1M0kv5G0L7N005CuG6WH1FV9jCzfnKpIfAwNKv8qTWDEksSfRYXypNp26HJrJvDeQ==
+X-Received: by 2002:a4a:be14:: with SMTP id l20mr26151489oop.46.1593678239579;
+        Thu, 02 Jul 2020 01:23:59 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a25:b09b:: with SMTP id f27ls2029056ybj.8.gmail; Thu, 02 Jul
- 2020 01:23:54 -0700 (PDT)
-X-Received: by 2002:a25:20c4:: with SMTP id g187mr50644524ybg.347.1593678234536;
-        Thu, 02 Jul 2020 01:23:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593678234; cv=none;
+Received: by 2002:a9d:4549:: with SMTP id p9ls1136545oti.11.gmail; Thu, 02 Jul
+ 2020 01:23:59 -0700 (PDT)
+X-Received: by 2002:a9d:3b1:: with SMTP id f46mr21794686otf.154.1593678239318;
+        Thu, 02 Jul 2020 01:23:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593678239; cv=none;
         d=google.com; s=arc-20160816;
-        b=N4DeFjx41r3nsWfozUMk6KRjDge8Dn4IAZNPsSZ7dP2voAGDdlMNUTMEmBOl8OZFcc
-         boslQojCfy72Eu67i+EypBKG39/MvnoIzwsx/WZvnmqV0NXzagX9P6Osq5RU1bBdCquI
-         s0rsyGG9h6P3jVrW0L2J1CyObHLMJya2mkkdkOrBInCM53qNkL7BcU5CfFGgepqL72sJ
-         9erRQ+MnYTtRVRIWZ2SS3/IRzittWwilY3hOrtFATLE4XafgbP4sCfRC/pfUw9qXz1Ha
-         RH32BolcGi+i4221fkaFYX6mz3KzxhMwUzTUaTPCiOE1AztKia3dLd4l2ZbSF2FgzwyF
-         WeHw==
+        b=auXIV+XXWCgwmSByRCus2OEqOW8wVjL9nCrEBzIs8P+mQZHYM2I1D4jxZ/f489icKv
+         MJYBLKxYsUvorPDxX3XCkYQ+9NIyfNgoH8Qs4+ZF7BdvJZDrVn+Zacy26t3i7u39NXW2
+         TNzWYRSvw3v6dJXEDSe8lSJJqHBSSYhDc8DCeMRTpwJpbl0iGU2VoC/lLp3OemvuH7BC
+         VEhLPOWa+EfoiEKa9iHXcciMY+6wAHKODJIB2ml1Iy37Rk99vwukIse1dOVfJblJasF3
+         dC0jC8EQXviKRI4nZ+MqDpClKS9DbSAUrnFFYeo/y6uMGua6azH3x7nBu8XlUy0GgOvA
+         hLrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=gAKCY5TQ5Cn7DATTGO9aj2/NUxi3jWWKle85Kq4dJwE=;
-        b=myyMLrE7QlWaTFXWDi2ikf4OyTi+E3D0v2EFZ8adL3T7GhyHekDO1cQljwtAGNlbtX
-         A28LZ5+Ohh35ihttxcZU585eKl+K6MwMHTB0w1jmyiz4jCCTo3rLWUlrtB990BHXdMf+
-         49WY0ujd/k2OiKvzfExjo0VsJ0dYCc1FS6KZyp/CWYuN+JBu/zIv6q8s7xddeAAoWiWY
-         zJN/mpOeIuiKfNB3eGJXuDw90RuTpuF2Hj53Ja4zvicpTgZhreWZ3P5XZL9B44/KqwWC
-         5tgpTKIgm6g7NEZLse0lAxC0ZzSyCIx4UA2YUvCr0fP7zIKuc56k+fXClpOKmryk/2r+
-         hq9w==
+        bh=2Ps3sR9VF/LqByb34nV2fM7x0C723HV4lrdTJSaPtuA=;
+        b=c7pjiuj3iZoMMjSvFgFAhTz0GmouFl4MN3Bh873KoUPQ7NmhN8s879BgaQlnZMLsWk
+         0/oOUsnE/63eCPGIG0EztxS8aDUJA9FaLPP4rX4RXpzW5Bc4kRhn3hzfDV2jD0OCQN8l
+         52W/EsLA/FcFNa4s6FSVl1GEcg160n7ldvFTr98y0WL+VRj9VqX+SCCsmnMS4ClsEWy2
+         4oNK6JxF8GWbzhuUmP+i0pret6MAKDrmkhExt8EGSp738W4YRv+EmHDcu39ICHj6Q7Gf
+         vJGhMYSg9ec1rL6i4/EXNmDxfB3SZ4sP2DWbZZP/borEXrg6d45uqBHsJ0jUSnEUTwsi
+         8ymg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="ufbuqB/i";
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=iCY0E9W7;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
-        by gmr-mx.google.com with ESMTPS id l126si489687ybf.4.2020.07.02.01.23.54
+Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com. [198.47.23.249])
+        by gmr-mx.google.com with ESMTPS id y16si301018oot.2.2020.07.02.01.23.59
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 02 Jul 2020 01:23:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628Nokn017606;
-	Thu, 2 Jul 2020 03:23:50 -0500
-Received: from DFLE112.ent.ti.com (dfle112.ent.ti.com [10.64.6.33])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0628Nnvi067681
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 2 Jul 2020 03:23:49 -0500
-Received: from DFLE112.ent.ti.com (10.64.6.33) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+        Thu, 02 Jul 2020 01:23:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) client-ip=198.47.23.249;
+Received: from fllv0035.itg.ti.com ([10.64.41.0])
+	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0628Nt6b082238;
+	Thu, 2 Jul 2020 03:23:55 -0500
+Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628NtLg087605;
+	Thu, 2 Jul 2020 03:23:55 -0500
+Received: from DFLE111.ent.ti.com (10.64.6.32) by DFLE103.ent.ti.com
+ (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Thu, 2 Jul
- 2020 03:23:49 -0500
-Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE112.ent.ti.com
- (10.64.6.33) with Microsoft SMTP Server (version=TLS1_2,
+ 2020 03:23:54 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DFLE111.ent.ti.com
+ (10.64.6.32) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Thu, 2 Jul 2020 03:23:49 -0500
+ Frontend Transport; Thu, 2 Jul 2020 03:23:54 -0500
 Received: from a0393678ub.india.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYX006145;
-	Thu, 2 Jul 2020 03:23:44 -0500
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0628LiYY006145;
+	Thu, 2 Jul 2020 03:23:49 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Ohad Ben-Cohen <ohad@wizery.com>,
         Bjorn Andersson
@@ -133,9 +132,9 @@ CC: <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-remoteproc@vger.kernel.org>, <linux-ntb@googlegroups.com>,
         <linux-pci@vger.kernel.org>, <kvm@vger.kernel.org>,
         <virtualization@lists.linux-foundation.org>, <netdev@vger.kernel.org>
-Subject: [RFC PATCH 21/22] NTB: Add a new NTB client driver to implement VHOST functionality
-Date: Thu, 2 Jul 2020 13:51:42 +0530
-Message-ID: <20200702082143.25259-22-kishon@ti.com>
+Subject: [RFC PATCH 22/22] NTB: Describe ntb_virtio and ntb_vhost client in the documentation
+Date: Thu, 2 Jul 2020 13:51:43 +0530
+Message-ID: <20200702082143.25259-23-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200702082143.25259-1-kishon@ti.com>
 References: <20200702082143.25259-1-kishon@ti.com>
@@ -144,8 +143,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b="ufbuqB/i";       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=iCY0E9W7;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -162,837 +161,40 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add a new NTB client driver to implement VHOST functionality. When two
-hosts are connected using NTB, one of the hosts should run NTB client
-driver that implements VIRTIO functionality and the other host should
-run NTB client implements VHOST functionality. This interfaces with
-VHOST layer so that any vhost client driver can exchange data with
-the remote virtio client driver.
+Add a blurb in Documentation/ntb.txt to describe the ntb_virtio and
+ntb_vhost client
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/ntb/Kconfig     |   9 +
- drivers/ntb/Makefile    |   1 +
- drivers/ntb/ntb_vhost.c | 776 ++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 786 insertions(+)
- create mode 100644 drivers/ntb/ntb_vhost.c
+ Documentation/driver-api/ntb.rst | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-diff --git a/drivers/ntb/Kconfig b/drivers/ntb/Kconfig
-index e171b3256f68..7d1b9bb56e71 100644
---- a/drivers/ntb/Kconfig
-+++ b/drivers/ntb/Kconfig
-@@ -46,4 +46,13 @@ config NTB_VIRTIO
+diff --git a/Documentation/driver-api/ntb.rst b/Documentation/driver-api/ntb.rst
+index 87d1372da879..f84b81625397 100644
+--- a/Documentation/driver-api/ntb.rst
++++ b/Documentation/driver-api/ntb.rst
+@@ -227,6 +227,17 @@ test client is interacted with through the debugfs filesystem:
+ 	specified peer. That peer's interrupt's occurrence file
+ 	should be incremented.
  
- 	 If unsure, say N.
++NTB Vhost Client (ntb\_vhost) and NTB Virtio Client (ntb\_virtio)
++------------------------------------------------------------------
++
++When two hosts are connected via NTB, one of the hosts should use NTB Vhost
++Client and the other host should use NTB Virtio Client. The NTB Vhost client
++interfaces with the Linux Vhost Framework and lets it to be used with any
++vhost client driver. The NTB Virtio client interfaces with the Linux Virtio
++Framework and lets it to be used with any virtio client driver. The Vhost
++client driver and Virtio client driver creates a logic cink to exchange data
++with each other.
++
+ NTB Hardware Drivers
+ ====================
  
-+config NTB_VHOST
-+	tristate "NTB VHOST"
-+	help
-+	 The NTB vhost driver sits between the NTB HW driver and the vhost
-+	 client driver and lets the vhost client driver to exchange data with
-+	 the remote virtio driver over the NTB hardware.
-+
-+	 If unsure, say N.
-+
- endif # NTB
-diff --git a/drivers/ntb/Makefile b/drivers/ntb/Makefile
-index d37ab488bcbc..25c9937c91cf 100644
---- a/drivers/ntb/Makefile
-+++ b/drivers/ntb/Makefile
-@@ -2,6 +2,7 @@
- obj-$(CONFIG_NTB) += ntb.o hw/ test/
- obj-$(CONFIG_NTB_TRANSPORT) += ntb_transport.o
- obj-$(CONFIG_NTB_VIRTIO) += ntb_virtio.o
-+obj-$(CONFIG_NTB_VHOST) += ntb_vhost.o
- 
- ntb-y			:= core.o
- ntb-$(CONFIG_NTB_MSI)	+= msi.o
-diff --git a/drivers/ntb/ntb_vhost.c b/drivers/ntb/ntb_vhost.c
-new file mode 100644
-index 000000000000..1d717bb98d85
---- /dev/null
-+++ b/drivers/ntb/ntb_vhost.c
-@@ -0,0 +1,776 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/**
-+ * NTB Client Driver to implement VHOST functionality
-+ *
-+ * Copyright (C) 2020 Texas Instruments
-+ * Author: Kishon Vijay Abraham I <kishon@ti.com>
-+ */
-+
-+#include <linux/module.h>
-+#include <linux/ntb.h>
-+#include <linux/slab.h>
-+#include <linux/vhost.h>
-+#include <linux/virtio_pci.h>
-+#include <linux/vringh.h>
-+
-+#include "ntb_virtio.h"
-+
-+static struct workqueue_struct *kntbvhost_workqueue;
-+
-+struct ntb_vhost_queue {
-+	struct delayed_work db_handler;
-+	struct vhost_virtqueue *vq;
-+	void __iomem *vq_addr;
-+};
-+
-+struct ntb_vhost {
-+	struct ntb_vhost_queue vqueue[MAX_VQS];
-+	struct work_struct link_cleanup;
-+	struct delayed_work cmd_handler;
-+	struct delayed_work link_work;
-+	resource_size_t peer_mw_size;
-+	struct config_group *group;
-+	phys_addr_t peer_mw_addr;
-+	struct vhost_dev vdev;
-+	struct ntb_dev *ndev;
-+	struct vring vring;
-+	struct device *dev;
-+	u64 virtio_addr;
-+	u64 features;
-+};
-+
-+#define to_ntb_vhost(v) container_of((v), struct ntb_vhost, vdev)
-+
-+/* ntb_vhost_finalize_features - Indicate features are finalized to vhost client
-+ *   driver
-+ * @ntb: NTB vhost device that communicates with the remote virtio device
-+ *
-+ * Invoked when the remote virtio device sends HOST_CMD_FINALIZE_FEATURES
-+ * command once the feature negotiation is complete. This function sends
-+ * notification to the vhost client driver.
-+ */
-+static void ntb_vhost_finalize_features(struct ntb_vhost *ntb)
-+{
-+	struct vhost_dev *vdev;
-+	struct ntb_dev *ndev;
-+	u64 features;
-+
-+	vdev = &ntb->vdev;
-+	ndev = ntb->ndev;
-+
-+	features = ntb_spad_read(ndev, VIRTIO_FEATURES_UPPER);
-+	features <<= 32;
-+	features |= ntb_spad_read(ndev, VIRTIO_FEATURES_LOWER);
-+	vdev->features = features;
-+	blocking_notifier_call_chain(&vdev->notifier, NOTIFY_FINALIZE_FEATURES, 0);
-+}
-+
-+/* ntb_vhost_cmd_handler - Handle commands from remote NTB virtio driver
-+ * @work: The work_struct holding the ntb_vhost_cmd_handler() function that is
-+ *   scheduled
-+ *
-+ * Handle commands from the remote NTB virtio driver and sends notification to
-+ * the vhost client driver. The remote virtio driver sends commands when the
-+ * virtio driver status is updated or when the feature negotiation is complet
-+ * or if the virtio driver wants to reset the device.
-+ */
-+static void ntb_vhost_cmd_handler(struct work_struct *work)
-+{
-+	struct vhost_dev *vdev;
-+	struct ntb_vhost *ntb;
-+	struct ntb_dev *ndev;
-+	struct device *dev;
-+	u8 command;
-+
-+	ntb = container_of(work, struct ntb_vhost, cmd_handler.work);
-+	vdev = &ntb->vdev;
-+	ndev = ntb->ndev;
-+	dev = ntb->dev;
-+
-+	command = ntb_spad_read(ndev, VHOST_COMMAND);
-+	if (!command)
-+		goto reset_handler;
-+
-+	ntb_spad_write(ndev, VHOST_COMMAND, 0);
-+
-+	switch (command) {
-+	case HOST_CMD_SET_STATUS:
-+		blocking_notifier_call_chain(&vdev->notifier, NOTIFY_SET_STATUS, 0);
-+		ntb_spad_write(ndev, VHOST_COMMAND_STATUS, HOST_CMD_STATUS_OKAY);
-+		break;
-+	case HOST_CMD_FINALIZE_FEATURES:
-+		ntb_vhost_finalize_features(ntb);
-+		ntb_spad_write(ndev, VHOST_COMMAND_STATUS, HOST_CMD_STATUS_OKAY);
-+		break;
-+	case HOST_CMD_RESET:
-+		blocking_notifier_call_chain(&vdev->notifier, NOTIFY_RESET, 0);
-+		ntb_spad_write(ndev, VHOST_COMMAND_STATUS, HOST_CMD_STATUS_OKAY);
-+		break;
-+	default:
-+		dev_err(dev, "UNKNOWN command: %d\n", command);
-+		break;
-+	}
-+
-+reset_handler:
-+	queue_delayed_work(kntbvhost_workqueue, &ntb->cmd_handler,
-+			   msecs_to_jiffies(1));
-+}
-+
-+/* ntb_vhost_del_vqs - Delete all the vqs associated with the vhost device
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ *
-+ * Delete all the vqs associated with the vhost device.
-+ */
-+void ntb_vhost_del_vqs(struct vhost_dev *vdev)
-+{
-+	struct ntb_vhost_queue *vqueue;
-+	struct vhost_virtqueue *vq;
-+	struct ntb_vhost *ntb;
-+	int i;
-+
-+	ntb = to_ntb_vhost(vdev);
-+
-+	for (i = 0; i < vdev->nvqs; i++) {
-+		vq = vdev->vqs[i];
-+		if (IS_ERR_OR_NULL(vq))
-+			continue;
-+
-+		vqueue = &ntb->vqueue[i];
-+		cancel_delayed_work_sync(&vqueue->db_handler);
-+		iounmap(vqueue->vq_addr);
-+		kfree(vq);
-+	}
-+}
-+
-+/* ntb_vhost_vq_db_work - Handle doorbell event receive for a virtqueue
-+ * @work: The work_struct holding the ntb_vhost_vq_db_work() function for every
-+ *   created virtqueue
-+ *
-+ * This function is invoked when the remote virtio driver sends a notification
-+ * to the virtqueue. (virtqueue_kick() on the remote virtio driver). This
-+ * function invokes the vhost client driver's virtqueue callback.
-+ */
-+static void ntb_vhost_vq_db_work(struct work_struct *work)
-+{
-+	struct ntb_vhost_queue *vqueue;
-+
-+	vqueue = container_of(work, struct ntb_vhost_queue, db_handler.work);
-+	vhost_virtqueue_callback(vqueue->vq);
-+}
-+
-+/* ntb_vhost_notify - Send notification to the remote virtqueue
-+ * @vq: The local vhost virtqueue corresponding to the remote virtio virtqueue
-+ *
-+ * Use NTB doorbell to send notification for the remote virtqueue
-+ */
-+static void ntb_vhost_notify(struct vhost_virtqueue *vq)
-+{
-+	struct vhost_dev *vdev;
-+	struct ntb_vhost *ntb;
-+
-+	vdev = vq->dev;
-+	ntb = to_ntb_vhost(vdev);
-+
-+	ntb_peer_db_set(ntb->ndev, vq->index);
-+}
-+
-+/* ntb_vhost_create_vq - Create a new vhost virtqueue
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ * @index: Index of the vhost virtqueue
-+ * @num_bufs: The number of buffers that should be supported by the vhost
-+ *   virtqueue (number of descriptors in the vhost virtqueue)
-+ * @callback: Callback function associated with the virtqueue
-+ *
-+ * Create a new vhost virtqueue which can be used by the vhost client driver
-+ * to access the remote virtio. This sets up the local address of the vhost
-+ * virtqueue but shouldn't be accessed until the virtio sets the status to
-+ * VIRTIO_CONFIG_S_DRIVER_OK.
-+ */
-+static struct vhost_virtqueue *
-+ntb_vhost_create_vq(struct vhost_dev *vdev, int index, unsigned int num_bufs,
-+		    void (*callback)(struct vhost_virtqueue *))
-+{
-+	struct ntb_vhost_queue *vqueue;
-+	unsigned int vq_size, offset;
-+	struct vhost_virtqueue *vq;
-+	phys_addr_t vq_phys_addr;
-+	phys_addr_t peer_mw_addr;
-+	struct vringh *vringh;
-+	struct ntb_vhost *ntb;
-+	void __iomem *vq_addr;
-+	struct ntb_dev *ndev;
-+	struct vring *vring;
-+	struct device *dev;
-+	int ret;
-+
-+	ntb = to_ntb_vhost(vdev);
-+	vqueue = &ntb->vqueue[index];
-+	peer_mw_addr = ntb->peer_mw_addr;
-+	ndev = ntb->ndev;
-+	dev = ntb->dev;
-+
-+	vq =  kzalloc(sizeof(*vq), GFP_KERNEL);
-+	if (!vq)
-+		return ERR_PTR(-ENOMEM);
-+
-+	vq->dev = vdev;
-+	vq->callback = callback;
-+	vq->num = num_bufs;
-+	vq->index = index;
-+	vq->notify = ntb_vhost_notify;
-+	vq->type = VHOST_TYPE_MMIO;
-+
-+	vringh = &vq->vringh;
-+	vring = &vringh->vring;
-+
-+	ntb_spad_write(ndev, VHOST_QUEUE_NUM_BUFFERS(index), num_bufs);
-+	vq_size = vring_size(num_bufs, VIRTIO_PCI_VRING_ALIGN);
-+	offset = index * vq_size;
-+	if (offset + vq_size > ntb->peer_mw_size) {
-+		dev_err(dev, "Not enough vhost memory for allocating vq\n");
-+		ret = -ENOMEM;
-+		goto err_out_of_bound;
-+	}
-+
-+	vq_phys_addr = peer_mw_addr + offset;
-+	vq_addr = ioremap_wc(vq_phys_addr, vq_size);
-+	if (!vq_addr) {
-+		dev_err(dev, "Fail to ioremap virtqueue address\n");
-+		ret = -ENOMEM;
-+		goto err_out_of_bound;
-+	}
-+
-+	vqueue->vq = vq;
-+	vqueue->vq_addr = vq_addr;
-+
-+	vring_init(vring, num_bufs, vq_addr, VIRTIO_PCI_VRING_ALIGN);
-+	ret = vringh_init_mmio(vringh, ntb->features, num_bufs, false,
-+			       vring->desc, vring->avail, vring->used);
-+	if (ret) {
-+		dev_err(dev, "Failed to init vringh\n");
-+		goto err_init_mmio;
-+	}
-+
-+	INIT_DELAYED_WORK(&vqueue->db_handler, ntb_vhost_vq_db_work);
-+
-+	return vq;
-+
-+err_init_mmio:
-+	iounmap(vq_addr);
-+
-+err_out_of_bound:
-+	kfree(vq);
-+
-+	return ERR_PTR(ret);
-+}
-+
-+/* ntb_vhost_create_vqs - Create vhost virtqueues for vhost device
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ * @nvqs: Number of vhost virtqueues to be created
-+ * @num_bufs: The number of buffers that should be supported by the vhost
-+ *   virtqueue (number of descriptors in the vhost virtqueue)
-+ * @vqs: Pointers to all the created vhost virtqueues
-+ * @callback: Callback function associated with the virtqueue
-+ * @names: Names associated with each virtqueue
-+ *
-+ * Create vhost virtqueues for vhost device. This acts as a wrapper to
-+ * ntb_vhost_create_vq() which creates individual vhost virtqueue.
-+ */
-+static int ntb_vhost_create_vqs(struct vhost_dev *vdev, unsigned int nvqs,
-+				unsigned int num_bufs,
-+				struct vhost_virtqueue *vqs[],
-+				vhost_vq_callback_t *callbacks[],
-+				const char * const names[])
-+{
-+	struct ntb_vhost *ntb;
-+	struct device *dev;
-+	int ret, i;
-+
-+	ntb = to_ntb_vhost(vdev);
-+	dev = ntb->dev;
-+
-+	for (i = 0; i < nvqs; i++) {
-+		vqs[i] = ntb_vhost_create_vq(vdev, i, num_bufs, callbacks[i]);
-+		if (IS_ERR_OR_NULL(vqs[i])) {
-+			ret = PTR_ERR(vqs[i]);
-+			dev_err(dev, "Failed to create virtqueue\n");
-+			goto err;
-+		}
-+	}
-+
-+	vdev->nvqs = nvqs;
-+	vdev->vqs = vqs;
-+
-+	return 0;
-+
-+err:
-+	ntb_vhost_del_vqs(vdev);
-+
-+	return ret;
-+}
-+
-+/* ntb_vhost_write - Write data to buffer provided by remote virtio driver
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ * @dst: Buffer address in the remote device provided by the remote virtio
-+ *   driver
-+ * @src: Buffer address in the local device provided by the vhost client driver
-+ * @len: Length of the data to be copied from @src to @dst
-+ *
-+ * Write data to buffer provided by remote virtio driver from buffer provided
-+ * by vhost client driver.
-+ */
-+static int ntb_vhost_write(struct vhost_dev *vdev, u64 dst, void *src, int len)
-+{
-+	phys_addr_t peer_mw_addr, phys_addr;
-+	struct ntb_vhost *ntb;
-+	unsigned int offset;
-+	struct device *dev;
-+	u64 virtio_addr;
-+	void *addr;
-+
-+	ntb = to_ntb_vhost(vdev);
-+	dev = ntb->dev;
-+
-+	peer_mw_addr = ntb->peer_mw_addr;
-+	virtio_addr = ntb->virtio_addr;
-+
-+	offset = dst -  virtio_addr;
-+	if (offset + len > ntb->peer_mw_size) {
-+		dev_err(dev, "Overflow of vhost memory\n");
-+		return -EINVAL;
-+	}
-+
-+	phys_addr = peer_mw_addr + offset;
-+	addr = ioremap_wc(phys_addr, len);
-+	if (!addr) {
-+		dev_err(dev, "Failed to ioremap vhost address\n");
-+		return -ENOMEM;
-+	}
-+
-+	memcpy_toio(addr, src, len);
-+	iounmap(addr);
-+
-+	return 0;
-+}
-+
-+/* ntb_vhost_read - Read data from buffers provided by remote virtio driver
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ * @dst: Buffer address in the local device provided by the vhost client driver
-+ * @src: Buffer address in the remote device provided by the remote virtio
-+ *   driver
-+ * @len: Length of the data to be copied from @src to @dst
-+ *
-+ * Read data from buffers provided by remote virtio driver to address provided
-+ * by vhost client driver.
-+ */
-+static int ntb_vhost_read(struct vhost_dev *vdev, void *dst, u64 src, int len)
-+{
-+	phys_addr_t peer_mw_addr, phys_addr;
-+	struct ntb_vhost *ntb;
-+	unsigned int offset;
-+	struct device *dev;
-+	u64 virtio_addr;
-+	void *addr;
-+
-+	ntb = to_ntb_vhost(vdev);
-+	dev = ntb->dev;
-+
-+	peer_mw_addr = ntb->peer_mw_addr;
-+	virtio_addr = ntb->virtio_addr;
-+
-+	offset = src - virtio_addr;
-+	if (offset + len > ntb->peer_mw_size) {
-+		dev_err(dev, "Overflow of vhost memory\n");
-+		return -EINVAL;
-+	}
-+
-+	phys_addr = peer_mw_addr + offset;
-+	addr = ioremap_wc(phys_addr, len);
-+	if (!addr) {
-+		dev_err(dev, "Failed to ioremap vhost address\n");
-+		return -ENOMEM;
-+	}
-+
-+	memcpy_fromio(dst, addr, len);
-+	iounmap(addr);
-+
-+	return 0;
-+}
-+
-+/* ntb_vhost_release - Callback function to free device
-+ * @dev: Device in vhost_dev that has to be freed
-+ *
-+ * Callback function from device core invoked to free the device after
-+ * all references have been removed. This frees the allocated memory for
-+ * struct ntb_vhost.
-+ */
-+static void ntb_vhost_release(struct device *dev)
-+{
-+	struct vhost_dev *vdev;
-+	struct ntb_vhost *ntb;
-+
-+	vdev = to_vhost_dev(dev);
-+	ntb = to_ntb_vhost(vdev);
-+
-+	kfree(ntb);
-+}
-+
-+/* ntb_vhost_set_features - vhost_config_ops to set vhost device features
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ * @features: Features supported by the vhost client driver
-+ *
-+ * vhost_config_ops invoked by the vhost client driver to set vhost device
-+ * features.
-+ */
-+static int ntb_vhost_set_features(struct vhost_dev *vdev, u64 features)
-+{
-+	struct ntb_vhost *ntb;
-+	struct ntb_dev *ndev;
-+
-+	ntb = to_ntb_vhost(vdev);
-+	ndev = ntb->ndev;
-+
-+	ntb_spad_write(ndev, VHOST_FEATURES_LOWER, lower_32_bits(features));
-+	ntb_spad_write(ndev, VHOST_FEATURES_UPPER, upper_32_bits(features));
-+	ntb->features = features;
-+
-+	return 0;
-+}
-+
-+/* ntb_vhost_set_status - vhost_config_ops to set vhost device status
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ * @status: Vhost device status configured by vhost client driver
-+ *
-+ * vhost_config_ops invoked by the vhost client driver to set vhost device
-+ * status.
-+ */
-+static int ntb_vhost_set_status(struct vhost_dev *vdev, u8 status)
-+{
-+	struct ntb_vhost *ntb;
-+	struct ntb_dev *ndev;
-+
-+	ntb = to_ntb_vhost(vdev);
-+	ndev = ntb->ndev;
-+
-+	ntb_spad_write(ndev, VHOST_DEVICE_STATUS, status);
-+
-+	return 0;
-+}
-+
-+/* ntb_vhost_get_status - vhost_config_ops to get vhost device status
-+ * @vdev: Vhost device that communicates with the remote virtio device
-+ *
-+ * vhost_config_ops invoked by the vhost client driver to get vhost device
-+ * status set by the remote virtio driver.
-+ */
-+static u8 ntb_vhost_get_status(struct vhost_dev *vdev)
-+{
-+	struct ntb_vhost *ntb;
-+	struct ntb_dev *ndev;
-+
-+	ntb = to_ntb_vhost(vdev);
-+	ndev = ntb->ndev;
-+
-+	return ntb_spad_read(ndev, VHOST_DEVICE_STATUS);
-+}
-+
-+static const struct vhost_config_ops ops = {
-+	.create_vqs	= ntb_vhost_create_vqs,
-+	.del_vqs	= ntb_vhost_del_vqs,
-+	.write		= ntb_vhost_write,
-+	.read		= ntb_vhost_read,
-+	.set_features	= ntb_vhost_set_features,
-+	.set_status	= ntb_vhost_set_status,
-+	.get_status	= ntb_vhost_get_status,
-+};
-+
-+/* ntb_vhost_link_cleanup - Cleanup once link to the remote host is lost
-+ * @ntb: NTB vhost device that communicates with the remote virtio device
-+ *
-+ * Performs the cleanup that has to be done once the link to the remote host
-+ * is lost or when the NTB vhost driver is removed.
-+ */
-+static void ntb_vhost_link_cleanup(struct ntb_vhost *ntb)
-+{
-+	cancel_delayed_work_sync(&ntb->link_work);
-+}
-+
-+/* ntb_vhost_link_cleanup_work - Cleanup once link to the remote host is lost
-+ * @work: The work_struct holding the ntb_vhost_link_cleanup_work() function
-+ *   that is scheduled
-+ *
-+ * Performs the cleanup that has to be done once the link to the remote host
-+ * is lost. This acts as a wrapper to ntb_vhost_link_cleanup() for the cleanup
-+ * operation.
-+ */
-+static void ntb_vhost_link_cleanup_work(struct work_struct *work)
-+{
-+	struct ntb_vhost *ntb;
-+
-+	ntb = container_of(work, struct ntb_vhost, link_cleanup);
-+	ntb_vhost_link_cleanup(ntb);
-+}
-+
-+/* ntb_vhost_link_work - Initialization once link to the remote host is
-+ *   established
-+ * @work: The work_struct holding the ntb_vhost_link_work() function that is
-+ *   scheduled
-+ *
-+ * Performs the NTB vhost initialization that has to be done once the link to
-+ * the remote host is established. Initializes the scratchpad registers with
-+ * data required for the remote NTB virtio driver to establish communication
-+ * with this vhost driver.
-+ */
-+static void ntb_vhost_link_work(struct work_struct *work)
-+{
-+	struct vhost_dev *vdev;
-+	struct ntb_vhost *ntb;
-+	struct ntb_dev *ndev;
-+	struct device *dev;
-+	u64 virtio_addr;
-+	u32 type;
-+
-+	ntb = container_of(work, struct ntb_vhost, link_work.work);
-+	vdev = &ntb->vdev;
-+	ndev = ntb->ndev;
-+	dev = ntb->dev;
-+
-+	/*
-+	 * Device will be registered when vhost client driver is linked to
-+	 * vhost transport device driver in configfs.
-+	 */
-+	if (!device_is_registered(&vdev->dev))
-+		goto out;
-+
-+	/*
-+	 * This is unlikely to happen if "vhost" configfs is used for
-+	 * registering vhost device.
-+	 */
-+	if (vdev->id.device == 0 && vdev->id.vendor == 0) {
-+		dev_err(dev, "vhost device is registered without valid ID\n");
-+		goto out;
-+	}
-+
-+	ntb_spad_write(ndev, VHOST_VENDORID, vdev->id.vendor);
-+	ntb_spad_write(ndev, VHOST_DEVICEID, vdev->id.device);
-+	ntb_peer_spad_write(ndev, NTB_DEF_PEER_IDX, VIRTIO_TYPE, TYPE_VHOST);
-+
-+	type = ntb_spad_read(ndev, VIRTIO_TYPE);
-+	if (type != TYPE_VIRTIO)
-+		goto out;
-+
-+	virtio_addr = ntb_spad_read(ndev,  VIRTIO_MW0_UPPER_ADDR);
-+	virtio_addr <<= 32;
-+	virtio_addr |= ntb_spad_read(ndev, VIRTIO_MW0_LOWER_ADDR);
-+	ntb->virtio_addr = virtio_addr;
-+
-+	INIT_DELAYED_WORK(&ntb->cmd_handler, ntb_vhost_cmd_handler);
-+	queue_work(kntbvhost_workqueue, &ntb->cmd_handler.work);
-+
-+	return;
-+
-+out:
-+	if (ntb_link_is_up(ndev, NULL, NULL) == 1)
-+		schedule_delayed_work(&ntb->link_work,
-+				      msecs_to_jiffies(NTB_LINK_DOWN_TIMEOUT));
-+}
-+
-+/* ntb_vhost_event_callback - Callback to link event interrupt
-+ * @data: Private data specific to NTB vhost driver
-+ *
-+ * Callback function from NTB HW driver whenever both the hosts in the NTB
-+ * setup has invoked ntb_link_enable().
-+ */
-+static void ntb_vhost_event_callback(void *data)
-+{
-+	struct ntb_vhost *ntb;
-+	struct ntb_dev *ndev;
-+
-+	ntb = data;
-+	ndev = ntb->ndev;
-+
-+	if (ntb_link_is_up(ntb->ndev, NULL, NULL) == 1)
-+		schedule_delayed_work(&ntb->link_work, 0);
-+	else
-+		schedule_work(&ntb->link_cleanup);
-+}
-+
-+/* ntb_vhost_vq_db_callback - Callback to doorbell interrupt to handle vhost
-+ *   virtqueue work
-+ * @data: Private data specific to NTB vhost driver
-+ * @vector: Doorbell vector on which interrupt is received
-+ *
-+ * Callback function from NTB HW driver whenever remote virtio driver has sent
-+ * a notification using doorbell. This schedules work corresponding to the
-+ * virtqueue for which notification has been received.
-+ */
-+static void ntb_vhost_vq_db_callback(void *data, int vector)
-+{
-+	struct ntb_vhost_queue *vqueue;
-+	struct ntb_vhost *ntb;
-+
-+	ntb = data;
-+	vqueue = &ntb->vqueue[vector - 1];
-+
-+	schedule_delayed_work(&vqueue->db_handler, 0);
-+}
-+
-+static const struct ntb_ctx_ops ntb_vhost_ops = {
-+	.link_event = ntb_vhost_event_callback,
-+	.db_event = ntb_vhost_vq_db_callback,
-+};
-+
-+/* ntb_vhost_configure_mw - Get memory window address and size
-+ * @ntb: NTB vhost device that communicates with the remote virtio device
-+ *
-+ * Get address and size of memory window 0 and update the size of
-+ * memory window 0 to scratchpad register in order for virtio driver
-+ * to get the memory window size.
-+ *
-+ * TODO: Add support for multiple memory windows.
-+ */
-+static int ntb_vhost_configure_mw(struct ntb_vhost *ntb)
-+{
-+	struct ntb_dev *ndev;
-+	struct device *dev;
-+	int ret;
-+
-+	ndev = ntb->ndev;
-+	dev = ntb->dev;
-+
-+	ret = ntb_peer_mw_get_addr(ndev, 0, &ntb->peer_mw_addr, &ntb->peer_mw_size);
-+	if (ret) {
-+		dev_err(dev, "Failed to get memory window address\n");
-+		return ret;
-+	}
-+
-+	ntb_spad_write(ndev, VHOST_MW0_SIZE_LOWER, lower_32_bits(ntb->peer_mw_size));
-+	ntb_spad_write(ndev, VHOST_MW0_SIZE_UPPER, upper_32_bits(ntb->peer_mw_size));
-+
-+	return 0;
-+}
-+
-+/* ntb_vhost_probe - Initialize struct ntb_vhost when a new NTB device is
-+ *   created
-+ * @client: struct ntb_client * representing the ntb vhost client driver
-+ * @ndev: NTB device created by NTB HW driver
-+ *
-+ * Probe function to initialize struct ntb_vhost when a new NTB device is
-+ * created. Also get the supported MW0 size and MW0 address and write the MW0
-+ * address to the self scratchpad for the remote NTB virtio driver to read.
-+ */
-+static int ntb_vhost_probe(struct ntb_client *self, struct ntb_dev *ndev)
-+{
-+	struct device *dev = &ndev->dev;
-+	struct config_group *group;
-+	struct vhost_dev *vdev;
-+	struct ntb_vhost *ntb;
-+	int ret;
-+
-+	ntb = kzalloc(sizeof(*ntb), GFP_KERNEL);
-+	if (!ntb)
-+		return -ENOMEM;
-+
-+	ntb->ndev = ndev;
-+	ntb->dev = dev;
-+
-+	ret = ntb_vhost_configure_mw(ntb);
-+	if (ret) {
-+		dev_err(dev, "Failed to configure memory window\n");
-+		goto err;
-+	}
-+
-+	ret = ntb_set_ctx(ndev, ntb, &ntb_vhost_ops);
-+	if (ret) {
-+		dev_err(dev, "Failed to set NTB vhost context\n");
-+		goto err;
-+	}
-+
-+	vdev = &ntb->vdev;
-+	vdev->dev.parent = dev;
-+	vdev->dev.release = ntb_vhost_release;
-+	vdev->ops = &ops;
-+
-+	group = vhost_cfs_add_device_item(vdev);
-+	if (IS_ERR(group)) {
-+		dev_err(dev, "Failed to add configfs entry for vhost device\n");
-+		goto err;
-+	}
-+
-+	ntb->group = group;
-+
-+	INIT_DELAYED_WORK(&ntb->link_work, ntb_vhost_link_work);
-+	INIT_WORK(&ntb->link_cleanup, ntb_vhost_link_cleanup_work);
-+
-+	ntb_link_enable(ndev, NTB_SPEED_AUTO, NTB_WIDTH_AUTO);
-+
-+	return 0;
-+
-+err:
-+	kfree(ntb);
-+
-+	return ret;
-+}
-+
-+/* ntb_vhost_free - Free the initializations performed by ntb_vhost_probe()
-+ * @client: struct ntb_client * representing the ntb vhost client driver
-+ * @ndev: NTB device created by NTB HW driver
-+ *
-+ * Free the initializations performed by ntb_vhost_probe().
-+ */
-+void ntb_vhost_free(struct ntb_client *client, struct ntb_dev *ndev)
-+{
-+	struct config_group *group;
-+	struct vhost_dev *vdev;
-+	struct ntb_vhost *ntb;
-+
-+	ntb = ndev->ctx;
-+	vdev = &ntb->vdev;
-+	group = ntb->group;
-+
-+	ntb_vhost_link_cleanup(ntb);
-+	ntb_link_disable(ndev);
-+	ntb_vhost_del_vqs(vdev);
-+	vhost_cfs_remove_device_item(group);
-+	if (device_is_registered(&vdev->dev))
-+		vhost_unregister_device(vdev);
-+}
-+
-+static struct ntb_client ntb_vhost_client = {
-+	.ops = {
-+		.probe = ntb_vhost_probe,
-+		.remove = ntb_vhost_free,
-+	},
-+};
-+
-+static int __init ntb_vhost_init(void)
-+{
-+	int ret;
-+
-+	kntbvhost_workqueue = alloc_workqueue("kntbvhost", WQ_MEM_RECLAIM |
-+					      WQ_HIGHPRI, 0);
-+	if (!kntbvhost_workqueue) {
-+		pr_err("Failed to allocate kntbvhost_workqueue\n");
-+		return -ENOMEM;
-+	}
-+
-+	ret = ntb_register_client(&ntb_vhost_client);
-+	if (ret) {
-+		pr_err("Failed to register ntb vhost driver --> %d\n", ret);
-+		return ret;
-+	}
-+
-+	return 0;
-+}
-+module_init(ntb_vhost_init);
-+
-+static void __exit ntb_vhost_exit(void)
-+{
-+	ntb_unregister_client(&ntb_vhost_client);
-+	destroy_workqueue(kntbvhost_workqueue);
-+}
-+module_exit(ntb_vhost_exit);
-+
-+MODULE_DESCRIPTION("NTB VHOST Driver");
-+MODULE_AUTHOR("Kishon Vijay Abraham I <kishon@ti.com>");
-+MODULE_LICENSE("GPL v2");
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-22-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200702082143.25259-23-kishon%40ti.com.
