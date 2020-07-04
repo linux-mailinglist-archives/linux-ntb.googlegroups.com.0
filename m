@@ -1,137 +1,138 @@
-Return-Path: <linux-ntb+bncBDV2D5O34IDRBJPX773QKGQEZI7X7OQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBPHEQH4AKGQEIO3HU2I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x340.google.com (mail-wm1-x340.google.com [IPv6:2a00:1450:4864:20::340])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0946C21439B
-	for <lists+linux-ntb@lfdr.de>; Sat,  4 Jul 2020 05:46:46 +0200 (CEST)
-Received: by mail-wm1-x340.google.com with SMTP id t145sf38185832wmt.2
-        for <lists+linux-ntb@lfdr.de>; Fri, 03 Jul 2020 20:46:46 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593834405; cv=pass;
+Received: from mail-pf1-x43a.google.com (mail-pf1-x43a.google.com [IPv6:2607:f8b0:4864:20::43a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 173B92145BE
+	for <lists+linux-ntb@lfdr.de>; Sat,  4 Jul 2020 14:12:46 +0200 (CEST)
+Received: by mail-pf1-x43a.google.com with SMTP id f132sf23091064pfa.0
+        for <lists+linux-ntb@lfdr.de>; Sat, 04 Jul 2020 05:12:45 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593864764; cv=pass;
         d=google.com; s=arc-20160816;
-        b=iL+k9MxfWYWN/kDggQHETsmjYYppXmydKB7D99nSf8wl32HrMioDg4gDXLOmSt7VTt
-         fmWwLn/EbyKBjDf4u3u4XNW05cwG38Arff2XgXdOlpzZeZHFMT4Uihk5KPVOmV1pFrv6
-         Fw7CwieN0HbtDHtQiWGUXGjjB/6gSQmnKBB4rTJPyqMOBOIiABwaUwFLdufyddvl3OIh
-         EkoSDaipDb+SZDx9mRSTQh7dPb2yHb++AEMsVs3dBdIS9NFU49AYDuzNqDfSVl6HH5b/
-         Xbol9NEL9zCZLe9XeVXIozhqFKxlCMA+LYOtF0iON/MNrtcOZ+THxxYvBbIXDrwU8rUD
-         pJrw==
+        b=D1T/+P6cL5/9LjMqd/2xvzjUQ0Ce25nhJX3LqcEjrp1obZbq/2RGgFLARt49CydMYd
+         D3HdGmD4yswVOFjK0wTfeufjigcUGasCgujI/65kM5nsr+KG6zAULdfvjQQIaCpPe6+y
+         OAA2/f091ZlW0yJkkQRP1/AwJIiyhZTqukfn4OhM1SCcHpB8S7yvka0x0xCyA0JeueLn
+         Oq96B/Ocr8KVOSaljaH1ersbVpVoKqRzB7LUX6O/UGy7bLrDgjZF2XZYMNQpPrqxf4Nq
+         PowUA4TsT+ZnY9Gt/BOfzlQKDDtzm1tkXE+0LcpdQvAMfvvMF7MfBRRvo/VIpPViz4zd
+         ddpA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=zCL+4nn+0tnGsGzeZpnBXyROgeIClYBU3laKfBHINpA=;
-        b=KMNDixueBfvqyNhF4PkSqyYrSeBZCSl33D+JvvPXib+bMKmGNr6dNo9WDXggDnShDa
-         CfKIV3WbxihD1yrT8y7eeky4PmgniqDB1v8zT+CFjjPRtvqx1LeVC56+x2A5Gx/dRQNv
-         RAt0A+Grf0HEw8PD1ZKZQLOgR/AcTMJZLWe6MwJqlK7xI7rpdLSBwEonsQ24VImaQQlT
-         tSWVWZVH/JPU22iz0+dCxxQPGoAc4c+20nelrBjdPAsDSLkQcBW3B2XJAri001Hc3zfO
-         wv1j0SwrUA7UItIP6fvBbmwukmSXUpE4aNFEaAIlIMu+yoHcg/ikWFdrW70c4CyjUD2q
-         NdBA==
+         :list-id:mailing-list:precedence:references
+         :content-transfer-encoding:mime-version:subject:message-id:reply-to
+         :from:date:dkim-signature;
+        bh=mz0iiBycFRwlpFbnmq6NFRIVGJlp++o/YtiNpRXzS1E=;
+        b=eBVoFpzmph/94enqqEQ/y/JJS6xarlMl/9Wvxy8a3tuESUkAfJcKbspzbTQFH1uDhy
+         fmP2ReFEPRwR8ohWpH3O8eXZKJUjooHDoFU5/6YljME5xrOL7TuyIHUMeGMN1OXxMKdm
+         X47wCgcqsnC8IVrUi1j2UPT6+sEiE5nMuwQGJiVrhhS0Es60GGSeaQOU6vHWuSKG6vRm
+         b01ZrFnFcO6U/kdeMiar97BQKoT0ojgqtMSTRwzenAdf2iqbCY3/Wza8JhQhiQFrqb+j
+         1SV6cEdTBZ/KDH1cC7xCh0V5fWYzpD/iskuMmnvnLa2cGaenPg4dH04oDQiXRUUNqc25
+         HlqQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=twiINFJb;
-       spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=h65RjdQV;
+       spf=pass (google.com: domain of s.cyprian12@yahoo.com designates 66.163.187.146 as permitted sender) smtp.mailfrom=s.cyprian12@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=zCL+4nn+0tnGsGzeZpnBXyROgeIClYBU3laKfBHINpA=;
-        b=UD80nErRipWQjqSxbSSxQ8pZQ4JBNrZCnS9LnnNHbo5UWI2ku3yNfw8fmeKpeLU6qr
-         qEFVAwR481smR59INwJXD+uylYoN2S+yfW9lwlidJ1DAE/Du5d2VPiGh9HbMRPgjgV0+
-         cl5BY8xlkqgi3O11NlE6gfxx+m1QuftuNWwCdoe8cyo+ozLKNyJOE3vTVJeZe6e3Jyg7
-         zXk/FoS1PA3tfP+k7lLDYzcoZcoDIpH/0QIAFR6HzHV1QykO6x0NyIf240Xk+h9ZieRa
-         zuLk/kmROM7Co2nwLzVJKwWM4OK4Krd/7l5TFDt+m472aZBAtvJ8COwNFZkY0aVeuVeD
-         0wXQ==
+        h=date:from:reply-to:message-id:subject:mime-version
+         :content-transfer-encoding:references:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=mz0iiBycFRwlpFbnmq6NFRIVGJlp++o/YtiNpRXzS1E=;
+        b=aWJd3FDtLrGLuhdEhMvhmHC/QzEsCKR8oKUhQXTUlnQ+uG1O+peefojF5hqK+u4C+J
+         zlh/MUQDUu/VvxDPpUK5p/wQILvsr4Hrfs6Ag0c9lkgx0qJUNypZKgXD3P8eLXIxy/G3
+         aFVoCy8bGQnqjG1K+10U3LqwtzIDF6pA52oaV+5MVhKdrjTW1jsoQtcGGznjANG5faSl
+         ajrPnj1XsJUnvipa60av90l2catDvosQ+8IiARYIBDjwuSgWP1zH8VuqAUH3WqT/PAPU
+         Qb6NpK3wZ0GtTojd/hqjnKNEYCrXEDgACu63hEdiXjPGsmFusLb1EqwCy1YKcR3RmALC
+         1cyg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :in-reply-to:references:mime-version:x-original-sender
+        h=x-gm-message-state:date:from:reply-to:message-id:subject
+         :mime-version:content-transfer-encoding:references:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=zCL+4nn+0tnGsGzeZpnBXyROgeIClYBU3laKfBHINpA=;
-        b=LIsPhnxOBuy40ZQUxfK4Jo5X9fAd2tmvxxWNA/xXHmm5F2VWvqYY2qj6rFQnbcRmdF
-         PJ46EycbGuSVjm1VUkkQYKKF2opbE8brAk22atVCEjwH3/Ds3RTZ5RA3CV6Szm+gtGja
-         SWkQoKVEoE3EBUOuReZGqmKtFeBqW0Wi2l2pqYj2YQJuCcWz3vCLcpP/ep+oTkb+Kiok
-         l6JM6fBIochn93pFz34V2x/cSgjQcfu72iD/qNX6MFuMHdLATSNwD+wj8RmyBfoIbsDR
-         h+WWF8OQHT2iaIBPAp1dHgxsK/q+EERd4U3o5odpbc2qWCygTCYqfU5V4fiybuc73+4X
-         JxIQ==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532zcBzNTZ2rrJwXegry9tzreCtNaQ0oI5g4cCXjkIgnwADzto2r
-	eAeF0CV3nWfMZDgmDua7zk0=
-X-Google-Smtp-Source: ABdhPJybUJRUOmHZWelnKJ9O8Dqpbg/VBQA2IG6h5hSHIlS/C5Kk1TD7pHfi4riDq3cXmMWSjBVPLw==
-X-Received: by 2002:adf:9525:: with SMTP id 34mr41567113wrs.313.1593834405826;
-        Fri, 03 Jul 2020 20:46:45 -0700 (PDT)
+        bh=mz0iiBycFRwlpFbnmq6NFRIVGJlp++o/YtiNpRXzS1E=;
+        b=Hv1/hRvW1pUidPJRCqlYsazQTdEWQ3rJYlHQ4lriVrQpOw1KbSvT1VpEfG/25bWy91
+         jRoAoU/hn0V/7k6AB7zSZ1mIMT5AJQvcDzXmyRuI10aHMRM9l4N6u9QrOorW3TUUrQ6b
+         t0FT4vNz4rBEFo6ANQ9FToyyS3FmdeyM25U9BhW8SQvRZmx7A1YwpUdq6G9Lx90IoVSH
+         6lLwG5Ux7xjzEWlomv8WIu3SRto2pKE8B+DQkJpiZ4+vkHsWGqXHD+qg/4AGHSZkCYZ2
+         t98LSnifGUdY+y21JGsPwsRxFMROFWeXFt62YLWgSw193QZQuPAkg8YfRatn+qkxROT/
+         XyFg==
+X-Gm-Message-State: AOAM531gr81X2BN+/+ycW/ldPAckBx6iZMd2BB86rHnssaIDV0jMORV5
+	VgH6iWWA8D50KXegSQZbPJ8=
+X-Google-Smtp-Source: ABdhPJyhJcfKxmxQsLbETEgxVfevCvHBblJu1+nBX7LqESXysNXl0j1lRuNZSAQdu6FpKBwPO6zy9g==
+X-Received: by 2002:a17:902:8b8a:: with SMTP id ay10mr35631464plb.236.1593864764683;
+        Sat, 04 Jul 2020 05:12:44 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a1c:9c95:: with SMTP id f143ls1739393wme.3.gmail; Fri, 03
- Jul 2020 20:46:45 -0700 (PDT)
-X-Received: by 2002:a1c:2905:: with SMTP id p5mr27137219wmp.91.1593834405434;
-        Fri, 03 Jul 2020 20:46:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593834405; cv=none;
+Received: by 2002:a17:902:9007:: with SMTP id a7ls4301325plp.3.gmail; Sat, 04
+ Jul 2020 05:12:44 -0700 (PDT)
+X-Received: by 2002:a17:902:934a:: with SMTP id g10mr23727050plp.83.1593864764395;
+        Sat, 04 Jul 2020 05:12:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593864764; cv=none;
         d=google.com; s=arc-20160816;
-        b=MAvZrpkPpfc83OScg3XouN1HQ+v59jzQt/beV7gS1fwmbzb8tqlDn8LGek+JZe89NB
-         F1Af8yogkdKvz+xx30G/JLcAP2lBrZGTppMq/GqGfh72/ZvTA+zk+0yk3PgXwxiN0LM3
-         vrQy3fn6x3EBpnapMfs9CfPtBbSx7QJMxLkNIJFUwTKppHffrAbuP+ow8SyhYI4EaU0s
-         XksSXF++gThqk6/X/52ijEUwT3E1zt1tVuxmZ353DF02xlb5mCdS6aSD+i4i4Lxv30hI
-         TtdPh4fJbRoP0XKGeflp1N1Z3BEKjs/bbr8EezWk8mE1JQy4CfkgrSiG7AKIMkx/ueoM
-         y9yw==
+        b=mpL3S/4A1Bd9NKPDufgTQmUfbeyKyu7cTxgS4opKwwf/Pj4z32/wqm41xtCm4e9pN0
+         VCsksOG/SHyexx6zHpehtXBN7nXZknqgrXAHH8odJJflTCcUa3DGPsvISOffTCpy9Q0C
+         /LNAlYgMhS+6qXqJwXcr5kog7v8sxB9DJShUuCApt9vkdw1dxXESw5wy7akOjRNNl3A5
+         izhqRR4OUDQyrw2AmdiazLxD11fujrgdXZZkiAYDY6SRyukhkyg3n2tQL2kpQD+t3WHl
+         mSpQwvyTaBS7jRZL+ERlenjLJxn1MQ4Dlq3CGNaXbYEei0Xf5hfkVLQ20AwXT+viuyT7
+         ZtzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=QMUoZdBV4wse9lG8bnGaYE8IXC2pAaw0z4G8gYRTTas=;
-        b=Xilwi65W0esOE4dzEkTsRXwg9PxrDVsQ48bWPpvC8J8MZN2Djxml2Gu9BBHEA3PbMX
-         DphJxCx2ZDXDkNCu5xtJ8SEhENoBrbCS6HtHothIJmV83et9uV1CNq7gGbx/JaSFV5Pm
-         muIn+VbcwS0rNpOjaJzU83dMnehFe/LrWFskMGiy4rO3qAaD3JZs0tR1CkUJrpE4Maso
-         pIuGV9MJbuN14S5cMasxTqpHw9HCQURgVvwmHYMOt9dfo3+K2H4afzUDQ//XsX1W5Xoh
-         I2nUwSpXTgahjxjgxu1JtYowz+Y21VErrjrukcjVxFBVnRqVMhCOquwzfZFpSZ/aDlVg
-         TX5A==
+        h=references:content-transfer-encoding:mime-version:subject
+         :message-id:reply-to:from:date:dkim-signature;
+        bh=SC5Gkorl0I1Yyh4irmvyjj3rLQH+q1rIKj2g+9rAurE=;
+        b=cmD/mRxBcuHxA6AceaalTrHmh2WQjN1LeZ9/IrK7apgU9Ihu+5SYYQqRzMOa2fq+Q3
+         WMmgFM0TSzHKL6y9v+8/C48jnQ0edcGAJMYxUxv9oqOxmB489qEMmK2ourvl5gFCvqCE
+         bX9jus1ojYTo95yYfpahnIMyg+bqMIociRQ5Mot4p1eyJBtAum6AQFxrhFIPVlZm+GL7
+         yUJSfjD7B8p/3acWo2EZiLfZSSxZ2obZ64lnb2eIJCLtTrAmT5KxuVGtnfObv8Ub29Ou
+         MZFHLevUemIJj9+xw5AcfofhOR1l7QEb44iW+BrGHuFlgie77O20pUDrbksIydrOGzdi
+         vXcg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=twiINFJb;
-       spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
-Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id y130si1212860wmd.2.2020.07.03.20.46.45
+       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=h65RjdQV;
+       spf=pass (google.com: domain of s.cyprian12@yahoo.com designates 66.163.187.146 as permitted sender) smtp.mailfrom=s.cyprian12@yahoo.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+Received: from sonic316-20.consmr.mail.ne1.yahoo.com (sonic316-20.consmr.mail.ne1.yahoo.com. [66.163.187.146])
+        by gmr-mx.google.com with ESMTPS id mz9si945295pjb.3.2020.07.04.05.12.44
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jul 2020 20:46:45 -0700 (PDT)
-Received-SPF: pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
-Received: from [2601:1c0:6280:3f0::19c2] (helo=smtpauth.infradead.org)
-	by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jrZ8R-0001Xb-Dk; Sat, 04 Jul 2020 03:46:40 +0000
-From: Randy Dunlap <rdunlap@infradead.org>
-To: linux-kernel@vger.kernel.org
-Cc: Randy Dunlap <rdunlap@infradead.org>,
-	Jonathan Corbet <corbet@lwn.net>,
-	linux-doc@vger.kernel.org,
-	Vinod Koul <vkoul@kernel.org>,
-	dmaengine@vger.kernel.org,
-	Luis Chamberlain <mcgrof@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	William Breathitt Gray <vilhelm.gray@gmail.com>,
-	linux-iio@vger.kernel.org,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org,
-	Jon Mason <jdmason@kudzu.us>,
-	Dave Jiang <dave.jiang@intel.com>,
-	Allen Hubbe <allenbh@gmail.com>,
-	linux-ntb@googlegroups.com,
-	Dan Williams <dan.j.williams@intel.com>,
-	Vishal Verma <vishal.l.verma@intel.com>,
-	Ira Weiny <ira.weiny@intel.com>,
-	linux-nvdimm@lists.01.org,
-	linux-usb@vger.kernel.org,
-	Eli Billauer <eli.billauer@gmail.com>
-Subject: [PATCH 17/17] Documentation/driver-api: xillybus: drop doubled word
-Date: Fri,  3 Jul 2020 20:45:02 -0700
-Message-Id: <20200704034502.17199-18-rdunlap@infradead.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200704034502.17199-1-rdunlap@infradead.org>
-References: <20200704034502.17199-1-rdunlap@infradead.org>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 04 Jul 2020 05:12:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of s.cyprian12@yahoo.com designates 66.163.187.146 as permitted sender) client-ip=66.163.187.146;
+X-YMail-OSG: IRcdVJwVM1k.oBU6ROmNn.qa2MweHXltf1QH4EmfSw6r1q3QU9ldZxgESlbLUOc
+ B203aUyycgEm46E.8slVAbAH75eqQHJ6QXsn6IqALMJsRXyPO0aQJ0HXnwd66.luwnn3f3qpaHjZ
+ QYdDodRUScO1K5vOGREx9GZeYVktgoj3KJdxKph92A1Yesv1UIeQVcqfL0eRbF4AqHWeZuBhzq91
+ MXq.iA.dkBrCxjy28qyEiSJIzekS7Sp4wIquQszubJwaxdC2xRZ5iI_H5m.z5DqZlKqiSW2_4x3P
+ h6uhR10eAxhRZCJ5oDVePzIWhKytKm8gwWwgLJUIrh_SzCqX9Cnhf.0n_kqwnbKRZSnB9KPqxFeF
+ 6dvHeSFNrWkSh9urqKX4sFjLS_U5zlymZqgzUvXLXg_lEmpERbJOO8z5c_ps92rgMcbXmebluJjm
+ yMjJYTBZaRWAcZMvb8ll7.Y.PjKONc_V0AKBX9bD8pir_d6lIsAZQM..OQOJAfoMtjzxTBBs60bZ
+ VHBKhpmoUoKiclwpwRbT_YrDQ._fU1_RFOtNUx7Y2oS5fB3UJ4W4cja2KJtqEL9I6h4Loh3EXzA6
+ rxDRBgKPG478YNsIKiN964H.NmOm6.QCoASXPhgvb6Hl5CSCScrl4o0zje0ejq1MI1ePuiE_W6nC
+ J6vGOQ6_nwEjD3xp2Jc.WFcPZ8Ve7dODy7Az.UPx0W5hXZxxG4kpPO3mexeBrAXBf35evM.WQiEw
+ uMyrLFT6YJYAdUyfehwn.Bh5ahAmCf.cvKABjMF1uuxoaEKAwZ1CKhfj0p.kuopKumf_c.VeoHUG
+ q23RFAom4exKU1GOTZpQUx9FeBziWOPrQjYwtuspiVcE.s4BNDLp_ECGVBOa781QN_MCiQIOSzJ2
+ EupN2q_I5q.L8meT5gy58IUg1.WUhesTvLBDkfFYJV6QVxdmdUAc5utMjDaXeuEJNeICSeJXQT1r
+ Fe2ve9JiUc9JT6LWUUzaKTig_21iNIJeQKm3Di9Y.4jcQhSmm_HV_KUt1gRA3MQS29Y.jmnosQqw
+ 5LAHm0aWp1p3.LdZFuozM2sMvpNnVKNgXNEg7o4uBxFWSY8CAvi5NO0LApQmYitjfCld.ZW_oNwn
+ pwz0AaiRFZFtrmjAZsuV89PxbQonESMHHBa97xVjipLmhCGOcIxdu7_KKUGiseBgT7NbC_MxllI4
+ r2dAIEIqQH3RdXoRNtzUqR84YWkCU2Bd_l.JwgCDaZCvfHcBmabhVm0gRoNUMoeBxNZKkQu6VreV
+ 93UTqrkXncZSHzhJ8wDWSqDo0k9ZX22yArNE2qrNhWEPFY0f7A7N7SWusBSHcVdiJKibz9y8FN..
+ S
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic316.consmr.mail.ne1.yahoo.com with HTTP; Sat, 4 Jul 2020 12:12:43 +0000
+Date: Sat, 4 Jul 2020 12:12:39 +0000 (UTC)
+From: "'Cyprian Sunny' via linux-ntb" <linux-ntb@googlegroups.com>
+Reply-To: s.cyprian12@yahoo.com
+Message-ID: <1739424868.2393235.1593864759629@mail.yahoo.com>
+Subject: My dear friend,  I wish you a safe and happy Independence Day
+ celebration.
 MIME-Version: 1.0
-X-Original-Sender: rdunlap@infradead.org
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@infradead.org header.s=casper.20170209 header.b=twiINFJb;
-       spf=pass (google.com: best guess record for domain of
- rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+References: <1739424868.2393235.1593864759629.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.16197 YMailNodin Mozilla/5.0 (Windows NT 6.1; ) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36
+X-Original-Sender: s.cyprian12@yahoo.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@yahoo.com header.s=s2048 header.b=h65RjdQV;       spf=pass
+ (google.com: domain of s.cyprian12@yahoo.com designates 66.163.187.146 as
+ permitted sender) smtp.mailfrom=s.cyprian12@yahoo.com;       dmarc=pass
+ (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
+X-Original-From: Cyprian Sunny <s.cyprian12@yahoo.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -144,29 +145,29 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Drop the doubled word "the".
+Greetings my dear friend,
 
-Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
-Cc: Jonathan Corbet <corbet@lwn.net>
-Cc: linux-doc@vger.kernel.org
-Cc: Eli Billauer <eli.billauer@gmail.com>
----
- Documentation/driver-api/xillybus.rst |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+I presume you're doing alright with members of your family? I want to use t=
+his opportunity to wish you a happy independence=C2=A0day celebration as th=
+e United States celebrates independence today. Although I've not been to th=
+e United States=C2=A0before, I love=C2=A0 American people and that's why I =
+want to wish you a happy celebration on this great event. I am wishing you =
+and your family the best the nation has to offer as you celebrate your coun=
+try's independence.
 
---- linux-next-20200701.orig/Documentation/driver-api/xillybus.rst
-+++ linux-next-20200701/Documentation/driver-api/xillybus.rst
-@@ -273,7 +273,7 @@ buffer is full, the FPGA informs the hos
- XILLYMSG_OPCODE_RELEASEBUF message channel 0 and sending an interrupt if
- necessary). The host responds by making the data available for reading through
- the character device. When all data has been read, the host writes on the
--the FPGA's buffer control register, allowing the buffer's overwriting. Flow
-+FPGA's buffer control register, allowing the buffer's overwriting. Flow
- control mechanisms exist on both sides to prevent underflows and overflows.
- 
- This is not good enough for creating a TCP/IP-like stream: If the data flow
+I am an Amcanophile because I'm=C2=A0sickeningly obsessed with American cul=
+ture.I also salute the great men and women of America who made this possibl=
+e. Happy Independence Day. God bless you and bless the=C2=A0USA..
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200704034502.17199-18-rdunlap%40infradead.org.
+Do have a great day.
+
+Best Regards,
+Cyprian Sunny
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/1739424868.2393235.1593864759629%40mail.yahoo.com.
