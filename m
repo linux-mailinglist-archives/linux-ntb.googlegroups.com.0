@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBDV2D5O34IDRBWPW773QKGQEVKXDZZY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDV2D5O34IDRBYHW773QKGQEQO74ADY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wr1-x43a.google.com (mail-wr1-x43a.google.com [IPv6:2a00:1450:4864:20::43a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 912E2214362
-	for <lists+linux-ntb@lfdr.de>; Sat,  4 Jul 2020 05:45:30 +0200 (CEST)
-Received: by mail-wr1-x43a.google.com with SMTP id 89sf11042887wrr.15
-        for <lists+linux-ntb@lfdr.de>; Fri, 03 Jul 2020 20:45:30 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593834330; cv=pass;
+Received: from mail-wr1-x440.google.com (mail-wr1-x440.google.com [IPv6:2a00:1450:4864:20::440])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1415C214364
+	for <lists+linux-ntb@lfdr.de>; Sat,  4 Jul 2020 05:45:37 +0200 (CEST)
+Received: by mail-wr1-x440.google.com with SMTP id f5sf34303839wrv.22
+        for <lists+linux-ntb@lfdr.de>; Fri, 03 Jul 2020 20:45:37 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593834336; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Ytu6DGrTFgDi9hrZSru0wQLEEOdeCbW5Je8iLHJHcvCML4g//W4h/LkYx7FugpF/is
-         Ao6MBzK6K+icx5+kou3nvqwmBJPg0bUheUJvqBTpCmyQlytVOJP6X1JL6iGs8EXDgbjI
-         Pg7VkMTC+utQ+KUFhFy2RGh+IFBtDhCArnNyRVLLuFoWjB9P+yo9OEQ+lCA2Q6UUpOjZ
-         ifxipFhxYM8SV3Rmr+TBtLx4zYaR9uytJpsPrtaMAzOcCS3hwIj6CBfeusW0qICT4HjL
-         wlTCWH7Vh9GEzjU/5AhMUsnGc8hzV4XzuC46WkIxaLZ4g3dgYBqyMFy/2sare/qnlOkL
-         vb4Q==
+        b=010mmot9GLLpiShYFXkaAly6v1GWKGwXfQ+4iroEjbMih6rTcOaLjE1dRiwN8gbyST
+         IWKCtJjrFlbi5Vc+hP4tafc/y2W3bfn5IbIwekZB+rC5pA2RC9ztNMuJw0HG3Vq8GnAl
+         cqx80XOWlvZjMT1bluRhsA11S3+Wa2UbIgeOz/fwF6d6YcurOqZ56xUiczFNtd1d1tbD
+         iyGuR1kBVOzqMg9W/bwP3g5oDvQc2C6AeSu2Vhzg40AdiL8wru9CpPIG1G1Yj1EX54Zz
+         rNnfBrmJ/JmpmrNNBeKdv7c1DxpfA1EE+CiIHS2DasvCieOsAAUULGehZdQe77fuR0Cs
+         mdcw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:sender:dkim-signature;
-        bh=KzSD0j3qasAkLCo9QE4sYIapKE1JyhEADmmVWKDHh6o=;
-        b=sYhoqvNxX/OyFjZVli/El7yH4IVPihJYsu3bXDVBAtNwXYaVbvByAPn54aCcrPVyoH
-         7qfG6F47GPjU3zn3q12ipZJxir3cqbmsfkNrUJt6UFGZpEOpg21vSpDayN+s9r+ZasLv
-         81qF/T0NlwUkJ6T81D/7iXojjL5e0WWHKjTkPAn99/JM8DjGTzEIaKq0+A5xulqwOYmE
-         h1Sseu0z8V0qxUsQeJsyol0c3M1XHu2u8mtxF8fvgHJu+A+GQRBBZTf+8/1hZshLnHYm
-         1flTVP2XrUBjRE8mFCfjOL/b7fpvyZCHm11CW/W5hvEIa7FgD/+sZQ7J0EseQ0OCeDLr
-         ffHg==
+        bh=pz1zCP5YoksS/1BZP104nsRZAXHCBMOCDNBRYaS8P+A=;
+        b=fNcqScnvQsi42uJM2DvjGmFN1R1zSCC3DrQmi0d3xcKQQsHI9eK5cO2Cdmnitz7Jtw
+         IhmnZDi2gmUfzykKhHfyS6P+Du8aDpuZlfD3Dk+fT3Nm6T2xx6cu0zAA70lCAD7U/els
+         oQhnxy4f7Xolmp6RM9456jTmP/XLbKGK9e93BPnqWjVcG2ouPvrHKBFu8f6dyYAngD0x
+         Evqk6KvE9Jkuw7M0Ym7xEvDPKMzZAGT1u+QD2w4pv4azghDakqS43DCxAGqOzacr6G7S
+         sC18rT+xRe9SmZMMW3jpmxBFZI6hkdikG3gEZ9MzCc5HCD6nbrVyqZVJdI/zaFBwBKPe
+         eAQA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=B2AMYlF3;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=bB8P99UQ;
        spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -34,13 +34,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=KzSD0j3qasAkLCo9QE4sYIapKE1JyhEADmmVWKDHh6o=;
-        b=Xq4ylTwYR3RZhtN/+IHQfcz01Hxan18db85N5gSTBIFVpOztKNbBCC0sNb2SzyBxxo
-         CP7GqxH8Kw1HMe/85Q8mw+rMqIh0x33yoSgFmBKTT2He4B8RRUImrLhJUxttUocq4U+f
-         PXBE+gheV1ha7/xY8/98lmH3Loqg89A6K4XVJt608yuvbX6I/mIIS6nqU90tWwEyTsdu
-         dJ7LvzE6BToyLqq/K7vuXuyKM5Lqywm03bur63aiWhpiYZxLi6RBzPe6ltC1TJuE+IdW
-         iDJRsEtkCMGc7NBA5XQ1Ur/nYLM1Rmn03XXxQw4grTDWZp9eGO6fISACzug5rGhqN/dI
-         C49A==
+        bh=pz1zCP5YoksS/1BZP104nsRZAXHCBMOCDNBRYaS8P+A=;
+        b=EOjT9MserzhkBtlN89IG4axk5DwpvsBklIgP9IMdOeTrIXLCMjfcNokle1vZPSWFsR
+         qzS8RKQ56bgTyfPlHYOWhah78C9mVRdWM+ksfYa97gz9j4n/OYGlIeSox+DeBXer1xL5
+         izqCjLnaGLCTmwsS/8NOZHXgUC3y0qVG6HtakXKdXg5l2u27rW58TI+YfZ5JpiEWjhWc
+         GuYqDvRS0hGLFDMaq9p8rfliTLq9ZLZdqvVB9DrKGLy7HkyfkIyduJ7cxkf4DrvMRD+w
+         D/2MUjKYEqeqDJ/1I+qHV2MH2fAwIjiPMTf0Q6pavzB6Dg0qrmNpLZtqfxMohkXwWbee
+         JAPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
@@ -48,54 +48,54 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=KzSD0j3qasAkLCo9QE4sYIapKE1JyhEADmmVWKDHh6o=;
-        b=VApdMrCHE7pkMnoq8r7XJas2wn5UOVvS0FDdreMFidAgz+6kQyCj6Q+BlW5kXVfP4n
-         PQDRkMn7AhtpqQBHc0xK3iLXosq5WfScQoumrbvupN52Y+Gb8OvrjFDGZ1jnBAOga9By
-         7Is4k4JS66XU0cafklmywlQpXtKanGWTRXG6WS72xMu7NI3osH3ltceBZ0MdEbOR0dte
-         hYLKlslU0DxQZ5GCdeegUOkp7LCViuxuccKaDlWiAcyyHLQEwZrjHQv3TF/pPpponqzG
-         a9HKPtvgtWlEo0quSYUJWeFZnqQXxlG6MYz2d36d45LZ4fiZI7xFAoetNSvmSgu7lmId
-         66Og==
+        bh=pz1zCP5YoksS/1BZP104nsRZAXHCBMOCDNBRYaS8P+A=;
+        b=o2qirxDknv/CJpZJIzugjAs7KU//a2zvbtkpFFWdrVk7HCVtva/oHJ/bfBbYaC0oKR
+         7uQQHOnqFzghD3oSjjvHm+25q7biMoA3j3Ih5wFUufuwgGZJeZpOuHRAoVKXyF+pt+5x
+         URUJDYY0pZLm4PtcNTp2Ehxv3XS7gBGyb8bnGOqa2JlJ5b8Lwh2+F9qUwfjVkPT7OsUw
+         vICebOa4clT7ofIX8/p0zcCnwYq2igh6MdvbtK5aGbdACdoVycWD5Qz4TKik7BDer2y0
+         0rqznCtZffftofPTBXfmBuXd92GlneTOreYRJrkwESfKT4cxhACutoloGl9MetLUFQ4s
+         SKNQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532yAOriWPID4ugOESgSc+DzehoUj853Zw6IjFzei+Z9qR1RyftA
-	5WDUtDJ4KyQBkNh14ZsFpVQ=
-X-Google-Smtp-Source: ABdhPJwlQBR9tneE7nwSY7iLq5MLAtdp+86ucKrzCEivtkVNpZOQEXphxsDHdU54O68dbqUNiwHKSQ==
-X-Received: by 2002:a1c:2905:: with SMTP id p5mr27133758wmp.91.1593834329916;
-        Fri, 03 Jul 2020 20:45:29 -0700 (PDT)
+X-Gm-Message-State: AOAM530AWklTXdAx9X17gqPanYWXben+XdyQmdFxNdXPEFsmNhNGfUPJ
+	cag+ncgG+y8hVuGj7YrIlVs=
+X-Google-Smtp-Source: ABdhPJwVQO97l65iyvfb7tashvpWIsO6xQZ8y4LtdR/wA4HIDsvj2z9apNR+F0rIvAYoj4ZIL+3urw==
+X-Received: by 2002:a05:6000:12c5:: with SMTP id l5mr42602849wrx.219.1593834336844;
+        Fri, 03 Jul 2020 20:45:36 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:82ca:: with SMTP id 68ls3030754wrc.2.gmail; Fri, 03 Jul
- 2020 20:45:29 -0700 (PDT)
-X-Received: by 2002:a05:6000:d0:: with SMTP id q16mr6203688wrx.166.1593834329599;
-        Fri, 03 Jul 2020 20:45:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593834329; cv=none;
+Received: by 2002:a5d:6507:: with SMTP id x7ls3036304wru.0.gmail; Fri, 03 Jul
+ 2020 20:45:36 -0700 (PDT)
+X-Received: by 2002:a5d:5549:: with SMTP id g9mr41652028wrw.419.1593834336475;
+        Fri, 03 Jul 2020 20:45:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593834336; cv=none;
         d=google.com; s=arc-20160816;
-        b=aePfRNdeiI84iWbS8eA2eXLxT5aARgHPs36OZLMR2lChBuHRlyRctd3unlPf4OomND
-         0fG6eP1q/5XgjKmzq6xBJAoJHfS6HZtbUaQhT3oIcfwaSmk65d9Ipmc0k30d08Ow/xPE
-         pMRUZjz6pSycgQ+gzOR6gcq3kKKVkydW+MIcUPZUqVNVfYGZPPxMnQNqwWR0fjD8g+SE
-         FmgLdaASq9yL8uaZVXuY07GCZbDB/dxEnPfy3gBTXuNQtWVFOf7saDHAoKgy4Y7njnkf
-         mx3ayw3zc7QEc7f4yr94kq7WO4fwvMr57co91nuHxVpRdaF3Zf/DeC7oq2dmUAh1AN6i
-         p0vA==
+        b=nSE9fL67lmxtGlw1sbjVSl3snjSFl98NVQO/q2InZgc+YlutYjE5LD9s4/1ofDUlqo
+         BmodmYXT9XPCqQFdD6r1iIGBu0LGyJ3w6TvzIBlx9rVus1Cizl/O8vOIzRjloxwu9YK9
+         REnU2W6I9V7r3zn4RtUD9VpWG/kec3TLrfntYxfhplqc0pa/7+dxB8DfSq74gOFwA63q
+         Xa2UtM//UN1oN8MTGNOt2Ufmp3tCKjtVPXbrJPRdZp/qxG5fvJpdxpVuNxM0aJ0exzmi
+         7ndTkGRlukhWBA3U2FfyXGs2rYY9gDAirbxPtDZhORshbgdcFdqzriiODh2b4B70EfPv
+         e1VA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=5uNtA/HJRXzseONyU9tn1hzhV7wWRJZnITuL/3spnnY=;
-        b=AUydRa67IVcJGwJIFWJblGBOMBcVBzbjqz+D9J+C7P06FLcN96UEOpS8dXFPQ8/lwt
-         QETwEnUH8KisFBax0x1FgcK2Zy4D5RHlC0Gv6N2lA6ih7IRDeuO3uq5yHf+idRKgBhMK
-         fsekSCe1jKSW9enlo8mX751qmhYEC3YxRuZkX490cv6vGB/h169CMjHNLIJ/pGjRwv5i
-         2bFsupEwFNJrN1m7dRqF3129ybGb4oCeL0bLNj6GF1AQ7npOlNXkrTeDa9JfoNp3hwwb
-         +NlPg8SeuLGjlrG8eZhp78bX6ewrirLzfS4Ouca5X0LLATze9dSBwCeShFN9WO7eOFxL
-         j2hg==
+        bh=COadqeh7uXIXiMC1HdlQrl27S5WUVALD05j/f0udySQ=;
+        b=izR5LIinGQm3TLptGwjTsKDXaamq+I5oTEoIvKub15KUsoXppfX1xwlxfH2ygWSg6/
+         vlf+frtRj0ZZXHrlx/hzPe+iKp3TQ/AMmC31Klf9nZMfPC4Z7UoEFFOU6TBI6/ucX1oO
+         PNIYy72JLkyQmiEgKKWPLyBd9B0Jn6GTwiAAkePSnJai4PO2abelmQLhAtrENjBhwrmz
+         wh1HbRBdbeubGy/6PPAUGzTcA+cIlXpKX36QYO9X1x95CzxDsCmJ4QIc0imkr5hcrrtO
+         t3IO6Por5qKij8SVfjqKYx+Z/SqPUXWbSR8CTnXtfFrRouBtg6IeLVp1zdFtMDDHVwdh
+         Pq/Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=B2AMYlF3;
+       dkim=pass header.i=@infradead.org header.s=casper.20170209 header.b=bB8P99UQ;
        spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
 Received: from casper.infradead.org (casper.infradead.org. [2001:8b0:10b:1236::1])
-        by gmr-mx.google.com with ESMTPS id 14si778834wmk.1.2020.07.03.20.45.29
+        by gmr-mx.google.com with ESMTPS id s18si661859wme.2.2020.07.03.20.45.36
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 03 Jul 2020 20:45:29 -0700 (PDT)
+        Fri, 03 Jul 2020 20:45:36 -0700 (PDT)
 Received-SPF: pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) client-ip=2001:8b0:10b:1236::1;
 Received: from [2601:1c0:6280:3f0::19c2] (helo=smtpauth.infradead.org)
 	by casper.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
-	id 1jrZ7D-0001Xb-VA; Sat, 04 Jul 2020 03:45:25 +0000
+	id 1jrZ7J-0001Xb-9C; Sat, 04 Jul 2020 03:45:30 +0000
 From: Randy Dunlap <rdunlap@infradead.org>
 To: linux-kernel@vger.kernel.org
 Cc: Randy Dunlap <rdunlap@infradead.org>,
@@ -119,16 +119,16 @@ Cc: Randy Dunlap <rdunlap@infradead.org>,
 	linux-nvdimm@lists.01.org,
 	linux-usb@vger.kernel.org,
 	Eli Billauer <eli.billauer@gmail.com>
-Subject: [PATCH 03/17] Documentation/driver-api: firmware/firmware_cache: drop doubled word
-Date: Fri,  3 Jul 2020 20:44:48 -0700
-Message-Id: <20200704034502.17199-4-rdunlap@infradead.org>
+Subject: [PATCH 04/17] Documentation/driver-api: firmware/direct-fs-lookup: drop doubled word
+Date: Fri,  3 Jul 2020 20:44:49 -0700
+Message-Id: <20200704034502.17199-5-rdunlap@infradead.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200704034502.17199-1-rdunlap@infradead.org>
 References: <20200704034502.17199-1-rdunlap@infradead.org>
 MIME-Version: 1.0
 X-Original-Sender: rdunlap@infradead.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@infradead.org header.s=casper.20170209 header.b=B2AMYlF3;
+ header.i=@infradead.org header.s=casper.20170209 header.b=bB8P99UQ;
        spf=pass (google.com: best guess record for domain of
  rdunlap@infradead.org designates 2001:8b0:10b:1236::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
 Content-Type: text/plain; charset="UTF-8"
@@ -144,7 +144,7 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Drop the doubled word "if".
+Drop the doubled word "firmware".
 
 Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
 Cc: Jonathan Corbet <corbet@lwn.net>
@@ -152,22 +152,22 @@ Cc: linux-doc@vger.kernel.org
 Cc: Luis Chamberlain <mcgrof@kernel.org>
 Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 ---
- Documentation/driver-api/firmware/firmware_cache.rst |    2 +-
+ Documentation/driver-api/firmware/direct-fs-lookup.rst |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- linux-next-20200701.orig/Documentation/driver-api/firmware/firmware_cache.rst
-+++ linux-next-20200701/Documentation/driver-api/firmware/firmware_cache.rst
-@@ -27,7 +27,7 @@ Some implementation details about the fi
-   uses all synchronous call except :c:func:`request_firmware_into_buf`.
+--- linux-next-20200701.orig/Documentation/driver-api/firmware/direct-fs-lookup.rst
++++ linux-next-20200701/Documentation/driver-api/firmware/direct-fs-lookup.rst
+@@ -24,7 +24,7 @@ available. Stuffing the firmware into in
+ however note that using initrd does not suffice to address the same race.
  
- * If an asynchronous call is used the firmware cache is only set up for a
--  device if if the second argument (uevent) to request_firmware_nowait() is
-+  device if the second argument (uevent) to request_firmware_nowait() is
-   true. When uevent is true it requests that a kobject uevent be sent to
-   userspace for the firmware request through the sysfs fallback mechanism
-   if the firmware file is not found.
+ There are circumstances that justify not wanting to include firmware into
+-initramfs, such as dealing with large firmware firmware files for the
++initramfs, such as dealing with large firmware files for the
+ remote-proc subsystem. For such cases using a userspace fallback mechanism
+ is currently the only viable solution as only userspace can know for sure
+ when the real rootfs is ready and mounted.
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200704034502.17199-4-rdunlap%40infradead.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200704034502.17199-5-rdunlap%40infradead.org.
