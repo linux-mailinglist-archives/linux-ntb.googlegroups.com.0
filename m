@@ -1,152 +1,135 @@
-Return-Path: <linux-ntb+bncBDNOHVNAXAGRBGHNQH4AKGQEGS54OGQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBD6L7CEQSIERB3OSQL4AKGQEVTMQEMI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb3c.google.com (mail-yb1-xb3c.google.com [IPv6:2607:f8b0:4864:20::b3c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 61DE92145D8
-	for <lists+linux-ntb@lfdr.de>; Sat,  4 Jul 2020 14:31:21 +0200 (CEST)
-Received: by mail-yb1-xb3c.google.com with SMTP id j187sf463578ybj.7
-        for <lists+linux-ntb@lfdr.de>; Sat, 04 Jul 2020 05:31:21 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1593865880; cv=pass;
+Received: from mail-qv1-xf40.google.com (mail-qv1-xf40.google.com [IPv6:2607:f8b0:4864:20::f40])
+	by mail.lfdr.de (Postfix) with ESMTPS id EBF0E214737
+	for <lists+linux-ntb@lfdr.de>; Sat,  4 Jul 2020 18:08:14 +0200 (CEST)
+Received: by mail-qv1-xf40.google.com with SMTP id ee9sf20019047qvb.6
+        for <lists+linux-ntb@lfdr.de>; Sat, 04 Jul 2020 09:08:14 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1593878894; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ndEwRCqqXorpLISiHEIByIS5m+zoRpY133bK013C4on1tS8bOoAfZbVDZoaO8fCWY1
-         H0thz4mtK3FUJF+eL8P7hzMFQEQUZ2Ze8oVoHBOwsxN5lNOsG3Abbm7uWrMFq0t7Hk8h
-         YUVoIuz0SOPqtcv29GIEqpFaQbAFH3Z3xYo1aLjT21lIDloQZNbzXObmfIa+4QHj8VNS
-         pJZ7EH9kgKJ80jFAe5l63Mw6T32aiB3qQczvSkgpbsZn6a0+ZC5/Q0qyPBLAHnJnM+IO
-         uM9ju3FxVFyG8N7uvMh4ds6RVPeMCYyZDhzaxGEmPYNOjU/E+KyJDftZa+D0m08mEDUR
-         F42w==
+        b=bSAmFjNoZPkPwa199wQjBgRR7pAMOtybdzEG8u8j877Y3E4YDP9MRDiYxuLOEXXMRX
+         A/jj5vJHemzQSxQ8NC3iV1sra6+YVr/FEayKbGxwxHWu9CMWu5DCCgE6Urc3U/LwjWXH
+         wWM0x4bUBnSELHgdZ+3uRDdKANKov5uq5h1yrzJU0PMU1n11T8bbwoTn+GKJckHqufpF
+         04JHyyjVbPY1QQ+HNzWreONIUvPzKOhgZFD34PF2tPm15u6b/o9oSGFbyT89vkiCQT6R
+         qXIzYqAFFwIzab5a3xEkwNay/ndAKKed85pEuJw/U5yAD8/kmMQvbRKoukny4y1d+UN7
+         LysQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :dkim-signature:dkim-signature;
-        bh=fkizAtOEGE5FdXb+R2BhSf7cf8wuPAxX0ABc5t/jtug=;
-        b=JIRXCHWmzz2UERJSCKbJFfFAecuQtF/0oYjaCPSVLn//rnZtZRf0ZhRuqBW5MQxl1D
-         jimh60o6LAFQOgj7un9yyFUwu7ItWWEJy7sU/TcDql08nWlYKKNuK/J2saeFOQyr30NC
-         YJAa7nhokuS001Z8/4Qv/DKQliD0a8b5Wk+lDwaNwSsYOEcVcRSOuKR4wnSKbGVtDaiq
-         3LCKHuvDH1ETHeClq2csPj4h+Qo9b2lmARhRZktOUghvuRFU4bNpf7ey++N3hsRJPBWk
-         Zb8tHIIKXNT4ikkDSQTh+GnMpPMGS+TwFmQflGXhvmQYKWTg6Q0r+nf+8OyWdgKiBcB1
-         GI2w==
+         :list-id:mailing-list:precedence:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:sender:dkim-signature;
+        bh=JtkIn5m+9uoThqq2EVPeUH/gxMmSodLUf7D4a67J4wo=;
+        b=mZ6GnK+w0aHOxlrpP2smtoAS550rOuLxEnezq9ADfCy9Wlnqz5YhG9y3Z8pTXgbWrb
+         ewKQMiL0tkXYUPNkd0oaMe6YG0RBUyAA9V+2yUi14orkV8x1V9o6bJaohP2/JNkT9qM7
+         Q1co4/Cp4vgnweKzMpGA2Sr5V/5HFHcJg/pC5o0B+wdJsVItmI7GfKIO02T+iee78oA/
+         NXw/myRgiWOF87LVPAEmY3lttrGgwV3rKHFfkvCy+Dz+/VVyGZq9f92snSUv9tJnPBGy
+         qWpbWFNb0RY361hZOkSVHEXSqgy4LEz3ITcS/1kXzPijSJ0oo8jj4XMQWo39C6UEKz5h
+         67Fg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E1+xoB3r;
-       spf=pass (google.com: domain of vilhelm.gray@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=vilhelm.gray@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@kernel.org header.s=default header.b="l5+F5/yt";
+       spf=pass (google.com: domain of jic23@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=jic23@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=fkizAtOEGE5FdXb+R2BhSf7cf8wuPAxX0ABc5t/jtug=;
-        b=G5hMLqic/cdGftNJOGmjOFfpBClngWc+9RDX+JXNWNe9TSybypgMBBckGz/5Qz0vkd
-         7a+RZW0qx0EPj41ifDFn7lqG/MXYW2GNaHZgXOmSNGVdUckOSmS1q1eEjfEDWecphZex
-         sL4yl5BpAwvPiyK8OILDUYPc9n8Q14gjpH5YIVLmhfa+D2Vy27L59L2RlMqAY4U/zXGc
-         whNp4FztYUT3TT/4ObusqiXhCqk9XA/uoVymgWzZjoeZp/0sm2MAVkyZzMUXFJ+wuq6+
-         8tcIeU7SnVd4UP5Ejm/5ji/ZcCyLVolwaA6zz3wWr/8m5FwTR1+MKWv56ZBhQRsGP7+C
-         /W7w==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=fkizAtOEGE5FdXb+R2BhSf7cf8wuPAxX0ABc5t/jtug=;
-        b=GAPg1PVhnnafgYINSaWyR3iDvEXGl7ONETg5H/TeiJjjuXKF2lXwmY8E1B/QzuAWGb
-         5g6bwm58k1hnwdq7hDo0t6rkKf3BRcqlFaBaA2haj7iLs37peJCzLFg5iKf8/nwwbPws
-         XlE5AKkr7DF34qiRKwwSDOUHyOup1YMeYadMaOHXMr5LRFPoI4xux03ropa0iOcCrzyw
-         omCHFSbygOhOPqGZceRnoMiYTvxA1UGcSohSLM/dmmooZRsy5T3Fa8txrtUqQ2VLKgNw
-         qLIJ1ukWf5H1HKU2lI6tw4eyk2zT3ppBL48PILdsSyVWzhs36dxfhDT9ErCsb/CAB6eq
-         z26Q==
+        h=sender:date:from:to:cc:subject:message-id:in-reply-to:references
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=JtkIn5m+9uoThqq2EVPeUH/gxMmSodLUf7D4a67J4wo=;
+        b=Y3bKARYw1BtVsn9xr9wu8CiWO6pJ/KoD3nFTDfCOMRsxYWJOGGX0e5toxJSIjZcvRA
+         cSTazFp4YPQTLObfFNKERp8OHVzjti3r/Qzbo+XcGz++I5k4YzbPnh2jSjth2qrozWtf
+         dePpNjpt4QwSTjfRWu5pojn7Ye+V54b5Sj2LyE9X2+TZi06sb9TMdXWbuowWGcAfyS1D
+         DZ1wGvFRZ8I4tcgc9x8t6kl4vpF2hW/PIhN6NDVxDON3nXCIHJJd771bTTptqUkHBdpo
+         0tKfBhI6SCHdCeMUkkyb0NX1AMgm8VK093RnbHvqpFzd7ScAoQ7R+3r55G5W15H0c5wY
+         1c3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=fkizAtOEGE5FdXb+R2BhSf7cf8wuPAxX0ABc5t/jtug=;
-        b=BwnwJ/B+jWZmuDlMbKXFJcKeZbJ1uv0gWdkimIRO/ZuCRXxHroltX0odVv9ap+BVz4
-         9EjtnEY1yMEn9r/Qbea8L8kFfOZdotnuZrbs3XbfgfWaia8gWe6oSqroe49O6LE00tDO
-         CrosIT7tJYjYcICBUdmEz+QFnEZiDRILOBDG9s0cRCkA6TFk409K+ksopcNDLMr4FgZ3
-         1rOJPpCJwWWlG3hOQ+sXBavAI9mYSq+XZi66+f0htKIIe7QhayOpyUt2oKI8NKSIw+wj
-         FAMtL5mJZi2LTi5BfqrRTlhUxCycZELnFTNoCA5oNpsXfs9x2FJoYYcShpdLf67Cxosi
-         JIOA==
+         :in-reply-to:references:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=JtkIn5m+9uoThqq2EVPeUH/gxMmSodLUf7D4a67J4wo=;
+        b=giS87ZwPQUwhH8OMdsdMsRWbHS1gxWoZqJWy08PV4qEAMNpQ5pe1raLOzarpSBcqqB
+         bHF9VCgIDyzIvFAHNYUdSGXP1BqJfE3VW/MpZFDAj5hIGNj638tCuuErm1v71d+q5ozK
+         oc82Sz2wjfe8O8d+DPj4BXBuoYHA8quQ28kTD8t1BrdMJ47VQTJEwwn4moEzBmJvMwxS
+         vWSxWKMuY+ibiCOYhDROqhpagLpRXgqPR+Q+mPmZMjowajZyDMao06/4egOq0tegOElG
+         zVOkqFsDVMtLveokcaHwoL1SxWNED6S4U8bKeO9XBFXX0QZkcoB34le84pB3ztMLzIsW
+         J3RA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533w53WBHa3A7tHGrekucwXybLLXiAnCkGW9zdl5w0OiTzeY7ZSP
-	fZ9EU0eNKt0tvBfRUsTTQ8M=
-X-Google-Smtp-Source: ABdhPJzLhgolFiqwoUfZk3STsQ/RstmzFgHmd21Avsy0zNrcdKPw3DMWKVEzEa5Zt1h1tFX1MakgeQ==
-X-Received: by 2002:a25:bfcf:: with SMTP id q15mr58039473ybm.39.1593865880165;
-        Sat, 04 Jul 2020 05:31:20 -0700 (PDT)
+X-Gm-Message-State: AOAM533m69Fuu9Y9bGEd2zrAn2bCOFfgPR1YbKyuv4Pgi5HSkq4SyuzF
+	AT0oqlR/im6DD83ygHROGoA=
+X-Google-Smtp-Source: ABdhPJx179dQjq5kUw48AR5DrFWJc9Vj9w7O0MX0Xa82WlzsmMUzXfn0cXX4pnPhs/yhvTQT4X1Caw==
+X-Received: by 2002:a37:a8c9:: with SMTP id r192mr38025860qke.467.1593878894022;
+        Sat, 04 Jul 2020 09:08:14 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a25:7003:: with SMTP id l3ls4421450ybc.2.gmail; Sat, 04 Jul
- 2020 05:31:19 -0700 (PDT)
-X-Received: by 2002:a25:148a:: with SMTP id 132mr67763839ybu.129.1593865879853;
-        Sat, 04 Jul 2020 05:31:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593865879; cv=none;
+Received: by 2002:ae9:ea09:: with SMTP id f9ls5753476qkg.1.gmail; Sat, 04 Jul
+ 2020 09:08:13 -0700 (PDT)
+X-Received: by 2002:ae9:de02:: with SMTP id s2mr15269192qkf.396.1593878893637;
+        Sat, 04 Jul 2020 09:08:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1593878893; cv=none;
         d=google.com; s=arc-20160816;
-        b=wFZ2QvNy7HNzh3I/Y7hoffEJsmBStu58vx0w/mRMbfGUqiAf2N/53dOxm+g8jd3p1f
-         sChjpSsW40wsHc3Jn32D1uc1KTCAeAzBgHSLKt1JR1ZSYHLqZq5BQsjLxh5L5HnBpdm/
-         0pGlfKO3TmiHvAJ/FNXRj1LvtC0xfH39WZ3vSjXvYQhb1B6k3GMpcGxGLjFbpjpK3oAB
-         CKn35Ng+XuGX2GLf8Spw3VVbi/U6ljmv6k8Q6VH+P+hovttXcn3134u19J+KBkmx/TAX
-         grBCKaYm5qH+DXLLTp4p2wYX1MfHQ2L18V16DhPhI+5kgNLrqxVJeAO0qWw+90n0qmx3
-         3VXg==
+        b=UBcK5XV4jFBGxjiiY3dnflXhsYolMDEO9ODY/Ea1HuvjLrVZG1IJbBxO9pZlECWbS4
+         g3MDCdJfUVEvvXTqlCZS67GFrMDkzhWYaj1KlmokJfZ5aIvmktyPDcJAAhHzQb96V+vZ
+         G+FihPTOwtAI07nFPdOOri6TxkJVgDjX+KkUcjdYexdsXDIymwIMRow+QqcuJSODWJHn
+         KheeUerSZySTDqpctc+hppuRePIMA0L7Z3fM16e5Bze6huLX3g/7UzFvyVmijSgH2iM+
+         qhjiP5/OUaG3cn4YcCnFOuvXvmYdFWiwfjCcQ2ZnTzIFPAPKmOjfEIfcZ+Tt/MP8rbKv
+         ix4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=wXVeQpxCI+iwkYlezHWcf0l5BZQJCmNvUa2xktmhOME=;
-        b=ZdmuAXjVsVDVQBSQjX043qMkLwDUw2lSYgekez/+0RjTdu6D/NrHMocv4nLu4bRKFK
-         xrkNuKtn9lzS/IICSs1quPbnyleGnSgV2bWAY17iswSM4tXYzAAx62nrI3h5igT5XZxf
-         ZLADWw4dZaBTXqmJtRjJ8oA2g/UU0qhYxL9mGUvct4vmnP3ztXfd0m35qdZHMrWIfZDv
-         x6+fBxkQwXGF852Sc9m5YbWXyobK0eAUr5fFl/xrnAzczg5ygb67LbA/se+1a8Xp5FHN
-         6C3QscPtkBe2LXCtG6secG1wufRE2Tvbs3tN10kvyEHkeziOYm2SjJ4kx0B61/u2Riza
-         ZjTA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:subject:cc:to:from:date:dkim-signature;
+        bh=X4xFxVgGyOh9T6LfbJ5l+hSNKy4sLC+bVgReprcmq3o=;
+        b=kp7MdQFhZw9SGbKugPsHvH7EWUYCakL6DVGwIBz0x8V69YSOycwBDqp1RXx1zbpvMy
+         k7p+uSixEcOMEnMrO1e1BV+ZCCc8OYTeoqMM+dmLlykrDi4v7ODpiwOAUCJBZxfOLgMn
+         Zrnr2FyvAwC3sFad95eZab072cOc3yeqPlugkFXJWRfU3ekf2tkWnkRb7QV4ly+t2lwv
+         kLyRTYRLv32ba2wRhvxkbGPVlSmqErrQNs1F5WKjEQQJodbe0MpWuy5z7bP5Iaqn6XJT
+         Bp1OnuClK3NpDjXn8rKsfMMQYgpq4Rfutqn065tqKzZlvOCZu4XxMk3sXrtQZJKSTR2H
+         a0nA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=E1+xoB3r;
-       spf=pass (google.com: domain of vilhelm.gray@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) smtp.mailfrom=vilhelm.gray@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-qk1-x744.google.com (mail-qk1-x744.google.com. [2607:f8b0:4864:20::744])
-        by gmr-mx.google.com with ESMTPS id a7si780938ybj.5.2020.07.04.05.31.19
+       dkim=pass header.i=@kernel.org header.s=default header.b="l5+F5/yt";
+       spf=pass (google.com: domain of jic23@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=jic23@kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
+        by gmr-mx.google.com with ESMTPS id j10si757986qko.0.2020.07.04.09.08.13
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 04 Jul 2020 05:31:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of vilhelm.gray@gmail.com designates 2607:f8b0:4864:20::744 as permitted sender) client-ip=2607:f8b0:4864:20::744;
-Received: by mail-qk1-x744.google.com with SMTP id b4so30964265qkn.11
-        for <linux-ntb@googlegroups.com>; Sat, 04 Jul 2020 05:31:19 -0700 (PDT)
-X-Received: by 2002:a37:6589:: with SMTP id z131mr39309316qkb.235.1593865879534;
-        Sat, 04 Jul 2020 05:31:19 -0700 (PDT)
-Received: from shinobu (072-189-064-225.res.spectrum.com. [72.189.64.225])
-        by smtp.gmail.com with ESMTPSA id a25sm14159031qtk.40.2020.07.04.05.31.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Jul 2020 05:31:18 -0700 (PDT)
-Date: Sat, 4 Jul 2020 08:31:16 -0400
-From: William Breathitt Gray <vilhelm.gray@gmail.com>
-To: Randy Dunlap <rdunlap@infradead.org>
-Cc: linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
-	linux-doc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
-	dmaengine@vger.kernel.org, Luis Chamberlain <mcgrof@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-iio@vger.kernel.org,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	linux-media@vger.kernel.org, Jon Mason <jdmason@kudzu.us>,
-	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
-	linux-ntb@googlegroups.com, Dan Williams <dan.j.williams@intel.com>,
-	Vishal Verma <vishal.l.verma@intel.com>,
-	Ira Weiny <ira.weiny@intel.com>, linux-nvdimm@lists.01.org,
-	linux-usb@vger.kernel.org, Eli Billauer <eli.billauer@gmail.com>
-Subject: Re: [PATCH 00/17] Documentation/driver-api: eliminate duplicated
- words
-Message-ID: <20200704123116.GB5194@shinobu>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 04 Jul 2020 09:08:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jic23@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
+Received: from archlinux (cpc149474-cmbg20-2-0-cust94.5-4.cable.virginm.net [82.4.196.95])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by mail.kernel.org (Postfix) with ESMTPSA id EE73520739;
+	Sat,  4 Jul 2020 16:08:08 +0000 (UTC)
+Date: Sat, 4 Jul 2020 17:08:05 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: William Breathitt Gray <vilhelm.gray@gmail.com>
+Cc: Randy Dunlap <rdunlap@infradead.org>, linux-kernel@vger.kernel.org,
+ Jonathan Corbet <corbet@lwn.net>, linux-doc@vger.kernel.org, Vinod Koul
+ <vkoul@kernel.org>, dmaengine@vger.kernel.org, Luis Chamberlain
+ <mcgrof@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-iio@vger.kernel.org, Mauro Carvalho Chehab <mchehab@kernel.org>,
+ linux-media@vger.kernel.org, Jon Mason <jdmason@kudzu.us>, Dave Jiang
+ <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+ linux-ntb@googlegroups.com, Dan Williams <dan.j.williams@intel.com>, Vishal
+ Verma <vishal.l.verma@intel.com>, Ira Weiny <ira.weiny@intel.com>,
+ linux-nvdimm@lists.01.org, linux-usb@vger.kernel.org, Eli Billauer
+ <eli.billauer@gmail.com>
+Subject: Re: [PATCH 06/17] Documentation/driver-api: generic-counter: drop
+ doubled word
+Message-ID: <20200704170805.18b07f1a@archlinux>
+In-Reply-To: <20200704123041.GA5194@shinobu>
 References: <20200704034502.17199-1-rdunlap@infradead.org>
+	<20200704034502.17199-7-rdunlap@infradead.org>
+	<20200704123041.GA5194@shinobu>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="cvVnyQ+4j833TQvp"
-Content-Disposition: inline
-In-Reply-To: <20200704034502.17199-1-rdunlap@infradead.org>
-X-Original-Sender: vilhelm.gray@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: jic23@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=E1+xoB3r;       spf=pass
- (google.com: domain of vilhelm.gray@gmail.com designates 2607:f8b0:4864:20::744
- as permitted sender) smtp.mailfrom=vilhelm.gray@gmail.com;       dmarc=pass
- (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@kernel.org header.s=default header.b="l5+F5/yt";       spf=pass
+ (google.com: domain of jic23@kernel.org designates 198.145.29.99 as permitted
+ sender) smtp.mailfrom=jic23@kernel.org;       dmarc=pass (p=NONE sp=NONE
+ dis=NONE) header.from=kernel.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -159,81 +142,42 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+On Sat, 4 Jul 2020 08:30:41 -0400
+William Breathitt Gray <vilhelm.gray@gmail.com> wrote:
 
---cvVnyQ+4j833TQvp
-Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
+> On Fri, Jul 03, 2020 at 08:44:51PM -0700, Randy Dunlap wrote:
+> > Drop the doubled word "the".
+> > 
+> > Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
+> > Cc: Jonathan Corbet <corbet@lwn.net>
+> > Cc: linux-doc@vger.kernel.org
+> > Cc: William Breathitt Gray <vilhelm.gray@gmail.com>
+> > Cc: linux-iio@vger.kernel.org
+> > ---
+> >  Documentation/driver-api/generic-counter.rst |    2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > --- linux-next-20200701.orig/Documentation/driver-api/generic-counter.rst
+> > +++ linux-next-20200701/Documentation/driver-api/generic-counter.rst
+> > @@ -262,7 +262,7 @@ the system.
+> >  Counter Counts may be allocated via counter_count structures, and
+> >  respective Counter Signal associations (Synapses) made via
+> >  counter_synapse structures. Associated counter_synapse structures are
+> > -stored as an array and set to the the synapses array member of the
+> > +stored as an array and set to the synapses array member of the
+> >  respective counter_count structure. These counter_count structures are
+> >  set to the counts array member of an allocated counter_device structure
+> >  before the Counter is registered to the system.  
+> 
+> Acked-by: William Breathitt Gray <vilhelm.gray@gmail.com>
 
-On Fri, Jul 03, 2020 at 08:44:45PM -0700, Randy Dunlap wrote:
-> Remove occurrences of duplicated words in Documentation/driver-api/.
-> 
-> Cc: Jonathan Corbet <corbet@lwn.net>
-> Cc: linux-doc@vger.kernel.org
-> Cc: Vinod Koul <vkoul@kernel.org>
-> Cc: dmaengine@vger.kernel.org
-> Cc: Luis Chamberlain <mcgrof@kernel.org>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-> Cc: William Breathitt Gray <vilhelm.gray@gmail.com>
-> Cc: linux-iio@vger.kernel.org
-> Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-> Cc: linux-media@vger.kernel.org
-> Cc: Jon Mason <jdmason@kudzu.us>
-> Cc: Dave Jiang <dave.jiang@intel.com>
-> Cc: Allen Hubbe <allenbh@gmail.com>
-> Cc: linux-ntb@googlegroups.com
-> Cc: Dan Williams <dan.j.williams@intel.com>
-> Cc: Vishal Verma <vishal.l.verma@intel.com>
-> Cc: Dave Jiang <dave.jiang@intel.com>
-> Cc: Ira Weiny <ira.weiny@intel.com>
-> Cc: linux-nvdimm@lists.01.org
-> Cc: linux-usb@vger.kernel.org
-> Cc: Eli Billauer <eli.billauer@gmail.com>
-> 
-> 
->  Documentation/driver-api/dmaengine/provider.rst        |    2 +-
->  Documentation/driver-api/driver-model/platform.rst     |    2 +-
->  Documentation/driver-api/firmware/built-in-fw.rst      |    2 +-
->  Documentation/driver-api/firmware/direct-fs-lookup.rst |    2 +-
->  Documentation/driver-api/firmware/firmware_cache.rst   |    2 +-
->  Documentation/driver-api/firmware/request_firmware.rst |    2 +-
->  Documentation/driver-api/generic-counter.rst           |    2 +-
->  Documentation/driver-api/iio/buffers.rst               |    2 +-
->  Documentation/driver-api/media/cec-core.rst            |    2 +-
->  Documentation/driver-api/media/dtv-frontend.rst        |    6 +++---
->  Documentation/driver-api/media/v4l2-controls.rst       |    4 ++--
->  Documentation/driver-api/media/v4l2-dev.rst            |    2 +-
->  Documentation/driver-api/ntb.rst                       |    2 +-
->  Documentation/driver-api/nvdimm/nvdimm.rst             |    2 +-
->  Documentation/driver-api/uio-howto.rst                 |    2 +-
->  Documentation/driver-api/usb/URB.rst                   |    2 +-
->  Documentation/driver-api/xillybus.rst                  |    2 +-
->  17 files changed, 20 insertions(+), 20 deletions(-)
+Applied to the togreg branch of iio.git
 
-Acked-by: William Breathitt Gray <vilhelm.gray@gmail.com>
+Thanks,
+
+Jonathan
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200704123116.GB5194%40shinobu.
-
---cvVnyQ+4j833TQvp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEk5I4PDJ2w1cDf/bghvpINdm7VJIFAl8AdpQACgkQhvpINdm7
-VJIBvxAAqwgnnmzKHJ8nY2Ip3r9kE7Fygjzlzj9bHCF7iXLQVTYqC4W7cN0q0Bfu
-QotqGgl0sAWKftn9qkvUzFI6TFRROjPuzPdDPucm+pQ5pW2m6HIEOgK42qjcuHLn
-wvVJmYNuV3L+Y6NQtUS1PBulobtAYL8fMMhtQiG6rialiiB6yaJeHkpU7BP5cdUn
-+n6i9IJIdl9//biQjBd5FQy7wqPLr+aXBZLAMSWT+hKl0huWGUXmFBTmcGLkGhAT
-OEKrj9H7j8U7CmavcpNe0bHRLlucKl3a1wQTtf6CV+SwfaaFEtKhaEKEIsB4M9QI
-sRvbV0gY9yJX2y3DabCS61B/EcCA2htBnk++AlNY+HvfXckvW9+g4xaMcCAU0cow
-1EFaMIVEGWrEuaBIRDQJX5f9n97Wvc0Zp2B/hlxYvSo1xmaCObehZ9+UecKCW1C0
-71A8NFc0cYiELXFZmQ+Vf7I9K3UeaRBaeoB8r4YEBNOO3JhmHq9E8re8ULoMvEse
-HKZyuoGyoOhW27cZXoBw1ymZZ07Nnmpupyukmh9wQllQcMj5smqQAcbCtBNCcqXb
-L+dlXBeIpE+KZHRFJ/2RtmDX903PaDcZ0Y5+NZUJsvt/KJCzg1rASkGcHC6lVTLj
-4jBBZt4JmxUWKLxsdnkHXb12eTXPB7DkjhCiSThpm1A2Re9P4Jg=
-=6Gqy
------END PGP SIGNATURE-----
-
---cvVnyQ+4j833TQvp--
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200704170805.18b07f1a%40archlinux.
