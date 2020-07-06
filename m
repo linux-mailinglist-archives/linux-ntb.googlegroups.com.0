@@ -1,125 +1,119 @@
-Return-Path: <linux-ntb+bncBC6IHYV42ILRBKN4RT4AKGQEAJ4CXCI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCROLYV75ECRBXUPRX4AKGQE5HEBNOA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x23c.google.com (mail-lj1-x23c.google.com [IPv6:2a00:1450:4864:20::23c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3166E215798
-	for <lists+linux-ntb@lfdr.de>; Mon,  6 Jul 2020 14:50:50 +0200 (CEST)
-Received: by mail-lj1-x23c.google.com with SMTP id g24sf17043321ljl.19
-        for <lists+linux-ntb@lfdr.de>; Mon, 06 Jul 2020 05:50:50 -0700 (PDT)
-ARC-Seal: i=3; a=rsa-sha256; t=1594039849; cv=pass;
+Received: from mail-pg1-x53b.google.com (mail-pg1-x53b.google.com [IPv6:2607:f8b0:4864:20::53b])
+	by mail.lfdr.de (Postfix) with ESMTPS id 14CC4215B20
+	for <lists+linux-ntb@lfdr.de>; Mon,  6 Jul 2020 17:48:48 +0200 (CEST)
+Received: by mail-pg1-x53b.google.com with SMTP id 75sf26486383pga.20
+        for <lists+linux-ntb@lfdr.de>; Mon, 06 Jul 2020 08:48:48 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1594050526; cv=pass;
         d=google.com; s=arc-20160816;
-        b=J6rPF3NuQfjjE72WVxrSiimeuy8pelWQPkifZqXG/BmFe7v7HKEYicnc2UPUxsxcNI
-         Q2D48zyeV9cFCPCLbI5AaAfi3NjoC1K3IBmIyc/ZBM1AWY5ViZbjRr4Zv22l8ywTEtRD
-         iJ4qDAOeuF0pC6cGu94Kdl99z/a6jp6Av+uzSdFE+Z1v/0Qbx021p4LhkPnGmri58i0C
-         GM+IQZuk4FIY2+IUvWtgD8LQNfAvm7ru/NxLSODNNv+cMIV3Tz07fopkTL09swV2qdzy
-         o6Rlb1armgwTyebnMtWIJmLFUC8HtTYH4rtnzJv7zRxOtXItCLh8x5uKOzL79XTxjq3v
-         nLVQ==
-ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=KzQiEYIKmhWyrDq84Dh/VaUoyuj4wgiAC5dF6eDTkAmnH8sQTzYEFwMAYa3y/4YpYw
+         QCkXrpjuEN0xdpsPp+IbsyZaFQVlGFBuubaqb0SA2IsA5X5NXWatoWmJG83IgRBw2k8V
+         9NpkpfLS9+RF0o0780/ggBW84REwLysq5wz2LOhRBa30B72TamKuhghBy7/+bDzDtdE6
+         QYDMaiMXeVeWPjTwCpD1XjNkaBWNhoDLeHTNhs3zCqIhPg/PHOWkR8iMsINojX6cbI/x
+         HHBTemtfX06Dghn1xUgnQuvD7xL9KcvYt8ctLazXCkz4VFRozqr07/HTW6tTZ2m600IL
+         Z4ig==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:cc:to:from:date
-         :sender:dkim-signature;
-        bh=JxvHjKkFwG9DgPdwf43Dc2gHQONsm/YF+jeU2ALtk5s=;
-        b=Fj7LcV17Tu9Sq3hAZPSBUmUKKP37Wi/ls4fbvLDkHtkPXNDc1F7L1xxyjMIT0jtKGf
-         bYJp9FfcoWXvy1dbp3g+GZDAGZQ4T1fQqrcZwU99DTevP8b0YgLXOrnTR8xzx+axvJPL
-         RukUcTeRoIuQmrXYuQX4amHIFmywqmvosCRCw+pKo0j0dauvDtoJisZuQPy9CoPBewjG
-         Fzn1gDn2rO4eYUclRRhkljrgd03k/oY0dYfCWwvkC9D/0xZalxSUhdLcOiLyRaiHMUpC
-         NzyUsvbHDMUYsnrfPQhO7kyPfPWk/L7OgMU9Xj/P+tn02IPf3xHmg1QWQjhKdW0QdERK
-         SBLA==
-ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=suse.com dkim=pass dkdomain=suse.com dmarc=pass fromdomain=suse.com);
-       spf=pass (google.com: domain of luis.chamberlain@suse.com designates 62.140.7.102 as permitted sender) smtp.mailfrom=luis.chamberlain@suse.com
+         :list-id:mailing-list:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:ironport-sdr:ironport-sdr:sender:dkim-signature;
+        bh=oJNg3y81VN7bk3HQUtULVasEVTZEaUJBCk6ugpZe5ww=;
+        b=A5puOLRWkNwV9LVMq99akFvi4ARQ8sA2/zHdeIQ+zX+1aciWBKhIsASC23sHABjUVE
+         VopqD0OpzFXNbH4sttOY1W7rtPBKaX1vuiKRYT9eQPt+3av2bDG85tbkdRl0hsyYxYK3
+         yiVSi+te5Bn06fMMpniz8t52aHYl6TvYh08G12QhDHBLQsYW+Q/XhLzamuFMe5x1NcI4
+         tEydRGa5m2Q18wdEE9Me/a3k/TdMzTKoPVT144lglk6IeKKf2wOnA0lSdYbBeBEEDEPp
+         iXaxtFdmfwD6nNRNk0d9y6t8z5HjuQ9ybx7gl+w7ENzfIx1CKge8UH3fCFE/5rLEI5yn
+         YhOA==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       spf=pass (google.com: domain of ira.weiny@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=ira.weiny@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:cc:subject:message-id:references
-         :content-disposition:in-reply-to:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=JxvHjKkFwG9DgPdwf43Dc2gHQONsm/YF+jeU2ALtk5s=;
-        b=g5odC5JudyMEy/KzGDT8mBYOy3aq3L1lyV9DmZe7K6x8g79ie42iC6gPYJ8PnSCbQ+
-         gVkv980uXQzdO9HzCrApuKBLRHYpz2SkjOinVzOZkcu6ST1ljuvm9ItKC5By1xBxsZkb
-         BYbpdRjZcXZZYnYuXOdff+hEkWbT3lzuK/UHnxueuO8D/4HbJzRrAj7Flfy92jRESQO7
-         lZRwHTjFiY8JOHuwiXIODJKdD0bOw/JPqTxXm5uSaHLlDLIfE4dNLRzCxH9M8M34nJ5w
-         Yk+RD02BJDYMqmYWkhNWdOgaP4itYzO0Z0RElBs2RM5X92VkbA1P1opPdjIzFu1vig6k
-         J4OQ==
+        h=sender:ironport-sdr:ironport-sdr:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=oJNg3y81VN7bk3HQUtULVasEVTZEaUJBCk6ugpZe5ww=;
+        b=NJznlvEo2AHPOi7PaFyFUUIer/6mcOHLmImjPyq3qOzhp0CY4T9awCZBlcHO0la5GY
+         L8G/wR6SfAGdszPj34EKIHGoAYHCMOaO/HVenkM9/kcdEwFkWfFaOhnNQHnVbuyNQqjw
+         yKBE5cgs78l4rRX6YqzalO/JDeCGT9SLvr7obMylk4bJhrBfQiA4uy124ukFOLpGHH//
+         3sDAdFBXHXrGiHfHwHW4cBhpecB9cQ9Svv1McLfvYCNEghUEc7S190jZGtOkTglo8Bh9
+         4vi2duyM3WrNMQ5CnRpOMJNbVGgKaDXpzCil37tsm8IK7y7H9gMuMQss/oa1QbOSs6S0
+         LxVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
-         :references:content-disposition:in-reply-to:mime-version
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=JxvHjKkFwG9DgPdwf43Dc2gHQONsm/YF+jeU2ALtk5s=;
-        b=jMlulspc6wp7pOUckCheEuVCs7zU0Mq/e6mBRXTwPa4MaLhMqrG+CmiBnaf5m7KoEH
-         SQ1jfJaZ8xPjIM4zMps9t9ToRt8kr4f3xQEqnUmAcE0eWTQldBeHXizc0qxY0uL6YeVu
-         1Gz0kUFyETWzxfP/R6DpO3b1DR5lMVI35TLDplixBspglvXj8ZwyZLh/t5T7DvR4yufd
-         8iPXB8Agmz6tOBQLU0ZznvaPWyAZQNq2KMbvnlNG7UeVUeYlXH9wXxLT/iSoD/14xwuH
-         yceyMGUmVndFeQ4+4E7AmUkFgfhWD6TomzOTYgr3SekKTuaNxHEFsd92P8xKas9KWG2v
-         9UcQ==
+        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:date:from:to:cc
+         :subject:message-id:references:mime-version:content-disposition
+         :in-reply-to:user-agent:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=oJNg3y81VN7bk3HQUtULVasEVTZEaUJBCk6ugpZe5ww=;
+        b=gTdA/M26W0b/3QajQBAY3yfQ4ns6nXka8P76R7HW/3zqInjKSu40HuprsPhigoh65M
+         iu+DqHRkkArMPk5iEXpjAJFMolJLfeLfqBBsNDgvNOiU0bcaN6ruHf/5ijBJ3W2SpfsP
+         GTurm7daKrDMdCYAUJTab7R21cy1snHKroPe/DjDv4hp7z2KbMZG0Oa95LPVNHkFtiuD
+         xr9WIQIGu96iYiM8QeJb5fJQuLl42NGoGjyAq97hQYoXteK2BSSmuLX52XVC6DClNqzL
+         pnJZXJD55XLKUNE+qAn8wYDPd3HpyB6bT9t+zG1znEHp0zTLRUCi/4b3FVJ2x0BR8ZrE
+         QDzA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533g6eC3cPkntuj9zbHm3lMfnU12c22uPxLuCf6lYjY4xXvM8p+t
-	FZa5NK2eR69h0eD/4UOfqPo=
-X-Google-Smtp-Source: ABdhPJwig3EssISYUCmxZrqq9kBKXhQs0N91KSvKIJo2eRiCNroIYKujM3ycXZPqcZEC/SJ09+ZTFw==
-X-Received: by 2002:a2e:99cf:: with SMTP id l15mr27646163ljj.294.1594039849707;
-        Mon, 06 Jul 2020 05:50:49 -0700 (PDT)
+X-Gm-Message-State: AOAM533elCmjd2E3NAOwThejI35Q7+w7AdX3c2kBMx8dxOkNH/jpjxBv
+	sxAd+m001spSABtnbuZnVMU=
+X-Google-Smtp-Source: ABdhPJzY7gBMWI0VV0UydVoXz9rlpnJKWhZpdmaeHg4SUuHvkYF9ysy7E4uOi/eb67IgLZ3cG/VrKQ==
+X-Received: by 2002:a17:90a:d912:: with SMTP id c18mr13363303pjv.184.1594050526494;
+        Mon, 06 Jul 2020 08:48:46 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a19:be95:: with SMTP id o143ls1753047lff.0.gmail; Mon, 06
- Jul 2020 05:50:49 -0700 (PDT)
-X-Received: by 2002:a19:c8c2:: with SMTP id y185mr30134864lff.52.1594039849157;
-        Mon, 06 Jul 2020 05:50:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1594039849; cv=pass;
+Received: by 2002:a17:90a:8a16:: with SMTP id w22ls8303pjn.1.canary-gmail;
+ Mon, 06 Jul 2020 08:48:46 -0700 (PDT)
+X-Received: by 2002:a17:90a:c715:: with SMTP id o21mr52900275pjt.35.1594050526086;
+        Mon, 06 Jul 2020 08:48:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594050526; cv=none;
         d=google.com; s=arc-20160816;
-        b=uuxOg5FW38n2blbWC333kxZ2NEwWTAIIavmRlrdMe32Ra5H1xpq16QGRcpFVXjsDpB
-         ge0n5pMkVmZiYk2ls1Scfk56pMlJitOfpIqtmi1eGtYSJqvVZZDIUNB7smi39cWkOZQ0
-         q8rCbeW42BT+OEhCR7Ey2QXbCcYSt6f0+jCiEIogDwW8wj6qFZqJX5kdZngEAMGnSO4U
-         eNb8NYdxDdypnLQPCkMEcLrhxdHIDB2REQzeux6x34OgsQe/GMgVY1rSnRc2S0latlNa
-         RdmPYCNQDT0qPQ7fY4hsWebGrviHe4zE2GZbco1UazfCy1uEJp8IgBD6/lJSbfurUYqi
-         oJSw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:in-reply-to:content-disposition:references:message-id
-         :subject:cc:to:from:date;
-        bh=5wXx1fomwPRGhWNiBlZVNG4MTyfJX1vHSR2d0J6JKFo=;
-        b=STnKjhnLQGGP3/mpys3YWVYS8KUnnI5aeMGHUleh73z3Eq1oWCafHCrReEZxMw/pNK
-         KAJEsYQOMGvz8vC4nxAYYUXXJdXjtLLUfKEzZkvKp0A9P4ze/MOcptUqhrmA0q8oeOuo
-         Cn4jJeY2ZRHuFrhpBq/15zDE/HIQ5mRa03zivMqX3zy1rTkEveaNZKZtWRSFhwV8FSEl
-         6aoYDl/Cl6rAbIXsxCDKEhPCm6xXp6i8LjDD26U7IyovIwXD9azX3zZVmPCkJo6fvBpG
-         Z246TjFrBVrpb320bkmAXZoTVThkHZCliMjSZ2vbgATaSSCyb1/ie/hvFa+E131qkTF8
-         lEzw==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=suse.com dkim=pass dkdomain=suse.com dmarc=pass fromdomain=suse.com);
-       spf=pass (google.com: domain of luis.chamberlain@suse.com designates 62.140.7.102 as permitted sender) smtp.mailfrom=luis.chamberlain@suse.com
-Received: from de-smtp-delivery-102.mimecast.com (de-smtp-delivery-102.mimecast.com. [62.140.7.102])
-        by gmr-mx.google.com with ESMTPS id a15si1095854lfb.3.2020.07.06.05.50.49
+        b=Dg/Hj5ySMai0D8Yh1VgWPPk8kefTjaM6Sqao9bPpiEA9jQ6uvC/dc4JnS+Zz4VcDv5
+         NjQ2wzp2ugQG341LjXdnPQY25kEAUkvzbCxiroLJpzgQ0ZF2ubPZHpRwFtLnqwUa3WNM
+         IF00K2mb3yAJYTFD74jOPucuGUOLcuJV5zq9I6uUofhbOsKyrJjJJ4tm7QiQa2CTzcRu
+         fAIx3/oLyrLZPUqg75ecrJu7LnDBbUnLbOcaNjWPQLma2uDaOGNmZpvDEXn9RtB6LvBl
+         Zn3gjJUQwH49E+3BaNbgug78wAOayuvd3R+2laz3qTUVYOkBFXTaTNNr1eOKb1MHU60N
+         jCow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date:ironport-sdr:ironport-sdr;
+        bh=x/lXsavxxgwFdiVz9pL0ijICcjXfeC0C4t4+mAS7ivE=;
+        b=R3k0xThoeUNS3udWglBNDpqB3sW1JMFIj4doJQ09hBH8hSZvT+4+4h8ok1jWmb304T
+         YDB5c5WdfHt54Ii9mb+kWwvowd6nuvCZvM6Jxph4SCTLmEw1XVi6VwtPuSyg6wlu1HHu
+         bRi3m0tkaOaLKN3No4uuWB1GqGw9yqq/DUnN4hTPoBwlWiHku+tfNIG/tFKPuqAZ1eau
+         CBZnI3rsXw9pMAYmiDMXZ6w0Bu0PicVJy08nxb5/j/ThURza5fmQLTloRepQY7v6vuU1
+         J50kxxiwV0JzIGPk3qAO0s2wGJAtXxrW5R60btgVQF2QaFO2XxUN904m2mkc7wHTHFhF
+         MLrQ==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of ira.weiny@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=ira.weiny@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
+        by gmr-mx.google.com with ESMTPS id s21si1336128pfh.2.2020.07.06.08.48.45
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 06 Jul 2020 05:50:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of luis.chamberlain@suse.com designates 62.140.7.102 as permitted sender) client-ip=62.140.7.102;
-Received: from EUR04-VI1-obe.outbound.protection.outlook.com
- (mail-vi1eur04lp2051.outbound.protection.outlook.com [104.47.14.51]) (Using
- TLS) by relay.mimecast.com with ESMTP id
- de-mta-18-kyQW1u4ePpGd2mFQWuazlQ-1; Mon, 06 Jul 2020 14:50:46 +0200
-X-MC-Unique: kyQW1u4ePpGd2mFQWuazlQ-1
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Av40yiNvxzuZfnHj2Z3K6/vnqpls4rs9Cpef7mhM58i5alcbEDFx73mndTCRtJj2Uo7QwABIYXX4KaqJjsD8dHsUQsOy0e1ACKDXPzMOCU9mJ4wCPeHZniLcZkT8Nd2JMK8tFk9FeN4V6dQ7V0F6/nEFrRSTfMEjjYeGyEETehcZrxVc3SJsXhtk4WgwptoDoOXDRIwzmcwMv0h5X6ZietaMxJ51DicYI0vz+1bLt3Iz6FsdZyX8SYMXClffqhZjJJZ5FgRJHxNnRTMDjoUii5Eb6t1D/dfjsx0kvG/Ny2yF9kiKRTmwsDy5C8x3ONGse8fGWKh2HtJ4gPluA754zw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=5wXx1fomwPRGhWNiBlZVNG4MTyfJX1vHSR2d0J6JKFo=;
- b=QU1UY3bwjHikX4YFS2tFGGO0aut33fW5MVOJ7M1IQx8bkw8BzVgAuDQYvSB4cycR9VY3FiBBkJm1niIfr3kwuhbPG2lktz0zUkJ1ys73EV6S6Z7vdrXZAXGwGjJxrC+x4oz1D+bu03cPiAUF0YfA6p09Vsg2383Hj+YagODPpQ5e7CZTztdXpSoMhVM9/bFwtkTUQMOT4jvnq/ns2v3882D/SsHWvmPKZBmTG1OIJHdD9YkbrIZ2qG2RlZReT3hm0zfHIubH1M6U4qBmhGimtEc0b+p7TpFOIATMMWFOfjsVE5WLoVA+y39Yg/WFZ+BeM6YtFKMjorF71w7RbI98sg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
- dkim=pass header.d=suse.com; arc=none
-Received: from VI1PR04MB5325.eurprd04.prod.outlook.com (2603:10a6:803:60::14)
- by VI1PR04MB6173.eurprd04.prod.outlook.com (2603:10a6:803:ff::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3153.23; Mon, 6 Jul
- 2020 12:50:45 +0000
-Received: from VI1PR04MB5325.eurprd04.prod.outlook.com
- ([fe80::dcff:4fd4:7403:f1b4]) by VI1PR04MB5325.eurprd04.prod.outlook.com
- ([fe80::dcff:4fd4:7403:f1b4%5]) with mapi id 15.20.3153.029; Mon, 6 Jul 2020
- 12:50:44 +0000
-Date: Mon, 6 Jul 2020 12:50:36 +0000
-From: Luis Chamberlain <mcgrof@suse.com>
+        Mon, 06 Jul 2020 08:48:46 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ira.weiny@intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
+IronPort-SDR: JoB+mw8pA1j1iQux+lbQvuRx2vUt2G+6Bw2YmTG7MTzpjIaN5kmD3pJWSc39AcZHNJeTExh+oU
+ 1K6wABVb3TpQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9673"; a="148932905"
+X-IronPort-AV: E=Sophos;i="5.75,320,1589266800"; 
+   d="scan'208";a="148932905"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga007.jf.intel.com ([10.7.209.58])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 06 Jul 2020 08:48:43 -0700
+IronPort-SDR: mWtp9jT1oxvVNrM8s4daFQ6nnPj+gYN2ssBS7Syix2KbmUM20xaxbsrT/kOeHfi4jicS3LFxaE
+ clCawcSTm4Ng==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="5.75,320,1589266800"; 
+   d="scan'208";a="323244256"
+Received: from iweiny-desk2.sc.intel.com ([10.3.52.147])
+  by orsmga007.jf.intel.com with ESMTP; 06 Jul 2020 08:48:42 -0700
+Date: Mon, 6 Jul 2020 08:48:42 -0700
+From: Ira Weiny <ira.weiny@intel.com>
 To: Randy Dunlap <rdunlap@infradead.org>
 Cc: linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
 	linux-doc@vger.kernel.org, Vinod Koul <vkoul@kernel.org>,
@@ -129,52 +123,24 @@ Cc: linux-kernel@vger.kernel.org, Jonathan Corbet <corbet@lwn.net>,
 	linux-iio@vger.kernel.org,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	linux-media@vger.kernel.org, Jon Mason <jdmason@kudzu.us>,
-	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com,
-	linux-nvdimm@lists.01.org, linux-usb@vger.kernel.org,
-	Eli Billauer <eli.billauer@gmail.com>
-Subject: Re: [PATCH 02/17] Documentation/driver-api: firmware/built-in-fw:
- drop doubled word
-Message-ID: <20200706125036.llvg2mgmr7a4ydni@ergon.do-not-panic.com>
+	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+	linux-ntb@googlegroups.com, Dan Williams <dan.j.williams@intel.com>,
+	Vishal Verma <vishal.l.verma@intel.com>, linux-nvdimm@lists.01.org,
+	linux-usb@vger.kernel.org, Eli Billauer <eli.billauer@gmail.com>
+Subject: Re: [PATCH 13/17] Documentation/driver-api: nvdimm: drop doubled word
+Message-ID: <20200706154842.GC1123188@iweiny-DESK2.sc.intel.com>
 References: <20200704034502.17199-1-rdunlap@infradead.org>
- <20200704034502.17199-3-rdunlap@infradead.org>
+ <20200704034502.17199-14-rdunlap@infradead.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
-In-Reply-To: <20200704034502.17199-3-rdunlap@infradead.org>
-X-ClientProxiedBy: BY3PR05CA0028.namprd05.prod.outlook.com
- (2603:10b6:a03:254::33) To VI1PR04MB5325.eurprd04.prod.outlook.com
- (2603:10a6:803:60::14)
-MIME-Version: 1.0
-X-MS-Exchange-MessageSentRepresentingType: 1
-Received: from ergon.do-not-panic.com (178.128.74.135) by BY3PR05CA0028.namprd05.prod.outlook.com (2603:10b6:a03:254::33) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3174.8 via Frontend Transport; Mon, 6 Jul 2020 12:50:44 +0000
-Received: by ergon.do-not-panic.com (Postfix, from userid 1000)	id EC0FEA2856; Mon,  6 Jul 2020 12:50:36 +0000 (UTC)
-X-Originating-IP: [178.128.74.135]
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: 743f4daf-1c58-4b23-fd3d-08d821ab327d
-X-MS-TrafficTypeDiagnostic: VI1PR04MB6173:
-X-Microsoft-Antispam-PRVS: <VI1PR04MB6173A4766C59D95B10831F90F0690@VI1PR04MB6173.eurprd04.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:2958;
-X-Forefront-PRVS: 04569283F9
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 8QKd0IN2aSMYsWoYj52PX5PysF/dW//lGCEbeH0Fi5uGqHDI6tYacudyeB5xMRDbCpnHVPYyAZevMDiwx0zb8lQ1EhKJjoyFBJ/17Ur4sZt3MsE0heFvlA9y2sT9UM5vD0uf+WU3xxOi5IcUtOXpt+1FjX5EC/7xE5jj4o1CSlkBxb3jHh4dgrofUhiT+bNZy4C6X2Y8+ikp9XHHe23U4aRzsuwjgaJn5LS4j1zhSbuPCrMEXFFEcUKtyZ94tlJbY1V8vTIAMqlYlVuqUCJ51/To+dWmHARUDryp43DTyn2vnmUS/gsW4yoUHs/gCJuEAKqdlI6bZPktcUO3TPq5xg==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:VI1PR04MB5325.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFTY:;SFS:(396003)(39860400002)(376002)(136003)(366004)(346002)(6916009)(9686003)(52116002)(186003)(7416002)(42186006)(316002)(6266002)(4326008)(8936002)(26005)(54906003)(8676002)(478600001)(4744005)(66556008)(66476007)(66946007)(2906002)(1076003)(5660300002);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData: Mb8GQRRldTCnyvM8Adi7uHnOb037Eld+uNceQL9ruoX6sJ5NLsKMj3JTCl2aKNTIuUCRTMAH1KuH0/buN08WyQUWU+lBv28VgI6mf5uSMtWrNSGeWnXjl/fMoZ7wZM24AxEVJFFKFAF0FN9k3NOyJoITaJ0SQy7GnWIjEA/+GkSWZ8jrkwAHNv05ZQbI8lrKN0HFhg712cSVD1iCGah2UELlj6u6twBmOxuz0vBFhapWZZV7YIP7UOchbc6z671YKHT3cu4gQ7BmmbmyMNlOMcU4mudyCF+wQ5CNXFIToczMgOQF280BZ0xbFVoPfAJJVy8rRTKoOcA/Pi2CorVhtTZV4jhRB7b6d+neiDBDiZZ89ZALZibx+/spVUSfgaYoFG7sLxkzzzX5PYvVk9NkSFonqYb1Tu8Ce+zbzeHj+w3k04XUBGPAs/HyvRpdguixT9WUjGrQZFemEAk7nGLItviw9y0f2uvJBXacylqloNam879Wlq+HJHNJuU2TiZcN
-X-OriginatorOrg: suse.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 743f4daf-1c58-4b23-fd3d-08d821ab327d
-X-MS-Exchange-CrossTenant-AuthSource: VI1PR04MB5325.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Jul 2020 12:50:44.8174
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ZL/MSPQ7vF6G817vDWiCPHaUz/7g1QBwypX6CWbRGwuxqbC0IzBzB/o11VDOQnRsD+XcmWon58h2h0S4bSPOYh9U6QTaSZC0p+rcOYFddDA=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR04MB6173
-X-Original-Sender: mcgrof@suse.com
-X-Original-Authentication-Results: gmr-mx.google.com;       arc=pass (i=1
- spf=pass spfdomain=suse.com dkim=pass dkdomain=suse.com dmarc=pass
- fromdomain=suse.com);       spf=pass (google.com: domain of
- luis.chamberlain@suse.com designates 62.140.7.102 as permitted sender) smtp.mailfrom=luis.chamberlain@suse.com
+In-Reply-To: <20200704034502.17199-14-rdunlap@infradead.org>
+User-Agent: Mutt/1.11.1 (2018-12-01)
+X-Original-Sender: ira.weiny@intel.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of ira.weiny@intel.com designates 134.134.136.24 as
+ permitted sender) smtp.mailfrom=ira.weiny@intel.com;       dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -187,22 +153,37 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Fri, Jul 03, 2020 at 08:44:47PM -0700, Randy Dunlap wrote:
-> Drop the doubled word "for".
+On Fri, Jul 03, 2020 at 08:44:58PM -0700, Randy Dunlap wrote:
+> Drop the doubled word "to".
 > 
 > Signed-off-by: Randy Dunlap <rdunlap@infradead.org>
 > Cc: Jonathan Corbet <corbet@lwn.net>
 > Cc: linux-doc@vger.kernel.org
-> Cc: Luis Chamberlain <mcgrof@kernel.org>
-> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+> Cc: Dan Williams <dan.j.williams@intel.com>
+> Cc: Vishal Verma <vishal.l.verma@intel.com>
+> Cc: Dave Jiang <dave.jiang@intel.com>
+> Cc: Ira Weiny <ira.weiny@intel.com>
 
-For all the firmware patches you sent:
+Acked-by: Ira Weiny <ira.weiny@intel.com>
 
-Acked-by: Luis Chamberlain <mcgrof@kernel.org>
-
-  Luis
+> Cc: linux-nvdimm@lists.01.org
+> ---
+>  Documentation/driver-api/nvdimm/nvdimm.rst |    2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> --- linux-next-20200701.orig/Documentation/driver-api/nvdimm/nvdimm.rst
+> +++ linux-next-20200701/Documentation/driver-api/nvdimm/nvdimm.rst
+> @@ -73,7 +73,7 @@ DAX:
+>    process address space.
+>  
+>  DSM:
+> -  Device Specific Method: ACPI method to to control specific
+> +  Device Specific Method: ACPI method to control specific
+>    device - in this case the firmware.
+>  
+>  DCR:
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200706125036.llvg2mgmr7a4ydni%40ergon.do-not-panic.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200706154842.GC1123188%40iweiny-DESK2.sc.intel.com.
