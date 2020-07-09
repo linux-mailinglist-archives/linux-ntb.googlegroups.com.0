@@ -1,104 +1,106 @@
-Return-Path: <linux-ntb+bncBC6JD5V23ENBBMMOTP4AKGQEV4GJJOQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBC6JD5V23ENBBOEOTP4AKGQEGK3EEPI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb3d.google.com (mail-yb1-xb3d.google.com [IPv6:2607:f8b0:4864:20::b3d])
-	by mail.lfdr.de (Postfix) with ESMTPS id E6BEC2199B3
-	for <lists+linux-ntb@lfdr.de>; Thu,  9 Jul 2020 09:28:50 +0200 (CEST)
-Received: by mail-yb1-xb3d.google.com with SMTP id m125sf1825676yba.23
-        for <lists+linux-ntb@lfdr.de>; Thu, 09 Jul 2020 00:28:50 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1594279729; cv=pass;
+Received: from mail-ot1-x33c.google.com (mail-ot1-x33c.google.com [IPv6:2607:f8b0:4864:20::33c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 869B52199BB
+	for <lists+linux-ntb@lfdr.de>; Thu,  9 Jul 2020 09:28:57 +0200 (CEST)
+Received: by mail-ot1-x33c.google.com with SMTP id w9sf772553oti.18
+        for <lists+linux-ntb@lfdr.de>; Thu, 09 Jul 2020 00:28:57 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1594279736; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lFrgcLDdOaXyEqsQ/WEZ29tysn8Dyxap/1akeOtgNpgvBHlPu+FK1HkeUXkNoO0A6d
-         imliZoNa45e1SRoulZ3hEIzURnWC8EDB5xmXDcYFIW8LgR35ZgQssAOK7Nb3NqzQANrt
-         JKMWWMUUFJ7aglVVkNjQHsQx7KxBw2LBkXhF67JFIS5+YX977f83t1/nPix2Y9hNy9JP
-         ipHY0s3V0sTn4TbqGQkPPwPG0ke5y9CnyF0xF8AIDHYLgxpV8U/qPeJJZrI4sPfwig4+
-         7VHa3a9imN/ZUpWIY3aRz7XzCA1jhpmd7Gql9/WggA+hL53RNxYexW8NNSXdy/OTCD3d
-         TcbQ==
+        b=I5uyezr82u8HngCnqWxK7uyR64xD8ToFMNK6kMHjABFIcK/+07imd2+LYeBameOjRg
+         fcLKyy1ud2NgyED7SabKd8aR6jAm1hwr88PfHUqp8wlKe5INKf49xzL679c12UDxQD54
+         4fUTvb1ZMEfnFMDbxtFE3vWRGXJJC6Fmu3eEfgiKsS2UqNGDaUroi6YCKX4QNGTiITat
+         YQUTdCZgQmUJ+CkFLgkutw7tdLbxBtek+zqt2JfTLu/RqxE8wXLtzyvse+OGwdcyWwAT
+         VVg9BAjbKuf41x2SBbmGbZ/QyM6veBWWh0aqRGQnRQJkUqAOe9B0qMmvxS1V0pXu5zAa
+         PE+g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:message-id:date:subject:cc:to:from
-         :mime-version:sender:dkim-signature;
-        bh=o6t3hPD1CfZiDjD2dVDlOl4ukH3UlG0MTiVP6deJHJo=;
-        b=H5zMsmvEzgZMJm1aGX5mg3xq9GS5k4wNxZ8/3e/XElc5fFQvOPkA+vZjB0Up3VfVTU
-         ZSbIGi8D92CBRSiRFOSsK/7KLs5p0M7vKgtvlGo+mtlBnQb6l9qUd51fhS7/N+CoypCt
-         H5ZsiWCNzjSd5uVHe87i28JrTuUxYeptP5Ep2/pUYMK2Jqbkn3GcIY/GJzQyUMH4ccrL
-         BoscqvpciZa7hrHtUo4PGRt7KqK8f08byzN/Wr6FdGwELMsOQvLPxiiTvydDm6iDgd2R
-         R19iXFiCvKynTYrvJA7LFzPqkCEY2uNtQ9sSbzyUuuduD3lk+FcIzQtUU3t/rqa8BPQk
-         9oSg==
+         :list-id:mailing-list:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:mime-version:sender:dkim-signature;
+        bh=RBJguk035O3tX/DvfoBjHtoxUd5pcAc73hyKWcclFeU=;
+        b=pYFBELMsjh0lIE2GHeQuTTEnSOEu7afKE72OLJ1P+ADnTpLheVYq4wdGksEj1BJuPL
+         g/IrSxXzaOUFP5tqBDgIJJ7ORRX3DO7vFGGx3aBytp3KVmHMITv1MwCs+Opch1ih67eP
+         cJZSX3xc61HOU7750hqImnTJch4m2aznFkzZ/GLPFRrBhg/gd4DZbaPu9EjYDtEHh++Z
+         eAN3AnPugUgC5e0LxL7FuihMnPXexvLcGTc7nvCltLHsJJ+msv9IPEbAdWbqPkyEjnj3
+         /3sX92lXXhMptnBwzQjPB9RcSh2kpvtJ2eOd6cGRDpM5YtjYjLq74Yv+kKk4P/eburKz
+         Cp4A==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=05Zm0mLc;
+       dkim=pass header.i=@kernel.org header.s=default header.b=wNJthvpv;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:from:to:cc:subject:date:message-id
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:mime-version:from:to:cc:subject:date:message-id:in-reply-to
+         :references:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=o6t3hPD1CfZiDjD2dVDlOl4ukH3UlG0MTiVP6deJHJo=;
-        b=HNKPNBOMj+S/X//xsPbaYmhrZHhT2CliEpic3y8UUof6MW+mZbO2shHgUXJijGP2uy
-         x10oUoq+enpF7pDeaXX0Mgb8E2L4DPVxCHjiNH+l6CzczjsVuC/ktpa7kxPuXZbxuWNT
-         VczyhmVSIAhQlo6vwGZwlNBbgNcBG2jA/bXxRAcU9XMhI1KMIYMgjYJhkTIwo/8p8Pkr
-         fZTf9VV+T0utbMfqWzy20hM3CbcIvIdxHrfOCNpl943tMkNbd//XIep3NWNJZuAU9pdO
-         yXrH/O/c4k6NqILMq39GvEB+7+yvV0L9wCwTu6mdI+TLcWkRcMMd5OCby5sd/iZLkQo2
-         M7Qg==
+        bh=RBJguk035O3tX/DvfoBjHtoxUd5pcAc73hyKWcclFeU=;
+        b=ING5SvNMF7NZFGZGH+MHvRbWTbGLx5sT8hChNwcuftgQ17Z2DTgEF86OZJVG+MkXdL
+         lJh/FRPg7i/K5Pf0zV68LGz881KJQwvuTPXzuwxJTbUbI5eCIuFS56u+He8VWIF60kki
+         2BB+p4RaSyNN4jW25TPPwnIyt5FBkruUQ3iB4bnva/ACdzFjagNk2tBjDF7JypoYnaxt
+         kXgwuKMw6JZmknpPY/h71dxQPj9qMW9xkM6+gGucUtine9Xgt+n5xdeRpV15AkTmV0dJ
+         l32EnfK9u+3wQwvY+SxYwB6L7RVOxJSVANXB5CavOSFFcK0VQKbykaiSz3N1gxkcZwQX
+         /Srg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:to:cc:subject:date
-         :message-id:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=o6t3hPD1CfZiDjD2dVDlOl4ukH3UlG0MTiVP6deJHJo=;
-        b=J3PDu14tvH7FeGZAaYiw1MNmlnMHAHhkgRYaElkcFPxvNKv3FUdSWV6CpmWoQTgsgt
-         /ln1dKuckX/FH+h7HWhOfbLQzCozu7LtRoRRLjABTdf3Q2YJafoswhmWgXg0xt6Doyn8
-         l60w3zNUjD4rjpctHRnlFhmgsoJnBaeuDJdwrWP+NlCIxx+q64rphgKAV6InDFdqL6J6
-         QyaQjTUJeheXgGeq2KweR/q8SGUASLMUcuwIsmHskfWKV5vyPO0u1Bd3Qx7+tyK0CTMd
-         qekWq7EshvlVnpB4g3Q4O0EAGSNy85YJ0zkmr16vx3Z9BJsH6shf1vp7+camILY8k7E+
-         /xGQ==
+         :message-id:in-reply-to:references:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=RBJguk035O3tX/DvfoBjHtoxUd5pcAc73hyKWcclFeU=;
+        b=n8Yck/mecaF5Zw+PFexrLI4LQ89onZaHjcscsU7tM2SBG6+f+Bb7ZJEX3syLY2CN05
+         95riUWpAOiXEKMmU6AASHDkrLYsnqCrh91BQ7zqZdkKHo1bqH/nsILVfpiXqYJF/VqSG
+         /9fX7ygNEHyNcadLbQGb+byVnnYJ29NQ7sT/dMFGnpkSuz/0DC7PW6PVRW0AxSG6itBu
+         FcojX1AxB2E4bycr3uCJIDQmShWKA3daGnAypfDRxUz6DYJkOhdwQV88CaMf6Fct+nkm
+         FyDi9Hr4IQDg82hazo5A9Vz68fxXMe0/MBibl8sR0xVtialjZZKMD9+sOoJSSavbHENx
+         QjyA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530YjBsSIevmoIjXLe7fafWrhXkppqxJsSmCpudeAXKeBCCFXD/7
-	0Nz+WNpZhEcQ8FgYAvs4VDM=
-X-Google-Smtp-Source: ABdhPJzUCz6XUh9EsoIlODxg6mjWO+PmnG2fzxgHjXHKJCKhpnXLHd14rHGXdTbI3ryrOgMIo6TRGg==
-X-Received: by 2002:a25:ba4f:: with SMTP id z15mr102484754ybj.113.1594279729643;
-        Thu, 09 Jul 2020 00:28:49 -0700 (PDT)
+X-Gm-Message-State: AOAM532TwcfJLjmrYHVq+vMpwPOHKU2+p4VQIvi3c0LXBR6GEBB0u1LD
+	qYvwvVeGxGfvFfavr6jdmT4=
+X-Google-Smtp-Source: ABdhPJzdxes0QUD9dwBtfRg0WvmzfQHrECvXNyaAOjK7jDeetBCND54D8uyBmIZ3oa7VjTz5TATdqg==
+X-Received: by 2002:aca:57c5:: with SMTP id l188mr10383539oib.154.1594279736287;
+        Thu, 09 Jul 2020 00:28:56 -0700 (PDT)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a25:2d5:: with SMTP id 204ls1771598ybc.5.gmail; Thu, 09 Jul
- 2020 00:28:49 -0700 (PDT)
-X-Received: by 2002:a5b:607:: with SMTP id d7mr4173680ybq.348.1594279729349;
-        Thu, 09 Jul 2020 00:28:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594279729; cv=none;
+Received: by 2002:aca:cc89:: with SMTP id c131ls1037263oig.3.gmail; Thu, 09
+ Jul 2020 00:28:56 -0700 (PDT)
+X-Received: by 2002:a05:6808:8f5:: with SMTP id d21mr10584192oic.174.1594279735963;
+        Thu, 09 Jul 2020 00:28:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594279735; cv=none;
         d=google.com; s=arc-20160816;
-        b=qPvGZrOCpBRwFS5lNtDYv0Xv/PqY66/PfPwwEHoyQcvuO2lbt9qSG0urPePabzBdDO
-         0C31RZZJlqp+FLX+fZkfJArrclBud4aUW+QjJC6N/Wqa9nnXCB4tn5UEIc7ZYsRzexqP
-         FFmVcR/UJnX9bI0hbVST9kLgqJF+ycmKwbgaAsyIn52phNQ6BQ6d6Ee6/VM2f6OjWhRC
-         65qCvhHtdhpJs2IaesJZm+AV+k1rZKDD9KhHkJLKsFV7AgFrbLMEjJK3r4FcTVaDuzVF
-         igMqL7fCaNCWfiwuDgn4UiTa7reI0odNDYbFNvT/TsJWNCGdv2vFTSMwW9+QNFqAl4xG
-         IeYA==
+        b=pXqkDNt15aakw1+t37n5ygUvzGsuMlBD3DZ0UzJnRBdPKA/l+YkKHNKniqvYGlXV1A
+         mG3+oNYOxKZ1AmbXEHZ4/sbeYVi1IoDy4JbYMrpTdePvJAM9yiFXSi7otjU3uxe3B5ca
+         jr4y28bxaSaCbXlg0dgupV/yRGwAmbArlxeW4rJ4XBvA2vtSsj3iY2UUYhn2Rpss8D7R
+         xsKG1EZioAm1xRYDPvWqyR/xhcjHQ3SEZlyJhXAW1FglRd9Sk/Hr+LGg8HgN/nLfZj/g
+         y7Y9PHD2hK20qLe9G78CV1lH6eaRtIz6XzAtt9cGju00yDEbZYD41IjcelTStFipyPUQ
+         8l4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=cSPJGYXKXhCwWjmuKFx+2ByRObYosFJyTax9bAdYlLc=;
-        b=qX5eD172W/WnOCwtVuqlT/Aztu85MHu/h0q0vyvJgR2QJ8cSj4M1K8xpkQWEb9Tc1O
-         qd1O+Ul91UIjIghsibpevCs/bcBexZCTrxDbWuHkkldY8gSCR3kqZV74/sAToOdtJgeG
-         ImuBNkgAOEnLMfWJgcILr+Z3t5ynnubZtX87OO9QVXoz7AU4j6MSRp2RGnflm5KHv0pr
-         xr0COk/ZiPtASRZao067B4J+oHQgwRXIWKSHoMftFkY8W1eLR9QqEVXRd/Imw9vZmaei
-         4xZTBodqyqh/XrbG/fsRSPpKdswhJkKu1uUhFJtzfTDj/awT277VH9nas45skpBxk6PH
-         Y3kA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=MSPpen2EhGG2j6EQecUvWAAXE5J427cIvTiMo3A9200=;
+        b=R1ZiKAKD4iATI6FWJIQKAGqeM86veVf8QSCmqDf1hp2KoJ2VJpdhdX+RYXcjHf1Pu2
+         7861s0UOsMnET+tfCAPjQoWltTFmVSkerahSOE3/SL7mV9igCUBAb41CFn+LwyZ8vpNj
+         0l+7GS1jLVA+y3V1YrXJkP2+Stur8+DAk/g0yEuM38Dxm77WUM0W/bCFJvUg0noB06ZW
+         LgUOj7CN5G1aed7y3vfoBabwLIP5eJTINxuTW0qRl0wOdNGeO0DKDEaEWi3KeHLdkCmR
+         p17Gj8vNFUhkwgOV+ibjgrzCrVAVQFDOhW8hlovnN3Ast1cNWBp/++tEbzjZfGBXGhzB
+         O/Ow==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b=05Zm0mLc;
+       dkim=pass header.i=@kernel.org header.s=default header.b=wNJthvpv;
        spf=pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=krzk@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id b36si126728ybj.1.2020.07.09.00.28.49
+        by gmr-mx.google.com with ESMTPS id j2si100005otr.0.2020.07.09.00.28.55
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 09 Jul 2020 00:28:49 -0700 (PDT)
+        Thu, 09 Jul 2020 00:28:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
 Received: from kozik-lap.mshome.net (unknown [194.230.155.195])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
 	(No client certificate requested)
-	by mail.kernel.org (Postfix) with ESMTPSA id 6505D2070E;
-	Thu,  9 Jul 2020 07:28:42 +0000 (UTC)
+	by mail.kernel.org (Postfix) with ESMTPSA id D4B6E2074B;
+	Thu,  9 Jul 2020 07:28:48 +0000 (UTC)
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Richard Henderson <rth@twiddle.net>,
 	Ivan Kokshaysky <ink@jurassic.park.msu.ru>,
@@ -132,13 +134,15 @@ To: Richard Henderson <rth@twiddle.net>,
 	virtualization@lists.linux-foundation.org,
 	linux-arch@vger.kernel.org
 Cc: Krzysztof Kozlowski <krzk@kernel.org>
-Subject: [PATCH v3 0/4] iomap: Constify ioreadX() iomem argument
-Date: Thu,  9 Jul 2020 09:28:33 +0200
-Message-Id: <20200709072837.5869-1-krzk@kernel.org>
+Subject: [PATCH v3 1/4] iomap: Constify ioreadX() iomem argument (as in generic implementation)
+Date: Thu,  9 Jul 2020 09:28:34 +0200
+Message-Id: <20200709072837.5869-2-krzk@kernel.org>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200709072837.5869-1-krzk@kernel.org>
+References: <20200709072837.5869-1-krzk@kernel.org>
 X-Original-Sender: krzk@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=default header.b=05Zm0mLc;       spf=pass
+ header.i=@kernel.org header.s=default header.b=wNJthvpv;       spf=pass
  (google.com: domain of krzk@kernel.org designates 198.145.29.99 as permitted
  sender) smtp.mailfrom=krzk@kernel.org;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=kernel.org
@@ -155,97 +159,1051 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hi,
+The ioreadX() and ioreadX_rep() helpers have inconsistent interface.  On
+some architectures void *__iomem address argument is a pointer to const,
+on some not.
 
-Multiple architectures are affected in the first patch and all further
-patches depend on the first.
+Implementations of ioreadX() do not modify the memory under the address
+so they can be converted to a "const" version for const-safety and
+consistency among architectures.
 
-Maybe this could go in through Andrew Morton's tree?
+Suggested-by: Geert Uytterhoeven <geert@linux-m68k.org>
+Signed-off-by: Krzysztof Kozlowski <krzk@kernel.org>
+Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be>
+Reviewed-by: Arnd Bergmann <arnd@arndb.de>
+---
+ arch/alpha/include/asm/core_apecs.h   |  6 +--
+ arch/alpha/include/asm/core_cia.h     |  6 +--
+ arch/alpha/include/asm/core_lca.h     |  6 +--
+ arch/alpha/include/asm/core_marvel.h  |  4 +-
+ arch/alpha/include/asm/core_mcpcia.h  |  6 +--
+ arch/alpha/include/asm/core_t2.h      |  2 +-
+ arch/alpha/include/asm/io.h           | 12 ++---
+ arch/alpha/include/asm/io_trivial.h   | 16 +++---
+ arch/alpha/include/asm/jensen.h       |  2 +-
+ arch/alpha/include/asm/machvec.h      |  6 +--
+ arch/alpha/kernel/core_marvel.c       |  2 +-
+ arch/alpha/kernel/io.c                | 12 ++---
+ arch/parisc/include/asm/io.h          |  4 +-
+ arch/parisc/lib/iomap.c               | 72 +++++++++++++--------------
+ arch/powerpc/kernel/iomap.c           | 28 +++++------
+ arch/sh/kernel/iomap.c                | 22 ++++----
+ drivers/sh/clk/cpg.c                  |  2 +-
+ include/asm-generic/iomap.h           | 28 +++++------
+ include/linux/io-64-nonatomic-hi-lo.h |  4 +-
+ include/linux/io-64-nonatomic-lo-hi.h |  4 +-
+ lib/iomap.c                           | 30 +++++------
+ 21 files changed, 137 insertions(+), 137 deletions(-)
 
-
-Changes since v2
-================
-1. Drop all non-essential patches (cleanups),
-2. Update also drivers/sh/clk/cpg.c .
-
-
-Changes since v1
-================
-https://lore.kernel.org/lkml/1578415992-24054-1-git-send-email-krzk@kernel.org/
-1. Constify also ioreadX_rep() and mmio_insX(),
-2. Squash lib+alpha+powerpc+parisc+sh into one patch for bisectability,
-3. Add acks and reviews,
-4. Re-order patches so all optional driver changes are at the end.
-
-
-Description
-===========
-The ioread8/16/32() and others have inconsistent interface among the
-architectures: some taking address as const, some not.
-
-It seems there is nothing really stopping all of them to take
-pointer to const.
-
-Patchset was only compile tested on affected architectures.  No real
-testing.
-
-
-volatile
-========
-There is still interface inconsistency between architectures around
-"volatile" qualifier:
- - include/asm-generic/io.h:static inline u32 ioread32(const volatile void __iomem *addr)
- - include/asm-generic/iomap.h:extern unsigned int ioread32(const void __iomem *);
-
-This is still discussed and out of scope of this patchset.
-
-
-Best regards,
-Krzysztof
-
-
-Krzysztof Kozlowski (4):
-  iomap: Constify ioreadX() iomem argument (as in generic
-    implementation)
-  rtl818x: Constify ioreadX() iomem argument (as in generic
-    implementation)
-  ntb: intel: Constify ioreadX() iomem argument (as in generic
-    implementation)
-  virtio: pci: Constify ioreadX() iomem argument (as in generic
-    implementation)
-
- arch/alpha/include/asm/core_apecs.h           |  6 +-
- arch/alpha/include/asm/core_cia.h             |  6 +-
- arch/alpha/include/asm/core_lca.h             |  6 +-
- arch/alpha/include/asm/core_marvel.h          |  4 +-
- arch/alpha/include/asm/core_mcpcia.h          |  6 +-
- arch/alpha/include/asm/core_t2.h              |  2 +-
- arch/alpha/include/asm/io.h                   | 12 ++--
- arch/alpha/include/asm/io_trivial.h           | 16 ++---
- arch/alpha/include/asm/jensen.h               |  2 +-
- arch/alpha/include/asm/machvec.h              |  6 +-
- arch/alpha/kernel/core_marvel.c               |  2 +-
- arch/alpha/kernel/io.c                        | 12 ++--
- arch/parisc/include/asm/io.h                  |  4 +-
- arch/parisc/lib/iomap.c                       | 72 +++++++++----------
- arch/powerpc/kernel/iomap.c                   | 28 ++++----
- arch/sh/kernel/iomap.c                        | 22 +++---
- .../realtek/rtl818x/rtl8180/rtl8180.h         |  6 +-
- drivers/ntb/hw/intel/ntb_hw_gen1.c            |  2 +-
- drivers/ntb/hw/intel/ntb_hw_gen3.h            |  2 +-
- drivers/ntb/hw/intel/ntb_hw_intel.h           |  2 +-
- drivers/sh/clk/cpg.c                          |  2 +-
- drivers/virtio/virtio_pci_modern.c            |  6 +-
- include/asm-generic/iomap.h                   | 28 ++++----
- include/linux/io-64-nonatomic-hi-lo.h         |  4 +-
- include/linux/io-64-nonatomic-lo-hi.h         |  4 +-
- lib/iomap.c                                   | 30 ++++----
- 26 files changed, 146 insertions(+), 146 deletions(-)
-
+diff --git a/arch/alpha/include/asm/core_apecs.h b/arch/alpha/include/asm/core_apecs.h
+index 0a07055bc0fe..2d9726fc02ef 100644
+--- a/arch/alpha/include/asm/core_apecs.h
++++ b/arch/alpha/include/asm/core_apecs.h
+@@ -384,7 +384,7 @@ struct el_apecs_procdata
+ 		}						\
+ 	} while (0)
+ 
+-__EXTERN_INLINE unsigned int apecs_ioread8(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int apecs_ioread8(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	unsigned long result, base_and_type;
+@@ -420,7 +420,7 @@ __EXTERN_INLINE void apecs_iowrite8(u8 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + base_and_type) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int apecs_ioread16(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int apecs_ioread16(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	unsigned long result, base_and_type;
+@@ -456,7 +456,7 @@ __EXTERN_INLINE void apecs_iowrite16(u16 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + base_and_type) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int apecs_ioread32(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int apecs_ioread32(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	if (addr < APECS_DENSE_MEM)
+diff --git a/arch/alpha/include/asm/core_cia.h b/arch/alpha/include/asm/core_cia.h
+index c706a7f2b061..cb22991f6761 100644
+--- a/arch/alpha/include/asm/core_cia.h
++++ b/arch/alpha/include/asm/core_cia.h
+@@ -342,7 +342,7 @@ struct el_CIA_sysdata_mcheck {
+ #define vuip	volatile unsigned int __force *
+ #define vulp	volatile unsigned long __force *
+ 
+-__EXTERN_INLINE unsigned int cia_ioread8(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int cia_ioread8(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	unsigned long result, base_and_type;
+@@ -374,7 +374,7 @@ __EXTERN_INLINE void cia_iowrite8(u8 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + base_and_type) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int cia_ioread16(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int cia_ioread16(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	unsigned long result, base_and_type;
+@@ -404,7 +404,7 @@ __EXTERN_INLINE void cia_iowrite16(u16 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + base_and_type) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int cia_ioread32(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int cia_ioread32(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	if (addr < CIA_DENSE_MEM)
+diff --git a/arch/alpha/include/asm/core_lca.h b/arch/alpha/include/asm/core_lca.h
+index 84d5e5b84f4f..ec86314418cb 100644
+--- a/arch/alpha/include/asm/core_lca.h
++++ b/arch/alpha/include/asm/core_lca.h
+@@ -230,7 +230,7 @@ union el_lca {
+ 	} while (0)
+ 
+ 
+-__EXTERN_INLINE unsigned int lca_ioread8(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int lca_ioread8(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	unsigned long result, base_and_type;
+@@ -266,7 +266,7 @@ __EXTERN_INLINE void lca_iowrite8(u8 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + base_and_type) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int lca_ioread16(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int lca_ioread16(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	unsigned long result, base_and_type;
+@@ -302,7 +302,7 @@ __EXTERN_INLINE void lca_iowrite16(u16 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + base_and_type) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int lca_ioread32(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int lca_ioread32(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	if (addr < LCA_DENSE_MEM)
+diff --git a/arch/alpha/include/asm/core_marvel.h b/arch/alpha/include/asm/core_marvel.h
+index cc6fd92d5fa9..b266e02e284b 100644
+--- a/arch/alpha/include/asm/core_marvel.h
++++ b/arch/alpha/include/asm/core_marvel.h
+@@ -332,10 +332,10 @@ struct io7 {
+ #define vucp	volatile unsigned char __force *
+ #define vusp	volatile unsigned short __force *
+ 
+-extern unsigned int marvel_ioread8(void __iomem *);
++extern unsigned int marvel_ioread8(const void __iomem *);
+ extern void marvel_iowrite8(u8 b, void __iomem *);
+ 
+-__EXTERN_INLINE unsigned int marvel_ioread16(void __iomem *addr)
++__EXTERN_INLINE unsigned int marvel_ioread16(const void __iomem *addr)
+ {
+ 	return __kernel_ldwu(*(vusp)addr);
+ }
+diff --git a/arch/alpha/include/asm/core_mcpcia.h b/arch/alpha/include/asm/core_mcpcia.h
+index b30dc128210d..cb24d1bd6141 100644
+--- a/arch/alpha/include/asm/core_mcpcia.h
++++ b/arch/alpha/include/asm/core_mcpcia.h
+@@ -267,7 +267,7 @@ extern inline int __mcpcia_is_mmio(unsigned long addr)
+ 	return (addr & 0x80000000UL) == 0;
+ }
+ 
+-__EXTERN_INLINE unsigned int mcpcia_ioread8(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int mcpcia_ioread8(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long)xaddr & MCPCIA_MEM_MASK;
+ 	unsigned long hose = (unsigned long)xaddr & ~MCPCIA_MEM_MASK;
+@@ -291,7 +291,7 @@ __EXTERN_INLINE void mcpcia_iowrite8(u8 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + hose + 0x00) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int mcpcia_ioread16(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int mcpcia_ioread16(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long)xaddr & MCPCIA_MEM_MASK;
+ 	unsigned long hose = (unsigned long)xaddr & ~MCPCIA_MEM_MASK;
+@@ -315,7 +315,7 @@ __EXTERN_INLINE void mcpcia_iowrite16(u16 b, void __iomem *xaddr)
+ 	*(vuip) ((addr << 5) + hose + 0x08) = w;
+ }
+ 
+-__EXTERN_INLINE unsigned int mcpcia_ioread32(void __iomem *xaddr)
++__EXTERN_INLINE unsigned int mcpcia_ioread32(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long)xaddr;
+ 
+diff --git a/arch/alpha/include/asm/core_t2.h b/arch/alpha/include/asm/core_t2.h
+index e0b33d09e93a..12bb7addc789 100644
+--- a/arch/alpha/include/asm/core_t2.h
++++ b/arch/alpha/include/asm/core_t2.h
+@@ -572,7 +572,7 @@ __EXTERN_INLINE int t2_is_mmio(const volatile void __iomem *addr)
+    it doesn't make sense to merge the pio and mmio routines.  */
+ 
+ #define IOPORT(OS, NS)							\
+-__EXTERN_INLINE unsigned int t2_ioread##NS(void __iomem *xaddr)		\
++__EXTERN_INLINE unsigned int t2_ioread##NS(const void __iomem *xaddr)		\
+ {									\
+ 	if (t2_is_mmio(xaddr))						\
+ 		return t2_read##OS(xaddr);				\
+diff --git a/arch/alpha/include/asm/io.h b/arch/alpha/include/asm/io.h
+index 640e1a2f57b4..1f6a909d1fa5 100644
+--- a/arch/alpha/include/asm/io.h
++++ b/arch/alpha/include/asm/io.h
+@@ -150,9 +150,9 @@ static inline void generic_##NAME(TYPE b, QUAL void __iomem *addr)	\
+ 	alpha_mv.mv_##NAME(b, addr);					\
+ }
+ 
+-REMAP1(unsigned int, ioread8, /**/)
+-REMAP1(unsigned int, ioread16, /**/)
+-REMAP1(unsigned int, ioread32, /**/)
++REMAP1(unsigned int, ioread8, const)
++REMAP1(unsigned int, ioread16, const)
++REMAP1(unsigned int, ioread32, const)
+ REMAP1(u8, readb, const volatile)
+ REMAP1(u16, readw, const volatile)
+ REMAP1(u32, readl, const volatile)
+@@ -307,7 +307,7 @@ static inline int __is_mmio(const volatile void __iomem *addr)
+  */
+ 
+ #if IO_CONCAT(__IO_PREFIX,trivial_io_bw)
+-extern inline unsigned int ioread8(void __iomem *addr)
++extern inline unsigned int ioread8(const void __iomem *addr)
+ {
+ 	unsigned int ret;
+ 	mb();
+@@ -316,7 +316,7 @@ extern inline unsigned int ioread8(void __iomem *addr)
+ 	return ret;
+ }
+ 
+-extern inline unsigned int ioread16(void __iomem *addr)
++extern inline unsigned int ioread16(const void __iomem *addr)
+ {
+ 	unsigned int ret;
+ 	mb();
+@@ -359,7 +359,7 @@ extern inline void outw(u16 b, unsigned long port)
+ #endif
+ 
+ #if IO_CONCAT(__IO_PREFIX,trivial_io_lq)
+-extern inline unsigned int ioread32(void __iomem *addr)
++extern inline unsigned int ioread32(const void __iomem *addr)
+ {
+ 	unsigned int ret;
+ 	mb();
+diff --git a/arch/alpha/include/asm/io_trivial.h b/arch/alpha/include/asm/io_trivial.h
+index ba3d8f0cfe0c..a1a29cbe02fa 100644
+--- a/arch/alpha/include/asm/io_trivial.h
++++ b/arch/alpha/include/asm/io_trivial.h
+@@ -7,15 +7,15 @@
+ 
+ #if IO_CONCAT(__IO_PREFIX,trivial_io_bw)
+ __EXTERN_INLINE unsigned int
+-IO_CONCAT(__IO_PREFIX,ioread8)(void __iomem *a)
++IO_CONCAT(__IO_PREFIX,ioread8)(const void __iomem *a)
+ {
+-	return __kernel_ldbu(*(volatile u8 __force *)a);
++	return __kernel_ldbu(*(const volatile u8 __force *)a);
+ }
+ 
+ __EXTERN_INLINE unsigned int
+-IO_CONCAT(__IO_PREFIX,ioread16)(void __iomem *a)
++IO_CONCAT(__IO_PREFIX,ioread16)(const void __iomem *a)
+ {
+-	return __kernel_ldwu(*(volatile u16 __force *)a);
++	return __kernel_ldwu(*(const volatile u16 __force *)a);
+ }
+ 
+ __EXTERN_INLINE void
+@@ -33,9 +33,9 @@ IO_CONCAT(__IO_PREFIX,iowrite16)(u16 b, void __iomem *a)
+ 
+ #if IO_CONCAT(__IO_PREFIX,trivial_io_lq)
+ __EXTERN_INLINE unsigned int
+-IO_CONCAT(__IO_PREFIX,ioread32)(void __iomem *a)
++IO_CONCAT(__IO_PREFIX,ioread32)(const void __iomem *a)
+ {
+-	return *(volatile u32 __force *)a;
++	return *(const volatile u32 __force *)a;
+ }
+ 
+ __EXTERN_INLINE void
+@@ -73,14 +73,14 @@ IO_CONCAT(__IO_PREFIX,writew)(u16 b, volatile void __iomem *a)
+ __EXTERN_INLINE u8
+ IO_CONCAT(__IO_PREFIX,readb)(const volatile void __iomem *a)
+ {
+-	void __iomem *addr = (void __iomem *)a;
++	const void __iomem *addr = (const void __iomem *)a;
+ 	return IO_CONCAT(__IO_PREFIX,ioread8)(addr);
+ }
+ 
+ __EXTERN_INLINE u16
+ IO_CONCAT(__IO_PREFIX,readw)(const volatile void __iomem *a)
+ {
+-	void __iomem *addr = (void __iomem *)a;
++	const void __iomem *addr = (const void __iomem *)a;
+ 	return IO_CONCAT(__IO_PREFIX,ioread16)(addr);
+ }
+ 
+diff --git a/arch/alpha/include/asm/jensen.h b/arch/alpha/include/asm/jensen.h
+index 436dc905b6ad..916895155a88 100644
+--- a/arch/alpha/include/asm/jensen.h
++++ b/arch/alpha/include/asm/jensen.h
+@@ -305,7 +305,7 @@ __EXTERN_INLINE int jensen_is_mmio(const volatile void __iomem *addr)
+    that it doesn't make sense to merge them.  */
+ 
+ #define IOPORT(OS, NS)							\
+-__EXTERN_INLINE unsigned int jensen_ioread##NS(void __iomem *xaddr)	\
++__EXTERN_INLINE unsigned int jensen_ioread##NS(const void __iomem *xaddr)	\
+ {									\
+ 	if (jensen_is_mmio(xaddr))					\
+ 		return jensen_read##OS(xaddr - 0x100000000ul);		\
+diff --git a/arch/alpha/include/asm/machvec.h b/arch/alpha/include/asm/machvec.h
+index a6b73c6d10ee..a4e96e2bec74 100644
+--- a/arch/alpha/include/asm/machvec.h
++++ b/arch/alpha/include/asm/machvec.h
+@@ -46,9 +46,9 @@ struct alpha_machine_vector
+ 	void (*mv_pci_tbi)(struct pci_controller *hose,
+ 			   dma_addr_t start, dma_addr_t end);
+ 
+-	unsigned int (*mv_ioread8)(void __iomem *);
+-	unsigned int (*mv_ioread16)(void __iomem *);
+-	unsigned int (*mv_ioread32)(void __iomem *);
++	unsigned int (*mv_ioread8)(const void __iomem *);
++	unsigned int (*mv_ioread16)(const void __iomem *);
++	unsigned int (*mv_ioread32)(const void __iomem *);
+ 
+ 	void (*mv_iowrite8)(u8, void __iomem *);
+ 	void (*mv_iowrite16)(u16, void __iomem *);
+diff --git a/arch/alpha/kernel/core_marvel.c b/arch/alpha/kernel/core_marvel.c
+index 4c80d992a659..4485b77f8658 100644
+--- a/arch/alpha/kernel/core_marvel.c
++++ b/arch/alpha/kernel/core_marvel.c
+@@ -806,7 +806,7 @@ void __iomem *marvel_ioportmap (unsigned long addr)
+ }
+ 
+ unsigned int
+-marvel_ioread8(void __iomem *xaddr)
++marvel_ioread8(const void __iomem *xaddr)
+ {
+ 	unsigned long addr = (unsigned long) xaddr;
+ 	if (__marvel_is_port_kbd(addr))
+diff --git a/arch/alpha/kernel/io.c b/arch/alpha/kernel/io.c
+index 938de13adfbf..838586abb1e0 100644
+--- a/arch/alpha/kernel/io.c
++++ b/arch/alpha/kernel/io.c
+@@ -14,7 +14,7 @@
+    "generic", which bumps through the machine vector.  */
+ 
+ unsigned int
+-ioread8(void __iomem *addr)
++ioread8(const void __iomem *addr)
+ {
+ 	unsigned int ret;
+ 	mb();
+@@ -23,7 +23,7 @@ ioread8(void __iomem *addr)
+ 	return ret;
+ }
+ 
+-unsigned int ioread16(void __iomem *addr)
++unsigned int ioread16(const void __iomem *addr)
+ {
+ 	unsigned int ret;
+ 	mb();
+@@ -32,7 +32,7 @@ unsigned int ioread16(void __iomem *addr)
+ 	return ret;
+ }
+ 
+-unsigned int ioread32(void __iomem *addr)
++unsigned int ioread32(const void __iomem *addr)
+ {
+ 	unsigned int ret;
+ 	mb();
+@@ -257,7 +257,7 @@ EXPORT_SYMBOL(readq_relaxed);
+ /*
+  * Read COUNT 8-bit bytes from port PORT into memory starting at SRC.
+  */
+-void ioread8_rep(void __iomem *port, void *dst, unsigned long count)
++void ioread8_rep(const void __iomem *port, void *dst, unsigned long count)
+ {
+ 	while ((unsigned long)dst & 0x3) {
+ 		if (!count)
+@@ -300,7 +300,7 @@ EXPORT_SYMBOL(insb);
+  * the interfaces seems to be slow: just using the inlined version
+  * of the inw() breaks things.
+  */
+-void ioread16_rep(void __iomem *port, void *dst, unsigned long count)
++void ioread16_rep(const void __iomem *port, void *dst, unsigned long count)
+ {
+ 	if (unlikely((unsigned long)dst & 0x3)) {
+ 		if (!count)
+@@ -340,7 +340,7 @@ EXPORT_SYMBOL(insw);
+  * but the interfaces seems to be slow: just using the inlined version
+  * of the inl() breaks things.
+  */
+-void ioread32_rep(void __iomem *port, void *dst, unsigned long count)
++void ioread32_rep(const void __iomem *port, void *dst, unsigned long count)
+ {
+ 	if (unlikely((unsigned long)dst & 0x3)) {
+ 		while (count--) {
+diff --git a/arch/parisc/include/asm/io.h b/arch/parisc/include/asm/io.h
+index 116effe26143..45e20d38dc59 100644
+--- a/arch/parisc/include/asm/io.h
++++ b/arch/parisc/include/asm/io.h
+@@ -303,8 +303,8 @@ extern void outsl (unsigned long port, const void *src, unsigned long count);
+ #define ioread64be ioread64be
+ #define iowrite64 iowrite64
+ #define iowrite64be iowrite64be
+-extern u64 ioread64(void __iomem *addr);
+-extern u64 ioread64be(void __iomem *addr);
++extern u64 ioread64(const void __iomem *addr);
++extern u64 ioread64be(const void __iomem *addr);
+ extern void iowrite64(u64 val, void __iomem *addr);
+ extern void iowrite64be(u64 val, void __iomem *addr);
+ 
+diff --git a/arch/parisc/lib/iomap.c b/arch/parisc/lib/iomap.c
+index 0195aec657e2..ce400417d54e 100644
+--- a/arch/parisc/lib/iomap.c
++++ b/arch/parisc/lib/iomap.c
+@@ -43,13 +43,13 @@
+ #endif
+ 
+ struct iomap_ops {
+-	unsigned int (*read8)(void __iomem *);
+-	unsigned int (*read16)(void __iomem *);
+-	unsigned int (*read16be)(void __iomem *);
+-	unsigned int (*read32)(void __iomem *);
+-	unsigned int (*read32be)(void __iomem *);
+-	u64 (*read64)(void __iomem *);
+-	u64 (*read64be)(void __iomem *);
++	unsigned int (*read8)(const void __iomem *);
++	unsigned int (*read16)(const void __iomem *);
++	unsigned int (*read16be)(const void __iomem *);
++	unsigned int (*read32)(const void __iomem *);
++	unsigned int (*read32be)(const void __iomem *);
++	u64 (*read64)(const void __iomem *);
++	u64 (*read64be)(const void __iomem *);
+ 	void (*write8)(u8, void __iomem *);
+ 	void (*write16)(u16, void __iomem *);
+ 	void (*write16be)(u16, void __iomem *);
+@@ -57,9 +57,9 @@ struct iomap_ops {
+ 	void (*write32be)(u32, void __iomem *);
+ 	void (*write64)(u64, void __iomem *);
+ 	void (*write64be)(u64, void __iomem *);
+-	void (*read8r)(void __iomem *, void *, unsigned long);
+-	void (*read16r)(void __iomem *, void *, unsigned long);
+-	void (*read32r)(void __iomem *, void *, unsigned long);
++	void (*read8r)(const void __iomem *, void *, unsigned long);
++	void (*read16r)(const void __iomem *, void *, unsigned long);
++	void (*read32r)(const void __iomem *, void *, unsigned long);
+ 	void (*write8r)(void __iomem *, const void *, unsigned long);
+ 	void (*write16r)(void __iomem *, const void *, unsigned long);
+ 	void (*write32r)(void __iomem *, const void *, unsigned long);
+@@ -69,17 +69,17 @@ struct iomap_ops {
+ 
+ #define ADDR2PORT(addr) ((unsigned long __force)(addr) & 0xffffff)
+ 
+-static unsigned int ioport_read8(void __iomem *addr)
++static unsigned int ioport_read8(const void __iomem *addr)
+ {
+ 	return inb(ADDR2PORT(addr));
+ }
+ 
+-static unsigned int ioport_read16(void __iomem *addr)
++static unsigned int ioport_read16(const void __iomem *addr)
+ {
+ 	return inw(ADDR2PORT(addr));
+ }
+ 
+-static unsigned int ioport_read32(void __iomem *addr)
++static unsigned int ioport_read32(const void __iomem *addr)
+ {
+ 	return inl(ADDR2PORT(addr));
+ }
+@@ -99,17 +99,17 @@ static void ioport_write32(u32 datum, void __iomem *addr)
+ 	outl(datum, ADDR2PORT(addr));
+ }
+ 
+-static void ioport_read8r(void __iomem *addr, void *dst, unsigned long count)
++static void ioport_read8r(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	insb(ADDR2PORT(addr), dst, count);
+ }
+ 
+-static void ioport_read16r(void __iomem *addr, void *dst, unsigned long count)
++static void ioport_read16r(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	insw(ADDR2PORT(addr), dst, count);
+ }
+ 
+-static void ioport_read32r(void __iomem *addr, void *dst, unsigned long count)
++static void ioport_read32r(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	insl(ADDR2PORT(addr), dst, count);
+ }
+@@ -150,37 +150,37 @@ static const struct iomap_ops ioport_ops = {
+ 
+ /* Legacy I/O memory ops */
+ 
+-static unsigned int iomem_read8(void __iomem *addr)
++static unsigned int iomem_read8(const void __iomem *addr)
+ {
+ 	return readb(addr);
+ }
+ 
+-static unsigned int iomem_read16(void __iomem *addr)
++static unsigned int iomem_read16(const void __iomem *addr)
+ {
+ 	return readw(addr);
+ }
+ 
+-static unsigned int iomem_read16be(void __iomem *addr)
++static unsigned int iomem_read16be(const void __iomem *addr)
+ {
+ 	return __raw_readw(addr);
+ }
+ 
+-static unsigned int iomem_read32(void __iomem *addr)
++static unsigned int iomem_read32(const void __iomem *addr)
+ {
+ 	return readl(addr);
+ }
+ 
+-static unsigned int iomem_read32be(void __iomem *addr)
++static unsigned int iomem_read32be(const void __iomem *addr)
+ {
+ 	return __raw_readl(addr);
+ }
+ 
+-static u64 iomem_read64(void __iomem *addr)
++static u64 iomem_read64(const void __iomem *addr)
+ {
+ 	return readq(addr);
+ }
+ 
+-static u64 iomem_read64be(void __iomem *addr)
++static u64 iomem_read64be(const void __iomem *addr)
+ {
+ 	return __raw_readq(addr);
+ }
+@@ -220,7 +220,7 @@ static void iomem_write64be(u64 datum, void __iomem *addr)
+ 	__raw_writel(datum, addr);
+ }
+ 
+-static void iomem_read8r(void __iomem *addr, void *dst, unsigned long count)
++static void iomem_read8r(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	while (count--) {
+ 		*(u8 *)dst = __raw_readb(addr);
+@@ -228,7 +228,7 @@ static void iomem_read8r(void __iomem *addr, void *dst, unsigned long count)
+ 	}
+ }
+ 
+-static void iomem_read16r(void __iomem *addr, void *dst, unsigned long count)
++static void iomem_read16r(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	while (count--) {
+ 		*(u16 *)dst = __raw_readw(addr);
+@@ -236,7 +236,7 @@ static void iomem_read16r(void __iomem *addr, void *dst, unsigned long count)
+ 	}
+ }
+ 
+-static void iomem_read32r(void __iomem *addr, void *dst, unsigned long count)
++static void iomem_read32r(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	while (count--) {
+ 		*(u32 *)dst = __raw_readl(addr);
+@@ -297,49 +297,49 @@ static const struct iomap_ops *iomap_ops[8] = {
+ };
+ 
+ 
+-unsigned int ioread8(void __iomem *addr)
++unsigned int ioread8(const void __iomem *addr)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr)))
+ 		return iomap_ops[ADDR_TO_REGION(addr)]->read8(addr);
+ 	return *((u8 *)addr);
+ }
+ 
+-unsigned int ioread16(void __iomem *addr)
++unsigned int ioread16(const void __iomem *addr)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr)))
+ 		return iomap_ops[ADDR_TO_REGION(addr)]->read16(addr);
+ 	return le16_to_cpup((u16 *)addr);
+ }
+ 
+-unsigned int ioread16be(void __iomem *addr)
++unsigned int ioread16be(const void __iomem *addr)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr)))
+ 		return iomap_ops[ADDR_TO_REGION(addr)]->read16be(addr);
+ 	return *((u16 *)addr);
+ }
+ 
+-unsigned int ioread32(void __iomem *addr)
++unsigned int ioread32(const void __iomem *addr)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr)))
+ 		return iomap_ops[ADDR_TO_REGION(addr)]->read32(addr);
+ 	return le32_to_cpup((u32 *)addr);
+ }
+ 
+-unsigned int ioread32be(void __iomem *addr)
++unsigned int ioread32be(const void __iomem *addr)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr)))
+ 		return iomap_ops[ADDR_TO_REGION(addr)]->read32be(addr);
+ 	return *((u32 *)addr);
+ }
+ 
+-u64 ioread64(void __iomem *addr)
++u64 ioread64(const void __iomem *addr)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr)))
+ 		return iomap_ops[ADDR_TO_REGION(addr)]->read64(addr);
+ 	return le64_to_cpup((u64 *)addr);
+ }
+ 
+-u64 ioread64be(void __iomem *addr)
++u64 ioread64be(const void __iomem *addr)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr)))
+ 		return iomap_ops[ADDR_TO_REGION(addr)]->read64be(addr);
+@@ -411,7 +411,7 @@ void iowrite64be(u64 datum, void __iomem *addr)
+ 
+ /* Repeating interfaces */
+ 
+-void ioread8_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread8_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr))) {
+ 		iomap_ops[ADDR_TO_REGION(addr)]->read8r(addr, dst, count);
+@@ -423,7 +423,7 @@ void ioread8_rep(void __iomem *addr, void *dst, unsigned long count)
+ 	}
+ }
+ 
+-void ioread16_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread16_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr))) {
+ 		iomap_ops[ADDR_TO_REGION(addr)]->read16r(addr, dst, count);
+@@ -435,7 +435,7 @@ void ioread16_rep(void __iomem *addr, void *dst, unsigned long count)
+ 	}
+ }
+ 
+-void ioread32_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread32_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	if (unlikely(INDIRECT_ADDR(addr))) {
+ 		iomap_ops[ADDR_TO_REGION(addr)]->read32r(addr, dst, count);
+diff --git a/arch/powerpc/kernel/iomap.c b/arch/powerpc/kernel/iomap.c
+index 5ac84efc6ede..9fe4fb3b08aa 100644
+--- a/arch/powerpc/kernel/iomap.c
++++ b/arch/powerpc/kernel/iomap.c
+@@ -15,23 +15,23 @@
+  * Here comes the ppc64 implementation of the IOMAP 
+  * interfaces.
+  */
+-unsigned int ioread8(void __iomem *addr)
++unsigned int ioread8(const void __iomem *addr)
+ {
+ 	return readb(addr);
+ }
+-unsigned int ioread16(void __iomem *addr)
++unsigned int ioread16(const void __iomem *addr)
+ {
+ 	return readw(addr);
+ }
+-unsigned int ioread16be(void __iomem *addr)
++unsigned int ioread16be(const void __iomem *addr)
+ {
+ 	return readw_be(addr);
+ }
+-unsigned int ioread32(void __iomem *addr)
++unsigned int ioread32(const void __iomem *addr)
+ {
+ 	return readl(addr);
+ }
+-unsigned int ioread32be(void __iomem *addr)
++unsigned int ioread32be(const void __iomem *addr)
+ {
+ 	return readl_be(addr);
+ }
+@@ -41,27 +41,27 @@ EXPORT_SYMBOL(ioread16be);
+ EXPORT_SYMBOL(ioread32);
+ EXPORT_SYMBOL(ioread32be);
+ #ifdef __powerpc64__
+-u64 ioread64(void __iomem *addr)
++u64 ioread64(const void __iomem *addr)
+ {
+ 	return readq(addr);
+ }
+-u64 ioread64_lo_hi(void __iomem *addr)
++u64 ioread64_lo_hi(const void __iomem *addr)
+ {
+ 	return readq(addr);
+ }
+-u64 ioread64_hi_lo(void __iomem *addr)
++u64 ioread64_hi_lo(const void __iomem *addr)
+ {
+ 	return readq(addr);
+ }
+-u64 ioread64be(void __iomem *addr)
++u64 ioread64be(const void __iomem *addr)
+ {
+ 	return readq_be(addr);
+ }
+-u64 ioread64be_lo_hi(void __iomem *addr)
++u64 ioread64be_lo_hi(const void __iomem *addr)
+ {
+ 	return readq_be(addr);
+ }
+-u64 ioread64be_hi_lo(void __iomem *addr)
++u64 ioread64be_hi_lo(const void __iomem *addr)
+ {
+ 	return readq_be(addr);
+ }
+@@ -139,15 +139,15 @@ EXPORT_SYMBOL(iowrite64be_hi_lo);
+  * FIXME! We could make these do EEH handling if we really
+  * wanted. Not clear if we do.
+  */
+-void ioread8_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread8_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	readsb(addr, dst, count);
+ }
+-void ioread16_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread16_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	readsw(addr, dst, count);
+ }
+-void ioread32_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread32_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	readsl(addr, dst, count);
+ }
+diff --git a/arch/sh/kernel/iomap.c b/arch/sh/kernel/iomap.c
+index ef9e2c97cbb7..0a0dff4e66de 100644
+--- a/arch/sh/kernel/iomap.c
++++ b/arch/sh/kernel/iomap.c
+@@ -8,31 +8,31 @@
+ #include <linux/module.h>
+ #include <linux/io.h>
+ 
+-unsigned int ioread8(void __iomem *addr)
++unsigned int ioread8(const void __iomem *addr)
+ {
+ 	return readb(addr);
+ }
+ EXPORT_SYMBOL(ioread8);
+ 
+-unsigned int ioread16(void __iomem *addr)
++unsigned int ioread16(const void __iomem *addr)
+ {
+ 	return readw(addr);
+ }
+ EXPORT_SYMBOL(ioread16);
+ 
+-unsigned int ioread16be(void __iomem *addr)
++unsigned int ioread16be(const void __iomem *addr)
+ {
+ 	return be16_to_cpu(__raw_readw(addr));
+ }
+ EXPORT_SYMBOL(ioread16be);
+ 
+-unsigned int ioread32(void __iomem *addr)
++unsigned int ioread32(const void __iomem *addr)
+ {
+ 	return readl(addr);
+ }
+ EXPORT_SYMBOL(ioread32);
+ 
+-unsigned int ioread32be(void __iomem *addr)
++unsigned int ioread32be(const void __iomem *addr)
+ {
+ 	return be32_to_cpu(__raw_readl(addr));
+ }
+@@ -74,7 +74,7 @@ EXPORT_SYMBOL(iowrite32be);
+  * convert to CPU byte order. We write in "IO byte
+  * order" (we also don't have IO barriers).
+  */
+-static inline void mmio_insb(void __iomem *addr, u8 *dst, int count)
++static inline void mmio_insb(const void __iomem *addr, u8 *dst, int count)
+ {
+ 	while (--count >= 0) {
+ 		u8 data = __raw_readb(addr);
+@@ -83,7 +83,7 @@ static inline void mmio_insb(void __iomem *addr, u8 *dst, int count)
+ 	}
+ }
+ 
+-static inline void mmio_insw(void __iomem *addr, u16 *dst, int count)
++static inline void mmio_insw(const void __iomem *addr, u16 *dst, int count)
+ {
+ 	while (--count >= 0) {
+ 		u16 data = __raw_readw(addr);
+@@ -92,7 +92,7 @@ static inline void mmio_insw(void __iomem *addr, u16 *dst, int count)
+ 	}
+ }
+ 
+-static inline void mmio_insl(void __iomem *addr, u32 *dst, int count)
++static inline void mmio_insl(const void __iomem *addr, u32 *dst, int count)
+ {
+ 	while (--count >= 0) {
+ 		u32 data = __raw_readl(addr);
+@@ -125,19 +125,19 @@ static inline void mmio_outsl(void __iomem *addr, const u32 *src, int count)
+ 	}
+ }
+ 
+-void ioread8_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread8_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	mmio_insb(addr, dst, count);
+ }
+ EXPORT_SYMBOL(ioread8_rep);
+ 
+-void ioread16_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread16_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	mmio_insw(addr, dst, count);
+ }
+ EXPORT_SYMBOL(ioread16_rep);
+ 
+-void ioread32_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread32_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	mmio_insl(addr, dst, count);
+ }
+diff --git a/drivers/sh/clk/cpg.c b/drivers/sh/clk/cpg.c
+index a5cacfe24a42..fd72d9088bdc 100644
+--- a/drivers/sh/clk/cpg.c
++++ b/drivers/sh/clk/cpg.c
+@@ -40,7 +40,7 @@ static int sh_clk_mstp_enable(struct clk *clk)
+ {
+ 	sh_clk_write(sh_clk_read(clk) & ~(1 << clk->enable_bit), clk);
+ 	if (clk->status_reg) {
+-		unsigned int (*read)(void __iomem *addr);
++		unsigned int (*read)(const void __iomem *addr);
+ 		int i;
+ 		void __iomem *mapped_status = (phys_addr_t)clk->status_reg -
+ 			(phys_addr_t)clk->enable_reg + clk->mapped_reg;
+diff --git a/include/asm-generic/iomap.h b/include/asm-generic/iomap.h
+index 9d28a5e82f73..649224664969 100644
+--- a/include/asm-generic/iomap.h
++++ b/include/asm-generic/iomap.h
+@@ -26,14 +26,14 @@
+  * in the low address range. Architectures for which this is not
+  * true can't use this generic implementation.
+  */
+-extern unsigned int ioread8(void __iomem *);
+-extern unsigned int ioread16(void __iomem *);
+-extern unsigned int ioread16be(void __iomem *);
+-extern unsigned int ioread32(void __iomem *);
+-extern unsigned int ioread32be(void __iomem *);
++extern unsigned int ioread8(const void __iomem *);
++extern unsigned int ioread16(const void __iomem *);
++extern unsigned int ioread16be(const void __iomem *);
++extern unsigned int ioread32(const void __iomem *);
++extern unsigned int ioread32be(const void __iomem *);
+ #ifdef CONFIG_64BIT
+-extern u64 ioread64(void __iomem *);
+-extern u64 ioread64be(void __iomem *);
++extern u64 ioread64(const void __iomem *);
++extern u64 ioread64be(const void __iomem *);
+ #endif
+ 
+ #ifdef readq
+@@ -41,10 +41,10 @@ extern u64 ioread64be(void __iomem *);
+ #define ioread64_hi_lo ioread64_hi_lo
+ #define ioread64be_lo_hi ioread64be_lo_hi
+ #define ioread64be_hi_lo ioread64be_hi_lo
+-extern u64 ioread64_lo_hi(void __iomem *addr);
+-extern u64 ioread64_hi_lo(void __iomem *addr);
+-extern u64 ioread64be_lo_hi(void __iomem *addr);
+-extern u64 ioread64be_hi_lo(void __iomem *addr);
++extern u64 ioread64_lo_hi(const void __iomem *addr);
++extern u64 ioread64_hi_lo(const void __iomem *addr);
++extern u64 ioread64be_lo_hi(const void __iomem *addr);
++extern u64 ioread64be_hi_lo(const void __iomem *addr);
+ #endif
+ 
+ extern void iowrite8(u8, void __iomem *);
+@@ -79,9 +79,9 @@ extern void iowrite64be_hi_lo(u64 val, void __iomem *addr);
+  * memory across multiple ports, use "memcpy_toio()"
+  * and friends.
+  */
+-extern void ioread8_rep(void __iomem *port, void *buf, unsigned long count);
+-extern void ioread16_rep(void __iomem *port, void *buf, unsigned long count);
+-extern void ioread32_rep(void __iomem *port, void *buf, unsigned long count);
++extern void ioread8_rep(const void __iomem *port, void *buf, unsigned long count);
++extern void ioread16_rep(const void __iomem *port, void *buf, unsigned long count);
++extern void ioread32_rep(const void __iomem *port, void *buf, unsigned long count);
+ 
+ extern void iowrite8_rep(void __iomem *port, const void *buf, unsigned long count);
+ extern void iowrite16_rep(void __iomem *port, const void *buf, unsigned long count);
+diff --git a/include/linux/io-64-nonatomic-hi-lo.h b/include/linux/io-64-nonatomic-hi-lo.h
+index ae21b72cce85..f32522bb3aa5 100644
+--- a/include/linux/io-64-nonatomic-hi-lo.h
++++ b/include/linux/io-64-nonatomic-hi-lo.h
+@@ -57,7 +57,7 @@ static inline void hi_lo_writeq_relaxed(__u64 val, volatile void __iomem *addr)
+ 
+ #ifndef ioread64_hi_lo
+ #define ioread64_hi_lo ioread64_hi_lo
+-static inline u64 ioread64_hi_lo(void __iomem *addr)
++static inline u64 ioread64_hi_lo(const void __iomem *addr)
+ {
+ 	u32 low, high;
+ 
+@@ -79,7 +79,7 @@ static inline void iowrite64_hi_lo(u64 val, void __iomem *addr)
+ 
+ #ifndef ioread64be_hi_lo
+ #define ioread64be_hi_lo ioread64be_hi_lo
+-static inline u64 ioread64be_hi_lo(void __iomem *addr)
++static inline u64 ioread64be_hi_lo(const void __iomem *addr)
+ {
+ 	u32 low, high;
+ 
+diff --git a/include/linux/io-64-nonatomic-lo-hi.h b/include/linux/io-64-nonatomic-lo-hi.h
+index faaa842dbdb9..448a21435dba 100644
+--- a/include/linux/io-64-nonatomic-lo-hi.h
++++ b/include/linux/io-64-nonatomic-lo-hi.h
+@@ -57,7 +57,7 @@ static inline void lo_hi_writeq_relaxed(__u64 val, volatile void __iomem *addr)
+ 
+ #ifndef ioread64_lo_hi
+ #define ioread64_lo_hi ioread64_lo_hi
+-static inline u64 ioread64_lo_hi(void __iomem *addr)
++static inline u64 ioread64_lo_hi(const void __iomem *addr)
+ {
+ 	u32 low, high;
+ 
+@@ -79,7 +79,7 @@ static inline void iowrite64_lo_hi(u64 val, void __iomem *addr)
+ 
+ #ifndef ioread64be_lo_hi
+ #define ioread64be_lo_hi ioread64be_lo_hi
+-static inline u64 ioread64be_lo_hi(void __iomem *addr)
++static inline u64 ioread64be_lo_hi(const void __iomem *addr)
+ {
+ 	u32 low, high;
+ 
+diff --git a/lib/iomap.c b/lib/iomap.c
+index e909ab71e995..fbaa3e8f19d6 100644
+--- a/lib/iomap.c
++++ b/lib/iomap.c
+@@ -70,27 +70,27 @@ static void bad_io_access(unsigned long port, const char *access)
+ #define mmio_read64be(addr) swab64(readq(addr))
+ #endif
+ 
+-unsigned int ioread8(void __iomem *addr)
++unsigned int ioread8(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return inb(port), return readb(addr));
+ 	return 0xff;
+ }
+-unsigned int ioread16(void __iomem *addr)
++unsigned int ioread16(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return inw(port), return readw(addr));
+ 	return 0xffff;
+ }
+-unsigned int ioread16be(void __iomem *addr)
++unsigned int ioread16be(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return pio_read16be(port), return mmio_read16be(addr));
+ 	return 0xffff;
+ }
+-unsigned int ioread32(void __iomem *addr)
++unsigned int ioread32(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return inl(port), return readl(addr));
+ 	return 0xffffffff;
+ }
+-unsigned int ioread32be(void __iomem *addr)
++unsigned int ioread32be(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return pio_read32be(port), return mmio_read32be(addr));
+ 	return 0xffffffff;
+@@ -142,26 +142,26 @@ static u64 pio_read64be_hi_lo(unsigned long port)
+ 	return lo | (hi << 32);
+ }
+ 
+-u64 ioread64_lo_hi(void __iomem *addr)
++u64 ioread64_lo_hi(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return pio_read64_lo_hi(port), return readq(addr));
+ 	return 0xffffffffffffffffULL;
+ }
+ 
+-u64 ioread64_hi_lo(void __iomem *addr)
++u64 ioread64_hi_lo(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return pio_read64_hi_lo(port), return readq(addr));
+ 	return 0xffffffffffffffffULL;
+ }
+ 
+-u64 ioread64be_lo_hi(void __iomem *addr)
++u64 ioread64be_lo_hi(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return pio_read64be_lo_hi(port),
+ 		return mmio_read64be(addr));
+ 	return 0xffffffffffffffffULL;
+ }
+ 
+-u64 ioread64be_hi_lo(void __iomem *addr)
++u64 ioread64be_hi_lo(const void __iomem *addr)
+ {
+ 	IO_COND(addr, return pio_read64be_hi_lo(port),
+ 		return mmio_read64be(addr));
+@@ -275,7 +275,7 @@ EXPORT_SYMBOL(iowrite64be_hi_lo);
+  * order" (we also don't have IO barriers).
+  */
+ #ifndef mmio_insb
+-static inline void mmio_insb(void __iomem *addr, u8 *dst, int count)
++static inline void mmio_insb(const void __iomem *addr, u8 *dst, int count)
+ {
+ 	while (--count >= 0) {
+ 		u8 data = __raw_readb(addr);
+@@ -283,7 +283,7 @@ static inline void mmio_insb(void __iomem *addr, u8 *dst, int count)
+ 		dst++;
+ 	}
+ }
+-static inline void mmio_insw(void __iomem *addr, u16 *dst, int count)
++static inline void mmio_insw(const void __iomem *addr, u16 *dst, int count)
+ {
+ 	while (--count >= 0) {
+ 		u16 data = __raw_readw(addr);
+@@ -291,7 +291,7 @@ static inline void mmio_insw(void __iomem *addr, u16 *dst, int count)
+ 		dst++;
+ 	}
+ }
+-static inline void mmio_insl(void __iomem *addr, u32 *dst, int count)
++static inline void mmio_insl(const void __iomem *addr, u32 *dst, int count)
+ {
+ 	while (--count >= 0) {
+ 		u32 data = __raw_readl(addr);
+@@ -325,15 +325,15 @@ static inline void mmio_outsl(void __iomem *addr, const u32 *src, int count)
+ }
+ #endif
+ 
+-void ioread8_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread8_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	IO_COND(addr, insb(port,dst,count), mmio_insb(addr, dst, count));
+ }
+-void ioread16_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread16_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	IO_COND(addr, insw(port,dst,count), mmio_insw(addr, dst, count));
+ }
+-void ioread32_rep(void __iomem *addr, void *dst, unsigned long count)
++void ioread32_rep(const void __iomem *addr, void *dst, unsigned long count)
+ {
+ 	IO_COND(addr, insl(port,dst,count), mmio_insl(addr, dst, count));
+ }
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200709072837.5869-1-krzk%40kernel.org.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200709072837.5869-2-krzk%40kernel.org.
