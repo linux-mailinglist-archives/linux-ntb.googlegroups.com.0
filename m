@@ -1,168 +1,132 @@
-Return-Path: <linux-ntb+bncBAABBPUAXP4QKGQEA7PVTBY@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBP7XY74QKGQEIAZUGUI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pj1-x103c.google.com (mail-pj1-x103c.google.com [IPv6:2607:f8b0:4864:20::103c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0614E23F802
-	for <lists+linux-ntb@lfdr.de>; Sat,  8 Aug 2020 17:09:52 +0200 (CEST)
-Received: by mail-pj1-x103c.google.com with SMTP id 4sf3969858pjf.5
-        for <lists+linux-ntb@lfdr.de>; Sat, 08 Aug 2020 08:09:51 -0700 (PDT)
-ARC-Seal: i=3; a=rsa-sha256; t=1596899390; cv=pass;
+Received: from mail-oo1-xc3b.google.com (mail-oo1-xc3b.google.com [IPv6:2607:f8b0:4864:20::c3b])
+	by mail.lfdr.de (Postfix) with ESMTPS id CDEA62414BC
+	for <lists+linux-ntb@lfdr.de>; Tue, 11 Aug 2020 04:00:32 +0200 (CEST)
+Received: by mail-oo1-xc3b.google.com with SMTP id d67sf6929633oob.11
+        for <lists+linux-ntb@lfdr.de>; Mon, 10 Aug 2020 19:00:32 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1597111231; cv=pass;
         d=google.com; s=arc-20160816;
-        b=UlvrXW3HptXHkNrikfcsFooMrSgNKEE/QLmLI+jTR2aVVAMs/Jv5XFck/I9sWQszwf
-         3a3QmBL7+7w1nnNSv/58ENBFluV52qMYD+UbegyM/nDApO5OtmpvNp32O0MS0PJoYCtm
-         LYhkVxKzo92q1/av2ZE7uYQh4ft3GZzt27eZvvbOJIT4IhYU66GgAzOFivYQiYV/49/+
-         1dJrtLez074DL2Vr78XfAK8GlkwckKx1air+Egja/5HRS+n/1PzXhsGLTk4D/SUtFcD7
-         fxn4v8urAB6PWrTuZnCAAPlDlZ+Pj8K6e8DYEcr0ODvc9GEk1tSvAIkGWu5s2483FBd0
-         U+oQ==
-ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=zIg+KTywE6zzr1uxjfO9Vg4XJjABNVjZO50OmaX9Spc8KAMDHr6EmqjSKlXlpL7l96
+         hEIDzJ+JjdsQlBV8tHrKxBjEM0XQh7RrhyvkFtwtUjtwewjk4BW4wPLAz5U+PzDKEkKo
+         XiAs9M3axX74KSny/SdjLMo9EOGZzGU0untivTBBqEgQeQhKQJSGKgGROly5+/PaOB/z
+         knKgMARyhsgrk3CAGAI+gB5JIBt96ufFbBQMya/hbp1PZTgHQXrFGfgSOAXx6SbfCvx+
+         aNUr1qdwGbgNVA5fgPL7fty/J/PUMSsTd1lUiTJ5uVTKOYch/bGhDHEa90bpEv4iUUGv
+         wUnA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:content-language
-         :accept-language:message-id:date:thread-index:thread-topic:subject
-         :from:sender:dkim-signature;
-        bh=ACJdSTWThMTE5Y2fROt3S0eDibx886JWAcgRs42Y28A=;
-        b=HuUEIWi2G0cd7UjZWiCdzRvUioIzQfoHz8uPihkaJqFaHlhSkz8Fve3i17b9AboTjv
-         LCYW8b3co1Lj0LJIgViSD6mcyWiToMGKZK5pIKgrVhDsKrx2tNfrdwxjUmsZoBEjoE2m
-         mjB/lipJxT+OCIXnfHzuxvummA///Fh6avNUmhpevJsMBHnLXbkq49TEqPOx+b23p3ag
-         +Z5kSwixYSb8y9DVHMeMUGHQVkgy61jqthPAf2e4K+/b6m7bjmfQrpCgp/UD9F0R2/jG
-         Nr8XM+325iVepzdx8ZBSrlDrHQe1h9NlEV+nFDZkHpvMsLjQQr2dIv8sQdrP0UE44Weq
-         OpFQ==
-ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=hq1pRTCi;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of patrickmmgomez54@hotmail.com designates 40.92.47.21 as permitted sender) smtp.mailfrom=patrickmmgomez54@hotmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+         :list-id:mailing-list:precedence:message-id:date:subject:cc:to:from
+         :mime-version:sender:dkim-signature;
+        bh=u4+MBE637CDfNEf9H0whbhW0fs/4r2MubBwOIHYWer8=;
+        b=kmNh+0JCQxokbf7i9gdntbRCDJ0KrEbyTd8Ox6LMov3AaADTlqXZdLtGnrukiVHlgM
+         u1sXDLT5bNCbnPlr1EJtXyfvfouNB82SoX2RizeafacGZyWYzyylvxRcVVN05cdVUuFY
+         lvu6LAk09N/e7So11hkn/QtYqoreS2jAGbak3QB0JLIYeczbCNWC7qf1Hfm/TYp7W/s1
+         /m6PjfH4cwnNDIMI2wAPmuELNhusqtyagv5psusKu7qaIsapML9TWF/HUQxfFvDVWSsD
+         NUTsaLllKh59pa35Rk6FLCQ2TWtl2y5SpmaqCDpmt7dVZBgwUYZCjz6ep9Wt8Y/3ejXX
+         Y5pg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       spf=pass (google.com: domain of likaige@loongson.cn designates 114.242.206.163 as permitted sender) smtp.mailfrom=likaige@loongson.cn
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:subject:thread-topic:thread-index:date:message-id
-         :accept-language:content-language:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=ACJdSTWThMTE5Y2fROt3S0eDibx886JWAcgRs42Y28A=;
-        b=ReGye56kO2J0yH8GXh+w6oGMnLuxx3o6uFxBWCb71ddPAuBtYgKkWfAlZl/wvtgm29
-         UOpHXblKrwwPbQ387A6kOyTKVGtCPH/jaIiiLPXZAHL+5hAadSD/xTNH9kARz37zutVd
-         AXbC3Vj+JPgUgRg4LX5jRw7jQ1wZofNuqLC0C1/nbTtQcNHcdoSvkZOjtC1XHj7skdxm
-         ziJoS0pFyZhO+kdAU18p7eXMoXdw3Q975/wCdGBOQ2Ml5xxm6qIvlzx0basCxg5RQTLf
-         RfVo6z4MR/JtORknJfshDx0e+L2uY5fOy8DHl2SPYnX69PMLzTL1z8enGlpLBoEUyrHK
-         8zag==
+        h=sender:mime-version:from:to:cc:subject:date:message-id
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=u4+MBE637CDfNEf9H0whbhW0fs/4r2MubBwOIHYWer8=;
+        b=fJ7XmwGzo5CX8AC2XE4EhZRrSjCg8WGYU5kFPr6+H0tyKPkW/BS2LGsdJxZzeOhAyO
+         ebroXdtdfodVApZU9WmF3hVIQGza3OlkuM3Q/s0xWvHuvLEYB2s8xb8easB3UZc0WAiN
+         wPO4mX7WcuetIFToQfkLGVc3q5KgF5lvrPxQFsC6yhYl1hIWxF0FupxEPdPJSLrOrQ6d
+         oqDJxfF6dSfleNCZRFm7bUfLP7cmx9Ug85VVlLYgYXKuIOHgvjNGGu5dAL6s7rsrs3kx
+         LGbyJyD19GoMc8mAsTIcZLCP5aygujPrwI/HmlsaBer4mY3hcbs5IwGXO/BgwiZz9g7b
+         RFXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:subject:thread-topic:thread-index
-         :date:message-id:accept-language:content-language:mime-version
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=ACJdSTWThMTE5Y2fROt3S0eDibx886JWAcgRs42Y28A=;
-        b=gED5nbT+hgPSRVVSJiZhdyM27f9Xa5nmQ+VCnMJbiiRzCWsn9VeUDUgbAKsAK284xI
-         xLaDe0+mVew6IEJDRq7KBndW76aTrJDMAy8BO3ivvKAJihl4QU99Az1bsS7lznFe+NBV
-         GrZEN2isD1Jgj8VPk5ghtPXc5kawwMQ5NcsbRO2F23mKlYzmRFE6/weftw+bzrHNjymI
-         7ONB6hINqU/I3TN1IDeRWaykFy2NSyHDIfYPIdTzpnhWQfB69axRWkfCi+yv9fTYXXLl
-         xWfc62xUj/5nAoDyn6S9nKLPS88zSRUEetQYiDpgMEWCvJRSIV5XvdZR8cgOyP0m1L/c
-         7JFw==
+        h=sender:x-gm-message-state:mime-version:from:to:cc:subject:date
+         :message-id:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=u4+MBE637CDfNEf9H0whbhW0fs/4r2MubBwOIHYWer8=;
+        b=mP8skKgZLCGLPGyEdiZSKrTLGo9jfqMN0n5fRJ7cvbdeYaAnGUC32QDLlQ4TDwRk3F
+         5m37cuJdvnmrpU6JQO2JsT4z++pDlUL6qNz5F0pzeRPrKio2+6y0sGejKWyevyLCGNBQ
+         lD4/44hzZxPvndSJIhwsfdYsl0SNsHsCe2EFUc8obg9gF0HarAbaUDiHoCzFgPqllKXu
+         03KoWXtBHmZvVoedsd1cxjOABJM9nvFWeGWbkYqLMAc0LgTIqKaQNWZ5BTCL4yFvFTFu
+         20WBf9wr3vUusn3TRj9iwHklbE7ZwWJOcL0x1YlDo/Fu+A9oDBS2cGepAeXtuDHjb81S
+         rFTQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530SIC0W/X8bYhyOIXrm/zra164zniPfRgmgSu8e/Tskw6HOCQbM
-	5wYvver6KYqFEL2i5fMT5JE=
-X-Google-Smtp-Source: ABdhPJztQ+8VATRwIpw779JGeepW5XHr2Ycl9vGyzKotNBebWU4txP9+tevGFGA+EdWXIeA0NMNAeg==
-X-Received: by 2002:a17:902:ac84:: with SMTP id h4mr17197993plr.334.1596899390386;
-        Sat, 08 Aug 2020 08:09:50 -0700 (PDT)
-X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:9b93:: with SMTP id y19ls5193440plp.6.gmail; Sat, 08
- Aug 2020 08:09:50 -0700 (PDT)
-X-Received: by 2002:a17:902:bf0a:: with SMTP id bi10mr8689743plb.80.1596899390093;
-        Sat, 08 Aug 2020 08:09:50 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1596899390; cv=pass;
-        d=google.com; s=arc-20160816;
-        b=chiB7cpduwW0g6qFCDBj96gn347cu26ohSN81Pdd4Nmxm+LxIQtTYkGxCzMF2eHiF5
-         Z5uyZbSCblMLIxfgWg3ZxSSpplOPHOUvrRYuL1peYcEQMs7/+KF9IiT0IhULG0994nVQ
-         DigHevfDVt+uwdBDxhykLhHDvErfSnJTWJXBA+JXlqoFiykJXFOAx9bGGSHbktBqqcS2
-         Myrs0ztRCWBP9+DinwtRXzOHSb/Lbf+2mtxzEvKl+h65cLWRNRGTtHhmHkG7/zMWBo93
-         innKgx0LHWBygzw+Zi1hs6figKXcG31kYu00VUy4m4P/jqXvd4BU2TvIzop0uiRiimG7
-         0lFQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:content-language:accept-language:message-id:date
-         :thread-index:thread-topic:subject:from:dkim-signature;
-        bh=F5Fj5CgnKDZWfL1/+Wi9YgwkMu6xikpAY5CTU29bSfE=;
-        b=sDAk0rk8k8nNZgPFF4E3Ib9uARU6KkuHou57FV4NyQN5Pya7mrp9QgZ44inoSRQx8z
-         hP+B+hlaKTROsaw3PUgBHmOiI0YINdcap4I9A91pog5a1DAp1AKkqxRIeckWXrrNPS1p
-         pRzNqFA/vJM5O38AYgnozHLDxaWKkyAeL0kJLmnOoO1HqRQM+fYBOfQ9gc3w4WJgJdL6
-         1KAptl65z7s3yxi3Mo9TeeSnGhcE4bkpv6lAgiuyaqBodmKLegYz+wuGIfAaydoF91Ky
-         Fhs6sSjJS5F9lhMh23CJyc6YJrtwNnJWqEpshdsO/6btGUpYpYkpfDFe0LPMC6OCK0KV
-         XnXQ==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@hotmail.com header.s=selector1 header.b=hq1pRTCi;
-       arc=pass (i=1);
-       spf=pass (google.com: domain of patrickmmgomez54@hotmail.com designates 40.92.47.21 as permitted sender) smtp.mailfrom=patrickmmgomez54@hotmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
-Received: from NAM04-BN8-obe.outbound.protection.outlook.com (mail-bn8nam08olkn2021.outbound.protection.outlook.com. [40.92.47.21])
-        by gmr-mx.google.com with ESMTPS id m15si301817pgc.5.2020.08.08.08.09.49
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 08 Aug 2020 08:09:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of patrickmmgomez54@hotmail.com designates 40.92.47.21 as permitted sender) client-ip=40.92.47.21;
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=Lw+3I2eDDB1HhcXuwotzWA8ubpXv4ue2+HjyxKXC74F34LBq3p2cd2dSY3cn+VShUuxOJ7vyLO3sn0WTFKOk08HLpcQbm6OVG5Y3kU/2dle6nij4rMudaZcCn5gcruF6I5o7O0c8ioqARKuUJhZI3Dura6PNFGl4Ns8gNWXnDUTtrt/P9b83C9dVSNiRFHzq/2sbGvh/DQ+yANdfK0VX8tVfyMpcbjGKRGENp2cE4hEDXxa2QKLGkO/4JMNqRAkactAG8gukjKBplTKRlH2rSLr+anoPI9HoGIaRB2at9RibPD+9YRfu8FlXL4KMeRhC/m8giW4evc+gUkQipkvChA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=F5Fj5CgnKDZWfL1/+Wi9YgwkMu6xikpAY5CTU29bSfE=;
- b=DbBPrj+yHKxZjsimv+l+52pIFWXl2PDte93bvj0VE8+Qe9GRijjGNIfeog+U6QrZSLoMwrPBA6Dlx0bL1UZ1Le/24OwmVWwFKvJjo8U4khZoDAZYh4AwdK17P6ng9P+8EpdvTbKhf+BW0EgYLwPnKCjdclJ22zFikgLXr2hWiI16/11ZUqL/x+mUVcOKSX3bePlyHKLDKgJTxjYE0Pep0LGiI+TTL5vO7Jd+oUDztSt7H8aHMlfFWmu2I8R4MzfK8lBQ9uZKTAKYWgyiw0f4EgzziqzZYoE5sB81SXzEW51lO2r/kKoVRURJxnagGzwtX/FqhlpN/rk4fPso9oncZA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=none; dmarc=none;
- dkim=none; arc=none
-Received: from SN1NAM04FT007.eop-NAM04.prod.protection.outlook.com
- (10.152.88.56) by SN1NAM04HT025.eop-NAM04.prod.protection.outlook.com
- (10.152.89.224) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3239.20; Sat, 8 Aug
- 2020 15:09:47 +0000
-Received: from BN7PR07MB4179.namprd07.prod.outlook.com
- (2a01:111:e400:7e4c::4c) by SN1NAM04FT007.mail.protection.outlook.com
- (2a01:111:e400:7e4c::140) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3261.16 via Frontend
- Transport; Sat, 8 Aug 2020 15:09:47 +0000
-Received: from BN7PR07MB4179.namprd07.prod.outlook.com
- ([fe80::d942:75ae:2b40:9445]) by BN7PR07MB4179.namprd07.prod.outlook.com
- ([fe80::d942:75ae:2b40:9445%2]) with mapi id 15.20.3261.022; Sat, 8 Aug 2020
- 15:09:47 +0000
-From: Patrick M Gomez <patrickmmgomez54@hotmail.com>
-Subject: RE?
-Thread-Topic: RE?
-Thread-Index: AQHWbZX0MwCavs+Co0aWJl8HoYVM7Q==
-Date: Sat, 8 Aug 2020 15:09:47 +0000
-Message-ID: <BN7PR07MB41797601F329AC5B998C8629C2460@BN7PR07MB4179.namprd07.prod.outlook.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-incomingtopheadermarker: OriginalChecksum:B5E2B9CA00AA44A4762A2AB7E1BA007921E80CF01EB904BECDB84FBDCFD686CA;UpperCasedChecksum:CA70C78B1E4F3754347890170EAFEC43B98299C227E5F778F8A17D4358B1F6DC;SizeAsReceived:9848;Count:40
-x-tmn: [mSq2NTLhFxccLP2otbt2H5CIVt4ouz+F]
-x-ms-publictraffictype: Email
-x-incomingheadercount: 40
-x-eopattributedmessage: 0
-x-ms-office365-filtering-correlation-id: e00a0679-9a1e-4e3a-06d4-08d83bad16e9
-x-ms-traffictypediagnostic: SN1NAM04HT025:
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: 5ya2qpxZ1siAkau+SRmceEdpXjUf+QskBHN5YLbKaKVh6R8rlQNXg6A2GvZ3VfjfjDlaOdTYq8TFUaXNarPXJhowTsO9v9dsQI/43WmT2nCgdQB4oh87SPYrOmz+NqEHAPQrtXkfyckNrunsvlG2tmII/SnzDFFfGO8P2F6DtGP7bZFbyeT+bUX+6YCwJ0v++BkGUoZ3w7uxASa9hNTh1Q==
-x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:0;SRV:;IPV:NLI;SFV:NSPM;H:BN7PR07MB4179.namprd07.prod.outlook.com;PTR:;CAT:NONE;SFTY:;SFS:;DIR:OUT;SFP:1901;
-x-ms-exchange-antispam-messagedata: /w9FdEIbDJJxkUnYTVaRtgj2u4TpikhooLuWt/edUsmjP/laBNmE8Li9ZeyI0hnYbEh0v8zrZLTRUvt0ouKhXOhTUWz9KjmPuJ/rA1ptgJlVMg9TObn7DcLVW2MzRdMDwFI/F5TaHupqry2UO7ldpg==
-x-ms-exchange-transport-forked: True
-Content-Type: multipart/alternative;
-	boundary="_000_BN7PR07MB41797601F329AC5B998C8629C2460BN7PR07MB4179namp_"
+X-Gm-Message-State: AOAM531/A+QljuttXA9ysaVnw0iJvW4ReviAz4JobAuMab4fACzGCD5X
+	4bcL2X9qJUie/BnzimygJ9M=
+X-Google-Smtp-Source: ABdhPJxtu2SmayJHi2iUqw6SSY30j77CLn7h6nazrcRsRok57j1aRPLTMuyKTe7FmuMBcy2N0oAmTQ==
+X-Received: by 2002:a05:6808:7c9:: with SMTP id f9mr1777737oij.69.1597111231464;
+        Mon, 10 Aug 2020 19:00:31 -0700 (PDT)
 MIME-Version: 1.0
-X-OriginatorOrg: hotmail.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-AuthSource: SN1NAM04FT007.eop-NAM04.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-RMS-PersistedConsumerOrg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-Network-Message-Id: e00a0679-9a1e-4e3a-06d4-08d83bad16e9
-X-MS-Exchange-CrossTenant-rms-persistedconsumerorg: 00000000-0000-0000-0000-000000000000
-X-MS-Exchange-CrossTenant-originalarrivaltime: 08 Aug 2020 15:09:47.1877
- (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Internet
-X-MS-Exchange-CrossTenant-id: 84df9e7f-e9f6-40af-b435-aaaaaaaaaaaa
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN1NAM04HT025
-X-Original-Sender: patrickmmgomez54@hotmail.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@hotmail.com header.s=selector1 header.b=hq1pRTCi;       arc=pass
- (i=1);       spf=pass (google.com: domain of patrickmmgomez54@hotmail.com
- designates 40.92.47.21 as permitted sender) smtp.mailfrom=patrickmmgomez54@hotmail.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=hotmail.com
+X-BeenThere: linux-ntb@googlegroups.com
+Received: by 2002:aca:d09:: with SMTP id 9ls4030125oin.6.gmail; Mon, 10 Aug
+ 2020 19:00:31 -0700 (PDT)
+X-Received: by 2002:aca:3ac2:: with SMTP id h185mr1833934oia.65.1597111231242;
+        Mon, 10 Aug 2020 19:00:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597111231; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jEJmJajbQM7rDTEO0SxjTijhc8vMFq+s+plzkqr0KOVBeHCNM6sCgw3nZLPbkWqt4d
+         HVpo0CZL28R0HMGuxaAEVvS9P3l1PI6yQsbR1fpmXyTujiaLYvbVQJmciLxt3n25zol6
+         WLApTT7sTJmRFbrKSIYfDDR49nQ4PRxp+sEgs3HrMCWV5OEU+ITCR2aRyHYNQau9gh8W
+         4ROu6Y6Q24vlFT14TIkYpayTHnKsK2SDQolO3Qd0wRCaHtqtl1OPFvZnFTBwQTs5F4kf
+         NRQuYMgcvxG3a1pHJoNS5MR6g3gjg32NZXLLfDMOoeUo1iUe6NPRkUt8vUTDP5v97Xr3
+         En6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:date:subject:cc:to:from;
+        bh=o6qs2AUfyvscR1EJRzugc7bfggenhBjHgbJggcqkj/E=;
+        b=H3tcrY1+Lu+xTnReLP5i4ABw4DzWWdYZfv+FMja6u1lXgoaGMV2bTzQEIEiywbXVWr
+         6kxHMc2dkYzj1KPZA2gheCXA7KGbLkyIiNFX1wl1Fld01ByRmYu7GOJrAYKMoKsPbmLt
+         qqRo+xTYypFd2FDhVxQmtmmgsliRB/5F4WOtxhkvAWzewbkV9Ccn0G6o6rD9fBy29exU
+         M2HWtfxlUh4EgWzmZNV3p3x3QFwHSohwNWiPkqu21PPbEZNaZi56G1UPo6z42pWBEqDU
+         FNELu/Tc6EY/K/Rsy1pV96rfsXVMkowaP86yT8+PvnScZnsrskiXYlgpNBNamlfAQ7W8
+         dEAw==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of likaige@loongson.cn designates 114.242.206.163 as permitted sender) smtp.mailfrom=likaige@loongson.cn
+Received: from loongson.cn (mail.loongson.cn. [114.242.206.163])
+        by gmr-mx.google.com with ESMTP id v18si143032oor.0.2020.08.10.19.00.30
+        for <linux-ntb@googlegroups.com>;
+        Mon, 10 Aug 2020 19:00:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of likaige@loongson.cn designates 114.242.206.163 as permitted sender) client-ip=114.242.206.163;
+Received: from bogon.localdomain (unknown [113.200.148.30])
+	by mail.loongson.cn (Coremail) with SMTP id AQAAf9DxT9+d+zFfTCoHAA--.3432S2;
+	Tue, 11 Aug 2020 09:59:58 +0800 (CST)
+From: Kaige Li <likaige@loongson.cn>
+To: Sanjay R Mehta <sanju.mehta@amd.com>,
+	Shyam Sundar S K <Shyam-sundar.S-k@amd.com>,
+	Jon Mason <jdmason@kudzu.us>,
+	Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>
+Cc: linux-ntb@googlegroups.com,
+	linux-kernel@vger.kernel.org
+Subject: [RESEND] NTB: hw: amd: fix an issue about leak system resources
+Date: Tue, 11 Aug 2020 09:59:57 +0800
+Message-Id: <1597111197-28563-1-git-send-email-likaige@loongson.cn>
+X-Mailer: git-send-email 2.1.0
+X-CM-TRANSID: AQAAf9DxT9+d+zFfTCoHAA--.3432S2
+X-Coremail-Antispam: 1UD129KBjvdXoW7Xr4kWF18WFyrKFyftF13Arb_yoW3uFb_J3
+	43XrsYgr1ktF9xt3WSkr1avrWSvas0vrsrWFyktF9xuF4UWr47W3yUAFs5GF4Y9FWjvFy3
+	ur1qkFy5C3sIyjkaLaAFLSUrUUUUnb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUIcSsGvfJTRUUUbh8YjsxI4VWxJwAYFVCjjxCrM7AC8VAFwI0_Gr0_Xr1l1xkIjI8I
+	6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM2
+	8CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW7JVWDJwA2z4x0Y4vE2Ix0
+	cI8IcVCY1x0267AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVAFwI0_Gr1j6F4UJwA2z4x0Y4
+	vEx4A2jsIEc7CjxVAFwI0_Gr1j6F4UJwAaw2AFwI0_JF0_Jw1le2I262IYc4CY6c8Ij28I
+	cVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jw0_WrylYx
+	0Ex4A2jsIE14v26r4j6F4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwCY
+	1x0262kKe7AKxVWUAVWUtwCY02Avz4vE14v_KwCF04k20xvY0x0EwIxGrwCFx2IqxVCFs4
+	IE7xkEbVWUJVW8JwCFI7km07C267AKxVWUAVWUtwC20s026c02F40E14v26r1j6r18MI8I
+	3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_JF0_Jw1lIxkGc2Ij64vIr41lIx
+	AIcVC0I7IYx2IY67AKxVWUCVW8JwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAI
+	cVCF04k26cxKx2IYs7xG6Fyj6rWUJwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87
+	Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxU4Vc_UUUUU
+X-CM-SenderInfo: 5olntxtjh6z05rqj20fqof0/
+X-Original-Sender: likaige@loongson.cn
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of likaige@loongson.cn designates 114.242.206.163 as
+ permitted sender) smtp.mailfrom=likaige@loongson.cn
+Content-Type: text/plain; charset="UTF-8"
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -175,47 +139,34 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---_000_BN7PR07MB41797601F329AC5B998C8629C2460BN7PR07MB4179namp_
-Content-Type: text/plain; charset="UTF-8"
+The related system resources were not released when pci_set_dma_mask(),
+pci_set_consistent_dma_mask(), or pci_iomap() return error in the
+amd_ntb_init_pci() function. Add pci_release_regions() to fix it.
 
-Is this a Business or Private Email?
+Signed-off-by: Kaige Li <likaige@loongson.cn>
+---
+
+changed commit massage.
+
+ drivers/ntb/hw/amd/ntb_hw_amd.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
+index 88e1db6..71428d8 100644
+--- a/drivers/ntb/hw/amd/ntb_hw_amd.c
++++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
+@@ -1203,6 +1203,7 @@ static int amd_ntb_init_pci(struct amd_ntb_dev *ndev,
+ 
+ err_dma_mask:
+ 	pci_clear_master(pdev);
++	pci_release_regions(pdev);
+ err_pci_regions:
+ 	pci_disable_device(pdev);
+ err_pci_enable:
+-- 
+2.1.0
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/BN7PR07MB41797601F329AC5B998C8629C2460%40BN7PR07MB4179.namprd07.prod.outlook.com.
-
---_000_BN7PR07MB41797601F329AC5B998C8629C2460BN7PR07MB4179namp_
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<html>
-<head>
-<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
-1">
-<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
-ttom:0;} </style>
-</head>
-<body dir=3D"ltr">
-<div style=3D"font-family: Calibri, Arial, Helvetica, sans-serif; font-size=
-: 12pt; color: rgb(0, 0, 0);">
-Is this a Business or Private Email?<br>
-</div>
-</body>
-</html>
-
-<p></p>
-
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/BN7PR07MB41797601F329AC5B998C8629C2460%40BN7PR07MB4179=
-.namprd07.prod.outlook.com?utm_medium=3Demail&utm_source=3Dfooter">https://=
-groups.google.com/d/msgid/linux-ntb/BN7PR07MB41797601F329AC5B998C8629C2460%=
-40BN7PR07MB4179.namprd07.prod.outlook.com</a>.<br />
-
---_000_BN7PR07MB41797601F329AC5B998C8629C2460BN7PR07MB4179namp_--
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1597111197-28563-1-git-send-email-likaige%40loongson.cn.
