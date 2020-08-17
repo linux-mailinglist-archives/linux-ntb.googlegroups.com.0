@@ -1,127 +1,179 @@
-Return-Path: <linux-ntb+bncBDD4ZJP5SUPBB7MD3P4QKGQELXJG2XY@googlegroups.com>
+Return-Path: <linux-ntb+bncBCFYTA5O7QNRB6MV5H4QKGQEJ7H5T4Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qt1-x838.google.com (mail-qt1-x838.google.com [IPv6:2607:f8b0:4864:20::838])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2F82A244D2A
-	for <lists+linux-ntb@lfdr.de>; Fri, 14 Aug 2020 18:55:26 +0200 (CEST)
-Received: by mail-qt1-x838.google.com with SMTP id f59sf7384462qtb.22
-        for <lists+linux-ntb@lfdr.de>; Fri, 14 Aug 2020 09:55:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1597424125; cv=pass;
+Received: from mail-pl1-x63d.google.com (mail-pl1-x63d.google.com [IPv6:2607:f8b0:4864:20::63d])
+	by mail.lfdr.de (Postfix) with ESMTPS id BECB3246244
+	for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 11:16:42 +0200 (CEST)
+Received: by mail-pl1-x63d.google.com with SMTP id j11sf4494462plj.6
+        for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 02:16:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1597655801; cv=pass;
         d=google.com; s=arc-20160816;
-        b=BKJtCVCbcyYIU9za+zwZBuZoBT9O+Y89twVPD8/2ofhwzDgA/Y9Elw4c7pZdoe998l
-         RJ5BqWLf3ucB4AmfoKaVt0E3COnkSMOimLayEiw9n3f0F6xMsFsNk3d5AJNENmehk8la
-         akivXPglBDbPcmzOj7OBgm/MxhrMp9rcWDFKHD548bOLEt2TTABp3pRUjZ2gWvyuZR4P
-         1hVApw1uN+flFO3qcTyXZfL3H/jmKzjqNesdKwbSrlZ+1eUuF9IHyZB5GRuaVwho/LVv
-         ECQWwGcx4gJToofYcedXBJWEbAQsVNwS0JSiyRmZW9b9CQdIrjAFnXjFV/4hr2p1Z6Tn
-         R3PQ==
+        b=QmahegxAsCvydoTTI/aac/JCzHS0XyeDVdjokdqFZ8cWVRTFxHoxSHOFUXi81Ok1pI
+         DDItQPcWJuBZy7oUAZunkejxAKRO9y1XBwlBe3hRDFXS1L2g+3eCQUu6/kkWUB3g3KO7
+         bLY/ZxnG9puyKSNaJAifw/hN69MSz5t1m4m1Pge964PdmS9+zJLZOkaS0rO0EIwFE8i5
+         spmsT+lNggNfmehD+k5qCIQ3kc7vZM12TvWatQGJdu0OLjT1dFMZiqIsyJ8YzgWYEiik
+         DkEvqNu/yCkoghmvJy/YPjAaMuHeyyTIAyCYaKwKNYXjwr+egqcGKdVq+ggxU13o2kOK
+         lyvw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :list-id:mailing-list:precedence:message-id:date:subject:cc:to:from
          :mime-version:sender:dkim-signature:dkim-signature;
-        bh=Oe8oKF/a5/zaoVfQKr2WhaOpmheaoDXaWsRWdAwKCGs=;
-        b=Wpj8uWDga9KRuoe+e7as3apX1t1FIJMTF7jdmoi7VfS2h1J5bvIKj603ZubpRi8f+1
-         Tmvz4q5O2xA0X09FTLh7AEUqFGqe6HvAcohhxAuhUmIlJPyXmoscILZt/HsMXND34sH8
-         jSeLb0mt2lY2YyNo9UMxfgnH1APQpOljde5OQqQlnbgowqxGVWkJGqGOPGyn1vr1YUp4
-         VJfBOuQU28R/ztkFIgHdGS7bSIHCIMXbKJ0vakhS0YA11CK/CHytt9QJHvQmX3z6BNod
-         cgXzwc92lyQ3hG0hQRpMGtQIucPhDMhtLKf1+1PV2UvmjjOnuU35DlOmCt1om8HqtHtK
-         PfWQ==
+        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
+        b=tmsXbf+UIgE7OlcrZAJqHW1zgymet9rcQRPZBN40frO+287Qi50ZIowDRlorBF6/+n
+         4NkALN1Avhk8zmdnKVywFCjD+JdalBo50+9cpA3N97ReYVhiWzj40IAJ66h6TdWf90w1
+         YKdXqqqTi9Lv4uEDtjiXMvWMCfAPM8g/cJkNFPY21rg+XbAEMtoWIvjQRf2WbqIh/9Ta
+         fKdb/M9TRnUujJW5ZxvpxCMEALZ2gSOvQ4H2irtnLG3Fc2avFAs9eWiypRpVOYHn3K+H
+         SvLH1g7Pk8wo2b62gQ1aWCteLMQUdpoFU1TKXDQVH00923k4wNUpZl3g2zjVNvDt9A6l
+         XmBw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kk1JWl5Y;
-       spf=pass (google.com: domain of aishagaddafi190@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=aishagaddafi190@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="mxWi/elP";
+       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:from:date:message-id:subject:to
+        h=sender:mime-version:from:to:cc:subject:date:message-id
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=Oe8oKF/a5/zaoVfQKr2WhaOpmheaoDXaWsRWdAwKCGs=;
-        b=dpnexczfMSYnSAGpvWqeYrfNt3ENNXFdJRrQZnm9l/lmHlWcicoCvvVN/SQgkfYKLu
-         gv+55shr3/xiAlzRtseOJor/RenL8PxesSdEE5CCRarudQqc0rsPByjMwLbNXUxpoLHA
-         mw2Qi3YtnzN1R21J5baOqpI3KDdbiAUu29R+/C1DDLk4n6PS8/q1opLHQ/PH+9at6vc2
-         VmDteGcCry8qlzKnYIfgX21FpmY8RR1TASjmy3A6u7svXIwo7H0wOoizmMZGWX7lNuwy
-         awWqWSBJJdWpdiWIzLiweN95ER7IvDs+8jmJOV7FTrkp1hr8YKhLK8PBZDltRP3IV27k
-         sgzQ==
+        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
+        b=eqA5B+Hs7DTj0nRaPMc+ZcrC0XxkWlR8Wr6HXcXp9b+tXSmnVEEqbhOzyhkt9kyOs9
+         9D7wzlCEF6oCwaiywZuRLOX63HYyLV3/lU1jyWEZlhCfydd+F13hoiVFysXTSq0fLEP0
+         bpxmw1sbyrswJv0BGNDmVhJE+bFpgiygjDCYcw5RSlnHHcdiPGF+zx3QmN6FvnvYDSGB
+         jaJWNt5E+PHUSW8g7iXdqmXs9r96GKAnikGRMWbma22STtkNesFu5F2g4qUb79bK0Uf+
+         VyAy1z8lcAl1uJve3p+ybxfHMrkomShWmaRIapq3i6ENapVbayoC4nxc9TnVJ82QdLzQ
+         grrQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:from:date:message-id:subject:to:x-original-sender
+        h=mime-version:from:to:cc:subject:date:message-id:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=Oe8oKF/a5/zaoVfQKr2WhaOpmheaoDXaWsRWdAwKCGs=;
-        b=D4HmvXV6QIQjrTRCwYN+aV133Tlox8sWXyLXATjo0MafY6oAZRcJi4YFIWTV/R2IMe
-         3TzuAoYUDnGQZB+86K4MBYPxU2fNuXQk+DxcezZS3IMyG6mc/93mBgVQi/1XNAPR2xKj
-         GT1m1AMnJ+nvWEL1pIb5KjkFj0TDlakQA5mh/V+Uo9SjaFaKFjXPpFfjkO8anNWos7fq
-         rB+SppZJ43wJSW186a8nBGRpCcfieUORevJ/0PgwSPSod8e4/Nn5sxSps87/hP9Y+O/3
-         fo1ISVgd26pMrj7aIKP6ZvRogMet3aOkp8OhId1K78ccdTIZHDaSy3EAx+GTuGctgKr0
-         ZI9g==
+        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
+        b=OAtL1xqKE/3pVGnaSNXGqq6fsfvD6KaQBqp9qnF40cpAjTKOgRzTr3k0GudbW04uAF
+         v+B2coX5CHJ2k4uGzOZAL/Fb0LTKUectZczrYRo1MMtAlkuwXzoXyYzyO7KJQOpqNzxK
+         egbU94Zu8/1iWWcpmIW/TRUIHhruQXF41/92J6fv02VHGDclbobikv8zqSOA8XLtKwNf
+         acMVb43Sndt+c8aZwhvLZ/U/+eao00mCWdUX1IcYR0FeYBiuWJl0wJWk3/S9SJLdVN0D
+         fQ4MHEAiY2ZJ8gnddzcIuIB+KUx5MmQDUZwozpiPbxJeXAd9hXPW10Nrhdtt6ci86dv4
+         AcPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
-         :to:x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=Oe8oKF/a5/zaoVfQKr2WhaOpmheaoDXaWsRWdAwKCGs=;
-        b=OGraCxQnp5jhsgNg7V+H5gImGiNPCk42qSTCIacP2/kI0IbUxHnXjO+6tCvOrzs0Dj
-         pz3fJS8K0NPfmQjpjKWjz4PcbFmEydocEUlBzQeHJ4ETPmEjRYTg6nOMfW1UXw05gJlK
-         3xeo72rx2tsk6fgSy0wpQ1mBUyv12213tGl1R7WVRkv/Bubc3pFSDFQA+/EDSVac+z+R
-         ovUwW1kRoFV4qMEow+MaW0rRrzla6HBHDRf+dQ/jz8PszStYkxKoiP2ji9ggPqwq/y62
-         l4DMrs804XrO9VrHgvI2/1rC32qoy2NXK1HjWh5lOuAx8jTQjw0pxutJOYL9eLts2v4R
-         hgRw==
+        h=sender:x-gm-message-state:mime-version:from:to:cc:subject:date
+         :message-id:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
+        b=PUmWhvhZRaNk6SAVg/UsHewl689npaaBuJS/s6XpSXxV2OXciRY1LkbEuDSE8lhODo
+         CusbZsjVptKQhfTp8A1cp+EKsRbkdhfAYALXj6HQnEmNl2AlSGavVUk4GZiVTmklEwUY
+         Qipni1ZYyzBdS4CuCrLl0zavY4kG/fbLxXFSETXvcNB+iq8gbjQHJ9vV/99bjZ5xRwGM
+         03KjmeSDRfoNgeLxGTCzS22YafSdZl8Jlnkm3qQ6OLcFI5UAWI+ZqCUBnWLrgnegu7yo
+         AkZygbh/iaKbzWMZm/7odwzgsMcJp1e/hEEszmKvz0uwXx1LuA9uLVqL5vy92ctOvyIJ
+         +7qg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530Kkcufd6Njcknir4JCytXkYFA2EHTTIqI9xtFUnqJgI0DE0DsT
-	FRPzgYSijUOEKISerTH/gKU=
-X-Google-Smtp-Source: ABdhPJwQgVVKlNrHTHMbH2s6sjMHTnR6q3YgUJTKR4h6p+4lUuB1nY2DSYKWsKldGsKJYlzim30hvg==
-X-Received: by 2002:a37:910:: with SMTP id 16mr2740829qkj.466.1597424125168;
-        Fri, 14 Aug 2020 09:55:25 -0700 (PDT)
+X-Gm-Message-State: AOAM532PeH5mdFpZRyWJIjbcavPMm8iTn4Ph4ze7owmTw+jxH0Z141Sj
+	rjooZhot+gKMJmjdFkGuIck=
+X-Google-Smtp-Source: ABdhPJzSLQSlC8q5zgGLAaxpRZk8HmQNaT4t9ywnK5hCfl1YXOLIVaDC3PbxwUC/CfVTRgaqEJBo7A==
+X-Received: by 2002:a17:902:aa91:: with SMTP id d17mr10614299plr.27.1597655801486;
+        Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
+MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ae9:f408:: with SMTP id y8ls4413607qkl.6.gmail; Fri, 14 Aug
- 2020 09:55:24 -0700 (PDT)
-X-Received: by 2002:a37:9d44:: with SMTP id g65mr2814845qke.96.1597424124813;
-        Fri, 14 Aug 2020 09:55:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597424124; cv=none;
+Received: by 2002:a62:8cc7:: with SMTP id m190ls5608306pfd.2.gmail; Mon, 17
+ Aug 2020 02:16:41 -0700 (PDT)
+X-Received: by 2002:aa7:8757:: with SMTP id g23mr10564658pfo.283.1597655801023;
+        Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597655801; cv=none;
         d=google.com; s=arc-20160816;
-        b=njl0xj2tOdK+DSq3X55+ivLbgVMcG/DqE5lv1xgMRE3D+x3qRyPAQgXL4dIN2RSLMY
-         y1Y+fnKyRlHDxGpUEqLx7sHnHvdJCBg8CDftBC4ub0SS0MMhcMKtygsVBv/kG36P9qVz
-         JdBgtX+/7OUcik0MzRVRhVV+VhfM6yTVHRLyaF0yp/LN+mLtvAs1TAiYvP+GoMqmcoLn
-         cYFa72IrRn7Zeqzw9c0OVqLu5pMZWyi3g/UbjvuP4JrsWhuF6h4cc0fMxaayCxxGqpGr
-         KP6na1rxjiKLb+kO1LU9MyfsufXXk6227mbb6wiq3/DnPzVrkVvoflXIX7GUKzBLFi/G
-         grOw==
+        b=wykMmUoLLUYHM8XKgQqnqqL3Rl+6wE/t4HsjSjRePb3xcB7BWNG/pCrBw/Amb9gGP7
+         QubLiFfeb1oWVKMmiopHrxQLXdznSI3oksF9x/oMsufI/LzAthFK1g6Di1UzmvJlPD9Z
+         gWLubN+TWoBvUi0RaoyWfoB8or4zqP0JPlOOLG6vTKsAH5otjgz3w3NWJAQgWY50VLnd
+         ywoAjRb+zDaAZdZfpN5bSfVLziwDRa0GF/yEilSjWRhYTahXphe48Yhpu7alEiEqRckk
+         93vUlWT8wZUAd673q23cA+ogrZbgRfp7KtSmOs2opUNUFTUacvHF31JVO/q/vKVEUw10
+         JkZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=hEkR1aiV3FgqWifUDRZ/LnwAKRgtXp8YBx05IH2xt3I=;
-        b=X2CvcuLgJyLWomFtQ/E6DnT60L1VDEzZ7p9fJZL2Kabx0Nf5TIFJm40gYVdBzNrcIw
-         l/BHZ/arOtIB7egMd2WTsMn80osW7vCLqNg12ST3CxFxxgcDhlzmCW6DWw+j/lx2m2hG
-         qukjGp8eoarwFH4rFNEP/nDrVjv7CDTEboXLggfazz9Sd5x/4QMV8RNi/VJSxBwiz0Q4
-         /1s+glas14TmgiMvQzsrFeS4/7JAUB5dIBjIiA+tBtioWn1N9Lgnxn4ePpMiWPnZd5TE
-         +GwoQNmROQ28bmT8E5ZohGMHCE2kTlbIYEMvKw+G0ZBDSrgYTPXcIeBzVgSLtomkOfCq
-         T0/Q==
+        h=message-id:date:subject:cc:to:from:dkim-signature;
+        bh=nYi1qCRVXukm3Vys4Ax0zzpvhrxgpQ9/OWRIEzi7jMM=;
+        b=L0n8OOfX0ecFaIuU55rNFs0+HLWWgtc6pZw1oajpRqaECFwxUAasEBYqdPbcVPFqw9
+         0KU7xXEoxdmV7F7LV6aqfVFRCKSVK1WFqKZvn3I2s/j/uFLdycs6dFUDrw4WQ/j9qg8N
+         syBxs7VGdJMqrGDC+Zm5j8jLwO8E4UratI8S6uQanslN83V30aR53p9xzcnv4q/SU3o9
+         n5GU4AxrbFRbnU18Npod5sho5x1803WiKUVsQYhBzlcnqObWPve7IAp1Lft07yu4o0cF
+         2CqDXBz84HDZ/9X5ZNGbpv04+9m/N2nDgSQxQfTKLuks29+4LFwMq7W0zO+Vj1Aopjx9
+         0MYA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kk1JWl5Y;
-       spf=pass (google.com: domain of aishagaddafi190@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=aishagaddafi190@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="mxWi/elP";
+       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-ot1-x343.google.com (mail-ot1-x343.google.com. [2607:f8b0:4864:20::343])
-        by gmr-mx.google.com with ESMTPS id n26si527986qkg.5.2020.08.14.09.55.24
+Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
+        by gmr-mx.google.com with ESMTPS id j4si1041080pjd.0.2020.08.17.02.16.41
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 14 Aug 2020 09:55:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of aishagaddafi190@gmail.com designates 2607:f8b0:4864:20::343 as permitted sender) client-ip=2607:f8b0:4864:20::343;
-Received: by mail-ot1-x343.google.com with SMTP id q9so8076679oth.5
-        for <linux-ntb@googlegroups.com>; Fri, 14 Aug 2020 09:55:24 -0700 (PDT)
-X-Received: by 2002:a9d:4b01:: with SMTP id q1mr1587943otf.15.1597424124293;
- Fri, 14 Aug 2020 09:55:24 -0700 (PDT)
-MIME-Version: 1.0
-From: Aisha Muammar Gaddafi <aishagaddafi190@gmail.com>
-Date: Fri, 14 Aug 2020 16:55:09 +0100
-Message-ID: <CAJVkJvmUc78HpBEOLJ0VmHngGiwnMx=f=fHCkzJz=Fii=w0_iQ@mail.gmail.com>
-Subject: Dr Aisha Muammar Gaddafi
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000007bf81605acd9497a"
-X-Original-Sender: aishagaddafi190@gmail.com
+        Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
+Received: by mail-pj1-x1044.google.com with SMTP id kr4so7516373pjb.2
+        for <linux-ntb@googlegroups.com>; Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
+X-Received: by 2002:a17:902:8495:: with SMTP id c21mr10840498plo.82.1597655800670;
+        Mon, 17 Aug 2020 02:16:40 -0700 (PDT)
+Received: from localhost.localdomain ([49.207.202.98])
+        by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.16.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Aug 2020 02:16:39 -0700 (PDT)
+From: Allen Pais <allen.cryptic@gmail.com>
+To: jdike@addtoit.com,
+	richard@nod.at,
+	anton.ivanov@cambridgegreys.com,
+	3chas3@gmail.com,
+	axboe@kernel.dk,
+	stefanr@s5r6.in-berlin.de,
+	airlied@linux.ie,
+	daniel@ffwll.ch,
+	sre@kernel.org,
+	James.Bottomley@HansenPartnership.com,
+	kys@microsoft.com,
+	deller@gmx.de,
+	dmitry.torokhov@gmail.com,
+	jassisinghbrar@gmail.com,
+	shawnguo@kernel.org,
+	s.hauer@pengutronix.de,
+	maximlevitsky@gmail.com,
+	oakad@yahoo.com,
+	ulf.hansson@linaro.org,
+	mporter@kernel.crashing.org,
+	alex.bou9@gmail.com,
+	broonie@kernel.org,
+	martyn@welchs.me.uk,
+	manohar.vanga@gmail.com,
+	mitch@sfgoth.com,
+	davem@davemloft.net,
+	kuba@kernel.org
+Cc: keescook@chromium.org,
+	linux-um@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-atm-general@lists.sourceforge.net,
+	netdev@vger.kernel.org,
+	linux-block@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	openipmi-developer@lists.sourceforge.net,
+	linux1394-devel@lists.sourceforge.net,
+	intel-gfx@lists.freedesktop.org,
+	dri-devel@lists.freedesktop.org,
+	linux-hyperv@vger.kernel.org,
+	linux-parisc@vger.kernel.org,
+	linux-input@vger.kernel.org,
+	linux-mmc@vger.kernel.org,
+	linux-ntb@googlegroups.com,
+	linux-s390@vger.kernel.org,
+	linux-spi@vger.kernel.org,
+	devel@driverdev.osuosl.org,
+	Allen Pais <allen.lkml@gmail.com>,
+	Romain Perier <romain.perier@gmail.com>
+Subject: [PATCH] arch: um: convert tasklets to use new tasklet_setup() API
+Date: Mon, 17 Aug 2020 14:45:55 +0530
+Message-Id: <20200817091617.28119-1-allen.cryptic@gmail.com>
+X-Mailer: git-send-email 2.17.1
+X-Original-Sender: allen.cryptic@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=kk1JWl5Y;       spf=pass
- (google.com: domain of aishagaddafi190@gmail.com designates
- 2607:f8b0:4864:20::343 as permitted sender) smtp.mailfrom=aishagaddafi190@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@gmail.com header.s=20161025 header.b="mxWi/elP";       spf=pass
+ (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044
+ as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Content-Type: text/plain; charset="UTF-8"
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -134,90 +186,48 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---0000000000007bf81605acd9497a
-Content-Type: text/plain; charset="UTF-8"
+From: Allen Pais <allen.lkml@gmail.com>
 
-As you know I'm Aisha Gaddafi the daughter of the former president of Libya
-late president Muammar Gaddafi who was killed in the civil war which took
-place in the year 2011 which ended up his life on the 20th October
-2011.Before the death of my father the Late President of Libya he made a
-deposit of 10 million US dollars with a security company there in Ghana .
-That no one knows about except we the children and now my brother is in
-prison for trial for war crime so i am the only one left out and i got an
-mail from the security company , that i have to come for the funds but now
-i can't because After the death of my father the UN and Libya Government
-has been tracking all my father's wealth and money everywhere around the
-globe my dear but, this was the last deposit my father made before he
-died,so i am looking for a trust worthy person to stand as my foreign
-beneficiary to help me claim the funds and i am ready to reward  whoever he
-or she may be and i will also let the security company  know that i am
-appointing the person as my beneficiary, and help me receive my funds from
-the security company  so i can come out of my present ordeal and to go
-somewhere to start a new good life somewhere my friend....Please i will
-love to read from you and let me know if you will be able to help me with
-this and i promise that this transaction will be smooth and free there is
-no need to be afraid and please this must be a secret between  both of us
-hope to hear from you soonest.
+In preparation for unconditionally passing the
+struct tasklet_struct pointer to all tasklet
+callbacks, switch to using the new tasklet_setup()
+and from_tasklet() to pass the tasklet pointer explicitly.
 
-Best Regards.
-Dr Aisha Muammar Gaddafi
+Signed-off-by: Romain Perier <romain.perier@gmail.com>
+Signed-off-by: Allen Pais <allen.lkml@gmail.com>
+---
+ arch/um/drivers/vector_kern.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/arch/um/drivers/vector_kern.c b/arch/um/drivers/vector_kern.c
+index 8735c468230a..06980870ae23 100644
+--- a/arch/um/drivers/vector_kern.c
++++ b/arch/um/drivers/vector_kern.c
+@@ -1196,9 +1196,9 @@ static int vector_net_close(struct net_device *dev)
+ 
+ /* TX tasklet */
+ 
+-static void vector_tx_poll(unsigned long data)
++static void vector_tx_poll(struct tasklet_struct *t)
+ {
+-	struct vector_private *vp = (struct vector_private *)data;
++	struct vector_private *vp = from_tasklet(vp, t, tx_poll);
+ 
+ 	vp->estats.tx_kicks++;
+ 	vector_send(vp->tx_queue);
+@@ -1629,7 +1629,7 @@ static void vector_eth_configure(
+ 	});
+ 
+ 	dev->features = dev->hw_features = (NETIF_F_SG | NETIF_F_FRAGLIST);
+-	tasklet_init(&vp->tx_poll, vector_tx_poll, (unsigned long)vp);
++	tasklet_setup(&vp->tx_poll, vector_tx_poll);
+ 	INIT_WORK(&vp->reset_tx, vector_reset_tx);
+ 
+ 	timer_setup(&vp->tl, vector_timer_expire, 0);
+-- 
+2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAJVkJvmUc78HpBEOLJ0VmHngGiwnMx%3Df%3DfHCkzJz%3DFii%3Dw0_iQ%40mail.gmail.com.
-
---0000000000007bf81605acd9497a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><span style=3D"color:rgb(38,40,42);font-family:&quot;Helve=
-tica Neue&quot;,Helvetica,Arial,sans-serif;font-size:12.8px">As you know I&=
-#39;m Aisha Gaddafi the daughter of the former president of Libya late pres=
-ident Muammar Gaddafi who was killed in the civil war which took place in t=
-he year 2011 which ended up his life on the 20th October 2011.Before the de=
-ath of my father the Late President of Libya he made a deposit of 10 millio=
-n US dollars with a security company there in Ghana . That no one knows abo=
-ut except we the children and now my brother is in prison for trial for war=
- crime so i am the only one left out and i got an mail from the security co=
-mpany , that i have to come for the funds but now i can&#39;t because After=
- the death of my father the UN and Libya Government has been tracking all m=
-y father&#39;s wealth and money everywhere around the globe my dear but, th=
-is was the last deposit my father made before he died,so i am looking for a=
- trust worthy person to stand as my foreign beneficiary to help me claim th=
-e funds and i am ready to reward=C2=A0 whoever he or she may be and i will =
-also let the security company=C2=A0 know that i am appointing the person as=
- my beneficiary, and help me receive my funds from the security company=C2=
-=A0 so i can come out of my present ordeal and to go somewhere to start a n=
-ew good life somewhere my friend....Please i will love to read from you and=
- let me know if you will be able to help me with this and i promise that th=
-is transaction will be smooth and free there is no need to be afraid and pl=
-ease this must be a secret between=C2=A0 both of us hope to hear from you s=
-oonest.</span><br style=3D"color:rgb(38,40,42);font-family:&quot;Helvetica =
-Neue&quot;,Helvetica,Arial,sans-serif;font-size:12.8px"><br style=3D"color:=
-rgb(38,40,42);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,sans-s=
-erif;font-size:12.8px"><span style=3D"color:rgb(38,40,42);font-family:&quot=
-;Helvetica Neue&quot;,Helvetica,Arial,sans-serif;font-size:12.8px">Best Reg=
-ards.=C2=A0</span><br style=3D"color:rgb(38,40,42);font-family:&quot;Helvet=
-ica Neue&quot;,Helvetica,Arial,sans-serif;font-size:12.8px"><span style=3D"=
-color:rgb(38,40,42);font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,=
-sans-serif;font-size:12.8px">Dr Aisha Muammar Gaddafi</span>=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0<br></div>
-
-<p></p>
-
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CAJVkJvmUc78HpBEOLJ0VmHngGiwnMx%3Df%3DfHCkzJz%3DFii%3D=
-w0_iQ%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://grou=
-ps.google.com/d/msgid/linux-ntb/CAJVkJvmUc78HpBEOLJ0VmHngGiwnMx%3Df%3DfHCkz=
-Jz%3DFii%3Dw0_iQ%40mail.gmail.com</a>.<br />
-
---0000000000007bf81605acd9497a--
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200817091617.28119-1-allen.cryptic%40gmail.com.
