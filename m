@@ -1,147 +1,150 @@
-Return-Path: <linux-ntb+bncBDR5N7WPRQGRBJEZ5L4QKGQE5H543JY@googlegroups.com>
+Return-Path: <linux-ntb+bncBCF5XGNWYQBRBLVV5P4QKGQEYREGPKY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qk1-x73b.google.com (mail-qk1-x73b.google.com [IPv6:2607:f8b0:4864:20::73b])
-	by mail.lfdr.de (Postfix) with ESMTPS id CEFCD2467C7
-	for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 15:56:53 +0200 (CEST)
-Received: by mail-qk1-x73b.google.com with SMTP id h185sf10899973qke.21
-        for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 06:56:53 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1597672612; cv=pass;
+Received: from mail-oi1-x23a.google.com (mail-oi1-x23a.google.com [IPv6:2607:f8b0:4864:20::23a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 304972475DB
+	for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 21:29:51 +0200 (CEST)
+Received: by mail-oi1-x23a.google.com with SMTP id f13sf6555776oij.8
+        for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 12:29:51 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1597692590; cv=pass;
         d=google.com; s=arc-20160816;
-        b=GOgQqP7ul114ardvUv2F4T/zvLnDhvIVMp4n3vH5Ebx4MuKPQVrev+gT2PP8w30nR2
-         ZzVscJrOilSwQWA+HdFg2PZhR5/RoPuZ5VXeTgrAARJnsaeWDVVBGeVMVtb06gJ+263r
-         pTyL+NJ/zylL0Eze0GtScjW588NXMz0PcOBnhtBlS6bggWcbdPpT683X/W4tjbN4usnu
-         EjnRYoM8zOMyb3NbX11afzQhUyjFIobgCdMtaSvFH34qkP7KudtS4cN5ctjx9ayfLTKg
-         5FO+sSBqmHiAjl/M9y9Sabvg3yM8qT9cgaYo+PdcX0D8GGRfwa0EpmMi1Ul+LHeweQ2c
-         RZrw==
+        b=Rf8jwKpYzNkl65Jcgo+u4D2ZGLt5ZXa2f6f2GBwxbFsqmpi2P/pPFT9nNmdaXfylZe
+         9cxnJbI4IZ2orcEkl6FDlWZK4qQFLrWi45HhvhoTXvEwAhqm70DSn4YjB4fuhKcGfwxE
+         cY27WXWF/7jxiMcegb414hkgf5xcdeJ/FVa3aJEygDGIdtNzvxNbpqDfmzZV0oQm/3uU
+         gWkybjsyCxQZ5H6u2XHxziq5XcFv+E6rGlr5Gb8hakkFhVCo+xXeLjJzi82XeV8gH5+R
+         jHN67Gbc2S/4Hq/EMXEtaqqAWVJaNurIVB9Gi8sLBfF8rln4woRRNdVcqeNyG6YChuT8
+         snIw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to
-         :subject:sender:dkim-signature;
-        bh=NvcHGRCTtNmv7xKMbL+mKUvpiW2XBfUX59dKPho6OFM=;
-        b=g8k3WagKJ2B5YpGmH2XS3kkXsEFPsTL4S60JA5/CnQFHh/4EXLy0Rw1TZjAunDkEsW
-         avsMa5jBRZGQQFyzgT/yCcbIKkmn8AksCtgkjMu0jrbotBBuWvQ2TV2eFnTYpFPvg8Tk
-         DUOV75HIUy29rcz8gXgOrtXOWj7h7MhhGAjG9pXlRiTcrJiPCvuJ18D92L1NgtRUfTzr
-         SlcEqxuK/aykjDSs+J93vLGX8X7NIHmKndaMe7oQwlD9Xx8SFGMNrK9D3UBbvPP8i7HD
-         Xv3vM3QmJ1bw1lM5IbxXbJi0+zBmWpu3Dtx467CmW49MVdJ+pQxiASEM5uwVvlFjtOqr
-         vVVA==
+         :list-id:mailing-list:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :dkim-signature;
+        bh=GpaZt01pBEmMppuFsDzVhZoStR5+QxPPp6JRaZ+sQjU=;
+        b=VJaZjmgDtzzASS/or8gIFjNACPlBaP7G+W7vOWRVYh6gilFHJX8qRDVfvpXqWP7rk2
+         GA5iDV9oI+6LODCQBgi9sEMdxAVE1Xg7nafLRUC8A2+MpZpG0q9nFAevDgfmh3Erchsw
+         TDAnZLL/JhqkrVZI2ZS9BfbUThYzENS8R3ud3hR1DIKtiqyl1hNRWA+nga3LKMc7p7mp
+         D1iP9CJ70Y09PtiqX4Z3QV2bEbIE/WrIuaY4UiVDIesT90JX4qr7z8ExPOLtNUDLQL+D
+         m8Py1BOMTTL5vdkMLb+/RUl8J/3MFnHojlYsRWVkJzm2iVu8INRx5a+YWp4XglC+3/K9
+         EnRw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel-dk.20150623.gappssmtp.com header.s=20150623 header.b=NhI2wzO1;
-       spf=pass (google.com: domain of axboe@kernel.dk designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=axboe@kernel.dk
+       dkim=pass header.i=@chromium.org header.s=google header.b="Il4/WYWW";
+       spf=pass (google.com: domain of keescook@chromium.org designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=keescook@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=NvcHGRCTtNmv7xKMbL+mKUvpiW2XBfUX59dKPho6OFM=;
-        b=kegZTwsf1dKJlG4ssx8tJy7iMJK/m8OurTXnUEu9AMYPQmd3tkZN1Br/zQbUIo2/DG
-         r+hImLlF//20w1IiZHZAWIn1vb11D5YMCKDtKjDJdmci2DEc36MU0NEREmBopQjX8AgY
-         z9S20UkKd1PnGy2e7+TUPAiThtbsqd3wc9Qa3sWI1COxHPAcX+NzMoDu86v5UdAkY0rV
-         kHY70VaAzxjgTXxQUSPZvESEdxDmnuNt1kYRRTr6Yh17LgCphB70434V/25dRqWuSgzj
-         iRj+si0OeqM7cDFi6E6hXr8iv68yg0QNk/aEy407FHsQ6jlZF/yN69PrgpPW4TxHftFA
-         VJDw==
+        bh=GpaZt01pBEmMppuFsDzVhZoStR5+QxPPp6JRaZ+sQjU=;
+        b=dQvUzKI/vXMUD7j/ld92C/xtU7grZU3nAacYWUJjzMsdS+nKhSoLPIwf38IHQHAApz
+         UvaLkGtS8UDSAZW0EP4pvnnUUYKgWIZYSxmM0x5ZuEeJLGJFAEcFdzi6uqgAIjtdcvYS
+         gXdFD8mX1U4sA2SCF/vAkMWKMOIfYHaQaf0nWDi2mGi1D6wcE7iuyO6M1ifVCGmwbRo3
+         awY7bs8E01c/QLEpgZDxsuR3EBUmodYBv2iqcFjKwyRn8DtYcyf40mPSDCBzX/3HSbL4
+         +jieC2gmbB9pdYOJUooQtneLDWZhT5uN4JcF/BwXHTa/xG4fXHc+WjNASqejOm6LrwHE
+         uyFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=NvcHGRCTtNmv7xKMbL+mKUvpiW2XBfUX59dKPho6OFM=;
-        b=h4Tl5eVlQ8wIrPhlOaFTuHR8HIQgqNUTilZIFJJ6azwrUPpURxV4sot803cXZs3VB6
-         ZK9nSSeAxd4Z+7nIQ0cCH7xv8bOGDlvnE08PRM14v+UVZhmQ6fQ5AiBCTZJJj4srLwEW
-         rvHiJWuTNLcuZJAxzvfqnaeDW/+z7DC0o00vVDfWAgzbHPuJ0Bg2jHp2oazDbwXsiL/+
-         izHmRIuFcPaRxmqXk6WwqRNdX/OldOcSkhciseS4uinv6uMIEnqNL66C1hheLB9JTutE
-         NtPBSAI86CrXt2afVKW87uM2fLeUDAkZF25WjvrnlmKlnQBKkrBJA/e2yWmt2uc0gVEk
-         hdPA==
+        bh=GpaZt01pBEmMppuFsDzVhZoStR5+QxPPp6JRaZ+sQjU=;
+        b=TpXBEew+i1q1klrIURxlNz04TGCB/0CgC3k8LaaXBIh13yJCQUEZyveQ4bo/wjSuJh
+         s5DUEpRrFfk45t1YD0LMQFCZ0FdOLhox1AfwybyLk/UIqQWtRxI/Pw9LWvCW0XPkypJ5
+         BtwuETInUx+uvJbNkmn4fl4USb4wGJtrFklX7SmOCu19R/DZCSTsSPkvBXsGFH03+Jha
+         V1h9HvlKTWyeJkPuuaOp3HjCL3xppGEQmzJ9CIgZ2i3Bsmo9ncIBYIyLK7Z3AfsKQOv4
+         e7z5y/fhojM0qDy5VE5UXm2xf/PHUMCCMoW1Sf3ehcszuJColAozspnYZ2h/KK66yh9v
+         TF2A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532dFbRnVQ84Z9JDiPAqBaVY8SNtNcKJfaevo1tShCTRlGLUoIfP
-	KkyZcaKm7uCwo/NgHxz3L/s=
-X-Google-Smtp-Source: ABdhPJwcYooD7K8l2SqHhg14ov29KdSJvcvm9YVPKqnBRgFrE6o/AtRtBlHq/MzeyLqrE2el9L2Crw==
-X-Received: by 2002:a37:bd46:: with SMTP id n67mr13208872qkf.190.1597672612692;
-        Mon, 17 Aug 2020 06:56:52 -0700 (PDT)
+X-Gm-Message-State: AOAM533l06AiBE5CktmQTt3+gQMKD39FrvnwiNK5XoeGPpObJBYSAg55
+	kEmqjjRoYFi9ULvetJKPmpA=
+X-Google-Smtp-Source: ABdhPJzj/ywXkGBjn09GAQeswbHwY0M4umm2d+jmvXjmo2X/etEU74JPN9u3kVv2c807O9pkE7wLPQ==
+X-Received: by 2002:a4a:2f4b:: with SMTP id p72mr12349512oop.39.1597692590134;
+        Mon, 17 Aug 2020 12:29:50 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ac8:34dd:: with SMTP id x29ls6545965qtb.6.gmail; Mon, 17 Aug
- 2020 06:56:52 -0700 (PDT)
-X-Received: by 2002:ac8:47c4:: with SMTP id d4mr13863833qtr.43.1597672612269;
-        Mon, 17 Aug 2020 06:56:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597672612; cv=none;
+Received: by 2002:a05:6830:1d90:: with SMTP id y16ls3849300oti.10.gmail; Mon,
+ 17 Aug 2020 12:29:49 -0700 (PDT)
+X-Received: by 2002:a05:6830:3196:: with SMTP id p22mr13187957ots.102.1597692589798;
+        Mon, 17 Aug 2020 12:29:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597692589; cv=none;
         d=google.com; s=arc-20160816;
-        b=zCwQcPkgnTdLyonrXWBfSq+CU1OAeUoV+LN3FRyDjIFyoeNXUZh6EpiIH3z1GIZfq/
-         AROVwojaZnbt2WIyUnjYSLVKNvIkn2etM8DJ1mllX7C+NCdH2aRO0WLUPNqCoSLDu0d2
-         1STEidMTw2X1DNrvYlgr6Gbbyof9YChT/kf3+b65Tm+TlpCXSZdtFmB3PG15Lkj6+fnN
-         KOpQnFDc01i8+ipNeKNVECBvTqKR1jXl/X6HXJkqTGbPIPIcrOl97PwQiM92k4xPc32B
-         iKZ6czxu+S0Dxcq8KbHV05xw2OzuXd+g9Pm7ozwMU+T+ym4HZqMegbYLKQaDzXn5HOTB
-         Rw6w==
+        b=rngWydKrvFSvVTxnmp2es+5gmYMMG12Ivj/JWCUlUfOM9+bxUX3sFYkuvIq86wObi8
+         H+kcB9YJAXOxShX55efpBrqvCOZyNvCi09R+gIv9Kv2cPo6lPNzH/5hW6CRiFacqZe5Z
+         OhRNji8KDOtxipcye3ulIAoCYcjkjziiH0ZGHm/Q/uQFuvbiKHHHTTEc2Is6eb7YtyyH
+         hzV8i9839NABjMozybNhF8AV08wbjdCOn31PYBxme/5uv/JebrFCJush9miHyWy0P6eV
+         181hiclQ183xyw+iz4e1vaQKKsq6XuVCJPAIUgS0waQ9baXWKAbWxILE1y70BoqVnsRM
+         VBpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=EwBPUmMzjIeHY9w/IO7ylAcRHQqFTujUKmssL35PKKE=;
-        b=bLqO4ubosHvvF3mak3c0Osh3TgTBUg36ltdURMEg3n5iwuNr2eGpLqybPyHQp9z72L
-         BYv6SCpIcY9uKQ5D721ycjB5sbI+jhZf6o/dSixzqT4Q86awHIal9A82qD25LKPoTouA
-         tcYHgDUCPFNS0qc0FHpqxOsmqQL2ODSZaLc2AOTezNy6cvBpNa2U2zZU/gbrIxUfkKiH
-         EObBy39DPfz/MA9GxqbWrxmQ51tmRvHYMr8V7JmXzaUWbYBbD9ep9pDL/nzcIT2udH4l
-         IDvkBlgKYiWRL6Yivt1UovjRl8LAeM+9XpFoy/qoVtmX/pl80FEhTskZGPQ2v1RcLU4p
-         JbfQ==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=IQEFM5eDrlk4uN0cUulgaoouXT3z+FbkNrUscxGEwfY=;
+        b=rCg45Kx4ZwiroaWxKISc/ObEzCZPzQbUnTYnZ6BOLRTXfV1DupzESIXjvddLpPNKnz
+         h1P1bL3BOW1cgF5kxOrOgjBQLuCJjNOXoLgPq31GhSoSOi3AQwO+zaHxcNuC/R8Ht6os
+         Hq7siTRcXImh6zZ4rL8bG0/ssRMK4eXxKZH4UJLTrV9sQc+Ug2TgrTA7uJAfrkRK+Evy
+         Mw+nNJA5vsnpBFjLvCdwmYZKxhnZeDkTS0KsZfO2BfjKVdMKmZ4pwPDegZwCt8HBikLV
+         XUYPYfwh+Xzja49tUk8wO4xdPabU6lIMZ1hD525MYo54ocmqtVrL0XdwPcjKVFyBgBvG
+         J6aA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel-dk.20150623.gappssmtp.com header.s=20150623 header.b=NhI2wzO1;
-       spf=pass (google.com: domain of axboe@kernel.dk designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=axboe@kernel.dk
-Received: from mail-pl1-x641.google.com (mail-pl1-x641.google.com. [2607:f8b0:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id b21si923077qtq.1.2020.08.17.06.56.52
+       dkim=pass header.i=@chromium.org header.s=google header.b="Il4/WYWW";
+       spf=pass (google.com: domain of keescook@chromium.org designates 2607:f8b0:4864:20::541 as permitted sender) smtp.mailfrom=keescook@chromium.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=chromium.org
+Received: from mail-pg1-x541.google.com (mail-pg1-x541.google.com. [2607:f8b0:4864:20::541])
+        by gmr-mx.google.com with ESMTPS id c199si801008oob.1.2020.08.17.12.29.49
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Aug 2020 06:56:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of axboe@kernel.dk designates 2607:f8b0:4864:20::641 as permitted sender) client-ip=2607:f8b0:4864:20::641;
-Received: by mail-pl1-x641.google.com with SMTP id g7so6428703plq.1
-        for <linux-ntb@googlegroups.com>; Mon, 17 Aug 2020 06:56:52 -0700 (PDT)
-X-Received: by 2002:a17:90a:5aa2:: with SMTP id n31mr12383701pji.33.1597672611292;
-        Mon, 17 Aug 2020 06:56:51 -0700 (PDT)
-Received: from ?IPv6:2605:e000:100e:8c61:ff2c:a74f:a461:daa2? ([2605:e000:100e:8c61:ff2c:a74f:a461:daa2])
-        by smtp.gmail.com with ESMTPSA id y126sm5565062pfy.138.2020.08.17.06.56.47
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Aug 2020 06:56:50 -0700 (PDT)
+        Mon, 17 Aug 2020 12:29:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keescook@chromium.org designates 2607:f8b0:4864:20::541 as permitted sender) client-ip=2607:f8b0:4864:20::541;
+Received: by mail-pg1-x541.google.com with SMTP id m34so8574948pgl.11
+        for <linux-ntb@googlegroups.com>; Mon, 17 Aug 2020 12:29:49 -0700 (PDT)
+X-Received: by 2002:a63:2e87:: with SMTP id u129mr11009060pgu.347.1597692589083;
+        Mon, 17 Aug 2020 12:29:49 -0700 (PDT)
+Received: from www.outflux.net (smtp.outflux.net. [198.145.64.163])
+        by smtp.gmail.com with ESMTPSA id h19sm18737765pjv.41.2020.08.17.12.29.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 17 Aug 2020 12:29:47 -0700 (PDT)
+Date: Mon, 17 Aug 2020 12:29:46 -0700
+From: Kees Cook <keescook@chromium.org>
+To: Jens Axboe <axboe@kernel.dk>
+Cc: Allen Pais <allen.cryptic@gmail.com>, jdike@addtoit.com, richard@nod.at,
+	anton.ivanov@cambridgegreys.com, 3chas3@gmail.com,
+	stefanr@s5r6.in-berlin.de, airlied@linux.ie, daniel@ffwll.ch,
+	sre@kernel.org, James.Bottomley@HansenPartnership.com,
+	kys@microsoft.com, deller@gmx.de, dmitry.torokhov@gmail.com,
+	jassisinghbrar@gmail.com, shawnguo@kernel.org,
+	s.hauer@pengutronix.de, maximlevitsky@gmail.com, oakad@yahoo.com,
+	ulf.hansson@linaro.org, mporter@kernel.crashing.org,
+	alex.bou9@gmail.com, broonie@kernel.org, martyn@welchs.me.uk,
+	manohar.vanga@gmail.com, mitch@sfgoth.com, davem@davemloft.net,
+	kuba@kernel.org, linux-um@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-atm-general@lists.sourceforge.net, netdev@vger.kernel.org,
+	linux-block@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	openipmi-developer@lists.sourceforge.net,
+	linux1394-devel@lists.sourceforge.net,
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	linux-hyperv@vger.kernel.org, linux-parisc@vger.kernel.org,
+	linux-input@vger.kernel.org, linux-mmc@vger.kernel.org,
+	linux-ntb@googlegroups.com, linux-s390@vger.kernel.org,
+	linux-spi@vger.kernel.org, devel@driverdev.osuosl.org,
+	Allen Pais <allen.lkml@gmail.com>,
+	Romain Perier <romain.perier@gmail.com>
 Subject: Re: [PATCH] block: convert tasklets to use new tasklet_setup() API
-To: Allen Pais <allen.cryptic@gmail.com>, jdike@addtoit.com, richard@nod.at,
- anton.ivanov@cambridgegreys.com, 3chas3@gmail.com,
- stefanr@s5r6.in-berlin.de, airlied@linux.ie, daniel@ffwll.ch,
- sre@kernel.org, James.Bottomley@HansenPartnership.com, kys@microsoft.com,
- deller@gmx.de, dmitry.torokhov@gmail.com, jassisinghbrar@gmail.com,
- shawnguo@kernel.org, s.hauer@pengutronix.de, maximlevitsky@gmail.com,
- oakad@yahoo.com, ulf.hansson@linaro.org, mporter@kernel.crashing.org,
- alex.bou9@gmail.com, broonie@kernel.org, martyn@welchs.me.uk,
- manohar.vanga@gmail.com, mitch@sfgoth.com, davem@davemloft.net,
- kuba@kernel.org
-Cc: keescook@chromium.org, linux-um@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-atm-general@lists.sourceforge.net,
- netdev@vger.kernel.org, linux-block@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- openipmi-developer@lists.sourceforge.net,
- linux1394-devel@lists.sourceforge.net, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org, linux-hyperv@vger.kernel.org,
- linux-parisc@vger.kernel.org, linux-input@vger.kernel.org,
- linux-mmc@vger.kernel.org, linux-ntb@googlegroups.com,
- linux-s390@vger.kernel.org, linux-spi@vger.kernel.org,
- devel@driverdev.osuosl.org, Allen Pais <allen.lkml@gmail.com>,
- Romain Perier <romain.perier@gmail.com>
+Message-ID: <202008171228.29E6B3BB@keescook>
 References: <20200817091617.28119-1-allen.cryptic@gmail.com>
  <20200817091617.28119-2-allen.cryptic@gmail.com>
-From: Jens Axboe <axboe@kernel.dk>
-Message-ID: <b5508ca4-0641-7265-2939-5f03cbfab2e2@kernel.dk>
-Date: Mon, 17 Aug 2020 06:56:47 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <b5508ca4-0641-7265-2939-5f03cbfab2e2@kernel.dk>
 MIME-Version: 1.0
-In-Reply-To: <20200817091617.28119-2-allen.cryptic@gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-Original-Sender: axboe@kernel.dk
+Content-Disposition: inline
+In-Reply-To: <b5508ca4-0641-7265-2939-5f03cbfab2e2@kernel.dk>
+X-Original-Sender: keescook@chromium.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel-dk.20150623.gappssmtp.com header.s=20150623
- header.b=NhI2wzO1;       spf=pass (google.com: domain of axboe@kernel.dk
- designates 2607:f8b0:4864:20::641 as permitted sender) smtp.mailfrom=axboe@kernel.dk
+ header.i=@chromium.org header.s=google header.b="Il4/WYWW";       spf=pass
+ (google.com: domain of keescook@chromium.org designates 2607:f8b0:4864:20::541
+ as permitted sender) smtp.mailfrom=keescook@chromium.org;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=chromium.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -154,24 +157,30 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On 8/17/20 2:15 AM, Allen Pais wrote:
-> From: Allen Pais <allen.lkml@gmail.com>
+On Mon, Aug 17, 2020 at 06:56:47AM -0700, Jens Axboe wrote:
+> On 8/17/20 2:15 AM, Allen Pais wrote:
+> > From: Allen Pais <allen.lkml@gmail.com>
+> > 
+> > In preparation for unconditionally passing the
+> > struct tasklet_struct pointer to all tasklet
+> > callbacks, switch to using the new tasklet_setup()
+> > and from_tasklet() to pass the tasklet pointer explicitly.
 > 
-> In preparation for unconditionally passing the
-> struct tasklet_struct pointer to all tasklet
-> callbacks, switch to using the new tasklet_setup()
-> and from_tasklet() to pass the tasklet pointer explicitly.
+> Who came up with the idea to add a macro 'from_tasklet' that is just
+> container_of? container_of in the code would be _much_ more readable,
+> and not leave anyone guessing wtf from_tasklet is doing.
+> 
+> I'd fix that up now before everything else goes in...
 
-Who came up with the idea to add a macro 'from_tasklet' that is just
-container_of? container_of in the code would be _much_ more readable,
-and not leave anyone guessing wtf from_tasklet is doing.
-
-I'd fix that up now before everything else goes in...
+As I mentioned in the other thread, I think this makes things much more
+readable. It's the same thing that the timer_struct conversion did
+(added a container_of wrapper) to avoid the ever-repeating use of
+typeof(), long lines, etc.
 
 -- 
-Jens Axboe
+Kees Cook
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/b5508ca4-0641-7265-2939-5f03cbfab2e2%40kernel.dk.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/202008171228.29E6B3BB%40keescook.
