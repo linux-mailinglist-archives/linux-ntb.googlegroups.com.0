@@ -1,119 +1,123 @@
-Return-Path: <linux-ntb+bncBCFYTA5O7QNRB6MV5H4QKGQEJ7H5T4Y@googlegroups.com>
+Return-Path: <linux-ntb+bncBCFYTA5O7QNRBBUW5H4QKGQESBUKLGI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63d.google.com (mail-pl1-x63d.google.com [IPv6:2607:f8b0:4864:20::63d])
-	by mail.lfdr.de (Postfix) with ESMTPS id BECB3246244
-	for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 11:16:42 +0200 (CEST)
-Received: by mail-pl1-x63d.google.com with SMTP id j11sf4494462plj.6
-        for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 02:16:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1597655801; cv=pass;
+Received: from mail-pj1-x103b.google.com (mail-pj1-x103b.google.com [IPv6:2607:f8b0:4864:20::103b])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2980A24624F
+	for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 11:16:56 +0200 (CEST)
+Received: by mail-pj1-x103b.google.com with SMTP id gf16sf10098194pjb.7
+        for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 02:16:56 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1597655814; cv=pass;
         d=google.com; s=arc-20160816;
-        b=QmahegxAsCvydoTTI/aac/JCzHS0XyeDVdjokdqFZ8cWVRTFxHoxSHOFUXi81Ok1pI
-         DDItQPcWJuBZy7oUAZunkejxAKRO9y1XBwlBe3hRDFXS1L2g+3eCQUu6/kkWUB3g3KO7
-         bLY/ZxnG9puyKSNaJAifw/hN69MSz5t1m4m1Pge964PdmS9+zJLZOkaS0rO0EIwFE8i5
-         spmsT+lNggNfmehD+k5qCIQ3kc7vZM12TvWatQGJdu0OLjT1dFMZiqIsyJ8YzgWYEiik
-         DkEvqNu/yCkoghmvJy/YPjAaMuHeyyTIAyCYaKwKNYXjwr+egqcGKdVq+ggxU13o2kOK
-         lyvw==
+        b=X2iVrlw6htvXPfIpld6FgJ0j2eidu/wvYzh1oMbJ/7pbNj6adJNIZQb8DV3LZQW1z0
+         m15qgDzhkj/5wj/jaDuVdukQSgl/J3MOBmgs7X75oPHZ9fk7n9N0/ivaXY98FKgglvR5
+         /DD6ZLKeYynunQbOQ+rID4PESD6l7+rEwIQlBSQHg0jslFo46e+By33NVsS/KCqa8KCo
+         gyd5E5QSwAvn9LfWL6j81SDnT0zCcaUB23BHxbKd6K53fIH48Px0X0W1MPgtXBr+nTB6
+         PPrsqYrnNSDC5hoGkDvGyDKuUFz77I4pwcReXxnuNQiuxEjRXvxYFqf0RFgIxzaLDSHb
+         05wg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:message-id:date:subject:cc:to:from
-         :mime-version:sender:dkim-signature:dkim-signature;
-        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
-        b=tmsXbf+UIgE7OlcrZAJqHW1zgymet9rcQRPZBN40frO+287Qi50ZIowDRlorBF6/+n
-         4NkALN1Avhk8zmdnKVywFCjD+JdalBo50+9cpA3N97ReYVhiWzj40IAJ66h6TdWf90w1
-         YKdXqqqTi9Lv4uEDtjiXMvWMCfAPM8g/cJkNFPY21rg+XbAEMtoWIvjQRf2WbqIh/9Ta
-         fKdb/M9TRnUujJW5ZxvpxCMEALZ2gSOvQ4H2irtnLG3Fc2avFAs9eWiypRpVOYHn3K+H
-         SvLH1g7Pk8wo2b62gQ1aWCteLMQUdpoFU1TKXDQVH00923k4wNUpZl3g2zjVNvDt9A6l
-         XmBw==
+         :list-id:mailing-list:precedence:references:in-reply-to:message-id
+         :date:subject:cc:to:from:mime-version:sender:dkim-signature
+         :dkim-signature;
+        bh=+xraWVOs0nmvUFLVJV3DEq3HRCPAaHD8VghfzgPw5GE=;
+        b=aLjBeaa0siHv5c7uRF9qmbRwP5aMO5qH2SMtHll1J23a4Zzl7yqjyVgnERt81zz+kT
+         HpCdY5uGdkLyqk8M6tdTvweN2llaz1q6c8cW6Z3+889JrVNo6XXpnDcdisXOWjCbVfrl
+         BinK3o4OrBYaCv4+X6maPZ3Y6XjLeXBkTxOCHR/nZuSFldWu4XcPqVhXpEPshgafVEOO
+         jLLt7bmqwOh+OH2aHjwtHL+l2wsr5QuzCPU2wyYW+neONpICcZ8FMMBxji0UCfw3XhRy
+         Rhrwm5JsaRviTqo8P4gMcEvw+9QmOyEkYcAhcXpPyE02Ls9kUlIX9OHb5Kd6zoGzkuMJ
+         N/Ow==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="mxWi/elP";
-       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Q0W/VwIV";
+       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:from:to:cc:subject:date:message-id
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:mime-version:from:to:cc:subject:date:message-id:in-reply-to
+         :references:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
-        b=eqA5B+Hs7DTj0nRaPMc+ZcrC0XxkWlR8Wr6HXcXp9b+tXSmnVEEqbhOzyhkt9kyOs9
-         9D7wzlCEF6oCwaiywZuRLOX63HYyLV3/lU1jyWEZlhCfydd+F13hoiVFysXTSq0fLEP0
-         bpxmw1sbyrswJv0BGNDmVhJE+bFpgiygjDCYcw5RSlnHHcdiPGF+zx3QmN6FvnvYDSGB
-         jaJWNt5E+PHUSW8g7iXdqmXs9r96GKAnikGRMWbma22STtkNesFu5F2g4qUb79bK0Uf+
-         VyAy1z8lcAl1uJve3p+ybxfHMrkomShWmaRIapq3i6ENapVbayoC4nxc9TnVJ82QdLzQ
-         grrQ==
+        bh=+xraWVOs0nmvUFLVJV3DEq3HRCPAaHD8VghfzgPw5GE=;
+        b=Cflo/k1en9+Na0Z8KBOkPlVC8Nx7finMFud0EnBYAtVifHExTgddUImnTXkd08cTfH
+         lf7pGLeNCtv5/VRkqq7d7o7nqIDeVW2FV/ZwCMywBNbBKwHTEmNC6YiR3F92uHcpjpvS
+         Ih0Gp40qA2amV/qK1B13l35QWR9EorhU6AvfcsGQbWcrC4Dpu5IgSPAeGgnco0jwr7VJ
+         5vmkkRG+C8FMPFpoUQvhrLqHorRETH7dMYPz2u3bO9BIBveF2MQs94E0nJyB963e40rU
+         6S/QNMhkSdzrrWcvFpWVIjUBedAleBuV0n8EQmutGGHwnhay+SOydsFYzlkWyhWzXHyr
+         4P0w==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=mime-version:from:to:cc:subject:date:message-id:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
-        b=OAtL1xqKE/3pVGnaSNXGqq6fsfvD6KaQBqp9qnF40cpAjTKOgRzTr3k0GudbW04uAF
-         v+B2coX5CHJ2k4uGzOZAL/Fb0LTKUectZczrYRo1MMtAlkuwXzoXyYzyO7KJQOpqNzxK
-         egbU94Zu8/1iWWcpmIW/TRUIHhruQXF41/92J6fv02VHGDclbobikv8zqSOA8XLtKwNf
-         acMVb43Sndt+c8aZwhvLZ/U/+eao00mCWdUX1IcYR0FeYBiuWJl0wJWk3/S9SJLdVN0D
-         fQ4MHEAiY2ZJ8gnddzcIuIB+KUx5MmQDUZwozpiPbxJeXAd9hXPW10Nrhdtt6ci86dv4
-         AcPA==
+        h=mime-version:from:to:cc:subject:date:message-id:in-reply-to
+         :references:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=+xraWVOs0nmvUFLVJV3DEq3HRCPAaHD8VghfzgPw5GE=;
+        b=Xp3ZLUSAuPXgFHaLSOb9LzlnSemm63w8dVnDONDw6Nb3QZyuYOw5F6Gcrxxpb+Pxok
+         xaDDXdnYajvSLFR+PqP9z7o5/2t9jbtuSUgl/Wi13/hD9AVQNH5cry9Hf/zUxUyKhQ6r
+         TJuM4TeE4leOckPY4Z6MI5hdNuVPLxuuOLvKLNQyDtcGNs8r+N1tJTXG52I2C3iBGVdb
+         /d54h5vtGJdPUln/uAKu2PJo8SFYNDM0Mr+p7OmGKId1GvG+yydzb/4+SYUB7B/+8y1+
+         8dFB7i7vECnl/Zu/UiCfu3j3aojVNe4Tsiuo2W10zllBc8pEUV59MJzaoAO/e+Ib27Iq
+         ZTsw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:to:cc:subject:date
-         :message-id:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=b3f63BYIEoAO4bYxPHLKrAcnJb8RhfUTNNfPIFLtgTM=;
-        b=PUmWhvhZRaNk6SAVg/UsHewl689npaaBuJS/s6XpSXxV2OXciRY1LkbEuDSE8lhODo
-         CusbZsjVptKQhfTp8A1cp+EKsRbkdhfAYALXj6HQnEmNl2AlSGavVUk4GZiVTmklEwUY
-         Qipni1ZYyzBdS4CuCrLl0zavY4kG/fbLxXFSETXvcNB+iq8gbjQHJ9vV/99bjZ5xRwGM
-         03KjmeSDRfoNgeLxGTCzS22YafSdZl8Jlnkm3qQ6OLcFI5UAWI+ZqCUBnWLrgnegu7yo
-         AkZygbh/iaKbzWMZm/7odwzgsMcJp1e/hEEszmKvz0uwXx1LuA9uLVqL5vy92ctOvyIJ
-         +7qg==
+         :message-id:in-reply-to:references:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=+xraWVOs0nmvUFLVJV3DEq3HRCPAaHD8VghfzgPw5GE=;
+        b=OMBR1Mdmqht/rx5u9MAoeHDThf6cie2wjlxCjlUlBsYUIvZ1N7ZBugGPK2HRAfLbxL
+         bV8mG3H3nyZqjUnnddDk2lg8H+dpAfOE4Fl1FTJayAPkYkHdKS7wSElCBEzM2afqG328
+         CeL9/7cnUkd4VGipRugRDFaltjhEjMCF/EDt60iqs+SmANLr3NAp1nLGIpI+fJnAX0WI
+         l/e0r8SOx3Jl7+R2kHFvwobmfz6e50bb+oIYGj65N2x2odvWf6RXyk2J7HmylYW0cocf
+         GPlYcUVHRje2EAzdQ1uKdXsTMz3EVRPLC4fjJcV/0gjnZjVOPYZkfZ17zVh6e/CG2JIS
+         BO+A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532PeH5mdFpZRyWJIjbcavPMm8iTn4Ph4ze7owmTw+jxH0Z141Sj
-	rjooZhot+gKMJmjdFkGuIck=
-X-Google-Smtp-Source: ABdhPJzSLQSlC8q5zgGLAaxpRZk8HmQNaT4t9ywnK5hCfl1YXOLIVaDC3PbxwUC/CfVTRgaqEJBo7A==
-X-Received: by 2002:a17:902:aa91:: with SMTP id d17mr10614299plr.27.1597655801486;
-        Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
+X-Gm-Message-State: AOAM532T3yU39EpYmJgdaQbE4n4wcjY70J4TOoothTU+sU0FqxlzEcE9
+	B+Wdu46WW0TDIjD8Z6FAzUA=
+X-Google-Smtp-Source: ABdhPJxEisfz+CFvkSwV4cFqbuQAqygPyFrDjmHmKnUS8/q48KJn1T74efDqIswDJB2ASK/DT45Gjw==
+X-Received: by 2002:a17:902:c286:: with SMTP id i6mr10299646pld.63.1597655814685;
+        Mon, 17 Aug 2020 02:16:54 -0700 (PDT)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a62:8cc7:: with SMTP id m190ls5608306pfd.2.gmail; Mon, 17
- Aug 2020 02:16:41 -0700 (PDT)
-X-Received: by 2002:aa7:8757:: with SMTP id g23mr10564658pfo.283.1597655801023;
-        Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597655801; cv=none;
+Received: by 2002:a17:902:142:: with SMTP id 60ls6717712plb.9.gmail; Mon, 17
+ Aug 2020 02:16:54 -0700 (PDT)
+X-Received: by 2002:a17:902:b683:: with SMTP id c3mr10647796pls.248.1597655814277;
+        Mon, 17 Aug 2020 02:16:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597655814; cv=none;
         d=google.com; s=arc-20160816;
-        b=wykMmUoLLUYHM8XKgQqnqqL3Rl+6wE/t4HsjSjRePb3xcB7BWNG/pCrBw/Amb9gGP7
-         QubLiFfeb1oWVKMmiopHrxQLXdznSI3oksF9x/oMsufI/LzAthFK1g6Di1UzmvJlPD9Z
-         gWLubN+TWoBvUi0RaoyWfoB8or4zqP0JPlOOLG6vTKsAH5otjgz3w3NWJAQgWY50VLnd
-         ywoAjRb+zDaAZdZfpN5bSfVLziwDRa0GF/yEilSjWRhYTahXphe48Yhpu7alEiEqRckk
-         93vUlWT8wZUAd673q23cA+ogrZbgRfp7KtSmOs2opUNUFTUacvHF31JVO/q/vKVEUw10
-         JkZQ==
+        b=Wotv9mb02F8cAr0NvNBHG1yB/QC5M1SksruhodJCKXResMx/TMglumLQrrKA8wsQvt
+         Rae79d5X0o33+fK00Jk5cXdYrbqWkpP4GzIC7ypz9uERszG5XkCOe1YtH0NWoe7d55Zu
+         Dd6zgOcnO/fQ4AsSEiG05ClEWUJNGHLs8UhOmW2akvv+xzGN++5jSv65/tDWpZ3fP9Oy
+         KR83aMJeORpgeXHrWRvD+i5X3JZKceSfRe84Zz5XKkQpJREgOslDBMO/WJXlLLDp/55a
+         z/CbgWtR6wsSc7g7dePsiiK76elq2qoVxXmcomp7zWuGo34AS+vjui9EpDT7kwllC5u5
+         3VUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:subject:cc:to:from:dkim-signature;
-        bh=nYi1qCRVXukm3Vys4Ax0zzpvhrxgpQ9/OWRIEzi7jMM=;
-        b=L0n8OOfX0ecFaIuU55rNFs0+HLWWgtc6pZw1oajpRqaECFwxUAasEBYqdPbcVPFqw9
-         0KU7xXEoxdmV7F7LV6aqfVFRCKSVK1WFqKZvn3I2s/j/uFLdycs6dFUDrw4WQ/j9qg8N
-         syBxs7VGdJMqrGDC+Zm5j8jLwO8E4UratI8S6uQanslN83V30aR53p9xzcnv4q/SU3o9
-         n5GU4AxrbFRbnU18Npod5sho5x1803WiKUVsQYhBzlcnqObWPve7IAp1Lft07yu4o0cF
-         2CqDXBz84HDZ/9X5ZNGbpv04+9m/N2nDgSQxQfTKLuks29+4LFwMq7W0zO+Vj1Aopjx9
-         0MYA==
+        h=references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=mHuwQk3c70LEeVRDgRBhzwGDJ7nUBqanmZ13DbCY85U=;
+        b=Y6lvcdN3PQkrPBR1pdmMwerSLtqNPjrZ4JAZcwrpru4qfoHMl7BmVbarNthQzN33fV
+         h6wGMC65jmvljUa3PYfWIhUj9HC9QKRttieLgJHDNeB/UY+CaXvHyLQ+4Jh2pdqIfYvO
+         igFhv+2idZFDvIvbrOryHA/RkkGjhyAMoaEgZWdCZ9icrRcNFBF8RvUdS6QTGcFOKMQ1
+         sXUYCuSbRvf/L9zlr9pBZuEmf/5C7JBanWwnkk3jy2xjKTEISLvb7IrIRTASKppA3rQd
+         XSJfiAjsX7ae1SavLDAwRIj0wlVZxxzNd/j8R9nogIGPcrcYCCQsEuwwJuZ7VKpAFyMe
+         xzRA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="mxWi/elP";
-       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Q0W/VwIV";
+       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-pj1-x1044.google.com (mail-pj1-x1044.google.com. [2607:f8b0:4864:20::1044])
-        by gmr-mx.google.com with ESMTPS id j4si1041080pjd.0.2020.08.17.02.16.41
+Received: from mail-pf1-x443.google.com (mail-pf1-x443.google.com. [2607:f8b0:4864:20::443])
+        by gmr-mx.google.com with ESMTPS id cp11si1155684plb.1.2020.08.17.02.16.54
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044 as permitted sender) client-ip=2607:f8b0:4864:20::1044;
-Received: by mail-pj1-x1044.google.com with SMTP id kr4so7516373pjb.2
-        for <linux-ntb@googlegroups.com>; Mon, 17 Aug 2020 02:16:41 -0700 (PDT)
-X-Received: by 2002:a17:902:8495:: with SMTP id c21mr10840498plo.82.1597655800670;
-        Mon, 17 Aug 2020 02:16:40 -0700 (PDT)
+        Mon, 17 Aug 2020 02:16:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::443 as permitted sender) client-ip=2607:f8b0:4864:20::443;
+Received: by mail-pf1-x443.google.com with SMTP id m71so7936036pfd.1
+        for <linux-ntb@googlegroups.com>; Mon, 17 Aug 2020 02:16:54 -0700 (PDT)
+X-Received: by 2002:a63:5213:: with SMTP id g19mr8976321pgb.44.1597655813910;
+        Mon, 17 Aug 2020 02:16:53 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
-        by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.16.26
+        by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.16.40
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Aug 2020 02:16:39 -0700 (PDT)
+        Mon, 17 Aug 2020 02:16:53 -0700 (PDT)
 From: Allen Pais <allen.cryptic@gmail.com>
 To: jdike@addtoit.com,
 	richard@nod.at,
@@ -163,14 +167,16 @@ Cc: keescook@chromium.org,
 	devel@driverdev.osuosl.org,
 	Allen Pais <allen.lkml@gmail.com>,
 	Romain Perier <romain.perier@gmail.com>
-Subject: [PATCH] arch: um: convert tasklets to use new tasklet_setup() API
-Date: Mon, 17 Aug 2020 14:45:55 +0530
-Message-Id: <20200817091617.28119-1-allen.cryptic@gmail.com>
+Subject: [PATCH] block: convert tasklets to use new tasklet_setup() API
+Date: Mon, 17 Aug 2020 14:45:56 +0530
+Message-Id: <20200817091617.28119-2-allen.cryptic@gmail.com>
 X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20200817091617.28119-1-allen.cryptic@gmail.com>
+References: <20200817091617.28119-1-allen.cryptic@gmail.com>
 X-Original-Sender: allen.cryptic@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b="mxWi/elP";       spf=pass
- (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1044
+ header.i=@gmail.com header.s=20161025 header.b="Q0W/VwIV";       spf=pass
+ (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::443
  as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;       dmarc=pass
  (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Content-Type: text/plain; charset="UTF-8"
@@ -196,38 +202,70 @@ and from_tasklet() to pass the tasklet pointer explicitly.
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- arch/um/drivers/vector_kern.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ drivers/block/umem.c    | 6 +++---
+ drivers/block/xsysace.c | 6 +++---
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/arch/um/drivers/vector_kern.c b/arch/um/drivers/vector_kern.c
-index 8735c468230a..06980870ae23 100644
---- a/arch/um/drivers/vector_kern.c
-+++ b/arch/um/drivers/vector_kern.c
-@@ -1196,9 +1196,9 @@ static int vector_net_close(struct net_device *dev)
+diff --git a/drivers/block/umem.c b/drivers/block/umem.c
+index 2b95d7b33b91..320781d5d156 100644
+--- a/drivers/block/umem.c
++++ b/drivers/block/umem.c
+@@ -405,7 +405,7 @@ static int add_bio(struct cardinfo *card)
+ 	return 1;
+ }
  
- /* TX tasklet */
- 
--static void vector_tx_poll(unsigned long data)
-+static void vector_tx_poll(struct tasklet_struct *t)
+-static void process_page(unsigned long data)
++static void process_page(struct tasklet_struct *t)
  {
--	struct vector_private *vp = (struct vector_private *)data;
-+	struct vector_private *vp = from_tasklet(vp, t, tx_poll);
+ 	/* check if any of the requests in the page are DMA_COMPLETE,
+ 	 * and deal with them appropriately.
+@@ -415,7 +415,7 @@ static void process_page(unsigned long data)
+ 	 */
+ 	struct mm_page *page;
+ 	struct bio *return_bio = NULL;
+-	struct cardinfo *card = (struct cardinfo *)data;
++	struct cardinfo *card = from_tasklet(card, t, tasklet);
+ 	unsigned int dma_status = card->dma_status;
  
- 	vp->estats.tx_kicks++;
- 	vector_send(vp->tx_queue);
-@@ -1629,7 +1629,7 @@ static void vector_eth_configure(
- 	});
+ 	spin_lock(&card->lock);
+@@ -891,7 +891,7 @@ static int mm_pci_probe(struct pci_dev *dev, const struct pci_device_id *id)
+ 	if (!card->queue)
+ 		goto failed_alloc;
  
- 	dev->features = dev->hw_features = (NETIF_F_SG | NETIF_F_FRAGLIST);
--	tasklet_init(&vp->tx_poll, vector_tx_poll, (unsigned long)vp);
-+	tasklet_setup(&vp->tx_poll, vector_tx_poll);
- 	INIT_WORK(&vp->reset_tx, vector_reset_tx);
+-	tasklet_init(&card->tasklet, process_page, (unsigned long)card);
++	tasklet_setup(&card->tasklet, process_page);
  
- 	timer_setup(&vp->tl, vector_timer_expire, 0);
+ 	card->check_batteries = 0;
+ 
+diff --git a/drivers/block/xsysace.c b/drivers/block/xsysace.c
+index 5d8e0ab3f054..bdd50a87d10f 100644
+--- a/drivers/block/xsysace.c
++++ b/drivers/block/xsysace.c
+@@ -762,9 +762,9 @@ static void ace_fsm_dostate(struct ace_device *ace)
+ 	}
+ }
+ 
+-static void ace_fsm_tasklet(unsigned long data)
++static void ace_fsm_tasklet(struct tasklet_struct *t)
+ {
+-	struct ace_device *ace = (void *)data;
++	struct ace_device *ace = from_tasklet(ace, t, fsm_tasklet);
+ 	unsigned long flags;
+ 
+ 	spin_lock_irqsave(&ace->lock, flags);
+@@ -1001,7 +1001,7 @@ static int ace_setup(struct ace_device *ace)
+ 	/*
+ 	 * Initialize the state machine tasklet and stall timer
+ 	 */
+-	tasklet_init(&ace->fsm_tasklet, ace_fsm_tasklet, (unsigned long)ace);
++	tasklet_setup(&ace->fsm_tasklet, ace_fsm_tasklet);
+ 	timer_setup(&ace->stall_timer, ace_stall_timer, 0);
+ 
+ 	/*
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200817091617.28119-1-allen.cryptic%40gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200817091617.28119-2-allen.cryptic%40gmail.com.
