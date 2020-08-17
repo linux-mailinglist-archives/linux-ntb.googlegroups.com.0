@@ -1,34 +1,34 @@
-Return-Path: <linux-ntb+bncBCFYTA5O7QNRBYUW5H4QKGQEPPDFQPA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCFYTA5O7QNRB4MW5H4QKGQEFYHFTDA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-oi1-x238.google.com (mail-oi1-x238.google.com [IPv6:2607:f8b0:4864:20::238])
-	by mail.lfdr.de (Postfix) with ESMTPS id C797324629E
-	for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 11:18:27 +0200 (CEST)
-Received: by mail-oi1-x238.google.com with SMTP id j68sf5974222oib.15
-        for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 02:18:27 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1597655906; cv=pass;
+Received: from mail-ua1-x93c.google.com (mail-ua1-x93c.google.com [IPv6:2607:f8b0:4864:20::93c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2A28E2462AC
+	for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 11:18:42 +0200 (CEST)
+Received: by mail-ua1-x93c.google.com with SMTP id k5sf3513801ual.20
+        for <lists+linux-ntb@lfdr.de>; Mon, 17 Aug 2020 02:18:42 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1597655921; cv=pass;
         d=google.com; s=arc-20160816;
-        b=IIO0ztVAkxPz25OFdkRiwMBQ+cVZRdHMgNevcqX90NhEYTdy8ygP9VORnLPgeKfWI1
-         84RRlY7i2QCAoRWy1KclqeAOT1fQv2LdXQpXUkykGfqlx7Mbzip9Aui4S7SrE8klDZL5
-         cpgKtI0aoOhiOW8RzYO7o7UGsXyUK8J/MqMqVk8e/R1U8dZQaszoVcrX0jH2p1d5o0gl
-         yH7kOFqIeeOVrS7a1+ML5vD+K+1aBaIHl53ZRR2tegoiRzL8OWsM4HSQUhzW1ajEpbWx
-         vZzLyAYGv7IUy1AAuopfmpEWD+wgPK91JvyhwtRPwVRnhxLMYONg8YBTRK9eseCASWg0
-         6IJQ==
+        b=X4bbqMG4ZS1O/oF3y4HezBmYGH5I6PkGU6XAnG+qoKxCM096bI5IC6Nb7rU/SFI1kb
+         9/EumzcHkqSPUwAbuzIgimo7mKIkJ9gZuMqPOVGuxs6V9J3ibE/n/rNId6MCIUSx8Wjp
+         C9taT58n07iD08LpjLdNosEkN1mnYPyuR96FMz9zLb2CfgDVT1S5gdGtOCr03OQ1oC04
+         MxH62EfQ9JzARWl1c2tTVK66ltHPjCw7yIpodyuxIp2XuytfhO2yegcjmJrnXoNIxFQ+
+         QbeXry1znsO3nYQ3U28vpJLuK50pb8uUXLwi2INiI03vDCJkKt6PFK/Ea2IYCQ+BTi/+
+         8OQQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:references:in-reply-to:message-id
          :date:subject:cc:to:from:mime-version:sender:dkim-signature
          :dkim-signature;
-        bh=yuGLtwYe9XCTyLUBbRPR1mNBJjaFlisJyOaX4AQsWa0=;
-        b=yhxEMpAPS2M0HpPmLHVhP9BU1oKx5vFb/UM3LBct0pu+sxGCSsmg5RLgRPmMv7AxRk
-         Xdvnu4S3osTZHYOdR/GnbPM+TX2myMgOORvDtUr3H2s1bQFXFT/Ka2i3/3qPFXHfhql4
-         Q19Zd9ZwHQCbHUmvL3NS1mAnsmaEvVMgWbjRThTW6LcgeF7C+nOvKfYXOidmYbijWJ+q
-         WkCAYZtLWflgIuWp+BABxTqCssPbLRcBT0KRkvv81pawSXDGwd7NyauND//eAIZh0LLE
-         8lDGZucc7B4y9+N8lGJGli8pJu/LO3G9a1ug9xADxc/uS48bzPY7MigwmJBKCsADYgNR
-         djzA==
+        bh=Oj2scqRYJ4VdjZXQAE3E08YL9NybUsnYv+ns38Zd1Po=;
+        b=ilUwd+aCDFdpHZDjvljvD721heh1Lr7dGvy7i1WVXgVRzIhSpM4vmz2jMH7YwIpviv
+         6qKA0Xcyx+dvbZMzL8O+uAUfza8CWvxJLZbbUXJDawuV0yIAjn6KOa3oYyhFKDYaFItt
+         AvWvEn4Z0CetKdBq3uLyeYF779EuqpQp4G9vrd7Ioj1v6qN3s6KUAyRNje7C2kdR6X8S
+         Vmx9Pbr4mdObnQjkc9a4CMRXCgulUvvEW5See3UOUPPsVjkZgH5bvEbUqwYDb7QmO61w
+         N44ojgvRRiwUgWwZl2Tj966ntDvfpWVyNFzqWLvGiK45zc1xYqK2Pu5ysqTLZkxM26FE
+         qDeA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D7eDa0sT;
-       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SB1by7Ka;
+       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -36,26 +36,26 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :references:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=yuGLtwYe9XCTyLUBbRPR1mNBJjaFlisJyOaX4AQsWa0=;
-        b=T9IaYdd95Saro5pNglsEm5aSZ9HSAP5iy0DVSdSh5ol7Ju4R65SIZHKKEGG41zgr+Z
-         0Ve65EOKkrcJ+wJByi+dP3FAQCUWkBzGO5KwWmxOTq/HEtQnsCWCSyqVNluQF1T2+EOd
-         XCLu7vR6oLiVH5FNuenczUO8B9oZOa0krKfNepUwPEcF1Pz7qXxWmSMj8xZjXjuX6bh1
-         Jsxe6HpufH1cNg8ClsEfImORUpLKaSy3C0pfubDsiTjrtpHuNaAd2vjTdTN2zsnohlsb
-         vqUvjwdqTQr0K0ayj1fw0ept2QxRFQ6IoZ4mLiDrq225Gh2SQLXJie7f8eIWMLpO9phi
-         25ZA==
+        bh=Oj2scqRYJ4VdjZXQAE3E08YL9NybUsnYv+ns38Zd1Po=;
+        b=q8Hoy5eKWZM7Q3nN2lItwlgVUWonXy0Cdx8Q3o0p1sPrThM6WdRw8faemI+TPFotKa
+         06mn0JD7XUSSIUFi4gMgnr5BgOVq9o8yDQMK/Una67ypC+TAa1PgHF5nna52d7dRBIXF
+         FBxb0biIt9aLf1TaAo+lIJBoRaGPJ45XiN5MwZTe6moEewn2qG1p10v5HG7BvZN12TE+
+         6hGxvamIRmSIEXuwNCF9Au14VTUjH4P0EbalJNMaaM0PsVi0JyRUSvl7hNhx36C1BD/T
+         GAtdzLO70FIaFVJoBbTKku9e4Yj2TrZhjW+RiPMuiv34MY4azUL2pDGysK6coQN1T51x
+         zfwg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:from:to:cc:subject:date:message-id:in-reply-to
          :references:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=yuGLtwYe9XCTyLUBbRPR1mNBJjaFlisJyOaX4AQsWa0=;
-        b=foMWXZIjepiMdI+BeQ4M7z68IdqY8eQsaBjw3wds7gFvOddbq+MBysZp5Ucm0qMpVi
-         Pj8qVCCtMm8Wgits04tuYAKY6G6G0o6phdg5rhWDK8+zn2JYXGNawBlfRNUjtv2pvcda
-         gIE0jBme0eS9DfO4Eow/JINmrue4fyfzojen7RUC1V/ppzdyVMNm/zr9JFGj+WTqfhVe
-         K24MfSauILP3h1FIFj+Gvgn0xi88Iow1fDukvT+Drg6BXr+TkPXCqWS/pHzC1INC/lEj
-         TTndow6ACfRqw4v8q30XbPMntOud3guk/+ikoO17pL4a3U2ne2LCOdhUp2a/7xR40rIH
-         E6/A==
+        bh=Oj2scqRYJ4VdjZXQAE3E08YL9NybUsnYv+ns38Zd1Po=;
+        b=kcrq4JWpympzo8HuStgC8qfRsBr0uSAtD0wwsrjFVwKTM4+FXhJJnhR3H3c+lYqePu
+         P74+IIfCKDEZgGX4XK3EbQa93CjQGYnFPlbZpiI0KShqduGFH9offQAt1d9W44UyYYWz
+         akugqbGtjrAUz3dCrg4BXcZr7qTvtRhzppPa3bp8ZrlZ53bXK399m7+a7ErXtjpHuz1z
+         FtzjLiHdYtoBk8h/UZRe/LJQxjQpB1PWBFaSjYLaWxV12eYz3dtetrnr5VMSeUPMgc+P
+         8FdGTbSaoYotZlxOmKXDuQA9F9toQYCKs29Gr0UIzZCotm7On4o645DPSsglwE3kwEmj
+         pTrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:to:cc:subject:date
@@ -63,61 +63,61 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=yuGLtwYe9XCTyLUBbRPR1mNBJjaFlisJyOaX4AQsWa0=;
-        b=fSDpqSzrlgmSnEOr6dEO4jteHd827e8wT3vmVfaG9ZeQkH6doH696riNpZmRT9Ey8/
-         OXXjLJnXe3s/U8VB9BqGOyE9kIPQio27DVYO5aqkFgW6qdm3kwbdR8OcDMLBV/+VF1Ew
-         0e2bsR5S1gCKNd03+QyPlVmWMmhldKdeYFExclDOlQH78ywSfDXO4tcLCnB1t8XiMMT2
-         oR7V0hjive0zmCESjDyRp4JQzRXuBoAChNSGalPkBDdlRcdDzg1F9KQwvHNZUjGgomYZ
-         u+9p6NNeXopY4tNDcyk4gop0/xYLbia5qiq+w0i3a5aO8zBmYkhnQ7sHtLDZxgzmusCh
-         bdRg==
+        bh=Oj2scqRYJ4VdjZXQAE3E08YL9NybUsnYv+ns38Zd1Po=;
+        b=eiBSHMvh7GMa0knAUYkw703GMyvgtXRu5ISFGVHCVZRDnryoBkorVDDSkaz8Sgix6f
+         fYCgdqeIIf7IMHvVL04YTptkbjsV0xPDfm/z8+kJe23fS2WsifTyk9ybDcq18J72ed4s
+         M16hnR/bLjTmZLC4/lyOGEbEIBSfkWdOpqB63R81s27MEeYU79sDb8zGXyCowZ3dcjUF
+         n+dHGxQWdKUL4xPWbktMVqeTb3RMB/zB28nTiNBaZhXb+E9FwQNjJoH/JFz+w5/5Ap0m
+         gWimEZFxQeF0Y6y7iLNJuWvEgSmIvEdZoJPiU3swh4NRiH99y37WFQ3A2TQx+GTRbchf
+         Q24Q==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531WGsbeNFZ2rHXskETsRncGwWTrP8+Mwv90bBePTGoi1tdatUsY
-	hpA0SUsB16qv5B1DXtnX3+g=
-X-Google-Smtp-Source: ABdhPJzaJp+Pvn7oiJyy6gu5KBbFaeC+sU/nPOX9v5N4KurfvLyykUu3EGEoWeN0dmwgi8j4QAqvCg==
-X-Received: by 2002:aca:55d6:: with SMTP id j205mr9182531oib.0.1597655906550;
-        Mon, 17 Aug 2020 02:18:26 -0700 (PDT)
+X-Gm-Message-State: AOAM531w388uiiKo8VPBrx5oTTHqP3yDUlBtbjx7cjLg76oXJI27odPK
+	ABfUAujnNLBRNgzr28tV/QQ=
+X-Google-Smtp-Source: ABdhPJwhxQ70pbExS5dKC1scz/U23PiU+CAa8X7dmeNZbFjsdWSmhJWmSwdXp4QQCUnaWcKw7QRXzw==
+X-Received: by 2002:a05:6102:311a:: with SMTP id e26mr7607333vsh.86.1597655921229;
+        Mon, 17 Aug 2020 02:18:41 -0700 (PDT)
 MIME-Version: 1.0
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6830:310d:: with SMTP id b13ls3430095ots.0.gmail; Mon,
- 17 Aug 2020 02:18:26 -0700 (PDT)
-X-Received: by 2002:a9d:7d83:: with SMTP id j3mr10573848otn.339.1597655906209;
-        Mon, 17 Aug 2020 02:18:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597655906; cv=none;
+Received: by 2002:a1f:5d84:: with SMTP id r126ls748335vkb.11.gmail; Mon, 17
+ Aug 2020 02:18:40 -0700 (PDT)
+X-Received: by 2002:a1f:3612:: with SMTP id d18mr611266vka.21.1597655920254;
+        Mon, 17 Aug 2020 02:18:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597655920; cv=none;
         d=google.com; s=arc-20160816;
-        b=HqDfa9oZmvq11A+U8DdDeSApazx9xNsvA5iEfwve+a2/OwUcpZhzLXZJ+QX1lYoFX9
-         VnBrpzXnaXiejyCUqErTrUE69uP7455NNuoBJSz5P8zt3txP8UHrXR+vIOnbDYSxsGiu
-         fpzgURl5ueUVnOcOppk30UOPgo8IM7yo5EAOVfBti8otIUJJCPlwihRArtK76dO58RT3
-         ejEV9Qesbz31slszOPQ2liS3sg+nXujtrc4SWJajnuL4zYv19fprDfBczf6/RvIrSywB
-         J1L3LW++IT8bRFru23h73daCnuyrNwbUS4nAu6FV+aJK9murKD7CREtAjdBuZNWQBxgu
-         jHQQ==
+        b=b4zNRdf8Sznwv/s1rjK/TLsCvYyxHuN2pAjBsB3xyNvRIoD34BbR9MizbJxd7x1pmt
+         bzhyn9jY7MkDGo2vXVw0XyxSUzVyxbWNhFVdoGgfdV2dQSsmaiP+7Anwbd5RWYhp2zdT
+         HZCoy/iLnmTc4QZeK3g7/Vs2nTGNkmU6NkphOAU+PrmUXfyOAj3vDlwiS6ScVZYM94GK
+         rm/5D492Y5/HjyHiy61vuMPpwEkfVMOW346idRFdiefkM4KM6L90hY1lxJcXJFf6gK9v
+         i5oGRGBsFL5zXX3inRt519b82Um56zw1U4+NVqLOqWHfzWY9ZfB3CbEjEDCAFQGxmIkz
+         uFnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=references:in-reply-to:message-id:date:subject:cc:to:from
          :dkim-signature;
-        bh=FQvu3zIKHcfDVUfKtSNhAC6ZzQDedEm/LuwK8bWrPeg=;
-        b=mdzq2bftfyf4pcTiX4CWTyRe8e2J08mnQ15K/NnjNQFwM/a4mxIl6+SZAn7jCIx7Ep
-         ELqzVXLYmyQnGbocTNvpw14wwXFn1X5BFGSky99iTqcaQ6HWPKGlVL7uMdd9bw7iDY8F
-         o3+qJqpD/GHD05ZYOOSUsMe/lfl+1O37ODTEmEjeimeTDEmWISPE5nhSoqCbJmtOsMRR
-         WcSF8G4/Zv6z7N9x9L1xgEsjEEgJhm9q6mOkDGvZgfgejRvH5+4Fi2NPbXTbetCvDO8X
-         G0D1v6hjdmwSBgMfSHuZ69dMtGyu09Oe5pT9iYblst2lNoq/yVdo0JA16eohk9mHp+3F
-         DWpQ==
+        bh=XewQeBy6WMQV1RzMvwbB0P7og4UUzSYm8rIudQOA7EQ=;
+        b=i3ichjWrRxf3UnpcWR3ZP5Wzx0DvByCpSAKenu43MwikNi+3L7+nYRvJwUoggsS6ev
+         EulLD1mRpQBUMm9V2qMBriEJ7S5izZjHY3PeLXzmq78KWAHErfnraAgoEy36nMORKPsN
+         O5ShdtiVBGNT+He0ObL+ZoAaJpYVN5UzkSkxu4ND8xgpwsMurqnSvCMkfMPQr2ZXWhZz
+         l9qnbjrjJZAaIWDI7ZxZIcCA4OVO6K3FEmxX5vlLbqq3aOpUt2uQ1tPQoeOEoZcDvGYI
+         m9NVtNSfqsGGcRgwPF+Wjn6pBs+FqACG3fgLTLvpBvmVwL0ZeQ9o5WaagqGWgG4+4BJX
+         Es2w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=D7eDa0sT;
-       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SB1by7Ka;
+       spf=pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-pg1-x542.google.com (mail-pg1-x542.google.com. [2607:f8b0:4864:20::542])
-        by gmr-mx.google.com with ESMTPS id r64si758626oor.2.2020.08.17.02.18.26
+Received: from mail-pj1-x1041.google.com (mail-pj1-x1041.google.com. [2607:f8b0:4864:20::1041])
+        by gmr-mx.google.com with ESMTPS id p197si906155vkp.0.2020.08.17.02.18.40
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 17 Aug 2020 02:18:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::542 as permitted sender) client-ip=2607:f8b0:4864:20::542;
-Received: by mail-pg1-x542.google.com with SMTP id h12so7817898pgm.7
-        for <linux-ntb@googlegroups.com>; Mon, 17 Aug 2020 02:18:26 -0700 (PDT)
-X-Received: by 2002:aa7:8c42:: with SMTP id e2mr10326531pfd.181.1597655905521;
-        Mon, 17 Aug 2020 02:18:25 -0700 (PDT)
+        Mon, 17 Aug 2020 02:18:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1041 as permitted sender) client-ip=2607:f8b0:4864:20::1041;
+Received: by mail-pj1-x1041.google.com with SMTP id ha11so7406377pjb.1
+        for <linux-ntb@googlegroups.com>; Mon, 17 Aug 2020 02:18:40 -0700 (PDT)
+X-Received: by 2002:a17:90a:36ee:: with SMTP id t101mr12384566pjb.47.1597655919356;
+        Mon, 17 Aug 2020 02:18:39 -0700 (PDT)
 Received: from localhost.localdomain ([49.207.202.98])
-        by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.18.13
+        by smtp.gmail.com with ESMTPSA id r25sm15971028pgv.88.2020.08.17.02.18.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 17 Aug 2020 02:18:24 -0700 (PDT)
+        Mon, 17 Aug 2020 02:18:38 -0700 (PDT)
 From: Allen Pais <allen.cryptic@gmail.com>
 To: jdike@addtoit.com,
 	richard@nod.at,
@@ -167,16 +167,16 @@ Cc: keescook@chromium.org,
 	devel@driverdev.osuosl.org,
 	Allen Pais <allen.lkml@gmail.com>,
 	Romain Perier <romain.perier@gmail.com>
-Subject: [PATCH] drivers: vme: convert tasklets to use new tasklet_setup() API
-Date: Mon, 17 Aug 2020 14:46:03 +0530
-Message-Id: <20200817091617.28119-9-allen.cryptic@gmail.com>
+Subject: [PATCH] drm: i915: convert tasklets to use new tasklet_setup() API
+Date: Mon, 17 Aug 2020 14:46:04 +0530
+Message-Id: <20200817091617.28119-10-allen.cryptic@gmail.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200817091617.28119-1-allen.cryptic@gmail.com>
 References: <20200817091617.28119-1-allen.cryptic@gmail.com>
 X-Original-Sender: allen.cryptic@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=D7eDa0sT;       spf=pass
- (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::542
+ header.i=@gmail.com header.s=20161025 header.b=SB1by7Ka;       spf=pass
+ (google.com: domain of allen.cryptic@gmail.com designates 2607:f8b0:4864:20::1041
  as permitted sender) smtp.mailfrom=allen.cryptic@gmail.com;       dmarc=pass
  (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Content-Type: text/plain; charset="UTF-8"
@@ -197,49 +197,141 @@ From: Allen Pais <allen.lkml@gmail.com>
 In preparation for unconditionally passing the
 struct tasklet_struct pointer to all tasklet
 callbacks, switch to using the new tasklet_setup()
-and from_tasklet() to pass the tasklet pointer explicitly.
+and from_tasklet() to pass the tasklet pointer explicitly
+and remove the .data field.
 
 Signed-off-by: Romain Perier <romain.perier@gmail.com>
 Signed-off-by: Allen Pais <allen.lkml@gmail.com>
 ---
- drivers/vme/bridges/vme_fake.c | 9 ++++-----
- 1 file changed, 4 insertions(+), 5 deletions(-)
+ drivers/gpu/drm/i915/gt/intel_lrc.c           | 31 ++++++++++---------
+ .../gpu/drm/i915/gt/uc/intel_guc_submission.c |  8 +++--
+ 2 files changed, 22 insertions(+), 17 deletions(-)
 
-diff --git a/drivers/vme/bridges/vme_fake.c b/drivers/vme/bridges/vme_fake.c
-index 6a1bc284f297..38dd5f949cd0 100644
---- a/drivers/vme/bridges/vme_fake.c
-+++ b/drivers/vme/bridges/vme_fake.c
-@@ -90,13 +90,13 @@ static struct device *vme_root;
- /*
-  * Calling VME bus interrupt callback if provided.
+diff --git a/drivers/gpu/drm/i915/gt/intel_lrc.c b/drivers/gpu/drm/i915/gt/intel_lrc.c
+index 24322ef08aa4..c45e42b9f239 100644
+--- a/drivers/gpu/drm/i915/gt/intel_lrc.c
++++ b/drivers/gpu/drm/i915/gt/intel_lrc.c
+@@ -3130,9 +3130,10 @@ static bool preempt_timeout(const struct intel_engine_cs *const engine)
+  * Check the unread Context Status Buffers and manage the submission of new
+  * contexts to the ELSP accordingly.
   */
--static void fake_VIRQ_tasklet(unsigned long data)
-+static void fake_VIRQ_tasklet(struct tasklet_struct *t)
+-static void execlists_submission_tasklet(unsigned long data)
++static void execlists_submission_tasklet(struct tasklet_struct *t)
  {
- 	struct vme_bridge *fake_bridge;
- 	struct fake_driver *bridge;
+-	struct intel_engine_cs * const engine = (struct intel_engine_cs *)data;
++	struct intel_engine_cs * const engine = from_tasklet(engine, t,
++						     execlists.tasklet);
+ 	bool timeout = preempt_timeout(engine);
  
--	fake_bridge = (struct vme_bridge *) data;
--	bridge = fake_bridge->driver_priv;
-+	bridge = from_tasklet(bridge, t, int_tasklet);
-+	fake_bridge = bridge->parent;
- 
- 	vme_irq_handler(fake_bridge, bridge->int_level, bridge->int_statid);
+ 	process_csb(engine);
+@@ -4306,9 +4307,10 @@ static void execlists_reset_rewind(struct intel_engine_cs *engine, bool stalled)
+ 	spin_unlock_irqrestore(&engine->active.lock, flags);
  }
-@@ -1098,8 +1098,7 @@ static int __init fake_init(void)
- 	/* Initialize wait queues & mutual exclusion flags */
- 	mutex_init(&fake_device->vme_int);
- 	mutex_init(&fake_bridge->irq_mtx);
--	tasklet_init(&fake_device->int_tasklet, fake_VIRQ_tasklet,
--			(unsigned long) fake_bridge);
-+	tasklet_setup(&fake_device->int_tasklet, fake_VIRQ_tasklet);
  
- 	strcpy(fake_bridge->name, driver_name);
+-static void nop_submission_tasklet(unsigned long data)
++static void nop_submission_tasklet(struct tasklet_struct *t)
+ {
+-	struct intel_engine_cs * const engine = (struct intel_engine_cs *)data;
++	struct intel_engine_cs * const engine = from_tasklet(engine, t,
++						     execlists.tasklet);
  
+ 	/* The driver is wedged; don't process any more events. */
+ 	WRITE_ONCE(engine->execlists.queue_priority_hint, INT_MIN);
+@@ -4391,7 +4393,8 @@ static void execlists_reset_cancel(struct intel_engine_cs *engine)
+ 	execlists->queue = RB_ROOT_CACHED;
+ 
+ 	GEM_BUG_ON(__tasklet_is_enabled(&execlists->tasklet));
+-	execlists->tasklet.func = nop_submission_tasklet;
++	execlists->tasklet.func = (void (*)(unsigned long))
++				  nop_submission_tasklet;
+ 
+ 	spin_unlock_irqrestore(&engine->active.lock, flags);
+ }
+@@ -4986,7 +4989,8 @@ void intel_execlists_set_default_submission(struct intel_engine_cs *engine)
+ {
+ 	engine->submit_request = execlists_submit_request;
+ 	engine->schedule = i915_schedule;
+-	engine->execlists.tasklet.func = execlists_submission_tasklet;
++	engine->execlists.tasklet.func = (void (*)(unsigned long))
++		execlists_submission_tasklet;
+ 
+ 	engine->reset.prepare = execlists_reset_prepare;
+ 	engine->reset.rewind = execlists_reset_rewind;
+@@ -5113,8 +5117,7 @@ int intel_execlists_submission_setup(struct intel_engine_cs *engine)
+ 	struct intel_uncore *uncore = engine->uncore;
+ 	u32 base = engine->mmio_base;
+ 
+-	tasklet_init(&engine->execlists.tasklet,
+-		     execlists_submission_tasklet, (unsigned long)engine);
++	tasklet_setup(&engine->execlists.tasklet, execlists_submission_tasklet);
+ 	timer_setup(&engine->execlists.timer, execlists_timeslice, 0);
+ 	timer_setup(&engine->execlists.preempt, execlists_preempt, 0);
+ 
+@@ -5509,9 +5512,10 @@ static intel_engine_mask_t virtual_submission_mask(struct virtual_engine *ve)
+ 	return mask;
+ }
+ 
+-static void virtual_submission_tasklet(unsigned long data)
++static void virtual_submission_tasklet(struct tasklet_struct *t)
+ {
+-	struct virtual_engine * const ve = (struct virtual_engine *)data;
++	struct virtual_engine *  ve = from_tasklet(ve, t,
++						   base.execlists.tasklet);
+ 	const int prio = READ_ONCE(ve->base.execlists.queue_priority_hint);
+ 	intel_engine_mask_t mask;
+ 	unsigned int n;
+@@ -5724,9 +5728,8 @@ intel_execlists_create_virtual(struct intel_engine_cs **siblings,
+ 
+ 	INIT_LIST_HEAD(virtual_queue(ve));
+ 	ve->base.execlists.queue_priority_hint = INT_MIN;
+-	tasklet_init(&ve->base.execlists.tasklet,
+-		     virtual_submission_tasklet,
+-		     (unsigned long)ve);
++	tasklet_setup(&ve->base.execlists.tasklet,
++		     virtual_submission_tasklet);
+ 
+ 	intel_context_init(&ve->context, &ve->base);
+ 
+@@ -5748,7 +5751,7 @@ intel_execlists_create_virtual(struct intel_engine_cs **siblings,
+ 		 * layering if we handle cloning of the requests and
+ 		 * submitting a copy into each backend.
+ 		 */
+-		if (sibling->execlists.tasklet.func !=
++		if (sibling->execlists.tasklet.func != (void (*)(unsigned long))
+ 		    execlists_submission_tasklet) {
+ 			err = -ENODEV;
+ 			goto err_put;
+diff --git a/drivers/gpu/drm/i915/gt/uc/intel_guc_submission.c b/drivers/gpu/drm/i915/gt/uc/intel_guc_submission.c
+index fdfeb4b9b0f5..3013ff54431c 100644
+--- a/drivers/gpu/drm/i915/gt/uc/intel_guc_submission.c
++++ b/drivers/gpu/drm/i915/gt/uc/intel_guc_submission.c
+@@ -344,9 +344,10 @@ static void __guc_dequeue(struct intel_engine_cs *engine)
+ 	execlists->active = execlists->inflight;
+ }
+ 
+-static void guc_submission_tasklet(unsigned long data)
++static void guc_submission_tasklet(struct tasklet_struct *t)
+ {
+-	struct intel_engine_cs * const engine = (struct intel_engine_cs *)data;
++	struct intel_engine_cs * const engine = from_tasklet(engine, t,
++							     execlists.tasklet);
+ 	struct intel_engine_execlists * const execlists = &engine->execlists;
+ 	struct i915_request **port, *rq;
+ 	unsigned long flags;
+@@ -591,7 +592,8 @@ static void guc_set_default_submission(struct intel_engine_cs *engine)
+ 	 */
+ 	intel_execlists_set_default_submission(engine);
+ 
+-	engine->execlists.tasklet.func = guc_submission_tasklet;
++	engine->execlists.tasklet.func =
++				(void (*)(unsigned long))guc_submission_tasklet;
+ 
+ 	/* do not use execlists park/unpark */
+ 	engine->park = engine->unpark = NULL;
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200817091617.28119-9-allen.cryptic%40gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200817091617.28119-10-allen.cryptic%40gmail.com.
