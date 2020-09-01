@@ -1,34 +1,34 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBUNBW75AKGQEZM7GKPA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBI5WW75AKGQEQ5XIOTA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53d.google.com (mail-pg1-x53d.google.com [IPv6:2607:f8b0:4864:20::53d])
-	by mail.lfdr.de (Postfix) with ESMTPS id 32EEA2586F8
-	for <lists+linux-ntb@lfdr.de>; Tue,  1 Sep 2020 06:40:51 +0200 (CEST)
-Received: by mail-pg1-x53d.google.com with SMTP id s2sf21173pgm.18
-        for <lists+linux-ntb@lfdr.de>; Mon, 31 Aug 2020 21:40:51 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1598935249; cv=pass;
+Received: from mail-pj1-x103c.google.com (mail-pj1-x103c.google.com [IPv6:2607:f8b0:4864:20::103c])
+	by mail.lfdr.de (Postfix) with ESMTPS id EEF8425875C
+	for <lists+linux-ntb@lfdr.de>; Tue,  1 Sep 2020 07:24:52 +0200 (CEST)
+Received: by mail-pj1-x103c.google.com with SMTP id z22sf127247pjr.8
+        for <lists+linux-ntb@lfdr.de>; Mon, 31 Aug 2020 22:24:52 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1598937891; cv=pass;
         d=google.com; s=arc-20160816;
-        b=HuLgBzLqRQxiG4SFRVVzg+bMlEuEIPNqnZ2F5Jx3J1Ea1l6c8Bh7WJHNkeiKQlKpGk
-         IrI5+JlvQl9LuUBehd3/qn8BU79rzZwCvnBmxAJPhiKefCkm3eoi6xsQI6+vh5YFAYHc
-         B8zqXZnYILDJb43K8Wc4Nx0Us7p7rDQMXhRueyFWbLYcmAWjZ6e7VwohCtahA9cJmNmM
-         i3hk4HgdJW7CQfjgwIfoDn0yskJO5P7BnR//P3IzCHtzSgyb0ZZNlMyNeLfTUUVXx756
-         rIEBkNGJUysj67TetcIH0o01szTDPcpkuw/DynHbKbuJU1jW1qFWViOfvGS4bJ+HkGnQ
-         VfoA==
+        b=vztUHXUgvkCoXO4oSvCVzV6VIckKJj3YP1Co9gSGqGaoQZ5pyZO3P+xjYEVpaxH5Xf
+         gtkMxnZJmKJAgMD5koFTJrSa/LrvUZr3KTPkYH17B7M6jFzgf48Qsoc/WYVKAQsGV5ck
+         3QS0mF/WheDbijrjDtciLfQ3o1EBj72STNXtYttOuPRpnwLdbagjo1kiNsBVQMslJpQI
+         P7UdtReFqhBRu0IkP7Ifi5q78u+gFlOdFKmG/WR4tSevz2mm0KccLKMUDT/+QunaVUoR
+         iAsO+WXE0jtaN/e0cLyqoiGkGEwJH7a8unA/kvZxj32R+obuixKW7mDiP6sG/LQuDOaJ
+         LDMA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=voc6CeU7wRF2sXrKWL1JL8sKjOE6smC1GOM9QWtXaa4=;
-        b=hvbiU0qFerp5sFpGdpSgrPAwMeNcbzgjlDYnh8w7P5zgr7ng97k9IbQWkjiP7jH5cu
-         T/NmewOyXMGqjl2pAsoyHNQt7jKA1IiMdSA4cSaYiPl3mdkkX7Ud1/DvvFB1T/xFTbgo
-         iGFIUgmV6YourNErfqff+YWatMIT/g8IErF387XP+KmQt1hMKj99kalncw8BlCgsx6Mi
-         AD/q/W3E86N449R/QMkmVozP5LbpwSHa/IPcZC7mCOaJ9slQxknhVYflZm7EstBe8U7Q
-         2D+PJPRGfWvnkkRDltLb8xMUVcy+eYFv/E0bZoEtvZFj6wBhDJy6eMpLNLaAJ5jigTqB
-         wDpQ==
+        bh=YnVBtEjWw9GZsMVFmjZGyjp220reRcB5WlSTgTG9vB0=;
+        b=lqznl3uvvGekicBmTNHlhZFEEsCtDj1uia+9hDQzL6SPaQtetypTXo0CIpg7RJ6dKX
+         L/VZP7Hm8l5fYwrUoD+np3RBa2y6QA0TNB/NoHpzK50knOcp3Q90Aaj1f88IGrbgxKXn
+         bBJstEZoxFJgz2n/VKfRzaniEss5nIiYo3LLlXXVd4GEo5Woj7eCW9hb5zVGe68XAHW6
+         4Tn+x5JyEQ0nw45Pg5pCbGSMsIEzYuICQx72il2DMyAKOE2QhokhicbhiJmMhNz0mTJw
+         ktBZ9UQZNnCETEjPHoBMwHFOH4tcsg5SVJ/Y3IZyTNdReDPGIdnISbroR/SLDRr5q1et
+         UEYw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=ldBJbNRg;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=uv5Qncr+;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -37,13 +37,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:reply-to
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=voc6CeU7wRF2sXrKWL1JL8sKjOE6smC1GOM9QWtXaa4=;
-        b=UFfzp0JpFQD18rsT4zo8cZ/q+YQrXSftVy9jwpBiiYHdNtRyg3KEM6mfzw/OTLRdYk
-         nCpuqPUEfNcX2FT8pR6+8COgUKUm4xlgSexsA0VYg1XQUeaQoOpttqJuifs9advy/Tas
-         KELO8bv9aFpEnotAEquwkw11rhmu3wnfcAs5B01cWALgrNUFDL878SS0c0H+ZMQOXjMT
-         kH1xWnNP1k9OhxEJLBtH+6uASOQwkZga7UXVZ2Stpfa8+hXxFYh1izEnaSoA+Vtp72vn
-         zlkyiaNVNXuS/saWmqJKASZ6wLXVTY/YkQ5zUCrMTu7OTTE4xqnMfwMm9oq8zf+Q4kdS
-         Dl1w==
+        bh=YnVBtEjWw9GZsMVFmjZGyjp220reRcB5WlSTgTG9vB0=;
+        b=FBwoCZVeT/w3/rzixI07yw+p59RekbJpe73poP69iD1We3vcsnQmfEzV+Pgaj0sWQZ
+         pmLhvdDfa4+gGiElr8qcV48saDfvkgo/zIbXBaty5cOMtPWsKqe6yB+a13xCt3+JTxqH
+         V9ltj5w95eKHEDxDroOaYd8847W3H9JmdH/+L/Myv4O30rklRm9WGKHMf9V7OVVksLjt
+         NBjBuXyjAQciChvmaHMaWTo+tF2mjh6DZxJaAq4XN29kMXVZsCcEjQdHGzIvLXDNX+fP
+         BeA8NFjVYOVBYjn3zBrqdvmBTuPb6zmk/OQ2UtWQ55vIMA5lMvyKNxd83qN/VnLsQ570
+         uO7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
@@ -52,87 +52,82 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=voc6CeU7wRF2sXrKWL1JL8sKjOE6smC1GOM9QWtXaa4=;
-        b=BR1PMllmG5P9mN4f+ZalTOA5lMAMZpWDleC0CE+gCqSAZPa6wC1+zWvEncaDENdgfS
-         7wFdlhutMwshffKxBvIF1HXG3UFrcANGS87jsv8z2N2zk3yZa0nP/So6kysKPxr2sf8v
-         cmxlV8xxQGWOX/KdC/2BnvEUne7lMsJW+WbeSgqphQjlDXnpXsEVC3NKPsLdK0aP+u9f
-         lxm8w29xUpg7DkSPfAXR1SKjcAqhSJ1f4iIGTjD/lqiNu9R2Xod7+7eo1fWtHf0NqFDl
-         uw8yqi31n6HhzgOizikE/RoJOQ21cJb+1frPJ478ZYOGyw8Lo/UKHldR+wiprXOUq7Hv
-         5M4w==
-X-Gm-Message-State: AOAM533LOH3SJQ+AbNWJvU1t7yF2wd1p58PB9R37bXImd0TuR4SKhx8o
-	7tZR5WB2XqVsnGEowGQwYeo=
-X-Google-Smtp-Source: ABdhPJw5Yzf2AcNNKKikVyOfbbr+6cGHC37a2HNE9fqBoJ6lBhVViZ9SSvUsnwvpI0nUqpQhSvJDBA==
-X-Received: by 2002:a17:902:d702:: with SMTP id w2mr3754603ply.53.1598935249454;
-        Mon, 31 Aug 2020 21:40:49 -0700 (PDT)
+        bh=YnVBtEjWw9GZsMVFmjZGyjp220reRcB5WlSTgTG9vB0=;
+        b=IDrxXtb6Ur2KB0i28bnoIo0Mt1+qboORVEh2XMBD8tynW/LMiI88w38czlWfqXgSbx
+         6lsqNHRQmM/BSj3TzxZ7skLoYSrBgehaplngP4Kc53fhmd6zmvtDweGAdORNFa1hha9j
+         Pf5CjnluxqBZhsjIw3SdNQMrunxhpEhReYK9VOy6QSVUEYSvkgzdW/pAn0cbMD+UAFLE
+         eQWVAchrSaGdP2m97cRAj6DExSCU1UVacZonwrg6lQdxDFNkF1dalBk5tgKAjbawd3fo
+         NLaeYPIFJI51ykPU+gPBmREf0PnwuoDuWC+UMX0bHQJwCAGKoPSIi2TkIaTTRrb1akQf
+         U5nQ==
+X-Gm-Message-State: AOAM531rv9n89+gfD+ufaGWsB6A86do9uHEZeTNuQfC5tvZJouCkf3SA
+	Xf0rFjmuJoh0R+tKz+r9I8k=
+X-Google-Smtp-Source: ABdhPJy+u+XsVg8Jfvrka9VL1XH24f1+6AuPN0jXIDAv/0mTbPIhuGFZUrC4ddtzKPyig0JrQc6SLg==
+X-Received: by 2002:a62:33c2:: with SMTP id z185mr279065pfz.242.1598937891557;
+        Mon, 31 Aug 2020 22:24:51 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a63:525b:: with SMTP id s27ls3094384pgl.11.gmail; Mon, 31
- Aug 2020 21:40:49 -0700 (PDT)
-X-Received: by 2002:a62:e40a:: with SMTP id r10mr168247pfh.52.1598935248968;
-        Mon, 31 Aug 2020 21:40:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598935248; cv=none;
+Received: by 2002:a17:90b:1013:: with SMTP id gm19ls34306pjb.3.gmail; Mon, 31
+ Aug 2020 22:24:51 -0700 (PDT)
+X-Received: by 2002:a17:90a:634c:: with SMTP id v12mr356393pjs.57.1598937890872;
+        Mon, 31 Aug 2020 22:24:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598937890; cv=none;
         d=google.com; s=arc-20160816;
-        b=o17OoC64f9cDThCdI2uX5Y03DZTMM49VE7FxDqE895XRS3FKjQcIxalo7AuyzdovF/
-         HwDHJRdPN5X44nP3KO99T3j85KtZ7kxV07s1JSryt8ZTZLona3b0Av+uXNX3AQOCEmj4
-         S3hpJTezF+3uf/L6i8j2urQuufBHCmNvUUZyfwUwMxnqw1+UWCHVhDF80p73vYc3oJIS
-         oqI924t0aBVdY6LDRkTsSfrHpG3AK7FH02q4n3lV59Zl6yT3LD05FlGIHfKxyJP3r6gc
-         iBAIevCGwomn6IUfgiArSFfvxArIwhJsY//5P7n/kDSJ09wF3nU+pAM5h+1tlgKNnWeh
-         yL3g==
+        b=cZrRPAFHJHJeVZrgwT+F+RlWQ2AcNYaNcmckE6In8cCYG8aUUUv38kzNpOHgS/Oj9H
+         NIlQRaYWrZkSutlI2YvxTtWo6p4sCdSt//lJ+YXUxdEPYLVGl41aUg7jhx9msrTlOF5H
+         DBK7sga+noHVNPIi3o2y0r7oSB1iJFSlcB8OCZHz8cA8sPXQIt5yfzpkd0+rLdWt48di
+         d+p1Q1VO/ouAWfC7miOCTrBpBwf5m+sGh9Wt2GIlsqmGKvCfKvmMiime4hxmANoby0g0
+         hs8aJl2jhEt7cT+pj8TNB+KUC9F4KVASSoMpXiJtZP3MGGrZ8fRRf0++ZBFqNa8cPITI
+         qDaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=ZPc+kCEY9KNjFpofORuVv0eLueeotIy+5gFYG818yuQ=;
-        b=yB0uQHooCWpMTRz8KRWJh5ShhBuU3zF6F3QlxBkPzTZdgbpvTWS7XAqFtB/3jRO1VE
-         thdgo0sjdLvZ0L9WavNtVnX0lQK09XjMaZxFIaoioxVJZXoH6SOaPxOPpE8xalGnMAbV
-         FRnpoBuE/xR6s3ieB5+0fILSTXqo0Ky3XLjxvc/ohmqP0/PQJ+0tmxrFAkb1J9YYJcdR
-         X+RmvREf6rqEuqsf7wCTbyDMSiHZ1Kqzv9S1VP4OgbwthEPJTQN1OFbA5ou6vETt+6JF
-         koNJ0o6g55htUDw/bjArUOCLgjfJ3PA00pIvhs666UFsR5rjcfAaymmAX9MhCjhE3LuB
-         ivNw==
+        bh=Qv67/wjb1spufErkrYAmFyjBFXBgorqv33GTd2PnIZQ=;
+        b=xWJl0ORVgQxYBS58gmcOG7U5n7GcirNSsVqTyogzqiuFfTbLYGhO3S9+Pt8g6dxEvg
+         ZBYfyhjeOXzzu41DvTKCP5mXmoZTHr14s8PCaBq+62Fv3ldm7Cl1ixx2fto45ELQKTOT
+         hQ6PPclN7JAyXOxd4ziOM3JZyjBaLVRZ4AUO7qZVNfBXH35QbA0HMaGUHZ8z4rCEzM1r
+         Rx7VAtPYFU7R/ZyUhh1jwfNEfjNm7UQfEeQIFrkx47ziWDwVoe+OSkZkysI0K+hrkF/c
+         u2CIgbTx2kf2QhMJWaj3eCcDq6mMzhlJdlKiyksBOFk0ZydFgO1u0htqPNdAbIyPGiaI
+         zmcQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=ldBJbNRg;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=uv5Qncr+;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com. [198.47.23.249])
-        by gmr-mx.google.com with ESMTPS id s2si4313pgh.4.2020.08.31.21.40.48
+Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
+        by gmr-mx.google.com with ESMTPS id n4si12542pgt.3.2020.08.31.22.24.50
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 31 Aug 2020 21:40:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) client-ip=198.47.23.249;
+        Mon, 31 Aug 2020 22:24:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
 Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0814egN8084924;
-	Mon, 31 Aug 2020 23:40:42 -0500
-Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0814egYU114208;
-	Mon, 31 Aug 2020 23:40:42 -0500
-Received: from DFLE105.ent.ti.com (10.64.6.26) by DFLE100.ent.ti.com
- (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 31
- Aug 2020 23:40:42 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE105.ent.ti.com
- (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0815OjiA015677;
+	Tue, 1 Sep 2020 00:24:45 -0500
+Received: from DLEE100.ent.ti.com (dlee100.ent.ti.com [157.170.170.30])
+	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0815OjvV051050;
+	Tue, 1 Sep 2020 00:24:45 -0500
+Received: from DLEE105.ent.ti.com (157.170.170.35) by DLEE100.ent.ti.com
+ (157.170.170.30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Tue, 1 Sep
+ 2020 00:24:45 -0500
+Received: from lelv0327.itg.ti.com (10.180.67.183) by DLEE105.ent.ti.com
+ (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Mon, 31 Aug 2020 23:40:42 -0500
+ Frontend Transport; Tue, 1 Sep 2020 00:24:45 -0500
 Received: from [10.250.232.147] (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0814eZHT040813;
-	Mon, 31 Aug 2020 23:40:36 -0500
+	by lelv0327.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0815Oba3074942;
+	Tue, 1 Sep 2020 00:24:38 -0500
 Subject: Re: [RFC PATCH 00/22] Enhance VHOST to enable SoC-to-SoC
  communication
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-CC: Jason Wang <jasowang@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
-        Ohad Ben-Cohen <ohad@wizery.com>,
-        Bjorn Andersson
-	<bjorn.andersson@linaro.org>,
-        Jon Mason <jdmason@kudzu.us>, Dave Jiang
-	<dave.jiang@intel.com>,
+To: Cornelia Huck <cohuck@redhat.com>, Jason Wang <jasowang@redhat.com>
+CC: "Michael S. Tsirkin" <mst@redhat.com>, Ohad Ben-Cohen <ohad@wizery.com>,
+        Bjorn Andersson <bjorn.andersson@linaro.org>,
+        Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
         Allen Hubbe <allenbh@gmail.com>,
-        Lorenzo Pieralisi
-	<lorenzo.pieralisi@arm.com>,
+        Lorenzo
+ Pieralisi <lorenzo.pieralisi@arm.com>,
         Bjorn Helgaas <bhelgaas@google.com>,
-        Paolo
- Bonzini <pbonzini@redhat.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
         Stefan Hajnoczi <stefanha@redhat.com>,
-        Stefano
- Garzarella <sgarzare@redhat.com>, <linux-doc@vger.kernel.org>,
+        Stefano Garzarella <sgarzare@redhat.com>, <linux-doc@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <linux-remoteproc@vger.kernel.org>,
         <linux-ntb@googlegroups.com>, <linux-pci@vger.kernel.org>,
         <kvm@vger.kernel.org>, <virtualization@lists.linux-foundation.org>,
@@ -147,22 +142,23 @@ References: <20200702082143.25259-1-kishon@ti.com>
  <fee8a0fb-f862-03bd-5ede-8f105b6af529@ti.com>
  <b2178e1d-2f5c-e8a3-72fb-70f2f8d6aa45@redhat.com>
  <45a8a97c-2061-13ee-5da8-9877a4a3b8aa@ti.com>
- <20200715171509.GA3185776@xps15>
+ <c8739d7f-e12e-f6a2-7018-9eeaf6feb054@redhat.com>
+ <20200828123409.4cd2a812.cohuck@redhat.com>
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-Message-ID: <ac339fb0-14e0-d3d2-ea42-c9a5b1bd8b17@ti.com>
-Date: Tue, 1 Sep 2020 10:10:35 +0530
+Message-ID: <ac8f7e4f-9f46-919a-f5c2-89b07794f0ab@ti.com>
+Date: Tue, 1 Sep 2020 10:54:36 +0530
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200715171509.GA3185776@xps15>
+In-Reply-To: <20200828123409.4cd2a812.cohuck@redhat.com>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=ldBJbNRg;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=uv5Qncr+;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -179,475 +175,656 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-SGkgTWF0aGlldSwNCg0KT24gMTUvMDcvMjAgMTA6NDUgcG0sIE1hdGhpZXUgUG9pcmllciB3cm90
-ZToNCj4gSGV5IEtpc2hvbiwNCj4gDQo+IE9uIFdlZCwgSnVsIDA4LCAyMDIwIGF0IDA2OjQzOjQ1
-UE0gKzA1MzAsIEtpc2hvbiBWaWpheSBBYnJhaGFtIEkgd3JvdGU6DQo+PiBIaSBKYXNvbiwNCj4+
-DQo+PiBPbiA3LzgvMjAyMCA0OjUyIFBNLCBKYXNvbiBXYW5nIHdyb3RlOg0KPj4+DQo+Pj4gT24g
-MjAyMC83Lzcg5LiL5Y2IMTA6NDUsIEtpc2hvbiBWaWpheSBBYnJhaGFtIEkgd3JvdGU6DQo+Pj4+
-IEhpIEphc29uLA0KPj4+Pg0KPj4+PiBPbiA3LzcvMjAyMCAzOjE3IFBNLCBKYXNvbiBXYW5nIHdy
-b3RlOg0KPj4+Pj4gT24gMjAyMC83LzYg5LiL5Y2INTozMiwgS2lzaG9uIFZpamF5IEFicmFoYW0g
-SSB3cm90ZToNCj4+Pj4+PiBIaSBKYXNvbiwNCj4+Pj4+Pg0KPj4+Pj4+IE9uIDcvMy8yMDIwIDEy
-OjQ2IFBNLCBKYXNvbiBXYW5nIHdyb3RlOg0KPj4+Pj4+PiBPbiAyMDIwLzcvMiDkuIvljYg5OjM1
-LCBLaXNob24gVmlqYXkgQWJyYWhhbSBJIHdyb3RlOg0KPj4+Pj4+Pj4gSGkgSmFzb24sDQo+Pj4+
-Pj4+Pg0KPj4+Pj4+Pj4gT24gNy8yLzIwMjAgMzo0MCBQTSwgSmFzb24gV2FuZyB3cm90ZToNCj4+
-Pj4+Pj4+PiBPbiAyMDIwLzcvMiDkuIvljYg1OjUxLCBNaWNoYWVsIFMuIFRzaXJraW4gd3JvdGU6
-DQo+Pj4+Pj4+Pj4+IE9uIFRodSwgSnVsIDAyLCAyMDIwIGF0IDAxOjUxOjIxUE0gKzA1MzAsIEtp
-c2hvbiBWaWpheSBBYnJhaGFtIEkgd3JvdGU6DQo+Pj4+Pj4+Pj4+PiBUaGlzIHNlcmllcyBlbmhh
-bmNlcyBMaW51eCBWaG9zdCBzdXBwb3J0IHRvIGVuYWJsZSBTb0MtdG8tU29DDQo+Pj4+Pj4+Pj4+
-PiBjb21tdW5pY2F0aW9uIG92ZXIgTU1JTy4gVGhpcyBzZXJpZXMgZW5hYmxlcyBycG1zZyBjb21t
-dW5pY2F0aW9uIGJldHdlZW4NCj4+Pj4+Pj4+Pj4+IHR3byBTb0NzIHVzaW5nIGJvdGggUENJZSBS
-QzwtPkVQIGFuZCBIT1NUMS1OVEItSE9TVDINCj4+Pj4+Pj4+Pj4+DQo+Pj4+Pj4+Pj4+PiAxKSBN
-b2RpZnkgdmhvc3QgdG8gdXNlIHN0YW5kYXJkIExpbnV4IGRyaXZlciBtb2RlbA0KPj4+Pj4+Pj4+
-Pj4gMikgQWRkIHN1cHBvcnQgaW4gdnJpbmcgdG8gYWNjZXNzIHZpcnRxdWV1ZSBvdmVyIE1NSU8N
-Cj4+Pj4+Pj4+Pj4+IDMpIEFkZCB2aG9zdCBjbGllbnQgZHJpdmVyIGZvciBycG1zZw0KPj4+Pj4+
-Pj4+Pj4gNCkgQWRkIFBDSWUgUkMgZHJpdmVyICh1c2VzIHZpcnRpbykgYW5kIFBDSWUgRVAgZHJp
-dmVyICh1c2VzIHZob3N0KSBmb3INCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqAgcnBtc2cgY29t
-bXVuaWNhdGlvbiBiZXR3ZWVuIHR3byBTb0NzIGNvbm5lY3RlZCB0byBlYWNoIG90aGVyDQo+Pj4+
-Pj4+Pj4+PiA1KSBBZGQgTlRCIFZpcnRpbyBkcml2ZXIgYW5kIE5UQiBWaG9zdCBkcml2ZXIgZm9y
-IHJwbXNnIGNvbW11bmljYXRpb24NCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqAgYmV0d2VlbiB0
-d28gU29DcyBjb25uZWN0ZWQgdmlhIE5UQg0KPj4+Pj4+Pj4+Pj4gNikgQWRkIGNvbmZpZ2ZzIHRv
-IGNvbmZpZ3VyZSB0aGUgY29tcG9uZW50cw0KPj4+Pj4+Pj4+Pj4NCj4+Pj4+Pj4+Pj4+IFVzZUNh
-c2UxIDoNCj4+Pj4+Pj4+Pj4+DQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgVkhPU1QgUlBNU0fCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIFZJUlRJTyBSUE1TRw0KPj4+Pj4+
-Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoCArwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKg
-wqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCB8DQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfA0K
-Pj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwNCj4+Pj4+Pj4+Pj4+ICDCoMKg
-wqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8DQo+Pj4+Pj4+Pj4+PiArLS0tLS12LS0tLS0tK8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICstLS0tLS12LS0tLS0tLSsNCj4+Pj4+Pj4+Pj4+IHzC
-oMKgIExpbnV4wqDCoMKgIHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKg
-wqAgTGludXjCoMKgwqAgfA0KPj4+Pj4+Pj4+Pj4gfMKgIEVuZHBvaW50wqAgfMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgUm9vdCBDb21wbGV4IHwNCj4+Pj4+Pj4+Pj4+IHzCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIDwtLS0tLS0tLS0tLS0tLS0tLT7CoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCB8DQo+Pj4+Pj4+Pj4+PiB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwNCj4+
-Pj4+Pj4+Pj4+IHzCoMKgwqAgU09DMcKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgfMKgwqDCoMKgIFNPQzLCoMKgwqDCoCB8DQo+Pj4+Pj4+Pj4+PiArLS0tLS0tLS0tLS0t
-K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICstLS0tLS0tLS0tLS0tLSsNCj4+Pj4+
-Pj4+Pj4+DQo+Pj4+Pj4+Pj4+PiBVc2VDYXNlIDI6DQo+Pj4+Pj4+Pj4+Pg0KPj4+Pj4+Pj4+Pj4g
-IMKgwqDCoMKgwqDCoMKgwqAgVkhPU1QgUlBNU0fCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBWSVJUSU8gUlBN
-U0cNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCArwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwN
-Cj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwNCj4+
-Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqAgKy0tLS0t
-LXYtLS0tLS0rwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqAgKy0tLS0tLXYtLS0tLS0rDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKg
-wqDCoMKgIHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqAgfA0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoCB8wqDCoMKgIEhPU1Qx
-wqDCoMKgIHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgIEhPU1QywqDCoMKgIHwNCj4+Pj4+Pj4+Pj4+ICDC
-oMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8DQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoMKgICstLS0tLS1e
-LS0tLS0tK8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgICstLS0tLS1eLS0tLS0tKw0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgfA0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfA0KPj4+Pj4+Pj4+Pj4gKy0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
-LSsNCj4+Pj4+Pj4+Pj4+IHzCoCArLS0tLS0tdi0tLS0tLSvCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCArLS0tLS0tdi0t
-LS0tLSvCoCB8DQo+Pj4+Pj4+Pj4+PiB8wqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgfA0KPj4+Pj4+Pj4+Pj4gfMKg
-IHzCoMKgwqDCoCBFUMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqDCoCBFUMKgwqDCoMKg
-wqAgfMKgIHwNCj4+Pj4+Pj4+Pj4+IHzCoCB8IENPTlRST0xMRVIxIHzCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8IENP
-TlRST0xMRVIyIHzCoCB8DQo+Pj4+Pj4+Pj4+PiB8wqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oCA8LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0+wqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIHzCoCB8DQo+Pj4+Pj4+Pj4+PiB8wqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgfA0KPj4+Pj4+Pj4+Pj4g
-fMKgIHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfMKgIHwNCj4+Pj4+Pj4+Pj4+IHzCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHzCoCBTb0MgV2l0aCBNdWx0aXBsZSBFUCBJbnN0YW5jZXPCoMKgIHzCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfMKgIHwNCj4+Pj4+Pj4+Pj4+IHzCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHzCoCAoQ29uZmlndXJlZCB1c2luZyBOVEIgRnVuY3Rpb24pwqAgfMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCB8wqAgfA0KPj4+Pj4+Pj4+Pj4gfMKgICstLS0tLS0tLS0tLS0tK8KgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgICstLS0tLS0tLS0tLS0tK8KgIHwNCj4+Pj4+Pj4+Pj4+ICstLS0tLS0tLS0tLS0tLS0tLS0t
-LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rDQo+Pj4+
-Pj4+Pj4+Pg0KPj4+Pj4+Pj4+Pj4gU29mdHdhcmUgTGF5ZXJpbmc6DQo+Pj4+Pj4+Pj4+Pg0KPj4+
-Pj4+Pj4+Pj4gVGhlIGhpZ2gtbGV2ZWwgU1cgbGF5ZXJpbmcgc2hvdWxkIGxvb2sgc29tZXRoaW5n
-IGxpa2UgYmVsb3cuIFRoaXMgc2VyaWVzDQo+Pj4+Pj4+Pj4+PiBhZGRzIHN1cHBvcnQgb25seSBm
-b3IgUlBNU0cgVkhPU1QsIGhvd2V2ZXIgc29tZXRoaW5nIHNpbWlsYXIgc2hvdWxkIGJlDQo+Pj4+
-Pj4+Pj4+PiBkb25lIGZvciBuZXQgYW5kIHNjc2kuIFdpdGggdGhhdCBhbnkgdmhvc3QgZGV2aWNl
-IChQQ0ksIE5UQiwgUGxhdGZvcm0NCj4+Pj4+Pj4+Pj4+IGRldmljZSwgdXNlcikgY2FuIHVzZSBh
-bnkgb2YgdGhlIHZob3N0IGNsaWVudCBkcml2ZXIuDQo+Pj4+Pj4+Pj4+Pg0KPj4+Pj4+Pj4+Pj4N
-Cj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqDCoCArLS0tLS0tLS0tLS0tLS0tLSvCoCArLS0tLS0t
-LS0tLS0rwqAgKy0tLS0tLS0tLS0tLSvCoCArLS0tLS0tLS0tLSsNCj4+Pj4+Pj4+Pj4+ICDCoMKg
-wqDCoMKgwqDCoCB8wqAgUlBNU0cgVkhPU1TCoMKgIHzCoCB8IE5FVCBWSE9TVCB8wqAgfCBTQ1NJ
-IFZIT1NUIHzCoCB8wqDCoMKgIFjCoMKgwqDCoCB8DQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoMKg
-wqAgKy0tLS0tLS1eLS0tLS0tLS0rwqAgKy0tLS0tXi0tLS0tK8KgICstLS0tLV4tLS0tLS0rwqAg
-Ky0tLS1eLS0tLS0rDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-fA0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8DQo+Pj4+Pj4+Pj4+PiArLS0tLS0tLS0tLS12LS0tLS0t
-LS0tLS0tLS0tLS12LS0tLS0tLS0tLS0tLS12LS0tLS0tLS0tLS0tLS12LS0tLS0tLS0tLSsNCj4+
-Pj4+Pj4+Pj4+IHzCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgVkhPU1QgQ09SRcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwNCj4+Pj4+Pj4+Pj4+ICstLS0tLS0tLV4tLS0tLS0t
-LS0tLS0tLS1eLS0tLS0tLS0tLS0tLS0tLS0tLS1eLS0tLS0tLS0tLS0tLS0tLS0tXi0tLS0tKw0K
-Pj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfA0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqAgfA0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqAgfMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfA0KPj4+Pj4+Pj4+Pj4gKy0t
-LS0tLS0tdi0tLS0tLS0rwqAgKy0tLS12LS0tLS0tK8KgICstLS0tLS0tLS0tdi0tLS0tLS0tLS0r
-wqAgKy0tLS12LS0tLS0rDQo+Pj4+Pj4+Pj4+PiB8wqAgUENJIEVQRiBWSE9TVCB8wqAgfCBOVEIg
-VkhPU1QgfMKgIHxQTEFURk9STSBERVZJQ0UgVkhPU1R8wqAgfMKgwqDCoCBYwqDCoMKgwqAgfA0K
-Pj4+Pj4+Pj4+Pj4gKy0tLS0tLS0tLS0tLS0tLS0rwqAgKy0tLS0tLS0tLS0tK8KgICstLS0tLS0t
-LS0tLS0tLS0tLS0tLS0rwqAgKy0tLS0tLS0tLS0rDQo+Pj4+Pj4+Pj4+Pg0KPj4+Pj4+Pj4+Pj4g
-VGhpcyB3YXMgaW5pdGlhbGx5IHByb3Bvc2VkIGhlcmUgWzFdDQo+Pj4+Pj4+Pj4+Pg0KPj4+Pj4+
-Pj4+Pj4gWzFdIC0+DQo+Pj4+Pj4+Pj4+PiBodHRwczovL2xvcmUua2VybmVsLm9yZy9yLzJjZjAw
-ZWM0LTFlZDYtZjY2ZS02ODk3LTAwNmQxYTViNjM5MEB0aS5jb20NCj4+Pj4+Pj4+Pj4gSSBmaW5k
-IHRoaXMgdmVyeSBpbnRlcmVzdGluZy4gQSBodWdlIHBhdGNoc2V0IHNvIHdpbGwgdGFrZSBhIGJp
-dA0KPj4+Pj4+Pj4+PiB0byByZXZpZXcsIGJ1dCBJIGNlcnRhaW5seSBwbGFuIHRvIGRvIHRoYXQu
-IFRoYW5rcyENCj4+Pj4+Pj4+PiBZZXMsIGl0IHdvdWxkIGJlIGJldHRlciBpZiB0aGVyZSdzIGEg
-Z2l0IGJyYW5jaCBmb3IgdXMgdG8gaGF2ZSBhIGxvb2suDQo+Pj4+Pj4+PiBJJ3ZlIHB1c2hlZCB0
-aGUgYnJhbmNoDQo+Pj4+Pj4+PiBodHRwczovL2dpdGh1Yi5jb20va2lzaG9uL2xpbnV4LXdpcC5n
-aXQgdmhvc3RfcnBtc2dfcGNpX250Yl9yZmMNCj4+Pj4+Pj4gVGhhbmtzDQo+Pj4+Pj4+DQo+Pj4+
-Pj4+DQo+Pj4+Pj4+Pj4gQnR3LCBJJ20gbm90IHN1cmUgSSBnZXQgdGhlIGJpZyBwaWN0dXJlLCBi
-dXQgSSB2YWd1ZWx5IGZlZWwgc29tZSBvZiB0aGUNCj4+Pj4+Pj4+PiB3b3JrIGlzDQo+Pj4+Pj4+
-Pj4gZHVwbGljYXRlZCB3aXRoIHZEUEEgKGUuZyB0aGUgZXBmIHRyYW5zcG9ydCBvciB2aG9zdCBi
-dXMpLg0KPj4+Pj4+Pj4gVGhpcyBpcyBhYm91dCBjb25uZWN0aW5nIHR3byBkaWZmZXJlbnQgSFcg
-c3lzdGVtcyBib3RoIHJ1bm5pbmcgTGludXggYW5kDQo+Pj4+Pj4+PiBkb2Vzbid0IG5lY2Vzc2Fy
-aWx5IGludm9sdmUgdmlydHVhbGl6YXRpb24uDQo+Pj4+Pj4+IFJpZ2h0LCB0aGlzIGlzIHNvbWV0
-aGluZyBzaW1pbGFyIHRvIFZPUA0KPj4+Pj4+PiAoRG9jdW1lbnRhdGlvbi9taXNjLWRldmljZXMv
-bWljL21pY19vdmVydmlldy5yc3QpLiBUaGUgZGlmZmVyZW50IGlzIHRoZQ0KPj4+Pj4+PiBoYXJk
-d2FyZSBJIGd1ZXNzIGFuZCBWT1AgdXNlIHVzZXJzcGFjZSBhcHBsaWNhdGlvbiB0byBpbXBsZW1l
-bnQgdGhlIGRldmljZS4NCj4+Pj4+PiBJJ2QgYWxzbyBsaWtlIHRvIHBvaW50IG91dCwgdGhpcyBz
-ZXJpZXMgdHJpZXMgdG8gaGF2ZSBjb21tdW5pY2F0aW9uIGJldHdlZW4NCj4+Pj4+PiB0d28NCj4+
-Pj4+PiBTb0NzIGluIHZlbmRvciBhZ25vc3RpYyB3YXkuIFNpbmNlIHRoaXMgc2VyaWVzIHNvbHZl
-cyBmb3IgMiB1c2VjYXNlcyAoUENJZQ0KPj4+Pj4+IFJDPC0+RVAgYW5kIE5UQiksIGZvciB0aGUg
-TlRCIGNhc2UgaXQgZGlyZWN0bHkgcGx1Z3MgaW50byBOVEIgZnJhbWV3b3JrIGFuZA0KPj4+Pj4+
-IGFueQ0KPj4+Pj4+IG9mIHRoZSBIVyBpbiBOVEIgYmVsb3cgc2hvdWxkIGJlIGFibGUgdG8gdXNl
-IGEgdmlydGlvLXZob3N0IGNvbW11bmljYXRpb24NCj4+Pj4+Pg0KPj4+Pj4+ICNscyBkcml2ZXJz
-L250Yi9ody8NCj4+Pj4+PiBhbWTCoCBlcGbCoCBpZHTCoCBpbnRlbMKgIG1zY2MNCj4+Pj4+Pg0K
-Pj4+Pj4+IEFuZCBzaW1pbGFybHkgZm9yIHRoZSBQQ0llIFJDPC0+RVAgY29tbXVuaWNhdGlvbiwg
-dGhpcyBhZGRzIGEgZ2VuZXJpYyBlbmRwb2ludA0KPj4+Pj4+IGZ1bmN0aW9uIGRyaXZlciBhbmQg
-aGVuY2UgYW55IFNvQyB0aGF0IHN1cHBvcnRzIGNvbmZpZ3VyYWJsZSBQQ0llIGVuZHBvaW50IGNh
-bg0KPj4+Pj4+IHVzZSB2aXJ0aW8tdmhvc3QgY29tbXVuaWNhdGlvbg0KPj4+Pj4+DQo+Pj4+Pj4g
-IyBscyBkcml2ZXJzL3BjaS9jb250cm9sbGVyL2R3Yy8qZXAqDQo+Pj4+Pj4gZHJpdmVycy9wY2kv
-Y29udHJvbGxlci9kd2MvcGNpZS1kZXNpZ253YXJlLWVwLmMNCj4+Pj4+PiBkcml2ZXJzL3BjaS9j
-b250cm9sbGVyL2R3Yy9wY2llLXVuaXBoaWVyLWVwLmMNCj4+Pj4+PiBkcml2ZXJzL3BjaS9jb250
-cm9sbGVyL2R3Yy9wY2ktbGF5ZXJzY2FwZS1lcC5jDQo+Pj4+Pg0KPj4+Pj4gVGhhbmtzIGZvciB0
-aG9zZSBiYWNrZ3JvdW5kcy4NCj4+Pj4+DQo+Pj4+Pg0KPj4+Pj4+Pj4gIMKgwqDCoCBTbyB0aGVy
-ZSBpcyBubyBndWVzdCBvciBob3N0IGFzIGluDQo+Pj4+Pj4+PiB2aXJ0dWFsaXphdGlvbiBidXQg
-dHdvIGVudGlyZWx5IGRpZmZlcmVudCBzeXN0ZW1zIGNvbm5lY3RlZCB2aWEgUENJZSBjYWJsZSwN
-Cj4+Pj4+Pj4+IG9uZQ0KPj4+Pj4+Pj4gYWN0aW5nIGFzIGd1ZXN0IGFuZCBvbmUgYXMgaG9zdC4g
-U28gb25lIHN5c3RlbSB3aWxsIHByb3ZpZGUgdmlydGlvDQo+Pj4+Pj4+PiBmdW5jdGlvbmFsaXR5
-IHJlc2VydmluZyBtZW1vcnkgZm9yIHZpcnRxdWV1ZXMgYW5kIHRoZSBvdGhlciBwcm92aWRlcyB2
-aG9zdA0KPj4+Pj4+Pj4gZnVuY3Rpb25hbGl0eSBwcm92aWRpbmcgYSB3YXkgdG8gYWNjZXNzIHRo
-ZSB2aXJ0cXVldWVzIGluIHZpcnRpbyBtZW1vcnkuDQo+Pj4+Pj4+PiBPbmUgaXMNCj4+Pj4+Pj4+
-IHNvdXJjZSBhbmQgdGhlIG90aGVyIGlzIHNpbmsgYW5kIHRoZXJlIGlzIG5vIGludGVybWVkaWF0
-ZSBlbnRpdHkuICh2aG9zdCB3YXMNCj4+Pj4+Pj4+IHByb2JhYmx5IGludGVybWVkaWF0ZSBlbnRp
-dHkgaW4gdmlydHVhbGl6YXRpb24/KQ0KPj4+Pj4+PiAoTm90IGEgbmF0aXZlIEVuZ2xpc2ggc3Bl
-YWtlcikgYnV0ICJ2aG9zdCIgY291bGQgaW50cm9kdWNlIHNvbWUgY29uZnVzaW9uIGZvcg0KPj4+
-Pj4+PiBtZSBzaW5jZSBpdCB3YXMgdXNlIGZvciBpbXBsZW1lbnRpbmcgdmlydGlvIGJhY2tlbmQg
-Zm9yIHVzZXJzcGFjZSBkcml2ZXJzLiBJDQo+Pj4+Pj4+IGd1ZXNzICJ2cmluZ2giIGNvdWxkIGJl
-IGJldHRlci4NCj4+Pj4+PiBJbml0aWFsbHkgSSBoYWQgbmFtZWQgdGhpcyB2cmluZ2ggYnV0IGxh
-dGVyIGRlY2lkZWQgdG8gY2hvb3NlIHZob3N0IGluc3RlYWQgb2YNCj4+Pj4+PiB2cmluZ2guIHZo
-b3N0IGlzIHN0aWxsIGEgdmlydGlvIGJhY2tlbmQgKG5vdCBuZWNlc3NhcmlseSB1c2Vyc3BhY2Up
-IHRob3VnaCBpdA0KPj4+Pj4+IG5vdyByZXNpZGVzIGluIGFuIGVudGlyZWx5IGRpZmZlcmVudCBz
-eXN0ZW0uIFdoYXRldmVyIHZpcnRpbyBpcyBmb3IgYSBmcm9udGVuZA0KPj4+Pj4+IHN5c3RlbSwg
-dmhvc3QgY2FuIGJlIHRoYXQgZm9yIGEgYmFja2VuZCBzeXN0ZW0uIHZyaW5nIGNhbiBiZSBmb3Ig
-YWNjZXNzaW5nDQo+Pj4+Pj4gdmlydHF1ZXVlIGFuZCBjYW4gYmUgdXNlZCBlaXRoZXIgaW4gZnJv
-bnRlbmQgb3IgYmFja2VuZC4NCj4+Pj4+DQo+Pj4+PiBPay4NCj4+Pj4+DQo+Pj4+Pg0KPj4+Pj4+
-Pj4+IEhhdmUgeW91IGNvbnNpZGVyZWQgdG8gaW1wbGVtZW50IHRoZXNlIHRocm91Z2ggdkRQQT8N
-Cj4+Pj4+Pj4+IElJVUMgdkRQQSBvbmx5IHByb3ZpZGVzIGFuIGludGVyZmFjZSB0byB1c2Vyc3Bh
-Y2UgYW5kIGFuIGluLWtlcm5lbCBycG1zZw0KPj4+Pj4+Pj4gZHJpdmVyDQo+Pj4+Pj4+PiBvciB2
-aG9zdCBuZXQgZHJpdmVyIGlzIG5vdCBwcm92aWRlZC4NCj4+Pj4+Pj4+DQo+Pj4+Pj4+PiBUaGUg
-SFcgY29ubmVjdGlvbiBsb29rcyBzb21ldGhpbmcgbGlrZSBodHRwczovL3Bhc3RlYm9hcmQuY28v
-SmZNVlZIQy5qcGcNCj4+Pj4+Pj4+ICh1c2VjYXNlMiBhYm92ZSksDQo+Pj4+Pj4+IEkgc2VlLg0K
-Pj4+Pj4+Pg0KPj4+Pj4+Pg0KPj4+Pj4+Pj4gIMKgwqDCoCBhbGwgdGhlIGJvYXJkcyBydW4gTGlu
-dXguIFRoZSBtaWRkbGUgYm9hcmQgcHJvdmlkZXMgTlRCDQo+Pj4+Pj4+PiBmdW5jdGlvbmFsaXR5
-IGFuZCBib2FyZCBvbiBlaXRoZXIgc2lkZSBwcm92aWRlcyB2aXJ0aW8vdmhvc3QNCj4+Pj4+Pj4+
-IGZ1bmN0aW9uYWxpdHkgYW5kDQo+Pj4+Pj4+PiB0cmFuc2ZlciBkYXRhIHVzaW5nIHJwbXNnLg0K
-Pj4+Pj4+PiBTbyBJIHdvbmRlciB3aGV0aGVyIGl0J3Mgd29ydGh3aGlsZSBmb3IgYSBuZXcgYnVz
-LiBDYW4gd2UgdXNlIHRoZSBleGlzdGVkDQo+Pj4+Pj4+IHZpcnRpby1idXMvZHJpdmVycz8gSXQg
-bWlnaHQgd29yayBhcywgZXhjZXB0IGZvciB0aGUgZXBmIHRyYW5zcG9ydCwgd2UgY2FuDQo+Pj4+
-Pj4+IGludHJvZHVjZSBhIGVwZiAidmhvc3QiIHRyYW5zcG9ydCBkcml2ZXIuDQo+Pj4+Pj4gSU1I
-TyB3ZSdsbCBuZWVkIHR3byBidXNlcyBvbmUgZm9yIGZyb250ZW5kIGFuZCBvdGhlciBmb3IgYmFj
-a2VuZCBiZWNhdXNlIHRoZQ0KPj4+Pj4+IHR3byBjb21wb25lbnRzIGNhbiB0aGVuIGNvLW9wZXJh
-dGUvaW50ZXJhY3Qgd2l0aCBlYWNoIG90aGVyIHRvIHByb3ZpZGUgYQ0KPj4+Pj4+IGZ1bmN0aW9u
-YWxpdHkuIFRob3VnaCBib3RoIHdpbGwgc2VlbWluZ2x5IHByb3ZpZGUgc2ltaWxhciBjYWxsYmFj
-a3MsIHRoZXkgYXJlDQo+Pj4+Pj4gYm90aCBwcm92aWRlIHN5bW1ldHJpY2FsIG9yIGNvbXBsaW1l
-bnRhcnkgZnVuY2l0b25hbGl0eSBhbmQgbmVlZCBub3QgYmUNCj4+Pj4+PiBzYW1lIG9yDQo+Pj4+
-Pj4gaWRlbnRpY2FsLg0KPj4+Pj4+DQo+Pj4+Pj4gSGF2aW5nIHRoZSBzYW1lIGJ1cyBjYW4gYWxz
-byBjcmVhdGUgc2VxdWVuY2luZyBpc3N1ZXMuDQo+Pj4+Pj4NCj4+Pj4+PiBJZiB5b3UgbG9vayBh
-dCB2aXJ0aW9fZGV2X3Byb2JlKCkgb2YgdmlydGlvX2J1cw0KPj4+Pj4+DQo+Pj4+Pj4gZGV2aWNl
-X2ZlYXR1cmVzID0gZGV2LT5jb25maWctPmdldF9mZWF0dXJlcyhkZXYpOw0KPj4+Pj4+DQo+Pj4+
-Pj4gTm93IGlmIHdlIHVzZSBzYW1lIGJ1cyBmb3IgYm90aCBmcm9udC1lbmQgYW5kIGJhY2stZW5k
-LCBib3RoIHdpbGwgdHJ5IHRvDQo+Pj4+Pj4gZ2V0X2ZlYXR1cmVzIHdoZW4gdGhlcmUgaGFzIGJl
-ZW4gbm8gc2V0X2ZlYXR1cmVzLiBJZGVhbGx5IHZob3N0IGRldmljZSBzaG91bGQNCj4+Pj4+PiBi
-ZSBpbml0aWFsaXplZCBmaXJzdCB3aXRoIHRoZSBzZXQgb2YgZmVhdHVyZXMgaXQgc3VwcG9ydHMu
-IFZob3N0IGFuZCB2aXJ0aW8NCj4+Pj4+PiBzaG91bGQgdXNlICJzdGF0dXMiIGFuZCAiZmVhdHVy
-ZXMiIGNvbXBsaW1lbnRhcmlseSBhbmQgbm90IGlkZW50aWNhbGx5Lg0KPj4+Pj4NCj4+Pj4+IFll
-cywgYnV0IHRoZXJlJ3Mgbm8gbmVlZCBmb3IgZG9pbmcgc3RhdHVzL2ZlYXR1cmVzIHBhc3N0aHJv
-dWdoIGluIGVwZiB2aG9zdA0KPj4+Pj4gZHJpdmVycy5iDQo+Pj4+Pg0KPj4+Pj4NCj4+Pj4+PiB2
-aXJ0aW8gZGV2aWNlIChvciBmcm9udGVuZCkgY2Fubm90IGJlIGluaXRpYWxpemVkIGJlZm9yZSB2
-aG9zdCBkZXZpY2UgKG9yDQo+Pj4+Pj4gYmFja2VuZCkgZ2V0cyBpbml0aWFsaXplZCB3aXRoIGRh
-dGEgc3VjaCBhcyBmZWF0dXJlcy4gU2ltaWxhcmx5IHZob3N0DQo+Pj4+Pj4gKGJhY2tlbmQpDQo+
-Pj4+Pj4gY2Fubm90IGFjY2VzcyB2aXJxdWV1ZXMgb3IgYnVmZmVycyBiZWZvcmUgdmlydGlvIChm
-cm9udGVuZCkgc2V0cw0KPj4+Pj4+IFZJUlRJT19DT05GSUdfU19EUklWRVJfT0sgd2hlcmVhcyB0
-aGF0IHJlcXVpcmVtZW50IGlzIG5vdCB0aGVyZSBmb3IgdmlydGlvIGFzDQo+Pj4+Pj4gdGhlIHBo
-eXNpY2FsIG1lbW9yeSBmb3IgdmlydHF1ZXVlcyBhcmUgY3JlYXRlZCBieSB2aXJ0aW8gKGZyb250
-ZW5kKS4NCj4+Pj4+DQo+Pj4+PiBlcGYgdmhvc3QgZHJpdmVycyBuZWVkIHRvIGltcGxlbWVudCB0
-d28gZGV2aWNlczogdmhvc3QodnJpbmdoKSBkZXZpY2UgYW5kDQo+Pj4+PiB2aXJ0aW8gZGV2aWNl
-ICh3aGljaCBpcyBhIG1lZGlhdGVkIGRldmljZSkuIFRoZSB2aG9zdCh2cmluZ2gpIGRldmljZSBp
-cyBkb2luZw0KPj4+Pj4gZmVhdHVyZSBuZWdvdGlhdGlvbiB3aXRoIHRoZSB2aXJ0aW8gZGV2aWNl
-IHZpYSBSQy9FUCBvciBOVEIuIFRoZSB2aXJ0aW8gZGV2aWNlDQo+Pj4+PiBpcyBkb2luZyBmZWF0
-dXJlIG5lZ290aWF0aW9uIHdpdGggbG9jYWwgdmlydGlvIGRyaXZlcnMuIElmIHRoZXJlJ3JlIGZl
-YXR1cmUNCj4+Pj4+IG1pc21hdGNoLCBlcGYgdmhvc3QgZHJpdmVycyBhbmQgZG8gbWVkaWF0aW9u
-IGJldHdlZW4gdGhlbS4NCj4+Pj4gSGVyZSBlcGYgdmhvc3Qgc2hvdWxkIGJlIGluaXRpYWxpemVk
-IHdpdGggYSBzZXQgb2YgZmVhdHVyZXMgZm9yIGl0IHRvIG5lZ290aWF0ZQ0KPj4+PiBlaXRoZXIg
-YXMgdmhvc3QgZGV2aWNlIG9yIHZpcnRpbyBkZXZpY2Ugbm8/IFdoZXJlIHNob3VsZCB0aGUgaW5p
-dGlhbCBmZWF0dXJlDQo+Pj4+IHNldCBmb3IgZXBmIHZob3N0IGNvbWUgZnJvbT8NCj4+Pg0KPj4+
-DQo+Pj4gSSB0aGluayBpdCBjYW4gd29yayBhczoNCj4+Pg0KPj4+IDEpIEhhdmluZyBhbiBpbml0
-aWFsIGZlYXR1cmVzIChoYXJkIGNvZGVkIGluIHRoZSBjb2RlKSBzZXQgWCBpbiBlcGYgdmhvc3QN
-Cj4+PiAyKSBVc2luZyB0aGlzIFggZm9yIGJvdGggdmlydGlvIGRldmljZSBhbmQgdmhvc3QodnJp
-bmdoKSBkZXZpY2UNCj4+PiAzKSBsb2NhbCB2aXJ0aW8gZHJpdmVyIHdpbGwgbmVnb3RpYXRlIHdp
-dGggdmlydGlvIGRldmljZSB3aXRoIGZlYXR1cmUgc2V0IFkNCj4+PiA0KSByZW1vdGUgdmlydGlv
-IGRyaXZlciB3aWxsIG5lZ290aWF0ZSB3aXRoIHZyaW5naCBkZXZpY2Ugd2l0aCBmZWF0dXJlIHNl
-dCBaDQo+Pj4gNSkgbWVkaWF0ZSBiZXR3ZWVuIGZlYXR1cmUgWSBhbmQgZmVhdHVyZSBaIHNpbmNl
-IGJvdGggWSBhbmQgWiBhcmUgYSBzdWJzZXQgb2YgWA0KPj4+DQo+Pj4NCj4+DQo+PiBva2F5LiBJ
-J20gYWxzbyB0aGlua2luZyBpZiB3ZSBjb3VsZCBoYXZlIGNvbmZpZ2ZzIGZvciBjb25maWd1cmlu
-ZyB0aGlzLiBBbnl3YXlzDQo+PiB3ZSBjb3VsZCBmaW5kIGRpZmZlcmVudCBhcHByb2FjaGVzIG9m
-IGNvbmZpZ3VyaW5nIHRoaXMuDQo+Pj4+Pg0KPj4+Pj4+PiBJdCB3aWxsIGhhdmUgdmlydHF1ZXVl
-cyBidXQgb25seSB1c2VkIGZvciB0aGUgY29tbXVuaWNhdGlvbiBiZXR3ZWVuIGl0c2VsZg0KPj4+
-Pj4+PiBhbmQNCj4+Pj4+Pj4gdXBwdGVyIHZpcnRpbyBkcml2ZXIuIEFuZCBpdCB3aWxsIGhhdmUg
-dnJpbmdoIHF1ZXVlcyB3aGljaCB3aWxsIGJlIHByb2JlIGJ5DQo+Pj4+Pj4+IHZpcnRpbyBlcGYg
-dHJhbnNwb3J0IGRyaXZlcnMuIEFuZCBpdCBuZWVkcyB0byBkbyBkYXRhY29weSBiZXR3ZWVuDQo+
-Pj4+Pj4+IHZpcnRxdWV1ZSBhbmQNCj4+Pj4+Pj4gdnJpbmdoIHF1ZXVlcy4NCj4+Pj4+Pj4NCj4+
-Pj4+Pj4gSXQgd29ya3MgbGlrZToNCj4+Pj4+Pj4NCj4+Pj4+Pj4gdmlydGlvIGRyaXZlcnMgPC0g
-dmlydHF1ZXVlL3ZpcnRpby1idXMgLT4gZXBmIHZob3N0IGRyaXZlcnMgPC0gdnJpbmdoDQo+Pj4+
-Pj4+IHF1ZXVlL2VwZj4NCj4+Pj4+Pj4NCj4+Pj4+Pj4gVGhlIGFkdmFudGFnZXMgaXMgdGhhdCB0
-aGVyZSdzIG5vIG5lZWQgZm9yIHdyaXRpbmcgbmV3IGJ1c2VzIGFuZCBkcml2ZXJzLg0KPj4+Pj4+
-IEkgdGhpbmsgdGhpcyB3aWxsIHdvcmsgaG93ZXZlciB0aGVyZSBpcyBhbiBhZGR0aW9uYWwgY29w
-eSBiZXR3ZWVuIHZyaW5naCBxdWV1ZQ0KPj4+Pj4+IGFuZCB2aXJ0cXVldWUsDQo+Pj4+Pg0KPj4+
-Pj4gSSB0aGluayBub3Q/IEUuZyBpbiB1c2UgY2FzZSAxKSwgaWYgd2Ugc3RpY2sgdG8gdmlydGlv
-IGJ1cywgd2Ugd2lsbCBoYXZlOg0KPj4+Pj4NCj4+Pj4+IHZpcnRpby1ycG1zZyAoRVApIDwtIHZp
-cnRpbyByaW5nKDEpIC0+IGVwZiB2aG9zdCBkcml2ZXIgKEVQKSA8LSB2aXJ0aW8gcmluZygyKQ0K
-Pj4+Pj4gLT4gdmlydGlvIHBjaSAoUkMpIDwtPiB2aXJ0aW8gcnBtc2cgKFJDKQ0KPj4+PiBJSVVD
-IGVwZiB2aG9zdCBkcml2ZXIgKEVQKSB3aWxsIGFjY2VzcyB2aXJ0aW8gcmluZygyKSB1c2luZyB2
-cmluZ2g/DQo+Pj4NCj4+Pg0KPj4+IFllcy4NCj4+Pg0KPj4+DQo+Pj4+IEFuZCB2aXJ0aW8NCj4+
-Pj4gcmluZygyKSBpcyBjcmVhdGVkIGJ5IHZpcnRpbyBwY2kgKFJDKS4NCj4+Pg0KPj4+DQo+Pj4g
-WWVzLg0KPj4+DQo+Pj4NCj4+Pj4+IFdoYXQgZXBmIHZob3N0IGRyaXZlciBkaWQgaXMgdG8gcmVh
-ZCBmcm9tIHZpcnRpbyByaW5nKDEpIGFib3V0IHRoZSBidWZmZXIgbGVuDQo+Pj4+PiBhbmQgYWRk
-ciBhbmQgdGhlbSBETUEgdG8gTGludXgoUkMpPw0KPj4+PiBva2F5LCBJIG1hZGUgc29tZSBvcHRp
-bWl6YXRpb24gaGVyZSB3aGVyZSB2aG9zdC1ycG1zZyB1c2luZyBhIGhlbHBlciB3cml0ZXMgYQ0K
-Pj4+PiBidWZmZXIgZnJvbSBycG1zZydzIHVwcGVyIGxheWVyIGRpcmVjdGx5IHRvIHJlbW90ZSBM
-aW51eCAoUkMpIGFzIGFnYWluc3QgaGVyZQ0KPj4+PiB3ZXJlIGl0IGhhcyB0byBiZSBmaXJzdCB3
-cml0dGVuIHRvIHZpcnRpbyByaW5nICgxKS4NCj4+Pj4NCj4+Pj4gVGhpbmtpbmcgaG93IHRoaXMg
-d291bGQgbG9vayBmb3IgTlRCDQo+Pj4+IHZpcnRpby1ycG1zZyAoSE9TVDEpIDwtIHZpcnRpbyBy
-aW5nKDEpIC0+IE5UQihIT1NUMSkgPC0+IE5UQihIT1NUMinCoCA8LSB2aXJ0aW8NCj4+Pj4gcmlu
-ZygyKSAtPiB2aXJ0aW8tcnBtc2cgKEhPU1QyKQ0KPj4+Pg0KPj4+PiBIZXJlIHRoZSBOVEIoSE9T
-VDEpIHdpbGwgYWNjZXNzIHRoZSB2aXJ0aW8gcmluZygyKSB1c2luZyB2cmluZ2g/DQo+Pj4NCj4+
-Pg0KPj4+IFllcywgSSB0aGluayBzbyBpdCBuZWVkcyB0byB1c2UgdnJpbmcgdG8gYWNjZXNzIHZp
-cnRpbyByaW5nICgxKSBhcyB3ZWxsLg0KPj4NCj4+IE5UQihIT1NUMSkgYW5kIHZpcnRpbyByaW5n
-KDEpIHdpbGwgYmUgaW4gdGhlIHNhbWUgc3lzdGVtLiBTbyBpdCBkb2Vzbid0IGhhdmUgdG8NCj4+
-IHVzZSB2cmluZy4gdmlydGlvIHJpbmcoMSkgaXMgYnkgdGhlIHZpcnRpbyBkZXZpY2UgdGhlIE5U
-QihIT1NUMSkgY3JlYXRlcy4NCj4+Pg0KPj4+DQo+Pj4+DQo+Pj4+IERvIHlvdSBhbHNvIHRoaW5r
-IHRoaXMgd2lsbCB3b3JrIHNlYW1sZXNzbHkgd2l0aCB2aXJ0aW9fbmV0LmMsIHZpcnRpb19ibGsu
-Yz8NCj4+Pg0KPj4+DQo+Pj4gWWVzLg0KPj4NCj4+IG9rYXksIEkgaGF2ZW4ndCBsb29rZWQgYXQg
-dGhpcyBidXQgdGhlIGJhY2tlbmQgb2YgdmlydGlvX2JsayBzaG91bGQgYWNjZXNzIGFuDQo+PiBh
-Y3R1YWwgc3RvcmFnZSBkZXZpY2Ugbm8/DQo+Pj4NCj4+Pg0KPj4+Pg0KPj4+PiBJJ2QgbGlrZSB0
-byBnZXQgY2xhcml0eSBvbiB0d28gdGhpbmdzIGluIHRoZSBhcHByb2FjaCB5b3Ugc3VnZ2VzdGVk
-LCBvbmUgaXMNCj4+Pj4gZmVhdHVyZXMgKHNpbmNlIGVwZiB2aG9zdCBzaG91bGQgaWRlYWxseSBi
-ZSB0cmFuc3BhcmVudCB0byBhbnkgdmlydGlvIGRyaXZlcikNCj4+Pg0KPj4+DQo+Pj4gV2UgY2Fu
-IGhhdmUgaGF2ZSBhbiBhcnJheSBvZiBwcmUtZGVmaW5lZCBmZWF0dXJlcyBpbmRleGVkIGJ5IHZp
-cnRpbyBkZXZpY2UgaWQNCj4+PiBpbiB0aGUgY29kZS4NCj4+Pg0KPj4+DQo+Pj4+IGFuZCB0aGUg
-b3RoZXIgaXMgaG93IGNlcnRhaW4gaW5wdXRzIHRvIHZpcnRpbyBkZXZpY2Ugc3VjaCBhcyBudW1i
-ZXIgb2YgYnVmZmVycw0KPj4+PiBiZSBkZXRlcm1pbmVkLg0KPj4+DQo+Pj4NCj4+PiBXZSBjYW4g
-c3RhcnQgZnJvbSBoYXJkIGNvZGVkIHRoZSB2YWx1ZSBsaWtlIDI1Niwgb3IgaW50cm9kdWNlIHNv
-bWUgQVBJIGZvciB1c2VyDQo+Pj4gdG8gY2hhbmdlIHRoZSB2YWx1ZS4NCj4+Pg0KPj4+DQo+Pj4+
-DQo+Pj4+IFRoYW5rcyBhZ2FpbiBmb3IgeW91ciBzdWdnZXN0aW9ucyENCj4+Pg0KPj4+DQo+Pj4g
-WW91J3JlIHdlbGNvbWUuDQo+Pj4NCj4+PiBOb3RlIHRoYXQgSSBqdXN0IHdhbnQgdG8gY2hlY2sg
-d2hldGhlciBvciBub3Qgd2UgY2FuIHJldXNlIHRoZSB2aXJ0aW8NCj4+PiBidXMvZHJpdmVyLiBJ
-dCdzIHNvbWV0aGluZyBzaW1pbGFyIHRvIHdoYXQgeW91IHByb3Bvc2VkIGluIFNvZnR3YXJlIExh
-eWVyaW5nDQo+Pj4gYnV0IHdlIGp1c3QgcmVwbGFjZSAidmhvc3QgY29yZSIgd2l0aCAidmlydGlv
-IGJ1cyIgYW5kIG1vdmUgdGhlIHZob3N0IGNvcmUNCj4+PiBiZWxvdyBlcGYvbnRiL3BsYXRmb3Jt
-IHRyYW5zcG9ydC4NCj4+DQo+PiBHb3QgaXQuIE15IGluaXRpYWwgZGVzaWduIHdhcyBiYXNlZCBv
-biBteSB1bmRlcnN0YW5kaW5nIG9mIHlvdXIgY29tbWVudHMgWzFdLg0KPj4NCj4+IEknbGwgdHJ5
-IHRvIGNyZWF0ZSBzb21ldGhpbmcgYmFzZWQgb24geW91ciBwcm9wb3NlZCBkZXNpZ24gaGVyZS4N
-Cj4gDQo+IEJhc2VkIG9uIHRoZSBhYm92ZSBjb252ZXJzYXRpb24gaXQgc2VlbXMgbGlrZSBJIHNo
-b3VsZCB3YWl0IGZvciBhbm90aGVyIHJldmlzaW9uDQo+IG9mIHRoaXMgc2V0IGJlZm9yZSByZXZp
-ZXdpbmcgdGhlIFJQTVNHIHBhcnQuICBQbGVhc2UgY29uZmlybSB0aGF0IG15DQo+IHVuZGVyc3Rh
-bmRpbmcgaXMgY29ycmVjdC4NCg0KUmlnaHQsIHRoZXJlIGFyZSBtdWx0aXBsZSBwYXJ0cyBpbiB0
-aGlzIHNlcmllcyB0aGF0IGhhcyB0byBiZSBhbGlnbmVkLiANCkknZCBzdGlsbCB0aGluayBpcnJl
-c3BlY3RpdmUgb2YgdGhlIGFwcHJvYWNoIHNvbWV0aGluZyBsaWtlIEFkZHJlc3MgDQpTZXJ2aWNl
-IE5vdGlmaWNhdGlvbiBzdXBwb3J0IG1pZ2h0IGhhdmUgdG8gYmUgc3VwcG9ydGVkIGJ5IHJwbXNn
-Lg0KDQpUaGFua3MNCktpc2hvbg0KPiANCj4gVGhhbmtzLA0KPiBNYXRoaWV1DQo+IA0KPj4NCj4+
-IFJlZ2FyZHMNCj4+IEtpc2hvbg0KPj4NCj4+IFsxXSAtPg0KPj4gaHR0cHM6Ly9sb3JlLmtlcm5l
-bC5vcmcvbGludXgtcGNpLzU5OTgyNDk5LTBmYzEtMmUzOS05ZmY5LTk5M2ZiNGRkN2RjY0ByZWRo
-YXQuY29tLw0KPj4+DQo+Pj4gVGhhbmtzDQo+Pj4NCj4+Pg0KPj4+Pg0KPj4+PiBSZWdhcmRzDQo+
-Pj4+IEtpc2hvbg0KPj4+Pg0KPj4+Pj4NCj4+Pj4+PiBpbiBzb21lIGNhc2VzIGFkZHMgbGF0ZW5j
-eSBiZWNhdXNlIG9mIGZvcndhcmRpbmcgaW50ZXJydXB0cw0KPj4+Pj4+IGJldHdlZW4gdmhvc3Qg
-YW5kIHZpcnRpbyBkcml2ZXIsIHZob3N0IGRyaXZlcnMgcHJvdmlkaW5nIGZlYXR1cmVzICh3aGlj
-aCBtZWFucw0KPj4+Pj4+IGl0IGhhcyB0byBiZSBhd2FyZSBvZiB3aGljaCB2aXJ0aW8gZHJpdmVy
-IHdpbGwgYmUgY29ubmVjdGVkKS4NCj4+Pj4+PiB2aXJ0aW8gZHJpdmVycyAoZnJvbnQgZW5kKSBn
-ZW5lcmFsbHkgYWNjZXNzIHRoZSBidWZmZXJzIGZyb20gaXQncyBsb2NhbCBtZW1vcnkNCj4+Pj4+
-PiBidXQgd2hlbiBpbiBiYWNrZW5kIGl0IGNhbiBhY2Nlc3Mgb3ZlciBNTUlPIChsaWtlIFBDSSBF
-UEYgb3IgTlRCKSBvcg0KPj4+Pj4+IHVzZXJzcGFjZS4NCj4+Pj4+Pj4gRG9lcyB0aGlzIG1ha2Ug
-c2Vuc2U/DQo+Pj4+Pj4gVHdvIGNvcGllcyBpbiBteSBvcGluaW9uIGlzIGFuIGlzc3VlIGJ1dCBs
-ZXRzIGdldCBvdGhlcnMgb3BpbmlvbnMgYXMgd2VsbC4NCj4+Pj4+DQo+Pj4+PiBTdXJlLg0KPj4+
-Pj4NCj4+Pj4+DQo+Pj4+Pj4gVGhhbmtzIGZvciB5b3VyIHN1Z2dlc3Rpb25zIQ0KPj4+Pj4NCj4+
-Pj4+IFlvdSdyZSB3ZWxjb21lLg0KPj4+Pj4NCj4+Pj4+IFRoYW5rcw0KPj4+Pj4NCj4+Pj4+DQo+
-Pj4+Pj4gUmVnYXJkcw0KPj4+Pj4+IEtpc2hvbg0KPj4+Pj4+DQo+Pj4+Pj4+IFRoYW5rcw0KPj4+
-Pj4+Pg0KPj4+Pj4+Pg0KPj4+Pj4+Pj4gVGhhbmtzDQo+Pj4+Pj4+PiBLaXNob24NCj4+Pj4+Pj4+
-DQo+Pj4+Pj4+Pj4gVGhhbmtzDQo+Pj4+Pj4+Pj4NCj4+Pj4+Pj4+Pg0KPj4+Pj4+Pj4+Pj4gS2lz
-aG9uIFZpamF5IEFicmFoYW0gSSAoMjIpOg0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqAgdmhvc3Q6
-IE1ha2UgX2ZlYXR1cmVfIGJpdHMgYSBwcm9wZXJ0eSBvZiB2aG9zdCBkZXZpY2UNCj4+Pj4+Pj4+
-Pj4+ICDCoMKgwqDCoMKgIHZob3N0OiBJbnRyb2R1Y2Ugc3RhbmRhcmQgTGludXggZHJpdmVyIG1v
-ZGVsIGluIFZIT1NUDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoCB2aG9zdDogQWRkIG9wcyBmb3Ig
-dGhlIFZIT1NUIGRyaXZlciB0byBjb25maWd1cmUgVkhPU1QgZGV2aWNlDQo+Pj4+Pj4+Pj4+PiAg
-wqDCoMKgwqDCoCB2cmluZ2g6IEFkZCBoZWxwZXJzIHRvIGFjY2VzcyB2cmluZyBpbiBNTUlPDQo+
-Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoCB2aG9zdDogQWRkIE1NSU8gaGVscGVycyBmb3Igb3BlcmF0
-aW9ucyBvbiB2aG9zdCB2aXJ0cXVldWUNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgIHZob3N0OiBJ
-bnRyb2R1Y2UgY29uZmlnZnMgZW50cnkgZm9yIGNvbmZpZ3VyaW5nIFZIT1NUDQo+Pj4+Pj4+Pj4+
-PiAgwqDCoMKgwqDCoCB2aXJ0aW9fcGNpOiBVc2UgcmVxdWVzdF90aHJlYWRlZF9pcnEoKSBpbnN0
-ZWFkIG9mIHJlcXVlc3RfaXJxKCkNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgIHJwbXNnOiB2aXJ0
-aW9fcnBtc2dfYnVzOiBEaXNhYmxlIHJlY2VpdmUgdmlydHF1ZXVlIGNhbGxiYWNrIHdoZW4NCj4+
-Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgwqDCoCByZWFkaW5nIG1lc3NhZ2VzDQo+Pj4+Pj4+Pj4+PiAg
-wqDCoMKgwqDCoCBycG1zZzogSW50cm9kdWNlIGNvbmZpZ2ZzIGVudHJ5IGZvciBjb25maWd1cmlu
-ZyBycG1zZw0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqAgcnBtc2c6IHZpcnRpb19ycG1zZ19idXM6
-IEFkZCBBZGRyZXNzIFNlcnZpY2UgTm90aWZpY2F0aW9uIHN1cHBvcnQNCj4+Pj4+Pj4+Pj4+ICDC
-oMKgwqDCoMKgIHJwbXNnOiB2aXJ0aW9fcnBtc2dfYnVzOiBNb3ZlIGdlbmVyaWMgcnBtc2cgc3Ry
-dWN0dXJlIHRvDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoMKgwqAgcnBtc2dfaW50ZXJuYWwuaA0K
-Pj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqAgdmlydGlvOiBBZGQgb3BzIHRvIGFsbG9jYXRlIGFuZCBm
-cmVlIGJ1ZmZlcg0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqAgcnBtc2c6IHZpcnRpb19ycG1zZ19i
-dXM6IFVzZSB2aXJ0aW9fYWxsb2NfYnVmZmVyKCkgYW5kDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDC
-oMKgwqAgdmlydGlvX2ZyZWVfYnVmZmVyKCkNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgIHJwbXNn
-OiBBZGQgVkhPU1QgYmFzZWQgcmVtb3RlIHByb2Nlc3NvciBtZXNzYWdpbmcgYnVzDQo+Pj4+Pj4+
-Pj4+PiAgwqDCoMKgwqDCoCBzYW1wbGVzL3JwbXNnOiBTZXR1cCBkZWxheWVkIHdvcmsgdG8gc2Vu
-ZCBtZXNzYWdlDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqDCoCBzYW1wbGVzL3JwbXNnOiBXYWl0IGZv
-ciBhZGRyZXNzIHRvIGJlIGJvdW5kIHRvIHJwZGV2IGZvciBzZW5kaW5nDQo+Pj4+Pj4+Pj4+PiAg
-wqDCoMKgwqDCoMKgwqAgbWVzc2FnZQ0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgwqAgcnBtc2cudHh0
-OiBBZGQgRG9jdW1lbnRhdGlvbiB0byBjb25maWd1cmUgcnBtc2cgdXNpbmcgY29uZmlnZnMNCj4+
-Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgIHZpcnRpb19wY2k6IEFkZCBWSVJUSU8gZHJpdmVyIGZvciBW
-SE9TVCBvbiBDb25maWd1cmFibGUgUENJZQ0KPj4+Pj4+Pj4+Pj4gRW5kcG9pbnQNCj4+Pj4+Pj4+
-Pj4+ICDCoMKgwqDCoMKgwqDCoCBkZXZpY2UNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgIFBDSTog
-ZW5kcG9pbnQ6IEFkZCBFUCBmdW5jdGlvbiBkcml2ZXIgdG8gcHJvdmlkZSBWSE9TVCBpbnRlcmZh
-Y2UNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgIE5UQjogQWRkIGEgbmV3IE5UQiBjbGllbnQgZHJp
-dmVyIHRvIGltcGxlbWVudCBWSVJUSU8gZnVuY3Rpb25hbGl0eQ0KPj4+Pj4+Pj4+Pj4gIMKgwqDC
-oMKgwqAgTlRCOiBBZGQgYSBuZXcgTlRCIGNsaWVudCBkcml2ZXIgdG8gaW1wbGVtZW50IFZIT1NU
-IGZ1bmN0aW9uYWxpdHkNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoMKgIE5UQjogRGVzY3JpYmUgdGhl
-IG50Yl92aXJ0aW8gYW5kIG50Yl92aG9zdCBjbGllbnQgaW4gdGhlDQo+Pj4+Pj4+Pj4+PiBkb2N1
-bWVudGF0aW9uDQo+Pj4+Pj4+Pj4+Pg0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIERvY3VtZW50YXRp
-b24vZHJpdmVyLWFwaS9udGIucnN0wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqAgMTEg
-Kw0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIERvY3VtZW50YXRpb24vcnBtc2cudHh0wqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqAgNTYgKw0KPj4+Pj4+Pj4+
-Pj4gIMKgwqDCoMKgIGRyaXZlcnMvbnRiL0tjb25maWfCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDE4ICsNCj4+Pj4+Pj4+Pj4+ICDCoMKg
-wqDCoCBkcml2ZXJzL250Yi9NYWtlZmlsZcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqAgMiArDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJp
-dmVycy9udGIvbnRiX3Zob3N0LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoCB8wqAgNzc2ICsrKysrKysrKysrDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJpdmVy
-cy9udGIvbnRiX3ZpcnRpby5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHzCoCA4NTMgKysrKysrKysrKysrDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJpdmVycy9u
-dGIvbnRiX3ZpcnRpby5owqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-IHzCoMKgIDU2ICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBkcml2ZXJzL3BjaS9lbmRwb2ludC9m
-dW5jdGlvbnMvS2NvbmZpZ8KgwqDCoMKgwqDCoMKgIHzCoMKgIDExICsNCj4+Pj4+Pj4+Pj4+ICDC
-oMKgwqDCoCBkcml2ZXJzL3BjaS9lbmRwb2ludC9mdW5jdGlvbnMvTWFrZWZpbGXCoMKgwqDCoMKg
-wqAgfMKgwqDCoCAxICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCAuLi4vcGNpL2VuZHBvaW50L2Z1
-bmN0aW9ucy9wY2ktZXBmLXZob3N0LmPCoMKgwqAgfCAxMTQ0DQo+Pj4+Pj4+Pj4+PiArKysrKysr
-KysrKysrKysrDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJpdmVycy9ycG1zZy9LY29uZmlnwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDEwICsN
-Cj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBkcml2ZXJzL3JwbXNnL01ha2VmaWxlwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoMKgIDMgKy0NCj4+Pj4+Pj4+
-Pj4+ICDCoMKgwqDCoCBkcml2ZXJzL3JwbXNnL3JwbXNnX2Nmcy5jwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMzk0ICsrKysrKw0KPj4+Pj4+Pj4+Pj4gIMKgwqDC
-oMKgIGRyaXZlcnMvcnBtc2cvcnBtc2dfY29yZS5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfMKgwqDCoCA3ICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBkcml2ZXJzL3Jw
-bXNnL3JwbXNnX2ludGVybmFsLmjCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDEz
-NiArKw0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIGRyaXZlcnMvcnBtc2cvdmhvc3RfcnBtc2dfYnVz
-LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHwgMTE1MQ0KPj4+Pj4+Pj4+Pj4gKysrKysr
-KysrKysrKysrKysNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBkcml2ZXJzL3JwbXNnL3ZpcnRpb19y
-cG1zZ19idXMuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCAxODQgKystDQo+Pj4+Pj4+
-Pj4+PiAgwqDCoMKgwqAgZHJpdmVycy92aG9zdC9LY29uZmlnwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgwqAgMSArDQo+Pj4+Pj4+Pj4+PiAgwqDC
-oMKgwqAgZHJpdmVycy92aG9zdC9NYWtlZmlsZcKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoCAyICstDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJp
-dmVycy92aG9zdC9uZXQuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfMKgwqAgMTAgKy0NCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBkcml2ZXJzL3Zo
-b3N0L3Njc2kuY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgIHzCoMKgIDI0ICstDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJpdmVycy92aG9zdC90ZXN0
-LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDC
-oCAxNyArLQ0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIGRyaXZlcnMvdmhvc3QvdmRwYS5jwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoCAyICst
-DQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJpdmVycy92aG9zdC92aG9zdC5jwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoCA3MzAgKysrKysrKysrKy0N
-Cj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBkcml2ZXJzL3Zob3N0L3Zob3N0X2Nmcy5jwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMzQxICsrKysrDQo+Pj4+Pj4+Pj4+
-PiAgwqDCoMKgwqAgZHJpdmVycy92aG9zdC92cmluZ2guY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgIDMzMiArKysrKw0KPj4+Pj4+Pj4+Pj4gIMKgwqDC
-oMKgIGRyaXZlcnMvdmhvc3QvdnNvY2suY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoCB8wqDCoCAyMCArLQ0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIGRyaXZl
-cnMvdmlydGlvL0tjb25maWfCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgIHzCoMKgwqAgOSArDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgZHJpdmVycy92aXJ0aW8v
-TWFrZWZpbGXCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDC
-oMKgIDEgKw0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIGRyaXZlcnMvdmlydGlvL3ZpcnRpb19wY2lf
-Y29tbW9uLmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDI1ICstDQo+Pj4+Pj4+Pj4+PiAg
-wqDCoMKgwqAgZHJpdmVycy92aXJ0aW8vdmlydGlvX3BjaV9lcGYuY8KgwqDCoMKgwqDCoMKgwqDC
-oMKgwqDCoMKgwqAgfMKgIDY3MCArKysrKysrKysrDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgaW5j
-bHVkZS9saW51eC9tb2RfZGV2aWNldGFibGUuaMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-fMKgwqDCoCA2ICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBpbmNsdWRlL2xpbnV4L3JwbXNnLmjC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfMKgwqDCoCA2
-ICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCB7ZHJpdmVycy92aG9zdCA9PiBpbmNsdWRlL2xpbnV4
-fS92aG9zdC5owqDCoMKgwqDCoCB8wqAgMTMyICstDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgaW5j
-bHVkZS9saW51eC92aXJ0aW8uaMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqAgfMKgwqDCoCAzICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBpbmNsdWRlL2xpbnV4
-L3ZpcnRpb19jb25maWcuaMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzCoMKgIDQy
-ICsNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBpbmNsdWRlL2xpbnV4L3ZyaW5naC5owqDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCB8wqDCoCA0NiArDQo+Pj4+Pj4+
-Pj4+PiAgwqDCoMKgwqAgc2FtcGxlcy9ycG1zZy9ycG1zZ19jbGllbnRfc2FtcGxlLmPCoMKgwqDC
-oMKgwqDCoMKgwqDCoCB8wqDCoCAzMiArLQ0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIHRvb2xzL3Zp
-cnRpby92aXJ0aW9fdGVzdC5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAg
-fMKgwqDCoCAyICstDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAgMzkgZmlsZXMgY2hhbmdlZCwgNzA4
-MyBpbnNlcnRpb25zKCspLCAxODMgZGVsZXRpb25zKC0pDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKgwqAg
-Y3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbnRiL250Yl92aG9zdC5jDQo+Pj4+Pj4+Pj4+PiAg
-wqDCoMKgwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvbnRiL250Yl92aXJ0aW8uYw0KPj4+
-Pj4+Pj4+Pj4gIMKgwqDCoMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL250Yi9udGJfdmly
-dGlvLmgNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVycy9w
-Y2kvZW5kcG9pbnQvZnVuY3Rpb25zL3BjaS1lcGYtdmhvc3QuYw0KPj4+Pj4+Pj4+Pj4gIMKgwqDC
-oMKgIGNyZWF0ZSBtb2RlIDEwMDY0NCBkcml2ZXJzL3JwbXNnL3JwbXNnX2Nmcy5jDQo+Pj4+Pj4+
-Pj4+PiAgwqDCoMKgwqAgY3JlYXRlIG1vZGUgMTAwNjQ0IGRyaXZlcnMvcnBtc2cvdmhvc3RfcnBt
-c2dfYnVzLmMNCj4+Pj4+Pj4+Pj4+ICDCoMKgwqDCoCBjcmVhdGUgbW9kZSAxMDA2NDQgZHJpdmVy
-cy92aG9zdC92aG9zdF9jZnMuYw0KPj4+Pj4+Pj4+Pj4gIMKgwqDCoMKgIGNyZWF0ZSBtb2RlIDEw
-MDY0NCBkcml2ZXJzL3ZpcnRpby92aXJ0aW9fcGNpX2VwZi5jDQo+Pj4+Pj4+Pj4+PiAgwqDCoMKg
-wqAgcmVuYW1lIHtkcml2ZXJzL3Zob3N0ID0+IGluY2x1ZGUvbGludXh9L3Zob3N0LmggKDY2JSkN
-Cj4+Pj4+Pj4+Pj4+DQo+Pj4+Pj4+Pj4+PiAtLSANCj4+Pj4+Pj4+Pj4+IDIuMTcuMQ0KPj4+Pj4+
-Pj4+Pj4NCj4+Pg0KDQotLSAKWW91IHJlY2VpdmVkIHRoaXMgbWVzc2FnZSBiZWNhdXNlIHlvdSBh
-cmUgc3Vic2NyaWJlZCB0byB0aGUgR29vZ2xlIEdyb3VwcyAibGludXgtbnRiIiBncm91cC4KVG8g
-dW5zdWJzY3JpYmUgZnJvbSB0aGlzIGdyb3VwIGFuZCBzdG9wIHJlY2VpdmluZyBlbWFpbHMgZnJv
-bSBpdCwgc2VuZCBhbiBlbWFpbCB0byBsaW51eC1udGIrdW5zdWJzY3JpYmVAZ29vZ2xlZ3JvdXBz
-LmNvbS4KVG8gdmlldyB0aGlzIGRpc2N1c3Npb24gb24gdGhlIHdlYiB2aXNpdCBodHRwczovL2dy
-b3Vwcy5nb29nbGUuY29tL2QvbXNnaWQvbGludXgtbnRiL2FjMzM5ZmIwLTE0ZTAtZDNkMi1lYTQy
-LWM5YTViMWJkOGIxNyU0MHRpLmNvbS4K
+Hi,
+
+On 28/08/20 4:04 pm, Cornelia Huck wrote:
+> On Thu, 9 Jul 2020 14:26:53 +0800
+> Jason Wang <jasowang@redhat.com> wrote:
+>=20
+> [Let me note right at the beginning that I first noted this while
+> listening to Kishon's talk at LPC on Wednesday. I might be very
+> confused about the background here, so let me apologize beforehand for
+> any confusion I might spread.]
+>=20
+>> On 2020/7/8 =E4=B8=8B=E5=8D=889:13, Kishon Vijay Abraham I wrote:
+>>> Hi Jason,
+>>>
+>>> On 7/8/2020 4:52 PM, Jason Wang wrote:
+>>>> On 2020/7/7 =E4=B8=8B=E5=8D=8810:45, Kishon Vijay Abraham I wrote:
+>>>>> Hi Jason,
+>>>>>
+>>>>> On 7/7/2020 3:17 PM, Jason Wang wrote:
+>>>>>> On 2020/7/6 =E4=B8=8B=E5=8D=885:32, Kishon Vijay Abraham I wrote:
+>>>>>>> Hi Jason,
+>>>>>>>
+>>>>>>> On 7/3/2020 12:46 PM, Jason Wang wrote:
+>>>>>>>> On 2020/7/2 =E4=B8=8B=E5=8D=889:35, Kishon Vijay Abraham I wrote:
+>>>>>>>>> Hi Jason,
+>>>>>>>>>
+>>>>>>>>> On 7/2/2020 3:40 PM, Jason Wang wrote:
+>>>>>>>>>> On 2020/7/2 =E4=B8=8B=E5=8D=885:51, Michael S. Tsirkin wrote:
+>>>>>>>>>>> On Thu, Jul 02, 2020 at 01:51:21PM +0530, Kishon Vijay Abraham =
+I wrote:
+>>>>>>>>>>>> This series enhances Linux Vhost support to enable SoC-to-SoC
+>>>>>>>>>>>> communication over MMIO. This series enables rpmsg communicati=
+on between
+>>>>>>>>>>>> two SoCs using both PCIe RC<->EP and HOST1-NTB-HOST2
+>>>>>>>>>>>>
+>>>>>>>>>>>> 1) Modify vhost to use standard Linux driver model
+>>>>>>>>>>>> 2) Add support in vring to access virtqueue over MMIO
+>>>>>>>>>>>> 3) Add vhost client driver for rpmsg
+>>>>>>>>>>>> 4) Add PCIe RC driver (uses virtio) and PCIe EP driver (uses v=
+host) for
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 rpmsg communication bet=
+ween two SoCs connected to each other
+>>>>>>>>>>>> 5) Add NTB Virtio driver and NTB Vhost driver for rpmsg commun=
+ication
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 between two SoCs connec=
+ted via NTB
+>>>>>>>>>>>> 6) Add configfs to configure the components
+>>>>>>>>>>>>
+>>>>>>>>>>>> UseCase1 :
+>>>>>>>>>>>>
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0 VHOST RPMSG=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 VIRTIO RPMSG
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 +
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> +-----v------+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +------v-------+
+>>>>>>>>>>>> |=C2=A0=C2=A0 Linux=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ |=C2=A0=C2=A0=C2=A0=C2=A0 Linux=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 Endpoint=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | Root Complex=
+ |
+>>>>>>>>>>>> |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 <----------------->=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> |=C2=A0=C2=A0=C2=A0 SOC1=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0=C2=A0=C2=A0=C2=A0 SOC2=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> +------------+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +--------------+
+>>>>>>>>>>>>
+>>>>>>>>>>>> UseCase 2:
+>>>>>>>>>>>>
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VHOST RPMSG=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 VI=
+RTIO RPMSG
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 +
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +------v------+=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +------v------+
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0 HOS=
+T1=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0=C2=A0=C2=A0 HOST2=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +------^------+=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +------^------+
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0 |
+>>>>>>>>>>>> +-------------------------------------------------------------=
+--------+
+>>>>>>>>>>>> |=C2=A0 +------v------+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 +------v------+=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0 EP=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=
+=A0=C2=A0=C2=A0 EP=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 | CONTROLLER1 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 | CONTROLLER2 |=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 <----------------------------------->=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0 |=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 SoC With Multiple EP Instances=C2=A0=C2=A0 |=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=
+=C2=A0 |
+>>>>>>>>>>>> |=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 (Configured using NTB Function)=C2=A0 |=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 =
+|
+>>>>>>>>>>>> |=C2=A0 +-------------+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0 +-------------+=C2=A0 |
+>>>>>>>>>>>> +-------------------------------------------------------------=
+--------+
+>=20
+> First of all, to clarify the terminology:
+> Is "vhost rpmsg" acting as what the virtio standard calls the 'device',
+> and "virtio rpmsg" as the 'driver'? Or is the "vhost" part mostly just
+
+Right, vhost_rpmsg is 'device' and virtio_rpmsg is 'driver'.
+> virtqueues + the exiting vhost interfaces?
+
+It's implemented to provide the full 'device' functionality.
+>=20
+>>>>>>>>>>>>
+>>>>>>>>>>>> Software Layering:
+>>>>>>>>>>>>
+>>>>>>>>>>>> The high-level SW layering should look something like below. T=
+his series
+>>>>>>>>>>>> adds support only for RPMSG VHOST, however something similar s=
+hould be
+>>>>>>>>>>>> done for net and scsi. With that any vhost device (PCI, NTB, P=
+latform
+>>>>>>>>>>>> device, user) can use any of the vhost client driver.
+>>>>>>>>>>>>
+>>>>>>>>>>>>
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +----------------=
++=C2=A0 +-----------+=C2=A0 +------------+=C2=A0 +----------+
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 RPMSG VHO=
+ST=C2=A0=C2=A0 |=C2=A0 | NET VHOST |=C2=A0 | SCSI VHOST |=C2=A0 |=C2=A0=C2=
+=A0=C2=A0 X=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 +-------^--------=
++=C2=A0 +-----^-----+=C2=A0 +-----^------+=C2=A0 +----^-----+
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> +-----------v-----------------v--------------v--------------v-=
+---------+
+>>>>>>>>>>>> |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 VHOST CORE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+ |
+>>>>>>>>>>>> +--------^---------------^--------------------^---------------=
+---^-----+
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>>   =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> +--------v-------+=C2=A0 +----v------+=C2=A0 +----------v-----=
+-----+=C2=A0 +----v-----+
+>>>>>>>>>>>> |=C2=A0 PCI EPF VHOST |=C2=A0 | NTB VHOST |=C2=A0 |PLATFORM DE=
+VICE VHOST|=C2=A0 |=C2=A0=C2=A0=C2=A0 X=C2=A0=C2=A0=C2=A0=C2=A0 |
+>>>>>>>>>>>> +----------------+=C2=A0 +-----------+=C2=A0 +----------------=
+-----+=C2=A0 +----------+
+>=20
+> So, the upper half is basically various functionality types, e.g. a net
+> device. What is the lower half, a hardware interface? Would it be
+> equivalent to e.g. a normal PCI device?
+
+Right, the upper half should provide the functionality.
+The bottom layer could be a HW interface (like PCIe device or NTB=20
+device) or it could be a SW interface (for accessing virtio ring in=20
+userspace) that could be used by Hypervisor.
+
+The top half should be transparent to what type of device is actually=20
+using it.
+
+>=20
+>>>>>>>>>>>>
+>>>>>>>>>>>> This was initially proposed here [1]
+>>>>>>>>>>>>
+>>>>>>>>>>>> [1] ->
+>>>>>>>>>>>> https://lore.kernel.org/r/2cf00ec4-1ed6-f66e-6897-006d1a5b6390=
+@ti.com
+>>>>>>>>>>> I find this very interesting. A huge patchset so will take a bi=
+t
+>>>>>>>>>>> to review, but I certainly plan to do that. Thanks!
+>>>>>>>>>> Yes, it would be better if there's a git branch for us to have a=
+ look.
+>>>>>>>>> I've pushed the branch
+>>>>>>>>> https://github.com/kishon/linux-wip.git vhost_rpmsg_pci_ntb_rfc
+>>>>>>>> Thanks
+>>>>>>>>
+>>>>>>>>  =20
+>>>>>>>>>> Btw, I'm not sure I get the big picture, but I vaguely feel some=
+ of the
+>>>>>>>>>> work is
+>>>>>>>>>> duplicated with vDPA (e.g the epf transport or vhost bus).
+>>>>>>>>> This is about connecting two different HW systems both running Li=
+nux and
+>>>>>>>>> doesn't necessarily involve virtualization.
+>>>>>>>> Right, this is something similar to VOP
+>>>>>>>> (Documentation/misc-devices/mic/mic_overview.rst). The different i=
+s the
+>>>>>>>> hardware I guess and VOP use userspace application to implement th=
+e device.
+>>>>>>> I'd also like to point out, this series tries to have communication=
+ between
+>>>>>>> two
+>>>>>>> SoCs in vendor agnostic way. Since this series solves for 2 usecase=
+s (PCIe
+>>>>>>> RC<->EP and NTB), for the NTB case it directly plugs into NTB frame=
+work and
+>>>>>>> any
+>>>>>>> of the HW in NTB below should be able to use a virtio-vhost communi=
+cation
+>>>>>>>
+>>>>>>> #ls drivers/ntb/hw/
+>>>>>>> amd=C2=A0 epf=C2=A0 idt=C2=A0 intel=C2=A0 mscc
+>>>>>>>
+>>>>>>> And similarly for the PCIe RC<->EP communication, this adds a gener=
+ic endpoint
+>>>>>>> function driver and hence any SoC that supports configurable PCIe e=
+ndpoint can
+>>>>>>> use virtio-vhost communication
+>>>>>>>
+>>>>>>> # ls drivers/pci/controller/dwc/*ep*
+>>>>>>> drivers/pci/controller/dwc/pcie-designware-ep.c
+>>>>>>> drivers/pci/controller/dwc/pcie-uniphier-ep.c
+>>>>>>> drivers/pci/controller/dwc/pci-layerscape-ep.c
+>>>>>> Thanks for those backgrounds.
+>>>>>>
+>>>>>>  =20
+>>>>>>>>>   =C2=A0=C2=A0=C2=A0 So there is no guest or host as in
+>>>>>>>>> virtualization but two entirely different systems connected via P=
+CIe cable,
+>>>>>>>>> one
+>>>>>>>>> acting as guest and one as host. So one system will provide virti=
+o
+>>>>>>>>> functionality reserving memory for virtqueues and the other provi=
+des vhost
+>>>>>>>>> functionality providing a way to access the virtqueues in virtio =
+memory.
+>>>>>>>>> One is
+>>>>>>>>> source and the other is sink and there is no intermediate entity.=
+ (vhost was
+>>>>>>>>> probably intermediate entity in virtualization?)
+>>>>>>>> (Not a native English speaker) but "vhost" could introduce some co=
+nfusion for
+>>>>>>>> me since it was use for implementing virtio backend for userspace =
+drivers. I
+>>>>>>>> guess "vringh" could be better.
+>>>>>>> Initially I had named this vringh but later decided to choose vhost=
+ instead of
+>>>>>>> vringh. vhost is still a virtio backend (not necessarily userspace)=
+ though it
+>>>>>>> now resides in an entirely different system. Whatever virtio is for=
+ a frontend
+>>>>>>> system, vhost can be that for a backend system. vring can be for ac=
+cessing
+>>>>>>> virtqueue and can be used either in frontend or backend.
+>=20
+> I guess that clears up at least some of my questions from above...
+>=20
+>>>>>> Ok.
+>>>>>>
+>>>>>>  =20
+>>>>>>>>>> Have you considered to implement these through vDPA?
+>>>>>>>>> IIUC vDPA only provides an interface to userspace and an in-kerne=
+l rpmsg
+>>>>>>>>> driver
+>>>>>>>>> or vhost net driver is not provided.
+>>>>>>>>>
+>>>>>>>>> The HW connection looks something like https://pasteboard.co/JfMV=
+VHC.jpg
+>>>>>>>>> (usecase2 above),
+>>>>>>>> I see.
+>>>>>>>>
+>>>>>>>>  =20
+>>>>>>>>>   =C2=A0=C2=A0=C2=A0 all the boards run Linux. The middle board p=
+rovides NTB
+>>>>>>>>> functionality and board on either side provides virtio/vhost
+>>>>>>>>> functionality and
+>>>>>>>>> transfer data using rpmsg.
+>=20
+> This setup looks really interesting (sometimes, it's really hard to
+> imagine this in the abstract.)
+>  =20
+>>>>>>>> So I wonder whether it's worthwhile for a new bus. Can we use
+>>>>>>>> the existed virtio-bus/drivers? It might work as, except for
+>>>>>>>> the epf transport, we can introduce a epf "vhost" transport
+>>>>>>>> driver.
+>>>>>>> IMHO we'll need two buses one for frontend and other for
+>>>>>>> backend because the two components can then co-operate/interact
+>>>>>>> with each other to provide a functionality. Though both will
+>>>>>>> seemingly provide similar callbacks, they are both provide
+>>>>>>> symmetrical or complimentary funcitonality and need not be same
+>>>>>>> or identical.
+>>>>>>>
+>>>>>>> Having the same bus can also create sequencing issues.
+>>>>>>>
+>>>>>>> If you look at virtio_dev_probe() of virtio_bus
+>>>>>>>
+>>>>>>> device_features =3D dev->config->get_features(dev);
+>>>>>>>
+>>>>>>> Now if we use same bus for both front-end and back-end, both
+>>>>>>> will try to get_features when there has been no set_features.
+>>>>>>> Ideally vhost device should be initialized first with the set
+>>>>>>> of features it supports. Vhost and virtio should use "status"
+>>>>>>> and "features" complimentarily and not identically.
+>>>>>> Yes, but there's no need for doing status/features passthrough
+>>>>>> in epf vhost drivers.b
+>>>>>>
+>>>>>>  =20
+>>>>>>> virtio device (or frontend) cannot be initialized before vhost
+>>>>>>> device (or backend) gets initialized with data such as
+>>>>>>> features. Similarly vhost (backend)
+>>>>>>> cannot access virqueues or buffers before virtio (frontend) sets
+>>>>>>> VIRTIO_CONFIG_S_DRIVER_OK whereas that requirement is not there
+>>>>>>> for virtio as the physical memory for virtqueues are created by
+>>>>>>> virtio (frontend).
+>>>>>> epf vhost drivers need to implement two devices: vhost(vringh)
+>>>>>> device and virtio device (which is a mediated device). The
+>>>>>> vhost(vringh) device is doing feature negotiation with the
+>>>>>> virtio device via RC/EP or NTB. The virtio device is doing
+>>>>>> feature negotiation with local virtio drivers. If there're
+>>>>>> feature mismatch, epf vhost drivers and do mediation between
+>>>>>> them.
+>>>>> Here epf vhost should be initialized with a set of features for
+>>>>> it to negotiate either as vhost device or virtio device no? Where
+>>>>> should the initial feature set for epf vhost come from?
+>>>>
+>>>> I think it can work as:
+>>>>
+>>>> 1) Having an initial features (hard coded in the code) set X in
+>>>> epf vhost 2) Using this X for both virtio device and vhost(vringh)
+>>>> device 3) local virtio driver will negotiate with virtio device
+>>>> with feature set Y 4) remote virtio driver will negotiate with
+>>>> vringh device with feature set Z 5) mediate between feature Y and
+>>>> feature Z since both Y and Z are a subset of X
+>>>>
+>>>>  =20
+>>> okay. I'm also thinking if we could have configfs for configuring
+>>> this. Anyways we could find different approaches of configuring
+>>> this.
+>>
+>>
+>> Yes, and I think some management API is needed even in the design of
+>> your "Software Layering". In that figure, rpmsg vhost need some
+>> pre-set or hard-coded features.
+>=20
+> When I saw the plumbers talk, my first idea was "this needs to be a new
+> transport". You have some hard-coded or pre-configured features, and
+> then features are negotiated via a transport-specific means in the
+> usual way. There's basically an extra/extended layer for this (and
+> status, and whatever).
+
+I think for PCIe root complex to PCIe endpoint communication it's still=20
+"Virtio Over PCI Bus", though existing layout cannot be used in this=20
+context (find virtio capability will fail for modern interface and=20
+loading queue status immediately after writing queue number is not=20
+possible for root complex to endpoint communication; setup_vq() in=20
+virtio_pci_legacy.c).
+
+"Virtio Over NTB" should anyways be a new transport.
+>=20
+> Does that make any sense?
+
+yeah, in the approach I used the initial features are hard-coded in=20
+vhost-rpmsg (inherent to the rpmsg) but when we have to use adapter=20
+layer (vhost only for accessing virtio ring and use virtio drivers on=20
+both front end and backend), based on the functionality (e.g, rpmsg),=20
+the vhost should be configured with features (to be presented to the=20
+virtio) and that's why additional layer or APIs will be required.
+>=20
+>>
+>>
+>>>>>>>> It will have virtqueues but only used for the communication
+>>>>>>>> between itself and
+>>>>>>>> uppter virtio driver. And it will have vringh queues which
+>>>>>>>> will be probe by virtio epf transport drivers. And it needs to
+>>>>>>>> do datacopy between virtqueue and
+>>>>>>>> vringh queues.
+>>>>>>>>
+>>>>>>>> It works like:
+>>>>>>>>
+>>>>>>>> virtio drivers <- virtqueue/virtio-bus -> epf vhost drivers <-
+>>>>>>>> vringh queue/epf>
+>>>>>>>>
+>>>>>>>> The advantages is that there's no need for writing new buses
+>>>>>>>> and drivers.
+>>>>>>> I think this will work however there is an addtional copy
+>>>>>>> between vringh queue and virtqueue,
+>>>>>> I think not? E.g in use case 1), if we stick to virtio bus, we
+>>>>>> will have:
+>>>>>>
+>>>>>> virtio-rpmsg (EP) <- virtio ring(1) -> epf vhost driver (EP) <-
+>>>>>> virtio ring(2) -> virtio pci (RC) <-> virtio rpmsg (RC)
+>>>>> IIUC epf vhost driver (EP) will access virtio ring(2) using
+>>>>> vringh?
+>>>>
+>>>> Yes.
+>>>>
+>>>>  =20
+>>>>> And virtio
+>>>>> ring(2) is created by virtio pci (RC).
+>>>>
+>>>> Yes.
+>>>>
+>>>>  =20
+>>>>>> What epf vhost driver did is to read from virtio ring(1) about
+>>>>>> the buffer len and addr and them DMA to Linux(RC)?
+>>>>> okay, I made some optimization here where vhost-rpmsg using a
+>>>>> helper writes a buffer from rpmsg's upper layer directly to
+>>>>> remote Linux (RC) as against here were it has to be first written
+>>>>> to virtio ring (1).
+>>>>>
+>>>>> Thinking how this would look for NTB
+>>>>> virtio-rpmsg (HOST1) <- virtio ring(1) -> NTB(HOST1) <->
+>>>>> NTB(HOST2)=C2=A0 <- virtio ring(2) -> virtio-rpmsg (HOST2)
+>>>>>
+>>>>> Here the NTB(HOST1) will access the virtio ring(2) using vringh?
+>>>>
+>>>> Yes, I think so it needs to use vring to access virtio ring (1) as
+>>>> well.
+>>> NTB(HOST1) and virtio ring(1) will be in the same system. So it
+>>> doesn't have to use vring. virtio ring(1) is by the virtio device
+>>> the NTB(HOST1) creates.
+>>
+>>
+>> Right.
+>>
+>>
+>>>>  =20
+>>>>> Do you also think this will work seamlessly with virtio_net.c,
+>>>>> virtio_blk.c?
+>>>>
+>>>> Yes.
+>>> okay, I haven't looked at this but the backend of virtio_blk should
+>>> access an actual storage device no?
+>>
+>>
+>> Good point, for non-peer device like storage. There's probably no
+>> need for it to be registered on the virtio bus and it might be better
+>> to behave as you proposed.
+>=20
+> I might be missing something; but if you expose something as a block
+> device, it should have something it can access with block reads/writes,
+> shouldn't it? Of course, that can be a variety of things.
+>=20
+>>
+>> Just to make sure I understand the design, how is VHOST SCSI expected
+>> to work in your proposal, does it have a device for file as a backend?
+>>
+>>
+>>>>  =20
+>>>>> I'd like to get clarity on two things in the approach you
+>>>>> suggested, one is features (since epf vhost should ideally be
+>>>>> transparent to any virtio driver)
+>>>>
+>>>> We can have have an array of pre-defined features indexed by
+>>>> virtio device id in the code.
+>>>>
+>>>>  =20
+>>>>> and the other is how certain inputs to virtio device such as
+>>>>> number of buffers be determined.
+>>>>
+>>>> We can start from hard coded the value like 256, or introduce some
+>>>> API for user to change the value.
+>>>>
+>>>>  =20
+>>>>> Thanks again for your suggestions!
+>>>>
+>>>> You're welcome.
+>>>>
+>>>> Note that I just want to check whether or not we can reuse the
+>>>> virtio bus/driver. It's something similar to what you proposed in
+>>>> Software Layering but we just replace "vhost core" with "virtio
+>>>> bus" and move the vhost core below epf/ntb/platform transport.
+>>> Got it. My initial design was based on my understanding of your
+>>> comments [1].
+>>
+>>
+>> Yes, but that's just for a networking device. If we want something
+>> more generic, it may require more thought (bus etc).
+>=20
+> I believe that we indeed need something bus-like to be able to support
+> a variety of devices.
+
+I think we could still have adapter layers for different types of=20
+devices ([1]) and use existing virtio bus for both front end and back=20
+end. Using bus-like will however simplify adding support for new types=20
+of devices and adding adapters for devices will be slightly more complex.
+
+[1] -> Page 13 in=20
+https://linuxplumbersconf.org/event/7/contributions/849/attachments/642/117=
+5/Virtio_for_PCIe_RC_EP_NTB.pdf
+>=20
+>>
+>>
+>>>
+>>> I'll try to create something based on your proposed design here.
+>>
+>>
+>> Sure, but for coding, we'd better wait for other's opinion here.
+>=20
+> Please tell me if my thoughts above make any sense... I have just
+> started looking at that, so I might be completely off.
+
+I think your understanding is correct! Thanks for your inputs.
+
+Thanks
+Kishon
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/ac8f7e4f-9f46-919a-f5c2-89b07794f0ab%40ti.com.
