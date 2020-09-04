@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBQHEY75AKGQEALL6LCY@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBRPEY75AKGQE2VT6BKA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-yb1-xb3f.google.com (mail-yb1-xb3f.google.com [IPv6:2607:f8b0:4864:20::b3f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 377EC25D2DB
-	for <lists+linux-ntb@lfdr.de>; Fri,  4 Sep 2020 09:52:33 +0200 (CEST)
-Received: by mail-yb1-xb3f.google.com with SMTP id c78sf5435307ybf.6
-        for <lists+linux-ntb@lfdr.de>; Fri, 04 Sep 2020 00:52:33 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1599205952; cv=pass;
+Received: from mail-oo1-xc3b.google.com (mail-oo1-xc3b.google.com [IPv6:2607:f8b0:4864:20::c3b])
+	by mail.lfdr.de (Postfix) with ESMTPS id BEF2825D2DC
+	for <lists+linux-ntb@lfdr.de>; Fri,  4 Sep 2020 09:52:38 +0200 (CEST)
+Received: by mail-oo1-xc3b.google.com with SMTP id z2sf2538919ooj.0
+        for <lists+linux-ntb@lfdr.de>; Fri, 04 Sep 2020 00:52:38 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1599205957; cv=pass;
         d=google.com; s=arc-20160816;
-        b=uO22/Z7w2OuNYEz/W7dclOKVl9dExsf2p5X3t1KPkB2+vE/oqZPusUykuiym0N53sG
-         VXE1lzEJKNeXBvcew6fJX3JjVOmA36DziQUrOp7yjqKb6jB6qrLy+i0HYR8gsV0G869S
-         bxhqk5dmLHV+sP94+C7h/THgnHuo7aXDxTaT3BbwyAqh1dB3Y8wU71gEeFsmoJqkQG4c
-         rFd/URccBTxH/4oqUtmWVgTR0Puy/huuxBezQ+Jqdk7/XaHJgTqU9Ue0XHVOx9bETBkr
-         euMnkkrd/O66RhHwunFopfNpU2CSBaHfycskf8voLAEWSQ3Y6QteOFadj27x3MP8xbSE
-         jBmA==
+        b=J0Cwl6L/jbGmdKLWwXjE8BaefedM/2Qm27E17NzRZZrs66mvO4+W17bZPQe8YN7Xcu
+         SNA0Co9Iy2wVSCgqx3PFfi1wwuDqlDa99rMir7I9cGHgtqUu79n7rc8J/8UYZKI2ZMtN
+         DUC+gQZtA7RfNeNrejEFEXfoF6JT3gMjXs6zgnOi3rUrWMY+68x8CMAOV3soPu2zev2Q
+         9iljx3kQX3xT1lk09iW4omidLee4rLJsvW07Kcsu5Ey1knhKRNVEOz0FwEz+8E5XtiiU
+         esT3mPxMpLCZc2xil7WIyb/L1Q1GeoK/a6mjmVnwIHfrpr6wg5ai1TjteaABqR4EJneH
+         BM7g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ZaZfrniohZNAJJXw4MPQzxTDa+NMW4Skr3T8XPWephM=;
-        b=KuIzkp3+gC6n4sCUERVcKSXHt1143/mrAe8dZkm01i5Lr2smOIUrup8nuxUE7emfo4
-         jZail0AWREvdJC3P6xd7AkQLOpI7lCBIJFaku4yZLuJj4rYDX/INWUKjiN/UgguInsHY
-         SnghVPiZa3dr9JWv5DEZeDM+6ngeNIGihkCtHTPGNQamknHLTD7z/ONpe+0uu/ya0fC7
-         U7eMPf4sGnBT+K0GmBIPQAptbc4u4VZ3wdqweY6F3UrVnr2XjZBFk7oQufV0kbLp/scv
-         4yh5jqlBN+A9WdTDpRkJehb6aCyl9Fz+QU3MtHAZz+nP8loQhBMwsakNe/5M+B//Da+k
-         Ja9A==
+        bh=mTNv0GfOMM0NixQ6e/dWRCgV740QuFuHevuIsSkuU04=;
+        b=QDtn1XIP4itk196EOizTiamBTtcd1HCkVB39w8gxsTdCpag49+AeNbNeIsosRPA3/C
+         bUYwwyLk/25yv/21bOOVSnEGPH0MuCvpvwO0ld7OMDkRkWFFOduBxvBL0oG2H4r4trsF
+         ZVwK9coGaXgXcYZDD5CRlxppLcn3w02QR3sGh4D4h5nhxl0mGh+d6Zbyr2iDEhGxek0Y
+         upeKbDOQxwrXfoGiwghFhIagDDt8yhPBbSqmi/YE1O0XGxmpUik1cfy22CJ8KTBzM5ih
+         tPUrVRwGBxRt27WjgdTUpHb7myks/bB3NLxYUlbl6eET7z/8LytXSGdV6gzlqWlizfr6
+         2YRA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=StrS39YH;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="I4nd6X/c";
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=ZaZfrniohZNAJJXw4MPQzxTDa+NMW4Skr3T8XPWephM=;
-        b=dt0YQoWNCccgy7Bbd7KxUZbk75XNPAX4xTQBv3h1QSaZNcOYpWqlknRhjmFsZFNEAE
-         UIpUFb3flZuULo3BsMj4vSpnSxFrZBtlKEHkdBA1p57W97mw7jtcVtRaHlPBRAL9uGUl
-         dOFJC5/qUdxJnDjTpRG5VOib7N3VYSccDQX1G+ku9ay0DK6vnGQ1a8LzDiIVsKV/ZRMg
-         Tw1cEEaKzpEQTil96RL/hlPsDdcksPAwZns6JfDrtVxHFsEHCSjjCzH1K61pZW5SHnwS
-         akMzSuZQzXP7qZ2AZ1vM90CifoNDCTOkE4psizjnhPlC/TSqCLfTsD4mXLyS2iEbykhc
-         PfaQ==
+        bh=mTNv0GfOMM0NixQ6e/dWRCgV740QuFuHevuIsSkuU04=;
+        b=N4cqUn27tBczElnmIcqkJE4/pNThsSdHIyq+Oqbiuz3yzis+m+QXBZkWSHOVQ4cbvr
+         gjIY0AmGtpswsM+K+MtJgtFHbt5qnNHJnJXAQ/pRpyQqAyNJiH3EmAdpWE27XlgfJQdh
+         kIDBHcQKa4KnVoY/78uy0lmVxvbprXvmmxSrKzByMPECwXYzA5fqXM9RmYgHzB0+HpLk
+         uiIsT9WOvFwOZj59Q+deY1oo1YeAuO9JkOUu79L22/xpfkDhFg2peJHmSVkqoAfpnCSC
+         QMkFaF4APrSkAnueh8nsfhCZL/tsrGXcbtx+NuyIFMfzkZ8KGbTOTkKElxiUQdF7Pdmm
+         2mlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=ZaZfrniohZNAJJXw4MPQzxTDa+NMW4Skr3T8XPWephM=;
-        b=Yc9Gc4isemIzzRNlc8m6p01vvFAXVHqWdY8ffXPKZ22S8UwWmMYuNYj8jgxEMx3Uxs
-         ETMLNjsbSPgIQRS7pP3xNm1QKW7+MZyY0bwkT8H5FVg+uHhWUctjtHRI0UZ642HLFyNu
-         sOlepuDzXO3iaMtKDF30RyOlLef+sL5FASTqjG2mPtGzIK1zj2GmKTFbHs05UiEj6KCS
-         ecVFi6JGOnKBdeXrCu/RoMIvBct1yG4WlodGqf7xy2XYPdAzEafgfInA1gEUR7U/+XHG
-         2a5fGqh5tpwoHRa0eF3160CjdDxDo6eavKe8nk7lVEmaR2s8pwgV8BVJ8zkzSy8Wqob7
-         70Jg==
-X-Gm-Message-State: AOAM532odELnJDQx42+PS7TmHw2X792BgRKDlyfzaUljwKXlPU3CP5HX
-	GfSRzyKvMH/qObdPtFBbRho=
-X-Google-Smtp-Source: ABdhPJyith2Cz9WNy8bIk4wzP68u1OEUQ50uYGhpwMSc1jRG1/yDjaTQGDqY7fkWPxVG2uH3er9fAg==
-X-Received: by 2002:a25:b443:: with SMTP id c3mr8604854ybg.118.1599205952242;
-        Fri, 04 Sep 2020 00:52:32 -0700 (PDT)
+        bh=mTNv0GfOMM0NixQ6e/dWRCgV740QuFuHevuIsSkuU04=;
+        b=LtXD0KPQQA9SUvv40zFG3UfItjiFyxuCKYyYfvlikTWK/SFGYHYtG6I8HBToD0Wjw5
+         fge5JfRWwGZ95ckvarSdP55TPef7QtUXYul1j+NkYcD86N+Z0yg33gAHsaS6nx/IT1w9
+         VdzKclL7BCwLuySr9OJe5YyInXF7bUs5zCoFXsEmhpNHy+RuF/llvZ9pqYBmfHKc5iGH
+         g4AsItGWPQICgnXfCH31xi02mIfXbvoktyOoDJBeTTQUDYvZwBzShHaIRzcoxCVbMRG7
+         uL1fX6yldw0wcv/NqrWuj2xa/wIUBvDGROcLuhwhNJGaFhPmwO/3xWWgBBwNjClTHZd4
+         B9TA==
+X-Gm-Message-State: AOAM530phjR8NVL0/FnGODIUh8XTN9ure0A+6EHuaBdcarbnXzgzNy2M
+	Ytm0G/EtfU7aCkbpDncmnmQ=
+X-Google-Smtp-Source: ABdhPJwFJRvEt0o1ohLwmWW8qZEBKoEw37mt6SnnyUWKZXdFg2MFg94PDcP7Eb+T0ZLrS4+TemgXJg==
+X-Received: by 2002:aca:b48b:: with SMTP id d133mr4718734oif.47.1599205957657;
+        Fri, 04 Sep 2020 00:52:37 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a25:ef05:: with SMTP id g5ls2454776ybd.0.gmail; Fri, 04 Sep
- 2020 00:52:31 -0700 (PDT)
-X-Received: by 2002:a25:bbcb:: with SMTP id c11mr8687399ybk.213.1599205951894;
-        Fri, 04 Sep 2020 00:52:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599205951; cv=none;
+Received: by 2002:a05:6830:157:: with SMTP id j23ls2181079otp.1.gmail; Fri, 04
+ Sep 2020 00:52:37 -0700 (PDT)
+X-Received: by 2002:a9d:2f03:: with SMTP id h3mr4807715otb.151.1599205957345;
+        Fri, 04 Sep 2020 00:52:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599205957; cv=none;
         d=google.com; s=arc-20160816;
-        b=RT+368hjjNkNYM5cNqv+7jVCEsOM9+BrRDef9mKm4waWyz0AOeBkpv3gbKF8ZbD7Di
-         pmM9P/ltAbFOReSHEarr2tOBLM4hv9jK5yCgbQoW+xUMMpr2MmJpzH0GbdZlX3o0U9mm
-         ZbZVzRqd09ZSRVvgegN437GJ9e9hMkPCfS7adky+vCtWiaUxE8jVJ77GE0dGRFg8a5E5
-         Mn7oCMiIhNcP0+zG1J99noa2I1efkbMMKNhwFHrNKKKujjeQZWsyfM1I3vt46AfIk1KO
-         ifTUkQ3hxF3g0QgOdrSwm8XUoB6LrMqOzUKhejQjrWWVxr3zFt7XEwTAnLbwgJY9Y846
-         GcZQ==
+        b=UCTVq6sAM5Af0onLYg/jEZNBceKCH5wR717usV77hufIU1VXnZLG+Lc/B1eKGVhNma
+         ZIzpeZtDrVXowaFqTb9bbeWu3cZvxVMJvvN+KzZV9CZ+cNp7UEeNHzHS58aKU1qiKq0F
+         sJl46IbQWfhN0xb7Jt0UbRQ/2Lq6JnlQqgIp5gYEdaKLxYAhH16nAYsRh6UiMJUsjsXX
+         ryBOdkzZqTaxn2i3cS4SznYYech7d9vBT6TI1pgcQBvCfNunb9tAfyy8/Lqf3QR8DvHp
+         GJiF+L0X8GBmUE0UJ4jyjrtwAqlbTo7UWuysY2+1vJPBcyPWWFNhWbHz0ciq/09htttq
+         Vk6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=WksIlAP2St63/dYiNF+cCQGpadcOB7vBxhhFZVaW4Fw=;
-        b=Qd5fHCCj17dzFpQNftknAOJ1XsdEwahS+FVAo1ACQNFGQe4Z7AUNuA5tVsModB8p49
-         +FPl5zLUfwaKKTXneOc3JWYCDK31o9SOhBTivBLcBB5ceJjhGZgUDZ3RwjtRAt5t1iv4
-         AaEpoZN/vL0tSAR164ReoKKw6Ju8QYGpG+tYCdMCCgAChsHXjsY2TQqz0zunKHxv6gHW
-         lVphApYtPKkpiZrs4/kvyt1ch0LGX/tQH8pfr58kQ3zEKS5Ub1z1DzTQeEae9aAd6nxA
-         G+xgwuOLj5PIuLJbtvUT/kqzhKDMw+8wSbCeGP4Hp4zTc5+/+WofCz3UB+QPmPcUOuy+
-         8M8Q==
+        bh=94TXcOdDL8wb076LMtmQPWLg/sQvPhi/Wpb3J68VtqI=;
+        b=bf9mljCnMSrOtpkELuSp4oC1mEaMTxIXWILHKaWRdNsPeIQG0zWbFaCbt0NgqPJY7s
+         gkBIXgfwvUSg7UUKSpCseTOXApikdQuxOuaFumUv7B7gdDHAjh5F+zjyAsj6cJxxLmuC
+         0rZ++hLTQO4qZrVlx4ew7BjmUruRgzKBezEg8oOaN51n9KsEm88u6Os9gTOSalauD263
+         /fXYnToiVyOtnKQGTCo5/DNJITZtB+aDHPGUttu/tL5mfgoM9mmnxBg4F5zX1UMfbsQu
+         jkm9HhlXmEGyMy6k8yv5AHrWcVD0m7GiNiYcrgSUk36RzJykkXdW3vDA6Pj4EpCy0Xjk
+         6UKA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=StrS39YH;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b="I4nd6X/c";
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from lelv0142.ext.ti.com (lelv0142.ext.ti.com. [198.47.23.249])
-        by gmr-mx.google.com with ESMTPS id m193si521460ybf.1.2020.09.04.00.52.31
+Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
+        by gmr-mx.google.com with ESMTPS id i19si327794oie.3.2020.09.04.00.52.37
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 04 Sep 2020 00:52:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted sender) client-ip=198.47.23.249;
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by lelv0142.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0847qPi7017951;
-	Fri, 4 Sep 2020 02:52:25 -0500
-Received: from DLEE104.ent.ti.com (dlee104.ent.ti.com [157.170.170.34])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0847qPpe004819
+        Fri, 04 Sep 2020 00:52:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
+Received: from lelv0265.itg.ti.com ([10.180.67.224])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0847qU68065991;
+	Fri, 4 Sep 2020 02:52:30 -0500
+Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
+	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0847qUaI027390
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Fri, 4 Sep 2020 02:52:25 -0500
-Received: from DLEE101.ent.ti.com (157.170.170.31) by DLEE104.ent.ti.com
- (157.170.170.34) with Microsoft SMTP Server (version=TLS1_2,
+	Fri, 4 Sep 2020 02:52:30 -0500
+Received: from DFLE110.ent.ti.com (10.64.6.31) by DFLE100.ent.ti.com
+ (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Fri, 4 Sep
- 2020 02:52:25 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE101.ent.ti.com
- (157.170.170.31) with Microsoft SMTP Server (version=TLS1_2,
+ 2020 02:52:30 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE110.ent.ti.com
+ (10.64.6.31) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Fri, 4 Sep 2020 02:52:25 -0500
+ Frontend Transport; Fri, 4 Sep 2020 02:52:30 -0500
 Received: from a0393678-ssd.ent.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0847osNH058796;
-	Fri, 4 Sep 2020 02:52:20 -0500
+	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0847osNI058796;
+	Fri, 4 Sep 2020 02:52:25 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
         Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
@@ -125,9 +125,9 @@ CC: Arnd Bergmann <arnd@arndb.de>,
         <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
         <linux-ntb@googlegroups.com>, Kishon Vijay
  Abraham I <kishon@ti.com>
-Subject: [PATCH v3 16/17] Documentation: PCI: Add binding documentation for pci-ntb endpoint function
-Date: Fri, 4 Sep 2020 13:20:51 +0530
-Message-ID: <20200904075052.8911-17-kishon@ti.com>
+Subject: [PATCH v3 17/17] Documentation: PCI: Add userguide for PCI endpoint NTB function
+Date: Fri, 4 Sep 2020 13:20:52 +0530
+Message-ID: <20200904075052.8911-18-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200904075052.8911-1-kishon@ti.com>
 References: <20200904075052.8911-1-kishon@ti.com>
@@ -136,8 +136,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=StrS39YH;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.23.249 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b="I4nd6X/c";       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -154,73 +154,198 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add binding documentation for pci-ntb endpoint function that helps in
-adding and configuring pci-ntb endpoint function.
+Add documentation to help users use pci-epf-ntb function driver and
+existing host side NTB infrastructure for NTB functionality.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- .../PCI/endpoint/function/binding/pci-ntb.rst | 38 +++++++++++++++++++
- Documentation/PCI/endpoint/index.rst          |  1 +
- 2 files changed, 39 insertions(+)
- create mode 100644 Documentation/PCI/endpoint/function/binding/pci-ntb.rst
+ Documentation/PCI/endpoint/index.rst         |   1 +
+ Documentation/PCI/endpoint/pci-ntb-howto.rst | 160 +++++++++++++++++++
+ 2 files changed, 161 insertions(+)
+ create mode 100644 Documentation/PCI/endpoint/pci-ntb-howto.rst
 
-diff --git a/Documentation/PCI/endpoint/function/binding/pci-ntb.rst b/Documentation/PCI/endpoint/function/binding/pci-ntb.rst
-new file mode 100644
-index 000000000000..40253d3d5163
---- /dev/null
-+++ b/Documentation/PCI/endpoint/function/binding/pci-ntb.rst
-@@ -0,0 +1,38 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+==========================
-+PCI NTB Endpoint Function
-+==========================
-+
-+1) Create a subdirectory to pci_epf_ntb directory in configfs.
-+
-+Standard EPF Configurable Fields:
-+
-+================   ===========================================================
-+vendorid	   should be 0x104c
-+deviceid	   should be 0xb00d for TI's J721E SoC
-+revid		   don't care
-+progif_code	   don't care
-+subclass_code	   should be 0x00
-+baseclass_code	   should be 0x5
-+cache_line_size	   don't care
-+subsys_vendor_id   don't care
-+subsys_id	   don't care
-+interrupt_pin	   don't care
-+msi_interrupts	   don't care
-+msix_interrupts	   don't care
-+================   ===========================================================
-+
-+2) Create a subdirectory to directory created in 1
-+
-+NTB EPF specific configurable fields:
-+
-+================   ===========================================================
-+db_count	   Number of doorbells; default = 4
-+mw1     	   size of memory window1
-+mw2     	   size of memory window2
-+mw3     	   size of memory window3
-+mw4     	   size of memory window4
-+num_mws     	   Number of memory windows; max = 4
-+spad_count     	   Number of scratchpad registers; default = 64
-+================   ===========================================================
 diff --git a/Documentation/PCI/endpoint/index.rst b/Documentation/PCI/endpoint/index.rst
-index ef6861128506..9cb6e5f3c4d5 100644
+index 9cb6e5f3c4d5..38ea1f604b6d 100644
 --- a/Documentation/PCI/endpoint/index.rst
 +++ b/Documentation/PCI/endpoint/index.rst
-@@ -14,3 +14,4 @@ PCI Endpoint Framework
+@@ -12,6 +12,7 @@ PCI Endpoint Framework
+    pci-test-function
+    pci-test-howto
     pci-ntb-function
++   pci-ntb-howto
  
     function/binding/pci-test
-+   function/binding/pci-ntb
+    function/binding/pci-ntb
+diff --git a/Documentation/PCI/endpoint/pci-ntb-howto.rst b/Documentation/PCI/endpoint/pci-ntb-howto.rst
+new file mode 100644
+index 000000000000..2fbb0a051c3b
+--- /dev/null
++++ b/Documentation/PCI/endpoint/pci-ntb-howto.rst
+@@ -0,0 +1,160 @@
++.. SPDX-License-Identifier: GPL-2.0
++
++======================
++PCI NTB EPF User Guide
++======================
++
++:Author: Kishon Vijay Abraham I <kishon@ti.com>
++
++This document is a guide to help users use pci-epf-ntb function driver
++and ntb_hw_epf host driver for NTB functionality. The list of steps to
++be followed in the host side and EP side is given below. For the hardware
++configuration and internals of NTB using configurable endpoints see
++Documentation/PCI/endpoint/pci-ntb-function.rst
++
++Endpoint Device
++===============
++
++Endpoint Controller Devices
++---------------------------
++
++For implementing NTB functionality atleast two endpoint controller devices
++are required.
++To find the list of endpoint controller devices in the system::
++
++        # ls /sys/class/pci_epc/
++          2900000.pcie-ep  2910000.pcie-ep
++
++If PCI_ENDPOINT_CONFIGFS is enabled::
++
++	# ls /sys/kernel/config/pci_ep/controllers
++	  2900000.pcie-ep  2910000.pcie-ep
++
++
++Endpoint Function Drivers
++-------------------------
++
++To find the list of endpoint function drivers in the system::
++
++	# ls /sys/bus/pci-epf/drivers
++	  pci_epf_ntb   pci_epf_ntb
++
++If PCI_ENDPOINT_CONFIGFS is enabled::
++
++	# ls /sys/kernel/config/pci_ep/functions
++	  pci_epf_ntb   pci_epf_ntb
++
++
++Creating pci-epf-ntb Device
++----------------------------
++
++PCI endpoint function device can be created using the configfs. To create
++pci-epf-ntb device, the following commands can be used::
++
++	# mount -t configfs none /sys/kernel/config
++	# cd /sys/kernel/config/pci_ep/
++	# mkdir functions/pci_epf_ntb/func1
++
++The "mkdir func1" above creates the pci-epf-ntb function device that will
++be probed by pci_epf_ntb driver.
++
++The PCI endpoint framework populates the directory with the following
++configurable fields::
++
++	# ls functions/pci_epf_ntb/func1
++          baseclass_code    deviceid          msi_interrupts    pci-epf-ntb.0
++          progif_code       secondary         subsys_id         vendorid
++          cache_line_size   interrupt_pin     msix_interrupts   primary
++          revid             subclass_code     subsys_vendor_id
++
++The PCI endpoint function driver populates these entries with default values
++when the device is bound to the driver. The pci-epf-ntb driver populates
++vendorid with 0xffff and interrupt_pin with 0x0001::
++
++	# cat functions/pci_epf_ntb/func1/vendorid
++	  0xffff
++	# cat functions/pci_epf_ntb/func1/interrupt_pin
++	  0x0001
++
++
++Configuring pci-epf-ntb Device
++-------------------------------
++
++The user can configure the pci-epf-ntb device using configfs entry. In order
++to change the vendorid and the deviceid, the following
++commands can be used::
++
++	# echo 0x104c > functions/pci_epf_ntb/func1/vendorid
++	# echo 0xb00d > functions/pci_epf_ntb/func1/deviceid
++
++In-order to configure NTB specific attributes, a new sub-directory to func1
++should be created::
++
++	# mkdir functions/pci_epf_ntb/func1/pci_epf_ntb.0/
++
++The NTB function driver will populate this directory with various attributes
++that can be configured by the user::
++
++	# ls functions/pci_epf_ntb/func1/pci_epf_ntb.0/
++          db_count    mw1         mw2         mw3         mw4         num_mws
++          spad_count
++
++A sample configuration for NTB function is given below::
++
++	# echo 4 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/db_count
++	# echo 128 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/spad_count
++	# echo 2 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/num_mws
++	# echo 0x100000 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/mw1
++	# echo 0x100000 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/mw2
++
++Binding pci-epf-ntb Device to EP Controller
++--------------------------------------------
++
++NTB function device should be attached to two PCIe endpoint controllers
++connected to the two hosts. Use the 'primary' and 'secondary' entries
++inside NTB function device to attach one PCIe endpoint controller to
++primary interface and the other PCIe endpoint controller to the secondary
++interface. ::
++
++        # ln -s controllers/2900000.pcie-ep/ functions/pci-epf-ntb/func1/primary
++        # ln -s controllers/2910000.pcie-ep/ functions/pci-epf-ntb/func1/secondary
++
++Once the above step is completed, both the PCI endpoint controllers is ready to
++establish a link with the host.
++
++
++Start the Link
++--------------
++
++In order for the endpoint device to establish a link with the host, the _start_
++field should be populated with '1'. For NTB, both the PCIe endpoint controllers
++should establish link with the host::
++
++        #echo 1 > controllers/2900000.pcie-ep/start
++        #echo 1 > controllers/2910000.pcie-ep/start
++
++
++RootComplex Device
++==================
++
++lspci Output
++------------
++
++Note that the devices listed here correspond to the value populated in 1.4
++above::
++
++        # lspci
++        0000:00:00.0 PCI bridge: Texas Instruments Device b00d
++        0000:01:00.0 RAM memory: Texas Instruments Device b00d
++
++
++Using ntb_hw_epf Device
++-----------------------
++
++The host side software follows the standard NTB software architecture in Linux.
++All the existing client side NTB utilities like NTB Transport Client and NTB
++Netdev, NTB Ping Pong Test Client and NTB Tool Test Clientcan be used with NTB
++function device.
++
++For more information on NTB see
++Documentation/driver-api/ntb.rst
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200904075052.8911-17-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200904075052.8911-18-kishon%40ti.com.
