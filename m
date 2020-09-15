@@ -1,147 +1,161 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBOEDQH5QKGQEUWZLARY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDOJZOXA5ABBB7PRQH5QKGQE4SJAS2Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ua1-x93a.google.com (mail-ua1-x93a.google.com [IPv6:2607:f8b0:4864:20::93a])
-	by mail.lfdr.de (Postfix) with ESMTPS id DA6BA269D1E
-	for <lists+linux-ntb@lfdr.de>; Tue, 15 Sep 2020 06:23:21 +0200 (CEST)
-Received: by mail-ua1-x93a.google.com with SMTP id b13sf252952uas.9
-        for <lists+linux-ntb@lfdr.de>; Mon, 14 Sep 2020 21:23:21 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1600143800; cv=pass;
+Received: from mail-pj1-x1040.google.com (mail-pj1-x1040.google.com [IPv6:2607:f8b0:4864:20::1040])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2D56226A084
+	for <lists+linux-ntb@lfdr.de>; Tue, 15 Sep 2020 10:19:11 +0200 (CEST)
+Received: by mail-pj1-x1040.google.com with SMTP id q12sf1547570pjg.9
+        for <lists+linux-ntb@lfdr.de>; Tue, 15 Sep 2020 01:19:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1600157950; cv=pass;
         d=google.com; s=arc-20160816;
-        b=EZBihbgHjcZ+SQSSQxX+bLxl0RK174/NUgeYxQ1DhvYw8pnh7bv4u+zDGMzzMNUTRT
-         R6dD9spICoHgMoGheSWq7BctM0szdNI9QoxviVB+8x7kDjs1JHRCX56jgyV0PlVPtc2+
-         5AhbRYtxbYbSodNHpKLZKioFo1JTwtedZL2Z+yfkLN7bLQSStlcH66fhw0tmM7sYPSTT
-         OsD9XWjFA1d7CnO7xf/YYNdeujbCvgXFx0ONTMwonEXn4yDR6umkHl3i+5IOjgpjlZnL
-         /PNrEJqFc7Y06PvbCxfG+3Fq7hsjJn4IE8iaWCUM82ooh8WQaFMieisQVwwfUyrVpNKP
-         DbSA==
+        b=DrsGWFKetJOpHNi6f1gGuHmWFQ4L7zdOROa7OGK15DGhz7823KEqKmiuP8V2qZ1sUR
+         SDOgZ0h3xMN3847TKKd87DxCNm/Tys4aDqW4wuAyIvQvWwaSpmoFuDkx96T+SXhHo3W9
+         B+9W6HS0hDHly/cs4maxqyDpevuq+nE3vPluJNSaZeII1ve0kkRArMnW7WZQ0khhaKOY
+         j66w992di4yNH19QhkTXF/o0j4zo8fco1j6kHCRplwS+PgMw5WIs4dugwMkePsYykwq7
+         dqOZo1zweJTDouxid5jwRIq7UBUTfzcOezjeSvS+pT96PdIHYVKWD6mUIMez0GegidBf
+         +/zA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1ciTj36aV7Fr9bHCACTw2oZ8TdRYggrjg9AJMM55g2c=;
-        b=CWZ0ZO3RVqomwDIraMLsl0Av6M+lvTtzielEkonu0OlMXEuROgr1f06ztwcY+xeUcr
-         Fvf4atzw3/pg8I2xj1jWK1mnRGYNryZcddNvISm/+AnUX4koZ1eFDlv2iDPpvGtjcaKr
-         otLmjjiyFydgXOi4qiwGAfCffquvyVW53f5tWsbo9TJoR8WZ1VjJQIOl4+KMNv3oU3FG
-         xSeU4vYlLXlkAi6BJc88HZLe7N5DawUgxVXDw6m/vYY8wwx9DckGArKO0tHh0MtY/Ed7
-         uKLy1PLEO/kGDeOPjbKcOeWWCg7AvME7R8pMUn6ZcsJxnwchGNE817tsT6TBHCOfhBMh
-         OIJg==
+         :list-id:mailing-list:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:cc:to:subject:sender:dkim-signature;
+        bh=KD2w97mI6EsPGSIpy9m8Q7Pmg4VcfVvhW61Ea5aq8eY=;
+        b=TWZfJm8nBuLhXo3VGCCo1jgl6HcMSHF/8LNFJ/Fr/hVWJkG31JK/fObm159Lh+wFVk
+         xx9YhqMkbbu3x8+OFredzhJfN5zErObyV7FImMQqEkwBUitEskMBFuAhRJrBRBJ95LN3
+         JfB5jd/5wFQnzdJDhIJm5hGIBoYfJXhN7Kv27MnWn79bU1THjRsviAr6wvpCJIb4Ds5J
+         RysjUzdirUnZ+Bkyfn+aRPO6S+aE3ybdVX0m61etiMXHQlc/PkZmUUozrm0s4ZGaBP73
+         Sl45orUV4p/pv3ftbDWwLxwW0UK4Svfea6AWWmita3/0C9muQeimaYbimuFe9PObiElb
+         HErw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=h1tUd5KM;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcDpTG1a;
+       spf=pass (google.com: domain of jasowang@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=jasowang@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:x-original-sender:x-original-authentication-results
-         :reply-to:precedence:mailing-list:list-id:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=1ciTj36aV7Fr9bHCACTw2oZ8TdRYggrjg9AJMM55g2c=;
-        b=LNd6qTkSAAj6Ivkz/fD/FMglfQxm91LQq8jfB7W4AH1qSUoXXmXXtQtrU7lA/+mQ3X
-         UAjxDBP5uViNaWbCmDmxkpyHp/65xA6bF8QcpgpfcjSEVltZ5M9h1V1FJj+Nzrug3LNq
-         PtWxi4EGFOMtZLbuLmt53FMW9OX7Xmhk+ffHOuGGJ/sdwVV3ecQXUjKMFC8OebshqKWB
-         kM/FnEuOt8yKMY+pcMtXHOeh7R31YwFr42foeQ7KQpUxRdzFFaPFO7D2auwgd79ecb4/
-         8p41lk4bE3cQS75TwhkVYVxKccRBJo6ABWnSLWhM+6OFAMPJf2Pz++aJGeHHEwGRrp0N
-         5cfg==
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding:content-language
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=KD2w97mI6EsPGSIpy9m8Q7Pmg4VcfVvhW61Ea5aq8eY=;
+        b=rn42Rbu69uTUrN1SIG/JxP+BCVrCaIENEj2wL3C94q6J6lfdDYPLxav4dnTrcG1sju
+         X9f2ObLppKMYUUh60mE85zIB2n9fzraQyZHZUfCiz+e5SvhTtQ6yxG81+L5jVoz0ZDgy
+         9nMVmqkllzT630+l6B8JNwhT3ipUY27Rj0kiGULa8+MMpRfeHA4AAj9YJuGFRkJBjX6B
+         VPMI5EYEEJ9wI2WhRVaW0vfRSWj9Eglnke0mGzm2m1dH134yt3rgLspJkmU924ZQFFDJ
+         OIGc8OT6dPNY81LIkCilJc6p5SraEwxCJOkAOnt3zNmudtemng7eo6zgGERo6Kk1YPLO
+         Tdfg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-transfer-encoding
+         :content-language:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=1ciTj36aV7Fr9bHCACTw2oZ8TdRYggrjg9AJMM55g2c=;
-        b=ezClh5gl/vph5oUDcycCM8+fJJS7/aV3hAz4/darjvWlW7wvyqnrnm6bQYyV2VqE7P
-         qOAfmiRHaFUbzKAtWTwyYMKcbUro81JQ0j/L3OfU4Y56h2VAf2GrNPpkTyB+9mUnExfc
-         lNJSJGaS0pnKQoPrqwlDkuLSlFX6oKWOTRUv0o1aPIuag2KUQvHYuOGjEfbSu5nOO5eI
-         2alGYK047OlINB/ivbbi9RLs6FM6ByLvQx3QrffEH7hssog+pr203PSlgA4zMOGBX7tf
-         n+MhVCgHD0avTU/HheSjo3M80HfZd54gI4IzeOp646mt/BF8wZWdwW6Zek0lDd3lTV2i
-         L5Fw==
-X-Gm-Message-State: AOAM532h4zxcN/skkugnS8gbzb0Wxh0fOsDjjY8WsVnsUYzh73gMj6h1
-	smJNBEszHJdedPhREeiEfEM=
-X-Google-Smtp-Source: ABdhPJypd2LRRyNLoqDflOI5Pt+aDpKKNcGDR2CEId/LX8R2hka+RQmHHpdJJPFjoXvGClMEIpKzEA==
-X-Received: by 2002:a67:63c1:: with SMTP id x184mr54903vsb.48.1600143800829;
-        Mon, 14 Sep 2020 21:23:20 -0700 (PDT)
+        bh=KD2w97mI6EsPGSIpy9m8Q7Pmg4VcfVvhW61Ea5aq8eY=;
+        b=S/LYZpYSWeUia+Jq0+A/SZFZkR6fnNLeLy9lZXFYabbxTRicWFmpPWo5CCmr2Q946m
+         kQYUUYa3HVFpOrkV/RAuZKpDKrs13h1Tcxy/l4o5HxG6AUNgR2jdUCk4GPZiWVPmpyuU
+         5SPKu8KwP7nMtAEGCKxcvDNycepQ/uJAGmxNytp+6ON4xF7xKbZkOzT3fREWVl13IdCx
+         90jREAvk1HziYob0YktHbbIFnHzxzb7LTlyJ6YzEczr8ZvkeXS5+og51j7F0UAWHRAyJ
+         5W1Ui+dQZ6KwcZ8R6F3+nIIhi8kNbvPkSicSSJ74bWX2NazSukxHKocA0Dqk7JzFMF4C
+         E5tQ==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM530jZBXkuJmsIy4dTDRyOdhTsTqvd+BqdT6RSB/7n4BbtLebADUu
+	gmraSrLnb0m53S5ZUgK0L8A=
+X-Google-Smtp-Source: ABdhPJzJTRRWQJZrzCqvxV2bfyiEyz+5FSoEeJK/vVoKhhO4OrTE5DBtXlAy1mdlsJuhfIW409IUBw==
+X-Received: by 2002:a17:90b:d90:: with SMTP id bg16mr3052545pjb.199.1600157949851;
+        Tue, 15 Sep 2020 01:19:09 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a1f:2481:: with SMTP id k123ls573295vkk.4.gmail; Mon, 14 Sep
- 2020 21:23:20 -0700 (PDT)
-X-Received: by 2002:a1f:6e0e:: with SMTP id j14mr51145vkc.14.1600143800322;
-        Mon, 14 Sep 2020 21:23:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600143800; cv=none;
+Received: by 2002:a62:7591:: with SMTP id q139ls4813419pfc.3.gmail; Tue, 15
+ Sep 2020 01:19:09 -0700 (PDT)
+X-Received: by 2002:a63:4d5:: with SMTP id 204mr14188843pge.0.1600157949232;
+        Tue, 15 Sep 2020 01:19:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600157949; cv=none;
         d=google.com; s=arc-20160816;
-        b=QlNU8X6qaeIoe7R3mCNH0DyTDK4yqyZ/mh6mv1BTos3acTfP4EM/mqj+MWZYU3sPFX
-         PkhMt84r5VzdvgFwqpL6s3p8j7F6L+cMuNflOs+2mDB/q7vOl58bEOXxs5lZHCI+2vaD
-         Exzvkg2mKiur86JhH/WYsF2PFxfu0Hw4Egh17MP6weKao0/bR6No7FAEpbUNtZWOUEP+
-         FhzmeIm8nBrYuOntlkoTGDwmeusW5/xOwAJOzWDxoMlRGZB+e07BxDWqLeg+WLTH+r30
-         5lYJsb2NZlEpsLqMp8z6t8CZmuvdU+zoyL8bExqDsh3WOVxHb++yjmx7xMYSRXOnMxc9
-         mqPA==
+        b=QlXw0EfkElxzlq/gP9oleA0wqWSGuh+soPiDZqqp11u5g+NVeLu9AnLYNkKrbgTlnp
+         a4+sKOtM0XXkXkp3otUrYhI9zcC+5HAMKCCNDUxUuprMAVXD3KXi6gyoSgq97ARDr3VP
+         oRtbGq5Iir94kirhOR/NKS2GMrsxwOsAVU/KENai7oS1KHTs+59MX3/gc84158WlquqO
+         FhRPaI+zS3VxqJalL6bjsL+7IDTKJFpKEpwJJwC4wXlmGHzyW1YCtbdoAzIWQ+/F9fND
+         Vc+AmWejkq2uX/Wl1+tBKl0FJxynxqwFOplrBgY3S4lNByghil1aUT5Nn7vADymstxBX
+         nNtQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
-         :from:dkim-signature;
-        bh=MzY9rnD924XkxaY7oxwQaSVbVUQpslPJTOfRRG0Q4ow=;
-        b=O2/asWSMAQFL74BOShKotE7PcdStPlVcXJiEANI9vnYPFkpRVmeHDgDI3F5IW4wMo4
-         80LGNjV1rKD7joRxumjuwSMYPGSQGueBYjN33noKlncwDu3bF3XCIEkEKho+tYwvhRWz
-         7wHTvi05Go1VserOeiuLo0RjK3mzMo6ALt8MFoUg3l7rJEzxEQAlPsqyBRd6M05RNKGa
-         E4ThUJMBwPNS0gLfl3+Owa8waZNEUqUgcOgKIg0FiX7THqoTYnSQb+GR6YHvbExlWmkx
-         DiwwT4HbYL7vaycqfe8Y5Y1Dq+uO3y7f0uD4lWTPMJEeKK35FR8fZVW+98EIgThT7a2u
-         vOww==
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=3bhDFHrLKx2Ugr++K3UZXsMiyEdJCQXQW25owbTuEPc=;
+        b=WuaVaefZ6Gp3hW71SWySOdVVvoEOAXmPPgM8uvuDHOXenatJsi7NEK9vW6XFVtIZOj
+         v1Gpa/aPK8PYCFoZksc9VSjs+6LCR/QQ16ojNX01e7PURjVgOZ5LQA8E3SKuRTTJrUcw
+         pCzJljllS3qqMKwphNJrBRJq35jFVFwiXcNJmj6LerlNAyR8cK6+bkm8NWlnJVizFCYC
+         ILbli8UCUgquIrE9LgjUAycSvMr2gVfH7J2OESmjqP2UWJc6e7UzlG02trYdjRbTvYJr
+         Vzk2Ah/+9jVuJ8ruRrXiubLC2XL/RLoy07Qo25wvdttcDpICcVXFcYxBk0jKo4E34RGV
+         ZQYw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=h1tUd5KM;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
-        by gmr-mx.google.com with ESMTPS id h9si414315vsh.2.2020.09.14.21.23.20
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EcDpTG1a;
+       spf=pass (google.com: domain of jasowang@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=jasowang@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by gmr-mx.google.com with ESMTPS id x63si567059pgx.1.2020.09.15.01.19.08
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 14 Sep 2020 21:23:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
-Received: from fllv0034.itg.ti.com ([10.64.40.246])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08F4NCao017552;
-	Mon, 14 Sep 2020 23:23:12 -0500
-Received: from DLEE107.ent.ti.com (dlee107.ent.ti.com [157.170.170.37])
-	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 08F4NBTU059441
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 14 Sep 2020 23:23:12 -0500
-Received: from DLEE111.ent.ti.com (157.170.170.22) by DLEE107.ent.ti.com
- (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 14
- Sep 2020 23:23:11 -0500
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DLEE111.ent.ti.com
- (157.170.170.22) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Mon, 14 Sep 2020 23:23:11 -0500
-Received: from a0393678-ssd.dal.design.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08F4LDMx028615;
-	Mon, 14 Sep 2020 23:23:07 -0500
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
-        Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-        Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
-        Allen Hubbe <allenbh@gmail.com>, Rob
- Herring <robh@kernel.org>
-CC: Arnd Bergmann <arnd@arndb.de>,
-        Greg Kroah-Hartman
-	<gregkh@linuxfoundation.org>,
-        Tom Joseph <tjoseph@cadence.com>, <linux-pci@vger.kernel.org>,
-        <linux-doc@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-        <linux-ntb@googlegroups.com>, Kishon Vijay
- Abraham I <kishon@ti.com>
-Subject: [PATCH v4 17/17] Documentation: PCI: Add userguide for PCI endpoint NTB function
-Date: Tue, 15 Sep 2020 09:51:10 +0530
-Message-ID: <20200915042110.3015-18-kishon@ti.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200915042110.3015-1-kishon@ti.com>
-References: <20200915042110.3015-1-kishon@ti.com>
+        Tue, 15 Sep 2020 01:19:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of jasowang@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-592-zNagHMNCPB-SgFEqX8TqPw-1; Tue, 15 Sep 2020 04:19:03 -0400
+X-MC-Unique: zNagHMNCPB-SgFEqX8TqPw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53E0480F040;
+	Tue, 15 Sep 2020 08:19:01 +0000 (UTC)
+Received: from [10.72.13.94] (ovpn-13-94.pek2.redhat.com [10.72.13.94])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 1A9D55DDB8;
+	Tue, 15 Sep 2020 08:18:47 +0000 (UTC)
+Subject: Re: [RFC PATCH 00/22] Enhance VHOST to enable SoC-to-SoC
+ communication
+To: Kishon Vijay Abraham I <kishon@ti.com>, Cornelia Huck <cohuck@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Ohad Ben-Cohen <ohad@wizery.com>,
+ Bjorn Andersson <bjorn.andersson@linaro.org>, Jon Mason <jdmason@kudzu.us>,
+ Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-remoteproc@vger.kernel.org,
+ linux-ntb@googlegroups.com, linux-pci@vger.kernel.org, kvm@vger.kernel.org,
+ virtualization@lists.linux-foundation.org, netdev@vger.kernel.org
+References: <20200702082143.25259-1-kishon@ti.com>
+ <20200702055026-mutt-send-email-mst@kernel.org>
+ <603970f5-3289-cd53-82a9-aa62b292c552@redhat.com>
+ <14c6cad7-9361-7fa4-e1c6-715ccc7e5f6b@ti.com>
+ <59fd6a0b-8566-44b7-3dae-bb52b468219b@redhat.com>
+ <ce9eb6a5-cd3a-a390-5684-525827b30f64@ti.com>
+ <da2b671c-b05d-a57f-7bdf-8b1043a41240@redhat.com>
+ <fee8a0fb-f862-03bd-5ede-8f105b6af529@ti.com>
+ <b2178e1d-2f5c-e8a3-72fb-70f2f8d6aa45@redhat.com>
+ <45a8a97c-2061-13ee-5da8-9877a4a3b8aa@ti.com>
+ <c8739d7f-e12e-f6a2-7018-9eeaf6feb054@redhat.com>
+ <20200828123409.4cd2a812.cohuck@redhat.com>
+ <ac8f7e4f-9f46-919a-f5c2-89b07794f0ab@ti.com>
+ <9cd58cd1-0041-3d98-baf7-6e5bc2e7e317@redhat.com>
+ <edf25301-93c0-4ba6-aa85-5f04137d0906@ti.com>
+From: Jason Wang <jasowang@redhat.com>
+Message-ID: <5733dbfc-76c1-45dc-6dce-ef5449eacc73@redhat.com>
+Date: Tue, 15 Sep 2020 16:18:46 +0800
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
+In-Reply-To: <edf25301-93c0-4ba6-aa85-5f04137d0906@ti.com>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: quoted-printable
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Original-Sender: jasowang@redhat.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=h1tUd5KM;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+ header.i=@redhat.com header.s=mimecast20190719 header.b=EcDpTG1a;
+       spf=pass (google.com: domain of jasowang@redhat.com designates
+ 63.128.21.124 as permitted sender) smtp.mailfrom=jasowang@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -154,198 +168,181 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add documentation to help users use pci-epf-ntb function driver and
-existing host side NTB infrastructure for NTB functionality.
+Hi Kishon:
 
-Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
----
- Documentation/PCI/endpoint/index.rst         |   1 +
- Documentation/PCI/endpoint/pci-ntb-howto.rst | 160 +++++++++++++++++++
- 2 files changed, 161 insertions(+)
- create mode 100644 Documentation/PCI/endpoint/pci-ntb-howto.rst
+On 2020/9/14 =E4=B8=8B=E5=8D=883:23, Kishon Vijay Abraham I wrote:
+>> Then you need something that is functional equivalent to virtio PCI
+>> which is actually the concept of vDPA (e.g vDPA provides alternatives if
+>> the queue_sel is hard in the EP implementation).
+> Okay, I just tried to compare the 'struct vdpa_config_ops' and 'struct
+> vhost_config_ops' ( introduced in [RFC PATCH 03/22] vhost: Add ops for
+> the VHOST driver to configure VHOST device).
+>
+> struct vdpa_config_ops {
+> 	/* Virtqueue ops */
+> 	int (*set_vq_address)(struct vdpa_device *vdev,
+> 			      u16 idx, u64 desc_area, u64 driver_area,
+> 			      u64 device_area);
+> 	void (*set_vq_num)(struct vdpa_device *vdev, u16 idx, u32 num);
+> 	void (*kick_vq)(struct vdpa_device *vdev, u16 idx);
+> 	void (*set_vq_cb)(struct vdpa_device *vdev, u16 idx,
+> 			  struct vdpa_callback *cb);
+> 	void (*set_vq_ready)(struct vdpa_device *vdev, u16 idx, bool ready);
+> 	bool (*get_vq_ready)(struct vdpa_device *vdev, u16 idx);
+> 	int (*set_vq_state)(struct vdpa_device *vdev, u16 idx,
+> 			    const struct vdpa_vq_state *state);
+> 	int (*get_vq_state)(struct vdpa_device *vdev, u16 idx,
+> 			    struct vdpa_vq_state *state);
+> 	struct vdpa_notification_area
+> 	(*get_vq_notification)(struct vdpa_device *vdev, u16 idx);
+> 	/* vq irq is not expected to be changed once DRIVER_OK is set */
+> 	int (*get_vq_irq)(struct vdpa_device *vdv, u16 idx);
+>
+> 	/* Device ops */
+> 	u32 (*get_vq_align)(struct vdpa_device *vdev);
+> 	u64 (*get_features)(struct vdpa_device *vdev);
+> 	int (*set_features)(struct vdpa_device *vdev, u64 features);
+> 	void (*set_config_cb)(struct vdpa_device *vdev,
+> 			      struct vdpa_callback *cb);
+> 	u16 (*get_vq_num_max)(struct vdpa_device *vdev);
+> 	u32 (*get_device_id)(struct vdpa_device *vdev);
+> 	u32 (*get_vendor_id)(struct vdpa_device *vdev);
+> 	u8 (*get_status)(struct vdpa_device *vdev);
+> 	void (*set_status)(struct vdpa_device *vdev, u8 status);
+> 	void (*get_config)(struct vdpa_device *vdev, unsigned int offset,
+> 			   void *buf, unsigned int len);
+> 	void (*set_config)(struct vdpa_device *vdev, unsigned int offset,
+> 			   const void *buf, unsigned int len);
+> 	u32 (*get_generation)(struct vdpa_device *vdev);
+>
+> 	/* DMA ops */
+> 	int (*set_map)(struct vdpa_device *vdev, struct vhost_iotlb *iotlb);
+> 	int (*dma_map)(struct vdpa_device *vdev, u64 iova, u64 size,
+> 		       u64 pa, u32 perm);
+> 	int (*dma_unmap)(struct vdpa_device *vdev, u64 iova, u64 size);
+>
+> 	/* Free device resources */
+> 	void (*free)(struct vdpa_device *vdev);
+> };
+>
+> +struct vhost_config_ops {
+> +	int (*create_vqs)(struct vhost_dev *vdev, unsigned int nvqs,
+> +			  unsigned int num_bufs, struct vhost_virtqueue *vqs[],
+> +			  vhost_vq_callback_t *callbacks[],
+> +			  const char * const names[]);
+> +	void (*del_vqs)(struct vhost_dev *vdev);
+> +	int (*write)(struct vhost_dev *vdev, u64 vhost_dst, void *src, int len)=
+;
+> +	int (*read)(struct vhost_dev *vdev, void *dst, u64 vhost_src, int len);
+> +	int (*set_features)(struct vhost_dev *vdev, u64 device_features);
+> +	int (*set_status)(struct vhost_dev *vdev, u8 status);
+> +	u8 (*get_status)(struct vhost_dev *vdev);
+> +};
+> +
+> struct virtio_config_ops
+> I think there's some overlap here and some of the ops tries to do the
+> same thing.
+>
+> I think it differs in (*set_vq_address)() and (*create_vqs)().
+> [create_vqs() introduced in struct vhost_config_ops provides
+> complimentary functionality to (*find_vqs)() in struct
+> virtio_config_ops. It seemingly encapsulates the functionality of
+> (*set_vq_address)(), (*set_vq_num)(), (*set_vq_cb)(),..].
+>
+> Back to the difference between (*set_vq_address)() and (*create_vqs)(),
+> set_vq_address() directly provides the virtqueue address to the vdpa
+> device but create_vqs() only provides the parameters of the virtqueue
+> (like the number of virtqueues, number of buffers) but does not directly
+> provide the address. IMO the backend client drivers (like net or vhost)
+> shouldn't/cannot by itself know how to access the vring created on
+> virtio front-end. The vdpa device/vhost device should have logic for
+> that. That will help the client drivers to work with different types of
+> vdpa device/vhost device and can access the vring created by virtio
+> irrespective of whether the vring can be accessed via mmio or kernel
+> space or user space.
+>
+> I think vdpa always works with client drivers in userspace and providing
+> userspace address for vring.
 
-diff --git a/Documentation/PCI/endpoint/index.rst b/Documentation/PCI/endpoint/index.rst
-index 9cb6e5f3c4d5..38ea1f604b6d 100644
---- a/Documentation/PCI/endpoint/index.rst
-+++ b/Documentation/PCI/endpoint/index.rst
-@@ -12,6 +12,7 @@ PCI Endpoint Framework
-    pci-test-function
-    pci-test-howto
-    pci-ntb-function
-+   pci-ntb-howto
- 
-    function/binding/pci-test
-    function/binding/pci-ntb
-diff --git a/Documentation/PCI/endpoint/pci-ntb-howto.rst b/Documentation/PCI/endpoint/pci-ntb-howto.rst
-new file mode 100644
-index 000000000000..e5194573f1a8
---- /dev/null
-+++ b/Documentation/PCI/endpoint/pci-ntb-howto.rst
-@@ -0,0 +1,160 @@
-+.. SPDX-License-Identifier: GPL-2.0
-+
-+======================
-+PCI NTB EPF User Guide
-+======================
-+
-+:Author: Kishon Vijay Abraham I <kishon@ti.com>
-+
-+This document is a guide to help users use pci-epf-ntb function driver
-+and ntb_hw_epf host driver for NTB functionality. The list of steps to
-+be followed in the host side and EP side is given below. For the hardware
-+configuration and internals of NTB using configurable endpoints see
-+Documentation/PCI/endpoint/pci-ntb-function.rst
-+
-+Endpoint Device
-+===============
-+
-+Endpoint Controller Devices
-+---------------------------
-+
-+For implementing NTB functionality at least two endpoint controller devices
-+are required.
-+To find the list of endpoint controller devices in the system::
-+
-+        # ls /sys/class/pci_epc/
-+          2900000.pcie-ep  2910000.pcie-ep
-+
-+If PCI_ENDPOINT_CONFIGFS is enabled::
-+
-+	# ls /sys/kernel/config/pci_ep/controllers
-+	  2900000.pcie-ep  2910000.pcie-ep
-+
-+
-+Endpoint Function Drivers
-+-------------------------
-+
-+To find the list of endpoint function drivers in the system::
-+
-+	# ls /sys/bus/pci-epf/drivers
-+	  pci_epf_ntb   pci_epf_ntb
-+
-+If PCI_ENDPOINT_CONFIGFS is enabled::
-+
-+	# ls /sys/kernel/config/pci_ep/functions
-+	  pci_epf_ntb   pci_epf_ntb
-+
-+
-+Creating pci-epf-ntb Device
-+----------------------------
-+
-+PCI endpoint function device can be created using the configfs. To create
-+pci-epf-ntb device, the following commands can be used::
-+
-+	# mount -t configfs none /sys/kernel/config
-+	# cd /sys/kernel/config/pci_ep/
-+	# mkdir functions/pci_epf_ntb/func1
-+
-+The "mkdir func1" above creates the pci-epf-ntb function device that will
-+be probed by pci_epf_ntb driver.
-+
-+The PCI endpoint framework populates the directory with the following
-+configurable fields::
-+
-+	# ls functions/pci_epf_ntb/func1
-+          baseclass_code    deviceid          msi_interrupts    pci-epf-ntb.0
-+          progif_code       secondary         subsys_id         vendorid
-+          cache_line_size   interrupt_pin     msix_interrupts   primary
-+          revid             subclass_code     subsys_vendor_id
-+
-+The PCI endpoint function driver populates these entries with default values
-+when the device is bound to the driver. The pci-epf-ntb driver populates
-+vendorid with 0xffff and interrupt_pin with 0x0001::
-+
-+	# cat functions/pci_epf_ntb/func1/vendorid
-+	  0xffff
-+	# cat functions/pci_epf_ntb/func1/interrupt_pin
-+	  0x0001
-+
-+
-+Configuring pci-epf-ntb Device
-+-------------------------------
-+
-+The user can configure the pci-epf-ntb device using its configfs entry. In order
-+to change the vendorid and the deviceid, the following
-+commands can be used::
-+
-+	# echo 0x104c > functions/pci_epf_ntb/func1/vendorid
-+	# echo 0xb00d > functions/pci_epf_ntb/func1/deviceid
-+
-+In order to configure NTB specific attributes, a new sub-directory to func1
-+should be created::
-+
-+	# mkdir functions/pci_epf_ntb/func1/pci_epf_ntb.0/
-+
-+The NTB function driver will populate this directory with various attributes
-+that can be configured by the user::
-+
-+	# ls functions/pci_epf_ntb/func1/pci_epf_ntb.0/
-+          db_count    mw1         mw2         mw3         mw4         num_mws
-+          spad_count
-+
-+A sample configuration for NTB function is given below::
-+
-+	# echo 4 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/db_count
-+	# echo 128 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/spad_count
-+	# echo 2 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/num_mws
-+	# echo 0x100000 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/mw1
-+	# echo 0x100000 > functions/pci_epf_ntb/func1/pci_epf_ntb.0/mw2
-+
-+Binding pci-epf-ntb Device to EP Controller
-+--------------------------------------------
-+
-+NTB function device should be attached to two PCIe endpoint controllers
-+connected to the two hosts. Use the 'primary' and 'secondary' entries
-+inside NTB function device to attach one PCIe endpoint controller to
-+primary interface and the other PCIe endpoint controller to the secondary
-+interface. ::
-+
-+        # ln -s controllers/2900000.pcie-ep/ functions/pci-epf-ntb/func1/primary
-+        # ln -s controllers/2910000.pcie-ep/ functions/pci-epf-ntb/func1/secondary
-+
-+Once the above step is completed, both the PCI endpoint controllers are ready to
-+establish a link with the host.
-+
-+
-+Start the Link
-+--------------
-+
-+In order for the endpoint device to establish a link with the host, the _start_
-+field should be populated with '1'. For NTB, both the PCIe endpoint controllers
-+should establish link with the host::
-+
-+        #echo 1 > controllers/2900000.pcie-ep/start
-+        #echo 1 > controllers/2910000.pcie-ep/start
-+
-+
-+RootComplex Device
-+==================
-+
-+lspci Output
-+------------
-+
-+Note that the devices listed here correspond to the values populated in
-+"Creating pci-epf-ntb Device" section above::
-+
-+        # lspci
-+        0000:00:00.0 PCI bridge: Texas Instruments Device b00d
-+        0000:01:00.0 RAM memory: Texas Instruments Device b00d
-+
-+
-+Using ntb_hw_epf Device
-+-----------------------
-+
-+The host side software follows the standard NTB software architecture in Linux.
-+All the existing client side NTB utilities like NTB Transport Client and NTB
-+Netdev, NTB Ping Pong Test Client and NTB Tool Test Client can be used with NTB
-+function device.
-+
-+For more information on NTB see
-+Documentation/driver-api/ntb.rst
--- 
-2.17.1
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200915042110.3015-18-kishon%40ti.com.
+Sorry for being unclear. What I meant is not replacing vDPA with the=20
+vhost(bus) you proposed but the possibility of replacing virtio-pci-epf=20
+with vDPA in:
+
+My question is basically for the part of virtio_pci_epf_send_command(),=20
+so it looks to me you have a vendor specific API to replace the=20
+virtio-pci layout of the BAR:
+
+
++static int virtio_pci_epf_send_command(struct virtio_pci_device *vp_dev,
++=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=
+=A0 =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 u32 command)
++{
++=C2=A0=C2=A0=C2=A0 struct virtio_pci_epf *pci_epf;
++=C2=A0=C2=A0=C2=A0 void __iomem *ioaddr;
++=C2=A0=C2=A0=C2=A0 ktime_t timeout;
++=C2=A0=C2=A0=C2=A0 bool timedout;
++=C2=A0=C2=A0=C2=A0 int ret =3D 0;
++=C2=A0=C2=A0=C2=A0 u8 status;
++
++=C2=A0=C2=A0=C2=A0 pci_epf =3D to_virtio_pci_epf(vp_dev);
++=C2=A0=C2=A0=C2=A0 ioaddr =3D vp_dev->ioaddr;
++
++=C2=A0=C2=A0=C2=A0 mutex_lock(&pci_epf->lock);
++=C2=A0=C2=A0=C2=A0 writeb(command, ioaddr + HOST_CMD);
++=C2=A0=C2=A0=C2=A0 timeout =3D ktime_add_ms(ktime_get(), COMMAND_TIMEOUT);
++=C2=A0=C2=A0=C2=A0 while (1) {
++=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 timedout =3D ktime_after(ktime_get()=
+, timeout);
++=C2=A0=C2=A0=C2=A0 =C2=A0=C2=A0=C2=A0 status =3D readb(ioaddr + HOST_CMD_S=
+TATUS);
++
+
+Several questions:
+
+- It's not clear to me how the synchronization is done between the RC=20
+and EP. E.g how and when the value of HOST_CMD_STATUS can be changed.=C2=A0=
+=20
+If you still want to introduce a new transport, a virtio spec patch=20
+would be helpful for us to understand the device API.
+- You have you vendor specific layout (according to=20
+virtio_pci_epb_table()), so I guess you it's better to have a vendor=20
+specific vDPA driver instead
+- The advantage of vendor specific vDPA driver is that it can 1) have=20
+less codes 2) support userspace drivers through vhost-vDPA (instead of=20
+inventing new APIs since we can't use vfio-pci here).
+
+
+>>> "Virtio Over NTB" should anyways be a new transport.
+>>>> Does that make any sense?
+>>> yeah, in the approach I used the initial features are hard-coded in
+>>> vhost-rpmsg (inherent to the rpmsg) but when we have to use adapter
+>>> layer (vhost only for accessing virtio ring and use virtio drivers on
+>>> both front end and backend), based on the functionality (e.g, rpmsg),
+>>> the vhost should be configured with features (to be presented to the
+>>> virtio) and that's why additional layer or APIs will be required.
+>> A question here, if we go with vhost bus approach, does it mean the
+>> virtio device can only be implemented in EP's userspace?
+> The vhost bus approach doesn't provide any restriction in where the
+> virto backend device should be created. This series creates two types of
+> virtio backend device (one for PCIe endpoint and the other for NTB) and
+> both these devices are created in kernel.
+
+
+Ok.
+
+Thanks
+
+
+>
+> Thanks
+> Kishon
+>
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/5733dbfc-76c1-45dc-6dce-ef5449eacc73%40redhat.com.
