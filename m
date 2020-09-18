@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBRFOSH5QKGQEM2IK36Y@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBSVOSH5QKGQEL4KXE2A@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-oo1-xc3b.google.com (mail-oo1-xc3b.google.com [IPv6:2607:f8b0:4864:20::c3b])
-	by mail.lfdr.de (Postfix) with ESMTPS id 8821626F61F
-	for <lists+linux-ntb@lfdr.de>; Fri, 18 Sep 2020 08:44:21 +0200 (CEST)
-Received: by mail-oo1-xc3b.google.com with SMTP id h23sf2236284oof.6
-        for <lists+linux-ntb@lfdr.de>; Thu, 17 Sep 2020 23:44:21 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1600411460; cv=pass;
+Received: from mail-io1-xd3f.google.com (mail-io1-xd3f.google.com [IPv6:2607:f8b0:4864:20::d3f])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5574926F623
+	for <lists+linux-ntb@lfdr.de>; Fri, 18 Sep 2020 08:44:27 +0200 (CEST)
+Received: by mail-io1-xd3f.google.com with SMTP id q6sf3844393iod.21
+        for <lists+linux-ntb@lfdr.de>; Thu, 17 Sep 2020 23:44:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1600411466; cv=pass;
         d=google.com; s=arc-20160816;
-        b=L69W8JBG2AA5hQWbLvJ/9My/p79JmQStwV/I8J0GzFe3GJMdBDcE7DAdd3Kz9HPTjx
-         GSp16RJ7zOcOToD6kadCZKEHBz0I0NfSu+h/vPjSGanGNOfh94545sMTsH5fCkDE3e2O
-         5dOTtnLuE+0+djfBa5MFGYkSqMd7A6pvyk9heX+VseXmEiZ/bzVb15IWV5YYHmyb2Mev
-         ZkvBvXbimDxJpiglnnj9sW2916bjitVh6SuYhIftojhLsWNt/qIkT/frQIznAVETter/
-         RlF8jVhJvzDVawguHIfBiY6xL4+L4NDGKGh+OaMq8XLGarbg/Jgam/hHqSqW1eMUCsug
-         hPcw==
+        b=0OhcSthGwOGdz9PCg8TZUeUYUcplD/dP3VNu198f3ckbiZ+m9cc/6oQZ5NqBGgBT6U
+         I8hnzsqnn5oLyp0QCU+ErxbhmFqfAYxEwwssPXpDunvcsmP9ENlx1QKBVeqqb4Mjx2j1
+         UD0zRsn44N5KzXIJUWuWk0Z1bF4ElYNUsXuOa6EoMZBE735E5hMN9Qt3s0ysuPTl/ir9
+         /TXBrq0oZujot+0Zxy6yeeGjNq5AmNhh9iToVM186pzwjmoYWwE64QUIqCiHdPFSyMP5
+         eRg/yUfRkV4dIRl/uFW9XURyOvWiL3JWFEgOU0eg9HVh0FrrMir1Sp7GqQI9Feb+xY0m
+         a34g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=WWSCUyOlg6KNMv7wUht6OfU3Gttf8N3wu2NdWocjYHY=;
-        b=GttQsMP+AV+fi2vvCz88yHdAee5T9Y1/ujAKzzdzS7zufRZjzyYD6wCvsCqCSjyj6l
-         /vVH7BmilKdQBwtM+RoNzW5cN29xqX0Hwuu9//GTiFyfFqNsiabt5f3e5yoAyouhS+WQ
-         wmVeNJccLWntVvZs6KA1iJk0zgSMosuPKTZYqEqcpSSS9DPejzK2z+4OyWog7vlXf34B
-         OgaXJHg2/CYGo8SJVbZKXpMUBunFAoLM1bFxV8MNLif9ysFfQVMjKTkCWsGE2BRzcZlB
-         qeNAhhwih4jQWovR/gFSsT5/poMv8BSROAuM43oD7zqUkFGHxbZpnmdZsWfiwNPGnVV+
-         PD0g==
+        bh=wJPq3qAVFFFdr2lle/JX+ql/F71Dp2vo5gQyIGccBng=;
+        b=l7mvVijjjU+OwHTvvkwPAtvqVOfE8xdR+q3Y3DphrBZaP+2dKqDGKktVJ0Bn0DEh2f
+         895ipY5vdtEwCctem4wx/R9fNA2UAdbEIHhsrxoP7BAldZpRG3aRDc265zcocqPS5wd1
+         MP0UL5tQ9gM+sQSGnOXB80l5F51JfGNRZk/aQeLgroljFmFCDTbOfDWEgsMEyIE4bKBz
+         KhP/jQyzDEIT1Kms+8XAHv8lVHSeeE0d/KlWijotoa6Vp8Wapm2huTL/0jlJ5EQI8hE5
+         /SGJsfqoAk+ZTkACYfM+jJDYvM0WlfNvz9TaXVweW8TJM3Q3e2J22AmBQQy4QohgE+55
+         NSLQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=OvJuNQLX;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vU2U7VDH;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=WWSCUyOlg6KNMv7wUht6OfU3Gttf8N3wu2NdWocjYHY=;
-        b=ktFkXV1N9fUxyGUOYJ5mvqZXqO+bLzdRwtddtfBuCoAmTDJRIQ8UNIV0Dt5ZIO5qSi
-         iiMEfZUfLe+l6axH+r6D652TBAWTo1gx46221FVgDiZlvldUA3AeCnMCiEdcCw92Sn7w
-         cin1QsWyu+YZUKAlx4kWwaAFYLGmBrZUJonO7yDb2jG052LiuVOXy0p3+7sFByDzY6uu
-         6AVjaH3+z64bL626KASsRrhOF6XcRx9OI9VvZMBzQ3B+dMrqTeJXSzi9YyUScqLK3U1W
-         UvORzSRVfuDKfu/KJXvUvZiModLdGe2PKf5u1T1FxB0qCtPF210yMstg64yWW1gx0Dev
-         /R1w==
+        bh=wJPq3qAVFFFdr2lle/JX+ql/F71Dp2vo5gQyIGccBng=;
+        b=kFwfEq6m+IRwvr7oWkceQ6DnqeED5QGU2TeSpqJ1wv0v+7KMKP9GFV8zLzfJJ/8LKx
+         aEw7CCdOPI1z7QYHYEy7hJFpBlOAYO4YsLqjIlwgaPTCJ+18u7GxUaz70ITt25ZsKhi6
+         kT4aeSER8XIh33usVY9xsj9m8ngy4MO5lRqAmNdEi+Vfq/O7fTZBGP0n7wMjekB3bDVW
+         vKP43woJ9Q3QLlpV6udvCttIZF2F8hfgd0fdXYxPXY5hjHF/f7qicsp9IqAAI/iOcDC7
+         WtWJWuvG6An88JIqsuQjutTkngCru5yDpU/KgNHLDAuWoWYCDpEOZCQYEHyvqQNBbTB1
+         E27g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,68 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=WWSCUyOlg6KNMv7wUht6OfU3Gttf8N3wu2NdWocjYHY=;
-        b=drHzV+yDDo2IPZVU0iHu081hkCXcX9of5bVlCdI4GZitHHAlyBiiqgispVW72VCwR1
-         YFB+GokLd06JAf82tgz06JRrM+p0+doML8neCgsBFhz5zpG94oD9tgfyXBzRYRVTWtts
-         J44YCs6rLYX+l+c5NBIYlJGSkuXiObfPUTRNwsEV6B3cP5tuGm3u1A5Fy52mhSulGGB+
-         gsLxfv9dow1uhkm8pyYf1Z4nMCZzz6CbdI0sBrbHmwv91OjD0cxAwqMTK+CRfmiC+tQO
-         JvmHq3l3CW/f7WClE0OVVbiyoTRwncSkNKIbbY7rC+smKYVht1UwR6rkDSCv+2oF6C80
-         IZ9w==
-X-Gm-Message-State: AOAM5332NXRQPnKZ44l5gQOeNvdzScFmJj6wADqXpRo/wEm+3Al/j01F
-	42cIxjmsSxhfwO+4C71k6Xw=
-X-Google-Smtp-Source: ABdhPJwqB+7Ijbg5yKo3yP0XyGgpfcvzMomPOs8gn/MlI3RlW72/vbEwf+6eR08anvj57Jh4QRYOag==
-X-Received: by 2002:a9d:75d1:: with SMTP id c17mr21049710otl.59.1600411460514;
-        Thu, 17 Sep 2020 23:44:20 -0700 (PDT)
+        bh=wJPq3qAVFFFdr2lle/JX+ql/F71Dp2vo5gQyIGccBng=;
+        b=pRN61QTiUWwBz8X8H91j4CAZxWtGmzPC9RgJeaqzDibtJPgF/+m+bC1yPgEcG1rYd8
+         BLvzlfxVrqoLH0/ElPglyMAnwxuCNnHdwbftv5xbvhJK8x5/K3vodoGQnxcTzqKuagv/
+         qMhIlIYUmdFTJEMWLBll69uqAeGTAL+n/zDfJISMb1Qy5KaU4PA+/vd0sW62xuzUrtCB
+         EC2MXIqPdne0RLhEoQGC7OtCfF7aSE98OiWGQnQgkmHS0qimlNNP+ouua5PRu6cY3+oH
+         3yPOSxh0P08+vav4xHu1JbQehN49bOyGjvk454OcuSoUVoGUuig53T9BENkR94UN2d/n
+         CiGg==
+X-Gm-Message-State: AOAM531/9JX/tmOEHs8dRakQTA/a3DSVcs7LJF2NO7eSub6xrKpDAW+7
+	qBnbpvuNOWCg4oI+jElfpms=
+X-Google-Smtp-Source: ABdhPJylidNufdmuXh2QHni/vKh8zMdsPLATQ5vyckwXFRCl3oi/B13WBcj4rH5p0WrH8NBZkW6Mbg==
+X-Received: by 2002:a05:6602:2a45:: with SMTP id k5mr25336291iov.1.1600411466331;
+        Thu, 17 Sep 2020 23:44:26 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6830:85:: with SMTP id a5ls1033922oto.10.gmail; Thu, 17
- Sep 2020 23:44:20 -0700 (PDT)
-X-Received: by 2002:a9d:312:: with SMTP id 18mr23232323otv.198.1600411460191;
-        Thu, 17 Sep 2020 23:44:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600411460; cv=none;
+Received: by 2002:a02:84ea:: with SMTP id f97ls592111jai.0.gmail; Thu, 17 Sep
+ 2020 23:44:26 -0700 (PDT)
+X-Received: by 2002:a02:887:: with SMTP id 129mr30091490jac.130.1600411465973;
+        Thu, 17 Sep 2020 23:44:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600411465; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dd/F97K2uy5p9J+dKZeVTulhbHbTkNLp3SSgRYPVZrg6EN4GjZUtRb1BolpJQESMr/
-         2sxyYK1lFuSJH87pQzevzfo45AI1sEEP6+J5fSjw0x6sgamgtJhgiV0xrbZZnT2Ccj1G
-         0fQpnS3xdkDOmVoSGjUex1yF8H3dE09HKiREI6KHmtZ9DLGgYgGd7NUoxw4T2ySJ3abK
-         /I8z2kgPong9DA/KjXrqBKTmzES98+PgrLQgi1YtT0+hCOyAWsySgVEk9II5Bfr17f+r
-         sAjb8TCeLqX6rL6pzQ/tXVLs/IT44FYR5Mia3BHAr4KyWvhBX2kQHjZ2zHAGqnHlvxP2
-         8FvA==
+        b=UxiHesbXP6Jr9/dyrASNTz5iku+ma/JRTA5yHASu4c3/E/lXgxqjP4MdqBv8TaM6jE
+         TK+RwKkby0daididrtuh8TO/Fb5S642/aiYQcLLn1bvXXqWeWI6tqrEXW6d843cDUSe2
+         x3rnpG0C9N5icgDMeUSJsGNnncT7Qytkw2LamVqtLWLD9bx3qEmA1sS0EIPWcYFVy+rQ
+         kSlaB47FTLRqzUFXc5eT3b2ybBvz9owVPqIruTUhkHv1tdFzM8B2j1Gt3Qetz/vLgEBL
+         Vnx7ahAJ4UtTsFSKfJhWFwN+4jzRSFNuKoigEemxrcyslaZyIYvwdkNEKYR0xRI6p97E
+         6GmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=27xJ9Q8zqn3uZRTDxUZ4FVw6OjM6K5CJr8HiYB/90+k=;
-        b=u5ZESPOyDHu/7UJo0DRoT29i5jLbCRYqqy86l5QfQXPqg9KQefSV/wqNGRSGi8qZET
-         KSZWbdfqAsAM+I6Bhqg6qwb/H2v9HlRs/NpE0t2E6cPOA8se3Tqm5CuPqbL4Z8ekLMn7
-         5iMPzLbwrP4ZwE1NGTrK+Q9NrD4OVmU4l3R6Igu2enzaJgWskRJO1JzRw3SzEuS6p2v7
-         UORI8o7W+IFNs2vr1dbZlcNLyEWgHDX4AeP6DEVgVvQpdkCn7WZh0UbqqeRKT1BqCmvm
-         KL9GFWARRC1BOPgrIy+8jyEMhOaX4QH40l3OXWIjE+xt1R+n4/O1tQcyknKjOjjkXR1j
-         Zqog==
+        bh=lTz57oIbDoqLeHnWKHJxRenng3YXT0XKq15ddYdluKo=;
+        b=sbqD3ZDiAk/wQ+zNKFhXaEctQBCemJxyhvyEW58StW4/Qpg7ULo9Sg2lj6xpSP7NSF
+         fbtXMrlqX5xAc7QYjGzM9Fq9HcpTXTO0L7fApLPp6bHcJiqMqdE6aDaW5bEhT/rUbIzk
+         VUaAfuh0r5H3UftREC0xKJKr2K/emgD82YfjeiTZK3BfTkmsApf2i8c/dgYAsGtd4ugb
+         wvdiMufq+6jVUiwIq2+RtVNeNbdMaqN+2Mi1BUqyg/C9MCNkzGrR+FC15Sdbx+C8D6aH
+         CIfqQlzZMx3ZnXtxcO/hPWYm8EQZdgteyVD75KChZEWf9RdAacoFKSS8QMKCOU2kQMJi
+         zmrg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=OvJuNQLX;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=vU2U7VDH;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id l15si276960otb.0.2020.09.17.23.44.20
+Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
+        by gmr-mx.google.com with ESMTPS id m2si121841ill.5.2020.09.17.23.44.25
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Sep 2020 23:44:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08I6iDIx128116;
-	Fri, 18 Sep 2020 01:44:13 -0500
-Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08I6iDeo042001;
-	Fri, 18 Sep 2020 01:44:13 -0500
-Received: from DFLE100.ent.ti.com (10.64.6.21) by DFLE104.ent.ti.com
- (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Fri, 18
- Sep 2020 01:44:13 -0500
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE100.ent.ti.com
+        Thu, 17 Sep 2020 23:44:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08I6iJZD015728;
+	Fri, 18 Sep 2020 01:44:19 -0500
+Received: from DFLE100.ent.ti.com (dfle100.ent.ti.com [10.64.6.21])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 08I6iJbI125148
+	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
+	Fri, 18 Sep 2020 01:44:19 -0500
+Received: from DFLE113.ent.ti.com (10.64.6.34) by DFLE100.ent.ti.com
  (10.64.6.21) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Fri, 18
+ Sep 2020 01:44:19 -0500
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE113.ent.ti.com
+ (10.64.6.34) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Fri, 18 Sep 2020 01:44:13 -0500
+ Frontend Transport; Fri, 18 Sep 2020 01:44:19 -0500
 Received: from a0393678-ssd.ent.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08I6gUCS094595;
-	Fri, 18 Sep 2020 01:44:07 -0500
+	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08I6gUCT094595;
+	Fri, 18 Sep 2020 01:44:14 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
         Kishon Vijay Abraham I <kishon@ti.com>,
@@ -125,9 +126,9 @@ To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
 CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
         <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
-Subject: [PATCH v5 08/17] PCI: endpoint: Add pci_epc_ops to map MSI irq
-Date: Fri, 18 Sep 2020 12:12:18 +0530
-Message-ID: <20200918064227.1463-9-kishon@ti.com>
+Subject: [PATCH v5 09/17] PCI: endpoint: Add pci_epf_ops for epf drivers to expose function specific attrs
+Date: Fri, 18 Sep 2020 12:12:19 +0530
+Message-ID: <20200918064227.1463-10-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200918064227.1463-1-kishon@ti.com>
 References: <20200918064227.1463-1-kishon@ti.com>
@@ -136,8 +137,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=OvJuNQLX;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=vU2U7VDH;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -154,106 +155,93 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add pci_epc_ops to map physical address to MSI address and return MSI
-data. The physical address is an address in the outbound region. This is
-required to implement doorbell functionality of NTB (non transparent
-bridge) wherein EPC on either side of the interface (primary and
-secondary) can directly write to the physical address (in outbound
-region) of the other interface to ring doorbell using MSI.
+In addition to the attributes that are generic across function drivers
+documented in Documentation/PCI/endpoint/pci-endpoint-cfs.rst, there
+could be function specific attributes that has to be exposed by the
+function driver to be configured by the user. Add ->add_cfs()
+in pci_epf_ops to be populated by the function driver if it has to
+expose any function specific attributes and pci_epf_type_add_cfs() to
+be invoked by pci-ep-cfs.c when sub-directory to main function directory
+is created.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/pci/endpoint/pci-epc-core.c | 40 +++++++++++++++++++++++++++++
- include/linux/pci-epc.h             |  7 +++++
- 2 files changed, 47 insertions(+)
+ drivers/pci/endpoint/pci-epf-core.c | 32 +++++++++++++++++++++++++++++
+ include/linux/pci-epf.h             |  5 +++++
+ 2 files changed, 37 insertions(+)
 
-diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index 0f6e2364ae6f..73f9ff425824 100644
---- a/drivers/pci/endpoint/pci-epc-core.c
-+++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -230,6 +230,46 @@ int pci_epc_raise_irq(struct pci_epc *epc, u8 func_no,
- }
- EXPORT_SYMBOL_GPL(pci_epc_raise_irq);
+diff --git a/drivers/pci/endpoint/pci-epf-core.c b/drivers/pci/endpoint/pci-epf-core.c
+index 79329ec6373c..7646c8660d42 100644
+--- a/drivers/pci/endpoint/pci-epf-core.c
++++ b/drivers/pci/endpoint/pci-epf-core.c
+@@ -20,6 +20,38 @@ static DEFINE_MUTEX(pci_epf_mutex);
+ static struct bus_type pci_epf_bus_type;
+ static const struct device_type pci_epf_type;
  
 +/**
-+ * pci_epc_map_msi_irq() - Map physical address to MSI address and return
-+ *                         MSI data
-+ * @epc: the EPC device which has the MSI capability
-+ * @func_no: the physical endpoint function number in the EPC device
-+ * @vfunc_no: the virtual endpoint function number in the physical function
-+ * @phys_addr: the physical address of the outbound region
-+ * @interrupt_num: the MSI interrupt number
-+ * @entry_size: Size of Outbound address region for each interrupt
-+ * @msi_data: the data that should be written in order to raise MSI interrupt
-+ *            with interrupt number as 'interrupt num'
++ * pci_epf_type_add_cfs() - Help function drivers to expose function specific
++ *                          attributes in configfs
++ * @epf: the EPF device that has to be configured using configfs
++ * @group: the parent configfs group (corresponding to entries in
++ *         pci_epf_device_id)
 + *
-+ * Invoke to map physical address to MSI address and return MSI data. The
-+ * physical address should be an address in the outbound region. This is
-+ * required to implement doorbell functionality of NTB wherein EPC on either
-+ * side of the interface (primary and secondary) can directly write to the
-+ * physical address (in outbound region) of the other interface to ring
-+ * doorbell.
++ * Invoke to expose function specific attributes in configfs. If the function
++ * driver does not have anything to expose (attributes configured by user),
++ * return NULL.
 + */
-+int pci_epc_map_msi_irq(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
-+			phys_addr_t phys_addr, u8 interrupt_num, u32 entry_size,
-+			u32 *msi_data)
++struct config_group *pci_epf_type_add_cfs(struct pci_epf *epf,
++					  struct config_group *group)
 +{
-+	int ret;
++	struct config_group *epf_type_group;
 +
-+	if (IS_ERR_OR_NULL(epc))
-+		return -EINVAL;
++	if (!epf->driver) {
++		dev_err(&epf->dev, "epf device not bound to driver\n");
++		return NULL;
++	}
 +
-+	if (!epc->ops->map_msi_irq)
-+		return -EINVAL;
++	if (!epf->driver->ops->add_cfs)
++		return NULL;
 +
-+	mutex_lock(&epc->lock);
-+	ret = epc->ops->map_msi_irq(epc, func_no, vfunc_no, phys_addr,
-+				    interrupt_num, entry_size, msi_data);
-+	mutex_unlock(&epc->lock);
++	mutex_lock(&epf->lock);
++	epf_type_group = epf->driver->ops->add_cfs(epf, group);
++	mutex_unlock(&epf->lock);
 +
-+	return ret;
++	return epf_type_group;
 +}
-+EXPORT_SYMBOL_GPL(pci_epc_map_msi_irq);
++EXPORT_SYMBOL_GPL(pci_epf_type_add_cfs);
 +
  /**
-  * pci_epc_get_msi() - get the number of MSI interrupt numbers allocated
-  * @epc: the EPC device to which MSI interrupts was requested
-diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
-index d9cb3944fb87..88284f3a0698 100644
---- a/include/linux/pci-epc.h
-+++ b/include/linux/pci-epc.h
-@@ -55,6 +55,7 @@ pci_epc_interface_string(enum pci_epc_interface_type type)
-  * @get_msix: ops to get the number of MSI-X interrupts allocated by the RC
-  *	     from the MSI-X capability register
-  * @raise_irq: ops to raise a legacy, MSI or MSI-X interrupt
-+ * @map_msi_irq: ops to map physical address to MSI address and return MSI data
-  * @start: ops to start the PCI link
-  * @stop: ops to stop the PCI link
-  * @owner: the module owner containing the ops
-@@ -77,6 +78,9 @@ struct pci_epc_ops {
- 	int	(*get_msix)(struct pci_epc *epc, u8 func_no);
- 	int	(*raise_irq)(struct pci_epc *epc, u8 func_no,
- 			     enum pci_epc_irq_type type, u16 interrupt_num);
-+	int	(*map_msi_irq)(struct pci_epc *epc, u8 func_no, u8 vfunc_no,
-+			       phys_addr_t phys_addr, u8 interrupt_num,
-+			       u32 entry_size, u32 *msi_data);
- 	int	(*start)(struct pci_epc *epc);
- 	void	(*stop)(struct pci_epc *epc);
- 	const struct pci_epc_features* (*get_features)(struct pci_epc *epc,
-@@ -216,6 +220,9 @@ int pci_epc_get_msi(struct pci_epc *epc, u8 func_no);
- int pci_epc_set_msix(struct pci_epc *epc, u8 func_no, u16 interrupts,
- 		     enum pci_barno, u32 offset);
- int pci_epc_get_msix(struct pci_epc *epc, u8 func_no);
-+int pci_epc_map_msi_irq(struct pci_epc *epc, u8 func_no,
-+			phys_addr_t phys_addr, u8 interrupt_num,
-+			u32 entry_size, u32 *msi_data);
- int pci_epc_raise_irq(struct pci_epc *epc, u8 func_no,
- 		      enum pci_epc_irq_type type, u16 interrupt_num);
- int pci_epc_start(struct pci_epc *epc);
+  * pci_epf_unbind() - Notify the function driver that the binding between the
+  *		      EPF device and EPC device has been lost
+diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
+index 1dc66824f5a8..b241e7dd171f 100644
+--- a/include/linux/pci-epf.h
++++ b/include/linux/pci-epf.h
+@@ -62,10 +62,13 @@ struct pci_epf_header {
+  * @bind: ops to perform when a EPC device has been bound to EPF device
+  * @unbind: ops to perform when a binding has been lost between a EPC device
+  *	    and EPF device
++ * @add_cfs: ops to initialize function specific configfs attributes
+  */
+ struct pci_epf_ops {
+ 	int	(*bind)(struct pci_epf *epf);
+ 	void	(*unbind)(struct pci_epf *epf);
++	struct config_group *(*add_cfs)(struct pci_epf *epf,
++					struct config_group *group);
+ };
+ 
+ /**
+@@ -188,4 +191,6 @@ void pci_epf_free_space(struct pci_epf *epf, void *addr, enum pci_barno bar,
+ 			enum pci_epc_interface_type type);
+ int pci_epf_bind(struct pci_epf *epf);
+ void pci_epf_unbind(struct pci_epf *epf);
++struct config_group *pci_epf_type_add_cfs(struct pci_epf *epf,
++					  struct config_group *group);
+ #endif /* __LINUX_PCI_EPF_H */
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200918064227.1463-9-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200918064227.1463-10-kishon%40ti.com.
