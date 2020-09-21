@@ -1,155 +1,132 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBKPDUD5QKGQEEGJS3KQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDV2D5O34IDRB6XFUD5QKGQEOHNAPZQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd3f.google.com (mail-io1-xd3f.google.com [IPv6:2607:f8b0:4864:20::d3f])
-	by mail.lfdr.de (Postfix) with ESMTPS id B2189271A37
-	for <lists+linux-ntb@lfdr.de>; Mon, 21 Sep 2020 06:52:58 +0200 (CEST)
-Received: by mail-io1-xd3f.google.com with SMTP id 80sf9187626iou.4
-        for <lists+linux-ntb@lfdr.de>; Sun, 20 Sep 2020 21:52:58 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1600663977; cv=pass;
+Received: from mail-pg1-x540.google.com (mail-pg1-x540.google.com [IPv6:2607:f8b0:4864:20::540])
+	by mail.lfdr.de (Postfix) with ESMTPS id 29FAA271A42
+	for <lists+linux-ntb@lfdr.de>; Mon, 21 Sep 2020 06:58:36 +0200 (CEST)
+Received: by mail-pg1-x540.google.com with SMTP id r3sf5545520pgm.22
+        for <lists+linux-ntb@lfdr.de>; Sun, 20 Sep 2020 21:58:36 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1600664314; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lV874+qVinA4BsftUMJys6DmpGU3njWot9fx2nsgjlwq8Tc2FoHbdUHaSYPqM0NZbW
-         NolVspMdhLAnomY2izkwVa5BcTDueUdxej/nyWtnckA27T9izStkz7OqyItrBRtR0h7D
-         12OS+HrYPJ6uMa4FCQO7inZamlICLhZx9OxUxbUOD7t1uP6FMcEhO3Jqxilrv4q4SzgU
-         4B2r6YEC5/0HDUNEOpYbUUt454WTPYVBsvC9GY96L/reK+kDpAYS/yUXXaExX+QHvSXI
-         +IwXegeoosHK/SyfhaMeYBvR2zhJzeI45IDzGOXmdjFRmaKDTIzsKhv8RzOpfrSRS1La
-         N+Xw==
+        b=Nd8tSt1OmnmmBRBdhxOhzXVIH2eAZoOmUzNbWnfHN9bxUoxsDqQF8gKv5eige/NxTJ
+         6t511L+6KMs1GdXFxVhHv3lX/6z6OakNQpEifiChfsXGH8bPmyIn+SmK2CokOfZC+GGi
+         MC6uwin2kRrKlsb62UXkXAVIG6kXOUDllXJL14ruKizhrGZY+/z2De69PXgELK01OOs9
+         uQAf2f6QBuvYL9lvoF85Uy+wc4U09XVbF5SJAYMO7i4jNe1ty18pxOar80HUVdFfmvXj
+         AST+hTH23w3Z3zVI1ho/zhgtiBH8JGfzYYk7kOlXPESMl1MdRxoobkdPr+urI5qS2YH5
+         kD4A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=ME75lQ0gQbXngYaFJO1NFLsiQ41oy9OvqHeUQcrgvas=;
-        b=v94JoNqRjhaLDLC12J2LxHlfu4uR+q7Ih+d3uaIQSWwZXT+gP7CAJtx4m2Wja+dlIy
-         s77zd48Ql7fvayzhZC4oBGaL63Ml2Bs3gR8YCLLNvPQVRtDs5Il/+xcWzH5NetWlhFHe
-         2esMaWf32tuQlARPS/UbDgGx+BmBR8ttiGDsNU2Z7oXFrak+y8edmkYb6sJSptyUzsxI
-         PxdWj47+oKDPj0Uum3gc9zv+7c0hD1XRbVXVCt4vOuvSd+GWirVWJRJrffgcf7/KwXdu
-         MybaMUh9lFK0JpeI0rBt6NCXiCqyXq9OHtz09b/UgRBqL+Ah8AjHBcj5R/39UyOsS7Q3
-         HrZg==
+         :list-id:mailing-list:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to
+         :subject:sender:dkim-signature;
+        bh=6mq1rNqEPc0IOYASIYsw0AXVqqHhgQRqcBLS/Q0dCys=;
+        b=MjGz9+coqF9WbFBCOfJKXyvPvrJ6Vv+mfGbvVXL1kULRyT6hIfq+5tguaGAG//gv66
+         N03h+wIlv/EvJrDmEH2DO+l2DxCdaocN33Psi6IT5LQUPtIO6NSxaZZufV0OpBop86Pq
+         zQE+bHNOwREviOQgFdsUl4omLiAkLg6Mrc9PwHZlEDV0rXaZ004sSYnrH6B1tiXiiDrX
+         WyMcfZghfXI6oYoKTaRuj2DzbnJhsiK17DZlyFhSGowUEzruUH4/+CMaefRGKETZipbf
+         1PGT76e3yHV+LoP/m78r/rNhd+SsTXcvkUo/IHGb1vWreo8qpHmDi2KZF9xDrs8/NCjV
+         +Stg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=K4gIhkwo;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       dkim=pass header.i=@infradead.org header.s=merlin.20170209 header.b=RvfoFYsq;
+       spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1231::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:list-post:list-help:list-archive:list-subscribe
-         :list-unsubscribe;
-        bh=ME75lQ0gQbXngYaFJO1NFLsiQ41oy9OvqHeUQcrgvas=;
-        b=c5MEXgN0t/6/0zfXYjYZ/mmdgLrz1EMnMh/P2reLksMzFp++JWno4XapKubwzPb6s3
-         aVFzJr8NQt6WRek6vrwoJJmH1Y5JwRI19M+ZUh9JYXjhQ+kgOSap4VDxkhAN5SGyDx4f
-         CRRtz1iB88QS7U1XS+RK1AjT+Sz70UD9BHxxEOx5ZWL/NXf8YFZ1l8X7F/WtaUEuFGd/
-         7DQLGEboPiB6W5ogjQdBhX4KLrRRisGJKJI8aUhG4riaqGPN/SGT9/CSIc1OAUijeywC
-         UkWwB5X7HpeJT45xbiHSj+rhj1lzMspzuJprrt4sg/ZiLA7u1EZgq7LH20qP6Bs1rLYn
-         e7IQ==
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=6mq1rNqEPc0IOYASIYsw0AXVqqHhgQRqcBLS/Q0dCys=;
+        b=Oi+Do6FL43Pz24O8APGaeghLYsurm6E1150uDyusAxSKQbQ4IapZM+GN5JyImgTxvr
+         igqNsPUr9SogyzUj3lg/vnwnFNTPfDO3jis4y9cmufjxGYOqeZoGO9vuSTA/SZlCjHYA
+         eZt0r387oB0+Y26NIt3/ld4jCj2zFEdbBYwzQ8V1qhP/wnQgutXeFYcAfUI3CUKjI4XT
+         wL8MqkemAbVznOr/560ESQGvw2TuJ8gx6TP09Z2vec5Q1a7+G+SZP4k4kMpYboxFJcbc
+         1tV0a1AEXkbSIzRarglaC7vpsIK4ojH1tbepvg5MHg3ugeAzRW/fu+nitmdYaCOZogxU
+         LfMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:reply-to
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=ME75lQ0gQbXngYaFJO1NFLsiQ41oy9OvqHeUQcrgvas=;
-        b=Cm+PJmUPw086WVh5w2zDyPq/8parDsj+FXt0jQs12x9mFwnMsMjSfrxdfa4Rak1x5a
-         FctQdAkK0E8ThpzEUk++7Y2fAS0h4GuHrxwFRAFzDu6tGfr9EzL5+i4nPB6pWofL9Nwy
-         Ny5Tn8LIeJXfO2dIjwwKeTM9jXHuInXg08aglYzeCbLWeAtmYG5j5fvOsmCOltkQtFA5
-         oxhZ21SzAiJwMkKij2rPf3vL3Igf+Oc6VWmdeEZnEa4okC/BjIYkMS4/fc+87PuHSX94
-         qgM5SIEQ0ZoolNFZZgC10uD2oFNkeIzCn4kP8GrqlkjmuMm6SoJ1Q9axXUjPk9NPqCIM
-         2cQA==
-X-Gm-Message-State: AOAM531dgsGG+3o3JH1E4iSp7rP3WwRZTHV/yie8aBmkjUsdltTuGu9a
-	H3QYlp1ufrPe6q8Zq/KAu1M=
-X-Google-Smtp-Source: ABdhPJzTAZiaax21BrqhGpnwignJwQ77UJCFdRBjUSNMTtyDfp/y1VJMEgYuX+lkuyhMhGyQJMKUHg==
-X-Received: by 2002:a6b:194:: with SMTP id 142mr35528286iob.18.1600663977370;
-        Sun, 20 Sep 2020 21:52:57 -0700 (PDT)
+        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=6mq1rNqEPc0IOYASIYsw0AXVqqHhgQRqcBLS/Q0dCys=;
+        b=RUPk+ebew+S11VgmXCdTS699BC+QXVZQaUiWYIS4AOy4pbjE3IkSAmTHTKk103vbTN
+         bJPXaSCIl8UZv2OIt69YuNBUe6pMLXjqfw8LhnRmieHRR7799S4vnEfbruXBP/DpZ1cw
+         ZCDb3vGbTVA+gGJFGUzmt1+qgm9RdovhKhqhPooZH6hUD4CISOU+bWyRaGjgkgYxFXQo
+         nIGcKMV81LGRL35/zEBDMm0dhcSE9AojhTSt99apMFiPYdQFPpX7yZT/FL7Zs07HYdyT
+         xRLHJgKkJEGC869Ts/ugC/ZmzpdEME/GYduOCcblKKoHQeEsCv/DS/cI4xYQEwO4E4lK
+         ZDIg==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM531OuBB73C1DualOpdT893RXkmZ0w52fezTFeMVSChgX1PKANb/7
+	wDNJSaR24FLULkXaCu4aHNI=
+X-Google-Smtp-Source: ABdhPJw+1UDIxjhDZX1yU8mGeRk3fQ9EwAEPPARfXn/mzcaWzZz8cXB6HTLTPHdog3FLJ8xbBWzw5Q==
+X-Received: by 2002:a63:806:: with SMTP id 6mr28110380pgi.71.1600664314476;
+        Sun, 20 Sep 2020 21:58:34 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a02:6f56:: with SMTP id b22ls1355147jae.9.gmail; Sun, 20 Sep
- 2020 21:52:57 -0700 (PDT)
-X-Received: by 2002:a02:62c9:: with SMTP id d192mr39028842jac.59.1600663976973;
-        Sun, 20 Sep 2020 21:52:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600663976; cv=none;
+Received: by 2002:a63:d745:: with SMTP id w5ls3989711pgi.8.gmail; Sun, 20 Sep
+ 2020 21:58:34 -0700 (PDT)
+X-Received: by 2002:a62:3044:0:b029:142:2501:398b with SMTP id w65-20020a6230440000b02901422501398bmr25876220pfw.80.1600664313960;
+        Sun, 20 Sep 2020 21:58:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600664313; cv=none;
         d=google.com; s=arc-20160816;
-        b=UbuF6gHVztVMqBgGM1w5FiE8IdVzexWcgrqd7ulL3SnJrxzeWT4w2M8+zHgcZsarMh
-         x16FWUv/kHPPPmfoSPmNGnJ6TbHkzVlkEOzDj1DjEUk2c/wmssUTct22b8CoCx8lfrjt
-         X0g46dZ0PI4LMk+eCUA/2S/YmJb2FOC97e2HK5xC9VG3HpFqfHyAZrssHPLA+gZyOLvk
-         hxpViRVTrYx8cnXQfJaM+BEPru9MU6shWMXVnLPszQTPBrSnTYoexMbQLfRspWTsXTUb
-         xR2UEBrb5hqRi9x2O0/FiA1oFi+3sAl3F9LiT95pQEAW0nc6UIySdOuL1je4dnTDXF3o
-         oigA==
+        b=UpZ4IUWqXhV7qZsFWn1HH6sUlGzU/OqPswwsMbpkmneuDrvEpg2PnlATFfebDaY0Qa
+         9GZjw4dNqGr5O1kXL4bfjq8U2E8NJLxczqvyim1gbor7quhVLkDHF3RFhbRedWySDEGf
+         LoC2X7dEBy+WWyANek7ZzPTWd0W3LgN87BCrU/fWcFskbcKjFPV4ZkQfIc99hWwia5dI
+         bgmgx1e23R0yg/OxOJ46YvgXry1w9JbyN8aapRMLZrjqWYCbDvQk0m2Vsuq6HPdv1+sT
+         Pb/TazU8sDK01LP5I4hl0OJt1mrskemynPpJRiQrsNXwQJpxrceSyjeF1y069tMhC13P
+         W1ag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=9uy99y5TKZJggG1dvxT3XStGw93Gtk7IkvWznY+qP3s=;
-        b=jlrUWzIEDK7LzSFWHSwnpLvb70IMyvssOdbXIixNUoYWD9UCxFwPAD2l/OPed7FDzj
-         6jJHrogY2Kj1X5PQmb8z6zBeN0YgIaVdS3hqoX3AABRG6amMWlZZ790jn8mt+xbjSRK/
-         t1UIUmq+MqFBsZcM42HzIv5DfDiNBfKw1yyDPKkCjQtwZkp4/dWxYcnE9CNZwO9NA1JQ
-         D5I4QVemM8BkWTzdDCA2pt5G+7umNwIij1/0lXoeVLM7tuc75GMESwNONJdmay0YE1kn
-         dwNgQqxWg+tVf8sF9MWBngeodc4ZHWED/t+HPRyLmbdZDYu/BlFy5dzwzZrDqT9hBOnt
-         m2pg==
+        bh=HQ/UY9FTcQifDZrg/8Ivhz0s2Q2BGUsiN0dGMhFdZV4=;
+        b=aMnzpPDrkPY3OG5tS2g2i5upJBX68eqVO/HRLsyaVpzSTSSxAnABfYL0z0+Sa9pvGj
+         R9rkPvAtULe1Cdmevg77KMK0LyA8eHwEWhXbNS2ZwebnDiufV1RyzwKALBvwqHw+QhOb
+         VfzKFPaHsZlKsf32sPRhOLd4pAd/qVLskc2p+2ZEG0xMN7H6227d17ir8etfki/KCEwj
+         LbIKP5xZ39MPQOJkuo5fBIDPYCunG7E/PkGhoI6bvOpm3ksEbQCV0DWuRhyo7WlSePnf
+         fXH+GMK9aAZnwJEe5jha0FiRbmPVhfBck6fPRndhbHN+bys7UV15NDr9PXmf+Jlk9i2E
+         fl4g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=K4gIhkwo;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
-        by gmr-mx.google.com with ESMTPS id k18si620606ion.4.2020.09.20.21.52.56
+       dkim=pass header.i=@infradead.org header.s=merlin.20170209 header.b=RvfoFYsq;
+       spf=pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1231::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
+Received: from merlin.infradead.org (merlin.infradead.org. [2001:8b0:10b:1231::1])
+        by gmr-mx.google.com with ESMTPS id h5si203724pfc.0.2020.09.20.21.58.33
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 20 Sep 2020 21:52:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08L4qm3F104834;
-	Sun, 20 Sep 2020 23:52:48 -0500
-Received: from DLEE105.ent.ti.com (dlee105.ent.ti.com [157.170.170.35])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08L4qmKx060489;
-	Sun, 20 Sep 2020 23:52:48 -0500
-Received: from DLEE112.ent.ti.com (157.170.170.23) by DLEE105.ent.ti.com
- (157.170.170.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Sun, 20
- Sep 2020 23:52:48 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE112.ent.ti.com
- (157.170.170.23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Sun, 20 Sep 2020 23:52:48 -0500
-Received: from [10.250.232.147] (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08L4qgFL030746;
-	Sun, 20 Sep 2020 23:52:43 -0500
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Sep 2020 21:58:33 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of rdunlap@infradead.org designates 2001:8b0:10b:1231::1 as permitted sender) client-ip=2001:8b0:10b:1231::1;
+Received: from [2601:1c0:6280:3f0::19c2]
+	by merlin.infradead.org with esmtpsa (Exim 4.92.3 #3 (Red Hat Linux))
+	id 1kKDuC-0000QV-EL; Mon, 21 Sep 2020 04:58:24 +0000
 Subject: Re: [PATCH v5 14/17] NTB: Add support for EPF PCI-Express
  Non-Transparent Bridge
-To: Randy Dunlap <rdunlap@infradead.org>, Bjorn Helgaas <bhelgaas@google.com>,
-        Jonathan Corbet <corbet@lwn.net>,
-        Lorenzo Pieralisi
-	<lorenzo.pieralisi@arm.com>,
-        Arnd Bergmann <arnd@arndb.de>, Jon Mason
-	<jdmason@kudzu.us>,
-        Dave Jiang <dave.jiang@intel.com>, Allen Hubbe
-	<allenbh@gmail.com>,
-        Tom Joseph <tjoseph@cadence.com>, Rob Herring
-	<robh@kernel.org>
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
-        <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>,
+ Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Arnd Bergmann
+ <arnd@arndb.de>, Jon Mason <jdmason@kudzu.us>,
+ Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+ Tom Joseph <tjoseph@cadence.com>, Rob Herring <robh@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-pci@vger.kernel.org, linux-doc@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
 References: <20200918064227.1463-1-kishon@ti.com>
  <20200918064227.1463-15-kishon@ti.com>
  <93b651aa-23e5-9249-6b22-fef65806b007@infradead.org>
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-Message-ID: <c8b7fa2b-5586-3929-1e00-8473106935f9@ti.com>
-Date: Mon, 21 Sep 2020 10:22:42 +0530
+ <c8b7fa2b-5586-3929-1e00-8473106935f9@ti.com>
+From: Randy Dunlap <rdunlap@infradead.org>
+Message-ID: <afa7a7c9-a954-d82c-3b67-7c98bac164de@infradead.org>
+Date: Sun, 20 Sep 2020 21:58:16 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <93b651aa-23e5-9249-6b22-fef65806b007@infradead.org>
+In-Reply-To: <c8b7fa2b-5586-3929-1e00-8473106935f9@ti.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
+X-Original-Sender: rdunlap@infradead.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=K4gIhkwo;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+ header.i=@infradead.org header.s=merlin.20170209 header.b=RvfoFYsq;
+       spf=pass (google.com: best guess record for domain of
+ rdunlap@infradead.org designates 2001:8b0:10b:1231::1 as permitted sender) smtp.mailfrom=rdunlap@infradead.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -162,44 +139,47 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hi Randy,
-
-On 18/09/20 9:45 pm, Randy Dunlap wrote:
-> On 9/17/20 11:42 PM, Kishon Vijay Abraham I wrote:
->> diff --git a/drivers/ntb/hw/epf/Kconfig b/drivers/ntb/hw/epf/Kconfig
->> new file mode 100644
->> index 000000000000..6197d1aab344
->> --- /dev/null
->> +++ b/drivers/ntb/hw/epf/Kconfig
->> @@ -0,0 +1,6 @@
->> +config NTB_EPF
->> +	tristate "Generic EPF Non-Transparent Bridge support"
->> +	depends on m
->> +	help
->> +	  This driver supports EPF NTB on configurable endpoint.
->> +	  If unsure, say N.
+On 9/20/20 9:52 PM, Kishon Vijay Abraham I wrote:
+> Hi Randy,
 > 
-> Hi,
-> Why is this driver restricted to 'm' (loadable module)?
-> I.e., it cannot be builtin.
+> On 18/09/20 9:45 pm, Randy Dunlap wrote:
+>> On 9/17/20 11:42 PM, Kishon Vijay Abraham I wrote:
+>>> diff --git a/drivers/ntb/hw/epf/Kconfig b/drivers/ntb/hw/epf/Kconfig
+>>> new file mode 100644
+>>> index 000000000000..6197d1aab344
+>>> --- /dev/null
+>>> +++ b/drivers/ntb/hw/epf/Kconfig
+>>> @@ -0,0 +1,6 @@
+>>> +config NTB_EPF
+>>> +	tristate "Generic EPF Non-Transparent Bridge support"
+>>> +	depends on m
+>>> +	help
+>>> +	  This driver supports EPF NTB on configurable endpoint.
+>>> +	  If unsure, say N.
+>>
+>> Hi,
+>> Why is this driver restricted to 'm' (loadable module)?
+>> I.e., it cannot be builtin.
+> 
+> I'm trying to keep all the host side PCI drivers corresponding to the
+> devices configured using endpoint function drivers as modules and also
+> not populate MODULE_DEVICE_TABLE() to prevent auto-loading.
+> 
+> The different endpoint function drivers (right now only pci-epf-test.c
+> and pci-epf-ntb.c) can use the same device ID and vendorID for
+> configuring the endpoint devices. So on the host side, it's possible an
+> un-intended PCI driver can be bound to the device. So in-order to give
+> users the flexibility of deciding the driver to be bound, I'm trying to
+> keep it as modules. (Some driver like NTB also uses class code
+> PCI_CLASS_MEMORY_RAM for binding a driver in addition to deviceID and
+> vendorID but it need not be the case for all the drivers.)
 
-I'm trying to keep all the host side PCI drivers corresponding to the
-devices configured using endpoint function drivers as modules and also
-not populate MODULE_DEVICE_TABLE() to prevent auto-loading.
+Thanks for the explanation.
 
-The different endpoint function drivers (right now only pci-epf-test.c
-and pci-epf-ntb.c) can use the same device ID and vendorID for
-configuring the endpoint devices. So on the host side, it's possible an
-un-intended PCI driver can be bound to the device. So in-order to give
-users the flexibility of deciding the driver to be bound, I'm trying to
-keep it as modules. (Some driver like NTB also uses class code
-PCI_CLASS_MEMORY_RAM for binding a driver in addition to deviceID and
-vendorID but it need not be the case for all the drivers.)
-
-Thanks
-Kishon
+-- 
+~Randy
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/c8b7fa2b-5586-3929-1e00-8473106935f9%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/afa7a7c9-a954-d82c-3b67-7c98bac164de%40infradead.org.
