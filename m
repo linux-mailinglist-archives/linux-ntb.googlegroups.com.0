@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBCOM2L5QKGQEWETJ6XQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBPOM2L5QKGQEX5EHJ4Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ua1-x940.google.com (mail-ua1-x940.google.com [IPv6:2607:f8b0:4864:20::940])
-	by mail.lfdr.de (Postfix) with ESMTPS id C4A0727ED3A
-	for <lists+linux-ntb@lfdr.de>; Wed, 30 Sep 2020 17:36:42 +0200 (CEST)
-Received: by mail-ua1-x940.google.com with SMTP id w24sf895249uan.14
-        for <lists+linux-ntb@lfdr.de>; Wed, 30 Sep 2020 08:36:42 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1601480202; cv=pass;
+Received: from mail-yb1-xb3d.google.com (mail-yb1-xb3d.google.com [IPv6:2607:f8b0:4864:20::b3d])
+	by mail.lfdr.de (Postfix) with ESMTPS id 6556827ED50
+	for <lists+linux-ntb@lfdr.de>; Wed, 30 Sep 2020 17:37:34 +0200 (CEST)
+Received: by mail-yb1-xb3d.google.com with SMTP id v4sf2156531ybk.5
+        for <lists+linux-ntb@lfdr.de>; Wed, 30 Sep 2020 08:37:34 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1601480253; cv=pass;
         d=google.com; s=arc-20160816;
-        b=sqmXBkxX5GWXkJ5blGY8k/8K5A0i/Wm5o9bJO1if43AdwmkuqQI/O5U8qTVu92dqV6
-         GmwHti3bL5kWjC0SKMPWADOc4CLFHKnZlUjm9AOfDYEfc0LKAJkAtT2kFzeR7vdEj0Vy
-         C3ZG+T/qdLu7Be4i28ZUan9nbuSuXPoENBpbvn7nKp1XuqryIuDQaN1easy00RmfkBQf
-         pHzLm6gZBK5atvBk0Ux6jXsLfFK7NINZydTHMmHTwbjIvKx4cacygWZJ0kAFj4MAzuYK
-         lTk6Z5BjzYFtfYLG2ycbnbj/Wem+d8duEscGOG2LC44YLxW3sEu7Nu1na8URK/EVmei3
-         qf+Q==
+        b=nkzbBcFDg3WPP79BLM7Buu+Jp074lEV+fy4KvFtoaJOdeVMcYZ1Esl/aOh2Xtmh7O/
+         buOpvgnurPJcktsocV1nHBYqqHUX/Jqgte7gEHGBma1De1wmY5tSBunTHC5q32mdfgLa
+         a4AW3svQogwL8vooNFcVHGVDmONcLXZrYVrOYNcdU3pz/ne4VW2T6kvh8mbJovTWTEpB
+         NhdupmG5wcqJtn5BNGbTROWG8xdSVvLxbkjVumNhvPBPF7MAzlv6xPye1QOun3VuSqzv
+         0aIWlI6Je6wYV7J8n7WBKja7ER6f6BDFWvQ4DoFu83Ewvb3IIJGU7xs4N5Zkabqyz+ny
+         Ce2g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=vxQX6lqHoi4tmhE01VVMZSxHaJ4P8F5CxPp1jUDuWpE=;
-        b=prfxvJPd2EQok+x6rbCV79RIl3wZkTGCv6XNCekY/KEAamdfSNBhtYK94s5ODpkaG7
-         jkYs4egO0Zm2hXHCHPjEtMHIHwZfNbPJMDFuvAUxKlvDkkZ2CjnIJVjpMhql7jpIzvBB
-         2RKeDYePisdLhlhgXK1NDFR8R57bJGHZsmEY0+cJ8H0inlVtdOP4Nhf6HWT2HWTDfNBd
-         wkYxabesPGdPjfFxVkvviui9HqUYT/moB4AmilqEsIQ30iTZNXaDAsU0CuJScPTlKIqQ
-         ZkagUMI4yhOlGgUSwHJUb3jtlCiXSVCXyqRHHKnzjj23f7p3ey0atnvLVFQBTb6iEYM4
-         enkA==
+        bh=LfdJRxRWPeBuAQbnr87QwEQ4c2+F2OfBAUTe+9f7EfU=;
+        b=m6mtKz2RZdxIEbpFhz1vQLAe55wcO905Cl/GYdNJVA2JVnR7CleSuyKFLDpX9374N+
+         UDZfrJRlpg2VFAfIBIByV+NGTG/26Js5yqWeeAO+05qt9lT1EnkqLs0xpGE6vcLqVfYN
+         FPgtQMVGwy9Gg6VINzQ+FTVHn07dTfuFJLUna9yrGFDf9bqpsO0Nyep87PHa5f2Zg3lB
+         b0kntmudsBfRVQ7fXIn10rDciA+AAt1B7sNdCcY2F7HvIY2IlV/9Nv0qwUmimlPsdfLj
+         xDHKGEAZfM/fezgjMWt1k6eyx69Cg/05MR6/QTqdZjTjtECeUy5pDLk47dUkzisr9FG4
+         FqDA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=thX1t1Tx;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=Md94JFk7;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=vxQX6lqHoi4tmhE01VVMZSxHaJ4P8F5CxPp1jUDuWpE=;
-        b=MWAVwV3Gcb16hnPxZAIhjUQpOuEkR87jXez7ccpXGms4u+xgOVqxz8wNgIFhKnIDuz
-         c+L2+IvnWZ73gIKUiA4O+nT8bNIfPE1BcfzxxO3lS1gjpw8Nt2KBUwd7fFuzv+gbVYGH
-         tfE3firzT8uL7JJYtePmGYHlsHgIAnj3JeN4RGxMpWm82hJ2GGDKYPfGL2qMew/pyL5Y
-         4/SJOS0hd5vLwlY1l4ss/RrXrDF5rru95Iyat8xBWUG1A9cqjg7052WmjmPJWQU+6pSe
-         Ki1H+WdwH8rSGb3asbIkqRZivLhon697CUK30AfaChiCuUXmyTQLXvKJBL+9s6/koi62
-         k+ZA==
+        bh=LfdJRxRWPeBuAQbnr87QwEQ4c2+F2OfBAUTe+9f7EfU=;
+        b=B6eyf9hc21+WwWWBh3X+UoEVdqYM2Touh+9hbpY5H56ph9RaxMoihPfd6ApPLws28U
+         WdW2wYafnLFIqzhGg8PXK0mmbEjsaUkOnaPM5Tnnu/KSCLuzKZKip50eZVJRz9tDXae4
+         aW0EhVKu0ID6VWTLsZaadxMF+RAIip+B6gpJlATIBwv1lUae6S3zoibt0YErLjm+EQKx
+         Pqylf1RrK5ziOZ/0oVLq9xp5BnvBjGypIHvSAu807eh4RsLHKhKg3a9eP2XxM9jfWIox
+         RjyZ6M08SNY998bFr8a6IevHsLAdH+CblebfCPb6X78as0fJBbA+bOWn4dEHcmpwyGZR
+         Vl4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=vxQX6lqHoi4tmhE01VVMZSxHaJ4P8F5CxPp1jUDuWpE=;
-        b=omV7LKZW87VtdkrLuFVPzHVQf06Boxgv15COrpq+5cASXH/90CSgyOokBtYR/wWL2p
-         pXiWrFwyr+Yc53zi/TrTtqwK2c7E0cXN4lkypQkjZZnLwx0+f1PTpUqMSH8hYhVeTv7E
-         O7e/l8m3yIyHVZ5J0HF66oxFXP0bMLi1uG41pSAZPYzCHHR3kUvvjJrKgbk+qFpMXhFB
-         VsJmemlEbR6DyKRIlB4lq/XIFZopKpI2tFlx8m0HNVR5w2bPI0nQ/nv1HAoZg29W20gK
-         Klu/7Zr8BfU4JruK8mDTKVK/B0C8KWGoyVeZ02NLY4aJINz1sOOKSxXbPb/5sGUr4NQD
-         I88g==
-X-Gm-Message-State: AOAM533NgFgoS757jkpsEJUnJfWhrxs0t0pELh/cQLG73qOP+Qa/3vO5
-	bvtzWBiW06p5N6aZau/zuqM=
-X-Google-Smtp-Source: ABdhPJwdVdW1QVMDdw+KCnIJozsFCp0kMFAVzAAGGDoVBjQHHLvGRKsQa0IWgKgGL/imhZ34EOtgBg==
-X-Received: by 2002:a1f:a905:: with SMTP id s5mr1927890vke.9.1601480201777;
-        Wed, 30 Sep 2020 08:36:41 -0700 (PDT)
+        bh=LfdJRxRWPeBuAQbnr87QwEQ4c2+F2OfBAUTe+9f7EfU=;
+        b=q8eE001LNZMWSEVUPcFRR+DJYReJVj9g/mrB/MZ7Yq+aJ21irmQs7hImHRbXSHs1kS
+         /UjKblevIqwX07bsFA+Kvo4mhvpMSvDKK+JBWm49elrAnplU9CP9+Ep0vOYtnzluL0Ld
+         c7Y/99qxHdbK7CsfhUkjfi7zdvdjAWHumnDu+HLH9RRQCRsLuk3j3O8U8Li//Xftqo+W
+         9pSTK7QN7eLuA7RxT3web2jc8r/CkRWfjcMhEaBBRwJ/5AbqjlJoHTi2mn5/oXip5BBj
+         1eGfoF3IfVAqin0coezvMoLfw0d2qXGv+7MHNiPXcqv9jTnwTljnlZErs3fGHKfrG4fP
+         u07A==
+X-Gm-Message-State: AOAM532rJfGvUxlOe+cAH/s9r878+naYh1eB994uSjzqGy3W1j/5A4a+
+	uYVUSPhoLHTr9hcQutHdYfk=
+X-Google-Smtp-Source: ABdhPJzkTlI18uekqDc2I8P2ajQVb5EG+RuhchSqECNxHH9KnftBzBUFug6tZD7Hiy6xOrseOshd1A==
+X-Received: by 2002:a25:4090:: with SMTP id n138mr4072575yba.320.1601480253449;
+        Wed, 30 Sep 2020 08:37:33 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ab0:40a2:: with SMTP id i31ls183118uad.9.gmail; Wed, 30 Sep
- 2020 08:36:41 -0700 (PDT)
-X-Received: by 2002:ab0:2c5:: with SMTP id 63mr1937357uah.102.1601480201199;
-        Wed, 30 Sep 2020 08:36:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601480201; cv=none;
+Received: by 2002:a25:ceca:: with SMTP id x193ls1045983ybe.2.gmail; Wed, 30
+ Sep 2020 08:37:33 -0700 (PDT)
+X-Received: by 2002:a25:2315:: with SMTP id j21mr4562780ybj.457.1601480252940;
+        Wed, 30 Sep 2020 08:37:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601480252; cv=none;
         d=google.com; s=arc-20160816;
-        b=fRvPyZ5d2PRsJJ/JG5BoTnPS7NWmH1njaaKdWZ1NhptDTDW7gnIFIlrY3xVT2XFcqi
-         OZ/aeC+KyfnItyvDsxG/1D7cjrCmvxOxDrcz3SgntniBqRDd/Rw65leBuXV/HsApAZiV
-         jxAqD2aa/uBk4pC1FhmGOUwTxHdWcz98shqfTgXCGj/4nJ0v+QcN6lzw1LYCYHXhbOVL
-         xu9H8aGnVevnmDESvp6Tqxw+W51oCr/q8DWA1F/eP5gduwfFWxOHi/BRVC+ooj/ls+S2
-         i4VMm4VqgZLOOgmgt88evw19gJJJ0VOvKEJiD70mSzp4Pas93EYMCk55/16Or1romAst
-         iz7w==
+        b=qVl2QubfiPHshGW/WK6BAeqa36MMDfIipfy8KXb/alM4pn4Gf/aleropYspPwarNgC
+         2jKuy9Jk4v/iAKy141evSluWASM97Zs9bQEqYQnsfi8JDOhxjoLAflaTAdetD90bHqg0
+         vKmmXqmWZVjHKF17btXAUDdvK3rZa3vQ2jG7WlAnwrvVfn/Y51cbrK939lAPiFKscalQ
+         CgqV9b5MHXTY8AxGt0cVLH94EO69gphsg3jp9Q/3+Er/4OrrIqbwVsfwqoUKtIKoDa/w
+         lUhcvZk1tlfy0paGUTj3Jy+J+OlghjegLJc05a+Myasb2Xsj00tx9yrGaELfKbEYLMW9
+         nT4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=6+pEZ2sU4Okxi+WU1gPDCbDCdtKwOEBqEUtnhiZE5hw=;
-        b=r8yJ2031zPphQafQ+ZM8eTO8/en9jD758iZClfl45/le79CIr1xtUw83mWU18fRU+l
-         8rj35VK413Ax1wZQAvikfcFKD1HM8aPLqKT3SSsXnd58ngNtjZ8xf1poM4ZmPHYdI7zX
-         mF75zIeTSuY+lAxlQ9PG46emxZFU98EwjADTjPklhF3loY87OIj6il+ZtzBtK3zeTNQl
-         9/A5NQCD8oj8vA4QdmWEDvKSE+MzN/+31/xsg7VWkCtMMGccM2Ag+Jlz02xPmTeYuu71
-         Hvc3JbBROZVH4NqdgeEtELcelkPnMbfMFes6H1Uq/gVEcJoR+s+FtdNLf58rmr8bG5Er
-         u11g==
+        bh=1Ii+sodm1kJBqDIewPjIsrGNN7Eqm55YjonNoKE1M6Q=;
+        b=pHfl7TODku6sPps8opt/IHT5mx6dJlRX4a4jPw2zUgPCVTQFT9o2YS67JRY3bQAnY5
+         Wip7nTJ33T35IU60SXNHoA9mglXOrTWNro2SJN8c4gdcC30Z1Zp01C8yMrVtbuXWJgq+
+         YOE0CTlpvPbjJELHQowjhqJnJrx9+Yzx6X074ux8nXwUVuv32FnOC/t9JLff3nkt0vUp
+         zdfXQyEA6vkw7WWMc5cJJp5a4/N64IVjsEJIykPB3c/TktpmUwdCUuwSliJP+tyPZ1Qs
+         iG3S4HOHrxoNDiQF3VN925IFEmi0kAcBe+7+kSkCnqD8sTPoSlL6RknLVbeWkEjNMYfP
+         Flkw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=thX1t1Tx;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=Md94JFk7;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id 134si132012vkx.0.2020.09.30.08.36.41
+Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
+        by gmr-mx.google.com with ESMTPS id s7si194659ybk.3.2020.09.30.08.37.32
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2020 08:36:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08UFaYx4076693;
-	Wed, 30 Sep 2020 10:36:34 -0500
-Received: from DFLE102.ent.ti.com (dfle102.ent.ti.com [10.64.6.23])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 08UFaXqk110998
+        Wed, 30 Sep 2020 08:37:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 08UFbPNf044103;
+	Wed, 30 Sep 2020 10:37:25 -0500
+Received: from DFLE103.ent.ti.com (dfle103.ent.ti.com [10.64.6.24])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 08UFbPGN026755
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Wed, 30 Sep 2020 10:36:33 -0500
-Received: from DFLE103.ent.ti.com (10.64.6.24) by DFLE102.ent.ti.com
- (10.64.6.23) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 30
- Sep 2020 10:36:33 -0500
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE103.ent.ti.com
+	Wed, 30 Sep 2020 10:37:25 -0500
+Received: from DFLE104.ent.ti.com (10.64.6.25) by DFLE103.ent.ti.com
  (10.64.6.24) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Wed, 30
+ Sep 2020 10:37:25 -0500
+Received: from lelv0326.itg.ti.com (10.180.67.84) by DFLE104.ent.ti.com
+ (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Wed, 30 Sep 2020 10:36:33 -0500
+ Frontend Transport; Wed, 30 Sep 2020 10:37:25 -0500
 Received: from a0393678-ssd.dal.design.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08UFZLZZ033254;
-	Wed, 30 Sep 2020 10:36:28 -0500
+	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 08UFZLZa033254;
+	Wed, 30 Sep 2020 10:36:34 -0500
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
         Kishon Vijay Abraham I <kishon@ti.com>,
@@ -126,9 +126,9 @@ To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
 CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
         <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
-Subject: [PATCH v7 10/18] PCI: endpoint: Allow user to create sub-directory of 'EPF Device' directory
-Date: Wed, 30 Sep 2020 21:05:11 +0530
-Message-ID: <20200930153519.7282-11-kishon@ti.com>
+Subject: [PATCH v7 11/18] PCI: cadence: Implement ->msi_map_irq() ops
+Date: Wed, 30 Sep 2020 21:05:12 +0530
+Message-ID: <20200930153519.7282-12-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20200930153519.7282-1-kishon@ti.com>
 References: <20200930153519.7282-1-kishon@ti.com>
@@ -137,8 +137,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=thX1t1Tx;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=Md94JFk7;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -155,93 +155,96 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Documentation/PCI/endpoint/pci-endpoint-cfs.rst explains how a user
-has to create a directory in-order to create a 'EPF Device' that
-can be configured/probed by 'EPF Driver'.
-
-Allow user to create a sub-directory of 'EPF Device' directory for
-any function specific attributes that has to be exposed to the user.
+Implement ->msi_map_irq() ops in order to map physical address to
+MSI address and return MSI data.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/pci/endpoint/pci-ep-cfs.c | 23 +++++++++++++++++++++++
- include/linux/pci-epf.h           |  3 +++
- 2 files changed, 26 insertions(+)
+ .../pci/controller/cadence/pcie-cadence-ep.c  | 53 +++++++++++++++++++
+ 1 file changed, 53 insertions(+)
 
-diff --git a/drivers/pci/endpoint/pci-ep-cfs.c b/drivers/pci/endpoint/pci-ep-cfs.c
-index 8f750961d6ab..f3a8b833b479 100644
---- a/drivers/pci/endpoint/pci-ep-cfs.c
-+++ b/drivers/pci/endpoint/pci-ep-cfs.c
-@@ -490,7 +490,29 @@ static struct configfs_item_operations pci_epf_ops = {
- 	.release		= pci_epf_release,
- };
+diff --git a/drivers/pci/controller/cadence/pcie-cadence-ep.c b/drivers/pci/controller/cadence/pcie-cadence-ep.c
+index 254a3e1eff50..5df492a12042 100644
+--- a/drivers/pci/controller/cadence/pcie-cadence-ep.c
++++ b/drivers/pci/controller/cadence/pcie-cadence-ep.c
+@@ -383,6 +383,57 @@ static int cdns_pcie_ep_send_msi_irq(struct cdns_pcie_ep *ep, u8 fn,
+ 	return 0;
+ }
  
-+static struct config_group *pci_epf_type_make(struct config_group *group,
-+					      const char *name)
++static int cdns_pcie_ep_map_msi_irq(struct pci_epc *epc, u8 fn,
++				    phys_addr_t addr, u8 interrupt_num,
++				    u32 entry_size, u32 *msi_data,
++				    u32 *msi_addr_offset)
 +{
-+	struct pci_epf_group *epf_group = to_pci_epf_group(&group->cg_item);
-+	struct config_group *epf_type_group;
++	struct cdns_pcie_ep *ep = epc_get_drvdata(epc);
++	u32 cap = CDNS_PCIE_EP_FUNC_MSI_CAP_OFFSET;
++	struct cdns_pcie *pcie = &ep->pcie;
++	u64 pci_addr, pci_addr_mask = 0xff;
++	u16 flags, mme, data, data_mask;
++	u8 msi_count;
++	int ret;
++	int i;
 +
-+	epf_type_group = pci_epf_type_add_cfs(epf_group->epf, group);
-+	return epf_type_group;
++	/* Check whether the MSI feature has been enabled by the PCI host. */
++	flags = cdns_pcie_ep_fn_readw(pcie, fn, cap + PCI_MSI_FLAGS);
++	if (!(flags & PCI_MSI_FLAGS_ENABLE))
++		return -EINVAL;
++
++	/* Get the number of enabled MSIs */
++	mme = (flags & PCI_MSI_FLAGS_QSIZE) >> 4;
++	msi_count = 1 << mme;
++	if (!interrupt_num || interrupt_num > msi_count)
++		return -EINVAL;
++
++	/* Compute the data value to be written. */
++	data_mask = msi_count - 1;
++	data = cdns_pcie_ep_fn_readw(pcie, fn, cap + PCI_MSI_DATA_64);
++	data = data & ~data_mask;
++
++	/* Get the PCI address where to write the data into. */
++	pci_addr = cdns_pcie_ep_fn_readl(pcie, fn, cap + PCI_MSI_ADDRESS_HI);
++	pci_addr <<= 32;
++	pci_addr |= cdns_pcie_ep_fn_readl(pcie, fn, cap + PCI_MSI_ADDRESS_LO);
++	pci_addr &= GENMASK_ULL(63, 2);
++
++	for (i = 0; i < interrupt_num; i++) {
++		ret = cdns_pcie_ep_map_addr(epc, fn, addr,
++					    pci_addr & ~pci_addr_mask,
++					    entry_size);
++		if (ret)
++			return ret;
++		addr = addr + entry_size;
++	}
++
++	*msi_data = data;
++	*msi_addr_offset = pci_addr & pci_addr_mask;
++
++	return 0;
 +}
 +
-+static void pci_epf_type_drop(struct config_group *group,
-+			      struct config_item *item)
-+{
-+	config_item_put(item);
-+}
-+
-+static struct configfs_group_operations pci_epf_type_group_ops = {
-+	.make_group     = &pci_epf_type_make,
-+	.drop_item      = &pci_epf_type_drop,
-+};
-+
- static const struct config_item_type pci_epf_type = {
-+	.ct_group_ops	= &pci_epf_type_group_ops,
- 	.ct_item_ops	= &pci_epf_ops,
- 	.ct_attrs	= pci_epf_attrs,
- 	.ct_owner	= THIS_MODULE,
-@@ -553,6 +575,7 @@ static struct config_group *pci_epf_make(struct config_group *group,
- 		goto free_name;
- 	}
- 
-+	epf->group = &epf_group->group;
- 	epf_group->epf = epf;
- 
- 	kfree(epf_name);
-diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
-index b241e7dd171f..6833e2160ef1 100644
---- a/include/linux/pci-epf.h
-+++ b/include/linux/pci-epf.h
-@@ -9,6 +9,7 @@
- #ifndef __LINUX_PCI_EPF_H
- #define __LINUX_PCI_EPF_H
- 
-+#include <linux/configfs.h>
- #include <linux/device.h>
- #include <linux/mod_devicetable.h>
- #include <linux/pci.h>
-@@ -128,6 +129,7 @@ struct pci_epf_bar {
-  *   EPC device
-  * @sec_epc_bar: represents the BAR of EPF device associated with secondary EPC
-  * @sec_epc_func_no: unique (physical) function number within the secondary EPC
-+ * @group: configfs group associated with the EPF device
-  */
- struct pci_epf {
- 	struct device		dev;
-@@ -150,6 +152,7 @@ struct pci_epf {
- 	struct list_head	sec_epc_list;
- 	struct pci_epf_bar	sec_epc_bar[6];
- 	u8			sec_epc_func_no;
-+	struct config_group	*group;
+ static int cdns_pcie_ep_send_msix_irq(struct cdns_pcie_ep *ep, u8 fn,
+ 				      u16 interrupt_num)
+ {
+@@ -482,6 +533,7 @@ static const struct pci_epc_features cdns_pcie_epc_features = {
+ 	.linkup_notifier = false,
+ 	.msi_capable = true,
+ 	.msix_capable = true,
++	.align = 256,
  };
  
- /**
+ static const struct pci_epc_features*
+@@ -501,6 +553,7 @@ static const struct pci_epc_ops cdns_pcie_epc_ops = {
+ 	.set_msix	= cdns_pcie_ep_set_msix,
+ 	.get_msix	= cdns_pcie_ep_get_msix,
+ 	.raise_irq	= cdns_pcie_ep_raise_irq,
++	.map_msi_irq	= cdns_pcie_ep_map_msi_irq,
+ 	.start		= cdns_pcie_ep_start,
+ 	.get_features	= cdns_pcie_ep_get_features,
+ };
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200930153519.7282-11-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20200930153519.7282-12-kishon%40ti.com.
