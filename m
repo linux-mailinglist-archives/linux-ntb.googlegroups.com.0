@@ -1,166 +1,141 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBAHKVL6QKGQETLALE3I@googlegroups.com>
+Return-Path: <linux-ntb+bncBCHOL743RIIRBCF2VP6QKGQEO6TQCEY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3d.google.com (mail-vk1-xa3d.google.com [IPv6:2607:f8b0:4864:20::a3d])
-	by mail.lfdr.de (Postfix) with ESMTPS id 110D22ADAAA
-	for <lists+linux-ntb@lfdr.de>; Tue, 10 Nov 2020 16:42:58 +0100 (CET)
-Received: by mail-vk1-xa3d.google.com with SMTP id t77sf2354549vkt.18
-        for <lists+linux-ntb@lfdr.de>; Tue, 10 Nov 2020 07:42:58 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1605022977; cv=pass;
+Received: from mail-lf1-x139.google.com (mail-lf1-x139.google.com [IPv6:2a00:1450:4864:20::139])
+	by mail.lfdr.de (Postfix) with ESMTPS id 477002ADE68
+	for <lists+linux-ntb@lfdr.de>; Tue, 10 Nov 2020 19:33:45 +0100 (CET)
+Received: by mail-lf1-x139.google.com with SMTP id n207sf2421706lfa.23
+        for <lists+linux-ntb@lfdr.de>; Tue, 10 Nov 2020 10:33:45 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1605033224; cv=pass;
         d=google.com; s=arc-20160816;
-        b=RtuJ0m200QPjeMAJD5STnTzCvEgrFGWo2RVr8T7w/fkDCNhK2RkGlShXbdDXV1fVuW
-         lQWiihobiKR73mBGkl4T0p9xN7yfCYzP7cvoQYAAgW3shpSsP4Yc2h9VGr6z710occOT
-         NkcX+Y7Atu2BKy12ROipMYNSLhwilXucCUmqRGNRKBsc5uoV0fY/OQddjf55HcIZ4GSz
-         hsOQjnLB96UjdZkRLoYHMrOs5p3f+pIEyDyozY0KPfg3Ve2JEnG8aRF1PD45Gk2AATBZ
-         dGY/hpQMolFExOZ+4/7W/3s2mbEqAcWH/s0o3AIl3EOTkgH5rCWHVa73CeyC+Pnn/ahj
-         ZYsQ==
+        b=uyrDM2wYtidj6lwUdKzWE7zOvrFKijwspMPJLe6YAqX4ePUgrbWeyHhzZZe1EBd9Cf
+         eMIC83owVPTqTKYWuxv2ZATZ1xgIt5ZoSm/D6uDLELC6kUOYNsQkjSVrcHR5jCh3vhcZ
+         mBElMbHgML6GZyh4QJ3ISNsIjPxH1ZB52kNtrZzcFiZ71K1vj4FSn/lDNIxsmOVGgCZo
+         UepDcWJ8nUID3byPO6plOWtXkdT+dA27vhcWBjAc1frJvph4O1zeYwxrKKws5k8WfKuy
+         rNep7z94fu2IuHJvianXmgAcsrq5jlF3y8NmZKKX2JEKS5UHLnSVDcMyXS8HIsf6syNp
+         OH7Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=i2nNDS3RoD4uo5QiCrhn473Fr3zRipAXnoLC2IYemv8=;
-        b=KH4kSO4KBDrjU6PunajatbDkD/hyfunmQmZoN3W8XNT3Nw7coziUdFJhFJxjg5Qhpy
-         62IzuNjHMyKUn1SynuVFCZS/xZickVPQCAD8I0kgl6GISCUWN5Ly/fhuE1TNZ2Lyn5Po
-         j1ns76LAuZRYvZRZMOKw5mFPe6ZlNznbm7BfW9X55zxF81axzv0RpZ7HXDrBM+7KvJ+4
-         Zk1nsB8vbGV+UMUaJUdQWeB6OXT36cdSpqXWHyw2yAes/86Ov8DZnQi6KAXrRNwG6ji9
-         KmRQFQNxvCqJVykepUIEG4SaWw/nLzc9rMo7hWKbJChIlOs3FngsQL4Ln/SkTCbkQ8xq
-         dEJg==
+         :list-id:mailing-list:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date:sender
+         :dkim-signature:dkim-signature;
+        bh=++xfq/jmtHuL8mUbnwhrz2C3XGHJH7yxsCYIhCH3Kc4=;
+        b=fR8gG7TqspKN4ew/ptkLQJfh4rhlxTwL3ztl/0Kvew1bk6OvtBOQQ3tigtX9xbjL9F
+         d0949fwPe6pDQJdpdHmTpcR+jjdgslQaeSXJDvhI3pYt6KUDdVm0InBzJBGeKNFSipjZ
+         XCmyBxpkDjXL2LiH90nzaYiaZWu/cG4a7FOE6+O8lIx8BRICvs7F0oau6NUHXuucoPcI
+         u1H/26kJQe+HucI59yY+ZE3SP0etALfViBNwZr45e6GuuhwFJNfguePwpvDDY1zsxkuH
+         cMcJtyaACKxnEvhL5D/93yqTtNJEl8Kw31jn/557ibi8uDl7dqYcbUnbilBxhz5E2MQw
+         oHUA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=eEazoQaT;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kOH5xt2M;
+       spf=pass (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=fancer.lancer@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:list-post:list-help:list-archive:list-subscribe
-         :list-unsubscribe;
-        bh=i2nNDS3RoD4uo5QiCrhn473Fr3zRipAXnoLC2IYemv8=;
-        b=IWl0lZvD4VTsQGZsTCSTuuvex3FqdXDunxvhm78Fpvzs9XLkYS3xMkkP0636a9K5ES
-         kWlvCZC8ZNn4eufNWDSCKVX5Ucb1rD5o6lJ0EHIul3dR8AivQYUGV2xdcL8PQYgJDXXy
-         ABq/2DgZiEeuX+SOJiA/G3+xAdYVnvO8diAG3BBB9c3AXeH9bEQUtnoTmZ1n4rHwQ/XH
-         4hOqPqND1pGZ/9kZ4E2qYX+1xDfkd/5BJmO7Qyk6yJKVhJojT1gTFEmXrgtTbFiKl+1g
-         xPlxfYmV1jQequnBQ/BT+aK4jWdYVEiB70OGRN/saUooiJuqKNA2ujSkN/Of7/gb+0D3
-         rJLw==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=++xfq/jmtHuL8mUbnwhrz2C3XGHJH7yxsCYIhCH3Kc4=;
+        b=GnaN6mLxFAIffreqQ3oS8UfwHb4vt/KS9cbksjQghXSrF9CB6aPMd0EqHp/KFPsz5g
+         /wX5044qJAZGGgfY+cutxSJ8CkudfCU7wav0t8YyhOFNnbipq/kYvtTyesAKP+k38jVt
+         A3H3GjqLUnCH0NrWQDZcBtZGoPplmb3E3HkVTmH6DCzNcXtPmbltiX30t8DJFc+bQbkV
+         Ef+GD1KaIdEHeO3F3e5xoGs1PAta/J6jTZII8+2dfmR+ZmDwyXwHMtVC8egBU130d5vO
+         jEGOMyaiITIE2q+vCdrTyVL6Nhc3/sBtPLVzntYtpTVwEw/j+TjDrG1O3Bio/5KTaTJL
+         vrTA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=++xfq/jmtHuL8mUbnwhrz2C3XGHJH7yxsCYIhCH3Kc4=;
+        b=Up6uK5c7Ip4EpZpbh766okeSZLPmeZ8+EkrwDn2MCEqHDFEybGUAkNsbbHtd1BAMW3
+         PfhPqHOnvHpcy9cZipMIxyZaozkV5+mdDgZLQutYfF0g95GkLTJ+mMWUFiEwaZPfrJg6
+         ZuAyP1wzDFl2XRRIVo2/7CILQOwdTOhTrsGa4gbMBTodmfRruannsMkRd89cFH++aNAz
+         Fa4zw1u19BKS5NmIV4em+EBbTDH8kSmW9u1BwoWO5Gh3XjfvgyeNNs5aY+VZvuf6z0IC
+         6MF3u9T7A/KyLtSnlhWfWWEuQdjhmgTYJZcZ7p0R/nd2qp7MVZesB0CkKZHxmNCcqLzv
+         d9eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:reply-to
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=i2nNDS3RoD4uo5QiCrhn473Fr3zRipAXnoLC2IYemv8=;
-        b=cwBbEDORC1HVg49w8slYcjZPEhLQD0vJdPF9LFqUeNVvPoBNg15mLpseN5DtlYij34
-         YoqEvi4FFAnJ8m0hcBF9ekNheuLl49+4y53Hq8qf1W9buLIUhMBKcIG+1vCG+XC8PbhH
-         pHtvySUb5mCtmBnVmMLok+ZPAVOGkdUxIM0tPWwNmjLGpYVK9Kdfhqsm3tLVZnSQnvZd
-         4/tWb1eye95ZeUSakuo3EVTszl/Yi9+tNh43AUwRsikBY4n0F8i3ay9pDU5tkzbfHEVt
-         dOBlkeJJr/IucC4pBbF68AsuzZ56v9r1CLFvDG3tGxX7T8QMB1vkUM4YGitryCb/rkJZ
-         UOKg==
-X-Gm-Message-State: AOAM533pM/NkDS3hyvjQ5IAr0xcHqVcCQn+xnVkMIcn900qBErXCizPc
-	Swjbe8U7d1z2Vxf4mzrdWPk=
-X-Google-Smtp-Source: ABdhPJz6joUG4mxS94UjEYAnOYT8Alc2B+iq9P26msM0c+cubavi8eFLX7WXgdxs3dqUglF+v6SO+w==
-X-Received: by 2002:a1f:9303:: with SMTP id v3mr10901130vkd.3.1605022976966;
-        Tue, 10 Nov 2020 07:42:56 -0800 (PST)
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=++xfq/jmtHuL8mUbnwhrz2C3XGHJH7yxsCYIhCH3Kc4=;
+        b=mfJ5AxRBrOYD0jS8wz7S0ivRB2KH6b5/FtoOLE0VOkrafFRC8DqcppEMZzI3Oh2lDG
+         VxbaydkZ2f/6QKWNlq2A18qrBHK8Da71VVNmCDH8k3UrIBbcogYrbF/Gg0VpGJxBcYDb
+         7vXbCxZfkHu38Gl7oHc2IOSfQFzq+NeUKQVfCL47pUQvpjry9Xf/J+o3VSU+uPVyaehG
+         TgfLlIK+A2VCMaRUxNzpQycFNzXvOzVAjniOiCCA2y4faNfJYQWByq0jd5+eRzoQWwZ3
+         Wxr6GYbxhCmAesybv8LfR+JHFt4H4t9sdHrEHScRiKNN+6OdDQGpGm4WVJCbbiDQQwQE
+         WnQA==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM533vpWK1hKAw7Lkgfwwl3g4muocu5ez6mF640BvMwbFm15nH+qvP
+	6DzIHaqVnYJLxf+ckdjXCPU=
+X-Google-Smtp-Source: ABdhPJw5Z3nSamejzWsIfJK7Mj1rhE1AvF973GIyM7QOi17tL0nYeJ7IiStYRufrdOTz3CJO3C2sww==
+X-Received: by 2002:ac2:57d3:: with SMTP id k19mr8962637lfo.386.1605033224797;
+        Tue, 10 Nov 2020 10:33:44 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a67:ed19:: with SMTP id l25ls1495877vsp.2.gmail; Tue, 10 Nov
- 2020 07:42:56 -0800 (PST)
-X-Received: by 2002:a67:b347:: with SMTP id b7mr12427144vsm.15.1605022976351;
-        Tue, 10 Nov 2020 07:42:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605022976; cv=none;
+Received: by 2002:a19:ccc2:: with SMTP id c185ls929761lfg.3.gmail; Tue, 10 Nov
+ 2020 10:33:43 -0800 (PST)
+X-Received: by 2002:ac2:5591:: with SMTP id v17mr3120794lfg.562.1605033223601;
+        Tue, 10 Nov 2020 10:33:43 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1605033223; cv=none;
         d=google.com; s=arc-20160816;
-        b=w5bsIVwThHC+bc/UNlXVcQsKoggfgUHt7R/U9xyOum2tgR2QNrrxncidNOFmx4AJji
-         cpuu79xq5xOP367TyXu5zwGhe+wefs8iO5YCz28LmFKtG7DLm3uhy/3Htp2WhcKa3LBv
-         JT/fK3s/+3MPtFx/On+u2J9/qLSNGuLGNaG4sfWeh9NnRRDoYYVxWSRZqna+AWJh7+yC
-         hIj4s9as9gAZkqLblYhirHDnRs0t3SbgJcJk5lQBvdpCgss2ZmuZfgCWRYj4vgiHpdkc
-         /2ZNmLytEwU1+L3tWS9H5ZP2nBMjzqf+6vtdiBsXld36+go98aW8jZhwfQgVsDEfNG1e
-         FVfg==
+        b=LF5E9EVsXTHudn2MTB6KfLpZkB+V3NLA7a8zl61CA62oq/8Faph7h0LwbxaoxlAQRy
+         zwWckbId18vkN0LXT+gGcsys00+jeHPEZJqunnYKjXr3bqbSTgemyvwAeXxzU+3aqS7S
+         FVwgy8aPiiiV7HHbi9ueD8Qd28zAZQfAwaqRooJF1u2pM+9Y2bWY+r5Dt2xt0rUuaRwn
+         4pNrPUFkXH0euxW2/X1U2y42o1PMEg2av3taZFR4LbFY35885da9ImYccXWAV89c2eMI
+         0HsMMvj1dYVJtPvIt7DtCPACIosMVhObgKdpeIDwtoejtLue+2GMNiULo/vwck15AuDq
+         cobw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=kZ6NUVS0wH3f6crDKEWytDIJj/TB2GdUpTaec0L/68E=;
-        b=m41Ec7fUocXftqZqiIkY1Y+5TmtbcR83+fLFcKPWtsNRdTgsPoYsKpflaSMGxg/NyR
-         myhlWjG1zm7bWeqyZvAmFgEzX7NILPgm1HHqzEb7DJNTvWeGsWtME8NGrMz4NTFpnkiE
-         dEbb7ftM5RkgpcMYEZfaJN8wHHJbsMXlykLVW6K3EzmRNUurdjHWt5vSxfd+Td0Bdaq+
-         t2vw59V0PlXhjrw4v8wk92SLI6tMJ+Pm5eLqAoVOQWr9Cw4mxHGYrtxDa6aKfi+0t2pT
-         /U+lK8ElzHwmfUhR5E8o3fKtZYlTvDPwWDjeeKRhyf53jAgpv71kSzlP0usaQ34MgKDM
-         ZLvA==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=MVvD+a8T0Lc81M2SgYvZ+Yt+89POCdnsUJ507OhxC5s=;
+        b=Lwrrc/J6uAA1BiyxJYyewaa/k3WBWzMJvIqT4wkw8IbRirOF6NhAQqBiGLyq/BKUUO
+         VZQnkIq0q+uTBqkj6EZT9fTEff+jT7Wt9xj9JDLE8JQTzSRGgMz7xm1phy5P0lJj4559
+         rIWTICNmDr9stYRs7EG1ZGQeIFz3NO+smyd04J0sK8sJHM0MflbLsnIBtFOZ+EIR6xqX
+         VdiKYAMJAMuqqojcVUFkpbWP03wEl+onKcHOe3F9xk1NHUTxDBLmZqnjGpGzGBt1kcJJ
+         3CvjkdORNm3jewQRaWqWTM0pvDgebp6mKYoLCpwweuuaY4gIoYlYru4+nABTq/LCJM6z
+         ZBZg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=eEazoQaT;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id y17si594166vko.2.2020.11.10.07.42.56
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=kOH5xt2M;
+       spf=pass (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=fancer.lancer@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com. [2a00:1450:4864:20::144])
+        by gmr-mx.google.com with ESMTPS id m18si393609lfr.11.2020.11.10.10.33.43
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 10 Nov 2020 07:42:56 -0800 (PST)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0AAFgj1k082798;
-	Tue, 10 Nov 2020 09:42:45 -0600
-Received: from DFLE114.ent.ti.com (dfle114.ent.ti.com [10.64.6.35])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0AAFgjfg031823
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Tue, 10 Nov 2020 09:42:45 -0600
-Received: from DFLE109.ent.ti.com (10.64.6.30) by DFLE114.ent.ti.com
- (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Tue, 10
- Nov 2020 09:42:45 -0600
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE109.ent.ti.com
- (10.64.6.30) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Tue, 10 Nov 2020 09:42:44 -0600
-Received: from [10.250.235.36] (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0AAFgd1M009286;
-	Tue, 10 Nov 2020 09:42:40 -0600
-Subject: Re: [PATCH v7 15/18] NTB: Add support for EPF PCI-Express
- Non-Transparent Bridge
-To: Arnd Bergmann <arnd@kernel.org>
-CC: Sherry Sun <sherry.sun@nxp.com>,
-        "bhelgaas@google.com"
-	<bhelgaas@google.com>,
-        Jonathan Corbet <corbet@lwn.net>,
-        "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
-        "arnd@arndb.de"
-	<arnd@arndb.de>,
-        "jdmason@kudzu.us" <jdmason@kudzu.us>,
-        "dave.jiang@intel.com" <dave.jiang@intel.com>,
-        "allenbh@gmail.com"
-	<allenbh@gmail.com>,
-        "tjoseph@cadence.com" <tjoseph@cadence.com>,
-        Rob Herring
-	<robh@kernel.org>,
-        "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-        "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>
-References: <20200930153519.7282-16-kishon@ti.com>
- <VI1PR04MB496061EAB6F249F1C394F01092EA0@VI1PR04MB4960.eurprd04.prod.outlook.com>
- <d6d27475-3464-6772-2122-cc194b8ae022@ti.com>
- <VI1PR04MB49602D24F65E11FF1F14294F92E90@VI1PR04MB4960.eurprd04.prod.outlook.com>
- <30c8f7a1-baa5-1eb4-d2c2-9a13be896f0f@ti.com>
- <CAK8P3a38vBXbAWE09H+TSoZUTkFdYDcQmXX97foT4qXQc8t5ZQ@mail.gmail.com>
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-Message-ID: <5a9115c8-322e-ffd4-6274-ae98c375b21d@ti.com>
-Date: Tue, 10 Nov 2020 21:12:33 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Nov 2020 10:33:43 -0800 (PST)
+Received-SPF: pass (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::144 as permitted sender) client-ip=2a00:1450:4864:20::144;
+Received: by mail-lf1-x144.google.com with SMTP id a25so10130965lfb.2
+        for <linux-ntb@googlegroups.com>; Tue, 10 Nov 2020 10:33:43 -0800 (PST)
+X-Received: by 2002:a19:418e:: with SMTP id o136mr47635lfa.80.1605033223385;
+        Tue, 10 Nov 2020 10:33:43 -0800 (PST)
+Received: from mobilestation ([95.79.141.114])
+        by smtp.gmail.com with ESMTPSA id 133sm2699139ljf.90.2020.11.10.10.33.42
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Nov 2020 10:33:42 -0800 (PST)
+Date: Tue, 10 Nov 2020 21:33:40 +0300
+From: Serge Semin <fancer.lancer@gmail.com>
+To: Wang Qing <wangqing@vivo.com>
+Cc: Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] ntb: idt: fix error check in ntb_hw_idt.c
+Message-ID: <20201110183340.77xcobfsnz43vsa2@mobilestation>
+References: <1604655811-31933-1-git-send-email-wangqing@vivo.com>
 MIME-Version: 1.0
-In-Reply-To: <CAK8P3a38vBXbAWE09H+TSoZUTkFdYDcQmXX97foT4qXQc8t5ZQ@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
+Content-Disposition: inline
+In-Reply-To: <1604655811-31933-1-git-send-email-wangqing@vivo.com>
+X-Original-Sender: fancer.lancer@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=eEazoQaT;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+ header.i=@gmail.com header.s=20161025 header.b=kOH5xt2M;       spf=pass
+ (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::144
+ as permitted sender) smtp.mailfrom=fancer.lancer@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -173,50 +148,54 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hi Sherry, Arnd,
+Hello Wang
 
-On 10/11/20 8:29 pm, Arnd Bergmann wrote:
-> On Tue, Nov 10, 2020 at 3:20 PM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->> On 10/11/20 7:55 am, Sherry Sun wrote:
+On Fri, Nov 06, 2020 at 05:43:31PM +0800, Wang Qing wrote:
+> idt_create_dev never return NULL and fix smatch warning.
+
+Thanks for submitting this. For the both changes
+Acked-by: Serge Semin <fancer.lancer@gmail.com>
+
+They are mostly unrelated though. If they weren't trivial I'd have
+suggested to split them up into the dedicated patches. Since they
+aren't I suppose leaving the patch 'as is' is ok, unless the subsystem
+maintainer thinks differently.
+
+-Sergey
+
 > 
->>> But for VOP, only two boards are needed(one board as host and one board as card) to realize the
->>> communication between the two systems, so my question is what are the advantages of using NTB?
->>
->> NTB is a bridge that facilitates communication between two different
->> systems. So it by itself will not be source or sink of any data unlike a
->> normal EP to RP system (or the VOP) which will be source or sink of data.
->>
->>> Because I think the architecture of NTB seems more complicated. Many thanks!
->>
->> yeah, I think it enables a different use case all together. Consider you
->> have two x86 HOST PCs (having RP) and they have to be communicate using
->> PCIe. NTB can be used in such cases for the two x86 PCs to communicate
->> with each other over PCIe, which wouldn't be possible without NTB.
+> Signed-off-by: Wang Qing <wangqing@vivo.com>
+> ---
+>  drivers/ntb/hw/idt/ntb_hw_idt.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> I think for VOP, we should have an abstraction that can work on either NTB
-> or directly on the endpoint framework but provide an interface that then
-> lets you create logical devices the same way.
+> diff --git a/drivers/ntb/hw/idt/ntb_hw_idt.c b/drivers/ntb/hw/idt/ntb_hw_idt.c
+> index d54261f..e7a4c2a
+> --- a/drivers/ntb/hw/idt/ntb_hw_idt.c
+> +++ b/drivers/ntb/hw/idt/ntb_hw_idt.c
+> @@ -2511,7 +2511,7 @@ static int idt_init_dbgfs(struct idt_ntb_dev *ndev)
+>  	/* If the top directory is not created then do nothing */
+>  	if (IS_ERR_OR_NULL(dbgfs_topdir)) {
+>  		dev_info(&ndev->ntb.pdev->dev, "Top DebugFS directory absent");
+> -		return PTR_ERR(dbgfs_topdir);
+> +		return PTR_ERR_OR_ZERO(dbgfs_topdir);
+>  	}
+>  
+>  	/* Create the info file node */
+> @@ -2756,7 +2756,7 @@ static int idt_pci_probe(struct pci_dev *pdev,
+>  
+>  	/* Allocate the memory for IDT NTB device data */
+>  	ndev = idt_create_dev(pdev, id);
+> -	if (IS_ERR_OR_NULL(ndev))
+> +	if (IS_ERR(ndev))
+>  		return PTR_ERR(ndev);
+>  
+>  	/* Initialize the basic PCI subsystem of the device */
+> -- 
+> 2.7.4
 > 
-> Doing VOP based on NTB plus the new NTB_EPF driver would also
-> work and just move the abstraction somewhere else, but I guess it
-> would complicate setting it up for those users that only care about the
-> simpler endpoint case.
-
-I'm not sure if you've got a chance to look at [1], where I added
-support for RP<->EP system both running Linux, with EP configured using
-Linux EP framework (as well as HOST ports connected to NTB switch,
-patches 20 and 21, that uses the Linux NTB framework) to communicate
-using virtio over PCIe.
-
-The cover-letter [1] shows a picture of the two use cases supported in
-that series.
-
-[1] -> http://lore.kernel.org/r/20200702082143.25259-1-kishon@ti.com
-
-Thank You,
-Kishon
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/5a9115c8-322e-ffd4-6274-ae98c375b21d%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20201110183340.77xcobfsnz43vsa2%40mobilestation.
