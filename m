@@ -1,170 +1,128 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBW55ZL6QKGQE5AGP66Y@googlegroups.com>
+Return-Path: <linux-ntb+bncBDXYVT6AR4MRB35N576QKGQERX2XILI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x43a.google.com (mail-pf1-x43a.google.com [IPv6:2607:f8b0:4864:20::43a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5EB692B49C0
-	for <lists+linux-ntb@lfdr.de>; Mon, 16 Nov 2020 16:46:37 +0100 (CET)
-Received: by mail-pf1-x43a.google.com with SMTP id d6sf12457977pfn.15
-        for <lists+linux-ntb@lfdr.de>; Mon, 16 Nov 2020 07:46:37 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1605541596; cv=pass;
+Received: from mail-oi1-x23a.google.com (mail-oi1-x23a.google.com [IPv6:2607:f8b0:4864:20::23a])
+	by mail.lfdr.de (Postfix) with ESMTPS id DC8DD2C0EEF
+	for <lists+linux-ntb@lfdr.de>; Mon, 23 Nov 2020 16:36:16 +0100 (CET)
+Received: by mail-oi1-x23a.google.com with SMTP id w125sf8914941oiw.8
+        for <lists+linux-ntb@lfdr.de>; Mon, 23 Nov 2020 07:36:16 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1606145775; cv=pass;
         d=google.com; s=arc-20160816;
-        b=CkPogIqJbhvKF34Ex4j6qaz9yuHuaVh2afJ8r9XVa0jvu7BeSitFJAv4uDXaFx5Sf1
-         eN6UJy/z5XW43CdxajD/meLMyl90DqbmUAGemRnojGzzmEUKQiPQJcWVKvizykbR0XpI
-         AKqXsl2PmRXozpQ4+9XYN6XaQDB3v2jGdwlHkFgqhMTbu68yuqcrJzZ2wLkcCEYNIDA+
-         k4vzQYTWJSVDpMi1vvvtnkcqOUmEGSXhgISN52hASjZV3s/E29sBSw1RjXp0ej1qmKNb
-         otBxIcriZr64u4iiVJ+bHMCiiL0Frphuzaah4UgZkir7QlCVcbJKme9LSDMaOXGg5t/O
-         Yo8g==
+        b=BWW/Pyhvw02HgrrPtARNS2yGsN57Z/LZtaHMgK3D1xksmnkpu3tl1+YU52Yj1KpSk3
+         JVKWzm5AiGb3YiChsd/yc7FmKNQnOlYMBkpWbq3LtDTJdk+xH9a6OI6LqRX8lknlEq3S
+         z9lKcGroMSU1Qv6HIMPE3SNVx4qBLHtBPM9xnbmCKlMyozKWrOmzM4pszjurUfpq+R+a
+         q6EunaS/0mxfMq4Er+YJpiq16Vim4CJJFvlonUkFRvUx70libCABODbEzLSN1RGvaixH
+         arWK6yJO2wdv8YZx0Up5XuMBlgWERA5ghxS4eDtNg4QRnXD5PPz8C6yTA7/Cge9mnc/N
+         MCTw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=4NgY8dw5ErorsABkYlv5s5unM3i2OjRJ9pPXX4Elar8=;
-        b=MvrRlF5lNg5rMfNmC+zt9xHiIs2+eKHwnuqJ42Pz2KdH1G5z5kzUpL6VsRCin7Qwra
-         8FbrFaTCvXA2o6fSFHUYrxPZyhL/KaLxEdHqXz6IvJwLgWkckjLv0zggRk5SMxvdUJrP
-         eF+vgvrLMhGa51St+pnOzDlwI1GhklW9SO96fGX3y5N6/k9ssxmZOlFqcN9lIj7bPvu4
-         ZXbXDa+AZWX5nOHMbb4d7KjATDkahkmvG9zXY3YfpeCcDO46WF+hnzFgZEIQvMRuQBs2
-         5IcHux37fDw7XYz5CtKfEYJvkR0OTj3Hi+LYXvS/zM+9aQLVtKQA3Cs+WlVaybHg4qvM
-         QUmg==
+         :list-id:mailing-list:precedence:mime-version:user-agent:message-id
+         :date:cc:to:from:subject:ironport-sdr:ironport-sdr:sender
+         :dkim-signature;
+        bh=30FrcOBF9vQjpaOE2Li5XABK6cvJT8HqcrsNRb99rd0=;
+        b=UBttcacJhhHTpKT5TFXHGC4p4ntSyn1dHuiSQQ74OkG+IUi8HrmS1kDorb/BOeZ91D
+         C2Ckgnn70a0SK5MsKfT4uY6+Mqn7urQ5FTzT4+v7sDjOYNEJ1rii0OCyWz+AEnEs+7gU
+         ShNC9YaK/C2ky9LuYr1gNnRg9c62SzSmgXCE9c700Zwkg8dDr5XYSqrI2U1UXddAFiGV
+         RbDPyjYNMCPv0gl3hNu2WNfqi0C+6Ruta2SbXiovBwQ3po0dK2G+1Q6k2ZMi62aNIoaZ
+         GT2a6klupUs0QPLw4OmbXLRDUCosV58hPcqmnPiUva9hiflsUAr8bYPQgWNzwZ+no2IZ
+         Oz5A==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=DtdiSme0;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:list-post:list-help:list-archive:list-subscribe
-         :list-unsubscribe;
-        bh=4NgY8dw5ErorsABkYlv5s5unM3i2OjRJ9pPXX4Elar8=;
-        b=T0hGKNzfCORpMmTXUHdFnfS0tPxLS/g+ozw14umJauLxdud4rYOXJKmrATB/PFEdYa
-         4psLLJD86et71fptqMHp7ovNlaAkjzt4BhLIAOXdW0d6XvoFq4jep4Clx2ET2u6PTXgb
-         wMxSGKVg9ms2uXPMMWxlp8FZmcHsV1KEcOczXyJxpSe+9EGophCdvewYtbjd2SPxDY7D
-         u3f+myfOLdj2XiSb0QXPVIQ7hmPSlyoN50a9iJb/uAGnaQCuEltkgBgLF6Bi/7rgvtT0
-         B1qj0NDaJ3763aarozbJVHjzA5yTLk7MFDsF+OLFP0XTHoLacE5x0rpQoSuYPaPtduNg
-         kssg==
+        h=sender:ironport-sdr:ironport-sdr:subject:from:to:cc:date:message-id
+         :user-agent:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=30FrcOBF9vQjpaOE2Li5XABK6cvJT8HqcrsNRb99rd0=;
+        b=LelwwdSzaddBnZ7aJw5Rtcw0IngW3GevujMbLzIhi1zW0/AZEHF6yJWRqATeZxkxL5
+         Sp8e5+hK1vDJuPOin4WXP8OO+vikZJdU0DiK9jCpkBIl0Xr5AHYScwIJeenC+V8YcZTR
+         pdbQMSo5RBsXEO+Y5x0ejeS+lQzszUEa9mmknAQCADhj35u2pTAuQbWr2Qav4yZAJ+dx
+         2XbErnT0eJT0j9o/Qid88/HHVfQiXtbMx0g+pI61NtOD7ECwZpOF0SIgbi+DZobTxYeg
+         a9Ipbf1LcnDkLNqdEOM8tEw1FJ5rJRbB4cIQcsrYW7bZyjTT+dCiV2t9JYfSS4pJUCKA
+         zQog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:reply-to
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=4NgY8dw5ErorsABkYlv5s5unM3i2OjRJ9pPXX4Elar8=;
-        b=qGXC8LPer6tDbVuuKxa3DZjG/YO7MamhmIHmEm6ivSt24mSiA7eWQCh+c+5We2mM1T
-         pBvPZYnedasev3J8vqHcOBaAYgWEEa0vpVp3+65zD5ox+8cAy+obkzx2/mMeWh69OCtk
-         pH2zVxVHBEwAjZRnRCKr1mi6ZPooRP2z1f7BpLO2073N/42uXxtMThiI8CaO9mm/reSX
-         cD02PccOnFu5rp1l3Ds/hACaoX5u8/Q1daVqom2bR4sCeFclGHqIJr838/xPH+QJS6dy
-         VV+bIVB1DezCH8TZqDPWa/IV17jB9EwOr7+B9ee7u3VYgHYrGs/rtqF/aXBReV/ufyyC
-         DKbw==
-X-Gm-Message-State: AOAM530r+vSg9IY1pitHvG4s6VRr8aaofaCfSjfSM/KDK8H76UgNJ3jw
-	ylrmFALRFFLolmVGMEOGja8=
-X-Google-Smtp-Source: ABdhPJxsgq01LNKgyPzlpTf129zOe5GDCzD2zv65BI4cHln3A4QUHJwxaUGvsUgAO5JBXJyqK+J1rA==
-X-Received: by 2002:a17:902:788a:b029:d6:b9f:820a with SMTP id q10-20020a170902788ab02900d60b9f820amr13324814pll.76.1605541596030;
-        Mon, 16 Nov 2020 07:46:36 -0800 (PST)
+        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:subject:from:to
+         :cc:date:message-id:user-agent:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=30FrcOBF9vQjpaOE2Li5XABK6cvJT8HqcrsNRb99rd0=;
+        b=tK7Izbqroh5i2ZIQyzJyROtVTXExClUvX2IpCk9CBqofDc8ywz84+2dFMi/9Bi6zMJ
+         etFkj5VQ9suWJU/PQIJ/FNE4XM4uAqv1F9ynb5NKYl7d0XmmI3uqJh/e6JkUpt+41Jam
+         uWuRxDuzWRToAsHfM//3hsr7ioQjWbzQ1dNXpFWiTwDHJC1nOu/m1KJryrOkpRsvF2d3
+         JOy/fb3NMK/4grOUdiUeeh7PXc7ASG09N+n8yA5RNIOtJwxCXd6ATDQUG6/NT/xOQtnI
+         K6GcZaudN3duVIAYKt8trZGE3CMas9bhIfA6FGBAKEtBeSVYUvi+JPfeEs6E5OpQLRWN
+         wSBg==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM531BcBwgOX2e6Krhq3sPe83EpIinPBeaEEB3yTf//5AjiwJ/lkls
+	oQwG40nnLG2MLPfb7+N8ewo=
+X-Google-Smtp-Source: ABdhPJw4d7cQh+CLC3ukrO2jWG5t33mkQVMluNYRlI2wHsLAXrcQ+ZY1DMzXAEDKFuq8kd0f6rZZjg==
+X-Received: by 2002:a4a:7252:: with SMTP id r18mr23026306ooe.22.1606145775593;
+        Mon, 23 Nov 2020 07:36:15 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a63:7d6:: with SMTP id 205ls4827912pgh.8.gmail; Mon, 16 Nov
- 2020 07:46:35 -0800 (PST)
-X-Received: by 2002:a62:924e:0:b029:18b:c60a:aaed with SMTP id o75-20020a62924e0000b029018bc60aaaedmr14837469pfd.52.1605541595518;
-        Mon, 16 Nov 2020 07:46:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605541595; cv=none;
+Received: by 2002:aca:4e95:: with SMTP id c143ls1623446oib.11.gmail; Mon, 23
+ Nov 2020 07:36:15 -0800 (PST)
+X-Received: by 2002:aca:aa90:: with SMTP id t138mr15779666oie.171.1606145775283;
+        Mon, 23 Nov 2020 07:36:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1606145775; cv=none;
         d=google.com; s=arc-20160816;
-        b=ueOXtJ1HmwKcVnpOsqXI9VQDVW5DCXRh5y53pC/dd2FfEEuUKlasx5/FvbJ6BzpWJQ
-         93QTg97kr49eCFxDkqHShZrP+vQi+tQAnpwWz84HcamDqnjl6byDdLXXClmI9i+jDXJ5
-         YYgUjmlL8SXh0HjiMBp757ucZiqk3bpvMFksz8BFYyuzxqJoLPi/u/iQQwdP4lRaG9q/
-         q8fZSn6NyCXi4ya2LiAII6vQwmU71T3iSL3jHoIyUPx4W7jksjj1AvvC/IdsW+I0Ze5k
-         XJc/RDsorxk5Y5GJZ1eW6BL5BRSYF0C0/XkpD15nL5y82B8mFu2gL9nAyJUAH37xy3ca
-         i/LA==
+        b=0cfcYgwmaZe62d1HXgAMSeWFylKxzAmt2fvPRbIg0/+NA0azjeN/MBYAyRzeCAQ1Fe
+         i4oMvvO/C1d+5OKCGI8wWhLXO6nkcHKMGeJni9JoaX50EKT5sPW7zL+4Y5otDcii+ldH
+         MH9RT662IAr+mz6MeGVlz6rtMp4cah6pSlxrqUWxk1fA1SXLgwH/Ud2eFfLgBCl5nGCx
+         +Lfdw5E11qebMoquD6aHQZcewSgWRNFAhFGCKIob9Ty37IMcrNe+pg4uV3vSowGxoq5g
+         M97QSj1q833aYrcn8Aj1FOSTA4JFdseXTRydCqVUGlhZ+FGK6D7Fua2QbMrZkv5MTOgk
+         wQgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=o5t+uCx7ItW5nQ8KW3HQTL7wK+HIkVDh+GCe1ihPz3c=;
-        b=ZcKqdyC4i3f8dLX0kngYBJCuc/rvADldxN4/mldEv4897QrSTv+jlT8bhfi7nDpc/w
-         wQ2WPq47/wZ9mLgXtYaZ8tqQi9S8AErJPWQzC6z0JjTc5Bn+VlYq4T+H83mryHe5Fg3n
-         W0WlPYyUI/clIEk8lfyI5l9X37yZK6bNCokgktxbcFmHhRk7vC5RxWE2/6gh4oD+dwqv
-         2EkUbovaoZcfzgdizd0hJp4k4FxYX5AISeSiet9KfHxdRibsNQq+kLXcEX360YdTLs1o
-         BuuX5OOrVCb1bADguh+yD6qISHeRBgalKu6NC767ciA09BDImJroYWFtU5Ilfl3UEhAa
-         RtvA==
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :cc:to:from:subject:ironport-sdr:ironport-sdr;
+        bh=RZYuPXb4X44IwzR90zbSxmbgbeMvX77D/xqxmE+ii7Y=;
+        b=C3DswHQUKhA54A45b5A3/TGxgrGOxuodEFg4kPcneSHFI8s8njaxp8t/n/emBaioIy
+         xMfdxRwJ4wScQw5cIj8GBkHKqwWaMEe2wGoEOYYYZCfRdE8tNZeuUJAq5Q3G2D9Irxry
+         6U/NpgWO3Q0wZHzWyLpq86BA8+LlXmQNlawEQWUrWop6r1GJe9yVb8uErUM8VAghZOgG
+         9eaFnaRXp7SZDuv3rH0ZCO7vq/Cy2BiisZeI8CkFrMi/fcO2RO7q93Bd9z+b4Ttpv4RB
+         aOzI8CfrS+j5ynh/6TEEx+vp6j65+zavhkNThK4XcMvnnlDKnnIBCi3zgBDLpbzt6khV
+         GyIQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=DtdiSme0;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id bg19si842763pjb.2.2020.11.16.07.46.35
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.151 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from mga17.intel.com (mga17.intel.com. [192.55.52.151])
+        by gmr-mx.google.com with ESMTPS id o26si1278515otk.2.2020.11.23.07.36.15
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 16 Nov 2020 07:46:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from lelv0266.itg.ti.com ([10.180.67.225])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0AGFkOVu104239;
-	Mon, 16 Nov 2020 09:46:24 -0600
-Received: from DFLE114.ent.ti.com (dfle114.ent.ti.com [10.64.6.35])
-	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0AGFkObf046972
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 16 Nov 2020 09:46:24 -0600
-Received: from DFLE105.ent.ti.com (10.64.6.26) by DFLE114.ent.ti.com
- (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 16
- Nov 2020 09:46:24 -0600
-Received: from fllv0040.itg.ti.com (10.64.41.20) by DFLE105.ent.ti.com
- (10.64.6.26) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Mon, 16 Nov 2020 09:46:24 -0600
-Received: from [10.250.235.36] (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0040.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0AGFkHxS052842;
-	Mon, 16 Nov 2020 09:46:18 -0600
-Subject: Re: [PATCH v7 15/18] NTB: Add support for EPF PCI-Express
- Non-Transparent Bridge
-To: Arnd Bergmann <arnd@kernel.org>
-CC: Sherry Sun <sherry.sun@nxp.com>,
-        "bhelgaas@google.com"
-	<bhelgaas@google.com>,
-        Jonathan Corbet <corbet@lwn.net>,
-        "lorenzo.pieralisi@arm.com" <lorenzo.pieralisi@arm.com>,
-        "arnd@arndb.de"
-	<arnd@arndb.de>,
-        "jdmason@kudzu.us" <jdmason@kudzu.us>,
-        "dave.jiang@intel.com" <dave.jiang@intel.com>,
-        "allenbh@gmail.com"
-	<allenbh@gmail.com>,
-        "tjoseph@cadence.com" <tjoseph@cadence.com>,
-        Rob Herring
-	<robh@kernel.org>,
-        "gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-        "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>
-References: <20200930153519.7282-16-kishon@ti.com>
- <VI1PR04MB496061EAB6F249F1C394F01092EA0@VI1PR04MB4960.eurprd04.prod.outlook.com>
- <d6d27475-3464-6772-2122-cc194b8ae022@ti.com>
- <VI1PR04MB49602D24F65E11FF1F14294F92E90@VI1PR04MB4960.eurprd04.prod.outlook.com>
- <30c8f7a1-baa5-1eb4-d2c2-9a13be896f0f@ti.com>
- <CAK8P3a38vBXbAWE09H+TSoZUTkFdYDcQmXX97foT4qXQc8t5ZQ@mail.gmail.com>
- <5a9115c8-322e-ffd4-6274-ae98c375b21d@ti.com>
- <CAK8P3a33XSvenqBhuQpGmtLbYydyzY2OQh73150TJtpzW24DTw@mail.gmail.com>
- <c720de5b-bf76-162f-24cb-07f6fe670bd2@ti.com>
- <CAK8P3a0nTdtADPa_5jduDm5MpBiwBNgs7cYokK5qBZ=RkL1Ktg@mail.gmail.com>
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-Message-ID: <a590bff0-ba9e-8e19-4f09-4838d8afdbb6@ti.com>
-Date: Mon, 16 Nov 2020 21:15:53 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+        Mon, 23 Nov 2020 07:36:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.151 as permitted sender) client-ip=192.55.52.151;
+IronPort-SDR: UGud2WhyPBTk/7vN7T2A7uP0IQDu/GP6YoHNQdFHa4ttjbBe+BvO+hGZD85TMnq0Egw4Wv+W0n
+ XR5mxd/x0T4A==
+X-IronPort-AV: E=McAfee;i="6000,8403,9813"; a="151627680"
+X-IronPort-AV: E=Sophos;i="5.78,363,1599548400"; 
+   d="scan'208";a="151627680"
+X-Amp-Result: SKIPPED(no attachment in message)
+X-Amp-File-Uploaded: False
+Received: from orsmga005.jf.intel.com ([10.7.209.41])
+  by fmsmga107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2020 07:36:13 -0800
+IronPort-SDR: lEpYJPXMSdx8B+dTRkzygth5JbZSF73z0MHU18Yl1onhBFiAPMaZVPOMesbIAz4OUHrXnlXo8F
+ BMQ1Yd2FCA8g==
+X-IronPort-AV: E=Sophos;i="5.78,363,1599548400"; 
+   d="scan'208";a="546458490"
+Received: from djiang5-desk3.ch.intel.com ([143.182.136.137])
+  by orsmga005-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 23 Nov 2020 07:36:13 -0800
+Subject: [PATCH] ntb: intel: add Intel NTB LTR vendor support for gen4 NTB
+From: Dave Jiang <dave.jiang@intel.com>
+To: jdmason@kudzu.us
+Cc: allenbh@gmail.com, linux-ntb@googlegroups.com
+Date: Mon, 23 Nov 2020 08:36:12 -0700
+Message-ID: <160614577287.521825.7762300396286632790.stgit@djiang5-desk3.ch.intel.com>
+User-Agent: StGit/0.23-29-ga622f1
 MIME-Version: 1.0
-In-Reply-To: <CAK8P3a0nTdtADPa_5jduDm5MpBiwBNgs7cYokK5qBZ=RkL1Ktg@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=DtdiSme0;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+X-Original-Sender: dave.jiang@intel.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of dave.jiang@intel.com designates 192.55.52.151 as
+ permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -177,49 +135,118 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hi Arnd,
+Intel NTB device has custom LTR management that is not compliant with the
+PCIe standard. Add support to set LTR status triggered by link status
+change.
 
-On 16/11/20 9:07 pm, Arnd Bergmann wrote:
-> On Mon, Nov 16, 2020 at 6:19 AM Kishon Vijay Abraham I <kishon@ti.com> wrote:
->> On 12/11/20 6:54 pm, Arnd Bergmann wrote:
->>>
->>> This looks very  promising indeed, I need to read up on the whole
->>> discussion there. I also see your slides at [1]  that help do explain some
->>> of it. I have one fundamental question that I can't figure out from
->>> the description, maybe you can help me here:
->>>
->>> How is the configuration managed, taking the EP case as an
->>> example? Your UseCase1 example sounds like the system that owns
->>> the EP hardware is the one that turns the EP into a vhost device,
->>> and creates a vhost-rpmsg device on top, while the RC side would
->>> probe the pci-vhost and then detect a virtio-rpmsg device to talk to.
->>
->> That's correct. Slide no 9 in [1] should give the layering details.
->>
->>> Can it also do the opposite, so you end up with e.g. a virtio-net
->>> device on the EP side and vhost-net on the RC?
->>
->> Unfortunately no. Again referring slide 9 in [1], we only have
->> vhost-pci-epf on the EP side which only creates a "vhost_dev" to deal
->> with vhost side of things. For doing the opposite, we'd need to create
->> virtio-pci-epf for EP side that interacts with core virtio (and also the
->> corresponding vhost back end on PCI host).
-> 
-> Ok, I see. So I think this is the opposite of drivers/misc/mic and
-> the bluefield driver were using, so we would probably end up
-> needing both.
-> 
-> Then again, I guess the NTB driver would give us the functionality
-> for free, if it shows a symmetric link?
+Signed-off-by: Dave Jiang <dave.jiang@intel.com>
+---
+ drivers/ntb/hw/intel/ntb_hw_gen1.h |    1 +
+ drivers/ntb/hw/intel/ntb_hw_gen4.c |   27 ++++++++++++++++++++++++++-
+ drivers/ntb/hw/intel/ntb_hw_gen4.h |   15 +++++++++++++++
+ 3 files changed, 42 insertions(+), 1 deletion(-)
 
-Right, NTB driver would need "pci_dev" on both sides of the link. But
-that would also mean we cannot use pci EP framework which actually uses
-"pci_epf".
+diff --git a/drivers/ntb/hw/intel/ntb_hw_gen1.h b/drivers/ntb/hw/intel/ntb_hw_gen1.h
+index 1b759942d8af..344249fc18d1 100644
+--- a/drivers/ntb/hw/intel/ntb_hw_gen1.h
++++ b/drivers/ntb/hw/intel/ntb_hw_gen1.h
+@@ -141,6 +141,7 @@
+ #define NTB_HWERR_B2BDOORBELL_BIT14	BIT_ULL(2)
+ #define NTB_HWERR_MSIX_VECTOR32_BAD	BIT_ULL(3)
+ #define NTB_HWERR_BAR_ALIGN		BIT_ULL(4)
++#define NTB_HWERR_LTR_BAD		BIT_ULL(5)
+ 
+ extern struct intel_b2b_addr xeon_b2b_usd_addr;
+ extern struct intel_b2b_addr xeon_b2b_dsd_addr;
+diff --git a/drivers/ntb/hw/intel/ntb_hw_gen4.c b/drivers/ntb/hw/intel/ntb_hw_gen4.c
+index bc4541cbf8c6..fede05151f69 100644
+--- a/drivers/ntb/hw/intel/ntb_hw_gen4.c
++++ b/drivers/ntb/hw/intel/ntb_hw_gen4.c
+@@ -177,8 +177,10 @@ int gen4_init_dev(struct intel_ntb_dev *ndev)
+ 
+ 	ndev->reg = &gen4_reg;
+ 
+-	if (pdev_is_ICX(pdev))
++	if (pdev_is_ICX(pdev)) {
+ 		ndev->hwerr_flags |= NTB_HWERR_BAR_ALIGN;
++		ndev->hwerr_flags |= NTB_HWERR_LTR_BAD;
++	}
+ 
+ 	ppd1 = ioread32(ndev->self_mmio + GEN4_PPD1_OFFSET);
+ 	ndev->ntb.topo = gen4_ppd_topo(ndev, ppd1);
+@@ -431,6 +433,25 @@ static int intel_ntb4_link_enable(struct ntb_dev *ntb,
+ 		dev_dbg(&ntb->pdev->dev,
+ 				"ignoring max_width %d\n", max_width);
+ 
++	if (!(ndev->hwerr_flags & NTB_HWERR_LTR_BAD)) {
++		u32 ltr;
++
++		/* Setup active snoop LTR values */
++		ltr = NTB_LTR_ACTIVE_REQMNT | NTB_LTR_ACTIVE_VAL | NTB_LTR_ACTIVE_LATSCALE;
++		/* Setup active non-snoop values */
++		ltr = (ltr << NTB_LTR_NS_SHIFT) | ltr;
++		iowrite32(ltr, ndev->self_mmio + GEN4_LTR_ACTIVE_OFFSET);
++
++		/* Setup idle snoop LTR values */
++		ltr = NTB_LTR_IDLE_VAL | NTB_LTR_IDLE_LATSCALE | NTB_LTR_IDLE_REQMNT;
++		/* Setup idle non-snoop values */
++		ltr = (ltr << NTB_LTR_NS_SHIFT) | ltr;
++		iowrite32(ltr, ndev->self_mmio + GEN4_LTR_IDLE_OFFSET);
++
++		/* setup PCIe LTR to active */
++		iowrite8(NTB_LTR_SWSEL_ACTIVE, ndev->self_mmio + GEN4_LTR_SWSEL_OFFSET);
++	}
++
+ 	ntb_ctl = NTB_CTL_E2I_BAR23_SNOOP | NTB_CTL_I2E_BAR23_SNOOP;
+ 	ntb_ctl |= NTB_CTL_E2I_BAR45_SNOOP | NTB_CTL_I2E_BAR45_SNOOP;
+ 	iowrite32(ntb_ctl, ndev->self_mmio + ndev->reg->ntb_ctl);
+@@ -476,6 +497,10 @@ static int intel_ntb4_link_disable(struct ntb_dev *ntb)
+ 	lnkctl |= GEN4_LINK_CTRL_LINK_DISABLE;
+ 	iowrite16(lnkctl, ndev->self_mmio + GEN4_LINK_CTRL_OFFSET);
+ 
++	/* set LTR to idle */
++	if (!(ndev->hwerr_flags & NTB_HWERR_LTR_BAD))
++		iowrite8(NTB_LTR_SWSEL_IDLE, ndev->self_mmio + GEN4_LTR_SWSEL_OFFSET);
++
+ 	ndev->dev_up = 0;
+ 
+ 	return 0;
+diff --git a/drivers/ntb/hw/intel/ntb_hw_gen4.h b/drivers/ntb/hw/intel/ntb_hw_gen4.h
+index a868c788de02..3fcd3fdce9ed 100644
+--- a/drivers/ntb/hw/intel/ntb_hw_gen4.h
++++ b/drivers/ntb/hw/intel/ntb_hw_gen4.h
+@@ -35,6 +35,9 @@
+ #define GEN4_IM_SPAD_SEM_OFFSET		0x00c0	/* SPAD hw semaphore */
+ #define GEN4_IM_SPAD_STICKY_OFFSET	0x00c4  /* sticky SPAD */
+ #define GEN4_IM_DOORBELL_OFFSET		0x0100  /* 0-31 doorbells */
++#define GEN4_LTR_SWSEL_OFFSET		0x30ec
++#define GEN4_LTR_ACTIVE_OFFSET		0x30f0
++#define GEN4_LTR_IDLE_OFFSET		0x30f4
+ #define GEN4_EM_SPAD_OFFSET		0x8080
+ /* note, link status is now in MMIO and not config space for NTB */
+ #define GEN4_LINK_CTRL_OFFSET		0xb050
+@@ -80,6 +83,18 @@
+ 
+ #define NTB_SJC_FORCEDETECT		0x000004
+ 
++#define NTB_LTR_SWSEL_ACTIVE		0x0
++#define NTB_LTR_SWSEL_IDLE		0x1
++
++#define NTB_LTR_NS_SHIFT		16
++#define NTB_LTR_ACTIVE_VAL		0x0000  /* 0 us */
++#define NTB_LTR_ACTIVE_LATSCALE		0x0800  /* 1us scale */
++#define NTB_LTR_ACTIVE_REQMNT		0x8000  /* snoop req enable */
++
++#define NTB_LTR_IDLE_VAL		0x0258  /* 600 us */
++#define NTB_LTR_IDLE_LATSCALE		0x0800  /* 1us scale */
++#define NTB_LTR_IDLE_REQMNT		0x8000  /* snoop req enable */
++
+ ssize_t ndev_ntb4_debugfs_read(struct file *filp, char __user *ubuf,
+ 				      size_t count, loff_t *offp);
+ int gen4_init_dev(struct intel_ntb_dev *ndev);
 
-Thanks
-Kishon
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/a590bff0-ba9e-8e19-4f09-4838d8afdbb6%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/160614577287.521825.7762300396286632790.stgit%40djiang5-desk3.ch.intel.com.
