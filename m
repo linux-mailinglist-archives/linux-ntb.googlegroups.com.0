@@ -1,34 +1,34 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBOHUZH7AKGQE6B37ZSA@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERBOXUZH7AKGQEIGJ4M4Q@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x237.google.com (mail-lj1-x237.google.com [IPv6:2a00:1450:4864:20::237])
-	by mail.lfdr.de (Postfix) with ESMTPS id 747522D66F9
-	for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 20:42:49 +0100 (CET)
-Received: by mail-lj1-x237.google.com with SMTP id u17sf3730053lja.10
-        for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 11:42:49 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607629369; cv=pass;
+Received: from mail-lj1-x23f.google.com (mail-lj1-x23f.google.com [IPv6:2a00:1450:4864:20::23f])
+	by mail.lfdr.de (Postfix) with ESMTPS id B5D7D2D66FC
+	for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 20:42:50 +0100 (CET)
+Received: by mail-lj1-x23f.google.com with SMTP id t10sf3785963ljj.2
+        for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 11:42:50 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607629370; cv=pass;
         d=google.com; s=arc-20160816;
-        b=A++VBMCxYuuLIqx12UHvYj9yFa5ajW0ND2KrYdFVwzwRc3MwkOCJQi92pINSPh9h+4
-         4W6hqo2q3cc1/hMGzNqGN4m22ySi0/25iSOvm0U87M4uwCS8WeaoYEF4BTDw8bfWwp6a
-         aNFuIo48HnALwgsyTajxCvMpZXYQgPXjlc5uT7RjWWIP60YrDhHnRJwSSnAz8MSxBO7U
-         ZN15RjlmLA14zZZjepqOp6TdzHXQYz07z7XMMI2c9wvdQVNXaCo89QL7zyVM/dCWLmIt
-         fQc1s4EvQVltgzmNLo+HdLzx58wCICpMPRCTLpHU41as35lRTlfvXvcgtH5PNsV4M5Hr
-         u0JQ==
+        b=Ux+0spC91wcAKF4blrS+cYEqNhjdhg7GUq0Q9yX7wNx/4UAiLMczZ6d3OIfimlH/38
+         6Cpxmpl3K21iIaAfgw3IEdoVxDW8BaNPeE2NlUYV3RLTjaLm7NtX6R/nICAKOuXbppaQ
+         JYmdNFgRqHXlYJEB/O+fTYufLFLgiRCV/lDfrB3egKmuIcY/3CZ3S9En4s58+QWSCXq5
+         +/T4oKCJgVsoAkoczb/nCm8yYPvR6xOqnxCOG8gpGeP7rhWGGYgahK9AjKn111Jgsqx6
+         5KeEaeCE3pvUDn3c8jKr/pN+U3f8thFPA2svF+zbSIn+Id3EDWrAIYxr1cufkGZL2AwG
+         JGNA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:mime-version:references:subject:cc
          :to:from:date:message-id:sender:dkim-signature;
-        bh=UxCiP29V451mwQbEvHC6VUNZBQlaxkYD+C/HesacxqE=;
-        b=l5nZ6cboRffP6RdFMjCncgnDR7EbNfh94qlUNrdiwFW1mbwAPlv1LTZ0+EwO7xZuRA
-         9JLxistlbXjKbbU7NzT6SX7TxN4X9ZIBuWKyW44hzN4seldbeuEvOKAJOFKaNg5YpVda
-         uvQgWij6WkSB8jiQunzMsSDjoTZMYSTEWio9DpuqvpCSGANrw+c23lKkvJwelQ689jY0
-         IRuXy4+kqKb7bJjBPN8PLUrQABDtWdiyrye3AvyfepmZ2RHWG8iMn66Ti0Z7Maa1Oa+b
-         GWzeSZVZL1LMbyEDa1wO0o4ws0eAntubFMIOKjjXulHpisvFKffBUu6G2Uep5kjylOKj
-         EaMg==
+        bh=BltRTsj5JBKH+Bwn3dn3UH588Nnu/DN/PdEQvcb16vU=;
+        b=thtdzhr5D9qfwMMvzpqxz3Q2AUiN/L8U2TITw5jgL3LqtFpLG7I3+U5U2PMEhtU5ad
+         T1QIXwNm1ILYHacUz9cLtozAaHlEb8GQeQSfAGvMII8oAZ97zY+xx1GoqRjREPSTi8dh
+         NYDJ4tGwGA2jynz3FY6SGfRodSSPXjiTuvgoda/kSgkH8LfKYVpW9a0VSi9gxVV4bcRI
+         aRE6M2H5jXx1oNeEeYorFdNWU6Lr5Vg/lLm8MazJMLGzu4yGTkhp61n0g2UvP720LyIm
+         DaXWL34poaaxMm0Sc2C0VLKodPEQ/hhZcjYfRwg8xVp4q7dBXv+/CNy/P+Ib/FkQoKVW
+         C7xw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=AhYGZMH5;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b="XdjqOHU/";
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=ViQ26Tbn;
+       dkim=neutral (no key) header.i=@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -36,13 +36,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=UxCiP29V451mwQbEvHC6VUNZBQlaxkYD+C/HesacxqE=;
-        b=fC6c771+liF5d7rM4jT5pxzmbSeurwWJD950Nc28Tsz+pz5tjEcWwUlbGedGytubj0
-         hd766ai2ipj3PWh2ZWxuZVUe4Junc+x6Ixmpf8nbsOjS9F/o3DVjwBcyZTA8NGSizVU4
-         FnTgBr/6yRVkFeHrL7aOqI51Uv9HJKknwssWsbaEW6bDXTQinN8U4nSFgCOp55A92154
-         ldN/rHFULSlxKmCFZfeIEJ6pXxyldMdcR7BEy7kZcLZYWChhOLyRjm8ye+kBfl2i0Kxq
-         c/pb2r1WCuPw1FJ/c8zM+2xHHWLW2ycEuMNM+TW1PW7R+WnKODu6uEBdzrd+2XfFYPcG
-         qp9w==
+        bh=BltRTsj5JBKH+Bwn3dn3UH588Nnu/DN/PdEQvcb16vU=;
+        b=NTNTh94Ceha9o49VtCBHpi9GIDxzy6PdQweoIHNJBd1EScSmW1/Kdd6N5+yI299UTn
+         f/+90cjB8njmMs2k2Go9bPbot64iLrs8aLLKfwYjoyZSBudPowUrC28URA4hjZ+hiJWs
+         k0aUZ0B/1DtC4ojAowK2aDsOT3JW8Szn8sX/BlR7AtYm86ILp7eIX9NKHpPvuqvko8+m
+         ZSO/+AOi/4Lw5ZgOgES1+t+TGKf4IMm22r2L17WArGSTeVbZio0iCT/UNxb0Q8IDS76H
+         sEmiIaCr6AMatjnL0p+dBEdyOBGxYboBLkl3LNGYy2yji1EiYfxLU3naiMV5RLiVU9th
+         ZCSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:message-id:date:from:to:cc:subject
@@ -50,55 +50,55 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=UxCiP29V451mwQbEvHC6VUNZBQlaxkYD+C/HesacxqE=;
-        b=FXh42EaVjg6Xx49LPCTSYwDnmRVB/+ZSn2ErNK26lm0RCgBzz4APteEt8p7Pd5hUc1
-         5yYVS0GwM0YzrbMXMqAtOqmzGj/TzeWlXxo3WFilQju0g/lW+U0q/A31Eb5u34C7+pMC
-         eJ+AGB9ssWAkimpe9NpQL7XiOupfdRVVasCtUlUvHDy5z3D0Lg32m/X77gW+2hJ/SFA0
-         GpdwR8F1iwu9rFSGLoU4QfhvDllh+k8aaUS2vDwxiRK9HklJQADYEd7SQIC9gPL8++1a
-         953umdEMe3sC9WtmYyAugMBY34PXptnZOurtrhA6nA57wQD4iH3AEHBYniD2syNnnU4W
-         qxxw==
+        bh=BltRTsj5JBKH+Bwn3dn3UH588Nnu/DN/PdEQvcb16vU=;
+        b=srqcJztsKm/dLUKgpB8tEa6jNHLqzwEK3HZGd0uBf2OjMln0GAwY+jBt2KkygQW/Fm
+         aRqN9oknzSf7WlFpWLxorqH4oAYVokHp3BLmH2rNgonPWLSMiw1Msk4fdSYYrye1Q9v9
+         mZByuFP0qXYoDfEc5j+6ygfxi0Ono4kqcaPlNHjkb+n7Q8TaCGqfztATou69YU14mFFS
+         qpSQujx0AzPJI0CBi36cOZ+VzFHqpelk7i6qQyJ/irF39SF50UKcoe31Req12Jc2Q/UU
+         Euq3o0egJ5lhBJsUb07P9YiXv7FYg545BTvrVqjY6iYmWCf8+NddoG0vTN1e7RjWtbcz
+         XW0g==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531qPO46oh+3W7XwDHfFLMnk72LwahdCwQxWSjDpxBRu6qv7oE0s
-	PPAsj05/Fn7WF6xeQaawcB4=
-X-Google-Smtp-Source: ABdhPJxCNHIIL8v+Cf4f/Fm9uUQCKBEBZHB58O4JqK513pQgn8qhW8IWHvmjEUfIGBGLbyeHdcsj/w==
-X-Received: by 2002:a2e:9611:: with SMTP id v17mr3655953ljh.69.1607629369025;
-        Thu, 10 Dec 2020 11:42:49 -0800 (PST)
+X-Gm-Message-State: AOAM5325kdQzAnQ5Qr/df0dJ5fp4GcbfwQnOdCeMsDPDLfoH8/VRe9Yi
+	zvT6inrmX1mzpO0kmsqTuqY=
+X-Google-Smtp-Source: ABdhPJy/8v/FYb26Vd/KtEDLBFHM9g2J/xZd63AufgCYvJOW7Rj65ftY2qkLtlrl0P3uVCRWRyk0mg==
+X-Received: by 2002:a2e:8156:: with SMTP id t22mr3476944ljg.263.1607629370301;
+        Thu, 10 Dec 2020 11:42:50 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a19:c1cd:: with SMTP id r196ls197728lff.1.gmail; Thu, 10 Dec
- 2020 11:42:48 -0800 (PST)
-X-Received: by 2002:a05:6512:504:: with SMTP id o4mr3701170lfb.398.1607629368119;
-        Thu, 10 Dec 2020 11:42:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607629368; cv=none;
+Received: by 2002:a2e:8055:: with SMTP id p21ls1237010ljg.5.gmail; Thu, 10 Dec
+ 2020 11:42:49 -0800 (PST)
+X-Received: by 2002:a05:651c:236:: with SMTP id z22mr3595034ljn.126.1607629369305;
+        Thu, 10 Dec 2020 11:42:49 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607629369; cv=none;
         d=google.com; s=arc-20160816;
-        b=iMYV3KnImdN62Qrj9WCM//JjGQYqQo/7NpDuEeRfQ20p03CTd+vXaIPqU2gXxLhkUq
-         zC1zHqrfC4/jS+1A5LOltmDNn3sEJO76oPfccUBkcRCMfsUgKf8xGCSpcajG1n1EGU5p
-         6fIu1Fz0lplJJXtFojPa1a5xIFz2xGyrlUzh3uLMMKILHatNXla+B+7WghpQfazYtG3E
-         r8ZXvcseVCQnwpBTBgAbfood5/WS5tGArEiVUzf9pauiCIGjwv2jr2Ko4uX9tvf1Z4Sw
-         gHhM7bEs572xQwz7vwOUEApK0JjthdEjtPvkAm8G6f7xz/lZ3EeIn3xzS7Eu8QpN8kfF
-         OB8g==
+        b=IjU4B4Pz0zxhKZKnttS/yrWuMxsOhXZYzJEc15BWVMtTR5E3cR8N9Le2l6eJUYD8wH
+         l1jx/AoZ5AgFbqznVd9LJB9zgb+YAS4dhZOAIeX2HJyZ/TXdHBspMQIjF0yYQweuL09+
+         faodoAspZyrF3H5ALhaTKShMucAgtpp3jq8/HlCa8IvJ0fh9J+SvBwYoXpWOlltbKALW
+         ChvmWFIEwR2wmdbnN7iKsUYY2BlZ9/sR514jFoPvv8DgXinuG6uY/etflN9pRU3sZgHL
+         oCvs2et8UUloD+vrojIAPURTZpBE3v6IxPEyUu2BSys0iwEusdFKOn76S9YtMH8K8qTn
+         s2NQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:subject:cc:to
          :from:date:dkim-signature:dkim-signature:message-id;
-        bh=RU1bu/2cEIaQZD4XBTa1ORm36AT2+9xoAT9okJ4RH1c=;
-        b=qpTPAhy9bI5V6yCbiumgV7jFuaMwb6y7dmVuV+hddEgWi2YyzxDzynoWxAK8pgDHWM
-         1EwPggNgVCaEhf2UX45MaTg+MQVWBuC+tq4VgzCeGIy54FzF/8G9b9/wF8gCBZjKfuTd
-         +wv3B3SfP3cbmYUZa6Ys7jhX7Ranq89SRVioJjjxpkJoFhJjAx4XBn4TlAPpInLB8ufx
-         Bi9asaAJhORk1f1NMHggQaNgXaMWiSgH75QJeuGwCiOWaOKOSAUohGPz22Ai6ayU5mGE
-         i8dP1wMO6RkU0MAS9ja3/o3G7MgeZHmJm6dwzBy42UeSpzFZczFiQRF8zxV4T0pm9w6W
-         QU9A==
+        bh=h+/J8p7baJr0DOpzZw5pWLEFMQkgQKdthJegqn8/Z3Y=;
+        b=iFqydZM+t8rj0EARPCZXnjIBRQQ7g6XtFU0Vx1JUdegKLER0GsonnibeeitnWh0w1e
+         ZvkuuilgySUwDapRxk3iCsexiDvAjbBvHf2T+Cj3LRKK6N9Gbv21+WtQOUVbUEEVXXff
+         Ozx3MCjUc1+9e7POr1s+bOUuZjI2EnNVxqTflZL9MSwSTh0mtCNl/Hmy8R44jZAFjfdX
+         iU1KeuATy39bBjZ0Bu/60VJZzwBywsUyFK9rn6/mBPwQI+SaLClwTzJ1Vd3MW4YZhWal
+         q7mWwfQGFLsj/Z6er7AppcoDQCvoxSu9Skuz9OZps5V6kBWBTkfIB1eCICK8aR+UHKax
+         wTqw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=AhYGZMH5;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b="XdjqOHU/";
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=ViQ26Tbn;
+       dkim=neutral (no key) header.i=@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
-        by gmr-mx.google.com with ESMTPS id l8si227074ljc.2.2020.12.10.11.42.48
+Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
+        by gmr-mx.google.com with ESMTPS id c24si101528lfc.1.2020.12.10.11.42.49
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Dec 2020 11:42:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
-Message-Id: <20201210194045.157601122@linutronix.de>
-Date: Thu, 10 Dec 2020 20:26:02 +0100
+        Thu, 10 Dec 2020 11:42:49 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
+Message-Id: <20201210194045.250321315@linutronix.de>
+Date: Thu, 10 Dec 2020 20:26:03 +0100
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 Cc: Peter Zijlstra <peterz@infradead.org>,
@@ -151,17 +151,17 @@ Cc: Peter Zijlstra <peterz@infradead.org>,
  linux-rdma@vger.kernel.org,
  Saeed Mahameed <saeedm@nvidia.com>,
  Leon Romanovsky <leon@kernel.org>
-Subject: [patch 26/30] xen/events: Use immediate affinity setting
+Subject: [patch 27/30] xen/events: Only force affinity mask for percpu interrupts
 References: <20201210192536.118432146@linutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 X-Original-Sender: tglx@linutronix.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=AhYGZMH5;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e header.b="XdjqOHU/";
-       spf=pass (google.com: domain of tglx@linutronix.de designates
- 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@linutronix.de header.s=2020 header.b=ViQ26Tbn;       dkim=neutral
+ (no key) header.i=@linutronix.de;       spf=pass (google.com: domain of
+ tglx@linutronix.de designates 193.142.43.55 as permitted sender)
+ smtp.mailfrom=tglx@linutronix.de;       dmarc=pass (p=NONE sp=QUARANTINE
+ dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -174,21 +174,25 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-There is absolutely no reason to mimic the x86 deferred affinity
-setting. This mechanism is required to handle the hardware induced issues
-of IO/APIC and MSI and is not in use when the interrupts are remapped.
+All event channel setups bind the interrupt on CPU0 or the target CPU for
+percpu interrupts and overwrite the affinity mask with the corresponding
+cpumask. That does not make sense.
 
-XEN does not need this and can simply change the affinity from the calling
-context. The core code invokes this with the interrupt descriptor lock held
-so it is fully serialized against any other operation.
+The XEN implementation of irqchip::irq_set_affinity() already picks a
+single target CPU out of the affinity mask and the actual target is stored
+in the effective CPU mask, so destroying the user chosen affinity mask
+which might contain more than one CPU is wrong.
 
-Mark the interrupts with IRQ_MOVE_PCNTXT to disable the deferred affinity
-setting. The conditional mask/unmask operation is already handled in
-xen_rebind_evtchn_to_cpu().
+Change the implementation so that the channel is bound to CPU0 at the XEN
+level and leave the affinity mask alone. At startup of the interrupt
+affinity will be assigned out of the affinity mask and the XEN binding will
+be updated. Only keep the enforcement for real percpu interrupts.
 
-This makes XEN on x86 use the same mechanics as on e.g. ARM64 where
-deferred affinity setting is not required and not implemented and the code
-path in the ack functions is compiled out.
+On resume the overwrite is not required either because info->cpu and the
+affinity mask are still the same as at the time of suspend. Same for
+rebind_evtchn_irq().
+
+This also prepares for proper interrupt spreading.
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Cc: Boris Ostrovsky <boris.ostrovsky@oracle.com>
@@ -196,84 +200,123 @@ Cc: Juergen Gross <jgross@suse.com>
 Cc: Stefano Stabellini <sstabellini@kernel.org>
 Cc: xen-devel@lists.xenproject.org
 ---
- drivers/xen/events/events_base.c |   35 +++++++++--------------------------
- 1 file changed, 9 insertions(+), 26 deletions(-)
+ drivers/xen/events/events_base.c |   42 ++++++++++++++++++++++++++-------------
+ 1 file changed, 28 insertions(+), 14 deletions(-)
 
 --- a/drivers/xen/events/events_base.c
 +++ b/drivers/xen/events/events_base.c
-@@ -628,6 +628,11 @@ static void xen_irq_init(unsigned irq)
- 	info->refcnt = -1;
- 
- 	set_info_for_irq(irq, info);
-+	/*
-+	 * Interrupt affinity setting can be immediate. No point
-+	 * in delaying it until an interrupt is handled.
-+	 */
-+	irq_set_status_flags(irq, IRQ_MOVE_PCNTXT);
- 
- 	INIT_LIST_HEAD(&info->eoi_list);
- 	list_add_tail(&info->list, &xen_irq_list_head);
-@@ -739,18 +744,7 @@ static void eoi_pirq(struct irq_data *da
- 	if (!VALID_EVTCHN(evtchn))
- 		return;
- 
--	if (unlikely(irqd_is_setaffinity_pending(data)) &&
--	    likely(!irqd_irq_disabled(data))) {
--		int masked = test_and_set_mask(evtchn);
--
--		clear_evtchn(evtchn);
--
--		irq_move_masked_irq(data);
--
--		if (!masked)
--			unmask_evtchn(evtchn);
--	} else
--		clear_evtchn(evtchn);
-+	clear_evtchn(evtchn);
- 
- 	if (pirq_needs_eoi(data->irq)) {
- 		rc = HYPERVISOR_physdev_op(PHYSDEVOP_eoi, &eoi);
-@@ -1641,7 +1635,6 @@ void rebind_evtchn_irq(evtchn_port_t evt
- 	mutex_unlock(&irq_mapping_update_lock);
- 
-         bind_evtchn_to_cpu(evtchn, info->cpu);
--	/* This will be deferred until interrupt is processed */
- 	irq_set_affinity(irq, cpumask_of(info->cpu));
- 
- 	/* Unmask the event channel. */
-@@ -1688,8 +1681,9 @@ static int set_affinity_irq(struct irq_d
- 			    bool force)
- {
- 	unsigned tcpu = cpumask_first_and(dest, cpu_online_mask);
--	int ret = xen_rebind_evtchn_to_cpu(evtchn_from_irq(data->irq), tcpu);
-+	int ret;
- 
-+	ret = xen_rebind_evtchn_to_cpu(evtchn_from_irq(data->irq), tcpu);
- 	if (!ret)
- 		irq_data_update_effective_affinity(data, cpumask_of(tcpu));
- 
-@@ -1719,18 +1713,7 @@ static void ack_dynirq(struct irq_data *
- 	if (!VALID_EVTCHN(evtchn))
- 		return;
- 
--	if (unlikely(irqd_is_setaffinity_pending(data)) &&
--	    likely(!irqd_irq_disabled(data))) {
--		int masked = test_and_set_mask(evtchn);
--
--		clear_evtchn(evtchn);
--
--		irq_move_masked_irq(data);
--
--		if (!masked)
--			unmask_evtchn(evtchn);
--	} else
--		clear_evtchn(evtchn);
-+	clear_evtchn(evtchn);
+@@ -433,15 +433,20 @@ static bool pirq_needs_eoi_flag(unsigned
+ 	return info->u.pirq.flags & PIRQ_NEEDS_EOI;
  }
  
- static void mask_ack_dynirq(struct irq_data *data)
+-static void bind_evtchn_to_cpu(evtchn_port_t evtchn, unsigned int cpu)
++static void bind_evtchn_to_cpu(evtchn_port_t evtchn, unsigned int cpu,
++			       bool force_affinity)
+ {
+ 	int irq = get_evtchn_to_irq(evtchn);
+ 	struct irq_info *info = info_for_irq(irq);
+ 
+ 	BUG_ON(irq == -1);
+-#ifdef CONFIG_SMP
+-	cpumask_copy(irq_get_affinity_mask(irq), cpumask_of(cpu));
+-#endif
++
++	if (IS_ENABLED(CONFIG_SMP) && force_affinity) {
++		cpumask_copy(irq_get_affinity_mask(irq), cpumask_of(cpu));
++		cpumask_copy(irq_get_effective_affinity_mask(irq),
++			     cpumask_of(cpu));
++	}
++
+ 	xen_evtchn_port_bind_to_cpu(evtchn, cpu, info->cpu);
+ 
+ 	info->cpu = cpu;
+@@ -788,7 +793,7 @@ static unsigned int __startup_pirq(unsig
+ 		goto err;
+ 
+ 	info->evtchn = evtchn;
+-	bind_evtchn_to_cpu(evtchn, 0);
++	bind_evtchn_to_cpu(evtchn, 0, false);
+ 
+ 	rc = xen_evtchn_port_setup(evtchn);
+ 	if (rc)
+@@ -1107,8 +1112,8 @@ static int bind_evtchn_to_irq_chip(evtch
+ 			irq = ret;
+ 			goto out;
+ 		}
+-		/* New interdomain events are bound to VCPU 0. */
+-		bind_evtchn_to_cpu(evtchn, 0);
++		/* New interdomain events are initially bound to VCPU 0. */
++		bind_evtchn_to_cpu(evtchn, 0, false);
+ 	} else {
+ 		struct irq_info *info = info_for_irq(irq);
+ 		WARN_ON(info == NULL || info->type != IRQT_EVTCHN);
+@@ -1156,7 +1161,11 @@ static int bind_ipi_to_irq(unsigned int
+ 			irq = ret;
+ 			goto out;
+ 		}
+-		bind_evtchn_to_cpu(evtchn, cpu);
++		/*
++		 * Force the affinity mask to the target CPU so proc shows
++		 * the correct target.
++		 */
++		bind_evtchn_to_cpu(evtchn, cpu, true);
+ 	} else {
+ 		struct irq_info *info = info_for_irq(irq);
+ 		WARN_ON(info == NULL || info->type != IRQT_IPI);
+@@ -1269,7 +1278,11 @@ int bind_virq_to_irq(unsigned int virq,
+ 			goto out;
+ 		}
+ 
+-		bind_evtchn_to_cpu(evtchn, cpu);
++		/*
++		 * Force the affinity mask for percpu interrupts so proc
++		 * shows the correct target.
++		 */
++		bind_evtchn_to_cpu(evtchn, cpu, percpu);
+ 	} else {
+ 		struct irq_info *info = info_for_irq(irq);
+ 		WARN_ON(info == NULL || info->type != IRQT_VIRQ);
+@@ -1634,8 +1647,7 @@ void rebind_evtchn_irq(evtchn_port_t evt
+ 
+ 	mutex_unlock(&irq_mapping_update_lock);
+ 
+-        bind_evtchn_to_cpu(evtchn, info->cpu);
+-	irq_set_affinity(irq, cpumask_of(info->cpu));
++	bind_evtchn_to_cpu(evtchn, info->cpu, false);
+ 
+ 	/* Unmask the event channel. */
+ 	enable_irq(irq);
+@@ -1669,7 +1681,7 @@ static int xen_rebind_evtchn_to_cpu(evtc
+ 	 * it, but don't do the xenlinux-level rebind in that case.
+ 	 */
+ 	if (HYPERVISOR_event_channel_op(EVTCHNOP_bind_vcpu, &bind_vcpu) >= 0)
+-		bind_evtchn_to_cpu(evtchn, tcpu);
++		bind_evtchn_to_cpu(evtchn, tcpu, false);
+ 
+ 	if (!masked)
+ 		unmask_evtchn(evtchn);
+@@ -1798,7 +1810,8 @@ static void restore_cpu_virqs(unsigned i
+ 
+ 		/* Record the new mapping. */
+ 		(void)xen_irq_info_virq_setup(cpu, irq, evtchn, virq);
+-		bind_evtchn_to_cpu(evtchn, cpu);
++		/* The affinity mask is still valid */
++		bind_evtchn_to_cpu(evtchn, cpu, false);
+ 	}
+ }
+ 
+@@ -1823,7 +1836,8 @@ static void restore_cpu_ipis(unsigned in
+ 
+ 		/* Record the new mapping. */
+ 		(void)xen_irq_info_ipi_setup(cpu, irq, evtchn, ipi);
+-		bind_evtchn_to_cpu(evtchn, cpu);
++		/* The affinity mask is still valid */
++		bind_evtchn_to_cpu(evtchn, cpu, false);
+ 	}
+ }
+ 
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20201210194045.157601122%40linutronix.de.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20201210194045.250321315%40linutronix.de.
