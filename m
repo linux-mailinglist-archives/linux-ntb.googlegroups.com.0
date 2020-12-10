@@ -1,34 +1,34 @@
-Return-Path: <linux-ntb+bncBC3JRV7SWYEBB3W2ZL7AKGQER4ILIGA@googlegroups.com>
+Return-Path: <linux-ntb+bncBC3JRV7SWYEBB6O2ZL7AKGQEITTQSNQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pf1-x43a.google.com (mail-pf1-x43a.google.com [IPv6:2607:f8b0:4864:20::43a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 158A12D6AE8
-	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 00:21:20 +0100 (CET)
-Received: by mail-pf1-x43a.google.com with SMTP id l11sf5001400pfc.16
-        for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 15:21:19 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607642478; cv=pass;
+Received: from mail-vs1-xe40.google.com (mail-vs1-xe40.google.com [IPv6:2607:f8b0:4864:20::e40])
+	by mail.lfdr.de (Postfix) with ESMTPS id 54BF02D6AE9
+	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 00:21:30 +0100 (CET)
+Received: by mail-vs1-xe40.google.com with SMTP id y82sf1606804vsc.14
+        for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 15:21:30 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607642489; cv=pass;
         d=google.com; s=arc-20160816;
-        b=BzAB6REQGKa6SbLZhqerRNgGV5LlYsFbzH7PJI0SJ22yiGRCxViMuWMYUq8qVrQSrs
-         M1p/tO0BGu+3DRkOkDnuY2oiFTSPTvsBoB91vlh2wbvUo6+7Bt2YtxtfNKRDd7AeA9a7
-         OQtyTdiS9uDg95A2NG2eGGVXMPzwMywNw0WrUJOMUkwjKFRHFesUx6GtIrNfExOhdJlX
-         TITXBtElEc2R0NBlfI6XTazQNNpvUYtWp98NEZwIJ2Pg82zo+ubnhGeUm6cV3XR1ZPRJ
-         7GveN2cwU+FnyYQG0IPsgSJl0GZMZSMKpR1yWtg54/rrrqz2Q8LvcrGuokZtnudOa/d4
-         Mg8A==
+        b=0ZriKIDbYxZRhT32Zm+VG83hDYUEvLy//+5P9NvgYZnlmPNp0V/XLi5C00rb0t0H+1
+         2ynKdiBSt0bMgRFAoFc6mKZ8nAxVpRmzaT4dVTS+/eWY+fzO0Owv3r3xK1zOXVNnKjaY
+         DKioQDVQ0GG1sWW+r9XbRhXo6D1MSExeMcjeNbrrw+5h9A6mIP7dpKrrn0dcUT4svZb7
+         3jkSOPjysNxRVRkilQhH26VByMlTzfdRlv1fTeNtNVwl9J3gViWfADE29sg6j22nZL8e
+         QSbeWHi/bKORodmEGWwSIgMSFv8Ry31TEMQ9o1fjE8lTKe0FQpmFwRrudX2tQyIZkwGs
+         NNsw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-language:in-reply-to
          :mime-version:user-agent:date:message-id:organization:from
          :references:cc:to:subject:sender:dkim-signature;
-        bh=EIFNzN2qfsxb8o0mo5JeDkOoNNB9wuwNsRPmsE7P3Nw=;
-        b=ovKlT1Svy7a0UJ9yly/5DZnvHHCSK0Mv5+wzcJ6Mk6jOsRc8DB3c+5stqgMaVZiUw6
-         rxOVP/7tuz+a/MwptxE19x2DfjWy6Y5MX/jQUpP8sx5NEUgxQBOBlBCKVm61WQ9VK4+o
-         sge9dUtlnIMlrKVAvkWjjH7sIP/JVi3kGLmoHTIk5ff7fRNFLiG0QE766FxirdTEkMqr
-         3xWp3hTtpCfsfPiw5jrJZI8HjypVbeKF83uM6JtuDjPxa6hilgN4CJB0VZPL9asFlvOt
-         A9uxKCs32fQUfSAd+l5GfNN3XDVm/myEGumDF4+NReZjaZ0OxS9XI66xxg/RgZWvVRTr
-         9Vgg==
+        bh=7yYYphvYs8owAT+xMKOoZ0Jy1FtMoiE9LxX0R2WoHAs=;
+        b=1CilHBI4Wf/I2uAeHkZk33BNyfrODowKAV7+RQkfRN70tUaNhzdTdtCHAgqwX/U2E1
+         A6/Vk3/abCSVCwfqrXner7ytC6dY/aPCFexFE1a2ULT03w4TDqNFntncnRXHWSrtMlaW
+         2US7N0BaLKiTnjrQxoqn/dYwEDUyBF8xz4eshFSbtc5rMosBdvTcKh9G8oVPS2lNuG6H
+         LLtoLtXnWKMu9UVuNBTqKoL0Mf7H/kRrONmbD/96mhYw2/aT9ysMNXblvIwyBXwb5VpC
+         yhdDEZfx43+5QmXKsj4LcpHBLzwJDLyGmK0UvwtXua5T3uknhY75TskqacA+BbgLqtaS
+         F1sg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=u+3l3VwF;
-       spf=pass (google.com: domain of boris.ostrovsky@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=boris.ostrovsky@oracle.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=yiiSqUT1;
+       spf=pass (google.com: domain of boris.ostrovsky@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=boris.ostrovsky@oracle.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -37,13 +37,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=EIFNzN2qfsxb8o0mo5JeDkOoNNB9wuwNsRPmsE7P3Nw=;
-        b=BUWzJf1pJYn9Lu91Q6QDxVeW32AUay16SW1cBsgXnis2ziMvTySyosRPWqvu0oHN1X
-         oiJWmChGkH/TEb4WFoxucmM+2pUN9poLWZfe6ZSGRltxATx5N6PL/bxrCxxX4SYsN1Qr
-         bwt5+5BUrpd0IPEp7jDRG+4d422syA7GMqb+wVVMytujTZcmqxRLrq1NJNt5tR9Jyzkb
-         FT4s4XWBw4X2lnCOoETX1sDKpEbkFqoLK8zWxlLNyKmQMZ77AU1tTdP5MMF82n/+knI/
-         OBtnizEfTStMOF5Umn28kDl0ZRdec2NvZ/0DylpC0fFWzKsWhhwWwIVP8Wlb/g36olMd
-         vBdg==
+        bh=7yYYphvYs8owAT+xMKOoZ0Jy1FtMoiE9LxX0R2WoHAs=;
+        b=K8YcsA0TfTxqkgF16+y/BczBM8p7jewvwJU7eYqgKDtSoaP7PaZMBsY7u/fPIMDi8k
+         qmRKNLbOkdh1zi123Aa4zjmcm3k0ie47OdfGj9bKkXIbyxlWmzwrt4gJ2mtsCr2S0E0B
+         B6CUamp4hJodt+C74tFtnVGbsYQYS+NZhzilD9cFbL3wYwhV1pZ0vcqpKdnUwdFFGFk5
+         JPcxRA03bL5Uqb1nMZkXVcSUhxE1F3+N/Da5t9Vb+ZkjwOiyiJ120EKLzO2RxjX2pHHm
+         3lE7CGqCYWH/SsKzkJ3/vGlCXa4FGdJpKDkNgnorPAVo1eXq4kynvijHkyAllIC3jNjT
+         oYbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:subject:to:cc:references:from
@@ -52,75 +52,75 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=EIFNzN2qfsxb8o0mo5JeDkOoNNB9wuwNsRPmsE7P3Nw=;
-        b=JRUIuKoJNbKBk9804M1WZC7G/KnGnJxTulZdXcShXWRBhs9EGIbMuX056UwC1geubb
-         m7CbeNiccKRcMsQeT3L2XK0Ax4LAQRcRZ5jbaHBY5pav4/S5CASgE665Fw1ubXyWP8m7
-         nNQfSxPHVzUrH5w6VxWDoXY4QtT0lVa4zIdmIYF0CoQv0vAgtf9x0PPsrZAQMytlVk+s
-         teGTeUQhv15OpeY2cMCvDRnrvbMr4ATHcrVGqpeQypkmdIbB4olKtoIxf6+1z30VaP0I
-         C6b4kDihbHHw67z+S4a1a4pumHSs0Xgk4gcgCG4E/ckbtyKE0X1f0yG55DpB7Lb46Kai
-         MfOg==
+        bh=7yYYphvYs8owAT+xMKOoZ0Jy1FtMoiE9LxX0R2WoHAs=;
+        b=j47VrHwr224s6Nv1LLprOM2fw4Pq36/EECvg/cgiYI8cp2Ychw+UgEQMPtCOxIKT0n
+         lorr9Rfnf2GALsKha1e0YCVYVl4UeQYx92bbV8FkU0PXbaBiqq8Pefr8hwyCUMWhbxT9
+         yLxVlM7EychP18le62wX5mDQdRuKGx4ykPF8rC5/ZCtq4FWCrUxGmQvwEZ6U8BWxDFzh
+         NqZHa+98DcVChak2mAQl2f68FT6sxIbQq8XGY3SYiwBR/uJIwuXgzX6MPdEnD95SR5dZ
+         9QnBurGbMAnmzn3qOqYaFWEvshiyaQxWLzhv0F4G/xdSn0A4kzCa+cLg2L/D4x0FLqTU
+         pU+g==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530WPAaiXrQdrEJENGX/procdjHh/r2oRJoW4t8kN9nY9o4GsDPt
-	S85nbQoZnFmXKcJ0vs8yh/Q=
-X-Google-Smtp-Source: ABdhPJy4M84qJBQZD3wj2ckbJXNp9Af2aGNIcQUu0M9gVdy5+qNZz2HlX6Hs1TNZjZ5mD3rxdGFGqw==
-X-Received: by 2002:a17:90a:989:: with SMTP id 9mr5971221pjo.162.1607642478776;
-        Thu, 10 Dec 2020 15:21:18 -0800 (PST)
+X-Gm-Message-State: AOAM532eRS1Z9tt67L7wT6u6YJ3SkUjgh12bye8bHG8n3lH9xizSJDYg
+	eYh2BJ8yA8bdwhVS7qjttxU=
+X-Google-Smtp-Source: ABdhPJyG9fzW/YW5GEVGM63iYzPZHHqU3gsJaIizAhmXvAuvoIoZ8cTUXGgaYfoOlrU9DLS1VXdmIg==
+X-Received: by 2002:a67:fc87:: with SMTP id x7mr10443064vsp.38.1607642489146;
+        Thu, 10 Dec 2020 15:21:29 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a63:451d:: with SMTP id s29ls2613883pga.5.gmail; Thu, 10 Dec
- 2020 15:21:18 -0800 (PST)
-X-Received: by 2002:a63:a902:: with SMTP id u2mr8917964pge.263.1607642478210;
-        Thu, 10 Dec 2020 15:21:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607642478; cv=none;
+Received: by 2002:ab0:6155:: with SMTP id w21ls484163uan.0.gmail; Thu, 10 Dec
+ 2020 15:21:28 -0800 (PST)
+X-Received: by 2002:ab0:6f0a:: with SMTP id r10mr4497037uah.36.1607642488691;
+        Thu, 10 Dec 2020 15:21:28 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607642488; cv=none;
         d=google.com; s=arc-20160816;
-        b=fcIBscmknihpw/DGFz50UwuLEv0lrGrzbzgR7HxT0YsfT321RI3h47LwT9J+n8DMYi
-         QzhLfuhu0mKyApUNPuhJ+6XAgdJHqT6BTuoCJY1aBcuNfpwBADcsN15/8y5JonoYkLML
-         rnEDQg+0w+mIfP/QBvtVG+9qY033A+J2LERvHF3IRSiLzJu1au2xBJdgajX4q0iqUmfd
-         laLGKd68TfW8MQopyjjxfivtZNjPvAW2maYTwSmtS+ZfmqE01AArfb+QsSvdNFCInPks
-         sQyK11WGTBQN4JWceaHfmh/25HOeVBN0zAzTUPCVG4XX7ATTd5wfayKK5+agOdI80jgW
-         vw9Q==
+        b=tYvF+f/fHXxtOjBCH98VIjZ/sMf8LRonjJ7TSr9pFidseWBUuh674GvpKrrOXVmc4q
+         l36pHwFGXljrIgssKcozYxmN0UcRc2DpC59hB15m1Wh0wIOdnRP9xLCyXw0aUGLBNbYB
+         +x1rH2gylMACWARLBWC/kUAmzFllIp7gT4DziZJq6wz3zCHT5jZMrt4ScRae2wWb+uWi
+         Bht+qv/aDL4XACRKX9Fyac1NjAzdBYzt4C/CzeCoNDIq1S/PPVzVkMNfjMJ/5PeYTf3U
+         yvT14zPGmBu+0bB46a7Vhs3FiqTtW7Y65iLUnYcZ2NSxcADb9Ans4v+8P3fGrGpX+WdS
+         I9wA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-language:content-transfer-encoding:in-reply-to:mime-version
          :user-agent:date:message-id:organization:from:references:cc:to
          :subject:dkim-signature;
-        bh=+7Mm8NoMJp9j52xNSSS3U0SBEUJij5+TbHj/sEGWvTc=;
-        b=CA7NAEqpmYTdAd2de58b5p8S35jhj1XoSr97cgN9FiJ1In1Qw2GCZEJTHLNR+n9nvD
-         CAlgcNCaeeUfJOYzxjZvskVwnR4NO2nIh03Mopj9DRndxKnXZkKpbEORWY4ZnCY2WLYp
-         e2E9XRuIPqvw7J4umr7kiK2GuLfTXKEtG6IRnxhevyPa4PE6+JY6p7Lx7SVVjn9i4g7f
-         vzuB/3/tktfhBesAlYpy2w7Wpyh8Q4s/hw7WiEGidvUg4v1h8AX/ssTHgGB7I0F7VkOI
-         HcFRXWuVdk+rqoKxZytGLOzvIMalXxt5KHxajRnkPsPjqijEnesYG3fIYcSqBE2WdsTt
-         rzUg==
+        bh=g9HQMgG8/lH1Xl7UdSJNvDAMRQCo3FWW7Bk60ydYMFM=;
+        b=HpxvrAJoBl3i/FYvTqihXz1ETNuA/8U1Aj6yWkfxIFD0O+MAkf7XLzQ0seYkgJn6ES
+         VIL+XQhSca01uN5ij12D0PQdP0Jk0GusxF6BdvYs1CLBUnKRVjARH8U4dirRq0kE2I8d
+         UJcfGaatMUGj85buffbRqIwVUxqYgk7CgA9IuuKf20wWHrQFqpx/v9jVVTTXdAO23Q6H
+         Wi5GgJWek9ZjKDCsOcu/eCM6Zjszs0EaPtlimRfl1qmV6J5p8wNvyaf9MXKCtMGdjTH7
+         F6t1pCiGPSEq11MOCGLT3M/tOnHXdONN/G66rdb0+yh7EVUCeuIrcOTysfSKjZdBH7N4
+         4huA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=u+3l3VwF;
-       spf=pass (google.com: domain of boris.ostrovsky@oracle.com designates 141.146.126.79 as permitted sender) smtp.mailfrom=boris.ostrovsky@oracle.com;
+       dkim=pass header.i=@oracle.com header.s=corp-2020-01-29 header.b=yiiSqUT1;
+       spf=pass (google.com: domain of boris.ostrovsky@oracle.com designates 141.146.126.78 as permitted sender) smtp.mailfrom=boris.ostrovsky@oracle.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from aserp2130.oracle.com (aserp2130.oracle.com. [141.146.126.79])
-        by gmr-mx.google.com with ESMTPS id e6si557921pgf.3.2020.12.10.15.21.17
+Received: from aserp2120.oracle.com (aserp2120.oracle.com. [141.146.126.78])
+        by gmr-mx.google.com with ESMTPS id r207si402015vkf.2.2020.12.10.15.21.28
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Dec 2020 15:21:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of boris.ostrovsky@oracle.com designates 141.146.126.79 as permitted sender) client-ip=141.146.126.79;
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
-	by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0BANJcXS003074;
-	Thu, 10 Dec 2020 23:19:38 GMT
-Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
-	by aserp2130.oracle.com with ESMTP id 357yqc85cd-1
+        Thu, 10 Dec 2020 15:21:28 -0800 (PST)
+Received-SPF: pass (google.com: domain of boris.ostrovsky@oracle.com designates 141.146.126.78 as permitted sender) client-ip=141.146.126.78;
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+	by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0BANJcxD076282;
+	Thu, 10 Dec 2020 23:21:08 GMT
+Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
+	by aserp2120.oracle.com with ESMTP id 35825mg2bs-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Thu, 10 Dec 2020 23:19:38 +0000
-Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
-	by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0BAMxr2o074450;
-	Thu, 10 Dec 2020 23:19:32 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
-	by userp3030.oracle.com with ESMTP id 358m52xf7m-1
+	Thu, 10 Dec 2020 23:21:08 +0000
+Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
+	by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 0BANKtw7149340;
+	Thu, 10 Dec 2020 23:21:07 GMT
+Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
+	by aserp3020.oracle.com with ESMTP id 358m42f5be-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 10 Dec 2020 23:19:32 +0000
-Received: from abhmp0019.oracle.com (abhmp0019.oracle.com [141.146.116.25])
-	by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 0BANJPdu022291;
-	Thu, 10 Dec 2020 23:19:25 GMT
+	Thu, 10 Dec 2020 23:21:07 +0000
+Received: from abhmp0008.oracle.com (abhmp0008.oracle.com [141.146.116.14])
+	by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 0BANKp8g025210;
+	Thu, 10 Dec 2020 23:20:51 GMT
 Received: from [10.39.227.125] (/10.39.227.125)
 	by default (Oracle Beehive Gateway v4.0)
-	with ESMTP ; Thu, 10 Dec 2020 15:19:24 -0800
-Subject: Re: [patch 24/30] xen/events: Remove unused
- bind_evtchn_to_irq_lateeoi()
+	with ESMTP ; Thu, 10 Dec 2020 15:20:51 -0800
+Subject: Re: [patch 27/30] xen/events: Only force affinity mask for percpu
+ interrupts
 To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
 Cc: Peter Zijlstra <peterz@infradead.org>, Marc Zyngier <maz@kernel.org>,
         Juergen Gross <jgross@suse.com>,
@@ -159,33 +159,33 @@ Cc: Peter Zijlstra <peterz@infradead.org>, Marc Zyngier <maz@kernel.org>,
         linux-rdma@vger.kernel.org, Saeed Mahameed <saeedm@nvidia.com>,
         Leon Romanovsky <leon@kernel.org>
 References: <20201210192536.118432146@linutronix.de>
- <20201210194044.972064156@linutronix.de>
+ <20201210194045.250321315@linutronix.de>
 From: boris.ostrovsky@oracle.com
 Organization: Oracle Corporation
-Message-ID: <748d8d81-ac0f-aee2-1a56-ba9c40fee52f@oracle.com>
-Date: Thu, 10 Dec 2020 18:19:19 -0500
+Message-ID: <7f7af60f-567f-cdef-f8db-8062a44758ce@oracle.com>
+Date: Thu, 10 Dec 2020 18:20:46 -0500
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:78.0)
  Gecko/20100101 Thunderbird/78.5.1
 MIME-Version: 1.0
-In-Reply-To: <20201210194044.972064156@linutronix.de>
+In-Reply-To: <20201210194045.250321315@linutronix.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Language: en-US
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9831 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 mlxscore=0 spamscore=0 suspectscore=0
- bulkscore=0 malwarescore=0 phishscore=0 adultscore=0 mlxlogscore=999
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0 malwarescore=0 adultscore=0
+ bulkscore=0 phishscore=0 suspectscore=0 mlxscore=0 mlxlogscore=999
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2012100148
+ definitions=main-2012100149
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9831 signatures=668683
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 mlxlogscore=999
- clxscore=1011 malwarescore=0 bulkscore=0 phishscore=0 adultscore=0
- spamscore=0 priorityscore=1501 mlxscore=0 lowpriorityscore=0
- impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2012100149
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0 adultscore=0 bulkscore=0
+ phishscore=0 mlxlogscore=999 clxscore=1015 priorityscore=1501 mlxscore=0
+ spamscore=0 lowpriorityscore=0 malwarescore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2012100149
 X-Original-Sender: boris.ostrovsky@oracle.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@oracle.com header.s=corp-2020-01-29 header.b=u+3l3VwF;
+ header.i=@oracle.com header.s=corp-2020-01-29 header.b=yiiSqUT1;
        spf=pass (google.com: domain of boris.ostrovsky@oracle.com designates
- 141.146.126.79 as permitted sender) smtp.mailfrom=boris.ostrovsky@oracle.com;
+ 141.146.126.78 as permitted sender) smtp.mailfrom=boris.ostrovsky@oracle.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
@@ -201,35 +201,30 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 
 
 On 12/10/20 2:26 PM, Thomas Gleixner wrote:
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Boris Ostrovsky <boris.ostrovsky@oracle.com>
-> Cc: Juergen Gross <jgross@suse.com>
-> Cc: Stefano Stabellini <sstabellini@kernel.org>
-> Cc: xen-devel@lists.xenproject.org
-> ---
->  drivers/xen/events/events_base.c |    6 ------
->  1 file changed, 6 deletions(-)
+> All event channel setups bind the interrupt on CPU0 or the target CPU for
+> percpu interrupts and overwrite the affinity mask with the corresponding
+> cpumask. That does not make sense.
 >
-> --- a/drivers/xen/events/events_base.c
-> +++ b/drivers/xen/events/events_base.c
-> @@ -1132,12 +1132,6 @@ int bind_evtchn_to_irq(evtchn_port_t evt
->  }
->  EXPORT_SYMBOL_GPL(bind_evtchn_to_irq);
->  
-> -int bind_evtchn_to_irq_lateeoi(evtchn_port_t evtchn)
-> -{
-> -	return bind_evtchn_to_irq_chip(evtchn, &xen_lateeoi_chip);
-> -}
-> -EXPORT_SYMBOL_GPL(bind_evtchn_to_irq_lateeoi);
+> The XEN implementation of irqchip::irq_set_affinity() already picks a
+> single target CPU out of the affinity mask and the actual target is stored
+> in the effective CPU mask, so destroying the user chosen affinity mask
+> which might contain more than one CPU is wrong.
+>
+> Change the implementation so that the channel is bound to CPU0 at the XEN
+> level and leave the affinity mask alone. At startup of the interrupt
+> affinity will be assigned out of the affinity mask and the XEN binding will
+> be updated. 
 
 
-
-include/xen/events.h also needs to be updated (and in the next patch for xen_set_affinity_evtchn() as well).
+If that's the case then I wonder whether we need this call at all and instead bind at startup time.
 
 
 -boris
 
+
+> Only keep the enforcement for real percpu interrupts.
+
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/748d8d81-ac0f-aee2-1a56-ba9c40fee52f%40oracle.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/7f7af60f-567f-cdef-f8db-8062a44758ce%40oracle.com.
