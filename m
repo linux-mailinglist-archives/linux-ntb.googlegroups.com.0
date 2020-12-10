@@ -1,157 +1,166 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRBSMKXT7AKGQEGEE3IDY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERBGHUZH7AKGQER7KUNDA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3c.google.com (mail-vk1-xa3c.google.com [IPv6:2607:f8b0:4864:20::a3c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7224C2D2238
-	for <lists+linux-ntb@lfdr.de>; Tue,  8 Dec 2020 05:47:06 +0100 (CET)
-Received: by mail-vk1-xa3c.google.com with SMTP id b4sf7070188vkg.10
-        for <lists+linux-ntb@lfdr.de>; Mon, 07 Dec 2020 20:47:06 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607402825; cv=pass;
+Received: from mail-lj1-x23c.google.com (mail-lj1-x23c.google.com [IPv6:2a00:1450:4864:20::23c])
+	by mail.lfdr.de (Postfix) with ESMTPS id AB3592D66C2
+	for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 20:42:17 +0100 (CET)
+Received: by mail-lj1-x23c.google.com with SMTP id r24sf3655821lji.22
+        for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 11:42:17 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607629337; cv=pass;
         d=google.com; s=arc-20160816;
-        b=sK0FuomYRgSBHFQeYkJJKfZ2MpdiaZj9iAbGJytM35trX0qME/nEW80scjiHCH9MLU
-         FZvkOfPgEr6XwdaEJalu9MyUvE1qXkK+aba8hwOUxlAkyVlslErRP8c4HeGu0Zp091MV
-         uIppHIB7AYn2JaSOZm7w5JtweafFvcsU109VcGJ0uerZ2GSVzinuG4wdvvw6R+FRXAV6
-         VZ/s9jqgfGMqxVzhaMBUebNkDBo/K83PIVWwGJ5axCKpkaIR4fv8eHKcC/n41fnUj8Ql
-         kAKEOBParrIyjE67QQp5cGZy338a9cIGsop1D1Y+oW8f0JiN8x4eRKtbiPYbey/0ALAM
-         EWFg==
+        b=KlTR75DPEfysGt0o303dVhPEkDxOP42M/aMFCWh5gRiqxLVT0IZ6dm69DfhOCZkQvD
+         GvDZSp5I5KCSdZ32udLRwUAcWZ2ovQrrsEaUVafiQY6G1IUMAKUbCnVD4uyxu3strVQF
+         w0DiU9ePrYEcZn//sLGdBoSY+AjwGD8yXHJWG66gzp0q1q5I3dnEWvWpe8jv3DYNSPtK
+         gS4MI3yi4wiZJKPFeM4vabsw7QGcZI0PuceBbxyJiGBCKHTVrVLjQGy6vr3ziOkY/ZCz
+         8CxuSWGOguljMAQJh7sGqILKbKN96wZLzzWmf2W46oTGrsK9ZeWJp6dhoap5twZxmEbu
+         MLng==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=NiwIUt4q5Lh661LBXORiWR/Op7EZJWXHr2xvvdk+N4w=;
-        b=yLQ6qboMOoQjr/uHSTk+E2E6N7z61eGCDNAmIPJKQp+YVglhZbbanPCMURGYpFFeNq
-         oGyCwQqFlnrqjVZbFqXDrzyp1F++IDTQjmHmcL1gyV2nr1t5IIbiP1qaa3TIjjqsOZWk
-         34ONdcQ8oe2SjT3EFchhNV2So5dn39o49ZLNgZqUeW/+yQxrUej0CFgzH6nsUdZAqo1z
-         zYXB7nfctKzkD5AAn98HIBtZFxw17IaF2YNyEQbde4haWFqgt+mUgjUCNez17pg5MUNx
-         8zfBRR4zzxwlnkUblabvsZK7qRoJ4ElkRy9MX0JFPLuQZLtLITyf1W7hygy9KkIoaVWV
-         bsfw==
+         :list-id:mailing-list:precedence:mime-version:subject:cc:to:from
+         :date:message-id:sender:dkim-signature;
+        bh=HnuPH5SFySkUPXvZNUWny+qTOk1r3yomoRBhv+/2qa4=;
+        b=mEM3EEtz21kJPvrzOEEqZBM8/fJN1g2DB3Oh9x3zUypgTN1ezt7Aaccqn11e7yGuF8
+         GdsejgWYX0fo/A/Jj1GNhPorNoIBRZgrfl3mLYXg6KWPBfuBv/ZsgrESMtqbamKQD/c4
+         aWPlSaakwXPU5rlDVWuxJruO46mxAPbL+7veajGjo96VCYFzVd5C3i9iAIK1mFnb248x
+         BRaxUBNH3Ut2tgllCneqx8WZwbY0cG4spl2UzohgXrrln4Ytiyf4uzysgGIz5SlsastP
+         +ynHqbZn+0qLVCGEPOZV4jZYCsQrJ3yarP4yp8Qi84E+c/1JYIOX1/Qfw94DjUvFM1rX
+         M8iQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=I1KcsdWf;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b="h/TAwStA";
+       dkim=neutral (no key) header.i=@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:list-post:list-help:list-archive:list-subscribe
-         :list-unsubscribe;
-        bh=NiwIUt4q5Lh661LBXORiWR/Op7EZJWXHr2xvvdk+N4w=;
-        b=bRDgFlvc8K/Jt7+vC8TY+u2eaawCfSe1u+hwMTDB56CWoeCZ6f2374EbR+c0CZY/O+
-         m6Ps/DPBPCBYbv4/YyX4h3JNafqVcCIHOLiCaNWOi7KEEmc4TiEQ58N/ezyNuLeV1p9C
-         IUzBJfXG5GvXde51dUH7UrMUDraqS8qCYT+ELWbbVy869C7iu+tkR8cN49v9WSKnB7t4
-         7D76+nH6q0RMjsjjPAslV4eqJjJHDHVtvk2fSIplkiojn3CZKVC44NNsZ4VUBUPrP/2t
-         Qe85HKOmKIC3TS04te6bis978mW0g1yBogwzXiEuxB6EurZxyRb2wP3sNZhPz+Yhzd+k
-         1jbg==
+        h=sender:message-id:date:from:to:cc:subject:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=HnuPH5SFySkUPXvZNUWny+qTOk1r3yomoRBhv+/2qa4=;
+        b=XMBOD5TtJI/W2FSIQFEzcYuJXuREiMVZFaIvGc9IHSFHwr4ixOw8vnwFSoqaQR2yV3
+         +2m8uDmiNxG2esAEhhPT+0C3aWGPoEtnjDz3JDywF5vNftfeBEuWICX6F/vE7hnVF/fB
+         7e6LJAtn5+W6F+tDXiZSOkEAjor3obdBe86XFOZ/nNxKngl2uzqVat97UdVhi3cEOwBU
+         L6S1Fnj9DUK/bTSM/KZcSz6DCXZdrPZekTVbBB4d4erdzaI/hxBNo9FtiBgL8rYiBAvw
+         akoobRqeSemCp9iw8pvlsvhr0Qqilzu/7QGE6G9yMKvVzT5Gh8qmqVSiKpSXuLHu8fAt
+         ROdw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :x-original-sender:x-original-authentication-results:reply-to
+        h=sender:x-gm-message-state:message-id:date:from:to:cc:subject
+         :mime-version:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
          :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=NiwIUt4q5Lh661LBXORiWR/Op7EZJWXHr2xvvdk+N4w=;
-        b=QaWEFJNTxF3vSvJZ5sTZDkJ+E64XNRM904JBbtoMUBTBAaClTU1jiPzGQf5PJkzoo8
-         nbiKVHnIv52GEedJwOgfVg0x6ivcIrdWWSO6j35czL9QgGpx1cPJqzs239+x+TCRVvv/
-         m3Tcq4OptdxGhrJp5IU5qxUeQHZi5uvuosFQEBBNL/dPZIN9JAvl6e/wnQTZ1/seqcVg
-         QBnerOCxk6+ybCnu8zeDuTgnxzbETT+VrkQt9YgDAKbvtW7C+sUPsLgGJE37S6rlrSb+
-         VI8XNDEDVM09IGc4gmAH7eDuVxVnH6CIgIds27DfPdU50MN4RMWmWWtwQLdhxRNhixC/
-         lrzA==
-X-Gm-Message-State: AOAM533mZxdZcQKhLRXOpQS5kJ04PsYLvknfFM/lwTUAxctT9DbW8g9y
-	zJq2oKraoA7f7voZF1k93ss=
-X-Google-Smtp-Source: ABdhPJzzWQiVC0got288ftJWqQiWD/73k76R37dDmMJXbVkPBGxia+NG+sQ+w4+CPyIGw3df2sBagQ==
-X-Received: by 2002:a1f:b291:: with SMTP id b139mr15004627vkf.0.1607402825254;
-        Mon, 07 Dec 2020 20:47:05 -0800 (PST)
+        bh=HnuPH5SFySkUPXvZNUWny+qTOk1r3yomoRBhv+/2qa4=;
+        b=JwHe6OZLYiPrIKmSvvdGFptp0Cyu440mkhwf9bIPTQ57K1ZdxF89Ed199s4HMaYPMr
+         oXzuF+mtxH3NBojWkg0k/QTv8b5dDPPuJKeYIfcQ16WWooG+IiJ4piWttYN33+m54j8t
+         0+iwqBcpuas5uNCTg6VTyWvQ4+BS10Xn8guBb+mWwn+fQW5mbw3WSgzbSE4QXNCIzCmU
+         JomhJNGCREYhEk5XuUVBrIWTymGUC0EK/E08mnbeqzAUxlyfEDcMsuvCIvGaAb7aOC+H
+         WsAo7UbQYQ4RFsSajKbLNbwzmYPf7rvL1EY+GP37V0slMy2ITToJnBxlVkP4OmUdjJi9
+         77wQ==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM532BUlVV6NbudFsu5QpkgPKf+wm1aPQWPmK/LSpMk8B4EvaslWgr
+	GmyzSFuqNZCgelGAztk5igs=
+X-Google-Smtp-Source: ABdhPJxmg2xWZUvu1uP93T29/n9lUIuKs8RoBdD4BvATIUy2SfR8nPfOS4QqXXhOXYA6Uu58UhF46g==
+X-Received: by 2002:ac2:5545:: with SMTP id l5mr3198773lfk.294.1607629337168;
+        Thu, 10 Dec 2020 11:42:17 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a1f:e686:: with SMTP id d128ls1060222vkh.2.gmail; Mon, 07
- Dec 2020 20:47:04 -0800 (PST)
-X-Received: by 2002:a1f:304a:: with SMTP id w71mr15051736vkw.3.1607402824706;
-        Mon, 07 Dec 2020 20:47:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607402824; cv=none;
+Received: by 2002:a05:6512:10d4:: with SMTP id k20ls1979987lfg.3.gmail; Thu,
+ 10 Dec 2020 11:42:16 -0800 (PST)
+X-Received: by 2002:ac2:4886:: with SMTP id x6mr3160929lfc.76.1607629336020;
+        Thu, 10 Dec 2020 11:42:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607629336; cv=none;
         d=google.com; s=arc-20160816;
-        b=MXy0XhJW4RNrap6bhasMrzad45Yul8q0IlOgAkSPDQ6HG4+OVP8t1EOAl7hb/b6neY
-         hYMCK4i9iM8/6/iIJd4u3i6TwTn0cu1vosbJS+u75njYOD8dy2BDElTCRcFAXhy1lL3A
-         Z5rQbX/u/i6nRIS+TH51oETr804x0dZxYRbLfA48gVu34RLQaJU+8rM9CBDB33QWS+4M
-         omP6Og6l5rtbY93+s6KKQ0WuGR8/2ZMhhYBnyYKVgk0I/UpAO31BzXJyC6imXaKh4ig1
-         OLW/i07FR9MtbeDlKLu7eabDpkluqF4L0whWLggtKqrw/a5PkOjVHqdhCd3wfd58tBMH
-         38Gw==
+        b=JirntulgZBg3p2IjLNBmoCt8X2qaW/qJkJ+vtJOAF+h1t5rOkE+WlLgMny3Gb7Peo6
+         YRFgkmQhvNnkin/brKENJn7y0hwCgz7stCvffxK/fQrlpFk2wNfw3MFQf+aeuablZwLG
+         XbJDY/Y1YHRr8CM+JDxY2q4G4Q3nryJr9QoSRBApX0wQ8tH/d2pqRaY9tQxSAREO0Tt3
+         mjzothI3dAv071Rffg4TL2SkHEw+FPID5SkWamuCnZKcUFZ4mN3nDKNZ5+Jk22jp8YSs
+         LWZiXOm1UgKnd9XnMsMSOvtLYGzYMfeKVsCiINE8irmCWAkwO3xMdWFGB7+V3bWI+Gil
+         ZbcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=ab8TR71D8wvDMjyDs6nWrexGzGp6Fis30WChrKD0GJI=;
-        b=MYMAvL/hI2hycYPSlEDWMYONNLNER53aX2GJDTla2AMgUS6ajW0j3dl+sSI0k/NiVx
-         c43eMrAcTivzJXU1SdXHQIpqmqLr5Gw0oFdOVvwETKsL56SuT7UnzVFiOGLx5G8VK+8W
-         PtQp/r/7TWiLdzNHzTHhR0YWGUHU50u43XixVcyUwmtmvSW06HX60V33BSY+J+6LNg20
-         iLeneWFcl8+pFp5RJ5TuB9TYnCW9uvvnLqUPODtr5Veb+se6W5p8Hb88l5N/aaWzLTw1
-         J8FxckLzRwnF4gkSC8bXjLW7K+6rwGDc84G0yhUTtBukGh8JYHK8n5wZCmVZpH50EobK
-         jwxw==
+        h=content-transfer-encoding:mime-version:subject:cc:to:from:date
+         :dkim-signature:dkim-signature:message-id;
+        bh=dqmaBUU1aX3t41xhFMZZXhwmlvXhIHW8LZkxAL3qIuw=;
+        b=rJpW1dQXqleSsK/KkVQA+TE2/o0hIV1jmOk+lCpDQM2xr2GxtHeE5QxgEXY30RkvQM
+         nATFsX80MFKC+UOpS2PxSGg7ZxXypUQKqbzGPOhahDBM2pJOcwuFSaWIuf57/3+7QMNS
+         P1JWiu8ZA+Wl1qen4MSa9dcoVSE+KNElInzeGinD0nldmGT/c3+GKAlz7C2syZMEwUFt
+         UFi3vX2M6YAjTcMy6MM5U5IuxF+vd0yUAKG76g4475DV5rBPTuIS2goYSoO5Wm0WGI/Y
+         wnwjFx0Gpac5lDhb91DYQf9q87sWbHN+bnikNB/oEO8CSQ7o07qIFGa7COi4JTuIW2Sp
+         nlXg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=I1KcsdWf;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
-       dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id a16si1034430uas.1.2020.12.07.20.47.04
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b="h/TAwStA";
+       dkim=neutral (no key) header.i=@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
+        by gmr-mx.google.com with ESMTPS id y21si196543lfl.7.2020.12.10.11.42.15
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 07 Dec 2020 20:47:04 -0800 (PST)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 0B84kqxV039474;
-	Mon, 7 Dec 2020 22:46:52 -0600
-Received: from DLEE106.ent.ti.com (dlee106.ent.ti.com [157.170.170.36])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 0B84kqEQ098505
-	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 7 Dec 2020 22:46:52 -0600
-Received: from DLEE102.ent.ti.com (157.170.170.32) by DLEE106.ent.ti.com
- (157.170.170.36) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 7 Dec
- 2020 22:46:52 -0600
-Received: from lelv0326.itg.ti.com (10.180.67.84) by DLEE102.ent.ti.com
- (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Mon, 7 Dec 2020 22:46:52 -0600
-Received: from [10.250.235.36] (ileax41-snat.itg.ti.com [10.172.224.153])
-	by lelv0326.itg.ti.com (8.15.2/8.15.2) with ESMTP id 0B84kkoW053051;
-	Mon, 7 Dec 2020 22:46:47 -0600
-Subject: Re: [PATCH v8 16/18] NTB: tool: Enable the NTB/PCIe link on the local
- or remote side of bridge
-To: "Jiang, Dave" <dave.jiang@intel.com>, Bjorn Helgaas <bhelgaas@google.com>,
-        Jonathan Corbet <corbet@lwn.net>,
-        Lorenzo Pieralisi
-	<lorenzo.pieralisi@arm.com>,
-        Arnd Bergmann <arnd@arndb.de>, Jon Mason
-	<jdmason@kudzu.us>,
-        Allen Hubbe <allenbh@gmail.com>, Tom Joseph
-	<tjoseph@cadence.com>,
-        Rob Herring <robh@kernel.org>
-CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        "linux-pci@vger.kernel.org" <linux-pci@vger.kernel.org>,
-        "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>,
-        "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-        "linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>
-References: <20201111153559.19050-1-kishon@ti.com>
- <20201111153559.19050-17-kishon@ti.com>
- <f39cf769993541e2a46bfe4d777ccf46@intel.com>
-From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
-Message-ID: <6a493055-eef0-5722-e24b-449a11cf8a36@ti.com>
-Date: Tue, 8 Dec 2020 10:16:46 +0530
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Dec 2020 11:42:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
+Message-Id: <20201210192536.118432146@linutronix.de>
+Date: Thu, 10 Dec 2020 20:25:36 +0100
+From: Thomas Gleixner <tglx@linutronix.de>
+To: LKML <linux-kernel@vger.kernel.org>
+Cc: Peter Zijlstra <peterz@infradead.org>,
+ Marc Zyngier <maz@kernel.org>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Helge Deller <deller@gmx.de>,
+ afzal mohammed <afzal.mohd.ma@gmail.com>,
+ linux-parisc@vger.kernel.org,
+ Russell King <linux@armlinux.org.uk>,
+ linux-arm-kernel@lists.infradead.org,
+ Mark Rutland <mark.rutland@arm.com>,
+ Catalin Marinas <catalin.marinas@arm.com>,
+ Will Deacon <will@kernel.org>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Heiko Carstens <hca@linux.ibm.com>,
+ linux-s390@vger.kernel.org,
+ Jani Nikula <jani.nikula@linux.intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ David Airlie <airlied@linux.ie>,
+ Daniel Vetter <daniel@ffwll.ch>,
+ Pankaj Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>,
+ Chris Wilson <chris@chris-wilson.co.uk>,
+ Wambui Karuga <wambui.karugax@gmail.com>,
+ intel-gfx@lists.freedesktop.org,
+ dri-devel@lists.freedesktop.org,
+ Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+ Linus Walleij <linus.walleij@linaro.org>,
+ linux-gpio@vger.kernel.org,
+ Lee Jones <lee.jones@linaro.org>,
+ Jon Mason <jdmason@kudzu.us>,
+ Dave Jiang <dave.jiang@intel.com>,
+ Allen Hubbe <allenbh@gmail.com>,
+ linux-ntb@googlegroups.com,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+ Rob Herring <robh@kernel.org>,
+ Bjorn Helgaas <bhelgaas@google.com>,
+ Michal Simek <michal.simek@xilinx.com>,
+ linux-pci@vger.kernel.org,
+ Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+ Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+ Tariq Toukan <tariqt@nvidia.com>,
+ "David S. Miller" <davem@davemloft.net>,
+ Jakub Kicinski <kuba@kernel.org>,
+ netdev@vger.kernel.org,
+ linux-rdma@vger.kernel.org,
+ Saeed Mahameed <saeedm@nvidia.com>,
+ Leon Romanovsky <leon@kernel.org>,
+ Boris Ostrovsky <boris.ostrovsky@oracle.com>,
+ Juergen Gross <jgross@suse.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ xen-devel@lists.xenproject.org
+Subject: [patch 00/30] genirq: Treewide hunt for irq descriptor abuse and
+ assorted fixes
 MIME-Version: 1.0
-In-Reply-To: <f39cf769993541e2a46bfe4d777ccf46@intel.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-US
-X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
-X-Original-Sender: kishon@ti.com
+X-Original-Sender: tglx@linutronix.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=I1KcsdWf;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
- sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
- dis=NONE) header.from=ti.com
-X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
-Reply-To: Kishon Vijay Abraham I <kishon@ti.com>
+ header.i=@linutronix.de header.s=2020 header.b="h/TAwStA";       dkim=neutral
+ (no key) header.i=@linutronix.de;       spf=pass (google.com: domain of
+ tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender)
+ smtp.mailfrom=tglx@linutronix.de;       dmarc=pass (p=NONE sp=QUARANTINE
+ dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -164,53 +173,75 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hi Dave,
+A recent request to export kstat_irqs() pointed to a copy of the same in
+the i915 code, which made me look for further usage of irq descriptors in
+drivers.
 
-On 07/12/20 9:25 pm, Jiang, Dave wrote:
-> 
-> 
->> -----Original Message-----
->> From: Kishon Vijay Abraham I <kishon@ti.com>
->> Sent: Wednesday, November 11, 2020 8:36 AM
->> To: Bjorn Helgaas <bhelgaas@google.com>; Jonathan Corbet
->> <corbet@lwn.net>; Kishon Vijay Abraham I <kishon@ti.com>; Lorenzo
->> Pieralisi <lorenzo.pieralisi@arm.com>; Arnd Bergmann <arnd@arndb.de>;
->> Jon Mason <jdmason@kudzu.us>; Jiang, Dave <dave.jiang@intel.com>;
->> Allen Hubbe <allenbh@gmail.com>; Tom Joseph <tjoseph@cadence.com>;
->> Rob Herring <robh@kernel.org>
->> Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>; linux-
->> pci@vger.kernel.org; linux-doc@vger.kernel.org; linux-
->> kernel@vger.kernel.org; linux-ntb@googlegroups.com
->> Subject: [PATCH v8 16/18] NTB: tool: Enable the NTB/PCIe link on the local or
->> remote side of bridge
->>
->> Invoke ntb_link_enable() to enable the NTB/PCIe link on the local or remote
->> side of the bridge.
->>
->> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
->> ---
->>  drivers/ntb/test/ntb_tool.c | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/drivers/ntb/test/ntb_tool.c b/drivers/ntb/test/ntb_tool.c index
->> b7bf3f863d79..8230ced503e3 100644
->> --- a/drivers/ntb/test/ntb_tool.c
->> +++ b/drivers/ntb/test/ntb_tool.c
->> @@ -1638,6 +1638,7 @@ static int tool_probe(struct ntb_client *self, struct
->> ntb_dev *ntb)
->>
->>  	tool_setup_dbgfs(tc);
->>
->> +	ntb_link_enable(ntb, NTB_SPEED_AUTO, NTB_WIDTH_AUTO);
-> 
-> The tool expects the user to enable the link via debugfs according to documentation. Is this necessary?
+The usage in drivers ranges from creative to broken in all colours.
 
-right, it can be enabled using debugfs. Will drop this patch.
+irqdesc.h clearly says that this is core functionality and the fact C does
+not allow full encapsulation is not a justification to fiddle with it just
+because. It took us a lot of effort to make the core functionality provide
+what drivers need.
 
-Thank You,
-Kishon
+If there is a shortcoming, it's not asked too much to talk to the relevant
+maintainers instead of going off and fiddling with the guts of interrupt
+descriptors and often enough without understanding lifetime and locking
+rules.
+
+As people insist on not respecting boundaries, this series cleans up the
+(ab)use and at the end removes the export of irq_to_desc() to make it at
+least harder. All legitimate users of this are built in.
+
+While at it I stumbled over some other oddities related to interrupt
+counting and cleaned them up as well.
+
+The series applies on top of
+
+   git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip.git irq/core
+
+and is also available from git:
+
+  git://git.kernel.org/pub/scm/linux/kernel/git/tglx/devel.git genirq
+
+Thanks,
+
+	tglx
+---
+ arch/alpha/kernel/sys_jensen.c                       |    2 
+ arch/arm/kernel/smp.c                                |    2 
+ arch/parisc/kernel/irq.c                             |    7 
+ arch/s390/kernel/irq.c                               |    2 
+ arch/x86/kernel/topology.c                           |    1 
+ arch/arm64/kernel/smp.c                              |    2 
+ drivers/gpu/drm/i915/display/intel_lpe_audio.c       |    4 
+ drivers/gpu/drm/i915/i915_irq.c                      |   34 +++
+ drivers/gpu/drm/i915/i915_pmu.c                      |   18 -
+ drivers/gpu/drm/i915/i915_pmu.h                      |    8 
+ drivers/mfd/ab8500-debugfs.c                         |   16 -
+ drivers/net/ethernet/mellanox/mlx4/en_cq.c           |    8 
+ drivers/net/ethernet/mellanox/mlx4/en_rx.c           |    6 
+ drivers/net/ethernet/mellanox/mlx4/mlx4_en.h         |    3 
+ drivers/net/ethernet/mellanox/mlx5/core/en.h         |    2 
+ drivers/net/ethernet/mellanox/mlx5/core/en_main.c    |    2 
+ drivers/net/ethernet/mellanox/mlx5/core/en_txrx.c    |    6 
+ drivers/ntb/msi.c                                    |    4 
+ drivers/pci/controller/mobiveil/pcie-mobiveil-host.c |    8 
+ drivers/pci/controller/pcie-xilinx-nwl.c             |    8 
+ drivers/pinctrl/nomadik/pinctrl-nomadik.c            |    3 
+ drivers/xen/events/events_base.c                     |  172 +++++++++++--------
+ drivers/xen/evtchn.c                                 |   34 ---
+ include/linux/interrupt.h                            |    1 
+ include/linux/irq.h                                  |    7 
+ include/linux/irqdesc.h                              |   40 +---
+ include/linux/kernel_stat.h                          |    1 
+ kernel/irq/irqdesc.c                                 |   42 ++--
+ kernel/irq/manage.c                                  |   37 ++++
+ kernel/irq/proc.c                                    |    5 
+ 30 files changed, 263 insertions(+), 222 deletions(-)
+
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/6a493055-eef0-5722-e24b-449a11cf8a36%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20201210192536.118432146%40linutronix.de.
