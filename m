@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBDGNZTVZVAFRBJGPZL7AKGQEGZ5PRMI@googlegroups.com>
+Return-Path: <linux-ntb+bncBDGNZTVZVAFRBROPZL7AKGQELWWIQ6Q@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53e.google.com (mail-pg1-x53e.google.com [IPv6:2607:f8b0:4864:20::53e])
-	by mail.lfdr.de (Postfix) with ESMTPS id D821F2D6AD4
-	for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 23:56:37 +0100 (CET)
-Received: by mail-pg1-x53e.google.com with SMTP id q4sf5057387pgn.0
-        for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 14:56:37 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607640996; cv=pass;
+Received: from mail-pl1-x637.google.com (mail-pl1-x637.google.com [IPv6:2607:f8b0:4864:20::637])
+	by mail.lfdr.de (Postfix) with ESMTPS id 2759A2D6AD8
+	for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 23:57:11 +0100 (CET)
+Received: by mail-pl1-x637.google.com with SMTP id 1sf4191423plb.4
+        for <lists+linux-ntb@lfdr.de>; Thu, 10 Dec 2020 14:57:11 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607641030; cv=pass;
         d=google.com; s=arc-20160816;
-        b=HIH800CjtWHvuYxlHm8cuUdR2SxJcA+8eC2hLKT9CdoxDAp5QCmPL8ad5UCAmKLbiI
-         CvkKYLzz1cM7MhL9PhybWI5N+LPFK20ruE5DtxLSZ8JGU3QcIOoCErj3LIM+97qxuYx3
-         HoV5zHDpjmzxCZuguR4LIbwD9nin+8rR/c2CfdZ30TAor+8CZ/YUOpzlEWN7Y40V0s6K
-         xOZy49UjYcjw9gi0JmtZp7NkfrdaLL/cYXXSSc/txf+7vHEeG/VTH+EGW5l1xtKVqvO/
-         xVtxQBkEHzve/yTV10XTdTIufd0gPkDR2t19HAJG+6BBMtR5gEqMp1F0a/ChmzqVANNL
-         x03A==
+        b=ZOfSZLP34RVhuRmwVnFs+wSF81z0IsPoeBDh/pmwDPA3f3jVnYNVZL6xUJHDOu5PUg
+         uNmUcNiXKDhJwrEpiEEJznZH3se2dwfon+4NLcru2mFGAAfKKMKNsk6sEQwfMESynnsY
+         oy2eLaQSM2paG78g6OsS3cmcBcC+UKp9NP/epIQ68LnmUAYR5n7uVFVlMv1eMU6MuTr8
+         VSc57fzFsZdvyw99AJnW7/4IqRylYW5m7LgDhW4mQtd/YD8G+5D7LOil1ePH/I0/Pivo
+         zRI6ZYe3Rv4ji8BVz3EilBkz4Z9r7kkLarpYkRbkM0MdMEhiWpYUDXSBtoh1DoVaUvcf
+         /DjA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:sender:dkim-signature;
-        bh=u0Ubye0sMIR68pjdFtf2X3xdfxICRDWYclJB0H5KeaQ=;
-        b=NII3jTkVdtSJXlwo5u4bpAwWdclpEo2Tq4oWUxC6YZaL5y6MbzCgtqwOcwdmecRpju
-         WdUpjcdCLUTXLxXS1lEoEtBs4CdJN5P2hxsJsHDYcqGmkxeMJEiCE1pwfo7LCwr5r39x
-         MzDdYBg/apb5F1a5ECo+N0lCquv12tOn6kUDTlFlXpR+z4I67EVzlNdkSK/NS3IMC7gD
-         /vFF2yDVbnvVFnviXR2m87j1Idnbf7PKcZcx+hhT0HG0qGO1WmhGZIc4eRtpkFzC7i7/
-         dS6EZvHqxUQxHf4ducDqGKUNm9/EksHlgFSdAhxNGRTp5YGO5oI4EkvMHxDQE/L3SGoR
-         m7Mw==
+        bh=bvcXBnZrbUZNHebczUv6vVkxa9ZvsnJyZnzPlDSv1JU=;
+        b=aslPIRTCPGc4UUKA0HWlusE+THX8D0mjJjmnhQ+f3Z5Gn7c1xaHR07yYj4BqeAXEuf
+         vugWW3MBirTovDIT00I23lurlF4TqYWXMFk9mGfXohd6XDrvJLLETXpnVXCdci7lt/eu
+         u9C9Kc1KPeNVWwZ62MfpKGWrdTcde6NSEHVWK0rbFc1k9rK4eRfhkLM0mya0LZNJfI4h
+         +IxLb4tUssoysct5F9zK1nC0+pxH6jhSssC0EbPWfV+tnlTsJCd1eqKYWocZC2wCqMPk
+         kRBJ1Ee/5okhBEw45P2I5cnKPaQ2/O+rT583AIo+lcSjiR+BzkO1BfWio70d7TcSDlra
+         13vA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DkCyyeuv;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=NX100t6g;
        spf=pass (google.com: domain of robh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=robh@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :subject:to:cc:x-original-sender:x-original-authentication-results
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=u0Ubye0sMIR68pjdFtf2X3xdfxICRDWYclJB0H5KeaQ=;
-        b=pD4FCAHRCbv8nW/vjukLrA/LsVrzug01/sxeON/qEwo2d3iGxV+w2FURbfW01dusWQ
-         tNkZe8SWqtMhdK6p4W6BUXPozMZa6HsasN4FX8qVthSZ1B00NaNNNOabZEOJFmeUHNRU
-         z2VdtmIah4x2GaSbw/8CCb5qA8V60OdfsPcfgCPWkW4bZu50t/2RudL9YDYlO2/596YC
-         lpV+l2Zxt5NNuv/8igGJ3LlYCZ0OwfIN6susR8Q8Wfzu/HVEH3a7JyZBhwmkplF1ziE5
-         hvDwDnvxhPU9Jsahy5zbYSz4ILQ7hpCCr8H+vNkIUGnLbhRyRWluyjYfAr44UFFiDh3a
-         A1xg==
+        bh=bvcXBnZrbUZNHebczUv6vVkxa9ZvsnJyZnzPlDSv1JU=;
+        b=J5maEtVgI8ctYpm2kK2HcAuy8UcBvwti+h9kngGlHUDV9kozz+xMR9qQ0xNo6izeAu
+         JBexXYYVdcfhysvo9eZdoQORJkcJMsu4uIgg9gPiRCexoWivZpvL/BdX99Q3cpYbz8Jl
+         Nolff05tC9ISS2I7wGXd0zVqjDb367yScOTkL3hg6Oa0CF+8sofRKvD0s2bBy5atAiQQ
+         g0KSAEEX7AYw9BIQYvjiUBPefvV+0U3WG7yiXftUUzW1t6b7URyq0B8+7c2qMNEILPoJ
+         9NrIwr5pfxOlNNSnH9ZQ545OJSfPxKi2WWkuINO4F7MvGycbLKHJ5/GYkdpEtiekdJY9
+         DDpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
@@ -49,71 +49,71 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=u0Ubye0sMIR68pjdFtf2X3xdfxICRDWYclJB0H5KeaQ=;
-        b=R51X1EYJNY2HfyrFoSFEInGHF9+qiAhD1k7N4zwtuNdBh9ZhmaniygWEtfb4o5JE90
-         vx29X0FrGRK26Bj+m8NE2jqORdTX7SktkjG2rIwx7YBiuSaEdcf4np+YSrCJjzYhN2pd
-         Ic7+6P4/3iuIU4bkfgazpKV7gTVx3jEmCV7AYEYPp6vvM5I0FWCOIE3JROlra9QR1WH5
-         e8o/t3UoVF1a2Yphp4bhks7PqqcXFOY/4b88d0IEmfDMTE0hh0td9IJ9bA/8jblPQMdD
-         sfuU9BZ+o6upufb4kztMeanZgU5ou6tI/WtxL3kEbHHRpz+2K/jGA1yvaCWE2P7ZLBmR
-         qCNA==
+        bh=bvcXBnZrbUZNHebczUv6vVkxa9ZvsnJyZnzPlDSv1JU=;
+        b=Nr7iHn+c2BZtTnkrkqQ8w1uimXQFv8D01gRRKRfpUEFboAksRMz8VtpIZuVJYIcwpd
+         owqll0RkT1CS5Z+spPRq2q6b9hkfHDj7N1ZWCYaSPX45RtNUvHHjWvZ1b6ltnOJGYVQm
+         +kGmL/4cyo7U0kqwT8wg4JHpNiVBJqp/mCHD9+CpO2IOQ91RkukuSsqXp+jR/KzNzAP4
+         nhhDBbqR/kmnVG+lksPRNQrQieNjdy6jobBWH/KdZKQ+xxmKfI42CeNwmTtNWPie0uxN
+         vOGfG3OVfxD/O4EaHbMdxslRds/DTpBccDm/UPVz/hZyixYkuiXqxtEcd9x2KsCEOnnj
+         MtVg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532Wm7W/Hr9HdogcljDDOXATO21RHhJ0wl/x8MK4qbP6nvxsJAKJ
-	pMMba+118SaEZUBgQuuqmxg=
-X-Google-Smtp-Source: ABdhPJwuRNLMGMAY2jqTxgcidenn2A9MiUVQlmRPr5lEPJZIn+kTeDFwOUm/9andnn93chQ3xcmsBg==
-X-Received: by 2002:a63:4703:: with SMTP id u3mr8760050pga.199.1607640996582;
-        Thu, 10 Dec 2020 14:56:36 -0800 (PST)
+X-Gm-Message-State: AOAM532TSws7phNy272QLFDxd08U7/td5/nciyVG+iyAH/GDdqDj8+tc
+	15wk8Ck78AdPg4FEoLph0fE=
+X-Google-Smtp-Source: ABdhPJzsXnDmCvE/CU1jn0vI0SEhA/GM3Hhk2sR3d4aR8VFX+83MjESwhV9GwXuYlA4BEMYK80Q2gg==
+X-Received: by 2002:a62:c104:0:b029:19d:d9f1:ac17 with SMTP id i4-20020a62c1040000b029019dd9f1ac17mr8713589pfg.63.1607641029897;
+        Thu, 10 Dec 2020 14:57:09 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:90a:b893:: with SMTP id o19ls3793210pjr.2.canary-gmail;
- Thu, 10 Dec 2020 14:56:36 -0800 (PST)
-X-Received: by 2002:a17:902:ee02:b029:db:c0d6:57f9 with SMTP id z2-20020a170902ee02b02900dbc0d657f9mr8600478plb.65.1607640995967;
-        Thu, 10 Dec 2020 14:56:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607640995; cv=none;
+Received: by 2002:a63:e54c:: with SMTP id z12ls2585538pgj.8.gmail; Thu, 10 Dec
+ 2020 14:57:09 -0800 (PST)
+X-Received: by 2002:a63:d741:: with SMTP id w1mr8572533pgi.131.1607641029263;
+        Thu, 10 Dec 2020 14:57:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607641029; cv=none;
         d=google.com; s=arc-20160816;
-        b=OgzJQhUfU7vBTtdgH5BpyPVIaKZwnk0jH4KLXZ0DvaNY/JmyeMmy2gSVaxi6RL97WO
-         pXMfcutTa35BKl4D+R0m4xjcIlmzuFGh8ai+KGUgLRqcxq2bMdn+3TE515ONEPNrirpu
-         uAhVxTlt/yXQlWJHtiZ1HuoAKMHkeZ6xsU2353UzPqrvhSWkmvAFGuVrt3txirnLEUCy
-         3A2AiXDlEUSMnfy9JhrLZXeNImB2LwZ2gaC99nr/CV+iOn9eKn9u/u9RXgRW1NkCjJKL
-         8iCDhEEs486WPhrB9opYNbOYZb+EaW3W2FwsDRpqJULo1D3mRQiQlWpRoK71LN4VZIJl
-         gVGg==
+        b=dFJdLqox4Kcy4jFlF9jDh4wiAF5REgXqCCQOnq+juIZWnXI/QX9Mr9nAiM9NQ9306w
+         0lPaZm/A/9Zqz2JmsxhnLUjPwOJ2ZEiWIYYSTXWCuPVwP9LVnzMXPqwdi4XZeL/rLYJO
+         opyCZnB+Wcd7BXKwuZVGYS3M17H5+C7dz43YU68I+0jSsSR3NeipVdi3mmTDW0IFLMMC
+         y5/Y1DDlf996IMI+2fKHuwFTEiq6+gvD4iH5mG2dVCtlrQtHjMZ6QupoHh470Bt4LQbg
+         PiDJg++UTcfDgzX0p/kLSmq7uXlyFI6gBJ0hzW8K+0waYvV7/QwQ0LKpwfKCNhweqgZ2
+         J7aw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=wzTThlXCSP3dYDIovaZhZsUysqjhot3Sl5lF7hf9xhE=;
-        b=AVr4cw5BFNoTi2z0L19hNJ1GLr9X+do8McZqBylvfFdZNPKG9lswPfnZg2pYB+rfNH
-         qIXzwGFjT/g+BFssxG1k5fLuiUdmQB/WwoKCtsZ9r9pwzR04zBx24VcSqTYTAoj8ry2Q
-         ADnlvD8c0FgoIeTTvmASoxNlLxSkhFUaZXrqq998rp7YRLgFndt9Wvvbh8miL96lkuyH
-         Hr6A54YFoMZbcJStt82m63gJVQATLR7mS8z1zIUOfFJekPJew1X7IST0zDlYi3IECfDF
-         NrtkVIIoPWQMD2uoKtyNwn7lDPDYPKt9XofX+cu1J4MmHaD7yMiaSIlOwAGVxXIDtbMM
-         ZVCg==
+        bh=Fo1MdpkvL7LqXSPZ6fGxErpfcynv4Okc+KhrOy3Fwdc=;
+        b=XvMy8YA/soWrfTEuqlJptAvjBUWEEF2+4AvL/qeTd8Gmo8bCRFQG1S2RkzAZulX8ST
+         VRVb6tc7A9k0dldfVTbyMZROOvEH9fZu4MUCbxjo1gIuTPxLgdu37erNIrZUhFu6xN6F
+         rzKypLoTW7i+a25m44UL8a/Orn0L4HwgkbgcsF8FBWc8LX7SeyAQFYNZ/OxhDSkLY8lu
+         O41cukHi3H9QhQow6R7iAySYGnMAFqiOwDYFpbCjfGwnjD6mq0dfSUJ3Pk88whcMoRuf
+         CLffz0ALt/YuM33DjperVkasY9TMy8lqcXotJSDb0RLJSM61wg5A7cXfN7HIt8jk9UGx
+         HtlA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=DkCyyeuv;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=NX100t6g;
        spf=pass (google.com: domain of robh@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=robh@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id mt17si493155pjb.0.2020.12.10.14.56.35
+        by gmr-mx.google.com with ESMTPS id f204si391883pfa.5.2020.12.10.14.57.09
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Dec 2020 14:56:35 -0800 (PST)
+        Thu, 10 Dec 2020 14:57:09 -0800 (PST)
 Received-SPF: pass (google.com: domain of robh@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-X-Received: by 2002:a17:906:d784:: with SMTP id pj4mr8261525ejb.360.1607640993261;
- Thu, 10 Dec 2020 14:56:33 -0800 (PST)
+X-Received: by 2002:a17:906:c20f:: with SMTP id d15mr8477099ejz.341.1607641026526;
+ Thu, 10 Dec 2020 14:57:06 -0800 (PST)
 MIME-Version: 1.0
-References: <20201210192536.118432146@linutronix.de> <20201210194044.364211860@linutronix.de>
-In-Reply-To: <20201210194044.364211860@linutronix.de>
+References: <20201210192536.118432146@linutronix.de> <20201210194044.473308721@linutronix.de>
+In-Reply-To: <20201210194044.473308721@linutronix.de>
 From: Rob Herring <robh@kernel.org>
-Date: Thu, 10 Dec 2020 16:56:21 -0600
-X-Gmail-Original-Message-ID: <CAL_JsqKCGkyk9whiGQ0hPyWjSYXnC-TSbot85k7=bwVd0rwC=A@mail.gmail.com>
-Message-ID: <CAL_JsqKCGkyk9whiGQ0hPyWjSYXnC-TSbot85k7=bwVd0rwC=A@mail.gmail.com>
-Subject: Re: [patch 18/30] PCI: xilinx-nwl: Use irq_data_get_irq_chip_data()
+Date: Thu, 10 Dec 2020 16:56:55 -0600
+X-Gmail-Original-Message-ID: <CAL_JsqK4bVyqyT9ip9A5P7gQQwDt1HMksjkCe6bwHrBCGrZYug@mail.gmail.com>
+Message-ID: <CAL_JsqK4bVyqyT9ip9A5P7gQQwDt1HMksjkCe6bwHrBCGrZYug@mail.gmail.com>
+Subject: Re: [patch 19/30] PCI: mobiveil: Use irq_data_get_irq_chip_data()
 To: Thomas Gleixner <tglx@linutronix.de>
 Cc: LKML <linux-kernel@vger.kernel.org>, Peter Zijlstra <peterz@infradead.org>, 
-	Marc Zyngier <maz@kernel.org>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Michal Simek <michal.simek@xilinx.com>, 
-	PCI <linux-pci@vger.kernel.org>, 
-	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
+	Marc Zyngier <maz@kernel.org>, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, 
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
+	Bjorn Helgaas <bhelgaas@google.com>, PCI <linux-pci@vger.kernel.org>, 
 	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, Helge Deller <deller@gmx.de>, 
 	afzal mohammed <afzal.mohd.ma@gmail.com>, linux-parisc@vger.kernel.org, 
-	Russell King <linux@armlinux.org.uk>, Mark Rutland <mark.rutland@arm.com>, 
+	Russell King <linux@armlinux.org.uk>, 
+	linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, Mark Rutland <mark.rutland@arm.com>, 
 	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
 	Christian Borntraeger <borntraeger@de.ibm.com>, Heiko Carstens <hca@linux.ibm.com>, linux-s390@vger.kernel.org, 
 	Jani Nikula <jani.nikula@linux.intel.com>, 
@@ -126,16 +126,16 @@ Cc: LKML <linux-kernel@vger.kernel.org>, Peter Zijlstra <peterz@infradead.org>,
 	Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, 
 	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Lee Jones <lee.jones@linaro.org>, 
 	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>, 
-	linux-ntb@googlegroups.com, Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, 
-	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Tariq Toukan <tariqt@nvidia.com>, 
-	"David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, netdev <netdev@vger.kernel.org>, 
-	linux-rdma@vger.kernel.org, Saeed Mahameed <saeedm@nvidia.com>, 
-	Leon Romanovsky <leon@kernel.org>, Boris Ostrovsky <boris.ostrovsky@oracle.com>, 
-	Juergen Gross <jgross@suse.com>, Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org
+	linux-ntb@googlegroups.com, Michal Simek <michal.simek@xilinx.com>, 
+	Tariq Toukan <tariqt@nvidia.com>, "David S. Miller" <davem@davemloft.net>, 
+	Jakub Kicinski <kuba@kernel.org>, netdev <netdev@vger.kernel.org>, linux-rdma@vger.kernel.org, 
+	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, 
+	Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>, 
+	Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org
 Content-Type: text/plain; charset="UTF-8"
 X-Original-Sender: robh@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=k20201202 header.b=DkCyyeuv;       spf=pass
+ header.i=@kernel.org header.s=k20201202 header.b=NX100t6g;       spf=pass
  (google.com: domain of robh@kernel.org designates 198.145.29.99 as permitted
  sender) smtp.mailfrom=robh@kernel.org;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=kernel.org
@@ -163,14 +163,14 @@ On Thu, Dec 10, 2020 at 1:42 PM Thomas Gleixner <tglx@linutronix.de> wrote:
 > doesn't make it more correct.
 >
 > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Cc: Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>
+> Cc: Hou Zhiqiang <Zhiqiang.Hou@nxp.com>
 > Cc: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
 > Cc: Rob Herring <robh@kernel.org>
 > Cc: Bjorn Helgaas <bhelgaas@google.com>
-> Cc: Michal Simek <michal.simek@xilinx.com>
 > Cc: linux-pci@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
 > ---
->  drivers/pci/controller/pcie-xilinx-nwl.c |    8 ++------
+>  drivers/pci/controller/mobiveil/pcie-mobiveil-host.c |    8 ++------
 >  1 file changed, 2 insertions(+), 6 deletions(-)
 
 Reviewed-by: Rob Herring <robh@kernel.org>
@@ -178,4 +178,4 @@ Reviewed-by: Rob Herring <robh@kernel.org>
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAL_JsqKCGkyk9whiGQ0hPyWjSYXnC-TSbot85k7%3DbwVd0rwC%3DA%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAL_JsqK4bVyqyT9ip9A5P7gQQwDt1HMksjkCe6bwHrBCGrZYug%40mail.gmail.com.
