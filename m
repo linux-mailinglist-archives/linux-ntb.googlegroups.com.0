@@ -1,155 +1,171 @@
-Return-Path: <linux-ntb+bncBCS5BWNH3ENRBUEDZX7AKGQE55C5ORQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDA7X7F2WUEBBOMIZX7AKGQEMYNGL5I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53c.google.com (mail-pg1-x53c.google.com [IPv6:2607:f8b0:4864:20::53c])
-	by mail.lfdr.de (Postfix) with ESMTPS id D126D2D7323
-	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 10:54:25 +0100 (CET)
-Received: by mail-pg1-x53c.google.com with SMTP id b35sf6156506pgl.8
-        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 01:54:25 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607680464; cv=pass;
+Received: from mail-wm1-x337.google.com (mail-wm1-x337.google.com [IPv6:2a00:1450:4864:20::337])
+	by mail.lfdr.de (Postfix) with ESMTPS id 13A552D734A
+	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 11:04:42 +0100 (CET)
+Received: by mail-wm1-x337.google.com with SMTP id l5sf1560158wmi.4
+        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 02:04:42 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607681081; cv=pass;
         d=google.com; s=arc-20160816;
-        b=jVvBHaYvRQaq7mkgrIaSH1UVi2hNGvwq+IiQcYUhwA71NRMe7IA/yRc9zxmuFaqnna
-         GgFP1eCOJjnP5urFvpz74ewVnE6aqW6/AAnBfxEqDmcda4Xw+6Ov+H11oQHWhahLQdqa
-         3omEFvYrO4SD9lGGI8O3sGL/kmU21k4CWel1c5Cn4Hzd4CFxntsneJbOKM/sIJ/VQbhs
-         aY6CusoiBYeFSt36ufxnnk3WJzMkbSUagHgPsdlTsAcf4UNx++KAN5IqSMIb24/v2lmU
-         wPDwkGiwq59wiCAYdW7/I8M0uTmWIJJ4vtNN7lykgufDtKtl6gjNXzPT7Ty+wSAwjPCY
-         Lh0g==
+        b=IcCn+agy+NvOiJn/fdEjQviz5TRLYJH4lf46pBH49NGrTeuvvEFm3yZPPlRlQdePLQ
+         QxlHX/dfULDXhu6UPzb8ZCtaMtEyEjzw6L2MW039NmCVjj9UwwoOoxfqYN+E7SDOWKsu
+         5Su8Fjb03byXVWDrlGeU6JQeTo2h4swNAKwv8aTiZ2auIy1I3w3OYy3FvQ/u1rL0fqy7
+         F+DqYkLrH+jRVo/TSQiXue5/kPbZ1nZeHiTi2NdgAk7Ptxhm/azwYEPaIn87Wrvlhoid
+         kNIR7JTXK7m0VZrYe1HQvUf1YXreMduxT40duKQdvWTGc+BW0tGR0vFMxBBKD9HfdZyr
+         Mr1w==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :references:organization:in-reply-to:subject:cc:to:from:ironport-sdr
-         :ironport-sdr:sender:dkim-signature;
-        bh=SVeYffuTkPlP4XX3z4xVvC8XBF+AzNqRnqZtDZfzxZo=;
-        b=ii1C1M8xtQJJDdAdMkZsQGXMErBY5AQvELnZY7n6hO8ImJnIv8LCMVo/wv7uClJJ+8
-         Yn1VdguhJx4jDWhVHHvlunGIBkckN+av8LSPDwDmBFb+Ldwvlg4Uiodbzjr8vZXk0nAS
-         zGhK2LkGTgm7YYGcaH2mcHs9bvsNYAqU/yFJ+ycC8YvoW9rwgcBok1Zms96dRTWkFZYY
-         N/sldS2shatV8b60DcVBg+Fwz1tHBPj2jwqvMyA+belYt2wpUpdfJ6NPnID+acdT994R
-         KLqsq5BAUSmG8eoCd5UOu8GGIhpjCQEu0lXSovqztlO/qsGEV/9xpEECn6NTDm/mzKEW
-         uYbA==
+         :list-id:mailing-list:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:dkim-signature;
+        bh=fTn2bje3o7aZfIORWoL4miyrPB03oCctJL/fOA0MRb4=;
+        b=LVtLFPrgjpyU68EgqBgx1aC4UNg/2V2pcrcknx8kRBfyBfE0c+w6jejs0FmDIzwBIs
+         eGssjnyGTWhP290itqA/ZzNJJWAqnSt/t0FrtN5zCZ9v51M6x6w0YDFxtkd8xWsOz8ZN
+         IPAQIncw/bFSS/Txt8n4c+XRGxtFcZMOWbHh3gXRjPyAgPjlFEWiYBZjP3owbpJLG0UK
+         624vU1LZKZaPLlwuABnNqyQj6mhcQTAZqThi+QS66GsN6ggMJskD19PF/zv5PF1PHXGl
+         +um/OQMLEXo1r+FCcTuDhvBKhCzWQGiDPH1zfAYh+KvOg2Wv6YOCjBr5vTdFz4g/bYx1
+         IDug==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=jani.nikula@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=QxFc8GC7;
+       spf=pass (google.com: domain of lee.jones@linaro.org designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lee.jones@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:ironport-sdr:ironport-sdr:from:to:cc:subject:in-reply-to
-         :organization:references:date:message-id:mime-version
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:content-transfer-encoding:in-reply-to
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=SVeYffuTkPlP4XX3z4xVvC8XBF+AzNqRnqZtDZfzxZo=;
-        b=ntl1muyZQdtzsIScp9JzSkZVhqvoDazPx21W3DMRJMfTbGvdLGONjorKIdAvL+Eujh
-         MkcmAaMzgiyx0Eb5rLMqZjgf67DCtgur2kDjwnXQS8HMSrFrptPGg58ZDrdqbIB7xtM4
-         1QXyos9/ULAkPd88/1gOIROtt5SAXvvufgcJf3auHL31vKQwZY+hDgOA3+IlvbFwfVI3
-         xvXmZHouhTKNwBCv6Qh4x4pz0w932Rgf7F8ik/b0FFzdl3pdPu+dxw6MhnC4GcO0l1mf
-         89fbAVelwD48x4b9wOjPfCFhvasqgJoI+K7rTwS8N6TFNKAYETGEdgVl6DmE0sm6yfg3
-         IIYw==
+        bh=fTn2bje3o7aZfIORWoL4miyrPB03oCctJL/fOA0MRb4=;
+        b=Z2oJ3osQzFG/Bc6YbwLwVgvd+hWWPdJjPwSsm5ciRhUMT7lVn8ML6+VKMN538ras5A
+         aFx2CTX4NNW836ato7d6Yu08WLF5IEjWO2Qm/kf3y0yy/yY7sUAzRpI0Ea5FeE7ptLa5
+         nhh5Nz2Lcmj4Kyk717OLvV9IF6wc6H89IXyAYNwuw7f9+7rMHulkTpaTsfQBu1rEj3Jr
+         QngDc83PgggvV+rYmN1SIrnjBn910vyLQInLGhcfhO5xa7Yco361C0oG4KA/QkcdtvTB
+         ouI29VmAn1w4GbvbmIShKZTNOjD5TCv7CkcAboXrJDEPMJQEsJP5kWOa+MhP63rQTdSP
+         q4mg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:from:to:cc
-         :subject:in-reply-to:organization:references:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=SVeYffuTkPlP4XX3z4xVvC8XBF+AzNqRnqZtDZfzxZo=;
-        b=bQdmV4Yd8UHi2qlvbfCnSvzOXc59zJu1vyDah9xhHsN6FRYGZ3224wG7HEnEBnKtat
-         HD0CGRMNvs4nATfC4FQ6eLjfaKmz1PU/76fdW1OtBwZKOVZ2hgMgi8APZj6jgoMJggqG
-         7hFT0pI3GiSZ3T5mHOgjfPK+3M7FliN4aqBXEoKLez06HL4F2UtODegRwzlfSzea0cIN
-         XraCpXfm5OxABxhgT9Vxos9MaFdGVOhxUHYXv0wn5R/zqUyq6DM+ojxnWLgFjM4grAeU
-         bY8A8qRsp7dCptC75Vqq0E2kns4iNcfcLv8Kbu0tcYS+R0u12WSuqMmFGSmHTLLIL2CD
-         BFzQ==
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition
+         :content-transfer-encoding:in-reply-to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=fTn2bje3o7aZfIORWoL4miyrPB03oCctJL/fOA0MRb4=;
+        b=LKr9M4t1Yjzo8e9Cs6AS3G98n7+cUzmmsT/Mn38TGegbg41Hp6KBKoZnBRYiklx9MU
+         H/h8WxEb3JyJgfF0r4V67I/BbhperjOu3pnVvyGO7/QvgISSH7Fhgv4boNNKrZ7xf6gd
+         fO9Ba2q4iqn0MkMN35tiHtsUH05n3dHE4J9Sea+KaTnhCU9kTHf1UeXXSP6yxF4C3NFT
+         n5ns0gH3IXmqL/Zn+wL5TndffL5yNIOhrrKFsknuMBuiXY1UHoTFNVOo4+JvV5VtB/Cl
+         IYOv9lty9B7WXVh1C/9l6dOJDp+PLuTCKMUOA8wkboYYYye36Ui+/+SQexlLX+UiZipt
+         LYIg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530HAbWcWVI6JBIESJvpJq5GEtAqzdgZ1+ZPQn5+NKM8bkJ/drdo
-	D48rcpG7Q1Bs/hV+Skqgl78=
-X-Google-Smtp-Source: ABdhPJyDMvf8KovVXfEeN8DRrq4P4DSCnML7QY6F3Zdb2h0dnthXKfj+AHfDfRwVzPrkDjOFt3J9DQ==
-X-Received: by 2002:a63:7943:: with SMTP id u64mr10846401pgc.139.1607680464536;
-        Fri, 11 Dec 2020 01:54:24 -0800 (PST)
+X-Gm-Message-State: AOAM530MMIjcwm6XNODCoCDXR9fXXWKLG9kml/aFCp6BUM59YUaPAoWH
+	eEr+aHdPDUVxW4oiYZEmo+I=
+X-Google-Smtp-Source: ABdhPJy++EHgwKA8uhRk6rWmxuEQk/o7Et/zYCWy12NQIdTE+aguq6aCjSWLg+78/wZuQQ4fNvqoVQ==
+X-Received: by 2002:a7b:c841:: with SMTP id c1mr13122449wml.31.1607681081780;
+        Fri, 11 Dec 2020 02:04:41 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:7583:: with SMTP id j3ls3883592pll.0.gmail; Fri, 11
- Dec 2020 01:54:24 -0800 (PST)
-X-Received: by 2002:a17:902:bf44:b029:da:d140:6f91 with SMTP id u4-20020a170902bf44b02900dad1406f91mr10478386pls.51.1607680463924;
-        Fri, 11 Dec 2020 01:54:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607680463; cv=none;
+Received: by 2002:a5d:66c5:: with SMTP id k5ls2625633wrw.3.gmail; Fri, 11 Dec
+ 2020 02:04:40 -0800 (PST)
+X-Received: by 2002:adf:a4cc:: with SMTP id h12mr10724560wrb.391.1607681080948;
+        Fri, 11 Dec 2020 02:04:40 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607681080; cv=none;
         d=google.com; s=arc-20160816;
-        b=ND9B9kbEIEwOfb4Yv1TxGlfCS/QYAi+rzRCtold/oiFW+Kmdqj4gpzXNtE3t1MdX9Q
-         uk3NtljRqUid07KXjhj5By5r3x8WM2BjIwFPww7hJ1cv49Z328PXMDqs36omqIb4anbd
-         r9hwuasBRBYa750TbYLFwOTWPx4j4kkwz1PEEZHn2v/QdmKzqbi+1ez+UnkmGwqbPwUw
-         2WUy4h6+pejIy633xONd+jxnc7ojG/8hNRe0KBRx84eE0YpaSAUMvMuxol1EF19W1u9R
-         gOLoxuOyvRQhgFy+ka/M2oRCkNsagDiScX72uzX2X5SdL3rwVuuv0EAzc49yVZGJRCJ9
-         W/Sg==
+        b=rpPj+qEF5SmK3h6VnT5++AOFtwV09NDLYePSacnHaXc1kzBiR8Wx+OTRuXi61RcwYA
+         RW+/TfVcsD2P7Zk96B0fhILjQKdHQS5HkHN7Ozi4tPim0nCKNDXUt6j3YfHO7I3l5d9z
+         VzqaLhlpWKcahHoi8lvzFI0Jgu8RQbCrduPUZo+UAIF/N42KpiQPB+6Jg5RBJlExJVud
+         jBZT7U3SYaDq3ufZC5bAS9hMWF42j66sj/H4FBqbd8w5kU2BJg9Z+vDhZrQ7ae3TbFyt
+         vr+h1rpUcVIo6wBoiDVPPtxqYAyF2eVIF7wEXOmMYAM7ZMYU59C/iF7ZFE3jXsql9nq7
+         I9dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:organization:in-reply-to
-         :subject:cc:to:from:ironport-sdr:ironport-sdr;
-        bh=tBI2X5hH5zQM6TkF5R+DFCo+J0XJrx1VqtLmx6bi1Qk=;
-        b=XJ4YE0TjZ7dRxjFSGHEDVv3hM/OCPGz6SxHRLpWQkE3cwKuapRF/z+FK/n5buz8/Sb
-         koyLXGeKuFFDBWjor9HyWxeYvleFb0R26Fcd2jcekKkagQbraF99wXaJLZfqchN6V06v
-         afLsXKa6V6qMmieSJvBxQW9RJku7UXOoBSSaVOtmml/mbTtjpUTNZrTKTI/anWFv70XA
-         8AWjIJIwdBNd1Z1Wzgvw7lK+RvO8dJJdioPvbLzp/rSR/6mPAc3v4TJcYbFLaDEMPfIX
-         Js5CP7M41i8oH62IGl7/IxV69IMpWkoxFoGE3bRVS8cJPwDatJFY84ChtSfOmT2t2MOp
-         jIuA==
+        h=in-reply-to:content-transfer-encoding:content-disposition
+         :mime-version:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=1m1097L8Z65yNEwPVsqCFAhMTO7JcIQztqm0XMNCEPQ=;
+        b=J04oX39xuFSA5TdX35n/5fVag7o3njCZBYmwt+SKbilefSPflUvHk6rUhV2c9Or3wW
+         /mP5jS6HNje2W2PG7rfUD0JIEbp5Z/4MnZVZTMuMnjWJmeAyvPRGXhRC1ch5w2SdJhZ0
+         qQ5J2JZcXgvQEshMtEniWnB6Qb0mQiOx0/eA6e8mx4mCbiPBkbOpGdInorAD8ef3tLgC
+         QqObXS2Mo9dFkZqQWT23U2ymkvSXYUVC7Wlkf4ZWvlAE+La52Tf8GuGmNcdVTauWTaC1
+         4W+h/IIhFdeMD5anAUlNEK7y+MbRYX9/NF+seJZ974QCS2/DKCs1CTDgb6O5qyHD+x3/
+         YR8w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=jani.nikula@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga12.intel.com (mga12.intel.com. [192.55.52.136])
-        by gmr-mx.google.com with ESMTPS id r2si532727pls.2.2020.12.11.01.54.23
+       dkim=pass header.i=@linaro.org header.s=google header.b=QxFc8GC7;
+       spf=pass (google.com: domain of lee.jones@linaro.org designates 2a00:1450:4864:20::442 as permitted sender) smtp.mailfrom=lee.jones@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from mail-wr1-x442.google.com (mail-wr1-x442.google.com. [2a00:1450:4864:20::442])
+        by gmr-mx.google.com with ESMTPS id x12si358275wmk.1.2020.12.11.02.04.40
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Dec 2020 01:54:23 -0800 (PST)
-Received-SPF: pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.136 as permitted sender) client-ip=192.55.52.136;
-IronPort-SDR: KaUISFA9IlXweZlgbK7GJVqspLFW1QbtTU2SRFp7yMXe3qDIdTVPQ6vyXh7Wha9qoLruxV5Mf9
- Efq9ESzg3PTw==
-X-IronPort-AV: E=McAfee;i="6000,8403,9831"; a="153640948"
-X-IronPort-AV: E=Sophos;i="5.78,411,1599548400"; 
-   d="scan'208";a="153640948"
-Received: from orsmga003.jf.intel.com ([10.7.209.27])
-  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2020 01:54:23 -0800
-IronPort-SDR: /ufv3vGNGQifQf4WI2wmyr1gYEo9JLcct/eEa85fh974wAfL2ugGQDoLz9o6bLFhFYPLXeOH+B
- J5isAR9V2pBA==
-X-IronPort-AV: E=Sophos;i="5.78,411,1599548400"; 
-   d="scan'208";a="333982962"
-Received: from dkreft-mobl1.ger.corp.intel.com (HELO localhost) ([10.249.158.206])
-  by orsmga003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2020 01:54:06 -0800
-From: Jani Nikula <jani.nikula@linux.intel.com>
-To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
-Cc: Peter Zijlstra <peterz@infradead.org>, Marc Zyngier <maz@kernel.org>,
- Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, Joonas Lahtinen
- <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
- David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
- intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, "James
- E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, Helge Deller
- <deller@gmx.de>, afzal mohammed <afzal.mohd.ma@gmail.com>,
- linux-parisc@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
- linux-arm-kernel@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>,
- Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>, linux-s390@vger.kernel.org, Pankaj Bharadiya
- <pankaj.laxminarayan.bharadiya@intel.com>, Chris Wilson
- <chris@chris-wilson.co.uk>, Wambui Karuga <wambui.karugax@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, Lee
- Jones <lee.jones@linaro.org>, Jon Mason <jdmason@kudzu.us>, Dave Jiang
- <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Michal
- Simek <michal.simek@xilinx.com>, linux-pci@vger.kernel.org, Karthikeyan
- Mitran <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang
- <Zhiqiang.Hou@nxp.com>, Tariq Toukan <tariqt@nvidia.com>, "David S.
- Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- netdev@vger.kernel.org, linux-rdma@vger.kernel.org, Saeed Mahameed
- <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, Boris Ostrovsky
- <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>, Stefano
- Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org
-Subject: Re: [patch 14/30] drm/i915/pmu: Replace open coded kstat_irqs() copy
-In-Reply-To: <20201210194043.957046529@linutronix.de>
-Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
-References: <20201210192536.118432146@linutronix.de> <20201210194043.957046529@linutronix.de>
-Date: Fri, 11 Dec 2020 11:54:03 +0200
-Message-ID: <87wnxo7jno.fsf@intel.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Dec 2020 02:04:40 -0800 (PST)
+Received-SPF: pass (google.com: domain of lee.jones@linaro.org designates 2a00:1450:4864:20::442 as permitted sender) client-ip=2a00:1450:4864:20::442;
+Received: by mail-wr1-x442.google.com with SMTP id a12so8393765wrv.8
+        for <linux-ntb@googlegroups.com>; Fri, 11 Dec 2020 02:04:40 -0800 (PST)
+X-Received: by 2002:a5d:6ccc:: with SMTP id c12mr13142414wrc.4.1607681080467;
+        Fri, 11 Dec 2020 02:04:40 -0800 (PST)
+Received: from dell ([91.110.221.240])
+        by smtp.gmail.com with ESMTPSA id 125sm14307876wmc.27.2020.12.11.02.04.38
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Dec 2020 02:04:39 -0800 (PST)
+Date: Fri, 11 Dec 2020 10:04:36 +0000
+From: Lee Jones <lee.jones@linaro.org>
+To: Thomas Gleixner <tglx@linutronix.de>
+Cc: LKML <linux-kernel@vger.kernel.org>,
+	Peter Zijlstra <peterz@infradead.org>,
+	Marc Zyngier <maz@kernel.org>,
+	Linus Walleij <linus.walleij@linaro.org>,
+	linux-arm-kernel@lists.infradead.org,
+	"James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+	Helge Deller <deller@gmx.de>,
+	afzal mohammed <afzal.mohd.ma@gmail.com>,
+	linux-parisc@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+	Mark Rutland <mark.rutland@arm.com>,
+	Catalin Marinas <catalin.marinas@arm.com>,
+	Will Deacon <will@kernel.org>,
+	Christian Borntraeger <borntraeger@de.ibm.com>,
+	Heiko Carstens <hca@linux.ibm.com>, linux-s390@vger.kernel.org,
+	Jani Nikula <jani.nikula@linux.intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>,
+	Pankaj Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>,
+	Chris Wilson <chris@chris-wilson.co.uk>,
+	Wambui Karuga <wambui.karugax@gmail.com>,
+	intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org,
+	Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>,
+	linux-gpio@vger.kernel.org, Jon Mason <jdmason@kudzu.us>,
+	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+	linux-ntb@googlegroups.com,
+	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Michal Simek <michal.simek@xilinx.com>, linux-pci@vger.kernel.org,
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
+	Hou Zhiqiang <Zhiqiang.Hou@nxp.com>,
+	Tariq Toukan <tariqt@nvidia.com>,
+	"David S. Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org,
+	linux-rdma@vger.kernel.org, Saeed Mahameed <saeedm@nvidia.com>,
+	Leon Romanovsky <leon@kernel.org>,
+	Boris Ostrovsky <boris.ostrovsky@oracle.com>,
+	Juergen Gross <jgross@suse.com>,
+	Stefano Stabellini <sstabellini@kernel.org>,
+	xen-devel@lists.xenproject.org
+Subject: Re: [patch 16/30] mfd: ab8500-debugfs: Remove the racy fiddling with
+ irq_desc
+Message-ID: <20201211100436.GC5029@dell>
+References: <20201210192536.118432146@linutronix.de>
+ <20201210194044.157283633@linutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: jani.nikula@linux.intel.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of jani.nikula@intel.com designates 192.55.52.136 as
- permitted sender) smtp.mailfrom=jani.nikula@intel.com;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20201210194044.157283633@linutronix.de>
+X-Original-Sender: lee.jones@linaro.org
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@linaro.org header.s=google header.b=QxFc8GC7;       spf=pass
+ (google.com: domain of lee.jones@linaro.org designates 2a00:1450:4864:20::442
+ as permitted sender) smtp.mailfrom=lee.jones@linaro.org;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -162,199 +178,41 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Thu, 10 Dec 2020, Thomas Gleixner <tglx@linutronix.de> wrote:
-> Driver code has no business with the internals of the irq descriptor.
->
-> Aside of that the count is per interrupt line and therefore takes
-> interrupts from other devices into account which share the interrupt line
-> and are not handled by the graphics driver.
->
-> Replace it with a pmu private count which only counts interrupts which
-> originate from the graphics card.
->
-> To avoid atomics or heuristics of some sort make the counter field
-> 'unsigned long'. That limits the count to 4e9 on 32bit which is a lot and
-> postprocessing can easily deal with the occasional wraparound.
+On Thu, 10 Dec 2020, Thomas Gleixner wrote:
 
-I'll let Tvrtko and Chris review the substance here, but assuming they
-don't object,
-
-Acked-by: Jani Nikula <jani.nikula@intel.com>
-
-for merging via whichever tree makes most sense.
-
->
+> First of all drivers have absolutely no business to dig into the internal=
+s
+> of an irq descriptor. That's core code and subject to change. All of this
+> information is readily available to /proc/interrupts in a safe and race
+> free way.
+>=20
+> Remove the inspection code which is a blatant violation of subsystem
+> boundaries and racy against concurrent modifications of the interrupt
+> descriptor.
+>=20
+> Print the irq line instead so the information can be looked up in a sane
+> way in /proc/interrupts.
+>=20
 > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
-> Cc: Jani Nikula <jani.nikula@linux.intel.com>
-> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: intel-gfx@lists.freedesktop.org
-> Cc: dri-devel@lists.freedesktop.org
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: Lee Jones <lee.jones@linaro.org>
+> Cc: linux-arm-kernel@lists.infradead.org
 > ---
->  drivers/gpu/drm/i915/i915_irq.c |   34 ++++++++++++++++++++++++++++++++++
->  drivers/gpu/drm/i915/i915_pmu.c |   18 +-----------------
->  drivers/gpu/drm/i915/i915_pmu.h |    8 ++++++++
->  3 files changed, 43 insertions(+), 17 deletions(-)
->
-> --- a/drivers/gpu/drm/i915/i915_irq.c
-> +++ b/drivers/gpu/drm/i915/i915_irq.c
-> @@ -60,6 +60,24 @@
->   * and related files, but that will be described in separate chapters.
->   */
->  
-> +/*
-> + * Interrupt statistic for PMU. Increments the counter only if the
-> + * interrupt originated from the the GPU so interrupts from a device which
-> + * shares the interrupt line are not accounted.
-> + */
-> +static inline void pmu_irq_stats(struct drm_i915_private *priv,
-> +				 irqreturn_t res)
-> +{
-> +	if (unlikely(res != IRQ_HANDLED))
-> +		return;
-> +
-> +	/*
-> +	 * A clever compiler translates that into INC. A not so clever one
-> +	 * should at least prevent store tearing.
-> +	 */
-> +	WRITE_ONCE(priv->pmu.irq_count, priv->pmu.irq_count + 1);
-> +}
-> +
->  typedef bool (*long_pulse_detect_func)(enum hpd_pin pin, u32 val);
->  
->  static const u32 hpd_ilk[HPD_NUM_PINS] = {
-> @@ -1599,6 +1617,8 @@ static irqreturn_t valleyview_irq_handle
->  		valleyview_pipestat_irq_handler(dev_priv, pipe_stats);
->  	} while (0);
->  
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->  	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->  
->  	return ret;
-> @@ -1676,6 +1696,8 @@ static irqreturn_t cherryview_irq_handle
->  		valleyview_pipestat_irq_handler(dev_priv, pipe_stats);
->  	} while (0);
->  
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->  	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->  
->  	return ret;
-> @@ -2103,6 +2125,8 @@ static irqreturn_t ilk_irq_handler(int i
->  	if (sde_ier)
->  		raw_reg_write(regs, SDEIER, sde_ier);
->  
-> +	pmu_irq_stats(i915, ret);
-> +
->  	/* IRQs are synced during runtime_suspend, we don't require a wakeref */
->  	enable_rpm_wakeref_asserts(&i915->runtime_pm);
->  
-> @@ -2419,6 +2443,8 @@ static irqreturn_t gen8_irq_handler(int
->  
->  	gen8_master_intr_enable(regs);
->  
-> +	pmu_irq_stats(dev_priv, IRQ_HANDLED);
-> +
->  	return IRQ_HANDLED;
->  }
->  
-> @@ -2514,6 +2540,8 @@ static __always_inline irqreturn_t
->  
->  	gen11_gu_misc_irq_handler(gt, gu_misc_iir);
->  
-> +	pmu_irq_stats(i915, IRQ_HANDLED);
-> +
->  	return IRQ_HANDLED;
->  }
->  
-> @@ -3688,6 +3716,8 @@ static irqreturn_t i8xx_irq_handler(int
->  		i8xx_pipestat_irq_handler(dev_priv, iir, pipe_stats);
->  	} while (0);
->  
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->  	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->  
->  	return ret;
-> @@ -3796,6 +3826,8 @@ static irqreturn_t i915_irq_handler(int
->  		i915_pipestat_irq_handler(dev_priv, iir, pipe_stats);
->  	} while (0);
->  
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->  	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->  
->  	return ret;
-> @@ -3941,6 +3973,8 @@ static irqreturn_t i965_irq_handler(int
->  		i965_pipestat_irq_handler(dev_priv, iir, pipe_stats);
->  	} while (0);
->  
-> +	pmu_irq_stats(dev_priv, IRQ_HANDLED);
-> +
->  	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->  
->  	return ret;
-> --- a/drivers/gpu/drm/i915/i915_pmu.c
-> +++ b/drivers/gpu/drm/i915/i915_pmu.c
-> @@ -423,22 +423,6 @@ static enum hrtimer_restart i915_sample(
->  	return HRTIMER_RESTART;
->  }
->  
-> -static u64 count_interrupts(struct drm_i915_private *i915)
-> -{
-> -	/* open-coded kstat_irqs() */
-> -	struct irq_desc *desc = irq_to_desc(i915->drm.pdev->irq);
-> -	u64 sum = 0;
-> -	int cpu;
-> -
-> -	if (!desc || !desc->kstat_irqs)
-> -		return 0;
-> -
-> -	for_each_possible_cpu(cpu)
-> -		sum += *per_cpu_ptr(desc->kstat_irqs, cpu);
-> -
-> -	return sum;
-> -}
-> -
->  static void i915_pmu_event_destroy(struct perf_event *event)
->  {
->  	struct drm_i915_private *i915 =
-> @@ -581,7 +565,7 @@ static u64 __i915_pmu_event_read(struct
->  				   USEC_PER_SEC /* to MHz */);
->  			break;
->  		case I915_PMU_INTERRUPTS:
-> -			val = count_interrupts(i915);
-> +			val = READ_ONCE(pmu->irq_count);
->  			break;
->  		case I915_PMU_RC6_RESIDENCY:
->  			val = get_rc6(&i915->gt);
-> --- a/drivers/gpu/drm/i915/i915_pmu.h
-> +++ b/drivers/gpu/drm/i915/i915_pmu.h
-> @@ -108,6 +108,14 @@ struct i915_pmu {
->  	 */
->  	ktime_t sleep_last;
->  	/**
-> +	 * @irq_count: Number of interrupts
-> +	 *
-> +	 * Intentionally unsigned long to avoid atomics or heuristics on 32bit.
-> +	 * 4e9 interrupts are a lot and postprocessing can really deal with an
-> +	 * occasional wraparound easily. It's 32bit after all.
-> +	 */
-> +	unsigned long irq_count;
-> +	/**
->  	 * @events_attr_group: Device events attribute group.
->  	 */
->  	struct attribute_group events_attr_group;
->
+>  drivers/mfd/ab8500-debugfs.c |   16 +++-------------
+>  1 file changed, 3 insertions(+), 13 deletions(-)
 
--- 
-Jani Nikula, Intel Open Source Graphics Center
+Acked-by: Lee Jones <lee.jones@linaro.org>
 
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87wnxo7jno.fsf%40intel.com.
+--=20
+Lee Jones [=E6=9D=8E=E7=90=BC=E6=96=AF]
+Senior Technical Lead - Developer Services
+Linaro.org =E2=94=82 Open source software for Arm SoCs
+Follow Linaro: Facebook | Twitter | Blog
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/20201211100436.GC5029%40dell.
