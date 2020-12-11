@@ -1,165 +1,149 @@
-Return-Path: <linux-ntb+bncBAABBVUMZX7AKGQEFZTKZJY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERBTMMZX7AKGQEPSGMMBQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vs1-xe3a.google.com (mail-vs1-xe3a.google.com [IPv6:2607:f8b0:4864:20::e3a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 005BC2D7398
-	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 11:13:43 +0100 (CET)
-Received: by mail-vs1-xe3a.google.com with SMTP id g12sf1971622vsm.5
-        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 02:13:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607681623; cv=pass;
+Received: from mail-lj1-x23a.google.com (mail-lj1-x23a.google.com [IPv6:2a00:1450:4864:20::23a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 9F6B42D7393
+	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 11:13:34 +0100 (CET)
+Received: by mail-lj1-x23a.google.com with SMTP id r22sf4622234ljd.4
+        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 02:13:34 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607681614; cv=pass;
         d=google.com; s=arc-20160816;
-        b=QLFmLHFA8wjS1IQnM2eC9AbI35u3bCp43grWJeDC9njWDwVJrbUkwIWhomGm/P9xeK
-         K+UlofiIRWxX5vN8PhNN+BifvhTulnPwWvYAcBCpaxCB4XaO8wPebAgI3rAEl8wATWxK
-         hFbprOiAW1oKmFi99r1lN77ysbE52GwESrpqYQrTkxcaEHx3ODyc4v5pVBg3D5h4twYV
-         kefFUMCuCyK/wW3C3/q8J4NR0Xn5rkm8/hOxhTC7DWdqq6E8iPS+PQQDy/Oj7/bvzCJk
-         WW1FGTGuKfygBr+hzHcsJswWNn9BKdeeR95qA3m+DaUDi8LProAhTpRgDNhyeOAbKWtH
-         oMfQ==
+        b=xuaEhERp7T7zXXYK8xFA1g680+Mu5tPjuKDuq/zqUXjhYkAgebKhhKESU9Oqx2FMXk
+         U4VPk9j+Ma7nq2s25UCuszj1dxuQ8bj5r6xlNodGirpWjjRTcaeXtTgflNcqcJC7j70Y
+         K/KMhszDAf4PYX3795k0gO+3RdCo4irYnfQtNdxEKe00G5H3wN7wprbbNAclOH28wDl1
+         FhSITek9KhobrJbx3Pr/PXbzvlg5SejbaVbU+MXeBzlYJrV8Tpxw0cQtXYLU5FWJuuBz
+         S/Qa2lonV01nDfOjtS21ldszKjqDrx/ojYUZx0RxQk1XMDphKmGSPlq8uTeaP5RH+5Yk
+         quxA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:organization:from
-         :references:cc:to:subject:ironport-sdr:ironport-sdr:sender
-         :dkim-signature;
-        bh=TBMoPhOMPZSvAtljLqFvIycejSk6Bt0vR4NHmKXMgcE=;
-        b=FMsrFRog3pRfmFWIP2GyUYq4yVFsUz/Rpx+qfU7teQGeVtVwyb+wp3EoGW/yVaLbjr
-         CBraUioNe+rwZnYRRZolXH9TOoW6YoyMzmevA+J7psMs01clyAzHVLi2CzgYTvKcQB5D
-         /ztKEe5o16CMNotXxPtW6RDSCIYIQ9gx/dS3qRqXYcS17UlgEcytH3d6Aahl+G1Q3YbV
-         Q7HvZ347lYKkn890tpg158du1Exen8FWitj8knyEZGO2etdmyyr3zrACkx93hDzD9/hN
-         DFbPkgDSZKHr5DpkGLimP1L5JQ4g0HOfRORmJf015QZLlqG11dll8c+M5AYFHtg/WxFz
-         mM7A==
+         :list-id:mailing-list:precedence:content-transfer-encoding
+         :mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:sender:dkim-signature;
+        bh=MTuczAsFxoj2r4K4VyCUufOG4vcaVCFD8p3qEtfZrGw=;
+        b=ZtEsxoRDLdNX2HeWVfaTbyuqgN4HWoqiS0EPxqXWyxcgfbdg0hvYlNq6tFdNY+FdHK
+         5mFlCmaT5OQruLGhF9g3iMQU49jEzJKXZnG5MbBzF0MAIvA5Ccx7Gsow5+H+pye6UaE4
+         1eXBwXs8PfyvZasnXBWmuMFEdK4UoTHqYatHdbQvlROPXmBolBwM98VSt3e6nwqiF83P
+         CTmCz8fF8jiS8XtB7mgjGmTxoFeeno1eTb8aZN3qw2zCScKQY2efaYTyV6gH/h6xZ+Jq
+         57sRXBbuzc7SPpqEhg8hDHQp1mezerGLtlm/dWsrqVw7lhruC7suY0KMdcEww4Kn4GG8
+         XQEA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of tvrtko.ursulin@linux.intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=tvrtko.ursulin@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=Ebn4XFcC;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=xExbb1La;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:ironport-sdr:ironport-sdr:subject:to:cc:references:from
-         :organization:message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:x-original-sender
+        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
+         :mime-version:content-transfer-encoding:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=TBMoPhOMPZSvAtljLqFvIycejSk6Bt0vR4NHmKXMgcE=;
-        b=mWn+WBwFQDPZkLk4OEaGtQhzMXGDzgJ1DfzodOuwQqJFKk7fx61PxS4xSLj+cxRE+0
-         mrSuJ/7xy2jSy/lTf9uAooUUFviPy8RfIo3qxnkhJdbTPexvWyXFwFseMo2gFgKvQbzJ
-         IqNFUm0Q1dp6X/U8YlLjz7///4MVwOOp821DgOz4Amx/pYwLTbiKSZysvlToMCrCbd5i
-         mXv61oty45xmQJx+pWklVKP6RfQ+f79F6A3JVTEv1XOAo+mgp7td+BR3gELn57+HR1RL
-         wRW9c1s3tMxrCFloQmXVf284+jJm3my4H6PntLVtNX9Gpl1mRW5kM0o/Slnf/4gGu5/F
-         h0xQ==
+        bh=MTuczAsFxoj2r4K4VyCUufOG4vcaVCFD8p3qEtfZrGw=;
+        b=qgb7NVGg+9PODriCi0gR4FK/dquxtjZXX5YWbhw8pnMkrHoBJfQz+XWc0H6rOIuOwi
+         Pv91Vd0VvvRGXB1smn7Y4slTJHT0D1FVHmorJShkRg2DvHAu8HBEsyZ81FozYb8Js3u+
+         6LVERMgNVWIfKzfShlElsQP713Jk3YqYltWz+EkeGmb+vrIVbKvJ+7+y/9JRE3UaLVeu
+         CeT1GD8xI22bsHY+aQqqtX9u1qzAyx5snRezdpLanhPH0iIB9m8KOe6lUXD+qHIkO5UL
+         qWpc3EoyZWcrOP8+0EeyWzbFo+q98qX1e55cp5o62jmEisO/elqBkWXBbCVsSWoDA1wm
+         MoRw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:subject:to:cc
-         :references:from:organization:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=TBMoPhOMPZSvAtljLqFvIycejSk6Bt0vR4NHmKXMgcE=;
-        b=d3+l3gVdOvtrix4rrDkHwCQSFGlyAyGj4lP+EP01MYmD3G//guD6kiU9xS2vf78OTL
-         VLoSQSyZdcM7cM3nD4VGzUopqXlm/4R+8IlTMzTgSGWcnSX+1HOBIUX21tXmCsQKa2+m
-         K0XkdRjJi8khgJ7FJA+JAygLm6HCG/mxkjRcvJc5a25q6Kl+77b59n4n3IVHTEQGEcl9
-         W3n+ol1nSGj+SB/TkXaSqYMEvdptKw2ADRLpkZ8hFc4g+pz8JGKqlKzBnHNpk2rq+TBs
-         uzfLE5msZMaBoBTycWDbBP7bd1YY9YRtCjnHAWF6BVF8x4aESEwNQmcGjc/eYPTz0otq
-         /NTg==
+        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
+         :date:message-id:mime-version:content-transfer-encoding
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=MTuczAsFxoj2r4K4VyCUufOG4vcaVCFD8p3qEtfZrGw=;
+        b=VPbCdOrFCrERGBeVqC7oUr0dUui1RkjozptvxVOlF+llgqXacAM0r+tethzfn0Ounz
+         UXZkKtlpsiSRUZIk+gJQILeNTfTycvcn61/923vSw00hAHajEctaPVINCYGGiKsc44ou
+         XJHaM7IIhJgn5Wk/Aqwm7dl6hbq+cVNsUOUbcTYkiHzWHGE20Yf5CDXQl+1B8O6U7BVG
+         riQa+T+D/ZeaghNyV67gXadTG3uwxYrHoHmiqiTbsNeESoXxA9QMvdMyZZlmbz6jNr7V
+         a1Pyny7It08V94NkBIwFxhdurGn0HW1T6i2etCIZgcR1fQqVcb3PUjITqhpvxEH//gH+
+         UVrg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5332OKub73jWNpzxeVTpOt0JUM8XsXihpU8NQFiPGIig3kE3eXrL
-	9QV0aBl8m0Krsgm+I7pMorU=
-X-Google-Smtp-Source: ABdhPJydOHICQ0X4B69n3JBcqGHdVIFLG2dIJTtMQFkXaTRDzUWCgETdh2v1334FQ1TVim6cSHhyRA==
-X-Received: by 2002:a1f:4595:: with SMTP id s143mr13000030vka.6.1607681622937;
-        Fri, 11 Dec 2020 02:13:42 -0800 (PST)
+X-Gm-Message-State: AOAM530kZeSHp/uWBEvRZ0KJcDP+ZTQs7rGQtAYccposWWaGayMyLxiU
+	UZaPLl6vILhe5DjVyymjDwQ=
+X-Google-Smtp-Source: ABdhPJzaIONEnSrl1n9W9wzFr63RUqJhcpEBfsJJ6kBDPsOX8qwlTMF9wkN461jmmzAKmW3bqHIidg==
+X-Received: by 2002:ac2:47e7:: with SMTP id b7mr1310786lfp.117.1607681614101;
+        Fri, 11 Dec 2020 02:13:34 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a9f:24af:: with SMTP id 44ls604107uar.10.gmail; Fri, 11 Dec
- 2020 02:13:42 -0800 (PST)
-X-Received: by 2002:ab0:2e8e:: with SMTP id f14mr11610062uaa.22.1607681622405;
-        Fri, 11 Dec 2020 02:13:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607681622; cv=none;
+Received: by 2002:a05:6512:3608:: with SMTP id f8ls3161561lfs.2.gmail; Fri, 11
+ Dec 2020 02:13:33 -0800 (PST)
+X-Received: by 2002:a05:6512:3888:: with SMTP id n8mr1835058lft.458.1607681613057;
+        Fri, 11 Dec 2020 02:13:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607681613; cv=none;
         d=google.com; s=arc-20160816;
-        b=QsiWKGpdUxUYT4yBhJtMaH6rVH2wbI8bFsaTuKAFZ2LR68a0vyF0dzWEzss6FODOV1
-         vf1xfUen8FKUpnebn1EkY0+//aAAqoMu4B6M4vFHQ4iznbpH/B7LZB5xjCEFvDemWrXu
-         GjwOGZMRxjsNTKGMuv3uj7N94KV8ciG/nXpYhe9XuArYqIUvkD3CvFpNxDpvjmkxnBtI
-         H9Fj6VuM//OEHwEDwW9l4/wT808CjHcq8BhQmslq1qHWsWNYoLnwiJIFn5uMHJ9rhjnp
-         /FmFxFeaivRuGDGt30ya4gJdz0Hwo9ddI9e+yJA1iJqC26NiBP3nlGsploW1pwcoCPhp
-         F9FA==
+        b=sW75QBngeqN6uIQRrRVF/ftINC7/vRR/YgOYDhRGArdbkINHdqK9/V4kPxuuk5nkMR
+         x9Vn47TWtWO+BMyZ+TUR2JXh+ZERX2zgkYX2cpWYm5lovajKJcH1ZxfoBeTAMN/9OCl9
+         uTw5iTs9bBCgHFJAlVXQVmXfjHMLB2n09dJPgLvM6MmZhf7gga9OnXiKd/5QAGrgpMV8
+         P4fEgfpzst1637bwxUnaRwNuZP/eKsVL4ifK3ifuanmeMQ2DTl4BkE6RyTx8KJ5tDImi
+         mwQ7gwgP3s5Ee1UF/ctChB/r0nUToWwusPXxy2vv6iNCNogD8x8FuLkSBJ+NVDOdEn3X
+         nRBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:organization:from:references:cc:to
-         :subject:ironport-sdr:ironport-sdr;
-        bh=w0eW0a7KXmm63AkK3FlltD4gNmKxhq4htK+hX8VWITM=;
-        b=SG/JApngdX+7BnBk2/IRjnlTGwfqkAEgM7OPMVENaqSsAM6naN2DFkol1aNc8v9l0u
-         r8ujSHNor5DODLO3ZPpCbdq1343uakwIDpKLq2kxtSL3TrB4nAzjZQCUIYEVirnUk0N7
-         qgDlWRZ7h0oJ5GngZAbfCYHlMxFTx5Y7OWji0RsqlQJiMpV0oLcFAAMDUD/6n/ebIZ4R
-         CrizR96zJtFPzjxJinVlE+wLu1A36Bxq4EngU/JT9d++czdJQHc1ij+SO3U0CEsduaeq
-         JxR3cyLDA+yetA6eAIPvZdASTjxYz6An6Nogp/slAeq/PR//VqYLfaMSVNhWloPomt6D
-         MJwg==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :in-reply-to:subject:cc:to:dkim-signature:dkim-signature:from;
+        bh=4TDbx5/eRxAHfo/4EOFfTsBBr8/iJ4NkSA5alVnInbw=;
+        b=DQYuHUXgH4NSAjk6ezgiN8q59iKhyAFcVwfhpWoDyj5At0b8up80GkidUyNoHM+tfJ
+         hgBAdHZi9Bp6FPR/JRMSX/Vlvx7vMSKHztphDTdHKA7LQBfZiFxz22Hl0vW3vSeji2T6
+         uUsdrz+mSt6CmdtjPz4xc/aScq3DR17gjIKxkfzDKc6uzEQH7sdMkQfGplh7JBZWWoRT
+         DP39tH/NV00AV2DTaRgVso022j+lm7CZdoPKl2Y07uIStsvIWSNxcwx5CrXOXPW2N8e9
+         VYDNBCjbJqyxJWBBU/MOE00S33eMI0CnQfDGj2kXTVDCGGv8F5vxYa4D3/BN7+oKVioF
+         j77Q==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: best guess record for domain of tvrtko.ursulin@linux.intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=tvrtko.ursulin@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
-        by gmr-mx.google.com with ESMTPS id y129si610077vkf.3.2020.12.11.02.13.42
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=Ebn4XFcC;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=xExbb1La;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
+        by gmr-mx.google.com with ESMTPS id q28si287321lfb.10.2020.12.11.02.13.32
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 11 Dec 2020 02:13:42 -0800 (PST)
-Received-SPF: pass (google.com: best guess record for domain of tvrtko.ursulin@linux.intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
-IronPort-SDR: aSuSDFt1b2AzVWigSDPSjPPGYHXSwmPb/7usfk+5N7mV28LU3TRXLPdNgM0/5ly3p4lkAYxstl
- if8K18fSR1Gg==
-X-IronPort-AV: E=McAfee;i="6000,8403,9831"; a="174554595"
-X-IronPort-AV: E=Sophos;i="5.78,411,1599548400"; 
-   d="scan'208";a="174554595"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2020 02:13:39 -0800
-IronPort-SDR: RsQ7lmI/Ay9vaPccFC88f8JfxCXrqcVSXV/MMPaui8twEB+RtpNdJLZX44RdUN4vBcYtBFso8b
- xcHG9HzNR9pw==
-X-IronPort-AV: E=Sophos;i="5.78,411,1599548400"; 
-   d="scan'208";a="321689328"
-Received: from ynaki-mobl1.ger.corp.intel.com (HELO [10.214.252.46]) ([10.214.252.46])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2020 02:13:24 -0800
-Subject: Re: [patch 14/30] drm/i915/pmu: Replace open coded kstat_irqs() copy
-To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Dec 2020 02:13:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
+From: Thomas Gleixner <tglx@linutronix.de>
+To: =?utf-8?B?SsO8cmdlbiBHcm/Dnw==?= <jgross@suse.com>,
+ boris.ostrovsky@oracle.com, LKML <linux-kernel@vger.kernel.org>
 Cc: Peter Zijlstra <peterz@infradead.org>, Marc Zyngier <maz@kernel.org>,
- Jani Nikula <jani.nikula@linux.intel.com>,
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
- Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>,
- Daniel Vetter <daniel@ffwll.ch>, intel-gfx@lists.freedesktop.org,
- dri-devel@lists.freedesktop.org,
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
- Helge Deller <deller@gmx.de>, afzal mohammed <afzal.mohd.ma@gmail.com>,
- linux-parisc@vger.kernel.org, Russell King <linux@armlinux.org.uk>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ xen-devel@lists.xenproject.org, "James E.J. Bottomley"
+ <James.Bottomley@HansenPartnership.com>, Helge Deller <deller@gmx.de>,
+ afzal mohammed <afzal.mohd.ma@gmail.com>, linux-parisc@vger.kernel.org,
+ Russell King <linux@armlinux.org.uk>,
  linux-arm-kernel@lists.infradead.org, Mark Rutland <mark.rutland@arm.com>,
  Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Heiko Carstens <hca@linux.ibm.com>, linux-s390@vger.kernel.org,
- Pankaj Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>,
- Chris Wilson <chris@chris-wilson.co.uk>,
- Wambui Karuga <wambui.karugax@gmail.com>,
- Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org,
- Lee Jones <lee.jones@linaro.org>, Jon Mason <jdmason@kudzu.us>,
- Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, Heiko Carstens
+ <hca@linux.ibm.com>, linux-s390@vger.kernel.org, Jani Nikula
+ <jani.nikula@linux.intel.com>, Joonas Lahtinen
+ <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Pankaj
+ Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>, Chris Wilson
+ <chris@chris-wilson.co.uk>, Wambui Karuga <wambui.karugax@gmail.com>,
+ intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, Tvrtko
+ Ursulin <tvrtko.ursulin@linux.intel.com>, Linus Walleij
+ <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, Lee Jones
+ <lee.jones@linaro.org>, Jon Mason <jdmason@kudzu.us>, Dave Jiang
+ <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
  linux-ntb@googlegroups.com, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
- Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
- Michal Simek <michal.simek@xilinx.com>, linux-pci@vger.kernel.org,
- Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>,
- Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Tariq Toukan <tariqt@nvidia.com>,
- "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
- netdev@vger.kernel.org, linux-rdma@vger.kernel.org,
- Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>,
- Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross
- <jgross@suse.com>, Stefano Stabellini <sstabellini@kernel.org>,
- xen-devel@lists.xenproject.org
-References: <20201210192536.118432146@linutronix.de>
- <20201210194043.957046529@linutronix.de>
-From: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
-Organization: Intel Corporation UK Plc
-Message-ID: <ad05af1a-5463-2a80-0887-7629721d6863@linux.intel.com>
-Date: Fri, 11 Dec 2020 10:13:21 +0000
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Michal
+ Simek <michal.simek@xilinx.com>, linux-pci@vger.kernel.org, Karthikeyan
+ Mitran <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang
+ <Zhiqiang.Hou@nxp.com>, Tariq Toukan <tariqt@nvidia.com>, "David S.
+ Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>,
+ netdev@vger.kernel.org, linux-rdma@vger.kernel.org, Saeed Mahameed
+ <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>
+Subject: Re: [patch 27/30] xen/events: Only force affinity mask for percpu interrupts
+In-Reply-To: <a4bce428-4420-6064-c7cc-7136a7544a52@suse.com>
+References: <20201210192536.118432146@linutronix.de> <20201210194045.250321315@linutronix.de> <7f7af60f-567f-cdef-f8db-8062a44758ce@oracle.com> <a4bce428-4420-6064-c7cc-7136a7544a52@suse.com>
+Date: Fri, 11 Dec 2020 11:13:31 +0100
+Message-ID: <874kksiras.fsf@nanos.tec.linutronix.de>
 MIME-Version: 1.0
-In-Reply-To: <20201210194043.957046529@linutronix.de>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Language: en-US
-X-Original-Sender: tvrtko.ursulin@linux.intel.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: best guess record for domain of tvrtko.ursulin@linux.intel.com
- designates 134.134.136.24 as permitted sender) smtp.mailfrom=tvrtko.ursulin@linux.intel.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Original-Sender: tglx@linutronix.de
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@linutronix.de header.s=2020 header.b=Ebn4XFcC;       dkim=neutral
+ (no key) header.i=@linutronix.de header.s=2020e header.b=xExbb1La;
+       spf=pass (google.com: domain of tglx@linutronix.de designates
+ 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -172,216 +156,67 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+On Fri, Dec 11 2020 at 07:17, J=C3=BCrgen Gro=C3=9F wrote:
+> On 11.12.20 00:20, boris.ostrovsky@oracle.com wrote:
+>>=20
+>> On 12/10/20 2:26 PM, Thomas Gleixner wrote:
+>>> All event channel setups bind the interrupt on CPU0 or the target CPU f=
+or
+>>> percpu interrupts and overwrite the affinity mask with the correspondin=
+g
+>>> cpumask. That does not make sense.
+>>>
+>>> The XEN implementation of irqchip::irq_set_affinity() already picks a
+>>> single target CPU out of the affinity mask and the actual target is sto=
+red
+>>> in the effective CPU mask, so destroying the user chosen affinity mask
+>>> which might contain more than one CPU is wrong.
+>>>
+>>> Change the implementation so that the channel is bound to CPU0 at the X=
+EN
+>>> level and leave the affinity mask alone. At startup of the interrupt
+>>> affinity will be assigned out of the affinity mask and the XEN binding =
+will
+>>> be updated.
+>>=20
+>>=20
+>> If that's the case then I wonder whether we need this call at all and in=
+stead bind at startup time.
+>
+> This binding to cpu0 was introduced with commit 97253eeeb792d61ed2
+> and I have no reason to believe the underlying problem has been
+> eliminated.
 
-On 10/12/2020 19:25, Thomas Gleixner wrote:
-> Driver code has no business with the internals of the irq descriptor.
-> 
-> Aside of that the count is per interrupt line and therefore takes
-> interrupts from other devices into account which share the interrupt line
-> and are not handled by the graphics driver.
-> 
-> Replace it with a pmu private count which only counts interrupts which
-> originate from the graphics card.
-> 
-> To avoid atomics or heuristics of some sort make the counter field
-> 'unsigned long'. That limits the count to 4e9 on 32bit which is a lot and
-> postprocessing can easily deal with the occasional wraparound.
+    "The kernel-side VCPU binding was not being correctly set for newly
+     allocated or bound interdomain events.  In ARM guests where 2-level
+     events were used, this would result in no interdomain events being
+     handled because the kernel-side VCPU masks would all be clear.
 
-After my failed hasty sketch from last night I had a different one which 
-was kind of heuristics based (re-reading the upper dword and retrying if 
-it changed on 32-bit). But you are right - it is okay to at least start 
-like this today and if later there is a need we can either do that or 
-deal with wrap at PMU read time.
+     x86 guests would work because the irq affinity was set during irq
+     setup and this would set the correct kernel-side VCPU binding."
 
-So thanks for dealing with it, some small comments below but overall it 
-is fine.
+I'm not convinced that this is really correctly analyzed because affinity
+setting is done at irq startup.
 
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>
-> Cc: Jani Nikula <jani.nikula@linux.intel.com>
-> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
-> Cc: David Airlie <airlied@linux.ie>
-> Cc: Daniel Vetter <daniel@ffwll.ch>
-> Cc: intel-gfx@lists.freedesktop.org
-> Cc: dri-devel@lists.freedesktop.org
-> ---
->   drivers/gpu/drm/i915/i915_irq.c |   34 ++++++++++++++++++++++++++++++++++
->   drivers/gpu/drm/i915/i915_pmu.c |   18 +-----------------
->   drivers/gpu/drm/i915/i915_pmu.h |    8 ++++++++
->   3 files changed, 43 insertions(+), 17 deletions(-)
-> 
-> --- a/drivers/gpu/drm/i915/i915_irq.c
-> +++ b/drivers/gpu/drm/i915/i915_irq.c
-> @@ -60,6 +60,24 @@
->    * and related files, but that will be described in separate chapters.
->    */
->   
-> +/*
-> + * Interrupt statistic for PMU. Increments the counter only if the
-> + * interrupt originated from the the GPU so interrupts from a device which
-> + * shares the interrupt line are not accounted.
-> + */
-> +static inline void pmu_irq_stats(struct drm_i915_private *priv,
+                switch (__irq_startup_managed(desc, aff, force)) {
+	        case IRQ_STARTUP_NORMAL:
+	                ret =3D __irq_startup(desc);
+                        irq_setup_affinity(desc);
+			break;
 
-We never use priv as a local name, it should be either i915 or dev_priv.
+which is completely architecture agnostic. So why should this magically
+work on x86 and not on ARM if both are using the same XEN irqchip with
+the same irqchip callbacks.
 
-> +				 irqreturn_t res)
-> +{
-> +	if (unlikely(res != IRQ_HANDLED))
-> +		return;
-> +
-> +	/*
-> +	 * A clever compiler translates that into INC. A not so clever one
-> +	 * should at least prevent store tearing.
-> +	 */
-> +	WRITE_ONCE(priv->pmu.irq_count, priv->pmu.irq_count + 1);
+Thanks,
 
-Curious, probably more educational for me - given x86_32 and x86_64, and 
-the context of it getting called, what is the difference from just doing 
-irq_count++?
+        tglx
 
-> +}
-> +
->   typedef bool (*long_pulse_detect_func)(enum hpd_pin pin, u32 val);
->   
->   static const u32 hpd_ilk[HPD_NUM_PINS] = {
-> @@ -1599,6 +1617,8 @@ static irqreturn_t valleyview_irq_handle
->   		valleyview_pipestat_irq_handler(dev_priv, pipe_stats);
->   	} while (0);
->   
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->   	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->   
->   	return ret;
-> @@ -1676,6 +1696,8 @@ static irqreturn_t cherryview_irq_handle
->   		valleyview_pipestat_irq_handler(dev_priv, pipe_stats);
->   	} while (0);
->   
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->   	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->   
->   	return ret;
-> @@ -2103,6 +2125,8 @@ static irqreturn_t ilk_irq_handler(int i
->   	if (sde_ier)
->   		raw_reg_write(regs, SDEIER, sde_ier);
->   
-> +	pmu_irq_stats(i915, ret);
-> +
->   	/* IRQs are synced during runtime_suspend, we don't require a wakeref */
->   	enable_rpm_wakeref_asserts(&i915->runtime_pm);
->   
-> @@ -2419,6 +2443,8 @@ static irqreturn_t gen8_irq_handler(int
->   
->   	gen8_master_intr_enable(regs);
->   
-> +	pmu_irq_stats(dev_priv, IRQ_HANDLED);
-> +
->   	return IRQ_HANDLED;
->   }
->   
-> @@ -2514,6 +2540,8 @@ static __always_inline irqreturn_t
->   
->   	gen11_gu_misc_irq_handler(gt, gu_misc_iir);
->   
-> +	pmu_irq_stats(i915, IRQ_HANDLED);
-> +
->   	return IRQ_HANDLED;
->   }
->   
-> @@ -3688,6 +3716,8 @@ static irqreturn_t i8xx_irq_handler(int
->   		i8xx_pipestat_irq_handler(dev_priv, iir, pipe_stats);
->   	} while (0);
->   
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->   	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->   
->   	return ret;
-> @@ -3796,6 +3826,8 @@ static irqreturn_t i915_irq_handler(int
->   		i915_pipestat_irq_handler(dev_priv, iir, pipe_stats);
->   	} while (0);
->   
-> +	pmu_irq_stats(dev_priv, ret);
-> +
->   	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->   
->   	return ret;
-> @@ -3941,6 +3973,8 @@ static irqreturn_t i965_irq_handler(int
->   		i965_pipestat_irq_handler(dev_priv, iir, pipe_stats);
->   	} while (0);
->   
-> +	pmu_irq_stats(dev_priv, IRQ_HANDLED);
-> +
->   	enable_rpm_wakeref_asserts(&dev_priv->runtime_pm);
->   
->   	return ret;
-> --- a/drivers/gpu/drm/i915/i915_pmu.c
-> +++ b/drivers/gpu/drm/i915/i915_pmu.c
-> @@ -423,22 +423,6 @@ static enum hrtimer_restart i915_sample(
->   	return HRTIMER_RESTART;
->   }
 
-In this file you can also drop the #include <linux/irq.h> line.
-
->   
-> -static u64 count_interrupts(struct drm_i915_private *i915)
-> -{
-> -	/* open-coded kstat_irqs() */
-> -	struct irq_desc *desc = irq_to_desc(i915->drm.pdev->irq);
-> -	u64 sum = 0;
-> -	int cpu;
-> -
-> -	if (!desc || !desc->kstat_irqs)
-> -		return 0;
-> -
-> -	for_each_possible_cpu(cpu)
-> -		sum += *per_cpu_ptr(desc->kstat_irqs, cpu);
-> -
-> -	return sum;
-> -}
-> -
->   static void i915_pmu_event_destroy(struct perf_event *event)
->   {
->   	struct drm_i915_private *i915 =
-> @@ -581,7 +565,7 @@ static u64 __i915_pmu_event_read(struct
->   				   USEC_PER_SEC /* to MHz */);
->   			break;
->   		case I915_PMU_INTERRUPTS:
-> -			val = count_interrupts(i915);
-> +			val = READ_ONCE(pmu->irq_count);
-
-I guess same curiosity about READ_ONCE like in the increment site.
-
->   			break;
->   		case I915_PMU_RC6_RESIDENCY:
->   			val = get_rc6(&i915->gt);
-> --- a/drivers/gpu/drm/i915/i915_pmu.h
-> +++ b/drivers/gpu/drm/i915/i915_pmu.h
-> @@ -108,6 +108,14 @@ struct i915_pmu {
->   	 */
->   	ktime_t sleep_last;
->   	/**
-> +	 * @irq_count: Number of interrupts
-> +	 *
-> +	 * Intentionally unsigned long to avoid atomics or heuristics on 32bit.
-> +	 * 4e9 interrupts are a lot and postprocessing can really deal with an
-> +	 * occasional wraparound easily. It's 32bit after all.
-> +	 */
-> +	unsigned long irq_count;
-> +	/**
->   	 * @events_attr_group: Device events attribute group.
->   	 */
->   	struct attribute_group events_attr_group;
-> 
-
-Regards,
-
-Tvrtko
-
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/ad05af1a-5463-2a80-0887-7629721d6863%40linux.intel.com.
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/874kksiras.fsf%40nanos.tec.linutronix.de.
