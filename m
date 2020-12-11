@@ -1,146 +1,157 @@
-Return-Path: <linux-ntb+bncBDE6RCFOWIARBQ6YZT7AKGQESEMCWPA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCS5BWNH3ENRBUECZX7AKGQETWXNMRI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x33f.google.com (mail-wm1-x33f.google.com [IPv6:2a00:1450:4864:20::33f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 1F5E12D7191
-	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 09:22:28 +0100 (CET)
-Received: by mail-wm1-x33f.google.com with SMTP id z12sf2956404wmf.9
-        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 00:22:28 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607674947; cv=pass;
+Received: from mail-yb1-xb3e.google.com (mail-yb1-xb3e.google.com [IPv6:2607:f8b0:4864:20::b3e])
+	by mail.lfdr.de (Postfix) with ESMTPS id A38A82D7311
+	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 10:52:17 +0100 (CET)
+Received: by mail-yb1-xb3e.google.com with SMTP id l8sf10335743ybj.16
+        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 01:52:17 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607680336; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qTi3ce22gfLa2iegLM41twvBf67lYQTzal0u38Kq4HkPYFcr5/p6ElJUHYl8AoJpaQ
-         FE0OG+0hzx1PFN2hPr8faJR2XpQ4btWev0Zc23wq3OEyTeEWUwPKr6KBLbxdVCjiz3Gt
-         cvE9Rbm3tiSI4r9KviRU3SZ/varh9ycaWWzCUrGJkoziCw8dFJ1Xpist3jXbDNxTaBuo
-         Xl2al3Ts3U95S8FbPR2Xsyk9jX39PyJsrMzIOBrvHiI5NS8iOSnE3Bn564uDm72UdRka
-         v0YerA+9VGiTFGPs9P9+e7mJU6qnK7AwYnJZOv1+c1RYbh9WKQQVXN1Mcj0fTzI/wqqW
-         iHCw==
+        b=KEEuIyD8xDhNYiEepfcnx2qJNz2TcRXahdsNMka3XOkT2skIdoJkL3cTZcdJ8R4MWA
+         7d9QOE7zmADi3EtVpQEv02ZdiAAUibAyG4PuOrK6gEYNstCIC0Z0MGpqlkWC35Q7ZBuA
+         E7Lr8CEphOu4elds+bJhEB02mGAZ2VSsFuy4+qpZnYjDqrro8qrFP+MolwivgmasHkJ+
+         9gTEjJo+meVrOKQ0jpkeKFU2ruAQ9df5Ves0r39u+Qxb2Sl77fc0P8d+yamhBWgPKIfn
+         JLw+LK95l49GxumH3xyKuW4l6pPeXdMWdfwzi1Jevdf5Cu9XfRplJavsniEJA1m1TuaP
+         JSyw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:sender:dkim-signature;
-        bh=kCm0+EFaKaMOJCMAjUI9F2mX8KEuU5dLFMFpsitLSe0=;
-        b=F8N2PJdqZ1hdupzR8rU/GW9uxSKXxp2TS0D7EjbEFVvansNQJvjTFEH2yvyb8yzPVX
-         53N/mguPBSF9Axpr/sDDB2ulQrTI6FxaMGLcjT5OinLVz1IbX65Gdy+HyY1soF4ZGybW
-         y3sfBY5ILFxHH+UPKjZ0vzi7rHHaW29ZKUksMEJJOXN9n8f3C26SVx6Oa2e+H5wNhIv1
-         2yIyYxUs2T42cOxf4YhnXkT4U5Ui+Wo5//YOITtcOqbl/OEuC0R4OA9RXLJvMNoCKtyI
-         l0QrVSiiJ5eqDkNGcAazCqiNNPERBhIM+ffOXK+TrpNRKPVVwhWTCkpXgry9L12a+P9h
-         G/jw==
+         :list-id:mailing-list:precedence:content-transfer-encoding
+         :mime-version:message-id:date:references:organization:in-reply-to
+         :subject:cc:to:from:ironport-sdr:ironport-sdr:sender:dkim-signature;
+        bh=zGGVwZuQ8Cm5Ms0WF2adoSiUfbn4jg+RYp6YA6S73xg=;
+        b=xahV063AbA0Wti+l1QSFeRSkX3L3xHg8W7BheFUuvn9+NdjHTVtt0mNHBKiQjIx1UJ
+         HVa7WtT/wkE8RB2ayu/qtnSfLxqpliQ74w7bnxEjpZOTqAWrWrDXdEbxOkcD3mpQ0538
+         GZliOxd/4qC9goXHgmuYIsxFUpt6yRT1x8RCESBQckmkpUvP09du2JgQe9HfHDiBM5bO
+         TaogQ99y5u7+TcJdAELnbp/DuqbkUp0SNq65Ghp2gC+fAFvYvx2nxGr7v/nFVQf5p0jk
+         lAX2MUJFq0flnqZuWtioc5P8WQMoLJJBvULbtp01TjaioywIfy29gCEMnoCGtdVJ23Gu
+         Xlng==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Sg4cSLWy;
-       spf=pass (google.com: domain of linus.walleij@linaro.org designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=linus.walleij@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=jani.nikula@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:references:in-reply-to:from:date:message-id
-         :subject:to:cc:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=kCm0+EFaKaMOJCMAjUI9F2mX8KEuU5dLFMFpsitLSe0=;
-        b=WQbf/ghC9k4uav5S8UqcRpmcDvSU+a8bO8ZS/Xeboq9C888anJVt3f5BeFUPq78eeh
-         Lk5VTHKluLTUbZ2kd3hlNqOeK21VhJgpbEdi7K9jKS41h/nxDmHTr+6bSiuhnQZqDjDV
-         FnU9WwpcfV+o2NTRI4EesV7PVpUfAexwOWf/AMvFjMe/b4i2T03o86ezjvv2qG6y3upE
-         3s+p4ngeDRTke5c7TvPoGXhEGvRQ1JX7R0VxcopxjaOCDNi7xeymaL3O1Iwcrb5SLbPM
-         ZzRm8S7RmovrB14ZhtIcmwqOVXixKkFR2c4nkha9RLyzHtrrvgxxPuD24ffaTQM6SHe+
-         n/mQ==
+        h=sender:ironport-sdr:ironport-sdr:from:to:cc:subject:in-reply-to
+         :organization:references:date:message-id:mime-version
+         :content-transfer-encoding:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=zGGVwZuQ8Cm5Ms0WF2adoSiUfbn4jg+RYp6YA6S73xg=;
+        b=TM9zn29JyZvBinqP7c8/I/Zxur9FHCk4vI07ee9lRyOerHWHdn+gcCJUxg6OvEIUIt
+         AyiXw1Tlq6N7lhKvdanHh8mRQPar7tNi7QXombHcehujpDoB2SCsOvjSO/2K1f/5hgHZ
+         XYhZ0S0cqy5YBjAXp1n1J5sT5ANnLz79wSN6DndJZ7Q9aRQdhj9CSqYCxkUaMfLW+St1
+         zuV7BTWI6L/ETzTVNEHj5HQHMbz4ACy+1pY2BJL3Z43zaToiqAaTO+G5GKZvH2Guprrr
+         1jRYm6ErMbIQcXORbh25hJ7Z1C5SJxtEuVs6+UIuZj3pfJ1pJzAmiunmA84PuptuvV0o
+         IN2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
-         :date:message-id:subject:to:cc:x-original-sender
+        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:from:to:cc
+         :subject:in-reply-to:organization:references:date:message-id
+         :mime-version:content-transfer-encoding:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=kCm0+EFaKaMOJCMAjUI9F2mX8KEuU5dLFMFpsitLSe0=;
-        b=GAVd6/u5sfNy6Lubh1OSA49S+F7j0WEw9jipGtRXfeUtnnkamudLWhQf1fMdTsat9Z
-         Pa8ppr+Xd3xBHhMCvA6l3gY4NfTQsQkn5Ua2u9s5rXW8Ie/cH5OzA9wPAGkC3sRtYiQH
-         G+fFfB/XdnG9pzG3df1XS5bUITc2B/tNGHX6xKL5Rltq68TJuzjnl6aVkhGUVkSxQrXs
-         bYaUZgw7kE1UVMGQz/eT6KwWlMtSQYWkc6bOirG6Da180yCO+sR5Vrdf3vMMxekr5pNn
-         fzvhDEDt7dfjPgvsbpnlGtyOXeIj4ATqVqL6/hLPF9GgzhTy7EHLr5MNAX2Y6zlxXKMa
-         dZmA==
+        bh=zGGVwZuQ8Cm5Ms0WF2adoSiUfbn4jg+RYp6YA6S73xg=;
+        b=spNe1sdTLCsKUAu86ukBS1U7EAarzolNjGLYk3KfduWiRYUAa0ML5wBqu1gy0ZeekJ
+         K6726lMBWWX3c/50alBaasnZ2Tj5oWM7wKNsNgfWnVZE/Nx83yQNYKuXrRoqHZFxOKd/
+         4SC0eCtb/hsQzpx5MhHelE8lj0E/RdgK16uPdIskaiXAM4Xjqdrb1s2Y03e/8vrQUFMZ
+         oPlELhf+/JMClf7HSOmYoiTHxCgx9qOAcs0KIeG10jM0QWguearoyESPXlPkvSK3B/DB
+         hQ1fBOoSt35t8kCb94M8w+jAz7O62fFxePva/8siY55mC+7Zzg5lzHsHMV45+iS88F1e
+         gcqg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530sqabl0gslbB/Z6kNPQOBRMAJXIDu8nuVjM9WFpHkVXpYGwsUD
-	umOVWoT2FUQeVKPu5Di801Q=
-X-Google-Smtp-Source: ABdhPJyWv0yKB95uGSw0CwQ41g0d4w4+M639Qq8dnwqIjSuRj25ryqeAwAYmil1bZ1ItycxBV7n2yw==
-X-Received: by 2002:adf:e552:: with SMTP id z18mr13107025wrm.29.1607674947830;
-        Fri, 11 Dec 2020 00:22:27 -0800 (PST)
+X-Gm-Message-State: AOAM530L5+UyWp73OiIpBMM/WREfZMoiFFN32CN8xyLYtF/n/yjpqn+/
+	Q00ZRPWox8OYowGP7ZGGukU=
+X-Google-Smtp-Source: ABdhPJzrfEV1ZP+uE2JrzEOjtn37JoEGzljHKmbVMXZLhYvjTp6CoaZHOxU3WPsJpiB5Y4XL/sgJFw==
+X-Received: by 2002:a25:b6c2:: with SMTP id f2mr17500002ybm.261.1607680336525;
+        Fri, 11 Dec 2020 01:52:16 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a5d:5543:: with SMTP id g3ls2178063wrw.0.gmail; Fri, 11 Dec
- 2020 00:22:27 -0800 (PST)
-X-Received: by 2002:a5d:4d50:: with SMTP id a16mr5081039wru.43.1607674946967;
-        Fri, 11 Dec 2020 00:22:26 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607674946; cv=none;
+Received: by 2002:a25:41d6:: with SMTP id o205ls3918567yba.10.gmail; Fri, 11
+ Dec 2020 01:52:16 -0800 (PST)
+X-Received: by 2002:a25:d0d4:: with SMTP id h203mr12413201ybg.274.1607680335953;
+        Fri, 11 Dec 2020 01:52:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607680335; cv=none;
         d=google.com; s=arc-20160816;
-        b=uW8RSZ8Laix/AsXGBbRbYJqb+7WhqR6z7C+nM+IYri1s3Ul3CwfVgcVfVUqr2KGN2I
-         j0eAu/IkcT5sahoO2Sz1xkQ4kh6WOsLK1YccKN+WZ8oV7rva+t/ATCMjtY3R3BMazw+i
-         CQQSqS5VXsE2zpB76HBGOvDEdDHtINTq1cTpTZPDV5rWvX0BMx96U6D8pK7lOqkVuPfW
-         isoI7gJuLyptQ52aK9KhEF23D7S24cmV2oRlxkZ8ULSJoZiUQx1Nr9dq/yphtIYO0Ukw
-         i0uBrpjn3g2WB/tohkGpS0hKWm9fLY0mAdeW+ha/bmNRpS2bdqIiuLp1R5YKeM7uoO1t
-         WmYw==
+        b=gpvS5NuxLC1P5hzcDZcGXdA8/6DylS+wQqox/2H4wU5AcL4T1bPhAKeXqy+ya1xJPv
+         qV3BRbbvj+GSCg2ci9E3hccRbeBtxfl3MeIBGCzBs7E5qTVeIQMnB/HHtFqlJp2YJFrW
+         o919hMPLqJey+33jIYPJqN5FuV5DVFmbaLJEGsg/2hWryhNo+bc1CmKXjBB7q4x9A0vr
+         OZ5tiT7mandnO/FlbX4oe1/izK9eTvfjae2W1rF8tkM1qUjn3OCWvON66ndmXSxlqQzi
+         qUhKEBFO1MkqXRPuTrr4UqKyIfH1cuv0M4BqQEOeAeupmqJyhKY4WrrFgvRj08QYp1kB
+         B5fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=2E9lnRJNmKjai1CIMZDErJ15p/JF+kjk/cqnxyQj4Dg=;
-        b=bY/fwK6o0rsDkkxu5/50UyN+cobsalI/j7TYlI9wSQMDNfEt1M2cFUNRp90WI6IoV5
-         nnxBr5MGYSIn8heWXv1sLNCkCzC5YAtb27MnZ9jDLiCh41VTA/eMr5Ul2Zp0ymq0/ffZ
-         6Ac53dABGMkYgAtxagQFQo9W3t7VZjC2zwpm7CTY4rN7DVowsqYAjwEbkAiPhfbFToqF
-         VTd6HWdW50Y7IhmrES+ertZTE5hnYSPwFKAPcfPv+Ibx6VgmS3vjJaNUlHEVWTErvfnf
-         9tL9RFBQVUp0vzFEnWikW4mEIZheTr/IhLH01iBSpir9OlYlztkVe7DI/hnVLXr/jd2z
-         +jYg==
+        h=content-transfer-encoding:mime-version:message-id:date:references
+         :organization:in-reply-to:subject:cc:to:from:ironport-sdr
+         :ironport-sdr;
+        bh=TD8am/Ai/jiwoG/IY71MvYmRV39zRERprjrs56RVvNM=;
+        b=vtAginx+NO4bvmi7uBtbzx6nRO+LpWF5KaNs/lwJAQcOWsd5Xxw1x/5hW2mcragEgs
+         jSOEVKkt2w9ObdsqVjgaLMZTRY6+yN2ccayTeP4RiD+6p/6M3xXzeNssmqmaf2MntBiN
+         H5xW86n9HaIuFvKmxyqlMwQvRvvRs69cIvWrXiR5E47Rp5I1e+Qnu8A1Cm5iigud61Se
+         dvoitm2XcNrvF3/SAh4NjLQ4lG4IcQBF8btsJhTUS5OcbZIQyf3jpX2oBu1ivzZAaZGr
+         3KSGaDRCNOiMyfl8lEcSIQZhhJMwYtbIfB85KaQdbfQj2JK7fswsh7vtvhQhzsZMM+Cn
+         KeRg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Sg4cSLWy;
-       spf=pass (google.com: domain of linus.walleij@linaro.org designates 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=linus.walleij@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from mail-lf1-x142.google.com (mail-lf1-x142.google.com. [2a00:1450:4864:20::142])
-        by gmr-mx.google.com with ESMTPS id q142si200349wme.2.2020.12.11.00.22.26
+       spf=pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=jani.nikula@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from mga14.intel.com (mga14.intel.com. [192.55.52.115])
+        by gmr-mx.google.com with ESMTPS id k6si581862ybd.5.2020.12.11.01.52.15
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 11 Dec 2020 00:22:26 -0800 (PST)
-Received-SPF: pass (google.com: domain of linus.walleij@linaro.org designates 2a00:1450:4864:20::142 as permitted sender) client-ip=2a00:1450:4864:20::142;
-Received: by mail-lf1-x142.google.com with SMTP id a9so12208265lfh.2
-        for <linux-ntb@googlegroups.com>; Fri, 11 Dec 2020 00:22:26 -0800 (PST)
-X-Received: by 2002:a19:8384:: with SMTP id f126mr3904234lfd.649.1607674946619;
- Fri, 11 Dec 2020 00:22:26 -0800 (PST)
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 11 Dec 2020 01:52:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of jani.nikula@intel.com designates 192.55.52.115 as permitted sender) client-ip=192.55.52.115;
+IronPort-SDR: Lq9IWofG504yKx1ByopMkg+HAY1fIDgD7JciSFtBvP9V/z4Et/wZMw9meRAj209xrA4w70QBld
+ 8ChGxy+nd1LQ==
+X-IronPort-AV: E=McAfee;i="6000,8403,9831"; a="173641942"
+X-IronPort-AV: E=Sophos;i="5.78,411,1599548400"; 
+   d="scan'208";a="173641942"
+Received: from fmsmga001.fm.intel.com ([10.253.24.23])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2020 01:52:14 -0800
+IronPort-SDR: PVl8OU8ROdRYNRcuuI1cwHnm0Pahwqqsf4O0coU6GZWsYYiN/hRTouvAiYE5Ccs0+xvEJJqBLa
+ InJ3eAdxnHfQ==
+X-IronPort-AV: E=Sophos;i="5.78,411,1599548400"; 
+   d="scan'208";a="440808660"
+Received: from dkreft-mobl1.ger.corp.intel.com (HELO localhost) ([10.249.158.206])
+  by fmsmga001-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 11 Dec 2020 01:52:00 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Ville =?utf-8?B?U3lyasOkbMOk?= <ville.syrjala@linux.intel.com>, Thomas
+ Gleixner <tglx@linutronix.de>
+Cc: Mark Rutland <mark.rutland@arm.com>, Karthikeyan Mitran
+ <m.karthikeyan@mobiveil.co.in>, Peter Zijlstra <peterz@infradead.org>,
+ Catalin Marinas <catalin.marinas@arm.com>, Linus Walleij
+ <linus.walleij@linaro.org>, dri-devel@lists.freedesktop.org, Chris Wilson
+ <chris@chris-wilson.co.uk>, "James E.J. Bottomley"
+ <James.Bottomley@hansenpartnership.com>, Russell King
+ <linux@armlinux.org.uk>, afzal mohammed <afzal.mohd.ma@gmail.com>, Boris
+ Ostrovsky <boris.ostrovsky@oracle.com>, Rob Herring <robh@kernel.org>,
+ Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Dave Jiang
+ <dave.jiang@intel.com>, Leon Romanovsky <leon@kernel.org>,
+ linux-rdma@vger.kernel.org, Marc Zyngier <maz@kernel.org>, Helge Deller
+ <deller@gmx.de>, Michal Simek <michal.simek@xilinx.com>, Christian
+ Borntraeger <borntraeger@de.ibm.com>, linux-pci@vger.kernel.org,
+ xen-devel@lists.xenproject.org, intel-gfx@lists.freedesktop.org, Wambui
+ Karuga <wambui.karugax@gmail.com>, Allen Hubbe <allenbh@gmail.com>, Will
+ Deacon <will@kernel.org>, linux-s390@vger.kernel.org, Heiko Carstens
+ <hca@linux.ibm.com>, linux-gpio@vger.kernel.org, Stefano Stabellini
+ <sstabellini@kernel.org>, Jakub Kicinski <kuba@kernel.org>, Bjorn Helgaas
+ <bhelgaas@google.com>, Lee Jones <lee.jones@linaro.org>,
+ linux-arm-kernel@lists.infradead.org, Juergen Gross <jgross@suse.com>,
+ David Airlie <airlied@linux.ie>, linux-parisc@vger.kernel.org,
+ netdev@vger.kernel.org, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, LKML
+ <linux-kernel@vger.kernel.org>, Tariq Toukan <tariqt@nvidia.com>, Jon
+ Mason <jdmason@kudzu.us>, linux-ntb@googlegroups.com, Saeed Mahameed
+ <saeedm@nvidia.com>, "David S. Miller" <davem@davemloft.net>
+Subject: Re: [Intel-gfx] [patch 13/30] drm/i915/lpe_audio: Remove pointless irq_to_desc() usage
+In-Reply-To: <X9J7h+myHaraeoKH@intel.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - Westendinkatu 7, 02160 Espoo
+References: <20201210192536.118432146@linutronix.de> <20201210194043.862572239@linutronix.de> <X9J7h+myHaraeoKH@intel.com>
+Date: Fri, 11 Dec 2020 11:51:57 +0200
+Message-ID: <87zh2k7jr6.fsf@intel.com>
 MIME-Version: 1.0
-References: <20201210192536.118432146@linutronix.de> <20201210194044.157283633@linutronix.de>
-In-Reply-To: <20201210194044.157283633@linutronix.de>
-From: Linus Walleij <linus.walleij@linaro.org>
-Date: Fri, 11 Dec 2020 09:22:15 +0100
-Message-ID: <CACRpkdZuPp0KN1BCJ26vWH1=nopaD-ctv6bh-rt2X9bJczZE-Q@mail.gmail.com>
-Subject: Re: [patch 16/30] mfd: ab8500-debugfs: Remove the racy fiddling with irq_desc
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: LKML <linux-kernel@vger.kernel.org>, Peter Zijlstra <peterz@infradead.org>, 
-	Marc Zyngier <maz@kernel.org>, Lee Jones <lee.jones@linaro.org>, 
-	Linux ARM <linux-arm-kernel@lists.infradead.org>, 
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, Helge Deller <deller@gmx.de>, 
-	afzal mohammed <afzal.mohd.ma@gmail.com>, linux-parisc@vger.kernel.org, 
-	Russell King <linux@armlinux.org.uk>, Mark Rutland <mark.rutland@arm.com>, 
-	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
-	Christian Borntraeger <borntraeger@de.ibm.com>, Heiko Carstens <hca@linux.ibm.com>, linux-s390@vger.kernel.org, 
-	Jani Nikula <jani.nikula@linux.intel.com>, 
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
-	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
-	Pankaj Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>, 
-	Chris Wilson <chris@chris-wilson.co.uk>, Wambui Karuga <wambui.karugax@gmail.com>, 
-	intel-gfx <intel-gfx@lists.freedesktop.org>, 
-	"open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>, 
-	Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, 
-	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, Jon Mason <jdmason@kudzu.us>, 
-	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com, 
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Michal Simek <michal.simek@xilinx.com>, 
-	linux-pci <linux-pci@vger.kernel.org>, 
-	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, 
-	Tariq Toukan <tariqt@nvidia.com>, "David S. Miller" <davem@davemloft.net>, 
-	Jakub Kicinski <kuba@kernel.org>, netdev <netdev@vger.kernel.org>, linux-rdma@vger.kernel.org, 
-	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, 
-	Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>, 
-	Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: linus.walleij@linaro.org
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linaro.org header.s=google header.b=Sg4cSLWy;       spf=pass
- (google.com: domain of linus.walleij@linaro.org designates
- 2a00:1450:4864:20::142 as permitted sender) smtp.mailfrom=linus.walleij@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Content-Transfer-Encoding: quoted-printable
+X-Original-Sender: jani.nikula@linux.intel.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of jani.nikula@intel.com designates 192.55.52.115 as
+ permitted sender) smtp.mailfrom=jani.nikula@intel.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -153,31 +164,66 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Thu, Dec 10, 2020 at 8:42 PM Thomas Gleixner <tglx@linutronix.de> wrote:
-
-> First of all drivers have absolutely no business to dig into the internals
-> of an irq descriptor. That's core code and subject to change. All of this
-> information is readily available to /proc/interrupts in a safe and race
-> free way.
+On Thu, 10 Dec 2020, Ville Syrj=C3=A4l=C3=A4 <ville.syrjala@linux.intel.com=
+> wrote:
+> On Thu, Dec 10, 2020 at 08:25:49PM +0100, Thomas Gleixner wrote:
+>> Nothing uses the result and nothing should ever use it in driver code.
+>>=20
+>> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+>> Cc: Jani Nikula <jani.nikula@linux.intel.com>
+>> Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+>> Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+>> Cc: David Airlie <airlied@linux.ie>
+>> Cc: Daniel Vetter <daniel@ffwll.ch>
+>> Cc: Pankaj Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>
+>> Cc: Chris Wilson <chris@chris-wilson.co.uk>
+>> Cc: Wambui Karuga <wambui.karugax@gmail.com>
+>> Cc: intel-gfx@lists.freedesktop.org
+>> Cc: dri-devel@lists.freedesktop.org
 >
-> Remove the inspection code which is a blatant violation of subsystem
-> boundaries and racy against concurrent modifications of the interrupt
-> descriptor.
+> Reviewed-by: Ville Syrj=C3=A4l=C3=A4 <ville.syrjala@linux.intel.com>
+
+Thomas, I presume you want to merge this series as a whole.
+
+Acked-by: Jani Nikula <jani.nikula@intel.com>
+
+for merging via whichever tree makes most sense. Please let us know if
+you want us to pick this up via drm-intel instead.
+
 >
-> Print the irq line instead so the information can be looked up in a sane
-> way in /proc/interrupts.
->
-> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> Cc: Linus Walleij <linus.walleij@linaro.org>
-> Cc: Lee Jones <lee.jones@linaro.org>
-> Cc: linux-arm-kernel@lists.infradead.org
+>> ---
+>>  drivers/gpu/drm/i915/display/intel_lpe_audio.c |    4 ----
+>>  1 file changed, 4 deletions(-)
+>>=20
+>> --- a/drivers/gpu/drm/i915/display/intel_lpe_audio.c
+>> +++ b/drivers/gpu/drm/i915/display/intel_lpe_audio.c
+>> @@ -297,13 +297,9 @@ int intel_lpe_audio_init(struct drm_i915
+>>   */
+>>  void intel_lpe_audio_teardown(struct drm_i915_private *dev_priv)
+>>  {
+>> -	struct irq_desc *desc;
+>> -
+>>  	if (!HAS_LPE_AUDIO(dev_priv))
+>>  		return;
+>> =20
+>> -	desc =3D irq_to_desc(dev_priv->lpe_audio.irq);
+>> -
+>>  	lpe_audio_platdev_destroy(dev_priv);
+>> =20
+>>  	irq_free_desc(dev_priv->lpe_audio.irq);
+>>=20
+>> _______________________________________________
+>> Intel-gfx mailing list
+>> Intel-gfx@lists.freedesktop.org
+>> https://lists.freedesktop.org/mailman/listinfo/intel-gfx
 
-Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
+--=20
+Jani Nikula, Intel Open Source Graphics Center
 
-Yours,
-Linus Walleij
-
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CACRpkdZuPp0KN1BCJ26vWH1%3DnopaD-ctv6bh-rt2X9bJczZE-Q%40mail.gmail.com.
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/87zh2k7jr6.fsf%40intel.com.
