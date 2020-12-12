@@ -1,130 +1,145 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBKXSZ77AKGQEZMHDDCI@googlegroups.com>
+Return-Path: <linux-ntb+bncBDE6RCFOWIARBTNF2D7AKGQEIWQ6HBA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x239.google.com (mail-lj1-x239.google.com [IPv6:2a00:1450:4864:20::239])
-	by mail.lfdr.de (Postfix) with ESMTPS id 30BC12D826B
-	for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 23:56:43 +0100 (CET)
-Received: by mail-lj1-x239.google.com with SMTP id h3sf5452774ljk.11
-        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 14:56:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607727402; cv=pass;
+Received: from mail-wr1-x440.google.com (mail-wr1-x440.google.com [IPv6:2a00:1450:4864:20::440])
+	by mail.lfdr.de (Postfix) with ESMTPS id EA7FF2D838E
+	for <lists+linux-ntb@lfdr.de>; Sat, 12 Dec 2020 01:46:05 +0100 (CET)
+Received: by mail-wr1-x440.google.com with SMTP id w5sf1717858wrl.9
+        for <lists+linux-ntb@lfdr.de>; Fri, 11 Dec 2020 16:46:05 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607733965; cv=pass;
         d=google.com; s=arc-20160816;
-        b=XU5IKSreC60/7CUSTboqBrx3RO9MUo5IUsO+mO+ew12rXbVmt74BKgr+JfsA+Tu2ej
-         bKkkRCdMNN3kM6ocbBEyRChggdAHUZH6EhRVogOLNHjHcuSa7QfmQk2emtG241BQuRKT
-         eypR6mucrOWbhrgu3crygYkra6T9XwWNKYxI4dQDdCvYGd6Vi+K0y3p+gh1GC2ugPzCZ
-         g7HcBuPg6NGLQnnPO2TyfEVRkf0daKl0C6R6k8emFlhQ1Bbb+dYDOT6EFng8bkTOVn1+
-         phMSkFeTndj18qcMCDS7tZhE14Pw4jJFaxLR5skhTmUQZUnoZqrYfBVsYaL1tZqs40A/
-         LODw==
+        b=tOYRJ8A01s1PmFIsn99b0qg3UTDBywSUbQPquJOQIssgwPPfw/hwjU6KtnvT4K8Tjt
+         RQqqjBoiykIwc944c9gAhCOkucg0zF4q8lxLjD8YJBUB2IZ9D3AmBBmheKU4T3lpyOK0
+         jZ6YV4fPRd3n87nyTDSaNdxXba1tjzjtiyfpbpfYv/2B/e+BKwhUGsd1UY9I9/57tAuN
+         IFqWTwg9tbU3v+vpmhOnXGQvN71D59kHGyaBpwtZEz7M69uipoS+cLJuhLXFRFcvIzqK
+         mG2MuhqUsBfXievWeuqalG6fmEqCG1t5mqerYn5oSDyWcZquPrXsODQJ+UXxo4aBYy+x
+         HVbA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-transfer-encoding
-         :mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:sender:dkim-signature;
-        bh=Rlit82fhQTpGRY8YUn5rTD9Zv4HQE0VxuETrmwJPA7E=;
-        b=XOl4oKKNTA3iQYr5dNM8ru2hFjl/DUjrgpE4tvWZl1xe+kbEBXbOO5Ec0tTJkqYrRJ
-         15o7mforfC6k0AT+EHo8ApY/49yYotM64c9FklPeBvAygXSx+VJjLVKzf9Q2j6mxpQO1
-         8RImZYBdD0u6MMvcIAHyvhc0ZlDrhjgKHbQgDCbsZ7ut+GykTRpBbd6aAL0r5GfYPGcD
-         KEw5J2h7zoaAs4FrTfdL02a2hPxW6FIx61fSNNrUJwAWiLphr4R0WDGATW0+EQ9+LXiY
-         yTc8aqpFPwRQjIpxq+hXdBcHiEntce0k+F0YiMppXcEET08ultmKRCObA+8K2MoeKPmg
-         1Tog==
+         :list-id:mailing-list:precedence:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:sender:dkim-signature;
+        bh=7p/YQje7Ih3JVBewQC00ZSfObLCl+6D2eQDEsNsjOmQ=;
+        b=FXfsMJWd7bUPkarntXtMb87XPjBOK2I6Ha3Tb0TF2P6ZEGY/hZXRvh7Y+FCZ6PQoJS
+         Ws9ZNyKMgEbZdDN1x5d6aehW9OcSKe1Mu4+niCijIf8LZe+z9kFcIztpCA40/8glyVip
+         VZqeeU8sJKHSkn2+5WtJWLXIdbLPhFPXsNw/ZhXoyzF7xkiSGXpjF2q7aAVKF4J1tcTb
+         F9xJMzWXC9ccEyYbTVKJKpnzq2+3dXS2KDEyhnZg+uicPRppXiVFVB13WVfZKXI0xE8D
+         cJcaorw4PLqi6/EnGzegZ293RGCyor50jeg5uJFkC82PvZQ8i/i8yKlkSxk11Lcodrou
+         D6Aw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=0WcDMUhL;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=ljcajSXu;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+       dkim=pass header.i=@linaro.org header.s=google header.b=vPmJzs+n;
+       spf=pass (google.com: domain of linus.walleij@linaro.org designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=linus.walleij@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
-         :mime-version:content-transfer-encoding:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=Rlit82fhQTpGRY8YUn5rTD9Zv4HQE0VxuETrmwJPA7E=;
-        b=soShV8b79GET19+v+bAe4QDCYfFA9wj1CwZVrv1jKwpwR+Fw+oGORvdGSKP4Lh047K
-         kDNT/8nEogp5LjBHfrI66jnmguPLaYWurkZ2fg2cPa6wg+1QVVlGlUdtxzOlYMlvt+2/
-         8CqChhOyF1l0iBlkyl0uHhYGiHxq9AJO52t+YTPxz5xR6suPWgRGSPCcpxAaeC3ZO1mK
-         tXICA8OYUMSd/UqoaMunOH9mgAugLZ0XDzFV6W+XKvb/QHUPYIHP52gaMwWVWs3OXUv3
-         rUND+nbkTugvuRUQmpNd2WzgT/pn52q18A+kb0mkfB70+Sy9bFFiVxVWHldfPNxOY6Gq
-         YRhw==
+        h=sender:mime-version:references:in-reply-to:from:date:message-id
+         :subject:to:cc:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=7p/YQje7Ih3JVBewQC00ZSfObLCl+6D2eQDEsNsjOmQ=;
+        b=kZYbGnMOKm7OWCuxatRR3iyNSz6Bu6sbDnzO9qV3jlSzjcvVgJLAgATzIBCl8U+4pR
+         7un2138rImWgIGbFklAm3eaLrv+aHSIXHA1XMu/bBGBEaJlIr4Bcr5DchWXVcow06Wdw
+         WooBppC8PNUr46QJrI6cQHcQiF8lE+dZ6WSnH9f8stQj+QKQRn1w46mtPk7PRP45S+sg
+         zczsymUl7wvP4mNQUW62X2TBa+ENK2JmTaSpeOG/v5kdAAikCrBlRl1DLoIxdJSoQpNe
+         FM0S5JsrPm9M5arDxT2k5fbNIgl18OoRpOe9epWVM+Yp8RF3Zjn5dLSNQBg8pQarF2B5
+         2hxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
-         :date:message-id:mime-version:content-transfer-encoding
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=Rlit82fhQTpGRY8YUn5rTD9Zv4HQE0VxuETrmwJPA7E=;
-        b=uNo0yGbktKpeAaKCR/0h156WxdHkX4JeiSzWSmuSTbK00XKM0NLH7IritnLX9FEVTz
-         gXZ4WZLm7HEApbGIYdEaMutZB5gTXWokPasL/IrESXnUbrt+V09H7/Cd2VgQqJSaT516
-         jMm4ZJFawI5cjPs2JczXtHCNXsZP8P8shWc/7fJZ26qoYZT7ZeeXw2muEDOCIq0L9J2w
-         YcXJvSS0zDRweO4lxigPI59iZUy1fOAfoswMAHQCvB6qBQKzC77Xmz+M41G4hJQW4xVP
-         bqreHTaEWsEpKzT21eE4FpF7FXA+T0EOJy2RGEcAWIcuHMUnXL+8ov3I9VcQKmbFFtTb
-         /77A==
+        h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
+         :date:message-id:subject:to:cc:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=7p/YQje7Ih3JVBewQC00ZSfObLCl+6D2eQDEsNsjOmQ=;
+        b=Ujsd4j1NxToRTDN4kzuUXZ8ihE8HTApXHDNgMTenQHPDdH0pKlfBMT5UNrOkq7lelX
+         LbenqLift33pUhX8UPL2xIw6IBOMjAEmMEpTn/qTHR9+VaBpZ5RmhcMtP09dAV+5dG7j
+         /Dlhki2qZCrv/1v8G0W6m/opnt+KOYWnXcUxDyYXMNu212/KSP1ZBiySGIPMiZlQA/FP
+         3nZnBYie6ByvneTTGZm3znP3JR4Dh5WGaU6mjf7rY/XkNT/Om5MqWAEev6ctoipUVCIO
+         FT+epJjd+N0m6Yve6InTzBnjmIEvWiRY8ynAhGSWoqrU1GCuHEyuie3CaRb8y7FHg2DQ
+         I5vA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533L2CgPSbuOP6v81DzgZoIMAiGhzvIkVmfB2lsSUNwVxBMdO4Pi
-	xSpO8B1dPOIjs1qXNBYyQ1w=
-X-Google-Smtp-Source: ABdhPJxFV/06LL6HQXQ9vYp6HK+VCYi6CoKQ+5mHPJQIBR3jLZAPPD0l3vwEhr6JgeoNr1vfRtCsZA==
-X-Received: by 2002:a2e:9f53:: with SMTP id v19mr6068891ljk.109.1607727402719;
-        Fri, 11 Dec 2020 14:56:42 -0800 (PST)
+X-Gm-Message-State: AOAM5328jwMyko7rod1D8fyIzTgfpiVZXnswUlu42x0B8ZjoHzppbHxv
+	MNBgXetdseG3x0hbqZfwE28=
+X-Google-Smtp-Source: ABdhPJx2zYXYibaFnXe52OfD+hf5m8PuPJFQvVbgEE/Cfgflrcg/MOTSW7ZY/2q3UcWPDN+HKkll7Q==
+X-Received: by 2002:a5d:6845:: with SMTP id o5mr16427512wrw.421.1607733965737;
+        Fri, 11 Dec 2020 16:46:05 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a2e:bc2a:: with SMTP id b42ls1959233ljf.2.gmail; Fri, 11 Dec
- 2020 14:56:41 -0800 (PST)
-X-Received: by 2002:a05:651c:1027:: with SMTP id w7mr5960524ljm.297.1607727401643;
-        Fri, 11 Dec 2020 14:56:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607727401; cv=none;
+Received: by 2002:a5d:6812:: with SMTP id w18ls5328979wru.1.gmail; Fri, 11 Dec
+ 2020 16:46:04 -0800 (PST)
+X-Received: by 2002:adf:f58f:: with SMTP id f15mr5333085wro.388.1607733964916;
+        Fri, 11 Dec 2020 16:46:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607733964; cv=none;
         d=google.com; s=arc-20160816;
-        b=OT4fwwDtwbEQTocV6C647eFNIh6YDXKnTs3JLmR5KgkZEtnhAy9BuGqmwK0rTJaQbt
-         Jw6mqufw7e6XjQjrdRQZIkA2voyZIxODIFcCuCEW/nYrMfwBTTSac/wJz93lDf4pbx3I
-         jaNfwsfYodW+fHjIH00oA816fk2qvEFs/RyOsZDEs7TYjZYbix45hf1i+TLURDH6Z0Di
-         pfbWl9kQVau9EJD9Z4o4DtI/nUIV/yPjwFG1P0SwcFt/RTJQLcdkRDKDy2/frQsClbRu
-         3FdVAY0oVQRFGkqiSZyeKyuZcnyTyD+4OTyfz6ZOpB6BDVRdrquPx8KqjkzxY4NAblAx
-         4Y3w==
+        b=Od8obpnCnfwG6bfeCWPn4v5Mu/8ldYyOwCLg6eCANBdD+vLecpJuZ1dY//XuT2vF+F
+         mAjhfedK/Q3X/gBYU573/UIwIV7Wwnsm144M+DYooHfY5PAykpcifi9TiL4d6MTxq2mD
+         nQnuRIUvy62usltL0d8qQE2E6t5bc4yLBdfc4kNOiJvOuASo2RRrAMDAfm6ntArsh5d7
+         ML7OVUV8wXfhr/hPfAebu8+DZvd84aM2rdc2Otjq6y1acR43jtsBooBlytJthdslZZId
+         4aetbu6B6sRV3K5o23wzP9BdQhDELvNlMbTQRrH0ACmdjn+gAoIU/5BQhrWo0o6qGMPQ
+         lNLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:references
-         :in-reply-to:subject:cc:to:dkim-signature:dkim-signature:from;
-        bh=RMdJ5cNpvG94MqmN/2d6QVEWUP/YrLyBgV8MUkzsNlA=;
-        b=krIsxtmrf/YYh+yNYZ4mjQm69TWos4pw/aSwbt0qCwwVExMSNKHRkmV+z+wmVEj8Z8
-         S2HqzhloCEaUaysKFLHrOpmYhLcjFbICKIPcPXMjfQ3d/8UVpdZ6lbe25Px65nF3KK6v
-         xvvzX+hS0BADhHwsVwFcWsLuPnBIdGHKYqXJVKX+/Zsgx7DqDyoa6CLUgEsC3fjWBC/9
-         U63Zr2hIywKhngmXNThHOotYIP9WcxXyef7who+ZuJZ3mDYvo0uUv1hUaIEYcdA5X7Hu
-         oKayli8V8vl0Sj2Gvr1IjguQ/IGaXbPHgeIPKtO4+L93EE9J9vv4W/onpRaYD7ytZWPB
-         Ba/Q==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=1p8BkEtCdcNBP/TpCqa88TfNrEdwTBnXM61elkmQDlU=;
+        b=OJNQ33MufWuljcCg0PGdK5oLLC1tVzKMXM4hDnNd5GhHwyvKs6kXG9dLDUWoMHgU1T
+         ljX97/8mhwsQWl9JelAC0jvTlSnD0s1JXcUESD1W7mCzSqMqlkCGAYCb0CrjKjaxV2cj
+         qKHE7A3IePaT7E4tZ2o0fY1Fp9y88Fb1KqtLUueduC4YmenRx8c5P55kPkgtJlREGxwA
+         i+rIVA9W9QE4NR5lZ9F+fRgag4cHWk7cm2DDoKyRVJQIgA/tlkV16V8q0UdTXlVS/uJN
+         F2pkM5KQIFe3OQmHqFPWvI/1ttyaE+xsbCYYZ4YMe9i9/cFni8vvmCDze3xBKoFEeU+P
+         WbIg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=0WcDMUhL;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=ljcajSXu;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
-        by gmr-mx.google.com with ESMTPS id v18si351898lfp.4.2020.12.11.14.56.41
+       dkim=pass header.i=@linaro.org header.s=google header.b=vPmJzs+n;
+       spf=pass (google.com: domain of linus.walleij@linaro.org designates 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=linus.walleij@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from mail-lf1-x144.google.com (mail-lf1-x144.google.com. [2a00:1450:4864:20::144])
+        by gmr-mx.google.com with ESMTPS id 10si404681wml.0.2020.12.11.16.46.04
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 11 Dec 2020 14:56:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Andrew Cooper <andrew.cooper3@citrix.com>, boris.ostrovsky@oracle.com,
- =?utf-8?B?SsO8cmdlbiBHcm/Dnw==?= <jgross@suse.com>, LKML
- <linux-kernel@vger.kernel.org>
-Cc: Peter Zijlstra <peterz@infradead.org>, Marc Zyngier <maz@kernel.org>, Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org, "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, Helge Deller <deller@gmx.de>, afzal
- mohammed <afzal.mohd.ma@gmail.com>, linux-parisc@vger.kernel.org, Russell
- King <linux@armlinux.org.uk>, linux-arm-kernel@lists.infradead.org, Mark
- Rutland <mark.rutland@arm.com>, Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, Christian Borntraeger <borntraeger@de.ibm.com>, Heiko Carstens <hca@linux.ibm.com>, linux-s390@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>, Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, Pankaj Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>, Chris Wilson <chris@chris-wilson.co.uk>, Wambui Karuga <wambui.karugax@gmail.com>, intel-gfx@lists.freedesktop.org, dri-devel@lists.freedesktop.org, Tvrtko
- Ursulin <tvrtko.ursulin@linux.intel.com>, Linus Walleij <linus.walleij@linaro.org>, linux-gpio@vger.kernel.org, Lee Jones <lee.jones@linaro.org>, Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Michal
- Simek <michal.simek@xilinx.com>, linux-pci@vger.kernel.org, Karthikeyan
- Mitran <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, Tariq Toukan <tariqt@nvidia.com>, "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, netdev@vger.kernel.org, linux-rdma@vger.kernel.org, Saeed Mahameed <saeedm@nvidia.com>, Leon
- Romanovsky <leon@kernel.org>
-Subject: Re: [patch 27/30] xen/events: Only force affinity mask for percpu interrupts
-In-Reply-To: <edbedd7a-4463-d934-73c9-fa046c19cf6d@citrix.com>
-References: <20201210192536.118432146@linutronix.de> <20201210194045.250321315@linutronix.de> <7f7af60f-567f-cdef-f8db-8062a44758ce@oracle.com> <2164a0ce-0e0d-c7dc-ac97-87c8f384ad82@suse.com> <871rfwiknd.fsf@nanos.tec.linutronix.de> <9806692f-24a3-4b6f-ae55-86bd66481271@oracle.com> <877dpoghio.fsf@nanos.tec.linutronix.de> <edbedd7a-4463-d934-73c9-fa046c19cf6d@citrix.com>
-Date: Fri, 11 Dec 2020 23:56:40 +0100
-Message-ID: <87y2i4eytz.fsf@nanos.tec.linutronix.de>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 11 Dec 2020 16:46:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of linus.walleij@linaro.org designates 2a00:1450:4864:20::144 as permitted sender) client-ip=2a00:1450:4864:20::144;
+Received: by mail-lf1-x144.google.com with SMTP id m25so15855100lfc.11
+        for <linux-ntb@googlegroups.com>; Fri, 11 Dec 2020 16:46:04 -0800 (PST)
+X-Received: by 2002:a05:651c:205b:: with SMTP id t27mr2692550ljo.368.1607733964618;
+ Fri, 11 Dec 2020 16:46:04 -0800 (PST)
 MIME-Version: 1.0
+References: <20201210192536.118432146@linutronix.de> <20201210194044.065003856@linutronix.de>
+In-Reply-To: <20201210194044.065003856@linutronix.de>
+From: Linus Walleij <linus.walleij@linaro.org>
+Date: Sat, 12 Dec 2020 01:45:53 +0100
+Message-ID: <CACRpkdbKZzaTq+Am6q38Ya5wuUjiMbLE5g2i8bb_mJEWTkXgCg@mail.gmail.com>
+Subject: Re: [patch 15/30] pinctrl: nomadik: Use irq_has_action()
+To: Thomas Gleixner <tglx@linutronix.de>
+Cc: LKML <linux-kernel@vger.kernel.org>, Peter Zijlstra <peterz@infradead.org>, 
+	Marc Zyngier <maz@kernel.org>, Linux ARM <linux-arm-kernel@lists.infradead.org>, 
+	"open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>, 
+	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, Helge Deller <deller@gmx.de>, 
+	afzal mohammed <afzal.mohd.ma@gmail.com>, linux-parisc@vger.kernel.org, 
+	Russell King <linux@armlinux.org.uk>, Mark Rutland <mark.rutland@arm.com>, 
+	Catalin Marinas <catalin.marinas@arm.com>, Will Deacon <will@kernel.org>, 
+	Christian Borntraeger <borntraeger@de.ibm.com>, Heiko Carstens <hca@linux.ibm.com>, linux-s390@vger.kernel.org, 
+	Jani Nikula <jani.nikula@linux.intel.com>, 
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+	David Airlie <airlied@linux.ie>, Daniel Vetter <daniel@ffwll.ch>, 
+	Pankaj Bharadiya <pankaj.laxminarayan.bharadiya@intel.com>, 
+	Chris Wilson <chris@chris-wilson.co.uk>, Wambui Karuga <wambui.karugax@gmail.com>, 
+	intel-gfx <intel-gfx@lists.freedesktop.org>, 
+	"open list:DRM PANEL DRIVERS" <dri-devel@lists.freedesktop.org>, 
+	Tvrtko Ursulin <tvrtko.ursulin@linux.intel.com>, Lee Jones <lee.jones@linaro.org>, 
+	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>, 
+	linux-ntb@googlegroups.com, Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>, 
+	Rob Herring <robh@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
+	Michal Simek <michal.simek@xilinx.com>, linux-pci <linux-pci@vger.kernel.org>, 
+	Karthikeyan Mitran <m.karthikeyan@mobiveil.co.in>, Hou Zhiqiang <Zhiqiang.Hou@nxp.com>, 
+	Tariq Toukan <tariqt@nvidia.com>, "David S. Miller" <davem@davemloft.net>, 
+	Jakub Kicinski <kuba@kernel.org>, netdev <netdev@vger.kernel.org>, linux-rdma@vger.kernel.org, 
+	Saeed Mahameed <saeedm@nvidia.com>, Leon Romanovsky <leon@kernel.org>, 
+	Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>, 
+	Stefano Stabellini <sstabellini@kernel.org>, xen-devel@lists.xenproject.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Original-Sender: tglx@linutronix.de
+X-Original-Sender: linus.walleij@linaro.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=0WcDMUhL;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e header.b=ljcajSXu;
-       spf=pass (google.com: domain of tglx@linutronix.de designates
- 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@linaro.org header.s=google header.b=vPmJzs+n;       spf=pass
+ (google.com: domain of linus.walleij@linaro.org designates
+ 2a00:1450:4864:20::144 as permitted sender) smtp.mailfrom=linus.walleij@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -137,97 +152,24 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Andrew,
+On Thu, Dec 10, 2020 at 8:42 PM Thomas Gleixner <tglx@linutronix.de> wrote:
 
-On Fri, Dec 11 2020 at 22:21, Andrew Cooper wrote:
-> On 11/12/2020 21:27, Thomas Gleixner wrote:
->> It's not any different from the hardware example at least not as far as
->> I understood the code.
+> Let the core code do the fiddling with irq_desc.
 >
-> Xen's event channels do have a couple of quirks.
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Cc: Linus Walleij <linus.walleij@linaro.org>
+> Cc: linux-arm-kernel@lists.infradead.org
+> Cc: linux-gpio@vger.kernel.org
 
-Why am I not surprised?
+Reviewed-by: Linus Walleij <linus.walleij@linaro.org>
 
-> Binding an event channel always results in one spurious event being
-> delivered.=C2=A0 This is to cover notifications which can get lost during=
- the
-> bidirectional setup, or re-setups in certain configurations.
->
-> Binding an interdomain or pirq event channel always defaults to vCPU0.=C2=
-=A0
-> There is no way to atomically set the affinity while binding.=C2=A0 I bel=
-ieve
-> the API predates SMP guest support in Xen, and noone has fixed it up
-> since.
+I suppose you will funnel this directly to Torvalds, else tell me and
+I'll apply it to my tree.
 
-That's fine. I'm not changing that.
+Yours,
+Linus Walleij
 
-What I'm changing is the unwanted and unnecessary overwriting of the
-actual affinity mask.
-
-We have a similar issue on real hardware where we can only target _one_
-CPU and not all CPUs in the affinity mask. So we still can preserve the
-(user) requested mask and just affine it to one CPU which is reflected
-in the effective affinity mask. This the right thing to do for two
-reasons:
-
-   1) It allows proper interrupt distribution
-
-   2) It does not break (user) requested affinity when the effective
-      target CPU goes offline and the affinity mask still contains
-      online CPUs. If you overwrite it you lost track of the requested
-      broader mask.
-
-> As a consequence, the guest will observe the event raised on vCPU0 as
-> part of setting up the event, even if it attempts to set a different
-> affinity immediately afterwards.=C2=A0 A little bit of care needs to be t=
-aken
-> when binding an event channel on vCPUs other than 0, to ensure that the
-> callback is safe with respect to any remaining state needing
-> initialisation.
-
-That's preserved for all non percpu interrupts. The percpu variant of
-VIRQ and IPIs did binding to vCPU !=3D 0 already before this change.
-
-> Beyond this, there is nothing magic I'm aware of.
->
-> We have seen soft lockups before in certain scenarios, simply due to the
-> quantity of events hitting vCPU0 before irqbalance gets around to
-> spreading the load.=C2=A0 This is why there is an attempt to round-robin =
-the
-> userspace event channel affinities by default, but I still don't see why
-> this would need custom affinity logic itself.
-
-Just the previous attempt makes no sense for the reasons I outlined in
-the changelog. So now with this new spreading mechanics you get the
-distribution for all cases:
-
-  1) Post setup using and respecting the default affinity mask which can
-     be set as a kernel commandline parameter.
-
-  2) Runtime (user) requested affinity change with a mask which contains
-     more than one vCPU. The previous logic always chose the first one
-     in the mask.
-
-     So assume userspace affines 4 irqs to a CPU 0-3 and 4 irqs to CPU
-     4-7 then 4 irqs end up on CPU0 and 4 on CPU4
-
-     The new algorithm which is similar to what we have on x86 (minus
-     the vector space limitation) picks the CPU which has the least
-     number of channels affine to it at that moment. If e.g. all 8 CPUs
-     have the same number of vectors before that change then in the
-     example above the first 4 are spread to CPU0-3 and the second 4 to
-     CPU4-7
-
-Thanks,
-
-        tglx
-  =20
-
---=20
-You received this message because you are subscribed to the Google Groups "=
-linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/87y2i4eytz.fsf%40nanos.tec.linutronix.de.
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CACRpkdbKZzaTq%2BAm6q38Ya5wuUjiMbLE5g2i8bb_mJEWTkXgCg%40mail.gmail.com.
