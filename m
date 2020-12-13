@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCUYFO7N5UDRBWXT277AKGQEC75DSJA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCUYFO7N5UDRBFPX277AKGQEEVV2OKI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lf1-x13a.google.com (mail-lf1-x13a.google.com [IPv6:2a00:1450:4864:20::13a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6B42F2D8CB1
-	for <lists+linux-ntb@lfdr.de>; Sun, 13 Dec 2020 12:24:11 +0100 (CET)
-Received: by mail-lf1-x13a.google.com with SMTP id i23sf5243269lfl.10
-        for <lists+linux-ntb@lfdr.de>; Sun, 13 Dec 2020 03:24:11 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1607858651; cv=pass;
+Received: from mail-lf1-x139.google.com (mail-lf1-x139.google.com [IPv6:2a00:1450:4864:20::139])
+	by mail.lfdr.de (Postfix) with ESMTPS id 5A8662D8CC1
+	for <lists+linux-ntb@lfdr.de>; Sun, 13 Dec 2020 12:31:34 +0100 (CET)
+Received: by mail-lf1-x139.google.com with SMTP id i23sf5252022lfl.10
+        for <lists+linux-ntb@lfdr.de>; Sun, 13 Dec 2020 03:31:34 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1607859094; cv=pass;
         d=google.com; s=arc-20160816;
-        b=B4l16tMuRfZQIErDlMrIUsCAPwFP/VS5hZgssZRGq51AO9LyuzC3cs0W5bacL/2RQF
-         g4mwxe5W5sg840BYL7jIMArJUkcV5TsH1qTgRS0IWKKNQhJvsCRASDG4W6KqmojFsA+9
-         nKFF/fFZXMb8/HqIjjSsa3CQruNLEdqqU0z5HBiUKg7UxTKEnhOT+TSVAlXxrFiYMHLJ
-         MC8C5IODw6BaOxLiacq2rNJTogDUS2BAOJxfNiPO0MFJbApeRpsA9R9tZ0E2cesg4R0h
-         hHtjpe2spBjG3rdehB5HXmdv9Hfr3ubgBH2a8EWwa9ipYsSMLAcc6jYVE3/1qfLcgP0b
-         rppA==
+        b=gJy6jEqDMsQvhLRNNpl2K2gqi86mrlol4jvLQSHzAARUAt90686p8waWknvyMFzyKN
+         xsZEJY/dlvZEOPxzYCAEWr2NeKTwUDb1uEyjExMTuCILTqaZcXwdaPzLmk/EFl+cmen6
+         bzZ48O2OmU6Kh7S7dD/eSyB5HOl6T2hfSch9kVEorKXvO399oUJe6JJ2WtS0fHaPYxYn
+         DkyirjcmIqbUcOm0Ag5iB93NVe6o+6NlRzz3Obvn0Gn5raNTOyZhrt/drIvI8f0gSYQD
+         1efwuVCtwTFtTEo9zF4h5EMZzeQlZ8Mot0a+C/zLC/Z8VO3Ttj3o6v2csJBzW9E5Rcew
+         tyEQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-language:in-reply-to
          :mime-version:user-agent:date:message-id:from:references:cc:to
          :subject:sender:dkim-signature:dkim-signature;
-        bh=FCQi0bOOpZidTo8eIDq/AI1rhuqcIilTP2hMUN2zGUA=;
-        b=A6Z8AsyaqnbZPPwLA0w0I4ynhVekPNRMV23PIgYJZ5pnmjYEFXVPOWDNNTON9yfiqo
-         YlG1HJYeHGMaDaj+Go9kDJHiwXG5L2GhjqGRfro0lUGQtS5SJRV4XFjmbsh1g8i1V3YP
-         aqbNTXs25xWgBYXJZIUPK5c05XVFY9A73TQmlUe5ziUhIBy6rCvfDQAWvhg7xasWsp4q
-         sPg0akQ68QPeche8HWQfXyX3ZK1+J4TukRLPWcTUgk6W2VxBMc6tlV4srK+0yIb2m0BU
-         vqe7iBGB9TAhSG6d9Xkp+BblosYmGLUDqk27FteDjsVWA00j6BkGFtpYcA2vRaRwA8TE
-         LLOQ==
+        bh=oxFtSo9psXtG1xA7AWGYU+dhAPwPAOxsbTxY3ZLBJSw=;
+        b=lN7vVr/ML1RCZGOYuA+Kqf05UaLZVzbN6Y+ev3YODQWd/qr98z/8IYSk0Uz4cuqnUc
+         A3vVtW+Hzwxj894/vmMMg35PF0PgyjU8/7Z0ajVrK5q4Mw+WyLbGHtmTX4dFFSY2xZra
+         CEMvR6Vo1P7Mz8xD0vrKsIR8C8co0XM6N4xM+cPZht+5VDDUcLLFgcZwfhmlFWnJVMTg
+         DLxWNSMP/nCYT/uav/ThuAKRz+c4MsduFBsyVd5N0hoD0YqE71hXuzZzNno02DXZ1jLG
+         n3Qa7hB7IteyyvLwi2obWoby2trQRD6xfLdwCPJdi3/Tc5rU5gmbYCJTBXn42FswsyiG
+         eR1w==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bQn+oB1J;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vPvvh2iQ;
        spf=pass (google.com: domain of ttoukan.linux@gmail.com designates 2a00:1450:4864:20::641 as permitted sender) smtp.mailfrom=ttoukan.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -36,26 +36,26 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:in-reply-to:content-language:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=FCQi0bOOpZidTo8eIDq/AI1rhuqcIilTP2hMUN2zGUA=;
-        b=bScZ9Bq9uw6dBwo2khq/J6LQ5Th8YS8l1Zg2qUrLT0l3yl/DQQU8vLskeVSwlTSN9y
-         Si68D+zLLdhMt5WIL3E5ggh6xQxN29PzGc69TW/TJqyhm/UFVDMqtcp4V1PPQwAzKjAb
-         S00GnJbSsiqqSQvSHEaf4LQ1JVCgtMwSjHRh+jDsx4QmjKJl8216g90MuRLqDdTAlD2d
-         OAkmJ1U+Ja2z686N8Wxrf+PJ5WE7DHvDWiUO1O4GcWrVoWJwFRCg1mHKiALGOWFCgGBW
-         h5AlF+VbBggPGqUPFM33+GDPSrBs6RpYf1q5X5DslkMfZQFmEnhUPkMtYSuTmFSHHm2G
-         o3FA==
+        bh=oxFtSo9psXtG1xA7AWGYU+dhAPwPAOxsbTxY3ZLBJSw=;
+        b=VI0QzznnkFHxxmTqI2jBoBEuCZr2/Qqj2WI5GcLvPAOOnFtQg1EAFqvdaPoDEVWZoH
+         Q0fKKlT7gK1xrIBhk4n8Fs24HMIYFR8PURXVDhxDecbSvUwEFihRb4zNdUGikQ8ZVzJQ
+         lCCi4TU7/mUJ/xRk5ctiiOSouunIOG+eYctkbtz2awjTk9Mm9ro+30BbBkuh/LnNgEhs
+         9yckrLXn6uesa8j5SYvBP948bNb6BfEXhW3+lLWvaeq1nNdGslSzvTCdoPcrTBDVGeWm
+         yEDB6vKFFfTNVeTGvWIWV6oSk0vzjiO5eamUr2zMjQaqpaciwbZ8dm19GSUBMBn95D0f
+         tKww==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=FCQi0bOOpZidTo8eIDq/AI1rhuqcIilTP2hMUN2zGUA=;
-        b=IULIkiIvwNIi5ZFNwcl0ytZzckAkyLe2GZo1Vvx/fJE00Aq5xLR/VWBxd1A8OVIQ8C
-         XTGkDtayu0vIubTSh6yP2rt21ynyO07QkyFP6MgoUknmYbirPATTVO0Oe0dst9glwzYC
-         RJCR0CHlU98PMq4BJ2ej8v0y19pnfCAg+d18zPDoOXAIBhe+RyQ6lUtrLZoBDMBt+V8c
-         EGlDlaL8Khq4yxayWWBnFY+DeY39kRY9MHZ/0D2ddy5rWuPL5Q3OpgtGYTs35KF5rhng
-         oWYpcOOTz2YzwjD2ThE33eDyHONqnlyekH0Z920vm72m6Sc/xAZVa7D4Q8O1V/9aqjlQ
-         SS6Q==
+        bh=oxFtSo9psXtG1xA7AWGYU+dhAPwPAOxsbTxY3ZLBJSw=;
+        b=Lh5K/b/Oq/d2opDaBPghc8B3enau5UunbvpGAa6fl5QeOreYFdy8h15N44Tpi+fbuD
+         i58zoRzyImcl+te/9jT+Ho3UCAZ6IyLKD7vGUGMuUYeIlKyv/zfMQ7+pabTmt/aiM4O5
+         npG5KyPCgR1lQMS9tQTjjTnZDBkzP/3dJbFwmYmsWlLcXqygJlasSNUmu+bG2orOuaO5
+         3TO1FSaqeNYCnzZLkISdv1dMdjHskM7n7ddVG9+QaJ0pDlVsb5MUkxOpMGqW1KxfCqK6
+         Fqx48pv863pVZ8CUDsxInzHJ63RLxSEqFYRqXNGDsWRLcnMpEJJDbEfARTk3PONPyd20
+         TP5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
@@ -63,62 +63,62 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=FCQi0bOOpZidTo8eIDq/AI1rhuqcIilTP2hMUN2zGUA=;
-        b=HmEAjVe8S9yfToWBe6gQU2CKlIiNp5y/1Z+MgPV4/XqdpxXtlRNlXyTgWsBTTZ8sUM
-         yP42KY/Yjsh4nUjXPMSfeVR3NNN3G5uNmnxU5OMqX6wx1p3aLEyfH7O9VU84jZPqxMTN
-         AYRont80FbBrokSOqF/DSLYaFpqji5gxyuQNONDIroxIWmACmM32+r2BK8aCez/SY+dF
-         ALr/o79aZn6ic837DP0OvSgr+sfOvvoLlELkxlu3n+nFPGAXniYXP9H9gyz8Gbj+dIDj
-         U82IvJVSn5h+/4f5TfRbsmBCZteuw0Ehd6CqWIx8oFinUlrw53CGb4INjJkXz3UyfLlg
-         uAGQ==
+        bh=oxFtSo9psXtG1xA7AWGYU+dhAPwPAOxsbTxY3ZLBJSw=;
+        b=LON7q0Gazap5ChODeYPpThC9IKXqZSFMqtUbWW/T+F/6yv0+7M6ieNR1J1T/OHAOsN
+         kJ1RtqGXM2urG1tgBGcwq0tBC1FC3JaOnDWQBGIamF3CC7lkrOpDJnzl++3OnbIfR4mF
+         T3yOaFrR1p61nHGWK+pQcUCDpCXLLxx/fp56bn7ZDlVr8gCkqgjkpU9gGMPvjTOl+RAD
+         DIhrI0zuQnY6E2f8ExFUWcY8+hXOcaDABCBqaEfyXklofCd1PbCsHrNQrF6rzAkhD0YU
+         diPzh8GougxEtQSZTD74CpPFgjKjCFlGcS3XdOf3hFLK3GvDD3KrxkNBl34uyNuXoRHr
+         N+KA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530XzwdJIbb51x5f2zzJc3HNDKbfkCWI87c9XoKeBV0w9frillv/
-	GFOzj6AQ77rkVI7mQqcXO/c=
-X-Google-Smtp-Source: ABdhPJxiz1m0MTOqmzTvHslYryQWSTzw3ryu4Z2GLG2uMa5MvN3tZ0ZKvRUaBgkpEAumux0DWrzI2A==
-X-Received: by 2002:ac2:428d:: with SMTP id m13mr7342303lfh.137.1607858650885;
-        Sun, 13 Dec 2020 03:24:10 -0800 (PST)
+X-Gm-Message-State: AOAM533djpjoXsc4/p98lfo+MYIU+o+0QU1U77a6vAnQZ31emNADwlPq
+	PzgslhlbD7kYOwiI8ioISc4=
+X-Google-Smtp-Source: ABdhPJwug4Y5ahJujzy6S5RSKFiIMxgdqUJ29fyYGPih5iEwweS0acoNuvc0vCm/EsPAg/aY07Kk1Q==
+X-Received: by 2002:ac2:5c08:: with SMTP id r8mr7579081lfp.12.1607859093905;
+        Sun, 13 Dec 2020 03:31:33 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a2e:860d:: with SMTP id a13ls334462lji.8.gmail; Sun, 13 Dec
- 2020 03:24:09 -0800 (PST)
-X-Received: by 2002:a2e:9c5:: with SMTP id 188mr8035144ljj.446.1607858649734;
-        Sun, 13 Dec 2020 03:24:09 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1607858649; cv=none;
+Received: by 2002:a2e:8055:: with SMTP id p21ls2404597ljg.5.gmail; Sun, 13 Dec
+ 2020 03:31:32 -0800 (PST)
+X-Received: by 2002:a2e:b889:: with SMTP id r9mr8062627ljp.44.1607859092712;
+        Sun, 13 Dec 2020 03:31:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1607859092; cv=none;
         d=google.com; s=arc-20160816;
-        b=fIqrDMBzlmASQSBIX+w87Gow6FKjYSV3zkZi5FgUxLnnXld+UsfueUvo2FJ5qK9lPp
-         M4jntv4U0ihkgNJtlonWLrG18YAdD1LXN32+Mc7WvyaI18ePfobd2/TpcTqPmXyINFLZ
-         VhPV6uef3nFwS0yKqsHneG0Du0vU58/XCrmETcjpP/IrcfTZrRZAT3NXeW9tAIWxL6Tv
-         +RdMe+Fzl6pPHKS07wssbtlYhb/ZAGUkJiUPmkyJBfaE/0aUJHjdlOhqPfTr3iWOSDEa
-         nLqc5DeEzMSGxKFcpCAb3uHg6Rnr5w4hzgHPXSDnEWsV6Lg5XeTJi+XWjl6Vcl6TqWAe
-         KooQ==
+        b=a7oPskic5+jD7tnF9GYcG+gUmlV++MlkpddgSwGdG83Esf9sJRUyPoz1k1OC/uGH7n
+         aR2FeN2tL4fICUyv3TcRWo8ccqguLMxd6yFzD1zeEvDaW2JIlcH+TksnpwUyG50W/shz
+         0kiUFTbqlntLtzbsctJx5T1jLVW/8cD/LyXjmCblOMR04KPtSPE48NriwUTTffnqWDVE
+         wytUocOdbhWYhn/tkDETx/T3nb7z1u2Eo8RELTs6Wnb78NSa9ELXl6GC+SCXRnrnRmWk
+         i5EyqjdzBrAr+vp4Re0Pab8RDmBPS7tZf6Qo47fW9v8gOWtepTmyUbLvQKr75/WxrOui
+         sOmg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=IW66fMc7VTs1PtxS+22ry7ms1/9mizOXCdVTfKV5hpo=;
-        b=XiKyEWuWS4H6Q29Sd4a6lFWubb45eHRxuEX6t8Y9SguZJafKGNudaipYQqg3BuUlmd
-         PmHjY6SyF4GHVv+28f7v74Sb6nGF0QisKorer0LnW6pu6G4YBv47xYDgxBE3ZiIftWyV
-         u9lXZ9aQ5um5rCy7Jk/QA898zUsWzb050Z5fyg53uOI71HZB62XEThBtV2170DtDirXz
-         26Psvtt+C0d7d0XJTF7fKF+fkcyCjDda4EmE9L4iCts2Hw8G8n5oHN7fOWtiyyg/SW3A
-         u2UHUgQCsot5UNnOqmvsGm9EFoUwgrQuIpeOm39e5hhdHcNjyxw4wRmaUQYi5fP/scHo
-         ZeHg==
+        bh=TjWjwM1ceLhbF1IYJl3oWPHfyZ88hbVMXIeiKOfmwOM=;
+        b=yHnktGR3upQW+wWHfGILvj6QxVCv7au3PB6r2nZSnnqk0lUpyxofup3kN3vfKRCNNV
+         bDoUVUTTUy8gYpDvlqy4c4lLi/GuiRkTD743FFDvcCCT10OhCq5eQcuriUIBtZE21iUg
+         FJKAZqZonSjFIq4peXdW5o5xgQXKo8yjBYNi2K00Webn8MgAxe1BpIPsHKH53S1HYy0D
+         Z2XtWpw5YNW88B10i4haAzFI96tl41TW8w18aBkHtzd2Fkq2h0ZZK50NlCyiH5Ao11K5
+         p8wvxFrl6DD2nWOj7ZrYKtQiWE+nnnajMDxTnnoi2RiRBvag+Xl7PB8oqxIN4yD/mtT6
+         3oxg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=bQn+oB1J;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=vPvvh2iQ;
        spf=pass (google.com: domain of ttoukan.linux@gmail.com designates 2a00:1450:4864:20::641 as permitted sender) smtp.mailfrom=ttoukan.linux@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Received: from mail-ej1-x641.google.com (mail-ej1-x641.google.com. [2a00:1450:4864:20::641])
-        by gmr-mx.google.com with ESMTPS id r12si504635ljm.1.2020.12.13.03.24.09
+        by gmr-mx.google.com with ESMTPS id q28si523998lfb.10.2020.12.13.03.31.32
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Dec 2020 03:24:09 -0800 (PST)
+        Sun, 13 Dec 2020 03:31:32 -0800 (PST)
 Received-SPF: pass (google.com: domain of ttoukan.linux@gmail.com designates 2a00:1450:4864:20::641 as permitted sender) client-ip=2a00:1450:4864:20::641;
-Received: by mail-ej1-x641.google.com with SMTP id q22so864190eja.2
-        for <linux-ntb@googlegroups.com>; Sun, 13 Dec 2020 03:24:09 -0800 (PST)
-X-Received: by 2002:a17:906:a2d0:: with SMTP id by16mr18015254ejb.207.1607858649230;
-        Sun, 13 Dec 2020 03:24:09 -0800 (PST)
+Received: by mail-ej1-x641.google.com with SMTP id ga15so18611284ejb.4
+        for <linux-ntb@googlegroups.com>; Sun, 13 Dec 2020 03:31:32 -0800 (PST)
+X-Received: by 2002:a17:906:4bc5:: with SMTP id x5mr1966810ejv.55.1607859092305;
+        Sun, 13 Dec 2020 03:31:32 -0800 (PST)
 Received: from [192.168.0.107] ([77.127.34.194])
-        by smtp.gmail.com with ESMTPSA id de12sm12533753edb.82.2020.12.13.03.24.02
+        by smtp.gmail.com with ESMTPSA id d6sm11014971ejy.114.2020.12.13.03.31.25
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 13 Dec 2020 03:24:08 -0800 (PST)
-Subject: Re: [patch 20/30] net/mlx4: Replace irq_to_desc() abuse
+        Sun, 13 Dec 2020 03:31:31 -0800 (PST)
+Subject: Re: [patch 21/30] net/mlx4: Use effective interrupt affinity
 To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
 Cc: Peter Zijlstra <peterz@infradead.org>, Marc Zyngier <maz@kernel.org>,
  Tariq Toukan <tariqt@nvidia.com>, "David S. Miller" <davem@davemloft.net>,
@@ -153,19 +153,19 @@ Cc: Peter Zijlstra <peterz@infradead.org>, Marc Zyngier <maz@kernel.org>,
  <jgross@suse.com>, Stefano Stabellini <sstabellini@kernel.org>,
  xen-devel@lists.xenproject.org
 References: <20201210192536.118432146@linutronix.de>
- <20201210194044.580936243@linutronix.de>
+ <20201210194044.672935978@linutronix.de>
 From: Tariq Toukan <ttoukan.linux@gmail.com>
-Message-ID: <01e427f9-7238-d6a8-25ec-8585914d32df@gmail.com>
-Date: Sun, 13 Dec 2020 13:24:00 +0200
+Message-ID: <57c3f9d3-7262-9916-626b-c2234de763f0@gmail.com>
+Date: Sun, 13 Dec 2020 13:31:24 +0200
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
  Thunderbird/78.5.1
 MIME-Version: 1.0
-In-Reply-To: <20201210194044.580936243@linutronix.de>
+In-Reply-To: <20201210194044.672935978@linutronix.de>
 Content-Type: text/plain; charset="UTF-8"; format=flowed
 Content-Language: en-US
 X-Original-Sender: ttoukan.linux@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=bQn+oB1J;       spf=pass
+ header.i=@gmail.com header.s=20161025 header.b=vPvvh2iQ;       spf=pass
  (google.com: domain of ttoukan.linux@gmail.com designates 2a00:1450:4864:20::641
  as permitted sender) smtp.mailfrom=ttoukan.linux@gmail.com;       dmarc=pass
  (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
@@ -184,15 +184,13 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 
 
 On 12/10/2020 9:25 PM, Thomas Gleixner wrote:
-> No driver has any business with the internals of an interrupt
-> descriptor. Storing a pointer to it just to use yet another helper at the
-> actual usage site to retrieve the affinity mask is creative at best. Just
-> because C does not allow encapsulation does not mean that the kernel has no
-> limits.
+> Using the interrupt affinity mask for checking locality is not really
+> working well on architectures which support effective affinity masks.
 > 
-> Retrieve a pointer to the affinity mask itself and use that. It's still
-> using an interface which is usually not for random drivers, but definitely
-> less hideous than the previous hack.
+> The affinity mask is either the system wide default or set by user space,
+> but the architecture can or even must reduce the mask to the effective set,
+> which means that checking the affinity mask itself does not really tell
+> about the actual target CPUs.
 > 
 > Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 > Cc: Tariq Toukan <tariqt@nvidia.com>
@@ -201,17 +199,27 @@ On 12/10/2020 9:25 PM, Thomas Gleixner wrote:
 > Cc: netdev@vger.kernel.org
 > Cc: linux-rdma@vger.kernel.org
 > ---
->   drivers/net/ethernet/mellanox/mlx4/en_cq.c   |    8 +++-----
->   drivers/net/ethernet/mellanox/mlx4/en_rx.c   |    6 +-----
->   drivers/net/ethernet/mellanox/mlx4/mlx4_en.h |    3 ++-
->   3 files changed, 6 insertions(+), 11 deletions(-)
+>   drivers/net/ethernet/mellanox/mlx4/en_cq.c |    2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> --- a/drivers/net/ethernet/mellanox/mlx4/en_cq.c
+> +++ b/drivers/net/ethernet/mellanox/mlx4/en_cq.c
+> @@ -117,7 +117,7 @@ int mlx4_en_activate_cq(struct mlx4_en_p
+>   			assigned_eq = true;
+>   		}
+>   		irq = mlx4_eq_get_irq(mdev->dev, cq->vector);
+> -		cq->aff_mask = irq_get_affinity_mask(irq);
+> +		cq->aff_mask = irq_get_effective_affinity_mask(irq);
+>   	} else {
+>   		/* For TX we use the same irq per
+>   		ring we assigned for the RX    */
 > 
 
 Reviewed-by: Tariq Toukan <tariqt@nvidia.com>
 
-Thanks for your patch.
+Thanks.
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/01e427f9-7238-d6a8-25ec-8585914d32df%40gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/57c3f9d3-7262-9916-626b-c2234de763f0%40gmail.com.
