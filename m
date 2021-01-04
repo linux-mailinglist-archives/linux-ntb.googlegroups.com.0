@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRB3HIZT7QKGQEV37U2XQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRB4PIZT7QKGQERGHMG6Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qt1-x83f.google.com (mail-qt1-x83f.google.com [IPv6:2607:f8b0:4864:20::83f])
-	by mail.lfdr.de (Postfix) with ESMTPS id D3EC32E9880
-	for <lists+linux-ntb@lfdr.de>; Mon,  4 Jan 2021 16:29:49 +0100 (CET)
-Received: by mail-qt1-x83f.google.com with SMTP id t7sf17710687qtn.19
-        for <lists+linux-ntb@lfdr.de>; Mon, 04 Jan 2021 07:29:49 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1609774188; cv=pass;
+Received: from mail-il1-x13e.google.com (mail-il1-x13e.google.com [IPv6:2607:f8b0:4864:20::13e])
+	by mail.lfdr.de (Postfix) with ESMTPS id E39B12E9884
+	for <lists+linux-ntb@lfdr.de>; Mon,  4 Jan 2021 16:29:54 +0100 (CET)
+Received: by mail-il1-x13e.google.com with SMTP id g1sf28067714ilq.7
+        for <lists+linux-ntb@lfdr.de>; Mon, 04 Jan 2021 07:29:54 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1609774193; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Xn2iQmSqkoZlpJCHJQniixge5vw92y7ZYedkhgtKQV7wjwOX0sXrTaQ65L40U9dvvw
-         SwZl72zK6rOKytk5Dh0RvQ7CAVqkRLe32JpphsF9qXsu7vjNkDrtn9i/8nWioB4cjRKn
-         A437LDwkI9ZWKYlnHmG/VM/Q7w80LiwJ0II9GnBTotEXgsaeQYGFqhYTPxdDevykYQZk
-         DOlzFXSb227/3tbCaruRbUsYXic9sUYwWh+NvD5C7YixtKV1XoRwjiC6Tzk6Arqoq+f/
-         TKPi3RfTQ5yuwtjCcGrMwdMkIo/VVraE3bRA2dyK4LBTtxs8OtCnZLPI56YKgoTs+6JH
-         m7ww==
+        b=rsZ59k0+WI+xmdpzokueUIyKUAWx3Y19Iu0qiNzL6x+GI1kYPcr7tG3qBQJCXd5Ey+
+         Eh+gbsmZZr2AQ8MVd2evmetmZw+owSAgkQlBvCH7GcuHFBUgoi3xxr3jGFopD/3atKeG
+         7a3HgJ3yZbnR3CGEFjY1NE5W2dO/LssOkofqHDcfZJl8AHT97+fsA8gg8vcZbfFNzxTK
+         n1hJznjPrJ41rLkqgbQDR4xbGHx+SJ826RaRMesL27tNIOXe3+r8EgoIFYz+FGJeZnks
+         CeGdfi1+5t5I+XMgFWHa1RvIer6fGcVybJFt7bjcZULsty1NIlAweWX9ubo05ZUFnvMU
+         1ycg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=qHpDcVOMUina1YOcQWIK36KlJJr4lFfjj2EEIvzU+K0=;
-        b=gR23xjAmNZ7S5p9kqk77fNI9mF8g7XPHuBqps4A1s8F6b77W8gTRjhbxfT7JLNACIV
-         nvBhQL8YR6Oq2oPOEfoXk5ozBdOm2ZyyJ2F9nO/820dXotoCYpL/26FmOJEddLr5g+i+
-         YfcH0f2Qxy0MeL8U28Vnfnp+N7fLcPh9Dttz51a6mJ61u5/I519hoxeQzCB3NgKOMVeK
-         KU8ALo9n3lVn9HMngWqPm6GiE58YGfRqDAstJqCmcYVMZ0Y7odrZzHvqlOTHXutOG2rw
-         MPcwhXqsMXwcS8d/psp8ggE1PicuYw5mGdJFjesb5jt/HJYrXxBUDydlCFEWGdu5ANg7
-         14WA==
+        bh=AaI/28q6ATHc33jYnlKlQ91pJ/IqZEsh3yyqgj4byvs=;
+        b=gFx74+abpMt/GSQnBRNlczIX04UIWovuFEyXV+jL7qaI05kiDo/VudU7Xeo2/WIroR
+         7YWG4NLtc0jMjwenL9leVFRDgLwaBK+LFcIZwRrEeHCesrmUwZiPhEu2ze6dl0/EOuON
+         hNVbptgumYYCxT6hDvLgDzUlkCy6krtc0mvy8p9k8CMMZUePI+CKC1hvNr7dZyx3rRoS
+         CvDkBoIrzsWobflIkqwD9Ro2VqA8JdP3rf039SLdb4tIHT11otldjI8eT8iuYClDmh94
+         5FiFp3j0cdpMEG+NOTBemI+fG25MIIUtpjPjn+YK4QRPoWD36KrUv9gS73LQR1mAkCNG
+         PHuw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=Xp9J0vDb;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=B11uZVI1;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=qHpDcVOMUina1YOcQWIK36KlJJr4lFfjj2EEIvzU+K0=;
-        b=HpyCE71zqBwPZsmIEpnmzEQY+DN3yeXemJs0VnxTs0revRPeE4gnXCsa/5dpkp+7xc
-         dlXf2CQutFstynfzBtc6RCC37YgVlQhuTbFypIeaRIxVF9822HGx/Wdy8UFoRy0WxuLU
-         NP7G6eQlqourqIP5P1EDN8wQQUMO5KWZPTgIiu11yUB83FMxP+jCOEwTd6IeKcEj5/Lf
-         /eL4H8LiRzGAIQx7CarVr8TGF5s9w6/o2jpMTkWmlq6HWONE27m9ELNWcW8tIgELBXzL
-         MAfQjSFBI3hjN7BC0KV5xFX90jqNTIiMsQjBFEw4qioicxhJ+m90aDeD1IrXhK4WH8VF
-         uUvw==
+        bh=AaI/28q6ATHc33jYnlKlQ91pJ/IqZEsh3yyqgj4byvs=;
+        b=PjdfMkEbptXFVXS3VZSVPsGWyn8tU6fdfsWzIK326bmSAVYovX3pMe+aw1pbRLR+az
+         5PrqFsD6uQ6K0mrZJ04TegUitg+ra7V916VCpyRjZDORrQdVmiXMyCJ9AosYNVk+kl1a
+         GCkJrNi9S4qYofJcITTeHBCLj/hNrZLSU+RC71/tUJieZkZlbO9/551+Tz0s4pq4dG5M
+         hXmrzwt04U0r9hBIZcfRn+03Ru2qxdecabjrKC2ZSVnOkbz/jgqp1werl0GizCzROYqM
+         D3GT2XcY5hfNgmE+ehnOGHgyj3DT9MeaOQxiufPKN2avPULFQ5kyMVDOZ2txUT5b3dBd
+         nWYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=qHpDcVOMUina1YOcQWIK36KlJJr4lFfjj2EEIvzU+K0=;
-        b=tz7Hce0q0xrqB3fBxyeh1BgINQcCZnCThxPW4y80EbQpK27ne/e3w9da04UzXq7XYe
-         Cvod/gO/usnOt5LH0DCMQqhBHGBfRO2sDYRgXej765Q8g1KjCxs9t+O0vFc2ejo4UH3h
-         5nUBaeYPth9tD+B/OXGuZUUShIBd2weyRbDV8/YbSjzfvZ2ho18fgEiifltuVYx85mZp
-         4FlEpO9u7y85ZuYBlqU4tkAcYZQFhT14fKPPsYdEbeKSrMc7IZHSsHYxkzfEt2SzFC0u
-         rOjpz5VbBMmEvJ9T4MsGlAQ/iusHke4E+c+YqxTNepKKr2nrpXrmMwHeT8eT68xdG2QL
-         M9lg==
-X-Gm-Message-State: AOAM530MjnLP5TlV+Eqzdf3uHqZx9LwMBCavXWst/Xubb6pgWI+4BrPl
-	9o4RBh9O5U9q/pYEhE3v/P0=
-X-Google-Smtp-Source: ABdhPJz+xf+If1Mtl9SOlAoVr7CTbUDrZyyfrYFq4//xynV+A5S9Xz+J2H2izuawH8LEPtZr6ICBKg==
-X-Received: by 2002:ac8:6b95:: with SMTP id z21mr70808718qts.353.1609774188618;
-        Mon, 04 Jan 2021 07:29:48 -0800 (PST)
+        bh=AaI/28q6ATHc33jYnlKlQ91pJ/IqZEsh3yyqgj4byvs=;
+        b=ualdWpoz6gg/sXK6fMU0gDhLZ4WO1YFB94PJLOKV5sqmlG5ajbJ1iqk7iHKFhNxKpg
+         HK9c6m3aKtmzvPogRMp5j9czyVd9SVY9Ry5Lg9WVhhPv6ep4Q0NgtBNlDL+IO15x0xMb
+         8oLzys8Kmu6pKHNDsnb1LdtXnTtaj7ahRsR8u6J/xejbcIIqWC6krdEfklNTzQWXzYGH
+         ndio/9olcs3gI14cx09VoWpxo5SSvYNWCPLPDI7ll9kVouRAJX8BGl/b4fQfpjVnT/3B
+         XEJ32613TUHdrzGrTRpDBrysKCjGKEatpz+WqgPEgd75wcdaXKIqgYGOpuWw+j0PusCW
+         yzmQ==
+X-Gm-Message-State: AOAM533i++I4jGuHSjCseYjH/rNPNPx0wPu/zFX2qqhVxBm4uqvRm5VP
+	dmFa8ZjGGe4HsuVi1duNSIE=
+X-Google-Smtp-Source: ABdhPJwDhX31ysF5DB/BioD1+bcrlliazzi0TaZFWKWz9qEbGhgAIt64rF+5l4Wc+KGlY0b+aZPh0g==
+X-Received: by 2002:a92:dccb:: with SMTP id b11mr72845055ilr.36.1609774193623;
+        Mon, 04 Jan 2021 07:29:53 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a37:9a4f:: with SMTP id c76ls37091999qke.8.gmail; Mon, 04
- Jan 2021 07:29:48 -0800 (PST)
-X-Received: by 2002:a37:63c7:: with SMTP id x190mr69902825qkb.277.1609774188323;
-        Mon, 04 Jan 2021 07:29:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609774188; cv=none;
+Received: by 2002:a05:6e02:921:: with SMTP id o1ls19722903ilt.2.gmail; Mon, 04
+ Jan 2021 07:29:53 -0800 (PST)
+X-Received: by 2002:a92:c942:: with SMTP id i2mr70441381ilq.227.1609774193151;
+        Mon, 04 Jan 2021 07:29:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609774193; cv=none;
         d=google.com; s=arc-20160816;
-        b=T384CDv7xxswCOIRhTv7emDrrm1wrmg701+UazC7zxHxucgOECzJJgKji+sqNw5o8f
-         M2zxOVfUgehKyVFQF3jahzoL9cBbQlwdCrRmHHhGsWEyELAeeri1OAANd8ZtSB4mEAMf
-         KqkneAE98b3e3q2NtW4p9I6cl3W945DjG5f4uvqQFjMeGdaxWAjTTKQJ/xvFZs7bq8rF
-         N9mpXRTUe4lIprpVqxHOWTM/bpqXVFn+Be9k4wqhHR/zz43CmZNplXUjdxc/FPJOkIiV
-         vsyFvj9nz4T+KMeatFUhxMlyHLVGIrxK+KNtEFuEKuxPCmcH0bZPVggnENP/9u9FMnvB
-         MAjw==
+        b=qfI4bY54f8qDPpqdOGiGXlqu8O6akOkzu7qkqZPHVefWeAtDuSMO0EGJf1/Cg9+jGu
+         cGIBGOfvWftxQQnwTBW8sVjDelmN1D5slD2NAfurM/et7LCWBqEV9tGgGCGgdVPiY4NW
+         v6eSOaf+cV5zKgK2wEudPjkGTPSAKDz+Wnj3oOfpVeJ123WsA9bRD1nO0McH9hfeoGQI
+         e6TtvQrwCDgIAbRSoasomcNXjUvMLSnloAzU6xh8DzTjovLc7VxJHhyNwI2fjg99Sl+2
+         3LqpDZumyRrJBr4zTCHVOvbOvs9jHhFnduJ3zj2lmZzeLLcjVpq4fqbjvZZ5fbrs91Tf
+         xl4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=7qF2OVbWDyaTlnP441W+A6WtQychKbyb9MpcDopQVLo=;
-        b=HIfPs7ruN2pZtyfD9eerqqnjhc+dY1co0U6HCBulVKMgWp9mQLfx8PFhGElHRPXqV/
-         NFRrdCb9S7WiRocdCr38twKjIqZUZ8UTQngPvdY9QN+ljZ5C655kETGqNcamfohoVRV0
-         PZMaInL0L/5h6b8/YhQ5gZMK9cUmTlWHFawijo9vaIcbAHypLU8lfO/dLshE8P+AiHnt
-         cM9ZrCXUbKx5o+Q9evVo9qPX0cDe2AaLLsoDimALrs6rewKX3aa6RdZjiSFpv4fa4jyt
-         pVq+9QfWCB2vjl2lrN7X/5WvEtq8QJHrLRRlbccqR1BIrZ3r3dvdkGMzbHgJ3J/1hztb
-         74mg==
+        bh=3vpCkC7uFlZ+YibeWVFAIXOSzm64dBgudr4jQOKgpzg=;
+        b=c6M6gAgz1WhITLzGSXMh5XeMVxO8R+EkFPbkkBE3GLPRbof10LHzhJ3b/t9doKnt8D
+         LFbCzq47Pt7osZJ2NNY+3ZkK+8a0RrN/Fn23tNkoEaEuGY4JqvAzPheRvfChR9AYaSJc
+         wHDDSJhRprjPLWDuTHNvGluBnkREcn98TTjsOJtyuQPTNBO7gmli/TeCAhLpyMxSpKL6
+         XTPvxSBcmM29t6iCo3jHTT4bePOh5xu7ZyAmf83kpIcDObcvm0uXwigXUeJ2Peh1IMKu
+         EcQCiPRv4rSa6hT4Gnd63wsaX96Jvd3AWm3ofC2OLhnjVwxObYG4Sw5maybr4WpOoaEA
+         MZlw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=Xp9J0vDb;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=B11uZVI1;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
-        by gmr-mx.google.com with ESMTPS id p55si4268653qtc.2.2021.01.04.07.29.48
+Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
+        by gmr-mx.google.com with ESMTPS id q4si4060634iog.3.2021.01.04.07.29.53
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Jan 2021 07:29:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
-Received: from lelv0265.itg.ti.com ([10.180.67.224])
-	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 104FTdrQ075887;
-	Mon, 4 Jan 2021 09:29:39 -0600
-Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
-	by lelv0265.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 104FTdk9006844
+        Mon, 04 Jan 2021 07:29:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
+Received: from lelv0266.itg.ti.com ([10.180.67.225])
+	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 104FTiiH029132;
+	Mon, 4 Jan 2021 09:29:44 -0600
+Received: from DLEE102.ent.ti.com (dlee102.ent.ti.com [157.170.170.32])
+	by lelv0266.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 104FTi4w078583
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 4 Jan 2021 09:29:39 -0600
-Received: from DFLE108.ent.ti.com (10.64.6.29) by DFLE104.ent.ti.com
- (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
+	Mon, 4 Jan 2021 09:29:44 -0600
+Received: from DLEE109.ent.ti.com (157.170.170.41) by DLEE102.ent.ti.com
+ (157.170.170.32) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 4 Jan
- 2021 09:29:38 -0600
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE108.ent.ti.com
- (10.64.6.29) with Microsoft SMTP Server (version=TLS1_2,
+ 2021 09:29:44 -0600
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE109.ent.ti.com
+ (157.170.170.41) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Mon, 4 Jan 2021 09:29:38 -0600
+ Frontend Transport; Mon, 4 Jan 2021 09:29:44 -0600
 Received: from a0393678-ssd.ent.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 104FTFZ9093710;
-	Mon, 4 Jan 2021 09:29:33 -0600
+	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 104FTFZA093710;
+	Mon, 4 Jan 2021 09:29:39 -0600
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
         Kishon Vijay Abraham I <kishon@ti.com>,
@@ -126,9 +126,9 @@ To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
 CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
         <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
-Subject: [PATCH v9 03/17] PCI: endpoint: Add helper API to get the 'next' unreserved BAR
-Date: Mon, 4 Jan 2021 20:58:55 +0530
-Message-ID: <20210104152909.22038-4-kishon@ti.com>
+Subject: [PATCH v9 04/17] PCI: endpoint: Make *_free_bar() to return error codes on failure
+Date: Mon, 4 Jan 2021 20:58:56 +0530
+Message-ID: <20210104152909.22038-5-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210104152909.22038-1-kishon@ti.com>
 References: <20210104152909.22038-1-kishon@ti.com>
@@ -137,8 +137,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=Xp9J0vDb;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=B11uZVI1;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -155,91 +155,106 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Add an API to get the next unreserved BAR starting from a given BAR
-number that can be used by the endpoint function.
+Modify pci_epc_get_next_free_bar() and pci_epc_get_first_free_bar() to
+return error values if there are no free BARs available.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/pci/endpoint/pci-epc-core.c | 26 ++++++++++++++++++++++----
- include/linux/pci-epc.h             |  2 ++
- 2 files changed, 24 insertions(+), 4 deletions(-)
+ drivers/pci/endpoint/functions/pci-epf-test.c |  2 ++
+ drivers/pci/endpoint/pci-epc-core.c           | 12 ++++++------
+ include/linux/pci-epc.h                       |  8 ++++----
+ include/linux/pci-epf.h                       |  1 +
+ 4 files changed, 13 insertions(+), 10 deletions(-)
 
+diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
+index e4e51d884553..7a1f3abfde48 100644
+--- a/drivers/pci/endpoint/functions/pci-epf-test.c
++++ b/drivers/pci/endpoint/functions/pci-epf-test.c
+@@ -834,6 +834,8 @@ static int pci_epf_test_bind(struct pci_epf *epf)
+ 		linkup_notifier = epc_features->linkup_notifier;
+ 		core_init_notifier = epc_features->core_init_notifier;
+ 		test_reg_bar = pci_epc_get_first_free_bar(epc_features);
++		if (test_reg_bar < 0)
++			return -EINVAL;
+ 		pci_epf_configure_bar(epf, epc_features);
+ 	}
+ 
 diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index 25e57672e1a1..1afe5d9afb0d 100644
+index 1afe5d9afb0d..ea7e7465ce7a 100644
 --- a/drivers/pci/endpoint/pci-epc-core.c
 +++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -87,17 +87,36 @@ EXPORT_SYMBOL_GPL(pci_epc_get);
-  * pci_epc_get_first_free_bar() - helper to get first unreserved BAR
-  * @epc_features: pci_epc_features structure that holds the reserved bar bitmap
-  *
-- * Invoke to get the first unreserved BAR that can be used for endpoint
-+ * Invoke to get the first unreserved BAR that can be used by the endpoint
+@@ -90,8 +90,8 @@ EXPORT_SYMBOL_GPL(pci_epc_get);
+  * Invoke to get the first unreserved BAR that can be used by the endpoint
   * function. For any incorrect value in reserved_bar return '0'.
   */
- unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
- 					*epc_features)
-+{
-+	return pci_epc_get_next_free_bar(epc_features, BAR_0);
-+}
-+EXPORT_SYMBOL_GPL(pci_epc_get_first_free_bar);
-+
-+/**
-+ * pci_epc_get_next_free_bar() - helper to get unreserved BAR starting from @bar
-+ * @epc_features: pci_epc_features structure that holds the reserved bar bitmap
-+ * @bar: the starting BAR number from where unreserved BAR should be searched
-+ *
-+ * Invoke to get the next unreserved BAR starting from @bar that can be used
-+ * for endpoint function. For any incorrect value in reserved_bar return '0'.
-+ */
-+unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
-+				       *epc_features, enum pci_barno bar)
+-unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
+-					*epc_features)
++enum pci_barno
++pci_epc_get_first_free_bar(const struct pci_epc_features *epc_features)
+ {
+ 	return pci_epc_get_next_free_bar(epc_features, BAR_0);
+ }
+@@ -105,13 +105,13 @@ EXPORT_SYMBOL_GPL(pci_epc_get_first_free_bar);
+  * Invoke to get the next unreserved BAR starting from @bar that can be used
+  * for endpoint function. For any incorrect value in reserved_bar return '0'.
+  */
+-unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
+-				       *epc_features, enum pci_barno bar)
++enum pci_barno pci_epc_get_next_free_bar(const struct pci_epc_features
++					 *epc_features, enum pci_barno bar)
  {
  	unsigned long free_bar;
  
  	if (!epc_features)
- 		return 0;
+-		return 0;
++		return BAR_0;
  
-+	/* If 'bar - 1' is a 64-bit BAR, move to the next BAR */
-+	if ((epc_features->bar_fixed_64bit << 1) & 1 << bar)
-+		bar++;
-+
- 	/* Find if the reserved BAR is also a 64-bit BAR */
- 	free_bar = epc_features->reserved_bar & epc_features->bar_fixed_64bit;
+ 	/* If 'bar - 1' is a 64-bit BAR, move to the next BAR */
+ 	if ((epc_features->bar_fixed_64bit << 1) & 1 << bar)
+@@ -126,7 +126,7 @@ unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
  
-@@ -105,14 +124,13 @@ unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
- 	free_bar <<= 1;
- 	free_bar |= epc_features->reserved_bar;
- 
--	/* Now find the free BAR */
--	free_bar = ffz(free_bar);
-+	free_bar = find_next_zero_bit(&free_bar, 6, bar);
+ 	free_bar = find_next_zero_bit(&free_bar, 6, bar);
  	if (free_bar > 5)
- 		return 0;
+-		return 0;
++		return NO_BAR;
  
  	return free_bar;
  }
--EXPORT_SYMBOL_GPL(pci_epc_get_first_free_bar);
-+EXPORT_SYMBOL_GPL(pci_epc_get_next_free_bar);
- 
- /**
-  * pci_epc_get_features() - get the features supported by EPC
 diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
-index cc66bec8be90..cfe9b427e6b7 100644
+index cfe9b427e6b7..88d311bad984 100644
 --- a/include/linux/pci-epc.h
 +++ b/include/linux/pci-epc.h
-@@ -203,6 +203,8 @@ const struct pci_epc_features *pci_epc_get_features(struct pci_epc *epc,
+@@ -201,10 +201,10 @@ int pci_epc_start(struct pci_epc *epc);
+ void pci_epc_stop(struct pci_epc *epc);
+ const struct pci_epc_features *pci_epc_get_features(struct pci_epc *epc,
  						    u8 func_no);
- unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
- 					*epc_features);
-+unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
-+				       *epc_features, enum pci_barno bar);
+-unsigned int pci_epc_get_first_free_bar(const struct pci_epc_features
+-					*epc_features);
+-unsigned int pci_epc_get_next_free_bar(const struct pci_epc_features
+-				       *epc_features, enum pci_barno bar);
++enum pci_barno
++pci_epc_get_first_free_bar(const struct pci_epc_features *epc_features);
++enum pci_barno pci_epc_get_next_free_bar(const struct pci_epc_features
++					 *epc_features, enum pci_barno bar);
  struct pci_epc *pci_epc_get(const char *epc_name);
  void pci_epc_put(struct pci_epc *epc);
  
+diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
+index 6644ff3b0702..fa3aca43eb19 100644
+--- a/include/linux/pci-epf.h
++++ b/include/linux/pci-epf.h
+@@ -21,6 +21,7 @@ enum pci_notify_event {
+ };
+ 
+ enum pci_barno {
++	NO_BAR = -1,
+ 	BAR_0,
+ 	BAR_1,
+ 	BAR_2,
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210104152909.22038-4-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210104152909.22038-5-kishon%40ti.com.
