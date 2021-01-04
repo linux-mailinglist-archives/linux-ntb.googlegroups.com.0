@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBCOOP4VF5IDRB7HIZT7QKGQESIKRYQY@googlegroups.com>
+Return-Path: <linux-ntb+bncBCOOP4VF5IDRBAXJZT7QKGQE5TNOVHI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63a.google.com (mail-pl1-x63a.google.com [IPv6:2607:f8b0:4864:20::63a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 9BB6F2E9887
-	for <lists+linux-ntb@lfdr.de>; Mon,  4 Jan 2021 16:30:05 +0100 (CET)
-Received: by mail-pl1-x63a.google.com with SMTP id x12sf13665145plr.21
-        for <lists+linux-ntb@lfdr.de>; Mon, 04 Jan 2021 07:30:05 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1609774204; cv=pass;
+Received: from mail-yb1-xb37.google.com (mail-yb1-xb37.google.com [IPv6:2607:f8b0:4864:20::b37])
+	by mail.lfdr.de (Postfix) with ESMTPS id 61C2E2E9892
+	for <lists+linux-ntb@lfdr.de>; Mon,  4 Jan 2021 16:30:11 +0100 (CET)
+Received: by mail-yb1-xb37.google.com with SMTP id l126sf52633658ybl.10
+        for <lists+linux-ntb@lfdr.de>; Mon, 04 Jan 2021 07:30:11 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1609774210; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Ocie7ZSM4N8GID5AGPFx90qlF3B3i6737/GtgwEA9SneloSXgvStR2LdNIbgRdaQpz
-         Pasu7Au2KPsg9xgqX8pL7W2lbxWe+W4xJMV9VjnsVMgE3KrrA04xFs1YC1SqIE79qVP7
-         0Dw3rbxGAGTjiQPq5SqUlcjpwleXmrKLsiPaOlDkcsapnfufC1o4Z47xfY1Hp7vDtNua
-         U6QEOkc+xKqs77bpK6zBisAoIROool5ngYgp+ZxAi6NKdPoGHmmwCTosK63YOXJJ/jrL
-         A4rz/iMk+a0SDxJUQ1C5zzDL4XxETzrwbVNFoNPmxYDqMaTRZVVtfO5p/qsZRhH2bhFX
-         fh5g==
+        b=sBNXuGvw4c/UfAjdi2jIWGgHJUkTr4wEXGqaL46ZHa6SAanqIHVtmuTaahdappur8M
+         sUr9qWb7Gol1j0bxGkcgvCx5Nr69DSoIsEiu8lhcpdgToroz40Obh1vn1Rpu5Iq9L7l0
+         a1m6erFjU2uNImvu3Raffywze/bJ4mfXyGAhAnF+/aObjfRciY6oikMWTurdM0eZ7iQ1
+         Gmsg6QRYJyxk6l0GhDeA5myHZNK/Aiy6BCmLmYwXZB9t3mYBN2KyrqTnq3dDQLsxo6Td
+         06ie7Epiowx/B5JrvSowm28bF71C3xqCi85kVuqcXB5JCX7/esJvkHUPZNYeDs5dBeZR
+         lCXA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:reply-to:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0MgWgLPJ53is72c2x0ogy69FXjctQ2t1+p0E6I6GC70=;
-        b=d3xWKHONYe2lCorxQuM3TifYw2IwDWYgb/cHpufZSh0mPcQvcCZ32is4z4w0sSlDzW
-         8/SC+1zPw36Qb1A7AdNkyNfs5CfPz/SF4SA6xD3Fu670965zpYI5tWgmgqWN6/wdRLLX
-         PzmnuJIflA3Am6qKkurvRxbN2+D6CshFc4UON1htFatGLSQr5UeWz6xR8iM+Fetx9+os
-         pSMnaQsV0/XOAC1qqAsjdgJThEdjQbAVenNqrWICtOEu8Wp8vTSlrIIgg3MoiwaiUPmN
-         kaqqXe28Awvnvrut/nvkKkVMDrJDj3Tbte/EvsIcxdJ5vmo6NoGviuQxK0INFiLJzTWb
-         HjIQ==
+        bh=dWtddcFy7sPBlRc/oHxZxffhjEqM6+SGRtM4UC4rZWY=;
+        b=LgRQzt78ZCxM9iUk4JKdUvP/sRXx4mBIAlaFj/q0FuniDn+4GcFlrvEmkKnDwEFd2h
+         tyVZmvHYa4e7OE3/cV+T6BvCxeukuzp6xPp25PB4Rg98Wzy9V+lrFXW8DAJ3P0M29IAI
+         cNLg8OYquF7o+xwZe6zqdFbLsclfa8eqaMfRW1+3T1twT+EDtt7ozvWqlJPDHts8o58j
+         QCiQqNw+8eStqVmtKyYPpsdNYQYyGBSDyUJ/7WDjKQ0VF3K7E6EofRWzIbH3bffgIc2A
+         R05ni3s4PRGS4pJulny2+jj/7VKdnNQ6IBUzwQa0+Fo7fjQzcz/Ozi3qEeAh+2X6r+WP
+         7h9g==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=ljhaOM8F;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=mpjjoJgr;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :mime-version:x-original-sender:x-original-authentication-results
          :reply-to:precedence:mailing-list:list-id:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=0MgWgLPJ53is72c2x0ogy69FXjctQ2t1+p0E6I6GC70=;
-        b=peN1SNUelsFtdJ6mlxH20jQRkrNcaiHvaaB9FtzsTROpckczC3cTM8AqbwSX2NdsjO
-         UmlHymrN5SkCvGhki58URUrtFu03fkAzLL0IsPMlJmqR3XJkGWMed5RpNfP0+p4hSuVy
-         Go1oE953IZe62a1IX1ZAM67oz1BeL6Ps4i5yeU19CPTsUc9uZ+Ai3fi92V2RSccNloq3
-         KUNmEenuy+z3vVf+g6SLWG0K18w7KhLHxHkVky4SU8rPwFgmC6AiwOUQXoNhu4S0r+/7
-         mm4HueZlSIBsM1FuwrzigREnmKH3qDRER9NsmLSAvnOMOXKdrWTEJlD4T3FRdkEuIxRy
-         9zpg==
+        bh=dWtddcFy7sPBlRc/oHxZxffhjEqM6+SGRtM4UC4rZWY=;
+        b=C8TQdPBENezsRHHCinwhlEjH/Un+ukU28EcJbkWDwRXLcWsPuLEjomslJkVMig3X+9
+         WbY4f3IDVLIAFWO9oeMzY3VxtTTNyYh6M/ucdNj/0BbGqK7UE7IDqSiLRiqfUnuONlkM
+         qAvJrW9zT2g33+9utAMflZQmELJf5Pxtxy0eoeTEcVuc26ji2+/KsXq+BVHlFgNJ+udq
+         YeJsQRV6ct4HiZ6YnkOWb9NpzejR4QyGhKQ/NaAVGQzbOLJe8xNCrCmhf3ebjZeqmcH0
+         cyCpnc8UauSiPfdt3p3gPCq4xOIrXZ4Rr+nDdeKeSWLxX4bdYNT7GbLvbRtO7FTRvzmB
+         Mf1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
@@ -49,69 +49,69 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:reply-to:precedence:mailing-list
          :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=0MgWgLPJ53is72c2x0ogy69FXjctQ2t1+p0E6I6GC70=;
-        b=dpXhhpRDzNpAfmVl+QyJvxp1wPI+YAq3z06sFjecyDBWALDGhw2KB0r1EBNzblpd2L
-         f5Is4hv5wbu0/ieKrjSrRAeH/yIJpLfTag2/tkvri2aN5b7vUxPFBCYaSKkN1Q38n8Ho
-         AgKJGCGqPRPH45PMh4Cs1Cuh5Wd343LbvT9DPrByV6oRW+oBTMlDViaqb19HODaXsnGt
-         0VjMs8kqSy7O2qrm+RyZbi1WPRVi9EB1CUNdojf4+aVefGcDZTxFEqa4Io89SEKuuZ/H
-         4roszt/vyj70YH218iOIfYQuDAn8byO34XV/pMUFiQlJAMqzJW5a/GEYM/pJ7SL6intN
-         V4sQ==
-X-Gm-Message-State: AOAM532UXwQVrDuYBusM2p9CrUc3YhoYjo9PvcQxNk6u+1Jzdn4iK8TC
-	IH2qUnoVgcDEhXW0kkC07k4=
-X-Google-Smtp-Source: ABdhPJzlRX1GlkermGpdVH8SucYvvOyKt0P9hQLVKJLH7nisEfdCsC642edh+TWogYAbiD3BQGWmzg==
-X-Received: by 2002:a62:c312:0:b029:1a9:19c7:a8e with SMTP id v18-20020a62c3120000b02901a919c70a8emr66130298pfg.74.1609774204378;
-        Mon, 04 Jan 2021 07:30:04 -0800 (PST)
+        bh=dWtddcFy7sPBlRc/oHxZxffhjEqM6+SGRtM4UC4rZWY=;
+        b=qaCyM8nTFZeBRd4cQ78a/EsC++2apSPdhoiDVAkB/BoHwclW9IzHr8RtSCDl+0jr64
+         wsSaEC0fcFtFnTsZvKNPsnXrMOV0cykS7uSX/KBlubR+KsX2b9rylyhLr89p2bf/fdp3
+         VeqX6q6HDEuVlq/BZXuwdtQMkc7DCKw4PXX3jmYQZZUk1PNF9h0+iuqKu7DHE725gQeS
+         kXaIcYkFrywfzvkpWoKeuA9o/We4XDDhk3Iqm7ijI04UYThOrH2csifnQOPBH2SSxzqG
+         QFpd8O+czk1HxYIMDB6Uu3BFPBdS+X4FRfSGip7mfEi8smHFb00YTJ/1tgxl95E+fk0X
+         v4/A==
+X-Gm-Message-State: AOAM533K5U+CNO+pvnvjlfEVJy95bZOItIi4eb+dl/XW0cuUPPoWcbOC
+	GO8ij2DQKA7UT0g8Z6uVAz4=
+X-Google-Smtp-Source: ABdhPJx9GPkbZ+AXq2J7N5dBrBC9vMEuAgG61UKaiKnvTJnN0zu3cyg/46o4Kp05O5AA8cwwU02v+A==
+X-Received: by 2002:a25:ef46:: with SMTP id w6mr106353822ybm.458.1609774210231;
+        Mon, 04 Jan 2021 07:30:10 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:90a:e287:: with SMTP id d7ls9732987pjz.0.gmail; Mon, 04
- Jan 2021 07:30:03 -0800 (PST)
-X-Received: by 2002:a17:902:223:b029:da:af1e:b112 with SMTP id 32-20020a1709020223b02900daaf1eb112mr72916815plc.83.1609774203698;
-        Mon, 04 Jan 2021 07:30:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1609774203; cv=none;
+Received: by 2002:a25:32c2:: with SMTP id y185ls35287727yby.8.gmail; Mon, 04
+ Jan 2021 07:30:09 -0800 (PST)
+X-Received: by 2002:a25:50a:: with SMTP id 10mr105633670ybf.115.1609774209487;
+        Mon, 04 Jan 2021 07:30:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1609774209; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ylc5GTes7A85R1FI8FazXmAs34Or4uBd2/+HD70JVeZaEBXXwclUtDSlYTRXU17JzN
-         giFQzKjrtOgx/526iDrmVWINWNViYesK4Pf7L4l2ZFym1ISV5F42KftHlEIqnFPHKjhr
-         zUE8Zs8YA5IhU+In/uECMWEv6XyQdGeBmlwYUScAihgNUrPyAVea6urWSEirkpydKF78
-         mo3G3ZgS9dNF6DDdMkTNUlmfxtVmrr9dSEbCZxyAHIQwDd4JGH4WyVq3i+w5B0hazd0w
-         Uwj8q7QYPYNs6nT8udtmPso0Q2PdWkyQMuF+pvwj/ceWMDQutWmecAusV6uZ6f7jjVaq
-         O04Q==
+        b=yXM4k0JwEjRLAMmJc1g0GbqWpOBGSQq4FH7tBjUutmllsLmZOPmdhsW+TH2/eyPb1D
+         Ii9TZ6Wgb76wNlcIAN59CKllcEIhr/ziFJDymffZofM078Ky6E3R2eyay61cPB/WrQrf
+         2+DlOL11PNsGqFmb44/TFwCGwHBTydFPvd9cbIR06n7DlKrYPf8ID/HIdrOVtLKeZsqJ
+         6cI4DCwby5sWhLYnFg1wmttzKNi14seTBwefngqpF6xgtZc18h7A3oo4FqTn0FOUb/io
+         uet/HkM6uFKahyeklHj0VZhT9uxeJr8njIJLZVi5N/Lm11Fn1n7PC20qiRhhB6g6LsLb
+         BYpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=mime-version:references:in-reply-to:message-id:date:subject:cc:to
          :from:dkim-signature;
-        bh=rM/zpyHLYwR6kMK4GfVsk4cqjPUlNqYX8ihj39HgGU0=;
-        b=sbj87js5Z2imwmzHkTJRcDKHSN6SFEfG18JMMQptbJSD0IXCfnEZIFPRVGXHohtK5H
-         L7O/9+HGooO928VnsjcVJeF+e6jbtTHuvwUxlctE5OlKSXw5EmASZduU9n3qabsG0Krq
-         jTnzZodQlLGYMLg9HxBZMy+gxQa93gTOB78rKoYmdT9PhXkTYRTQj6x0uTBPgAIgZ+Qn
-         WxUwdCIzjF/YyDHzI9i0mlEdHpbDWb3F/VL5ufd32iJWjUrjovsI/jp48W8ZUYWAsYOw
-         +TlArifLrO9QGTvhVj94H/rQfNOoEe9Dc3c1v7+aX1skz6MpdUolUEWT47R8vjlgJBnp
-         kxyg==
+        bh=z3Tw9eXfcOK90ruy3aMeRyVdcSzDrEL/G+eXeTQ/vG0=;
+        b=TWY0Ya0ZLCsvCZrIQEGF1a+M0cxU5jLLdL/FaLIHZMAQewfqdFTgGLwKGMzW3/1Pm8
+         YkbClnM+w9fEXHIo/a1ZyDcNaI5oKLBdaZzFm2YTc9CvQe/v78JkYPwtqdYLbEPDN0h+
+         55CL8g3JZ8AFidwNbK2QIKjHEQ3qn5kue6KgYEd6gQkTUGPmU8/WXduL8VCnR9+iXttD
+         u1UYCBPhkSPbkrhccUNtbo41Hfajh5uqYn6yW25Dnoqre79IObQECh8sCkDV6EL+VJEz
+         53VkVKwJh9QwEMM7bJ+k56WTpfwVLyNLHoknb02DiQ+qYMg0dVXDOV9jNxR5300s1LkM
+         Kt8A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=ljhaOM8F;
-       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) smtp.mailfrom=kishon@ti.com;
+       dkim=pass header.i=@ti.com header.s=ti-com-17Q1 header.b=mpjjoJgr;
+       spf=pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) smtp.mailfrom=kishon@ti.com;
        dmarc=pass (p=QUARANTINE sp=NONE dis=NONE) header.from=ti.com
-Received: from fllv0016.ext.ti.com (fllv0016.ext.ti.com. [198.47.19.142])
-        by gmr-mx.google.com with ESMTPS id ce15si1936708pjb.3.2021.01.04.07.30.03
+Received: from fllv0015.ext.ti.com (fllv0015.ext.ti.com. [198.47.19.141])
+        by gmr-mx.google.com with ESMTPS id i70si3546925ybg.1.2021.01.04.07.30.09
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 04 Jan 2021 07:30:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted sender) client-ip=198.47.19.142;
-Received: from fllv0035.itg.ti.com ([10.64.41.0])
-	by fllv0016.ext.ti.com (8.15.2/8.15.2) with ESMTP id 104FTttR029165;
-	Mon, 4 Jan 2021 09:29:55 -0600
-Received: from DLEE107.ent.ti.com (dlee107.ent.ti.com [157.170.170.37])
-	by fllv0035.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 104FTtZQ095799
+        Mon, 04 Jan 2021 07:30:09 -0800 (PST)
+Received-SPF: pass (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted sender) client-ip=198.47.19.141;
+Received: from fllv0034.itg.ti.com ([10.64.40.246])
+	by fllv0015.ext.ti.com (8.15.2/8.15.2) with ESMTP id 104FU180075958;
+	Mon, 4 Jan 2021 09:30:01 -0600
+Received: from DFLE104.ent.ti.com (dfle104.ent.ti.com [10.64.6.25])
+	by fllv0034.itg.ti.com (8.15.2/8.15.2) with ESMTPS id 104FU1ea077801
 	(version=TLSv1.2 cipher=AES256-GCM-SHA384 bits=256 verify=FAIL);
-	Mon, 4 Jan 2021 09:29:55 -0600
-Received: from DLEE107.ent.ti.com (157.170.170.37) by DLEE107.ent.ti.com
- (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
+	Mon, 4 Jan 2021 09:30:01 -0600
+Received: from DFLE114.ent.ti.com (10.64.6.35) by DFLE104.ent.ti.com
+ (10.64.6.25) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3; Mon, 4 Jan
- 2021 09:29:55 -0600
-Received: from fllv0039.itg.ti.com (10.64.41.19) by DLEE107.ent.ti.com
- (157.170.170.37) with Microsoft SMTP Server (version=TLS1_2,
+ 2021 09:30:00 -0600
+Received: from fllv0039.itg.ti.com (10.64.41.19) by DFLE114.ent.ti.com
+ (10.64.6.35) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.1979.3 via
- Frontend Transport; Mon, 4 Jan 2021 09:29:55 -0600
+ Frontend Transport; Mon, 4 Jan 2021 09:30:00 -0600
 Received: from a0393678-ssd.ent.ti.com (ileax41-snat.itg.ti.com [10.172.224.153])
-	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 104FTFZC093710;
-	Mon, 4 Jan 2021 09:29:50 -0600
+	by fllv0039.itg.ti.com (8.15.2/8.15.2) with ESMTP id 104FTFZD093710;
+	Mon, 4 Jan 2021 09:29:55 -0600
 From: "'Kishon Vijay Abraham I' via linux-ntb" <linux-ntb@googlegroups.com>
 To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
         Kishon Vijay Abraham I <kishon@ti.com>,
@@ -126,9 +126,9 @@ To: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
 CC: Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
         <linux-pci@vger.kernel.org>, <linux-doc@vger.kernel.org>,
         <linux-kernel@vger.kernel.org>, <linux-ntb@googlegroups.com>
-Subject: [PATCH v9 06/17] PCI: endpoint: Add support to associate secondary EPC with EPF
-Date: Mon, 4 Jan 2021 20:58:58 +0530
-Message-ID: <20210104152909.22038-7-kishon@ti.com>
+Subject: [PATCH v9 07/17] PCI: endpoint: Add support in configfs to associate two EPCs with EPF
+Date: Mon, 4 Jan 2021 20:58:59 +0530
+Message-ID: <20210104152909.22038-8-kishon@ti.com>
 X-Mailer: git-send-email 2.17.1
 In-Reply-To: <20210104152909.22038-1-kishon@ti.com>
 References: <20210104152909.22038-1-kishon@ti.com>
@@ -137,8 +137,8 @@ Content-Type: text/plain; charset="UTF-8"
 X-EXCLAIMER-MD-CONFIG: e1e8a2fd-e40a-4ac6-ac9b-f7e9cc9ee180
 X-Original-Sender: kishon@ti.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ti.com header.s=ti-com-17Q1 header.b=ljhaOM8F;       spf=pass
- (google.com: domain of kishon@ti.com designates 198.47.19.142 as permitted
+ header.i=@ti.com header.s=ti-com-17Q1 header.b=mpjjoJgr;       spf=pass
+ (google.com: domain of kishon@ti.com designates 198.47.19.141 as permitted
  sender) smtp.mailfrom=kishon@ti.com;       dmarc=pass (p=QUARANTINE sp=NONE
  dis=NONE) header.from=ti.com
 X-Original-From: Kishon Vijay Abraham I <kishon@ti.com>
@@ -155,393 +155,226 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-In the case of standard endpoint functions, only one endpoint
-controller (EPC) will be associated with an endpoint function
-(EPF). However for providing NTB (non transparent bridge)
-functionality, two EPCs should be associated with a single EPF.
-Add support to associate secondary EPC with EPF. This is in
-preparation for adding NTB endpoint function driver.
+Now that PCI endpoint core supports to add secondary endpoint
+controller (EPC) with endpoint function (EPF), Add support in configfs
+to associate two EPCs with EPF. This creates "primary" and "secondary"
+directory inside the directory created by users for EPF device. Users
+have to add a symlink of endpoint controller (pci_ep/controllers/) to
+"primary" or "secondary" directory to bind EPF to primary and secondary
+EPF interfaces respectively. Existing method of linking directory
+representing EPF device to directory representing EPC device to
+associate a single EPC device with a EPF device will continue to work.
 
 Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
 ---
- drivers/pci/endpoint/functions/pci-epf-test.c | 11 ++--
- drivers/pci/endpoint/pci-ep-cfs.c             |  6 +-
- drivers/pci/endpoint/pci-epc-core.c           | 47 +++++++++++----
- drivers/pci/endpoint/pci-epf-core.c           | 57 +++++++++++++------
- include/linux/pci-epc.h                       | 25 +++++++-
- include/linux/pci-epf.h                       | 17 +++++-
- 6 files changed, 125 insertions(+), 38 deletions(-)
+ .../PCI/endpoint/pci-endpoint-cfs.rst         |  10 ++
+ drivers/pci/endpoint/pci-ep-cfs.c             | 147 ++++++++++++++++++
+ 2 files changed, 157 insertions(+)
 
-diff --git a/drivers/pci/endpoint/functions/pci-epf-test.c b/drivers/pci/endpoint/functions/pci-epf-test.c
-index 7a1f3abfde48..c0ac4e9cbe72 100644
---- a/drivers/pci/endpoint/functions/pci-epf-test.c
-+++ b/drivers/pci/endpoint/functions/pci-epf-test.c
-@@ -619,7 +619,8 @@ static void pci_epf_test_unbind(struct pci_epf *epf)
+diff --git a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
+index 1bbd81ed06c8..696f8eeb4738 100644
+--- a/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
++++ b/Documentation/PCI/endpoint/pci-endpoint-cfs.rst
+@@ -68,6 +68,16 @@ created)
+ 				... subsys_vendor_id
+ 				... subsys_id
+ 				... interrupt_pin
++                                ... primary/
++			                ... <Symlink EPC Device1>/
++                                ... secondary/
++			                ... <Symlink EPC Device2>/
++
++If an EPF device has to be associated with 2 EPCs (like in the case of
++Non-transparent bridge), symlink of endpoint controller connected to primary
++interface should be added in 'primary' directory and symlink of endpoint
++controller connected to secondary interface should be added in 'secondary'
++directory.
  
- 		if (epf_test->reg[bar]) {
- 			pci_epc_clear_bar(epc, epf->func_no, epf_bar);
--			pci_epf_free_space(epf, epf_test->reg[bar], bar);
-+			pci_epf_free_space(epf, epf_test->reg[bar], bar,
-+					   PRIMARY_INTERFACE);
- 		}
- 	}
- }
-@@ -651,7 +652,8 @@ static int pci_epf_test_set_bar(struct pci_epf *epf)
- 
- 		ret = pci_epc_set_bar(epc, epf->func_no, epf_bar);
- 		if (ret) {
--			pci_epf_free_space(epf, epf_test->reg[bar], bar);
-+			pci_epf_free_space(epf, epf_test->reg[bar], bar,
-+					   PRIMARY_INTERFACE);
- 			dev_err(dev, "Failed to set BAR%d\n", bar);
- 			if (bar == test_reg_bar)
- 				return ret;
-@@ -771,7 +773,7 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
- 	}
- 
- 	base = pci_epf_alloc_space(epf, test_reg_size, test_reg_bar,
--				   epc_features->align);
-+				   epc_features->align, PRIMARY_INTERFACE);
- 	if (!base) {
- 		dev_err(dev, "Failed to allocated register space\n");
- 		return -ENOMEM;
-@@ -789,7 +791,8 @@ static int pci_epf_test_alloc_space(struct pci_epf *epf)
- 			continue;
- 
- 		base = pci_epf_alloc_space(epf, bar_size[bar], bar,
--					   epc_features->align);
-+					   epc_features->align,
-+					   PRIMARY_INTERFACE);
- 		if (!base)
- 			dev_err(dev, "Failed to allocate space for BAR%d\n",
- 				bar);
+ EPC Device
+ ==========
 diff --git a/drivers/pci/endpoint/pci-ep-cfs.c b/drivers/pci/endpoint/pci-ep-cfs.c
-index 3710adf51912..6ca9e2f92460 100644
+index 6ca9e2f92460..8f750961d6ab 100644
 --- a/drivers/pci/endpoint/pci-ep-cfs.c
 +++ b/drivers/pci/endpoint/pci-ep-cfs.c
-@@ -94,13 +94,13 @@ static int pci_epc_epf_link(struct config_item *epc_item,
- 	struct pci_epc *epc = epc_group->epc;
- 	struct pci_epf *epf = epf_group->epf;
+@@ -21,6 +21,9 @@ static struct config_group *controllers_group;
  
--	ret = pci_epc_add_epf(epc, epf);
-+	ret = pci_epc_add_epf(epc, epf, PRIMARY_INTERFACE);
- 	if (ret)
- 		return ret;
- 
- 	ret = pci_epf_bind(epf);
- 	if (ret) {
--		pci_epc_remove_epf(epc, epf);
-+		pci_epc_remove_epf(epc, epf, PRIMARY_INTERFACE);
- 		return ret;
- 	}
- 
-@@ -120,7 +120,7 @@ static void pci_epc_epf_unlink(struct config_item *epc_item,
- 	epc = epc_group->epc;
- 	epf = epf_group->epf;
- 	pci_epf_unbind(epf);
--	pci_epc_remove_epf(epc, epf);
-+	pci_epc_remove_epf(epc, epf, PRIMARY_INTERFACE);
+ struct pci_epf_group {
+ 	struct config_group group;
++	struct config_group primary_epc_group;
++	struct config_group secondary_epc_group;
++	struct delayed_work cfs_work;
+ 	struct pci_epf *epf;
+ 	int index;
+ };
+@@ -41,6 +44,127 @@ static inline struct pci_epc_group *to_pci_epc_group(struct config_item *item)
+ 	return container_of(to_config_group(item), struct pci_epc_group, group);
  }
  
- static struct configfs_item_operations pci_epc_item_ops = {
-diff --git a/drivers/pci/endpoint/pci-epc-core.c b/drivers/pci/endpoint/pci-epc-core.c
-index ea7e7465ce7a..3693eca5b030 100644
---- a/drivers/pci/endpoint/pci-epc-core.c
-+++ b/drivers/pci/endpoint/pci-epc-core.c
-@@ -493,21 +493,28 @@ EXPORT_SYMBOL_GPL(pci_epc_write_header);
-  * pci_epc_add_epf() - bind PCI endpoint function to an endpoint controller
-  * @epc: the EPC device to which the endpoint function should be added
-  * @epf: the endpoint function to be added
-+ * @type: Identifies if the EPC is connected to the primary or secondary
-+ *        interface of EPF
-  *
-  * A PCI endpoint device can have one or more functions. In the case of PCIe,
-  * the specification allows up to 8 PCIe endpoint functions. Invoke
-  * pci_epc_add_epf() to add a PCI endpoint function to an endpoint controller.
-  */
--int pci_epc_add_epf(struct pci_epc *epc, struct pci_epf *epf)
-+int pci_epc_add_epf(struct pci_epc *epc, struct pci_epf *epf,
-+		    enum pci_epc_interface_type type)
- {
-+	struct list_head *list;
- 	u32 func_no;
- 	int ret = 0;
- 
--	if (epf->epc)
-+	if (IS_ERR_OR_NULL(epc))
-+		return -EINVAL;
++static int pci_secondary_epc_epf_link(struct config_item *epf_item,
++				      struct config_item *epc_item)
++{
++	int ret;
++	struct pci_epf_group *epf_group = to_pci_epf_group(epf_item->ci_parent);
++	struct pci_epc_group *epc_group = to_pci_epc_group(epc_item);
++	struct pci_epc *epc = epc_group->epc;
++	struct pci_epf *epf = epf_group->epf;
 +
-+	if (type == PRIMARY_INTERFACE && epf->epc)
- 		return -EBUSY;
- 
--	if (IS_ERR(epc))
--		return -EINVAL;
-+	if (type == SECONDARY_INTERFACE && epf->sec_epc)
-+		return -EBUSY;
- 
- 	mutex_lock(&epc->lock);
- 	func_no = find_first_zero_bit(&epc->function_num_map,
-@@ -524,11 +531,17 @@ int pci_epc_add_epf(struct pci_epc *epc, struct pci_epf *epf)
- 	}
- 
- 	set_bit(func_no, &epc->function_num_map);
--	epf->func_no = func_no;
--	epf->epc = epc;
--
--	list_add_tail(&epf->list, &epc->pci_epf);
-+	if (type == PRIMARY_INTERFACE) {
-+		epf->func_no = func_no;
-+		epf->epc = epc;
-+		list = &epf->list;
-+	} else {
-+		epf->sec_epc_func_no = func_no;
-+		epf->sec_epc = epc;
-+		list = &epf->sec_epc_list;
-+	}
- 
-+	list_add_tail(list, &epc->pci_epf);
- ret:
- 	mutex_unlock(&epc->lock);
- 
-@@ -543,14 +556,26 @@ EXPORT_SYMBOL_GPL(pci_epc_add_epf);
-  *
-  * Invoke to remove PCI endpoint function from the endpoint controller.
-  */
--void pci_epc_remove_epf(struct pci_epc *epc, struct pci_epf *epf)
-+void pci_epc_remove_epf(struct pci_epc *epc, struct pci_epf *epf,
-+			enum pci_epc_interface_type type)
- {
-+	struct list_head *list;
-+	u32 func_no = 0;
++	ret = pci_epc_add_epf(epc, epf, SECONDARY_INTERFACE);
++	if (ret)
++		return ret;
 +
- 	if (!epc || IS_ERR(epc) || !epf)
- 		return;
- 
-+	if (type == PRIMARY_INTERFACE) {
-+		func_no = epf->func_no;
-+		list = &epf->list;
-+	} else {
-+		func_no = epf->sec_epc_func_no;
-+		list = &epf->sec_epc_list;
++	ret = pci_epf_bind(epf);
++	if (ret) {
++		pci_epc_remove_epf(epc, epf, SECONDARY_INTERFACE);
++		return ret;
 +	}
 +
- 	mutex_lock(&epc->lock);
--	clear_bit(epf->func_no, &epc->function_num_map);
--	list_del(&epf->list);
-+	clear_bit(func_no, &epc->function_num_map);
-+	list_del(list);
- 	epf->epc = NULL;
- 	mutex_unlock(&epc->lock);
- }
-diff --git a/drivers/pci/endpoint/pci-epf-core.c b/drivers/pci/endpoint/pci-epf-core.c
-index e44a317a2a2a..79329ec6373c 100644
---- a/drivers/pci/endpoint/pci-epf-core.c
-+++ b/drivers/pci/endpoint/pci-epf-core.c
-@@ -74,24 +74,37 @@ EXPORT_SYMBOL_GPL(pci_epf_bind);
-  * @epf: the EPF device from whom to free the memory
-  * @addr: the virtual address of the PCI EPF register space
-  * @bar: the BAR number corresponding to the register space
-+ * @type: Identifies if the allocated space is for primary EPC or secondary EPC
-  *
-  * Invoke to free the allocated PCI EPF register space.
-  */
--void pci_epf_free_space(struct pci_epf *epf, void *addr, enum pci_barno bar)
-+void pci_epf_free_space(struct pci_epf *epf, void *addr, enum pci_barno bar,
-+			enum pci_epc_interface_type type)
- {
- 	struct device *dev = epf->epc->dev.parent;
-+	struct pci_epf_bar *epf_bar;
++	return 0;
++}
++
++static void pci_secondary_epc_epf_unlink(struct config_item *epc_item,
++					 struct config_item *epf_item)
++{
++	struct pci_epf_group *epf_group = to_pci_epf_group(epf_item->ci_parent);
++	struct pci_epc_group *epc_group = to_pci_epc_group(epc_item);
 +	struct pci_epc *epc;
- 
- 	if (!addr)
- 		return;
- 
--	dma_free_coherent(dev, epf->bar[bar].size, addr,
--			  epf->bar[bar].phys_addr);
-+	if (type == PRIMARY_INTERFACE) {
-+		epc = epf->epc;
-+		epf_bar = epf->bar;
-+	} else {
-+		epc = epf->sec_epc;
-+		epf_bar = epf->sec_epc_bar;
-+	}
++	struct pci_epf *epf;
 +
-+	dev = epc->dev.parent;
-+	dma_free_coherent(dev, epf_bar[bar].size, addr,
-+			  epf_bar[bar].phys_addr);
- 
--	epf->bar[bar].phys_addr = 0;
--	epf->bar[bar].addr = NULL;
--	epf->bar[bar].size = 0;
--	epf->bar[bar].barno = 0;
--	epf->bar[bar].flags = 0;
-+	epf_bar[bar].phys_addr = 0;
-+	epf_bar[bar].addr = NULL;
-+	epf_bar[bar].size = 0;
-+	epf_bar[bar].barno = 0;
-+	epf_bar[bar].flags = 0;
- }
- EXPORT_SYMBOL_GPL(pci_epf_free_space);
- 
-@@ -101,15 +114,18 @@ EXPORT_SYMBOL_GPL(pci_epf_free_space);
-  * @size: the size of the memory that has to be allocated
-  * @bar: the BAR number corresponding to the allocated register space
-  * @align: alignment size for the allocation region
-+ * @type: Identifies if the allocation is for primary EPC or secondary EPC
-  *
-  * Invoke to allocate memory for the PCI EPF register space.
-  */
- void *pci_epf_alloc_space(struct pci_epf *epf, size_t size, enum pci_barno bar,
--			  size_t align)
-+			  size_t align, enum pci_epc_interface_type type)
- {
--	void *space;
--	struct device *dev = epf->epc->dev.parent;
-+	struct pci_epf_bar *epf_bar;
- 	dma_addr_t phys_addr;
-+	struct pci_epc *epc;
-+	struct device *dev;
-+	void *space;
- 
- 	if (size < 128)
- 		size = 128;
-@@ -119,17 +135,26 @@ void *pci_epf_alloc_space(struct pci_epf *epf, size_t size, enum pci_barno bar,
- 	else
- 		size = roundup_pow_of_two(size);
- 
-+	if (type == PRIMARY_INTERFACE) {
-+		epc = epf->epc;
-+		epf_bar = epf->bar;
-+	} else {
-+		epc = epf->sec_epc;
-+		epf_bar = epf->sec_epc_bar;
-+	}
++	WARN_ON_ONCE(epc_group->start);
 +
-+	dev = epc->dev.parent;
- 	space = dma_alloc_coherent(dev, size, &phys_addr, GFP_KERNEL);
- 	if (!space) {
- 		dev_err(dev, "failed to allocate mem space\n");
- 		return NULL;
- 	}
- 
--	epf->bar[bar].phys_addr = phys_addr;
--	epf->bar[bar].addr = space;
--	epf->bar[bar].size = size;
--	epf->bar[bar].barno = bar;
--	epf->bar[bar].flags |= upper_32_bits(size) ?
-+	epf_bar[bar].phys_addr = phys_addr;
-+	epf_bar[bar].addr = space;
-+	epf_bar[bar].size = size;
-+	epf_bar[bar].barno = bar;
-+	epf_bar[bar].flags |= upper_32_bits(size) ?
- 				PCI_BASE_ADDRESS_MEM_TYPE_64 :
- 				PCI_BASE_ADDRESS_MEM_TYPE_32;
- 
-diff --git a/include/linux/pci-epc.h b/include/linux/pci-epc.h
-index 88d311bad984..d9cb3944fb87 100644
---- a/include/linux/pci-epc.h
-+++ b/include/linux/pci-epc.h
-@@ -13,6 +13,12 @@
- 
- struct pci_epc;
- 
-+enum pci_epc_interface_type {
-+	UNKNOWN_INTERFACE = -1,
-+	PRIMARY_INTERFACE,
-+	SECONDARY_INTERFACE,
++	epc = epc_group->epc;
++	epf = epf_group->epf;
++	pci_epf_unbind(epf);
++	pci_epc_remove_epf(epc, epf, SECONDARY_INTERFACE);
++}
++
++static struct configfs_item_operations pci_secondary_epc_item_ops = {
++	.allow_link	= pci_secondary_epc_epf_link,
++	.drop_link	= pci_secondary_epc_epf_unlink,
 +};
 +
- enum pci_epc_irq_type {
- 	PCI_EPC_IRQ_UNKNOWN,
- 	PCI_EPC_IRQ_LEGACY,
-@@ -20,6 +26,19 @@ enum pci_epc_irq_type {
- 	PCI_EPC_IRQ_MSIX,
++static const struct config_item_type pci_secondary_epc_type = {
++	.ct_item_ops	= &pci_secondary_epc_item_ops,
++	.ct_owner	= THIS_MODULE,
++};
++
++static struct config_group
++*pci_ep_cfs_add_secondary_group(struct pci_epf_group *epf_group)
++{
++	struct config_group *secondary_epc_group;
++
++	secondary_epc_group = &epf_group->secondary_epc_group;
++	config_group_init_type_name(secondary_epc_group, "secondary",
++				    &pci_secondary_epc_type);
++	configfs_register_group(&epf_group->group, secondary_epc_group);
++
++	return secondary_epc_group;
++}
++
++static int pci_primary_epc_epf_link(struct config_item *epf_item,
++				    struct config_item *epc_item)
++{
++	int ret;
++	struct pci_epf_group *epf_group = to_pci_epf_group(epf_item->ci_parent);
++	struct pci_epc_group *epc_group = to_pci_epc_group(epc_item);
++	struct pci_epc *epc = epc_group->epc;
++	struct pci_epf *epf = epf_group->epf;
++
++	ret = pci_epc_add_epf(epc, epf, PRIMARY_INTERFACE);
++	if (ret)
++		return ret;
++
++	ret = pci_epf_bind(epf);
++	if (ret) {
++		pci_epc_remove_epf(epc, epf, PRIMARY_INTERFACE);
++		return ret;
++	}
++
++	return 0;
++}
++
++static void pci_primary_epc_epf_unlink(struct config_item *epc_item,
++				       struct config_item *epf_item)
++{
++	struct pci_epf_group *epf_group = to_pci_epf_group(epf_item->ci_parent);
++	struct pci_epc_group *epc_group = to_pci_epc_group(epc_item);
++	struct pci_epc *epc;
++	struct pci_epf *epf;
++
++	WARN_ON_ONCE(epc_group->start);
++
++	epc = epc_group->epc;
++	epf = epf_group->epf;
++	pci_epf_unbind(epf);
++	pci_epc_remove_epf(epc, epf, PRIMARY_INTERFACE);
++}
++
++static struct configfs_item_operations pci_primary_epc_item_ops = {
++	.allow_link	= pci_primary_epc_epf_link,
++	.drop_link	= pci_primary_epc_epf_unlink,
++};
++
++static const struct config_item_type pci_primary_epc_type = {
++	.ct_item_ops	= &pci_primary_epc_item_ops,
++	.ct_owner	= THIS_MODULE,
++};
++
++static struct config_group
++*pci_ep_cfs_add_primary_group(struct pci_epf_group *epf_group)
++{
++	struct config_group *primary_epc_group = &epf_group->primary_epc_group;
++
++	config_group_init_type_name(primary_epc_group, "primary",
++				    &pci_primary_epc_type);
++	configfs_register_group(&epf_group->group, primary_epc_group);
++
++	return primary_epc_group;
++}
++
+ static ssize_t pci_epc_start_store(struct config_item *item, const char *page,
+ 				   size_t len)
+ {
+@@ -372,6 +496,25 @@ static const struct config_item_type pci_epf_type = {
+ 	.ct_owner	= THIS_MODULE,
  };
  
-+static inline const char *
-+pci_epc_interface_string(enum pci_epc_interface_type type)
++static void pci_epf_cfs_work(struct work_struct *work)
 +{
-+	switch (type) {
-+	case PRIMARY_INTERFACE:
-+		return "primary";
-+	case SECONDARY_INTERFACE:
-+		return "secondary";
-+	default:
-+		return "UNKNOWN interface";
++	struct pci_epf_group *epf_group;
++	struct config_group *group;
++
++	epf_group = container_of(work, struct pci_epf_group, cfs_work.work);
++	group = pci_ep_cfs_add_primary_group(epf_group);
++	if (IS_ERR(group)) {
++		pr_err("failed to create 'primary' EPC interface\n");
++		return;
++	}
++
++	group = pci_ep_cfs_add_secondary_group(epf_group);
++	if (IS_ERR(group)) {
++		pr_err("failed to create 'secondary' EPC interface\n");
++		return;
 +	}
 +}
 +
- /**
-  * struct pci_epc_ops - set of function pointers for performing EPC operations
-  * @write_header: ops to populate configuration space header
-@@ -175,10 +194,12 @@ __pci_epc_create(struct device *dev, const struct pci_epc_ops *ops,
- 		 struct module *owner);
- void devm_pci_epc_destroy(struct device *dev, struct pci_epc *epc);
- void pci_epc_destroy(struct pci_epc *epc);
--int pci_epc_add_epf(struct pci_epc *epc, struct pci_epf *epf);
-+int pci_epc_add_epf(struct pci_epc *epc, struct pci_epf *epf,
-+		    enum pci_epc_interface_type type);
- void pci_epc_linkup(struct pci_epc *epc);
- void pci_epc_init_notify(struct pci_epc *epc);
--void pci_epc_remove_epf(struct pci_epc *epc, struct pci_epf *epf);
-+void pci_epc_remove_epf(struct pci_epc *epc, struct pci_epf *epf,
-+			enum pci_epc_interface_type type);
- int pci_epc_write_header(struct pci_epc *epc, u8 func_no,
- 			 struct pci_epf_header *hdr);
- int pci_epc_set_bar(struct pci_epc *epc, u8 func_no,
-diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
-index f373a134ac04..1dc66824f5a8 100644
---- a/include/linux/pci-epf.h
-+++ b/include/linux/pci-epf.h
-@@ -14,6 +14,7 @@
- #include <linux/pci.h>
+ static struct config_group *pci_epf_make(struct config_group *group,
+ 					 const char *name)
+ {
+@@ -414,6 +557,10 @@ static struct config_group *pci_epf_make(struct config_group *group,
  
- struct pci_epf;
-+enum pci_epc_interface_type;
+ 	kfree(epf_name);
  
- enum pci_notify_event {
- 	CORE_INIT,
-@@ -119,6 +120,11 @@ struct pci_epf_bar {
-  * @list: to add pci_epf as a list of PCI endpoint functions to pci_epc
-  * @nb: notifier block to notify EPF of any EPC events (like linkup)
-  * @lock: mutex to protect pci_epf_ops
-+ * @sec_epc: the secondary EPC device to which this EPF device is bound
-+ * @sec_epc_list: to add pci_epf as list of PCI endpoint functions to secondary
-+ *   EPC device
-+ * @sec_epc_bar: represents the BAR of EPF device associated with secondary EPC
-+ * @sec_epc_func_no: unique (physical) function number within the secondary EPC
-  */
- struct pci_epf {
- 	struct device		dev;
-@@ -135,6 +141,12 @@ struct pci_epf {
- 	struct notifier_block   nb;
- 	/* mutex to protect against concurrent access of pci_epf_ops */
- 	struct mutex		lock;
++	INIT_DELAYED_WORK(&epf_group->cfs_work, pci_epf_cfs_work);
++	queue_delayed_work(system_wq, &epf_group->cfs_work,
++			   msecs_to_jiffies(1));
 +
-+	/* Below members are to attach secondary EPC to an endpoint function */
-+	struct pci_epc		*sec_epc;
-+	struct list_head	sec_epc_list;
-+	struct pci_epf_bar	sec_epc_bar[6];
-+	u8			sec_epc_func_no;
- };
+ 	return &epf_group->group;
  
- /**
-@@ -171,8 +183,9 @@ int __pci_epf_register_driver(struct pci_epf_driver *driver,
- 			      struct module *owner);
- void pci_epf_unregister_driver(struct pci_epf_driver *driver);
- void *pci_epf_alloc_space(struct pci_epf *epf, size_t size, enum pci_barno bar,
--			  size_t align);
--void pci_epf_free_space(struct pci_epf *epf, void *addr, enum pci_barno bar);
-+			  size_t align, enum pci_epc_interface_type type);
-+void pci_epf_free_space(struct pci_epf *epf, void *addr, enum pci_barno bar,
-+			enum pci_epc_interface_type type);
- int pci_epf_bind(struct pci_epf *epf);
- void pci_epf_unbind(struct pci_epf *epf);
- #endif /* __LINUX_PCI_EPF_H */
+ free_name:
 -- 
 2.17.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210104152909.22038-7-kishon%40ti.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210104152909.22038-8-kishon%40ti.com.
