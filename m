@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBDXJDZXNUMORBIGMTSAAMGQE4FGCV6Q@googlegroups.com>
+Return-Path: <linux-ntb+bncBDXJDZXNUMORBKWMTSAAMGQECRX4BGQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pg1-x53c.google.com (mail-pg1-x53c.google.com [IPv6:2607:f8b0:4864:20::53c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 068A52FBF0F
-	for <lists+linux-ntb@lfdr.de>; Tue, 19 Jan 2021 19:34:10 +0100 (CET)
-Received: by mail-pg1-x53c.google.com with SMTP id o20sf12931420pgu.16
-        for <lists+linux-ntb@lfdr.de>; Tue, 19 Jan 2021 10:34:09 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1611081248; cv=pass;
+Received: from mail-ot1-x33c.google.com (mail-ot1-x33c.google.com [IPv6:2607:f8b0:4864:20::33c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 71D4F2FBF10
+	for <lists+linux-ntb@lfdr.de>; Tue, 19 Jan 2021 19:34:19 +0100 (CET)
+Received: by mail-ot1-x33c.google.com with SMTP id l21sf8671848otj.12
+        for <lists+linux-ntb@lfdr.de>; Tue, 19 Jan 2021 10:34:19 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1611081258; cv=pass;
         d=google.com; s=arc-20160816;
-        b=OWdye14ogGqilBVBKSYwRSrW13sCJ0Qw+RPeX7ErWq/9UHbMldXKcKNv8ambjRPh5+
-         p17LNbL0dxKGEscexh+6gkpDUUQ3oabtY+mgmQvto6qBwWiyFzbtPWKuR9vpW12bAloI
-         /wFlXm5TlRmjo8aNNNLDRXFjxDUqAcfJLjxDK7dkwNQFy7Owx9yMNJoZTU27jcmZAcq0
-         J2wg8uNXbZJwsBnQ9ex7KZFWx92pMTAKOvuphpYQI/DZycB+ulJe/HYTsizxNsrGPPeC
-         /j8nY6Qq0ot9vHb8MQNl9Hw5xkjV9ln831SMPxyndNHajhknfTGEpa2Rdq6lou8d3AwD
-         dNmQ==
+        b=NX8hAqI1onQgHrW/fimRIxyoIa8WIKammsOVDMpvzFhW24yGNxou6B66MU7Sei8V/L
+         WveLd/mqbT/+QTfcmtG2STuuUeql25E4CPJ1HNUJ77lq8I/6gZ1aZl2ivlXvGA1xWXNn
+         eCsRHOfAN1CoV4w215ZtGHRCtRyNGJ8KfDld9YaN4aaDD9B0HyJgpdf4+JZauVjes9rp
+         qKn7Ry6XrmKPX1q/oHDsRydizj/cu/9+J1oR47LVl0J/mBlKSmtv7yLGP/v/adwhqJ5b
+         gP9ADf9MQl8qpfLRKc2tgw1VKiQe28T44k1DZD7RTIFLWJhK/mnyEASRdDMyYW+dBj5o
+         Cx6A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:in-reply-to:content-disposition
          :mime-version:message-id:subject:cc:to:from:date:sender
          :dkim-signature;
-        bh=Q40uOqzprgEHrrlzm86N9eevwlf+gb0Gg/anw0YEKlQ=;
-        b=RM6ZMOmMpY6wxEV/vIsK6d+9V/MQAq7+ZeKrlU080ykdrrcD01H98etz+d5Ejo9aXj
-         AWLlV8NRBWyrNQZ496I0TfvauBjjh2ImOl69XUhVlyf3AHobchJEj7iXwPXeNNDeL9AT
-         mkZOjp/WMC4cQHRjE6mLbrNtk8jgLd3nESo5W3lFAb8Ce2CJAebwgOPyqOs2jsmuBfZ7
-         RL5A8db+2lRH5LpKhN0NZs5gpQJ+QsgidWEfjfblcbKvlsycsV2uM7tYlhz0P0yb0Gf0
-         t/kSC1I6dicxDUjsVI9t/Zl/DR4snMI9WebT4zNQhffos+LkjJ5MtjsaytGZ6ojP56Uk
-         K9Yg==
+        bh=uST2aoxFz/3g4DcF3mDyUcneNq1v9MZbwN4h8FUqO4Y=;
+        b=0uyT7eRblFxfh+rUDPoGEtOZs1WJyuukmxrVE25d1xI/TcCQnMIpn2w0PMH+d5BRY0
+         fQh8M6d0T6NDElsYeHHa0IGwVmR/qjN0raTm3C7zaCUmwutS/nYp3FHMBOO7bia69e4/
+         mVa+GfW9irsX+fuJwEkwjajsdvLF2AVTGwGQ9rfsm3qb8FftvphZNqQi7Xjc6gANVkXh
+         KlyjHgp1pkinkuPCZCxdsa+dh93vKtle8mJY/SvNb06/EF/PxKstE5AKfPegTtQr6gKK
+         Hq30SEfFMMsns5Y1pyHF0XTycLdDtqpKaMfd3pWK/6JqQHsTZ1o3oEPOTtOmIrzp7MDg
+         AGvg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=REX6epqL;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ab2U1vrn;
        spf=pass (google.com: domain of helgaas@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=helgaas@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -36,13 +36,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :content-disposition:in-reply-to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=Q40uOqzprgEHrrlzm86N9eevwlf+gb0Gg/anw0YEKlQ=;
-        b=NuEP+7JagD2DWQ9lve1Q8oLlDFH47FkalijTc86fKDkcRx0AXVvFT3EVFZ5Rp4hLIB
-         i5fn7PFsYRqPpAlMomZv/g1Gssp+VCEgL18AHiyMRrwWmM8Ds03L3I9aM5FhA1ZXgT6e
-         PzC2gva8v63uJYiKBGqvEhCvwpoJhFq/FyJ4BVxi/KRm4DEV0gy5f0N8M9FN21mTMo51
-         +Xgej7pcUZ3uldiSIgZuXcJdp0SbAOtAjRt3VJ5GnCzfPUyr7/TlFzEl4Z2zg7WwjhAH
-         C1w2X0kb2jSM6J7XsMjl/3Ydeo5fvv6DLL+dpdF/80zGA3wueK/pFzSedDRn2pzvD8sc
-         QT/g==
+        bh=uST2aoxFz/3g4DcF3mDyUcneNq1v9MZbwN4h8FUqO4Y=;
+        b=Lrbit/itOTA72zdfLPg9vLeytKYEQMwZRxKKmtLSOr3bnZ0ltvqOihmY6M4P5Oi5Av
+         tm6x/gEOdULF8pWy4fUdHzxYNYMyVK8wmV5S6SK91RYW3bpw7cAyuVXU3ISKi/GqZHiY
+         l4ZPXc1UFrBKVocRDVOg4ZxjE6XVt2oMXtUrbAQ5JS7UWh5GgWQSrc3a9hdHjxoNtgP/
+         pSzd/9T+qYChPtvC8iL/pEeMXJJ8+AfwnjMrtQD44DB+CAUrkRdPmHUoJ8YTRH0pq16a
+         sA/S5YweuPLfcG8T+x3PKegrUK+twU+3c6hG1K4KbWme3spkjPUIoG2mux1gcnKUsx1x
+         enSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
@@ -50,75 +50,75 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=Q40uOqzprgEHrrlzm86N9eevwlf+gb0Gg/anw0YEKlQ=;
-        b=HIkvNSf+SFTnxRs2j6kn6QnsHydsrcRTdhVjzoMfQIUzyViIlsQCsOI132bvnc24nI
-         2BLJdhF35mnM0Ukti2OfCy802yV4oYdB3n8nHFVc8a2H1oplLrl94VSVPBjCSVPNemYz
-         RuxCPui9DcpnO5Y9wUs6ezXaeswpZaKLvkX/t1xIw8I8w4bNuwKhvFwNQ83+wsL7ndCb
-         R4atPGq4zQoqXYMsksZeMJVN35rC5TzqM6o7GiMee+9En4PAh6t+W/Lh03fmciZwTyGU
-         Uiu0zMTseNqkm0g/pvKOHMSQNlRL2QM8SSWHm5KA+ynsK/OMaFaC7UEyLyqIkZMhzi2w
-         jP1A==
+        bh=uST2aoxFz/3g4DcF3mDyUcneNq1v9MZbwN4h8FUqO4Y=;
+        b=iGzaCTL9PAnzJHrmi0xTLJWvlcnZHN+/hvUc6Mjno/tOcOHK6yoQmklq9+k8TEQrVb
+         XbJsUnen9hBrzacfGPuk55sSVQ503ieMn8rRwIz+G2wzMw1KdQxJI0mdMM0uwBUAq/WE
+         YlQYUEn8WBO9swHNkW3sUWq5Nc2tFdAtx5x5Wg2lSW5gSjG2DxYqkGkW6L4ToUN3wDW0
+         buOEAya+rXtE7f+248uZHMe7ezcWlcUtsDA1rg8kBU5pbJIht35h82ATOKKuZGWq/mzZ
+         N7sofYzQz4/Juorae6nPW/og2VQCZa7nfDpW5VTQ/1MGDsiH7OaAfD+iT7pVJDJh7DHO
+         XplA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530RtWDwAvpXKDyXspLPM3dGDYp6wMNBwLf4Nj8NlM8uAr8+yED8
-	Qs+N/ujxxsc6Yg8H1MxSQJc=
-X-Google-Smtp-Source: ABdhPJxqKxj92RXQAGrwe9cxcAxOG1/MDnX9SwOd96+ZEuwTzPTTFGHF1Apih4h43cEfkz4yzs0Xhw==
-X-Received: by 2002:a63:db0d:: with SMTP id e13mr5556481pgg.343.1611081248395;
-        Tue, 19 Jan 2021 10:34:08 -0800 (PST)
+X-Gm-Message-State: AOAM530R+FFJyK6YsJMG8g7HEOiiPdNOWLkhDnE8BqtswXkg7fXJdsli
+	8duIT67qa0FyRoz+6Qc3WZ8=
+X-Google-Smtp-Source: ABdhPJwMl9vuBzqJ70A2vesPPZtyNyQDIvUTvrYxZ4oRaKVfFq052XjpbpE1QQTmJX0lDQ/6f9+zlQ==
+X-Received: by 2002:a05:6830:1d52:: with SMTP id p18mr4527208oth.27.1611081258420;
+        Tue, 19 Jan 2021 10:34:18 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a63:4704:: with SMTP id u4ls7994316pga.0.gmail; Tue, 19 Jan
- 2021 10:34:07 -0800 (PST)
-X-Received: by 2002:a63:4b16:: with SMTP id y22mr5541780pga.203.1611081247753;
-        Tue, 19 Jan 2021 10:34:07 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611081247; cv=none;
+Received: by 2002:a4a:9c05:: with SMTP id y5ls1464671ooj.0.gmail; Tue, 19 Jan
+ 2021 10:34:18 -0800 (PST)
+X-Received: by 2002:a4a:c503:: with SMTP id i3mr3765021ooq.6.1611081257931;
+        Tue, 19 Jan 2021 10:34:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611081257; cv=none;
         d=google.com; s=arc-20160816;
-        b=Den6Akkzo2OMJRVy3Y+lVhP9VDFcKeH7jkwwFxiQOGprElF1H6VchKCoUhJ16z6LVR
-         ZeWTUmdQruLKplVOFX7xUyqLY9uYqAgKgKZWzNoeOo5yOkanhl5LZhI201K3Av9baOSI
-         HjJXPCpqQk2vRyE8PO29Xoj+4Z1AJdwZEL+6xQ1iKMXjgll/5LyC60XgbEN7rYb00fLT
-         FCFy8i7bHkYkMDdPlQBwdAqxYlXRoj9wv3FJw3C9yHMLSsUrUMMNoHnK1rrCXK3FNjbW
-         3e0KzXAyieQ8jC5ZHr/x6Ju0SHT9XqqfpHDhgP7NjMt6TByAt2Y5FRIEg0yKnTCHeIwb
-         j2+g==
+        b=HXHyqAriusfB1KxYlv1DdLVVYH3IX1gYp4didatHCPLACPBg38yCZCDd6oV1OkAjHc
+         q/cDM+l1uAIVFE7QWix7Kajt6zzzLcN6ImhVy6HLNpg+Z5pI73LUXjrv0wIDsW+7j7CE
+         CZk/klZEl9nMNK6oCWTb3KEz91XYLhwvpqEJPDkZmGjc2RgMukfMJiWpWGe5cRUhHfGO
+         AXzCyI5++btuFLcXBRnW+PjPMeOA2LkRtNebmuj56Xa3XWrV5WW0Q8ylbz4K5xXkjewh
+         LR23a6vr1upesbKYgDJ92ierw8S9Mm45aTYmcwBFYBydLIg7XNvHlp+BueLiDWfj42j+
+         TaKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:message-id:subject:cc
          :to:from:date:dkim-signature;
-        bh=7ewuk/NqpEs84mitbAnKBum6l7UBVe2XNrv7Ma7yZ9w=;
-        b=BmLctkqXcwtkDSvvAjSbp2ihBzrPLeB1EnaqvRUGefByR+vLVT5/J1TapDrsqbP4JE
-         UnzVHMFaMTWkkidyQA1+h5sw0rUG1stGqBj7+/gOwdekpvtT1aaw1mqYi4KxA7Qt3uxg
-         WwZt9jKqPbpcsgCh1jq+AO+mLPaAln5J+gWA/rbLuJl9YC2St+Pu7USsNTFsI3/f0yb8
-         7/03sSdb7SpBvQlIAHDLVyIUaLK+IWxBqC984RbQU9QYXm2lAevaQb7YO7sLJWp4yfx6
-         6JWaAwFRa3kzcqcBoVZmz1Ck7/CQbyzx8yiML3lgiJZay0rJzPYbW6HF4kHWNEE9vr+M
-         9+kQ==
+        bh=dVYjnXPZNvn30Ia+w5sx8boYqxSdkzPOCKQSL2H4Ayo=;
+        b=jymT96kIDjaR00NaHZ7IJJnB4sdwqAERMDCc5ZUXwrjLsQL0w+Q1Tr/lrmyUgFSFxB
+         ygqkcDsw+q5qOEje9o3QFjCAXjdx5KEGy5pp+r01cpcnNBSCnY8zhi6PYYnojrFDzIAT
+         dsiYNZ2YFT6W7emYapchduM0zWqoo5ibBIUzNnoYElragBWknB4VeQrejb113Cj9RuK8
+         gKU2tcBH5ice2a/D+boxOgmQK0Ja+A70t+DJQfpcvVDlLPxDlOEyYgExln3cwa/lkvaP
+         oI2qAKRvfsBEmFxVFUffmlDodbCjT3dZfLSZpM0HWzwrZj7Q8VRJy9LvrDhwwwZ0OC+7
+         I01g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=REX6epqL;
+       dkim=pass header.i=@kernel.org header.s=k20201202 header.b=Ab2U1vrn;
        spf=pass (google.com: domain of helgaas@kernel.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=helgaas@kernel.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
 Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id d2si1749100pfr.4.2021.01.19.10.34.07
+        by gmr-mx.google.com with ESMTPS id k4si220718oib.1.2021.01.19.10.34.17
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 19 Jan 2021 10:34:07 -0800 (PST)
+        Tue, 19 Jan 2021 10:34:17 -0800 (PST)
 Received-SPF: pass (google.com: domain of helgaas@kernel.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Received: by mail.kernel.org (Postfix) with ESMTPSA id 1E40022E00;
-	Tue, 19 Jan 2021 18:34:07 +0000 (UTC)
-Date: Tue, 19 Jan 2021 12:34:05 -0600
+Received: by mail.kernel.org (Postfix) with ESMTPSA id CF15B22CAD;
+	Tue, 19 Jan 2021 18:34:16 +0000 (UTC)
+Date: Tue, 19 Jan 2021 12:34:15 -0600
 From: Bjorn Helgaas <helgaas@kernel.org>
-To: Kishon Vijay Abraham I <kishon@ti.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Kishon Vijay Abraham I <kishon@ti.com>
 Cc: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
 	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
 	Arnd Bergmann <arnd@arndb.de>, Jon Mason <jdmason@kudzu.us>,
 	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
 	Tom Joseph <tjoseph@cadence.com>, Rob Herring <robh@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	linux-pci@vger.kernel.org, linux-doc@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
-Subject: Re: [PATCH v9 10/17] PCI: endpoint: Allow user to create
- sub-directory of 'EPF Device' directory
-Message-ID: <20210119183405.GA2496684@bjorn-Precision-5520>
+Subject: Re: [PATCH v9 17/17] Documentation: PCI: Add userguide for PCI
+ endpoint NTB function
+Message-ID: <20210119181852.GA2495234@bjorn-Precision-5520>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
-In-Reply-To: <20210104152909.22038-11-kishon@ti.com>
+In-Reply-To: <20210104152909.22038-18-kishon@ti.com>
 X-Original-Sender: helgaas@kernel.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@kernel.org header.s=k20201202 header.b=REX6epqL;       spf=pass
+ header.i=@kernel.org header.s=k20201202 header.b=Ab2U1vrn;       spf=pass
  (google.com: domain of helgaas@kernel.org designates 198.145.29.99 as
  permitted sender) smtp.mailfrom=helgaas@kernel.org;       dmarc=pass (p=NONE
  sp=NONE dis=NONE) header.from=kernel.org
@@ -134,103 +134,64 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-[cc->to Greg]
-
-On Mon, Jan 04, 2021 at 08:59:02PM +0530, Kishon Vijay Abraham I wrote:
-> Documentation/PCI/endpoint/pci-endpoint-cfs.rst explains how a user
-> has to create a directory in-order to create a 'EPF Device' that
-> can be configured/probed by 'EPF Driver'.
+On Mon, Jan 04, 2021 at 08:59:09PM +0530, Kishon Vijay Abraham I wrote:
+> Add documentation to help users use pci-epf-ntb function driver and
+> existing host side NTB infrastructure for NTB functionality.
 > 
-> Allow user to create a sub-directory of 'EPF Device' directory for
-> any function specific attributes that has to be exposed to the user.
-
-Maybe add an example sysfs path in the commit log?
-
-Seems like there's restriction on hierarchy depth in sysfs, but I
-don't remember the details.  Moved Greg to "to" in case he wants to
-comment.
-
 > Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+> Reviewed-by: Randy Dunlap <rdunlap@infradead.org>
 > ---
->  drivers/pci/endpoint/pci-ep-cfs.c | 23 +++++++++++++++++++++++
->  include/linux/pci-epf.h           |  3 +++
->  2 files changed, 26 insertions(+)
+>  Documentation/PCI/endpoint/index.rst         |   1 +
+>  Documentation/PCI/endpoint/pci-ntb-howto.rst | 160 +++++++++++++++++++
+>  2 files changed, 161 insertions(+)
+>  create mode 100644 Documentation/PCI/endpoint/pci-ntb-howto.rst
 > 
-> diff --git a/drivers/pci/endpoint/pci-ep-cfs.c b/drivers/pci/endpoint/pci-ep-cfs.c
-> index 8f750961d6ab..f3a8b833b479 100644
-> --- a/drivers/pci/endpoint/pci-ep-cfs.c
-> +++ b/drivers/pci/endpoint/pci-ep-cfs.c
-> @@ -490,7 +490,29 @@ static struct configfs_item_operations pci_epf_ops = {
->  	.release		= pci_epf_release,
->  };
+> diff --git a/Documentation/PCI/endpoint/index.rst b/Documentation/PCI/endpoint/index.rst
+> index 9cb6e5f3c4d5..38ea1f604b6d 100644
+> --- a/Documentation/PCI/endpoint/index.rst
+> +++ b/Documentation/PCI/endpoint/index.rst
+> @@ -12,6 +12,7 @@ PCI Endpoint Framework
+>     pci-test-function
+>     pci-test-howto
+>     pci-ntb-function
+> +   pci-ntb-howto
 >  
-> +static struct config_group *pci_epf_type_make(struct config_group *group,
-> +					      const char *name)
-> +{
-> +	struct pci_epf_group *epf_group = to_pci_epf_group(&group->cg_item);
-> +	struct config_group *epf_type_group;
+>     function/binding/pci-test
+>     function/binding/pci-ntb
+> diff --git a/Documentation/PCI/endpoint/pci-ntb-howto.rst b/Documentation/PCI/endpoint/pci-ntb-howto.rst
+> new file mode 100644
+> index 000000000000..b6e1073c9a39
+> --- /dev/null
+> +++ b/Documentation/PCI/endpoint/pci-ntb-howto.rst
+> @@ -0,0 +1,160 @@
+> +.. SPDX-License-Identifier: GPL-2.0
 > +
-> +	epf_type_group = pci_epf_type_add_cfs(epf_group->epf, group);
-> +	return epf_type_group;
-> +}
+> +===================================================================
+> +PCI Non-Transparent Bridge (NTB) Endpoint Function (EPF) User Guide
+> +===================================================================
 > +
-> +static void pci_epf_type_drop(struct config_group *group,
-> +			      struct config_item *item)
-> +{
-> +	config_item_put(item);
-> +}
+> +:Author: Kishon Vijay Abraham I <kishon@ti.com>
 > +
-> +static struct configfs_group_operations pci_epf_type_group_ops = {
-> +	.make_group     = &pci_epf_type_make,
-> +	.drop_item      = &pci_epf_type_drop,
-> +};
+> +This document is a guide to help users use pci-epf-ntb function driver
+> +and ntb_hw_epf host driver for NTB functionality. The list of steps to
+> +be followed in the host side and EP side is given below. For the hardware
+> +configuration and internals of NTB using configurable endpoints see
+> +Documentation/PCI/endpoint/pci-ntb-function.rst
 > +
->  static const struct config_item_type pci_epf_type = {
-> +	.ct_group_ops	= &pci_epf_type_group_ops,
->  	.ct_item_ops	= &pci_epf_ops,
->  	.ct_attrs	= pci_epf_attrs,
->  	.ct_owner	= THIS_MODULE,
-> @@ -553,6 +575,7 @@ static struct config_group *pci_epf_make(struct config_group *group,
->  		goto free_name;
->  	}
->  
-> +	epf->group = &epf_group->group;
->  	epf_group->epf = epf;
->  
->  	kfree(epf_name);
-> diff --git a/include/linux/pci-epf.h b/include/linux/pci-epf.h
-> index b241e7dd171f..6833e2160ef1 100644
-> --- a/include/linux/pci-epf.h
-> +++ b/include/linux/pci-epf.h
-> @@ -9,6 +9,7 @@
->  #ifndef __LINUX_PCI_EPF_H
->  #define __LINUX_PCI_EPF_H
->  
-> +#include <linux/configfs.h>
->  #include <linux/device.h>
->  #include <linux/mod_devicetable.h>
->  #include <linux/pci.h>
-> @@ -128,6 +129,7 @@ struct pci_epf_bar {
->   *   EPC device
->   * @sec_epc_bar: represents the BAR of EPF device associated with secondary EPC
->   * @sec_epc_func_no: unique (physical) function number within the secondary EPC
-> + * @group: configfs group associated with the EPF device
->   */
->  struct pci_epf {
->  	struct device		dev;
-> @@ -150,6 +152,7 @@ struct pci_epf {
->  	struct list_head	sec_epc_list;
->  	struct pci_epf_bar	sec_epc_bar[6];
->  	u8			sec_epc_func_no;
-> +	struct config_group	*group;
->  };
->  
->  /**
-> -- 
-> 2.17.1
-> 
+> +Endpoint Device
+> +===============
+> +
+> +Endpoint Controller Devices
+> +---------------------------
+> +
+> +For implementing NTB functionality at least two endpoint controller devices
+> +are required.
+> +To find the list of endpoint controller devices in the system::
+
+Is the above one paragraph or two?  Reflow or add blank line as
+appropriate.
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210119183405.GA2496684%40bjorn-Precision-5520.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210119181852.GA2495234%40bjorn-Precision-5520.
