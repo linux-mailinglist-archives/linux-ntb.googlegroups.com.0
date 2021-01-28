@@ -1,126 +1,130 @@
-Return-Path: <linux-ntb+bncBAABB3GHXKAAMGQEQKHGFPI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCXK7HEV3YBRBC6UZKAAMGQEDDQTFKQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd40.google.com (mail-io1-xd40.google.com [IPv6:2607:f8b0:4864:20::d40])
-	by mail.lfdr.de (Postfix) with ESMTPS id 537153023F7
-	for <lists+linux-ntb@lfdr.de>; Mon, 25 Jan 2021 11:56:46 +0100 (CET)
-Received: by mail-io1-xd40.google.com with SMTP id k26sf18351750ios.9
-        for <lists+linux-ntb@lfdr.de>; Mon, 25 Jan 2021 02:56:46 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1611572205; cv=pass;
+Received: from mail-ua1-x938.google.com (mail-ua1-x938.google.com [IPv6:2607:f8b0:4864:20::938])
+	by mail.lfdr.de (Postfix) with ESMTPS id 02E0530759E
+	for <lists+linux-ntb@lfdr.de>; Thu, 28 Jan 2021 13:11:57 +0100 (CET)
+Received: by mail-ua1-x938.google.com with SMTP id z4sf1449898uan.8
+        for <lists+linux-ntb@lfdr.de>; Thu, 28 Jan 2021 04:11:56 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1611835916; cv=pass;
         d=google.com; s=arc-20160816;
-        b=pQNKlyC/7gvCJzudEmZej+1ahhVxrdzMrH2R4FaUzrEl3uqoMeC0gw1+OlXKEE+fyy
-         Bq2AgH+ulhd3Rmdo0iO7g7VNEcKdY00HYwJgOykEKd2OfwOtmZFUTJnomwOTP70dPyPA
-         jLR0UAlUMwN/QZ0V87MBjABUfrWEG4EsbrhE/B4P/ScD5BEyOKQyYgEsYOhq1j/XzvpH
-         AQU/iJNRphPmA2P9T85YiqkVXVQP3mlm5ZeQp08eKMd+xvk5y9QtfZROe1zOqLLc36rf
-         plynvbdpZorXEZ6PcMqoeBSAqm1oYlthyT64ckg/JrAaG99E6znNMgHLKboL05G78Iwb
-         dNNA==
+        b=bU1TU1MsNfNRBCehXi/yB79mCNLmr8HFDcWS20DbZkYxGEMKOorgSJkX6Kig0Th/DV
+         x1efE21oX+oYYQhORiCF4ypX4LQA8hLMgAvCdDCUCu8UQgTEa7S8Mvz4OvdWbYrRfTDI
+         Ms5xHhMChiUFDosRRZyachA94cZgwEsAit+BJd1Grv16GMwcpwNUTW+s22T/64smRbkV
+         PKPt0K05TjH4N8DgIK3kj8QjIjs/m7h8ip1MdMM/aE2ls33gt1bPIpjvCWQbfrNa2+V8
+         yLA39Cz6g064yrOuf4HZwUJsn8LyMCLWnYWcPT7rJ+FvSn08bZoWfmkyEiKlO68G2rV8
+         45EQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-transfer-encoding:date
-         :reply-to:to:subject:from:message-id:mime-version:sender
-         :dkim-signature;
-        bh=nOphbn3rmjF5ZKR9t8KiACaCbcPQFJGWeRUgr6O3x6Q=;
-        b=osDZMv/228Yl0C2rl1Vwq0OJTio4XaxKjibOIrpnWeTMfcH5OmDmKpl0B+BjXOMVRS
-         YHHDb7TsAdRUOa7SQj6IZ/dU/mJntfuXpLqKyQ1BYi9xes2lqq9iraKTcELOR1ZM/OPI
-         soO/wsJhN7o92o8yWqhB62oyvMC9qkrdbf0tz+lVzK131ouuWvRvQMZ4u+p3dVWKGRWC
-         0MRl8L9YzbfCkUBWoC0lz6CUMKhyUue0xCSoA9kxhNQk6SwrdAgfOZNl/gR6kDxo5oNY
-         37V82heB7AqRoKgaBN034SpaJkCXtZxZIdhTzDlPCzFAJTQwJUp71EtGaOEcIDDDNZWx
-         Vxcg==
+         :list-id:mailing-list:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:sender:dkim-signature;
+        bh=/mykg+vnN95LDesL0ups+r2nMVnigofPcQF4g01Pio4=;
+        b=vBQu066VTMlfBOriKvU5sWyUM31B2/dKMm2lPa1X1drtil0Swtpc80D7QAdB15CdlH
+         xFkbUNe2Qc1wR3NagiJV2RxLi2GFqUNn0X9L/DmFcYTakwAgXAJ/dgeSfMVpilj8WJps
+         BmFY7pWBEOyRpXzzb4/Umwuwz0IvARrDTBJPZ89WC33KyQgecMH1Od14Bh62+26NJ5hK
+         xjXTz4P7AIeo9QpIWCasY27VejE9M/WkoRtxebI82TbjUzD8A79P8dZMFz7SCjj5ljWz
+         IZx/WBUubJrK6Nskbepa1PJGlod+17vssSDqEtqLKfJnWnvoTD1yR0wPnY0zkuiKmo1W
+         NiqA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@dkim.uni5.net header.s=uni51 header.b=C4T85n8V;
-       spf=pass (google.com: domain of geovana@teteraconsultoria.com.br designates 177.185.203.63 as permitted sender) smtp.mailfrom=geovana@teteraconsultoria.com.br
+       spf=pass (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=lorenzo.pieralisi@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:mime-version:message-id:from:subject:to:reply-to:date
-         :x-original-sender:x-original-authentication-results
-         :content-transfer-encoding:precedence:mailing-list:list-id:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=nOphbn3rmjF5ZKR9t8KiACaCbcPQFJGWeRUgr6O3x6Q=;
-        b=f9TSEFKRAaqsF1Olgkhh1hqDl93PGbsS6LTYLhHXVnqZxFGFbe1yO/7CRtuWjvU1uV
-         /vXcTWK4SaIjvibnJUqoJFO01k5QojEfXY63miSIB/MLuQW/mdDoSFDtgwRQ2/SMJs/x
-         gbq9sQFVzqFfj21qkWOkoYxREKOh7/nVNZ6gctCn3FM7VmGviksl/RUspw269NESQJUy
-         qd6leciVkRc12YfyZXq8UMo/SPh9lwAWVyjsSIxTXS9WIdunQLwBEoTf9C5n9MQ2JzA+
-         QC884I+gzus7vncg36bSLLaIqbQl13bLStZhR1FFbLY/XTjuQGA8JfC8hszGh+XUez/E
-         NxmA==
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=/mykg+vnN95LDesL0ups+r2nMVnigofPcQF4g01Pio4=;
+        b=JBMVEl4YYwZSRiTr3RUHoUsxu/ra+MHShqvFrmi8MgXLhwgEOZ7qVQ+NyHGNlp1bc9
+         4t4Qz2K6/2Ey7AB0fphEKidWLsyKAH210IBoSQyQsfbmXdpizPMwnTmT3TLtgxQ9ZJ4n
+         QSdmSfA8JKHtGhY5uas8ngvdY8eC3VymYFJiEHoii2VAo+1wX0SPhhG2LPeH+714ur10
+         JalPHLAjTnLOzhih5KkEcrT0kT5bFsEz00FSiGUskRniUOAtpAg6V2PWOL40cvWE2IBa
+         6HIr4SCpBwrV8Pq/Lsjf547kbYxetWhvv6sSkPUY40F1JOStj4IbB70yw7AC5WxhkdHK
+         ypEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:mime-version:message-id:from:subject:to
-         :reply-to:date:x-original-sender:x-original-authentication-results
-         :content-transfer-encoding:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=nOphbn3rmjF5ZKR9t8KiACaCbcPQFJGWeRUgr6O3x6Q=;
-        b=iUIl4pnCLABk6FudQZ65YS1idYijHWMz7BmWl8XC4Q0AjR/Jir2I/byzPXInqz0lkC
-         XCzUKq642xtraJpCw1KedHGvFproLSOxxlylMqELeXsZNoSsHDNiyYVmVaoGCXFNlN2N
-         UasicdYeQkCyQkQi39Q20qMNc9y9PkXA7YjSQZc6W0/xqDYALVkB1bD4Sb0cEzZFuwsQ
-         NC9IpWZel7HXnUIaTrK8IPM0U3XMb0HWCB4Clp66FXPRY8egPsgW9dZDeK4i4lHbO3hi
-         9asznqc0pwsiMZyGP97gp7coCNac7OWnQCCAfwyelOJVS0/kuPhQwispejNRaYORsgbA
-         DzPQ==
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=/mykg+vnN95LDesL0ups+r2nMVnigofPcQF4g01Pio4=;
+        b=P/QiknqUTnRhVm8kkQDrw9IDaIE3L+0PKrkegcf1wudeSqJzrcInpxcqp9Q6Hw51+N
+         GiK6F/QVSogxTaTk8zjMC15nPzIrq3il3Ytu8nNGLNVPd2oGsXD0nOgLa3vqG7qIvO1r
+         Y764A4TiT3g4rsw6HPT5ctlz5+wlnSh01iuJnN6Oybnk9aBMryq4WaLdfes8bZBhWKMX
+         AYJZsYDmKHBlhfgWJ74zhbBcC1cBeLWy/B855jiIq5cYof9V06k6HKoi6aOFmT+1UWB5
+         w4rE5JS2rIghumdxRT0W+h0ExxpHzQ5qGVNm761C2/u7ENaz4v8E2bFvAeyhuknyVbhb
+         aj6w==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531eNQM8tCwaODBu3P0FC3Kogbv1D+jKLyDKSEpnu+PeCoYVGeGG
-	RKafvdfmgquBjKonRKbLR34=
-X-Google-Smtp-Source: ABdhPJyin52qykyMcDkiM31qNPEyOf9bH/untIKPPNgFjZGYjbbUG0UD3sjUakmWv5ME8wdHo4WEBw==
-X-Received: by 2002:a05:6e02:1110:: with SMTP id u16mr93351ilk.73.1611572205223;
-        Mon, 25 Jan 2021 02:56:45 -0800 (PST)
-MIME-Version: 1.0
+X-Gm-Message-State: AOAM530oyUoTPnHRt3UdX+XsNMagS+EdKS3krOg/XVNN4rGcpELCMQAN
+	qIl4Qz1HtpBLIiNIgCTEDYw=
+X-Google-Smtp-Source: ABdhPJx+/ixhaPeLa0vdcJPSv+ZZVZZqWADW5Rzu8yjFsDbm2U0jLvMoy7ryHjlqWgh+iy/RDw2n7w==
+X-Received: by 2002:a67:c787:: with SMTP id t7mr11579094vsk.48.1611835916016;
+        Thu, 28 Jan 2021 04:11:56 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a5d:9f06:: with SMTP id q6ls1726930iot.1.gmail; Mon, 25 Jan
- 2021 02:56:44 -0800 (PST)
-X-Received: by 2002:a05:6602:3154:: with SMTP id m20mr218829ioy.188.1611572204541;
-        Mon, 25 Jan 2021 02:56:44 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611572204; cv=none;
+Received: by 2002:a1f:8f8d:: with SMTP id r135ls279949vkd.1.gmail; Thu, 28 Jan
+ 2021 04:11:55 -0800 (PST)
+X-Received: by 2002:a1f:9fce:: with SMTP id i197mr10954985vke.18.1611835915445;
+        Thu, 28 Jan 2021 04:11:55 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1611835915; cv=none;
         d=google.com; s=arc-20160816;
-        b=pUu4SqoECfySwj78p7rKoHFel7VoCJbICe5lxAO1nQbfHcR2sLzOvqurqexHEnGdBJ
-         EMLBqcPHBJFwU7627r3uctoVJKA9h0XJsSeCC+dousRJbBZqROAHTqVDHO8+Lsze9EE7
-         iy/TCt0f6QYTuZ9Hjd23rgm8ssWwiVDw9tD41lu0cc1ydqLRqEgENqK/YfTXJ3QYqwHI
-         mVxzZZwXThafT1MneAyWf7ieWVcHHDx/d0rYuXEGiynLAerurbSpxsWBU4zVt2tehZVb
-         Q9qBSDPgjwwyTsnGTWhIM5SMrMfCb+DPey6zCkG25bQan83eYmPsXCbAPDVBIZ+WGtVh
-         8XQQ==
+        b=M/cRI0j168lElA8btvByjNAnByIJGH6CEYTE6dgP3D3hPQkH0+hwLb1WqCCA1KLyj4
+         hok1Mmf/fFhP3Zv2lR+rm950us2h+Mp2P3LeYwnFsqBm7ccRh72qBRwvwXyABfgVInfj
+         c0ztpwdp3H/kjz7xJqz+YiCYDUD92RxyZCzWQuSg4PLefY54+4kSOVi9SMjFMWy2CvHD
+         +FwCbESXouhcn8A0h+Ls3V4zUs3S/2QfQbGEaUTY6+f4YDUFXID+ltkOtZoyRSzAsLB0
+         ZBYkojOKbFRU8EZ+JLczvuXhp/0MduG3QBXlKdoCvCd3jzIgwQtBbhXnr2C267+9AZfr
+         MLRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:reply-to:to:subject:from:dkim-signature:message-id;
-        bh=kXDBJXGAC2xxB+n00wTjM0AmSC38/6PNkaZIOYDS6AM=;
-        b=rG0gm2bUHyrG/n5m1cBuErUtWmjBERkKUg1h+FsVoG9VXkogG1e+ZDLWv41OX4je65
-         Vm43HbRjU4Q5li81L1IN3CNeTBupfXSvPiWvAApifiAAlZua3MYVTMFWyJwwIAQK2Zca
-         Fr0Bzcg2OnZzPhlBWcKEKnbdA4p8k43xqDJlw8mZ74Wzd2iIZkMGOxbyDiajimGYQ9hv
-         Pu7KFJ4iKEsGzSqo2LXiEtDFKQTAhScbn5nwJ83ju86DmZ38UuOCwl5R8G8dbRrBl0m8
-         2vgesZS1HAsGJpEnkP27DyTmBbhcR/O1Y2h+a4WUXSXNqYgWULqVoSAYOVHH3qNhDnia
-         mYxQ==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=0n8i8TfMPWKyon3bybyT33k30Twrhki5H9ULmwbPlNo=;
+        b=nJAV0NX9zmG9e8P2mOTj6yGb0MzmwDYSzGQFQ6rziH3iVm2R7IKAZLMvu+OPu7fjXG
+         veDcllS/5ojjyK06bUTTZcDjpFKr+mR/pB9K3bTZqTPbshkAg0rM2W0rRFPppB1gCb7p
+         AzH3uFd/hLISnW1yGQ5y6K/npnW8emTz3Tk/9JEtPs7IGpqJaNDf1+/lyjdUMihgb0a4
+         ApIQosJcrDMjVKiSTKIYIsfFP2EN/ynLUFdw2+KSB/upqrS+rCY8ZIwwEMh9bNvQuAYK
+         8gQl8UKgxiInBZQfb45HW8QIFPkEijJ9SSdFpnYVl7pzO8t7R5CiB5czmJ8K5kUuy45O
+         NbAw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@dkim.uni5.net header.s=uni51 header.b=C4T85n8V;
-       spf=pass (google.com: domain of geovana@teteraconsultoria.com.br designates 177.185.203.63 as permitted sender) smtp.mailfrom=geovana@teteraconsultoria.com.br
-Received: from smtp-sp203-63.hospedagem.net (smtp-sp203-63.hospedagem.net. [177.185.203.63])
-        by gmr-mx.google.com with ESMTPS id s10si794745ild.2.2021.01.25.02.56.43
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 25 Jan 2021 02:56:43 -0800 (PST)
-Received-SPF: pass (google.com: domain of geovana@teteraconsultoria.com.br designates 177.185.203.63 as permitted sender) client-ip=177.185.203.63;
-Message-ID: <600ea3eb.1c69fb81.325ba.5849SMTPIN_ADDED_MISSING@gmr-mx.google.com>
-Received: from DESKTOP-PP3A8MN (170-80-135-106.iubtelecom.net.br [170.80.135.106])
-	(Authenticated sender: geovana@teteraconsultoria.com.br)
-	by smtp-sp203-63.hospedagem.net (Postfix) with ESMTPA id 4D9176001EE9
-	for <linux-ntb@googlegroups.com>; Mon, 25 Jan 2021 07:56:33 -0300 (-03)
-From: "Geovana Vilela" <geovana@teteraconsultoria.com.br>
-Subject: FW: Nota de devolucao 062337524700220430
-To: linux-ntb@googlegroups.com
-Content-Type: text/html; charset="UTF-8"
-Reply-To: geovana@teteraconsultoria.com.br
-Date: Mon, 25 Jan 2021 07:56:33 -0300
-X-SND-ID: AHCa34u4GtUmNNqg86z62dl03hCjBEeIlRDvK+WaBCfla+9gMzbXcXqv/YYd
-	1GNY9WkBOZLUfd64y0ryoiU3NvBIrsH7DYOC5ubD/h4Sd8KntCrKBEqlSXbk
-	L4D770RmV6dq7vhJc9e78eym+dyHir0jfxhW1LvpJTzFvxoTmKaS2ga73rmK
-	EwcrSODn50COWU9QpybA5DdvfTqtyD1f91JQGFilLHNPiXKx/VhxZaAeiueb
-	vpnLR6lI0aWp0XENHf12AyMA/32hl7X4YH0s7QAvrAM6XROqKraU0MB+pM4S
-	HQjqQgW5watag0wZTmogb+EN2gmlB7tZLD/eOe4CfXV6u3Qp8EESSzJYqKOK
-	udR0ZvNgA0+Rk6qKEFm6cZD3bY4cSMkY95X59ht2U+LSysG4eIL1mYErz3ty
-	bVsm0Sgcja5GOrM4n+9W592KSmHTy53K6q2sPgejAg8a8Bi/2pUBNhe6s2DP
-	b6+E31U5yIXDPS1/fhYG4hB48oGfNkLR/xLv0RuJZmXInQhItOE4DIDxAf8+
-	6rI+DE3grvUxw9Q=
-X-Original-Sender: geovana@teteraconsultoria.com.br
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@dkim.uni5.net header.s=uni51 header.b=C4T85n8V;       spf=pass
- (google.com: domain of geovana@teteraconsultoria.com.br designates
- 177.185.203.63 as permitted sender) smtp.mailfrom=geovana@teteraconsultoria.com.br
-Content-Transfer-Encoding: quoted-printable
+       spf=pass (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=lorenzo.pieralisi@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
+Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
+        by gmr-mx.google.com with ESMTP id d25si230134vsk.2.2021.01.28.04.11.55
+        for <linux-ntb@googlegroups.com>;
+        Thu, 28 Jan 2021 04:11:55 -0800 (PST)
+Received-SPF: pass (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 5D3B41FB;
+	Thu, 28 Jan 2021 04:11:54 -0800 (PST)
+Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com [10.1.196.255])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id 777383F719;
+	Thu, 28 Jan 2021 04:11:52 -0800 (PST)
+Date: Thu, 28 Jan 2021 12:11:47 +0000
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>,
+	Jonathan Corbet <corbet@lwn.net>, Arnd Bergmann <arnd@arndb.de>,
+	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>, Tom Joseph <tjoseph@cadence.com>,
+	Rob Herring <robh@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-pci@vger.kernel.org, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
+Subject: Re: [PATCH v9 01/17] Documentation: PCI: Add specification for the
+ *PCI NTB* function device
+Message-ID: <20210128121147.GA23564@e121166-lin.cambridge.arm.com>
+References: <20210119181106.GA2493893@bjorn-Precision-5520>
+ <797ec9f2-34c3-5dc4-cc0a-d4f7cdf4afb0@ti.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Disposition: inline
+In-Reply-To: <797ec9f2-34c3-5dc4-cc0a-d4f7cdf4afb0@ti.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Original-Sender: lorenzo.pieralisi@arm.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172
+ as permitted sender) smtp.mailfrom=lorenzo.pieralisi@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -133,30 +137,239 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-<p>&nbsp;</p>
-<p><span style=3D"display: none;">https://portal.fazenda.sp.gov.br/servicos=
-/nfp/Emicao/nf/62337524700000002204300</span></p>
-<p>&nbsp;</p>
-<p><a title=3D"NF Paulistana" href=3D"https://is.gd/hxSOWh?/servicos/nfp/Em=
-icao/nf/62337524700000002204300" target=3D"_blank" rel=3D"noopener">https:/=
-/portal.fazenda.sp.gov.br/servicos/nfp/Emicao/nf/62337524700000002204300</a=
-></p>
-<p>&nbsp;</p>
-<p>Segue a NFSe emitida de servi&ccedil;os prestados</p>
-<p>&nbsp;<br />N&uacute;mero da Nota : 0062337524700022043 <br />CCM: 0180<=
-/p>
-<p>&nbsp;</p>
+On Fri, Jan 22, 2021 at 07:48:52PM +0530, Kishon Vijay Abraham I wrote:
+> Hi Bjorn,
+> 
+> On 20/01/21 12:04 am, Bjorn Helgaas wrote:
+> > On Mon, Jan 04, 2021 at 08:58:53PM +0530, Kishon Vijay Abraham I wrote:
+> >> Add specification for the *PCI NTB* function device. The endpoint function
+> >> driver and the host PCI driver should be created based on this
+> >> specification.
+> >>
+> >> Signed-off-by: Kishon Vijay Abraham I <kishon@ti.com>
+> > 
+> > A few typos below if there's opportunity for revisions.
+> 
+> I'll fix them.
 
-<p></p>
+Hi Kishon,
 
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/600ea3eb.1c69fb81.325ba.5849SMTPIN_ADDED_MISSING%40gmr=
--mx.google.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.googl=
-e.com/d/msgid/linux-ntb/600ea3eb.1c69fb81.325ba.5849SMTPIN_ADDED_MISSING%40=
-gmr-mx.google.com</a>.<br />
+if you have changes please send them along and I will re-merge the
+whole series.
+
+Thanks,
+Lorenzo
+
+> >> ---
+> >>  Documentation/PCI/endpoint/index.rst          |   1 +
+> >>  .../PCI/endpoint/pci-ntb-function.rst         | 351 ++++++++++++++++++
+> >>  2 files changed, 352 insertions(+)
+> >>  create mode 100644 Documentation/PCI/endpoint/pci-ntb-function.rst
+> >>
+> >> diff --git a/Documentation/PCI/endpoint/index.rst b/Documentation/PCI/endpoint/index.rst
+> >> index 4ca7439fbfc9..ef6861128506 100644
+> >> --- a/Documentation/PCI/endpoint/index.rst
+> >> +++ b/Documentation/PCI/endpoint/index.rst
+> >> @@ -11,5 +11,6 @@ PCI Endpoint Framework
+> >>     pci-endpoint-cfs
+> >>     pci-test-function
+> >>     pci-test-howto
+> >> +   pci-ntb-function
+> >>  
+> >>     function/binding/pci-test
+> >> diff --git a/Documentation/PCI/endpoint/pci-ntb-function.rst b/Documentation/PCI/endpoint/pci-ntb-function.rst
+> >> new file mode 100644
+> >> index 000000000000..a57908be4047
+> >> --- /dev/null
+> >> +++ b/Documentation/PCI/endpoint/pci-ntb-function.rst
+> >> @@ -0,0 +1,351 @@
+> >> +.. SPDX-License-Identifier: GPL-2.0
+> >> +
+> >> +=================
+> >> +PCI NTB Function
+> >> +=================
+> >> +
+> >> +:Author: Kishon Vijay Abraham I <kishon@ti.com>
+> >> +
+> >> +PCI Non Transparent Bridges (NTB) allow two host systems to communicate
+> >> +with each other by exposing each host as a device to the other host.
+> >> +NTBs typically support the ability to generate interrupts on the remote
+> >> +machine, expose memory ranges as BARs and perform DMA.  They also support
+> >> +scratchpads which are areas of memory within the NTB that are accessible
+> >> +from both machines.
+> >> +
+> >> +PCI NTB Function allows two different systems (or hosts) to communicate
+> >> +with each other by configurig the endpoint instances in such a way that
+> >> +transactions from one system is routed to the other system.
+> > 
+> > s/is/are/
+> > 
+> >> +In the below diagram, PCI NTB function configures the SoC with multiple
+> >> +PCIe Endpoint (EP) instances in such a way that transaction from one EP
+> >> +controller is routed to the other EP controller. Once PCI NTB function
+> > 
+> > s/transaction ... is/transactions ... are/
+> > 
+> >> +configures the SoC with multiple EP instances, HOST1 and HOST2 can
+> >> +communicate with each other using SoC as a bridge.
+> >> +
+> >> +.. code-block:: text
+> >> +
+> >> +    +-------------+                                   +-------------+
+> >> +    |             |                                   |             |
+> >> +    |    HOST1    |                                   |    HOST2    |
+> >> +    |             |                                   |             |
+> >> +    +------^------+                                   +------^------+
+> >> +           |                                                 |
+> >> +           |                                                 |
+> >> + +---------|-------------------------------------------------|---------+
+> >> + |  +------v------+                                   +------v------+  |
+> >> + |  |             |                                   |             |  |
+> >> + |  |     EP      |                                   |     EP      |  |
+> >> + |  | CONTROLLER1 |                                   | CONTROLLER2 |  |
+> >> + |  |             <----------------------------------->             |  |
+> >> + |  |             |                                   |             |  |
+> >> + |  |             |                                   |             |  |
+> >> + |  |             |  SoC With Multiple EP Instances   |             |  |
+> >> + |  |             |  (Configured using NTB Function)  |             |  |
+> >> + |  +-------------+                                   +-------------+  |
+> >> + +---------------------------------------------------------------------+
+> >> +
+> >> +Constructs used for Implementing NTB
+> >> +====================================
+> >> +
+> >> +	1) Config Region
+> >> +	2) Self Scratchpad Registers
+> >> +	3) Peer Scratchpad Registers
+> >> +	4) Doorbell Registers
+> >> +	5) Memory Window
+> >> +
+> >> +
+> >> +Config Region:
+> >> +--------------
+> >> +
+> >> +Config Region is a construct that is specific to NTB implemented using NTB
+> >> +Endpoint Function Driver. The host and endpoint side NTB function driver will
+> >> +exchange information with each other using this region. Config Region has
+> >> +Control/Status Registers for configuring the Endpoint Controller. Host can
+> >> +write into this region for configuring the outbound ATU and to indicate the
+> > 
+> > Expand "ATU" since this is the first mention.
+> > 
+> >> +link status. Endpoint can indicate the status of commands issued be host in
+> >> +this region. Endpoint can also indicate the scratchpad offset, number of
+> >> +memory windows to the host using this region.
+> > 
+> > s/be host/by host/
+> > s/offset, number/offset and number/
+> > 
+> >> +The format of Config Region is given below. Each of the fields here are 32
+> >> +bits.
+> > 
+> > s/Each ... are/All ... are/
+> > 
+> >> +
+> >> +.. code-block:: text
+> >> +
+> >> +	+------------------------+
+> >> +	|         COMMAND        |
+> >> +	+------------------------+
+> >> +	|         ARGUMENT       |
+> >> +	+------------------------+
+> >> +	|         STATUS         |
+> >> +	+------------------------+
+> >> +	|         TOPOLOGY       |
+> >> +	+------------------------+
+> >> +	|    ADDRESS (LOWER 32)  |
+> >> +	+------------------------+
+> >> +	|    ADDRESS (UPPER 32)  |
+> >> +	+------------------------+
+> >> +	|           SIZE         |
+> >> +	+------------------------+
+> >> +	|   NO OF MEMORY WINDOW  |
+> >> +	+------------------------+
+> >> +	|  MEMORY WINDOW1 OFFSET |
+> >> +	+------------------------+
+> >> +	|       SPAD OFFSET      |
+> >> +	+------------------------+
+> >> +	|        SPAD COUNT      |
+> >> +	+------------------------+
+> >> +	|      DB ENTRY SIZE     |
+> >> +	+------------------------+
+> >> +	|         DB DATA        |
+> >> +	+------------------------+
+> >> +	|            :           |
+> >> +	+------------------------+
+> >> +	|            :           |
+> >> +	+------------------------+
+> >> +	|         DB DATA        |
+> >> +	+------------------------+
+> >> +
+> >> +
+> >> +  COMMAND:
+> >> +
+> >> +	NTB function supports three commands:
+> >> +
+> >> +	  CMD_CONFIGURE_DOORBELL (0x1): Command to configure doorbell. Before
+> >> +	invoking this command, the host should allocate and initialize
+> >> +	MSI/MSI-X vectors (i.e initialize the MSI/MSI-X capability in the
+> > 
+> > s/i.e/i.e.,/
+> > 
+> >> +	Endpoint). The endpoint on receiving this command will configure
+> >> +	the outbound ATU such that transaction to DB BAR will be routed
+> >> +	to the MSI/MSI-X address programmed by the host. The ARGUMENT
+> > 
+> > s/transaction to/transactions to/
+> > 
+> > Expand "DB BAR".  I assume this refers to "Doorbell BAR" (which itself
+> > is not defined).  How do we know which is the Doorbell BAR?
+> 
+> right doorbell. That part is explained in the "Modeling Constructs"
+> section below.
+> > 
+> > Also, "DB" itself needs to be expanded somehow for uses like below:
+> > 
+> >> +	register should be populated with number of DBs to configure (in the
+> >> +	lower 16 bits) and if MSI or MSI-X should be configured (BIT 16).
+> >> +	(TODO: Add support for MSI-X).
+> >> +
+> >> +	  CMD_CONFIGURE_MW (0x2): Command to configure memory window. The
+> >> +	host invokes this command after allocating a buffer that can be
+> >> +	accessed by remote host. The allocated address should be programmed
+> >> +	in the ADDRESS register (64 bit), the size should be programmed in
+> >> +	the SIZE register and the memory window index should be programmed
+> >> +	in the ARGUMENT register. The endpoint on receiving this command
+> >> +	will configure the outbound ATU such that trasaction to MW BAR
+> >> +	will be routed to the address provided by the host.
+> > 
+> > How do we know which is the MW BAR?  I assume "MW" refers to "Memory
+> > Window".
+> 
+> right memory window. That's again explained in the "Modeling Constructs"
+> section below.
+> > 
+> >> +
+> >> +	  CMD_LINK_UP (0x3): Command to indicate an NTB application is
+> >> +	bound to the EP device on the host side. Once the endpoint
+> >> +	receives this command from both the hosts, the endpoint will
+> >> +	raise an LINK_UP event to both the hosts to indicate the hosts
+> >> +	can start communicating with each other.
+> > 
+> > s/raise an/raise a/
+> > 
+> > I guess this "LINK_UP event" is something other than the PCIe DL_Up
+> > state, because each host has already been communicating with the
+> > endpoint.  Right?  Is this LINK_UP a software construct?
+> 
+> Yeah. This is when an NTB client application is bound to the NTB device.
+> This is used for handshake between the applications running on the two
+> hosts.
+> 
+> Thanks
+> Kishon
+
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210128121147.GA23564%40e121166-lin.cambridge.arm.com.
