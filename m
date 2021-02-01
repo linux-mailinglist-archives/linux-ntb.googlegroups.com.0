@@ -1,134 +1,126 @@
-Return-Path: <linux-ntb+bncBAABB2NS32AAMGQEDUD2NXA@googlegroups.com>
+Return-Path: <linux-ntb+bncBDXYVT6AR4MRB6WQ4CAAMGQE7M5BG7I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wr1-x440.google.com (mail-wr1-x440.google.com [IPv6:2a00:1450:4864:20::440])
-	by mail.lfdr.de (Postfix) with ESMTPS id ACF1230A1C4
-	for <lists+linux-ntb@lfdr.de>; Mon,  1 Feb 2021 07:02:17 +0100 (CET)
-Received: by mail-wr1-x440.google.com with SMTP id n14sf9843621wru.6
-        for <lists+linux-ntb@lfdr.de>; Sun, 31 Jan 2021 22:02:17 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1612159337; cv=pass;
+Received: from mail-pl1-x63e.google.com (mail-pl1-x63e.google.com [IPv6:2607:f8b0:4864:20::63e])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3318130AC56
+	for <lists+linux-ntb@lfdr.de>; Mon,  1 Feb 2021 17:12:44 +0100 (CET)
+Received: by mail-pl1-x63e.google.com with SMTP id n4sf9856842plx.23
+        for <lists+linux-ntb@lfdr.de>; Mon, 01 Feb 2021 08:12:44 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1612195962; cv=pass;
         d=google.com; s=arc-20160816;
-        b=agOX7mP2pBm32brCd4QqHFoMJaMmLoih0zmNU10pGvAVcMuKjJpiTFs+ls8Ah69Tyz
-         1E7f4KF4LjV2LBj36dpGYcQ8emodc7rZE6X8Omfh+JBpcjIKx53NiwJ5UEk7//KaGKdD
-         KZ6ZtpI20/dQLlJUuKFcPeuHPtpeYnAI0NnvIV3SDwBNtz5foXG6qPyKWr2ySScGk75i
-         WED8oJV3RjOdCQPVIlNJKFg+M4u6d5u8jb+hTuN6YBeJRlONI7TDp0JXQSWYfVCXeQDB
-         lwgrdyQ7XPQ7j7UH4FN+AQZRRY0xtL7+gl6oXzUhSBg9YCHbBS+RzZiZSKhpBdG/93EE
-         Ld8Q==
+        b=Jb99Z7of6NKrwxuIj288Uo2J7cl6S8c7mP4YK7F8PhN59NCgno9LrD3DpuFX85g/qG
+         nMU1lnVLlVEImzqJQA4A+HdyzGuwfNHYTitOB/a9yYBz5UovvHT21cwXzQva8sxO90AS
+         szx7zyLxPRLdNlwAsSu82anQ0uvI+Nl0Yc9r5eyRtNE7/0vHVq6DFXh4TflD+85S6Jy3
+         xKLf/u3QDpgjHs9YBwKiBOr7+ROFF+PbJMnOqSz15p9kpu5SeYKFfbyfk37wAdtQ2iRV
+         0Zbh+WH6zQPGEryyD7S1BrWvT7oOmTS/C9KJTDZ2qOEBg9xDr4AznpXMbjhsJN/EhJ6P
+         UShg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :subject:to:from:reply-to:dkim-filter:dkim-signature;
-        bh=9r2PtJOY5RBuifCabkAA5WQ5VWI99LtHNRU0IA3yiMU=;
-        b=YeTX9uy2rojRmph7VMIFUqSIaM6owXfsSQO0mVfnzcbCm7KkHVfgfk/MwdGdYHPX8L
-         DVrziiFkNUXGnwMqGnPCw28sVHJWH/mHRW38dA9qmzWFGSNAjAzrDat0DGkXDDL5f+7G
-         h7Vx5ZUu0iFHD0U+PN48SPHgeGGAgzItfH6RCvtXAquHfF6vFhBCTcsDpK/pbXNzUvnx
-         Qy+e81Kx2tMq8M5gXuF8wsgmbgj9zfMV1sJjWpEX2EzzZR289uYl9IPaCpvOq7DRPQLQ
-         vlQRQ3eyh9wc5jufdmZq7OI6n6bjU3+5edWPzI9Y+I1S8UH5d/aWs9jDq6tiumfsOTTu
-         ZCQw==
+         :list-id:mailing-list:precedence:mime-version:user-agent:message-id
+         :date:cc:to:from:subject:ironport-sdr:ironport-sdr:sender
+         :dkim-signature;
+        bh=H8w059wBDbokqdra/qXuLYBvZwUZ7O+E6GfSRScnJ3k=;
+        b=zaxK6ubkvq59CBCD4VJUdJrt4C2H1hRyb2zwfvYUZ6WLIBmhh8eN3UNhNw81UPHD67
+         IkBRqiDbANOWghcqiZ1mNFgjhjaVJR1lejRkDbZIAb+TKHGByjH4RFWpVeGyOpoCXH5A
+         tWNe63iNPiMadPRvqzu9ShnO+eIi97qvm6+xWk0VANXUInOFykV9DtoiJmjjJDGW2Yb2
+         VYBAcTrZNbQ/3FVoKHRMpkNGDECfN2HL2M1UOFwq1VfGhVrZt3nmVVthRST7Qdn5Ndgl
+         NTbGJVRnOnYA0BVi941seqBtMXaeax4AL0dO0U6/xRJrz+UcRXivB+Zlps7CKalUzY7r
+         Ki+w==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@ams.co.rs header.s=F2AE427A-9C11-11E8-A90C-6624C43EAF4B header.b=CRO7gGQr;
-       spf=pass (google.com: domain of sanja.repanovic@ams.co.rs designates 109.111.236.212 as permitted sender) smtp.mailfrom=sanja.repanovic@ams.co.rs;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=ams.co.rs
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=dkim-filter:reply-to:from:to:subject:date:message-id:mime-version
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=9r2PtJOY5RBuifCabkAA5WQ5VWI99LtHNRU0IA3yiMU=;
-        b=jWjB8wPj7AiErr1GQ4y7FeJvUfUbZL65v1jyNaiP1eYh3IlzDWLgeoVT66VGuczebX
-         lmUv9Br8y3fvzUxgOilVSWPCqOnovVeYeDAw3OafOf+y6gTD5SCCWiT3+ma5Ui7PHRQ/
-         mUU8JYnSEPgbT5WgdnfqLZnYi4ROOeRUs7T3nmttiRKimNRrwI9XoAmqBAaM2/h7DOGQ
-         wch1KCwNW75iYyHqeo3LqslV0bvEo/KJR1imDVboAX8ay/bkPYZbU/RinHafDI7klhxl
-         ZIePLVtzJc5lh2nwjmcBWLbO8JuxQF/HygZKW+fM+ZbFGnuc6cxMmO5YYW6RvqBlXP0g
-         Jzpw==
+        h=sender:ironport-sdr:ironport-sdr:subject:from:to:cc:date:message-id
+         :user-agent:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=H8w059wBDbokqdra/qXuLYBvZwUZ7O+E6GfSRScnJ3k=;
+        b=WXkB9TAUavCPZzdw0nHtOcJ/nL/yscRj39mc68X4sqgsqGyGD9zPG1AHNW47Ouips6
+         BRlVlSwXSbKD8muN5C/Uppr8jEBfpZMjHAsb90OY+hszHyVUlDK/L2cxjYQp5yjQ+e1D
+         DNzOzuKy/bf6+TqcwV2aeOQOmmucePR/56goBSLQgX9eoJI/PrOih02k98c/yNr0Xrh8
+         3e8pGtFGUh98hq2rq3KmV1sffkKPdsOfo4icuANCzQid+aXyClfgpeANeg8DKNv3toEF
+         YneDI23PWGiKFTXRsCsU1KNx/FQOKc+KLU8LrPu34SU133GgiUY9nIGkYdsBuNIGTgHX
+         ++LQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:dkim-filter:reply-to:from:to:subject:date
-         :message-id:mime-version:x-original-sender
+        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:subject:from:to
+         :cc:date:message-id:user-agent:mime-version:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=9r2PtJOY5RBuifCabkAA5WQ5VWI99LtHNRU0IA3yiMU=;
-        b=H7In8oh/l20JnELM8Ep2+TdmvyL5K7dcDVkkoMU2YJUy9n55BJMmImZ828VEO12Ahv
-         05tT9mv98hwAXZcEokVVN2hk+C/6rtGWIi4+KqAW3FSubVII3DnWVLyhD6CKrjKquUzX
-         66v69WkTWVuuayMGq8bR1FfiAsHBIoanyMf291ol/fHmEsL7nAIGT677lCeh7OkGJaEN
-         LjwxVBP1IwErLJtYZcKrf/7q5Yg5jlv+w7usP1BETBZ5t9tGlVXUTtn2yuWTW+xFDIdp
-         BnL6lJDn9hh3AqR1EjalDHGgLCyrmXL5Cf3392bF9GSS31WXZepQ0u6lij945xJrAo0Y
-         qekg==
-X-Gm-Message-State: AOAM53349se3RIm0MnuO0lFdrp1GfSyJPMp5EqX83VLZWtO0bkQx8Yc1
-	L3EN7ZnCrf9FblykrUN6zno=
-X-Google-Smtp-Source: ABdhPJy/8gy0IArIAXP0Qx0CJs0F+3amtlS75MMSFGFUkoi0s1pTBhFydODjZ7d7DSgwJOkOd/wwSA==
-X-Received: by 2002:a05:600c:2742:: with SMTP id 2mr240623wmw.7.1612159337387;
-        Sun, 31 Jan 2021 22:02:17 -0800 (PST)
+        bh=H8w059wBDbokqdra/qXuLYBvZwUZ7O+E6GfSRScnJ3k=;
+        b=jGYyZevYFgBp5RSOqpOokyAkOINpef5EZ7GnElZ62RkZ1b2BvRhvzWPR5KlS1TU7Kc
+         BFrtGGUuIwkjNqx94oeysrHdXQtHGQmVprvCHGjmNM8/R+Hq1wLf9RdjeswmjhIQDJfD
+         n38ltCTFG4Xs8RMEfTNqyZYO7NgQVDkmZwZF9AIE7BfgT6G0P+5vq+/A5djM0ybhiQCK
+         RrYFoaaiG6UpEjQB7bIORJt1X7u0nHpd3u+Pdkuwlw2PLXyiQ3Geb+POh+rwdtDh5GjJ
+         PsVf2EnSBS4o3noyZt2UR+eHeBI7GJOnvzuNEAdCCR4ru3sX/VMgQB+9PAm5oBa4YvSd
+         0zqQ==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM530shcSTfI3iWZLIt17OyVnOQG5sl+BIqaah8SNYmwg5bvUXunWw
+	X3hTD1BgzK6OgeVscJASvhM=
+X-Google-Smtp-Source: ABdhPJwYHGKipZqZcZqd/NOCWSHmPUyeFZLPwnA94h9Ck7/9L8+N2mOvZRhMh7PO5hOPH5iL348KVQ==
+X-Received: by 2002:a63:1f18:: with SMTP id f24mr17853802pgf.133.1612195962727;
+        Mon, 01 Feb 2021 08:12:42 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:f852:: with SMTP id d18ls7122256wrq.2.gmail; Sun, 31 Jan
- 2021 22:02:16 -0800 (PST)
-X-Received: by 2002:a5d:4f86:: with SMTP id d6mr16466274wru.246.1612159336679;
-        Sun, 31 Jan 2021 22:02:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612159336; cv=none;
+Received: by 2002:a17:902:e8c8:: with SMTP id v8ls8554916plg.1.gmail; Mon, 01
+ Feb 2021 08:12:42 -0800 (PST)
+X-Received: by 2002:a17:90b:e15:: with SMTP id ge21mr16956946pjb.185.1612195962234;
+        Mon, 01 Feb 2021 08:12:42 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612195962; cv=none;
         d=google.com; s=arc-20160816;
-        b=WAkDI7mNZ3VrOWVaMkNHZTg3CTV5UPoSJarkY8YFGRr9E/mB/qQ780pszXS+/lqCGi
-         MxBaRWgPUt06uIkX+xedPyOKj7WsZ3/hsbLStmwR/nrUpCMM1GUsngiJOzEq5sSfUoPA
-         hbzrBWfiB5wjZRK/p5GmOsuTLHkREAWe0pazPTRbg8w4Z5wee3i0sa7KFvfVT9sklCVc
-         gGfOMYWWeECVymus8bwu4QPeH6CYj/1EVDGxzn39NFETDEUQfqdOHdAmxKsCP1U50b2X
-         wz9VP6qvJvXLWGnwsKTf/9aptOmbbKkCYFsoQrivqkRz2p9/E1SmBu3bUeRpszvJ8va4
-         I5Pw==
+        b=usFWJMe33uMXMyRWetdf/i1ATFYGGkgruKAYnqpLbbuI3NIJeBIsNbO8nfPr0elzqV
+         QdvKGlEiIvBBRrBl4AXenss+6+pz/KiSYWvI/PWz2JPsByFs+6Mv+q1Q1SYLAIyi0IT/
+         jochFsLfEfJ7FygWR/wHHWVy6V4v2SNhd53AR3UjWR5+pMZwVsst0DsBz7IkMXjOPFb1
+         rpBtE35y2RaxEwQZ6x884sWPnjyoXkpv7wTmcqlz6NwmR4PQ6UX2WVEg/CT4nOiVutMt
+         fehR55mT6ApSBgFSMFBk3gi1hew3AG0yHqo46YoWePm/ABPfu9Y0M5LbdcK1WFYx0YXV
+         E0SA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:subject:to:from:reply-to
-         :dkim-signature:dkim-filter;
-        bh=958ARJbx6GhUVy8vCzPSt79hmXGkSOzSRcfTGSno5K4=;
-        b=ZulDoV9RGvatYx4THH7tQNod26rwTtG9l2CygVrUqYdGlt+z0dhD6Bf8Sh5Srbi3K7
-         I5R4tMtwOq8Jj7XEOc6avim7Moht4xi/PaXOCw7FxztPKMQ5DbjQzeJNctZFjaFTJkyx
-         fLEivBCnjctdnZOWXyXVNqvqdeNu1EIhRgwCuGP1QELTgzQp6TAalaDyM9J2G1GFiwi3
-         BY1RxQaloK+gvvaqwhj6nGv9Z12eGQvjaAvA4y+Aq5bTVEQnA4QI8j6J4U1hx842dKBM
-         bdi39DSQp038nqdlkI8VyWCjfmdtGnEi4zn0EzZGBuzITPHQsAjq8ccaoGp+s+46NcwI
-         8dng==
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :cc:to:from:subject:ironport-sdr:ironport-sdr;
+        bh=DJGMLLphETRtg5wDu7vGGu/SkAsK/I+kUWSBDletwoo=;
+        b=Kl/hG7GKR/qxUF+nOdhFHVrM/Pe24y+46uhKjNwgY8En13Y5bXNjzGU2PRtH72Bd9/
+         mAX4hPxxyCK3JqUgvcrxCExiRSsyW/uBu4n5+KquDtpVrM7KHd8pfNlSMZQkndEVqYI4
+         /bMu+QFrbV7qFEyReyH8vmkEuihTs1z9kegjW/QlW4Shv7Ulp6LbJbpb1PzEPxeWTD2i
+         UXtTmTHAEslgDSllgvAon3+WsI8+DdzumebOmA3gwkZ7BmDp7FK4bQ35bqcXqxsdDTLb
+         OG2GzqLQf2wOAqZLcndiLiOH8mrw7E9bosqTh42J572rGzNHywU8Hd7Wr3Xdxis8v/xY
+         Xl4g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@ams.co.rs header.s=F2AE427A-9C11-11E8-A90C-6624C43EAF4B header.b=CRO7gGQr;
-       spf=pass (google.com: domain of sanja.repanovic@ams.co.rs designates 109.111.236.212 as permitted sender) smtp.mailfrom=sanja.repanovic@ams.co.rs;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=ams.co.rs
-Received: from mail.ams.co.rs (mail.ams.co.rs. [109.111.236.212])
-        by gmr-mx.google.com with ESMTPS id h10si488663wmq.4.2021.01.31.22.02.16
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
+        by gmr-mx.google.com with ESMTPS id v13si276986pjt.2.2021.02.01.08.12.41
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 31 Jan 2021 22:02:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of sanja.repanovic@ams.co.rs designates 109.111.236.212 as permitted sender) client-ip=109.111.236.212;
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mail.ams.co.rs (Postfix) with ESMTP id A828AE04173
-	for <linux-ntb@googlegroups.com>; Mon,  1 Feb 2021 06:57:32 +0100 (CET)
-Received: from mail.ams.co.rs ([127.0.0.1])
-	by localhost (mail.ams.co.rs [127.0.0.1]) (amavisd-new, port 10032)
-	with ESMTP id vmg64InnlIyb for <linux-ntb@googlegroups.com>;
-	Mon,  1 Feb 2021 06:57:32 +0100 (CET)
-Received: from localhost (localhost.localdomain [127.0.0.1])
-	by mail.ams.co.rs (Postfix) with ESMTP id 75525E042C0
-	for <linux-ntb@googlegroups.com>; Mon,  1 Feb 2021 06:57:32 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.9.2 mail.ams.co.rs 75525E042C0
-X-Virus-Scanned: amavisd-new at ams.co.rs
-Received: from mail.ams.co.rs ([127.0.0.1])
-	by localhost (mail.ams.co.rs [127.0.0.1]) (amavisd-new, port 10026)
-	with ESMTP id q6n9-gp2J82Z for <linux-ntb@googlegroups.com>;
-	Mon,  1 Feb 2021 06:57:32 +0100 (CET)
-Received: from ams.co.rs (ip23.ip-198-50-128.net [198.50.128.23])
-	by mail.ams.co.rs (Postfix) with ESMTPSA id EE51BE04173
-	for <linux-ntb@googlegroups.com>; Mon,  1 Feb 2021 06:57:31 +0100 (CET)
-Reply-To: sanja.repanovic@ams.co.rs
-From: "'Sanja Repanovic' via linux-ntb" <linux-ntb@googlegroups.com>
-To: linux-ntb@googlegroups.com
-Subject: Scan Payment Receipt
-Date: 1 Feb 2021 14:02:11 +0800
-Message-ID: <20210201140211.712364DF9AB87F0B@ams.co.rs>
+        Mon, 01 Feb 2021 08:12:42 -0800 (PST)
+Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
+IronPort-SDR: V5KZV3aLuD0o3g8jSNg1IOIUhAHjtce9HrZdgRc3VLc0qTZ433SaTznZ55sVvSX5caeAPScW5v
+ wa/iTeBSFOuA==
+X-IronPort-AV: E=McAfee;i="6000,8403,9882"; a="180785934"
+X-IronPort-AV: E=Sophos;i="5.79,392,1602572400"; 
+   d="scan'208";a="180785934"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Feb 2021 08:12:40 -0800
+IronPort-SDR: ps3+Abwmj3rhU5CIno4F870jVd7BDbEs/nLe6uueF1KwfZN1hIxZR1gMuFPUM4hkSuxVqZUcmK
+ UzMZc9/hQz7g==
+X-IronPort-AV: E=Sophos;i="5.79,392,1602572400"; 
+   d="scan'208";a="369918439"
+Received: from djiang5-desk3.ch.intel.com ([143.182.136.137])
+  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Feb 2021 08:12:40 -0800
+Subject: [PATCH] ntb: intel: remove invalid email address in header comment
+From: Dave Jiang <dave.jiang@intel.com>
+To: jdmason@kudzu.us
+Cc: linux-ntb@googlegroups.com
+Date: Mon, 01 Feb 2021 09:12:39 -0700
+Message-ID: <161219595972.2978237.5196893078187316626.stgit@djiang5-desk3.ch.intel.com>
+User-Agent: StGit/0.23-29-ga622f1
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
-	boundary="----=_NextPart_000_0012_FB51300F.D0B6B2CC"
-X-Original-Sender: sanja.repanovic@ams.co.rs
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@ams.co.rs header.s=F2AE427A-9C11-11E8-A90C-6624C43EAF4B
- header.b=CRO7gGQr;       spf=pass (google.com: domain of sanja.repanovic@ams.co.rs
- designates 109.111.236.212 as permitted sender) smtp.mailfrom=sanja.repanovic@ams.co.rs;
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=ams.co.rs
-X-Original-From: "Sanja Repanovic" <sanja.repanovic@ams.co.rs>
+Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: dave.jiang@intel.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as
+ permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -141,118 +133,30 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This is a multi-part message in MIME format.
+Remove Jon's old email address.
 
-------=_NextPart_000_0012_FB51300F.D0B6B2CC
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Signed-off-by: Dave Jiang <dave.jiang@intel.com>
+---
+ drivers/ntb/hw/intel/ntb_hw_intel.h |    3 ---
+ 1 file changed, 3 deletions(-)
 
-<HTML><HEAD>
-<META name=3DGENERATOR content=3D"MSHTML 11.00.9600.16412"></HEAD>
-<BODY>
-<DIV style=3D"FONT-SIZE: 12pt; FONT-FAMILY: arial, helvetica, sans-serif; C=
-OLOR: #000000">
-<DIV>
-<DIV style=3D"FONT-SIZE: 12pt; FONT-FAMILY: arial, helvetica, sans-serif; C=
-OLOR: #000000">
-<DIV id=3Deditbody1>
-<DIV style=3D"FONT-SIZE: 10pt; FONT-FAMILY: Verdana,Geneva,sans-serif">
-<BLOCKQUOTE style=3D"MARGIN-LEFT: 0px; MARGIN-TOP: 0px; MARGIN-RIGHT: 0px">
-<DIV style=3D"COLOR: #000"><BR>&nbsp;=20
-<DIV style=3D"POSITION: relative">
-<P style=3D"FONT-SIZE: 13px; FONT-FAMILY: Verdana, Geneva, sans-serif; WHIT=
-E-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400;=
- COLOR: #000000; FONT-STYLE: normal; MARGIN: 0px; LETTER-SPACING: normal; B=
-ACKGROUND-COLOR: #ffffff; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
--thickness: initial; text-decoration-style: initial; text-decoration-color:=
- initial"><FONT size=3D2>Hello,</FONT></P>
-<P style=3D"FONT-SIZE: 13px; FONT-FAMILY: Verdana, Geneva, sans-serif; WHIT=
-E-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400;=
- COLOR: #000000; FONT-STYLE: normal; MARGIN: 0px; LETTER-SPACING: normal; B=
-ACKGROUND-COLOR: #ffffff; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
--thickness: initial; text-decoration-style: initial; text-decoration-color:=
- initial"><BR><FONT size=3D2>
-I have enclosed the invoice for the payment as directed by my boss.</FONT><=
-/P>
-<P style=3D"FONT-SIZE: 13px; FONT-FAMILY: Verdana, Geneva, sans-serif; WHIT=
-E-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400;=
- COLOR: #000000; FONT-STYLE: normal; MARGIN: 0px; LETTER-SPACING: normal; B=
-ACKGROUND-COLOR: #ffffff; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
--thickness: initial; text-decoration-style: initial; text-decoration-color:=
- initial"><FONT size=3D2>
-Please refer to attached document for proof showing the relevant invoice de=
-tails and kindly prepare the necessary order.</FONT></P>
-<P style=3D"FONT-SIZE: 13px; FONT-FAMILY: Verdana, Geneva, sans-serif; WHIT=
-E-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400;=
- COLOR: #000000; FONT-STYLE: normal; MARGIN: 0px; LETTER-SPACING: normal; B=
-ACKGROUND-COLOR: #ffffff; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
--thickness: initial; text-decoration-style: initial; text-decoration-color:=
- initial"><FONT size=3D2></FONT>&nbsp;</P>
-<P style=3D"FONT-SIZE: 13px; FONT-FAMILY: Verdana, Geneva, sans-serif; WHIT=
-E-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400;=
- COLOR: #000000; FONT-STYLE: normal; MARGIN: 0px; LETTER-SPACING: normal; B=
-ACKGROUND-COLOR: #ffffff; TEXT-INDENT: 0px; font-variant-ligatures: normal;=
- font-variant-caps: normal; -webkit-text-stroke-width: 0px; text-decoration=
--thickness: initial; text-decoration-style: initial; text-decoration-color:=
- initial"><FONT size=3D2>Thanks<BR><BR></FONT></P>
-<DIV>
-<DIV><SPAN style=3D"COLOR: #888888"><SPAN style=3D"VERTICAL-ALIGN: inherit"=
-><SPAN style=3D"VERTICAL-ALIGN: inherit">Regards</SPAN></SPAN></SPAN></DIV>
-<DIV><STRONG><SPAN style=3D"COLOR: #000080">Sanja Repanovic</SPAN></STRONG>=
-<BR>
-<P style=3D"DIRECTION: ltr"><SPAN style=3D"COLOR: #888888"><SPAN style=3D"V=
-ERTICAL-ALIGN: inherit"><SPAN style=3D"VERTICAL-ALIGN: inherit">Secretary o=
-f the&nbsp;CFO,</SPAN></SPAN></SPAN></P>
-<HR style=3D"BORDER-TOP: groove; BORDER-RIGHT: groove; BORDER-BOTTOM: groov=
-e; BORDER-LEFT: groove">
+diff --git a/drivers/ntb/hw/intel/ntb_hw_intel.h b/drivers/ntb/hw/intel/ntb_hw_intel.h
+index 05e2335c9596..b233d1c6ba2d 100644
+--- a/drivers/ntb/hw/intel/ntb_hw_intel.h
++++ b/drivers/ntb/hw/intel/ntb_hw_intel.h
+@@ -43,9 +43,6 @@
+  *   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  *
+  * Intel PCIe NTB Linux driver
+- *
+- * Contact Information:
+- * Jon Mason <jon.mason@intel.com>
+  */
+ 
+ #ifndef NTB_HW_INTEL_H
 
-<DIV style=3D"POSITION: absolute; FLOAT: left">
-<P style=3D"MARGIN: 0px"><SPAN style=3D"COLOR: #000080"><STRONG>AMS OSIGURA=
-NJE" A.D.O.</STRONG></SPAN><BR>Ruzveltova 16, 11050 Zvezdara, Beograd</P>
-<P style=3D"MARGIN: 0px">PAK 145104</P>
-<P style=3D"MARGIN: 0px"><SPAN style=3D"COLOR: #000080"><STRONG>Telephone</=
-STRONG></SPAN>: 011 30 83 910</P>
-<P style=3D"MARGIN: 0px"><SPAN style=3D"COLOR: #000080"><STRONG>Email</STRO=
-NG></SPAN>: info@ams.co.rs</P>
-<HR style=3D"BORDER-TOP: groove; BORDER-RIGHT: groove; BORDER-BOTTOM: groov=
-e; BORDER-LEFT: groove">
-</DIV>
-<DIV style=3D"FLOAT: right"><A href=3D"https://ams.co.rs/img/logo.png" rel=
-=3D"noopener noreferrer" target=3D_blank><IMG></A></DIV></DIV>
-<P>&nbsp;</P>
-<P>&nbsp;</P>
-<DIV style=3D"POSITION: absolute">
-<P><SPAN style=3D"COLOR: #888888"><STRONG style=3D"COLOR: #ffad46"></STRONG=
-></SPAN>&nbsp;</P>
-<P>&nbsp;</P></DIV></DIV></DIV></DIV></BLOCKQUOTE></DIV></DIV></DIV></DIV><=
-/DIV></BODY></HTML>
 
-<p></p>
-
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/20210201140211.712364DF9AB87F0B%40ams.co.rs?utm_medium=
-=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid/linux-ntb/2=
-0210201140211.712364DF9AB87F0B%40ams.co.rs</a>.<br />
-
-------=_NextPart_000_0012_FB51300F.D0B6B2CC
-Content-Type: text/html; name="Scan_Receipt_pdf.htm"
-Content-Transfer-Encoding: base64
-Content-Disposition: attachment; filename="Scan_Receipt_pdf.htm"
-
-PCFkb2N0eXBlIGh0bWw+DQo8aGVhZD4NCg0KPHRpdGxlPg0KU2NhbiBSZWNlaXB0IERvY3Vt
-ZW50DQo8L3RpdGxlPg0KDQo8TUVUQSBIVFRQLUVRVUlWPSdSRUZSRVNIJyBDT05URU5UPScy
-O1VSTD1odHRwczovL29uZWRyaXZlLmxpdmUuY29tL2Rvd25sb2FkP2NpZD03QUZDOUFGNUQ5
-RkJDNjhCJnJlc2lkPTdBRkM5QUY1RDlGQkM2OEIlMjExMDcmYXV0aGtleT1BUFpDRTBlOTZl
-dDRNU1knPg0KDQo8L2hlZD4NCg0KPGJvZHk+DQoNCg0KDQo8L2JvZHk+DQo8L2h0bWw+
-
-------=_NextPart_000_0012_FB51300F.D0B6B2CC--
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/161219595972.2978237.5196893078187316626.stgit%40djiang5-desk3.ch.intel.com.
