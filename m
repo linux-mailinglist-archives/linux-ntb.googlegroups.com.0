@@ -1,126 +1,127 @@
-Return-Path: <linux-ntb+bncBDXYVT6AR4MRB6WQ4CAAMGQE7M5BG7I@googlegroups.com>
+Return-Path: <linux-ntb+bncBCXK7HEV3YBRBAUV4GAAMGQEU3E2NPI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63e.google.com (mail-pl1-x63e.google.com [IPv6:2607:f8b0:4864:20::63e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3318130AC56
-	for <lists+linux-ntb@lfdr.de>; Mon,  1 Feb 2021 17:12:44 +0100 (CET)
-Received: by mail-pl1-x63e.google.com with SMTP id n4sf9856842plx.23
-        for <lists+linux-ntb@lfdr.de>; Mon, 01 Feb 2021 08:12:44 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1612195962; cv=pass;
+Received: from mail-pj1-x103c.google.com (mail-pj1-x103c.google.com [IPv6:2607:f8b0:4864:20::103c])
+	by mail.lfdr.de (Postfix) with ESMTPS id B4A5030AF83
+	for <lists+linux-ntb@lfdr.de>; Mon,  1 Feb 2021 19:37:55 +0100 (CET)
+Received: by mail-pj1-x103c.google.com with SMTP id p8sf121739pjg.1
+        for <lists+linux-ntb@lfdr.de>; Mon, 01 Feb 2021 10:37:55 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1612204674; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Jb99Z7of6NKrwxuIj288Uo2J7cl6S8c7mP4YK7F8PhN59NCgno9LrD3DpuFX85g/qG
-         nMU1lnVLlVEImzqJQA4A+HdyzGuwfNHYTitOB/a9yYBz5UovvHT21cwXzQva8sxO90AS
-         szx7zyLxPRLdNlwAsSu82anQ0uvI+Nl0Yc9r5eyRtNE7/0vHVq6DFXh4TflD+85S6Jy3
-         xKLf/u3QDpgjHs9YBwKiBOr7+ROFF+PbJMnOqSz15p9kpu5SeYKFfbyfk37wAdtQ2iRV
-         0Zbh+WH6zQPGEryyD7S1BrWvT7oOmTS/C9KJTDZ2qOEBg9xDr4AznpXMbjhsJN/EhJ6P
-         UShg==
+        b=xZxHX610J/KX9yX5URS3ns2vLq6CqvlRPwGzliYXJ0E2pnJNKqM/c81f3lgY7BBrcY
+         9KLJgW7l4QMyFKBPjGHMcJoA/6z0ixrgnB4UF0n9NQm6c82lJ97Y8HxB84xigKlw54bb
+         PMntXl75e/e/twS1KT9yl9n8q9UZAThvJf1WkphCk9FioUFi4EBs+tg7V0qsWPSOuKis
+         cvDjGVnw3kGkm99I/3pnYZmqFda+2MiQT87q8kU+SFuGy5cFUU+10AD7HVd5ddl5xiRx
+         pAmrPQF7J6VTtBiGbByj2igLGdscskO0yt3rvkgKyj4JlsNpjygapMWh6qkz3/uOS7ja
+         PTgQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:user-agent:message-id
-         :date:cc:to:from:subject:ironport-sdr:ironport-sdr:sender
-         :dkim-signature;
-        bh=H8w059wBDbokqdra/qXuLYBvZwUZ7O+E6GfSRScnJ3k=;
-        b=zaxK6ubkvq59CBCD4VJUdJrt4C2H1hRyb2zwfvYUZ6WLIBmhh8eN3UNhNw81UPHD67
-         IkBRqiDbANOWghcqiZ1mNFgjhjaVJR1lejRkDbZIAb+TKHGByjH4RFWpVeGyOpoCXH5A
-         tWNe63iNPiMadPRvqzu9ShnO+eIi97qvm6+xWk0VANXUInOFykV9DtoiJmjjJDGW2Yb2
-         VYBAcTrZNbQ/3FVoKHRMpkNGDECfN2HL2M1UOFwq1VfGhVrZt3nmVVthRST7Qdn5Ndgl
-         NTbGJVRnOnYA0BVi941seqBtMXaeax4AL0dO0U6/xRJrz+UcRXivB+Zlps7CKalUzY7r
-         Ki+w==
+         :list-id:mailing-list:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:cc
+         :to:from:date:sender:dkim-signature;
+        bh=3AvfZZPP6sc/XN2RmNFtHJMN9L1c+fbFpvOClWPN53A=;
+        b=NS0gyyqXQzPMaa3jj7e079YelAHHHiHlEwMVTq+kR9lHU+ukrIkMgeJhw9cFevvV18
+         X3r1ThSUweb+1HMnE1gHKXhQ5qcUkApyusgtKWHO3/DyZuPfyyCpJJXFoaM4nq0T6rST
+         GdqT0qCKs/4MDER7cNqsC/AGnL+47T6ozu9+ZtwlHcU/70bAB2eBZ/iEy19iyB2TOdSR
+         dVTVftsLCEbGcLo9pndsWVp0oHnMILMsfmjp615cv7IbWvrwgEJX07ZHjH8ZSNDrextz
+         4ydiIitDh6ZqH7bfokmYE9UshsNC2YrYsx/A/Gurb+Wk1xLVupOA+7RIzbbPiI086EUy
+         p5Yw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       spf=pass (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=lorenzo.pieralisi@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:ironport-sdr:ironport-sdr:subject:from:to:cc:date:message-id
-         :user-agent:mime-version:x-original-sender
+        h=sender:date:from:to:cc:subject:message-id:references:mime-version
+         :content-disposition:in-reply-to:user-agent:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=H8w059wBDbokqdra/qXuLYBvZwUZ7O+E6GfSRScnJ3k=;
-        b=WXkB9TAUavCPZzdw0nHtOcJ/nL/yscRj39mc68X4sqgsqGyGD9zPG1AHNW47Ouips6
-         BRlVlSwXSbKD8muN5C/Uppr8jEBfpZMjHAsb90OY+hszHyVUlDK/L2cxjYQp5yjQ+e1D
-         DNzOzuKy/bf6+TqcwV2aeOQOmmucePR/56goBSLQgX9eoJI/PrOih02k98c/yNr0Xrh8
-         3e8pGtFGUh98hq2rq3KmV1sffkKPdsOfo4icuANCzQid+aXyClfgpeANeg8DKNv3toEF
-         YneDI23PWGiKFTXRsCsU1KNx/FQOKc+KLU8LrPu34SU133GgiUY9nIGkYdsBuNIGTgHX
-         ++LQ==
+        bh=3AvfZZPP6sc/XN2RmNFtHJMN9L1c+fbFpvOClWPN53A=;
+        b=C6TroQi7OQjumTv78foJJCH0SIqjdpZvKDX8pwRwH/QaBlogli96VM0/3e3n0CxR1g
+         erqtDxrEfI6OeHHb/4zUge9NztaQjY2JtT73ygS/g9gpSy1HUFWdmGNcnRi9SILgVFg/
+         aiaYJVHsblbn3iRdKkFmSA09SSlSCiz2c0Pkrht/cX4yw9rJwfxMMOqK7xivToRRSGyl
+         RYN1h4ZXwDTDKurzc5mjDXBDQfqjjMEf+XPlGPVJFQi+YmDPTkwnLB7qDrlXRLCd1GAu
+         EUKA6Z8nuKuZrKTh3PaycbtFxwJL6kRSIB1wlXSwJhDLB2ZrErqJgIeYmC95RGc2/1wn
+         DgeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:ironport-sdr:ironport-sdr:subject:from:to
-         :cc:date:message-id:user-agent:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=H8w059wBDbokqdra/qXuLYBvZwUZ7O+E6GfSRScnJ3k=;
-        b=jGYyZevYFgBp5RSOqpOokyAkOINpef5EZ7GnElZ62RkZ1b2BvRhvzWPR5KlS1TU7Kc
-         BFrtGGUuIwkjNqx94oeysrHdXQtHGQmVprvCHGjmNM8/R+Hq1wLf9RdjeswmjhIQDJfD
-         n38ltCTFG4Xs8RMEfTNqyZYO7NgQVDkmZwZF9AIE7BfgT6G0P+5vq+/A5djM0ybhiQCK
-         RrYFoaaiG6UpEjQB7bIORJt1X7u0nHpd3u+Pdkuwlw2PLXyiQ3Geb+POh+rwdtDh5GjJ
-         PsVf2EnSBS4o3noyZt2UR+eHeBI7GJOnvzuNEAdCCR4ru3sX/VMgQB+9PAm5oBa4YvSd
-         0zqQ==
+        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
+         :references:mime-version:content-disposition:in-reply-to:user-agent
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=3AvfZZPP6sc/XN2RmNFtHJMN9L1c+fbFpvOClWPN53A=;
+        b=YndtP/1AYsdxGkPlXAib8QOV8F21Jqs9gqhhBNWCvwLEkUMz3AKM1tURxz6N10uPev
+         iRH5NWFWHiRh53Z6c2CCDNcDuTsRp6uj8N0bwl5HBRFkU79YO6Oj2QvMcrYNKtf4yav5
+         TB5IIenM8Q7SMq7jeaJRFs0Wf4+fr40dSNV9JeYYKiGEJDdVrAlymJOYIzsyui0NnOnH
+         nMZyKspETzvfqL4V8rXyYPJ5YaYjijCeRw+GTnCcyu5yj7MW5Cw5tG7JwGzq8YqqA8m5
+         lqCY2jp4GkGhCLFdtVrNorzJJE/o7aaD4+uI/ZWhcaglUGmz+naDD8ui7ZYgFwXL/5wq
+         YS9A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530shcSTfI3iWZLIt17OyVnOQG5sl+BIqaah8SNYmwg5bvUXunWw
-	X3hTD1BgzK6OgeVscJASvhM=
-X-Google-Smtp-Source: ABdhPJwYHGKipZqZcZqd/NOCWSHmPUyeFZLPwnA94h9Ck7/9L8+N2mOvZRhMh7PO5hOPH5iL348KVQ==
-X-Received: by 2002:a63:1f18:: with SMTP id f24mr17853802pgf.133.1612195962727;
-        Mon, 01 Feb 2021 08:12:42 -0800 (PST)
+X-Gm-Message-State: AOAM533H9IM+rcDn9sDnS9rnH/AMxhnL1P4T5MlUgBneTBrAnindsCi1
+	v4mSb2W3j/ALar0aCZ23NO8=
+X-Google-Smtp-Source: ABdhPJyp0ZiUHx/JpqEwlriML0wFdH3CjwG7UTw8puZfDg3+cxG8VhqfIcOv4Sm9ZmXazo+zm1NNnQ==
+X-Received: by 2002:a17:902:16b:b029:dc:4ca1:f5fc with SMTP id 98-20020a170902016bb02900dc4ca1f5fcmr18439481plb.26.1612204674260;
+        Mon, 01 Feb 2021 10:37:54 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:e8c8:: with SMTP id v8ls8554916plg.1.gmail; Mon, 01
- Feb 2021 08:12:42 -0800 (PST)
-X-Received: by 2002:a17:90b:e15:: with SMTP id ge21mr16956946pjb.185.1612195962234;
-        Mon, 01 Feb 2021 08:12:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612195962; cv=none;
+Received: by 2002:aa7:9386:: with SMTP id t6ls6992177pfe.1.gmail; Mon, 01 Feb
+ 2021 10:37:53 -0800 (PST)
+X-Received: by 2002:aa7:9ac8:0:b029:1c1:4472:c63 with SMTP id x8-20020aa79ac80000b02901c144720c63mr17350988pfp.1.1612204673669;
+        Mon, 01 Feb 2021 10:37:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1612204673; cv=none;
         d=google.com; s=arc-20160816;
-        b=usFWJMe33uMXMyRWetdf/i1ATFYGGkgruKAYnqpLbbuI3NIJeBIsNbO8nfPr0elzqV
-         QdvKGlEiIvBBRrBl4AXenss+6+pz/KiSYWvI/PWz2JPsByFs+6Mv+q1Q1SYLAIyi0IT/
-         jochFsLfEfJ7FygWR/wHHWVy6V4v2SNhd53AR3UjWR5+pMZwVsst0DsBz7IkMXjOPFb1
-         rpBtE35y2RaxEwQZ6x884sWPnjyoXkpv7wTmcqlz6NwmR4PQ6UX2WVEg/CT4nOiVutMt
-         fehR55mT6ApSBgFSMFBk3gi1hew3AG0yHqo46YoWePm/ABPfu9Y0M5LbdcK1WFYx0YXV
-         E0SA==
+        b=zS0EtM8QLMuH/4brNFUeIL03vbVCQar2nAwr+Eg1AO1Jjg7VPHMdkkFNVcIRD2HTMe
+         1cl/kueM/4aDGIaakErXvGeCL7QLE2KFVN+07i4zl1QaczF4PjVmb17DJC29/irEWXyV
+         Nqtp9lSh3drywWBw8lseKn00x5n5KZIQzNbzSnPbl/m5jK+Nfy4lq9aPk0tAdkVpBTQO
+         DR3yZ0rQ2PZ978AoLostXF1AJ2NsNuTW0zQnYwefcGpLHNHrI+t3QdNdAzRlRsNsRvUd
+         B61Q2gaIp6MQbFBAtyozn4ilLxLf3JOXyzyuArM9/TcAn7AHQTi/jLAsP5F2cYybWsIa
+         Sccg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:user-agent:message-id:date
-         :cc:to:from:subject:ironport-sdr:ironport-sdr;
-        bh=DJGMLLphETRtg5wDu7vGGu/SkAsK/I+kUWSBDletwoo=;
-        b=Kl/hG7GKR/qxUF+nOdhFHVrM/Pe24y+46uhKjNwgY8En13Y5bXNjzGU2PRtH72Bd9/
-         mAX4hPxxyCK3JqUgvcrxCExiRSsyW/uBu4n5+KquDtpVrM7KHd8pfNlSMZQkndEVqYI4
-         /bMu+QFrbV7qFEyReyH8vmkEuihTs1z9kegjW/QlW4Shv7Ulp6LbJbpb1PzEPxeWTD2i
-         UXtTmTHAEslgDSllgvAon3+WsI8+DdzumebOmA3gwkZ7BmDp7FK4bQ35bqcXqxsdDTLb
-         OG2GzqLQf2wOAqZLcndiLiOH8mrw7E9bosqTh42J572rGzNHywU8Hd7Wr3Xdxis8v/xY
-         Xl4g==
+        h=user-agent:in-reply-to:content-disposition:mime-version:references
+         :message-id:subject:cc:to:from:date;
+        bh=1586XwgFRXCKR8V7cuc1++MrnVezjh2lyan1IS88J8U=;
+        b=ZikfP/HKjhN73ZAWe6Cs/P6Mx86jaO563gv+JyWcq911eLWLabVWZXlq0bXeQVlRxj
+         xKi+Pjec8wqKmAkLeKldsM0JHnUZHDaYziZ25TUcM9CEqE28UfyACciBoFJbDjXVH+SR
+         7+otW7zsaC89f3Hs65Zai+808XSLBwryLcyTgM2B1Qqi7+ucjVuFzGMsxPlOsW4d/+Wn
+         +i1F5vWuqtWvody6RCGjG1/NJkWPkuk0LIoX1CstBWWIFObJuNqB10zEqbSvpWtSk5d1
+         +ZxXNOiFY+J39utrZW5nt9VFa9aJvXu2NVGXAW3IHJFr81tahghUuAbWQVKJKRb4cAhz
+         pIXQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga03.intel.com (mga03.intel.com. [134.134.136.65])
-        by gmr-mx.google.com with ESMTPS id v13si276986pjt.2.2021.02.01.08.12.41
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 01 Feb 2021 08:12:42 -0800 (PST)
-Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as permitted sender) client-ip=134.134.136.65;
-IronPort-SDR: V5KZV3aLuD0o3g8jSNg1IOIUhAHjtce9HrZdgRc3VLc0qTZ433SaTznZ55sVvSX5caeAPScW5v
- wa/iTeBSFOuA==
-X-IronPort-AV: E=McAfee;i="6000,8403,9882"; a="180785934"
-X-IronPort-AV: E=Sophos;i="5.79,392,1602572400"; 
-   d="scan'208";a="180785934"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by orsmga103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Feb 2021 08:12:40 -0800
-IronPort-SDR: ps3+Abwmj3rhU5CIno4F870jVd7BDbEs/nLe6uueF1KwfZN1hIxZR1gMuFPUM4hkSuxVqZUcmK
- UzMZc9/hQz7g==
-X-IronPort-AV: E=Sophos;i="5.79,392,1602572400"; 
-   d="scan'208";a="369918439"
-Received: from djiang5-desk3.ch.intel.com ([143.182.136.137])
-  by fmsmga008-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Feb 2021 08:12:40 -0800
-Subject: [PATCH] ntb: intel: remove invalid email address in header comment
-From: Dave Jiang <dave.jiang@intel.com>
-To: jdmason@kudzu.us
-Cc: linux-ntb@googlegroups.com
-Date: Mon, 01 Feb 2021 09:12:39 -0700
-Message-ID: <161219595972.2978237.5196893078187316626.stgit@djiang5-desk3.ch.intel.com>
-User-Agent: StGit/0.23-29-ga622f1
+       spf=pass (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172 as permitted sender) smtp.mailfrom=lorenzo.pieralisi@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
+Received: from foss.arm.com (foss.arm.com. [217.140.110.172])
+        by gmr-mx.google.com with ESMTP id i10si126043pfa.6.2021.02.01.10.37.53
+        for <linux-ntb@googlegroups.com>;
+        Mon, 01 Feb 2021 10:37:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172 as permitted sender) client-ip=217.140.110.172;
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id AD29A1477;
+	Mon,  1 Feb 2021 10:37:52 -0800 (PST)
+Received: from e121166-lin.cambridge.arm.com (e121166-lin.cambridge.arm.com [10.1.196.255])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id E59FD3F718;
+	Mon,  1 Feb 2021 10:37:50 -0800 (PST)
+Date: Mon, 1 Feb 2021 18:37:45 +0000
+From: Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>
+To: Kishon Vijay Abraham I <kishon@ti.com>
+Cc: Bjorn Helgaas <bhelgaas@google.com>, Jonathan Corbet <corbet@lwn.net>,
+	Arnd Bergmann <arnd@arndb.de>, Jon Mason <jdmason@kudzu.us>,
+	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+	Tom Joseph <tjoseph@cadence.com>, Rob Herring <robh@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-pci@vger.kernel.org, linux-doc@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
+Subject: Re: [PATCH v10 00/17] Implement NTB Controller using multiple PCI EP
+Message-ID: <20210201183745.GA5152@e121166-lin.cambridge.arm.com>
+References: <20210129124313.28549-1-kishon@ti.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: dave.jiang@intel.com
+Content-Disposition: inline
+In-Reply-To: <20210129124313.28549-1-kishon@ti.com>
+User-Agent: Mutt/1.9.4 (2018-02-28)
+X-Original-Sender: lorenzo.pieralisi@arm.com
 X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of dave.jiang@intel.com designates 134.134.136.65 as
- permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=intel.com
+ (google.com: domain of lorenzo.pieralisi@arm.com designates 217.140.110.172
+ as permitted sender) smtp.mailfrom=lorenzo.pieralisi@arm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=arm.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -133,30 +134,159 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Remove Jon's old email address.
+On Fri, Jan 29, 2021 at 06:12:56PM +0530, Kishon Vijay Abraham I wrote:
+> This series is about implementing SW defined Non-Transparent Bridge (NTB)
+> using multiple endpoint (EP) instances. This series has been tested using
+> 2 endpoint instances in J7 connected to J7 board on one end and DRA7 board
+> on the other end. However there is nothing platform specific for the NTB
+> functionality.
+> 
+> This was presented in Linux Plumbers Conference. Link to presentation
+> and video can be found @ [1]
+> Created a video demo @ [9]
+> 
+> RFC patch series can be found @ [2]
+> v1 patch series can be found @ [3]
+> v2 patch series can be found @ [4]
+> v3 patch series can be found @ [5]
+> v4 patch series can be found @ [6]
+> v5 patch series can be found @ [7]
+> v6 patch series can be found @ [8]
+> v7 patch series can be found @ [10]
+> v8 patch series can be found @ [11]
+> v9 patch series can be found @ [12]
+> 
+> Changes from v9:
+> 1) Fix the typos pointed out Bjorn Helgaas
+> 2) Added the received Reviewed-by tags.
+> 
+> Changes from v8:
+> 1) Do not use devm_request_irq/devm_free_irq as pci_free_irq_vectors()
+> has to be used after free_irq
+> 2) Drop "NTB: tool: Enable the NTB/PCIe link on the local or remote side
+> of bridge" as there is a debugfs entry to enable the link
+>  
+> Changes from v7:
+> 1) Used values stored in ctrl_reg_bar, peer_spad_reg_bar and db_reg_bar
+>    instead of hardcoded values in pci_iomap of ntb_hw_epf.c driver
+> 
+> Changes from v6:
+> 1) Fixed issues when multiple NTB devices are creating using multiple
+>    functions
+> 2) Fixed issue with writing scratchpad register
+> 3) Created a video demo @ [9]
+> 
+> Changes from v5:
+> 1) Fixed a formatting issue in Kconfig pointed out by Randy
+> 2) Checked for Error or Null in pci_epc_add_epf()
+> 
+> Changes from v4:
+> 1) Fixed error condition checks in pci_epc_add_epf()
+> 
+> Changes from v3:
+> 1) Fixed Documentation edits suggested by Randy Dunlap <rdunlap@infradead.org>
+> 
+> Changes from v2:
+> 1) Add support for the user to create sub-directory of 'EPF Device'
+>    directory (for endpoint function specific configuration using
+>    configfs).
+> 2) Add documentation for NTB specific attributes in configfs
+> 3) Check for PCI_CLASS_MEMORY_RAM (PCIe class) before binding ntb_hw_epf
+>    driver
+> 4) Other documentation fixes
+> 
+> Changes from v1:
+> 1) As per Rob's comment, removed support for creating NTB function
+>    device from DT
+> 2) Add support to create NTB EPF device using configfs (added support in
+>    configfs to associate primary and secondary EPC with EPF.
+> 
+> Changes from RFC:
+> 1) Converted the DT binding patches to YAML schema and merged the
+>    DT binding patches together
+> 2) NTB documentation is converted to .rst
+> 3) One HOST can now interrupt the other HOST using MSI-X interrupts
+> 4) Added support for teardown of memory window and doorbell
+>    configuration
+> 5) Add support to provide support 64-bit memory window size from
+>    DT
+> 
+> [1] -> https://linuxplumbersconf.org/event/4/contributions/395/
+> [2] -> http://lore.kernel.org/r/20190926112933.8922-1-kishon@ti.com
+> [3] -> http://lore.kernel.org/r/20200514145927.17555-1-kishon@ti.com
+> [4] -> http://lore.kernel.org/r/20200611130525.22746-1-kishon@ti.com
+> [5] -> http://lore.kernel.org/r/20200904075052.8911-1-kishon@ti.com
+> [6] -> http://lore.kernel.org/r/20200915042110.3015-1-kishon@ti.com
+> [7] -> http://lore.kernel.org/r/20200918064227.1463-1-kishon@ti.com
+> [8] -> http://lore.kernel.org/r/20200924092519.17082-1-kishon@ti.com
+> [9] -> https://youtu.be/dLKKxrg5-rY
+> [10] -> http://lore.kernel.org/r/20200930153519.7282-1-kishon@ti.com 
+> [11] -> http://lore.kernel.org/r/20201111153559.19050-1-kishon@ti.com
+> [12] -> http://lore.kernel.org/r/20210104152909.22038-1-kishon@ti.com
+> 
+> Kishon Vijay Abraham I (17):
+>   Documentation: PCI: Add specification for the *PCI NTB* function
+>     device
+>   PCI: endpoint: Make *_get_first_free_bar() take into account 64 bit
+>     BAR
+>   PCI: endpoint: Add helper API to get the 'next' unreserved BAR
+>   PCI: endpoint: Make *_free_bar() to return error codes on failure
+>   PCI: endpoint: Remove unused pci_epf_match_device()
+>   PCI: endpoint: Add support to associate secondary EPC with EPF
+>   PCI: endpoint: Add support in configfs to associate two EPCs with EPF
+>   PCI: endpoint: Add pci_epc_ops to map MSI irq
+>   PCI: endpoint: Add pci_epf_ops for epf drivers to expose function
+>     specific attrs
+>   PCI: endpoint: Allow user to create sub-directory of 'EPF Device'
+>     directory
+>   PCI: cadence: Implement ->msi_map_irq() ops
+>   PCI: cadence: Configure LM_EP_FUNC_CFG based on epc->function_num_map
+>   PCI: endpoint: Add EP function driver to provide NTB functionality
+>   PCI: Add TI J721E device to pci ids
+>   NTB: Add support for EPF PCI-Express Non-Transparent Bridge
+>   Documentation: PCI: Add configfs binding documentation for pci-ntb
+>     endpoint function
+>   Documentation: PCI: Add userguide for PCI endpoint NTB function
+> 
+>  .../PCI/endpoint/function/binding/pci-ntb.rst |   38 +
+>  Documentation/PCI/endpoint/index.rst          |    3 +
+>  .../PCI/endpoint/pci-endpoint-cfs.rst         |   10 +
+>  .../PCI/endpoint/pci-ntb-function.rst         |  348 +++
+>  Documentation/PCI/endpoint/pci-ntb-howto.rst  |  161 ++
+>  drivers/misc/pci_endpoint_test.c              |    1 -
+>  drivers/ntb/hw/Kconfig                        |    1 +
+>  drivers/ntb/hw/Makefile                       |    1 +
+>  drivers/ntb/hw/epf/Kconfig                    |    6 +
+>  drivers/ntb/hw/epf/Makefile                   |    1 +
+>  drivers/ntb/hw/epf/ntb_hw_epf.c               |  754 ++++++
+>  .../pci/controller/cadence/pcie-cadence-ep.c  |   60 +-
+>  drivers/pci/endpoint/functions/Kconfig        |   13 +
+>  drivers/pci/endpoint/functions/Makefile       |    1 +
+>  drivers/pci/endpoint/functions/pci-epf-ntb.c  | 2128 +++++++++++++++++
+>  drivers/pci/endpoint/functions/pci-epf-test.c |   13 +-
+>  drivers/pci/endpoint/pci-ep-cfs.c             |  176 +-
+>  drivers/pci/endpoint/pci-epc-core.c           |  130 +-
+>  drivers/pci/endpoint/pci-epf-core.c           |  105 +-
+>  include/linux/pci-epc.h                       |   39 +-
+>  include/linux/pci-epf.h                       |   28 +-
+>  include/linux/pci_ids.h                       |    1 +
+>  22 files changed, 3945 insertions(+), 73 deletions(-)
+>  create mode 100644 Documentation/PCI/endpoint/function/binding/pci-ntb.rst
+>  create mode 100644 Documentation/PCI/endpoint/pci-ntb-function.rst
+>  create mode 100644 Documentation/PCI/endpoint/pci-ntb-howto.rst
+>  create mode 100644 drivers/ntb/hw/epf/Kconfig
+>  create mode 100644 drivers/ntb/hw/epf/Makefile
+>  create mode 100644 drivers/ntb/hw/epf/ntb_hw_epf.c
+>  create mode 100644 drivers/pci/endpoint/functions/pci-epf-ntb.c
 
-Signed-off-by: Dave Jiang <dave.jiang@intel.com>
----
- drivers/ntb/hw/intel/ntb_hw_intel.h |    3 ---
- 1 file changed, 3 deletions(-)
+Hi Kishon,
 
-diff --git a/drivers/ntb/hw/intel/ntb_hw_intel.h b/drivers/ntb/hw/intel/ntb_hw_intel.h
-index 05e2335c9596..b233d1c6ba2d 100644
---- a/drivers/ntb/hw/intel/ntb_hw_intel.h
-+++ b/drivers/ntb/hw/intel/ntb_hw_intel.h
-@@ -43,9 +43,6 @@
-  *   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-  *
-  * Intel PCIe NTB Linux driver
-- *
-- * Contact Information:
-- * Jon Mason <jon.mason@intel.com>
-  */
- 
- #ifndef NTB_HW_INTEL_H
+it looks like this series did not make it to linux-pci therefore
+I can't apply it, not sure what happened, I need to check.
 
+Lorenzo
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/161219595972.2978237.5196893078187316626.stgit%40djiang5-desk3.ch.intel.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210201183745.GA5152%40e121166-lin.cambridge.arm.com.
