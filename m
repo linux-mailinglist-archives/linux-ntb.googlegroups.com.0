@@ -1,133 +1,119 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBBMB7GCQMGQES3USMJA@googlegroups.com>
+Return-Path: <linux-ntb+bncBDU5DXUG4MFRBOWIQKDAMGQE5BHOS2Q@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ot1-x340.google.com (mail-ot1-x340.google.com [IPv6:2607:f8b0:4864:20::340])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6056639E13F
-	for <lists+linux-ntb@lfdr.de>; Mon,  7 Jun 2021 17:51:34 +0200 (CEST)
-Received: by mail-ot1-x340.google.com with SMTP id w1-20020a0568304101b02902fc17224cf5sf11809154ott.3
-        for <lists+linux-ntb@lfdr.de>; Mon, 07 Jun 2021 08:51:34 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1623081093; cv=pass;
+Received: from mail-ej1-x63d.google.com (mail-ej1-x63d.google.com [IPv6:2a00:1450:4864:20::63d])
+	by mail.lfdr.de (Postfix) with ESMTPS id D08253A1281
+	for <lists+linux-ntb@lfdr.de>; Wed,  9 Jun 2021 13:21:30 +0200 (CEST)
+Received: by mail-ej1-x63d.google.com with SMTP id jy19-20020a1709077633b02903eb7acdb38csf7879254ejc.14
+        for <lists+linux-ntb@lfdr.de>; Wed, 09 Jun 2021 04:21:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1623237690; cv=pass;
         d=google.com; s=arc-20160816;
-        b=iOc6tTEMHVMM/m/v8/ThGYcRbIKo2eUvhHbHQVgP7fmxqR2vOeCE8jG4jptfLcnozo
-         LBYhIU3AamZ01ciLd8q5ZqHLL2e1pYZX1yTKJYcWdYVNQ6bPd+I8mqp1mPd9DCtMgzV7
-         a5GxBWBcKvQytj8aqNwtpaaFUB4Hm5eZUskxOi9JrpLdz7HL9FkLgwf1AYUWz1U52Jlx
-         cX0bMX0F80BglWyb/nCwziCTFf0j5bs3BTvqo4OXFkcLJwQkViPnwVuLwpfTzER3E+US
-         dqL8a1QU9vO6tFqWfiSTV2NxISZiEbfgrPR06+UXdvdiJE3cTnkbw/A+RcC2dZEzeRZH
-         cEPA==
+        b=oAzfGNBs1nvK1+aJQqm6yYqYsIGr3oavA03uGHm1KBCUVCVvODpYCdudKSQW6THktu
+         utCPcDNpEx07BFZ/BZ4ApMLR3Spd5ZGaCLytOsm0+cZ0LiovTU/WmrTSyVHoi/nK09cw
+         lpPGf75N8B2p4gIpBBxG6985Np/FEeK4X60h0wjfjE3CxUlD+ApM5KO0qq2T70tKFDbf
+         cm/TJ+Bur+3aiDnLWKOtGl+Am32bVMMb4Ebnj3z+qYkp4WwVXm3XG+7KQhXBENWBMMU1
+         qOZuVC888Bb5J5/c4GZz8400wdvIUT722QwOmtBN4r91tVw2OOrRhnW8ufCz3pjeh5j7
+         w34Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:subject:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:sender:dkim-signature;
-        bh=ZXVx7w1qDhWqczWwTIJQtLy6Nfsv/uErE+1fdIJ9HOs=;
-        b=KYYYvktMpkcysV0qWk8tKiJ4A4w1PGjUUqth2TzGQKgeGsRPodlSquWWcOwVU9vxQP
-         bmePP2Sto+kc08t9MryMhDwNqZK7SZ1nG+zMO1BmRJ+zVbderI5GcKIiXi1/VSvJNnv+
-         dc/+xjSvwJQNkNgko+W6KivBM3TCExZ5ffUUHqFae/dYt0aNUeo3s9agZ+w4eSi+fqFQ
-         cP7wjJOavnw3xpMebrEIp3q8wb8awbhlQAYBtCBUCnu9ge8w9hc+B7BJym6ttYeh6Ro0
-         UXFf75dARQnLnm1k7Nua4/XLKgVSyUnJMXlJdBmNO0Ume9C95H6OIP3novKy0nWfuM1g
-         unYQ==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=K5gqN5tiWRIsqi8ZjE+YjIBFBS6IW/niD0UBzGGqTi8=;
+        b=zM1YpV9buvGhoyPXh6uVFWvG3rN5Ena6xUOY7mijx7cxNnh6AsdNboWRISwYYC6q9d
+         rzoKvd9EdAxvSQ83yenk6x8Q1Is6cOAvyozYxNfHrsBARG5W+7BMf4HmzWptR0/O0LPT
+         Htu411y9f0SdolmQy4F8eLRaFC8YOls6K24c1yco/9uBuEoJAvaBTQ3YDhwJikI96TXY
+         bS6illL9CEWNeFB70Dltke5DpXHBU5GZQm5G1t240cJ1+roY/GYw5waKzmmBRScR7Hn4
+         kKuydWJJ+wTCAneNpCyOe0O5odu4/DNfQZi9NtyVeXQ8SN9AgHluQ5nheHKLX4pOKbaA
+         pglw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@deltatee.com header.s=20200525 header.b=KZWC9QwJ;
-       spf=pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) smtp.mailfrom=logang@deltatee.com
+       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:subject:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=ZXVx7w1qDhWqczWwTIJQtLy6Nfsv/uErE+1fdIJ9HOs=;
-        b=ojP1sLgqdAW0r1HGC1UrDSBIbNUBImGq9SwC0/f/5nMloB4bnslVft6Ysr8TZK3oPX
-         nZzxk3YINU6wbaNYP4/r//8iWB/V+bNyr5VJ/4UCRKB7CZtvYm69MYnlr0CzxQa2tRpz
-         3HKXrA2qHi70oalVPch6j1R4BmFfk9QxHBaShUAmtgZc3zJeF0LP/jjrJz5TdhSipuKX
-         AtYh0da0CYoQ/3tzJMMxg5QlDwandrIkm9290VZ7koZr6zJJaGUH69ouJEg/Jh6p/tkN
-         tgSUs9IxcCGRgkIP2HU7lN4Muee7sLhJQeL4Ohgefm+dyBkEbXDZgqQ+HSEzsLKuZjIk
-         viYQ==
+        h=sender:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=K5gqN5tiWRIsqi8ZjE+YjIBFBS6IW/niD0UBzGGqTi8=;
+        b=Chb6f4ydVLWjHCol1yo6Ze5gtNA3Hkd3B2AWzqPGcKbHUQLsJVrJKLTmCAFRRSWRpk
+         35xLfxS0K4WCRHtFtmR3/OugrXikxyxjqF3xJW5h+zQn43n0Nn7m/iE0navbmjPvOIbC
+         SZwszGTvRnZ9WaWHe5VtaA9Hj9iaxjEjWADMSul4oGwa9sqI6rCX0mimzJ7un6ME/tZ4
+         k/jVr2Gzq6CodyyxVQlLnWvG4qR2C2z1YlgeFtTVN+Pu5Yaf88Y7DDv3wmLMthNaduVX
+         hD+cw8FMrDv5Arb5Ym77s+BLLXAnYgbVE9El3n+BU6pPCHaHDgAG/gKmDe3sgL3u5dug
+         RRRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language:subject
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=ZXVx7w1qDhWqczWwTIJQtLy6Nfsv/uErE+1fdIJ9HOs=;
-        b=TjSMNfyNubxEZEdrFU31i4JeDkWseszsaCo1LGmLLhfPQMBFrqDeF3+tZ5lc9zyFOL
-         /YMVEynoxmhRks/iMWs1eMwB3O4bf7wfMC6ldQOOcweFzX8WFgka9yLSo6YNIj1FaCYN
-         TflJ7uwgXiP0gkZRrN6Pl9tZPmTsyzncL0DizPN6Z7UJoSo0iHz32RuReCyeDCiUfxMv
-         Y/flO0CtFF0xsOFLALtOLdpTAZBRuZTWuK2vLoPu2COlmll20sBrQ6aR8tORH/ra1MR4
-         HBPa5FWxEMY9F/r3t1AnRY7Q7ueB+50Vc2yBRmVFIJzpiQ49QREGxWOdKr4JEulMrgDS
-         2AWw==
+        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=K5gqN5tiWRIsqi8ZjE+YjIBFBS6IW/niD0UBzGGqTi8=;
+        b=FWSAelSQ/wpfILYGs0QH7RlRGeH3T5L9c3oGeJJKF8H7E7XYcdDU2DRCH4Rq3YTmec
+         8cIJjA5IQncpJrYDsNiEAgA9cFdPzSf6JRPyg22ObeF+DwPjZLPqtRubBJz9Zrmmc5n6
+         LyGepWVjeJ/94Y++tP4sIkGoOld2kgi4s/8xkaIte00GuzdkewflI7pg45B4/ZjjE6pO
+         S9MpBXZUv84OUg4GEI6I8351CQ9eWQJomv7VpMk9c/ssuBV5vR9BSGpv4o81qriNgjIv
+         m1ehftspwpn/Keur5n55I1ui4Ikk9Tjx4dIcnvyCZQqPSTyc/Dv8ecPJ5Tujg2yKTx2S
+         X3BA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530H5ZmSFoVLU+0lxS3Zy9yh160ydVKIJhOreJCrupzCFQ3rkZcY
-	XmZop7wAeaSS9Bm2wlNck9U=
-X-Google-Smtp-Source: ABdhPJzgf4DJ+bzyNMvAQME7idL9bR2UsZwhPj8yF2aWlUcAlQRRkMEPqhlZ3oiV5zgi9qEMHfNJmw==
-X-Received: by 2002:a05:6830:161a:: with SMTP id g26mr7264768otr.62.1623081093225;
-        Mon, 07 Jun 2021 08:51:33 -0700 (PDT)
+X-Gm-Message-State: AOAM532L/DHUI9eEtUGVK/AqNSVQlch3xLAusUJLPe+em8wAfotbxXDG
+	8y0z8xh9oMvhb8U1RZNklYM=
+X-Google-Smtp-Source: ABdhPJxsBZ6q4sqpELbMD2BWJXbPsKmWl5/yqlTY+flJJl/zN/qCEGDL1N82DXdzZCVkP6GQk4Jnqg==
+X-Received: by 2002:aa7:c9c4:: with SMTP id i4mr22480127edt.299.1623237690583;
+        Wed, 09 Jun 2021 04:21:30 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:aca:5d05:: with SMTP id r5ls4012442oib.7.gmail; Mon, 07 Jun
- 2021 08:51:32 -0700 (PDT)
-X-Received: by 2002:aca:5755:: with SMTP id l82mr14088200oib.44.1623081092813;
-        Mon, 07 Jun 2021 08:51:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1623081092; cv=none;
+Received: by 2002:a05:6402:1510:: with SMTP id f16ls1599161edw.1.gmail; Wed,
+ 09 Jun 2021 04:21:29 -0700 (PDT)
+X-Received: by 2002:aa7:da8c:: with SMTP id q12mr26087818eds.368.1623237689733;
+        Wed, 09 Jun 2021 04:21:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1623237689; cv=none;
         d=google.com; s=arc-20160816;
-        b=vC0oQ8KM6n7xzWL0UQYWT2R1Xt7d2z49XwzrOYCax77oBIfyab2RtxgPEBqOnXJlDj
-         HHiu/x/un0zzPtrXG6xwOgxYwGJgQLdfFxsKBDWja1IqKIeIySse5TmUk2hMa0Fy/2hl
-         yE5DgyU8xFRQ9VT6eYcZcm4PRYzSll5jG5juEVbVHysKiyIoA8iE0ZMr/DcBOVg2HIeu
-         MeUdJnDd97ni8y+Y9bSI+UuMKsKzQtMFSKNBvFf5Bhun75sGFdtf7Min2gqyX6vHZ5Re
-         9Pt4kn+i4dKZni5Bxecbd4XN9DU23yWCXPe8yD7awag09KwIAZlVGX/9mmLIX2pvEvhn
-         SFRQ==
+        b=w8SOEMfhqaqr4TmZQl7jjCqPjdzVoshrau/ygLLbF0pnY1HipCGwxOM20ePsZOWNwR
+         k3WiWRJi+JcMHLLNmV0Gs5Mmc7yBcgyQQ4fe2Zu/ZXMDWYYLW9mYyZCh3DKsFQtAi9X1
+         +II59wFPpgaNXu+ymQcWvlb/8v+VNtI8GYwwPAw7D8+Oxcq+d4QBEZ3V/dprx0GHQZdZ
+         1XMfFliYSL1VM+MZ53OMewDQA9CmgUGV5Gx+Hjr0WAj+bDUv9qAcJlWMMLzCrtEoi0F2
+         gjQBtO8pqkxqfhoZOPc257QCGVR+OZoJELmIkM7MUv6PArX6tlOL8/fkCX1pfu7FU5ZE
+         rHGg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to
-         :dkim-signature;
-        bh=4claKpMmrc3WERETeGcJn3zlM3eZGEqhAb7GXJGJFUo=;
-        b=sq4xeJHSYIYlGHUvm5i5efCx7CXM6kaZ6ifpHwUhEVHHllH+3E4b3hfV9WvglKk/u0
-         rs+e4IkRLbXaUv7gWAd2+jdJEtbawPH3dlGveJADsqSSoqZPetSbp7q976NUbjrf1iEI
-         m9FDzxJmsswFmpN9v6BNH9SNkgCcwtYUNRVzORANkcMaq24kwaguYE60326NAqAruKCx
-         pRlWU0KWz14mdF/hjTNWg0CMk4FGQxWeWKhlRqs20Z6kYvCcYY8Wh8fYqFt1YIcSx2OP
-         rM5evgpMqv5/P/++IjLv/jLTXMGV7aROFEaVUdTj8ty+XPvucW24ah7KSkQz8Ipa4GTv
-         KEPg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=Rn1+a7AfOXXYoD+jvu8312xXWSk2OImJgr+pExr2QRQ=;
+        b=DftHNtXY3dbF0Fybva1ZOp8FsTqT4LqZzczwnSWQEWGp/ESKdLwyRrRZi/2RW9F4TL
+         ILFxO2H+drZAtw57CVNWIzEfpwrKEnA9LvI2hyrfsfdMO0VLdB8ix+UaRskHtmMiufDd
+         A4TWLu9xLYxsGsAl4Bkw5v0OmtfL0FkyWfnSQpEWEvkQeBIqaDy52y9CkNzEKnrk8J5/
+         aagPzCvSwzVNYU2otf7oJ9K9iPPGLz1YloC/hdZPTJa5V4o7PK1/g6c70wrT3A9kp603
+         qF2dCP9DjagMOKqtoVkhEYT9V4gebj1DhBVi5ACivMcx0NOPwNyHXapmmhSbyb/qod5E
+         VuPw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@deltatee.com header.s=20200525 header.b=KZWC9QwJ;
-       spf=pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) smtp.mailfrom=logang@deltatee.com
-Received: from ale.deltatee.com (ale.deltatee.com. [204.191.154.188])
-        by gmr-mx.google.com with ESMTPS id f20si1249246oig.3.2021.06.07.08.51.32
+       spf=pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
+Received: from youngberry.canonical.com (youngberry.canonical.com. [91.189.89.112])
+        by gmr-mx.google.com with ESMTPS id x10si176961ejy.0.2021.06.09.04.21.29
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 07 Jun 2021 08:51:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) client-ip=204.191.154.188;
-Received: from guinness.priv.deltatee.com ([172.16.1.162])
-	by ale.deltatee.com with esmtp (Exim 4.92)
-	(envelope-from <logang@deltatee.com>)
-	id 1lqHXG-0007rq-Up; Mon, 07 Jun 2021 09:51:31 -0600
-To: Yang Li <yang.lee@linux.alibaba.com>, jdmason@kudzu.us
-Cc: dave.jiang@intel.com, allenbh@gmail.com, linux-ntb@googlegroups.com,
- linux-kernel@vger.kernel.org
-References: <1623045380-125394-1-git-send-email-yang.lee@linux.alibaba.com>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <9182a6e0-541b-e350-d760-06623cb06855@deltatee.com>
-Date: Mon, 7 Jun 2021 09:51:29 -0600
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.10.0
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 09 Jun 2021 04:21:29 -0700 (PDT)
+Received-SPF: pass (google.com: best guess record for domain of colin.king@canonical.com designates 91.189.89.112 as permitted sender) client-ip=91.189.89.112;
+Received: from 1.general.cking.uk.vpn ([10.172.193.212] helo=localhost)
+	by youngberry.canonical.com with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.93)
+	(envelope-from <colin.king@canonical.com>)
+	id 1lqwH2-0003xO-I0; Wed, 09 Jun 2021 11:21:28 +0000
+From: Colin King <colin.king@canonical.com>
+To: Jon Mason <jdmason@kudzu.us>,
+	Dave Jiang <dave.jiang@intel.com>,
+	linux-ntb@googlegroups.com
+Cc: kernel-janitors@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] ntb: ntb_pingpong: remove redundant initialization of variables msg_data and spad_data
+Date: Wed,  9 Jun 2021 12:21:28 +0100
+Message-Id: <20210609112128.184667-1-colin.king@canonical.com>
+X-Mailer: git-send-email 2.31.1
 MIME-Version: 1.0
-In-Reply-To: <1623045380-125394-1-git-send-email-yang.lee@linux.alibaba.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-CA
-X-SA-Exim-Connect-IP: 172.16.1.162
-X-SA-Exim-Rcpt-To: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com, allenbh@gmail.com, dave.jiang@intel.com, jdmason@kudzu.us, yang.lee@linux.alibaba.com
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.2 (2018-09-13) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-6.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
-	NICE_REPLY_A,URIBL_BLOCKED autolearn=ham autolearn_force=no
-	version=3.4.2
-Subject: Re: [PATCH v2] NTB: Fix an error code in ntb_msit_probe()
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-Original-Sender: logang@deltatee.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@deltatee.com header.s=20200525 header.b=KZWC9QwJ;       spf=pass
- (google.com: domain of logang@deltatee.com designates 204.191.154.188 as
- permitted sender) smtp.mailfrom=logang@deltatee.com
+X-Original-Sender: colin.king@canonical.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: best guess record for domain of colin.king@canonical.com
+ designates 91.189.89.112 as permitted sender) smtp.mailfrom=colin.king@canonical.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=canonical.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -140,50 +126,35 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+From: Colin Ian King <colin.king@canonical.com>
 
+The variables msg_data and spad_data are being initialized with values
+that are never read, they are being updated later on. The initializations
+are redundant and can be removed.
 
-On 2021-06-06 11:56 p.m., Yang Li wrote:
-> When the value of nm->isr_ctx is false, the value of ret is 0.
-> So, we set ret to -ENOMEM to indicate this error.
-> 
-> Clean up smatch warning:
-> drivers/ntb/test/ntb_msi_test.c:373 ntb_msit_probe() warn: missing
-> error code 'ret'.
-> 
-> Reported-by: Abaci Robot <abaci@linux.alibaba.com>
-> Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+Addresses-Coverity: ("Unused value")
+Signed-off-by: Colin Ian King <colin.king@canonical.com>
+---
+ drivers/ntb/test/ntb_pingpong.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks!
-
-Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
-
-> ---
-> 
-> Change in v2:
-> --revise typo
-> 
->  drivers/ntb/test/ntb_msi_test.c | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/ntb/test/ntb_msi_test.c b/drivers/ntb/test/ntb_msi_test.c
-> index 7095ecd..4e18e08 100644
-> --- a/drivers/ntb/test/ntb_msi_test.c
-> +++ b/drivers/ntb/test/ntb_msi_test.c
-> @@ -369,8 +369,10 @@ static int ntb_msit_probe(struct ntb_client *client, struct ntb_dev *ntb)
->  	if (ret)
->  		goto remove_dbgfs;
->  
-> -	if (!nm->isr_ctx)
-> +	if (!nm->isr_ctx) {
-> +		ret = -ENOMEM;
->  		goto remove_dbgfs;
-> +	}
->  
->  	ntb_link_enable(ntb, NTB_SPEED_AUTO, NTB_WIDTH_AUTO);
->  
-> 
+diff --git a/drivers/ntb/test/ntb_pingpong.c b/drivers/ntb/test/ntb_pingpong.c
+index 2164e8492772..8aeca7914050 100644
+--- a/drivers/ntb/test/ntb_pingpong.c
++++ b/drivers/ntb/test/ntb_pingpong.c
+@@ -187,7 +187,7 @@ static void pp_ping(struct pp_ctx *pp)
+ 
+ static void pp_pong(struct pp_ctx *pp)
+ {
+-	u32 msg_data = -1, spad_data = -1;
++	u32 msg_data, spad_data;
+ 	int pidx = 0;
+ 
+ 	/* Read pong data */
+-- 
+2.31.1
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/9182a6e0-541b-e350-d760-06623cb06855%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210609112128.184667-1-colin.king%40canonical.com.
