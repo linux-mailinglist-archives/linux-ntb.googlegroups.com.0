@@ -1,61 +1,48 @@
-Return-Path: <linux-ntb+bncBD76R2M4QICBBGPDSGDQMGQEGBPCHCQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDLPBG4DUEARBKHFSGDQMGQETJN3AFA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x23e.google.com (mail-lj1-x23e.google.com [IPv6:2a00:1450:4864:20::23e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 516C33BD963
-	for <lists+linux-ntb@lfdr.de>; Tue,  6 Jul 2021 17:07:06 +0200 (CEST)
-Received: by mail-lj1-x23e.google.com with SMTP id z9-20020a2eb5290000b02901859d7fbdf8sf362640ljm.5
-        for <lists+linux-ntb@lfdr.de>; Tue, 06 Jul 2021 08:07:06 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1625584026; cv=pass;
+Received: from mail-qt1-x83e.google.com (mail-qt1-x83e.google.com [IPv6:2607:f8b0:4864:20::83e])
+	by mail.lfdr.de (Postfix) with ESMTPS id A11503BD991
+	for <lists+linux-ntb@lfdr.de>; Tue,  6 Jul 2021 17:11:37 +0200 (CEST)
+Received: by mail-qt1-x83e.google.com with SMTP id t15-20020a05622a180fb029024f88c5e9b0sf11309640qtc.17
+        for <lists+linux-ntb@lfdr.de>; Tue, 06 Jul 2021 08:11:37 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1625584296; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ZXHzRgn/T6/UpUwrXjigILU7ePrnl1Hw3i2PTYvADLXQi1LZMANdJDPfGYggDuXUbk
-         M8/MmPnkxJUe56gkvqzIVdAbViraD5YWuN2nr/Q984uisuTjAV8G02sPlapRme2YYb48
-         woJZI4lF+U5GLnMliRAkcnOualnfJXrEaZZZwH/kZCl+aSzrTuYQsLw2ttXlQxKUap8P
-         01vAvCcMHX0dqypvMOCsyPwhKTTWXrKepYprzXXIadWzeWXDodCT8/uLCBBkmHIPBGva
-         QDH3ZBnin9lmg9u2hCf2dQqEhB1dOwRRYxTFyofxrPW7XborEO8AJpgFVGTeljgIdD5C
-         kenw==
+        b=YVi7FDEailuHxdf2iGsMNPrmwreTDcW2wWmJ5xfS8syVmRdD04RUgRhC9+ALIxnZmw
+         hFb/JWi3a1gqh9nO8ZHwA8fc2WClXEWGrMPUsxMGvxHycOf9CmNYm2BmixGliky2JQGU
+         e1t4SCjD0iix87Rs7hhZtnPaO5K9S+jF8i3D6lHWHl3NltOYhjOkhZi7gQ+hVdtcUMSq
+         aauF3Qglcil5y8+xXHSTN+mHX5unP8BrA3mvMXEuR8vWv6Rc+1F1ouE1NG8A0OqlbZhQ
+         w7iB3QXPATLiX5GSkpc612QOvx2n4sNynOut45mYoVjn3N2jsyFukAz0MLVnqluA9WpV
+         iq6Q==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
-         :sender:dkim-signature:dkim-signature;
-        bh=bIC00qgO4PyESOkD3r9UF/EH1J5evXr78m+leL0vR1Q=;
-        b=nTS2iSVmTtBu98R/ycnsPxGbvip3smIVitZyDJlMGxUaJ8bFeWQ8snMF1Zn9g9x38z
-         zqRxmKhvcUpKLPwW7/dzdvVCo0fz5kXNyMsqVDkuKJfx2OzwtUVhh50usBPKoCYQfdvj
-         IuNrF57ML5cq7oYo4jSMA8muDfRa3mJamvGTXc0tBpIR3ks137Lvt6YYL7F8TuSYn3D2
-         cPpCu9LHyEWORj1nqa9u91moJKXq7uAdGHSwmyeWP31f9Tc3XF0jZy1/VMYMSrnwwMYP
-         BJSE95lYMLFd+XOLuNOpWBckfdkVSbeTTtDkpuCbw0MNhyx8Q4SdzyeqBgGVyru9OaIZ
-         6hjw==
+         :sender:dkim-signature;
+        bh=wyPBCDq+NopNjwaEBv/mH7jQosKPzxyXNrG91AFUyK0=;
+        b=I8CYT6htNDN3hf5dKEX75PliiDt44tkD1ydHzoEKlWEFTHN75QEsuAsAeMa6Jovc7Z
+         rjI6FptpjRcEJh1cWdZ7xfEfFYcPuWwsCaJqvF3ymXm4aUSa9k10XpVJKHrMpOHmEZBV
+         lXX2kwbv22dvWkzM6M0fnHQNL78gwCj05XOD1+2Shb+Piinj1KiJlE9MxYcZSRExN6HN
+         2BYhwcgBxdTesgmA7GG+oODJPYH2fNJ4LQBtnqQ3TvodEbQILc9kGs81oUieqIPVsPzi
+         7AviO431bsHd7gMHmMaY6sUXjeJGctZLZeEuddrKzKpvsMDrj5L6G/cmXRz+hvpFIlY1
+         Dovw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SBHfWn82;
-       spf=pass (google.com: domain of yehezkelshb@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=yehezkelshb@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=IvCXivhu;
+       spf=pass (google.com: domain of mathieu.poirier@linaro.org designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=mathieu.poirier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
         h=sender:mime-version:references:in-reply-to:from:date:message-id
          :subject:to:cc:content-transfer-encoding:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=bIC00qgO4PyESOkD3r9UF/EH1J5evXr78m+leL0vR1Q=;
-        b=qCTnYo3AEWyUJodnsYNRTCjo3mDambevmejHKyhJ9ah6HZLD84TPc205wc3MWm76Po
-         f8SVzv1YbWSNezlnd11H3UKGR7s5H13gmNIrNzJLrRrzxaUyNi5zTvecc/I4k7fK27An
-         eZRKv6XuMTWUWnkgLv7EUzf1IBT5FP48o681v4MpPSdD4fxjD0Gtb/PvSUotgW4hoqL5
-         3HVWjXntPlb9sn5e8kWer7YZNrqR4swda94DZFfi6Pf1p44IlfOr/RPtWOmsF67h/S4q
-         tIgZMrC1AyZxKt9u00AtgKe6Zy555QgdLnry0j7xo0ONxah34E3MLf1lB/LCpvK2DY1Q
-         j2LA==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=bIC00qgO4PyESOkD3r9UF/EH1J5evXr78m+leL0vR1Q=;
-        b=SXq74DV3h/oODT1fOzs/+842W3cGOyTvCqm0AKWu1REF0XZVNbccKpBrnLjx+CpnSt
-         Ho2kYfLLjT9XyMWBSM429a+WvBZQ9+SXKYGxFpbPQ8MewqoVvpR9t2bt9ShCES+gevXr
-         0H6ZZrhhMed4HkEK9ZbIdLTYRY4WZP02LB02l7huI8yLVyIkAyphpvfSqCYAEmg8A+Qd
-         n5P/z/5ufPLeyHgEe6RMMXPp1xRjCx6b51bEIJ4QrdBhSnMLnUL95G8MlizpUkBmuj0c
-         AfLkSQn4z+9dmxVfuEPDFjTt6lRqfRrI0+iPP0eWNlTNMQ6urL58AriNBd2gycNiands
-         B7Yw==
+        bh=wyPBCDq+NopNjwaEBv/mH7jQosKPzxyXNrG91AFUyK0=;
+        b=TQXdHy0Ptv0qPkcHfw2I8nYcj8/malMn+JgIKwNqqmZz1Fb5bhJbgEHIkm44376uQq
+         wdvK0Ju1PMFyKfGAgxkwnI2yaHRRlGcIWl8B1H9Rn+ofXUjsOez12F94Ig5XYC+OSq9K
+         3zQKi0BeNyfNyL0p2gMwI7oI6c8q1mZQbL0F9HrKrsqZgPmSlOB/SHumtYGmwd6fs0IU
+         tfMaDaQOR6lo8oHhjVtprrU42IaZXfz2YNC1FX7VIowLZdOssnslAIKPd47fjQYTk08o
+         fGjTEiA4wceH+CHmPR0jhlqprv3S512/L39vlvl7ZgY6d7dVoR9ZwaNmv09UBzYybMu8
+         lpYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:references:in-reply-to:from
@@ -63,66 +50,67 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=bIC00qgO4PyESOkD3r9UF/EH1J5evXr78m+leL0vR1Q=;
-        b=kgCKAVBUHG3v38Q9PUkRp05bXgtUGXV1USpgWWwJKrDuRTlKcabN7YhHkxe5GyJ95C
-         zgNDZVwp2W8/4/1JFTFcdoHQUm1FOR5ceah/p4UIhRG9ztseRkCDJ57ROqM6CHiMzG39
-         niqz1QoI7HbROTAvhJFIYM2N4bO2Xwd67XuP0HlSqD8MBDB6+V50V9/pMvnxZUKAn7SK
-         zdTC6eNFRoy4zVIQRyfhGMuVGY6R7KTK4cizm/olSpQVb73uxTjzKhiB4vAZvmUb0KtX
-         ILifkPZFajeFUirDP/akJu5yRkbVbTKCIuAgF05hRyS2HgVi3BJkuUCfArDUgbp9QHAS
-         1z0Q==
+        bh=wyPBCDq+NopNjwaEBv/mH7jQosKPzxyXNrG91AFUyK0=;
+        b=ATtXjMVxCBShhhKee0jyTplcAU0cOYLSp6qPyH/P3rVxji8trx6KL7GYqXuD3+CwXL
+         lTKmqc6mindMsAfwS/FaKyldLYxZbAUv3BjshDXdAKETrRyBNdQf4MTNXQ807KldVa/K
+         Uaif9asR+zFDP9p/fTQFTv1WIjSoFkRsgRhScTWFF6zOmF5cbsZgqnE4w6l/WCX2Km1y
+         6520d3AGWYqA1GNZE7DAysq22ARUCx9+CXAUCUpu+kXPHZaYAa/Poh0WluOh8a9aIypo
+         hOfB7E9x4lBovbaRqwltdxKE/cFn2HUTi6O5ZfMRqTXPtB0mU82mgtH9z2dEmmoEq7A4
+         W5Mg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532A1iZCJlyaHxM883bJyF2NGaozsUFK3SlKFOAQtG8srm31ePEj
-	NGo/cUkS3n0Ln5ki71I4qs8=
-X-Google-Smtp-Source: ABdhPJzhQhnl+STmzv7Y52qxJAi/jhy9rDvoW/JqFkwduitkIjBBESu3T0KodNfKbuwxYj05Fy1k2A==
-X-Received: by 2002:ac2:4356:: with SMTP id o22mr15834989lfl.309.1625584025907;
-        Tue, 06 Jul 2021 08:07:05 -0700 (PDT)
+X-Gm-Message-State: AOAM530qAHmBc2NukB8hiikasj22OWCneD/PcQN+ArYJE9zdnkJGKf0A
+	ugl/MjBoU5CkOWal9TMbCAU=
+X-Google-Smtp-Source: ABdhPJwcuZgiY7M85NZFaG3MIWO/mOggt8TMl3Y2EEXt972wF53SkUiSL1d8BAQ6Tkp1wNR+ATPBWA==
+X-Received: by 2002:a37:bbc3:: with SMTP id l186mr7944288qkf.67.1625584296738;
+        Tue, 06 Jul 2021 08:11:36 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a2e:a783:: with SMTP id c3ls3688833ljf.2.gmail; Tue, 06 Jul
- 2021 08:07:04 -0700 (PDT)
-X-Received: by 2002:a2e:730b:: with SMTP id o11mr15873101ljc.352.1625584024867;
-        Tue, 06 Jul 2021 08:07:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625584024; cv=none;
+Received: by 2002:a0c:fed1:: with SMTP id z17ls6680757qvs.10.gmail; Tue, 06
+ Jul 2021 08:11:36 -0700 (PDT)
+X-Received: by 2002:a05:6214:250c:: with SMTP id gf12mr18613130qvb.7.1625584296380;
+        Tue, 06 Jul 2021 08:11:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625584296; cv=none;
         d=google.com; s=arc-20160816;
-        b=zz6XweqBHBkq+UA75ld6OsHSK91xaUVmfHB5z3YAC5/n3MkjpbAFHzgJhf/uujfUAR
-         wtftTHk4x+W2/zx9GFkOFgev4+LpctR30GO+HGkGB2oYakZxLiInfNvwhCxL2+6/wVAe
-         Tn+5g2D9bWnJ/UHtVHhlkxBDAVmap2f8p8OAXdAtJG13nwJFO/MxtwU2mdwn8YUzgkCF
-         jc8zO0dDaQnO4g4/56jdrt+hF7A38Rrt2S/cXhzJlZViN661108CjJxQeJcWE8w7D82M
-         WFeXivS8yXgr0CIXGqstlbnht/3MG+AewflInxB1cpQQW/Do92xXfQGm+nkjtx/REJXC
-         ijNA==
+        b=zcESkVTqFHzwJ9t28w7ppVWDWmIpjQJyxqL4RyKhytV0gIPucH+Kpp5i3BZp6n1njY
+         mAxWPCwwvEvY67FRlpE8DkiOaA1OzWSjpAxjAFhl7yiaEnfJHj+kBVqRE3si8L43hWxP
+         FGppUDXr3ayMGVtyGzckkVVXQjYjeCc+Gg/ZWFkJV8uWhogiYmDhgi6QVxDEcbTEKjiS
+         ENJkJ1ixVt4L6KeyMSrTuYjFwrKBoDfIk6InPEStir0tQ4Neu0piYGhZ2DSFkJHIoeYl
+         EaEtLeuYbyKRJVMFpoMrU/MYMmACIbHI64KXcvw/Ein/bHFR6psCcxJmi8wJ7V0qc4uU
+         MW/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=+9dsgPbS//aUCZUFixPgGcG7qxsG2EJ3dbyOzFDh8TA=;
-        b=fJRoOVlqUqnWkJW2OqBUh64hkaci08+V9pbcbEHm39rdolWviwtY9X7fnu4JZM9B6v
-         XwEpKqIphCUta2SpAH8KUF1YcbUDf6c6pcjwhgl9sOQ5O2uiEkRZoxp1N4qHLNkxZ9JO
-         67a8WPodu6miybviMmhcEQzca8jpNqfjGqNwrqma0832YTVBSQ9WZA5Q/5+ocGjAoVav
-         Q22nV7xwt/x1oqo4Cdt79u3RqwWPkyo9QiAP0CK2Aoii5IDlZGz2hnR5oW2kgRCe/UA/
-         NslYf2Scfg4cnYw5lXcDaU1EQr/cD9Co25bn5YhDg+M8DpYp+OGRudVskV1DpDM62cIu
-         JhDg==
+        bh=4MFz8ETd/nmuIWZiubiifP+Omq2X9iSE9tCmj3gucYM=;
+        b=kh3Pu+m/q/2FBpME4uTDFrEcxs38++OYU/vVwBJR7YJTzkhr3ezMb6LJNrJwnfo4sK
+         lu4+Y4j59q3zK0goIDGjWTskOYQ57RXsemnu+Sh/UHoG8WyfumCx16Lm7XVqBfpx+D5C
+         0kT9PPIIh4jGZWs9s1N3EE7MHlvRJuO7Itg4m4GwvXg5Qblxx5Es4o6XE55PBckC3pqp
+         pSmNELkmdKCyrARgmoZszScaw33Sxj+H0uDKDWoo5prOWJ0SghvVhMDjvlnG++1BBiY0
+         Y3IwEAYFkoTwdHJ+lsUp6JT/qNgRJkEczzFPyDA0hCL4Tqg3yFsOq4SULD+zu9/MS/LC
+         nIlg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=SBHfWn82;
-       spf=pass (google.com: domain of yehezkelshb@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) smtp.mailfrom=yehezkelshb@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-ej1-x62c.google.com (mail-ej1-x62c.google.com. [2a00:1450:4864:20::62c])
-        by gmr-mx.google.com with ESMTPS id q8si815770ljg.4.2021.07.06.08.07.04
+       dkim=pass header.i=@linaro.org header.s=google header.b=IvCXivhu;
+       spf=pass (google.com: domain of mathieu.poirier@linaro.org designates 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=mathieu.poirier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from mail-il1-x130.google.com (mail-il1-x130.google.com. [2607:f8b0:4864:20::130])
+        by gmr-mx.google.com with ESMTPS id q9si566463qkm.7.2021.07.06.08.11.36
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 06 Jul 2021 08:07:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of yehezkelshb@gmail.com designates 2a00:1450:4864:20::62c as permitted sender) client-ip=2a00:1450:4864:20::62c;
-Received: by mail-ej1-x62c.google.com with SMTP id c17so34628089ejk.13
-        for <linux-ntb@googlegroups.com>; Tue, 06 Jul 2021 08:07:04 -0700 (PDT)
-X-Received: by 2002:a17:907:6289:: with SMTP id nd9mr19151547ejc.384.1625584024338;
- Tue, 06 Jul 2021 08:07:04 -0700 (PDT)
+        Tue, 06 Jul 2021 08:11:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of mathieu.poirier@linaro.org designates 2607:f8b0:4864:20::130 as permitted sender) client-ip=2607:f8b0:4864:20::130;
+Received: by mail-il1-x130.google.com with SMTP id j12so10174632ils.5
+        for <linux-ntb@googlegroups.com>; Tue, 06 Jul 2021 08:11:36 -0700 (PDT)
+X-Received: by 2002:a05:6e02:1a0f:: with SMTP id s15mr14885840ild.58.1625584295743;
+ Tue, 06 Jul 2021 08:11:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <20210706095037.1425211-1-u.kleine-koenig@pengutronix.de>
 In-Reply-To: <20210706095037.1425211-1-u.kleine-koenig@pengutronix.de>
-From: Yehezkel Bernat <yehezkelshb@gmail.com>
-Date: Tue, 6 Jul 2021 18:06:47 +0300
-Message-ID: <CA+CmpXu5-NCvfuOc8fso2a9bmi0Dacmd=+u=XB-Wd7X=WgOTBA@mail.gmail.com>
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+Date: Tue, 6 Jul 2021 09:11:24 -0600
+Message-ID: <CANLsYkz_k3rBETkFWd9mm+Lgfcyp=YgiAM8rq8DaqaOcSofEkA@mail.gmail.com>
 Subject: Re: [PATCH] bus: Make remove callback return void
 To: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kernel@pengutronix.de, 
-	LKML <linux-kernel@vger.kernel.org>, Russell King <linux@armlinux.org.uk>, 
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, 
+	Linux Kernel Mailing List <linux-kernel@vger.kernel.org>, Russell King <linux@armlinux.org.uk>, 
 	Thomas Bogendoerfer <tsbogend@alpha.franken.de>, 
 	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, Helge Deller <deller@gmx.de>, 
 	Geoff Levand <geoff@infradead.org>, Michael Ellerman <mpe@ellerman.id.au>, 
@@ -156,29 +144,29 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kernel@pengutronix.de,
 	Maximilian Luz <luzmaximilian@gmail.com>, Hans de Goede <hdegoede@redhat.com>, 
 	Mark Gross <mgross@linux.intel.com>, Matt Porter <mporter@kernel.crashing.org>, 
 	Alexandre Bounine <alex.bou9@gmail.com>, Ohad Ben-Cohen <ohad@wizery.com>, 
-	Bjorn Andersson <bjorn.andersson@linaro.org>, Mathieu Poirier <mathieu.poirier@linaro.org>, 
+	Bjorn Andersson <bjorn.andersson@linaro.org>, 
 	"Martin K. Petersen" <martin.petersen@oracle.com>, Thorsten Scherer <t.scherer@eckelmann.de>, 
 	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>, Andy Gross <agross@kernel.org>, 
 	Mark Brown <broonie@kernel.org>, Stephen Boyd <sboyd@kernel.org>, Michael Buesch <m@bues.ch>, 
 	Sven Van Asbroeck <TheSven73@gmail.com>, Johan Hovold <johan@kernel.org>, Alex Elder <elder@kernel.org>, 
 	Andreas Noever <andreas.noever@gmail.com>, Michael Jamet <michael.jamet@intel.com>, 
-	Mika Westerberg <mika.westerberg@linux.intel.com>, Rob Herring <robh@kernel.org>, 
-	Jiri Slaby <jirislaby@kernel.org>, Heikki Krogerus <heikki.krogerus@linux.intel.com>, 
-	"Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>, 
-	Kirti Wankhede <kwankhede@nvidia.com>, Alex Williamson <alex.williamson@redhat.com>, 
-	Cornelia Huck <cohuck@redhat.com>, Martyn Welch <martyn@welchs.me.uk>, 
-	Manohar Vanga <manohar.vanga@gmail.com>, Boris Ostrovsky <boris.ostrovsky@oracle.com>, 
-	Juergen Gross <jgross@suse.com>, Stefano Stabellini <sstabellini@kernel.org>, 
-	Johannes Berg <johannes@sipsolutions.net>, Jaroslav Kysela <perex@perex.cz>, 
-	Takashi Iwai <tiwai@suse.com>, Marc Zyngier <maz@kernel.org>, Tyrel Datwyler <tyreld@linux.ibm.com>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Samuel Holland <samuel@sholland.org>, 
-	Qinglang Miao <miaoqinglang@huawei.com>, Alexey Kardashevskiy <aik@ozlabs.ru>, 
-	Kai-Heng Feng <kai.heng.feng@canonical.com>, Joey Pabalan <jpabalanb@gmail.com>, 
-	=?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, 
+	Mika Westerberg <mika.westerberg@linux.intel.com>, Yehezkel Bernat <YehezkelShB@gmail.com>, 
+	Rob Herring <robh@kernel.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+	Jason Wang <jasowang@redhat.com>, Kirti Wankhede <kwankhede@nvidia.com>, 
+	Alex Williamson <alex.williamson@redhat.com>, Cornelia Huck <cohuck@redhat.com>, 
+	Martyn Welch <martyn@welchs.me.uk>, Manohar Vanga <manohar.vanga@gmail.com>, 
+	Boris Ostrovsky <boris.ostrovsky@oracle.com>, Juergen Gross <jgross@suse.com>, 
+	Stefano Stabellini <sstabellini@kernel.org>, Johannes Berg <johannes@sipsolutions.net>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, Marc Zyngier <maz@kernel.org>, 
+	Tyrel Datwyler <tyreld@linux.ibm.com>, Vladimir Zapolskiy <vz@mleia.com>, 
+	Samuel Holland <samuel@sholland.org>, Qinglang Miao <miaoqinglang@huawei.com>, 
+	Alexey Kardashevskiy <aik@ozlabs.ru>, Kai-Heng Feng <kai.heng.feng@canonical.com>, 
+	Joey Pabalan <jpabalanb@gmail.com>, =?UTF-8?Q?Pali_Roh=C3=A1r?= <pali@kernel.org>, 
 	Adrian Hunter <adrian.hunter@intel.com>, Frank Li <lznuaa@gmail.com>, 
 	Mike Christie <michael.christie@oracle.com>, Bodo Stroesser <bostroesser@gmail.com>, 
 	Hannes Reinecke <hare@suse.de>, David Woodhouse <dwmw@amazon.co.uk>, SeongJae Park <sjpark@amazon.de>, 
-	Julien Grall <jgrall@amazon.com>, linux-arm-kernel@lists.infradead.org, 
+	Julien Grall <jgrall@amazon.com>, linux-arm-kernel <linux-arm-kernel@lists.infradead.org>, 
 	linux-mips@vger.kernel.org, linux-parisc@vger.kernel.org, 
 	linuxppc-dev@lists.ozlabs.org, linux-acpi@vger.kernel.org, 
 	linux-wireless@vger.kernel.org, linux-sunxi@lists.linux.dev, 
@@ -188,9 +176,9 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kernel@pengutronix.de,
 	linux-i2c@vger.kernel.org, linux-i3c@lists.infradead.org, 
 	industrypack-devel@lists.sourceforge.net, linux-media@vger.kernel.org, 
 	linux-mmc@vger.kernel.org, netdev@vger.kernel.org, linux-ntb@googlegroups.com, 
-	Linux PCI <linux-pci@vger.kernel.org>, platform-driver-x86@vger.kernel.org, 
-	linux-remoteproc@vger.kernel.org, linux-scsi@vger.kernel.org, 
-	alsa-devel@alsa-project.org, linux-arm-msm@vger.kernel.org, 
+	linux-pci@vger.kernel.org, platform-driver-x86@vger.kernel.org, 
+	linux-remoteproc <linux-remoteproc@vger.kernel.org>, linux-scsi@vger.kernel.org, 
+	alsa-devel@alsa-project.org, linux-arm-msm <linux-arm-msm@vger.kernel.org>, 
 	linux-spi@vger.kernel.org, linux-staging@lists.linux.dev, 
 	greybus-dev@lists.linaro.org, target-devel@vger.kernel.org, 
 	linux-usb@vger.kernel.org, linux-serial@vger.kernel.org, 
@@ -198,12 +186,12 @@ Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, kernel@pengutronix.de,
 	xen-devel@lists.xenproject.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Original-Sender: yehezkelshb@gmail.com
+X-Original-Sender: mathieu.poirier@linaro.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=SBHfWn82;       spf=pass
- (google.com: domain of yehezkelshb@gmail.com designates 2a00:1450:4864:20::62c
- as permitted sender) smtp.mailfrom=yehezkelshb@gmail.com;       dmarc=pass
- (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@linaro.org header.s=google header.b=IvCXivhu;       spf=pass
+ (google.com: domain of mathieu.poirier@linaro.org designates
+ 2607:f8b0:4864:20::130 as permitted sender) smtp.mailfrom=mathieu.poirier@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -216,7 +204,7 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Tue, Jul 6, 2021 at 12:50 PM Uwe Kleine-K=C3=B6nig
+On Tue, 6 Jul 2021 at 03:56, Uwe Kleine-K=C3=B6nig
 <u.kleine-koenig@pengutronix.de> wrote:
 >
 > The driver core ignores the return value of this callback because there
@@ -234,13 +222,78 @@ On Tue, Jul 6, 2021 at 12:50 PM Uwe Kleine-K=C3=B6nig
 >
 > Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
 > ---
-
+> Hello,
 >
->  drivers/thunderbolt/domain.c              | 4 +---
+> this patch depends on "PCI: endpoint: Make struct pci_epf_driver::remove
+> return void" that is not yet applied, see
+> https://lore.kernel.org/r/20210223090757.57604-1-u.kleine-koenig@pengutro=
+nix.de.
+>
+> I tested it using allmodconfig on amd64 and arm, but I wouldn't be
+> surprised if I still missed to convert a driver. So it would be great to
+> get this into next early after the merge window closes.
+>
+> I send this mail to all people that get_maintainer.pl emits for this
+> patch. I wonder how many recipents will refuse this mail because of the
+> long Cc: list :-)
+>
+> Best regards
+> Uwe
+>
+>  arch/arm/common/locomo.c                  | 3 +--
+>  arch/arm/common/sa1111.c                  | 4 +---
+>  arch/arm/mach-rpc/ecard.c                 | 4 +---
+>  arch/mips/sgi-ip22/ip22-gio.c             | 3 +--
+>  arch/parisc/kernel/drivers.c              | 5 ++---
+>  arch/powerpc/platforms/ps3/system-bus.c   | 3 +--
+>  arch/powerpc/platforms/pseries/ibmebus.c  | 3 +--
+>  arch/powerpc/platforms/pseries/vio.c      | 3 +--
+>  drivers/acpi/bus.c                        | 3 +--
+>  drivers/amba/bus.c                        | 4 +---
+>  drivers/base/auxiliary.c                  | 4 +---
+>  drivers/base/isa.c                        | 4 +---
+>  drivers/base/platform.c                   | 4 +---
+>  drivers/bcma/main.c                       | 6 ++----
+>  drivers/bus/sunxi-rsb.c                   | 4 +---
+>  drivers/cxl/core.c                        | 3 +--
+>  drivers/dax/bus.c                         | 4 +---
+>  drivers/dma/idxd/sysfs.c                  | 4 +---
+>  drivers/firewire/core-device.c            | 4 +---
+>  drivers/firmware/arm_scmi/bus.c           | 4 +---
+>  drivers/firmware/google/coreboot_table.c  | 4 +---
+>  drivers/fpga/dfl.c                        | 4 +---
+>  drivers/hid/hid-core.c                    | 4 +---
+>  drivers/hid/intel-ish-hid/ishtp/bus.c     | 4 +---
+>  drivers/hv/vmbus_drv.c                    | 5 +----
+>  drivers/hwtracing/intel_th/core.c         | 4 +---
+>  drivers/i2c/i2c-core-base.c               | 5 +----
+>  drivers/i3c/master.c                      | 4 +---
+>  drivers/input/gameport/gameport.c         | 3 +--
+>  drivers/input/serio/serio.c               | 3 +--
+>  drivers/ipack/ipack.c                     | 4 +---
+>  drivers/macintosh/macio_asic.c            | 4 +---
+>  drivers/mcb/mcb-core.c                    | 4 +---
+>  drivers/media/pci/bt8xx/bttv-gpio.c       | 3 +--
+>  drivers/memstick/core/memstick.c          | 3 +--
+>  drivers/mfd/mcp-core.c                    | 3 +--
+>  drivers/misc/mei/bus.c                    | 4 +---
+>  drivers/misc/tifm_core.c                  | 3 +--
+>  drivers/mmc/core/bus.c                    | 4 +---
+>  drivers/mmc/core/sdio_bus.c               | 4 +---
+>  drivers/net/netdevsim/bus.c               | 3 +--
+>  drivers/ntb/core.c                        | 4 +---
+>  drivers/ntb/ntb_transport.c               | 4 +---
+>  drivers/nvdimm/bus.c                      | 3 +--
+>  drivers/pci/endpoint/pci-epf-core.c       | 4 +---
+>  drivers/pci/pci-driver.c                  | 3 +--
+>  drivers/pcmcia/ds.c                       | 4 +---
+>  drivers/platform/surface/aggregator/bus.c | 4 +---
+>  drivers/platform/x86/wmi.c                | 4 +---
+>  drivers/pnp/driver.c                      | 3 +--
+>  drivers/rapidio/rio-driver.c              | 4 +---
+>  drivers/rpmsg/rpmsg_core.c                | 4 +---
 
-For Thunderbolt:
-
-Acked-by: Yehezkel Bernat <YehezkelShB@gmail.com>
+Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 
 --=20
 You received this message because you are subscribed to the Google Groups "=
@@ -248,5 +301,5 @@ linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to linux-ntb+unsubscribe@googlegroups.com.
 To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/CA%2BCmpXu5-NCvfuOc8fso2a9bmi0Dacmd%3D%2Bu%3DXB-Wd7X%3DWgOTBA%40m=
-ail.gmail.com.
+linux-ntb/CANLsYkz_k3rBETkFWd9mm%2BLgfcyp%3DYgiAM8rq8DaqaOcSofEkA%40mail.gm=
+ail.com.
