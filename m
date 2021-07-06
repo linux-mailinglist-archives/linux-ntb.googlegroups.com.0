@@ -1,31 +1,31 @@
-Return-Path: <linux-ntb+bncBCX3TTWUQMPRB5ODSKDQMGQEG6MRUOI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCX3TTWUQMPRB66ISKDQMGQEYDKUVYA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x23f.google.com (mail-lj1-x23f.google.com [IPv6:2a00:1450:4864:20::23f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CC753BDD34
-	for <lists+linux-ntb@lfdr.de>; Tue,  6 Jul 2021 20:33:26 +0200 (CEST)
-Received: by mail-lj1-x23f.google.com with SMTP id t1-20020a2e9d010000b02900f5b2b52da7sf9172828lji.8
-        for <lists+linux-ntb@lfdr.de>; Tue, 06 Jul 2021 11:33:26 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1625596405; cv=pass;
+Received: from mail-lj1-x23e.google.com (mail-lj1-x23e.google.com [IPv6:2a00:1450:4864:20::23e])
+	by mail.lfdr.de (Postfix) with ESMTPS id 904BC3BDD79
+	for <lists+linux-ntb@lfdr.de>; Tue,  6 Jul 2021 20:44:12 +0200 (CEST)
+Received: by mail-lj1-x23e.google.com with SMTP id y10-20020a05651c154ab02901337d2c58f3sf9159427ljp.9
+        for <lists+linux-ntb@lfdr.de>; Tue, 06 Jul 2021 11:44:12 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1625597052; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zff0l/6DOtEJbBd2gRwmy/8FmQV4ffy7SNQnUwj6VO0vvUwkyj8CvqK0ElPZswBn21
-         soA8s24kFScqcigaKJde3VBzBHR45vR80IgEmRKeeDRl14T/YdR015vpTz5wH9NUcWfF
-         88qNtGL6juOHHFkj4Jf1oUvdbShx16bM7Wvl4URU99psOhqQXnUvaflUaAxzHvToPRz6
-         65s1BMfhwiwR+qyMYryplHsS3HMC2iCCbtZa4rrNIEv5qvdjVuvMwMT4x2gOLaZjPT42
-         j6fL5cDS3++8Npd5WVkEo1NZaptjxhXzn4hbngW1sN5tya/AVhxh3KLrJoHI2t+jOE39
-         2Y5Q==
+        b=HsRvdWBUTrKUZu5mpSF0KPTlO/+D+nRAKeR3ApEjhRW4jiuR23R9EQbpxXlYvYi7xy
+         W1Zo0TA18mQHyZVIjngQBdZ8Irfmg5Ms3LGLzq0kNvyjJSRdFop6qWbFP10MTDBsPUAp
+         GohCCOTDiBIz5xb01Ik1Zmil4jO4EXxJ/hPc6iNq+JBjrvOnNexRzncA3dwjhWV8y5LU
+         xEWyeZ3oeC7XSWaqfz724yco8RvobkPH0rp+Lp9SEx0MeW6PtvuoKBMM62mYDpVHr6Be
+         uCKoLXZRARJtJxbXImMCiGHZX9pplKScFi/a+sJ1H1tsJCVsEhE3esHYF/F0ZpgvT4Hk
+         XMCQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:sender
          :dkim-signature;
-        bh=OGkw6q8nf1Bhz3o/wujRykvGXFReD44UFYCNoqAqW+s=;
-        b=OO6Lo8T0U08Od93rJ/9Q9uORES4rs344L1FPZfLTYhnhgaCHtXBE7+ja85n4/iYyzp
-         feF9akKvpFBz6zHDMYJjxizCnWbVtz3pr5Q15S2AUYAl/EQfLfID3vbgts+LP1Eh9EAu
-         1pGX2iOiHnYl1O6SGobHr79qffD3AswIIw1acXWftICJ3AVZ8KYPx5yepOZLvTE0UGOs
-         cxtkOd2nlS5CbxuuHrr5Ls3xGTskg3AJ4Kne00FKrK66LDYdXJ60CqUTQevG6juoQ3pM
-         Io/PDdeOVCEkM6AKbAnkFlw/cHJ+FA67pr+ZzC8Bl+7sSjAq5XnDLIlYU8Bc32kY+dYg
-         9CZg==
+        bh=grphTooOvuHn6LBNzstL0S4A76zrX8wmu7Fflj02rZE=;
+        b=h4TEZ2hCTT4r+Nmd8XW2Wr3PwPySzm9qR8R/+9m2fqt9wiDEgvTEltbyqCR7AU3D6R
+         PL5k24Yg0/SK5nyFVPezNWaFf3YHaqGHeEyn1etAsWJi7eEq3IHucNcWtng3NcCFCUR9
+         ++a9MmAJJkEPB73aWK+xWl7SqUSNr+l6cmP0ywhEz+YhEkbTtzprhpx603AJcrORKvVI
+         DMIuC3OyHxq6SsvZhvD6iGQf8lJnh5fpUYYs10+THv5Ro17nlC+b19vkZnuMqY1wqfJk
+         ZGHRhgYBw8wZgU64OX6C0pWpbW8L1cDG+y+eBhRR3r1lSGnvh7pRelUrs1R9v5uERv0z
+         Sbtg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
        spf=pass (google.com: domain of ukl@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) smtp.mailfrom=ukl@pengutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -34,13 +34,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :content-disposition:in-reply-to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=OGkw6q8nf1Bhz3o/wujRykvGXFReD44UFYCNoqAqW+s=;
-        b=RGIWQV4HcLij1BLv8HaXE5z9Yxv2DlGZSuOAzKlXMUA2UXZl2mHl/4LmSjzGcfsnf/
-         OPfADP9T+pUjI3PMHZVfCmRqDM4TNrNa82Sb7BCLypxV+eG6PQGqzVw2IP8m0ivqmU+C
-         QcD0Y7WzCTxZhk6BH6vl2LS3CJYbTIwzk14EeZHJPDiu1v7FT1+3tE52BIAV0p1QnI91
-         +DleToXHbVqfeg1oN751sxKIwsmS27863aNZfJKymtE1mhr8utMXbPYKmi3dJKA24dCi
-         D1esOZp6QynjSUKnkijNbqEaNNlyn5ur1adIobsasbmah30N7tMpfrHYtqmaku+eplis
-         5zXw==
+        bh=grphTooOvuHn6LBNzstL0S4A76zrX8wmu7Fflj02rZE=;
+        b=RQ6cPZc8IWPoLZV7CUFg9MDKm9UAw9oZzaumzFS9x00+6Szpk3qj4MDJ9T810r7vCf
+         obvmPHdLnWAxzYTUXd8DX1D616u+dl6YwA93D7TpzkqrsdkPUh+LtRnLClvCJTYn3Wzr
+         bXfNy8Z6NGI6738UlqkiIjbT3o5x7DWlqAFZLNT0g+jQY1DRhfvx+hk08JnmolwSVmGx
+         YS3fpQW3rcnsLeooCKInELBIFNqjyNW6opcXuI8XPog+MWohqiPod1+Z6IxULbemUAsP
+         9KdEsHwyKM8wdj2sB/lb5ibUfXKjXphW9DJ2A1K81bpDG38Ovf7Ak1EcWfjdn0+6sI+2
+         Spmg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
@@ -48,190 +48,95 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=OGkw6q8nf1Bhz3o/wujRykvGXFReD44UFYCNoqAqW+s=;
-        b=Az5ktCGtmaK0h44nwTSFE8kUBFZdNt7ZVQ1S9PgEZ65oj3tUk6yqVKFNNhakD6O09t
-         1i5rSDY6/23pcBNDUJgFR25LwOQLrB1gdtyMhP/wsvBF207m3rsuIDRhtB9Fue2FQ/qi
-         mpx5rUjyktg01mIY4b2TIuIHLN2QpqMZb12LW2gNpazHEfvdYQkFe6W1NP9ANKeQs1m1
-         fPxQOGS3chopbKLw29SIrF0aDthG+u2e+XoazP3LOzXOlTCxMyy+TUxgksiCv1BWYSl3
-         JXvg9G9GVPS/2rncnzKZv8E090QitW9B6zaq8sYRfeJb2AoNjVg+C9XYLzu3xvBi79ZP
-         nFFA==
+        bh=grphTooOvuHn6LBNzstL0S4A76zrX8wmu7Fflj02rZE=;
+        b=rXO9dke6sTI6MFy4p8HaCqbldDtCm5vHotWTh5vyHkH5/0s0YjHhs0goISFfzsXfd/
+         CtGVEbTGAVT4xDf6lsTd/NIH3GHgQNoT0lF0brdEjsBwpypdJt8YVF5Whw2a8zo0ZSr/
+         qNaJLT8JVJ8rhK9KAjEI+EcJeWiXZAyS5vkTZo1ppLPYZDZ084ACvfjGNYurpsBvSvWz
+         V8s/QCk/TPLd1J/t6XH1LpGYguGV69WlaPyQSw04MLfnWbYuaOFbyLjb9xtPNIZcwUDR
+         UpwC0HR7uL4Pg5uLTXmPWQ9hB2yFgX85NqtYrjsMLL2CATe8s/xm+o6es569PwzNJNVo
+         AOiQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531EGdrQYRMDnGAYno1ZNVkXVw/bM6cymYUB7v0bGt477heXOIlp
-	d27y7q34lVboBhy6qMmr15U=
-X-Google-Smtp-Source: ABdhPJw9w6pDGyL3zX4vuhNgFKjEc3RB5BJDTwQzdUple+CcRKhiKUC1qWUc/0cjolK+GNZyMyNErQ==
-X-Received: by 2002:a19:f505:: with SMTP id j5mr16262976lfb.126.1625596405647;
-        Tue, 06 Jul 2021 11:33:25 -0700 (PDT)
+X-Gm-Message-State: AOAM533zDQpUeAljKdgqeY4cftCiN1IgPKXGVKaKRm+dQMaoBGtbg5pA
+	CqINvoJEmnV5aMwjfaNywVU=
+X-Google-Smtp-Source: ABdhPJy/EljGRdIOBl+HjKJ54PvmFGtT08wQTLVBwzT3AHcaI2qJE6czXnQzwfviQ0NC1kxraeXz6A==
+X-Received: by 2002:a2e:9218:: with SMTP id k24mr3551603ljg.7.1625597052165;
+        Tue, 06 Jul 2021 11:44:12 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ac2:508b:: with SMTP id f11ls1478138lfm.2.gmail; Tue, 06 Jul
- 2021 11:33:24 -0700 (PDT)
-X-Received: by 2002:a19:c795:: with SMTP id x143mr15204569lff.354.1625596404493;
-        Tue, 06 Jul 2021 11:33:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1625596404; cv=none;
+Received: by 2002:ac2:430b:: with SMTP id l11ls1491059lfh.1.gmail; Tue, 06 Jul
+ 2021 11:44:11 -0700 (PDT)
+X-Received: by 2002:a05:6512:238c:: with SMTP id c12mr16434026lfv.317.1625597051015;
+        Tue, 06 Jul 2021 11:44:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1625597051; cv=none;
         d=google.com; s=arc-20160816;
-        b=f1sEbl8WLxBRT3nm0nPaKhuvsLRMr5SMUSNb6qQSaKqevCVoYL0hMoXyuM++ClAjQL
-         YQelHuq3KPSIUiy9FTmach+NV9UmyoqEy5xv/OtlPNXxVhIbwN3pb2ImI3cMgdLyU2bE
-         tX5K0mdo5UkzidW3EoTISdGKs3O9fhhtF3teg0D3ELURWt07vZBRgf7qIkP2sG49YoC/
-         +YOAGFlU3vdh3aSrD8K6JUBRWGfxfS2qQmyEStH+3+sdVJpwOQO2BWC0KrIvvXBBdNgW
-         7gtbD54SMoZQt1dhFfyxyAslLvJMJhnrlGNN+DmV1M934nlTuvVAblInDqirBbeZIX9X
-         1yFw==
+        b=d6oUEWnlgDoEdwTjsFqL86IqbnuKndpkiN3cFE/nQDR3gYWGoebogu7eB0bNtoOrMn
+         ubIH32T6d9YCpI/wa53s0rQvjpjCbhd1RW/D9BEQ5Rmd3VwNuhMDbhS5VBlIfVhsUMPL
+         D7SsK/T0mgH2Yw+h/be20W8a8WK3qR05BLz6bPAEanc4tvCOGORoPgtZWAZ/yj2TwN1V
+         LSHV0tdSA2tbDNtggYjUISJAIyZRkdL/ZznIlbYKaQBadCTL6ywCbnRvbffwuiK1DadE
+         xbxhfh0sx7qEgWYmtsATCl/1fyXVOnpvPUxLrlhxW+YskOgEg3KulEq+nMzb9x6Q5dnX
+         VOUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date;
-        bh=P0aCJaLITjI7WDvYcDRMBdR6D7VOBjn+2isTBrQhPjc=;
-        b=Pq6cgsNgBBnv8eAYdfqiuBlT9zSV2uUmLgvxALOHUWXaPdgx+De4SlcvaknjTzfBF4
-         hDUVFygivFrIqhteX9dX2299hJUcHOmVmo70qmF4QhJYglBUvp6lHCTodnJxU1iPJUpF
-         ZtCH0w85yJ3vmcJc44fF6c4gJh2ghyhLv3V96bYE6JYuf/WX00+UNCldxv0bVQSrtxVx
-         PP/Jv3W22D5r+S64d5dDbfRgCGJSib7+cXmL/dNMA5HXq00RjJwRjC1iM5vbRRLwZ2n6
-         bFWykJSsOcELD1ouYslYNkjWQme31lGWHb+F9T5cLqpZeSA6Ya8mVoU/7Qe0hAT+puny
-         UktA==
+        bh=OK5lMYl6Edzi1cWTOjCJiYs2KYL0s404M8dW5RgTsqg=;
+        b=pHhHIrB6UeMAWhOAg8L7ct4LYMEC8OSHFmkC/WKxVIJP+CeOJLpe5rd7Ioh/hOH55o
+         lO93DQupWuoeQhv9l53q3ikpougAyeM0NEQ2FPkE/u+xoUUCeiIwUSBlmiMk4qcCWeWP
+         oB0Vgtq9kx7E1iJSKTCQCz7BVPjJzNN5y+EtGX/WuR8CPR/hNe2wHSkHEuXr75EhzMnt
+         oNX+Iak2UL62bVzudP1hsBdqzPX/aIG7OrK+xB+JD9tu6pj+cFw7p/c+P9xnLoTrX5tQ
+         irFnazKfupft6x7CYdO13qVA38TrGymgW02YHkpuF08MI2IMyCEg2szjp6k864saK86P
+         jPSw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of ukl@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) smtp.mailfrom=ukl@pengutronix.de
 Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de. [2001:67c:670:201:290:27ff:fe1d:cc33])
-        by gmr-mx.google.com with ESMTPS id n127si9669lfa.7.2021.07.06.11.33.24
+        by gmr-mx.google.com with ESMTPS id 187si214179lfm.5.2021.07.06.11.44.10
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Jul 2021 11:33:24 -0700 (PDT)
+        Tue, 06 Jul 2021 11:44:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ukl@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) client-ip=2001:67c:670:201:290:27ff:fe1d:cc33;
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1m0ps1-0007tV-Rc; Tue, 06 Jul 2021 20:32:33 +0200
+	id 1m0q2W-0000ek-Kp; Tue, 06 Jul 2021 20:43:24 +0200
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1m0prk-0001yq-8e; Tue, 06 Jul 2021 20:32:16 +0200
+	id 1m0q2V-00021e-8f; Tue, 06 Jul 2021 20:43:23 +0200
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1m0prk-0004ND-2r; Tue, 06 Jul 2021 20:32:16 +0200
-Date: Tue, 6 Jul 2021 20:32:15 +0200
+	id 1m0q2V-0004QV-6e; Tue, 06 Jul 2021 20:43:23 +0200
+Date: Tue, 6 Jul 2021 20:43:23 +0200
 From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: nvdimm@lists.linux.dev, Alexey Kardashevskiy <aik@ozlabs.ru>,
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
-	Samuel Iglesias Gonsalvez <siglesias@igalia.com>,
-	Jens Taprogge <jens.taprogge@taprogge.org>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
-	Paul Mackerras <paulus@samba.org>,
-	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
-	"K. Y. Srinivasan" <kys@microsoft.com>,
-	Mike Christie <michael.christie@oracle.com>,
-	Wei Liu <wei.liu@kernel.org>,
-	Maxim Levitsky <maximlevitsky@gmail.com>,
-	Samuel Holland <samuel@sholland.org>,
-	Michael Ellerman <mpe@ellerman.id.au>, linux-acpi@vger.kernel.org,
-	linux-pci@vger.kernel.org, xen-devel@lists.xenproject.org,
-	Tomas Winkler <tomas.winkler@intel.com>,
-	Julien Grall <jgrall@amazon.com>, Ohad Ben-Cohen <ohad@wizery.com>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Alex Elder <elder@kernel.org>, linux-parisc@vger.kernel.org,
-	Geoff Levand <geoff@infradead.org>, linux-fpga@vger.kernel.org,
-	linux-usb@vger.kernel.org, "Rafael J. Wysocki" <rjw@rjwysocki.net>,
-	linux-kernel@vger.kernel.org, linux-spi@vger.kernel.org,
-	Thorsten Scherer <t.scherer@eckelmann.de>, kernel@pengutronix.de,
-	Jon Mason <jdmason@kudzu.us>, linux-ntb@googlegroups.com,
-	Wu Hao <hao.wu@intel.com>, David Woodhouse <dwmw@amazon.co.uk>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	linux-wireless@vger.kernel.org,
-	Dominik Brodowski <linux@dominikbrodowski.net>,
-	virtualization@lists.linux-foundation.org,
-	"James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
-	target-devel@vger.kernel.org,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	linux-i2c@vger.kernel.org,
-	Kai-Heng Feng <kai.heng.feng@canonical.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Stephen Hemminger <sthemmin@microsoft.com>,
-	Ira Weiny <ira.weiny@intel.com>, Helge Deller <deller@gmx.de>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
+To: Bjorn Andersson <bjorn.andersson@linaro.org>
+Cc: nvdimm@lists.linux.dev, linux-hyperv@vger.kernel.org,
+	kvm@vger.kernel.org, linux-wireless@vger.kernel.org,
+	linux-fpga@vger.kernel.org, linux-pci@vger.kernel.org,
+	alsa-devel@alsa-project.org, linux-cxl@vger.kernel.org,
+	platform-driver-x86@vger.kernel.org, target-devel@vger.kernel.org,
+	linux-i2c@vger.kernel.org, linux-i3c@lists.infradead.org,
+	linux1394-devel@lists.sourceforge.net, linux-scsi@vger.kernel.org,
+	linux-staging@lists.linux.dev, linux-acpi@vger.kernel.org,
 	industrypack-devel@lists.sourceforge.net,
-	linux-mips@vger.kernel.org, Len Brown <lenb@kernel.org>,
-	alsa-devel@alsa-project.org, linux-arm-msm@vger.kernel.org,
-	linux-media@vger.kernel.org, Maxime Ripard <mripard@kernel.org>,
-	Johan Hovold <johan@kernel.org>, greybus-dev@lists.linaro.org,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Dave Jiang <dave.jiang@intel.com>,
-	Boris Ostrovsky <boris.ostrovsky@oracle.com>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Johannes Thumshirn <morbidrsa@gmail.com>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Stephen Boyd <sboyd@kernel.org>, Cornelia Huck <cohuck@redhat.com>,
-	Wolfram Sang <wsa@kernel.org>, Joey Pabalan <jpabalanb@gmail.com>,
-	Yehezkel Bernat <YehezkelShB@gmail.com>,
-	Pali =?utf-8?B?Um9ow6Fy?= <pali@kernel.org>,
-	Bodo Stroesser <bostroesser@gmail.com>,
-	Alison Schofield <alison.schofield@intel.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Tyrel Datwyler <tyreld@linux.ibm.com>,
-	Alexander Shishkin <alexander.shishkin@linux.intel.com>,
-	Tom Rix <trix@redhat.com>, Jason Wang <jasowang@redhat.com>,
-	SeongJae Park <sjpark@amazon.de>, linux-hyperv@vger.kernel.org,
-	platform-driver-x86@vger.kernel.org, Frank Li <lznuaa@gmail.com>,
-	netdev@vger.kernel.org, Qinglang Miao <miaoqinglang@huawei.com>,
-	Jiri Slaby <jirislaby@kernel.org>, Rob Herring <robh@kernel.org>,
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-	Mark Gross <mgross@linux.intel.com>, linux-staging@lists.linux.dev,
-	Dexuan Cui <decui@microsoft.com>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Chen-Yu Tsai <wens@csie.org>, linux-input@vger.kernel.org,
-	Matt Porter <mporter@kernel.crashing.org>,
-	Allen Hubbe <allenbh@gmail.com>, Alex Dubov <oakad@yahoo.com>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Jiri Kosina <jikos@kernel.org>, Vladimir Zapolskiy <vz@mleia.com>,
-	Russell King <rmk+kernel@armlinux.org.uk>,
-	Ben Widawsky <ben.widawsky@intel.com>,
-	Moritz Fischer <mdf@kernel.org>, linux-cxl@vger.kernel.org,
-	Michael Buesch <m@bues.ch>, Dan Williams <dan.j.williams@intel.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Martyn Welch <martyn@welchs.me.uk>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	linux-mmc@vger.kernel.org, linux-sunxi@lists.linux.dev,
-	Stefan Richter <stefanr@s5r6.in-berlin.de>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Sven Van Asbroeck <TheSven73@gmail.com>, kvm@vger.kernel.org,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	linux-remoteproc@vger.kernel.org,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Kirti Wankhede <kwankhede@nvidia.com>,
-	Andreas Noever <andreas.noever@gmail.com>,
-	linux-i3c@lists.infradead.org,
-	linux1394-devel@lists.sourceforge.net,
-	Lee Jones <lee.jones@linaro.org>, Arnd Bergmann <arnd@arndb.de>,
-	linux-scsi@vger.kernel.org, Vishal Verma <vishal.l.verma@intel.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Andy Gross <agross@kernel.org>, linux-serial@vger.kernel.org,
-	Jakub Kicinski <kuba@kernel.org>,
-	Michael Jamet <michael.jamet@intel.com>,
-	William Breathitt Gray <vilhelm.gray@gmail.com>,
-	Hans de Goede <hdegoede@redhat.com>, Hannes Reinecke <hare@suse.de>,
-	Adrian Hunter <adrian.hunter@intel.com>,
-	Juergen Gross <jgross@suse.com>, linuxppc-dev@lists.ozlabs.org,
-	Takashi Iwai <tiwai@suse.com>,
-	Alexandre Bounine <alex.bou9@gmail.com>,
-	Vinod Koul <vkoul@kernel.org>, Mark Brown <broonie@kernel.org>,
-	Marc Zyngier <maz@kernel.org>, dmaengine@vger.kernel.org,
-	Johannes Berg <johannes@sipsolutions.net>,
-	Johannes Thumshirn <jth@kernel.org>,
-	Maximilian Luz <luzmaximilian@gmail.com>
+	linux-input@vger.kernel.org, xen-devel@lists.xenproject.org,
+	linux-sunxi@lists.linux.dev, linux-media@vger.kernel.org,
+	linux-arm-msm@vger.kernel.org, linux-serial@vger.kernel.org,
+	linux-remoteproc@vger.kernel.org, greybus-dev@lists.linaro.org,
+	virtualization@lists.linux-foundation.org,
+	linux-arm-kernel@lists.infradead.org, linux-parisc@vger.kernel.org,
+	netdev@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-mmc@vger.kernel.org, linux-mips@vger.kernel.org,
+	linux-spi@vger.kernel.org, kernel@pengutronix.de,
+	dmaengine@vger.kernel.org, linux-ntb@googlegroups.com,
+	linuxppc-dev@lists.ozlabs.org
 Subject: Re: [PATCH v2 4/4] bus: Make remove callback return void
-Message-ID: <20210706183215.tcd7i4pwz2gxtxtb@pengutronix.de>
+Message-ID: <20210706184323.fudcbsiu4i34dojs@pengutronix.de>
 References: <20210706154803.1631813-1-u.kleine-koenig@pengutronix.de>
  <20210706154803.1631813-5-u.kleine-koenig@pengutronix.de>
+ <YOSb1+yeVeLxiSRc@yoga>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="q2vlxiybuwkj6z7s"
+	protocol="application/pgp-signature"; boundary="2fjaqpmq47gf4tbn"
 Content-Disposition: inline
-In-Reply-To: <20210706154803.1631813-5-u.kleine-koenig@pengutronix.de>
+In-Reply-To: <YOSb1+yeVeLxiSRc@yoga>
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: ukl@pengutronix.de
 X-SA-Exim-Scanned: No (on metis.ext.pengutronix.de); SAEximRunCond expanded to false
@@ -253,63 +158,105 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
  <https://groups.google.com/group/linux-ntb/subscribe>
 
 
---q2vlxiybuwkj6z7s
+--2fjaqpmq47gf4tbn
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-Hello,
+Hello Bjorn,
 
-v1 was acked by some more after I stopped looking in my mailbox while
-preparing v2:
-
-On Tue, Jul 06, 2021 at 05:48:03PM +0200, Uwe Kleine-K=C3=B6nig wrote:
-> The driver core ignores the return value of this callback because there
-> is only little it can do when a device disappears.
+On Tue, Jul 06, 2021 at 01:08:18PM -0500, Bjorn Andersson wrote:
+> On Tue 06 Jul 10:48 CDT 2021, Uwe Kleine-K?nig wrote:
+> > diff --git a/drivers/rpmsg/rpmsg_core.c b/drivers/rpmsg/rpmsg_core.c
+> > index c1404d3dae2c..7f6fac618ab2 100644
+> > --- a/drivers/rpmsg/rpmsg_core.c
+> > +++ b/drivers/rpmsg/rpmsg_core.c
+> > @@ -530,7 +530,7 @@ static int rpmsg_dev_probe(struct device *dev)
+> >  	return err;
+> >  }
+> > =20
+> > -static int rpmsg_dev_remove(struct device *dev)
+> > +static void rpmsg_dev_remove(struct device *dev)
+> >  {
+> >  	struct rpmsg_device *rpdev =3D to_rpmsg_device(dev);
+> >  	struct rpmsg_driver *rpdrv =3D to_rpmsg_driver(rpdev->dev.driver);
+> > @@ -546,8 +546,6 @@ static int rpmsg_dev_remove(struct device *dev)
+> > =20
+> >  	if (rpdev->ept)
+> >  		rpmsg_destroy_ept(rpdev->ept);
+> > -
+> > -	return err;
 >=20
-> This is the final bit of a long lasting cleanup quest where several
-> buses were converted to also return void from their remove callback.
-> Additionally some resource leaks were fixed that were caused by drivers
-> returning an error code in the expectation that the driver won't go
-> away.
->=20
-> With struct bus_type::remove returning void it's prevented that newly
-> implemented buses return an ignored error code and so don't anticipate
-> wrong expectations for driver authors.
->=20
-> Acked-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk> (For ARM, Am=
-ba and related parts)
-> Acked-by: Mark Brown <broonie@kernel.org>
-> Acked-by: Chen-Yu Tsai <wens@csie.org> (for drivers/bus/sunxi-rsb.c)
-> Acked-by: Pali Roh=C3=A1r <pali@kernel.org>
-> Acked-by: Mauro Carvalho Chehab <mchehab@kernel.org> (for drivers/media)
-> Acked-by: Hans de Goede <hdegoede@redhat.com> (For drivers/platform)
-> Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
-> Acked-By: Vinod Koul <vkoul@kernel.org>
-> Acked-by: Juergen Gross <jgross@suse.com> (For Xen)
-> Acked-by: Lee Jones <lee.jones@linaro.org> (For drivers/mfd)
-> Acked-by: Johannes Thumshirn <jth@kernel.org> (For drivers/mcb)
-> Acked-by: Johan Hovold <johan@kernel.org>
-> Acked-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org> (For drive=
-rs/slimbus)
-> Acked-by: Kirti Wankhede <kwankhede@nvidia.com> (For drivers/vfio)
-> Acked-by: Maximilian Luz <luzmaximilian@gmail.com>
-> Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com> (For ulpi and=
- typec)
-> Acked-by: Samuel Iglesias Gons=C3=A1lvez <siglesias@igalia.com> (For ipac=
-k)
-> Reviewed-by: Tom Rix <trix@redhat.com> (For fpga)
-> Acked-by: Geoff Levand <geoff@infradead.org> (For ps3)
+> This leaves err assigned but never used, but I don't mind following up
+> with a patch cleaning that up after this has landed.
 
-Acked-by: Yehezkel Bernat <YehezkelShB@gmail.com> (For thunderbolt)
-Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
-Acked-by: Alexander Shishkin <alexander.shishkin@linux.intel.com> (For inte=
-l_th)
-Acked-by: Dominik Brodowski <linux@dominikbrodowski.net> (For pcmcia)
+Ah, good catch. If I send out a v3 I will fold the following into this
+patch:
 
-> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
+diff --git a/drivers/rpmsg/rpmsg_core.c b/drivers/rpmsg/rpmsg_core.c
+index 7f6fac618ab2..9151836190ce 100644
+--- a/drivers/rpmsg/rpmsg_core.c
++++ b/drivers/rpmsg/rpmsg_core.c
+@@ -534,10 +534,9 @@ static void rpmsg_dev_remove(struct device *dev)
+ {
+ 	struct rpmsg_device *rpdev =3D to_rpmsg_device(dev);
+ 	struct rpmsg_driver *rpdrv =3D to_rpmsg_driver(rpdev->dev.driver);
+-	int err =3D 0;
+=20
+ 	if (rpdev->ops->announce_destroy)
+-		err =3D rpdev->ops->announce_destroy(rpdev);
++		rpdev->ops->announce_destroy(rpdev);
+=20
+ 	if (rpdrv->remove)
+ 		rpdrv->remove(rpdev);
 
-Best regards
+Maybe .announce_destroy() should then be changed to return void, too?
+Something like:
+
+diff --git a/drivers/rpmsg/rpmsg_internal.h b/drivers/rpmsg/rpmsg_internal.=
+h
+index a76c344253bf..d5204756714c 100644
+--- a/drivers/rpmsg/rpmsg_internal.h
++++ b/drivers/rpmsg/rpmsg_internal.h
+@@ -40,7 +40,7 @@ struct rpmsg_device_ops {
+ 					    struct rpmsg_channel_info chinfo);
+=20
+ 	int (*announce_create)(struct rpmsg_device *ept);
+-	int (*announce_destroy)(struct rpmsg_device *ept);
++	void (*announce_destroy)(struct rpmsg_device *ept);
+ };
+=20
+ /**
+diff --git a/drivers/rpmsg/virtio_rpmsg_bus.c b/drivers/rpmsg/virtio_rpmsg_=
+bus.c
+index 8e49a3bacfc7..4e05994634f8 100644
+--- a/drivers/rpmsg/virtio_rpmsg_bus.c
++++ b/drivers/rpmsg/virtio_rpmsg_bus.c
+@@ -340,7 +340,7 @@ static int virtio_rpmsg_announce_create(struct rpmsg_de=
+vice *rpdev)
+ 	return err;
+ }
+=20
+-static int virtio_rpmsg_announce_destroy(struct rpmsg_device *rpdev)
++static void virtio_rpmsg_announce_destroy(struct rpmsg_device *rpdev)
+ {
+ 	struct virtio_rpmsg_channel *vch =3D to_virtio_rpmsg_channel(rpdev);
+ 	struct virtproc_info *vrp =3D vch->vrp;
+@@ -360,8 +360,6 @@ static int virtio_rpmsg_announce_destroy(struct rpmsg_d=
+evice *rpdev)
+ 		if (err)
+ 			dev_err(dev, "failed to announce service %d\n", err);
+ 	}
+-
+-	return err;
+ }
+=20
+ static const struct rpmsg_device_ops virtio_rpmsg_ops =3D {
+
+though it's not obvious for me that the last hunk is sensible. (OTOH the
+return code is ignored anyhow as rpmsg_dev_remove() is the only caller.
+
+Best regards and thanks
 Uwe
 
 --=20
@@ -323,21 +270,21 @@ linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to linux-ntb+unsubscribe@googlegroups.com.
 To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/20210706183215.tcd7i4pwz2gxtxtb%40pengutronix.de.
+linux-ntb/20210706184323.fudcbsiu4i34dojs%40pengutronix.de.
 
---q2vlxiybuwkj6z7s
+--2fjaqpmq47gf4tbn
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmDkoawACgkQwfwUeK3K
-7AkRFgf/Qj+Sw4DQa5XQzuIke1atkI5Z9SH6bby9lfgLCjU/9fFWokjZXUFUlHEd
-p6KCgzwG5JD4RoIVKyntr/S7rR3FlCH5aMtgDi4xzKWybmOwAdP5XCSzU6ois1Cd
-G76Gg954N8CBAyFE6c0p18Fu1R1fscGQQDIF6yrUJ6p9WbpckBTw8xuX/AOicKcu
-r9s0okuUVqJmb0eM1Io+LGgjIvSLaUPl2lFnllwI6ztli3Wwo3NhHhy0iFZN9q1n
-IAXVYkylaIeq6hoC+Fo0NN0/ZNZRsV+s2qlzlaQkj8zQmyYqfN369rEDpTajwdlU
-JoOxFMsceOjeYMAEfCEfUeEBRom3lw==
-=mbzo
+iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmDkpEcACgkQwfwUeK3K
+7Ak4/gf+JPjwmTdMOBhuMe8ecxXY1LASOPn6raBvtbwdOTQTpuggYaNCNlkaVJAE
+HyLf68h68hyvV9vpIoID8AOmf9uXGwFBXlOzR/nHgHqauU/8HnbE2GH+wOywoCi8
+Tkzj2jT35NSYD0Cmtorpd0wmKVjEQuPqiv8px5gEqAMvtwp93P9dQwyKm7IPhUSf
+Ly8NwR3EsI/ng6nNulL+Z6d0tGg+RRvUj5mWp8YcIYePISvHdibi/lFHA6vTaWE7
+ZqLwQsajLZaY5r33EPGYZOxBPk809iKwh4Q5mfww37TTXySNeps2tFT7S6r4d6To
+OAUYwloDQSOqtVvuLc4PfxSTkToueQ==
+=o1F8
 -----END PGP SIGNATURE-----
 
---q2vlxiybuwkj6z7s--
+--2fjaqpmq47gf4tbn--
