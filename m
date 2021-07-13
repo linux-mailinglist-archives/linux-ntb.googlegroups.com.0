@@ -1,109 +1,109 @@
-Return-Path: <linux-ntb+bncBCX3TTWUQMPRBM6WW6DQMGQE7MWEDJA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCX3TTWUQMPRBNWWW6DQMGQEY6GJD7A@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ed1-x540.google.com (mail-ed1-x540.google.com [IPv6:2a00:1450:4864:20::540])
-	by mail.lfdr.de (Postfix) with ESMTPS id F18CB3C7717
-	for <lists+linux-ntb@lfdr.de>; Tue, 13 Jul 2021 21:36:19 +0200 (CEST)
-Received: by mail-ed1-x540.google.com with SMTP id c21-20020aa7d6150000b02903ab03a06e86sf637548edr.14
-        for <lists+linux-ntb@lfdr.de>; Tue, 13 Jul 2021 12:36:19 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1626204979; cv=pass;
+Received: from mail-lj1-x23f.google.com (mail-lj1-x23f.google.com [IPv6:2a00:1450:4864:20::23f])
+	by mail.lfdr.de (Postfix) with ESMTPS id 975B83C7719
+	for <lists+linux-ntb@lfdr.de>; Tue, 13 Jul 2021 21:36:23 +0200 (CEST)
+Received: by mail-lj1-x23f.google.com with SMTP id h10-20020a2eb0ea0000b029018b2ce5954fsf5357063ljl.7
+        for <lists+linux-ntb@lfdr.de>; Tue, 13 Jul 2021 12:36:23 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1626204983; cv=pass;
         d=google.com; s=arc-20160816;
-        b=B5DIIMMo7G270Rnrzf9Gcev6uEyi9co3u8T/2hwTtpbANl1nN7k/YGh7YlEXy13HM9
-         uig6RwC8178zjCRTQoffK0Kd4ZUBi7kgA5YWRM8EFRxdM8GdgTK9jRYGqhSSvdlWhpH3
-         LCreEW9eCm/grt6usk3vMMMnjseeycZr5Y6Qvl7C5nlGNRVUdewhciH3Db54rKbR44/m
-         OLRiDBmo0Pet/2DA87R/KPfGDIpGMzq3BM0mRkrHCin2i/VRxLLm7MTbmx//t3/HDg27
-         c5uMWmPmD/RcdCkQFJCd/cqSpeRWweqVue+PRZ/0qomXaa6hHOpOQDZ2M4kN/tglb9+8
-         z7og==
+        b=jGc5i/ajp4VJER6Phg+Rk8cHn0/u2qIEaq7ZM3Kx+L1Fz5wzhzB3fkqbyzbyj+hty0
+         fzspow1Wiyhbc4fp0Xvc1sU9RIsqL9pniyNom3uAR0v3Wyqt0EVaZ8ZC87+8swp6R50g
+         fAE6DccYkbn7BByAF/+phByTjZ8vL3bGVtedm36VvRwvk/hOsxvUeH7JWE4TbrmkCe6o
+         /c52WgGi9xAJbno38eO/bA7MUuqNiA606YUYXBHsn/VKUhQ3z3rrOGKjl+saI5HC3ALV
+         EFcB8Fw/mEMRCRoD34gMSXd1xohE/0sY8e2hP1rvZa+n0fBL3Q1eveKpDpGFVg7b+8ih
+         yGAg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:cc:to:from:sender
-         :dkim-signature;
-        bh=gohsJoN6naXyUhbb2BuVpFjbbKQgpmiOtY2w1vHriEs=;
-        b=E6g0Gf7vZRRQyFCBGdG7KdgEy5jiKBpANlHTHYv2muTuPT0ecqFQyHMoMXMdXhKodl
-         fkWhG12hosBwin97bUlz0hsTyfUZpzPuxHTac7xXt0PKSUmIRzucGsIo/fWCx4VEUCQu
-         TDo3a3hf4toxoq4ThAqf15osF8MGv3+9dAHQSkf8TA2JrBOvp4NcwENC87OTRz10FTgH
-         mYc+FLDGXt/PfvYGdSYRmTpfSnvyQXp7b5Z54lWPw1/VgYzT1kSkjN0DKr8BhogPFRsH
-         B8XUju8g6jTmqGbAQljNaKFyDJRlBZJW835HCNnPVHSKjh7Vp5oVUwU8J+RX+2/OcCOW
-         alfw==
+         :mime-version:references:in-reply-to:message-id:date:subject:cc:to
+         :from:sender:dkim-signature;
+        bh=y4McF9QNB15tXh3KkKD9gfM28inE/5L43/r0gVkweGs=;
+        b=HrwFxE+l2MOTHBW1/cTVxlH5/XwQM0dtaE0qSSU3QmNi2q+K4hP/3Li6m98mFJGu/F
+         qih6bLQ5bKeHt0U7+hC07BHYpQoohzqoeDh9Ctdce6Zb4biLEtiCElnn+kezpOiDHggK
+         WY739y4B2wGMWZ/3WnNWUOmMXZ5xd3GCXC8nzEYfR0V1qpLzmPcvWbqRn3ssw6LuJS4k
+         TlS19KUN0DA2wGLu0mJqdGpo1hDMDrpWnWszwWM/GOn0pVOvV/Jx9KJKtJWwgZfbAe35
+         cefyxJEp5Mmwh8Bhpb8f8LMXc6nRVby0HGbemTmjCwGM9W/pfRV5xNRRaxuMNIJJ32TO
+         17wQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
        spf=pass (google.com: domain of ukl@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) smtp.mailfrom=ukl@pengutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding:x-original-sender
+        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=gohsJoN6naXyUhbb2BuVpFjbbKQgpmiOtY2w1vHriEs=;
-        b=Ynb2jynFenkElwmG1UIeXNET8cdQcPW/Txbi1LjWBbPuUry9RHeI8WCwf1MP09YkvW
-         dVOxhaFGJlJKWv53lQ/kMzfUqIxPWn1oh4UEIO2uc/uSUncSzRAtClJaKkCH+9xPJloh
-         i+kippLoZ5b6BexnznSFAWPBcCVFqCIdeKyfKtt08PBycUoY8x+DXDFQo/7cqxbWgjVp
-         4riGbaHXlgW+8G63Jdvl8re2xisP+JQCbMfBlqZyInJEw9K5a2zV2PDN+q9lfrV52VGv
-         jsXJ11/xcrIsGobPkgjxtEdsepVHkdDFD/L1MjibJxQK4Ro2v3Z+wHV99firCVycLgYr
-         qBBA==
+        bh=y4McF9QNB15tXh3KkKD9gfM28inE/5L43/r0gVkweGs=;
+        b=UB4u0pH6kOeigbQMpHBqCPUvXsor+KL8IF+OLMNZ4JJD/UXNcbKP7MpB3Vszn39zZF
+         XLQ0TmL/uxtCMSRS0qLDD65WKoCjJA9Ir/ySSIvQxwmGmWcMNHAlpfJ5roLhQ55wITgA
+         tRnLP/yPZ/fyTv2aQ3+g43XoQdDjP+yS2t1n7MFmlvdNce97mhLnLCabT26Q7LiVQNAC
+         sETOBY7gdEnE5O/6EI3Lf+vg1nLXku8HxJnYkp2wF/BpThZ5vbEVqpjwnikyWnjCygym
+         MpwTXZ99hRq8hQcGQBQVFoifeH32U76BA2qw/7169UCDiIWx7Fvm+pg+kYc2zpgnwiNj
+         C6aw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
-         :mime-version:content-transfer-encoding:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=gohsJoN6naXyUhbb2BuVpFjbbKQgpmiOtY2w1vHriEs=;
-        b=FCBsmAvozXJeqPIuQA1/y2hPYKkEcI7xs5asArXurGa2V9yZpLdQGLSNkGuRIcB8WX
-         IqqeqAxIemFIFqOkv7sv2l6HkPgIDBaeC4a2EZb+fCpkjIhijDv+JVx46nzzbpAO7BNp
-         BpS22um1tUGk+hBb5ZfzQmbFbv70PYRnX1DPMiWiFHjyb757Ym4e1pr48c36nj+TE+WD
-         e5c8Wi2JWjlUxGnBMMLaKmQdYml5gryBhteWl4UPiOUWsjJtdNhTCVjHp86m8WRMRMuQ
-         brT7x8LKvDWs4uFtCfOxzZGEPpkr4cCPGrxeI/FaJ2sfRlGN4rpiUiiZln11HbW4eIX/
-         xlGA==
+         :in-reply-to:references:mime-version:content-transfer-encoding
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=y4McF9QNB15tXh3KkKD9gfM28inE/5L43/r0gVkweGs=;
+        b=I4Kigu3z+wwqBpQYTM4RmMkNE9t/8+J2sWMsRo46dCBwhQwLBI7wxDzzHnUzPmk6qg
+         HU8YkYa9KbHbqcwnRWFgpPktUBnq0bV7l7vI+75m8E0O6B7XD1EB15dtOJ51zpdFNawY
+         PSc8Sa88VFLixSSn5AfcvmNGAWJl7R8p45+ymaCx2eJi3O/fS8unarnjYFnONpClBxfD
+         D7kkpy12xg3Kb5ZLqYBHZWXFupcuEBfwYMaqd8x/vFIT4wxQ+esVPXXZFoTsSLKpBIOc
+         RVCe7hbYu1FBLkypUxrwLjVwhu3pVZ2yCjf0qJiUXe/yXasDSmwpqAThziEAawC3i9gC
+         lSMQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5315qn0y6G9VKVnMofeqZ6rK2/HsX1tPL+clqPZwLXBqWKyVdTjy
-	sa74cFlg0ucqK+zynF4FJ3E=
-X-Google-Smtp-Source: ABdhPJxWJO1HwTpI00u2PwjB2BMxBQp4C/y/kps7YbwOfTvXBjxcD6CVSRau13s3BZuwXzZbPqbMgA==
-X-Received: by 2002:a17:906:1fca:: with SMTP id e10mr7477463ejt.420.1626204979694;
-        Tue, 13 Jul 2021 12:36:19 -0700 (PDT)
+X-Gm-Message-State: AOAM530l1Ln+0ltu9HyO25/dq/8YBelMPd6ZrK4G+61pMbC4+V7p7WUI
+	KXynKV+4SorQarDXxIgntKk=
+X-Google-Smtp-Source: ABdhPJyyB65orf/7fww5Hb1eymCljR9UBa4zDU0zluMKkQjJlwtH6KdCPsPswWbmSb1rHeiSGAWjHg==
+X-Received: by 2002:a2e:5810:: with SMTP id m16mr5580389ljb.323.1626204983111;
+        Tue, 13 Jul 2021 12:36:23 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:906:aec5:: with SMTP id me5ls6182837ejb.3.gmail; Tue, 13
- Jul 2021 12:36:18 -0700 (PDT)
-X-Received: by 2002:a17:906:edc9:: with SMTP id sb9mr7342232ejb.99.1626204978759;
-        Tue, 13 Jul 2021 12:36:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626204978; cv=none;
+Received: by 2002:a05:651c:1a7:: with SMTP id c7ls4320500ljn.5.gmail; Tue, 13
+ Jul 2021 12:36:21 -0700 (PDT)
+X-Received: by 2002:a05:651c:10a3:: with SMTP id k3mr5460711ljn.451.1626204981860;
+        Tue, 13 Jul 2021 12:36:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1626204981; cv=none;
         d=google.com; s=arc-20160816;
-        b=dDHwfw0mKM6bo2DSBo9lhW2l5LrgsvICzMkC+2r54LjdrUcfwGDWFcFph8GrlUESr+
-         V+fYqbUgQZTBDPK9uTcN/h+GtAHr+BSgWT6tBOag9wNJbVwrEisA4ynZW6t93kp1z1TY
-         9uEV6Fqzie0j0dmWZ7l2/+PgkOqhQTIj2psYV1EGHbS7qU0ywquKfcf7rw0S34QSU6SZ
-         PdPEOQ3Cj3xn+UtXqgK543OdDQ7rN2CKf4k0WSE3a2xtnlwJ/dYlHA/VcxTOAyFMdTFv
-         +U5x40x/hgqICD5ZsTunIOUTla5m0WQ8zXZuKqDf3o1Z3JzAISn6b6EHUGDv4e9fvr7b
-         dyXQ==
+        b=GP8Dqq01MmCVCcFI1qS+8O/xrluhuy6uKCzBeztve8ChBaQqIQr5uJOi6+EKlEWMr+
+         N4S/jlQ47g2VSgEMGyc6hJcWB8LsiuvFChpQ/GfFdKNiUuy9y5FBzwadjgwVvcDfV9Dy
+         kMdh3bNlbWMMR5CP41YjPVBNBqYJBV0aQ7hRhYikteAiBtSAaP3UXW/wFY1cdq4u1+mf
+         Szrv+GOqDP+9YDMc/ZXYuy6snD61DC5Whw3tdMR2UEvVegaCxjUryxwum6bphkwnF9sU
+         8oxMI4OOpQVogVulJ72Lv3H4UIuAmKjTmOTJnHTPdQxFTY5TiUxCSAfSiv9SE46IGeWY
+         uQtg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=zJIGO4AtQVqUv6zSvE8Befr/+w3pBbY9BaIDMA6GILI=;
-        b=DVdKkMWB7UPyPwtYnTzKKlC8O+IDBA3VAGNmzuHgeJaruNxQbEbbnNT3cllqq6Fw2R
-         aG9TB4len2vuz+vlpYp9cpnmmqhKg0uo0d1qH9k9ndQlXzRc40BxNwHNHBTLUjtIQC7E
-         Kz1SbmKsPKdvMFDx+hSBMEmZPVP5bkLa9NzNYvHv9fhbVIPezC1ZgXO2bu+yY0HV7X/J
-         mdDBcEw6sUWM7yFpeU0Klh2UPhFlaW85Ez9nElY4svMRPLpZShufGvYccThQNcWjhcfW
-         AOFnvtWfrx0FENLP7iBpPQG8pDWUY48nxW7C49GDJWCZJg+D9UbCHhueUkFe45NCLegk
-         QIUw==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=fucKxID8t/2dVTayjzJNlkThdoJO9i7UTeEOXpHwDKE=;
+        b=E5q5t/tHwxcX1ezTn05mgm2cccVhzYpbK4Br7UAJkGPIxlvH8tibHi3Jdukgn+aCRF
+         7wZHHUGp7Byg9dyfqpn3ZnqHi3qS0Mh9OeKd3RN4RWghQeWYirci3heCchQYjZh1CRak
+         zzhUz9XDBhJK0I4ywkvaAFAR8AfoSp8aDWXP8muEGsIz2puk67Oxz5fLy19ZHGm4w2Cx
+         tWQHgzgp5N3X8fzeORkU7F/u9WOpD3Un8JAbJkEmXjINgImrhZirCVN/hMiykU/8gx+e
+         XjKR3HapMKFCUeLDbBL2dxL/yDKV2/zdDgwrb5esPAw1W7MmZHVul2gROojuSIOtJzrk
+         OYaA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
        spf=pass (google.com: domain of ukl@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) smtp.mailfrom=ukl@pengutronix.de
 Received: from metis.ext.pengutronix.de (metis.ext.pengutronix.de. [2001:67c:670:201:290:27ff:fe1d:cc33])
-        by gmr-mx.google.com with ESMTPS id be24si835356edb.1.2021.07.13.12.36.18
+        by gmr-mx.google.com with ESMTPS id d9si552691lji.3.2021.07.13.12.36.21
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 13 Jul 2021 12:36:18 -0700 (PDT)
+        Tue, 13 Jul 2021 12:36:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of ukl@pengutronix.de designates 2001:67c:670:201:290:27ff:fe1d:cc33 as permitted sender) client-ip=2001:67c:670:201:290:27ff:fe1d:cc33;
 Received: from drehscheibe.grey.stw.pengutronix.de ([2a0a:edc0:0:c01:1d::a2])
 	by metis.ext.pengutronix.de with esmtps (TLS1.3:ECDHE_RSA_AES_256_GCM_SHA384:256)
 	(Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1m3OBr-0001GT-RJ; Tue, 13 Jul 2021 21:35:35 +0200
+	id 1m3OBr-0001Hd-S2; Tue, 13 Jul 2021 21:35:35 +0200
 Received: from [2a0a:edc0:0:900:1d::77] (helo=ptz.office.stw.pengutronix.de)
 	by drehscheibe.grey.stw.pengutronix.de with esmtp (Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1m3OBi-0006p7-4I; Tue, 13 Jul 2021 21:35:26 +0200
+	id 1m3OBk-0006px-Ji; Tue, 13 Jul 2021 21:35:28 +0200
 Received: from ukl by ptz.office.stw.pengutronix.de with local (Exim 4.92)
 	(envelope-from <ukl@pengutronix.de>)
-	id 1m3OBh-0002bU-W6; Tue, 13 Jul 2021 21:35:25 +0200
+	id 1m3OBj-0002f5-Cb; Tue, 13 Jul 2021 21:35:27 +0200
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig?= <u.kleine-koenig@pengutronix.de>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 Cc: kernel@pengutronix.de,
@@ -136,14 +136,12 @@ Cc: kernel@pengutronix.de,
 	Dexuan Cui <decui@microsoft.com>,
 	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
 	Dominik Brodowski <linux@dominikbrodowski.net>,
-	Eric Farman <farman@linux.ibm.com>,
 	Finn Thain <fthain@linux-m68k.org>,
 	Florian Fainelli <f.fainelli@gmail.com>,
 	Frank Li <lznuaa@gmail.com>,
 	Geert Uytterhoeven <geert@linux-m68k.org>,
 	Geoff Levand <geoff@infradead.org>,
 	Haiyang Zhang <haiyangz@microsoft.com>,
-	Halil Pasic <pasic@linux.ibm.com>,
 	Hannes Reinecke <hare@suse.de>,
 	Hans de Goede <hdegoede@redhat.com>,
 	Harald Freudenberger <freude@linux.ibm.com>,
@@ -181,7 +179,6 @@ Cc: kernel@pengutronix.de,
 	"Martin K. Petersen" <martin.petersen@oracle.com>,
 	Martyn Welch <martyn@welchs.me.uk>,
 	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
 	Matt Porter <mporter@kernel.crashing.org>,
 	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Maxime Ripard <mripard@kernel.org>,
@@ -275,13 +272,19 @@ Cc: kernel@pengutronix.de,
 	sparclinux@vger.kernel.org,
 	target-devel@vger.kernel.org,
 	virtualization@lists.linux-foundation.org,
-	xen-devel@lists.xenproject.org
-Subject: [PATCH v4 0/5] bus: Make remove callback return void
-Date: Tue, 13 Jul 2021 21:35:17 +0200
-Message-Id: <20210713193522.1770306-1-u.kleine-koenig@pengutronix.de>
+	xen-devel@lists.xenproject.org,
+	Johannes Thumshirn <jth@kernel.org>,
+	"Rafael J . Wysocki" <rafael@kernel.org>
+Subject: [PATCH v4 5/5] bus: Make remove callback return void
+Date: Tue, 13 Jul 2021 21:35:22 +0200
+Message-Id: <20210713193522.1770306-6-u.kleine-koenig@pengutronix.de>
 X-Mailer: git-send-email 2.30.2
+In-Reply-To: <20210713193522.1770306-1-u.kleine-koenig@pengutronix.de>
+References: <20210713193522.1770306-1-u.kleine-koenig@pengutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
+X-Patch-Hashes: v=1; h=sha256; i=nwraWdwDJwSCf/PVA+pCJjcxHppjqX/HTinL8xamX9o=; m=ziH5qs3H2jnGskCKzejNXaENxMH8EgSJcO+tV5Q1Ac8=; p=kdJYwoRZCRKNyxlGyoapK+yxaytciBs/cGQdjGSOeUI=; g=4381be49bc13f37b6c5b14275d44d3be31edf21e
+X-Patch-Sig: m=pgp; i=uwe@kleine-koenig.org; s=0x0D2511F322BFAB1C1580266BE2DCDD9132669BD6; b=iQEzBAABCgAdFiEEfnIqFpAYrP8+dKQLwfwUeK3K7AkFAmDt6t4ACgkQwfwUeK3K7AlsHwgAijO oHwzFuAFEEZKrqPJFx8mx9ZjwAivcLC87p92gRFS6qR4iUcqbTBxv77UQghsR8xgrgXWbErtQe8ki RD4F9YDFakvuiajjbLM3hSQD6jZHoo5jiTOxuviHGsyDJBin3g8t1Ke0IoNSQ2l69ETHFoej1UUvN YnW4ia052+/c4HVtM+SgusOto8tNftDZMMWtj4O8phZexuiKsNdsaOhZoNJ2BFlg7gCB+vcLu3lCe D3WUn2R+5OHtVtZU3UDeCWct1PbCCxYvKZ11BYcUrwMVxVo1QtkcOuLfsWALZfV4p++x1IU3tA2Ho lQ8bYZWIdckKOfWg9oSien2r3XkeChQ==
 Content-Transfer-Encoding: quoted-printable
 X-SA-Exim-Connect-IP: 2a0a:edc0:0:c01:1d::a2
 X-SA-Exim-Mail-From: ukl@pengutronix.de
@@ -303,46 +306,62 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Hello,
+The driver core ignores the return value of this callback because there
+is only little it can do when a device disappears.
 
-this is v4 of the final patch set for my effort to make struct
-bus_type::remove return void.
+This is the final bit of a long lasting cleanup quest where several
+buses were converted to also return void from their remove callback.
+Additionally some resource leaks were fixed that were caused by drivers
+returning an error code in the expectation that the driver won't go
+away.
 
-The first four patches contain cleanups that make some of these
-callbacks (more obviously) always return 0. They are acked by the
-respective maintainers. Bjorn Helgaas explicitly asked to include the
-pci patch (#1) into this series, so Greg taking this is fine. I assume
-the s390 people are fine with Greg taking patches #2 to #4, too, they
-didn't explicitly said so though.
+With struct bus_type::remove returning void it's prevented that newly
+implemented buses return an ignored error code and so don't anticipate
+wrong expectations for driver authors.
 
-The last patch actually changes the prototype and so touches quite some
-drivers and has the potential to conflict with future developments, so I
-consider it beneficial to put these patches into next soon. I expect
-that it will be Greg who takes the complete series, he already confirmed
-via irc (for v2) to look into this series.
-
-The only change compared to v3 is in the fourth patch where I modified a
-few more drivers to fix build failures. Some of them were found by build
-bots (thanks!), some of them I found myself using a regular expression
-search. The newly modified files are:
-
- arch/sparc/kernel/vio.c
- drivers/nubus/bus.c
- drivers/sh/superhyway/superhyway.c
- drivers/vlynq/vlynq.c
- drivers/zorro/zorro-driver.c
- sound/ac97/bus.c
-
-Best regards
-Uwe
-
-Uwe Kleine-K=C3=B6nig (5):
-  PCI: endpoint: Make struct pci_epf_driver::remove return void
-  s390/cio: Make struct css_driver::remove return void
-  s390/ccwgroup: Drop if with an always false condition
-  s390/scm: Make struct scm_driver::remove return void
-  bus: Make remove callback return void
-
+Acked-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk> (For ARM, Amba=
+ and related parts)
+Acked-by: Mark Brown <broonie@kernel.org>
+Acked-by: Chen-Yu Tsai <wens@csie.org> (for sunxi-rsb)
+Acked-by: Pali Roh=C3=A1r <pali@kernel.org>
+Acked-by: Mauro Carvalho Chehab <mchehab@kernel.org> (for media)
+Acked-by: Hans de Goede <hdegoede@redhat.com> (For drivers/platform)
+Acked-by: Alexandre Belloni <alexandre.belloni@bootlin.com>
+Acked-By: Vinod Koul <vkoul@kernel.org>
+Acked-by: Juergen Gross <jgross@suse.com> (For xen)
+Acked-by: Lee Jones <lee.jones@linaro.org> (For mfd)
+Acked-by: Johannes Thumshirn <jth@kernel.org> (For mcb)
+Acked-by: Johan Hovold <johan@kernel.org>
+Acked-by: Srinivas Kandagatla <srinivas.kandagatla@linaro.org> (For slimbus=
+)
+Acked-by: Kirti Wankhede <kwankhede@nvidia.com> (For vfio)
+Acked-by: Maximilian Luz <luzmaximilian@gmail.com>
+Acked-by: Heikki Krogerus <heikki.krogerus@linux.intel.com> (For ulpi and t=
+ypec)
+Acked-by: Samuel Iglesias Gons=C3=A1lvez <siglesias@igalia.com> (For ipack)
+Reviewed-by: Tom Rix <trix@redhat.com> (For fpga)
+Acked-by: Geoff Levand <geoff@infradead.org> (For ps3)
+Acked-by: Yehezkel Bernat <YehezkelShB@gmail.com> (For thunderbolt)
+Reviewed-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+Acked-by: Alexander Shishkin <alexander.shishkin@linux.intel.com> (For inte=
+l_th)
+Acked-by: Dominik Brodowski <linux@dominikbrodowski.net> (For pcmcia)
+Reviewed-by: Cornelia Huck <cohuck@redhat.com> (For drivers/s390 and driver=
+s/vfio)
+Acked-by: Rafael J. Wysocki <rafael@kernel.org> (For ACPI)
+Acked-by: Bjorn Andersson <bjorn.andersson@linaro.org> (rpmsg and apr)
+Acked-by: Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com> (For in=
+tel-ish-hid)
+Acked-by: Dan Williams <dan.j.williams@intel.com> (For CXL, DAX, and NVDIMM=
+)
+Acked-by: William Breathitt Gray <vilhelm.gray@gmail.com> (For isa)
+Acked-by: Stefan Richter <stefanr@s5r6.in-berlin.de> (For firewire)
+Acked-by: Benjamin Tissoires <benjamin.tissoires@redhat.com> (For hid)
+Acked-by: Thorsten Scherer <t.scherer@eckelmann.de> (For siox)
+Acked-by: Sven Van Asbroeck <TheSven73@gmail.com> (For anybuss)
+Acked-by: Ulf Hansson <ulf.hansson@linaro.org> (For MMC)
+Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@pengutronix.de>
+---
  arch/arm/common/locomo.c                  | 3 +--
  arch/arm/common/sa1111.c                  | 4 +---
  arch/arm/mach-rpc/ecard.c                 | 4 +---
@@ -351,7 +370,6 @@ Uwe Kleine-K=C3=B6nig (5):
  arch/powerpc/platforms/ps3/system-bus.c   | 3 +--
  arch/powerpc/platforms/pseries/ibmebus.c  | 3 +--
  arch/powerpc/platforms/pseries/vio.c      | 3 +--
- arch/s390/include/asm/eadm.h              | 2 +-
  arch/sparc/kernel/vio.c                   | 4 +---
  drivers/acpi/bus.c                        | 3 +--
  drivers/amba/bus.c                        | 4 +---
@@ -390,7 +408,7 @@ Uwe Kleine-K=C3=B6nig (5):
  drivers/ntb/ntb_transport.c               | 4 +---
  drivers/nubus/bus.c                       | 6 ++----
  drivers/nvdimm/bus.c                      | 3 +--
- drivers/pci/endpoint/pci-epf-core.c       | 7 ++-----
+ drivers/pci/endpoint/pci-epf-core.c       | 4 +---
  drivers/pci/pci-driver.c                  | 3 +--
  drivers/pcmcia/ds.c                       | 4 +---
  drivers/platform/surface/aggregator/bus.c | 4 +---
@@ -398,15 +416,10 @@ Uwe Kleine-K=C3=B6nig (5):
  drivers/pnp/driver.c                      | 3 +--
  drivers/rapidio/rio-driver.c              | 4 +---
  drivers/rpmsg/rpmsg_core.c                | 7 ++-----
- drivers/s390/block/scm_drv.c              | 4 +---
- drivers/s390/cio/ccwgroup.c               | 6 +-----
- drivers/s390/cio/chsc_sch.c               | 3 +--
- drivers/s390/cio/css.c                    | 7 +++----
- drivers/s390/cio/css.h                    | 2 +-
- drivers/s390/cio/device.c                 | 9 +++------
- drivers/s390/cio/eadm_sch.c               | 4 +---
- drivers/s390/cio/scm.c                    | 5 +++--
- drivers/s390/cio/vfio_ccw_drv.c           | 3 +--
+ drivers/s390/cio/ccwgroup.c               | 4 +---
+ drivers/s390/cio/css.c                    | 4 +---
+ drivers/s390/cio/device.c                 | 4 +---
+ drivers/s390/cio/scm.c                    | 4 +---
  drivers/s390/crypto/ap_bus.c              | 4 +---
  drivers/scsi/scsi_debug.c                 | 3 +--
  drivers/sh/superhyway/superhyway.c        | 8 ++------
@@ -433,13 +446,1896 @@ Uwe Kleine-K=C3=B6nig (5):
  drivers/xen/xenbus/xenbus_probe.c         | 4 +---
  drivers/zorro/zorro-driver.c              | 3 +--
  include/linux/device/bus.h                | 2 +-
- include/linux/pci-epf.h                   | 2 +-
  sound/ac97/bus.c                          | 6 ++----
  sound/aoa/soundbus/core.c                 | 4 +---
- 93 files changed, 107 insertions(+), 263 deletions(-)
+ 86 files changed, 93 insertions(+), 243 deletions(-)
 
-
-base-commit: e73f0f0ee7541171d89f2e2491130c7771ba58d3
+diff --git a/arch/arm/common/locomo.c b/arch/arm/common/locomo.c
+index e45f4e4e06b6..24d21ba63030 100644
+--- a/arch/arm/common/locomo.c
++++ b/arch/arm/common/locomo.c
+@@ -834,14 +834,13 @@ static int locomo_bus_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int locomo_bus_remove(struct device *dev)
++static void locomo_bus_remove(struct device *dev)
+ {
+ 	struct locomo_dev *ldev =3D LOCOMO_DEV(dev);
+ 	struct locomo_driver *drv =3D LOCOMO_DRV(dev->driver);
+=20
+ 	if (drv->remove)
+ 		drv->remove(ldev);
+-	return 0;
+ }
+=20
+ struct bus_type locomo_bus_type =3D {
+diff --git a/arch/arm/common/sa1111.c b/arch/arm/common/sa1111.c
+index ff5e0d04cb89..092a2ebc0c28 100644
+--- a/arch/arm/common/sa1111.c
++++ b/arch/arm/common/sa1111.c
+@@ -1364,15 +1364,13 @@ static int sa1111_bus_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int sa1111_bus_remove(struct device *dev)
++static void sa1111_bus_remove(struct device *dev)
+ {
+ 	struct sa1111_dev *sadev =3D to_sa1111_device(dev);
+ 	struct sa1111_driver *drv =3D SA1111_DRV(dev->driver);
+=20
+ 	if (drv->remove)
+ 		drv->remove(sadev);
+-
+-	return 0;
+ }
+=20
+ struct bus_type sa1111_bus_type =3D {
+diff --git a/arch/arm/mach-rpc/ecard.c b/arch/arm/mach-rpc/ecard.c
+index 827b50f1c73e..53813f9464a2 100644
+--- a/arch/arm/mach-rpc/ecard.c
++++ b/arch/arm/mach-rpc/ecard.c
+@@ -1052,7 +1052,7 @@ static int ecard_drv_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int ecard_drv_remove(struct device *dev)
++static void ecard_drv_remove(struct device *dev)
+ {
+ 	struct expansion_card *ec =3D ECARD_DEV(dev);
+ 	struct ecard_driver *drv =3D ECARD_DRV(dev->driver);
+@@ -1067,8 +1067,6 @@ static int ecard_drv_remove(struct device *dev)
+ 	ec->ops =3D &ecard_default_ops;
+ 	barrier();
+ 	ec->irq_data =3D NULL;
+-
+-	return 0;
+ }
+=20
+ /*
+diff --git a/arch/mips/sgi-ip22/ip22-gio.c b/arch/mips/sgi-ip22/ip22-gio.c
+index de0768a49ee8..dfc52f661ad0 100644
+--- a/arch/mips/sgi-ip22/ip22-gio.c
++++ b/arch/mips/sgi-ip22/ip22-gio.c
+@@ -143,14 +143,13 @@ static int gio_device_probe(struct device *dev)
+ 	return error;
+ }
+=20
+-static int gio_device_remove(struct device *dev)
++static void gio_device_remove(struct device *dev)
+ {
+ 	struct gio_device *gio_dev =3D to_gio_device(dev);
+ 	struct gio_driver *drv =3D to_gio_driver(dev->driver);
+=20
+ 	if (dev->driver && drv->remove)
+ 		drv->remove(gio_dev);
+-	return 0;
+ }
+=20
+ static void gio_device_shutdown(struct device *dev)
+diff --git a/arch/parisc/kernel/drivers.c b/arch/parisc/kernel/drivers.c
+index 80fa0650736b..776d624a7207 100644
+--- a/arch/parisc/kernel/drivers.c
++++ b/arch/parisc/kernel/drivers.c
+@@ -133,14 +133,13 @@ static int parisc_driver_probe(struct device *dev)
+ 	return rc;
+ }
+=20
+-static int __exit parisc_driver_remove(struct device *dev)
++static void __exit parisc_driver_remove(struct device *dev)
+ {
+ 	struct parisc_device *pa_dev =3D to_parisc_device(dev);
+ 	struct parisc_driver *pa_drv =3D to_parisc_driver(dev->driver);
++
+ 	if (pa_drv->remove)
+ 		pa_drv->remove(pa_dev);
+-
+-	return 0;
+ }
+ =09
+=20
+diff --git a/arch/powerpc/platforms/ps3/system-bus.c b/arch/powerpc/platfor=
+ms/ps3/system-bus.c
+index 1a5665875165..cc5774c64fae 100644
+--- a/arch/powerpc/platforms/ps3/system-bus.c
++++ b/arch/powerpc/platforms/ps3/system-bus.c
+@@ -381,7 +381,7 @@ static int ps3_system_bus_probe(struct device *_dev)
+ 	return result;
+ }
+=20
+-static int ps3_system_bus_remove(struct device *_dev)
++static void ps3_system_bus_remove(struct device *_dev)
+ {
+ 	struct ps3_system_bus_device *dev =3D ps3_dev_to_system_bus_dev(_dev);
+ 	struct ps3_system_bus_driver *drv;
+@@ -399,7 +399,6 @@ static int ps3_system_bus_remove(struct device *_dev)
+ 			__func__, __LINE__, drv->core.name);
+=20
+ 	pr_debug(" <- %s:%d: %s\n", __func__, __LINE__, dev_name(&dev->core));
+-	return 0;
+ }
+=20
+ static void ps3_system_bus_shutdown(struct device *_dev)
+diff --git a/arch/powerpc/platforms/pseries/ibmebus.c b/arch/powerpc/platfo=
+rms/pseries/ibmebus.c
+index c6c79ef55e13..7ee3ed7d6cc2 100644
+--- a/arch/powerpc/platforms/pseries/ibmebus.c
++++ b/arch/powerpc/platforms/pseries/ibmebus.c
+@@ -366,14 +366,13 @@ static int ibmebus_bus_device_probe(struct device *de=
+v)
+ 	return error;
+ }
+=20
+-static int ibmebus_bus_device_remove(struct device *dev)
++static void ibmebus_bus_device_remove(struct device *dev)
+ {
+ 	struct platform_device *of_dev =3D to_platform_device(dev);
+ 	struct platform_driver *drv =3D to_platform_driver(dev->driver);
+=20
+ 	if (dev->driver && drv->remove)
+ 		drv->remove(of_dev);
+-	return 0;
+ }
+=20
+ static void ibmebus_bus_device_shutdown(struct device *dev)
+diff --git a/arch/powerpc/platforms/pseries/vio.c b/arch/powerpc/platforms/=
+pseries/vio.c
+index e00f3725ec96..58283cecbd52 100644
+--- a/arch/powerpc/platforms/pseries/vio.c
++++ b/arch/powerpc/platforms/pseries/vio.c
+@@ -1257,7 +1257,7 @@ static int vio_bus_probe(struct device *dev)
+ }
+=20
+ /* convert from struct device to struct vio_dev and pass to driver. */
+-static int vio_bus_remove(struct device *dev)
++static void vio_bus_remove(struct device *dev)
+ {
+ 	struct vio_dev *viodev =3D to_vio_dev(dev);
+ 	struct vio_driver *viodrv =3D to_vio_driver(dev->driver);
+@@ -1276,7 +1276,6 @@ static int vio_bus_remove(struct device *dev)
+ 		vio_cmo_bus_remove(viodev);
+=20
+ 	put_device(devptr);
+-	return 0;
+ }
+=20
+ static void vio_bus_shutdown(struct device *dev)
+diff --git a/arch/sparc/kernel/vio.c b/arch/sparc/kernel/vio.c
+index 348a88691219..01122a208f94 100644
+--- a/arch/sparc/kernel/vio.c
++++ b/arch/sparc/kernel/vio.c
+@@ -93,7 +93,7 @@ static int vio_device_probe(struct device *dev)
+ 	return drv->probe(vdev, id);
+ }
+=20
+-static int vio_device_remove(struct device *dev)
++static void vio_device_remove(struct device *dev)
+ {
+ 	struct vio_dev *vdev =3D to_vio_dev(dev);
+ 	struct vio_driver *drv =3D to_vio_driver(dev->driver);
+@@ -107,8 +107,6 @@ static int vio_device_remove(struct device *dev)
+=20
+ 		drv->remove(vdev);
+ 	}
+-
+-	return 0;
+ }
+=20
+ static ssize_t devspec_show(struct device *dev,
+diff --git a/drivers/acpi/bus.c b/drivers/acpi/bus.c
+index f854bcb8d010..b941555cb5e4 100644
+--- a/drivers/acpi/bus.c
++++ b/drivers/acpi/bus.c
+@@ -1019,7 +1019,7 @@ static int acpi_device_probe(struct device *dev)
+ 	return 0;
+ }
+=20
+-static int acpi_device_remove(struct device *dev)
++static void acpi_device_remove(struct device *dev)
+ {
+ 	struct acpi_device *acpi_dev =3D to_acpi_device(dev);
+ 	struct acpi_driver *acpi_drv =3D acpi_dev->driver;
+@@ -1034,7 +1034,6 @@ static int acpi_device_remove(struct device *dev)
+ 	acpi_dev->driver_data =3D NULL;
+=20
+ 	put_device(dev);
+-	return 0;
+ }
+=20
+ struct bus_type acpi_bus_type =3D {
+diff --git a/drivers/amba/bus.c b/drivers/amba/bus.c
+index 939ca220bf78..962041148482 100644
+--- a/drivers/amba/bus.c
++++ b/drivers/amba/bus.c
+@@ -219,7 +219,7 @@ static int amba_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int amba_remove(struct device *dev)
++static void amba_remove(struct device *dev)
+ {
+ 	struct amba_device *pcdev =3D to_amba_device(dev);
+ 	struct amba_driver *drv =3D to_amba_driver(dev->driver);
+@@ -236,8 +236,6 @@ static int amba_remove(struct device *dev)
+=20
+ 	amba_put_disable_pclk(pcdev);
+ 	dev_pm_domain_detach(dev, true);
+-
+-	return 0;
+ }
+=20
+ static void amba_shutdown(struct device *dev)
+diff --git a/drivers/base/auxiliary.c b/drivers/base/auxiliary.c
+index adc199dfba3c..0c86f5bed9f4 100644
+--- a/drivers/base/auxiliary.c
++++ b/drivers/base/auxiliary.c
+@@ -79,7 +79,7 @@ static int auxiliary_bus_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int auxiliary_bus_remove(struct device *dev)
++static void auxiliary_bus_remove(struct device *dev)
+ {
+ 	struct auxiliary_driver *auxdrv =3D to_auxiliary_drv(dev->driver);
+ 	struct auxiliary_device *auxdev =3D to_auxiliary_dev(dev);
+@@ -87,8 +87,6 @@ static int auxiliary_bus_remove(struct device *dev)
+ 	if (auxdrv->remove)
+ 		auxdrv->remove(auxdev);
+ 	dev_pm_domain_detach(dev, true);
+-
+-	return 0;
+ }
+=20
+ static void auxiliary_bus_shutdown(struct device *dev)
+diff --git a/drivers/base/isa.c b/drivers/base/isa.c
+index aa4737667026..55e3ee2da98f 100644
+--- a/drivers/base/isa.c
++++ b/drivers/base/isa.c
+@@ -46,14 +46,12 @@ static int isa_bus_probe(struct device *dev)
+ 	return 0;
+ }
+=20
+-static int isa_bus_remove(struct device *dev)
++static void isa_bus_remove(struct device *dev)
+ {
+ 	struct isa_driver *isa_driver =3D dev->platform_data;
+=20
+ 	if (isa_driver && isa_driver->remove)
+ 		isa_driver->remove(dev, to_isa_dev(dev)->id);
+-
+-	return 0;
+ }
+=20
+ static void isa_bus_shutdown(struct device *dev)
+diff --git a/drivers/base/platform.c b/drivers/base/platform.c
+index 8640578f45e9..a94b7f454881 100644
+--- a/drivers/base/platform.c
++++ b/drivers/base/platform.c
+@@ -1438,7 +1438,7 @@ static int platform_probe(struct device *_dev)
+ 	return ret;
+ }
+=20
+-static int platform_remove(struct device *_dev)
++static void platform_remove(struct device *_dev)
+ {
+ 	struct platform_driver *drv =3D to_platform_driver(_dev->driver);
+ 	struct platform_device *dev =3D to_platform_device(_dev);
+@@ -1450,8 +1450,6 @@ static int platform_remove(struct device *_dev)
+ 			dev_warn(_dev, "remove callback returned a non-zero value. This will be=
+ ignored.\n");
+ 	}
+ 	dev_pm_domain_detach(_dev, true);
+-
+-	return 0;
+ }
+=20
+ static void platform_shutdown(struct device *_dev)
+diff --git a/drivers/bcma/main.c b/drivers/bcma/main.c
+index 6535614a7dc1..e076630d17bd 100644
+--- a/drivers/bcma/main.c
++++ b/drivers/bcma/main.c
+@@ -27,7 +27,7 @@ static DEFINE_MUTEX(bcma_buses_mutex);
+=20
+ static int bcma_bus_match(struct device *dev, struct device_driver *drv);
+ static int bcma_device_probe(struct device *dev);
+-static int bcma_device_remove(struct device *dev);
++static void bcma_device_remove(struct device *dev);
+ static int bcma_device_uevent(struct device *dev, struct kobj_uevent_env *=
+env);
+=20
+ static ssize_t manuf_show(struct device *dev, struct device_attribute *att=
+r, char *buf)
+@@ -614,7 +614,7 @@ static int bcma_device_probe(struct device *dev)
+ 	return err;
+ }
+=20
+-static int bcma_device_remove(struct device *dev)
++static void bcma_device_remove(struct device *dev)
+ {
+ 	struct bcma_device *core =3D container_of(dev, struct bcma_device, dev);
+ 	struct bcma_driver *adrv =3D container_of(dev->driver, struct bcma_driver=
+,
+@@ -623,8 +623,6 @@ static int bcma_device_remove(struct device *dev)
+ 	if (adrv->remove)
+ 		adrv->remove(core);
+ 	put_device(dev);
+-
+-	return 0;
+ }
+=20
+ static int bcma_device_uevent(struct device *dev, struct kobj_uevent_env *=
+env)
+diff --git a/drivers/bus/sunxi-rsb.c b/drivers/bus/sunxi-rsb.c
+index d46db132d085..6f225dddc74f 100644
+--- a/drivers/bus/sunxi-rsb.c
++++ b/drivers/bus/sunxi-rsb.c
+@@ -169,13 +169,11 @@ static int sunxi_rsb_device_probe(struct device *dev)
+ 	return drv->probe(rdev);
+ }
+=20
+-static int sunxi_rsb_device_remove(struct device *dev)
++static void sunxi_rsb_device_remove(struct device *dev)
+ {
+ 	const struct sunxi_rsb_driver *drv =3D to_sunxi_rsb_driver(dev->driver);
+=20
+ 	drv->remove(to_sunxi_rsb_device(dev));
+-
+-	return 0;
+ }
+=20
+ static struct bus_type sunxi_rsb_bus =3D {
+diff --git a/drivers/cxl/core.c b/drivers/cxl/core.c
+index a2e4d54fc7bc..2b90b7c3b9d7 100644
+--- a/drivers/cxl/core.c
++++ b/drivers/cxl/core.c
+@@ -1034,13 +1034,12 @@ static int cxl_bus_probe(struct device *dev)
+ 	return to_cxl_drv(dev->driver)->probe(dev);
+ }
+=20
+-static int cxl_bus_remove(struct device *dev)
++static void cxl_bus_remove(struct device *dev)
+ {
+ 	struct cxl_driver *cxl_drv =3D to_cxl_drv(dev->driver);
+=20
+ 	if (cxl_drv->remove)
+ 		cxl_drv->remove(dev);
+-	return 0;
+ }
+=20
+ struct bus_type cxl_bus_type =3D {
+diff --git a/drivers/dax/bus.c b/drivers/dax/bus.c
+index 5aee26e1bbd6..6cc4da4c713d 100644
+--- a/drivers/dax/bus.c
++++ b/drivers/dax/bus.c
+@@ -172,15 +172,13 @@ static int dax_bus_probe(struct device *dev)
+ 	return 0;
+ }
+=20
+-static int dax_bus_remove(struct device *dev)
++static void dax_bus_remove(struct device *dev)
+ {
+ 	struct dax_device_driver *dax_drv =3D to_dax_drv(dev->driver);
+ 	struct dev_dax *dev_dax =3D to_dev_dax(dev);
+=20
+ 	if (dax_drv->remove)
+ 		dax_drv->remove(dev_dax);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type dax_bus_type =3D {
+diff --git a/drivers/dma/idxd/sysfs.c b/drivers/dma/idxd/sysfs.c
+index 0460d58e3941..5a017c62c752 100644
+--- a/drivers/dma/idxd/sysfs.c
++++ b/drivers/dma/idxd/sysfs.c
+@@ -260,7 +260,7 @@ static void disable_wq(struct idxd_wq *wq)
+ 	dev_info(dev, "wq %s disabled\n", dev_name(&wq->conf_dev));
+ }
+=20
+-static int idxd_config_bus_remove(struct device *dev)
++static void idxd_config_bus_remove(struct device *dev)
+ {
+ 	int rc;
+=20
+@@ -305,8 +305,6 @@ static int idxd_config_bus_remove(struct device *dev)
+ 			dev_info(dev, "Device %s disabled\n", dev_name(dev));
+=20
+ 	}
+-
+-	return 0;
+ }
+=20
+ static void idxd_config_bus_shutdown(struct device *dev)
+diff --git a/drivers/firewire/core-device.c b/drivers/firewire/core-device.=
+c
+index 68216988391f..90ed8fdaba75 100644
+--- a/drivers/firewire/core-device.c
++++ b/drivers/firewire/core-device.c
+@@ -187,14 +187,12 @@ static int fw_unit_probe(struct device *dev)
+ 	return driver->probe(fw_unit(dev), unit_match(dev, dev->driver));
+ }
+=20
+-static int fw_unit_remove(struct device *dev)
++static void fw_unit_remove(struct device *dev)
+ {
+ 	struct fw_driver *driver =3D
+ 			container_of(dev->driver, struct fw_driver, driver);
+=20
+ 	driver->remove(fw_unit(dev));
+-
+-	return 0;
+ }
+=20
+ static int get_modalias(struct fw_unit *unit, char *buffer, size_t buffer_=
+size)
+diff --git a/drivers/firmware/arm_scmi/bus.c b/drivers/firmware/arm_scmi/bu=
+s.c
+index 784cf0027da3..2682c3df651c 100644
+--- a/drivers/firmware/arm_scmi/bus.c
++++ b/drivers/firmware/arm_scmi/bus.c
+@@ -116,15 +116,13 @@ static int scmi_dev_probe(struct device *dev)
+ 	return scmi_drv->probe(scmi_dev);
+ }
+=20
+-static int scmi_dev_remove(struct device *dev)
++static void scmi_dev_remove(struct device *dev)
+ {
+ 	struct scmi_driver *scmi_drv =3D to_scmi_driver(dev->driver);
+ 	struct scmi_device *scmi_dev =3D to_scmi_dev(dev);
+=20
+ 	if (scmi_drv->remove)
+ 		scmi_drv->remove(scmi_dev);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type scmi_bus_type =3D {
+diff --git a/drivers/firmware/google/coreboot_table.c b/drivers/firmware/go=
+ogle/coreboot_table.c
+index dc83ea118c67..c52bcaa9def6 100644
+--- a/drivers/firmware/google/coreboot_table.c
++++ b/drivers/firmware/google/coreboot_table.c
+@@ -44,15 +44,13 @@ static int coreboot_bus_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int coreboot_bus_remove(struct device *dev)
++static void coreboot_bus_remove(struct device *dev)
+ {
+ 	struct coreboot_device *device =3D CB_DEV(dev);
+ 	struct coreboot_driver *driver =3D CB_DRV(dev->driver);
+=20
+ 	if (driver->remove)
+ 		driver->remove(device);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type coreboot_bus_type =3D {
+diff --git a/drivers/fpga/dfl.c b/drivers/fpga/dfl.c
+index 511b20ff35a3..1ae6779a0dd6 100644
+--- a/drivers/fpga/dfl.c
++++ b/drivers/fpga/dfl.c
+@@ -284,15 +284,13 @@ static int dfl_bus_probe(struct device *dev)
+ 	return ddrv->probe(ddev);
+ }
+=20
+-static int dfl_bus_remove(struct device *dev)
++static void dfl_bus_remove(struct device *dev)
+ {
+ 	struct dfl_driver *ddrv =3D to_dfl_drv(dev->driver);
+ 	struct dfl_device *ddev =3D to_dfl_dev(dev);
+=20
+ 	if (ddrv->remove)
+ 		ddrv->remove(ddev);
+-
+-	return 0;
+ }
+=20
+ static int dfl_bus_uevent(struct device *dev, struct kobj_uevent_env *env)
+diff --git a/drivers/hid/hid-core.c b/drivers/hid/hid-core.c
+index 7db332139f7d..dbed2524fd47 100644
+--- a/drivers/hid/hid-core.c
++++ b/drivers/hid/hid-core.c
+@@ -2302,7 +2302,7 @@ static int hid_device_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int hid_device_remove(struct device *dev)
++static void hid_device_remove(struct device *dev)
+ {
+ 	struct hid_device *hdev =3D to_hid_device(dev);
+ 	struct hid_driver *hdrv;
+@@ -2322,8 +2322,6 @@ static int hid_device_remove(struct device *dev)
+=20
+ 	if (!hdev->io_started)
+ 		up(&hdev->driver_input_lock);
+-
+-	return 0;
+ }
+=20
+ static ssize_t modalias_show(struct device *dev, struct device_attribute *=
+a,
+diff --git a/drivers/hid/intel-ish-hid/ishtp/bus.c b/drivers/hid/intel-ish-=
+hid/ishtp/bus.c
+index f0802b047ed8..8a51bd9cd093 100644
+--- a/drivers/hid/intel-ish-hid/ishtp/bus.c
++++ b/drivers/hid/intel-ish-hid/ishtp/bus.c
+@@ -255,7 +255,7 @@ static int ishtp_cl_bus_match(struct device *dev, struc=
+t device_driver *drv)
+  *
+  * Return: Return value from driver remove() call.
+  */
+-static int ishtp_cl_device_remove(struct device *dev)
++static void ishtp_cl_device_remove(struct device *dev)
+ {
+ 	struct ishtp_cl_device *device =3D to_ishtp_cl_device(dev);
+ 	struct ishtp_cl_driver *driver =3D to_ishtp_cl_driver(dev->driver);
+@@ -267,8 +267,6 @@ static int ishtp_cl_device_remove(struct device *dev)
+=20
+ 	if (driver->remove)
+ 		driver->remove(device);
+-
+-	return 0;
+ }
+=20
+ /**
+diff --git a/drivers/hv/vmbus_drv.c b/drivers/hv/vmbus_drv.c
+index 57bbbaa4e8f7..392c1ac4f819 100644
+--- a/drivers/hv/vmbus_drv.c
++++ b/drivers/hv/vmbus_drv.c
+@@ -922,7 +922,7 @@ static int vmbus_probe(struct device *child_device)
+ /*
+  * vmbus_remove - Remove a vmbus device
+  */
+-static int vmbus_remove(struct device *child_device)
++static void vmbus_remove(struct device *child_device)
+ {
+ 	struct hv_driver *drv;
+ 	struct hv_device *dev =3D device_to_hv_device(child_device);
+@@ -932,11 +932,8 @@ static int vmbus_remove(struct device *child_device)
+ 		if (drv->remove)
+ 			drv->remove(dev);
+ 	}
+-
+-	return 0;
+ }
+=20
+-
+ /*
+  * vmbus_shutdown - Shutdown a vmbus device
+  */
+diff --git a/drivers/hwtracing/intel_th/core.c b/drivers/hwtracing/intel_th=
+/core.c
+index 66eed2dff818..7e753a75d23b 100644
+--- a/drivers/hwtracing/intel_th/core.c
++++ b/drivers/hwtracing/intel_th/core.c
+@@ -95,7 +95,7 @@ static int intel_th_probe(struct device *dev)
+=20
+ static void intel_th_device_remove(struct intel_th_device *thdev);
+=20
+-static int intel_th_remove(struct device *dev)
++static void intel_th_remove(struct device *dev)
+ {
+ 	struct intel_th_driver *thdrv =3D to_intel_th_driver(dev->driver);
+ 	struct intel_th_device *thdev =3D to_intel_th_device(dev);
+@@ -164,8 +164,6 @@ static int intel_th_remove(struct device *dev)
+ 	pm_runtime_disable(dev);
+ 	pm_runtime_set_active(dev);
+ 	pm_runtime_enable(dev);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type intel_th_bus =3D {
+diff --git a/drivers/i2c/i2c-core-base.c b/drivers/i2c/i2c-core-base.c
+index 84f12bf90644..54964fbe3f03 100644
+--- a/drivers/i2c/i2c-core-base.c
++++ b/drivers/i2c/i2c-core-base.c
+@@ -601,7 +601,7 @@ static int i2c_device_probe(struct device *dev)
+ 	return status;
+ }
+=20
+-static int i2c_device_remove(struct device *dev)
++static void i2c_device_remove(struct device *dev)
+ {
+ 	struct i2c_client	*client =3D to_i2c_client(dev);
+ 	struct i2c_adapter      *adap;
+@@ -631,9 +631,6 @@ static int i2c_device_remove(struct device *dev)
+ 	client->irq =3D 0;
+ 	if (client->flags & I2C_CLIENT_HOST_NOTIFY)
+ 		pm_runtime_put(&client->adapter->dev);
+-
+-	/* return always 0 because there is WIP to make remove-functions void */
+-	return 0;
+ }
+=20
+ #ifdef CONFIG_PM_SLEEP
+diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
+index e2e12a5585e5..c3b4c677b442 100644
+--- a/drivers/i3c/master.c
++++ b/drivers/i3c/master.c
+@@ -322,7 +322,7 @@ static int i3c_device_probe(struct device *dev)
+ 	return driver->probe(i3cdev);
+ }
+=20
+-static int i3c_device_remove(struct device *dev)
++static void i3c_device_remove(struct device *dev)
+ {
+ 	struct i3c_device *i3cdev =3D dev_to_i3cdev(dev);
+ 	struct i3c_driver *driver =3D drv_to_i3cdrv(dev->driver);
+@@ -331,8 +331,6 @@ static int i3c_device_remove(struct device *dev)
+ 		driver->remove(i3cdev);
+=20
+ 	i3c_device_free_ibi(i3cdev);
+-
+-	return 0;
+ }
+=20
+ struct bus_type i3c_bus_type =3D {
+diff --git a/drivers/input/gameport/gameport.c b/drivers/input/gameport/gam=
+eport.c
+index 61fa7e724172..db58a01b23d3 100644
+--- a/drivers/input/gameport/gameport.c
++++ b/drivers/input/gameport/gameport.c
+@@ -697,13 +697,12 @@ static int gameport_driver_probe(struct device *dev)
+ 	return gameport->drv ? 0 : -ENODEV;
+ }
+=20
+-static int gameport_driver_remove(struct device *dev)
++static void gameport_driver_remove(struct device *dev)
+ {
+ 	struct gameport *gameport =3D to_gameport_port(dev);
+ 	struct gameport_driver *drv =3D to_gameport_driver(dev->driver);
+=20
+ 	drv->disconnect(gameport);
+-	return 0;
+ }
+=20
+ static void gameport_attach_driver(struct gameport_driver *drv)
+diff --git a/drivers/input/serio/serio.c b/drivers/input/serio/serio.c
+index 29f491082926..ec117be3d8d8 100644
+--- a/drivers/input/serio/serio.c
++++ b/drivers/input/serio/serio.c
+@@ -778,12 +778,11 @@ static int serio_driver_probe(struct device *dev)
+ 	return serio_connect_driver(serio, drv);
+ }
+=20
+-static int serio_driver_remove(struct device *dev)
++static void serio_driver_remove(struct device *dev)
+ {
+ 	struct serio *serio =3D to_serio_port(dev);
+=20
+ 	serio_disconnect_driver(serio);
+-	return 0;
+ }
+=20
+ static void serio_cleanup(struct serio *serio)
+diff --git a/drivers/ipack/ipack.c b/drivers/ipack/ipack.c
+index 7de9605cac4f..b1c3198355e7 100644
+--- a/drivers/ipack/ipack.c
++++ b/drivers/ipack/ipack.c
+@@ -67,15 +67,13 @@ static int ipack_bus_probe(struct device *device)
+ 	return drv->ops->probe(dev);
+ }
+=20
+-static int ipack_bus_remove(struct device *device)
++static void ipack_bus_remove(struct device *device)
+ {
+ 	struct ipack_device *dev =3D to_ipack_dev(device);
+ 	struct ipack_driver *drv =3D to_ipack_driver(device->driver);
+=20
+ 	if (drv->ops->remove)
+ 		drv->ops->remove(dev);
+-
+-	return 0;
+ }
+=20
+ static int ipack_uevent(struct device *dev, struct kobj_uevent_env *env)
+diff --git a/drivers/macintosh/macio_asic.c b/drivers/macintosh/macio_asic.=
+c
+index 49af60bdac92..c1fdf2896021 100644
+--- a/drivers/macintosh/macio_asic.c
++++ b/drivers/macintosh/macio_asic.c
+@@ -88,7 +88,7 @@ static int macio_device_probe(struct device *dev)
+ 	return error;
+ }
+=20
+-static int macio_device_remove(struct device *dev)
++static void macio_device_remove(struct device *dev)
+ {
+ 	struct macio_dev * macio_dev =3D to_macio_device(dev);
+ 	struct macio_driver * drv =3D to_macio_driver(dev->driver);
+@@ -96,8 +96,6 @@ static int macio_device_remove(struct device *dev)
+ 	if (dev->driver && drv->remove)
+ 		drv->remove(macio_dev);
+ 	macio_dev_put(macio_dev);
+-
+-	return 0;
+ }
+=20
+ static void macio_device_shutdown(struct device *dev)
+diff --git a/drivers/mcb/mcb-core.c b/drivers/mcb/mcb-core.c
+index 38fbb3b59873..edf4ee6eff25 100644
+--- a/drivers/mcb/mcb-core.c
++++ b/drivers/mcb/mcb-core.c
+@@ -77,7 +77,7 @@ static int mcb_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int mcb_remove(struct device *dev)
++static void mcb_remove(struct device *dev)
+ {
+ 	struct mcb_driver *mdrv =3D to_mcb_driver(dev->driver);
+ 	struct mcb_device *mdev =3D to_mcb_device(dev);
+@@ -89,8 +89,6 @@ static int mcb_remove(struct device *dev)
+ 	module_put(carrier_mod);
+=20
+ 	put_device(&mdev->dev);
+-
+-	return 0;
+ }
+=20
+ static void mcb_shutdown(struct device *dev)
+diff --git a/drivers/media/pci/bt8xx/bttv-gpio.c b/drivers/media/pci/bt8xx/=
+bttv-gpio.c
+index b730225ca887..a2b18e2bed1b 100644
+--- a/drivers/media/pci/bt8xx/bttv-gpio.c
++++ b/drivers/media/pci/bt8xx/bttv-gpio.c
+@@ -46,14 +46,13 @@ static int bttv_sub_probe(struct device *dev)
+ 	return sub->probe ? sub->probe(sdev) : -ENODEV;
+ }
+=20
+-static int bttv_sub_remove(struct device *dev)
++static void bttv_sub_remove(struct device *dev)
+ {
+ 	struct bttv_sub_device *sdev =3D to_bttv_sub_dev(dev);
+ 	struct bttv_sub_driver *sub =3D to_bttv_sub_drv(dev->driver);
+=20
+ 	if (sub->remove)
+ 		sub->remove(sdev);
+-	return 0;
+ }
+=20
+ struct bus_type bttv_sub_bus_type =3D {
+diff --git a/drivers/memstick/core/memstick.c b/drivers/memstick/core/memst=
+ick.c
+index bb1065990aeb..660df7d269fa 100644
+--- a/drivers/memstick/core/memstick.c
++++ b/drivers/memstick/core/memstick.c
+@@ -91,7 +91,7 @@ static int memstick_device_probe(struct device *dev)
+ 	return rc;
+ }
+=20
+-static int memstick_device_remove(struct device *dev)
++static void memstick_device_remove(struct device *dev)
+ {
+ 	struct memstick_dev *card =3D container_of(dev, struct memstick_dev,
+ 						  dev);
+@@ -105,7 +105,6 @@ static int memstick_device_remove(struct device *dev)
+ 	}
+=20
+ 	put_device(dev);
+-	return 0;
+ }
+=20
+ #ifdef CONFIG_PM
+diff --git a/drivers/mfd/mcp-core.c b/drivers/mfd/mcp-core.c
+index eff9423e90f5..2fa592c37c6f 100644
+--- a/drivers/mfd/mcp-core.c
++++ b/drivers/mfd/mcp-core.c
+@@ -33,13 +33,12 @@ static int mcp_bus_probe(struct device *dev)
+ 	return drv->probe(mcp);
+ }
+=20
+-static int mcp_bus_remove(struct device *dev)
++static void mcp_bus_remove(struct device *dev)
+ {
+ 	struct mcp *mcp =3D to_mcp(dev);
+ 	struct mcp_driver *drv =3D to_mcp_driver(dev->driver);
+=20
+ 	drv->remove(mcp);
+-	return 0;
+ }
+=20
+ static struct bus_type mcp_bus_type =3D {
+diff --git a/drivers/misc/mei/bus.c b/drivers/misc/mei/bus.c
+index 935acc6bbf3c..3bf2bb4fd152 100644
+--- a/drivers/misc/mei/bus.c
++++ b/drivers/misc/mei/bus.c
+@@ -884,7 +884,7 @@ static int mei_cl_device_probe(struct device *dev)
+  *
+  * Return:  0 on success; < 0 otherwise
+  */
+-static int mei_cl_device_remove(struct device *dev)
++static void mei_cl_device_remove(struct device *dev)
+ {
+ 	struct mei_cl_device *cldev =3D to_mei_cl_device(dev);
+ 	struct mei_cl_driver *cldrv =3D to_mei_cl_driver(dev->driver);
+@@ -896,8 +896,6 @@ static int mei_cl_device_remove(struct device *dev)
+=20
+ 	mei_cl_bus_module_put(cldev);
+ 	module_put(THIS_MODULE);
+-
+-	return 0;
+ }
+=20
+ static ssize_t name_show(struct device *dev, struct device_attribute *a,
+diff --git a/drivers/misc/tifm_core.c b/drivers/misc/tifm_core.c
+index 667e574a7df2..52656fc87e99 100644
+--- a/drivers/misc/tifm_core.c
++++ b/drivers/misc/tifm_core.c
+@@ -87,7 +87,7 @@ static void tifm_dummy_event(struct tifm_dev *sock)
+ 	return;
+ }
+=20
+-static int tifm_device_remove(struct device *dev)
++static void tifm_device_remove(struct device *dev)
+ {
+ 	struct tifm_dev *sock =3D container_of(dev, struct tifm_dev, dev);
+ 	struct tifm_driver *drv =3D container_of(dev->driver, struct tifm_driver,
+@@ -101,7 +101,6 @@ static int tifm_device_remove(struct device *dev)
+ 	}
+=20
+ 	put_device(dev);
+-	return 0;
+ }
+=20
+ #ifdef CONFIG_PM
+diff --git a/drivers/mmc/core/bus.c b/drivers/mmc/core/bus.c
+index 4383c262b3f5..f6b7a9c5bbff 100644
+--- a/drivers/mmc/core/bus.c
++++ b/drivers/mmc/core/bus.c
+@@ -140,14 +140,12 @@ static int mmc_bus_probe(struct device *dev)
+ 	return drv->probe(card);
+ }
+=20
+-static int mmc_bus_remove(struct device *dev)
++static void mmc_bus_remove(struct device *dev)
+ {
+ 	struct mmc_driver *drv =3D to_mmc_driver(dev->driver);
+ 	struct mmc_card *card =3D mmc_dev_to_card(dev);
+=20
+ 	drv->remove(card);
+-
+-	return 0;
+ }
+=20
+ static void mmc_bus_shutdown(struct device *dev)
+diff --git a/drivers/mmc/core/sdio_bus.c b/drivers/mmc/core/sdio_bus.c
+index 3d709029e07c..fda03b35c14a 100644
+--- a/drivers/mmc/core/sdio_bus.c
++++ b/drivers/mmc/core/sdio_bus.c
+@@ -203,7 +203,7 @@ static int sdio_bus_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int sdio_bus_remove(struct device *dev)
++static void sdio_bus_remove(struct device *dev)
+ {
+ 	struct sdio_driver *drv =3D to_sdio_driver(dev->driver);
+ 	struct sdio_func *func =3D dev_to_sdio_func(dev);
+@@ -232,8 +232,6 @@ static int sdio_bus_remove(struct device *dev)
+ 		pm_runtime_put_sync(dev);
+=20
+ 	dev_pm_domain_detach(dev, false);
+-
+-	return 0;
+ }
+=20
+ static const struct dev_pm_ops sdio_bus_pm_ops =3D {
+diff --git a/drivers/net/netdevsim/bus.c b/drivers/net/netdevsim/bus.c
+index ccec29970d5b..14b154929533 100644
+--- a/drivers/net/netdevsim/bus.c
++++ b/drivers/net/netdevsim/bus.c
+@@ -370,12 +370,11 @@ static int nsim_bus_probe(struct device *dev)
+ 	return nsim_dev_probe(nsim_bus_dev);
+ }
+=20
+-static int nsim_bus_remove(struct device *dev)
++static void nsim_bus_remove(struct device *dev)
+ {
+ 	struct nsim_bus_dev *nsim_bus_dev =3D to_nsim_bus_dev(dev);
+=20
+ 	nsim_dev_remove(nsim_bus_dev);
+-	return 0;
+ }
+=20
+ static int nsim_num_vf(struct device *dev)
+diff --git a/drivers/ntb/core.c b/drivers/ntb/core.c
+index f8f75a504a58..27dd93deff6e 100644
+--- a/drivers/ntb/core.c
++++ b/drivers/ntb/core.c
+@@ -271,7 +271,7 @@ static int ntb_probe(struct device *dev)
+ 	return rc;
+ }
+=20
+-static int ntb_remove(struct device *dev)
++static void ntb_remove(struct device *dev)
+ {
+ 	struct ntb_dev *ntb;
+ 	struct ntb_client *client;
+@@ -283,8 +283,6 @@ static int ntb_remove(struct device *dev)
+ 		client->ops.remove(client, ntb);
+ 		put_device(dev);
+ 	}
+-
+-	return 0;
+ }
+=20
+ static void ntb_dev_release(struct device *dev)
+diff --git a/drivers/ntb/ntb_transport.c b/drivers/ntb/ntb_transport.c
+index 4a02561cfb96..a9b97ebc71ac 100644
+--- a/drivers/ntb/ntb_transport.c
++++ b/drivers/ntb/ntb_transport.c
+@@ -304,7 +304,7 @@ static int ntb_transport_bus_probe(struct device *dev)
+ 	return rc;
+ }
+=20
+-static int ntb_transport_bus_remove(struct device *dev)
++static void ntb_transport_bus_remove(struct device *dev)
+ {
+ 	const struct ntb_transport_client *client;
+=20
+@@ -312,8 +312,6 @@ static int ntb_transport_bus_remove(struct device *dev)
+ 	client->remove(dev);
+=20
+ 	put_device(dev);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type ntb_transport_bus =3D {
+diff --git a/drivers/nubus/bus.c b/drivers/nubus/bus.c
+index ad3d17c42e23..d9d04f27f89b 100644
+--- a/drivers/nubus/bus.c
++++ b/drivers/nubus/bus.c
+@@ -29,14 +29,12 @@ static int nubus_device_probe(struct device *dev)
+ 	return err;
+ }
+=20
+-static int nubus_device_remove(struct device *dev)
++static void nubus_device_remove(struct device *dev)
+ {
+ 	struct nubus_driver *ndrv =3D to_nubus_driver(dev->driver);
+-	int err =3D -ENODEV;
+=20
+ 	if (dev->driver && ndrv->remove)
+-		err =3D ndrv->remove(to_nubus_board(dev));
+-	return err;
++		ndrv->remove(to_nubus_board(dev));
+ }
+=20
+ struct bus_type nubus_bus_type =3D {
+diff --git a/drivers/nvdimm/bus.c b/drivers/nvdimm/bus.c
+index e6aa87043a95..9dc7f3edd42b 100644
+--- a/drivers/nvdimm/bus.c
++++ b/drivers/nvdimm/bus.c
+@@ -108,7 +108,7 @@ static int nvdimm_bus_probe(struct device *dev)
+ 	return rc;
+ }
+=20
+-static int nvdimm_bus_remove(struct device *dev)
++static void nvdimm_bus_remove(struct device *dev)
+ {
+ 	struct nd_device_driver *nd_drv =3D to_nd_device_driver(dev->driver);
+ 	struct module *provider =3D to_bus_provider(dev);
+@@ -123,7 +123,6 @@ static int nvdimm_bus_remove(struct device *dev)
+ 	dev_dbg(&nvdimm_bus->dev, "%s.remove(%s)\n", dev->driver->name,
+ 			dev_name(dev));
+ 	module_put(provider);
+-	return 0;
+ }
+=20
+ static void nvdimm_bus_shutdown(struct device *dev)
+diff --git a/drivers/pci/endpoint/pci-epf-core.c b/drivers/pci/endpoint/pci=
+-epf-core.c
+index 4b9ad96bf1b2..502eb79cd551 100644
+--- a/drivers/pci/endpoint/pci-epf-core.c
++++ b/drivers/pci/endpoint/pci-epf-core.c
+@@ -387,7 +387,7 @@ static int pci_epf_device_probe(struct device *dev)
+ 	return driver->probe(epf);
+ }
+=20
+-static int pci_epf_device_remove(struct device *dev)
++static void pci_epf_device_remove(struct device *dev)
+ {
+ 	struct pci_epf *epf =3D to_pci_epf(dev);
+ 	struct pci_epf_driver *driver =3D to_pci_epf_driver(dev->driver);
+@@ -395,8 +395,6 @@ static int pci_epf_device_remove(struct device *dev)
+ 	if (driver->remove)
+ 		driver->remove(epf);
+ 	epf->driver =3D NULL;
+-
+-	return 0;
+ }
+=20
+ static struct bus_type pci_epf_bus_type =3D {
+diff --git a/drivers/pci/pci-driver.c b/drivers/pci/pci-driver.c
+index 3a72352aa5cf..a0615395500a 100644
+--- a/drivers/pci/pci-driver.c
++++ b/drivers/pci/pci-driver.c
+@@ -440,7 +440,7 @@ static int pci_device_probe(struct device *dev)
+ 	return error;
+ }
+=20
+-static int pci_device_remove(struct device *dev)
++static void pci_device_remove(struct device *dev)
+ {
+ 	struct pci_dev *pci_dev =3D to_pci_dev(dev);
+ 	struct pci_driver *drv =3D pci_dev->driver;
+@@ -476,7 +476,6 @@ static int pci_device_remove(struct device *dev)
+ 	 */
+=20
+ 	pci_dev_put(pci_dev);
+-	return 0;
+ }
+=20
+ static void pci_device_shutdown(struct device *dev)
+diff --git a/drivers/pcmcia/ds.c b/drivers/pcmcia/ds.c
+index bd81aa64d011..5bd1b80424e7 100644
+--- a/drivers/pcmcia/ds.c
++++ b/drivers/pcmcia/ds.c
+@@ -350,7 +350,7 @@ static void pcmcia_card_remove(struct pcmcia_socket *s,=
+ struct pcmcia_device *le
+ 	return;
+ }
+=20
+-static int pcmcia_device_remove(struct device *dev)
++static void pcmcia_device_remove(struct device *dev)
+ {
+ 	struct pcmcia_device *p_dev;
+ 	struct pcmcia_driver *p_drv;
+@@ -389,8 +389,6 @@ static int pcmcia_device_remove(struct device *dev)
+ 	/* references from pcmcia_device_probe */
+ 	pcmcia_put_dev(p_dev);
+ 	module_put(p_drv->owner);
+-
+-	return 0;
+ }
+=20
+=20
+diff --git a/drivers/platform/surface/aggregator/bus.c b/drivers/platform/s=
+urface/aggregator/bus.c
+index 0169677c243e..0a40dd9c94ed 100644
+--- a/drivers/platform/surface/aggregator/bus.c
++++ b/drivers/platform/surface/aggregator/bus.c
+@@ -316,14 +316,12 @@ static int ssam_bus_probe(struct device *dev)
+ 		->probe(to_ssam_device(dev));
+ }
+=20
+-static int ssam_bus_remove(struct device *dev)
++static void ssam_bus_remove(struct device *dev)
+ {
+ 	struct ssam_device_driver *sdrv =3D to_ssam_device_driver(dev->driver);
+=20
+ 	if (sdrv->remove)
+ 		sdrv->remove(to_ssam_device(dev));
+-
+-	return 0;
+ }
+=20
+ struct bus_type ssam_bus_type =3D {
+diff --git a/drivers/platform/x86/wmi.c b/drivers/platform/x86/wmi.c
+index 62e0d56a3332..a76313006bdc 100644
+--- a/drivers/platform/x86/wmi.c
++++ b/drivers/platform/x86/wmi.c
+@@ -980,7 +980,7 @@ static int wmi_dev_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int wmi_dev_remove(struct device *dev)
++static void wmi_dev_remove(struct device *dev)
+ {
+ 	struct wmi_block *wblock =3D dev_to_wblock(dev);
+ 	struct wmi_driver *wdriver =3D
+@@ -997,8 +997,6 @@ static int wmi_dev_remove(struct device *dev)
+=20
+ 	if (ACPI_FAILURE(wmi_method_enable(wblock, 0)))
+ 		dev_warn(dev, "failed to disable device\n");
+-
+-	return 0;
+ }
+=20
+ static struct class wmi_bus_class =3D {
+diff --git a/drivers/pnp/driver.c b/drivers/pnp/driver.c
+index c29d590c5e4f..cc6757dfa3f1 100644
+--- a/drivers/pnp/driver.c
++++ b/drivers/pnp/driver.c
+@@ -123,7 +123,7 @@ static int pnp_device_probe(struct device *dev)
+ 	return error;
+ }
+=20
+-static int pnp_device_remove(struct device *dev)
++static void pnp_device_remove(struct device *dev)
+ {
+ 	struct pnp_dev *pnp_dev =3D to_pnp_dev(dev);
+ 	struct pnp_driver *drv =3D pnp_dev->driver;
+@@ -139,7 +139,6 @@ static int pnp_device_remove(struct device *dev)
+ 		pnp_disable_dev(pnp_dev);
+=20
+ 	pnp_device_detach(pnp_dev);
+-	return 0;
+ }
+=20
+ static void pnp_device_shutdown(struct device *dev)
+diff --git a/drivers/rapidio/rio-driver.c b/drivers/rapidio/rio-driver.c
+index 72874153972e..a72bb0a40fcf 100644
+--- a/drivers/rapidio/rio-driver.c
++++ b/drivers/rapidio/rio-driver.c
+@@ -112,7 +112,7 @@ static int rio_device_probe(struct device *dev)
+  * driver, then run the driver remove() method.  Then update
+  * the reference count.
+  */
+-static int rio_device_remove(struct device *dev)
++static void rio_device_remove(struct device *dev)
+ {
+ 	struct rio_dev *rdev =3D to_rio_dev(dev);
+ 	struct rio_driver *rdrv =3D rdev->driver;
+@@ -124,8 +124,6 @@ static int rio_device_remove(struct device *dev)
+ 	}
+=20
+ 	rio_dev_put(rdev);
+-
+-	return 0;
+ }
+=20
+ static void rio_device_shutdown(struct device *dev)
+diff --git a/drivers/rpmsg/rpmsg_core.c b/drivers/rpmsg/rpmsg_core.c
+index c1404d3dae2c..9151836190ce 100644
+--- a/drivers/rpmsg/rpmsg_core.c
++++ b/drivers/rpmsg/rpmsg_core.c
+@@ -530,14 +530,13 @@ static int rpmsg_dev_probe(struct device *dev)
+ 	return err;
+ }
+=20
+-static int rpmsg_dev_remove(struct device *dev)
++static void rpmsg_dev_remove(struct device *dev)
+ {
+ 	struct rpmsg_device *rpdev =3D to_rpmsg_device(dev);
+ 	struct rpmsg_driver *rpdrv =3D to_rpmsg_driver(rpdev->dev.driver);
+-	int err =3D 0;
+=20
+ 	if (rpdev->ops->announce_destroy)
+-		err =3D rpdev->ops->announce_destroy(rpdev);
++		rpdev->ops->announce_destroy(rpdev);
+=20
+ 	if (rpdrv->remove)
+ 		rpdrv->remove(rpdev);
+@@ -546,8 +545,6 @@ static int rpmsg_dev_remove(struct device *dev)
+=20
+ 	if (rpdev->ept)
+ 		rpmsg_destroy_ept(rpdev->ept);
+-
+-	return err;
+ }
+=20
+ static struct bus_type rpmsg_bus =3D {
+diff --git a/drivers/s390/cio/ccwgroup.c b/drivers/s390/cio/ccwgroup.c
+index a6aeab1ea0ae..382c5b5f8cd3 100644
+--- a/drivers/s390/cio/ccwgroup.c
++++ b/drivers/s390/cio/ccwgroup.c
+@@ -439,15 +439,13 @@ module_exit(cleanup_ccwgroup);
+=20
+ /************************** driver stuff ******************************/
+=20
+-static int ccwgroup_remove(struct device *dev)
++static void ccwgroup_remove(struct device *dev)
+ {
+ 	struct ccwgroup_device *gdev =3D to_ccwgroupdev(dev);
+ 	struct ccwgroup_driver *gdrv =3D to_ccwgroupdrv(dev->driver);
+=20
+ 	if (gdrv->remove)
+ 		gdrv->remove(gdev);
+-
+-	return 0;
+ }
+=20
+ static void ccwgroup_shutdown(struct device *dev)
+diff --git a/drivers/s390/cio/css.c b/drivers/s390/cio/css.c
+index 092fd1ea5799..ebc321edba51 100644
+--- a/drivers/s390/cio/css.c
++++ b/drivers/s390/cio/css.c
+@@ -1371,7 +1371,7 @@ static int css_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int css_remove(struct device *dev)
++static void css_remove(struct device *dev)
+ {
+ 	struct subchannel *sch;
+=20
+@@ -1379,8 +1379,6 @@ static int css_remove(struct device *dev)
+ 	if (sch->driver->remove)
+ 		sch->driver->remove(sch);
+ 	sch->driver =3D NULL;
+-
+-	return 0;
+ }
+=20
+ static void css_shutdown(struct device *dev)
+diff --git a/drivers/s390/cio/device.c b/drivers/s390/cio/device.c
+index cd5d2d4d8e46..adf33b653d87 100644
+--- a/drivers/s390/cio/device.c
++++ b/drivers/s390/cio/device.c
+@@ -1741,7 +1741,7 @@ ccw_device_probe (struct device *dev)
+ 	return 0;
+ }
+=20
+-static int ccw_device_remove(struct device *dev)
++static void ccw_device_remove(struct device *dev)
+ {
+ 	struct ccw_device *cdev =3D to_ccwdev(dev);
+ 	struct ccw_driver *cdrv =3D cdev->drv;
+@@ -1775,8 +1775,6 @@ static int ccw_device_remove(struct device *dev)
+ 	spin_unlock_irq(cdev->ccwlock);
+ 	io_subchannel_quiesce(sch);
+ 	__disable_cmf(cdev);
+-
+-	return 0;
+ }
+=20
+ static void ccw_device_shutdown(struct device *dev)
+diff --git a/drivers/s390/cio/scm.c b/drivers/s390/cio/scm.c
+index b31711307e5a..b6b4589c70bd 100644
+--- a/drivers/s390/cio/scm.c
++++ b/drivers/s390/cio/scm.c
+@@ -28,15 +28,13 @@ static int scmdev_probe(struct device *dev)
+ 	return scmdrv->probe ? scmdrv->probe(scmdev) : -ENODEV;
+ }
+=20
+-static int scmdev_remove(struct device *dev)
++static void scmdev_remove(struct device *dev)
+ {
+ 	struct scm_device *scmdev =3D to_scm_dev(dev);
+ 	struct scm_driver *scmdrv =3D to_scm_drv(dev->driver);
+=20
+ 	if (scmdrv->remove)
+ 		scmdrv->remove(scmdev);
+-
+-	return 0;
+ }
+=20
+ static int scmdev_uevent(struct device *dev, struct kobj_uevent_env *env)
+diff --git a/drivers/s390/crypto/ap_bus.c b/drivers/s390/crypto/ap_bus.c
+index 8d3a1d84a757..0992edcaf1af 100644
+--- a/drivers/s390/crypto/ap_bus.c
++++ b/drivers/s390/crypto/ap_bus.c
+@@ -901,7 +901,7 @@ static int ap_device_probe(struct device *dev)
+ 	return rc;
+ }
+=20
+-static int ap_device_remove(struct device *dev)
++static void ap_device_remove(struct device *dev)
+ {
+ 	struct ap_device *ap_dev =3D to_ap_dev(dev);
+ 	struct ap_driver *ap_drv =3D ap_dev->drv;
+@@ -926,8 +926,6 @@ static int ap_device_remove(struct device *dev)
+ 	ap_dev->drv =3D NULL;
+=20
+ 	put_device(dev);
+-
+-	return 0;
+ }
+=20
+ struct ap_queue *ap_get_qdev(ap_qid_t qid)
+diff --git a/drivers/scsi/scsi_debug.c b/drivers/scsi/scsi_debug.c
+index 5b3a20a140f9..58f69366bdcc 100644
+--- a/drivers/scsi/scsi_debug.c
++++ b/drivers/scsi/scsi_debug.c
+@@ -7674,7 +7674,7 @@ static int sdebug_driver_probe(struct device *dev)
+ 	return error;
+ }
+=20
+-static int sdebug_driver_remove(struct device *dev)
++static void sdebug_driver_remove(struct device *dev)
+ {
+ 	struct sdebug_host_info *sdbg_host;
+ 	struct sdebug_dev_info *sdbg_devinfo, *tmp;
+@@ -7691,7 +7691,6 @@ static int sdebug_driver_remove(struct device *dev)
+ 	}
+=20
+ 	scsi_host_put(sdbg_host->shost);
+-	return 0;
+ }
+=20
+ static int pseudo_lld_bus_match(struct device *dev,
+diff --git a/drivers/sh/superhyway/superhyway.c b/drivers/sh/superhyway/sup=
+erhyway.c
+index 348836b90605..c0ab904c76ec 100644
+--- a/drivers/sh/superhyway/superhyway.c
++++ b/drivers/sh/superhyway/superhyway.c
+@@ -150,17 +150,13 @@ static int superhyway_device_probe(struct device *dev=
+)
+ 	return -ENODEV;
+ }
+=20
+-static int superhyway_device_remove(struct device *dev)
++static void superhyway_device_remove(struct device *dev)
+ {
+ 	struct superhyway_device *shyway_dev =3D to_superhyway_device(dev);
+ 	struct superhyway_driver *shyway_drv =3D to_superhyway_driver(dev->driver=
+);
+=20
+-	if (shyway_drv && shyway_drv->remove) {
++	if (shyway_drv && shyway_drv->remove)
+ 		shyway_drv->remove(shyway_dev);
+-		return 0;
+-	}
+-
+-	return -ENODEV;
+ }
+=20
+ /**
+diff --git a/drivers/siox/siox-core.c b/drivers/siox/siox-core.c
+index 1794ff0106bc..7c4f32d76966 100644
+--- a/drivers/siox/siox-core.c
++++ b/drivers/siox/siox-core.c
+@@ -520,7 +520,7 @@ static int siox_probe(struct device *dev)
+ 	return sdriver->probe(sdevice);
+ }
+=20
+-static int siox_remove(struct device *dev)
++static void siox_remove(struct device *dev)
+ {
+ 	struct siox_driver *sdriver =3D
+ 		container_of(dev->driver, struct siox_driver, driver);
+@@ -528,8 +528,6 @@ static int siox_remove(struct device *dev)
+=20
+ 	if (sdriver->remove)
+ 		sdriver->remove(sdevice);
+-
+-	return 0;
+ }
+=20
+ static void siox_shutdown(struct device *dev)
+diff --git a/drivers/slimbus/core.c b/drivers/slimbus/core.c
+index 1d2bc181da05..78480e332ab8 100644
+--- a/drivers/slimbus/core.c
++++ b/drivers/slimbus/core.c
+@@ -81,7 +81,7 @@ static int slim_device_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int slim_device_remove(struct device *dev)
++static void slim_device_remove(struct device *dev)
+ {
+ 	struct slim_device *sbdev =3D to_slim_device(dev);
+ 	struct slim_driver *sbdrv;
+@@ -91,8 +91,6 @@ static int slim_device_remove(struct device *dev)
+ 		if (sbdrv->remove)
+ 			sbdrv->remove(sbdev);
+ 	}
+-
+-	return 0;
+ }
+=20
+ static int slim_device_uevent(struct device *dev, struct kobj_uevent_env *=
+env)
+diff --git a/drivers/soc/qcom/apr.c b/drivers/soc/qcom/apr.c
+index 7abfc8c4fdc7..475a57b435b2 100644
+--- a/drivers/soc/qcom/apr.c
++++ b/drivers/soc/qcom/apr.c
+@@ -217,7 +217,7 @@ static int apr_device_probe(struct device *dev)
+ 	return adrv->probe(adev);
+ }
+=20
+-static int apr_device_remove(struct device *dev)
++static void apr_device_remove(struct device *dev)
+ {
+ 	struct apr_device *adev =3D to_apr_device(dev);
+ 	struct apr_driver *adrv;
+@@ -231,8 +231,6 @@ static int apr_device_remove(struct device *dev)
+ 		idr_remove(&apr->svcs_idr, adev->svc_id);
+ 		spin_unlock(&apr->svcs_lock);
+ 	}
+-
+-	return 0;
+ }
+=20
+ static int apr_uevent(struct device *dev, struct kobj_uevent_env *env)
+diff --git a/drivers/spi/spi.c b/drivers/spi/spi.c
+index c99181165321..ad2b558dc9cb 100644
+--- a/drivers/spi/spi.c
++++ b/drivers/spi/spi.c
+@@ -405,7 +405,7 @@ static int spi_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int spi_remove(struct device *dev)
++static void spi_remove(struct device *dev)
+ {
+ 	const struct spi_driver		*sdrv =3D to_spi_driver(dev->driver);
+=20
+@@ -420,8 +420,6 @@ static int spi_remove(struct device *dev)
+ 	}
+=20
+ 	dev_pm_domain_detach(dev, true);
+-
+-	return 0;
+ }
+=20
+ static void spi_shutdown(struct device *dev)
+diff --git a/drivers/spmi/spmi.c b/drivers/spmi/spmi.c
+index 51f5aeb65b3b..b37ead9e2fad 100644
+--- a/drivers/spmi/spmi.c
++++ b/drivers/spmi/spmi.c
+@@ -345,7 +345,7 @@ static int spmi_drv_probe(struct device *dev)
+ 	return err;
+ }
+=20
+-static int spmi_drv_remove(struct device *dev)
++static void spmi_drv_remove(struct device *dev)
+ {
+ 	const struct spmi_driver *sdrv =3D to_spmi_driver(dev->driver);
+=20
+@@ -356,7 +356,6 @@ static int spmi_drv_remove(struct device *dev)
+ 	pm_runtime_disable(dev);
+ 	pm_runtime_set_suspended(dev);
+ 	pm_runtime_put_noidle(dev);
+-	return 0;
+ }
+=20
+ static void spmi_drv_shutdown(struct device *dev)
+diff --git a/drivers/ssb/main.c b/drivers/ssb/main.c
+index 3a29b5570f9f..8a93c83cb6f8 100644
+--- a/drivers/ssb/main.c
++++ b/drivers/ssb/main.c
+@@ -283,7 +283,7 @@ static void ssb_device_shutdown(struct device *dev)
+ 		ssb_drv->shutdown(ssb_dev);
+ }
+=20
+-static int ssb_device_remove(struct device *dev)
++static void ssb_device_remove(struct device *dev)
+ {
+ 	struct ssb_device *ssb_dev =3D dev_to_ssb_dev(dev);
+ 	struct ssb_driver *ssb_drv =3D drv_to_ssb_drv(dev->driver);
+@@ -291,8 +291,6 @@ static int ssb_device_remove(struct device *dev)
+ 	if (ssb_drv && ssb_drv->remove)
+ 		ssb_drv->remove(ssb_dev);
+ 	ssb_device_put(ssb_dev);
+-
+-	return 0;
+ }
+=20
+ static int ssb_device_probe(struct device *dev)
+diff --git a/drivers/staging/fieldbus/anybuss/host.c b/drivers/staging/fiel=
+dbus/anybuss/host.c
+index 0f730efe9a6d..8a75f6642c78 100644
+--- a/drivers/staging/fieldbus/anybuss/host.c
++++ b/drivers/staging/fieldbus/anybuss/host.c
+@@ -1186,15 +1186,13 @@ static int anybus_bus_probe(struct device *dev)
+ 	return adrv->probe(adev);
+ }
+=20
+-static int anybus_bus_remove(struct device *dev)
++static void anybus_bus_remove(struct device *dev)
+ {
+ 	struct anybuss_client_driver *adrv =3D
+ 		to_anybuss_client_driver(dev->driver);
+=20
+ 	if (adrv->remove)
+ 		adrv->remove(to_anybuss_client(dev));
+-
+-	return 0;
+ }
+=20
+ static struct bus_type anybus_bus =3D {
+diff --git a/drivers/staging/greybus/gbphy.c b/drivers/staging/greybus/gbph=
+y.c
+index 13d319860da5..5a5c17a4519b 100644
+--- a/drivers/staging/greybus/gbphy.c
++++ b/drivers/staging/greybus/gbphy.c
+@@ -169,7 +169,7 @@ static int gbphy_dev_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int gbphy_dev_remove(struct device *dev)
++static void gbphy_dev_remove(struct device *dev)
+ {
+ 	struct gbphy_driver *gbphy_drv =3D to_gbphy_driver(dev->driver);
+ 	struct gbphy_device *gbphy_dev =3D to_gbphy_dev(dev);
+@@ -180,8 +180,6 @@ static int gbphy_dev_remove(struct device *dev)
+ 	pm_runtime_set_suspended(dev);
+ 	pm_runtime_put_noidle(dev);
+ 	pm_runtime_dont_use_autosuspend(dev);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type gbphy_bus_type =3D {
+diff --git a/drivers/target/loopback/tcm_loop.c b/drivers/target/loopback/t=
+cm_loop.c
+index 6d0b0e67e79e..cbb2118fb35e 100644
+--- a/drivers/target/loopback/tcm_loop.c
++++ b/drivers/target/loopback/tcm_loop.c
+@@ -81,7 +81,7 @@ static int tcm_loop_show_info(struct seq_file *m, struct =
+Scsi_Host *host)
+ }
+=20
+ static int tcm_loop_driver_probe(struct device *);
+-static int tcm_loop_driver_remove(struct device *);
++static void tcm_loop_driver_remove(struct device *);
+=20
+ static int pseudo_lld_bus_match(struct device *dev,
+ 				struct device_driver *dev_driver)
+@@ -363,7 +363,7 @@ static int tcm_loop_driver_probe(struct device *dev)
+ 	return 0;
+ }
+=20
+-static int tcm_loop_driver_remove(struct device *dev)
++static void tcm_loop_driver_remove(struct device *dev)
+ {
+ 	struct tcm_loop_hba *tl_hba;
+ 	struct Scsi_Host *sh;
+@@ -373,7 +373,6 @@ static int tcm_loop_driver_remove(struct device *dev)
+=20
+ 	scsi_remove_host(sh);
+ 	scsi_host_put(sh);
+-	return 0;
+ }
+=20
+ static void tcm_loop_release_adapter(struct device *dev)
+diff --git a/drivers/thunderbolt/domain.c b/drivers/thunderbolt/domain.c
+index a062befcb3b2..7018d959f775 100644
+--- a/drivers/thunderbolt/domain.c
++++ b/drivers/thunderbolt/domain.c
+@@ -86,7 +86,7 @@ static int tb_service_probe(struct device *dev)
+ 	return driver->probe(svc, id);
+ }
+=20
+-static int tb_service_remove(struct device *dev)
++static void tb_service_remove(struct device *dev)
+ {
+ 	struct tb_service *svc =3D tb_to_service(dev);
+ 	struct tb_service_driver *driver;
+@@ -94,8 +94,6 @@ static int tb_service_remove(struct device *dev)
+ 	driver =3D container_of(dev->driver, struct tb_service_driver, driver);
+ 	if (driver->remove)
+ 		driver->remove(svc);
+-
+-	return 0;
+ }
+=20
+ static void tb_service_shutdown(struct device *dev)
+diff --git a/drivers/tty/serdev/core.c b/drivers/tty/serdev/core.c
+index 9cdfcfe07e87..92498961fd92 100644
+--- a/drivers/tty/serdev/core.c
++++ b/drivers/tty/serdev/core.c
+@@ -421,15 +421,13 @@ static int serdev_drv_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int serdev_drv_remove(struct device *dev)
++static void serdev_drv_remove(struct device *dev)
+ {
+ 	const struct serdev_device_driver *sdrv =3D to_serdev_device_driver(dev->=
+driver);
+ 	if (sdrv->remove)
+ 		sdrv->remove(to_serdev_device(dev));
+=20
+ 	dev_pm_domain_detach(dev, true);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type serdev_bus_type =3D {
+diff --git a/drivers/usb/common/ulpi.c b/drivers/usb/common/ulpi.c
+index 7e13b74e60e5..4169cf40a03b 100644
+--- a/drivers/usb/common/ulpi.c
++++ b/drivers/usb/common/ulpi.c
+@@ -78,14 +78,12 @@ static int ulpi_probe(struct device *dev)
+ 	return drv->probe(to_ulpi_dev(dev));
+ }
+=20
+-static int ulpi_remove(struct device *dev)
++static void ulpi_remove(struct device *dev)
+ {
+ 	struct ulpi_driver *drv =3D to_ulpi_driver(dev->driver);
+=20
+ 	if (drv->remove)
+ 		drv->remove(to_ulpi_dev(dev));
+-
+-	return 0;
+ }
+=20
+ static struct bus_type ulpi_bus =3D {
+diff --git a/drivers/usb/serial/bus.c b/drivers/usb/serial/bus.c
+index 7133818a58b9..9e38142acd38 100644
+--- a/drivers/usb/serial/bus.c
++++ b/drivers/usb/serial/bus.c
+@@ -74,7 +74,7 @@ static int usb_serial_device_probe(struct device *dev)
+ 	return retval;
+ }
+=20
+-static int usb_serial_device_remove(struct device *dev)
++static void usb_serial_device_remove(struct device *dev)
+ {
+ 	struct usb_serial_port *port =3D to_usb_serial_port(dev);
+ 	struct usb_serial_driver *driver;
+@@ -101,8 +101,6 @@ static int usb_serial_device_remove(struct device *dev)
+=20
+ 	if (!autopm_err)
+ 		usb_autopm_put_interface(port->serial->interface);
+-
+-	return 0;
+ }
+=20
+ static ssize_t new_id_store(struct device_driver *driver,
+diff --git a/drivers/usb/typec/bus.c b/drivers/usb/typec/bus.c
+index 7f3c9a8e2bf0..78e0e78954f2 100644
+--- a/drivers/usb/typec/bus.c
++++ b/drivers/usb/typec/bus.c
+@@ -382,7 +382,7 @@ static int typec_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int typec_remove(struct device *dev)
++static void typec_remove(struct device *dev)
+ {
+ 	struct typec_altmode_driver *drv =3D to_altmode_driver(dev->driver);
+ 	struct typec_altmode *adev =3D to_typec_altmode(dev);
+@@ -400,8 +400,6 @@ static int typec_remove(struct device *dev)
+=20
+ 	adev->desc =3D NULL;
+ 	adev->ops =3D NULL;
+-
+-	return 0;
+ }
+=20
+ struct bus_type typec_bus =3D {
+diff --git a/drivers/vdpa/vdpa.c b/drivers/vdpa/vdpa.c
+index bb3f1d1f0422..3fc4525fc05c 100644
+--- a/drivers/vdpa/vdpa.c
++++ b/drivers/vdpa/vdpa.c
+@@ -34,15 +34,13 @@ static int vdpa_dev_probe(struct device *d)
+ 	return ret;
+ }
+=20
+-static int vdpa_dev_remove(struct device *d)
++static void vdpa_dev_remove(struct device *d)
+ {
+ 	struct vdpa_device *vdev =3D dev_to_vdpa(d);
+ 	struct vdpa_driver *drv =3D drv_to_vdpa(vdev->dev.driver);
+=20
+ 	if (drv && drv->remove)
+ 		drv->remove(vdev);
+-
+-	return 0;
+ }
+=20
+ static struct bus_type vdpa_bus =3D {
+diff --git a/drivers/vfio/mdev/mdev_driver.c b/drivers/vfio/mdev/mdev_drive=
+r.c
+index c368ec824e2b..e2cb1ff56f6c 100644
+--- a/drivers/vfio/mdev/mdev_driver.c
++++ b/drivers/vfio/mdev/mdev_driver.c
+@@ -57,7 +57,7 @@ static int mdev_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int mdev_remove(struct device *dev)
++static void mdev_remove(struct device *dev)
+ {
+ 	struct mdev_driver *drv =3D
+ 		container_of(dev->driver, struct mdev_driver, driver);
+@@ -67,8 +67,6 @@ static int mdev_remove(struct device *dev)
+ 		drv->remove(mdev);
+=20
+ 	mdev_detach_iommu(mdev);
+-
+-	return 0;
+ }
+=20
+ static int mdev_match(struct device *dev, struct device_driver *drv)
+diff --git a/drivers/virtio/virtio.c b/drivers/virtio/virtio.c
+index 4b15c00c0a0a..2a6055c0d4d3 100644
+--- a/drivers/virtio/virtio.c
++++ b/drivers/virtio/virtio.c
+@@ -278,7 +278,7 @@ static int virtio_dev_probe(struct device *_d)
+=20
+ }
+=20
+-static int virtio_dev_remove(struct device *_d)
++static void virtio_dev_remove(struct device *_d)
+ {
+ 	struct virtio_device *dev =3D dev_to_virtio(_d);
+ 	struct virtio_driver *drv =3D drv_to_virtio(dev->dev.driver);
+@@ -292,7 +292,6 @@ static int virtio_dev_remove(struct device *_d)
+=20
+ 	/* Acknowledge the device's existence again. */
+ 	virtio_add_status(dev, VIRTIO_CONFIG_S_ACKNOWLEDGE);
+-	return 0;
+ }
+=20
+ static struct bus_type virtio_bus =3D {
+diff --git a/drivers/vlynq/vlynq.c b/drivers/vlynq/vlynq.c
+index e966981c0215..4af6615808cc 100644
+--- a/drivers/vlynq/vlynq.c
++++ b/drivers/vlynq/vlynq.c
+@@ -342,14 +342,12 @@ static int vlynq_device_probe(struct device *dev)
+ 	return result;
+ }
+=20
+-static int vlynq_device_remove(struct device *dev)
++static void vlynq_device_remove(struct device *dev)
+ {
+ 	struct vlynq_driver *drv =3D to_vlynq_driver(dev->driver);
+=20
+ 	if (drv->remove)
+ 		drv->remove(to_vlynq_device(dev));
+-
+-	return 0;
+ }
+=20
+ int __vlynq_register_driver(struct vlynq_driver *driver, struct module *ow=
+ner)
+diff --git a/drivers/vme/vme.c b/drivers/vme/vme.c
+index 1b15afea28ee..8dba20186be3 100644
+--- a/drivers/vme/vme.c
++++ b/drivers/vme/vme.c
+@@ -1990,7 +1990,7 @@ static int vme_bus_probe(struct device *dev)
+ 	return -ENODEV;
+ }
+=20
+-static int vme_bus_remove(struct device *dev)
++static void vme_bus_remove(struct device *dev)
+ {
+ 	struct vme_driver *driver;
+ 	struct vme_dev *vdev =3D dev_to_vme_dev(dev);
+@@ -1998,8 +1998,6 @@ static int vme_bus_remove(struct device *dev)
+ 	driver =3D dev->platform_data;
+ 	if (driver->remove)
+ 		driver->remove(vdev);
+-
+-	return 0;
+ }
+=20
+ struct bus_type vme_bus_type =3D {
+diff --git a/drivers/xen/xenbus/xenbus.h b/drivers/xen/xenbus/xenbus.h
+index 2a93b7c9c159..2754bdfadcb8 100644
+--- a/drivers/xen/xenbus/xenbus.h
++++ b/drivers/xen/xenbus/xenbus.h
+@@ -106,7 +106,7 @@ void xs_request_exit(struct xb_req_data *req);
+=20
+ int xenbus_match(struct device *_dev, struct device_driver *_drv);
+ int xenbus_dev_probe(struct device *_dev);
+-int xenbus_dev_remove(struct device *_dev);
++void xenbus_dev_remove(struct device *_dev);
+ int xenbus_register_driver_common(struct xenbus_driver *drv,
+ 				  struct xen_bus_type *bus,
+ 				  struct module *owner,
+diff --git a/drivers/xen/xenbus/xenbus_probe.c b/drivers/xen/xenbus/xenbus_=
+probe.c
+index 33d09b3f6211..bd003ca8acbe 100644
+--- a/drivers/xen/xenbus/xenbus_probe.c
++++ b/drivers/xen/xenbus/xenbus_probe.c
+@@ -325,7 +325,7 @@ int xenbus_dev_probe(struct device *_dev)
+ }
+ EXPORT_SYMBOL_GPL(xenbus_dev_probe);
+=20
+-int xenbus_dev_remove(struct device *_dev)
++void xenbus_dev_remove(struct device *_dev)
+ {
+ 	struct xenbus_device *dev =3D to_xenbus_device(_dev);
+ 	struct xenbus_driver *drv =3D to_xenbus_driver(_dev->driver);
+@@ -355,8 +355,6 @@ int xenbus_dev_remove(struct device *_dev)
+ 	if (!drv->allow_rebind ||
+ 	    xenbus_read_driver_state(dev->nodename) =3D=3D XenbusStateClosing)
+ 		xenbus_switch_state(dev, XenbusStateClosed);
+-
+-	return 0;
+ }
+ EXPORT_SYMBOL_GPL(xenbus_dev_remove);
+=20
+diff --git a/drivers/zorro/zorro-driver.c b/drivers/zorro/zorro-driver.c
+index 0dd7cbcec2b0..c18524bb8b2a 100644
+--- a/drivers/zorro/zorro-driver.c
++++ b/drivers/zorro/zorro-driver.c
+@@ -62,7 +62,7 @@ static int zorro_device_probe(struct device *dev)
+ }
+=20
+=20
+-static int zorro_device_remove(struct device *dev)
++static void zorro_device_remove(struct device *dev)
+ {
+ 	struct zorro_dev *z =3D to_zorro_dev(dev);
+ 	struct zorro_driver *drv =3D to_zorro_driver(dev->driver);
+@@ -72,7 +72,6 @@ static int zorro_device_remove(struct device *dev)
+ 			drv->remove(z);
+ 		z->driver =3D NULL;
+ 	}
+-	return 0;
+ }
+=20
+=20
+diff --git a/include/linux/device/bus.h b/include/linux/device/bus.h
+index 1ea5e1d1545b..062777a45a74 100644
+--- a/include/linux/device/bus.h
++++ b/include/linux/device/bus.h
+@@ -91,7 +91,7 @@ struct bus_type {
+ 	int (*uevent)(struct device *dev, struct kobj_uevent_env *env);
+ 	int (*probe)(struct device *dev);
+ 	void (*sync_state)(struct device *dev);
+-	int (*remove)(struct device *dev);
++	void (*remove)(struct device *dev);
+ 	void (*shutdown)(struct device *dev);
+=20
+ 	int (*online)(struct device *dev);
+diff --git a/sound/ac97/bus.c b/sound/ac97/bus.c
+index 6ddf646cda65..0d31a6d71468 100644
+--- a/sound/ac97/bus.c
++++ b/sound/ac97/bus.c
+@@ -514,7 +514,7 @@ static int ac97_bus_probe(struct device *dev)
+ 	return ret;
+ }
+=20
+-static int ac97_bus_remove(struct device *dev)
++static void ac97_bus_remove(struct device *dev)
+ {
+ 	struct ac97_codec_device *adev =3D to_ac97_device(dev);
+ 	struct ac97_codec_driver *adrv =3D to_ac97_driver(dev->driver);
+@@ -522,7 +522,7 @@ static int ac97_bus_remove(struct device *dev)
+=20
+ 	ret =3D pm_runtime_resume_and_get(dev);
+ 	if (ret < 0)
+-		return ret;
++		return;
+=20
+ 	ret =3D adrv->remove(adev);
+ 	pm_runtime_put_noidle(dev);
+@@ -530,8 +530,6 @@ static int ac97_bus_remove(struct device *dev)
+ 		ac97_put_disable_clk(adev);
+=20
+ 	pm_runtime_disable(dev);
+-
+-	return ret;
+ }
+=20
+ static struct bus_type ac97_bus_type =3D {
+diff --git a/sound/aoa/soundbus/core.c b/sound/aoa/soundbus/core.c
+index 002fb5bf220b..c9579d97fbab 100644
+--- a/sound/aoa/soundbus/core.c
++++ b/sound/aoa/soundbus/core.c
+@@ -104,7 +104,7 @@ static int soundbus_uevent(struct device *dev, struct k=
+obj_uevent_env *env)
+ 	return retval;
+ }
+=20
+-static int soundbus_device_remove(struct device *dev)
++static void soundbus_device_remove(struct device *dev)
+ {
+ 	struct soundbus_dev * soundbus_dev =3D to_soundbus_device(dev);
+ 	struct soundbus_driver * drv =3D to_soundbus_driver(dev->driver);
+@@ -112,8 +112,6 @@ static int soundbus_device_remove(struct device *dev)
+ 	if (dev->driver && drv->remove)
+ 		drv->remove(soundbus_dev);
+ 	soundbus_dev_put(soundbus_dev);
+-
+-	return 0;
+ }
+=20
+ static void soundbus_device_shutdown(struct device *dev)
 --=20
 2.30.2
 
@@ -449,4 +2345,4 @@ linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to linux-ntb+unsubscribe@googlegroups.com.
 To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/20210713193522.1770306-1-u.kleine-koenig%40pengutronix.de.
+linux-ntb/20210713193522.1770306-6-u.kleine-koenig%40pengutronix.de.
