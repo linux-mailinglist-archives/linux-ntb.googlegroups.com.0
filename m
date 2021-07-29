@@ -1,258 +1,127 @@
-Return-Path: <linux-ntb+bncBCUJ7YGL3QFBBSHA4SDQMGQE5GKT6QI@googlegroups.com>
+Return-Path: <linux-ntb+bncBDLLLYWA2UDBBYWZRGEAMGQEOI4CVDI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-pl1-x63e.google.com (mail-pl1-x63e.google.com [IPv6:2607:f8b0:4864:20::63e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 29B833D2004
-	for <lists+linux-ntb@lfdr.de>; Thu, 22 Jul 2021 10:46:02 +0200 (CEST)
-Received: by mail-pl1-x63e.google.com with SMTP id e8-20020a17090301c8b029012b411f5cbasf2366124plh.20
-        for <lists+linux-ntb@lfdr.de>; Thu, 22 Jul 2021 01:46:02 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1626943561; cv=pass;
+Received: from mail-oi1-x240.google.com (mail-oi1-x240.google.com [IPv6:2607:f8b0:4864:20::240])
+	by mail.lfdr.de (Postfix) with ESMTPS id 35BBB3D9FE2
+	for <lists+linux-ntb@lfdr.de>; Thu, 29 Jul 2021 10:54:59 +0200 (CEST)
+Received: by mail-oi1-x240.google.com with SMTP id t7-20020a0568081587b029025c900aa571sf2747704oiw.0
+        for <lists+linux-ntb@lfdr.de>; Thu, 29 Jul 2021 01:54:59 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1627548898; cv=pass;
         d=google.com; s=arc-20160816;
-        b=YUVVBgxK4jxnMxvL69D9ntxmDeiFSr4Xm8vSIzYI5k7R0rLrheRsNR+kmxEs3NBqZ0
-         UKXTw2LiVq/UnWRH8wpYmOoazfPkZ/30kOcc+ar3A48buOvMddZsYSn36hFYYryZiKY3
-         hww1MZu9xCZ+gfxkW3gphPogKuNOzEUD7wIWowWFms3T0qIQDvxN/cAAR05A/wVcY5fd
-         bppE0YRm+OlKkqF5c9sWCYVzOFtmL47n84q8rYcgljcEx2r8Cr0mxZTWgFa8CyatBo+C
-         4qMzqy1A32rFsTNak7kYQLfxdQzUHz1+4WqOvZVcXY/mmbXOow2L2hKMaFYScwA5Z8bu
-         VsEg==
+        b=lkUJUkcu4ZaOxQeiTr52h/affcSpDZjomYl2AFC7Gr8vTkObRo+6n3y5fY0qkm76Kn
+         un+fP/EXXQbR8LADR2IzA9AR43gUUrgDuHxrwRAb8MNmHJtMMi9/OQqW3fN3jZ6aFxE3
+         6iJHmhifohmVdeM5EgHODtcx+Sy1jjsIPy8YyzwkwYiibN3FU3/NvGdN78cAwOtaNLup
+         RMco9N/gswIOB8snQVRet6dWjATf3JyWh3ChUNcT4V8aR6xVGUGni6xZfLHwO8ddkJm+
+         CPfV2Lhe9GZDuxasTnNSxJ0Y5U2eyfgyjabvokvVXGT7qas++DFIRePc6RpjqfCYDxiD
+         3cYQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:cc:to:from:date:sender:dkim-signature;
-        bh=R5f8kpEuiiNpC5h28Hx9pwMqFE1JdniApI7f4TvRbmw=;
-        b=MnxKMOdcdVXYqdelqPd/qv2Ik9P7NljofaBlWM3I1mEOHbRr7i9ygJzSl5LRfJaTdL
-         aaxg2AjycZKssFyTN/3SQPUPPw16wcXhBVRAMGJp2SphSmWSLwu3iLoHsXQCe9SaM+3c
-         c9HAvB0Ld1UIbI2nzpTL8nju1fJL/xj1T9uI9Lf1HrGxWrQxcQChVgU9I3GQKgBEmQ8N
-         zCmryOho22SC9A0GUQ1QLgf43fiM0Rpg/8ML/2vsd065sfr+qg/1K30EbdoYOj6T+SB/
-         uYqmANvIkgaQnffn60tzLAWx23Ww1fJODwEeTK3jgmV/mbfAYMvpeN+WeUZltG42wQB7
-         Vquw==
+         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:sender:dkim-signature:dkim-signature;
+        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
+        b=hwrAKCLowqCPzlbC4K+I2hOZYvQ9gMsnFMFND1rV4hJGrjbVmNkx57BkzFrbJbbVO9
+         1yr1A9QIZVHnIwM1Vta01LYFSvjAdjcp7Y7foayu4r9m7TLBdr719dGaeNa1EmDPf++M
+         ZGN0yLnA0H3aU0pknsZwLhMun0dmiEfKbuhTiCOpzaKxvB84pC9xb05Bt8Zy571QXABm
+         1qfk/8GSf5HIa7xGU1TU4qDWzwF6fm/eAwG2Gi8sIaiWypqK3fhQJbXsqxvikLrNM6BJ
+         Yr+7kTcPAv9Bc/pnjPGzxrywETmmT4OhbZql5ZrH1B6nxtYvzK/l3MVq+uEZquy2YFy3
+         looA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=d2l4V14j;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YwavG0wf;
+       spf=pass (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a as permitted sender) smtp.mailfrom=ga3939798@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:content-transfer-encoding:in-reply-to
+        h=sender:mime-version:from:date:message-id:subject:to
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=R5f8kpEuiiNpC5h28Hx9pwMqFE1JdniApI7f4TvRbmw=;
-        b=agJ6HuQMxRyCaNeVsNZV7Ofcq/B1cUxlE0ylc0EmkcFbdc6bDSezmtnH9+upJgJC5Y
-         OqmepOAH6lD33PDcA9gv6OzaB31Rn5PzzpM84L6mXUT/kIfZxCoJeM5ISWt3vILMueYT
-         2+Epzki2K3/bYX281HtxbuPuQd47CkNtPR7Wqr+86yd3FRabz8pRXI+r3Q9R4SGRpjh5
-         CWABbyM2WDYpvmbL6YM31b3LIqPOq6TPctP/tiXODyI4jUdOiZ0L9h/8BkSwOir5MX7f
-         hP0XuGRcG22xHe8jSN4MNU+Szb+Y2WFOM0OJEFYogbqeg3V8sXFXPrsJv7tX8gQjlkV0
-         E8oQ==
+        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
+        b=kBHxHSjF/PZxUtWAzwtnKwufe0tfoLdtFrzy5ghKyNECg4Vb2ztCATu4laYIis5h46
+         PLBvqVQbhuD10qr+FIcR1ri4qQBrf1zy6UIYBJExcNL9hWxWMD8nhduMKME7fAA4pm3b
+         E37NhVh4gzES4Q2yA0o/RXHijcw1jCLAPywkzaEd8Q9YqkJHpTy4F4ZfRw0TS3/xOn6x
+         4RDA/xUN9H/J0Vmtfb/AlxNA4TBcH73Cl89S+b3oybbYJ+rMW6ba6CIlzCW/6tqyHFTF
+         KNdLjYG/k596jZzYX8MFd1UaUUFOfqqF0khr5ESud4/VViOhDpRMzIpfwaDWSypFg26W
+         oTlA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
+        b=F4q2VynNTx0K43BJ/qqdqgDx5AxQU9EPi8J5dSaFBU86/G4WBl2D+vRFNCpAhE3YVw
+         EY5aECH3Pew04gO+H7XHWO4E1CvnA/ubZELYcj2u2xgoiW3GTTgNv0uqxOHOLW5o2L2M
+         2M/9D1RqvCo3zVPqazirkk4b8W0/XzolrDO7kQlgzJxxCgSyUfsk0wfo3GQqiEJAfDwr
+         6HBu32EaGHBHGj1ICEdiM/DtgtEZedc2KZTX50dXK6peNX/CNoTNVHBsgPWGiFplVDlj
+         A28cScLkv9jh9gpHZFvbW+TpbZ8M6fRXfBPZq9gOSWnBtNp9qhtDWKlf3PkDoxnkk5hL
+         abNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition
-         :content-transfer-encoding:in-reply-to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=R5f8kpEuiiNpC5h28Hx9pwMqFE1JdniApI7f4TvRbmw=;
-        b=echdBBB4mcDDGfeAdzLmPtHTHggE2uLg3dY2uq7gkbf7UgoPO89k08hHsBH/1ZlG+o
-         qK2Eq7s5KAYOwUaGLYLmpg5sfbLE6IE5PsLiRyGrbVq1Tq9fykla/jRkfBlJjvcIB0i6
-         rSdj+aUvOykuHISHk2l3LmKZgfXs+qgs7yRmbRAMVUfvjiJM+ygHvtI8vGhmPdLL/3PL
-         jlvWRU63eHuEot/iEPJ35GXAHZCk2qMQuCo/h4vVFj+yYgsBwKlSQgZre2TOVJvSsUvD
-         SidOcD8eRiNlvKgn4xrUmLDDp0D6D1jRpSnt02WxW2NC/P5XP2EiQ5xXShWlOFbosJFy
-         /ojA==
+        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
+         :to:x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
+        b=oJ7GYcGTRinfNwNBokzn6aUTXr5oyUGcT/9Czk7eiEUwvZ5c5AH+HDtUuY9vJp9oA2
+         mlCpjxO7TRB9Q8QltragKMXXAL47zTHhNz2wXMrKs98uodahWlx0eS6EcWNvX2xhfGaa
+         YKiXIRM0pgPdtOrfuIxXbwXuQGdyQhIXtD60ss83n2x9f6RvdO0pyOjwVHZM9vbVs4N3
+         ZR3B+IbloWlQQ9Id5cS8Po0LTvO6giw4XNHBoj17S+2hn4hxIB3A6lRIsm3LoPNz/XUs
+         8zoSc4ewlBwhs7kCCTaS9Xm/glZKKW6dK2KT7ljxll1vQHN3Grr1FBCR7ifePX0yVhAS
+         yEow==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531pu9tFFd0aQ5szaR/ChIYvrnUYgXQjbDATUhW+1hkzJqiv5qtl
-	ddq0PVvt6ge9yf0U7X/tDrs=
-X-Google-Smtp-Source: ABdhPJzSlDS3q8cY9gwVO0aqdAE8DtLy51uoBteQE6uZadHBDogiameyx9wcLjUsv6mcfVBbPzsE8g==
-X-Received: by 2002:a17:90a:a117:: with SMTP id s23mr7959987pjp.229.1626943560859;
-        Thu, 22 Jul 2021 01:46:00 -0700 (PDT)
+X-Gm-Message-State: AOAM5304K4u8Zz0sXB0+70eIu9smvFA4U4t+/v7BIb7HiqQ0vFErwhMo
+	nK8ItiwmL6o88SJmyNBI0Fc=
+X-Google-Smtp-Source: ABdhPJyevqz0oC1fRJIPHiyUOIxzt8Jsnjz8yAos8X2PZE22Ff1RNtziwZDKIyvOdf1c62dsmR5MVQ==
+X-Received: by 2002:a05:6808:1494:: with SMTP id e20mr8928028oiw.122.1627548898151;
+        Thu, 29 Jul 2021 01:54:58 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:902:76c5:: with SMTP id j5ls2601576plt.7.gmail; Thu, 22
- Jul 2021 01:46:00 -0700 (PDT)
-X-Received: by 2002:a17:90b:209:: with SMTP id fy9mr31268304pjb.187.1626943560270;
-        Thu, 22 Jul 2021 01:46:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1626943560; cv=none;
+Received: by 2002:a05:6808:1d5:: with SMTP id x21ls1380461oic.9.gmail; Thu, 29
+ Jul 2021 01:54:57 -0700 (PDT)
+X-Received: by 2002:aca:1809:: with SMTP id h9mr9285364oih.4.1627548897805;
+        Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627548897; cv=none;
         d=google.com; s=arc-20160816;
-        b=TiFpsC5J6oG/Fq+FqnLEeYMWKHaHxlehGHbP2Fm3wH78shjo1EOrzwThLuToIc0lHL
-         uGPxQT+TLQ0EvYYBd7QPdk3FrcgklZaqRikfhQwIX7brRk+JdRC4OR606MCVH2VH1UL6
-         JdoJCcZYqotqW0UMe0pPrRjvHoaj4F4vGEd3HMe3eWk6zN5CNSPC3HjlfClQeRZ+YwSc
-         cnko2EaaG9wJxwce06n40FHck3sfB5OFTzho5DeOauUKZTxFLJWzSPlR5GvPpQrzKKYV
-         IwUgnR58dJfnHeldasA7KYJY3459PSWl1UTHrupwh/Am7NZw6KLRfMMqjhM0+BkhtGMu
-         Eltw==
+        b=cPW0PqQKnaz96W+p+UuZweMBNbaY+Itj57O92xgd41JRCwe++MJv/8tFA5kUYIgrCQ
+         emvrnP4axuv2LfJPz3M9g83PUReLnOB3XkSbNQBS0JVhBMwRzXjaX5jxVDAisrHaHVoz
+         eDPTXUiQehnNCVgW/0obfMXStcR4DBGArHjlnDsxmON6EBsth5yFvbCBCUgFNwDre3c0
+         DvkklSWYBDf1C0lRhxoITQmkIOCHTLo5eF1rZytL+1v3Sg/oWSspgQNPR+A1liqpurOA
+         NKMVVGT0KabkExd5gw+g5YhMqrKQpkB/4rgiNQ4v/qb2CmNQKdtXISSNF0xgnN2RkDPx
+         aAdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=dAVPQEFTCmeurJw2VuYp9UhlNJMHw+cv8niNegl9BmI=;
-        b=qINrtcuUDdqRvRxi/DgiVTIwZ2GNB3F+HAgTc9epBd4Hs6MOFNnphqeuvOSbteDPdM
-         Hfl90o8ldfQzrob2D5+GRtoVGTmw44k8nFYo4uRi+39gdyk2v4b3Noz48FjfW5mXsf3c
-         YDtVSI8P34hap7TXT5O6uRqcKXxaJ0Ch/uHJbnS2slTynmzbc8VAVcvMTXhGXKTbzU3Z
-         jxmDUuHAdb5mT1NsUw1sMohjouGBXQBDdtRzVgJQ7ltSXJanYaDsJqMTsS+WvFA8Awu3
-         j3yiV8Ko8fzMtexP/ZgsMSmBdC/fM/i/0cgot8nWYR1PbGg9QO/166j++/S1hriaoT0k
-         tSLg==
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=pTUj+JrupeNrZlPH3X3mwAcgAjhFt+nbz+SrklduekU=;
+        b=RZPBhf4F8IG2HkBDZ0rqmoYUxUyI686evlMnIwuW0le2wg5iX2BEJqSKutfVWTvQTD
+         GFW5kbUCUu98MwB094eYEOIghxIn4D+dL4HDnUH5oirii3C3I5EABJmXKFtGeIuKq9yQ
+         jHo2fEHiH3PQCmUm6Qry0x8qjCaIvYh358VsQuh4VGveB/WK68lWZD2HWsiRIG1j+cOh
+         NJ9f8Z4aKI9itD4ar8Ho3SyO+YPfJYQQdWORnOZ4sswXdpdWFNjLtbmxmcql/pMbkYHB
+         GNFjPXMdGVAhh9JI/HUZsddn6WFXaS1vc5w8fCAVURafoyBfV1hY9oRL/f1exMaHBZ6b
+         9uYg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=d2l4V14j;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: from mail.kernel.org (mail.kernel.org. [198.145.29.99])
-        by gmr-mx.google.com with ESMTPS id o20si3517533pgv.1.2021.07.22.01.46.00
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YwavG0wf;
+       spf=pass (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a as permitted sender) smtp.mailfrom=ga3939798@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-io1-xd2a.google.com (mail-io1-xd2a.google.com. [2607:f8b0:4864:20::d2a])
+        by gmr-mx.google.com with ESMTPS id m22si238393oie.5.2021.07.29.01.54.57
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 22 Jul 2021 01:46:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as permitted sender) client-ip=198.145.29.99;
-Received: by mail.kernel.org (Postfix) with ESMTPSA id A43AE6128C;
-	Thu, 22 Jul 2021 08:45:57 +0000 (UTC)
-Date: Thu, 22 Jul 2021 10:45:55 +0200
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig?= <u.kleine-koenig@pengutronix.de>
-Cc: kernel@pengutronix.de,
-	Alexander Shishkin <alexander.shishkin@linux.intel.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Alexandre Bounine <alex.bou9@gmail.com>,
-	Alex Dubov <oakad@yahoo.com>, Alex Elder <elder@kernel.org>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Alison Schofield <alison.schofield@intel.com>,
-	Allen Hubbe <allenbh@gmail.com>,
-	Andreas Noever <andreas.noever@gmail.com>,
-	Andy Gross <agross@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
-	Benjamin Herrenschmidt <benh@kernel.crashing.org>,
-	Benjamin Tissoires <benjamin.tissoires@redhat.com>,
-	Ben Widawsky <ben.widawsky@intel.com>,
-	Bjorn Andersson <bjorn.andersson@linaro.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Bodo Stroesser <bostroesser@gmail.com>,
-	Boris Ostrovsky <boris.ostrovsky@oracle.com>,
-	Chen-Yu Tsai <wens@csie.org>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Cornelia Huck <cohuck@redhat.com>,
-	Cristian Marussi <cristian.marussi@arm.com>,
-	Dan Williams <dan.j.williams@intel.com>,
-	Dave Jiang <dave.jiang@intel.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	David Woodhouse <dwmw@amazon.co.uk>,
-	Dexuan Cui <decui@microsoft.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Dominik Brodowski <linux@dominikbrodowski.net>,
-	Eric Farman <farman@linux.ibm.com>,
-	Finn Thain <fthain@linux-m68k.org>,
-	Florian Fainelli <f.fainelli@gmail.com>,
-	Frank Li <lznuaa@gmail.com>,
-	Geert Uytterhoeven <geert@linux-m68k.org>,
-	Geoff Levand <geoff@infradead.org>,
-	Haiyang Zhang <haiyangz@microsoft.com>,
-	Halil Pasic <pasic@linux.ibm.com>, Hannes Reinecke <hare@suse.de>,
-	Hans de Goede <hdegoede@redhat.com>,
-	Harald Freudenberger <freude@linux.ibm.com>,
-	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-	Heiko Carstens <hca@linux.ibm.com>, Helge Deller <deller@gmx.de>,
-	Ira Weiny <ira.weiny@intel.com>, Jakub Kicinski <kuba@kernel.org>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	Jaroslav Kysela <perex@perex.cz>, Jason Wang <jasowang@redhat.com>,
-	Jens Taprogge <jens.taprogge@taprogge.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>, Jiri Slaby <jirislaby@kernel.org>,
-	Joey Pabalan <jpabalanb@gmail.com>, Johan Hovold <johan@kernel.org>,
-	Johannes Berg <johannes@sipsolutions.net>,
-	Johannes Thumshirn <morbidrsa@gmail.com>,
-	Jon Mason <jdmason@kudzu.us>, Juergen Gross <jgross@suse.com>,
-	Julien Grall <jgrall@amazon.com>,
-	Kai-Heng Feng <kai.heng.feng@canonical.com>,
-	Kirti Wankhede <kwankhede@nvidia.com>,
-	Kishon Vijay Abraham I <kishon@ti.com>,
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kw@linux.com>,
-	"K. Y. Srinivasan" <kys@microsoft.com>,
-	Lee Jones <lee.jones@linaro.org>, Len Brown <lenb@kernel.org>,
-	Lorenzo Pieralisi <lorenzo.pieralisi@arm.com>,
-	Manohar Vanga <manohar.vanga@gmail.com>,
-	Marc Zyngier <maz@kernel.org>, Mark Brown <broonie@kernel.org>,
-	Mark Gross <mgross@linux.intel.com>,
-	"Martin K. Petersen" <martin.petersen@oracle.com>,
-	Martyn Welch <martyn@welchs.me.uk>,
-	Mathieu Poirier <mathieu.poirier@linaro.org>,
-	Matthew Rosato <mjrosato@linux.ibm.com>,
-	Matt Porter <mporter@kernel.crashing.org>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Maxime Ripard <mripard@kernel.org>,
-	Maximilian Luz <luzmaximilian@gmail.com>,
-	Maxim Levitsky <maximlevitsky@gmail.com>,
-	Michael Buesch <m@bues.ch>, Michael Ellerman <mpe@ellerman.id.au>,
-	Michael Jamet <michael.jamet@intel.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	Mika Westerberg <mika.westerberg@linux.intel.com>,
-	Mike Christie <michael.christie@oracle.com>,
-	Moritz Fischer <mdf@kernel.org>, Ohad Ben-Cohen <ohad@wizery.com>,
-	Pali =?iso-8859-1?Q?Roh=E1r?= <pali@kernel.org>,
-	Paul Mackerras <paulus@samba.org>,
-	Peter Oberparleiter <oberpar@linux.ibm.com>,
-	"Rafael J. Wysocki" <rjw@rjwysocki.net>,
-	=?utf-8?B?UmFmYcWCIE1pxYJlY2tp?= <zajec5@gmail.com>,
-	Rich Felker <dalias@libc.org>,
-	Rikard Falkeborn <rikard.falkeborn@gmail.com>,
-	Rob Herring <robh@kernel.org>, Russell King <linux@armlinux.org.uk>,
-	"Russell King (Oracle)" <rmk+kernel@armlinux.org.uk>,
-	Samuel Holland <samuel@sholland.org>,
-	Samuel Iglesias Gonsalvez <siglesias@igalia.com>,
-	SeongJae Park <sjpark@amazon.de>,
-	Srinivas Kandagatla <srinivas.kandagatla@linaro.org>,
-	Srinivas Pandruvada <srinivas.pandruvada@linux.intel.com>,
-	Stefano Stabellini <sstabellini@kernel.org>,
-	Stefan Richter <stefanr@s5r6.in-berlin.de>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Stephen Hemminger <sthemmin@microsoft.com>,
-	Sudeep Holla <sudeep.holla@arm.com>,
-	Sven Van Asbroeck <TheSven73@gmail.com>,
-	Takashi Iwai <tiwai@suse.com>,
-	Thomas Bogendoerfer <tsbogend@alpha.franken.de>,
-	Thorsten Scherer <t.scherer@eckelmann.de>,
-	Tomas Winkler <tomas.winkler@intel.com>, Tom Rix <trix@redhat.com>,
-	Tyrel Datwyler <tyreld@linux.ibm.com>,
-	Ulf Hansson <ulf.hansson@linaro.org>,
-	Vasily Gorbik <gor@linux.ibm.com>,
-	Vineeth Vijayan <vneethv@linux.ibm.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Vishal Verma <vishal.l.verma@intel.com>,
-	Wei Liu <wei.liu@kernel.org>,
-	William Breathitt Gray <vilhelm.gray@gmail.com>,
-	Wolfram Sang <wsa@kernel.org>, Wu Hao <hao.wu@intel.com>,
-	Yehezkel Bernat <YehezkelShB@gmail.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	YueHaibing <yuehaibing@huawei.com>, Yufen Yu <yuyufen@huawei.com>,
-	alsa-devel@alsa-project.org, dmaengine@vger.kernel.org,
-	greybus-dev@lists.linaro.org,
-	industrypack-devel@lists.sourceforge.net, kvm@vger.kernel.org,
-	linux1394-devel@lists.sourceforge.net, linux-acpi@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-cxl@vger.kernel.org, linux-fpga@vger.kernel.org,
-	linux-hyperv@vger.kernel.org, linux-i2c@vger.kernel.org,
-	linux-i3c@lists.infradead.org, linux-input@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-m68k@lists.linux-m68k.org,
-	linux-media@vger.kernel.org, linux-mips@vger.kernel.org,
-	linux-mmc@vger.kernel.org, linux-ntb@googlegroups.com,
-	linux-parisc@vger.kernel.org, linux-pci@vger.kernel.org,
-	linuxppc-dev@lists.ozlabs.org, linux-remoteproc@vger.kernel.org,
-	linux-s390@vger.kernel.org, linux-scsi@vger.kernel.org,
-	linux-serial@vger.kernel.org, linux-sh@vger.kernel.org,
-	linux-spi@vger.kernel.org, linux-staging@lists.linux.dev,
-	linux-sunxi@lists.linux.dev, linux-usb@vger.kernel.org,
-	linux-wireless@vger.kernel.org, netdev@vger.kernel.org,
-	nvdimm@lists.linux.dev, platform-driver-x86@vger.kernel.org,
-	sparclinux@vger.kernel.org, target-devel@vger.kernel.org,
-	virtualization@lists.linux-foundation.org,
-	xen-devel@lists.xenproject.org
-Subject: Re: [PATCH v4 0/5] bus: Make remove callback return void
-Message-ID: <YPkwQwf0dUKnGA7L@kroah.com>
-References: <20210713193522.1770306-1-u.kleine-koenig@pengutronix.de>
- <YPfyZen4Y0uDKqDT@kroah.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a as permitted sender) client-ip=2607:f8b0:4864:20::d2a;
+Received: by mail-io1-xd2a.google.com with SMTP id a13so6095336iol.5
+        for <linux-ntb@googlegroups.com>; Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
+X-Received: by 2002:a6b:e207:: with SMTP id z7mr3103604ioc.111.1627548897550;
+ Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <YPfyZen4Y0uDKqDT@kroah.com>
-X-Original-Sender: gregkh@linuxfoundation.org
+From: Ms <ga3939798@gmail.com>
+Date: Thu, 29 Jul 2021 09:54:13 +0100
+Message-ID: <CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt=Q@mail.gmail.com>
+Subject: RE
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="000000000000e4a4a605c83f4116"
+X-Original-Sender: ga3939798@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linuxfoundation.org header.s=korg header.b=d2l4V14j;       spf=pass
- (google.com: domain of gregkh@linuxfoundation.org designates 198.145.29.99 as
- permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+ header.i=@gmail.com header.s=20161025 header.b=YwavG0wf;       spf=pass
+ (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a
+ as permitted sender) smtp.mailfrom=ga3939798@gmail.com;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -265,184 +134,42 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Wed, Jul 21, 2021 at 12:09:41PM +0200, Greg Kroah-Hartman wrote:
-> On Tue, Jul 13, 2021 at 09:35:17PM +0200, Uwe Kleine-K=C3=B6nig wrote:
-> > Hello,
-> >=20
-> > this is v4 of the final patch set for my effort to make struct
-> > bus_type::remove return void.
-> >=20
-> > The first four patches contain cleanups that make some of these
-> > callbacks (more obviously) always return 0. They are acked by the
-> > respective maintainers. Bjorn Helgaas explicitly asked to include the
-> > pci patch (#1) into this series, so Greg taking this is fine. I assume
-> > the s390 people are fine with Greg taking patches #2 to #4, too, they
-> > didn't explicitly said so though.
-> >=20
-> > The last patch actually changes the prototype and so touches quite some
-> > drivers and has the potential to conflict with future developments, so =
-I
-> > consider it beneficial to put these patches into next soon. I expect
-> > that it will be Greg who takes the complete series, he already confirme=
-d
-> > via irc (for v2) to look into this series.
-> >=20
-> > The only change compared to v3 is in the fourth patch where I modified =
-a
-> > few more drivers to fix build failures. Some of them were found by buil=
-d
-> > bots (thanks!), some of them I found myself using a regular expression
-> > search. The newly modified files are:
-> >=20
-> >  arch/sparc/kernel/vio.c
-> >  drivers/nubus/bus.c
-> >  drivers/sh/superhyway/superhyway.c
-> >  drivers/vlynq/vlynq.c
-> >  drivers/zorro/zorro-driver.c
-> >  sound/ac97/bus.c
-> >=20
-> > Best regards
-> > Uwe
->=20
-> Now queued up.  I can go make a git tag that people can pull from after
-> 0-day is finished testing this to verify all is good, if others need it.
+--000000000000e4a4a605c83f4116
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Ok, here's a tag that any other subsystem can pull from if they want
-these changes in their tree before 5.15-rc1 is out.  I might pull it
-into my char-misc-next tree as well just to keep that tree sane as it
-seems to pick up new busses on a regular basis...
+Greetings, I=E2=80=99m writing this message to you with heavy whimper in my=
+ heart,
+tears in my eyes/pains and great sorrow in my heart and soul, I'm bereaved
+from every side of my life, I call it Vanity upon Vanity, I'm Rev. sister
+Carla Mona, I have been hits with evil Cancer which has gotten a worst /
+dangerous stage at me, and the doctor said I have only few days live,
 
-thanks,
+As an orphan and a catholic Rev Sister I decided to hand you over this sum
+of $4.900.000.00 USD (Four million Nine hundred thousand united states
+dollars) as trusted traits to facilitate wealthy accomplishment in life to
+underprivileged people in the world because I was too shocked when the
+doctor stated I have only few days to live, I cried as all that I have
+worked for the good work for God almighty in life is gone, My houses, cars,
+schools and money is gone,
 
-greg k-h
+I have already instructed my deposited Branch Bank Manger to take directive
+from my Lawyer and I have also as well spoken to the lawyer today about you
+as the person who I wishes to handle this assignment to help humanity and
+Orphanages since evil cancer wants to take my life away to leave all I have
+worked for underprivileged people in the world and the lawyer is waiting to
+hear from you
 
------------------------------------
+Let you establish immediate contact with the lawyer and work with him as he
+is a trusted elderly man He is the only person there that I am confiding in
+as I do not want to let other people know about the transfer that I will
+make to you, below is the contact of the lawyer (
+practitioner-office@consultant.com)
 
-
-The following changes since commit 2734d6c1b1a089fb593ef6a23d4b70903526fe0c=
-:
-
-  Linux 5.14-rc2 (2021-07-18 14:13:49 -0700)
-
-are available in the Git repository at:
-
-  git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core.git tags=
-/bus_remove_return_void-5.15
-
-for you to fetch changes up to fc7a6209d5710618eb4f72a77cd81b8d694ecf89:
-
-  bus: Make remove callback return void (2021-07-21 11:53:42 +0200)
-
-----------------------------------------------------------------
-Bus: Make remove callback return void tag
-
-Tag for other trees/branches to pull from in order to have a stable
-place to build off of if they want to add new busses for 5.15.
-
-Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-
-----------------------------------------------------------------
-Uwe Kleine-K=C3=B6nig (5):
-      PCI: endpoint: Make struct pci_epf_driver::remove return void
-      s390/cio: Make struct css_driver::remove return void
-      s390/ccwgroup: Drop if with an always false condition
-      s390/scm: Make struct scm_driver::remove return void
-      bus: Make remove callback return void
-
- arch/arm/common/locomo.c                  | 3 +--
- arch/arm/common/sa1111.c                  | 4 +---
- arch/arm/mach-rpc/ecard.c                 | 4 +---
- arch/mips/sgi-ip22/ip22-gio.c             | 3 +--
- arch/parisc/kernel/drivers.c              | 5 ++---
- arch/powerpc/platforms/ps3/system-bus.c   | 3 +--
- arch/powerpc/platforms/pseries/ibmebus.c  | 3 +--
- arch/powerpc/platforms/pseries/vio.c      | 3 +--
- arch/s390/include/asm/eadm.h              | 2 +-
- arch/sparc/kernel/vio.c                   | 4 +---
- drivers/acpi/bus.c                        | 3 +--
- drivers/amba/bus.c                        | 4 +---
- drivers/base/auxiliary.c                  | 4 +---
- drivers/base/isa.c                        | 4 +---
- drivers/base/platform.c                   | 4 +---
- drivers/bcma/main.c                       | 6 ++----
- drivers/bus/sunxi-rsb.c                   | 4 +---
- drivers/cxl/core.c                        | 3 +--
- drivers/dax/bus.c                         | 4 +---
- drivers/dma/idxd/sysfs.c                  | 4 +---
- drivers/firewire/core-device.c            | 4 +---
- drivers/firmware/arm_scmi/bus.c           | 4 +---
- drivers/firmware/google/coreboot_table.c  | 4 +---
- drivers/fpga/dfl.c                        | 4 +---
- drivers/hid/hid-core.c                    | 4 +---
- drivers/hid/intel-ish-hid/ishtp/bus.c     | 4 +---
- drivers/hv/vmbus_drv.c                    | 5 +----
- drivers/hwtracing/intel_th/core.c         | 4 +---
- drivers/i2c/i2c-core-base.c               | 5 +----
- drivers/i3c/master.c                      | 4 +---
- drivers/input/gameport/gameport.c         | 3 +--
- drivers/input/serio/serio.c               | 3 +--
- drivers/ipack/ipack.c                     | 4 +---
- drivers/macintosh/macio_asic.c            | 4 +---
- drivers/mcb/mcb-core.c                    | 4 +---
- drivers/media/pci/bt8xx/bttv-gpio.c       | 3 +--
- drivers/memstick/core/memstick.c          | 3 +--
- drivers/mfd/mcp-core.c                    | 3 +--
- drivers/misc/mei/bus.c                    | 4 +---
- drivers/misc/tifm_core.c                  | 3 +--
- drivers/mmc/core/bus.c                    | 4 +---
- drivers/mmc/core/sdio_bus.c               | 4 +---
- drivers/net/netdevsim/bus.c               | 3 +--
- drivers/ntb/core.c                        | 4 +---
- drivers/ntb/ntb_transport.c               | 4 +---
- drivers/nubus/bus.c                       | 6 ++----
- drivers/nvdimm/bus.c                      | 3 +--
- drivers/pci/endpoint/pci-epf-core.c       | 7 ++-----
- drivers/pci/pci-driver.c                  | 3 +--
- drivers/pcmcia/ds.c                       | 4 +---
- drivers/platform/surface/aggregator/bus.c | 4 +---
- drivers/platform/x86/wmi.c                | 4 +---
- drivers/pnp/driver.c                      | 3 +--
- drivers/rapidio/rio-driver.c              | 4 +---
- drivers/rpmsg/rpmsg_core.c                | 7 ++-----
- drivers/s390/block/scm_drv.c              | 4 +---
- drivers/s390/cio/ccwgroup.c               | 6 +-----
- drivers/s390/cio/chsc_sch.c               | 3 +--
- drivers/s390/cio/css.c                    | 7 +++----
- drivers/s390/cio/css.h                    | 2 +-
- drivers/s390/cio/device.c                 | 9 +++------
- drivers/s390/cio/eadm_sch.c               | 4 +---
- drivers/s390/cio/scm.c                    | 5 +++--
- drivers/s390/cio/vfio_ccw_drv.c           | 3 +--
- drivers/s390/crypto/ap_bus.c              | 4 +---
- drivers/scsi/scsi_debug.c                 | 3 +--
- drivers/sh/superhyway/superhyway.c        | 8 ++------
- drivers/siox/siox-core.c                  | 4 +---
- drivers/slimbus/core.c                    | 4 +---
- drivers/soc/qcom/apr.c                    | 4 +---
- drivers/spi/spi.c                         | 4 +---
- drivers/spmi/spmi.c                       | 3 +--
- drivers/ssb/main.c                        | 4 +---
- drivers/staging/fieldbus/anybuss/host.c   | 4 +---
- drivers/staging/greybus/gbphy.c           | 4 +---
- drivers/target/loopback/tcm_loop.c        | 5 ++---
- drivers/thunderbolt/domain.c              | 4 +---
- drivers/tty/serdev/core.c                 | 4 +---
- drivers/usb/common/ulpi.c                 | 4 +---
- drivers/usb/serial/bus.c                  | 4 +---
- drivers/usb/typec/bus.c                   | 4 +---
- drivers/vdpa/vdpa.c                       | 4 +---
- drivers/vfio/mdev/mdev_driver.c           | 4 +---
- drivers/virtio/virtio.c                   | 3 +--
- drivers/vlynq/vlynq.c                     | 4 +---
- drivers/vme/vme.c                         | 4 +---
- drivers/xen/xenbus/xenbus.h               | 2 +-
- drivers/xen/xenbus/xenbus_probe.c         | 4 +---
- drivers/zorro/zorro-driver.c              | 3 +--
- include/linux/device/bus.h                | 2 +-
- include/linux/pci-epf.h                   | 2 +-
- sound/ac97/bus.c                          | 6 ++----
- sound/aoa/soundbus/core.c                 | 4 +---
- 93 files changed, 107 insertions(+), 263 deletions(-)
+I pray that God will give you health and courage to undertake this for me
+and you shall pray for my emergency surgery operations to answer my call to
+the almighty.
+Rev Sister Carla Mona
 
 --=20
 You received this message because you are subscribed to the Google Groups "=
@@ -450,4 +177,51 @@ linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to linux-ntb+unsubscribe@googlegroups.com.
 To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/YPkwQwf0dUKnGA7L%40kroah.com.
+linux-ntb/CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt%3DQ%40mail.gmai=
+l.com.
+
+--000000000000e4a4a605c83f4116
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Greetings, I=E2=80=99m writing this message to you with he=
+avy whimper in my heart, tears in my eyes/pains and great sorrow in my hear=
+t and soul, I&#39;m bereaved from every side of my life, I call it Vanity u=
+pon Vanity, I&#39;m Rev. sister Carla Mona, I have been hits with evil Canc=
+er which has gotten a worst / dangerous stage at me, and the doctor said I =
+have only few days live, <br><br>As an orphan and a catholic Rev Sister I d=
+ecided to hand you over this sum of $4.900.000.00 USD (Four million Nine hu=
+ndred thousand united states dollars) as trusted traits to facilitate wealt=
+hy accomplishment in life to underprivileged people in the world because I =
+was too shocked when the doctor stated I have only few days to live, I crie=
+d as all that I have worked for the good work for God almighty in life is g=
+one, My houses, cars, schools and money is gone, <br><br>I have already ins=
+tructed my deposited Branch Bank Manger to take directive from my Lawyer an=
+d I have also as well spoken to the lawyer today about you as the person wh=
+o I wishes to handle this assignment to help humanity and Orphanages since =
+evil cancer wants to take my life away to leave all I have worked for under=
+privileged people in the world and the lawyer is waiting to hear from you <=
+br><br>Let you establish immediate contact with the lawyer and work with hi=
+m as he is a trusted elderly man He is the only person there that I am conf=
+iding in as I do not want to let other people know about the transfer that =
+I will make to you, below is the contact of the lawyer (<a href=3D"mailto:p=
+ractitioner-office@consultant.com">practitioner-office@consultant.com</a>) =
+<br><br>I pray that God will give you health and courage to undertake this =
+for me and you shall pray for my emergency surgery operations to answer my =
+call to the almighty.<br>Rev Sister Carla Mona<br></div>
+
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt%3DQ%=
+40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.goo=
+gle.com/d/msgid/linux-ntb/CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt=
+%3DQ%40mail.gmail.com</a>.<br />
+
+--000000000000e4a4a605c83f4116--
