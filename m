@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBDLLLYWA2UDBBYWZRGEAMGQEOI4CVDI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCS7LS6WRQIBBBNES2EAMGQE7BS324I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-oi1-x240.google.com (mail-oi1-x240.google.com [IPv6:2607:f8b0:4864:20::240])
-	by mail.lfdr.de (Postfix) with ESMTPS id 35BBB3D9FE2
-	for <lists+linux-ntb@lfdr.de>; Thu, 29 Jul 2021 10:54:59 +0200 (CEST)
-Received: by mail-oi1-x240.google.com with SMTP id t7-20020a0568081587b029025c900aa571sf2747704oiw.0
-        for <lists+linux-ntb@lfdr.de>; Thu, 29 Jul 2021 01:54:59 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1627548898; cv=pass;
+Received: from mail-oo1-xc39.google.com (mail-oo1-xc39.google.com [IPv6:2607:f8b0:4864:20::c39])
+	by mail.lfdr.de (Postfix) with ESMTPS id 41ECF3DC797
+	for <lists+linux-ntb@lfdr.de>; Sat, 31 Jul 2021 20:10:14 +0200 (CEST)
+Received: by mail-oo1-xc39.google.com with SMTP id z9-20020a4ade490000b029024c2413e5c6sf5150555oot.1
+        for <lists+linux-ntb@lfdr.de>; Sat, 31 Jul 2021 11:10:14 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1627755013; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lkUJUkcu4ZaOxQeiTr52h/affcSpDZjomYl2AFC7Gr8vTkObRo+6n3y5fY0qkm76Kn
-         un+fP/EXXQbR8LADR2IzA9AR43gUUrgDuHxrwRAb8MNmHJtMMi9/OQqW3fN3jZ6aFxE3
-         6iJHmhifohmVdeM5EgHODtcx+Sy1jjsIPy8YyzwkwYiibN3FU3/NvGdN78cAwOtaNLup
-         RMco9N/gswIOB8snQVRet6dWjATf3JyWh3ChUNcT4V8aR6xVGUGni6xZfLHwO8ddkJm+
-         CPfV2Lhe9GZDuxasTnNSxJ0Y5U2eyfgyjabvokvVXGT7qas++DFIRePc6RpjqfCYDxiD
-         3cYQ==
+        b=MdG0oVwp8/5H83Fdqnl5th2ChzQyQ7XNlIaz9echIRr7QEcgVXktQSjh0QpbI4yIpy
+         84vz3dDDizD9m20f0EZmcFDgxpIrUgNax6i6OQDDkhMmrV/K5KunUodY6MPhA+flyYfZ
+         yicnGdOHpRJ7KDIWrEsU4vGBNGuqHcEAPeBILG2ITX06+P7H1nSgSup+GFpQmDOoQVN4
+         /NJ8qsBHHZQ+trFAnfwhLFm1TQGh7GedmbYuUBv0QHrnbDa6G9L9nBHoKRGsckfDSwL0
+         fQ/zL/+VKdN//tNVuu9dYewC7kYllvsdUoI4+jAxmg52jfUJaJrCcpv6I/92xG8re5yc
+         T4BA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:to:subject:message-id:date:from
          :mime-version:sender:dkim-signature:dkim-signature;
-        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
-        b=hwrAKCLowqCPzlbC4K+I2hOZYvQ9gMsnFMFND1rV4hJGrjbVmNkx57BkzFrbJbbVO9
-         1yr1A9QIZVHnIwM1Vta01LYFSvjAdjcp7Y7foayu4r9m7TLBdr719dGaeNa1EmDPf++M
-         ZGN0yLnA0H3aU0pknsZwLhMun0dmiEfKbuhTiCOpzaKxvB84pC9xb05Bt8Zy571QXABm
-         1qfk/8GSf5HIa7xGU1TU4qDWzwF6fm/eAwG2Gi8sIaiWypqK3fhQJbXsqxvikLrNM6BJ
-         Yr+7kTcPAv9Bc/pnjPGzxrywETmmT4OhbZql5ZrH1B6nxtYvzK/l3MVq+uEZquy2YFy3
-         looA==
+        bh=V5DNxKH0zjAyFU38bf2BfelAmx7iStr38jnZStxNqUs=;
+        b=gee9AE34S4WxSlII1+xRG9E49PJUT7/ZmgzfzMv/tDC+vkJysTI0P6oqFglH3v4zIr
+         K9SDnSL/4CIh8F54WFfQxVj3zC1PxY+cyIo4ebtRvXwuz4s41Pm2+1yDyJjFFdfu2ln+
+         oD26Dzd0D2FK305Wjdl0MLM64DKaJwbEltb630q/T+J+QhfiwTXM8/9TQtHOXL+6ciTB
+         l+EySM2nMdnoG1l6fEI+8Ayo+5gtjtVb2Nd83AHx8rmMT173JnnwhGIoF0FlGqh1gKBw
+         3r0te7pU9tinBzcAwTBQv3pRpIZmSi1wIMWXYuVuxBZxVYfrGZG8yqw8aiZxF/MM4zlQ
+         318Q==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YwavG0wf;
-       spf=pass (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a as permitted sender) smtp.mailfrom=ga3939798@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qI0SYvOW;
+       spf=pass (google.com: domain of pacomeamegan@gmail.com designates 2607:f8b0:4864:20::b2d as permitted sender) smtp.mailfrom=pacomeamegan@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20161025;
@@ -35,92 +35,92 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
-        b=kBHxHSjF/PZxUtWAzwtnKwufe0tfoLdtFrzy5ghKyNECg4Vb2ztCATu4laYIis5h46
-         PLBvqVQbhuD10qr+FIcR1ri4qQBrf1zy6UIYBJExcNL9hWxWMD8nhduMKME7fAA4pm3b
-         E37NhVh4gzES4Q2yA0o/RXHijcw1jCLAPywkzaEd8Q9YqkJHpTy4F4ZfRw0TS3/xOn6x
-         4RDA/xUN9H/J0Vmtfb/AlxNA4TBcH73Cl89S+b3oybbYJ+rMW6ba6CIlzCW/6tqyHFTF
-         KNdLjYG/k596jZzYX8MFd1UaUUFOfqqF0khr5ESud4/VViOhDpRMzIpfwaDWSypFg26W
-         oTlA==
+        bh=V5DNxKH0zjAyFU38bf2BfelAmx7iStr38jnZStxNqUs=;
+        b=OYbcD0ZHi0AaW2+oxrUvIoAEzS3RwFqFotul/2h6uql5U55iEjbIPxfP7GudjZu0uG
+         GDOOGtztORwqzlSYmedTgjBILHiK7hOCEr55pnieVJAAtxxd5+v+WPeWAQfkFba1usNV
+         y9UeQOv1Ds5K9PwlBP3ipZs/eYXK40FBU5PATE62HHPfkPrI4F8zQMwHdeubam7937AX
+         W0Dkl5hXNr3as7taFUP+0DIsrr9+1MyGROYXmyr4OMyJIwlqAVY8KmdRvSYPq308g90y
+         fJI9F8f8zq3JY6/0O5O3DZkXG7yfX494SAWq0OnhZAQrz/NNUelO1QkokME3GH9sS5Si
+         LB2g==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
         h=mime-version:from:date:message-id:subject:to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
-        b=F4q2VynNTx0K43BJ/qqdqgDx5AxQU9EPi8J5dSaFBU86/G4WBl2D+vRFNCpAhE3YVw
-         EY5aECH3Pew04gO+H7XHWO4E1CvnA/ubZELYcj2u2xgoiW3GTTgNv0uqxOHOLW5o2L2M
-         2M/9D1RqvCo3zVPqazirkk4b8W0/XzolrDO7kQlgzJxxCgSyUfsk0wfo3GQqiEJAfDwr
-         6HBu32EaGHBHGj1ICEdiM/DtgtEZedc2KZTX50dXK6peNX/CNoTNVHBsgPWGiFplVDlj
-         A28cScLkv9jh9gpHZFvbW+TpbZ8M6fRXfBPZq9gOSWnBtNp9qhtDWKlf3PkDoxnkk5hL
-         abNg==
+        bh=V5DNxKH0zjAyFU38bf2BfelAmx7iStr38jnZStxNqUs=;
+        b=mRlldq4n6lKRl7o10PT1+/vHmKnPxh+bdnRXnEvUo7A9kJ7WRG4XTpTRWGLnEzTjwU
+         oODoLsM7JR+trfKgVmQPLUvA6niqQrLDK+XR+ge0X+fcyON3n4i5PNW6aBnbGYcEEbCB
+         i4CKqiNQV7Du2wOQ8g+NvDsxqyo3M6ug4s4+SG5p9lwiy/txvo6Jc23UG5tHl0dZiL6G
+         eTDpXR7cRqxcfcUl3wb+z4BPuGhIq+slnDgnuJ/SuBpPH+TZ74erDequsvaCjG1gwdM0
+         QOzKfEqosO0ruc1TpFLAsiEdCrBMxlbbhEIzb81x8hj4/rfXwxxYC1Ujd55mKwqHyfg6
+         +K6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
          :to:x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=bkJL41U5u06T7grnbt4vphQAibE/V+9JGLX36o34mdE=;
-        b=oJ7GYcGTRinfNwNBokzn6aUTXr5oyUGcT/9Czk7eiEUwvZ5c5AH+HDtUuY9vJp9oA2
-         mlCpjxO7TRB9Q8QltragKMXXAL47zTHhNz2wXMrKs98uodahWlx0eS6EcWNvX2xhfGaa
-         YKiXIRM0pgPdtOrfuIxXbwXuQGdyQhIXtD60ss83n2x9f6RvdO0pyOjwVHZM9vbVs4N3
-         ZR3B+IbloWlQQ9Id5cS8Po0LTvO6giw4XNHBoj17S+2hn4hxIB3A6lRIsm3LoPNz/XUs
-         8zoSc4ewlBwhs7kCCTaS9Xm/glZKKW6dK2KT7ljxll1vQHN3Grr1FBCR7ifePX0yVhAS
-         yEow==
+        bh=V5DNxKH0zjAyFU38bf2BfelAmx7iStr38jnZStxNqUs=;
+        b=qq5i2vtrR0VaMg5T4kBtEfsjpufQhTHRije5HNNVvd+k0AKUqoZvDbcvA8mM0kdOk0
+         rnAQYdFOWmWp0Jl/pJP/KVq7d9bHbz2pKOkfKfSc5j85WmeJaXUmG4JEd8jmSG0npyo6
+         I/QqLeCZ39Aqj9mbuE07G1iAcZLyvNTPwV6iO5nQQsKSCP+xmpMGVpL72zNJqK4NKF3i
+         n5qqUlFLzmdXIeZAfS78wqhMwBofnJA7pRhIWUXG0i1Z1cm290osf0yTJY6Sxv1rBaVB
+         Kj/V6LqjaZUZgPWCiNQukSt0Rby4vP61b18bhLvPXBH2Z31MFjjAJOE7gsx5gGl7pLKi
+         W7WA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5304K4u8Zz0sXB0+70eIu9smvFA4U4t+/v7BIb7HiqQ0vFErwhMo
-	nK8ItiwmL6o88SJmyNBI0Fc=
-X-Google-Smtp-Source: ABdhPJyevqz0oC1fRJIPHiyUOIxzt8Jsnjz8yAos8X2PZE22Ff1RNtziwZDKIyvOdf1c62dsmR5MVQ==
-X-Received: by 2002:a05:6808:1494:: with SMTP id e20mr8928028oiw.122.1627548898151;
-        Thu, 29 Jul 2021 01:54:58 -0700 (PDT)
+X-Gm-Message-State: AOAM533nurjSvwCec5SnyWUyOdzRcNCZ4H1udZve5aNSD5iMD92Mxflt
+	hKbHRuWLLgj+C2QzziNebZ8=
+X-Google-Smtp-Source: ABdhPJwTzS/ebUDYUGALh/SqFhTV8M4fP0FQbkarbyjcJn6QZzqOy5fhbFJhLIb12lxMnv+CFKcLDA==
+X-Received: by 2002:a05:6808:2d2:: with SMTP id a18mr6057641oid.106.1627755013221;
+        Sat, 31 Jul 2021 11:10:13 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6808:1d5:: with SMTP id x21ls1380461oic.9.gmail; Thu, 29
- Jul 2021 01:54:57 -0700 (PDT)
-X-Received: by 2002:aca:1809:: with SMTP id h9mr9285364oih.4.1627548897805;
-        Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1627548897; cv=none;
+Received: by 2002:a05:6830:1403:: with SMTP id v3ls1213924otp.7.gmail; Sat, 31
+ Jul 2021 11:10:12 -0700 (PDT)
+X-Received: by 2002:a9d:74c1:: with SMTP id a1mr6542502otl.129.1627755012899;
+        Sat, 31 Jul 2021 11:10:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627755012; cv=none;
         d=google.com; s=arc-20160816;
-        b=cPW0PqQKnaz96W+p+UuZweMBNbaY+Itj57O92xgd41JRCwe++MJv/8tFA5kUYIgrCQ
-         emvrnP4axuv2LfJPz3M9g83PUReLnOB3XkSbNQBS0JVhBMwRzXjaX5jxVDAisrHaHVoz
-         eDPTXUiQehnNCVgW/0obfMXStcR4DBGArHjlnDsxmON6EBsth5yFvbCBCUgFNwDre3c0
-         DvkklSWYBDf1C0lRhxoITQmkIOCHTLo5eF1rZytL+1v3Sg/oWSspgQNPR+A1liqpurOA
-         NKMVVGT0KabkExd5gw+g5YhMqrKQpkB/4rgiNQ4v/qb2CmNQKdtXISSNF0xgnN2RkDPx
-         aAdg==
+        b=f2Osk0pEIuUW5isP6wlRqc4h2pfofmwSFvP8wcexEjExoRIiAvqmHUW97yyUaB3Gkp
+         Z7fDaZ/mp7HGwD1B/0mMYOJT3RU4qSFH7TZgiR3obEKuO/R6P0BSJ1fVof3iJIy8sg/j
+         m9fd5Cl14O6hk5q6YxA/6cRF1GkcUjCIb3Y0K5MhZDkeZ1MOaXfQC/J8kP+dU4B2xHkL
+         hPss9TqPU1UHOs6ZCWAWYNnrz70LJVnn0jkdnaO/4Q74jrPtkFnmH4CxgCS/kGqL+iTz
+         eQH/EigPZQwAUCD24LSp36j7yonWbqjHc3TDlHV5d3p19YPhgkRJsk091Ocnir74dGGi
+         fJCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=pTUj+JrupeNrZlPH3X3mwAcgAjhFt+nbz+SrklduekU=;
-        b=RZPBhf4F8IG2HkBDZ0rqmoYUxUyI686evlMnIwuW0le2wg5iX2BEJqSKutfVWTvQTD
-         GFW5kbUCUu98MwB094eYEOIghxIn4D+dL4HDnUH5oirii3C3I5EABJmXKFtGeIuKq9yQ
-         jHo2fEHiH3PQCmUm6Qry0x8qjCaIvYh358VsQuh4VGveB/WK68lWZD2HWsiRIG1j+cOh
-         NJ9f8Z4aKI9itD4ar8Ho3SyO+YPfJYQQdWORnOZ4sswXdpdWFNjLtbmxmcql/pMbkYHB
-         GNFjPXMdGVAhh9JI/HUZsddn6WFXaS1vc5w8fCAVURafoyBfV1hY9oRL/f1exMaHBZ6b
-         9uYg==
+        bh=YbrFcM7HPSkQMOG6132rZuGH17DXfPyZ0tfD3Ghn2XQ=;
+        b=ac6p/eT6H0CwH03WJR1SAoh5c3elpYndmRnlwRwmQUgI+Xwi6nfTNXAe0po4Oucx6K
+         zLqeT7wZ6PQa0M3EWdDI2YLLluREVxHtoGcA9pjEBqJWBSc5PP93Fp3ljkcCQmOMxP6/
+         /U9g0DuRpBzPAWwvXxJtpoLEZqY4ORrxpfQ7pabZvJwZFOuNJlZWVOqKCmiLHrXlDhuB
+         VF9vxHGzZKidqV31HPnTysB+lGouU+dFqNrsQU5daMBYNov/suRF43HfW0CloZVrOHB6
+         RQGBV3pCV1zgsjTRgIf4EO3zkKGZpiSa8qJ9vvILqKyQhc9UbQ8V0ZvRFF50mUPOYEFn
+         9Ukg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YwavG0wf;
-       spf=pass (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a as permitted sender) smtp.mailfrom=ga3939798@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qI0SYvOW;
+       spf=pass (google.com: domain of pacomeamegan@gmail.com designates 2607:f8b0:4864:20::b2d as permitted sender) smtp.mailfrom=pacomeamegan@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-io1-xd2a.google.com (mail-io1-xd2a.google.com. [2607:f8b0:4864:20::d2a])
-        by gmr-mx.google.com with ESMTPS id m22si238393oie.5.2021.07.29.01.54.57
+Received: from mail-yb1-xb2d.google.com (mail-yb1-xb2d.google.com. [2607:f8b0:4864:20::b2d])
+        by gmr-mx.google.com with ESMTPS id l23si285569otb.2.2021.07.31.11.10.12
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a as permitted sender) client-ip=2607:f8b0:4864:20::d2a;
-Received: by mail-io1-xd2a.google.com with SMTP id a13so6095336iol.5
-        for <linux-ntb@googlegroups.com>; Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
-X-Received: by 2002:a6b:e207:: with SMTP id z7mr3103604ioc.111.1627548897550;
- Thu, 29 Jul 2021 01:54:57 -0700 (PDT)
+        Sat, 31 Jul 2021 11:10:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pacomeamegan@gmail.com designates 2607:f8b0:4864:20::b2d as permitted sender) client-ip=2607:f8b0:4864:20::b2d;
+Received: by mail-yb1-xb2d.google.com with SMTP id m193so6983775ybf.9
+        for <linux-ntb@googlegroups.com>; Sat, 31 Jul 2021 11:10:12 -0700 (PDT)
+X-Received: by 2002:a25:f80a:: with SMTP id u10mr10646753ybd.391.1627755012689;
+ Sat, 31 Jul 2021 11:10:12 -0700 (PDT)
 MIME-Version: 1.0
-From: Ms <ga3939798@gmail.com>
-Date: Thu, 29 Jul 2021 09:54:13 +0100
-Message-ID: <CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt=Q@mail.gmail.com>
-Subject: RE
+From: Sarah Ritterhouse <sarahriterhouse01@gmail.com>
+Date: Sat, 31 Jul 2021 18:09:56 +0000
+Message-ID: <CAOPTZN7VRDDPdEiUT+P38B-7MZF4m6sFddEipN5fuTyPv=h8=g@mail.gmail.com>
+Subject: 
 To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="000000000000e4a4a605c83f4116"
-X-Original-Sender: ga3939798@gmail.com
+Content-Type: multipart/alternative; boundary="0000000000005013e105c86f3fb8"
+X-Original-Sender: sarahriterhouse01@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20161025 header.b=YwavG0wf;       spf=pass
- (google.com: domain of ga3939798@gmail.com designates 2607:f8b0:4864:20::d2a
- as permitted sender) smtp.mailfrom=ga3939798@gmail.com;       dmarc=pass
+ header.i=@gmail.com header.s=20161025 header.b=qI0SYvOW;       spf=pass
+ (google.com: domain of pacomeamegan@gmail.com designates 2607:f8b0:4864:20::b2d
+ as permitted sender) smtp.mailfrom=pacomeamegan@gmail.com;       dmarc=pass
  (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
@@ -134,42 +134,13 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---000000000000e4a4a605c83f4116
+--0000000000005013e105c86f3fb8
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Greetings, I=E2=80=99m writing this message to you with heavy whimper in my=
- heart,
-tears in my eyes/pains and great sorrow in my heart and soul, I'm bereaved
-from every side of my life, I call it Vanity upon Vanity, I'm Rev. sister
-Carla Mona, I have been hits with evil Cancer which has gotten a worst /
-dangerous stage at me, and the doctor said I have only few days live,
-
-As an orphan and a catholic Rev Sister I decided to hand you over this sum
-of $4.900.000.00 USD (Four million Nine hundred thousand united states
-dollars) as trusted traits to facilitate wealthy accomplishment in life to
-underprivileged people in the world because I was too shocked when the
-doctor stated I have only few days to live, I cried as all that I have
-worked for the good work for God almighty in life is gone, My houses, cars,
-schools and money is gone,
-
-I have already instructed my deposited Branch Bank Manger to take directive
-from my Lawyer and I have also as well spoken to the lawyer today about you
-as the person who I wishes to handle this assignment to help humanity and
-Orphanages since evil cancer wants to take my life away to leave all I have
-worked for underprivileged people in the world and the lawyer is waiting to
-hear from you
-
-Let you establish immediate contact with the lawyer and work with him as he
-is a trusted elderly man He is the only person there that I am confiding in
-as I do not want to let other people know about the transfer that I will
-make to you, below is the contact of the lawyer (
-practitioner-office@consultant.com)
-
-I pray that God will give you health and courage to undertake this for me
-and you shall pray for my emergency surgery operations to answer my call to
-the almighty.
-Rev Sister Carla Mona
+--=20
+=E4=BD=A0=E5=A5=BD=EF=BC=8C=E4=BD=A0=E6=94=B6=E5=88=B0=E6=88=91=E7=9A=84=E6=
+=B6=88=E6=81=AF=E4=BA=86=E5=90=97=EF=BC=9F
 
 --=20
 You received this message because you are subscribed to the Google Groups "=
@@ -177,38 +148,17 @@ linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to linux-ntb+unsubscribe@googlegroups.com.
 To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt%3DQ%40mail.gmai=
-l.com.
+linux-ntb/CAOPTZN7VRDDPdEiUT%2BP38B-7MZF4m6sFddEipN5fuTyPv%3Dh8%3Dg%40mail.=
+gmail.com.
 
---000000000000e4a4a605c83f4116
+--0000000000005013e105c86f3fb8
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">Greetings, I=E2=80=99m writing this message to you with he=
-avy whimper in my heart, tears in my eyes/pains and great sorrow in my hear=
-t and soul, I&#39;m bereaved from every side of my life, I call it Vanity u=
-pon Vanity, I&#39;m Rev. sister Carla Mona, I have been hits with evil Canc=
-er which has gotten a worst / dangerous stage at me, and the doctor said I =
-have only few days live, <br><br>As an orphan and a catholic Rev Sister I d=
-ecided to hand you over this sum of $4.900.000.00 USD (Four million Nine hu=
-ndred thousand united states dollars) as trusted traits to facilitate wealt=
-hy accomplishment in life to underprivileged people in the world because I =
-was too shocked when the doctor stated I have only few days to live, I crie=
-d as all that I have worked for the good work for God almighty in life is g=
-one, My houses, cars, schools and money is gone, <br><br>I have already ins=
-tructed my deposited Branch Bank Manger to take directive from my Lawyer an=
-d I have also as well spoken to the lawyer today about you as the person wh=
-o I wishes to handle this assignment to help humanity and Orphanages since =
-evil cancer wants to take my life away to leave all I have worked for under=
-privileged people in the world and the lawyer is waiting to hear from you <=
-br><br>Let you establish immediate contact with the lawyer and work with hi=
-m as he is a trusted elderly man He is the only person there that I am conf=
-iding in as I do not want to let other people know about the transfer that =
-I will make to you, below is the contact of the lawyer (<a href=3D"mailto:p=
-ractitioner-office@consultant.com">practitioner-office@consultant.com</a>) =
-<br><br>I pray that God will give you health and courage to undertake this =
-for me and you shall pray for my emergency surgery operations to answer my =
-call to the almighty.<br>Rev Sister Carla Mona<br></div>
+<div dir=3D"ltr"><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"gma=
+il_signature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">=E4=BD=A0=
+=E5=A5=BD=EF=BC=8C=E4=BD=A0=E6=94=B6=E5=88=B0=E6=88=91=E7=9A=84=E6=B6=88=E6=
+=81=AF=E4=BA=86=E5=90=97=EF=BC=9F<br></div></div></div>
 
 <p></p>
 
@@ -219,9 +169,9 @@ To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 +unsubscribe@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt%3DQ%=
-40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.goo=
-gle.com/d/msgid/linux-ntb/CAGPn9P6mCfzf_oO60t39OMigWFKyobxNGLB11hu8i5xvfqZt=
-%3DQ%40mail.gmail.com</a>.<br />
+om/d/msgid/linux-ntb/CAOPTZN7VRDDPdEiUT%2BP38B-7MZF4m6sFddEipN5fuTyPv%3Dh8%=
+3Dg%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups=
+.google.com/d/msgid/linux-ntb/CAOPTZN7VRDDPdEiUT%2BP38B-7MZF4m6sFddEipN5fuT=
+yPv%3Dh8%3Dg%40mail.gmail.com</a>.<br />
 
---000000000000e4a4a605c83f4116--
+--0000000000005013e105c86f3fb8--
