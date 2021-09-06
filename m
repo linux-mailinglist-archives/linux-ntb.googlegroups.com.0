@@ -1,143 +1,123 @@
-Return-Path: <linux-ntb+bncBCHOL743RIIRBXGH2OEQMGQEGGCN7EI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCS4BDN7YUCRBIVP3GEQMGQEWVCAJHY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ed1-x53c.google.com (mail-ed1-x53c.google.com [IPv6:2a00:1450:4864:20::53c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 3D96940109A
-	for <lists+linux-ntb@lfdr.de>; Sun,  5 Sep 2021 17:35:57 +0200 (CEST)
-Received: by mail-ed1-x53c.google.com with SMTP id y10-20020a056402270a00b003c8adc4d40csf2285955edd.15
-        for <lists+linux-ntb@lfdr.de>; Sun, 05 Sep 2021 08:35:57 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1630856157; cv=pass;
+Received: from mail-ot1-x33d.google.com (mail-ot1-x33d.google.com [IPv6:2607:f8b0:4864:20::33d])
+	by mail.lfdr.de (Postfix) with ESMTPS id DA9F9401F64
+	for <lists+linux-ntb@lfdr.de>; Mon,  6 Sep 2021 20:02:11 +0200 (CEST)
+Received: by mail-ot1-x33d.google.com with SMTP id i11-20020a9d53cb000000b00538e5ca17d6sf4774475oth.18
+        for <lists+linux-ntb@lfdr.de>; Mon, 06 Sep 2021 11:02:11 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1630951330; cv=pass;
         d=google.com; s=arc-20160816;
-        b=zoz4+5qsz5rwfNLsagxiRHe484GUhIkgIHHhodd3Ial7X1e20N9zwwbpkFxiK3H951
-         Zg9XWbsMrpMeUgp4XcjMada+aaMzyqgfW/TkE3dn8/9s9L+TVJhWsucG1yLniJFZWVKn
-         RjtMYiKN/Dnx1rnRie84WcUufRwILDnFXIWDxS8zNZv9kIf1OuQJ0Z3kxrH4bkmdCn9k
-         aUANLG103+HltYD0xqI5RDGPVRKhgsYxNvxNoaiZm4ZUdzC0xyDi/5eCTP1LY1fdceGg
-         DMQHI3ZjI2QkvHn4EEsG+B7fwlD5YwBzDY7belQbfhkfY6/LngSxgr2uX77oiyWvvLNI
-         l1sg==
+        b=O5lD9Yrlr3SJ0nlGntdCnsDP339ofasI+yoGmIQCVE2Feyjqp0nn5GEm3AeaAgPCkv
+         vixpTN09DOyTYJFo2cbmNqcGN3waRlRD+trQ49ORcDzkteqQm3UvIIv0RckggXDKngej
+         HBjs8E/LTfz3Y+ZyKmFgPdh90Vzhk5IpZKVUnfwyvSb7RH0aBrJ82UEi8aTJYyVIJYdc
+         fGZGAC3GAsBgN74gaEgbqO+QnrmZMkAJh8DmqBTrYEBeyUxodFiaeMgqgZn91vZmjPs1
+         7tRrs0GpssO4IpCW3YdsOLfcgwBcZYQQXcp7g7If/7moOrrR2/hV9DyHCdSDpcml4CH8
+         c3KQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :dkim-signature:dkim-signature;
-        bh=xC1xbbrqf2fKNYTMeccD67Mp/ZKjKiVW4kE773yB6iI=;
-        b=tkWBqxSwr+k9wHh8rrOsY9dhUIdKulLvdvTgPOYKAttR41MZA0JwxkEunEV3DEmcjW
-         LUnwMeZYBS40CiI4myxVsAjQPBXRvMpMaHRiI1h8CgWZqBPtD/PerUglh0dgMbxMDQgU
-         W6paf23RZUCRZswp5xVkH/QWGOObrVP2EhQMreO6QXmNtwiB3tJt9PcvqoQZWoA9vI+g
-         zpxQ2sQnPPignOg385vDsEFVrBim/i22dPlKyGLzONCAGCOk7wxrq4oNW0JoVETPpf6n
-         i1gC0i2b18MCmsD90pX6vIKaNHERGF2hj4RzwfiKkvu/hG+fp3MYT3OtI/7k2vlOGPUZ
-         /xOw==
+         :list-id:mailing-list:precedence:user-agent:content-disposition
+         :mime-version:message-id:subject:cc:to:date:from:sender
+         :dkim-signature;
+        bh=tIqOENPq6xphbWV5yAPm7SGIgw04dkqBRjg1fDkvllg=;
+        b=M1FzeNttIn2t3Mht16nTaV1JFdu7YEETd7B3WUplBAbca+JlZoR61vuIwRyh5M67rE
+         YO/lCLHZula/QKFR0zWsJbGuwgCcu7Fsh+Trd3HVzp26RAdMDOPu3aggzGStVMGW40ds
+         YQkLJy5ep3z31UVmKx7f0NybcLruA1y5qFydkJ89C+l2unWSxHMLCXyMYUhK80CEWcnW
+         fkiv1isNS+tzOq2jAPmaZi+uApqT/aqpUUvATuFrCcvwHssyfZObXVbMyiWj/LkwHSgR
+         MFencZu4h731obSWE27IcK3OjMUOTieB/68B4osYyyckO+P5k8bH0CPYZYLEckin9SzR
+         7yTg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=YvT6EUl+;
-       spf=pass (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) smtp.mailfrom=fancer.lancer@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=Dolg4Jol;
+       spf=neutral (google.com: 2607:f8b0:4864:20::f2b is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:x-original-sender
+        h=sender:from:date:to:cc:subject:message-id:mime-version
+         :content-disposition:user-agent:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=xC1xbbrqf2fKNYTMeccD67Mp/ZKjKiVW4kE773yB6iI=;
-        b=DD5Q0fCCn2TKSArmti4hzK1vMdE8/753nQkmwGEPmv2gu1TyACfviKv17rd/CyIvAw
-         HPF4cLr/Gn5fFWzYR4iv0UgOMpO9/8rLUQebhkF9ryj7WXNSaJk05LKoIDcSnqOU7K8b
-         vI4iaMZN5HXwF3W0lFMJ5rrVu65fMRBbbQHI3G9/mG0kSiFHdRr4XaCef4GFXxaHreQR
-         jO/htMcfPMvkVP9DrQuvs4pNeCsXyGWgtkUVkmBNy0zAN3COPxmqCi5oCuHn1s1us3Gf
-         w8Nf/zqo+/B6D7MsTBpS87R3JSCeQv34LtevFpLFVAdJIy97OaR63SL134NbX3K0UO6x
-         suQw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=xC1xbbrqf2fKNYTMeccD67Mp/ZKjKiVW4kE773yB6iI=;
-        b=Mr87DDUGSIIz1aTWE72byYrNq5YoCXm5uPv+YxkVvWWrDypAcREXE8n5qnG0NtZ1x5
-         uFHo1izJbK44Sl5a+gvO5U3OuKhJuIqS/xCK1QXCPwnAV2sfFgxWgiY4WOfTSXse3HrM
-         Cd05Dtvwlvu9HmYylC26dCR3GucZlwGtDLLYqvd4KGlZz88NhqszRYD/y9Q0vT4sK1ie
-         FA00tnQ3jWYB0/A4Rv5yrAmgbX6LmEhliCDh5ao+RPlISnjpvh6jBTKH5SSINipw4Osk
-         1AUOxSlajcEDMWIgfqUze1yaXvRug30SCDjTRdIfHCDPPCDKagbVbB1J/oZc0Ezaup2k
-         klAQ==
+        bh=tIqOENPq6xphbWV5yAPm7SGIgw04dkqBRjg1fDkvllg=;
+        b=pxggyTecKjCW+XqhQrq6k1fj7gqljFJsyhUfUe4TDZBmjbCKm5sO7oB+yNx2p3kNnk
+         sY5asNE/0sCinMCyxx3Nwh1SYndwPPgZzwkruKdF6o2rL6LYWTIa7lML9ET8SkYFLtfQ
+         l8bUyf3geoRTVD8WbM3Uzzy2dZCwG69qHOiTdwc6882ilxTO0GNwOOMdz7mvzz6eKk6u
+         nT5IGAjPPixonroYZak2GD6ySiJ3d3/3oxfxSoPoxJ0EdfC3d0g/IChBUAZr4Vqq+56K
+         6/OuJO9MT4zgRP/zeGfxOvHTlKUQ+H1DSV1posvUlo7qfTHnOx9+pciC9l6z4cpCdqY4
+         1Z7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=xC1xbbrqf2fKNYTMeccD67Mp/ZKjKiVW4kE773yB6iI=;
-        b=HSVdXUCAfx/43p8VfH+/3BkMRO2yMeebUWOcDgYcngqykNMEsJGuhqWE7yz2EM7tZq
-         QgQ8HlL9TfRFh4zHUg3/43HI5n20f9lwvNpblSmLN6mbMT8tchI7mcKQGjJ4Isy9K00Y
-         c0Djm4SMLhlooavvzUqe40gVhr1Bc8kDEWddLy5n5yoa71kQvAmQWB+OkjOfNE2dzXs4
-         8WJgJHAuE3P3ogHnttvcjoB0/LRUWRbg/3rx1rJGEIk9n/zbLnEt4UvHnPQLqt+fsiIk
-         l2JIn12p1hhioAr7P1unU5oU/zDZI5eNFDrxrSSDmFI1+rbe4qGwTEYDKOq/dR0LY/GH
-         yOUA==
+        h=sender:x-gm-message-state:from:date:to:cc:subject:message-id
+         :mime-version:content-disposition:user-agent:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=tIqOENPq6xphbWV5yAPm7SGIgw04dkqBRjg1fDkvllg=;
+        b=so6D4YG3RbegPgZuw+O9xz36/JFIj4XNHsyqpEYABmxhUHlze3/b0q4o2sCQfJjnpc
+         OZCO4XTqCYDmE/L50fi/HCB/ANzpa6xtWb3aMeb+CCQJk6YK0qVEB5UKtGmm+0rrGGP+
+         +qm6IVL5/elF7TQ3ISULUq5r+pXQnvYQJ0Glwc4CpAEQ0f3xl1rH8c4oHpyJgNOxQBrw
+         +Tm/4JEuFngz0KXIP1KCYy7ArqhH1GW7a9o4dwQyXk21lW2BqIPGIi0kDqscN70D+WQr
+         enb8TxSg1Fj1p13oWH739QVRNcf6kTfGqBdxKc/q1k1QzkInnOANKpblMCsM4x8iBCDf
+         7iKg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533mKrNRW8eZ6ZjBhhWJXHUFCUX3Cq+VoBNS8Vi/0dmTJ5auGXLz
-	3rOZe2kpoDQQZjd9bwLwccI=
-X-Google-Smtp-Source: ABdhPJxyaWx6Iud3+wP5T6xUpt+9Wrp08b1noF8ay+A+FKQIMbHEqd1iQSfx+UK3CY+ZETURkZ5wXg==
-X-Received: by 2002:a50:ab42:: with SMTP id t2mr9270651edc.113.1630856156855;
-        Sun, 05 Sep 2021 08:35:56 -0700 (PDT)
+X-Gm-Message-State: AOAM533X6WeZRNBf3UfbS+aQiqNoEjG2031GJsP+bG/+EpZ5MSJJzdmT
+	1GqboN6l/9on1ahORV0rBzU=
+X-Google-Smtp-Source: ABdhPJzhYFSidGUn+3aM3h6jeoFVfHOsYtmeOVeWeMeXPEXjJW5A9/+jFZuGwSIRPz64HD9doYdR5A==
+X-Received: by 2002:a9d:4c15:: with SMTP id l21mr12146438otf.311.1630951330504;
+        Mon, 06 Sep 2021 11:02:10 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:906:1644:: with SMTP id n4ls1889334ejd.7.gmail; Sun, 05
- Sep 2021 08:35:55 -0700 (PDT)
-X-Received: by 2002:a17:906:b1d5:: with SMTP id bv21mr9370522ejb.346.1630856155864;
-        Sun, 05 Sep 2021 08:35:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1630856155; cv=none;
+Received: by 2002:a05:6808:20d:: with SMTP id l13ls1558513oie.5.gmail; Mon, 06
+ Sep 2021 11:02:10 -0700 (PDT)
+X-Received: by 2002:aca:ab54:: with SMTP id u81mr284033oie.40.1630951330138;
+        Mon, 06 Sep 2021 11:02:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1630951330; cv=none;
         d=google.com; s=arc-20160816;
-        b=zQtVN9gV3CWogL5RZxK3QZ8EXftiebaYdUDrgWl5IuM5WFbgfRSHMOofPxtHEGuLjY
-         EXg90X6uei1+yqQwwBuwzRiuX7sdjMNWXH9c9di+omp9RRdzPf6i7msG2LTl3YUzlfxR
-         dP4S2/uTZCxOfr+iPOKP7FPA8+9YZLYhOnqVoRmKM9GRSHgGnMn51KTkaWno+tnR4TbY
-         +qgfydW516/LHxr85iq0PkYM+3wVkK43WHMHTycz/Sw7kbTvzPQQEy+3NOpV+Dp9j9d2
-         UrQVNxf2bUa8UOy+WJFgEPOOKJNw/xcg8D6Vaj/S9FFwVuT7tJe7sxNSdTiPrKBPraRy
-         jESA==
+        b=KljiOxD7aRs/bwBy7bHtjfxXLF7ltwQUqA2bhQlysbyEexdgTtYR/MN0MLXi0Dhzi0
+         eyhy/lovr3cOsYvqo86+w4YvQhwlcaXxZyfKrBpa9q2WHRZJbd46cT/jnCGMRtBTvxFG
+         NnShfYx0oGtYi4/7rDqtuFy9AZu2VERbqhmYicIO4qeB2ixsT+H5wd+VOLSnHtS8vLYU
+         NsNum9QbwADxqRHSq6zr2rUS//oPhhKwnEnl+UQXa/+68+mtByE2MV00js/YDlyYl1Gj
+         +fmH+B8LUJkRl0vtyUjeQgvs35z/5VCL/shpuUey/ch6N2Uq4o7ukZZS5NHlvdoCOSAT
+         /tRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=cITEr3eddlLeZ9kM0AgouAgtRcaj2tOTljG3ru0dFVk=;
-        b=F2Jcp2sU3cAs6I7mU5m/ux5ov8suKSwY/EP96x/chQm9IvgEgLZ8yv2yCszL7IONIv
-         y6K0EC5Ogs64ZOU5pOR6OufNXSMeS8GUtAH5VpbppXy9dJwjZX8FNFSAW/ObZLZtYAiE
-         0S54cdAQqUZPReo2U5bJ2M0G88AGf4vra2oEuCdIOfJiZrfeTl1wpj4ek6tj7Qb2CPER
-         8bHQN+H9NjO9dIgPPSVdgoUcDv1jSi/OGL97MMc9gZ0iC+H1vxkfIInuSCcrNbX6C/2J
-         J/9z21he4aHQrFaz3dCkCxposWxVYKffXGg4HwDo+P6uOjN2TFQW1/x7ggmrqmKdb1v0
-         fjxQ==
+        h=user-agent:content-disposition:mime-version:message-id:subject:cc
+         :to:date:from:dkim-signature;
+        bh=7QsvEICZ6OB0fLFnC4FGlJhtsxVgGBKEFw5SvTXHfEI=;
+        b=Eflii5XthIDx8NOI2evVbbGwQr1vjGD11eFhopWkmY8H8/luwgbt319oGpUm4ZCCpK
+         dLGTqEnl8/RwngfjpL5jrVQiKkh7EC/2xguTNb69rCzmrAlhmwQ5VOlawovlDCz4x/lj
+         UziK4zSIqiuA2e7p7Uh8MAJtwc91UD5Xip/J+VtbLIY7Lu3rAFJJdLu6BEWxSt/4w0qj
+         UfBaukNx/FnejXURz7o2Uqu4xQAkatsG2mEYRYOxmRWd0Vd3G/7hFZmM6an1K2pFif/y
+         wWfHitYvX38l4D+rzpVKv4n2/AJyYCaNLc21OWy6eN08PUupaDnT1piBomly4e1ewQT/
+         ATSg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=YvT6EUl+;
-       spf=pass (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) smtp.mailfrom=fancer.lancer@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-lj1-x230.google.com (mail-lj1-x230.google.com. [2a00:1450:4864:20::230])
-        by gmr-mx.google.com with ESMTPS id w12si312061edj.5.2021.09.05.08.35.55
+       dkim=pass header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623 header.b=Dolg4Jol;
+       spf=neutral (google.com: 2607:f8b0:4864:20::f2b is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
+Received: from mail-qv1-xf2b.google.com (mail-qv1-xf2b.google.com. [2607:f8b0:4864:20::f2b])
+        by gmr-mx.google.com with ESMTPS id s30si108142oiw.1.2021.09.06.11.02.10
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 05 Sep 2021 08:35:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::230 as permitted sender) client-ip=2a00:1450:4864:20::230;
-Received: by mail-lj1-x230.google.com with SMTP id g14so6855986ljk.5
-        for <linux-ntb@googlegroups.com>; Sun, 05 Sep 2021 08:35:55 -0700 (PDT)
-X-Received: by 2002:a2e:a908:: with SMTP id j8mr6880398ljq.77.1630856155629;
-        Sun, 05 Sep 2021 08:35:55 -0700 (PDT)
-Received: from mobilestation ([95.79.127.110])
-        by smtp.gmail.com with ESMTPSA id d24sm669456ljj.8.2021.09.05.08.35.54
+        Mon, 06 Sep 2021 11:02:10 -0700 (PDT)
+Received-SPF: neutral (google.com: 2607:f8b0:4864:20::f2b is neither permitted nor denied by best guess record for domain of jdmason@kudzu.us) client-ip=2607:f8b0:4864:20::f2b;
+Received: by mail-qv1-xf2b.google.com with SMTP id 93so4362382qva.7
+        for <linux-ntb@googlegroups.com>; Mon, 06 Sep 2021 11:02:10 -0700 (PDT)
+X-Received: by 2002:a0c:9010:: with SMTP id o16mr7241792qvo.49.1630951329852;
+        Mon, 06 Sep 2021 11:02:09 -0700 (PDT)
+Received: from localhost ([2605:a601:a650:b700:5999:364b:aaba:7f89])
+        by smtp.gmail.com with ESMTPSA id d129sm7067264qkf.136.2021.09.06.11.02.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 05 Sep 2021 08:35:55 -0700 (PDT)
-Date: Sun, 5 Sep 2021 18:35:53 +0300
-From: Serge Semin <fancer.lancer@gmail.com>
-To: Colin King <colin.king@canonical.com>
-Cc: Serge Semin <Sergey.Semin@baikalelectronics.ru>,
-	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
-	linux-ntb@googlegroups.com, kernel-janitors@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] ntb: ntb_pingpong: remove redundant initialization of
- variables msg_data and spad_data
-Message-ID: <20210905153553.nmmgv7w3t3oeqtca@mobilestation>
-References: <20210609112128.184667-1-colin.king@canonical.com>
+        Mon, 06 Sep 2021 11:02:09 -0700 (PDT)
+From: Jon Mason <jdmason@kudzu.us>
+Date: Mon, 6 Sep 2021 14:02:09 -0400
+To: torvalds@linux-foundation.org
+Cc: linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com
+Subject: [GIT PULL] NTB bug fixes for v5.15
+Message-ID: <20210906180209.GA14486@athena.kudzu.us>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
-In-Reply-To: <20210609112128.184667-1-colin.king@canonical.com>
-X-Original-Sender: fancer.lancer@gmail.com
+User-Agent: Mutt/1.10.1 (2018-07-13)
+X-Original-Sender: jdmason@kudzu.us
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20210112 header.b=YvT6EUl+;       spf=pass
- (google.com: domain of fancer.lancer@gmail.com designates 2a00:1450:4864:20::230
- as permitted sender) smtp.mailfrom=fancer.lancer@gmail.com;       dmarc=pass
- (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@kudzu-us.20150623.gappssmtp.com header.s=20150623
+ header.b=Dolg4Jol;       spf=neutral (google.com: 2607:f8b0:4864:20::f2b is
+ neither permitted nor denied by best guess record for domain of
+ jdmason@kudzu.us) smtp.mailfrom=jdmason@kudzu.us
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -150,45 +130,53 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Wed, Jun 09, 2021 at 12:21:28PM +0100, Colin King wrote:
-> From: Colin Ian King <colin.king@canonical.com>
-> 
-> The variables msg_data and spad_data are being initialized with values
-> that are never read, they are being updated later on. The initializations
-> are redundant and can be removed.
-> 
-> Addresses-Coverity: ("Unused value")
-> Signed-off-by: Colin Ian King <colin.king@canonical.com>
-> ---
->  drivers/ntb/test/ntb_pingpong.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Hello Linus,
+Here are a few NTB bug fixes for v5.15.  Please consider pulling them.
 
-Wow, missed this in my emails log. Thanks for the cleanup.
-Acked-by: Serge Semin <fancer.lancer@gmail.com>
+Thanks,
+Jon
 
-> 
-> diff --git a/drivers/ntb/test/ntb_pingpong.c b/drivers/ntb/test/ntb_pingpong.c
-> index 2164e8492772..8aeca7914050 100644
-> --- a/drivers/ntb/test/ntb_pingpong.c
-> +++ b/drivers/ntb/test/ntb_pingpong.c
-> @@ -187,7 +187,7 @@ static void pp_ping(struct pp_ctx *pp)
->  
->  static void pp_pong(struct pp_ctx *pp)
->  {
-> -	u32 msg_data = -1, spad_data = -1;
-> +	u32 msg_data, spad_data;
->  	int pidx = 0;
->  
->  	/* Read pong data */
-> -- 
-> 2.31.1
-> 
-> -- 
-> You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-> To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-> To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210609112128.184667-1-colin.king%40canonical.com.
+
+
+The following changes since commit 7d2a07b769330c34b4deabeed939325c77a7ec2f:
+
+  Linux 5.14 (2021-08-29 15:04:50 -0700)
+
+are available in the Git repository at:
+
+  git://github.com/jonmason/ntb tags/ntb-5.15
+
+for you to fetch changes up to 38de3afffb7257176978dfa9b3ab67d0c29af95c:
+
+  NTB: switch from 'pci_' to 'dma_' API (2021-09-05 18:08:14 -0400)
+
+----------------------------------------------------------------
+Bug fixes and clean-ups for Linux v5.15
+
+----------------------------------------------------------------
+Christophe JAILLET (1):
+      NTB: switch from 'pci_' to 'dma_' API
+
+Colin Ian King (1):
+      ntb: ntb_pingpong: remove redundant initialization of variables msg_data and spad_data
+
+Dave Jiang (1):
+      ntb: intel: remove invalid email address in header comment
+
+Yang Li (2):
+      NTB: Fix an error code in ntb_msit_probe()
+      NTB: perf: Fix an error code in perf_setup_inbuf()
+
+ drivers/ntb/hw/amd/ntb_hw_amd.c     | 12 ++----------
+ drivers/ntb/hw/idt/ntb_hw_idt.c     | 15 ++-------------
+ drivers/ntb/hw/intel/ntb_hw_gen1.c  | 12 ++----------
+ drivers/ntb/hw/intel/ntb_hw_intel.h |  3 ---
+ drivers/ntb/test/ntb_msi_test.c     |  4 +++-
+ drivers/ntb/test/ntb_perf.c         |  1 +
+ drivers/ntb/test/ntb_pingpong.c     |  2 +-
+ 7 files changed, 11 insertions(+), 38 deletions(-)
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210905153553.nmmgv7w3t3oeqtca%40mobilestation.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20210906180209.GA14486%40athena.kudzu.us.
