@@ -1,68 +1,60 @@
-Return-Path: <linux-ntb+bncBDOOLPFLRMPBBI5AZKGAMGQE7EAKL7Y@googlegroups.com>
+Return-Path: <linux-ntb+bncBDONFX5HQEIBBX4L2GGAMGQE3FAMBPA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qv1-xf3e.google.com (mail-qv1-xf3e.google.com [IPv6:2607:f8b0:4864:20::f3e])
-	by mail.lfdr.de (Postfix) with ESMTPS id 6745A450A1E
-	for <lists+linux-ntb@lfdr.de>; Mon, 15 Nov 2021 17:51:48 +0100 (CET)
-Received: by mail-qv1-xf3e.google.com with SMTP id dz17-20020ad45891000000b003bbb4aba6d7sf16511781qvb.12
-        for <lists+linux-ntb@lfdr.de>; Mon, 15 Nov 2021 08:51:48 -0800 (PST)
+Received: from mail-qk1-x739.google.com (mail-qk1-x739.google.com [IPv6:2607:f8b0:4864:20::739])
+	by mail.lfdr.de (Postfix) with ESMTPS id E753A453D00
+	for <lists+linux-ntb@lfdr.de>; Wed, 17 Nov 2021 00:59:28 +0100 (CET)
+Received: by mail-qk1-x739.google.com with SMTP id u8-20020a05620a454800b00468482aac5dsf450694qkp.18
+        for <lists+linux-ntb@lfdr.de>; Tue, 16 Nov 2021 15:59:28 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
         h=sender:date:from:to:message-id:subject:mime-version
          :x-original-sender:precedence:mailing-list:list-id:list-post
          :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=7Dt65ti7yTZrIAb6QE7tpCY+rZZi03rfVV5dxy2KM+k=;
-        b=EDRLdgyf7fxcFFSU+XfYO0s7qXRR0FEoDkFKXP61vazJZDLsqqSnZthNrN2IbNnwHu
-         NJi45x+A+sNWPPKb6tJOSc5ZiD6jiKcmO2HevLZFb/2mIdpgMgMo45+ApmxMe3mtbeBM
-         2AFklWSVzVcklf7FTDU9H/baN505iEhTWzpwdI9ZUJlP5lcCDSKfwzRcWBbBmr03TP2W
-         9/3mamX2NnCOA/TIGh78cYYx6xkngzsHLjVXLi2/0KPgxZIgOAQcN1cQ5VU0pDJX+C9V
-         WBkn3CS88vbYpsyoWY/97DL8qZLQPRpafFBq4FfNLKa4DkeEozQ+WBpcN+OUDG+AgpFV
-         r7sg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=date:from:to:message-id:subject:mime-version:x-original-sender
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=7Dt65ti7yTZrIAb6QE7tpCY+rZZi03rfVV5dxy2KM+k=;
-        b=khlKXyEJTeZXVga3T+APot85Eu0EDVM/ekDp5prkl2Ps5ei/5dZU3OnQ/Qm1km0dXm
-         ZEtIyVYuCPHCYlWjwat8oLTn9218XZQtmUOkakPcyBT/nCJO0AARgh05o8TTpR7vksDA
-         znqBj0u5gtkzBKoqe3oqNdpU3ujGynC0YWX9DMGlmNMC8BJDmUmeHOj0XQZdUzo+FyGo
-         F6l+keqpuSsLq9cB3BZd381VZKylISLWUyO4lReiAyBvF/7m7btkCVhc/+Yk38oylqRM
-         c/lkTdhkTElENDipWi9flaGwiB6e9wZW7TE+VtDY4Ij9B83moYDvWUCEOmzDchOGw33u
-         Xlgw==
+        bh=prbnB54ac+wYZ7iq34D4E9vA9nk2bPnBfPf9OpgZh28=;
+        b=UUhbLr9tUr+cYGqQOLWJzwUHLEWX2YEhQnY1FM3tpEiaU4MVWsAQ/q4lq/FE2TQJEY
+         AROdoKwn1LGkCrjxXwN8W2tNl72Aqn7bN7pUcZPRb1IoJle3iLPjPtmc/1oII+V3GAPT
+         qKwLpHzAJ7E4bxpXa96aYBhQ/CrlKnqeYn7+vQzZQ3GZvAfApB2VB7DjEglPWBT/fdBC
+         vjrws5if4OWOV3MgwuE0QGP14vI++Ooumou3taBjpYTq35YJKXpzuMVvpnEkCoULTsAI
+         QmaHRdJ/nAMldp+P19V6vMLIA9DovSy2rc8sXqfN8doC5G8gtujYfbVOwyWcf8ZvZg8r
+         aH9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=sender:x-gm-message-state:date:from:to:message-id:subject
          :mime-version:x-original-sender:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=7Dt65ti7yTZrIAb6QE7tpCY+rZZi03rfVV5dxy2KM+k=;
-        b=z9v2DBotFSEwx/1GZPxsro5Enfj2e8DzMl03nVw042eYYQ5bmmsrtT5W3Ob8j6DokP
-         G2CvteLnTK3DxZnFMRHu5yy7+xy76M4z6VJfx9EpIxFcRRtpOwzVR1YVRsBN+4NDnJpp
-         LjY7dBBui1fzdmHSAh/bJ+LVnafEpyCc1T3EvHhVAFyXWmL3B4VqOyqj1J1U7LlAYq+m
-         ji2TNw3VXlgPmWy0TsAmQ+7zJ1/YutvR1WAQLmv2k36fLej228o+ctTLaUDDfjlCtnYE
-         aApkyNUQ55Hffv8YX7EnrvZUoblxKygrQwpDUPf20XkAYo1dMibUdKKKztZledjn9xoM
-         +FlA==
+        bh=prbnB54ac+wYZ7iq34D4E9vA9nk2bPnBfPf9OpgZh28=;
+        b=WZazYXdJuys+VV+J+sQw/gnRTpUXE0L2/aMDWLdjp/zERbdw3E2RuKInQ68ga5j5Fh
+         4RpmJCZOZusXAQe2eGDHIpMtkbD6ksGcZlmweOEqvxCJqja6RXxPgkyshZe7w2hE7Yzv
+         VluPncfebwZSOMOnjNEqav3xAFHNue9KEJu3FV8b/DP9iIYKYDUDFyUhg4vW9S9PFtPf
+         m6LTP1KNkDEeStzDlY2gG77f68aX6ueFW8gP710miKH1ZxnL2hyBoLsHISg8XC3NudAO
+         rp+1PspB74yqUT6X6JQqDX5P5XYB4ffNd7pnnbKWs9eUGV0B/T3lu0joKCAGtuEwT0F/
+         P8yQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM53342xU+d37lCIui/SLb9+DAMi1ZMh6iEPI8R9PQPZcSKh3DLLP3
-	5JfdexCHGjtwLJ3/CyNeuF0=
-X-Google-Smtp-Source: ABdhPJx0sr7r991LHdkmSh55DZa7KN91PbABV+40PkBpxd7a4ED0zqObmz0NXy+RQynEmDyaE3jd/w==
-X-Received: by 2002:a05:620a:1585:: with SMTP id d5mr374375qkk.96.1636995107321;
-        Mon, 15 Nov 2021 08:51:47 -0800 (PST)
+X-Gm-Message-State: AOAM5305i0rv+ScDz5/RqxMOgZZUuAhr9/+tcuPGLkbdGYsQ42meoFTv
+	35diqHGY4orPmrGWG0f7sZ0=
+X-Google-Smtp-Source: ABdhPJzgNpjWJchAwyPqXICplS2Pzs9Mq0bLOqDXjuOFZaEhCRwLcpH9wb3NYZNa5e6w7xTpzbZvTQ==
+X-Received: by 2002:a05:6214:96e:: with SMTP id do14mr50662533qvb.39.1637107168047;
+        Tue, 16 Nov 2021 15:59:28 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6214:1866:: with SMTP id eh6ls2912243qvb.1.gmail; Mon,
- 15 Nov 2021 08:51:46 -0800 (PST)
-X-Received: by 2002:a05:6214:ac2:: with SMTP id g2mr38968886qvi.28.1636995106802;
-        Mon, 15 Nov 2021 08:51:46 -0800 (PST)
-Date: Mon, 15 Nov 2021 08:51:46 -0800 (PST)
-From: Eyal ben ner <eyalbenn@gmail.com>
+Received: by 2002:a05:620a:bca:: with SMTP id s10ls10486138qki.1.gmail; Tue,
+ 16 Nov 2021 15:59:27 -0800 (PST)
+X-Received: by 2002:a05:620a:4d0:: with SMTP id 16mr9541019qks.326.1637107167532;
+        Tue, 16 Nov 2021 15:59:27 -0800 (PST)
+Date: Tue, 16 Nov 2021 15:59:27 -0800 (PST)
+From: MAURIZIO PORCARI FIDEURAM INVESTIMENTI SGR <gianni.cippeddu@mail.com>
 To: linux-ntb <linux-ntb@googlegroups.com>
-Message-Id: <24826bb2-da96-4ea8-9b75-6f40425e0368n@googlegroups.com>
-Subject: ntb_tool: asymmetric windows
+Message-Id: <c178dc90-bdfb-4052-91f9-aaf1ed3ba3c4n@googlegroups.com>
+Subject: =?UTF-8?Q?VUOLE_SEMPRE_SESSO_ANALE:_#MARIAPAOLATOSCHI_DI_#JPMORGAN!_VUOL?=
+ =?UTF-8?Q?E_SESSO_DI_GRUPPO_EXTREME:_MARI?=
+ =?UTF-8?Q?A_PAOLA_TOSCHI_DI_JP_MORGAN!_=C3=89_S?=
+ =?UTF-8?Q?EMPRE_NINFOMANE_FOCOSISSIMA:_#MARIAPAOLATOSCHI_DI_JP_MORGAN!_N?=
+ =?UTF-8?Q?E_SCRIVE_CON_ENTUSIASMO_(VOLENDOLE_BENE),_L'EROICO_BANCHIERE...?=
 MIME-Version: 1.0
 Content-Type: multipart/mixed; 
-	boundary="----=_Part_4986_966976853.1636995106189"
-X-Original-Sender: eyalbenn@gmail.com
+	boundary="----=_Part_3790_1724704297.1637107167029"
+X-Original-Sender: gianni.cippeddu@mail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -75,289 +67,298 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-------=_Part_4986_966976853.1636995106189
+------=_Part_3790_1724704297.1637107167029
 Content-Type: multipart/alternative; 
-	boundary="----=_Part_4987_455102966.1636995106189"
+	boundary="----=_Part_3791_1378349112.1637107167029"
 
-------=_Part_4987_455102966.1636995106189
+------=_Part_3791_1378349112.1637107167029
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+VUOLE SEMPRE SESSO ANALE: #MARIAPAOLATOSCHI DI #JPMORGAN! VUOLE SESSO DI=20
+GRUPPO EXTREME: MARIA PAOLA TOSCHI DI JP MORGAN! =C3=89 SEMPRE NINFOMANE=20
+FOCOSISSIMA: #MARIAPAOLATOSCHI DI JP MORGAN! NE SCRIVE CON ENTUSIASMO=20
+(VOLENDOLE BENE), L'EROICO BANCHIERE........SVIZZERO #ANDREASNIGG DI BANK J=
+=20
+SAFRA SARASIN ZURICH. CHE PASSAVA WEEK ENDS DI SESSO INTENSISSIMO, CON LEI,=
+=20
+STILE PERVERTITO ^ARCORE^HARDCORE^, FRA 2001 E 2004, MENTRE LA TOSCHI=20
+LAVORAVA IN BANCA LEONARDO DI NOTO, PURE ASSASSINO, #MICHELEMILLA, ORA IN=
+=20
+CRIMINALE #MOMENTUM ASSAGNO (KILLER MICHELE MILLA CHE FECE IMPICCARE=20
+#UBALDOGAGGIO ED UCCIDERE ^MASSONICAMENTE^, ALLA DAVID ROSSI, TANTISSIMI=20
+ALTRI)! A VOI IL VINCENTISSIMO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH!
 
+CIAO A TUTTI. SONO SEMPRE IL VOSTRO ANDREAS NIGG DI BANK J SAFRA SARASIN.
+https://citywireselector.com/manager/andreas-nigg/d2395
+https://ch.linkedin.com/in/andreasnigg
+https://www.blogger.com/profile/13220677517437640922
 
+HO SERI INTERESSI IN ITALIA. HO TANTI CLIENTI IN SVIZZERA, DI NAZIONALIT=C3=
+=80=20
+ITALIANA. I #BENETTON, #RENZOROSSO DI DIESEL, #GIOELEMAGALDI, #LEOZAGAMI,=
+=20
+#ENRICOLETTA, #GIANNILETTA, #ANDREAMARCUCCI, #MATTEORENZI,=20
+#MARIAELENABOSCHI, #VITTORIOSGARBI, #CARLOBONOMI, QUEL PORCO PERVERTITO DI=
+=20
+#GUIDOCROSETTO. PURE ARTISTI, COME I MASSONI #LAURAPAUSINI,=20
+#ADRIANOCELENTANO, #MONICABELLUCCI, #CARLOVERDONE, #ENRICOMONTESANO, LA=20
+FAMIGLIA #FACCHINETTI E TANTI ALTRI (NON ESISTE PI=C3=99 IL SEGRETO BANCARI=
+O,=20
+QUINDI POSSO SCRIVERNE). DI SOLITO SCRIVO PER SGAMARE IL MALE BASTARDAMENTE=
+=20
+MASSO^NAZI=E5=8D=90FASCISTA E BERLUSCONIANO CHE BLOCCA, STUPRA, DIREI UCCID=
+E=20
+L'ITALIA, DA 35 ANNI. SCHIFO CON TUTTE LE FORZE I BASTARDI PEDOFILI=20
+ASSASSINI #BERLUSCONI! SONO DEI PEZZI DI MERDA #HITLER, #PINOCHET, #PUTIN=
+=20
+MISTI A STRA PEZZI DI MERDA AL CAPONE, TOTO RIINA E PASQUALE BARRA DETTO "O=
+=20
+ANIMALE"! SI PRENDONO LA NAZIONE INTERA, INTRECCIANDO POTERE ECONOMICO,=20
+POTERE DI CORROMPERE CHIUNQUE, POTERE MEDIATICO, POTERE EDITORIALE, POTERE=
+=20
+MAFIOSO, POTERE MILITARE, POTERE DI POLIZIA E GIUDICI DA LORO=20
+CORROTTISSIMI, POTERE DI INTELLIGENCE ASSASSINA, POTERE DI TERRORISTI=20
+NAZIFASCISTI, ADDIRITURA PURE POTERE CALCISTICO ED IL POTERE DEI POTERI: IL=
+=20
+POTERE POLITICO (OSSIA OGNI TIPO DI POTERE: OGNI)! CREANDO DITTATURA=20
+STRAGISTA, STRA OMICIDA! I TOPI DI FOGNA KILLER #SILVIOBERLUSCONI,=20
+#PAOLOBERLUSCONI, #PIERSILVIOBERLUSCONI E #MARINABERLUSCONI HAN FATTO=20
+UCCIDERE IN VITA LORO, CENTINAIA DI PERSONE (ALMENO 700)! LA LORO=20
+SPECIALIT=C3=81 =C3=89 ORGANIZZARE OMICIDI ^MASSONICI^! OSSIA DA FAR PASSAR=
+E PER=20
+FINTI SUICIDI, INFARTI, INCIDENTI (VEDI COME HANNO UCCISO LENTAMENTE, IN=20
+MANIERA MASSONICISSIMA, LA GRANDE #IMANEFADIL, MA PURE GLI AVVOCATI VICINI=
+=20
+A IMANE FADIL: #EGIDIOVERZINI E #MAURORUFFFINI)! IN COMBUTTA CON SERVIZI=20
+SEGRETI NAZIFASCISTI, BASTARDA MASSONERIA DI ESTREMA DESTRA (VEDI #P2 P2 O=
+=20
+#LOGGIADELDRAGO LOGGIA DEL DRAGO, OSSIA LOGGIA PERSONALE DEL PEZZO DI MERDA=
+=20
+PEDOSIFLO E STRAGISTA #SILVIOBERLUSCONI). OLTRE CHE DI LORO VARIE COSA=20
+NOSTRA, CAMORRA, NDRANGHETA, MAFIA RUSSA, MAFIA CINESE, MAFIA COLOMBIANA,=
+=20
+MAFIE DI TUTTO IL PIANETA TERRA. OGGI PER=C3=93 VOGLIO SCRIVERE DI UNA PERS=
+ONA=20
+DI CUI HO BUON RICORDO. LA SEMPRE VOGLIOSISSIMA DI SESSO ANALE, SESSO DI=20
+GRUPPO O SESSO FOCOSISSIMO IN GENERE: #MARIAPAOLATOSCHI DI #JPMORGAN=20
+(TUTT'ORA, 21 ANNI DOPO QUELLO CHE VADO A DESCRIVERE, NON =C3=89 MALE FISIC=
+AMENTE
+https://www.instagram.com/p/BmbRyjljaSm/
+MA 21 ANNI FA ERA MOLTISSIMO ANCOR PI=C3=9A BELLA FIGA, VE LO ASSICURO).
+ANNO 2000. ERA NATA LA MAFIOSA #BANCALEONARDO (DEL CRIMINALISSIMO,=20
+ESTRMEMANTE OMICIDA #MICHELEMILLA MICHELE MILLA
+https://finlantern.com/financeforum/sponsors/milla-michele-partner-momentum=
+-alternative-investments/
+ORA PRESSO CRIMINALISSIMA #MOMENTUM MASSAGNO=20
+https://ch.linkedin.com/company/momentum-alternative-investment-sa
+SU CUI TROVATE NON POCO QUI
+https://www.politbjuro.com/itemeva-di-essere-licenziataibrfunzionaria-di-ba=
+nca-suicida/).
+SCENDEVO A MILANO OGNI VENERDI SERA DA ZURIGO, E PASSAVO WEEK END DI SESSO=
+=20
+SCATENATISSIMO CON LEI (DI NASCOSTO, DA VERI E PROPRI SECRET LOVERS=20
+https://www.youtube.com/watch?v=3DOe2UXqFo0DY, LEI ERA, COME ME, SPOSATA, M=
+A=20
+ESSENDO NOI DUE, VOGLIOSI DI SESSO, LIBERTINI DI ROTARY E LIONS CLUBS,=20
+SCOPAVAMO TANTISSIMO, LEI AMAVA IL SESSO ANALE, ANDAMMO AVANTI FINO AL=20
+2004, PER FANTASTICI 48 MESI). CHE BEI RICORDI CHE HO NEL CUORE. UN BACIO=
+=20
+CALIENTISSIMO. SONO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH. PREMIATO=
+=20
+NEL 2018, 2019, 2020, COME BANCHIERE SVIZZERO DELL'ANNO, A BASILEA. I=20
+SONDAGGI MI DANNO VINCITORE PURE NEL 2021. MA NON MI FIDO TANTISSIMO DEI=20
+SONDAGGI. MASSIMA UMILT=C3=80, FAME ESTREMA DI VITTORIE E PIEDI PER TERRA, =
+SON=20
+LE UNICHE CHIAVI PER FARE LA STORIA!
+LEGGETE QUESTO TESTO, ORA, PLEASE, DOVE INIZIO A SCRIVERE DI UN MASSONE=20
+SATANISTA NAZISTA SATA=E5=8D=8DNAZISTA E BERLUSCONICCHIO: L'AVVOCATO ASSASS=
+INO=20
+#DANIELEMINOTTI DI GENOVA E CRIMINALE STUDIO LEGALE LISI. NOTO PER RAPIRE,=
+=20
+SODOMIZZARE ED UCCIDERE TANTISSIMI BAMBINI OGNI ANNO. CIAO A TUTTI.
+ANDREAS NIGG DI BANK J SAFRA SARASIN.
+https://citywireselector.com/manager/andreas-nigg/d2395
+https://ch.linkedin.com/in/andreasnigg
+https://www.blogger.com/profile/13220677517437640922
 
-Hi,
+PS SCUSATE PER MIO ITALIANO COS=C3=8D COS=C3=8D MA SON SVIZZERO
 
-Newbie question: I'm using 2 Xeon(R) Silver 4214 nodes (ntb3 hw) with 
-4.19.177 kernel.
+MA ORA VAMOS CON QUESTO IMPORTANTISSIMO TESTO, VAMOS BABY, VAMOS, IAMM=20
+BELL, IA:
 
-I loaded the ntb_tool modules and connected both nodes.
+=C3=89 DA ARRESTARE PRIMA CHE FACCIA UCCIDERE ANCORA, L'AVVOCATO PEDOFILO,=
+=20
+BERLUSCO=E5=8D=90NAZISTA, FASCIOLEGHISTA, ASSASSINO DANIELE MINOTTI (FACEBO=
+OK,=20
+TWITTER) DI GENOVA, RAPALLO E CRIMINALISSIMO STUDIO LEGALE LISI.
+=C3=89 DA FERMARE PER SEMPRE, L'AVVOCATO SATANISTA, NAZISTA, SATA=E5=8D=90N=
+AZISTA,=20
+PEDERASTA, OMICIDA #DANIELEMINOTTI DI RAPALLO E GENOVA: RAPISCE, INCULA,=20
+UCCIDE TANTI BIMBI, SIA PER VENDERNE GLI ORGANI (COME DA QUESTA ABERRANTE=
+=20
+FOTO
+https://www.newnotizie.it/wp-content/uploads/2016/07/Egypt-Organ-Harvesting=
+-415x208.jpg),
+CHE PER RITI MASSONICO^SATANISTI, CHE FA IN MILLE SETTE!
+=C3=89 DI PERICOLO PUBBLICO ENORME, L'AVV ASSASSINO E PEDERASTA DANIELE MIN=
+OTTI=20
+(FACEBOOK) DI RAPALLO E GENOVA! AVVOCATO STUPRANTE INFANTI ED ADOLESCENTI,=
+=20
+COME PURE KILLER #DANIELEMINOTTI DI CRIMINALISSIMO #STUDIOLEGALELISI DI=20
+LECCE E MILANO (
+https://studiolegalelisi.it/team/daniele-minotti/
+STUDIO LEGALE MASSO^MAFIOSO LISI DI LECCE E MILANO, DA SEMPRE TUTT'UNO CON=
+=20
+MEGA KILLERS DI COSA NOSTRA, CAMORRA, NDRANGHETA, E, COME DA SUA=20
+SPECIALITA' PUGLIESE, ANCOR PI=C3=9A, DI SACRA CORONA UNITA, MAFIA BARESE, =
+MAFIA=20
+FOGGIANA, MAFIA DI SAN SEVERO)! =C3=89 STALKER DIFFAMATORE VIA INTERNET, NO=
+NCH=C3=89=20
+PEDERASTA CHE VIOLENTA ED UCCIDE BIMBI, QUESTO AVVOCATO OMICIDA CHIAMATO=20
+DANIELE MINOTTI! QUESTO AVVOCATO SATANISTA, NAZISTA, SATA=E5=8D=90NAZISTA, =
+PEDOFILO=20
+E SANGUINARIO, DI RAPALLO E GENOVA (LO VEDETE A SINISTRA, SOPRA SCRITTA=20
+ECOMMERCE https://i.ytimg.com/vi/LDoNHVqzee8/maxresdefault.jpg)
+RAPALLO: OVE ORGANIZZA TRAME OMICIDA E TERRORISMO DI ESTREMA DESTRA,=20
+INSIEME "AL RAPALLESE" DI RESIDENZA, HITLERIANO, RAZZISTA, KU KLUK=20
+KLANISTA, MAFIOSO E RICICLA SOLDI MAFIOSI COME SUO PADRE: VI ASSICURO,=20
+ANCHE ASSASSINO #PIERSILVIOBERLUSCONI PIERSILVIO BERLUSCONI! SI, SI =C3=89=
+=20
+PROPRIO COS=C3=8D: =C3=89 DA ARRESTARE SUBITO L'AVVOCATO SATANISTA, NAZISTA=
+,=20
+SATA=E5=8D=90NAZISTA, PEDOFILO E KILLER DANIELE MINOTTI DI GENOVA E RAPALLO=
+!
+https://www.py.cz/pipermail/python/2017-March/012979.html
+OGNI SETTIMANA SGOZZA, OLTRE CHE GATTI E SERPENTI, TANTI BIMBI, IN RITI=20
+SATANICI. IN TUTTO NORD ITALIA!
 
-I created 8KB buffer on node A, I mapped a (8KB) window on node B, I wrote 
-8KB file to the window and succeed to read the file completely from the 
-debugfs on node A (so far, we are good).
+CONTINUA QUI
+https://groups.google.com/g/comp.lang.python/c/SlMthvxiClg
 
-I restarted node A buffer content.
+TROVATE ANCORA MILIONI DI VINCENTISSIMI DETTAGLI, QUI
+https://groups.google.com/g/comp.lang.python/c/SlMthvxiClg
 
-Next, I created additional 4KB buffer on node B, then I wrote the same 8KB 
-file to the same old 8KB window on node B, but now I read only 4KB on node 
-A, the rest 4KB is the initialized data of the buffer.
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/c178dc90-bdfb-4052-91f9-aaf1ed3ba3c4n%40googlegroups.com.
 
-Below I'll put the exact commands I used.
-
-Is this a knows issue?
-
-Any idea how to solve this issue?
-
- 
-
-Thanks,
-
-Eyal
-
- 
-
-1st stage:
-
-Node A:
-
-1.      insmod ntb/test/ntb_tool.ko
-
-Node B:
-
-1.      insmod ntb/test/ntb_tool.ko 
-
-Node A:
-
-1.      export DBG_DIR=/sys/kernel/debug/ntb_tool/0000:0a:00.0
-
-2.      cat $DBG_DIR/peer0/link
-
-3.      echo Y > $DBG_DIR/link
-
-4.      cat $DBG_DIR/peer0/link
-
-Node B:
-
-1.      export DBG_DIR=/sys/kernel/debug/ntb_tool/0000:0a:00.0
-
-2.      cat $DBG_DIR/peer0/link
-
-3.      echo Y > $DBG_DIR/link
-
-4.      cat $DBG_DIR/peer0/link
-
-Node A:
-
-1.      echo 8192 > $DBG_DIR/peer0/mw_trans0
-
-2.      cat 2.txt > $DBG_DIR/peer0/mw
-
-3.      head -c 8192 $DBG_DIR/peer0/mw0 > 1s_1st_r.txt
-
-Node B:
-
-1.      echo 0x1000000000:8192  > $DBG_DIR/peer0/peer_mw_trans0
-
-2.      cat 5.txt  > $DBG_DIR/peer0/peer_mw0
-
-Node A:
-
-1.      head -c 8192 $DBG_DIR/peer0/mw0 > 1s_2nd_r.txt
-
- 
-
-2nd stage:
-
-Node B:
-
-1.      echo 4096 > $DBG_DIR/peer0/mw_trans0
-
-Node A:
-
-1.      cat 2.txt > $DBG_DIR/peer0/mw0
-
-2.      head -c 8192 $DBG_DIR/peer0/mw0 > 2s_1st_r.txt
-
-Node B:
-
-1.      cat 5.txt  > $DBG_DIR/peer0/peer_mw0
-
-Node A:
-
-1.      head -c 8192 $DBG_DIR/peer0/mw0 > 2s_2nd_r.txt
-
- 
-
- 
-
- 
-
--- 
-You received this message because you are subscribed to the Google Groups "linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/24826bb2-da96-4ea8-9b75-6f40425e0368n%40googlegroups.com.
-
-------=_Part_4987_455102966.1636995106189
+------=_Part_3791_1378349112.1637107167029
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<p><br>
-Hi,</p>
-
-<p>Newbie question: I'm using 2 Xeon(R) Silver 4214 nodes (ntb3 hw)&nbsp;wi=
-th 4.19.177 kernel.</p>
-
-<p>I loaded the ntb_tool modules and connected both
-nodes.</p>
-
-<p>I created 8KB buffer on node A, I mapped a (8KB)
-window on node B, I wrote 8KB file to the window and succeed to read
-the file completely from the debugfs on node A (so far, we are good).</p>
-
-<p>I restarted node A buffer content.</p>
-
-<p>Next, I created additional 4KB buffer on node B, then I wrote
-the same 8KB file to the same old 8KB window on node B, but now I read only=
- 4KB
-on node A, the rest 4KB is the initialized data of the buffer.</p>
-
-<p>Below I'll put the exact commands I used.</p>
-
-<p>Is this a knows issue?</p>
-
-<p>Any
-idea how to solve this issue?</p>
-
-<p>&nbsp;</p>
-
-<p>Thanks,</p>
-
-<p>Eyal</p>
-
-<p>&nbsp;</p>
-
-<p>1st
-stage:</p>
-
-<p>Node
-A:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>insmod ntb/test/ntb_tool.ko</p>
-
-<p>Node
-B:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>insmod ntb/test/ntb_tool.ko </p>
-
-<p>Node
-A:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>export
-DBG_DIR=3D/sys/kernel/debug/ntb_tool/0000:0a:00.0</p>
-
-<p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat $DBG_DIR/peer0/link</p>
-
-<p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>echo Y &gt; $DBG_DIR/link</p>
-
-<p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat $DBG_DIR/peer0/link</p>
-
-<p>Node
-B:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>export
-DBG_DIR=3D/sys/kernel/debug/ntb_tool/0000:0a:00.0</p>
-
-<p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat $DBG_DIR/peer0/link</p>
-
-<p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>echo Y &gt; $DBG_DIR/link</p>
-
-<p>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat $DBG_DIR/peer0/link</p>
-
-<p>Node
-A:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>echo
-8192 &gt; $DBG_DIR/peer0/mw_trans0</p>
-
-<p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat
-2.txt &gt; $DBG_DIR/peer0/mw</p>
-
-<p>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>head
--c 8192 $DBG_DIR/peer0/mw0 &gt; 1s_1st_r.txt</p>
-
-<p>Node
-B:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>echo
-0x1000000000:8192&nbsp; &gt; $DBG_DIR/peer0/peer_mw_trans0</p>
-
-<p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat
-5.txt&nbsp; &gt; $DBG_DIR/peer0/peer_mw0</p>
-
-<p>Node
-A:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>head
--c 8192 $DBG_DIR/peer0/mw0 &gt; 1s_2nd_r.txt</p>
-
-<p>&nbsp;</p>
-
-<p>2nd
-stage:</p>
-
-<p>Node
-B:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>echo
-4096 &gt; $DBG_DIR/peer0/mw_trans0</p>
-
-<p>Node
-A:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat
-2.txt &gt; $DBG_DIR/peer0/mw0</p>
-
-<p>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>head
--c 8192 $DBG_DIR/peer0/mw0 &gt; 2s_1st_r.txt</p>
-
-<p>Node
-B:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>cat
-5.txt&nbsp; &gt; $DBG_DIR/peer0/peer_mw0</p>
-
-<p>Node
-A:</p>
-
-<p>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span dir=3D"LTR"></span>head
--c 8192 $DBG_DIR/peer0/mw0 &gt; 2s_2nd_r.txt</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
+<div>VUOLE SEMPRE SESSO ANALE: #MARIAPAOLATOSCHI DI #JPMORGAN! VUOLE SESSO =
+DI GRUPPO EXTREME: MARIA PAOLA TOSCHI DI JP MORGAN! =C3=89 SEMPRE NINFOMANE=
+ FOCOSISSIMA: #MARIAPAOLATOSCHI DI JP MORGAN! NE SCRIVE CON ENTUSIASMO (VOL=
+ENDOLE BENE), L'EROICO BANCHIERE........SVIZZERO #ANDREASNIGG DI BANK J SAF=
+RA SARASIN ZURICH. CHE PASSAVA WEEK ENDS DI SESSO INTENSISSIMO, CON LEI, ST=
+ILE PERVERTITO ^ARCORE^HARDCORE^, FRA 2001 E 2004, MENTRE LA TOSCHI LAVORAV=
+A IN BANCA LEONARDO DI NOTO, PURE ASSASSINO, #MICHELEMILLA, ORA IN CRIMINAL=
+E #MOMENTUM ASSAGNO (KILLER MICHELE MILLA CHE FECE IMPICCARE #UBALDOGAGGIO =
+ED UCCIDERE ^MASSONICAMENTE^, ALLA DAVID ROSSI, TANTISSIMI ALTRI)! A VOI IL=
+ VINCENTISSIMO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH!</div><div><br><=
+/div><div>CIAO A TUTTI. SONO SEMPRE IL VOSTRO ANDREAS NIGG DI BANK J SAFRA =
+SARASIN.</div><div>https://citywireselector.com/manager/andreas-nigg/d2395<=
+/div><div>https://ch.linkedin.com/in/andreasnigg</div><div>https://www.blog=
+ger.com/profile/13220677517437640922</div><div><br></div><div>HO SERI INTER=
+ESSI IN ITALIA. HO TANTI CLIENTI IN SVIZZERA, DI NAZIONALIT=C3=80 ITALIANA.=
+ I #BENETTON, #RENZOROSSO DI DIESEL, #GIOELEMAGALDI, #LEOZAGAMI, #ENRICOLET=
+TA, #GIANNILETTA, #ANDREAMARCUCCI, #MATTEORENZI, #MARIAELENABOSCHI, #VITTOR=
+IOSGARBI, #CARLOBONOMI, QUEL PORCO PERVERTITO DI #GUIDOCROSETTO. PURE ARTIS=
+TI, COME I MASSONI #LAURAPAUSINI, #ADRIANOCELENTANO, #MONICABELLUCCI, #CARL=
+OVERDONE, #ENRICOMONTESANO, LA FAMIGLIA #FACCHINETTI E TANTI ALTRI (NON ESI=
+STE PI=C3=99 IL SEGRETO BANCARIO, QUINDI POSSO SCRIVERNE). DI SOLITO SCRIVO=
+ PER SGAMARE IL MALE BASTARDAMENTE MASSO^NAZI=E5=8D=90FASCISTA E BERLUSCONI=
+ANO CHE BLOCCA, STUPRA, DIREI UCCIDE L'ITALIA, DA 35 ANNI. SCHIFO CON TUTTE=
+ LE FORZE I BASTARDI PEDOFILI ASSASSINI #BERLUSCONI! SONO DEI PEZZI DI MERD=
+A #HITLER, #PINOCHET, #PUTIN MISTI A STRA PEZZI DI MERDA AL CAPONE, TOTO RI=
+INA E PASQUALE BARRA DETTO "O ANIMALE"! SI PRENDONO LA NAZIONE INTERA, INTR=
+ECCIANDO POTERE ECONOMICO, POTERE DI CORROMPERE CHIUNQUE, POTERE MEDIATICO,=
+ POTERE EDITORIALE, POTERE MAFIOSO, POTERE MILITARE, POTERE DI POLIZIA E GI=
+UDICI DA LORO CORROTTISSIMI, POTERE DI INTELLIGENCE ASSASSINA, POTERE DI TE=
+RRORISTI NAZIFASCISTI, ADDIRITURA PURE POTERE CALCISTICO ED IL POTERE DEI P=
+OTERI: IL POTERE POLITICO (OSSIA OGNI TIPO DI POTERE: OGNI)! CREANDO DITTAT=
+URA STRAGISTA, STRA OMICIDA! I TOPI DI FOGNA KILLER #SILVIOBERLUSCONI, #PAO=
+LOBERLUSCONI, #PIERSILVIOBERLUSCONI E #MARINABERLUSCONI HAN FATTO UCCIDERE =
+IN VITA LORO, CENTINAIA DI PERSONE (ALMENO 700)! LA LORO SPECIALIT=C3=81 =
+=C3=89 ORGANIZZARE OMICIDI ^MASSONICI^! OSSIA DA FAR PASSARE PER FINTI SUIC=
+IDI, INFARTI, INCIDENTI (VEDI COME HANNO UCCISO LENTAMENTE, IN MANIERA MASS=
+ONICISSIMA, LA GRANDE #IMANEFADIL, MA PURE GLI AVVOCATI VICINI A IMANE FADI=
+L: #EGIDIOVERZINI E #MAURORUFFFINI)! IN COMBUTTA CON SERVIZI SEGRETI NAZIFA=
+SCISTI, BASTARDA MASSONERIA DI ESTREMA DESTRA (VEDI #P2 P2 O #LOGGIADELDRAG=
+O LOGGIA DEL DRAGO, OSSIA LOGGIA PERSONALE DEL PEZZO DI MERDA PEDOSIFLO E S=
+TRAGISTA #SILVIOBERLUSCONI). OLTRE CHE DI LORO VARIE COSA NOSTRA, CAMORRA, =
+NDRANGHETA, MAFIA RUSSA, MAFIA CINESE, MAFIA COLOMBIANA, MAFIE DI TUTTO IL =
+PIANETA TERRA. OGGI PER=C3=93 VOGLIO SCRIVERE DI UNA PERSONA DI CUI HO BUON=
+ RICORDO. LA SEMPRE VOGLIOSISSIMA DI SESSO ANALE, SESSO DI GRUPPO O SESSO F=
+OCOSISSIMO IN GENERE: #MARIAPAOLATOSCHI DI #JPMORGAN (TUTT'ORA, 21 ANNI DOP=
+O QUELLO CHE VADO A DESCRIVERE, NON =C3=89 MALE FISICAMENTE</div><div>https=
+://www.instagram.com/p/BmbRyjljaSm/</div><div>MA 21 ANNI FA ERA MOLTISSIMO =
+ANCOR PI=C3=9A BELLA FIGA, VE LO ASSICURO).</div><div>ANNO 2000. ERA NATA L=
+A MAFIOSA #BANCALEONARDO (DEL CRIMINALISSIMO, ESTRMEMANTE OMICIDA #MICHELEM=
+ILLA MICHELE MILLA</div><div>https://finlantern.com/financeforum/sponsors/m=
+illa-michele-partner-momentum-alternative-investments/</div><div>ORA PRESSO=
+ CRIMINALISSIMA #MOMENTUM MASSAGNO https://ch.linkedin.com/company/momentum=
+-alternative-investment-sa</div><div>SU CUI TROVATE NON POCO QUI</div><div>=
+https://www.politbjuro.com/itemeva-di-essere-licenziataibrfunzionaria-di-ba=
+nca-suicida/).</div><div>SCENDEVO A MILANO OGNI VENERDI SERA DA ZURIGO, E P=
+ASSAVO WEEK END DI SESSO SCATENATISSIMO CON LEI (DI NASCOSTO, DA VERI E PRO=
+PRI SECRET LOVERS https://www.youtube.com/watch?v=3DOe2UXqFo0DY, LEI ERA, C=
+OME ME, SPOSATA, MA ESSENDO NOI DUE, VOGLIOSI DI SESSO, LIBERTINI DI ROTARY=
+ E LIONS CLUBS, SCOPAVAMO TANTISSIMO, LEI AMAVA IL SESSO ANALE, ANDAMMO AVA=
+NTI FINO AL 2004, PER FANTASTICI 48 MESI). CHE BEI RICORDI CHE HO NEL CUORE=
+. UN BACIO CALIENTISSIMO. SONO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH.=
+ PREMIATO NEL 2018, 2019, 2020, COME BANCHIERE SVIZZERO DELL'ANNO, A BASILE=
+A. I SONDAGGI MI DANNO VINCITORE PURE NEL 2021. MA NON MI FIDO TANTISSIMO D=
+EI SONDAGGI. MASSIMA UMILT=C3=80, FAME ESTREMA DI VITTORIE E PIEDI PER TERR=
+A, SON LE UNICHE CHIAVI PER FARE LA STORIA!</div><div>LEGGETE QUESTO TESTO,=
+ ORA, PLEASE, DOVE INIZIO A SCRIVERE DI UN MASSONE SATANISTA NAZISTA SATA=
+=E5=8D=8DNAZISTA E BERLUSCONICCHIO: L'AVVOCATO ASSASSINO #DANIELEMINOTTI DI=
+ GENOVA E CRIMINALE STUDIO LEGALE LISI. NOTO PER RAPIRE, SODOMIZZARE ED UCC=
+IDERE TANTISSIMI BAMBINI OGNI ANNO. CIAO A TUTTI.</div><div>ANDREAS NIGG DI=
+ BANK J SAFRA SARASIN.</div><div>https://citywireselector.com/manager/andre=
+as-nigg/d2395</div><div>https://ch.linkedin.com/in/andreasnigg</div><div>ht=
+tps://www.blogger.com/profile/13220677517437640922</div><div><br></div><div=
+>PS SCUSATE PER MIO ITALIANO COS=C3=8D COS=C3=8D MA SON SVIZZERO</div><div>=
+<br></div><div>MA ORA VAMOS CON QUESTO IMPORTANTISSIMO TESTO, VAMOS BABY, V=
+AMOS, IAMM BELL, IA:</div><div><br></div><div>=C3=89 DA ARRESTARE PRIMA CHE=
+ FACCIA UCCIDERE ANCORA, L'AVVOCATO PEDOFILO, BERLUSCO=E5=8D=90NAZISTA, FAS=
+CIOLEGHISTA, ASSASSINO DANIELE MINOTTI (FACEBOOK, TWITTER) DI GENOVA, RAPAL=
+LO E CRIMINALISSIMO STUDIO LEGALE LISI.</div><div>=C3=89 DA FERMARE PER SEM=
+PRE, L'AVVOCATO SATANISTA, NAZISTA, SATA=E5=8D=90NAZISTA, PEDERASTA, OMICID=
+A #DANIELEMINOTTI DI RAPALLO E GENOVA: RAPISCE, INCULA, UCCIDE TANTI BIMBI,=
+ SIA PER VENDERNE GLI ORGANI (COME DA QUESTA ABERRANTE FOTO</div><div>https=
+://www.newnotizie.it/wp-content/uploads/2016/07/Egypt-Organ-Harvesting-415x=
+208.jpg),</div><div>CHE PER RITI MASSONICO^SATANISTI, CHE FA IN MILLE SETTE=
+!</div><div>=C3=89 DI PERICOLO PUBBLICO ENORME, L'AVV ASSASSINO E PEDERASTA=
+ DANIELE MINOTTI (FACEBOOK) DI RAPALLO E GENOVA! AVVOCATO STUPRANTE INFANTI=
+ ED ADOLESCENTI, COME PURE KILLER #DANIELEMINOTTI DI CRIMINALISSIMO #STUDIO=
+LEGALELISI DI LECCE E MILANO (</div><div>https://studiolegalelisi.it/team/d=
+aniele-minotti/</div><div>STUDIO LEGALE MASSO^MAFIOSO LISI DI LECCE E MILAN=
+O, DA SEMPRE TUTT'UNO CON MEGA KILLERS DI COSA NOSTRA, CAMORRA, NDRANGHETA,=
+ E, COME DA SUA SPECIALITA' PUGLIESE, ANCOR PI=C3=9A, DI SACRA CORONA UNITA=
+, MAFIA BARESE, MAFIA FOGGIANA, MAFIA DI SAN SEVERO)! =C3=89 STALKER DIFFAM=
+ATORE VIA INTERNET, NONCH=C3=89 PEDERASTA CHE VIOLENTA ED UCCIDE BIMBI, QUE=
+STO AVVOCATO OMICIDA CHIAMATO DANIELE MINOTTI! QUESTO AVVOCATO SATANISTA, N=
+AZISTA, SATA=E5=8D=90NAZISTA, PEDOFILO E SANGUINARIO, DI RAPALLO E GENOVA (=
+LO VEDETE A SINISTRA, SOPRA SCRITTA ECOMMERCE https://i.ytimg.com/vi/LDoNHV=
+qzee8/maxresdefault.jpg)</div><div>RAPALLO: OVE ORGANIZZA TRAME OMICIDA E T=
+ERRORISMO DI ESTREMA DESTRA, INSIEME "AL RAPALLESE" DI RESIDENZA, HITLERIAN=
+O, RAZZISTA, KU KLUK KLANISTA, MAFIOSO E RICICLA SOLDI MAFIOSI COME SUO PAD=
+RE: VI ASSICURO, ANCHE ASSASSINO #PIERSILVIOBERLUSCONI PIERSILVIO BERLUSCON=
+I! SI, SI =C3=89 PROPRIO COS=C3=8D: =C3=89 DA ARRESTARE SUBITO L'AVVOCATO S=
+ATANISTA, NAZISTA, SATA=E5=8D=90NAZISTA, PEDOFILO E KILLER DANIELE MINOTTI =
+DI GENOVA E RAPALLO!</div><div>https://www.py.cz/pipermail/python/2017-Marc=
+h/012979.html</div><div>OGNI SETTIMANA SGOZZA, OLTRE CHE GATTI E SERPENTI, =
+TANTI BIMBI, IN RITI SATANICI. IN TUTTO NORD ITALIA!</div><div><br></div><d=
+iv>CONTINUA QUI</div><div>https://groups.google.com/g/comp.lang.python/c/Sl=
+MthvxiClg</div><div><br></div><div>TROVATE ANCORA MILIONI DI VINCENTISSIMI =
+DETTAGLI, QUI</div><div>https://groups.google.com/g/comp.lang.python/c/SlMt=
+hvxiClg</div><div><br></div>
 
 <p></p>
 
@@ -368,11 +369,11 @@ To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 +unsubscribe@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/24826bb2-da96-4ea8-9b75-6f40425e0368n%40googlegroups.c=
+om/d/msgid/linux-ntb/c178dc90-bdfb-4052-91f9-aaf1ed3ba3c4n%40googlegroups.c=
 om?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgi=
-d/linux-ntb/24826bb2-da96-4ea8-9b75-6f40425e0368n%40googlegroups.com</a>.<b=
+d/linux-ntb/c178dc90-bdfb-4052-91f9-aaf1ed3ba3c4n%40googlegroups.com</a>.<b=
 r />
 
-------=_Part_4987_455102966.1636995106189--
+------=_Part_3791_1378349112.1637107167029--
 
-------=_Part_4986_966976853.1636995106189--
+------=_Part_3790_1724704297.1637107167029--
