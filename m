@@ -1,60 +1,132 @@
-Return-Path: <linux-ntb+bncBCM2RP62ZYGBBOXE22GAMGQEQZYLBOQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERBVUQQ2GQMGQEFKZ5JTY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qt1-x838.google.com (mail-qt1-x838.google.com [IPv6:2607:f8b0:4864:20::838])
-	by mail.lfdr.de (Postfix) with ESMTPS id 0CE90455263
-	for <lists+linux-ntb@lfdr.de>; Thu, 18 Nov 2021 02:54:04 +0100 (CET)
-Received: by mail-qt1-x838.google.com with SMTP id x28-20020ac8701c000000b0029f4b940566sf3281840qtm.19
-        for <lists+linux-ntb@lfdr.de>; Wed, 17 Nov 2021 17:54:04 -0800 (PST)
+Received: from mail-pl1-x638.google.com (mail-pl1-x638.google.com [IPv6:2607:f8b0:4864:20::638])
+	by mail.lfdr.de (Postfix) with ESMTPS id 4CD4045F8CF
+	for <lists+linux-ntb@lfdr.de>; Sat, 27 Nov 2021 02:22:32 +0100 (CET)
+Received: by mail-pl1-x638.google.com with SMTP id f16-20020a170902ce9000b001436ba39b2bsf4711170plg.3
+        for <lists+linux-ntb@lfdr.de>; Fri, 26 Nov 2021 17:22:32 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1637976151; cv=pass;
+        d=google.com; s=arc-20160816;
+        b=h/rNEDxtaUUijPZ5+YLpEga20u8yaGfMUN1fpjLTWQ9WcAE4ch/M/YqEygRiCpryf9
+         6uYBgouRVM/pXlpdR49Rd2bEapQ52qxZEoXOIcJumNLBEJsAz6B9KQVFRwmIssGuLFUK
+         iUyLRt6lXvWIm89i9C6tfms2QQDEkiskjcstgTPNh88fQexxP1Y4121Obliig/RZ94Gp
+         /lrU0Xcwhoega4xkZjF36Q15LPyJyW8EHD/gylntD9417lcK6qq+bBBIHUUu2lksable
+         dWxmvWAHW3uVO+7atYb7FvvXgHNCe+CMJDcWzqcgY4ITvDOM5Ab+hHzAeWlTxd2JZmJv
+         hgDA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:date:mime-version:subject:cc:to
+         :from:message-id:sender:dkim-signature;
+        bh=3Aih1KZbJ0oFQzHDSbwtTetkHfoMIv/kC87g3816yJU=;
+        b=haUMrrf7UJOGEmcRRJ7NgFzXQndOo7qFJl7YtOeG286+Bc9Zpn+M6JwiDIrI4DdjLK
+         5UCVOqjf0S/iw+V+dSas1YxqPENdqEKUaeaZKbeFQ47ZamHF7p0D16lsFjBSpuxCKBQb
+         u7dkY8xWHEWlZs3cdf/naSnHMmO0xbBaZp8+TDHZ/JTPgYXlCdfNKTIsnv/wGiVjXC10
+         r+j/3EdpTj6FfxiSqdxWlPW8Xp+alwZL8GU86Lm8fCTeUYrNfBHFgfJ5AMlObw4bT7bU
+         hkF0Q9Ngu/zjgxgrJulaEB4fmyhCwYUOoRi5cZ+mg3hlCsOuwRczRxP0J8oFolAtHp3K
+         FfQA==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=TEH82iHa;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b="6MlFc/aH";
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:date:from:to:message-id:subject:mime-version
-         :x-original-sender:precedence:mailing-list:list-id:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=dZVNsZiEWaNsllR0KgMrWONTCyeM1X7ACyVx+VJokyc=;
-        b=YWsnKjnYflFqZY3SweuUiu99Q0I1XgHkvQ3bjNJtzb4KnFNoYU3r1dZ7FZ9nZpsnGw
-         v0jW2E7B1jnsPIQbvfthvc9jSVYVoEQuqbKvZWAVRoLAHpwQzjXQW4WQX0BpGS4v9cRx
-         nMm/Q2FYDHRXEo5ThfwalOWOF1POXZQ0O83DD74Vs0znSnCtWakBqne8sDHnmZU1jyxh
-         JOwB/+0OrRFTO6E8lMc1I/JGoDbTkvG+j+5fX60lqDLaq5q9AUXJxYHIPpVMPNPUq4aw
-         JYplxiCDT99wAxyqnAG/5X+rkSHT13tfu+owZ3gh8DHjVAo1zKsx+cLeLLXr0IuapY7l
-         vFKA==
+        h=sender:message-id:from:to:cc:subject:mime-version:date
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=3Aih1KZbJ0oFQzHDSbwtTetkHfoMIv/kC87g3816yJU=;
+        b=rNPqSeuLPNNn1G+G6Z7dJBOCA0TjCwwbiyh4pQJ7KJnSDvJedNIyFy4xCPFMad1FoB
+         lGeIwMgMT9hvAG/+uwaucfKq1zJ+h/fBPJ9VjOiA1F1DqXiPtuoHSD2yRbnV5TqmFRP7
+         D4BTf6XyvkZEkvkPDtlOKZqJAANPTZ799P3Mi/7Pk2ubl/kAD/SoyKRojVgQeHfwUwPL
+         xAYWjdfAxZYPKywoWGeHzhx8D87nYddJjBEPpVFvlJdhkhMEYvm/cYw1HEik3UHNo+ls
+         +TfYx+KzR8uZrG5QTtWjpRgE2zgiwk9NsRW2Kt+NQ/wjkPI9Sl5wQyD/fdTOg3MMxCzK
+         SghQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:date:from:to:message-id:subject
-         :mime-version:x-original-sender:precedence:mailing-list:list-id
+        h=sender:x-gm-message-state:message-id:from:to:cc:subject
+         :mime-version:date:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=dZVNsZiEWaNsllR0KgMrWONTCyeM1X7ACyVx+VJokyc=;
-        b=dXcIte+Ppn52seaDrelxv5hqYN0eAWzpbSRdn+Rv8unzY412GXH9gSYgTZWJ3I2ize
-         P3wZxoSHelFWF5xU5GDVOubMj3J6bKq4qRiG0dPYH6jIFLM6LZoxf51O8lZfCGBo/iEw
-         B5jGEcAF7ey5gs/20LjdIbbKNGb3nU1B60mMAaJ8EoNXQzMfhU6ogULrCTH5zDKKWJR5
-         7dIaxfWbGNY9LH4d4ex+w2FzSAj1eI3+p/saH6THMiQv9Es938l1MpaXVI2CC8avOYh8
-         S83v5/YTgQ8ASGWteOXbXSSrDheJBsVai6XRJYLbhAacouPPk88qBIyjPvFDA8Zxolvv
-         1exQ==
+        bh=3Aih1KZbJ0oFQzHDSbwtTetkHfoMIv/kC87g3816yJU=;
+        b=vGb1hDrARXYYamAHmmlSv3WvTaC8V07aPxoS88uAXoIu1fb6O69C0zyJ3qHz5DkJM5
+         8ZgadZo63PBJ/P+5WpstKyv0VM718GHgQeQF4Mkm+wv/Co/iAE1rQ6uwID2AuZJEgwY0
+         On+qdgiC2taXULydNR5Fk+LRQ+wr4k2qeO+aQBvCWlSRnuihaKugGyK00jLoSFsWIksI
+         d96jnInJAyHd5gQ9nwZ6LPWrTpSvZ28mgB99BNini6PgV9JQbvUHEDlLSqsUCKUXtyfC
+         IUX0t5KjQG96X++PGFPJWbzOkvB812cwqaEy5DgvLcFwjtOnuHAqR8cWp0GkxBfAzbnQ
+         CTkA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531jksAWajsnBiUDdDY3eu/ueziLebW/I0vcTmtsi6YhM8mRnY+R
-	cQCNaedI90bZpMeHTpDm+GA=
-X-Google-Smtp-Source: ABdhPJxBggLWaDk1yuq2iwauLervVrd+TJ0WhHtMsxQZv6wD9W1Hu12hB5/5DIbHYckPIteU2cJe6w==
-X-Received: by 2002:a05:622a:1050:: with SMTP id f16mr21229250qte.311.1637200442813;
-        Wed, 17 Nov 2021 17:54:02 -0800 (PST)
+X-Gm-Message-State: AOAM530Y9xF8lsnIxRygAW1tYyS9EgHtpZfxIr5q+PD+n36au1vxWpAD
+	b/PeZElAnsN+M4q2n2oxK9A=
+X-Google-Smtp-Source: ABdhPJyPRoGHHLxRbLUobejLpWPsqzebbL5/zpyJtdi60q3GhBHE4yRzUAtZxuE1ap8EUYEFuGoevA==
+X-Received: by 2002:a17:90b:30e:: with SMTP id ay14mr19531918pjb.60.1637976150753;
+        Fri, 26 Nov 2021 17:22:30 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ac8:1e13:: with SMTP id n19ls1014138qtl.10.gmail; Wed, 17
- Nov 2021 17:54:02 -0800 (PST)
-X-Received: by 2002:ac8:5acb:: with SMTP id d11mr22147703qtd.109.1637200442279;
-        Wed, 17 Nov 2021 17:54:02 -0800 (PST)
-Date: Wed, 17 Nov 2021 17:54:01 -0800 (PST)
-From: FRANCESCO PERILLI EQUITA SIM MILAN <adamjalam@mail.com>
-To: linux-ntb <linux-ntb@googlegroups.com>
-Message-Id: <4f694882-2500-4c4a-9c5b-d5e0ca4be2ban@googlegroups.com>
-Subject: =?UTF-8?Q?AMA_IL_SESSO_ANALE:_#MARIAPAOLATOSCHI_DI_#JPMORGAN!_VUOLE_SESS?=
- =?UTF-8?Q?O_DI_GRUPPO_EXTREME:_MARIA_PAOL?=
- =?UTF-8?Q?A_TOSCHI_DI_JP_MORGAN!_=C3=89_SEMPRE_?=
- =?UTF-8?Q?NINFOMANE_FOCOSA:_#MARIAPAOLATOSCHI_DI_JP_MORGAN!_NE_SCRIVE_CO?=
- =?UTF-8?Q?N_ENTUSIASMO_(VOLENDOLE_BENE),_L'EROICO_BANCHIERE_SVIZZERO.....?=
+Received: by 2002:a17:902:c40d:: with SMTP id k13ls4156901plk.5.gmail; Fri, 26
+ Nov 2021 17:22:30 -0800 (PST)
+X-Received: by 2002:a17:902:f551:b0:143:759c:6a30 with SMTP id h17-20020a170902f55100b00143759c6a30mr41763286plf.0.1637976150219;
+        Fri, 26 Nov 2021 17:22:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637976150; cv=none;
+        d=google.com; s=arc-20160816;
+        b=agwPt4mObu5G7CnWpOLwUxX+7avJBa5zI1UE9wxrLlrCOpZHAu5aLC4SvuH/YitlcE
+         GxuwCS1FLYmJuO6ahq775vHUP/ymbGxYdt03XVIo8pSuV7/9d9udEaIHqWaX+Sbpku5m
+         khZBP5bYm0H0lCCyfKjl/sH29gv696kqXImyY0UyjkOj86INe9F+vRNILBNMZ/J69sim
+         dg93BEIy08VebU6cfyIVIry8ctL+p4q6/QaeQPxwkqwRJxenOmhWwdjywgOGgWYQ7Ew4
+         bS/uVDaE9tz/ReeDQq/YViDAAvnX/A2KaW9vNo1n6ABvH4qfGCQlZWs2L02nN6WBMewK
+         O/gg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:content-transfer-encoding:mime-version:subject:cc:to:from
+         :dkim-signature:dkim-signature:message-id;
+        bh=D0nbUkdccTCr+2Br2gyXx7cP8vfnCoeXBZSgMbFqpdM=;
+        b=l8qTY1IKyVr5xc8kOmVr5LJkzI16Jp+qZpE7CP4llybTMBAnMHvQu5tbvp3G54sJtl
+         vdTSe9THS5zhrY1OlV/lo4V64deK045nnplP0tLZVSWYVw9JDv63qBPDG9dDTnkM4f2t
+         6bs/D0pkG2xny7aQ8eoq7X/VLA2nStDGlAzE8mLLD3Xun5SdWDmVpQj0ecLhyjIaFP/Z
+         QOdbzISORspzRTqDMtip+aIpbQqEB+H2bFVz4V5QiBPTPANjKGjncCKiMof7h27DfRG4
+         QkQGtHsy00VDW/7JgyjBiLB1mktVFTsdVDrVkg5jPY57hoFCqnDN1zjr3v+atkdbJt6B
+         g/Eg==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=TEH82iHa;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b="6MlFc/aH";
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
+        by gmr-mx.google.com with ESMTPS id g12si1249935pjp.0.2021.11.26.17.22.29
+        for <linux-ntb@googlegroups.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 26 Nov 2021 17:22:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
+Message-ID: <20211126230957.239391799@linutronix.de>
+From: Thomas Gleixner <tglx@linutronix.de>
+To: LKML <linux-kernel@vger.kernel.org>
+Cc: Bjorn Helgaas <helgaas@kernel.org>,
+ Marc Zygnier <maz@kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Kevin Tian <kevin.tian@intel.com>,
+ Jason Gunthorpe <jgg@nvidia.com>,
+ Megha Dey <megha.dey@intel.com>,
+ Ashok Raj <ashok.raj@intel.com>,
+ linux-pci@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ linux-s390@vger.kernel.org,
+ Heiko Carstens <hca@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Jon Mason <jdmason@kudzu.us>,
+ Dave Jiang <dave.jiang@intel.com>,
+ Allen Hubbe <allenbh@gmail.com>,
+ linux-ntb@googlegroups.com
+Subject: [patch 00/32] genirq/msi, PCI/MSI: Spring cleaning - Part 2
 MIME-Version: 1.0
-Content-Type: multipart/mixed; 
-	boundary="----=_Part_28_686143101.1637200441488"
-X-Original-Sender: adamjalam@mail.com
+Content-Type: text/plain; charset="UTF-8"
+Date: Sat, 27 Nov 2021 02:22:27 +0100 (CET)
+X-Original-Sender: tglx@linutronix.de
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@linutronix.de header.s=2020 header.b=TEH82iHa;       dkim=neutral
+ (no key) header.i=@linutronix.de header.s=2020e header.b="6MlFc/aH";
+       spf=pass (google.com: domain of tglx@linutronix.de designates
+ 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -67,315 +139,95 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-------=_Part_28_686143101.1637200441488
-Content-Type: multipart/alternative; 
-	boundary="----=_Part_29_1064802573.1637200441489"
+This is the third part of [PCI]MSI refactoring which aims to provide the
+ability of expanding MSI-X vectors after enabling MSI-X.
 
-------=_Part_29_1064802573.1637200441489
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The first two parts of this work can be found here:
 
-AMA IL SESSO ANALE: #MARIAPAOLATOSCHI DI #JPMORGAN! VUOLE SESSO DI GRUPPO=
-=20
-EXTREME: MARIA PAOLA TOSCHI DI JP MORGAN! =C3=89 SEMPRE NINFOMANE FOCOSA:=
-=20
-#MARIAPAOLATOSCHI DI JP MORGAN! NE SCRIVE CON ENTUSIASMO (VOLENDOLE BENE),=
-=20
-L'EROICO BANCHIERE SVIZZERO..........#ANDREASNIGG DI BANK J SAFRA SARASIN=
-=20
-ZURICH. CHE PASSAVA WEEK ENDS DI SESSO INTENSISSIMO, CON LEI, STILE=20
-PERVERTITO ^ARCORE^HARDCORE^, FRA 2001 E 2004, MENTRE LA TOSCHI LAVORAVA IN=
-=20
-BANCA LEONARDO DI NOTO, PURE ASSASSINO, #MICHELEMILLA, ORA IN CRIMINALE=20
-#MOMENTUM ASSAGNO (KILLER MICHELE MILLA CHE FECE IMPICCARE #UBALDOGAGGIO ED=
-=20
-UCCIDERE ^MASSONICAMENTE^, ALLA DAVID ROSSI, TANTISSIMI ALTRI)! A VOI IL=20
-VINCENTISSIMO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH!
+    https://lore.kernel.org/r/20211126222700.862407977@linutronix.de
+    https://lore.kernel.org/r/20211126224100.303046749@linutronix.de
 
-CIAO A TUTTI. SONO SEMPRE IL VOSTRO ANDREAS NIGG DI BANK J SAFRA SARASIN.
-https://citywireselector.com/manager/andreas-nigg/d2395
-https://ch.linkedin.com/in/andreasnigg
-https://www.blogger.com/profile/13220677517437640922
+This third part has the following important changes:
 
-HO SERI INTERESSI IN ITALIA. HO TANTI CLIENTI IN SVIZZERA, DI NAZIONALIT=C3=
-=80=20
-ITALIANA. I #BENETTON, #RENZOROSSO DI DIESEL, #GIOELEMAGALDI, #LEOZAGAMI,=
-=20
-#ENRICOLETTA, #GIANNILETTA, #ANDREAMARCUCCI, #MATTEORENZI,=20
-#MARIAELENABOSCHI, #VITTORIOSGARBI, #CARLOBONOMI, QUEL PORCO PERVERTITO DI=
-=20
-#GUIDOCROSETTO. PURE ARTISTI, COME I MASSONI #LAURAPAUSINI,=20
-#ADRIANOCELENTANO, #MONICABELLUCCI, #CARLOVERDONE, #ENRICOMONTESANO, LA=20
-FAMIGLIA #FACCHINETTI E TANTI ALTRI (NON ESISTE PI=C3=99 IL SEGRETO BANCARI=
-O,=20
-QUINDI POSSO SCRIVERNE). DI SOLITO SCRIVO PER SGAMARE IL MALE BASTARDAMENTE=
-=20
-MASSO^NAZI=E5=8D=90FASCISTA E BERLUSCONIANO CHE BLOCCA, STUPRA, DIREI UCCID=
-E=20
-L'ITALIA, DA 35 ANNI. SCHIFO CON TUTTE LE FORZE I BASTARDI PEDOFILI=20
-ASSASSINI #BERLUSCONI! SONO DEI PEZZI DI MERDA #HITLER, #PINOCHET, #PUTIN=
-=20
-MISTI A STRA PEZZI DI MERDA AL CAPONE, TOTO RIINA E PASQUALE BARRA DETTO "O=
-=20
-ANIMALE"! SI PRENDONO LA NAZIONE INTERA, INTRECCIANDO POTERE ECONOMICO,=20
-POTERE DI CORROMPERE CHIUNQUE, POTERE MEDIATICO, POTERE EDITORIALE, POTERE=
-=20
-MAFIOSO, POTERE MILITARE, POTERE DI POLIZIA E GIUDICI DA LORO=20
-CORROTTISSIMI, POTERE DI INTELLIGENCE ASSASSINA, POTERE DI TERRORISTI=20
-NAZIFASCISTI, ADDIRITURA PURE POTERE CALCISTICO ED IL POTERE DEI POTERI: IL=
-=20
-POTERE POLITICO (OSSIA OGNI TIPO DI POTERE: OGNI)! CREANDO DITTATURA=20
-STRAGISTA, STRA OMICIDA! I TOPI DI FOGNA KILLER #SILVIOBERLUSCONI,=20
-#PAOLOBERLUSCONI, #PIERSILVIOBERLUSCONI E #MARINABERLUSCONI HAN FATTO=20
-UCCIDERE IN VITA LORO, CENTINAIA DI PERSONE (ALMENO 700)! LA LORO=20
-SPECIALIT=C3=81 =C3=89 ORGANIZZARE OMICIDI ^MASSONICI^! OSSIA DA FAR PASSAR=
-E PER=20
-FINTI SUICIDI, INFARTI, INCIDENTI (VEDI COME HANNO UCCISO LENTAMENTE, IN=20
-MANIERA MASSONICISSIMA, LA GRANDE #IMANEFADIL, MA PURE GLI AVVOCATI VICINI=
-=20
-A IMANE FADIL: #EGIDIOVERZINI E #MAURORUFFFINI)! IN COMBUTTA CON SERVIZI=20
-SEGRETI NAZIFASCISTI, BASTARDA MASSONERIA DI ESTREMA DESTRA (VEDI #P2 P2 O=
-=20
-#LOGGIADELDRAGO LOGGIA DEL DRAGO, OSSIA LOGGIA PERSONALE DEL PEZZO DI MERDA=
-=20
-PEDOSIFLO E STRAGISTA #SILVIOBERLUSCONI). OLTRE CHE DI LORO VARIE COSA=20
-NOSTRA, CAMORRA, NDRANGHETA, MAFIA RUSSA, MAFIA CINESE, MAFIA COLOMBIANA,=
-=20
-MAFIE DI TUTTO IL PIANETA TERRA. OGGI PER=C3=93 VOGLIO SCRIVERE DI UNA PERS=
-ONA=20
-DI CUI HO BUON RICORDO. LA SEMPRE VOGLIOSISSIMA DI SESSO ANALE, SESSO DI=20
-GRUPPO O SESSO FOCOSO IN GENERE: #MARIAPAOLATOSCHI DI #JPMORGAN (TUTT'ORA,=
-=20
-21 ANNI DOPO QUELLO CHE VADO A DESCRIVERE, NON =C3=89 MALE FISICAMENTE
-https://www.instagram.com/p/BmbRyjljaSm/
-MA 21 ANNI FA ERA MOLTISSIMO ANCOR PI=C3=9A BELLA FIGA, VE LO ASSICURO).
-ANNO 2000. ERA NATA LA MAFIOSA #BANCALEONARDO (DEL CRIMINALISSIMO,=20
-ESTRMEMANTE OMICIDA #MICHELEMILLA MICHELE MILLA
-https://finlantern.com/financeforum/sponsors/milla-michele-partner-momentum=
--alternative-investments/
-ORA PRESSO CRIMINALISSIMA #MOMENTUM MASSAGNO=20
-https://ch.linkedin.com/company/momentum-alternative-investment-sa
-SU CUI TROVATE NON POCO QUI
-https://www.politbjuro.com/itemeva-di-essere-licenziataibrfunzionaria-di-ba=
-nca-suicida/).
-SCENDEVO A MILANO OGNI VENERDI SERA DA ZURIGO, E PASSAVO WEEK END DI SESSO=
-=20
-SCATENATISSIMO CON LEI (DI NASCOSTO, DA VERI E PROPRI SECRET LOVERS=20
-https://www.youtube.com/watch?v=3DOe2UXqFo0DY, LEI ERA, COME ME, SPOSATA, M=
-A=20
-ESSENDO NOI DUE, VOGLIOSI DI SESSO, LIBERTINI DI ROTARY E LIONS CLUBS,=20
-SCOPAVAMO TANTISSIMO, LEI AMAVA IL SESSO ANALE, ANDAMMO AVANTI FINO AL=20
-2004, PER FANTASTICI 48 MESI). CHE BEI RICORDI CHE HO NEL CUORE. UN BACIO=
-=20
-CALIENTISSIMO. SONO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH. PREMIATO=
-=20
-NEL 2018, 2019, 2020, COME BANCHIERE SVIZZERO DELL'ANNO, A BASILEA. I=20
-SONDAGGI MI DANNO VINCITORE PURE NEL 2021. MA NON MI FIDO TANTISSIMO DEI=20
-SONDAGGI. MASSIMA UMILT=C3=80, FAME ESTREMA DI VITTORIE E PIEDI PER TERRA, =
-SON=20
-LE UNICHE CHIAVI PER FARE LA STORIA!
-LEGGETE QUESTO TESTO, ORA, PLEASE, DOVE INIZIO A SCRIVERE DI UN MASSONE=20
-SATANISTA NAZISTA SATA=E5=8D=8DNAZISTA E BERLUSCONICCHIO: L'AVVOCATO ASSASS=
-INO=20
-#DANIELEMINOTTI DI GENOVA E CRIMINALE STUDIO LEGALE LISI. NOTO PER RAPIRE,=
-=20
-SODOMIZZARE ED UCCIDERE TANTISSIMI BAMBINI OGNI ANNO. CIAO A TUTTI.
-ANDREAS NIGG DI BANK J SAFRA SARASIN.
-https://citywireselector.com/manager/andreas-nigg/d2395
-https://ch.linkedin.com/in/andreasnigg
-https://www.blogger.com/profile/13220677517437640922
+   1) Add locking to protect the MSI descriptor storage
 
-PS SCUSATE PER MIO ITALIANO COS=C3=8D COS=C3=8D MA SON SVIZZERO
+      Right now the MSI descriptor storage (linked list) is not protected
+      by anything under the assumption that the list is installed before
+      use and destroyed after use. As this is about to change there has to
+      be protection
 
-MA ORA VAMOS CON QUESTO IMPORTANTISSIMO TESTO, VAMOS BABY, VAMOS, IAMM=20
-BELL, IA:
+   2) A new set of iterators which allow filtering on the state of the
+      descriptors namely whether a descriptor is associated to a Linux
+      interrupt or not.
 
-=C3=89 DA ARRESTARE PRIMA CHE FACCIA UCCIDERE ANCORA, L'AVVOCATO PEDOFILO,=
-=20
-BERLUSCO=E5=8D=90NAZISTA, FASCIOLEGHISTA, ASSASSINO DANIELE MINOTTI (FACEBO=
-OK,=20
-TWITTER) DI GENOVA, RAPALLO E CRIMINALISSIMO STUDIO LEGALE LISI.
-=C3=89 DA FERMARE PER SEMPRE, L'AVVOCATO SATANISTA, NAZISTA, SATA=E5=8D=90N=
-AZISTA,=20
-PEDERASTA, OMICIDA #DANIELEMINOTTI DI RAPALLO E GENOVA: RAPISCE, INCULA,=20
-UCCIDE TANTI BIMBI, SIA PER VENDERNE GLI ORGANI (COME DA QUESTA ABERRANTE=
-=20
-FOTO
-https://www.newnotizie.it/wp-content/uploads/2016/07/Egypt-Organ-Harvesting=
--415x208.jpg),
-CHE PER RITI MASSONICO^SATANISTI, CHE FA IN MILLE SETTE!
-=C3=89 DI PERICOLO PUBBLICO ENORME, L'AVV ASSASSINO E PEDERASTA DANIELE MIN=
-OTTI=20
-(FACEBOOK) DI RAPALLO E GENOVA! AVVOCATO STUPRANTE INFANTI ED ADOLESCENTI,=
-=20
-COME PURE KILLER #DANIELEMINOTTI DI CRIMINALISSIMO #STUDIOLEGALELISI DI=20
-LECCE E MILANO (
-https://studiolegalelisi.it/team/daniele-minotti/
-STUDIO LEGALE MASSO^MAFIOSO LISI DI LECCE E MILANO, DA SEMPRE TUTT'UNO CON=
-=20
-MEGA KILLERS DI COSA NOSTRA, CAMORRA, NDRANGHETA, E, COME DA SUA=20
-SPECIALITA' PUGLIESE, ANCOR PI=C3=9A, DI SACRA CORONA UNITA, MAFIA BARESE, =
-MAFIA=20
-FOGGIANA, MAFIA DI SAN SEVERO)! =C3=89 STALKER DIFFAMATORE VIA INTERNET, NO=
-NCH=C3=89=20
-PEDERASTA CHE VIOLENTA ED UCCIDE BIMBI, QUESTO AVVOCATO OMICIDA CHIAMATO=20
-DANIELE MINOTTI! QUESTO AVVOCATO SATANISTA, NAZISTA, SATA=E5=8D=90NAZISTA, =
-PEDOFILO=20
-E SANGUINARIO, DI RAPALLO E GENOVA (LO VEDETE A SINISTRA, SOPRA SCRITTA=20
-ECOMMERCE https://i.ytimg.com/vi/LDoNHVqzee8/maxresdefault.jpg)
-RAPALLO: OVE ORGANIZZA TRAME OMICIDA E TERRORISMO DI ESTREMA DESTRA,=20
-INSIEME "AL RAPALLESE" DI RESIDENZA, HITLERIANO, RAZZISTA, KU KLUK=20
-KLANISTA, MAFIOSO E RICICLA SOLDI MAFIOSI COME SUO PADRE: VI ASSICURO,=20
-ANCHE ASSASSINO #PIERSILVIOBERLUSCONI PIERSILVIO BERLUSCONI! SI, SI =C3=89=
-=20
-PROPRIO COS=C3=8D: =C3=89 DA ARRESTARE SUBITO L'AVVOCATO SATANISTA, NAZISTA=
-,=20
-SATA=E5=8D=90NAZISTA, PEDOFILO E KILLER DANIELE MINOTTI DI GENOVA E RAPALLO=
-!
-https://www.py.cz/pipermail/python/2017-March/012979.html
-OGNI SETTIMANA SGOZZA, OLTRE CHE GATTI E SERPENTI, TANTI BIMBI, IN RITI=20
-SATANICI. IN TUTTO NORD ITALIA!
+      This cleans up a lot of use cases which have to do this filtering
+      manually.
 
-CONTINUA QUI
-https://groups.google.com/g/comp.lang.python/c/QbzEBDzBXCs
+   3) A new set of MSI descriptor allocation functions which make the usage
+      sites simpler and confine the storage handling to the core code.
 
-TROVATE MILIONI DI ALTRI VINCENTISSIMI DETTAGLI QUI
-https://groups.google.com/g/comp.lang.python/c/QbzEBDzBXCs
+      Trivial MSI descriptors (non PCI) are now allocated by the core code
+      automatically when the underlying irq domain requests that.
 
---=20
-You received this message because you are subscribed to the Google Groups "=
-linux-ntb" group.
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/=
-linux-ntb/4f694882-2500-4c4a-9c5b-d5e0ca4be2ban%40googlegroups.com.
+   4) Rework of sysfs handling to prepare for dynamic extension of MSI-X
 
-------=_Part_29_1064802573.1637200441489
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+      The current mechanism which creates the directory and the attributes
+      for all MSI descriptors in one go is obviously not suitable for
+      dynamic extension. The rework splits the directory creation out and
+      lets the MSI interrupt allocation create the per descriptor
+      attributes.
 
-<div>AMA IL SESSO ANALE: #MARIAPAOLATOSCHI DI #JPMORGAN! VUOLE SESSO DI GRU=
-PPO EXTREME: MARIA PAOLA TOSCHI DI JP MORGAN! =C3=89 SEMPRE NINFOMANE FOCOS=
-A: #MARIAPAOLATOSCHI DI JP MORGAN! NE SCRIVE CON ENTUSIASMO (VOLENDOLE BENE=
-), L'EROICO BANCHIERE SVIZZERO..........#ANDREASNIGG DI BANK J SAFRA SARASI=
-N ZURICH. CHE PASSAVA WEEK ENDS DI SESSO INTENSISSIMO, CON LEI, STILE PERVE=
-RTITO ^ARCORE^HARDCORE^, FRA 2001 E 2004, MENTRE LA TOSCHI LAVORAVA IN BANC=
-A LEONARDO DI NOTO, PURE ASSASSINO, #MICHELEMILLA, ORA IN CRIMINALE #MOMENT=
-UM ASSAGNO (KILLER MICHELE MILLA CHE FECE IMPICCARE #UBALDOGAGGIO ED UCCIDE=
-RE ^MASSONICAMENTE^, ALLA DAVID ROSSI, TANTISSIMI ALTRI)! A VOI IL VINCENTI=
-SSIMO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH!</div><div><br></div><div=
->CIAO A TUTTI. SONO SEMPRE IL VOSTRO ANDREAS NIGG DI BANK J SAFRA SARASIN.<=
-/div><div>https://citywireselector.com/manager/andreas-nigg/d2395</div><div=
->https://ch.linkedin.com/in/andreasnigg</div><div>https://www.blogger.com/p=
-rofile/13220677517437640922</div><div><br></div><div>HO SERI INTERESSI IN I=
-TALIA. HO TANTI CLIENTI IN SVIZZERA, DI NAZIONALIT=C3=80 ITALIANA. I #BENET=
-TON, #RENZOROSSO DI DIESEL, #GIOELEMAGALDI, #LEOZAGAMI, #ENRICOLETTA, #GIAN=
-NILETTA, #ANDREAMARCUCCI, #MATTEORENZI, #MARIAELENABOSCHI, #VITTORIOSGARBI,=
- #CARLOBONOMI, QUEL PORCO PERVERTITO DI #GUIDOCROSETTO. PURE ARTISTI, COME =
-I MASSONI #LAURAPAUSINI, #ADRIANOCELENTANO, #MONICABELLUCCI, #CARLOVERDONE,=
- #ENRICOMONTESANO, LA FAMIGLIA #FACCHINETTI E TANTI ALTRI (NON ESISTE PI=C3=
-=99 IL SEGRETO BANCARIO, QUINDI POSSO SCRIVERNE). DI SOLITO SCRIVO PER SGAM=
-ARE IL MALE BASTARDAMENTE MASSO^NAZI=E5=8D=90FASCISTA E BERLUSCONIANO CHE B=
-LOCCA, STUPRA, DIREI UCCIDE L'ITALIA, DA 35 ANNI. SCHIFO CON TUTTE LE FORZE=
- I BASTARDI PEDOFILI ASSASSINI #BERLUSCONI! SONO DEI PEZZI DI MERDA #HITLER=
-, #PINOCHET, #PUTIN MISTI A STRA PEZZI DI MERDA AL CAPONE, TOTO RIINA E PAS=
-QUALE BARRA DETTO "O ANIMALE"! SI PRENDONO LA NAZIONE INTERA, INTRECCIANDO =
-POTERE ECONOMICO, POTERE DI CORROMPERE CHIUNQUE, POTERE MEDIATICO, POTERE E=
-DITORIALE, POTERE MAFIOSO, POTERE MILITARE, POTERE DI POLIZIA E GIUDICI DA =
-LORO CORROTTISSIMI, POTERE DI INTELLIGENCE ASSASSINA, POTERE DI TERRORISTI =
-NAZIFASCISTI, ADDIRITURA PURE POTERE CALCISTICO ED IL POTERE DEI POTERI: IL=
- POTERE POLITICO (OSSIA OGNI TIPO DI POTERE: OGNI)! CREANDO DITTATURA STRAG=
-ISTA, STRA OMICIDA! I TOPI DI FOGNA KILLER #SILVIOBERLUSCONI, #PAOLOBERLUSC=
-ONI, #PIERSILVIOBERLUSCONI E #MARINABERLUSCONI HAN FATTO UCCIDERE IN VITA L=
-ORO, CENTINAIA DI PERSONE (ALMENO 700)! LA LORO SPECIALIT=C3=81 =C3=89 ORGA=
-NIZZARE OMICIDI ^MASSONICI^! OSSIA DA FAR PASSARE PER FINTI SUICIDI, INFART=
-I, INCIDENTI (VEDI COME HANNO UCCISO LENTAMENTE, IN MANIERA MASSONICISSIMA,=
- LA GRANDE #IMANEFADIL, MA PURE GLI AVVOCATI VICINI A IMANE FADIL: #EGIDIOV=
-ERZINI E #MAURORUFFFINI)! IN COMBUTTA CON SERVIZI SEGRETI NAZIFASCISTI, BAS=
-TARDA MASSONERIA DI ESTREMA DESTRA (VEDI #P2 P2 O #LOGGIADELDRAGO LOGGIA DE=
-L DRAGO, OSSIA LOGGIA PERSONALE DEL PEZZO DI MERDA PEDOSIFLO E STRAGISTA #S=
-ILVIOBERLUSCONI). OLTRE CHE DI LORO VARIE COSA NOSTRA, CAMORRA, NDRANGHETA,=
- MAFIA RUSSA, MAFIA CINESE, MAFIA COLOMBIANA, MAFIE DI TUTTO IL PIANETA TER=
-RA. OGGI PER=C3=93 VOGLIO SCRIVERE DI UNA PERSONA DI CUI HO BUON RICORDO. L=
-A SEMPRE VOGLIOSISSIMA DI SESSO ANALE, SESSO DI GRUPPO O SESSO FOCOSO IN GE=
-NERE: #MARIAPAOLATOSCHI DI #JPMORGAN (TUTT'ORA, 21 ANNI DOPO QUELLO CHE VAD=
-O A DESCRIVERE, NON =C3=89 MALE FISICAMENTE</div><div>https://www.instagram=
-.com/p/BmbRyjljaSm/</div><div>MA 21 ANNI FA ERA MOLTISSIMO ANCOR PI=C3=9A B=
-ELLA FIGA, VE LO ASSICURO).</div><div>ANNO 2000. ERA NATA LA MAFIOSA #BANCA=
-LEONARDO (DEL CRIMINALISSIMO, ESTRMEMANTE OMICIDA #MICHELEMILLA MICHELE MIL=
-LA</div><div>https://finlantern.com/financeforum/sponsors/milla-michele-par=
-tner-momentum-alternative-investments/</div><div>ORA PRESSO CRIMINALISSIMA =
-#MOMENTUM MASSAGNO https://ch.linkedin.com/company/momentum-alternative-inv=
-estment-sa</div><div>SU CUI TROVATE NON POCO QUI</div><div>https://www.poli=
-tbjuro.com/itemeva-di-essere-licenziataibrfunzionaria-di-banca-suicida/).</=
-div><div>SCENDEVO A MILANO OGNI VENERDI SERA DA ZURIGO, E PASSAVO WEEK END =
-DI SESSO SCATENATISSIMO CON LEI (DI NASCOSTO, DA VERI E PROPRI SECRET LOVER=
-S https://www.youtube.com/watch?v=3DOe2UXqFo0DY, LEI ERA, COME ME, SPOSATA,=
- MA ESSENDO NOI DUE, VOGLIOSI DI SESSO, LIBERTINI DI ROTARY E LIONS CLUBS, =
-SCOPAVAMO TANTISSIMO, LEI AMAVA IL SESSO ANALE, ANDAMMO AVANTI FINO AL 2004=
-, PER FANTASTICI 48 MESI). CHE BEI RICORDI CHE HO NEL CUORE. UN BACIO CALIE=
-NTISSIMO. SONO ANDREAS NIGG DI BANK J SAFRA SARASIN ZURICH. PREMIATO NEL 20=
-18, 2019, 2020, COME BANCHIERE SVIZZERO DELL'ANNO, A BASILEA. I SONDAGGI MI=
- DANNO VINCITORE PURE NEL 2021. MA NON MI FIDO TANTISSIMO DEI SONDAGGI. MAS=
-SIMA UMILT=C3=80, FAME ESTREMA DI VITTORIE E PIEDI PER TERRA, SON LE UNICHE=
- CHIAVI PER FARE LA STORIA!</div><div>LEGGETE QUESTO TESTO, ORA, PLEASE, DO=
-VE INIZIO A SCRIVERE DI UN MASSONE SATANISTA NAZISTA SATA=E5=8D=8DNAZISTA E=
- BERLUSCONICCHIO: L'AVVOCATO ASSASSINO #DANIELEMINOTTI DI GENOVA E CRIMINAL=
-E STUDIO LEGALE LISI. NOTO PER RAPIRE, SODOMIZZARE ED UCCIDERE TANTISSIMI B=
-AMBINI OGNI ANNO. CIAO A TUTTI.</div><div>ANDREAS NIGG DI BANK J SAFRA SARA=
-SIN.</div><div>https://citywireselector.com/manager/andreas-nigg/d2395</div=
-><div>https://ch.linkedin.com/in/andreasnigg</div><div>https://www.blogger.=
-com/profile/13220677517437640922</div><div><br></div><div>PS SCUSATE PER MI=
-O ITALIANO COS=C3=8D COS=C3=8D MA SON SVIZZERO</div><div><br></div><div>MA =
-ORA VAMOS CON QUESTO IMPORTANTISSIMO TESTO, VAMOS BABY, VAMOS, IAMM BELL, I=
-A:</div><div><br></div><div>=C3=89 DA ARRESTARE PRIMA CHE FACCIA UCCIDERE A=
-NCORA, L'AVVOCATO PEDOFILO, BERLUSCO=E5=8D=90NAZISTA, FASCIOLEGHISTA, ASSAS=
-SINO DANIELE MINOTTI (FACEBOOK, TWITTER) DI GENOVA, RAPALLO E CRIMINALISSIM=
-O STUDIO LEGALE LISI.</div><div>=C3=89 DA FERMARE PER SEMPRE, L'AVVOCATO SA=
-TANISTA, NAZISTA, SATA=E5=8D=90NAZISTA, PEDERASTA, OMICIDA #DANIELEMINOTTI =
-DI RAPALLO E GENOVA: RAPISCE, INCULA, UCCIDE TANTI BIMBI, SIA PER VENDERNE =
-GLI ORGANI (COME DA QUESTA ABERRANTE FOTO</div><div>https://www.newnotizie.=
-it/wp-content/uploads/2016/07/Egypt-Organ-Harvesting-415x208.jpg),</div><di=
-v>CHE PER RITI MASSONICO^SATANISTI, CHE FA IN MILLE SETTE!</div><div>=C3=89=
- DI PERICOLO PUBBLICO ENORME, L'AVV ASSASSINO E PEDERASTA DANIELE MINOTTI (=
-FACEBOOK) DI RAPALLO E GENOVA! AVVOCATO STUPRANTE INFANTI ED ADOLESCENTI, C=
-OME PURE KILLER #DANIELEMINOTTI DI CRIMINALISSIMO #STUDIOLEGALELISI DI LECC=
-E E MILANO (</div><div>https://studiolegalelisi.it/team/daniele-minotti/</d=
-iv><div>STUDIO LEGALE MASSO^MAFIOSO LISI DI LECCE E MILANO, DA SEMPRE TUTT'=
-UNO CON MEGA KILLERS DI COSA NOSTRA, CAMORRA, NDRANGHETA, E, COME DA SUA SP=
-ECIALITA' PUGLIESE, ANCOR PI=C3=9A, DI SACRA CORONA UNITA, MAFIA BARESE, MA=
-FIA FOGGIANA, MAFIA DI SAN SEVERO)! =C3=89 STALKER DIFFAMATORE VIA INTERNET=
-, NONCH=C3=89 PEDERASTA CHE VIOLENTA ED UCCIDE BIMBI, QUESTO AVVOCATO OMICI=
-DA CHIAMATO DANIELE MINOTTI! QUESTO AVVOCATO SATANISTA, NAZISTA, SATA=E5=8D=
-=90NAZISTA, PEDOFILO E SANGUINARIO, DI RAPALLO E GENOVA (LO VEDETE A SINIST=
-RA, SOPRA SCRITTA ECOMMERCE https://i.ytimg.com/vi/LDoNHVqzee8/maxresdefaul=
-t.jpg)</div><div>RAPALLO: OVE ORGANIZZA TRAME OMICIDA E TERRORISMO DI ESTRE=
-MA DESTRA, INSIEME "AL RAPALLESE" DI RESIDENZA, HITLERIANO, RAZZISTA, KU KL=
-UK KLANISTA, MAFIOSO E RICICLA SOLDI MAFIOSI COME SUO PADRE: VI ASSICURO, A=
-NCHE ASSASSINO #PIERSILVIOBERLUSCONI PIERSILVIO BERLUSCONI! SI, SI =C3=89 P=
-ROPRIO COS=C3=8D: =C3=89 DA ARRESTARE SUBITO L'AVVOCATO SATANISTA, NAZISTA,=
- SATA=E5=8D=90NAZISTA, PEDOFILO E KILLER DANIELE MINOTTI DI GENOVA E RAPALL=
-O!</div><div>https://www.py.cz/pipermail/python/2017-March/012979.html</div=
-><div>OGNI SETTIMANA SGOZZA, OLTRE CHE GATTI E SERPENTI, TANTI BIMBI, IN RI=
-TI SATANICI. IN TUTTO NORD ITALIA!</div><div><br></div><div>CONTINUA QUI</d=
-iv><div>https://groups.google.com/g/comp.lang.python/c/QbzEBDzBXCs</div><di=
-v><br></div><div>TROVATE MILIONI DI ALTRI VINCENTISSIMI DETTAGLI QUI</div><=
-div>https://groups.google.com/g/comp.lang.python/c/QbzEBDzBXCs</div>
+   5) Conversion of the MSI descriptor storage to xarray
 
-<p></p>
+      The linked list based storage is suboptimal even without dynamic
+      expansion as it requires full list walks to get to a specific
+      descriptor. With dynamic expansion this gets even more
+      convoluted. Xarray is way more suitable and simplifies the
+      final goal of dynamic expansion of the MSI-X space.
 
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/4f694882-2500-4c4a-9c5b-d5e0ca4be2ban%40googlegroups.c=
-om?utm_medium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgi=
-d/linux-ntb/4f694882-2500-4c4a-9c5b-d5e0ca4be2ban%40googlegroups.com</a>.<b=
-r />
+This third series is based on:
 
-------=_Part_29_1064802573.1637200441489--
+     git://git.kernel.org/pub/scm/linux/kernel/git/tglx/devel.git msi-v1-part-2
 
-------=_Part_28_686143101.1637200441488--
+and also available from git:
+
+     git://git.kernel.org/pub/scm/linux/kernel/git/tglx/devel.git msi-v1-part-3
+
+For the curious who can't wait for the next part to arrive the full series
+is available via:
+
+     git://git.kernel.org/pub/scm/linux/kernel/git/tglx/devel.git msi-v1-part-4
+
+Thanks,
+
+	tglx
+---
+ .clang-format                          |    1 
+ arch/powerpc/platforms/4xx/hsta_msi.c  |    7 
+ arch/powerpc/platforms/cell/axon_msi.c |    7 
+ arch/powerpc/platforms/pasemi/msi.c    |    9 
+ arch/powerpc/sysdev/fsl_msi.c          |    8 
+ arch/powerpc/sysdev/mpic_u3msi.c       |    9 
+ arch/s390/pci/pci_irq.c                |    6 
+ arch/x86/pci/xen.c                     |   14 
+ drivers/base/core.c                    |    3 
+ drivers/base/platform-msi.c            |  110 -----
+ drivers/bus/fsl-mc/fsl-mc-msi.c        |   61 --
+ drivers/ntb/msi.c                      |   19 
+ drivers/pci/controller/pci-hyperv.c    |   15 
+ drivers/pci/msi/irqdomain.c            |   11 
+ drivers/pci/msi/legacy.c               |   20 
+ drivers/pci/msi/msi.c                  |  255 +++++------
+ drivers/pci/xen-pcifront.c             |    2 
+ drivers/soc/ti/ti_sci_inta_msi.c       |   77 +--
+ include/linux/device.h                 |    4 
+ include/linux/msi.h                    |  135 +++++-
+ include/linux/soc/ti/ti_sci_inta_msi.h |    1 
+ kernel/irq/msi.c                       |  719 ++++++++++++++++++++++-----------
+ 22 files changed, 841 insertions(+), 652 deletions(-)
+
+
+-- 
+You received this message because you are subscribed to the Google Groups "linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211126230957.239391799%40linutronix.de.
