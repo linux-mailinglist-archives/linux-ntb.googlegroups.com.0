@@ -1,34 +1,34 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBQ4RQ2GQMGQEUTBTUNA@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERBRMRQ2GQMGQE74HDCAI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qk1-x73c.google.com (mail-qk1-x73c.google.com [IPv6:2607:f8b0:4864:20::73c])
-	by mail.lfdr.de (Postfix) with ESMTPS id AD3F745F98A
-	for <lists+linux-ntb@lfdr.de>; Sat, 27 Nov 2021 02:24:20 +0100 (CET)
-Received: by mail-qk1-x73c.google.com with SMTP id c1-20020a05620a0ce100b00468060d41ecsf11851619qkj.19
-        for <lists+linux-ntb@lfdr.de>; Fri, 26 Nov 2021 17:24:20 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1637976259; cv=pass;
+Received: from mail-pf1-x439.google.com (mail-pf1-x439.google.com [IPv6:2607:f8b0:4864:20::439])
+	by mail.lfdr.de (Postfix) with ESMTPS id 78C7745F98B
+	for <lists+linux-ntb@lfdr.de>; Sat, 27 Nov 2021 02:24:22 +0100 (CET)
+Received: by mail-pf1-x439.google.com with SMTP id c131-20020a621c89000000b004a343484969sf6194963pfc.3
+        for <lists+linux-ntb@lfdr.de>; Fri, 26 Nov 2021 17:24:22 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1637976261; cv=pass;
         d=google.com; s=arc-20160816;
-        b=VYsbaQpt56L9s8xGwiqgOG+wWmPf2awXyPVn2mv8EUwbe4SdZ5G4ORuIBs2KFj7nzC
-         yySowC8OIW6Urt4rer/n8fb00jDa6HEA9v1nAjTMBgBaJ3JEX3yphL9dJ5Eq8TB3aCat
-         4qTldi48LmJrNIR5pw8sBRhVffFz3RERxdfpsIyME+PLaKC6xbhSFQ+NChkK4SZ99SO5
-         T5cKZP519IjL+27fOAaugRk+nYltmdDrS1uSPnH+/C4l3TZ8NVVgOyVgCOgmc0vDqwrJ
-         gDOstr42pbLnZ7CcKLSbZEpF5NF10e2KifYxb8J1UKekyjs7d9qJtEJ2aK9fv1ciTUrK
-         O5jg==
+        b=pkyyJF2Oak3WcOC8TPqBqJAlPxKv+RgBugvCZTN94LnMzh2m37kxl2zx6XXzL9eVsP
+         gGL36v+pRIRyU5pJksK93LAjDBXSoKvg/w1ovMsVLL+LJyzR9r62SgkfzQBU3FosWr/m
+         9bHLiakIzUFes/3jjKJF1VDqMdMmZ2Qls52wLNrtnOv66meTaOXGLS+ZvG+llBXEJ7LB
+         br6/EHsN+rleLCa9ciEtmXWjVaAen/PjN3StkBDJso3CBJxGCF+7UX+1UcqCCNTJB2SR
+         H7pi7KqvfaJUkfD7Yd3g/Y5KVxi2I1JnXxTn701vNxvIRBMVC5yev/APJlotrInT9K1O
+         ZGfQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:date:mime-version:references
          :subject:cc:to:from:message-id:sender:dkim-signature;
-        bh=/UuirWpq7Of+8ZAI2tcXpnoA3jXtJbn06wiuhMXdDfA=;
-        b=ZAegtWwvI/dZPRCZJwcVaMO0p6gLcbO+u5P8Sh4OrraoaQrMmQx2eB4zt+OCejIrlV
-         dPHfeISfPXjmDthXOjj7FnYbgZ/ZhpNkivZZW4FLBhzXeHbbOWwNsiKzjZBY/z3QSwzp
-         EKmmlrIR6BB5zBAcbav/paJpN779bTpehRbFqNhesTfkh0VhYQSGaJBNeqd9gJyqpnS5
-         hWFWlhq58P5XK72KFPs2wnIgPEuLoYYqxaPbtmMPg0xXRjcDoqhJCKXFkHQFtjPZoq9M
-         bRvunpHYYH5q0o9Ykk5kRUSp4jsAADuACG5P0otHb21PUuALtmpV0t1x8IEw5vdVhgXi
-         ulRw==
+        bh=SQX60VImJAOoY5lvtm8O2YzIr5CD729uKpYTYMTd76I=;
+        b=HyG8E2ut/AEB6pknU50NGrUwfvcGNoitaYJfz1Sh+zOXfC4pxVpcgF+n6ycJCHtHmh
+         dc79CtdUaJXwU1MvuTWAyWwtOdnKxgJBmFVVEjg1wb5ZVzS+97zXEg57ofXWJX0qIW3F
+         nEG/HJZw8ySW155OolHUIySOT6tYDOzd5cBIo5CspMexVAozxMvtyHqD6z+AqVV/v2kP
+         j+1a5aOozpWoJUTLrlirDxIAOgu5Q53+Nl85C61sOsWAuLPjqpU2EROsEvXddFoVb15E
+         Ol8M8kET3pM4N2plxw8L+oaKPDsQYmRELyDmHCwYkiswppq2/sBiCDAG37r6NxXK7U9C
+         iC8w==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b="IMu/M7Ho";
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=3XpHFykv;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=Gfa5k+3E;
+       dkim=neutral (no key) header.i=@linutronix.de header.b=mN71jLqI;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
@@ -36,13 +36,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=/UuirWpq7Of+8ZAI2tcXpnoA3jXtJbn06wiuhMXdDfA=;
-        b=Db3dAUtkwjM0HmjQleiQIllMK5lBkk9NETwYJ6SsdABLHJ8HCytQSXHrdlCMLpAxJh
-         qbTGBCM+BFca3rG3VJsl+U52RFmCgagZrJLdN7g93hZs0JQlKp+rX/WqPMfr9rjgwOMH
-         qOP70rm8ku5CwHbgWDZtHgazXOkL9p/j5xqRlhR/Hlc/ZCnKHZc+zY3V9E/i+L3f83F3
-         3+EqcleveOWyqR59XHT0/ywXXPilwIT9sl2BbZUGiRFY3yw7oSzK3cLaWMqUocy7WRt0
-         rWW/qySZ4LFrCfGQR4Fng78JOJee8w3hmmPqf4YonVJL/c42WUt0Ha1QzXcVbIgs5dHp
-         s4cA==
+        bh=SQX60VImJAOoY5lvtm8O2YzIr5CD729uKpYTYMTd76I=;
+        b=U3sAp0+PG3IhbEKvwykr5EhSojRRuRmnmlMgZoMVrtyZXjCIdCjftIAC21G7IQhsj3
+         /irTPwD4MbLMMVqFSEcvdPQEn31F8y44ACNnNdZAugvKxwPe++2lE6btLm7ZSK7Q9jP2
+         3eY8PN8TsBXfHpYcsjAGrNwVI1qW0l5cc4JBHCHlFTfPkA+9nb22oqGX8dNdIpPZaTe7
+         kimVApGuOv9J1J17OTwSK++Gt61YdMR3UT3R5WNaPSRSBVNtF/xyywRARtsNEIrPCoaf
+         gKI54C3dIY59G9Gs0dLU9ch0EG9Uz6hXIoxG3yUr75vmLdEJD3FEuYLrsvmHKo6ZPF6Y
+         +x0Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=sender:x-gm-message-state:message-id:from:to:cc:subject:references
@@ -50,54 +50,54 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=/UuirWpq7Of+8ZAI2tcXpnoA3jXtJbn06wiuhMXdDfA=;
-        b=0t9VqxobOkI2bsAri10B75Iv4Z4OB/JHAWufSyuGFgLwwO8BpxzspO35MV2g42Gnt7
-         BR97lOBOag6fzIf59omLnz2kMXSo5Iwq6jYtt99SDtkhrFpyGwCLb5pOR72TwZzlP0Fi
-         TOLEfmBAV7rI8H1nmodwpAXAQDEHEPofbkEefEIUu/R1Bci7lmvUkpTN1THXsixc5LaW
-         LQqgM37tuDyJHWgz2M06yfSrvzAyXpgIefj+YL+l8lz/OQlfPqXYEgT0bh/UkQaMJkQD
-         db+nBX6RWGAUFZRwCs+4GGkx72v9bopu2MF4t13a7j6gM3+pDaMGJyv21BYr1vUWIQWw
-         o/Cg==
+        bh=SQX60VImJAOoY5lvtm8O2YzIr5CD729uKpYTYMTd76I=;
+        b=As41Jv+cuSy22lrdEP95an++JVIjuO72gKrIu0sq/GX4eI2vIA+QkIff4IGBQgs9X0
+         Hf79Wa+LcH+GlqbPdT0ILrWv9U3hZ5KnzC5/QEnAL2asJQS1Be5LSaU0RHPRFUiLBJww
+         1BnzjqFA7oOqBB/dzwPXDU+fvOR8wnaQbNfvUdMhrROF/K1wTuZtedJrx7aqumQ+e9vR
+         F8OX8VN0ylloICqmHKeWzUnmGsPlGWo0GtNQmsDFmYS9v2y6OhwKRZqtXD0xbDQjBS+t
+         uRZZbALHfo8xEeUu0y+Q5jz6GywLK5H0bIERoAGEtoMD5143ZVmmKlUPEDZjefZH5K/m
+         DfzQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531/gWhR4V0Z/7F5IHFjFtSfGA11r3GdfNhR33xcKjbiyaS0VX0u
-	nmcO8XlOy6liSwCd4FkWU1I=
-X-Google-Smtp-Source: ABdhPJxo13Je88zY83d/tEDjMkGgn2VCXqY70bu+knDt7t3NOA4vx8iLN7dnmCFXcKMXthrFt/xkKA==
-X-Received: by 2002:a05:620a:2229:: with SMTP id n9mr25487736qkh.155.1637976259815;
-        Fri, 26 Nov 2021 17:24:19 -0800 (PST)
+X-Gm-Message-State: AOAM533p5bnnH7yIJkGFCz1LHz1V3T88goVZyMAzknHfdgBhBvaKgwwd
+	gkSzLJKNcRhCGsZI+P/HQ5s=
+X-Google-Smtp-Source: ABdhPJw97lngGIc3jrNc0HRGwKO1dqXAfOKStlKzlklM3elp0hDE12xyhM7ZrNgWoH8Dh+6hsVSjEw==
+X-Received: by 2002:a62:e508:0:b0:4a4:f06f:1cd9 with SMTP id n8-20020a62e508000000b004a4f06f1cd9mr24686145pff.21.1637976261198;
+        Fri, 26 Nov 2021 17:24:21 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:ac8:5746:: with SMTP id 6ls4290594qtx.9.gmail; Fri, 26 Nov
- 2021 17:24:19 -0800 (PST)
-X-Received: by 2002:ac8:13cd:: with SMTP id i13mr28857339qtj.234.1637976259389;
-        Fri, 26 Nov 2021 17:24:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1637976259; cv=none;
+Received: by 2002:a17:902:d50e:: with SMTP id b14ls4153882plg.7.gmail; Fri, 26
+ Nov 2021 17:24:20 -0800 (PST)
+X-Received: by 2002:a17:90a:2ec8:: with SMTP id h8mr19124808pjs.168.1637976260688;
+        Fri, 26 Nov 2021 17:24:20 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1637976260; cv=none;
         d=google.com; s=arc-20160816;
-        b=B0UvhQ3xazhMvYSGCzr93oH+WzDMwOCUgffMTXAaxzdqnxNxU1JqXIUpQZmdWuDSZ9
-         i1wHFq85KUuCpdd6KO6EElUPhkHGC4Fn1QJcbvsFlbSK5Fps7gJ67Cvqf+iNQc7Lugu9
-         t7Ode9c5OTWtwck35q0TpT29BjPImyx2rSHduTz1b3AmTl9yJZVx0YHnqzmz1dvw9IjY
-         U6AdSAn4G/aDl0Bk/cRjtResBV0qr4Jaw39KX8Ky8hLn2YMkqquvJFwyIpaL8ScWIxW/
-         Pay1o36nH4kc6g1j1TRpL6sV4kdvMgDKxY3B0A285qM5PzBkAO3jL7S65uuTSMSO0raR
-         q/Lg==
+        b=JvU/zuLT8iAyU8HCZNhho07PkDf+0XHakVvyhdKeXot+NlAGn01HNpHqUPKtlvDdgx
+         XWmCnoY8BoQmZ31WRRBapqApZxczGNazkbBWS0Lr8jW6d/x8xlx1fpjGjJ4Zr4CT4Kjk
+         iohjm5FRYpG4Y3AgQy7z8nb+UDtToL+TS8BBI6JAaJYNXznL2fdC3yaTYynQA2ew3dTZ
+         NqIYMlvdUHpcYkEHMQdp2WjflSBlZZ22+n+s6wZjuCT3jheuoqJuJU1lnA2jvYZaNSD2
+         RqCtG9PdSyU4UNDn0xTvYF/33Llzby4ivskk3efZAXyxqdy2u4ZOxlo0UZj/9Y/JIRNl
+         ILpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=date:mime-version:references:subject:cc:to:from:dkim-signature
          :dkim-signature:message-id;
-        bh=2D8aNt4Gm/AldjGMDcfK5UGFdFdsKJp+Ma1rVxhtL/s=;
-        b=ygwWYxm3IEEQPaXlrbusG6INYGabxIIl1KmQfJgLAeumy4xrZFbeY8BZ1pnwpx2fWG
-         26am1kOzePK1f+zDz52nzwz4dBi2b09ZeCPI+DVe+EfkbnBWs3QP59+aLZNpuCE0iuh6
-         A6JNoFECgpjOiw2yCOuFzeoCCgxiCcz1BwcpHYJHDBHVxw9NF05uTv+hAEFfrY2Rjbkz
-         CVQkulj/ehUoMGg3STY4U3L5K1bowj3mE+wj2yORjcX/ZndxMct6mtrHCGO9uqyjDM6D
-         E6Ux63uGlbnUBczE2OZSEcMhvqblssbmvM54OEXmlc+OSeH+9j2Fe2BXcqltmC8ktN0E
-         z+1g==
+        bh=PFuyUtIKHszvU7gtDYULmf7Bd4K09pORQBH8HusBKz0=;
+        b=nWYbALyXANN3Y/etSUIgBnNoi0veyiOVp8ynxXvcei6iTW9dnvIm9c2wxFR8JVVuo6
+         DLlzB48BlaPxlAIXAiWlcpwjIkqXeyyYwaKT05qjdyeptLG06UMagi9kb4KnnYdRmUec
+         ncvl4mQ+cFFoutQ+iZGi66BJrT3k1kUYUWybA3JspQZpmzbUsahAxvGYbIfHALSgZF/y
+         HdAS0HAx7RhiQlHvkCwKElBzpilLX3fjDmTWUXUK2NNH+xOQgE+obQaKIcnqZBafuNUu
+         6lRCyrEoMfBPwvazTm09mLysE+oxBrE27SvqAntm/kUApGCnEKjLD+y9x9rB0zM3QN6R
+         1wTw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b="IMu/M7Ho";
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=3XpHFykv;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=Gfa5k+3E;
+       dkim=neutral (no key) header.i=@linutronix.de header.b=mN71jLqI;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
-        by gmr-mx.google.com with ESMTPS id i2si847632qtg.3.2021.11.26.17.24.19
+Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
+        by gmr-mx.google.com with ESMTPS id l5si781590pfc.2.2021.11.26.17.24.20
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 26 Nov 2021 17:24:19 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
-Message-ID: <20211126232736.135247787@linutronix.de>
+        Fri, 26 Nov 2021 17:24:20 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
+Message-ID: <20211126232736.190744801@linutronix.de>
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 Cc: Bjorn Helgaas <helgaas@kernel.org>,
@@ -116,18 +116,18 @@ Cc: Bjorn Helgaas <helgaas@kernel.org>,
  Dave Jiang <dave.jiang@intel.com>,
  Allen Hubbe <allenbh@gmail.com>,
  linux-ntb@googlegroups.com
-Subject: [patch 31/32] genirq/msi: Simplify sysfs handling
+Subject: [patch 32/32] genirq/msi: Convert storage to xarray
 References: <20211126230957.239391799@linutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Date: Sat, 27 Nov 2021 02:24:17 +0100 (CET)
+Date: Sat, 27 Nov 2021 02:24:18 +0100 (CET)
 X-Original-Sender: tglx@linutronix.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b="IMu/M7Ho";       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e header.b=3XpHFykv;
-       spf=pass (google.com: domain of tglx@linutronix.de designates
- 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@linutronix.de header.s=2020 header.b=Gfa5k+3E;       dkim=neutral
+ (no key) header.i=@linutronix.de header.b=mN71jLqI;       spf=pass
+ (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1
+ as permitted sender) smtp.mailfrom=tglx@linutronix.de;       dmarc=pass
+ (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -140,375 +140,428 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-The sysfs handling for MSI is a convoluted maze and it is in the way of
-supporting dynamic expansion of the MSI-X vectors because it only supports
-a one off bulk population/free of the sysfs entries.
+The current linked list storage for MSI descriptors is suboptimal in
+several ways:
 
-Change it to do:
+  1) Looking up a MSI desciptor requires a O(n) list walk in the worst case
 
-   1) Creating an empty sysfs attribute group when msi_device_data is
-      allocated
+  2) The upcoming support of runtime expansion of MSI-X vectors would need
+     to do a full list walk to figure out whether a particular index is
+     already associated.
 
-   2) Populate the entries when the MSI descriptor is initialized
+  3) Runtime expansion of sparse allocations is even more complex as the
+     current implementation assumes an ordered list (increasing MSI index).
 
-   3) Free the entries when a MSI descriptor is detached from a Linux
-      interrupt.
-
-   4) Provide functions for the legacy non-irqdomain fallback code to
-      do a bulk population/free. This code won't support dynamic
-      expansion.
-
-This makes the code simpler and reduces the number of allocations as the
-empty attribute group can be shared.
+Use an xarray which solves all of the above problems nicely.
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---
- include/linux/msi.h |    7 +
- kernel/irq/msi.c    |  196 +++++++++++++++++++++++-----------------------------
- 2 files changed, 95 insertions(+), 108 deletions(-)
+ include/linux/msi.h |   19 ++---
+ kernel/irq/msi.c    |  188 ++++++++++++++++++++++------------------------------
+ 2 files changed, 90 insertions(+), 117 deletions(-)
 
 --- a/include/linux/msi.h
 +++ b/include/linux/msi.h
-@@ -72,6 +72,7 @@ struct irq_data;
- struct msi_desc;
- struct pci_dev;
- struct platform_msi_priv_data;
-+struct device_attribute;
+@@ -17,6 +17,7 @@
+  */
  
- void __get_cached_msi_msg(struct msi_desc *entry, struct msi_msg *msg);
- #ifdef CONFIG_GENERIC_MSI_IRQ
-@@ -127,6 +128,7 @@ struct pci_msi_desc {
+ #include <linux/spinlock.h>
++#include <linux/xarray.h>
+ #include <linux/mutex.h>
+ #include <linux/list.h>
+ #include <linux/bits.h>
+@@ -122,7 +123,6 @@ struct pci_msi_desc {
+ 
+ /**
+  * struct msi_desc - Descriptor structure for MSI based interrupts
+- * @list:	List head for management
+  * @irq:	The base interrupt number
+  * @nvec_used:	The number of vectors used
   * @dev:	Pointer to the device which uses this descriptor
-  * @msg:	The last set MSI message cached for reuse
-  * @affinity:	Optional pointer to a cpu affinity mask for this descriptor
-+ * @sysfs_attr:	Pointer to sysfs device attribute
-  *
-  * @write_msi_msg:	Callback that may be called when the MSI message
-  *			address or data changes
-@@ -146,6 +148,9 @@ struct msi_desc {
- #ifdef CONFIG_IRQ_MSI_IOMMU
- 	const void			*iommu_cookie;
- #endif
-+#ifdef CONFIG_SYSFS
-+	struct device_attribute		*sysfs_attrs;
-+#endif
- 
- 	void (*write_msi_msg)(struct msi_desc *entry, void *data);
- 	void *write_msi_msg_data;
-@@ -171,7 +176,6 @@ enum msi_desc_filter {
-  * @lock:		Spinlock to protect register access
+@@ -139,7 +139,6 @@ struct pci_msi_desc {
+  */
+ struct msi_desc {
+ 	/* Shared device/bus type independent data */
+-	struct list_head		list;
+ 	unsigned int			irq;
+ 	unsigned int			nvec_used;
+ 	struct device			*dev;
+@@ -177,20 +176,20 @@ enum msi_desc_filter {
   * @properties:		MSI properties which are interesting to drivers
   * @num_descs:		The number of allocated MSI descriptors for the device
-- * @attrs:		Pointer to the sysfs attribute group
   * @platform_data:	Platform-MSI specific data
-  * @list:		List of MSI descriptors associated to the device
-  * @mutex:		Mutex protecting the MSI list
-@@ -182,7 +186,6 @@ struct msi_device_data {
+- * @list:		List of MSI descriptors associated to the device
+- * @mutex:		Mutex protecting the MSI list
+- * @__next:		Cached pointer to the next entry for iterators
+- * @__filter:		Cached descriptor filter
++ * @mutex:		Mutex protecting the MSI descriptor store
++ * @store:		Xarray for storing MSI descriptor pointers
++ * @__iter_idx:		Index to search the next entry for iterators
++ * @__iter_filter:	Cached descriptor filter
+  */
+ struct msi_device_data {
  	raw_spinlock_t			lock;
  	unsigned long			properties;
  	unsigned int			num_descs;
--	const struct attribute_group    **attrs;
  	struct platform_msi_priv_data	*platform_data;
- 	struct list_head		list;
+-	struct list_head		list;
  	struct mutex			mutex;
+-	struct msi_desc			*__next;
+-	enum msi_desc_filter		__filter;
++	struct xarray			store;
++	unsigned long			__iter_idx;
++	enum msi_desc_filter		__iter_filter;
+ };
+ 
+ int msi_setup_device_data(struct device *dev);
+@@ -266,7 +265,7 @@ static inline struct msi_desc *msi_first
+  * @dev:	struct device pointer - device to iterate
+  * @filter:	Filter for descriptor selection
+  *
+- * See msi_for_each_desc_from()for further information.
++ * See msi_for_each_desc_from() for further information.
+  */
+ #define msi_for_each_desc(desc, dev, filter)				\
+ 	msi_for_each_desc_from(desc, dev, filter, 0)
 --- a/kernel/irq/msi.c
 +++ b/kernel/irq/msi.c
-@@ -19,6 +19,7 @@
- 
+@@ -20,7 +20,6 @@
  #include "internals.h"
  
-+static inline int msi_sysfs_create_group(struct device *dev);
- #define dev_to_msi_list(dev)	(&(dev)->msi.data->list)
+ static inline int msi_sysfs_create_group(struct device *dev);
+-#define dev_to_msi_list(dev)	(&(dev)->msi.data->list)
  
  /**
-@@ -208,6 +209,7 @@ static void msi_device_data_release(stru
- int msi_setup_device_data(struct device *dev)
- {
- 	struct msi_device_data *md;
-+	int ret;
+  * msi_alloc_desc - Allocate an initialized msi_desc
+@@ -41,7 +40,6 @@ static struct msi_desc *msi_alloc_desc(s
+ 	if (!desc)
+ 		return NULL;
  
- 	if (dev->msi.data)
- 		return 0;
-@@ -216,6 +218,12 @@ int msi_setup_device_data(struct device
- 	if (!md)
+-	INIT_LIST_HEAD(&desc->list);
+ 	desc->dev = dev;
+ 	desc->nvec_used = nvec;
+ 	if (affinity) {
+@@ -60,6 +58,19 @@ static void msi_free_desc(struct msi_des
+ 	kfree(desc);
+ }
+ 
++static int msi_insert_desc(struct msi_device_data *md, struct msi_desc *desc, unsigned int index)
++{
++	int ret;
++
++	desc->msi_index = index;
++	ret = xa_insert(&md->store, index, desc, GFP_KERNEL);
++	if (!ret)
++		md->num_descs++;
++	else
++		msi_free_desc(desc);
++	return ret;
++}
++
+ /**
+  * msi_add_msi_desc - Allocate and initialize a MSI descriptor
+  * @dev:	Pointer to the device for which the descriptor is allocated
+@@ -77,13 +88,9 @@ int msi_add_msi_desc(struct device *dev,
+ 	if (!desc)
  		return -ENOMEM;
  
-+	ret = msi_sysfs_create_group(dev);
-+	if (ret) {
-+		devres_free(md);
-+		return ret;
-+	}
-+
- 	raw_spin_lock_init(&md->lock);
- 	INIT_LIST_HEAD(&md->list);
- 	mutex_init(&md->mutex);
-@@ -395,6 +403,20 @@ int __msi_get_virq(struct device *dev, u
- EXPORT_SYMBOL_GPL(__msi_get_virq);
- 
- #ifdef CONFIG_SYSFS
-+static struct attribute *msi_dev_attrs[] = {
-+	NULL
-+};
-+
-+static const struct attribute_group msi_irqs_group = {
-+	.name	= "msi_irqs",
-+	.attrs	= msi_dev_attrs,
-+};
-+
-+static inline int msi_sysfs_create_group(struct device *dev)
-+{
-+	return devm_device_add_group(dev, &msi_irqs_group);
-+}
-+
- static ssize_t msi_mode_show(struct device *dev, struct device_attribute *attr,
- 			     char *buf)
- {
-@@ -404,97 +426,74 @@ static ssize_t msi_mode_show(struct devi
- 	return sysfs_emit(buf, "%s\n", is_msix ? "msix" : "msi");
- }
- 
--/**
-- * msi_populate_sysfs - Populate msi_irqs sysfs entries for devices
-- * @dev:	The device(PCI, platform etc) who will get sysfs entries
-- */
--static const struct attribute_group **msi_populate_sysfs(struct device *dev)
-+static void msi_sysfs_remove_desc(struct device *dev, struct msi_desc *desc)
- {
--	const struct attribute_group **msi_irq_groups;
--	struct attribute **msi_attrs, *msi_attr;
--	struct device_attribute *msi_dev_attr;
--	struct attribute_group *msi_irq_group;
--	struct msi_desc *entry;
--	int ret = -ENOMEM;
--	int num_msi = 0;
--	int count = 0;
-+	struct device_attribute *attrs = desc->sysfs_attrs;
- 	int i;
- 
--	/* Determine how many msi entries we have */
--	msi_for_each_desc(entry, dev, MSI_DESC_ALL)
--		num_msi += entry->nvec_used;
--	if (!num_msi)
--		return NULL;
-+	if (!attrs)
-+		return;
- 
--	/* Dynamically create the MSI attributes for the device */
--	msi_attrs = kcalloc(num_msi + 1, sizeof(void *), GFP_KERNEL);
--	if (!msi_attrs)
--		return ERR_PTR(-ENOMEM);
+-	/* Copy the MSI index and type specific data to the new descriptor. */
+-	desc->msi_index = init_desc->msi_index;
++	/* Copy type specific data to the new descriptor. */
+ 	desc->pci = init_desc->pci;
 -
--	msi_for_each_desc(entry, dev, MSI_DESC_ALL) {
--		for (i = 0; i < entry->nvec_used; i++) {
--			msi_dev_attr = kzalloc(sizeof(*msi_dev_attr), GFP_KERNEL);
--			if (!msi_dev_attr)
--				goto error_attrs;
--			msi_attrs[count] = &msi_dev_attr->attr;
--
--			sysfs_attr_init(&msi_dev_attr->attr);
--			msi_dev_attr->attr.name = kasprintf(GFP_KERNEL, "%d",
--							    entry->irq + i);
--			if (!msi_dev_attr->attr.name)
--				goto error_attrs;
--			msi_dev_attr->attr.mode = 0444;
--			msi_dev_attr->show = msi_mode_show;
--			++count;
--		}
-+	desc->sysfs_attrs = NULL;
-+	for (i = 0; i < desc->nvec_used; i++) {
-+		if (attrs[i].show)
-+			sysfs_remove_file_from_group(&dev->kobj, &attrs[i].attr, msi_irqs_group.name);
-+		kfree(attrs[i].attr.name);
- 	}
-+	kfree(attrs);
-+}
- 
--	msi_irq_group = kzalloc(sizeof(*msi_irq_group), GFP_KERNEL);
--	if (!msi_irq_group)
--		goto error_attrs;
--	msi_irq_group->name = "msi_irqs";
--	msi_irq_group->attrs = msi_attrs;
--
--	msi_irq_groups = kcalloc(2, sizeof(void *), GFP_KERNEL);
--	if (!msi_irq_groups)
--		goto error_irq_group;
--	msi_irq_groups[0] = msi_irq_group;
-+static int msi_sysfs_populate_desc(struct device *dev, struct msi_desc *desc)
-+{
-+	struct device_attribute *attrs;
-+	int ret, i;
- 
--	ret = sysfs_create_groups(&dev->kobj, msi_irq_groups);
--	if (ret)
--		goto error_irq_groups;
-+	attrs = kcalloc(desc->nvec_used, sizeof(*attrs), GFP_KERNEL);
-+	if (!attrs)
-+		return -ENOMEM;
-+
-+	desc->sysfs_attrs = attrs;
-+	for (i = 0; i < desc->nvec_used; i++) {
-+		sysfs_attr_init(&attrs[i].attr);
-+		attrs[i].attr.name = kasprintf(GFP_KERNEL, "%d", desc->irq + i);
-+		if (!attrs[i].attr.name) {
-+			ret = -ENOMEM;
-+			goto fail;
-+		}
- 
--	return msi_irq_groups;
-+		attrs[i].attr.mode = 0444;
-+		attrs[i].show = msi_mode_show;
- 
--error_irq_groups:
--	kfree(msi_irq_groups);
--error_irq_group:
--	kfree(msi_irq_group);
--error_attrs:
--	count = 0;
--	msi_attr = msi_attrs[count];
--	while (msi_attr) {
--		msi_dev_attr = container_of(msi_attr, struct device_attribute, attr);
--		kfree(msi_attr->name);
--		kfree(msi_dev_attr);
--		++count;
--		msi_attr = msi_attrs[count];
-+		ret = sysfs_add_file_to_group(&dev->kobj, &attrs[i].attr, msi_irqs_group.name);
-+		if (ret) {
-+			attrs[i].show = NULL;
-+			goto fail;
-+		}
- 	}
--	kfree(msi_attrs);
--	return ERR_PTR(ret);
-+	return 0;
-+
-+fail:
-+	msi_sysfs_remove_desc(dev, desc);
-+	return ret;
- }
- 
-+#ifdef CONFIG_PCI_MSI_ARCH_FALLBACK
- /**
-  * msi_device_populate_sysfs - Populate msi_irqs sysfs entries for a device
-  * @dev:	The device(PCI, platform etc) which will get sysfs entries
-  */
- int msi_device_populate_sysfs(struct device *dev)
- {
--	const struct attribute_group **group = msi_populate_sysfs(dev);
-+	struct msi_desc *desc;
-+	int ret;
- 
--	if (IS_ERR(group))
--		return PTR_ERR(group);
--	dev->msi.data->attrs = group;
-+	msi_for_each_desc(desc, dev, MSI_DESC_ASSOCIATED) {
-+		if (desc->sysfs_attrs)
-+			continue;
-+		ret = msi_sysfs_populate_desc(dev, desc);
-+		if (ret)
-+			return ret;
-+	}
- 	return 0;
- }
- 
-@@ -505,28 +504,17 @@ int msi_device_populate_sysfs(struct dev
-  */
- void msi_device_destroy_sysfs(struct device *dev)
- {
--	const struct attribute_group **msi_irq_groups = dev->msi.data->attrs;
--	struct device_attribute *dev_attr;
--	struct attribute **msi_attrs;
--	int count = 0;
--
--	dev->msi.data->attrs = NULL;
--	if (!msi_irq_groups)
--		return;
-+	struct msi_desc *desc;
- 
--	sysfs_remove_groups(&dev->kobj, msi_irq_groups);
--	msi_attrs = msi_irq_groups[0]->attrs;
--	while (msi_attrs[count]) {
--		dev_attr = container_of(msi_attrs[count], struct device_attribute, attr);
--		kfree(dev_attr->attr.name);
--		kfree(dev_attr);
--		++count;
--	}
--	kfree(msi_attrs);
--	kfree(msi_irq_groups[0]);
--	kfree(msi_irq_groups);
-+	msi_for_each_desc(desc, dev, MSI_DESC_ALL)
-+		msi_sysfs_remove_desc(dev, desc);
- }
--#endif
-+#endif /* CONFIG_PCI_MSI_ARCH_FALLBACK */
-+#else /* CONFIG_SYSFS */
-+static inline int msi_sysfs_create_group(struct device *dev) { return 0; }
-+static inline int msi_sysfs_populate_desc(struct device *dev, struct msi_desc *desc) { return 0; }
-+static inline void msi_sysfs_remove_desc(struct device *dev, struct msi_desc *desc) { }
-+#endif /* !CONFIG_SYSFS */
- 
- #ifdef CONFIG_GENERIC_MSI_IRQ_DOMAIN
- static inline void irq_chip_write_msi_msg(struct irq_data *data,
-@@ -959,6 +947,12 @@ int __msi_domain_alloc_irqs(struct irq_d
- 			ret = msi_init_virq(domain, virq + i, vflags);
- 			if (ret)
- 				return ret;
-+
-+			if (info->flags & MSI_FLAG_DEV_SYSFS) {
-+				ret = msi_sysfs_populate_desc(dev, desc);
-+				if (ret)
-+					return ret;
-+			}
- 		}
- 		allocated++;
- 	}
-@@ -1003,18 +997,7 @@ int msi_domain_alloc_irqs_descs_locked(s
- 
- 	ret = ops->domain_alloc_irqs(domain, dev, nvec);
- 	if (ret)
--		goto cleanup;
--
--	if (!(info->flags & MSI_FLAG_DEV_SYSFS))
--		return 0;
--
--	ret = msi_device_populate_sysfs(dev);
--	if (ret)
--		goto cleanup;
+-	list_add_tail(&desc->list, &dev->msi.data->list);
+-	dev->msi.data->num_descs++;
 -	return 0;
--
--cleanup:
--	msi_domain_free_irqs_descs_locked(domain, dev);
-+		msi_domain_free_irqs_descs_locked(domain, dev);
- 	return ret;
++	return msi_insert_desc(dev->msi.data, desc, init_desc->msi_index);
  }
  
-@@ -1039,6 +1022,7 @@ int msi_domain_alloc_irqs(struct irq_dom
- 
- void __msi_domain_free_irqs(struct irq_domain *domain, struct device *dev)
+ /**
+@@ -96,29 +103,41 @@ int msi_add_msi_desc(struct device *dev,
+  */
+ static int msi_add_simple_msi_descs(struct device *dev, unsigned int index, unsigned int ndesc)
  {
-+	struct msi_domain_info *info = domain->host_data;
- 	struct irq_data *irqd;
- 	struct msi_desc *desc;
- 	int i;
-@@ -1053,6 +1037,8 @@ void __msi_domain_free_irqs(struct irq_d
- 		}
- 
- 		irq_domain_free_irqs(desc->irq, desc->nvec_used);
-+		if (info->flags & MSI_FLAG_DEV_SYSFS)
-+			msi_sysfs_remove_desc(dev, desc);
- 		desc->irq = 0;
- 	}
- }
-@@ -1081,8 +1067,6 @@ void msi_domain_free_irqs_descs_locked(s
+-	struct msi_desc *desc, *tmp;
+-	LIST_HEAD(list);
+-	unsigned int i;
++	struct msi_desc *desc;
++	unsigned long i;
++	int ret;
  
  	lockdep_assert_held(&dev->msi.data->mutex);
  
--	if (info->flags & MSI_FLAG_DEV_SYSFS)
--		msi_device_destroy_sysfs(dev);
- 	ops->domain_free_irqs(domain, dev);
- 	msi_domain_free_msi_descs(info, dev);
+ 	for (i = 0; i < ndesc; i++) {
+ 		desc = msi_alloc_desc(dev, 1, NULL);
+ 		if (!desc)
++			goto fail_mem;
++		ret = msi_insert_desc(dev->msi.data, desc, index + i);
++		if (ret)
+ 			goto fail;
+-		desc->msi_index = index + i;
+-		list_add_tail(&desc->list, &list);
+ 	}
+-	list_splice_tail(&list, &dev->msi.data->list);
+-	dev->msi.data->num_descs += ndesc;
+ 	return 0;
+ 
++fail_mem:
++	ret = -ENOMEM;
+ fail:
+-	list_for_each_entry_safe(desc, tmp, &list, list) {
+-		list_del(&desc->list);
+-		msi_free_desc(desc);
++	msi_free_msi_descs_range(dev, MSI_DESC_NOTASSOCIATED, index, ndesc);
++	return ret;
++}
++
++static bool msi_desc_match(struct msi_desc *desc, enum msi_desc_filter filter)
++{
++	switch (filter) {
++	case MSI_DESC_ALL:
++		return true;
++	case MSI_DESC_NOTASSOCIATED:
++		return !desc->irq;
++	case MSI_DESC_ASSOCIATED:
++		return !!desc->irq;
+ 	}
+-	return -ENOMEM;
++	WARN_ON_ONCE(1);
++	return false;
+ }
+ 
+ /**
+@@ -132,19 +151,16 @@ void msi_free_msi_descs_range(struct dev
+ 			      unsigned int base_index, unsigned int ndesc)
+ {
+ 	struct msi_desc *desc;
++	unsigned long idx;
+ 
+ 	lockdep_assert_held(&dev->msi.data->mutex);
+ 
+-	msi_for_each_desc(desc, dev, filter) {
+-		/*
+-		 * Stupid for now to handle MSI device domain until the
+-		 * storage is switched over to an xarray.
+-		 */
+-		if (desc->msi_index < base_index || desc->msi_index >= base_index + ndesc)
+-			continue;
+-		list_del(&desc->list);
+-		msi_free_desc(desc);
+-		dev->msi.data->num_descs--;
++	xa_for_each_range(&dev->msi.data->store, idx, desc, base_index, base_index + ndesc - 1) {
++		if (msi_desc_match(desc, filter)) {
++			xa_erase(&dev->msi.data->store, idx);
++			msi_free_desc(desc);
++			dev->msi.data->num_descs--;
++		}
+ 	}
+ }
+ 
+@@ -192,7 +208,8 @@ static void msi_device_data_release(stru
+ {
+ 	struct msi_device_data *md = res;
+ 
+-	WARN_ON_ONCE(!list_empty(&md->list));
++	WARN_ON_ONCE(!xa_empty(&md->store));
++	xa_destroy(&md->store);
+ 	dev->msi.data = NULL;
+ }
+ 
+@@ -225,7 +242,7 @@ int msi_setup_device_data(struct device
+ 	}
+ 
+ 	raw_spin_lock_init(&md->lock);
+-	INIT_LIST_HEAD(&md->list);
++	xa_init(&md->store);
+ 	mutex_init(&md->mutex);
+ 	dev->msi.data = md;
+ 	devres_add(dev, md);
+@@ -252,38 +269,21 @@ void msi_unlock_descs(struct device *dev
+ {
+ 	if (WARN_ON_ONCE(!dev->msi.data))
+ 		return;
+-	/* Clear the next pointer which was cached by the iterator */
+-	dev->msi.data->__next = NULL;
++	/* Invalidate the index wich was cached by the iterator */
++	dev->msi.data->__iter_idx = ULONG_MAX;
+ 	mutex_unlock(&dev->msi.data->mutex);
+ }
+ EXPORT_SYMBOL_GPL(msi_unlock_descs);
+ 
+-static bool msi_desc_match(struct msi_desc *desc, enum msi_desc_filter filter)
+-{
+-	switch (filter) {
+-	case MSI_DESC_ALL:
+-		return true;
+-	case MSI_DESC_NOTASSOCIATED:
+-		return !desc->irq;
+-	case MSI_DESC_ASSOCIATED:
+-		return !!desc->irq;
+-	}
+-	WARN_ON_ONCE(1);
+-	return false;
+-}
+-
+-static struct msi_desc *msi_find_first_desc(struct device *dev, enum msi_desc_filter filter,
+-					    unsigned int base_index)
++static struct msi_desc *msi_find_desc(struct msi_device_data *md)
+ {
+ 	struct msi_desc *desc;
+ 
+-	list_for_each_entry(desc, dev_to_msi_list(dev), list) {
+-		if (desc->msi_index < base_index)
+-			continue;
+-		if (msi_desc_match(desc, filter))
+-			return desc;
++	xa_for_each_start(&md->store, md->__iter_idx, desc, md->__iter_idx) {
++		if (msi_desc_match(desc, md->__iter_filter))
++			break;
+ 	}
+-	return NULL;
++	return desc;
+ }
+ 
+ /**
+@@ -301,43 +301,25 @@ static struct msi_desc *msi_find_first_d
+ struct msi_desc *__msi_first_desc(struct device *dev, enum msi_desc_filter filter,
+ 				  unsigned int base_index)
+ {
+-	struct msi_desc *desc;
++	struct msi_device_data *md = dev->msi.data;
+ 
+-	if (WARN_ON_ONCE(!dev->msi.data))
++	if (WARN_ON_ONCE(!md))
+ 		return NULL;
+ 
+-	lockdep_assert_held(&dev->msi.data->mutex);
++	lockdep_assert_held(&md->mutex);
+ 
+-	/* Invalidate a previous invocation within the same lock section */
+-	dev->msi.data->__next = NULL;
+-
+-	desc = msi_find_first_desc(dev, filter, base_index);
+-	if (desc) {
+-		dev->msi.data->__next = list_next_entry(desc, list);
+-		dev->msi.data->__filter = filter;
+-	}
+-	return desc;
++	md->__iter_filter = filter;
++	md->__iter_idx = base_index;
++	return msi_find_desc(md);
+ }
+ EXPORT_SYMBOL_GPL(__msi_first_desc);
+ 
+-static struct msi_desc *__msi_next_desc(struct device *dev, enum msi_desc_filter filter,
+-					struct msi_desc *from)
+-{
+-	struct msi_desc *desc = from;
+-
+-	list_for_each_entry_from(desc, dev_to_msi_list(dev), list) {
+-		if (msi_desc_match(desc, filter))
+-			return desc;
+-	}
+-	return NULL;
+-}
+-
+ /**
+  * msi_next_desc - Get the next MSI descriptor of a device
+  * @dev:	Device to operate on
+  *
+  * The first invocation of msi_next_desc() has to be preceeded by a
+- * successful incovation of __msi_first_desc(). Consecutive invocations are
++ * successful invocation of __msi_first_desc(). Consecutive invocations are
+  * only valid if the previous one was successful. All these operations have
+  * to be done within the same MSI mutex held region.
+  *
+@@ -346,20 +328,18 @@ static struct msi_desc *__msi_next_desc(
+  */
+ struct msi_desc *msi_next_desc(struct device *dev)
+ {
+-	struct msi_device_data *data = dev->msi.data;
+-	struct msi_desc *desc;
++	struct msi_device_data *md = dev->msi.data;
+ 
+-	if (WARN_ON_ONCE(!data))
++	if (WARN_ON_ONCE(!md))
+ 		return NULL;
+ 
+-	lockdep_assert_held(&data->mutex);
++	lockdep_assert_held(&md->mutex);
+ 
+-	if (!data->__next)
++	if (md->__iter_idx == ULONG_MAX)
+ 		return NULL;
+ 
+-	desc = __msi_next_desc(dev, data->__filter, data->__next);
+-	dev->msi.data->__next = desc ? list_next_entry(desc, list) : NULL;
+-	return desc;
++	md->__iter_idx++;
++	return msi_find_desc(md);
+ }
+ EXPORT_SYMBOL_GPL(msi_next_desc);
+ 
+@@ -384,21 +364,18 @@ int __msi_get_virq(struct device *dev, u
+ 	pcimsi = msi_device_has_property(dev, MSI_PROP_PCI_MSI);
+ 
+ 	msi_lock_descs(dev);
+-	msi_for_each_desc_from(desc, dev, MSI_DESC_ASSOCIATED, index) {
+-		/* PCI-MSI has only one descriptor for multiple interrupts. */
+-		if (pcimsi) {
+-			if (index < desc->nvec_used)
+-				ret = desc->irq + index;
+-			break;
+-		}
+-
++	desc = xa_load(&dev->msi.data->store, pcimsi ? 0 : index);
++	if (desc && desc->irq) {
+ 		/*
++		 * PCI-MSI has only one descriptor for multiple interrupts.
+ 		 * PCI-MSIX and platform MSI use a descriptor per
+ 		 * interrupt.
+ 		 */
+-		if (desc->msi_index == index) {
++		if (pcimsi) {
++			if (index < desc->nvec_used)
++				ret = desc->irq + index;
++		} else {
+ 			ret = desc->irq;
+-			break;
+ 		}
+ 	}
+ 	msi_unlock_descs(dev);
+@@ -779,17 +756,13 @@ int msi_domain_populate_irqs(struct irq_
+ 	int ret, virq;
+ 
+ 	msi_lock_descs(dev);
+-	for (virq = virq_base; virq < virq_base + nvec; virq++) {
+-		desc = msi_alloc_desc(dev, 1, NULL);
+-		if (!desc) {
+-			ret = -ENOMEM;
+-			goto fail;
+-		}
++	ret = msi_add_simple_msi_descs(dev, virq_base, nvec);
++	if (ret)
++		goto unlock;
+ 
+-		desc->msi_index = virq;
++	for (virq = virq_base; virq < virq_base + nvec; virq++) {
++		desc = xa_load(&dev->msi.data->store, virq);
+ 		desc->irq = virq;
+-		list_add_tail(&desc->list, &dev->msi.data->list);
+-		dev->msi.data->num_descs++;
+ 
+ 		ops->set_desc(arg, desc);
+ 		ret = irq_domain_alloc_irqs_hierarchy(domain, virq, 1, arg);
+@@ -805,6 +778,7 @@ int msi_domain_populate_irqs(struct irq_
+ 	for (--virq; virq >= virq_base; virq--)
+ 		irq_domain_free_irqs_common(domain, virq, 1);
+ 	msi_free_msi_descs_range(dev, MSI_DESC_ALL, virq_base, nvec);
++unlock:
+ 	msi_unlock_descs(dev);
+ 	return ret;
  }
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211126232736.135247787%40linutronix.de.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211126232736.190744801%40linutronix.de.
