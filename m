@@ -1,34 +1,34 @@
-Return-Path: <linux-ntb+bncBCUJ7YGL3QFBBYGFRWGQMGQEXCS7OMI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCUJ7YGL3QFBBAWGRWGQMGQEUQWTR5A@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x33a.google.com (mail-wm1-x33a.google.com [IPv6:2a00:1450:4864:20::33a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 2CAA94605BA
-	for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 12:07:13 +0100 (CET)
-Received: by mail-wm1-x33a.google.com with SMTP id ay34-20020a05600c1e2200b00337fd217772sf8605042wmb.4
-        for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 03:07:12 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638097632; cv=pass;
+Received: from mail-lf1-x139.google.com (mail-lf1-x139.google.com [IPv6:2a00:1450:4864:20::139])
+	by mail.lfdr.de (Postfix) with ESMTPS id BF2CE4605BB
+	for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 12:07:47 +0100 (CET)
+Received: by mail-lf1-x139.google.com with SMTP id c15-20020a05651200cf00b0040524451deesf4619109lfp.20
+        for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 03:07:47 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638097667; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ate1fnLuCW3UZhv5xliAcEpeJ6kwSsqrbX2z8T6q4D8aybTa5X84yV9h6Lwqm5yB5y
-         usUIDDrSTAmr+P3jXl0t+XeOHVqRnaMmM47wSVO9rF6qYpYbIes0/IucY171unnCvDmi
-         +5DDoypnBYASEWUxHRriWy3+GkAMJcvrbPuO6xLQiYAKYvmp8HnGj8off6qMIztOzkfI
-         V99+dkx6BLTvg90m0NRtmV/M4yURWw2V+HEXqhBpyXYkNHeYfsx49nhZvF57YrOriKwu
-         KdiP4npzfR8VA90ntdUE8VY82EFAUocUg/mFp3zIF9nLqjeyHJmdEsl/VuGJ2nmsftiE
-         7lhw==
+        b=ucWwNMiy3QJjtUrVl7Wk21nrqIo9abLanocdYBjzNoUlZbkzQQF3aowuyQvhfUJpt5
+         cBxlDxxNAiWh4T0vYoz4EZocevO1bbo5TQE18v/HzqxLSO7i1TExi0lZ0K7egD/6waKA
+         Z3pQOJRZj1he5dGC04y6ftKXiZAfsrC2uZN/KDOOnz02STYsWHL7490JjJA/yvIQUJVp
+         SKCZnz/P70uD44ja9u8uV6N5/imPOO+nnlzZ4AMbYuk6K56eL4TY95KqBZTgHdKY91as
+         14+DvGckMjw9Pr+1IXfCBXFHkwcXbIwzI4KGLrzUCM/mJYzKKrcmXupzXwEXGN/C5hrc
+         ZEqQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:sender
          :dkim-signature;
-        bh=wWTiRtQMWFLWiZqq54tdlLp9y+PjKbYXWIIYyS2EiZs=;
-        b=t/S1iAkTpX+Bh85NEiLMon+wCPJ55D1YDTb7+tgfD72tDUH+m+N500p79LofcEzXx2
-         Uf8EGWYOR+hBnphW/unYHCv2JmWJsJPfUEVope5WrpJQn/+NRw9AFNkTTXYkmAKiNSdV
-         cVE2OeEDDUvQV5S3homKZ6UG3Wdq+zLur6LLyALFsZ0TUsyZ+BjzxxnuLZwBeGlINu6k
-         v9dljgZKjVAf9ZH3PNz3k0fJVZtkg+56WVj2BdtP5tYSejlkXAgtTH8v3QoXLhAKfTJx
-         OyMIdpO1MF2q9Ej/d97XjgZLwqUSuEqVJZNjVRhDEmnZ+kgOrjvo1Sry+FUekZodJgq6
-         sJqg==
+        bh=wsitXFaYh2+R283Pd3O0KpRPU0QMuR2Rw/5RIKIGPZY=;
+        b=BhXC7J8Qt/p/mp6VTtoaTtfpByiPPrKvK2HpPvhVw0l1OgOGsiCbkBqwDzxleRvqi9
+         wmcMeiJEXIoLYH9Lq0avVBRv1j8DQnkGrmwZEhofv+82wD6cbtmI46FF9ffdoSgLtPbg
+         Y1hpyq2gfiu6/OF0Obr34EOiDJsKKg7e6BA7+2IpZap3YsOGi47Hs/zC2GNRo/1Nq6st
+         SWmgP+4Ywvi+iViuuJkQfEYweMrT89Ck/Rx26JCvT3OpTh3eo71VwunXQNj8f53db8bB
+         h0gs0g3/JpheVuN7h5lcSrXs7XHnWsbAN34TMtTGIGPM2Qu1N9wsnSvM2QLWMkhc0Ns8
+         hNew==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=I8mCqVBi;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dAild5U9;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
@@ -36,13 +36,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :content-disposition:in-reply-to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=wWTiRtQMWFLWiZqq54tdlLp9y+PjKbYXWIIYyS2EiZs=;
-        b=q6KGGZB4b55zkYoYZbpc+iv77/QyDtQ1bd9IHmvlya/4oMnkIE5G8AbTXCyajlvcUT
-         k16KcxTm+Ex8+7hC6Y2e3EVHWTFJ9SgOFsggpPy59CwVixbCOWT28LKji9Oeuo2WMwae
-         ut8r9+LYh92FktzB629SRik3lzqhY1mtt0GZoML7cCKx42aaTJMOWVz8PwJvIESwkQGt
-         4MqIYoEDZzjsW5zR/qoukPYKzoSpcHPmydjEOOQibGFpQsE9zPCC6QnQ//C8eFyN+Xmw
-         k6Y6l9CtSbI9xj/07Qhcp/xxX+7to96KMbJtbiTwkkonFB0zFySt/Tscdi9u6HMLXbnd
-         rHuA==
+        bh=wsitXFaYh2+R283Pd3O0KpRPU0QMuR2Rw/5RIKIGPZY=;
+        b=VVWDVFmrcBBYOW6P5fp+QnDKT5humJuodnXmKlebuJGNH2SLKfZHTIMrrmayEAU1YJ
+         Okox4+FMQ8fUxjlvXKQ7kSKIlSsWNB49N8JDzvh0LutNeJtLOcnYuD1xKPBi8g5bmxIn
+         +U7DQhXbu9EfQvrz6DK94JlxFxYZ9861uWTYdw/YoxkgjjQfWLcJI8KSjAs0lyoxxPeY
+         2ZQ/hVjmKV5XOyaAdERccLkouLDu5XsMrCyGFyACEofCNyOigsDgex+fdh932Lm97Gi5
+         Qm0lPVqTEshPp45SAh1k8YqHj3Ahm0o2DcEUl2EXg1IQ+EA+odg8jAipfnZXrMPtb4zL
+         ZBew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
@@ -50,60 +50,60 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=wWTiRtQMWFLWiZqq54tdlLp9y+PjKbYXWIIYyS2EiZs=;
-        b=XiSl/YCsZO7KoCx584lOJthap52GE/VeAPAwfTDV5Sg5/awiNnslDXZ0cORfwvJRlr
-         7/XLUuZxmKuNEp5we/dCKB/jaiZLDT+aPOmKtj+PxkYRlS91efF/UAkxXMlE84Qp7mER
-         8JhHNEEI41ip6TOkheYCxhTyP5Os0dOGziQV4ecLCIpUyUB+1nrtCmu+5t98LF9KiIB6
-         dqEmoBlHhzflOyPd/a2wdD82KnFbW6CUMGhyMK3LctNbsejGrpweft1p7AcfiA14nQa0
-         Mw/Eml7ILRqchmgVaSe+rNst96UZNvuwhXlzH0JzgatHE5sOYXBdfim6bGpIt7cY3Aoe
-         AWFQ==
+        bh=wsitXFaYh2+R283Pd3O0KpRPU0QMuR2Rw/5RIKIGPZY=;
+        b=SyoNMoniauaDwgd/ZKFemWP4WreAMw/As5gTx3+aZms3X+Zs7omIL3tTf1pi7VnykF
+         kGB2++/Jcx2CNvB6GlrzqcZbrga0yMnrBH8gp6aRXZSk6+eImsfUrTxmCSuPZJTeXWFT
+         fVNYB6n8KOGdL+xRRUK3Ox0mVUPiemaUM0sevFYqn163ovehb/st/2NdYbFmxcDs3/Hb
+         JPp0/+iKlJMkbWxx2vL0Zn+KxwbaJ710o1QuKq+64O1+H/f39gj4s117GNgM2EMX5JGS
+         0UM6mWjWEdHVTElMuJAMr1Du8IPzT80/ncxSQqXp1KZ/32cKgFfF8JwgfMcgA3B7huso
+         q6+Q==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530FgCzQTLfED08+8nd6hR1oBIuCk9p9pLz1kuupUPvNbrJNRR3/
-	zQcRuV+svngawupq7FMMGbQ=
-X-Google-Smtp-Source: ABdhPJwyO5VUI9am+50uuyINB9eNHWDEyLAzw9Vdcs6Mp9hE8Cizx2YE7yVH4NwcvSBa/00IkHUC2A==
-X-Received: by 2002:a05:600c:3c85:: with SMTP id bg5mr28269728wmb.58.1638097632360;
-        Sun, 28 Nov 2021 03:07:12 -0800 (PST)
+X-Gm-Message-State: AOAM532QF9XP2+vN2tNEkuzEmdmOiRCBailwqzIRzPh4voBMq9jgC8Uy
+	+mxJ+OAIJ8ip/Y1DIuATkuY=
+X-Google-Smtp-Source: ABdhPJyorKPBO67pcii7cRjZ4NtedzaB1aSXVH09gMi92AcovxHcDxWnPNnnp61ndVz8hwI0a3SeTQ==
+X-Received: by 2002:a2e:83c4:: with SMTP id s4mr40669847ljh.445.1638097666892;
+        Sun, 28 Nov 2021 03:07:46 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:f885:: with SMTP id u5ls3862699wrp.3.gmail; Sun, 28 Nov
- 2021 03:07:11 -0800 (PST)
-X-Received: by 2002:adf:9bdb:: with SMTP id e27mr26441722wrc.417.1638097631487;
-        Sun, 28 Nov 2021 03:07:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638097631; cv=none;
+Received: by 2002:a05:651c:b1f:: with SMTP id b31ls1485126ljr.0.gmail; Sun, 28
+ Nov 2021 03:07:46 -0800 (PST)
+X-Received: by 2002:a2e:a910:: with SMTP id j16mr15057536ljq.96.1638097665947;
+        Sun, 28 Nov 2021 03:07:45 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638097665; cv=none;
         d=google.com; s=arc-20160816;
-        b=tvYS8NVk1lSTUwcYifC1Va0rTtoy4PHA/RIaLO4WPqeciGk7xl/PwJBfBnXG65YrPC
-         ThJcJJy8O0Ma6PDluJi/6MIv1fUXSCrBDH3ZEdHoiX0nHSeF0JxB63F5nP03mayhAgRs
-         2MkiJ9VzG0u/cTOwhsy0i92rTi+z1mIywtn6vwuPENuZYAyxfL95BFT1MrOjiq5XKAg7
-         DRvSxof1QVWN1tCUAKquAVVXuTSwrxqpKZwJpsOBEKFto5mVHyvECQa9f6KjRzXOg57F
-         FERwTovpJPlyy0qFXu+C96P9AL+NHPMxvqWZ5Xc6/kY2Pw8+iiRaIBKqMmw5WQ85BA6g
-         WjKw==
+        b=S2SfYzULYE75gw5Lj2EShawkpuaatGhF8YYotHHhg4IIGO2+tAgTF3qD7NFfAPb5/6
+         hZlIPZRRC321FLL4UUDe66FF4TURF5+3iHQ5YdU6TzSeRTtu0X0W9NXScWbOp+BghIYs
+         imLj4EXB4EkNyqBibo6eDQN/RUbb0X1PlxyjSHXuqXiHiU8IO7CuxFp3XPdcF3eULaLk
+         xwckUNv5ns3zXQHX3hAcdj74oCfi0tB+GsNq37btXQ76Y/YqCk2NtPG6Q6u79t0i6uXv
+         jXbV2NdzYJYUSNkhadckqTXf7sobRaoLOBE5BYcrtl/Vrkr/H/ErEPVLaNAC2ywz/LUS
+         e6FQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=ayzi7LnOQam0U82XMBC6CR48BErXjqDbBnJVwUFZJuQ=;
-        b=g0o8AnjenETj39x1IZCUF/hychd6gf0EIwXKUix9Atey5bohd5mktiRWbAGhFnJO8x
-         jl1ML4xPc4bXDPOW25rZx6bKSe+ope+S6+graIAkVm/oSQS3y91aomyQJauefQJHiTJu
-         p7ko+ynPA5Pgwy/eoasthe92KFJ29AAlOiPGykvmOiexwcgixxpyLjVPrgaSs1NPismq
-         pHjbarNyeOgJBd1s022Q7mZ4MWJ7+zvHSIAlWOx5ORonEVwkg3cz9JFL0ak8VcKqRhQN
-         Q8EOn+Z9WjiyE3/IJJHvLAgl1xWloQFAcqugPjLJOmL9NnySXCdFypRFClX1eMhn9yjD
-         gyTw==
+        bh=eYKaEE6i/wB0NVY3Sqw5/2W1ub4TJ5yaf/yNo46esNE=;
+        b=C2k4Irkd59yTu8q3D5CIzVsDJU7OHg4p+tgST8UYpjbgVdD1umNRnYjs3BinFOb8kZ
+         9/cVPJSqYHgbwx4AeE4UchP0cOKIy5ShOf5agqwnuqQuhW6FgOsqzm0xT8wts8xIMs7N
+         Q6hCMFjsG/PNRyHwJUn6brDp6gy19nwWk8JqbSlfNLwpN1vqCu2TUGh/bledehKqzPoS
+         jhXV58KOxnD69eTGB3KeTrQR2VeSU8SEiDFXDzEWVxmzgqNRaDDXLTpnZsFPwKEk6YP5
+         IpvQXyWQDt06CdyPwcIjNirDx57SYCVBZnoAwFclY6bhgiNrjmZbeSNEyDFRKdPDtKZB
+         oYaw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=I8mCqVBi;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 139.178.84.217 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dAild5U9;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: from dfw.source.kernel.org (dfw.source.kernel.org. [139.178.84.217])
-        by gmr-mx.google.com with ESMTPS id o19si2078692wme.2.2021.11.28.03.07.11
+Received: from ams.source.kernel.org (ams.source.kernel.org. [145.40.68.75])
+        by gmr-mx.google.com with ESMTPS id t71si835669lff.6.2021.11.28.03.07.45
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Nov 2021 03:07:11 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 139.178.84.217 as permitted sender) client-ip=139.178.84.217;
+        Sun, 28 Nov 2021 03:07:45 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as permitted sender) client-ip=145.40.68.75;
 Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by dfw.source.kernel.org (Postfix) with ESMTPS id 1C32660F16;
-	Sun, 28 Nov 2021 11:07:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F2B2FC004E1;
-	Sun, 28 Nov 2021 11:07:07 +0000 (UTC)
-Date: Sun, 28 Nov 2021 12:07:05 +0100
+	by ams.source.kernel.org (Postfix) with ESMTPS id 0E0D7B80B26;
+	Sun, 28 Nov 2021 11:07:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB4A1C004E1;
+	Sun, 28 Nov 2021 11:07:42 +0000 (UTC)
+Date: Sun, 28 Nov 2021 12:07:41 +0100
 From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Thomas Gleixner <tglx@linutronix.de>
 Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
@@ -116,22 +116,23 @@ Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
 	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
 	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com
-Subject: Re: [patch 31/32] genirq/msi: Simplify sysfs handling
-Message-ID: <YaNi2RkiYdnoEDau@kroah.com>
+Subject: Re: [patch 07/32] genirq/msi: Count the allocated MSI descriptors
+Message-ID: <YaNi/YqN0ARC3h2z@kroah.com>
 References: <20211126230957.239391799@linutronix.de>
- <20211126232736.135247787@linutronix.de>
- <YaIlX8bef2jPLkUE@kroah.com>
- <87lf19fl9i.ffs@tglx>
+ <20211126232734.708730446@linutronix.de>
+ <YaIiPISLr7VokL8P@kroah.com>
+ <87o865flot.ffs@tglx>
+ <87ilwdfkmp.ffs@tglx>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
-In-Reply-To: <87lf19fl9i.ffs@tglx>
+In-Reply-To: <87ilwdfkmp.ffs@tglx>
 X-Original-Sender: gregkh@linuxfoundation.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linuxfoundation.org header.s=korg header.b=I8mCqVBi;       spf=pass
- (google.com: domain of gregkh@linuxfoundation.org designates 139.178.84.217
- as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+ header.i=@linuxfoundation.org header.s=korg header.b=dAild5U9;       spf=pass
+ (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as
+ permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -144,83 +145,24 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Sat, Nov 27, 2021 at 08:31:37PM +0100, Thomas Gleixner wrote:
-> On Sat, Nov 27 2021 at 13:32, Greg Kroah-Hartman wrote:
-> > On Sat, Nov 27, 2021 at 02:23:15AM +0100, Thomas Gleixner wrote:
-> >> The sysfs handling for MSI is a convoluted maze and it is in the way of
-> >> supporting dynamic expansion of the MSI-X vectors because it only supports
-> >> a one off bulk population/free of the sysfs entries.
-> >> 
-> >> Change it to do:
-> >> 
-> >>    1) Creating an empty sysfs attribute group when msi_device_data is
-> >>       allocated
-> >> 
-> >>    2) Populate the entries when the MSI descriptor is initialized
+On Sat, Nov 27, 2021 at 08:45:18PM +0100, Thomas Gleixner wrote:
+> On Sat, Nov 27 2021 at 20:22, Thomas Gleixner wrote:
+> 
+> > On Sat, Nov 27 2021 at 13:19, Greg Kroah-Hartman wrote:
+> >> On Sat, Nov 27, 2021 at 02:22:38AM +0100, Thomas Gleixner wrote:
+> >>> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> >>
+> >> No changelog?
 > >
-> > How much later does this happen?  Can it happen while the device has a
-> > driver bound to it?
-> 
-> That's not later than before. It's when the driver initializes the
-> MSI[X] interrupts, which usually happens in the probe() function.
-> 
-> The difference is that the group, (i.e.) directory is created slightly
-> earlier.
-
-Ok, but that still happens when probe() is called for the driver, right?
-
-> >> +
-> >> +static inline int msi_sysfs_create_group(struct device *dev)
-> >> +{
-> >> +	return devm_device_add_group(dev, &msi_irqs_group);
+> > Bah. This one should not be there at all.
 > >
-> > Much nicer, but you changed the lifetime rules of when these attributes
-> > will be removed, is that ok?
+> >> Anyway, why do we care about the number of decriptors?
 > 
-> The msi entries are removed at the same place as they are removed in the
-> current mainline code, i.e. when the device driver shuts the device
-> down and disables MSI[X], which happens usually during remove()
-> 
-> What's different now is that the empty group stays around a bit
-> longer. I don't see how that matters.
+> The last part of this really cares about it for the dynamic extension
+> part, but that's core code which looks at the counter under the lock.
 
-How much longer does it stick around?
-
-What happens if this sequence happens:
-	- probe()
-	- disconnect()
-	- probe()
-with the same device (i.e. the device is not removed from the system)?
-
-Which can happen as userspace can trigger disconnect() or even worse, if
-the driver is unloaded and then loaded again?  Will the second call to
-create this directory fail as it is not cleaned up yet?
-
-I can never remember if devm_*() stuff sticks around for the device
-lifecycle, or for the driver/device lifecycle, which is one big reason
-why I don't like that api...
-
-> > I still worry that these attributes show up "after" the device is
-> > registered with the driver core, but hey, it's no worse than it
-> > currently is, so that's not caused by this patch series...
-> 
-> Happens that register before or after driver->probe()?
-
-During probe is a bit too late, but we can handle that as we are used to
-it.  If it happens after probe() succeeds, based on something else being
-asked for in the driver (like the device being opened), then userspace
-has no chance of ever noticing these attributes being added.
-
-But again, this isn't new to your code series, so I wouldn't worry about
-it.  Obviously userspace tools do not care or really notice these
-attributes at all otherwise the authors of them would have complained
-a long time ago :)
-
-So again, no real objection from me here, just meta-comments, except for
-the above thing with the devm_* call to ensure that the
-probe/disconnect/probe sequence will still work just as well as it does
-today.  Should be easy enough to test out by just unloading a module and
-then loading it again with this patch series applied.
+Ah, that should be documented well as right now you are saying "this is
+done lockless" in the comment :)
 
 thanks,
 
@@ -229,4 +171,4 @@ greg k-h
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/YaNi2RkiYdnoEDau%40kroah.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/YaNi/YqN0ARC3h2z%40kroah.com.
