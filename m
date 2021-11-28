@@ -1,138 +1,130 @@
-Return-Path: <linux-ntb+bncBCUJ7YGL3QFBBAWGRWGQMGQEUQWTR5A@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERB6FNR6GQMGQES45IEFA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lf1-x139.google.com (mail-lf1-x139.google.com [IPv6:2a00:1450:4864:20::139])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF2CE4605BB
-	for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 12:07:47 +0100 (CET)
-Received: by mail-lf1-x139.google.com with SMTP id c15-20020a05651200cf00b0040524451deesf4619109lfp.20
-        for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 03:07:47 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638097667; cv=pass;
+Received: from mail-ed1-x53e.google.com (mail-ed1-x53e.google.com [IPv6:2a00:1450:4864:20::53e])
+	by mail.lfdr.de (Postfix) with ESMTPS id 722B446094D
+	for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 20:22:33 +0100 (CET)
+Received: by mail-ed1-x53e.google.com with SMTP id v1-20020aa7cd41000000b003e80973378asf11768426edw.14
+        for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 11:22:33 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638127352; cv=pass;
         d=google.com; s=arc-20160816;
-        b=ucWwNMiy3QJjtUrVl7Wk21nrqIo9abLanocdYBjzNoUlZbkzQQF3aowuyQvhfUJpt5
-         cBxlDxxNAiWh4T0vYoz4EZocevO1bbo5TQE18v/HzqxLSO7i1TExi0lZ0K7egD/6waKA
-         Z3pQOJRZj1he5dGC04y6ftKXiZAfsrC2uZN/KDOOnz02STYsWHL7490JjJA/yvIQUJVp
-         SKCZnz/P70uD44ja9u8uV6N5/imPOO+nnlzZ4AMbYuk6K56eL4TY95KqBZTgHdKY91as
-         14+DvGckMjw9Pr+1IXfCBXFHkwcXbIwzI4KGLrzUCM/mJYzKKrcmXupzXwEXGN/C5hrc
-         ZEqQ==
+        b=rfQs+dr2NaM+pvN48CXMJZoE6XUU1wxqa4eqRVSFrnlb1pHYY2LSJ0kfMUEtC1Jn0E
+         gufcK+KQgr7PSfRpg/USJiaH7KU+XOtbX3iXCf+UKzGWCTVDp6L0ZR92CY8pBD0KP8Bb
+         QYKCxIpLdwM1cj1n8ETOJUghKqplC1OsVaDBTHYEp/DYiuzzfdiUfmWUI5hn3mb27Uwj
+         Kq9n0VrZteGuQ58YILG9YxIzcTQ6q78JfISQKHiTRZ4hky9RWt/i19YXyGR4nPSMRCHR
+         wdV2vRLpiiU6P8EiKsV3sNIQN027urva9xerMCESTF+ZdlXs3tOPMm+WhqJyczjcgBKz
+         nqYg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:cc:to:from:date:sender
-         :dkim-signature;
-        bh=wsitXFaYh2+R283Pd3O0KpRPU0QMuR2Rw/5RIKIGPZY=;
-        b=BhXC7J8Qt/p/mp6VTtoaTtfpByiPPrKvK2HpPvhVw0l1OgOGsiCbkBqwDzxleRvqi9
-         wmcMeiJEXIoLYH9Lq0avVBRv1j8DQnkGrmwZEhofv+82wD6cbtmI46FF9ffdoSgLtPbg
-         Y1hpyq2gfiu6/OF0Obr34EOiDJsKKg7e6BA7+2IpZap3YsOGi47Hs/zC2GNRo/1Nq6st
-         SWmgP+4Ywvi+iViuuJkQfEYweMrT89Ck/Rx26JCvT3OpTh3eo71VwunXQNj8f53db8bB
-         h0gs0g3/JpheVuN7h5lcSrXs7XHnWsbAN34TMtTGIGPM2Qu1N9wsnSvM2QLWMkhc0Ns8
-         hNew==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
+        bh=D3FZX9AgNCF5T6xkiVmcvQtVRnj//gZjnIRy+I1QJ2k=;
+        b=wthTpsw6PM2Nelah2wnXvjeQhoCeE6YciLh9xXbehE5brFiFzPfHSMUVmsJqHAQ9uf
+         enF3cj/WeB+6kbmcTQ3P0wA2akR/cu1MX6cvdLJHvJyNKDedrSzS15V38GPAJT3Ozj0d
+         Xb5AlpSTvQ7A5V7sn7Ihe+/bN805cYLlj8SIbFVGkLYk/b/5JJCeIf0JHCnFad0KmgEz
+         9QqTXcypUbck6cERknKh02elsFV0epzAuQ5PfeLOmKYS/dU6pQH69aY4IRf5rgQeUbX1
+         RRhBek7Hht3FiQ4uFRRRXTOgzroLt+HQp8GqigM0YFFOP0v/WARX+Q3poafkIWtpNc0e
+         4jOA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dAild5U9;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=1YKU3JyE;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=wsitXFaYh2+R283Pd3O0KpRPU0QMuR2Rw/5RIKIGPZY=;
-        b=VVWDVFmrcBBYOW6P5fp+QnDKT5humJuodnXmKlebuJGNH2SLKfZHTIMrrmayEAU1YJ
-         Okox4+FMQ8fUxjlvXKQ7kSKIlSsWNB49N8JDzvh0LutNeJtLOcnYuD1xKPBi8g5bmxIn
-         +U7DQhXbu9EfQvrz6DK94JlxFxYZ9861uWTYdw/YoxkgjjQfWLcJI8KSjAs0lyoxxPeY
-         2ZQ/hVjmKV5XOyaAdERccLkouLDu5XsMrCyGFyACEofCNyOigsDgex+fdh932Lm97Gi5
-         Qm0lPVqTEshPp45SAh1k8YqHj3Ahm0o2DcEUl2EXg1IQ+EA+odg8jAipfnZXrMPtb4zL
-         ZBew==
+        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=D3FZX9AgNCF5T6xkiVmcvQtVRnj//gZjnIRy+I1QJ2k=;
+        b=qGt9HsAH6SV6rtbLhuIZn5TDJq/7WchijcnlrCdLSyj3VGFHdtdDE+NuXDXga6QQus
+         +kYxjt+nlkjJ+NjfllWTjgKuRWeVDyZ1Tn+NmEIoDGLTlbO6XMrxJP+FL1huPwFHvrDP
+         gdy0aKiLifvlYcjdKKClYV88KjD3E6PJuebKZfI2cxaHEn2e8MQo7fqGzLq5lIxWiK3B
+         LyHCoZj4fQnwTHFgH3AHrrWpmL7172l4KWianrKgLJsKE6l2vT/3J2+Yf4HnLAylITS1
+         OL4FzC8ZaWL7RyIJTIkU/sgzpxNau7LWx6Mp7HzvOfd+PN9IYj9QA4KfNbYD9p1J8PrN
+         mvqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
-         :references:mime-version:content-disposition:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=wsitXFaYh2+R283Pd3O0KpRPU0QMuR2Rw/5RIKIGPZY=;
-        b=SyoNMoniauaDwgd/ZKFemWP4WreAMw/As5gTx3+aZms3X+Zs7omIL3tTf1pi7VnykF
-         kGB2++/Jcx2CNvB6GlrzqcZbrga0yMnrBH8gp6aRXZSk6+eImsfUrTxmCSuPZJTeXWFT
-         fVNYB6n8KOGdL+xRRUK3Ox0mVUPiemaUM0sevFYqn163ovehb/st/2NdYbFmxcDs3/Hb
-         JPp0/+iKlJMkbWxx2vL0Zn+KxwbaJ710o1QuKq+64O1+H/f39gj4s117GNgM2EMX5JGS
-         0UM6mWjWEdHVTElMuJAMr1Du8IPzT80/ncxSQqXp1KZ/32cKgFfF8JwgfMcgA3B7huso
-         q6+Q==
+        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
+         :date:message-id:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=D3FZX9AgNCF5T6xkiVmcvQtVRnj//gZjnIRy+I1QJ2k=;
+        b=LWYNtkw4AGBczJ7dI5o3F12rkXA+8dMAs4OLkCoU227pzaZBRIykEyQdJqFBi61bfu
+         pxzGXQwAuZDe3oibUkSF5a/96ecwtnP8f8oMMJnP4wCJ/oBM7GPu8eLrDkSnYXMgOwwW
+         pBS3S2CThe8jk3ZTiMhSi9IBjVCDAgfWq4e/aqXerCV5FKgi2alCOYX8YP26bv/OzFeS
+         WiN/jJSYOIrMyJ8w3XVznolnC4VJImHWUKLSCkq5EKVXqF1yxmb2OZHcJa8ub9CiLdB8
+         Ndi7YBhCCUCL/bycghUHQyng9MuikHMfidU5F9I4gDsUB1/JxaRhg8oxvjt/2rsJjLON
+         tg9A==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532QF9XP2+vN2tNEkuzEmdmOiRCBailwqzIRzPh4voBMq9jgC8Uy
-	+mxJ+OAIJ8ip/Y1DIuATkuY=
-X-Google-Smtp-Source: ABdhPJyorKPBO67pcii7cRjZ4NtedzaB1aSXVH09gMi92AcovxHcDxWnPNnnp61ndVz8hwI0a3SeTQ==
-X-Received: by 2002:a2e:83c4:: with SMTP id s4mr40669847ljh.445.1638097666892;
-        Sun, 28 Nov 2021 03:07:46 -0800 (PST)
+X-Gm-Message-State: AOAM533uWClxYboXq5XLwa1XTiGtTLgdAsVO6OMH4CVJchLuLUq+jz97
+	aVNXzawywb0S2fzU/8u5PUA=
+X-Google-Smtp-Source: ABdhPJwwkIir8Y5S6PcWy7OXBHRC+nJs9VbydnkB35Lwk5kConcVCcqNEJRrBDivckiTQ9fzfrYW8Q==
+X-Received: by 2002:aa7:c390:: with SMTP id k16mr67984725edq.161.1638127352496;
+        Sun, 28 Nov 2021 11:22:32 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:651c:b1f:: with SMTP id b31ls1485126ljr.0.gmail; Sun, 28
- Nov 2021 03:07:46 -0800 (PST)
-X-Received: by 2002:a2e:a910:: with SMTP id j16mr15057536ljq.96.1638097665947;
-        Sun, 28 Nov 2021 03:07:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638097665; cv=none;
+Received: by 2002:aa7:c944:: with SMTP id h4ls2700602edt.1.gmail; Sun, 28 Nov
+ 2021 11:22:31 -0800 (PST)
+X-Received: by 2002:a05:6402:26c5:: with SMTP id x5mr69234093edd.198.1638127351510;
+        Sun, 28 Nov 2021 11:22:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638127351; cv=none;
         d=google.com; s=arc-20160816;
-        b=S2SfYzULYE75gw5Lj2EShawkpuaatGhF8YYotHHhg4IIGO2+tAgTF3qD7NFfAPb5/6
-         hZlIPZRRC321FLL4UUDe66FF4TURF5+3iHQ5YdU6TzSeRTtu0X0W9NXScWbOp+BghIYs
-         imLj4EXB4EkNyqBibo6eDQN/RUbb0X1PlxyjSHXuqXiHiU8IO7CuxFp3XPdcF3eULaLk
-         xwckUNv5ns3zXQHX3hAcdj74oCfi0tB+GsNq37btXQ76Y/YqCk2NtPG6Q6u79t0i6uXv
-         jXbV2NdzYJYUSNkhadckqTXf7sobRaoLOBE5BYcrtl/Vrkr/H/ErEPVLaNAC2ywz/LUS
-         e6FQ==
+        b=MivoVIm8h5z2T3A/SYEVT9HTKflQiRqBwzpImFSgrNKOr8DtAsd6f3pkzX9rHERXNV
+         S6HlFnRBz1M7XT7VJwr/qGK0DB0gnYdYG4mw4Fis9URirY8IosQ+HqYP9NjFlRxWZD4y
+         BaAxMT2LNeYpxFWe/e3e5ok6qhikJglDphYZ4FjfyRXAddIpX47ZGkgQq2mwVwBXQonQ
+         QFLFtRbtGjGc4hdaagVCqg0TJQBjcndfu/aSfurzWqaTbzbfxYdh+4ugXSCyAEB/NfaC
+         +Pqyw6sR8xnAfQgjG3eWBZ3jWctA/VJSAsoL69zatAHwxyFO9hvGyyrnJpdIJ3iUAZ3t
+         8psg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=eYKaEE6i/wB0NVY3Sqw5/2W1ub4TJ5yaf/yNo46esNE=;
-        b=C2k4Irkd59yTu8q3D5CIzVsDJU7OHg4p+tgST8UYpjbgVdD1umNRnYjs3BinFOb8kZ
-         9/cVPJSqYHgbwx4AeE4UchP0cOKIy5ShOf5agqwnuqQuhW6FgOsqzm0xT8wts8xIMs7N
-         Q6hCMFjsG/PNRyHwJUn6brDp6gy19nwWk8JqbSlfNLwpN1vqCu2TUGh/bledehKqzPoS
-         jhXV58KOxnD69eTGB3KeTrQR2VeSU8SEiDFXDzEWVxmzgqNRaDDXLTpnZsFPwKEk6YP5
-         IpvQXyWQDt06CdyPwcIjNirDx57SYCVBZnoAwFclY6bhgiNrjmZbeSNEyDFRKdPDtKZB
-         oYaw==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :dkim-signature:dkim-signature:from;
+        bh=E8ZA6r18LEZgOr5P11pd+i/cnzZnNK1YQYI4tPYAbOM=;
+        b=OcsEiGlyi9sHk7h81l1/XYhTK6DJ/61dgB59TnoPl9pm2cMuhzKcz6zFLDOKJvEEuK
+         zWlGVwgURfzPwNBgPnzJTPN/NbyrEfVuxhkmSKCpMy+rfMMo/rhtbWy87wyf2GRCD1i0
+         CTV7/9R04c++D1+CRavt4CrIgDwWy+CS4InooHlgjOqdZPbl7vFkUEUWu57oBhdl/xj+
+         BMFOwm5faSkhmdiXvitgUP6gPasBcydXGAGAhKVTtze+g1JmirWPEjE+q+78+GrfyC17
+         KQ3O0ThW/YYh4MoLyqx9GDWUbwQwbx4uYqHYbCUwpRj65FpMnwd4nZTZR+erUzGOarfs
+         7lmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=dAild5U9;
-       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
-Received: from ams.source.kernel.org (ams.source.kernel.org. [145.40.68.75])
-        by gmr-mx.google.com with ESMTPS id t71si835669lff.6.2021.11.28.03.07.45
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=1YKU3JyE;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
+        by gmr-mx.google.com with ESMTPS id i23si588247edr.1.2021.11.28.11.22.31
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 28 Nov 2021 03:07:45 -0800 (PST)
-Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as permitted sender) client-ip=145.40.68.75;
-Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
-	(No client certificate requested)
-	by ams.source.kernel.org (Postfix) with ESMTPS id 0E0D7B80B26;
-	Sun, 28 Nov 2021 11:07:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DB4A1C004E1;
-	Sun, 28 Nov 2021 11:07:42 +0000 (UTC)
-Date: Sun, 28 Nov 2021 12:07:41 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Thomas Gleixner <tglx@linutronix.de>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 28 Nov 2021 11:22:31 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
+From: Thomas Gleixner <tglx@linutronix.de>
+To: Jason Gunthorpe <jgg@nvidia.com>
 Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
-	Marc Zygnier <maz@kernel.org>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Kevin Tian <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
-	Megha Dey <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
-	linux-pci@vger.kernel.org, linux-s390@vger.kernel.org,
-	Heiko Carstens <hca@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>,
-	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
-	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com
-Subject: Re: [patch 07/32] genirq/msi: Count the allocated MSI descriptors
-Message-ID: <YaNi/YqN0ARC3h2z@kroah.com>
+ Marc Zygnier <maz@kernel.org>, Alex Williamson
+ <alex.williamson@redhat.com>, Kevin Tian <kevin.tian@intel.com>, Megha Dey
+ <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
+ linux-pci@vger.kernel.org, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, linux-s390@vger.kernel.org, Heiko Carstens
+ <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>, Jon
+ Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>, Allen Hubbe
+ <allenbh@gmail.com>, linux-ntb@googlegroups.com
+Subject: Re: [patch 04/32] genirq/msi: Provide a set of advanced MSI
+ accessors and iterators
+In-Reply-To: <20211128010037.GV4670@nvidia.com>
 References: <20211126230957.239391799@linutronix.de>
- <20211126232734.708730446@linutronix.de>
- <YaIiPISLr7VokL8P@kroah.com>
- <87o865flot.ffs@tglx>
- <87ilwdfkmp.ffs@tglx>
+ <20211126232734.531194050@linutronix.de>
+ <20211128010037.GV4670@nvidia.com>
+Date: Sun, 28 Nov 2021 20:22:30 +0100
+Message-ID: <877dcsf5l5.ffs@tglx>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
-In-Reply-To: <87ilwdfkmp.ffs@tglx>
-X-Original-Sender: gregkh@linuxfoundation.org
+X-Original-Sender: tglx@linutronix.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linuxfoundation.org header.s=korg header.b=dAild5U9;       spf=pass
- (google.com: domain of gregkh@linuxfoundation.org designates 145.40.68.75 as
- permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+ header.i=@linutronix.de header.s=2020 header.b=1YKU3JyE;       dkim=neutral
+ (no key) header.i=@linutronix.de header.s=2020e;       spf=pass (google.com:
+ domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted
+ sender) smtp.mailfrom=tglx@linutronix.de;       dmarc=pass (p=NONE
+ sp=QUARANTINE dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -145,30 +137,43 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Sat, Nov 27, 2021 at 08:45:18PM +0100, Thomas Gleixner wrote:
-> On Sat, Nov 27 2021 at 20:22, Thomas Gleixner wrote:
-> 
-> > On Sat, Nov 27 2021 at 13:19, Greg Kroah-Hartman wrote:
-> >> On Sat, Nov 27, 2021 at 02:22:38AM +0100, Thomas Gleixner wrote:
-> >>> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
-> >>
-> >> No changelog?
-> >
-> > Bah. This one should not be there at all.
-> >
-> >> Anyway, why do we care about the number of decriptors?
-> 
-> The last part of this really cares about it for the dynamic extension
-> part, but that's core code which looks at the counter under the lock.
+On Sat, Nov 27 2021 at 21:00, Jason Gunthorpe wrote:
+> On Sat, Nov 27, 2021 at 02:22:33AM +0100, Thomas Gleixner wrote:
+>> + * Notes:
+>> + *  - The loop must be protected with a msi_lock_descs()/msi_unlock_descs()
+>> + *    pair.
+>> + *  - It is safe to remove a retrieved MSI descriptor in the loop.
+>> + */
+>> +#define msi_for_each_desc_from(desc, dev, filter, base_index)			\
+>> +	for ((desc) = __msi_first_desc((dev), (filter), (base_index)); (desc);	\
+>> +	     (desc) = msi_next_desc((dev)))
+>
+> Given this ends up as an xarray it feels really weird that there is a
+> hidden shared __next/__iter_idx instead of having the caller provide
+> the index storage as is normal for xa operations.
+>
+> I understand why that isn't desirable at this patch where the storage
+> would have to be a list_head pointer, but still, seems like an odd
+> place to end up at the end of the series.
+>
+> eg add index here unused and then the last patch uses it instead of
+> __iter_idx.
 
-Ah, that should be documented well as right now you are saying "this is
-done lockless" in the comment :)
+TBH, didn't think about doing just that. OTH, given the experience of
+looking at the creative mess people create, this was probably also a
+vain attempt to make it harder in the future.
 
-thanks,
+> Also, I don't understand why filter was stored in the dev and not
+> passed into msi_next_desc() in the macro here?
 
-greg k-h
+No real reason. I probably just stored it along with the rest. Lemme try
+that index approach.
+
+Thanks,
+
+        tglx
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/YaNi/YqN0ARC3h2z%40kroah.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/877dcsf5l5.ffs%40tglx.
