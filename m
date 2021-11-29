@@ -1,129 +1,127 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERB65SR6GQMGQE5A7Y2SY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERBNVZSKGQMGQE4V5U4SA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-oi1-x240.google.com (mail-oi1-x240.google.com [IPv6:2607:f8b0:4864:20::240])
-	by mail.lfdr.de (Postfix) with ESMTPS id B6E6A46096B
-	for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 20:33:17 +0100 (CET)
-Received: by mail-oi1-x240.google.com with SMTP id be34-20020a05680821a200b002bd24f9a87bsf9702656oib.17
-        for <lists+linux-ntb@lfdr.de>; Sun, 28 Nov 2021 11:33:17 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638127996; cv=pass;
+Received: from mail-pj1-x1037.google.com (mail-pj1-x1037.google.com [IPv6:2607:f8b0:4864:20::1037])
+	by mail.lfdr.de (Postfix) with ESMTPS id 90CA946110B
+	for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 10:26:16 +0100 (CET)
+Received: by mail-pj1-x1037.google.com with SMTP id u11-20020a17090a4bcb00b001a6e77f7312sf7619112pjl.5
+        for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 01:26:16 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638177975; cv=pass;
         d=google.com; s=arc-20160816;
-        b=brHWXxx9A4jLRtOfWmgOZzNbgBmTY9UruWIP4pJUcEOt+Wvne2wBR/9kdBNrIBrP7z
-         kW8ajgpJRRFIYuoCyXv4Ux8yK5puF6LU2oFb1RhAHOhV+bh9LD5sUsRqNBJUsA62BA5t
-         myw8sV7ItQ9AgSyUve5L3uTDEDJ3LZtWQPr8IyvwtUBvhSuKxBpUGACFHVkNAv7Dwub1
-         Z4aYSsgkIwZFKE+VvDHaDupx7w/bDta1zJ72Kb5UazznnovZIe5nyBD+LIxNvjQq1U3j
-         7Di77WAa3ok1kuDU6fOdpJUkvOMWsHkhBXWO/KBHegRxAMNM6EoqzRckCqFuxRcQO2y8
-         yMZw==
+        b=sG2iLTJ1zvvda3xlou0FijZ87dJDf46Pc3pyETsHAdxpqAPBppkPQhpvTD9ITTMMRj
+         rXVPINSmp0li8OGECCG2+FP5DpC8n6NPytLmAy4GqyQRM4YJYz5TR3uLVOOJ6hlsb9l2
+         XC7vvHmCX1kyVuOnbdSbWnEf3ZoOzibyG7n3RS/zxLCnmibDd7y3931XHLn7q1N4EfTy
+         qpQs0wPcdezmTCS2b78q9mOrANYdgc2AMirnWKEu/A93vwoaExIkBYmNsrFprkLiLQ/6
+         PsHfTtq8bnJztnaQNhg/fF4HmrjJu/MukY82TsEx0wWPOy5Gprb5Pfs7ohELY4OWaxQY
+         bX7g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
-        bh=Odog/PYDsGfLo5OG/6M76N9Kv54SJfrVHllMpYWKrpg=;
-        b=cXbvF3HKuAGcgu3uiw37Tg+ZcFwldLAhsLioHagIPBIDRA/FLr935V7do/3IfUIg1d
-         1OL0GUsftr5lSc+StEqUTfuKtp+jtTY/ETw1efuCJ2L1JPx6HXA0BDfhGzKpJeag931v
-         Zli4J7jcgHI1Hs7VtGcOg7o4C865u+17ol6u8M0UeKqYRhueWN9sIIWmQqxTg6ZGVzdg
-         /cneuoejHqn4Gz02qENmyXKEyEE9jnjsYQqVb7OtU1sLEW0rDC+Hx/smNt2uH3hQ9KoV
-         l05fnkg/26tSL+/FYYKVF9lRoN1luMHt21aNuILyDz2dJjIILzki/W6LoLkalZj26vue
-         6xtg==
+         :in-reply-to:subject:cc:to:from:sender:dkim-signature;
+        bh=TosT11OZHb/yiIoSCeh7umotmL8yUWJB2yZ5TN6wf7Y=;
+        b=MbbPyjnylnxkKDcowosbRphzPB2zAtiiI3qz3ZGcHZwvgzDYtbp+Rr64/SqrDDQz0l
+         S4Q6I2m3DFbUvph+qAOcRgTe8jO9GWU/NxmLq5AflltqSyieq0/reJlfRQwLKJ6cSJjl
+         fcAfWvwW+me6TIp4r1ABB3+04iyE1FpTGeshcNIUpirsLMXq01bl4TSpmnhf8Qihm7EF
+         GRifxOst6MiwlFKr5DuqtxEpxD+IzJv4Ob99RWeGBjB9gd7QR9SaWvPA4+Dvfq5lK1Jy
+         6l7NO/tNIFFUlI2qxzM9SDZa5dbPwvP8aPEUHng8oNZdRK5IU/10AH/bhEK6GQTFnaAD
+         8v2A==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=DgcprPBW;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=nJiWamim;
+       dkim=neutral (no key) header.i=@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:from:to:cc:subject:in-reply-to:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=Odog/PYDsGfLo5OG/6M76N9Kv54SJfrVHllMpYWKrpg=;
-        b=Yba8aNCESpAnOXlXFjf5cEJ6OuG3oFdWUmRO3wQqgayhyCvdz+P2ttWJgVsD/6eYmS
-         /bp0Te/cFrbr6akBhPUrQMi5Ux4ZyVIvmkvHwKOT/Ib9Cy+WkCdbojcMD1ZYroBQJJgZ
-         abNnuozS3urv+iBhuubqJaLKLD5cnzNtilkgjgA0Qe9jOMJ41aUN8Uc3mWfQ5+zHv2t9
-         iWhMJ8/QcVftsEzika2Fahm6z0ZORcyayFOh80DSlP8Mk907d3unuNR9N81cT8mJ64Ee
-         9zyIXa3fgFZzsZCiRRAn4ZldTLA6HqZlWNqOnQL9oiuqOES8H4DN22naguqgt5PjIxv5
-         bGCA==
+        bh=TosT11OZHb/yiIoSCeh7umotmL8yUWJB2yZ5TN6wf7Y=;
+        b=iY14Z6AooG0u4LwPtii0pQTC6deWuTIlY4TFy1WDQLQLeRKZRrrNwyDuOTjC/Quo33
+         MmWuJCvoqVOaAOZ6LF09TudLTnEE8YfD14UeKXT7KRTk9wBNnOesl7LnHMwdODl/aNl6
+         cbjET9RH748hZVyR2ARPAcCkMZgTEhNFEib9zwMoFNZAJCR5pBigCnuLbqXvbMsVxQl7
+         jj7iV/NIocUZYU1DEgMIcDHQKpQltDjFq8P9vHApnUNF7rWVRONTNuTsf0B94aZI22B7
+         aHpvGz8It3x40w69xixoEe63xzSxmubxgRwdHCS0NtGoXa0rfGOICRslCJOT4b+VSm9e
+         0iQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
-         :date:message-id:mime-version:x-original-sender
+        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:date
+         :message-id:mime-version:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=Odog/PYDsGfLo5OG/6M76N9Kv54SJfrVHllMpYWKrpg=;
-        b=sLqof61rFcBrO6jie2MPtoaKbxAWCRcPYGHUcRoEOqE/MfTTgsuqlgE7aQfRgohDni
-         GPYrmZkyW5drGtLPZZh9AGq1midewuId9zH0chG+ewyZi8vqNOzq/FDljWHHoLRuZE1/
-         INy9dyVd7hN+mRkWagQao8jKrWQ3ouyeyOGyEH20ztIrLPd9RiyOJrkLQIH5gQcWBRUH
-         mwd7yeZmHUdmtmwaykaCQDFCmKg9KJFSgmWOjgyYQh7T9XT3zLff+VOcX1UHR8/jWUjp
-         NXGCknm81Su0UjwL5lADNbUfByC0T6MHKo0WW0scbQP9sP7qfX71dSph13AKdBRpKgTJ
-         TZAA==
+        bh=TosT11OZHb/yiIoSCeh7umotmL8yUWJB2yZ5TN6wf7Y=;
+        b=KFzqzKif1sQr8lQwnr/zFKt+/nxGWaH376H1Fr7XIeIZrPdgge3jb9Otg0sP/yyKzj
+         PE3KmtDl9n5lEh0iivws1b1ppfQOZeHSxAB1i1oWAkbUMEcn0r7sZNJ7wT3PZHMvhE5V
+         aKFMx6HPWBWVc1iXQXF0qeH3ayo9s92hG2iCFVjouS+vVm2anOtJQBZOYbkhLZmpOQ7m
+         Z91Bo0pY8OIu4IsU2srNoP9ROQrL9hE+4I8SPkm4H3VsZ0NyP0oXgQgWntm2gkT1K5vR
+         8gIVi9ptR/lR11cJREgLgIqC3o+aX0vhDxTpqwhCJPufucyauPsAfSnW1lnDUV9JGweZ
+         5fBQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533VxMO7qysJq6yyITCRs6vfPwQc2sr/fF0YCB7++bQGbD7tdNIq
-	5+4qzO6Yykof8SvCGNMwWXc=
-X-Google-Smtp-Source: ABdhPJz2c3orddIC+7Umh+YBi//lCnC+8/+c6dg17aOpAIKvOp2V5xI0fPYudQUYVJL2HRGvOgHlEA==
-X-Received: by 2002:a05:6830:22f1:: with SMTP id t17mr41111875otc.39.1638127995857;
-        Sun, 28 Nov 2021 11:33:15 -0800 (PST)
+X-Gm-Message-State: AOAM531FfW4wV7VNptXVeOXN2w0sCb8CwHY4t6zqRtAHEuOroMOUjE2o
+	/gc+3jLflCONheh27dTCstQ=
+X-Google-Smtp-Source: ABdhPJykm36SWgiTj3XuSwk//UQsXUmAphEUXlRIUpffNTpi5gVqDrowwCFITIbudZXjYWq4lwugqQ==
+X-Received: by 2002:a17:90a:1d0b:: with SMTP id c11mr36502883pjd.207.1638177975003;
+        Mon, 29 Nov 2021 01:26:15 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a9d:457:: with SMTP id 81ls3822741otc.5.gmail; Sun, 28 Nov
- 2021 11:33:15 -0800 (PST)
-X-Received: by 2002:a05:6830:195:: with SMTP id q21mr40480272ota.355.1638127995581;
-        Sun, 28 Nov 2021 11:33:15 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638127995; cv=none;
+Received: by 2002:a63:4e03:: with SMTP id c3ls3624279pgb.1.gmail; Mon, 29 Nov
+ 2021 01:26:14 -0800 (PST)
+X-Received: by 2002:a62:7a54:0:b0:494:6e78:994b with SMTP id v81-20020a627a54000000b004946e78994bmr38097767pfc.5.1638177974142;
+        Mon, 29 Nov 2021 01:26:14 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638177974; cv=none;
         d=google.com; s=arc-20160816;
-        b=qrnZkTko5111e9tsOlf7Yt31w/tGrFO0Vt68pB0ahaQ98Vt7hlA+HYr6PbOUCAGO5o
-         Al7jFRW16vBkAgKdrkugrwh+duXpGfYItBNoHbLTKlwhEif72i0Bn3xisUBOU2wz7tvI
-         EetzJV3hE/i0U56AEEIhsvCl4uR5yhm9+q3r4u1N7KFITTCi6EN0gmTfuhrVgNw3yOvH
-         ahQSloI1ufFAFEuHa5hAv1blhnH+HMsv+O79sb1YYUPVrSzp7jmifK4VK38HSYVIEoSS
-         wZsWqY5NIraQWmJP1ruI98M1mgQvFwSsmmuj+UvxW95wHi2e3wOY/ZLS7LkoA/rZaeu0
-         okiQ==
+        b=mcutMxluGLOB5M+Qj1Sd7YuJBcx74TTdlhJccgGej+rELEMokWBZ31ExR75rtKIs7D
+         vnzM1QqsdbpkvpAflCwhBDkg1tJJX6ucnkExF06lZBB9q1JGDv7FNdRMRPpYXNlTEsF1
+         l2u3KlVIfVCINuyC9e8u4Ju309iDYSLq5ixQld7p+obgEgvQJAsFYTOtsYmF9soykI9g
+         NW9+TuXlagdZ9OjdTy5WlhvB+bRRRSGN7bSrPBY6kQSXogzsKH8nULLBgyXuCKqv5wlc
+         0pUYziy2lsh7SoGBH5PjyY5eJVKDVAxwkXUyCNQVz29xazRo5qq7MfQv8TSkAxBJXKkn
+         uQZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+        h=mime-version:message-id:date:in-reply-to:subject:cc:to
          :dkim-signature:dkim-signature:from;
-        bh=1GlxYQghjX/NPZP4Y4QM4fareAu4mBm93KG+myCiGto=;
-        b=rug15Oi1M2zY4Y1ugukSFNzflCnSme2gSJBv/paq+3vZnRseUvJ2OqdsqKM+wOdj9d
-         kTo1Azp+L74bc56z8pcwFk2EK3FnclWhYsVezvHO3HNz0cIzU0zI0XLWPEiJKRhT5ugx
-         dMRp6fxk5c/kguyGsAfx9OQCSIkC86qOH3vfsekSQFf137tbcVOXn/Vp88Dq+jmYoRpt
-         e9NwfbIWHtOQ8su/mbZSAIhG8X+FVeElVK/PUHiJ04bcywRz7sBzn3vAVUI/q49QyDpW
-         uP4I3oPufB0sqDCIxY6OKSDnOqMAV7mZpFpt0ZcGkOvaKzmKsaqTDTnba5yBbecaSefY
-         i6eg==
+        bh=vsQfYjhiBM4r7l7V0nZmUO3oNlQtIhI3OMTj1eyI/yY=;
+        b=g7qo2jFeW1mCBIg7BpX5KbopRgE0R5nXJliEJO+8R4PjrlDTvXFQQxWXJQjvII3WDt
+         vFzYLNHg/24SD7cxQbfc/fcAWdxtCavUzEzgvRMQCRRDI/DBcGhKgWoIwWhFsf8Vi+Vg
+         lBsDXzbXDOXJ+6TLmSJeYOm4fl2LXZfluUjtZrV4cr6fjbz2Crg3SQHNqqqiFPpiIMmf
+         nIv7dMRPmkaLkWSFn7XMEgdQ1mN6qZC87+H709UqoTlpOlOxEPaxPd7wIh+WWYtFhOWz
+         88w8uPBOtpy646Px9nlxZe7ni8RvKk63k0xXCSsRXUoMINJBKmQdXnZ/6R3CGyz1nzBz
+         bOpw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=DgcprPBW;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=nJiWamim;
+       dkim=neutral (no key) header.i=@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
-        by gmr-mx.google.com with ESMTPS id g64si1891079oia.1.2021.11.28.11.33.15
+Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
+        by gmr-mx.google.com with ESMTPS id p10si355763plr.4.2021.11.29.01.26.13
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 28 Nov 2021 11:33:15 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
+        Mon, 29 Nov 2021 01:26:14 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
 From: Thomas Gleixner <tglx@linutronix.de>
-To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+To: Jason Gunthorpe <jgg@nvidia.com>
 Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
  Marc Zygnier <maz@kernel.org>, Alex Williamson
- <alex.williamson@redhat.com>, Kevin Tian <kevin.tian@intel.com>, Jason
- Gunthorpe <jgg@nvidia.com>, Megha Dey <megha.dey@intel.com>, Ashok Raj
- <ashok.raj@intel.com>, linux-pci@vger.kernel.org,
- linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>, Christian
- Borntraeger <borntraeger@de.ibm.com>, Jon Mason <jdmason@kudzu.us>, Dave
- Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com, Neil Horman <nhorman@tuxdriver.com>
-Subject: Re: [patch 31/32] genirq/msi: Simplify sysfs handling
-In-Reply-To: <YaNi2RkiYdnoEDau@kroah.com>
-References: <20211126230957.239391799@linutronix.de>
- <20211126232736.135247787@linutronix.de> <YaIlX8bef2jPLkUE@kroah.com>
- <87lf19fl9i.ffs@tglx> <YaNi2RkiYdnoEDau@kroah.com>
-Date: Sun, 28 Nov 2021 20:33:13 +0100
-Message-ID: <871r30f53a.ffs@tglx>
+ <alex.williamson@redhat.com>, Kevin Tian <kevin.tian@intel.com>, Megha Dey
+ <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
+ linux-pci@vger.kernel.org, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, linux-s390@vger.kernel.org, Heiko Carstens
+ <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>, Jon
+ Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>, Allen Hubbe
+ <allenbh@gmail.com>, linux-ntb@googlegroups.com
+Subject: Re: [patch 04/32] genirq/msi: Provide a set of advanced MSI
+ accessors and iterators
+In-Reply-To: <877dcsf5l5.ffs@tglx>
+Date: Mon, 29 Nov 2021 10:26:11 +0100
+Message-ID: <87o863e2j0.ffs@tglx>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 X-Original-Sender: tglx@linutronix.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=DgcprPBW;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e;       spf=pass (google.com:
- domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted
- sender) smtp.mailfrom=tglx@linutronix.de;       dmarc=pass (p=NONE
- sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@linutronix.de header.s=2020 header.b=nJiWamim;       dkim=neutral
+ (no key) header.i=@linutronix.de;       spf=pass (google.com: domain of
+ tglx@linutronix.de designates 193.142.43.55 as permitted sender)
+ smtp.mailfrom=tglx@linutronix.de;       dmarc=pass (p=NONE sp=QUARANTINE
+ dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -136,94 +134,44 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Sun, Nov 28 2021 at 12:07, Greg Kroah-Hartman wrote:
-> On Sat, Nov 27, 2021 at 08:31:37PM +0100, Thomas Gleixner wrote:
->> On Sat, Nov 27 2021 at 13:32, Greg Kroah-Hartman wrote:
->> > On Sat, Nov 27, 2021 at 02:23:15AM +0100, Thomas Gleixner wrote:
->> >> The sysfs handling for MSI is a convoluted maze and it is in the way of
->> >> supporting dynamic expansion of the MSI-X vectors because it only supports
->> >> a one off bulk population/free of the sysfs entries.
->> >> 
->> >> Change it to do:
->> >> 
->> >>    1) Creating an empty sysfs attribute group when msi_device_data is
->> >>       allocated
->> >> 
->> >>    2) Populate the entries when the MSI descriptor is initialized
->> >
->> > How much later does this happen?  Can it happen while the device has a
->> > driver bound to it?
->> 
->> That's not later than before. It's when the driver initializes the
->> MSI[X] interrupts, which usually happens in the probe() function.
->> 
->> The difference is that the group, (i.e.) directory is created slightly
->> earlier.
->
-> Ok, but that still happens when probe() is called for the driver,
-> right?
+Jason,
 
-Yes.
-
->> >> +static inline int msi_sysfs_create_group(struct device *dev)
->> >> +{
->> >> +	return devm_device_add_group(dev, &msi_irqs_group);
->> >
->> > Much nicer, but you changed the lifetime rules of when these attributes
->> > will be removed, is that ok?
->> 
->> The msi entries are removed at the same place as they are removed in the
->> current mainline code, i.e. when the device driver shuts the device
->> down and disables MSI[X], which happens usually during remove()
->> 
->> What's different now is that the empty group stays around a bit
->> longer. I don't see how that matters.
+On Sun, Nov 28 2021 at 20:22, Thomas Gleixner wrote:
+> On Sat, Nov 27 2021 at 21:00, Jason Gunthorpe wrote:
+>> On Sat, Nov 27, 2021 at 02:22:33AM +0100, Thomas Gleixner wrote:
+>> I understand why that isn't desirable at this patch where the storage
+>> would have to be a list_head pointer, but still, seems like an odd
+>> place to end up at the end of the series.
+>>
+>> eg add index here unused and then the last patch uses it instead of
+>> __iter_idx.
 >
-> How much longer does it stick around?
+> TBH, didn't think about doing just that. OTH, given the experience of
+> looking at the creative mess people create, this was probably also a
+> vain attempt to make it harder in the future.
 >
-> What happens if this sequence happens:
-> 	- probe()
-> 	- disconnect()
-> 	- probe()
-> with the same device (i.e. the device is not removed from the system)?
+>> Also, I don't understand why filter was stored in the dev and not
+>> passed into msi_next_desc() in the macro here?
 >
-> Which can happen as userspace can trigger disconnect() or even worse, if
-> the driver is unloaded and then loaded again?  Will the second call to
-> create this directory fail as it is not cleaned up yet?
->
-> I can never remember if devm_*() stuff sticks around for the device
-> lifecycle, or for the driver/device lifecycle, which is one big reason
-> why I don't like that api...
+> No real reason. I probably just stored it along with the rest. Lemme try
+> that index approach.
 
-Driver lifecycle AFAICT.
+After looking at all the call sites again, there is no real usage for
+this local index variable.
 
->> > I still worry that these attributes show up "after" the device is
->> > registered with the driver core, but hey, it's no worse than it
->> > currently is, so that's not caused by this patch series...
->> 
->> Happens that register before or after driver->probe()?
->
-> During probe is a bit too late, but we can handle that as we are used to
-> it.  If it happens after probe() succeeds, based on something else being
-> asked for in the driver (like the device being opened), then userspace
-> has no chance of ever noticing these attributes being added.
->
-> But again, this isn't new to your code series, so I wouldn't worry about
-> it.  Obviously userspace tools do not care or really notice these
-> attributes at all otherwise the authors of them would have complained
-> a long time ago :)
+If anything needs the index of a descriptor then it's available in the
+descriptor itself. That won't change because the low level message write
+code needs the index too and the only accessible storage there is
+msi_desc.
 
-I have no idea how these attributes are used at all. Neil should knows
-as he added it in the first place.
+So the "gain" would be to have a pointless 'unsigned long index;'
+variable at all usage sites.
 
-> So again, no real objection from me here, just meta-comments, except for
-> the above thing with the devm_* call to ensure that the
-> probe/disconnect/probe sequence will still work just as well as it does
-> today.  Should be easy enough to test out by just unloading a module and
-> then loading it again with this patch series applied.
+What for? The usage sites should not have to care about the storage
+details of a facility they are using.
 
-That works just fine. Tested that already before posting. After module
-removal the directory is gone.
+So it might look odd in the first place, but at the end it's conveniant
+and does not put any restrictions on changing the underlying mechanics.
 
 Thanks,
 
@@ -232,4 +180,4 @@ Thanks,
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/871r30f53a.ffs%40tglx.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87o863e2j0.ffs%40tglx.
