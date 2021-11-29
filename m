@@ -1,129 +1,144 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBKOPSOGQMGQEFZTE6IQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBM5USSGQMGQEWBGOHMY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ed1-x53a.google.com (mail-ed1-x53a.google.com [IPv6:2a00:1450:4864:20::53a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7A92C461A35
-	for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 15:46:02 +0100 (CET)
-Received: by mail-ed1-x53a.google.com with SMTP id w5-20020a05640234c500b003f1b9ab06d2sf1774280edc.13
-        for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 06:46:02 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638197162; cv=pass;
+Received: from mail-pf1-x440.google.com (mail-pf1-x440.google.com [IPv6:2607:f8b0:4864:20::440])
+	by mail.lfdr.de (Postfix) with ESMTPS id 77238461D7D
+	for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 19:21:42 +0100 (CET)
+Received: by mail-pf1-x440.google.com with SMTP id x14-20020a627c0e000000b0049473df362dsf11258475pfc.12
+        for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 10:21:42 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638210101; cv=pass;
         d=google.com; s=arc-20160816;
-        b=UGcT4Xh1lzIeig3hqlRS8SSI8kVy848Zqm3a8K9+Mjn/T94gunMVFA45BoDoDBdCIW
-         7qVDPYrkGx1g3DoXPTXwXv8VPQbiezoMtgaGTVzqSv4JmHQ1YE55DRvuWnRMneCjNwST
-         +vBlHG038ZIj9LfTYiPeJyiTxVKtyblLbunOd040T/0Or6rhKwkT6teXBc236WzMnvwg
-         yOijxoXQISB5mfP+k5fHwRKoMOmm2EnEnN07rkXAbDfYQgdI9fhao2wqTCzzpUBMbOwI
-         V/Md+6CpUuccT4maxpesJPS/FHPymA5u+L4xzAiUFOFSC1tADtkmriQg8XrabqX9jC8T
-         nzBg==
+        b=pxR4bcBYX7bROkTZGIhxF02ml6rooOyhUSbcFXvRpSsu9eXXsvmpw3GNLpMn5H/sRi
+         vf1KRhb4hX3IUKma/Mss6J4cmH3ZoKaRcgLQQ6TI1rFWb4lgS/NFkDxRYtMtIwU5Yi6F
+         pNQ2Ho9o0YdV4ZYb5virXQjoAO2BhJgdiHYs3Rf1fqIxaOo4oztr1SoufVk1LM4GdV2F
+         WrL5USPnqC3tlB/YQPjHi3IC22GmCter4JSQcidP8fJe/EGDxeYQs8t1pHIO4ek/myzR
+         q50NfyR9f6ArUi6U2BImBvyRJeIczV2OkedEvxQgOTHPV+Nphvy6G7QmiZIkRsEIRZ4h
+         uKZQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
-        bh=XWAOkadJCLapOsI9KhLMq1/K0hpnCyMsQI6O0KSljM0=;
-        b=rtVlRR3kWq3BCL/92ic5X+Y5K5kAXwHgietq8on4WlgTHHonAi3XLTpGk4AnA1p0CU
-         1c8/J9Ay5fboGr3FX0b4GO8Yv3t8j78yP9RLQ02hGrbIOrlxo1MsTYQ7+3tHbI/EQ7tn
-         4BIGhXWY4W55ccPNXyGxJGrVu8cXYmKPusN1/PFZfAH0NDXKIprRSD/c+hnDo9LtrP7u
-         UTaXRY5agac68UonQyiiCPW9JMIhfez8Dy9v5Z9YS7tUqwyit73J7aXjbIaKvieykrKw
-         rzvd6lD7sJAvboZ2cuTx48lgayncmLA1SfM5gjqCcPykY3Qol9UOmL6QTlRGzmJBFTYu
-         WWjg==
+         :list-id:mailing-list:precedence:subject:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:sender:dkim-signature;
+        bh=mdsdHUjqj/98OXqvT/Q/KxtUyVAHfi0E6fkE78yUdig=;
+        b=jRLyKpW1VsDeuUAeVeAOpx7o4tt749qOsYCoX1jvWXaooyRco1E6TqFRlgytOv3fEP
+         TKATjUQsM0/PVMcSpQ5BtNdePrDCakrxTM4yThv7mz80tUrbSBSvOwUkwOXmiPURseB4
+         JYpvhOsFn/8Eu09iSvd+LZTTa46FLbbzOPy1mPMalaQHv36bdlC5MAfhHSgGrUNK3D0T
+         QmFohyl83UudKH0YuSqpyyx/l+RXs9eqe0CZCCgechFPoCB7Diugnfs617B4aKF7U3Va
+         jDeAYsT5wFLaSRj2lT09zisj8ZHQZFpr2tlVDdlAMTp7Sr54HVpJxEjYGSNrAQ7zpeh7
+         NLUQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=3S6nmBad;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=vkhx9Uk6;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+       dkim=pass header.i=@deltatee.com header.s=20200525 header.b=i+hqBeVj;
+       spf=pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) smtp.mailfrom=logang@deltatee.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=deltatee.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=XWAOkadJCLapOsI9KhLMq1/K0hpnCyMsQI6O0KSljM0=;
-        b=noGl2L0BhgUEoc0Udzalk7cRoBJET/PtwAGc/wDvEnMuIEvT1mzGyk3OCWFO61y9PP
-         /otlJ/mCJ+rHSx1ahgs+jeOhMOkcMYLOPr04KZGEfgKKt5UF5ccW6PnANP+LK0ZgVkG4
-         g50XfFd8Qf3qJ+ftx0YmV5sS0YJ31RZjVnGZkq2K5ZuCiZ65HO8FdVCE6bk3UD3aX7Ee
-         WEDcJRZLvjoSp7s6IFsNC5LKjW6ZsdQSW3QjXO7az0r2oQF77egKIhDhvN7BO7bDRSyL
-         JIu7rUwiB0+U5C2/LN+ncioBY5ul2y088gES3WUJh8KS5KBxON8//K6D5VIVCmKYpURy
-         KumA==
+        h=sender:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:subject:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=mdsdHUjqj/98OXqvT/Q/KxtUyVAHfi0E6fkE78yUdig=;
+        b=n4ImgY3QpNbvy5yisgTqP39MymCtPMonHpFHj9fJE9u6d1G57akF2va0m8g5JnzJmJ
+         W0LnfIPccqMQ03sxW4le6gEnooBO8O6ZBWMgR5D3jFAyNPLs5VQp+hb5uL8zzqO65ocU
+         0os3V+OuIZUui5D+KDjc7nYCRhYbievszL0gWx6DeQafTidc37y4+401DbTC8NLtxjQl
+         2Bno6jHFt6bastHJNdgvuN5SvdXc9WGCAmtHLQVC6XNNQMgtit/cLbjjGfrdgtp2rPRU
+         xhLeDLhFbGkfIWrSgKG9koxooB7rwHY8Zbcuzvmrfk4UWRm1/mQcWVk9ImXUwFN2v3oP
+         Y23A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
-         :date:message-id:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=XWAOkadJCLapOsI9KhLMq1/K0hpnCyMsQI6O0KSljM0=;
-        b=sl2T+jx5BW0Y89ULqLbBAjzVNeq+bb/8TEVpd3cZBotAtU0SdDX+KSriLIqsI142UD
-         +43kMLUJI05BaNU7rtSv89rtXay54zmWze2fUT8NvOq3Bb9bupP5eotYH8LWns9TyZ5g
-         3t5T2Em3B/HrKUXtpiFy4XS4acOKjSwtAj8JqPn3GnL41oWsO1Ox4QNkd/FhEyyi6Yzw
-         YENyGYMgVbQ547SHbkox4Hc+WP1JbwEgAR3fUrnvhvVbT0hCDAzKC6D8QDQDdT2DkDzs
-         S4r6FxPS2dY5S6oV+PC39x48FDkIzZD/argkinrxNsL7mxZ6dM0yVcHgrL4H3N7gqPyb
-         cW8Q==
+        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language:subject
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=mdsdHUjqj/98OXqvT/Q/KxtUyVAHfi0E6fkE78yUdig=;
+        b=LY8nM+o1FbAMKj03gWebCoLyzTAiXq0OpfktmlvDmjVAR6wSgeOR4XVwiRxobuKkqy
+         PpiToWROJsd9QmHhb5Yk94BGCQj9nomL7chdyD+b83nXtMdjROnMJgVx/AZW+AXbm4Hf
+         fu5EB4i+lUjOl7qqjSCE+XtO63aj1f+vqAT+O05C5uYYpygT4+3aYq/7ltjm4TntPlwt
+         WFOLf+zr9AfoESRo8ZAJunrIWuVFFU7NEcCfLeWtr31gy44jnDVYrPrHDZ3jwVcQ7Fvt
+         LetvO1XyMgspdzR0Jtx8YwnAh649TAQYM8rgttyxHQxsacZTyp3u02xqLmb4jTwCspUi
+         sJIg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530YvHcofWqxe741/YMPld8LKOB0josAnc5jbZnBEhpINfC8tH54
-	m144p+rq5bWkDnLYL66SDXU=
-X-Google-Smtp-Source: ABdhPJwcym2kaX6IuM4IjlgHbn0WuIdcvtgrlzFth6RsobowYwtzZGPpdL6EMz1oryu1BYONjXSRtQ==
-X-Received: by 2002:a17:907:1b0d:: with SMTP id mp13mr23989776ejc.29.1638197162245;
-        Mon, 29 Nov 2021 06:46:02 -0800 (PST)
+X-Gm-Message-State: AOAM531zAtDzI3jG0XKJJetlmOdCXcKz8Hj9jZRhk+Xb0B4A08m6nrj6
+	vDThjewyNPbECfsoKmEWKz0=
+X-Google-Smtp-Source: ABdhPJyGrzspeaCBwwDs8vrM7KizMaLhTy9ux6d9d9k/wN9hS//6S/PeWj0JJoqnWoIUxzxgQRwn9g==
+X-Received: by 2002:a65:6a4b:: with SMTP id o11mr36755599pgu.305.1638210099949;
+        Mon, 29 Nov 2021 10:21:39 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:907:7f0b:: with SMTP id qf11ls1845954ejc.7.gmail; Mon,
- 29 Nov 2021 06:46:01 -0800 (PST)
-X-Received: by 2002:a17:907:16ac:: with SMTP id hc44mr58805668ejc.363.1638197161242;
-        Mon, 29 Nov 2021 06:46:01 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638197161; cv=none;
+Received: by 2002:a05:6a00:138d:: with SMTP id t13ls5775017pfg.10.gmail; Mon,
+ 29 Nov 2021 10:21:39 -0800 (PST)
+X-Received: by 2002:a05:6a00:8cd:b0:4a2:82d7:1703 with SMTP id s13-20020a056a0008cd00b004a282d71703mr42048278pfu.43.1638210099134;
+        Mon, 29 Nov 2021 10:21:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638210099; cv=none;
         d=google.com; s=arc-20160816;
-        b=qW8ZiNE/gbrPN6h0gJGOGWN9gL14fIUV/fnNLjYEAzW/fTuUNeMjgNXG2aNQJM2K4k
-         CvqyabIsM8TIMfYPj62WOMp7ENLttW9Oq8wEalUOfWx73KjvVjPBTO75XWwPX2r+THfD
-         P4MY71rs608Ry3dkbl2YAcPd7I6d1/qk2g+19nQ3u2Z6OG6Pu3CTf/38NI5hcHqc8UNi
-         iUV6gDl9Q0bN1sP0cpl1M/F7OtVSv+W+UdwRUc7lLYAGblntTvQBL6WWr61qSxEzd7kO
-         jsuvQzcqLlIav1iOSekGi13D7wCLhiY6odt6Z5wFASoWa1IwS2hVdYisHYxBrJXdM3GS
-         BLKQ==
+        b=RvgfXDITADRjd+gd3bN5Ka3FFkChNt1qpvKksLP/TEuSlwvUvVvGOwJJCdUICTLL8c
+         YSehbPzUcJh8321NK+kwVnDP0SPOxb9rrbjtcArGgmL0ZhNK2znOIF2xSKWEIuhxiXaV
+         rjrqULzpvs1aw5bR55WiNBijsCSqqFvJxf23onq6vnuqjG7BX8hFEmwesrlzG9XYuJDF
+         1xAzvo0KDoNXBYwJL3D2oheAycp/ju/KUOIPb614bbv73yXeyo8OgkBPfFnbnFqxVNjL
+         JcxKV/CVx6aywLWAux+uy6Ai2FzgW9jQHCxyMJ49HWLhvD4yofwAZPObt1VuF/sA/5+i
+         m02Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :dkim-signature:dkim-signature:from;
-        bh=moCVXIgDd3WnVTqImBDpITWvvySrFpXIFP1kWeQJHKU=;
-        b=G07cWF6zcw1eguokIu831L8uDC2SRZSH2SmiRzNFG7jVlF6WnJC2uAOiJPQoeB5aL7
-         zPRkLCb1xaIJWJ74aVC1nKlGmDzb79CItLdriS6mG9X3aptyvantScY71gT1p9tgwTGC
-         fzhlL0NaMWiJS3hYtLfowFGsqEtVplmN8LEzVFpXY0UTLlr/GvgPEYJBTkJP7qfdBmeB
-         xbA+LP2KT2PpzZVtty9FOoq0TIHXHC4Jezamwiv4nJAXNsPAJVzjC6JNO31GGnd20SLj
-         ZiylIxprniGYIWSNd0ustWyScACLISCEQVhxUF6UQ9ni3LYsJ4uvRJtA7WcxmMqDRYtL
-         mEiQ==
+        h=subject:content-transfer-encoding:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to
+         :dkim-signature;
+        bh=WV/TNnYNnFcZxzUqPd3ZA5cAcLIoTgfWNZK1F+bgrdE=;
+        b=v7qHLBdyYPski3mJHvXVVR/BGtHT3K0x59+/+S+WvD7vsI/zWp9JiIS7b9RGs3gFf1
+         9v7Q1CWIAqMvos8OTWf4W//uy9X9yyghokiYD1RRC48bHHdOiHvmNmd6h7GeyOPULSkB
+         EfRtX+OyJzjPH6+yfb2SnYDeTCBy+q1FxSLTChPFGPKq/I2aYwd83q4XLUIa5e9W8zo5
+         YQYMtlJ3nwxQDZTQeksZHVFyO30bE+kTjo9Bxs8fjkYUBcGqobCLjCQ+5D0SE+L2/xoc
+         u7/wEfgmydHPD9ViYTwaJMpJduypjS8vrBdX+5O6DEThFFx0Y+oMR7Z0tuQNHt9eLxVi
+         wTyg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=3S6nmBad;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=vkhx9Uk6;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
-        by gmr-mx.google.com with ESMTPS id d5si1114856ede.2.2021.11.29.06.46.01
+       dkim=pass header.i=@deltatee.com header.s=20200525 header.b=i+hqBeVj;
+       spf=pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) smtp.mailfrom=logang@deltatee.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=deltatee.com
+Received: from ale.deltatee.com (ale.deltatee.com. [204.191.154.188])
+        by gmr-mx.google.com with ESMTPS id l17si672793plb.1.2021.11.29.10.21.38
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 29 Nov 2021 06:46:01 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
- Marc Zygnier <maz@kernel.org>, Alex Williamson
- <alex.williamson@redhat.com>, Kevin Tian <kevin.tian@intel.com>, Megha Dey
- <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
- linux-pci@vger.kernel.org, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, linux-s390@vger.kernel.org, Heiko Carstens
- <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>, Jon
- Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>, Allen Hubbe
- <allenbh@gmail.com>, linux-ntb@googlegroups.com
-Subject: Re: [patch 04/32] genirq/msi: Provide a set of advanced MSI
- accessors and iterators
-In-Reply-To: <20211129140112.GX4670@nvidia.com>
-References: <877dcsf5l5.ffs@tglx> <87o863e2j0.ffs@tglx>
- <20211129140112.GX4670@nvidia.com>
-Date: Mon, 29 Nov 2021 15:46:00 +0100
-Message-ID: <87a6hndnpz.ffs@tglx>
+        Mon, 29 Nov 2021 10:21:38 -0800 (PST)
+Received-SPF: pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) client-ip=204.191.154.188;
+Received: from guinness.priv.deltatee.com ([172.16.1.162])
+	by ale.deltatee.com with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.94.2)
+	(envelope-from <logang@deltatee.com>)
+	id 1mrlHS-00ANgo-Vh; Mon, 29 Nov 2021 11:21:36 -0700
+To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Kevin Tian <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Megha Dey <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
+ linux-pci@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
+ Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com,
+ linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>
+References: <20211126230957.239391799@linutronix.de>
+ <20211126232735.547996838@linutronix.de>
+From: Logan Gunthorpe <logang@deltatee.com>
+Message-ID: <7daba0e2-73a3-4980-c3a5-a71f6b597b22@deltatee.com>
+Date: Mon, 29 Nov 2021 11:21:30 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.14.0
 MIME-Version: 1.0
+In-Reply-To: <20211126232735.547996838@linutronix.de>
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: tglx@linutronix.de
+Content-Language: en-CA
+X-SA-Exim-Connect-IP: 172.16.1.162
+X-SA-Exim-Rcpt-To: borntraeger@de.ibm.com, hca@linux.ibm.com, linux-s390@vger.kernel.org, linux-ntb@googlegroups.com, allenbh@gmail.com, dave.jiang@intel.com, jdmason@kudzu.us, gregkh@linuxfoundation.org, linux-pci@vger.kernel.org, ashok.raj@intel.com, megha.dey@intel.com, jgg@nvidia.com, kevin.tian@intel.com, alex.williamson@redhat.com, maz@kernel.org, helgaas@kernel.org, linux-kernel@vger.kernel.org, tglx@linutronix.de
+X-SA-Exim-Mail-From: logang@deltatee.com
+X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on ale.deltatee.com
+X-Spam-Level: 
+X-Spam-Status: No, score=-8.2 required=5.0 tests=ALL_TRUSTED,BAYES_00,
+	NICE_REPLY_A autolearn=ham autolearn_force=no version=3.4.6
+Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
+X-SA-Exim-Version: 4.2.1 (built Sat, 13 Feb 2021 17:57:42 +0000)
+X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
+X-Original-Sender: logang@deltatee.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=3S6nmBad;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e header.b=vkhx9Uk6;
-       spf=pass (google.com: domain of tglx@linutronix.de designates
- 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@deltatee.com header.s=20200525 header.b=i+hqBeVj;       spf=pass
+ (google.com: domain of logang@deltatee.com designates 204.191.154.188 as
+ permitted sender) smtp.mailfrom=logang@deltatee.com;       dmarc=pass (p=NONE
+ sp=NONE dis=NONE) header.from=deltatee.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -136,42 +151,27 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Jason,
 
-On Mon, Nov 29 2021 at 10:01, Jason Gunthorpe wrote:
-> On Mon, Nov 29, 2021 at 10:26:11AM +0100, Thomas Gleixner wrote:
->> After looking at all the call sites again, there is no real usage for
->> this local index variable.
->> 
->> If anything needs the index of a descriptor then it's available in the
->> descriptor itself. That won't change because the low level message write
->> code needs the index too and the only accessible storage there is
->> msi_desc.
->
-> Oh, that makes it simpler, just use the current desc->index as the
-> input to the xa_for_each_start() and then there should be no need of
-> hidden state?
 
-That works for alloc, but on free that's going to end up badly.
+On 2021-11-26 6:23 p.m., Thomas Gleixner wrote:
+> Replace the about to vanish iterators, make use of the filtering and take
+> the descriptor lock around the iteration.
+> 
+> Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+> Cc: Jon Mason <jdmason@kudzu.us>
+> Cc: Dave Jiang <dave.jiang@intel.com>
+> Cc: Allen Hubbe <allenbh@gmail.com>
+> Cc: linux-ntb@googlegroups.com
 
->> What for? The usage sites should not have to care about the storage
->> details of a facility they are using.
->
-> Generally for_each things shouldn't have hidden state that prevents
-> them from being nested. It is just an unexpected design pattern..
+This patch looks good to me:
 
-I'm not seeing any sensible use case for:
-
-     msi_for_each_desc(dev)
-        msi_for_each_desc(dev)
-
-If that ever comes forth, I'm happy to debate this further :)
+Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
 
 Thanks,
 
-        tglx
+Logan
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87a6hndnpz.ffs%40tglx.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/7daba0e2-73a3-4980-c3a5-a71f6b597b22%40deltatee.com.
