@@ -1,139 +1,210 @@
-Return-Path: <linux-ntb+bncBDXYVT6AR4MRBNFSSWGQMGQEACFQIVI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCN77QHK3UIBBWOFSWGQMGQEUUZFDLI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x33b.google.com (mail-wm1-x33b.google.com [IPv6:2a00:1450:4864:20::33b])
-	by mail.lfdr.de (Postfix) with ESMTPS id ECA8C46267B
-	for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 23:50:28 +0100 (CET)
-Received: by mail-wm1-x33b.google.com with SMTP id o18-20020a05600c511200b00332fa17a02esf11591740wms.5
-        for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 14:50:28 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638226228; cv=pass;
+Received: from mail-qk1-x73c.google.com (mail-qk1-x73c.google.com [IPv6:2607:f8b0:4864:20::73c])
+	by mail.lfdr.de (Postfix) with ESMTPS id 55F92462844
+	for <lists+linux-ntb@lfdr.de>; Tue, 30 Nov 2021 00:31:38 +0100 (CET)
+Received: by mail-qk1-x73c.google.com with SMTP id p18-20020a05620a057200b00467bc32b45asf26491148qkp.12
+        for <lists+linux-ntb@lfdr.de>; Mon, 29 Nov 2021 15:31:38 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1638228697; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Rshyf2vRVr8OcHRJxHK5JzE4MrHtTYFrx8DZHSOdoMlMo27Mipud8v86XfgkK7f4Go
-         8C9xwAQ7nkDQFa2CPh3CjxevbfsrwRCEKt2geq5rMXHO9TTvJPFv6VR/LGP9I2Df8e2x
-         3ND6NbGdU/1iOSysUQHZHE5/Gz28cqk1RWWyi7FsvOYL8Sz6FzZrCpDdvzUSNPUAXuaA
-         pqB8R0/8XHTZqN6M7c9xZRcAxr7kC1m37/urKymyttFQsfxn+ZmkhVpYx+/fYKBhlsYs
-         LXMK+1s0KfrKBcno1cFCBw6//4Pw1cg7XtTp8nDgIg7CDF2vzC0UympdxwBbQCTCFcMP
-         Qsdw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=JWxn0ar7t3G13z1ZM7nmrdNwKVa/Ccd3DgW33qEtSYR2PU5vJfwiorUV02fR05sS4W
+         Ls9tD1wVWd69BdOqexeJ7qQw53DmiOosF87vGvwhBC3zi3EmCrat9lZc4mjDvqfS5kR5
+         LZZfFQKOprErRtaXNOLzjBHYwz4IM9iFrkiK06tgxb6T7y28p+VuOPGgNxWycgjLnZn2
+         4Fj0ak/rgO5fsc6AwDcYsnoFdyZuIDmR8i75pZ2zMy/NEb3RjPQwnlN3hASVXYVOgkmD
+         zwlZH2s5W+7tLh/RN0qqXFKjf9Ad91ITqLDd7EPbNK3O71mP8pMctTuh9utBhkfx+JWL
+         FfBQ==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:dkim-signature;
-        bh=bkBxia9laA5fNRjXs7jPHM3Fj0L+vzbbHtJ4TADKA0o=;
-        b=JfgUf1Dp2Hb6mvr3RdCzWbliewMCUfAtUXU5K9VsgzlE2GhZxVePV5QdrStuYyOOdw
-         hOkbCwWdAwd+0gCkFg9Bl/2/CTXRpHQ9qztf4G6evRwScot9zED/rO0zrDThX3nrwspI
-         3O8l56WFieBoilAnon+FX+JLsCvtD9wOyxUgOaWhvVhYqc2MTnfbMJQ10SEobSLq8+pU
-         /ufrSwFGKSiFouFgMEAuy1eAzaA5qcbYi/n4RSFCkSFgxN4zEIjaaRYg/bKGzsfkr2j1
-         Ia054SviR4mTWvZsQ8Y80bf9fBNsWD/LkRDLPLySaugIxTL8DF9dhAM9SRItXjgCo1yn
-         LrTw==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.31 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+         :list-id:mailing-list:precedence:reply-to:mime-version:in-reply-to
+         :content-disposition:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=90Wd/PKxeUfQ5rPmVk+4Ucmr4FcSfDBSClZzb9WWxDo=;
+        b=rh1WxkYKfleUwTV61d9HTf+juzkyRSbTWEer4HgGi7QnoDIsS6iSPkCDtr3eOS6dnQ
+         uxjicZhOml0ywqzYA1tvfQovUBiDDoLyz5E5WxI7M5OB2d7bNh4DA9E8LDl6EYTyKGVL
+         nyEZl3sesCR5g0RkhLQZZlN49+YAdOo58tpzaVmpOKvxd5J5N3eVhlheuHj77C/p3gVH
+         4xLH4MPJozy220GNa3Q5tsqafNtSl9qKhR/NkRD7JgwUzymjzC9OF1esDoWFf7RgDXin
+         215Mj0KmIQ8wgzRccF0Srow+78RlBPjYOGrzasdRgySpHhcCEbhKF6MPtdYRg3wnVG/4
+         IqFQ==
+ARC-Authentication-Results: i=3; gmr-mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=BPxRiq2Y;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of jgg@nvidia.com designates 40.107.244.86 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=bkBxia9laA5fNRjXs7jPHM3Fj0L+vzbbHtJ4TADKA0o=;
-        b=sOShaZNBIZ/jIEKn9tI6QYajBUltahvv8tG39nRwG0A12hz4TcR0CWL0FEHmL/T8x0
-         JiudRFZT+Ibyt7DyJ+/sFhoFZGOw9JRVW2OIfRtfOylBdffpe96G/I5KrL+5NF5m9Bf8
-         LCerx1bVcz6SySUFzqiKknlIK8NjfUET5RU+sDx5OxCqYwMcFmGFzHPZpV2fBiJ7mRjL
-         P7wxeYP/wq1Q7TwquqtPcLkP/VMvt9j2cd9k/3f7ZeYI27HrGuIKtlp5FcUFWmQjnFwf
-         /iAz/C7jXQM1JD1mETp0hyUgnlXmIsCooUcH/KpR7ldCepD6CWSk1iifMEV0Qz2QXQ46
-         A8VA==
+        h=date:from:to:cc:subject:message-id:references:content-disposition
+         :in-reply-to:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=90Wd/PKxeUfQ5rPmVk+4Ucmr4FcSfDBSClZzb9WWxDo=;
+        b=VHxrZwZ9gAerWitpdplNVz63/sVRTcw1K++twSiM/A5lrERaHfmX5AfgdzRjX8vkah
+         pcpk9t9D6tKSqtJQr/4TKCN5LiqHhkEhUcILjLKyADwCssthG6NmI/bHEnlUK6cdZBZW
+         o5sRA3FrGlF/bQB76kvsbGqIrKvMn3nZcqMi4nGS4Vw9dsYpUMSuuXw5LB7QGdC0U/tl
+         vJod5wByJX2ux4MM3twSaclLUCrbNvH1aMvg9vdB/mIjJIY2uXcVraKnFUBSUB2YhceW
+         cUSxO+djEtzwVI+3wwGBZIuKCOV8Mr3PEBLcf1peWAf1y3ojUMaIs+H0Dgt7xVg/LZ1D
+         ApGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=bkBxia9laA5fNRjXs7jPHM3Fj0L+vzbbHtJ4TADKA0o=;
-        b=Gk0kt+pt04zKYIQqY/OLv/ydZR+HhPFHNf/uq63ofa0/cKfH/Rm0UmECd8yiD/KoMp
-         AcNzL8ECeH7nqMhZZ790gDMwyKrVck34Eqk4xS1aUsNXrnWqzia9g9aqSPb9V0VnUgBO
-         A4ngyRad0VRZQXdGOcI84eZkX2h7OFi+n6ZYbxJt//JAk3HRy1s8tBnfpy11W41sAj42
-         CAJcKBYWuXm3imswXT+rnmkcXHEL+rcSKneB0CeFuL5bVUeTN4ADLJcbxpPcKsJYeM8c
-         rmD/yk56TYOdD2nzY9sTr38s7F9Id74/yQzum1k3f3//l++ntnuZX8FEb8bEDuVYwL60
-         CDIg==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532UYV6Q7ikMDDHqa86ULMTp8r/XYuMcome3VHeaZPgccUbDfsYt
-	EMr8yUEEVe3rmxLkiuPQVvs=
-X-Google-Smtp-Source: ABdhPJxIw+6vSgjDjldHtGqwHzkWAws1zZwFUgugHU5CSv9BHIfJwBnc3Qf6ap4pW9R6pXA9fJCmsA==
-X-Received: by 2002:a5d:47c9:: with SMTP id o9mr37717415wrc.348.1638226228746;
-        Mon, 29 Nov 2021 14:50:28 -0800 (PST)
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :content-disposition:in-reply-to:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=90Wd/PKxeUfQ5rPmVk+4Ucmr4FcSfDBSClZzb9WWxDo=;
+        b=teFby9V+f0gnz+bz9/wwnD8ex+BGtWCqThS34H08/HmTogCIoPcKWupv3lB0Obx3c8
+         BvLGMI7+JPZPaZjZBTD0Q5JaDtQLjy6Y556wVdBn/QRig84ecWqSaJ5V2lXs9hhaNk41
+         r+NeJXLGXoWgdgYlFqJr3AWHCOWBLuwsfR1DMSZrvsBgxrn8uaDjwT/K6ZSKKqT+5omz
+         WNZjSB0gFhiJVOkBckPjONxN8oTn7imBxcL1B/FEx716gMj0+px2wRFm7/LDCNecAYW+
+         q6VTZPTTX0Z8nL58RZw3KZTwg/7BdTM1+CZQ9MCOsSqNqeeWoHk5rMNGIWdptKfdThBi
+         vdxA==
+X-Gm-Message-State: AOAM5314AYuaogA/OtBeDXbAAspqyBPvAS3kU3RE61T+OtPq684Idn+X
+	t4ga6svJqhgGXwqoEOIDfto=
+X-Google-Smtp-Source: ABdhPJwpQbJX6Q9SWYZozIXJHb6scH+7uSkFEGqEUzMZ/zhi3zLZdidT7m2VztLAZxx70OuIWQ+h0w==
+X-Received: by 2002:a05:620a:4107:: with SMTP id j7mr33585754qko.645.1638228697364;
+        Mon, 29 Nov 2021 15:31:37 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:fe0b:: with SMTP id n11ls10502767wrr.0.gmail; Mon, 29
- Nov 2021 14:50:27 -0800 (PST)
-X-Received: by 2002:adf:f206:: with SMTP id p6mr36928547wro.509.1638226227928;
-        Mon, 29 Nov 2021 14:50:27 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638226227; cv=none;
+Received: by 2002:ac8:5c85:: with SMTP id r5ls9393624qta.5.gmail; Mon, 29 Nov
+ 2021 15:31:37 -0800 (PST)
+X-Received: by 2002:a05:622a:1812:: with SMTP id t18mr37863190qtc.455.1638228696931;
+        Mon, 29 Nov 2021 15:31:36 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638228696; cv=pass;
         d=google.com; s=arc-20160816;
-        b=cFwlxmTkVCRP1X/x+7wMELIAH9Klta482NkVe5cTJ9YNimmEzQ0NGmWN7Xf8objkVP
-         io5me7E7BZ9D3ywkxWcuJAHkkS4RxytyEa8mFjji9Ja+a7aSuIKwESDK++9HV1czb/lR
-         dJOsW00/Y2IhBKTiCJp008l1njLlvV+AydJhOrfYRJOoDSjX05dVyqold4wLJx2KK1XY
-         5xzWlpuoa/06Q1MU2TvaIwj2OIsD6BxMjf5MOiSZl3x+xyj/bxChwWANGk4HeAa91jUQ
-         8/n9PTwxa9UnRvIsAh1/4SQ/VdrlelTEn0ky0jDnJLC8KUsdL+EOCODtKV5yGIAMv33y
-         RTQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=xDc51V/NLbF2HRrnRI3LW5qqYtH3l/L9lcC0Xt/V3x0=;
-        b=q2v8dqyyFz/XN6SjOptfLZAuHlNe3TArvRkQ28dmKvylQH/dgg8nAb/D6awMoMxxlS
-         2KZU7/IJMRYS6e+8hetFKN8C9g29ouULsWaKtlbC7H6QQqgetSJpflsV1Xv3aLXHymlL
-         jq+jXJUiny7OPZoDVsUYuRiNWs99YjAB2kvlOuYFqNm7jR5hLAbOTcsBTxGt8ZwYzgCU
-         KZxGQ3Wh3MnpPbqIIL2HCcYwLifU28gnf8Wx8okC4nEJJ8Lci+1XSpIWRIYrDuGvMJ7b
-         322//5XkrZFD+CISHqmBk7QjLRN+2ikHFXigzo217WH1u9Y4OB/+Z61Ow83UMjPKU9Hx
-         zqFg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.31 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga06.intel.com (mga06.intel.com. [134.134.136.31])
-        by gmr-mx.google.com with ESMTPS id z3si65907wmi.2.2021.11.29.14.50.27
+        b=w48hP91q7aP4CGu5fsQvzi2M8SgvJUu9eYi79qluQGBCDQgtmf5QVAtPieknq9ZG6Y
+         FNLsH6XALWCYbLz9FVTAVg5YGChGFllRrOk8/3sjUIZOK8RBg3490TRhO8/RqxgXTppN
+         l30Dg3YEXvDKbIjM5sXtj2ES0wQ2T01lV3nts7tAJO7+kp0jcyb2a1VcbeIHsQRkSei/
+         EZOV8YqRIhiea0BEmhtpZHeBVlJDLVty2uVy7BLHB/N1ttGLA/HM0ObnrcrSWcYuFpHB
+         HvJvlFi5r3UIepZ//3nQEOigt/XXr8fhYlV7/tZiLYCfujUgAxaCrllT1obHQhIIvvpJ
+         lj9A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:in-reply-to:content-disposition:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=nyxPtnkcQL0uIg9OAMxMzlMr1aPsQv2mJYOr1PS9ewM=;
+        b=akIqRvMvTxvuq1PW6HZPbIgHGowYXC22mBdn2A47yoXCdQPkbw3OtpE9VFF9mZwr6b
+         pqQ5ST1EMFAqBUUx0SFZaG+qG0yepolvEqF5HRMg16qzenVDXC2chtr0Er5BDnhlTSnt
+         j704091IxLCU70NkkKxL4sOcz4OfiDTrmu+pjrUqvPbBxitup8FIyBMwPjiKMnLW7y7o
+         W37/1FSZVB77aj4ALE3mUOIaBdmipMU7sU5YPAVIZ1Bpn+3k4xUkQjYOXAcobGu6zI+X
+         f8DZcPPSOzY3NTtqEf2rmMTDnEvpzr7wcXJLb8uJF/fKqEHJ6SI9s1QOsVugGq8iCgMh
+         FHHQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=BPxRiq2Y;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of jgg@nvidia.com designates 40.107.244.86 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
+Received: from NAM12-MW2-obe.outbound.protection.outlook.com (mail-mw2nam12on2086.outbound.protection.outlook.com. [40.107.244.86])
+        by gmr-mx.google.com with ESMTPS id s4si930658qtc.4.2021.11.29.15.31.36
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 29 Nov 2021 14:50:27 -0800 (PST)
-Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.31 as permitted sender) client-ip=134.134.136.31;
-X-IronPort-AV: E=McAfee;i="6200,9189,10183"; a="296899400"
-X-IronPort-AV: E=Sophos;i="5.87,273,1631602800"; 
-   d="scan'208";a="296899400"
-Received: from orsmga001.jf.intel.com ([10.7.209.18])
-  by orsmga104.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Nov 2021 14:50:25 -0800
-X-IronPort-AV: E=Sophos;i="5.87,273,1631602800"; 
-   d="scan'208";a="540182749"
-Received: from djiang5-mobl1.amr.corp.intel.com (HELO [10.209.175.223]) ([10.209.175.223])
-  by orsmga001-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 29 Nov 2021 14:50:24 -0800
-Message-ID: <693a42d6-34d0-b8f9-f8b8-39ebbabb7f16@intel.com>
-Date: Mon, 29 Nov 2021 15:50:23 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.1
+        Mon, 29 Nov 2021 15:31:36 -0800 (PST)
+Received-SPF: pass (google.com: domain of jgg@nvidia.com designates 40.107.244.86 as permitted sender) client-ip=40.107.244.86;
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=gVbC7+8ClrqWAYdS/veFfz10RCOyHjhf+eQi8gNtV+4UpmtNcz8eqtKx+icP/53mvAZ4gy6C4y6GPiRUGg2JQq4qjGeZVW0V7FRYH1eMZtE58jUyobaReY3qwPApcV+wIScKw0e1T7gxkLgPhsdXcynMGbwv5uMlAxWkm4szA+iKOkP8JpW6pvoe1ZtYy8QMMfIhr5NMnqt6CZ1DiMO934CK82pXGzWbSlUyyIaKSlKf4e1WDeIX7oeo591ekB+UCN06cs3lIg6JvBrrasSDyz448oQV8JHKYOKAcbU/bLfc0k3cqCd/KV4/OTBQJTTUwd2oePGAaj19rk9fNi8BaQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=nyxPtnkcQL0uIg9OAMxMzlMr1aPsQv2mJYOr1PS9ewM=;
+ b=j0zqQHwfJ9GiwHOytIEZ3r7ulK8+4f8dZ7ZnBkjfBrXm2FCsYMXMR/uo6l9TQDflBonKCYPT1ueg1WTBe4rRF8NEVROU9dp2ElemvsmbARyjr3iofFtjWiiXZbDibIXD18NG8mUibfj+P3VG/WXl3VU6wy6273VsCqUGPVt6Anr8635/dtwnuiXu8EtNmabNEVh5xEfSJLRa5GsD7j/mBbIdjuRKzdhUmmCsiO9L/uRG1XeTdEVysNHB/syWX06E5+SKhwg1rHsNG9I21iUBtKJskgtw2/cOu3j5qexxgrU4iZsmGxUnTbn0sOFmHaP/o11qVbkdQKzEXWQZTZS3fw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com (2603:10b6:208:1cb::22)
+ by BL1PR12MB5191.namprd12.prod.outlook.com (2603:10b6:208:318::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.23; Mon, 29 Nov
+ 2021 23:31:35 +0000
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::5897:83b2:a704:7909]) by BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::5897:83b2:a704:7909%8]) with mapi id 15.20.4734.024; Mon, 29 Nov 2021
+ 23:31:35 +0000
+Date: Mon, 29 Nov 2021 19:31:33 -0400
+From: "'Jason Gunthorpe' via linux-ntb" <linux-ntb@googlegroups.com>
+To: Logan Gunthorpe <logang@deltatee.com>
+Cc: Thomas Gleixner <tglx@linutronix.de>,
+	LKML <linux-kernel@vger.kernel.org>,
+	Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>,
+	Ashok Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com,
+	linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>
 Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
-Content-Language: en-US
-To: Logan Gunthorpe <logang@deltatee.com>,
- Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>,
- Alex Williamson <alex.williamson@redhat.com>,
- Kevin Tian <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
- Megha Dey <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
- linux-pci@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com, linux-s390@vger.kernel.org,
- Heiko Carstens <hca@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>
+Message-ID: <20211129233133.GA4670@nvidia.com>
 References: <20211126230957.239391799@linutronix.de>
  <20211126232735.547996838@linutronix.de>
- <7daba0e2-73a3-4980-c3a5-a71f6b597b22@deltatee.com> <874k7ueldt.ffs@tglx>
+ <7daba0e2-73a3-4980-c3a5-a71f6b597b22@deltatee.com>
+ <874k7ueldt.ffs@tglx>
  <6ba084d6-2b26-7c86-4526-8fcd3d921dfd@deltatee.com>
-From: Dave Jiang <dave.jiang@intel.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Disposition: inline
 In-Reply-To: <6ba084d6-2b26-7c86-4526-8fcd3d921dfd@deltatee.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-X-Original-Sender: dave.jiang@intel.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of dave.jiang@intel.com designates 134.134.136.31 as
- permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=intel.com
+X-ClientProxiedBy: BLAPR03CA0110.namprd03.prod.outlook.com
+ (2603:10b6:208:32a::25) To BL0PR12MB5506.namprd12.prod.outlook.com
+ (2603:10b6:208:1cb::22)
+MIME-Version: 1.0
+Received: from mlx.ziepe.ca (142.162.113.129) by BLAPR03CA0110.namprd03.prod.outlook.com (2603:10b6:208:32a::25) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.23 via Frontend Transport; Mon, 29 Nov 2021 23:31:34 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from <jgg@nvidia.com>)	id 1mrq7R-004kPs-9f; Mon, 29 Nov 2021 19:31:33 -0400
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a120248d-c303-4c37-2baf-08d9b39061dc
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5191:
+X-Microsoft-Antispam-PRVS: <BL1PR12MB519143820A0AABA3DF4B591FC2669@BL1PR12MB5191.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:8882;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: Yy/GrBVA+5qtPbF/ctJMtFSTY4k11w2t/QwmigajP8r4jZxAB31+SXLZmq0pTMN+dRt4CwF37OO4Ge6pi4mAQFrBJjvm95YvZy+eJvUpLyrtDK0JCWVP1D4o1SiB5tRxfqS8UEIXak2fYQHd1dvOPvb7SNoybhsFNoquiYujxbgBy9HykWBJp4jOgKcoOa7ueJcOWgaJV9PJK/x4H4iGSHKWPZufU3Cc/oe83GZCKeRVRGXukwi5CqE8lQNGhvkPE/0PdbfKRCrRnhbA34xbl2r2zY59+AyG8HuZFRyyzcIoipB1AIZv6RrGb3v5MOgiVLC6DB7Nf40yJMFuWqpAEO5YCutEyF1yy3ZM9hiLqHPgRFLbuBfdVQ8m+fKuTm+KtX/DR0rxYIzZ6VeR4gvEqWumVgX7a3/Pzfsm9x6ZnUA9CeY1Wk37jAk+Zf/bDZ8gyz4N6YvhC/Et+Dh03lrPULJog0PV+RiaiWw+Iv3nnihDLj1OjmBhJGHzywLIpzQFdz6058ajYA7mlBIYtUBDy56ELBZRITexvSt11YtGyoEo2cbn7+GH+GV5aV8SnRw/nEn5moVUfGI568xMK/oLi5DLF72y5HQsIrVNs+VtJN0VogTJwqumS6r1mL2wv8s0Uw09t6Jv8B+9pShZ4zhzcw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL0PR12MB5506.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(4636009)(366004)(186003)(36756003)(426003)(6916009)(8676002)(1076003)(66946007)(2616005)(5660300002)(26005)(7416002)(2906002)(66476007)(83380400001)(66556008)(33656002)(38100700002)(4326008)(8936002)(86362001)(9786002)(9746002)(54906003)(316002)(508600001);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?d8zmZsrlevrOyId2WsxDhY8ZQyvEEmffio4ibRhoF49elGiDkrUTEk9ELLtz?=
+ =?us-ascii?Q?94M0UpQqdFK7fyPr1TXCxZodb62l8jzhxPpAuy3RQOMY9NW+w6/9dV5RePzT?=
+ =?us-ascii?Q?XVUjPC/4OpR9KyzJZ/KNdvh/LG2O8a3WcihresxeXFRONt0v1wY8I563aA8s?=
+ =?us-ascii?Q?Vh7Pi0/gS15oNmz/toxMOjnO8K5NAfLWMyu3AfzKT6o/rV0uou+kYDpP258h?=
+ =?us-ascii?Q?04DLXAzZleEIHq1lNldM8OJONR13fjJBgjdCTnhKMCil7oeZWJ4TSsTwMl5t?=
+ =?us-ascii?Q?WK6whG9NajHudHXZR20n8Nhcf68OXACRSh27f8C7WJJ6oti969D6gDxktxXg?=
+ =?us-ascii?Q?J0g0ecGuF4K36EPZ+l1l1LvBZMb4VBwaiYm9hnh03fgP/tEDrH12rD1YYpLr?=
+ =?us-ascii?Q?8W9bKk5pSyLMmQUyvfIhL0/eoUBJmtm3EIiU49nD9kyojCHSUTg30MP9Phd7?=
+ =?us-ascii?Q?Y5BWFZcVYXsk84o7lFunjVVynuoE167agf1Nyxs1D4zhPCEXCVOiFqwFTI3u?=
+ =?us-ascii?Q?Cisv43lqhW18SM6tp9twWF3QwaYLK8VtCtXgr7UkJDjyqMko1zUDM2Z0W9M+?=
+ =?us-ascii?Q?V1O/NoYNx1HMdnSapkEURWHmbrmthDvUSzZevrNY9GX9ZAGyyKFzoEri3ewU?=
+ =?us-ascii?Q?YhaW8HNcfh+wm3xtbnN9J9EcO4id0Ksq9NG9Z2vR7MNgRrttlbHveoV4e8LC?=
+ =?us-ascii?Q?XENrVKo8Fg8D8Twg056dHxlM2K4z4tgeLdKd+daFHxfuxh0I259l+q34ksVX?=
+ =?us-ascii?Q?ukfiAmHhv2C3/6GYlX70AjDpHU38f50U7hovaWFhLmNpfNWou6UG+NpKosYU?=
+ =?us-ascii?Q?XQsArJl9M4IOsc7InKb4RytaKNybkdSQw8krIbAYwAfHl8sfYB3TgP0KqVD/?=
+ =?us-ascii?Q?probtVtyRYDjfbK+cT+3zz/1o3aAOUziLS2fH95LQ0Qqm8gdqwHIAlX1LCDH?=
+ =?us-ascii?Q?5gxDP+XliD6zi00gwf88Y1k3JuMcohKctRzoJn2sxTcOBtT9SBzpvt3HUyak?=
+ =?us-ascii?Q?vRY9YonuHUWL4HgQ+Y5uoDKXIH82kj3Qizlo1ATYM5bseKtnBnH6FNA8U2sS?=
+ =?us-ascii?Q?dHv1z0CT3D5yWbfGhrYL1EGpPYB+OUoODd32mI1zxJIGpW1XquoOAlYcoLko?=
+ =?us-ascii?Q?tUJjsO7NhFeeptBehBbipADoXZvVYB+nSZWQrdwbO2Ic3nIQKbGXesAJloa2?=
+ =?us-ascii?Q?LemTMpsz20KcjiKe4vdxlE+uIzNPkUNN7i8gCTt4uZPFfCmkfeD7kBIJjEvc?=
+ =?us-ascii?Q?NQYpMXRcNowTgNkWx0gK4AJbSlXyGjKReiAfq/67AoCmsSG1m80reydi5M/C?=
+ =?us-ascii?Q?tQWxNn3qPi53fMIlgWAjhziO/6bSuWkJvN6SBfWvN40kb4gsxAqr6Fqwcn4X?=
+ =?us-ascii?Q?QpCXUCXJXFSXlCestZUzpFpB5WOl1KmpSP8Mz7VvbXcwWDdVlXzKCbPrsUCP?=
+ =?us-ascii?Q?igbR8G9c1jwQRvdBO4rmfvYZ4Pvsl/C4hyUWHbYlBvX+/1rtyXrtx3lqKr4n?=
+ =?us-ascii?Q?0AdlMN7FtDH99Gp+wHdLOZpPL5tQSbg2AaKx5L6nHO2kWdhnOw8Y+XnnRI8F?=
+ =?us-ascii?Q?XTl3zg9bHxz0phabpf4=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a120248d-c303-4c37-2baf-08d9b39061dc
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB5506.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Nov 2021 23:31:34.9182
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: GzI8/mSkYXICL2FAC4r6xn6fLgB0CyPpVBssGoN/KdITybX902bHKRE/skhT9anU
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5191
+X-Original-Sender: jgg@nvidia.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@Nvidia.com header.s=selector2 header.b=BPxRiq2Y;       arc=pass
+ (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass
+ fromdomain=nvidia.com);       spf=pass (google.com: domain of jgg@nvidia.com
+ designates 40.107.244.86 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
+X-Original-From: Jason Gunthorpe <jgg@nvidia.com>
+Reply-To: Jason Gunthorpe <jgg@nvidia.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -146,44 +217,8 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+On Mon, Nov 29, 2021 at 03:27:20PM -0700, Logan Gunthorpe wrote:
 
-On 11/29/2021 3:27 PM, Logan Gunthorpe wrote:
->
-> On 2021-11-29 1:51 p.m., Thomas Gleixner wrote:
->> Logan,
->>
->> On Mon, Nov 29 2021 at 11:21, Logan Gunthorpe wrote:
->>> On 2021-11-26 6:23 p.m., Thomas Gleixner wrote:
->>>> Replace the about to vanish iterators, make use of the filtering and take
->>>> the descriptor lock around the iteration.
->>> This patch looks good to me:
->>>
->>> Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
->> thanks for having a look at this. While I have your attention, I have a
->> question related to NTB.
->>
->> The switchtec driver is the only one which uses PCI_IRQ_VIRTUAL in order
->> to allocate non-hardware backed MSI-X descriptors.
->>
->> AFAIU these descriptors are not MSI-X descriptors in the regular sense
->> of PCI/MSI-X. They are allocated via the PCI/MSI mechanism but their
->> usage is somewhere in NTB which has nothing to do with the way how the
->> real MSI-X interrupts of a device work which explains why we have those
->> pci.msi_attrib.is_virtual checks all over the place.
->>
->> I assume that there are other variants feeding into NTB which can handle
->> that without this PCI_IRQ_VIRTUAL quirk, but TBH, I got completely lost
->> in that code.
->>
->> Could you please shed some light on the larger picture of this?
-> Yes, of course. I'll try to explain:
->
-> The NTB code here is trying to create an MSI interrupt that is not
-> triggered by the PCI device itself but from a peer behind the
-> Non-Transparent Bridge (or, more carefully: from the CPU's perspective
-> the interrupt will come from the PCI device, but nothing in the PCI
-> device's firmware or hardware will have triggered the interrupt).
->
 > In most cases, the NTB code needs more interrupts than the hardware
 > actually provides for in its MSI-X table. That's what PCI_IRQ_VIRTUAL is
 > for: it allows the driver to request more interrupts than the hardware
@@ -191,56 +226,30 @@ On 11/29/2021 3:27 PM, Logan Gunthorpe wrote:
 > created, but get flagged with msi_attrib.is_virtual which ensures
 > functions that program the MSI-X table don't try to write past the end
 > of the hardware's table.
->
-> The NTB code in drivers/ntb/msi.c uses these virtual MSI-X interrupts.
-> (Or rather it can use any interrupt: it doesn't care whether its virtual
-> or not, it would be fine if it is just a spare interrupt in hardware,
-> but in practice, it will usually be a virtual one). The code uses these
-> interrupts by setting up a memory window in the bridge to cover the MMIO
-> addresses of MSI-X interrupts. It communicates the offsets of the
-> interrupts (and the MSI message data) to the peer so that the peer can
-> trigger the interrupt simply by writing the message data to its side of
-> the memory window. (In the code: ntbm_msi_request_threaded_irq() is
-> called to request and interrupt which fills in the ntb_msi_desc with the
-> offset and data, which is transferred to the peer which would then use
-> ntb_msi_peer_trigger() to trigger the interrupt.)
->
+
+AFAICT what you've described is what Intel is calling IMS in other
+contexts.
+
+IMS is fundamentally a way to control MSI interrupt descriptors that
+are not accessed through PCI SIG compliant means. In this case the NTB
+driver has to do its magic to relay the addr/data pairs to the real
+MSI storage in the hidden devices.
+
+PCI_IRQ_VIRTUAL should probably be fully replaced by the new dynamic
+APIs in the fullness of time..
+
 > Existing NTB hardware does already have what's called a doorbell which
 > provides the same functionally as the above technique. However, existing
 > hardware implementations of doorbells have significant latency and thus
 > slow down performance substantially. Implementing the MSI interrupts as
 > described above increased the performance of ntb_transport by more than
 > three times[1].
->
-> There aren't really other "variants". In theory, IDT hardware would also
-> require the same quirk but the drivers in the tree aren't quite up to
-> snuff and don't even support ntb_transport (so nobody has added
-> support). Intel and AMD drivers could probably do this as well (provided
-> they have extra memory windows) but I don't know that anyone has tried.
 
-The Intel driver used to do something similar to bypass the doorbell 
-hardware errata for pre Skylake Xeon hardware that wasn't upstream. I'd 
-like to get this working for the performance reasons you mentioned. I 
-just really need to find some time to test this with the second memory 
-window Intel NTB has.
+Does the doorbell scheme allow as many interrupts?
 
-
->
-> Let me know if anything is still unclear or you have further questions.
-> You can also read the last posting of the patch series[2] if you'd like
-> more information.
->
-> Logan
->
-> [1] 2b0569b3b7e6 ("NTB: Add MSI interrupt support to ntb_transport")
-> [2]
-> https://lore.kernel.org/all/20190523223100.5526-1-logang@deltatee.com/T/#u
->
->
->
->
+Jason
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/693a42d6-34d0-b8f9-f8b8-39ebbabb7f16%40intel.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211129233133.GA4670%40nvidia.com.
