@@ -1,144 +1,134 @@
-Return-Path: <linux-ntb+bncBDXYVT6AR4MRBTEGT6GQMGQEDYCCDCY@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERBTNST6GQMGQEASSUEUA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ed1-x538.google.com (mail-ed1-x538.google.com [IPv6:2a00:1450:4864:20::538])
-	by mail.lfdr.de (Postfix) with ESMTPS id C77E04655C8
-	for <lists+linux-ntb@lfdr.de>; Wed,  1 Dec 2021 19:47:40 +0100 (CET)
-Received: by mail-ed1-x538.google.com with SMTP id b15-20020aa7c6cf000000b003e7cf0f73dasf21094340eds.22
-        for <lists+linux-ntb@lfdr.de>; Wed, 01 Dec 2021 10:47:40 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638384460; cv=pass;
+Received: from mail-oi1-x237.google.com (mail-oi1-x237.google.com [IPv6:2607:f8b0:4864:20::237])
+	by mail.lfdr.de (Postfix) with ESMTPS id 136E2465707
+	for <lists+linux-ntb@lfdr.de>; Wed,  1 Dec 2021 21:21:35 +0100 (CET)
+Received: by mail-oi1-x237.google.com with SMTP id y21-20020aca4b15000000b002a819a3cd6dsf17012531oia.15
+        for <lists+linux-ntb@lfdr.de>; Wed, 01 Dec 2021 12:21:35 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638390094; cv=pass;
         d=google.com; s=arc-20160816;
-        b=STrEF5szrpBZrQlIFSBN5zOS+jb5ptdIuM5Xtc6KafRRKE/saJ/vonbFRtNw7E0tyF
-         Whzu7PbsVP7tkdqXkLAnBFVoTV5dh5m55vMPbaGoq5S7F4oFqsug+pfjrLkuj88BEXMH
-         /TafTXz1g8/VenFeEL0ONSeUI24VmZ3lw5MIJ5wKQW6nZIagwKt3IaPja7gzpUABrAOY
-         15xAIzg5at03fdqR7E5JpeBZ9rIu21iPUQbWyyNePuFZfL1PgDUClBderHGnLJRJpPD4
-         T4WigzJSUmgpQNlizbtSM03dnKoMmaz5KEaZ4XG0e3X8Rm0o11/j3kecL2w/mXLJXQx3
-         5HKw==
+        b=NWuBlchSGnabWE5UkdSi1M5Hu1s1OXdA7gUGHzqgmWCyB6pfi+EVrNQpSDN9ABMk6s
+         9wfmO7AWOnnBJTT5BDVTLeECpqW7I4GkyWKvNRs+jxtsBHdliO5fuCrLR2SyvkJG+Tph
+         NJi/yf/EyuPKJbKKmProDZujRzokC71Nn87OwGtcFgvRdwpXdPl6H32KXarroiM1B61J
+         966vPW22gvS/fFZwa+wSnC0XxHH1HbpxVt4tYpKvGtxbypu3pSP2X8uAym6lHYNrsvkK
+         GlCgXDRjBUVPGaLcrQuwSZ/urIRraBIoAz6v0uQ2ic+f8axpOGAMg4T+yimP3QnOO+8V
+         sOOA==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id
-         :sender:dkim-signature;
-        bh=vwlbyrS8zyf6nKT7uCkQX8Tzgv41S9GCioxpEZjuqWU=;
-        b=qvyg3yT9vIXP+ZcdJkR1VwKnYd0WYkuGUP33kXxLH7WFxBhvMG0/FmH/+y/M1xzw7n
-         PrxHkvgrPpCiWceckBal5Xu9A3U6Ym/ukSpFJpqKs/j9bPFkL5DtguxtPl1AaDFZuvGV
-         0dvMjP1QwD239Tv60sJ3KO9ioTUZRCsdUuEAYFyGgB/CDwbogox5QoHI9f3pj2szBlNN
-         yv4UbPvfI6XMVqCgLJvsoqIBw0ay1rhD872wIBizFu7cYs50Y/AcAP6k7SneUUt30bj3
-         4uH6puqT89o+XMWKeWKWQ+SzCPRvUX02WtNkkerNNtlCmo04kz89uM0F5unuqvXl4D44
-         4bJg==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
+        bh=E0resvlXO5ogGwc7ZdLhi4Ow/oyiOh7z+HH/2hb6+a0=;
+        b=MBuDehMzrLguBZHr1QBDegRN4OPGNSnFuBbAn74L9zlUegq6uOlKQLJ6U2aQrSoTVU
+         Gto4vnOo05RgSxjjZBQ3WRcQDKqJS/L6jgz5E+WfWQnOYHofdtlLF2tEjWEHgXxrOUqT
+         wfq9N4EZBDkR+euCv4PoKMJhmG5NXr/IyFXJKu5iMHOC9LyHeNIB5uFXM5ZcY60CiteE
+         efwUYjN/URlaNOuwG+6IysdDJDqeNVkdbtubIAGl3zYPFY7EVSys6Y5/Bx8IhSin7mHg
+         ljYJY9vmOf49Bvgb7jZd9jit9U8ug6XKDRx/lSUwIbk9RI4pQ33m/6xSQ0IXrBRAoPKy
+         wmhA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=sbuHX70H;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=8iqy66nC;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:message-id:date:mime-version:user-agent:subject
-         :content-language:to:cc:references:from:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:list-post:list-help:list-archive
+        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=vwlbyrS8zyf6nKT7uCkQX8Tzgv41S9GCioxpEZjuqWU=;
-        b=h0nvmYfKVlj47z+02kBENpRcHLS6aL1iJoTFKQsaAohPT7b/yvcf+vL0Cwr68jyqYC
-         N8b6WOzaWADOIIvHfuMz65e7lCzH3Q5n2+G7m+bXEbppbTxHuFgoYXgplN9J6ITu2YBo
-         Yp08ayntEgT0Ur5qwhoT+i/dqW6YY6LHaY82L3OqsQFaMO4RW1T6YuhODstFDIcgTC4P
-         3P6M54ornQaXu4zMT0MVZtHw3MXQxi3ZC+/evfrrfJlaUr3aoN9t2wLbam1pfUiYLhiR
-         /GMJDh6xy2etlim0XBtrNpAz9+zJ1uZ9QZMK9FifU3A5SyC8xv/IBSPaX9U4mZUzbIj8
-         n+FQ==
+        bh=E0resvlXO5ogGwc7ZdLhi4Ow/oyiOh7z+HH/2hb6+a0=;
+        b=KvXn9+Wjby/XECovb0qpD8s22Py9GQNbMKwJT7v1X4gx7Cd9Zy81sTtE3qBDDxTCmk
+         2/omqxECPW75KAbz2dWuystdoRkByfj8BWkHb1V1PxLVxrWoGJTFXmN4LL//n7p19wXx
+         uPD5rq5UJIFHQd5LyDTw9inxpClPsSSBSu/vR829pp8P2Eb4GAX4wJaKgf7k/lmvDcm0
+         IrmPYn7oihUKfsCdoWP7loLD4FYkfs8nNhiMjhNb0oFQAaWz8pTJSL+fIXzMtqLOA9y+
+         hy9gX6y2QeQ3gDs5kbECBxFBHWnHITriJL3EVi5d1xTm4BlYZL+f56Vc8AeauW4yM5E7
+         hp2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:message-id:date:mime-version:user-agent
-         :subject:content-language:to:cc:references:from:in-reply-to
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=vwlbyrS8zyf6nKT7uCkQX8Tzgv41S9GCioxpEZjuqWU=;
-        b=z+KpcUpn0aC1lH+aCSOgraINJfgLJE3r/TcTb8P9kB/nMf0gckHfi+ieQeaj3CZYbp
-         wVeZc+pbaiI9pqxOdLByzAXZa87NdS+7PIEeHje9oaiExFdW5I3GRoqdvDCntdU8fd6x
-         ptl2EkTrBh5TeEs49yXvinfxFEOxESeqH8OA+ylkzw+GAvz23DG0tfUJ1vODKy1BpgP2
-         5EbfN8XCIFJZZQVR9RTTgRQRjdFzkEBEgnAOIlqExBa7zi0GBPC/mZZ7P5wFpBidkqOn
-         +DtIqJlsTF9zT9Y225s1ErStg62gB63Qyet0zsMaXXHu3DHOzTY9ITC0rn+4+/nGOktt
-         kNAQ==
+        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
+         :date:message-id:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=E0resvlXO5ogGwc7ZdLhi4Ow/oyiOh7z+HH/2hb6+a0=;
+        b=MrA1sVr6AbDnpwJF+AVcHumMXfHmIVk09QYaGH/UA4GuEWkvom7xkiVcwW5yU6nFDg
+         GuMF9+Vs8r75cKkArm3dGQtvXSX/55iNW6bY3e8f7ObD4rlMEh9waZ4FEAhwXZyCND/c
+         WcZFlaMFXC4JVaag0ubquDq/vEJYLqoT2W0NW1as6yZTT+LeRzQ412+nSHSnncoUPvJZ
+         rok9jLXpHm0JjgKP+De2sV6wJHfc+AQQJxfkM94R3lGkBl1A0vVXjSsDFyULzEMO8vtm
+         nrElsMoPIez05R8+BUd8W5lLm8Yr8NLc6W5kO1eorYYoLeBxSai/AYdbHZsvowpTCFxC
+         bKXg==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533JjbLDhHLPg4nX/ZW15TfRXR6WCisU1Nv84FSKi1+qeqS39w3N
-	cI2dhI/gsdO4lvZrmX0Lt5Y=
-X-Google-Smtp-Source: ABdhPJxszwa8YrnFX4Yr01EuOMsnnovFBPMo6RDKybgHpE17WJnAKY+5qDI+i/sAJDnVIAqzMt0p9g==
-X-Received: by 2002:a50:d741:: with SMTP id i1mr10983950edj.37.1638384460596;
-        Wed, 01 Dec 2021 10:47:40 -0800 (PST)
+X-Gm-Message-State: AOAM531wzJoes/cPf7VNHwMXOEmmS4Qpun9EdpbvCHLT1dG/Niq6omTF
+	tnz8GGioJeKS7HCLrXsmHNw=
+X-Google-Smtp-Source: ABdhPJy1xjH3qdBRmtYi70Fqn4W0oGPZ/IjUSCqA+Yqmbgr8JJMtJeuqg5km7+5f/SqOWHbDGFUQjQ==
+X-Received: by 2002:a05:6808:11c1:: with SMTP id p1mr452868oiv.113.1638390093953;
+        Wed, 01 Dec 2021 12:21:33 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a50:fd09:: with SMTP id i9ls3766711eds.3.gmail; Wed, 01 Dec
- 2021 10:47:39 -0800 (PST)
-X-Received: by 2002:a05:6402:354e:: with SMTP id f14mr10736730edd.245.1638384459762;
-        Wed, 01 Dec 2021 10:47:39 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638384459; cv=none;
+Received: by 2002:a05:6830:3499:: with SMTP id c25ls1260058otu.4.gmail; Wed,
+ 01 Dec 2021 12:21:33 -0800 (PST)
+X-Received: by 2002:a9d:67c1:: with SMTP id c1mr7772711otn.299.1638390093504;
+        Wed, 01 Dec 2021 12:21:33 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638390093; cv=none;
         d=google.com; s=arc-20160816;
-        b=GsOZJ8H4ma3E8kyQDDheXUl0lFuozeh7qhzH0VdQnQJTR++AQgddkeu2Cdu+V/t+/E
-         TPJNVqfV+pWuYMdF78vY0g9mTYm2nXm8/AtEpQWOQ0rxdTxo1guk4dxMF9t2mG/SRqBj
-         NdLMziaIrySTJRFuTKDiIjILYZEPoxyJWGI31ncfn/+cZoLUZUpS/sE+gS3TELcnxAKu
-         grdPMaSmSHdqJcFnU0xp/FNcYpWAzrnGC1Tq0NPmiVmplju9vEzgP8EJzLfZB9UYEJzU
-         MMjobaVcegQSAjD76BB3NrIkzntAxY8/7iGkL+dQWw2L5g3rUoYVb4+2jhz3RX8zFL/T
-         PT+g==
+        b=bQ84V2Lzs6+Z8NFBlV8/sK3RVkD2ZgVpco/CcvZjfKhsQHayVApjr0hsbb2OqZ0JCt
+         YOrUdHotaKrGBo5cy+iwOu5NgNuwgAODMqMe8tMBJp8x1x2DuptrTsDgIZNk33Qmu3TI
+         4c2c4Ugq6LfYZsL4e8Ng6nEu20HA4+26UxWlhfjdiKIm0RE167ta4+8uIbh5RSoz5sAc
+         /N3bBzcs6WsUQkNfwyWH02XLJ54zC6tGpPL7vDM6ZFSkTBTjVVKLtyH+A1/CPxUH+MsM
+         t8GSSQv0qboPtrPa1ZwoZdHcCc63+vE0DVj6b/39KdEYMyKMtd+pIlXrW+d9jxJiCsaO
+         G/5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:from:references:cc:to
-         :content-language:subject:user-agent:mime-version:date:message-id;
-        bh=lSm+lEGDdGSvDcfFv9XiegpdBQmKaPzi7WIfnNbwD04=;
-        b=Cv8eLTYDhApqHMoZs2HFnFY+bOKNBqeO+Ld+cwlZcCUd559xUdOb6ZQSL4ynqIwyJN
-         FxbTZhsv1N3fi9VlYBfEDEujK+0YAjSTT8iBkiGPRWy31ecHOmHMup7GzHO/KkW44ctW
-         VslFX/4+Dj7CcxlfF7sJuo9npnwySiYtQikmG7HHGpC5BKWvbCaW3Tgcypt8zPQr+pX8
-         q6sRuVT3YWnfbmwxQC2kRkcYB0g0o6D/r0kb8cJwz5JPu1KSaObS+0CWOlO6Wi10z9Dt
-         4PYUEyHxCfJ++5LBD9PXLAq6LcaxgrHgzRg6NTl1L6jtMbRycjSvTQsNIYN68uMcAiIF
-         H5XA==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :dkim-signature:dkim-signature:from;
+        bh=XT2wUHCzGqHpG3jIMlo/pIyGWM+MoMGI0fdIA1I0A8A=;
+        b=O0h9Xi8OyOud1COM6NOl2SmpHbToHl+oGkpTCi0KYgrQ6Xh5QA7jxzm4V/RjP4l6wP
+         K59NDDCdO8RAg2O9JXlVZGch5wA1+FkFxcbgoY+BphWzTyKcW7JjucjuhHkoLHYzA7Qr
+         ph8qE85zQmujj6W/XsU2s5C2eWXdYCvTOHb7I1SgU2pwA8mmvYo3Uh/v0c6ue4gpCzhE
+         rlzN1ROTApUYBLyfueE9tuij9XTznkESHubBzT0fPRfZBg+nWfMZw5Fv3e/fPZMPvXgP
+         nJ5KqQU/ykLj4Xy0Xmp099eAczDYQI5GQsgxO/pyL8QPbeu/9R+PYj9OS3YdUlQ1r8L5
+         eqfw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga02.intel.com (mga02.intel.com. [134.134.136.20])
-        by gmr-mx.google.com with ESMTPS id fl21si47338ejc.0.2021.12.01.10.47.38
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b=sbuHX70H;
+       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=8iqy66nC;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
+        by gmr-mx.google.com with ESMTPS id bg19si187691oib.5.2021.12.01.12.21.32
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Dec 2021 10:47:39 -0800 (PST)
-Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as permitted sender) client-ip=134.134.136.20;
-X-IronPort-AV: E=McAfee;i="6200,9189,10185"; a="223759724"
-X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; 
-   d="scan'208";a="223759724"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
-  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Dec 2021 10:47:37 -0800
-X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; 
-   d="scan'208";a="602264166"
-Received: from djiang5-mobl1.amr.corp.intel.com (HELO [10.212.64.69]) ([10.212.64.69])
-  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Dec 2021 10:47:35 -0800
-Message-ID: <df00b87e-00dc-d998-8b64-46b16dba46eb@intel.com>
-Date: Wed, 1 Dec 2021 11:47:35 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
- Thunderbird/91.3.1
-Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
-Content-Language: en-US
-To: Thomas Gleixner <tglx@linutronix.de>, Jason Gunthorpe <jgg@nvidia.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 01 Dec 2021 12:21:33 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
+From: Thomas Gleixner <tglx@linutronix.de>
+To: Jason Gunthorpe <jgg@nvidia.com>
 Cc: Logan Gunthorpe <logang@deltatee.com>, LKML
- <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
- Marc Zygnier <maz@kernel.org>, Alex Williamson <alex.williamson@redhat.com>,
- Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>,
- Ashok Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jon Mason
- <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com, linux-s390@vger.kernel.org,
- Heiko Carstens <hca@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, x86@kernel.org,
- Joerg Roedel <jroedel@suse.de>, iommu@lists.linux-foundation.org
-References: <20211126230957.239391799@linutronix.de>
- <20211126232735.547996838@linutronix.de>
- <7daba0e2-73a3-4980-c3a5-a71f6b597b22@deltatee.com> <874k7ueldt.ffs@tglx>
- <6ba084d6-2b26-7c86-4526-8fcd3d921dfd@deltatee.com> <87ilwacwp8.ffs@tglx>
- <d6f13729-1b83-fa7d-3f0d-98d4e3f7a2aa@deltatee.com> <87v909bf2k.ffs@tglx>
- <20211130202800.GE4670@nvidia.com> <87o861banv.ffs@tglx>
- <20211201001748.GF4670@nvidia.com> <87mtlkaauo.ffs@tglx>
- <8c2262ba-173e-0007-bc4c-94ec54b2847d@intel.com> <87pmqg88xq.ffs@tglx>
-From: Dave Jiang <dave.jiang@intel.com>
-In-Reply-To: <87pmqg88xq.ffs@tglx>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-X-Original-Sender: dave.jiang@intel.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as
- permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
- (p=NONE sp=NONE dis=NONE) header.from=intel.com
+ <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>, Marc
+ Zygnier <maz@kernel.org>, Alex Williamson <alex.williamson@redhat.com>,
+ Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>, Ashok
+ Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>, Jon Mason <jdmason@kudzu.us>, Dave Jiang
+ <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+ linux-ntb@googlegroups.com, linux-s390@vger.kernel.org, Heiko Carstens
+ <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>,
+ x86@kernel.org, Joerg Roedel <jroedel@suse.de>,
+ iommu@lists.linux-foundation.org
+Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
+In-Reply-To: <20211201181406.GM4670@nvidia.com>
+References: <6ba084d6-2b26-7c86-4526-8fcd3d921dfd@deltatee.com>
+ <87ilwacwp8.ffs@tglx> <d6f13729-1b83-fa7d-3f0d-98d4e3f7a2aa@deltatee.com>
+ <87v909bf2k.ffs@tglx> <20211130202800.GE4670@nvidia.com>
+ <87o861banv.ffs@tglx> <20211201001748.GF4670@nvidia.com>
+ <87mtlkaauo.ffs@tglx> <20211201130023.GH4670@nvidia.com>
+ <87y2548byw.ffs@tglx> <20211201181406.GM4670@nvidia.com>
+Date: Wed, 01 Dec 2021 21:21:29 +0100
+Message-ID: <87mtlk84ae.ffs@tglx>
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+X-Original-Sender: tglx@linutronix.de
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@linutronix.de header.s=2020 header.b=sbuHX70H;       dkim=neutral
+ (no key) header.i=@linutronix.de header.s=2020e header.b=8iqy66nC;
+       spf=pass (google.com: domain of tglx@linutronix.de designates
+ 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -151,51 +141,133 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+Jason,
 
-On 12/1/2021 11:41 AM, Thomas Gleixner wrote:
-> Dave,
+On Wed, Dec 01 2021 at 14:14, Jason Gunthorpe wrote:
+> On Wed, Dec 01, 2021 at 06:35:35PM +0100, Thomas Gleixner wrote:
+>> On Wed, Dec 01 2021 at 09:00, Jason Gunthorpe wrote:
+>> But NTB is operating through an abstraction layer and is not a direct
+>> PCIe device driver.
 >
-> please trim your replies.
->
-> On Wed, Dec 01 2021 at 09:28, Dave Jiang wrote:
->
->> On 12/1/2021 3:16 AM, Thomas Gleixner wrote:
->>> Jason,
->>>
->>> CC+ IOMMU folks
->>>
->>> On Tue, Nov 30 2021 at 20:17, Jason Gunthorpe wrote:
->>>> On Tue, Nov 30, 2021 at 10:23:16PM +0100, Thomas Gleixner wrote:
->>> Though I fear there is also a use case for MSI-X and IMS tied to the
->>> same device. That network card you are talking about might end up using
->>> MSI-X for a control block and then IMS for the actual network queues
->>> when it is used as physical function device as a whole, but that's
->>> conceptually a different case.
->> Hi Thomas. This is actually the IDXD usage for a mediated device passed
->> to a guest kernel when we plumb the pass through of IMS to the guest
->> rather than doing previous implementation of having a MSIX vector on
->> guest backed by IMS.
-> Which makes a lot of sense.
->
->> The control block for the mediated device is emulated and therefore an
->> emulated MSIX vector will be surfaced as vector 0. However the queues
->> will backed by IMS vectors. So we end up needing MSIX and IMS coexist
->> running on the guest kernel for the same device.
-> Why? What's wrong with using straight MSI-X for all of them?
+> I'm not sure exactly how NTB seems to be split between switchtec and
+> the ntb code, but since the ntbd code seems to be doing MMIO touches,
+> it feels like part of a PCIe driver?
 
-The hardware implementation does not have enough MSIX vectors for 
-guests. There are only 9 MSIX vectors total (8 for queues) and 2048 IMS 
-vectors. So if we are to do MSI-X for all of them, then we need to do 
-the IMS backed MSIX scheme rather than passthrough IMS to guests.
+It's a maze of magic PCIe driver with callbacks left and right into the
+underlying NTB hardware driver which itself does some stuff on its own
+and also calls back into the underlying PCIe driver.
+
+Decomposing that thing feels like being trapped in the Labyrinth of
+Knossos. But let's ignore that for a moment.
+
+>> The VFIO driver does not own the irq chip ever. The irq chip is of
+>> course part of the underlying infrastructure. I never asked for that.
+>
+> That isn't quite what I ment.. I ment the PCIe driver cannot create
+> the domain or make use of the irq_chip until the VFIO layer comes
+> along and provides the struct device. To me this is backwards
+> layering, the interrupts come from the PCIe layer and should exist
+> independently from VFIO.
+
+See below.
+
+>>      When it allocates a slice for whatever usage then it also
+>>      allocates the IMS interrupts (though the VFIO people want to
+>>      have only one and do the allocations later on demand).
+>> 
+>>      That allocation cannot be part of the PCI/MSIx interrupt
+>>      domain as we already agreed on.
+>
+> Yes, it is just an open question of where the new irq_domain need to
+> reside
+
+The irqdomain is created by and part of the physical device. But that
+does not mean that the interrupts which are allocated from that irq
+domain are stored in the physical device representation.
+
+Going by that logic, the PCI/MSI domain would store all MSI[X]
+interrupts which are allocated on some root bridge or wherever.
+
+They are obviously stored per PCI device, but the irqdomain is owned
+e.g. by the underlying IOMMU zone.
+
+The irqdomain is managing and handing out resources. Like any other
+resource manager does.
+
+See?
+
+>>     1) Storage
+>> 
+>>        A) Having "subdevices" solves the storage problem nicely and
+>>           makes everything just fall in place. Even for a purely
+>>           physical multiqueue device one can argue that each queue is a
+>>           "subdevice" of the physical device. The fact that we lump them
+>>           all together today is not an argument against that.
+>
+> I don't like the idea that queue is a device, that is trying to force
+> a struct device centric world onto a queue which doesn't really want
+> it..
+
+Here we are at the point where we agree to disagree.
+
+Of course a queue is a resource, but what prevents us to represent a
+queue as a carved out subdevice of the physical device?
+
+Look at it from the VF point of view. If VFs are disabled then all
+resources belong to the physical device. If VFs are enabled then the
+hardware/firmware splits the resources into separate subdevices which
+have their own device representation, interrupt storage etc.
+
+As VFs have a scalability limitation due to the underlying PCIe
+restrictions the step we are talking about now is to split the queues up
+in software which means nothing else than creating a software
+representation of finer grained and more scalable subdevices.
+
+So why would we want to pretend that these are not devices?
+
+They are from a conceptual and topology view a subdevice of the physical
+device. Just because they are named queues does not make it any
+different.
+
+Let's look at VFIO again. If VFIO passes a VF through then it builds a
+wrapper around the VF device.
+
+So if a queue is represented as a subdevice, then VFIO can just build
+a wrapper around that subdevice.
+
+But with your model, VFIO has to create a device, request a queue,
+wrestle the interrupts in place, etc. Which is exactly the opposite of
+how VFs are handled.
+
+So again, why would we want to make software managed subdevices look
+exactly the opposite way like hardware/firmware managed subdevices?
+
+Let me also look at the cdev which is exposed by the phsyical device.
+
+The cdev is nothing else than a software vehicle to create a /dev/
+node. (ignore the switchtec case which (ab)uses the cdev to connect to
+NTB). The cdev allows user space to allocate/release a resource.
+
+Of course it can just allocate a queue and stick the necessary
+interrupts into the physical device MSI descriptor storage.
+
+But there is no reason why the queue allocation cannot allocate a
+subdevice representing the queue.
+
+That makes the VFIO and the cdev case just using the same underlying
+representation which can expose it's properties via the underlying
+device.
+
+Which in turn is consistent all over the place and does not require any
+special case for anything. Neither for interrupts nor for anything else.
+
+Thanks,
+
+        tglx
 
 
->
-> Thanks,
->
->          tglx
->
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/df00b87e-00dc-d998-8b64-46b16dba46eb%40intel.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87mtlk84ae.ffs%40tglx.
