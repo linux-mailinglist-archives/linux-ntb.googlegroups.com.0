@@ -1,214 +1,144 @@
-Return-Path: <linux-ntb+bncBCN77QHK3UIBBQUGT6GQMGQEWKBQIJA@googlegroups.com>
+Return-Path: <linux-ntb+bncBDXYVT6AR4MRBTEGT6GQMGQEDYCCDCY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-vk1-xa3e.google.com (mail-vk1-xa3e.google.com [IPv6:2607:f8b0:4864:20::a3e])
-	by mail.lfdr.de (Postfix) with ESMTPS id BF1994655C6
-	for <lists+linux-ntb@lfdr.de>; Wed,  1 Dec 2021 19:47:31 +0100 (CET)
-Received: by mail-vk1-xa3e.google.com with SMTP id n19-20020ac5c253000000b003030c0efe45sf14733811vkk.20
-        for <lists+linux-ntb@lfdr.de>; Wed, 01 Dec 2021 10:47:31 -0800 (PST)
-ARC-Seal: i=3; a=rsa-sha256; t=1638384450; cv=pass;
+Received: from mail-ed1-x538.google.com (mail-ed1-x538.google.com [IPv6:2a00:1450:4864:20::538])
+	by mail.lfdr.de (Postfix) with ESMTPS id C77E04655C8
+	for <lists+linux-ntb@lfdr.de>; Wed,  1 Dec 2021 19:47:40 +0100 (CET)
+Received: by mail-ed1-x538.google.com with SMTP id b15-20020aa7c6cf000000b003e7cf0f73dasf21094340eds.22
+        for <lists+linux-ntb@lfdr.de>; Wed, 01 Dec 2021 10:47:40 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638384460; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lmJHSUqLcBmNwqjZFTMxlzueCSGD8Crdi5O7YFedR9AHBDBq1QF4HKz4FJdXkyVOsF
-         ItE7ID/FtDq2hwBtkT+4WPhBSM+fS7Nlm92Av8hbg53VtGdLIbkJvf9xS1LPmNwlQQyX
-         P7NK6LPJDOJv6R3aY5bm2N1IR0+7YbUOVttId6aWc9kWFNr2zvBLEAGT1hvzvRdY+mL3
-         R9uo6xFi+BatqMvWqcD58LuAFUfiUq/UTH4ZtKipRdLH2X8RPtI/i5rnIOr+kT8/9qsd
-         ysrbdggO0fMa0xT1d7/9e8AQcWX6Ich6/1+VKwP+/cdGcg3EDxsaFS5YRrCdjcyfdC85
-         adIg==
-ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=STrEF5szrpBZrQlIFSBN5zOS+jb5ptdIuM5Xtc6KafRRKE/saJ/vonbFRtNw7E0tyF
+         Whzu7PbsVP7tkdqXkLAnBFVoTV5dh5m55vMPbaGoq5S7F4oFqsug+pfjrLkuj88BEXMH
+         /TafTXz1g8/VenFeEL0ONSeUI24VmZ3lw5MIJ5wKQW6nZIagwKt3IaPja7gzpUABrAOY
+         15xAIzg5at03fdqR7E5JpeBZ9rIu21iPUQbWyyNePuFZfL1PgDUClBderHGnLJRJpPD4
+         T4WigzJSUmgpQNlizbtSM03dnKoMmaz5KEaZ4XG0e3X8Rm0o11/j3kecL2w/mXLJXQx3
+         5HKw==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:reply-to:mime-version:in-reply-to
-         :content-disposition:references:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=sK5Ebb+ccrsml801d6eA2qr9x6F008fgY9XVB/fpV3A=;
-        b=OHBAIynoEckzrqP8auOAszqa2/OVvXRvIqKH6XWhynZ67ccXptCEm3/iRQ1eXpPtd2
-         RRkxmXQ0fjWEmKFstFvRW5FW/OQ+Y9cvy80gpcTSKAg88SSfn7waKphQTVzLs1HanX6F
-         LtQDNEyi5V2c0GUHa35RrOTFzE8R86Nr5hcDRfZRWvVTyx7Rpt4WCD3RhpIF6vZsqds0
-         fbDr6XDKpZ3dB7IQ187r5mRJt5j1J/KylhAJDDIM4Y0eM1pHhFGKqO3WZ2yJw7aoVeMj
-         OE2hc/svJ9A1n9to9dwwf/BhmvIXP4IIWz/StNujBBZDYy/TGB2q3AMO3k+G2C0vPgOp
-         l+CQ==
-ARC-Authentication-Results: i=3; gmr-mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=KLDxS1f9;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of jgg@nvidia.com designates 40.107.244.84 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
+         :list-id:mailing-list:precedence:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id
+         :sender:dkim-signature;
+        bh=vwlbyrS8zyf6nKT7uCkQX8Tzgv41S9GCioxpEZjuqWU=;
+        b=qvyg3yT9vIXP+ZcdJkR1VwKnYd0WYkuGUP33kXxLH7WFxBhvMG0/FmH/+y/M1xzw7n
+         PrxHkvgrPpCiWceckBal5Xu9A3U6Ym/ukSpFJpqKs/j9bPFkL5DtguxtPl1AaDFZuvGV
+         0dvMjP1QwD239Tv60sJ3KO9ioTUZRCsdUuEAYFyGgB/CDwbogox5QoHI9f3pj2szBlNN
+         yv4UbPvfI6XMVqCgLJvsoqIBw0ay1rhD872wIBizFu7cYs50Y/AcAP6k7SneUUt30bj3
+         4uH6puqT89o+XMWKeWKWQ+SzCPRvUX02WtNkkerNNtlCmo04kz89uM0F5unuqvXl4D44
+         4bJg==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=date:from:to:cc:subject:message-id:references:content-disposition
-         :in-reply-to:mime-version:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:list-post:list-help:list-archive:list-subscribe
-         :list-unsubscribe;
-        bh=sK5Ebb+ccrsml801d6eA2qr9x6F008fgY9XVB/fpV3A=;
-        b=Ob4p+YoKVkJcyiitwRMWpUuz19Q+6h85zYCAKoIku8vdszjtIb0BnddzwqONSCsWaI
-         Q/phA1zpIeLDKPB5qlMQDQ56p34xfgBBU4gyxwHo0SZDTfs4pD6pcW0Nt/+aEY6uQlEc
-         EC66quiiYlAwznB2Nk+ruYignkMAuvpl2o6IEPYag+3xfyANTfB0xw8nT9mGt7zgZZuL
-         xaQthyecHO1ayMEBTmHz1gbvOLlDAws4+40DXLWvZLBzVlN5xfdgCnpR4DRR6K3JZUjJ
-         ZDNFo1P4QDajgWra7M0fS8gZ3cew6k29wec05Qjb/FeqKmXXmqyGTynOnnkh4sSFiT/7
-         cSgQ==
+        h=sender:message-id:date:mime-version:user-agent:subject
+         :content-language:to:cc:references:from:in-reply-to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=vwlbyrS8zyf6nKT7uCkQX8Tzgv41S9GCioxpEZjuqWU=;
+        b=h0nvmYfKVlj47z+02kBENpRcHLS6aL1iJoTFKQsaAohPT7b/yvcf+vL0Cwr68jyqYC
+         N8b6WOzaWADOIIvHfuMz65e7lCzH3Q5n2+G7m+bXEbppbTxHuFgoYXgplN9J6ITu2YBo
+         Yp08ayntEgT0Ur5qwhoT+i/dqW6YY6LHaY82L3OqsQFaMO4RW1T6YuhODstFDIcgTC4P
+         3P6M54ornQaXu4zMT0MVZtHw3MXQxi3ZC+/evfrrfJlaUr3aoN9t2wLbam1pfUiYLhiR
+         /GMJDh6xy2etlim0XBtrNpAz9+zJ1uZ9QZMK9FifU3A5SyC8xv/IBSPaX9U4mZUzbIj8
+         n+FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :content-disposition:in-reply-to:mime-version:x-original-sender
-         :x-original-authentication-results:reply-to:precedence:mailing-list
-         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=sK5Ebb+ccrsml801d6eA2qr9x6F008fgY9XVB/fpV3A=;
-        b=H3nXReF5QhjyglPXDbxGH7qWE0UXmYEIp7g4yxf35XLgHJUtrsRIp6rq4Z2gybHYHE
-         u1ys5MjQGbtwRaxqY406fQWo7fnO4SiHE1+dNuxQKxp3y1jECwp5JJkzQdSSoWaux/mw
-         pz2atTpVfzumzUa47ffAiDPvMF2Lza42CpLqBJfD2oyh3GYOou7c0M95LzqHKW623i9b
-         m8FgUMNWs50JM8GuGFqJHt8YX6nlQYwGQfiSHzUlJxbAMc0wxfXzudd7xie8s1UbBvQk
-         SglZSzDdZtftg55UeI+z9FweWcoEO6jqPjOUQN1kkG5gPMZjqd/Rn4JTP5KtMG1wP2pH
-         FOsQ==
-X-Gm-Message-State: AOAM531Ccv7vxLiHgaWHo5q65BdtGSJrAgAjH/bdzSjhVO2Afank4ROV
-	wELSE63dUAgnmrqCinR2Wpo=
-X-Google-Smtp-Source: ABdhPJyV18K0E7WEXMeLoU1Y+sGDxNSXAF+iayue1dOAYIT2otzdueGcBSuUAqEJ6qcobxXnVZwO3Q==
-X-Received: by 2002:a67:ac0b:: with SMTP id v11mr9641512vse.67.1638384450476;
-        Wed, 01 Dec 2021 10:47:30 -0800 (PST)
+        h=sender:x-gm-message-state:message-id:date:mime-version:user-agent
+         :subject:content-language:to:cc:references:from:in-reply-to
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=vwlbyrS8zyf6nKT7uCkQX8Tzgv41S9GCioxpEZjuqWU=;
+        b=z+KpcUpn0aC1lH+aCSOgraINJfgLJE3r/TcTb8P9kB/nMf0gckHfi+ieQeaj3CZYbp
+         wVeZc+pbaiI9pqxOdLByzAXZa87NdS+7PIEeHje9oaiExFdW5I3GRoqdvDCntdU8fd6x
+         ptl2EkTrBh5TeEs49yXvinfxFEOxESeqH8OA+ylkzw+GAvz23DG0tfUJ1vODKy1BpgP2
+         5EbfN8XCIFJZZQVR9RTTgRQRjdFzkEBEgnAOIlqExBa7zi0GBPC/mZZ7P5wFpBidkqOn
+         +DtIqJlsTF9zT9Y225s1ErStg62gB63Qyet0zsMaXXHu3DHOzTY9ITC0rn+4+/nGOktt
+         kNAQ==
+Sender: linux-ntb@googlegroups.com
+X-Gm-Message-State: AOAM533JjbLDhHLPg4nX/ZW15TfRXR6WCisU1Nv84FSKi1+qeqS39w3N
+	cI2dhI/gsdO4lvZrmX0Lt5Y=
+X-Google-Smtp-Source: ABdhPJxszwa8YrnFX4Yr01EuOMsnnovFBPMo6RDKybgHpE17WJnAKY+5qDI+i/sAJDnVIAqzMt0p9g==
+X-Received: by 2002:a50:d741:: with SMTP id i1mr10983950edj.37.1638384460596;
+        Wed, 01 Dec 2021 10:47:40 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a67:f15a:: with SMTP id t26ls1068329vsm.7.gmail; Wed, 01 Dec
- 2021 10:47:30 -0800 (PST)
-X-Received: by 2002:a05:6102:38ce:: with SMTP id k14mr9607381vst.70.1638384450037;
-        Wed, 01 Dec 2021 10:47:30 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638384450; cv=pass;
+Received: by 2002:a50:fd09:: with SMTP id i9ls3766711eds.3.gmail; Wed, 01 Dec
+ 2021 10:47:39 -0800 (PST)
+X-Received: by 2002:a05:6402:354e:: with SMTP id f14mr10736730edd.245.1638384459762;
+        Wed, 01 Dec 2021 10:47:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638384459; cv=none;
         d=google.com; s=arc-20160816;
-        b=E3/NZosko2KufYx8ewhDX8fAz+NHU1bPJYtppkyJMC/ykAF1LRnuM06HzCRj+iMrHA
-         n+nacUnvalzbU6Ix5L71jq4rChNJmZkULaqU+ny7r8qjn/EzB/PPG4umZNgik2SXO2rf
-         qnxA/b3EnOb3EBsLMy7qnb/FX/bSwIJ8qIeqTgn86DChjWxCsZuX5Jlq4Rrqp7pUy3aF
-         HOc1m6VowC+vc2forLlIUakEWX4kiz/jsHnA3tMf7FnWwURfBGl5B0kTgXaqUtY0T74b
-         rTNzkfdsXOHpuCpm6XGBN2s1EYUqbpotMD2FWCn0NiiQiTVztf7sMebZvH3TuP6FGpCF
-         nlpQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:in-reply-to:content-disposition:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=DXItD7ldxAtzBmsqOWiJr1ETJJVIgdNHSztEjVM0mcA=;
-        b=YldSpoCpFAL3kTJkK8MRpHNgKGcA6VO7V0wUfC/kxDhF0TwavoKyptXBMGRju3J5AR
-         aDlb1u1gcWxMCc0KQbRot5NVuoQRojGqob4svlmCqTRdg+o1Ab14Qmv8T9arMtmZtEqk
-         aEnuC+ZMmSmW3EAZoggIMghXvaHwrDoI0zhqIETT76NNC8SnGzyY4qDJPosuaJyMdzqN
-         K5AiDPpFdZkxT/EdAu9dyyExO5dDgwduYz/7RAFltKmKZNs9XcUpd0rtyPXMvvDHiMnv
-         VKRArnwIMMwjrsEaeQIvvbKY2oO43quWDA8TVPpmH4ie+WF/G7YRUykvFXN8lse+ywDQ
-         Dlnw==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=KLDxS1f9;
-       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
-       spf=pass (google.com: domain of jgg@nvidia.com designates 40.107.244.84 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
-Received: from NAM12-MW2-obe.outbound.protection.outlook.com (mail-mw2nam12on2084.outbound.protection.outlook.com. [40.107.244.84])
-        by gmr-mx.google.com with ESMTPS id r20si113460vsn.2.2021.12.01.10.47.29
+        b=GsOZJ8H4ma3E8kyQDDheXUl0lFuozeh7qhzH0VdQnQJTR++AQgddkeu2Cdu+V/t+/E
+         TPJNVqfV+pWuYMdF78vY0g9mTYm2nXm8/AtEpQWOQ0rxdTxo1guk4dxMF9t2mG/SRqBj
+         NdLMziaIrySTJRFuTKDiIjILYZEPoxyJWGI31ncfn/+cZoLUZUpS/sE+gS3TELcnxAKu
+         grdPMaSmSHdqJcFnU0xp/FNcYpWAzrnGC1Tq0NPmiVmplju9vEzgP8EJzLfZB9UYEJzU
+         MMjobaVcegQSAjD76BB3NrIkzntAxY8/7iGkL+dQWw2L5g3rUoYVb4+2jhz3RX8zFL/T
+         PT+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:in-reply-to:from:references:cc:to
+         :content-language:subject:user-agent:mime-version:date:message-id;
+        bh=lSm+lEGDdGSvDcfFv9XiegpdBQmKaPzi7WIfnNbwD04=;
+        b=Cv8eLTYDhApqHMoZs2HFnFY+bOKNBqeO+Ld+cwlZcCUd559xUdOb6ZQSL4ynqIwyJN
+         FxbTZhsv1N3fi9VlYBfEDEujK+0YAjSTT8iBkiGPRWy31ecHOmHMup7GzHO/KkW44ctW
+         VslFX/4+Dj7CcxlfF7sJuo9npnwySiYtQikmG7HHGpC5BKWvbCaW3Tgcypt8zPQr+pX8
+         q6sRuVT3YWnfbmwxQC2kRkcYB0g0o6D/r0kb8cJwz5JPu1KSaObS+0CWOlO6Wi10z9Dt
+         4PYUEyHxCfJ++5LBD9PXLAq6LcaxgrHgzRg6NTl1L6jtMbRycjSvTQsNIYN68uMcAiIF
+         H5XA==
+ARC-Authentication-Results: i=1; gmr-mx.google.com;
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from mga02.intel.com (mga02.intel.com. [134.134.136.20])
+        by gmr-mx.google.com with ESMTPS id fl21si47338ejc.0.2021.12.01.10.47.38
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 01 Dec 2021 10:47:29 -0800 (PST)
-Received-SPF: pass (google.com: domain of jgg@nvidia.com designates 40.107.244.84 as permitted sender) client-ip=40.107.244.84;
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=nRKnpRyqqiqwtYT75rT0bvGJhQmnXu3sqEAvtUzoDqchoRSrQeySqz+57tk2zD4svWpqvULpY3mD6vgZVHdc86o4/jtkjVsBvXJbz5iMPguBuDSpdPcJjiQ+dU/M2ytUfgiIyzah4I/px47TgsG/nyLeY1wyW6sDdOa7xqGg1zFQVdhU7CvrIuVCR3pRbMvbJO4c9UHCxUzJk0FFPGdPgD5zk+NWAZe7154HHcfNCPMNyO1sG5hrzkMwZYGvNTqtUx8LF+V5qlqAYrZoiaaZyiDi2I2qL+MTdRD6z0fnYivvStXnST++TyvQBKjlUinu2XzKxI3vr1c1K7gGtK9q6A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DXItD7ldxAtzBmsqOWiJr1ETJJVIgdNHSztEjVM0mcA=;
- b=CWoJ5PJDKs4Gj9dzMVv/6EIKaadjTEfbAKlU2U3hXayEBpI3I7lWIXJ8nZz937n8NSL7PUBCxMrW8wC7ySNOmozIGR/2JGg0ADK56SJAn6akBSLa/vAP5879rG11UMMUc6K0Jx8evWDZEWWcSUnzyhnQ5+JN6cK3x8H9pp+H9jpH2+9ovegNtHV+hfkjQ4ZtmOpi2Envcs1STikivGxz+0tNCxgGZL/yvT0EWzQ4sj3sdwuhCS+K13IuuBZ8wNqu3QFfT+qQPlw3AFjSsjXzOS8XMbjB2Fp6ElaL2tXwXy5+H5toCknt0X45b3fPxnlACY42RE3QtCMmLYRS0RDmmg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-Received: from DM6PR12MB5520.namprd12.prod.outlook.com (2603:10b6:5:208::9) by
- DM4PR12MB5229.namprd12.prod.outlook.com (2603:10b6:5:398::12) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.20.4734.20; Wed, 1 Dec 2021 18:47:28 +0000
-Received: from DM6PR12MB5520.namprd12.prod.outlook.com
- ([fe80::1569:38dd:26fb:bf87]) by DM6PR12MB5520.namprd12.prod.outlook.com
- ([fe80::1569:38dd:26fb:bf87%8]) with mapi id 15.20.4734.024; Wed, 1 Dec 2021
- 18:47:28 +0000
-Date: Wed, 1 Dec 2021 14:47:26 -0400
-From: "'Jason Gunthorpe' via linux-ntb" <linux-ntb@googlegroups.com>
-To: Thomas Gleixner <tglx@linutronix.de>
-Cc: Logan Gunthorpe <logang@deltatee.com>,
-	LKML <linux-kernel@vger.kernel.org>,
-	Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>,
-	Alex Williamson <alex.williamson@redhat.com>,
-	Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>,
-	Ashok Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
-	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com,
-	linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>,
-	Christian Borntraeger <borntraeger@de.ibm.com>, x86@kernel.org
-Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
-Message-ID: <20211201184726.GN4670@nvidia.com>
-References: <874k7ueldt.ffs@tglx>
- <6ba084d6-2b26-7c86-4526-8fcd3d921dfd@deltatee.com>
- <87ilwacwp8.ffs@tglx>
- <d6f13729-1b83-fa7d-3f0d-98d4e3f7a2aa@deltatee.com>
- <87v909bf2k.ffs@tglx>
- <20211130202800.GE4670@nvidia.com>
- <87o861banv.ffs@tglx>
- <871r2w9y3x.ffs@tglx>
- <20211201151121.GL4670@nvidia.com>
- <87sfvc893n.ffs@tglx>
-Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
-In-Reply-To: <87sfvc893n.ffs@tglx>
-X-ClientProxiedBy: BL1PR13CA0075.namprd13.prod.outlook.com
- (2603:10b6:208:2b8::20) To DM6PR12MB5520.namprd12.prod.outlook.com
- (2603:10b6:5:208::9)
+        Wed, 01 Dec 2021 10:47:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as permitted sender) client-ip=134.134.136.20;
+X-IronPort-AV: E=McAfee;i="6200,9189,10185"; a="223759724"
+X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; 
+   d="scan'208";a="223759724"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+  by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Dec 2021 10:47:37 -0800
+X-IronPort-AV: E=Sophos;i="5.87,279,1631602800"; 
+   d="scan'208";a="602264166"
+Received: from djiang5-mobl1.amr.corp.intel.com (HELO [10.212.64.69]) ([10.212.64.69])
+  by fmsmga002-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 01 Dec 2021 10:47:35 -0800
+Message-ID: <df00b87e-00dc-d998-8b64-46b16dba46eb@intel.com>
+Date: Wed, 1 Dec 2021 11:47:35 -0700
 MIME-Version: 1.0
-Received: from mlx.ziepe.ca (142.162.113.129) by BL1PR13CA0075.namprd13.prod.outlook.com (2603:10b6:208:2b8::20) with Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4755.7 via Frontend Transport; Wed, 1 Dec 2021 18:47:27 +0000
-Received: from jgg by mlx with local (Exim 4.94)	(envelope-from <jgg@nvidia.com>)	id 1msUda-006WkA-QA; Wed, 01 Dec 2021 14:47:26 -0400
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: c3cd54a2-a17d-455a-bb1b-08d9b4fb05d7
-X-MS-TrafficTypeDiagnostic: DM4PR12MB5229:
-X-Microsoft-Antispam-PRVS: <DM4PR12MB52290D3E02BD4F3C47245370C2689@DM4PR12MB5229.namprd12.prod.outlook.com>
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 6yjyIJ6w1qiB7spINi+OjtKiney4QTIkSClJAs7B4a2g+NKMEYjWA4f+SAX4T/EDjAu6Y8sXIT4VsadcTu6GAbPtH8Dtud9zxwod7R4AWduwJvtaCJVkvwcXqKGVxZeOyrsTnVVwub5lWZ6VFHBN37rKLoHDSXaN93MD9yMYqgvMecNBOSVpzd7Dvetr4e/AxU5Nxrlf7OzGBYdCQKwS3izVo45ukgsoCb5gl5ZhlVKvSssPeJBvuxQeaV8bF/aKGpvm5F3yr9YoQIfpKIf33jWFjK/857ftyWwzZR+D/yXcQd601WQYywriF9DtPlO6LVYzjEq1VE4ifujoFfpa2/zUL80xmwQ3g26hmRiy21egK9UmqvCWtlgLGPIGAyfPxUDWRsGbz598EgoIxlnTx5NZTVZMEwWi7BKA4oxTi9C1qNRYYkTUPBO4+T5CcgZ1HHMYn/FG9dShJBuqTYFbQN2GJKzeY8xl5HsaAECaiOjkIuZMeC7S+x6XiwZUJ4kdm8lBb5+NKAFtIAvuXqP4psNhl1tuO3N9iP3/fyPjOmOF/gxh//lT3jaMKL8HILJSnP4h2+6JvCFa7QZBw2rlYxL1wpuqqA1vqZ73G745WFFBpfTy4fXivBO8DJKdcwocqTGThV/MZ4lAcJgV0AwKkw==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DM6PR12MB5520.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(4636009)(366004)(86362001)(9746002)(2906002)(38100700002)(9786002)(2616005)(66476007)(8936002)(66556008)(5660300002)(54906003)(426003)(7416002)(26005)(508600001)(6916009)(1076003)(186003)(4326008)(36756003)(316002)(33656002)(8676002)(66946007);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mTpAgeJtDzpVswsVvWxEIlrkVDFcTAeKV0nQ2ktPOsK39GObHRW7KylOWRsM?=
- =?us-ascii?Q?EnzrWlJt3tWUi+4oneF81YSln3l/8sjtIEDXXDW3uQ/oT348TeGxiYHIGwdo?=
- =?us-ascii?Q?ichARPQBJ4q1mg0sK4yjZFCkKHkMvxbLUxT15TJYG/jLkTSkbP4xn69PcaOR?=
- =?us-ascii?Q?oNLEqXbVkktVAXimWnEYR5LYgpoXMjj8DwKXYEr6Tkf8xV9dh346NB7eslrq?=
- =?us-ascii?Q?VaPtQn5tgbkq/cleRo9ETEphWMpByc8Q630434kAVR8Hj/kHeBQup6+04yRi?=
- =?us-ascii?Q?SLqjEaI4xt86C4QGim8L85ZW0AceE2fP5IGcScBVMdVTqkQEJEOrucGMY3Mg?=
- =?us-ascii?Q?BdH8+qTpA2mYCobJNCWksYK3liLY5I56rCADfsEXanY16qLwhD/4QZ1G/Bdd?=
- =?us-ascii?Q?c0i/zwD5wxF0BR6iwwM3wmucLMY3lRGSbEtXAzHVpMfpMUoMXcmMlS+/MykS?=
- =?us-ascii?Q?IxJUArUH+E9OoA9mNvvJf1hLyY1x7kD5r+3wp9/X554JUD3P2euG2l6f19Of?=
- =?us-ascii?Q?du/xCXFP8lWru+3j6q+9lRp+1nNyNHnsDbaV04aCYkqvOhA/BSKTm4/pWl6Z?=
- =?us-ascii?Q?Fmdurn8KpBC//U33/za/9pGFq17TFnfqpEwkGK/lIlvdYEi6a98mzCFdfVcD?=
- =?us-ascii?Q?LQ6LFbmb7aH+XX0GAYc8VTJLWxi2HetWAOZ63piEcJ/uuMtEQjiIahIfSrc9?=
- =?us-ascii?Q?4ADsH9L0REBSbuQFaAd9y7AM/pWfYUlSWWXdzQ7hss7LiRsbKJpzq8eytpHb?=
- =?us-ascii?Q?02i8iV9ITCS7WuM8ZFdJoWFE9BqG+zVBJsoVlzQBaDMUKSmMc+Lvb/M8qKYA?=
- =?us-ascii?Q?q3CFkgyCElbfQ/O+/ZNOc8pfqpYWfgmu+71LOoUKPWvtNozUlTmZ5EXWul9+?=
- =?us-ascii?Q?0ozvf/rOGEW3LFvPaf93SyV/yDnccg63RsfI5bpT0kxIyw6CLO8ZDugfXsKk?=
- =?us-ascii?Q?ThRXBEbzQb+fyo6NRnUviAacTDUER7WOtKs6zYnYH+OcvSGB3wlGYYc5FxPu?=
- =?us-ascii?Q?lN4Ku3v9ajuPY4jWfpo4xKg2l9DJyAyvU3TOOwk6YfrpavAWqxtpbGO1TmXr?=
- =?us-ascii?Q?INmtlj6uLeokifhGT6olPAPPUCkp8iGJ763XlUhhrwOUHrjjSX5d0MnopCxl?=
- =?us-ascii?Q?S2lhDY6vpanFVgoRPUjr+/o2UrMMjjJS4PdUVNMZIwMUg1hns7i5QMOT0EhE?=
- =?us-ascii?Q?wXaE+ef7CJ1jaASWVO3DwtGi+unfyqYJjmPMf+ROMjlbE521MlrfUphZ6Isz?=
- =?us-ascii?Q?xsQ9rpNG11PuLn2X3eq8lb7uojFBMAZ8XPJ7uaofpPgLIzG0WdpYPUiIYCbl?=
- =?us-ascii?Q?h6eot7itlhL7Wwuhj2b0yCgXpINcaqypF7DccqgEPkkBUVQULdEhq+OLxDGf?=
- =?us-ascii?Q?sejmHQ1nul2Dzk7VBlBszS3sxgLH0njohKryOFSDbm1pBB+a/wh3AEwX3Otg?=
- =?us-ascii?Q?Zd/FzrpNa8bJEwaMRAx7OSIHcz+o8PXJyTQ/MQHOWMAraveCtGVWOpvJrcG5?=
- =?us-ascii?Q?Srjuf8BcCJ4Xz28RPu45wwgcmmFg3z5bX4iJmAt12Qop4gL/bczAoAVFfBFb?=
- =?us-ascii?Q?xbfmhf1up2RfIT86rag=3D?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c3cd54a2-a17d-455a-bb1b-08d9b4fb05d7
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR12MB5520.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Dec 2021 18:47:27.8795
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 212YAvZ60eeYKFhqTPhxQFnREVA2/mB4J49Qg6WCQWz+7Qkzla8T2ew4MtUTo5CP
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB5229
-X-Original-Sender: jgg@nvidia.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@Nvidia.com header.s=selector2 header.b=KLDxS1f9;       arc=pass
- (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass
- fromdomain=nvidia.com);       spf=pass (google.com: domain of jgg@nvidia.com
- designates 40.107.244.84 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
-X-Original-From: Jason Gunthorpe <jgg@nvidia.com>
-Reply-To: Jason Gunthorpe <jgg@nvidia.com>
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101
+ Thunderbird/91.3.1
+Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
+Content-Language: en-US
+To: Thomas Gleixner <tglx@linutronix.de>, Jason Gunthorpe <jgg@nvidia.com>
+Cc: Logan Gunthorpe <logang@deltatee.com>, LKML
+ <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
+ Marc Zygnier <maz@kernel.org>, Alex Williamson <alex.williamson@redhat.com>,
+ Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>,
+ Ashok Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jon Mason
+ <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
+ linux-ntb@googlegroups.com, linux-s390@vger.kernel.org,
+ Heiko Carstens <hca@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, x86@kernel.org,
+ Joerg Roedel <jroedel@suse.de>, iommu@lists.linux-foundation.org
+References: <20211126230957.239391799@linutronix.de>
+ <20211126232735.547996838@linutronix.de>
+ <7daba0e2-73a3-4980-c3a5-a71f6b597b22@deltatee.com> <874k7ueldt.ffs@tglx>
+ <6ba084d6-2b26-7c86-4526-8fcd3d921dfd@deltatee.com> <87ilwacwp8.ffs@tglx>
+ <d6f13729-1b83-fa7d-3f0d-98d4e3f7a2aa@deltatee.com> <87v909bf2k.ffs@tglx>
+ <20211130202800.GE4670@nvidia.com> <87o861banv.ffs@tglx>
+ <20211201001748.GF4670@nvidia.com> <87mtlkaauo.ffs@tglx>
+ <8c2262ba-173e-0007-bc4c-94ec54b2847d@intel.com> <87pmqg88xq.ffs@tglx>
+From: Dave Jiang <dave.jiang@intel.com>
+In-Reply-To: <87pmqg88xq.ffs@tglx>
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+X-Original-Sender: dave.jiang@intel.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of dave.jiang@intel.com designates 134.134.136.20 as
+ permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -221,38 +151,51 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Wed, Dec 01, 2021 at 07:37:32PM +0100, Thomas Gleixner wrote:
-> On Wed, Dec 01 2021 at 11:11, Jason Gunthorpe wrote:
-> > On Wed, Dec 01, 2021 at 03:52:02PM +0100, Thomas Gleixner wrote:
-> >> So we really can go and create a MSI irqdomain and stick the pointer
-> >> into stdev->dev.irqdomain. The parent domain of this irqdomain is
-> >> 
-> >>      stdev->pdev.dev.irqdomain->parent
-> >
-> > It can work (pending some solution to the iommu stuff), but IMHO it is
-> > strange/hacky to put HW objects like irqdomain on what is a character
-> > struct device with a set major/minor in dev->devt and associated
-> > struct cdev.
-> >
-> > Conceptually it makes no sense to me, cdevs are software constructs,
-> > they should never go into HW areas..
-> 
-> I picked that because it _is_ already used to establish the connection
-> to the switchtec_class NTB driver which is beyond the usual cdev muck.
 
-IMHO that is also a misuse. These days two drivers should be hooked
-together using an aux device, not a cdev and the obscure
-class_interface stuff. Aux device supports auto probing and module
-auto loading for instance.
+On 12/1/2021 11:41 AM, Thomas Gleixner wrote:
+> Dave,
+>
+> please trim your replies.
+>
+> On Wed, Dec 01 2021 at 09:28, Dave Jiang wrote:
+>
+>> On 12/1/2021 3:16 AM, Thomas Gleixner wrote:
+>>> Jason,
+>>>
+>>> CC+ IOMMU folks
+>>>
+>>> On Tue, Nov 30 2021 at 20:17, Jason Gunthorpe wrote:
+>>>> On Tue, Nov 30, 2021 at 10:23:16PM +0100, Thomas Gleixner wrote:
+>>> Though I fear there is also a use case for MSI-X and IMS tied to the
+>>> same device. That network card you are talking about might end up using
+>>> MSI-X for a control block and then IMS for the actual network queues
+>>> when it is used as physical function device as a whole, but that's
+>>> conceptually a different case.
+>> Hi Thomas. This is actually the IDXD usage for a mediated device passed
+>> to a guest kernel when we plumb the pass through of IMS to the guest
+>> rather than doing previous implementation of having a MSIX vector on
+>> guest backed by IMS.
+> Which makes a lot of sense.
+>
+>> The control block for the mediated device is emulated and therefore an
+>> emulated MSIX vector will be surfaced as vector 0. However the queues
+>> will backed by IMS vectors. So we end up needing MSIX and IMS coexist
+>> running on the guest kernel for the same device.
+> Why? What's wrong with using straight MSI-X for all of them?
 
-An interrupt on an aux device is at least somewhat conceptually
-parallel to an interrupt on a mdev as both are usually representing
-some slice of a device.
+The hardware implementation does not have enough MSIX vectors for 
+guests. There are only 9 MSIX vectors total (8 for queues) and 2048 IMS 
+vectors. So if we are to do MSI-X for all of them, then we need to do 
+the IMS backed MSIX scheme rather than passthrough IMS to guests.
 
-Thanks,
-Jason
+
+>
+> Thanks,
+>
+>          tglx
+>
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211201184726.GN4670%40nvidia.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/df00b87e-00dc-d998-8b64-46b16dba46eb%40intel.com.
