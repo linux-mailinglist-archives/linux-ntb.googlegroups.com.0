@@ -1,134 +1,149 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBNXSVWGQMGQEQOM2DAI@googlegroups.com>
+Return-Path: <linux-ntb+bncBAABBDG2WCGQMGQE5AHSTYQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-ed1-x538.google.com (mail-ed1-x538.google.com [IPv6:2a00:1450:4864:20::538])
-	by mail.lfdr.de (Postfix) with ESMTPS id 73173468552
-	for <lists+linux-ntb@lfdr.de>; Sat,  4 Dec 2021 15:20:40 +0100 (CET)
-Received: by mail-ed1-x538.google.com with SMTP id b15-20020aa7c6cf000000b003e7cf0f73dasf4808563eds.22
-        for <lists+linux-ntb@lfdr.de>; Sat, 04 Dec 2021 06:20:40 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638627639; cv=pass;
+Received: from mail-ua1-x938.google.com (mail-ua1-x938.google.com [IPv6:2607:f8b0:4864:20::938])
+	by mail.lfdr.de (Postfix) with ESMTPS id 36CAF4688F6
+	for <lists+linux-ntb@lfdr.de>; Sun,  5 Dec 2021 04:07:58 +0100 (CET)
+Received: by mail-ua1-x938.google.com with SMTP id h6-20020a9f3006000000b002e6e81fda51sf3846554uab.4
+        for <lists+linux-ntb@lfdr.de>; Sat, 04 Dec 2021 19:07:58 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638673677; cv=pass;
         d=google.com; s=arc-20160816;
-        b=lMxlH9bqQV/+CF2kgMqMaky4U4JwDHMiheJlru2QmTYLKsn2EEkkYJGEjKIAmP29Ka
-         PoGRJSS8Cg7hN54QeW2QZUwKVmz1YQlNB8knTKIGk0p/k6GI3LKHWpyQA+SnBH6tL/J+
-         HS35RB7EQQrKQEhMTHCz+d8N4+szJAMKjE+2Bgl1xNE8tYzd8YkwZgyZA+ZhKLo3rQqO
-         seCzWW3ikktHk+JHaANIEOTlRrpNqvAY8F3u6wqDScGZ51ifCs18IFmFPUIL+9ATbwFt
-         AyxLWiJoi6NdfVaUFiqBp2lJVER8ETpp1hQiYvwD1FKk0kfFqA6W/wtL/SdK4OT+AZoo
-         tHlQ==
+        b=Le+20YE8yHCBW4BLIByAK0duR+LXjwPzgengAdatUNHMKh7Cv60eSu2MIPx1a0UFzQ
+         RhFLAy22TYV4vt5BWjwPTRMQz75BarcnOo6jMpLPxTUjiMnPSF8bePJ9sUE5EbjDTmHK
+         T6//vj/Jk91bdG4h+9PxXqRnhlr5Y75vUtSiku97J3H0Veuw9nWsj3VvBAM1KBdNPerd
+         yAk492X3nLXYfs/Ajoe9FYDe/Rtau6DVRAyPleK88lsRn4552DbDuFRcC1UoG4aClCQ8
+         NW4x3iXblAzwJJ/zFSYw0Ft6UErBmu1MGLQycyjKSrVKJDPN8ZcvAPy/0zwi96JJJNRI
+         EOLQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
-        bh=nGd81xrHWzqIEMJuODmUt4D/FqmmnXxCYVuLEB6Xm8g=;
-        b=eNvTIZeqv7yJ+qvTg3sh8CCgA7ol9fxHD3z0KKTCvtkBWNlSdM3V5MfvI10kbJygT9
-         Y1eeZHHDvqcAg4++SNZxFP3L3IN/cyykQR2uEhL2dL+Tv7DwFnZg4i4utcN9t+d58pY1
-         TJUlMqDMDuxw+MA5MDmTuNyW0dCbXO0WgfPAmi5nLPXjqIiOZ4E4eNU4RXVwdijyhawe
-         g2d2o23aFyo5HsaAx+IpJkHMhgNBtstDD2h3lxjKXDqST+sCcHN3TJM9+yuep5VjDybr
-         xoGENcfZM9sJUnOFtwk6IrrJLy63GL3B5SDqq/uR1n3vrpRPp2I4qw2RL6kpyj4fitOG
-         S32Q==
+         :list-id:mailing-list:precedence:reply-to:references:mime-version
+         :subject:message-id:to:from:date:dkim-signature;
+        bh=Jxhwi45nrEqBOEQMkRu2crVUYOlyz7235Fk0nrBXlxA=;
+        b=CNNSHDyJqN5FFXZN1hr//tjjuTa9yGKi5wvZjDCs5allD15DEu+Rha0lsGyWxmgSdr
+         ibDmJXtCSTMGpfWBTbHr/QotUGuRTqnOrjr3GUFvCOxiHXJAEX5NqwA59EYCizrRSa1I
+         c1EYvbnq2rnAB0lDuht+MmlvsxjBzGuju6TUzPe+qWlNXGbSSgJe5ga4WKRueZt5u+7a
+         OkFYBh6znKamSb1bCvn/ivVDu34L2dEvzhktSi/1O3MJuvl0xiHKQN3JwX0DT8iTSQBS
+         uWbVde/FsJnIMQ659iu8MMuy099RNUbRevHOx/T4Vc0pfGLYBv35oHfD5IPd8hbW3PXl
+         DkLQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=UvXEFQnJ;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+       dkim=pass header.i=@yahoo.com.sg header.s=s2048 header.b=k22oIl6K;
+       spf=pass (google.com: domain of pharmaceuticalmanufacturing80@yahoo.com.sg designates 106.10.241.39 as permitted sender) smtp.mailfrom=pharmaceuticalmanufacturing80@yahoo.com.sg;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.sg
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
+        h=date:from:to:message-id:subject:mime-version:references
+         :x-original-sender:x-original-authentication-results:reply-to
          :precedence:mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=nGd81xrHWzqIEMJuODmUt4D/FqmmnXxCYVuLEB6Xm8g=;
-        b=I7pSldkCDmWUrYBeid9nAweFuSih5dJfXuXDuNY87PJUXKXkqGHceepffOHuJQxlZ7
-         gbhFS+d+d42A8tl5cj392OqN7t2zS3OC6sSeGlO7H0+2LJBN3UCB+5ayWklORHHKH3ME
-         HXIM9R1loW537J+4NhT9lxKT1WVkB9PJp/9WwbrbGTxBjB9w1Q+K6Ur+Z9epitIRvrbf
-         kxFqI+HnrIAoWZcDD+Gn0AQIVS9h071CsMsFZAfCTGzOtn5GQ/0BAwdXES5yyRaVEpqc
-         R/nAcwzrcPlbCy0Nj9M6ZTtncPY7W6/gjxtBgT7o1fWgJYTVjGMzVPYaMt+xWCrNcdpM
-         bDmg==
+        bh=Jxhwi45nrEqBOEQMkRu2crVUYOlyz7235Fk0nrBXlxA=;
+        b=o9eT6qcS6JLdJbQ8MWH8vc8QvKTEcE/l9pejuG5ZSPhkGM+eo7Pst8T3xpwocWnRW6
+         JkycsJhCziXTf6ANwQ5pVLcmnIqsqRKoW9eGClFrhKoKJnXpQAE8pvxH2q1XN1YKZ29L
+         O0xHzTeSCtyTEpQue/C8yVQZzMYQtAMQsy4HQQVx3vuPHxLwcWqHTf9Mv/vuHI6fiuMD
+         wKH+ZBRo/TIdivMN+Iq3WwanbtFn03Ob7MP6yp5kfXyD0ui1o6sW43PzjSohcXAJmcod
+         ch5AkB9U7YGoWq6fo8ATnHGw/DBdWm9xLJxLmdcqW3YxooV2adGfH5r/CUvIPWDRbwXb
+         mbXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
-         :date:message-id:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=nGd81xrHWzqIEMJuODmUt4D/FqmmnXxCYVuLEB6Xm8g=;
-        b=OtNhumChpbMotzrdpVEtCT2s6ahJMUx01bea/+3CC6Q0W0krp1ldQdGJgDGwQC9nOr
-         Z9k70cAsXd5QbXSQazyJp90/OZp0QmwXHP5F1CkKvTYpqO/ickkb6QmA8hM0JuR8ic8/
-         AouQj5OLCBz6hllcOUdtLEGZlp+UheoVYEcIko8caLTWtWTd4mxr16u3KytGEGGrIVjl
-         h+DCiBSaOpWfz27U7twxZb0OrZK50b8TjrT4hx6Kz0GZuqucFw2tc/tWWJraDDMQbECu
-         dHWsKoh/1BicGGsndkS63NygpqO7+Y5a/opmQxj6f5luS3uw67SSLkRTMEQmOaupM//4
-         81uw==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5307zOqP5VbcL+Kwv3p8yLMEbLbffdIVmjAKAAXzxBNEF6XrULkM
-	wuy8dGMqULdg7xZzbgCj2og=
-X-Google-Smtp-Source: ABdhPJzK4vrSKpWykRYDKSHWAFBUsVew4p8juLP7rF6PbR4eyRZfeUKp4mBx7qfzN6mM7OZ2KiLRmw==
-X-Received: by 2002:a17:907:1c07:: with SMTP id nc7mr29869629ejc.546.1638627639159;
-        Sat, 04 Dec 2021 06:20:39 -0800 (PST)
+        h=x-gm-message-state:date:from:to:message-id:subject:mime-version
+         :references:x-original-sender:x-original-authentication-results
+         :reply-to:precedence:mailing-list:list-id:x-spam-checked-in-group
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=Jxhwi45nrEqBOEQMkRu2crVUYOlyz7235Fk0nrBXlxA=;
+        b=ZmgX5XA2iMVe4Y1Rfh9jOdr9e2BO46h+WFOViAETj9cPfBizaHhnTOEQ1I499W6eFK
+         fGcTDnu2qQ6mTMNWHsAgkKmDgO+Vs1ftuv1ce2ahfA4YkBTrKBiFgD75XI0ylTTYTYGu
+         jFe2NP1aSTSIYdqCzWuCnfRXnmpETBs32VGV1yZjQCO2xH0LJ+A+vsUkxBzA9TrPR9GX
+         U5YGeXGZ+Zb10l/lgLJAhYOvnB99oblYooGOGb7oWr7Tb282kDuBUu1hzgyUzqcNlCRv
+         uA9swpmUJ1Uvyz4OdR/rvxMJW4mr5qjlbf0l+OkUjO5EM5TZiDASTJJRyYDJXMr4uFQA
+         1+OQ==
+X-Gm-Message-State: AOAM530AcjuTY/1nklk3/eH6bjWzn3/6uKYtCkHv9RcFXZ0S32wfWIGV
+	zqpMFkNnrO8iSxprdJtZ25c=
+X-Google-Smtp-Source: ABdhPJwH4E7+6yVZPtF8u0dfu5yR7ZDXIk4cFPJ5LJFu761LoXFdWviSovc2HgCSfiMQJmq1A4xnHQ==
+X-Received: by 2002:ab0:36c4:: with SMTP id v4mr31645658uau.8.1638673677129;
+        Sat, 04 Dec 2021 19:07:57 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a17:907:3e9d:: with SMTP id hs29ls4673759ejc.2.gmail; Sat,
- 04 Dec 2021 06:20:38 -0800 (PST)
-X-Received: by 2002:a17:907:96a4:: with SMTP id hd36mr31685624ejc.407.1638627638174;
-        Sat, 04 Dec 2021 06:20:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638627638; cv=none;
+Received: by 2002:a05:6102:41a6:: with SMTP id cd38ls3960878vsb.5.gmail; Sat,
+ 04 Dec 2021 19:07:56 -0800 (PST)
+X-Received: by 2002:a67:b807:: with SMTP id i7mr28787498vsf.52.1638673676653;
+        Sat, 04 Dec 2021 19:07:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638673676; cv=none;
         d=google.com; s=arc-20160816;
-        b=k3746KeLZADh0HPTD7cwnfuyZ27XxdnsmCMyoyftaie8w3sqgdUR9DHGqYDz1wtf+8
-         oLV2k1DIfTaV+HL7vmuljAB8zrMzQWVPwZzd6FnPxQfg+5UiMZKH6LluXbOUkVpKMRA3
-         bYv1UCS75SBovTxJnc9eO0VR8EjUM1yKbusgpypt5D+wy7p/5ewQdOtkHTebmRWy08g4
-         kclsL2mp0ZuuEgGwCWfLsVafEAGpu8ulQ2IODEAiS5Q+9bgILq/1DAGRPvt4m0VxGv1x
-         13WP2FQhhyfEyXLg5DYKUTc4XmK/xjThXGZ5IUGFrpsybZRVMotGqUHW3sgV/GNs7hnV
-         PvKA==
+        b=JKer1vaeO6y8pqQXu/bv1LGLv38WGEoT1o9CptgqbYaK7XSpQ4Lm6061sa7AS0t2vK
+         1BTZnFV1WRZS3D7O2r2nQ1kHx0Zr3/+SwRi5EXYun2/iMq0gZZ8Fmc1DmNxOZunFjizo
+         3cerjH4gbiVrr6131hL2NY1iWwLLCPb3GlnSv+WgW3jJ/9zKKtTrPSjZJ30F9z/ZU/Hu
+         wFdZOWsxm+KsNZ7jXpj7M10YxwBDbSLR2+xSKdaVANTreIMg7Dd+aBPHwbkB38OPP9CD
+         9TEeBjrN4OyVRFQDzhvAIsav/eYLem/YVv4RTd3acPt79N5XEHrk33D56XtozuVre7oV
+         s2wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :dkim-signature:dkim-signature:from;
-        bh=oC4rR+ZzJhUFWEhNk/yS63wLbPwpFqTfGsr/JOeeegI=;
-        b=I3hflolHKbxz8CNtrEDldLqrOOWtpPNVLBE6UQOtdSQRVFIe4QRKhY1g5olFHi0Koa
-         YSay5ckMntehy1PoKF7QsjHc0PaCkRTji2aH+40yG7O8IBedE40uHxatFLcZOmTz7us1
-         g332zwcvDv7Sclawo5KgHA9SqDpPX2gF8JzJY/rZaPLbmu3yMKIOt7xPSDmKT0LqXXsn
-         3BFzPHX4QnLeHQyaUxnUA7XEMQJVULnO6E4cwgwBYe+f77dvNf2jPanlBSmzmBXpAKaE
-         eIdJ6QdwIY7d4o8B/x+gHUUlK9PlDuV267Lg+AVoVEcimBtqDBrSh4rP+1sNF+7fPoFB
-         lk+g==
+        h=references:mime-version:subject:message-id:to:from:date
+         :dkim-signature;
+        bh=r6lQsmKlMKpNkqqodmqQ5uVqGEcs/RyTrDAF+DeC/pQ=;
+        b=QCXXRUheBcTMouJZex4YpoF3tHo5Uf9I8C8RvLIy7fMPc+krxOTRJp7oaNKeQZ8jwB
+         mrVOQD/IzYhDzeK4SbYkuHGKLpoRlgycbHFc/iycto79Mx4iet2fQK3qsq8/yuPf8eK9
+         FfpxO6Bml//3l4WoTCgm+F/y4TausYkX3jzOFMmreN3ouJPtORL4i+mEgjnYHkxitfNB
+         l31NaoMY642e3F7Ejf99GY9grwa5Gdy8DveSRTPrBrr5XTsxkZXMgxExE/B3WDk74QD4
+         vCxAhlGtMuI/45to+3g2/z0h0a9txCpRdoG2W6mekFH+Wdpd2esz4F4Qubt+iHtKfX5E
+         gr+A==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=UvXEFQnJ;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
-        by gmr-mx.google.com with ESMTPS id d5si488578ede.2.2021.12.04.06.20.38
+       dkim=pass header.i=@yahoo.com.sg header.s=s2048 header.b=k22oIl6K;
+       spf=pass (google.com: domain of pharmaceuticalmanufacturing80@yahoo.com.sg designates 106.10.241.39 as permitted sender) smtp.mailfrom=pharmaceuticalmanufacturing80@yahoo.com.sg;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.sg
+Received: from sonic307-22.consmr.mail.sg3.yahoo.com (sonic307-22.consmr.mail.sg3.yahoo.com. [106.10.241.39])
+        by gmr-mx.google.com with ESMTPS id x19si401734vke.2.2021.12.04.19.07.55
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 04 Dec 2021 06:20:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Logan Gunthorpe <logang@deltatee.com>, LKML
- <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>, Marc
- Zygnier <maz@kernel.org>, Alex Williamson <alex.williamson@redhat.com>,
- Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>, Ashok
- Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Jon Mason <jdmason@kudzu.us>, Dave Jiang
- <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com, linux-s390@vger.kernel.org, Heiko Carstens
- <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>,
- x86@kernel.org, Joerg Roedel <jroedel@suse.de>,
- iommu@lists.linux-foundation.org
-Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
-In-Reply-To: <20211203164104.GX4670@nvidia.com>
-References: <87y2548byw.ffs@tglx> <20211201181406.GM4670@nvidia.com>
- <87mtlk84ae.ffs@tglx> <87r1av7u3d.ffs@tglx>
- <20211202135502.GP4670@nvidia.com> <87wnkm6c77.ffs@tglx>
- <20211202200017.GS4670@nvidia.com> <87o85y63m8.ffs@tglx>
- <20211203003749.GT4670@nvidia.com> <877dcl681d.ffs@tglx>
- <20211203164104.GX4670@nvidia.com>
-Date: Sat, 04 Dec 2021 15:20:36 +0100
-Message-ID: <87v9044fkb.ffs@tglx>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 04 Dec 2021 19:07:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of pharmaceuticalmanufacturing80@yahoo.com.sg designates 106.10.241.39 as permitted sender) client-ip=106.10.241.39;
+X-SONIC-DKIM-SIGN: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048; t=1638673673; bh=X0F5QFVVd0rmHdykwqhVaxIwOBzASoIvZKSGEUqL9kA=; h=X-Sonic-MF:Date:From:To:Subject:From:Subject; b=Nch7EGMlS/Jv+dRWmNF6cPqiROo/IC1NNWb4NP1XeYj89aTyoDbwQY6TzBeo/h2fA7gMdSa47XRJX/EK2za791CK3afcCqykEUVStQpwBtuznJ5MuT/vwBw0F47y8xIm1YhQcotY69ax8TnbwWm7MJS7AwvidS+SBBmKv3zsoMk7iG/XZuos9T6lrC+kF9PP8jC2GgWPiKAa4/JB7c1R+JSZXDuDnp3M+O7JlsXOx5+eHAKI1onh/j3KNDDIOFFRVdgU1FuecECROuU78k2QJMw6kSdZ+t/e20VvAjBdtdkAArDOhw65dD5IY78kCBBzdr4ikZzfW/qHSgCx5cpBSQ==
+X-YMail-OSG: yOqW1IAVM1nd2sVA3wX3gEdI97mUFhN9U0w2cxOaWKfoSMMkxsSFumHfBRz8kVU
+ XfD.igWaITqlhhnwUxU1lSGbN8HgOO22dxeuzbwKHxqryII5rJ3i8ec1V55TS.4xB.a9sZr4kHHI
+ 0r9a4tWeOEt8BrS3sGuFud9Rho3ctIXBdWScEzYt_1MIpv0hCGw9D12I5WB1V2I0ZQ8Pru43MJ0D
+ G8cm7w_HuZng3J4XtlRP0VvaUvw4b6BaeLaOLia7yGUkZhLSmLwiiYaiGXNnSiNGpNU.71GW9W3x
+ .JfM8_BiAd_7DMVFyUrC8pQeiZnxiMLkpPOqMzpp3spWQHBdNHYaxZeBRW4ufZAOvWAMRPuPIttV
+ ALzJvIFplza1K9.IFlYYL8JmfkaOAfz_YXhoNxnol_tN65mBoMMzR36b5o_B.nPsAToAmR9gWyhM
+ FuvyND9w3Ppj35TI6RPXiYMAUZsM3E7iyhEAcAZcVLVGpsSpWxjVziAzLpaRileAEANagFnfllGR
+ sjCJCv64T5Cye9Qth1CILjXUoxiycSRk9C96qTl6pJS5joYEcYR2KccENem7eQg2U8Go._wWCbP.
+ qmMm.qhggOlCcvoXMdRjphgdBijF0xa07AVc9eaVxc3LVn75kjv.aTBsW3BqHPzkWSl_qW353yaX
+ GNFcPQG5xBteXVoihh1pEKFwP37mmWIk.lzvTevzm1Cuv2i4ECR9ZbFJ3_kY9m3p_SQ..L8.fxwF
+ N10GvHVlz2q7vGT_GNVvv6bBhdDMJaHb80fqiXY2rd4jGpC48utSh.jefYilxwD912drhX5uXxDL
+ 5YlEcxPeXCgPjkSPDaLXzRm8ugioS7utUjkpBRI1j5A3AdwWpeSmTgUw2VOv9LJSR5In39CPWSty
+ Vj54ee3bdKPgjNZuqxV9ZGLa4J3uTn32Iws543PrqF7rGPqFsJS5IoG7a1eo89FFHpV02op_kljM
+ vKoFgqbeW0FBmRBsM7c5sUP.W0s77agd1QsTrRzqVA53_ksTPhoPA5jZAaUUI4Z7n1xGvuLBGmbv
+ nJLfpSe4yDffWPKd3LyF1zhARDeTkqk2wwy.nPu4yW2zvS7zkyoLjXRCQ1.7dysO_CX.6kN04brF
+ mjQHA2Z3I8tAgnI2f6zbeHlB2uCshVCzMHkwpuPQn6O3GORwcCmgTZL0_VbH1VPafI1iyWF9fvqE
+ 0izC7xkY1J5fbYI5DIC1M9YfzVb1QIXqxPmOU..5eWEwcn784Ay5ih4jWmJAlGyikwdCxmfnSdg4
+ NiFz6yRxnFFYIcSc2l38kxZFPeUXhr7NtnlzV46eROmSj0Wz14doQjuffowe5qhCPHBYPEubLjq2
+ .DdTL26fj2t.yU.xZqWXJ4FiXDE.Z8Fzi.p4EesQPABgbqjZf50TQfNrtgNXZH97fMnCXs0BjFbY
+ TpI3mDd3v6VtuDSrJsV.C.N5HKkGAm2aBZpc3NNuPyPmLaUx73stUa53.JUGNk7XNWt0pJrFloyW
+ FmhBbIefTS3_zak06mITYWchAP1slFkANr052x8pB6xIXr3DsLKHNoGVG7ZL.vhl03e3LNv6Tg87
+ m3Yj5rP0XO9gTS8E9vR5rXUgB9CqM75GB1CKI9jw3chOKYCXa8d4uC4PH5ky2j.dAI0Ja.KRpI56
+ TvWa.u2KJwGniTvcYnosCFonib51DoNyeMICdiM0sH4HegKjctMpWIFrPyzCb6h5CmM_n77lW2uw
+ vLWA_EpymWRRFOGRJPhM.4SvX3KZtlhtnwZvfLTG22P7vuPEu0AZIesITDayzPQJ5uIte8UmZ3Vc
+ fjHzb6Ke3JrdLxo0DoTN7wC117nOwu.5etSl6oh7NXmADuQlp_iBoaXk84hFN_8o8KQHPAKXKelD
+ 4Qhaus03wT4dsUL.EF1UOuLSyK5ITPJRlMy58D1p.LE3Y.B9MeDM2BTHj8sN_IRYyoe0XjJPtjJC
+ cCDTr2kfkFkIZG5NZtCRuDM3_afzVCF5bbBklVqHdAIOxnKEjgy0OTa7SA6DH.NZuDaAzvoaKSza
+ uzf_DmZ9Bmsj6MGEVPEKFs.Uq9849josl0jrb7Z__KY6Lj0563S3lZ5cTfDlx04xQMVewhdUWXaJ
+ u2vyzfjnEYtGE5rEb7n6csxxgcKA707SCwHaMt7VuvjlN7YJ2DqosBy_ke3tmKlexcOOkSgiWUzF
+ d6tx_xfsk1VJkSUivMjRCzRAI8ggViUxy5k2UdUKmQCDv9L0SyACzHrE.ivq9qdM0a1c-
+X-Sonic-MF: <pharmaceuticalmanufacturing80@yahoo.com.sg>
+Received: from sonic.gate.mail.ne1.yahoo.com by sonic307.consmr.mail.sg3.yahoo.com with HTTP; Sun, 5 Dec 2021 03:07:53 +0000
+Date: Sun, 5 Dec 2021 03:07:54 +0000 (UTC)
+From: "'pharmaceuticalmanufacturing80@yahoo.com.sg' via linux-ntb" <linux-ntb@googlegroups.com>
+To: "britishhighcommi111@gmail.com" <britishhighcommi111@gmail.com>
+Message-ID: <1424513128.258601.1638673674158@mail.yahoo.com>
+Subject: 1-1
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: tglx@linutronix.de
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_258600_178442310.1638673674158"
+References: <1424513128.258601.1638673674158.ref@mail.yahoo.com>
+X-Mailer: WebService/1.1.19306 YMailNorrin
+X-Original-Sender: pharmaceuticalmanufacturing80@yahoo.com.sg
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=UvXEFQnJ;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e;       spf=pass (google.com:
- domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted
- sender) smtp.mailfrom=tglx@linutronix.de;       dmarc=pass (p=NONE
- sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@yahoo.com.sg header.s=s2048 header.b=k22oIl6K;       spf=pass
+ (google.com: domain of pharmaceuticalmanufacturing80@yahoo.com.sg designates
+ 106.10.241.39 as permitted sender) smtp.mailfrom=pharmaceuticalmanufacturing80@yahoo.com.sg;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com.sg
+X-Original-From: "pharmaceuticalmanufacturing80@yahoo.com.sg" <pharmaceuticalmanufacturing80@yahoo.com.sg>
+Reply-To: "pharmaceuticalmanufacturing80@yahoo.com.sg" <pharmaceuticalmanufacturing80@yahoo.com.sg>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -141,325 +156,71 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Jason,
+------=_Part_258600_178442310.1638673674158
+Content-Type: multipart/alternative; 
+	boundary="----=_Part_258599_1502703077.1638673674120"
 
-On Fri, Dec 03 2021 at 12:41, Jason Gunthorpe wrote:
-> On Fri, Dec 03, 2021 at 04:07:58PM +0100, Thomas Gleixner wrote:
-> Lets do a thought experiment, lets say we forget about the current PCI
-> MSI API.
->
-> What if it worked more like this:
->
-> probe()
->  // Access the real PCI SIG MSI/MSI-X table
->  mystruct->msi_table = pci_allocate_msi_table(pci_dev);
->
->  // Special interrupt 0
->  mstruct->desc0 = msi_table_alloc_vector(mystruct->msi_table, hw_label=0);
->  request_irq(mystruct->desc0, ..)
+------=_Part_258599_1502703077.1638673674120
+Content-Type: text/plain; charset="UTF-8"
 
-A device driver should not even know about msi_desc. Period.
 
-The code which gets the msi_desc pointer handed in is the irqdomain code
-and eventually the irqchip callbacks which need to deal with it.
-
-I just cleaned up quite some places again which fiddled with msi_desc
-for the very wrong reasons. We've had subtle bugs due to that in the
-past.
-
-The time I wasted in the past to fix drivers which fiddled with msi_desc
-and even with irq descriptors just because they can, makes me think hard
-about encapsulations because I have absolutely no interest to do full
-tree cleanups every time I need to change something in the core
-code. Neither do I have interest to deal with the resulting bugs which
-end up on my desk because the usual consequence is that the abuse makes
-the core go belly up.
-
-If I need to change a dozen irq chip implementations, that's a limited
-scope, but chasing the abuse all over the place is insane. I'm dead
-tired of it.
-
-The driver can get some info struct which has the index and the linux
-irq number in it and that is all it needs, seriously.
-
-If C would provide access protection scopes in objects then the msi
-descriptor pointer could become a cookie. But we only can document that
-the driver writer has to treat it like a cookie which is equally
-effective to not documenting it at all. That's unfortunately the sad
-reality. So the goal is to make it harder to screw up and not to make it
-easier. The only way to do that is strict encapsulation.
-
->  - msi_table is a general API for accessing MSIs. Each bus type
->    would provide some kind of logical creation function for their
->    bus standardized MSI table type. eg MSI/MSI-X/etc
-
-You can't give up on that table thing, right? We just established that
-for devices like yours IMS is not necessary a table and does not even
-need the index. The fact that MSI-X uses a table does not make
-everything a nail^Wtable. :)
-
->    It is a logical handle for the physical resource the holds the MSI
->    addr/data paris.
->
->  - Use a pointer instead of idx as the API for referring to a MSI
->    irq. Most drivers probably only use msi_desc->irq?
-
-No. pci_irq_vector() translates the hw index to linux irq number.  The
-hardware index is known by the driver when it is doing a batched
-allocation, right?
-
-There is also that magic interface which hands in an array of struct
-msi_entry.  msi_entry contains the hardware index and the linux irq
-number. The hardware index is filled by the driver and the linux irq
-number by the core code when the allocation was successful.
-
-Yes, it's awful from an interface point of view, but that has nothing to
-do with the underlying infrastructure and the problem at hand.
-
-I'm fine with using the info struct I described above as the reference
-cookie.
-
->  - We do not have device->msi, it is held in the driver instead.
-
-No. First of all drivers have no business with that, really.
-
-It's infrastructure which the driver utilizes and that infrastructure
-manages the data it requires and uses it within the infrastructure, in
-this case irqdomains and the associated irq chips.
-
-Aside of that. Even if it would be a good idea, then someone has to
-rewrite the PCI/MSI backends of powerpc, mips-octeon, s390, xen and some
-more first. Along with the MSI and the PCI/MSI core.
-
-Then create either nasty wrappers around the existing interfaces which
-create those magic tables automatically and store them where? In struct
-device->msi perhaps? :)
-
-Alternatively cleanup ~360 usage sites throughout drivers and add the
-same silly boilerplate code all over the place, which is wrong to begin
-with. We want less boilerplate not more.
-
-I'm sure you're volunteering or can provide the engineering capacity to
-do that. Depending on the capacity this might be done in 1-10 years from
-now.
-
->    dev->irqdomain is always the bus/platform originated irqdomain of
->    the physical device.
-
-This is a guarantee for subtle bugs and I'm not even remotely interested
-going there. See also below.
-
->    Thus we break the 1:1 of the device and irqdomain. A device can
->    spawn many msi_tables, but only one would be on the dev->irqdomain
-
-Why are you trying brute force to push things into device drivers?
-That's really the wrong direction. We want common infrastructure to be
-managed by generic code. And all of this is about common infrastructure.
-
-The only device specific thing which is required due to IMS is the
-irqchip plus it's data. Whether that irq chip implementation is part of
-the device driver itself or is preferrably an irq chip implementation
-which can be shared and instantiated by several device types is not
-making any difference here at all. It's from an encapsulation POV still
-an irq chip which is handled and managed by the interrupt subsystem.
-
-We don't need that for PCI/MSI[-X] at all, so why would we go and give
-up on central managed storage and add pointless crap to drivers so that
-driver writers can screw up even more?
-
->  - Rely on dynamic allocation instead of the awkward batch interfaces.
->    This means a msi_table starts out with 0 msi_descs and as we go
->    they are allocated, installed in the xarray, and connected to the
->    HW.
-
-We need to preserve multi-vector batch allocations unless you have the
-engineering capacity to fixup the stuff I mentioned above.
-
-And no, you can't just make the batch allocation a wrapper loop around
-single vector allocation as that will break the world as well.
-
-There is a very good reason why I made runtime expansion of MSI-X
-interrupts opt-in by the underlying architecture specific MSI
-backend. IMS support has to be opt-in for the very same reason.
-
->  - hw_label is defined by whatever type of msi_table it is:
->    for PCI MSI this is the MSI table index
->    for IDXD IMS this is the IMS table index
->    for mlx5 memory IMS it is -1 (?) and the msi_desc is just placed
->    anywhere in the xarray. msi_desc->xarray_index can store its
->    location
->
->  - 'msi_table_alloc_vector_range' allows a simple API to get any
->    free entry from a group of fungible entries to make it clear
->    to readers the typical special/pooled HW design pattern
->
-> Is it sane? What really needs device->msi anyhow?
-
-device->msi is a container for interrupt management and that's done by
-the interrupt code and not by random device drivers. Again, struct
-msi_desc is a software construct which the interrupt core code and the
-irqdomains and irq chip implementation use for various purposes. Nothing
-outside of this realm has to even know about the fact that this data
-structure exists in the first place. See below.
-
-> IMS is a logical progression of this concept:
->
-> probe()
->    mystruct->msi_table = pci_allocate_msi_table(pci_dev);
->    mystruct->ims_irqdomain = <....>
->    mystruct->ims_table = msi_allocate_table(pci_dev->dev,  mystruct->ims_irqdomain ..)
->
->    // Use MSI
->    mystruct->desc0 = msi_table_alloc_vector(mystruct->msi_table, hw_label=0);
->    // Use IMS
->    mystruct->desc1 = msi_table_alloc_vector(mystruct->ims_table, hw_label=0);
->
-> Not saying we can/should go out and just do something so radical, but
-> as a thought experiment, can it guide toward a direction like this?
-
-What I agree on is that the interface should be in a way that the driver
-can:
-
- 1) Allocate vectors at a given hardware index
-
- 2) Allocate vectors within a given hardware index range
-
- 3) The core returns the hardware index and the Linux irq number in
-    a separate info structure which is independent of the interrupt
-    stack internal data representations.
-
-But the driver interface is _not_ the problem at all.
-
-Interrupts are fundamentally a resource pool which roots at the
-CPU. There are layers on top, e.g. IOMMU, which are involved in
-routing. On top of that there is the outermost interrupt chip which is
-handling the device specifics.
-
-Interrupt delivery roots at the CPU too. So the interrupt core code has
-to have a consistent view of the whole chain. That requires to have
-proper data representations and a consistent relationship between these
-representations.
-
-That brings me back to device->msi. This is part of the data
-representation and disconnecting it make things just harder and more
-exposed to the whim of driver writers. Thanks, no.
-
-Sure the driver can get a cookie of some sort to do allocation/free from
-different resource pools, e.g. PCI-MSI[X] and IMS. But the internal data
-representation management has to be done at the core level.
-
-That means that a driver which utilizes device specific IMS should not
-even try to make the irqchip/domain code mangled into the other device
-code. It should create the irqdomain with the associated chip and that
-creation process returns a cookie which is passed to the actual device
-specific code. Allocation then can use that cookie and not the irqdomain
-pointer itself.
-
-But the driver API is the least of the problems at this point,
-really. What's important is to know what kind of functionality the
-drivers need.
-
-Then you build the thing up from bottom to top, layer by layer
-considering the functional requirements.
-
-The final driver API is a conveniance wrapper based on the underlying
-infrastucture which hides common tasks from the driver level.
-
-> I agree alot with the other email you wrote that IMS == MSI - I think
-> that is key.
-
-Yes, that was clear to me from the very beginning, that all of them just
-raise interrupts by writing msg.data to msg.address.
-
-> So much of these conversations have been warped by thinking of IMS as
-> some wonky thing for virtualization, or trying to focus on VFIO as the
-> only use case.
-
-Well, I was always thinking about all use cases.
-
-The important thing about this discussion was that I had to understand
-how this is used and that my naive assumption that this new approach is
-just a logical consequence of splitting the devices up further into
-smaller slices is not really correct.
-
-The Physical function -> Virtual function -> Logical function view made
-a lot of sense to me. And that's how some people explained it in the
-earlier discussions. From that point of view having a struct device to
-represent it was not that absurd, right?
-
-So thanks for being patient in educating me here.
-
-The fact that we will be able to support this at all is based on years
-of cleanups, consolidation and restructuring of the infrastructure. The
-result of doing this is that my trust in driver developers in that
-regard is very close to zero. The cleanup patches I had to do for this
-series just to solve the single irqdomain case did not help to elevate
-the trust level either.
-
-The common approach is: My device is special and therefore I need
-special X. The core does not provide special X so I hack something up
-which violates all known rules of encapsulation and layering in one go.
-
-Reality is that this is in 99+% of the cases not true at all. If "my
-device is special" would be true, then writing and maintaining an OS
-which can handle this hardware zoo would be close to impossible.
-
-That's why I'm insisting on understanding the use cases and the
-underlying concepts of representation deeply. That's why I'm more
-interested in data representation and the relation ship of data than in
-function interfaces and code.
-
-Code and function interfaces are defined by data representation and the
-relationship of data. Doing it the other way round is doomed.
-
-> I think the other sort of tangential issue when you think on IMS ==
-> MSI is how pci_msi_create_irq_domain() is basically a special case for
-> PCI MSI by providing chip ops that only work for PCI to the irqdomain.
->
-> Not only that, but instead of cleanly having two irq_chip ops for the
-> very different HW programming under the MSI and MSI-X cases it is
-> handled with a 'if (msi_desc->msix)' on each op.
-
-I'm well aware of that. That's historical ballast which is also required
-to keep the legacy architecture code alive. Same problem as explained
-above.
-
-> If IMS == MSI, then couldn't we conceptually have the dev->irqdomain
-> completely unable to handle IMS/MSI/MSI-X at all, and instead, when
-> the driver asks for PCI MSI access we create a new hierarchical
-> irqdomain and link it to a MSI chip_ops or a MSI-X chip_ops - just as
-> you outlined for IMS?  (again, not saying to do this, but let's ask if
-> that makes more sense than the current configuration)
-
-That's not really a good idea because dev->irqdomain is a generic
-mechanism and not restricted to the PCI use case. Special casing it for
-PCI is just wrong. Special casing it for all use cases just to please
-PCI is equally wrong. There is a world outside of PCI and x86. 
-
-But yes, dev->irqdomain _is_ part of the problem and even the root of
-it. I definitely stared at it before, but for stupid some reason I
-stopped staring at it. I blame it on too much email. :)
-
-The point is that up to now we had a strict 1:1 device irqdomain
-mapping, which starts at dev->irqdomain. The MSI descriptor storage is
-just a consequence of that. And yes, it took a while to understand that
-there is a use case for 1:2.
-
-So I need to break that up in a way which caters for both cases, but
-does neither create a special case for PCI nor for the rest of the
-universe, i.e. the 1:1 case has to be a subset of the 1:2 case which
-means all of it is common case. With that solved the storage question
-becomes a nobrainer.
-
-When I looked at it again yesterday while writing mail, I went back to
-my notes and found the loose ends where I left off. Let me go back and
-start over from there.
-
-Thanks,
-
-        tglx
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87v9044fkb.ffs%40tglx.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1424513128.258601.1638673674158%40mail.yahoo.com.
+
+------=_Part_258599_1502703077.1638673674120
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><head></head><body><div class=3D"yahoo-style-wrap" style=3D"font-fami=
+ly:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px;"><div><br><=
+/div></div></body></html>
+
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/1424513128.258601.1638673674158%40mail.yahoo.com?utm_m=
+edium=3Demail&utm_source=3Dfooter">https://groups.google.com/d/msgid/linux-=
+ntb/1424513128.258601.1638673674158%40mail.yahoo.com</a>.<br />
+
+------=_Part_258599_1502703077.1638673674120--
+
+------=_Part_258600_178442310.1638673674158
+Content-Type: text/plain
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="a-c.txt"
+Content-ID: <e3864d91-af59-8d56-0ba2-f304e0944549@yahoo.com>
+
+VGhpcyBpcyB0byBpbmZvcm0geW91IHRoYXQgeW91IGhhdmUgd29uIGEgcHJpemUgbW9uZXkgb2Yg
+ozUwMCwwMDAuMDAsKE9uZSBIdW5kcmVkIGFuZCBGaWZ0eSBUaG91c2FuZCBQb3VuZHMpZnJvbSB0
+aGVDb2NhLUNvbGEgTG90dGVyeSBwcm9tb3Rpb24gVW5pdGVkIEtpbmdkb20gd2hpY2ggaXMgb3Jn
+YW5pemVkIGJ5IENvY2EtQ29sYSBpbiBjb25qdW5jdGlvbiB3aXRoIENoZXZyb24gVGV4YWNvIE9p
+bCBhbmQgR2FzIENvbXBhbnksIJNZb3VyIEVtYWlsIEFkZHJlc3MiIHdlcmUgc2VsZWN0ZWQgdGhy
+b3VnaCBhIGNvbXB1dGVyIGJhbGxvdCBzeXN0ZW0gZHJhd24gZnJvbSBOaW5lIGh1bmRyZWQgdGhv
+dXNhbmQgZW1haWwgZnJvbSBDYW5hZGEsIEF1c3RyYWxpYSwgVW5pdGVkIFN0YXRlcywgQXNpYSwg
+RXVyb3BlLCBNaWRkbGUgRWFzdCwgQWZyaWNhIGFuZCBPY2VhbmljIGFzIHBhcnQgb2Ygb3VyIGlu
+dGVybmF0aW9uYWwgcHJvbW90aW9ucyBwcm9ncmFtIHdoaWNoIGlzIGNvbmR1Y3RlZCBhbm51YWxs
+eSwgd2UgaGF2ZSBvbmx5IHNlbGVjdGVkIDIwIHBlb3BsZSBhcyBvdXIgd2lubmVycywgdGhyb3Vn
+aCBlbGVjdHJvbmljIGJhbGxvdCBTeXN0ZW0gd2l0aG91dCB0aGUgd2lubmVyIGFwcGx5aW5nLiAN
+ClZFUklGSUNBVElPTiBBTkQgRlVORFMgUkVMRUFTRSBGT1JNDQoxLiBGdWxsIG5hbWU6CQkNCjIu
+IEFkZHJlc3M6DQozLiBTZXggYW5kIEFnZQ0KNC4gU3RhdGU6IA0KNS4gVGVsZXBob25lIE51bWJl
+cjoNCjYuIE9jY3VwYXRpb246IA0KNy4gRW1haWw6DQo4LlN0YW1wIFNpemUgUGhvdG86CQ0KOC4g
+QmFuayBOYW1lLCBBY2MgTm8gYW5kIElmc2MgQ29kZToNClRvIGNsYWltIHlvdXIgcHJpemUsIHBs
+ZWFzZSBmaWxsIGFuZCBzdWJtaXQgeW91ciB2ZXJpZmljYXRpb24gZm9ybSBpbW1lZGlhdGVseSB2
+aWEgZW1haWwuIA0KRHIuIFJpY2hhcmQgRG9tbmljICAgd29ybGRjb2xhQGV1cm9wZS5jb20NCkZv
+cmVpZ24gU2VydmljZSBNYW5hZ2VyIA0KQ29jYS1Db2xhIExvdHRlcnkgKFB2dCkgTHRkLiANClRl
+bDogKzQ0NzQ0ODcyMjI2NjcNCkVtYWlsOiB3b3JsZGNvbGFAZXVyb3BlLmNvbQ0KSSB3YW50IHRv
+IENvbmdyYXR1bGF0ZSBZb3UgSW4gQWR2YW5jZSBhbmQgUGxlYXNlIERvIE5vdCBGb3JnZXQgdG8g
+SGVscCB0aGUgUG9vciBJbiB0aGUgU29jaWV0eSBXaGVuIENvY2EtQ29sYSBNYWtlcyBZb3UgYSBC
+ZW5lZmljaWFyeSBPZiB0aGVpciBXb3JsZCBPZiBXZWFsdGguDQpDb25ncmF0dWxhdGlvbnMgb25j
+ZSBhZ2FpbiAhISENCg==
+
+------=_Part_258600_178442310.1638673674158--
