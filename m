@@ -1,134 +1,216 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBSUTWOGQMGQE7R3NAYY@googlegroups.com>
+Return-Path: <linux-ntb+bncBCN77QHK3UIBB3VXXCGQMGQEWDY3X5Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lf1-x139.google.com (mail-lf1-x139.google.com [IPv6:2a00:1450:4864:20::139])
-	by mail.lfdr.de (Postfix) with ESMTPS id 66A77468B5C
-	for <lists+linux-ntb@lfdr.de>; Sun,  5 Dec 2021 15:16:43 +0100 (CET)
-Received: by mail-lf1-x139.google.com with SMTP id h40-20020a0565123ca800b00402514d959fsf2575807lfv.7
-        for <lists+linux-ntb@lfdr.de>; Sun, 05 Dec 2021 06:16:43 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638713803; cv=pass;
+Received: from mail-oi1-x23d.google.com (mail-oi1-x23d.google.com [IPv6:2607:f8b0:4864:20::23d])
+	by mail.lfdr.de (Postfix) with ESMTPS id 661A7469881
+	for <lists+linux-ntb@lfdr.de>; Mon,  6 Dec 2021 15:19:27 +0100 (CET)
+Received: by mail-oi1-x23d.google.com with SMTP id r65-20020aca4444000000b002bce52a8122sf8176740oia.14
+        for <lists+linux-ntb@lfdr.de>; Mon, 06 Dec 2021 06:19:27 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1638800366; cv=pass;
         d=google.com; s=arc-20160816;
-        b=EWtc/UPfFpp5L307iZVzicY3PrjSfdMmJSSU26Nymv/XZQgf5gRJP8J/PZfzMnpdpr
-         M5f9wipwrojPLYxzab1rXZLva0u/1kKIr2l+y0wn5oCkvBmf+zS5JQ30Z3Vw+/NzZvo4
-         ESnih05pccMjG2gpYtRuxymCOTFxubmP2snarI+GZVTTmeQYPQmL/m/KTLIlaIfVyPHz
-         7fhz//f06Hy67FiEOZ+tggurOmC0Btkua1pBOQM7u4ifJ6hhDgnvnCRPaMHdoDsYweP3
-         uukf/AU/K0POdYqFa/TRCf9aQ9E0cNQKUbbC++YUUnFwkLzNI2kUssVZDIgEM5wWy/Vf
-         bhEA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=FnD2GWoPWemJCvRA8i/C1mlzciFfhCUQjdb+IfVxLv5OJAsYGL2luchP5y09v+00Pg
+         lbF7OtN0F4A8A92NMY3UaPrnOEVJOIuQN38eUz188iBkKE1TwxcUgj2Zqx8DxvXYvVs0
+         vY0RGSTIOK3cmToTAUzmm8PvV3d2C7K4yYm5gp0RZWWkzByOtqqUXn9+7V256fw6Qu3l
+         zrA7H7lOx8xBk3UXTyyHxxMRCyzmAOdpgfO1Fk33XXjOpihnKh5nrm+ZR0k6qHG+97ea
+         isM/Tdmj2i38w7wtXcSBzFt9zZMieWs7gJX9GVaKm18DKdmmzA0uO1+f3Xi4abefD5KV
+         DQXg==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
-        bh=bnV3GAmDQHJm0HFbmb/hA4oZw6APUXbC/uu1FyoMN4s=;
-        b=mnMOqTgKz61BjVfk+LkGaFhPME2sBsZMGTobKL/M7yhgMAINt6aDpBg1T2etlgOG5e
-         uf1f9FA/OZWUUVIxzX5VwZBbIOGtpS81na8loibVeuZfDF/B/TUI1BGPkdaajLVSd05E
-         5rnn4FPj+W7FQqF+Ig5N24E8u63S3R3iU8dUfhKFvR4cV3Ou9bCULPRuBww4r+rG7KKX
-         gWEU9f8y5MSlzbUbNl2SawD0x1B/T4HdchwRGfRcB6wdjoJ2YoJkR6U2VZpACK/AYjF5
-         dmuD1FqdwBLOyB8Jie6HBudFhqcBU3jUMiiEEZrH80dr4fIjQ3+WKv7tEAzO90zqM17t
-         jHMg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=yD1StGSO;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b="qH/RLvwS";
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+         :list-id:mailing-list:precedence:reply-to:mime-version:in-reply-to
+         :content-disposition:references:message-id:subject:cc:to:from:date
+         :dkim-signature;
+        bh=iK8g1/g+1EZ+eD0/Flj3lV8D+3I68yK8OxJS/UQ86/g=;
+        b=0oziXLIkxhgLfa8dpmMzfnOmR77C9yuMQglrcxcHAwGBzFPzRl5orTq1LGSi/vz9ut
+         G3P1XCdyvtpefhvEVqYBH7BYIyC2+o+7y8uYxVLuFZJFbMLIZBK9ZEECD7Pw6fYsYo+O
+         W9WS2J3vFWLlMh3YjuSSmUMj3dDD3K0QOnNqSnwTEtrxKQSO0Y/L3tkZPw8jnnHnSYMs
+         BWv/bDWW1nfAZMaRGAJdQIEKuWOn6a5Fmt8/vMCOxWuPMBd1hg5npVlCaXueKFEi47qh
+         lL+hpNeAVAMFlFbWNc6QkuIZqVALkXY6MpmV1qkeAXJvUH5g6ZX6PbgSzGjaSzTHgK3V
+         xbmw==
+ARC-Authentication-Results: i=3; gmr-mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ksINXdoG;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of jgg@nvidia.com designates 40.107.220.61 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=bnV3GAmDQHJm0HFbmb/hA4oZw6APUXbC/uu1FyoMN4s=;
-        b=Mf3Jfpbh+KBZojoZ3Tb/C2+u2ipe2NtfKoGKUN36Djacg2q8gNY5RcPZ9s2T6swpK4
-         olM0PjtnT6SWNID3/H7wPMIPP/qSZ6ybLEbudOMqE2YWESt3bCgr1ajJ9hxwme5uQ0a9
-         bJKRtVPWUGz2s4dzZ2Yen2vuWdx9wib2lwu/wt0cmJOyFZf5sgTo92JLUSiSQi6OtZgt
-         rXEsFxg4UOP6/dtlBF46hUrtK9m03JPADodsEcWOZtoBDXm++F1AIzZ8F8ZsZ4y3tRpu
-         g52zld5+jEtXIA+l+tbDUrHjvOL0ALbclnA3WfzRYIpoDFuahyM5TYnFtz4np7UVExo6
-         08cw==
+        h=date:from:to:cc:subject:message-id:references:content-disposition
+         :in-reply-to:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=iK8g1/g+1EZ+eD0/Flj3lV8D+3I68yK8OxJS/UQ86/g=;
+        b=RIhlRFODln8+9bYlsa3APR7/JCfN7JwbQqRwY6JnUrWbNJ9vo6hu5zu87F76Gwjt3h
+         ExowIuhFPrLIlxNxm8T9zQNjtGGqbOudx6/62xuVoddHC5CJh3V3voyPbvIBXmKtaCEJ
+         tXZPSXraiaYGjtP5mNemZGAp0aZkiBKqD6rF3sQGibkb6eT+HpFWocQ/s6xE5Ti+tKbX
+         qPBc+S8AhLAFFXC8t+eYv0GMrpMhEoj3tQeNNU6X4KmSYn514U4CfpCURjOdOIWZ1OvG
+         oLphvmkKzaPvsR4ulyF4eg2HMciy7C10jGdk5Iyngc4Vbz0SRI1SCf7wUgveBets9NVT
+         UtqA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
-         :date:message-id:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
+        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+         :content-disposition:in-reply-to:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=bnV3GAmDQHJm0HFbmb/hA4oZw6APUXbC/uu1FyoMN4s=;
-        b=c00kGhBk95Gg1+6XF8HWSX+gtAThONttNmmrydpuYUFMZ323lPLVtk5+JlLGIIwQwO
-         JRT49sr9YGvSIUVe8obG2BC4sDNnSx0Ivhao9KDBtobq52FhnXmRQnxJ7pUoPIUjVDan
-         Wk+ck5s1XEQS77a6/Y9+YJ+DoO1/Z+7eWTNpRY4WbLkon3Am9nBSiksVbXGvAKgHViHx
-         Nkux985ldANFI+hz4SzmzY3i787/jgSvFRKej5yjjUMKPVYwo9VeAo+gJ3/H9OOBFahM
-         uvz8azO/OE4PliTUDhQjeBUbr4G3+SAZRXdA26xQ021/St91/57DOF++Qjr9/hgyIORr
-         ZC2A==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5310jV6vlIbvWeKg7qsIeS9yYlD9giulIf31QeEI6ZX5taP+e/wo
-	4vNUSN5EK6kw9uqtZFEZjuM=
-X-Google-Smtp-Source: ABdhPJynl64RXBo0ZMqQC40B7tTOrvMFkwhl1lgUg7BaWGWQ8+5NBgU8MzKsMhl9LcRTJ9EpAb93jQ==
-X-Received: by 2002:a2e:a548:: with SMTP id e8mr29410243ljn.24.1638713802913;
-        Sun, 05 Dec 2021 06:16:42 -0800 (PST)
+        bh=iK8g1/g+1EZ+eD0/Flj3lV8D+3I68yK8OxJS/UQ86/g=;
+        b=OUHZmgZJ+9ETccQtZDqmMFlXqfmBXDkO01DE1RrKgti+ad/+HB66JYn9aL9gZ0Q1N0
+         g3ncX13fpWNxFqhir6cYnxmTKGd31/Z+M2fi4Y00UbbGVdH9pKBz/dKg2r9SmQalyUjh
+         Oz3VMnA5W3hraYNxdrjm3pds4Er9p4iC7tYxCkZoWPYBA5g4OVz8FakhOAMpf8IxUg6I
+         lcs8WkA5qj55rtXok3frSvrfyLD9WL06CALxB47XYFFSf3Bcy/b9sINDVJwZ7/zJHagE
+         m1KZMkYUziKFA+bfApCglcZXiJP8QPYn9qNmDtx/FM14bnsE1umAoVVTkbtEZrYmmdnv
+         vevg==
+X-Gm-Message-State: AOAM531FHnioPoWVCN9fwktHOCpDnaDW612kCJuyak+b6dKkT45N9pMG
+	mKiGEHOSlnW5lvq7d2oEgPE=
+X-Google-Smtp-Source: ABdhPJzQP/CeZvuVeJ2jF4pVyhBRKSkp1+cPRc7K3+7RuYxjGJuZVYuuqjfPMKKuE38/JEMbDFJ7zA==
+X-Received: by 2002:a54:4515:: with SMTP id l21mr24155855oil.15.1638800366179;
+        Mon, 06 Dec 2021 06:19:26 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6512:234c:: with SMTP id p12ls2407614lfu.0.gmail; Sun,
- 05 Dec 2021 06:16:42 -0800 (PST)
-X-Received: by 2002:a19:f50e:: with SMTP id j14mr29409089lfb.458.1638713801958;
-        Sun, 05 Dec 2021 06:16:41 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638713801; cv=none;
+Received: by 2002:a4a:58c9:: with SMTP id f192ls1151142oob.6.gmail; Mon, 06
+ Dec 2021 06:19:25 -0800 (PST)
+X-Received: by 2002:a4a:7d52:: with SMTP id q18mr22297573ooe.52.1638800365691;
+        Mon, 06 Dec 2021 06:19:25 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638800365; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rcYLn1St2Q7iPWTSmCOsPGC3YUZJ30RjldgZdLM5ltmXmMSy93/I5hGYhx+JM5piCK
-         ECBMIVjsPmUNzKvMEakW7xO4z7QywJgo6WVrDShfZ4v3mjGMEhWE7ghpqw+lBoAix9Ku
-         UmUdJ9jaFqey8ZvAIQUroWd6IAUwMaobMZv3s/Suzk+SNo25IjJV+0cV0F7Hwc4OjKs/
-         G3eKlknLBJkP1Ht/WJ85YHA33IO15NHLybm7Ai/nrh/JBlRiaM+RSTXLb4/T+gQ6XYiC
-         HyUwSH/hA75LOviA44bD1ttpDdHy0iBScQIvJmkqeIV5UbZmJFmVhsNXlto+4INcGPzI
-         +qRA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :dkim-signature:dkim-signature:from;
-        bh=sJTQUIRR77MaSNIdhZpi/LTBTa3zuBS70Kn6pQ3k3x4=;
-        b=Q0a9j+tn7TT8rwfYvdriH9iFD6GhSqUKqRubmQXcV912IHnuBbdM37j3TmAk358q32
-         762d0MCINMU6xm2EHvgCv2TAFNgKQRP+jbLziRfNJi/pawG8KodYd77SPtL+5p4AEcku
-         myjAR3cjc1CyQHRksMh4ikJKW+eitCtL6AthzQEM/7ZvauW9li3rFxIdBKOBrALSs8u7
-         OZx3cOv47R+yBRCym+KxAZdsxDapZ6PhM63WUNvGVjK41efntrf7y2ST4DqSktD8+gCy
-         byR/ON5gMFjfMY4ItojxiiadJ69GeK19KJoLVts/xYh53bQVDCIKSb4SABgxDstfeEpw
-         x3pA==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=yD1StGSO;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b="qH/RLvwS";
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
-        by gmr-mx.google.com with ESMTPS id k26si70627lfe.10.2021.12.05.06.16.41
+        b=YsByp/LDrUHOd1HJkQ8YLf9r79+F6cjrG98+PcID4Pq2ALuxrVwYeBlua5pWbnDjlN
+         7MlE+y+TJ7m/7Sxo219V4l1ZFbhyAQalJ5rTBy93jXDA9KuCGAaltWyN7+wG59t+g3fb
+         GyHEMq+wgqT4aNHrAer3Qo7x6bWlYhGkTqWPliejaRkzJUGN0iebgRpYjsXrp1/N9roN
+         RmHILWqgkWiQoeNKvuEsgxq9kGzXvfsfKj/MEuBTQDd7FvabEL7qEGODKooRVOVHaFuB
+         YJr/m3i5EMa4tdCRVwRo6dEof8g+6jbhw0/pZNhipUKYRjztSsX5daJx6SHTScDgTOs1
+         Hkmg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:in-reply-to:content-disposition:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=s33L9I9tWRsuPN1BuFQQ4V50sW1tbQOR8xkMP9Iv0d8=;
+        b=MYZ6as/DopwlqEVuvM+KR1TV6S1p1wBz/eveNiBAIgoWzs/uYgQW/ow/LcjNUT9dhA
+         vqF78TItoMMIPqQu23P6tBuaIXF3hB8N1gj/LW3x2y+4XMXcv0+pOOzBY/jaa/IjUgbH
+         uay9kg7TyWplU0lREcqeiCqvX2dq2m1v7+jT+nfgU6GsAUZ5KRnBTbDxEKm5BH2FRKBG
+         /1ezjQBTuS2DmMmmqslqTVaLfzlzHe/PwmQU1twyRr1KaA55WCgFU6KBvyn3krNilvW9
+         JMpeaq3yW+57VP6RoX2uTyGCkD5svu0u0bl+Ng8wfwqhVQB6UoS7xTwdKwnQMKKlr1JE
+         +j6Q==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@Nvidia.com header.s=selector2 header.b=ksINXdoG;
+       arc=pass (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass fromdomain=nvidia.com);
+       spf=pass (google.com: domain of jgg@nvidia.com designates 40.107.220.61 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
+Received: from NAM11-CO1-obe.outbound.protection.outlook.com (mail-co1nam11on2061.outbound.protection.outlook.com. [40.107.220.61])
+        by gmr-mx.google.com with ESMTPS id be25si1348191oib.3.2021.12.06.06.19.25
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 05 Dec 2021 06:16:41 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Jason Gunthorpe <jgg@nvidia.com>
-Cc: Logan Gunthorpe <logang@deltatee.com>, LKML
- <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>, Marc
- Zygnier <maz@kernel.org>, Alex Williamson <alex.williamson@redhat.com>,
- Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>, Ashok
- Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Jon Mason <jdmason@kudzu.us>, Dave Jiang
- <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com, linux-s390@vger.kernel.org, Heiko Carstens
- <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>,
- x86@kernel.org, Joerg Roedel <jroedel@suse.de>,
- iommu@lists.linux-foundation.org, Kalle Valo <kvalo@codeaurora.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 06 Dec 2021 06:19:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of jgg@nvidia.com designates 40.107.220.61 as permitted sender) client-ip=40.107.220.61;
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=Gnmuz2Uc6a0R4rEzUReyBjN4V3CaA8lb47vKd1CV20CVLVyXaOcSTAp0y8a3Au+g1s0qNGud7u8CcgM4vgObsGJbKv5u8i1WYtiquNe4R05jz+hGLDRrUksSG3UBDcu/OOJeAq+Y28b4DgDes/uJ9SR14sRBdyPnBJj/K7Bb3NnyMoTG5nXcAC6N3gvpnt2BUu8mon5aMm/dg5FkCAzvNuEt8LZGjKG/CMGuG5kBAR+NU2kRkWtRq4cNLC/nEIklgoerZgr9laCxzXh2a+mB/xoDsEbJRv8jO2mME56O+mnYkw1GUgi76ceWF7avKJbyw0e8ZeXL3eqA51AqLw2MBw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=s33L9I9tWRsuPN1BuFQQ4V50sW1tbQOR8xkMP9Iv0d8=;
+ b=Sji+6fYENl2qeuxKa+cfyFHOlj2fG727PsM7XLXy1vLcs4fwYf2QoEABu6SmOck29isOog0vtmx1vcKo+v5y5qwoISdGbFg9Gf+L3Dx4aJd83lB2HibQEHrJQTvEjCSE0tx7ULcxpylCRcyulJ8nt+JBcSbn/mRHoYHUvVmyebYgntZ/rVERBclK7diDK87eE8rtAOwQkUiAG4ieafV3mN5zxuFcbIqOde+3tuFc9FV63ZDfr9D3NAI5njXhIEX9FPl0cpCobRoVhwkwHH/Stuu1L/V2DnrvcPOrNSeX5hMC7p+FPAMZHJw8VjSQrHlR4P8QrQjBXizrNZqudRJv3Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com (2603:10b6:208:1cb::22)
+ by BL1PR12MB5077.namprd12.prod.outlook.com (2603:10b6:208:310::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4734.24; Mon, 6 Dec
+ 2021 14:19:23 +0000
+Received: from BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d8be:e4e4:ce53:6d11]) by BL0PR12MB5506.namprd12.prod.outlook.com
+ ([fe80::d8be:e4e4:ce53:6d11%5]) with mapi id 15.20.4755.021; Mon, 6 Dec 2021
+ 14:19:23 +0000
+Date: Mon, 6 Dec 2021 10:19:22 -0400
+From: "'Jason Gunthorpe' via linux-ntb" <linux-ntb@googlegroups.com>
+To: Thomas Gleixner <tglx@linutronix.de>
+Cc: Logan Gunthorpe <logang@deltatee.com>,
+	LKML <linux-kernel@vger.kernel.org>,
+	Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>,
+	Alex Williamson <alex.williamson@redhat.com>,
+	Kevin Tian <kevin.tian@intel.com>, Megha Dey <megha.dey@intel.com>,
+	Ashok Raj <ashok.raj@intel.com>, linux-pci@vger.kernel.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
+	Allen Hubbe <allenbh@gmail.com>, linux-ntb@googlegroups.com,
+	linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>,
+	Christian Borntraeger <borntraeger@de.ibm.com>, x86@kernel.org,
+	Joerg Roedel <jroedel@suse.de>, iommu@lists.linux-foundation.org
 Subject: Re: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
-In-Reply-To: <87v9044fkb.ffs@tglx>
-References: <87y2548byw.ffs@tglx> <20211201181406.GM4670@nvidia.com>
- <87mtlk84ae.ffs@tglx> <87r1av7u3d.ffs@tglx>
- <20211202135502.GP4670@nvidia.com> <87wnkm6c77.ffs@tglx>
- <20211202200017.GS4670@nvidia.com> <87o85y63m8.ffs@tglx>
- <20211203003749.GT4670@nvidia.com> <877dcl681d.ffs@tglx>
- <20211203164104.GX4670@nvidia.com> <87v9044fkb.ffs@tglx>
-Date: Sun, 05 Dec 2021 15:16:40 +0100
-Message-ID: <87o85v3znb.ffs@tglx>
-MIME-Version: 1.0
+Message-ID: <20211206141922.GZ4670@nvidia.com>
+References: <87mtlk84ae.ffs@tglx>
+ <87r1av7u3d.ffs@tglx>
+ <20211202135502.GP4670@nvidia.com>
+ <87wnkm6c77.ffs@tglx>
+ <20211202200017.GS4670@nvidia.com>
+ <87o85y63m8.ffs@tglx>
+ <20211203003749.GT4670@nvidia.com>
+ <877dcl681d.ffs@tglx>
+ <20211203164104.GX4670@nvidia.com>
+ <87v9044fkb.ffs@tglx>
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: tglx@linutronix.de
+Content-Disposition: inline
+In-Reply-To: <87v9044fkb.ffs@tglx>
+X-ClientProxiedBy: BL1PR13CA0099.namprd13.prod.outlook.com
+ (2603:10b6:208:2b9::14) To BL0PR12MB5506.namprd12.prod.outlook.com
+ (2603:10b6:208:1cb::22)
+MIME-Version: 1.0
+Received: from mlx.ziepe.ca (142.162.113.129) by BL1PR13CA0099.namprd13.prod.outlook.com (2603:10b6:208:2b9::14) with Microsoft SMTP Server (version=TLS1_2, cipher=) via Frontend Transport; Mon, 6 Dec 2021 14:19:23 +0000
+Received: from jgg by mlx with local (Exim 4.94)	(envelope-from <jgg@nvidia.com>)	id 1muEpu-008wJd-Cr; Mon, 06 Dec 2021 10:19:22 -0400
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: e7bf6166-9883-44df-e64c-08d9b8c366de
+X-MS-TrafficTypeDiagnostic: BL1PR12MB5077:EE_
+X-Microsoft-Antispam-PRVS: <BL1PR12MB50773C662AA0E526C1D576ABC26D9@BL1PR12MB5077.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: ziXlJLH5sUn3pszwfZcvSt8eyCqqH/MKuu8PuHpZLiJ7BCB2SClIZe3b6D7IxrYXeZn7HNL5g25HLtfCJRXdr+F2sZvegUL7pq5MZPZ3GZ/W26nFJg3oiDG9MRsHWxXtUkF20x6oIfRvkKKOUKe5Hu+DpSpztpqVCPTNqBi+QVV9bYqBODVMopUuUib0oHWzsPEykGZoTC0X0BrORsBBl5C3q5mAz9iXNCa9GRXeJWbcfZwcY0O/JuLXxdLQ3yLB+ZS+tWfi5eB+unvfUjvvd97J/SARbSFFpCM50aU90Ee9pzGDgNI6IlG4pmqZOiN5IzFD7ZnmbGL/9ryojsiK3YWGyDIncX9ugDeThgEV0XIv9lLXKut6ODPlXvg5KYactdT+tDV1K8ccnVXPdXmxmNsdKcZihNOXnOBHKrGHkXrk+cw9LOTj4nQ2tkkpyIn+ZFd8LwUT7koYVqXvlHJq5st+hhcxfsROHHMiuqvd9hovoNSuLm0LRCGt/apB1N/Uw8MTb2EhtXIqmg2xkWDdickC015YCWwuJovQnxcVZfDOr3XdzTd+yuTgR4lx0ffh42FCKnvUWhHavHxNBn2XGWCoyD6j7rfU7/GFc+fHTAAPT+jotTktUZ5TDAljKlQPmjEEprAZczOdNJZFfQiQbw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BL0PR12MB5506.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(4636009)(366004)(2906002)(33656002)(83380400001)(66476007)(66556008)(36756003)(66946007)(508600001)(7416002)(4326008)(5660300002)(6916009)(54906003)(86362001)(2616005)(426003)(38100700002)(9786002)(8936002)(316002)(8676002)(26005)(186003)(1076003)(9746002);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?bsPPD0sQ47SWb5kJqKM4cjW7v+CMfuZ0RV1qzYUFEABibKzrI/nA1J08R4p2?=
+ =?us-ascii?Q?1g5tK5i9OCldw2ApSbjF62qYwsYEaA2r1DLHRTMLMLEJRlwGWVy+aXhe8nTA?=
+ =?us-ascii?Q?RYwNusbVDUzRNigfbSnamucQRCsIdP4K7Vbq5k2meIWXlH9B973gwvmBR9HQ?=
+ =?us-ascii?Q?24VtfTPHEay1wvd7rvKwhEFFEz0KfAGKVUFIzc/8WvHY/bSeJjbtIcXENs0o?=
+ =?us-ascii?Q?XUQiPWmqRVigFs15G95PVkvonTnjmSFevaZasVAr73gZ04Gwb935IJm8Ixtf?=
+ =?us-ascii?Q?OC/JZ9Xz30JlzvMHmJMdsQyg+81xXqjW3G90z9vF0h0h7AMbFNEpNd26uBXn?=
+ =?us-ascii?Q?J+uIloVivbn++BUZk2WfftwA+KzPPIkoR/ZEnTjkaWgTm1IQwf/m3oXeyy+K?=
+ =?us-ascii?Q?qx9+KPR+7S6VNLb7r3HDYIqw4hBoiMdaAwXF+29SnBAnT/yxVRHz5ABCOMJl?=
+ =?us-ascii?Q?EG63rD+Wm+XK6cB+HwVxyWFULvUX0VmgAFrI9iSk6stTn5Tk/qMzrs/8f6LZ?=
+ =?us-ascii?Q?x6tR7gwMNYHm/hzuFgLqdMxE/S5vaEhUbkn1As3lsKopRjTKMI4XlSuM01XK?=
+ =?us-ascii?Q?I1ENuE1PS2f90eoYTyZZ5tE+6e4Ts8ssgRzgj7eR7vpNcz05IxnYX34c3hi/?=
+ =?us-ascii?Q?KCmev0uyiPJ2pMrAMNDoFFlqyPtpEKjQl5Wt4vUpRpHubE7Hdihn+YFLFJK0?=
+ =?us-ascii?Q?jgcv0GuQJXcWX+XelPVJqd0z9JBwcNsKEieEIYCOKEPWy2twSGLjkVkYp3SI?=
+ =?us-ascii?Q?0zA+7SDpakDNBof7FttLjHuufynA8JBILhHguw4/ES36Qu0cdVaXpXt2FAvX?=
+ =?us-ascii?Q?uRMF1Aq+X/M9Xq4S/APr0lO2HfYCRmV04PNDhkXjI3JA50hAvVQuAtb3zVMm?=
+ =?us-ascii?Q?SpGlu7dWRPGZFSfZlePZXxfFFI8XsnewQUqge0Su9eopl7EC09ixTLPljoYp?=
+ =?us-ascii?Q?71426u/aEIpS8ZpQk68NDOaz9dJNTxhVvaifQPNqy+llgQ64TxffARN6cGIL?=
+ =?us-ascii?Q?3ZrG/vQuOWP8LHf4db41h6kn6ww9K5pQIewahGLyOIn5cAmMp9QWFnJzC6Mk?=
+ =?us-ascii?Q?/S6ZSIE1IywH30TjFb3QxF0j/6TkwPcLhA3RSsfM/OTgmNQShJuSJSIAhDN5?=
+ =?us-ascii?Q?MLd9yPeTUcq8r1DPUchroi24m1l0bWVIIbKIaWGiH7M62jmkp4iGA7vClkv7?=
+ =?us-ascii?Q?WlAA+GM+0W9UWocPGujOAMeYytckKDyB1sWqcT1bJ3qna2A9szOSMYlpAXCt?=
+ =?us-ascii?Q?QuYI4xxyOK+3pYmZmzSBQZ//xalZoIZQi9sB/Fgxmk8X0hq9QZgZaOwR7zk2?=
+ =?us-ascii?Q?sWJmJ5zISvIt1iOW6Dg9L+LwwHW1kDJ4EkApvPJJBksQWbiEsraknNtKbZ3Z?=
+ =?us-ascii?Q?li9c2YVxw2Sh1K7DmKhAdDcECEoGMBi0uh0LG31fLMymfJ1pPxJyft0F6K6c?=
+ =?us-ascii?Q?ErHhTm+ct5xklVrRJhpP3yFqeOy6BzYLoOXMD05dbaakKCsWMIF/w3ad10td?=
+ =?us-ascii?Q?SmMhybGYKEn8jIhoWQEV4tFO2PVGz/kVirauoVwQT96QQnmH4uqIH/quPN8P?=
+ =?us-ascii?Q?7GlPI27xFKVFvUpZ8aI=3D?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e7bf6166-9883-44df-e64c-08d9b8c366de
+X-MS-Exchange-CrossTenant-AuthSource: BL0PR12MB5506.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Dec 2021 14:19:23.6621
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: wS+lLoTetQsZ/T4eURkiJe1eM+TQQMSm8ySYHl86m4vRqgtZTVj3XzFFHMskOR5R
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BL1PR12MB5077
+X-Original-Sender: jgg@nvidia.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=yD1StGSO;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e header.b="qH/RLvwS";
-       spf=pass (google.com: domain of tglx@linutronix.de designates
- 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@Nvidia.com header.s=selector2 header.b=ksINXdoG;       arc=pass
+ (i=1 spf=pass spfdomain=nvidia.com dkim=pass dkdomain=nvidia.com dmarc=pass
+ fromdomain=nvidia.com);       spf=pass (google.com: domain of jgg@nvidia.com
+ designates 40.107.220.61 as permitted sender) smtp.mailfrom=jgg@nvidia.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=nvidia.com
+X-Original-From: Jason Gunthorpe <jgg@nvidia.com>
+Reply-To: Jason Gunthorpe <jgg@nvidia.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -141,213 +223,209 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Sat, Dec 04 2021 at 15:20, Thomas Gleixner wrote:
+On Sat, Dec 04, 2021 at 03:20:36PM +0100, Thomas Gleixner wrote:
+> Jason,
+> 
 > On Fri, Dec 03 2021 at 12:41, Jason Gunthorpe wrote:
-> So I need to break that up in a way which caters for both cases, but
-> does neither create a special case for PCI nor for the rest of the
-> universe, i.e. the 1:1 case has to be a subset of the 1:2 case which
-> means all of it is common case. With that solved the storage question
-> becomes a nobrainer.
->
-> When I looked at it again yesterday while writing mail, I went back to
-> my notes and found the loose ends where I left off. Let me go back and
-> start over from there.
+> > On Fri, Dec 03, 2021 at 04:07:58PM +0100, Thomas Gleixner wrote:
+> > Lets do a thought experiment, lets say we forget about the current PCI
+> > MSI API.
 
-I found out why I stopped looking at it. I came from a similar point of
-view what you were suggesting:
+I've read both your emails, and I'll make a few small remarks on this
+one, mainly to try to clearly communicate what I was thinking
 
->> If IMS == MSI, then couldn't we conceptually have the dev->irqdomain
->> completely unable to handle IMS/MSI/MSI-X at all, and instead, when
->> the driver asks for PCI MSI access we create a new hierarchical
->> irqdomain and link it to a MSI chip_ops or a MSI-X chip_ops - just as
->> you outlined for IMS?  (again, not saying to do this, but let's ask if
->> that makes more sense than the current configuration)
+Just want to call out the above paragraph, not suggesting we do it,
+but the thought exercise of what should we do if not weighed down by
+endless engineering cruft is usually informative.
 
-Which I shot down with:
+> > What if it worked more like this:
+> >
+> > probe()
+> >  // Access the real PCI SIG MSI/MSI-X table
+> >  mystruct->msi_table = pci_allocate_msi_table(pci_dev);
+> >
+> >  // Special interrupt 0
+> >  mstruct->desc0 = msi_table_alloc_vector(mystruct->msi_table, hw_label=0);
+> >  request_irq(mystruct->desc0, ..)
+> 
+> A device driver should not even know about msi_desc. Period.
 
-> That's not really a good idea because dev->irqdomain is a generic
-> mechanism and not restricted to the PCI use case. Special casing it for
-> PCI is just wrong. Special casing it for all use cases just to please
-> PCI is equally wrong. There is a world outside of PCI and x86. 
+Here, this wasn't really about the msi_desc, it was just about some
+pointer-based handle. Call it what you will, and force it to be opaque
+to the drivers.
 
-That argument is actually only partially correct.
+eg this 'msi table' layer can just have a 
 
-After studying my notes and some more code (sigh), it looks feasible
-under certain assumptions, constraints and consequences.
+struct msi_handle;
 
-Assumptions:
+In headers
 
-  1) The irqdomain pointer of PCI devices which is set up during device
-     discovery is not used by anything else than infrastructure which
-     knows how to handle it.
+and in a C it can be:
 
-     Of course there is no guarantee, but I'm not that horrified about
-     it anymore after chasing the exposure with yet more coccinelle
-     scripts.
+struct msi_handle {
+   struct msi_desc desc;
+};
 
-Constraints:
+And achieve what you've asked for
 
-  1) This is strictly opt-in and depends on hierarchical irqdomains.
+> >  - msi_table is a general API for accessing MSIs. Each bus type
+> >    would provide some kind of logical creation function for their
+> >    bus standardized MSI table type. eg MSI/MSI-X/etc
+> 
+> You can't give up on that table thing, right? We just established that
+> for devices like yours IMS is not necessary a table and does not even
+> need the index. The fact that MSI-X uses a table does not make
+> everything a nail^Wtable. :)
 
-     If an architecture/subarchitecture wants to support it then it
-     needs to rework their PCI/MSI backend to hierarchical irqdomains or
-     make their PCI/MSI irqdomain ready for the task.
+It is just a name for the idea of a handle to a device's MSI
+mechanism.
 
-     From my inspection of 30+ PCI/MSI irqdomains, most of them should
-     be trivial to convert. The hard ones are powerpc, XEN and VMD,
-     where XEN is definitely the most convoluted one.
+Call it 'msi_hw' or something.
 
-     That means that devices which depend on IMS won't work on anything
-     which is not up to date.
+My concept is that each device, integral to the device, has some ways
+to operate the device's MSI storage (MSI/MSI-X/IMS/Platform), so lets
+give that a name and give it a struct and an API. It is all still core
+code.
 
-  2) Guest support is strictly opt-in
+Think of it as a clean separation between 'determining the addr/data
+pair' and 'writing the addr/data pair to HW'.
 
-     The underlying architecture/subarchitecture specific irqdomain has
-     to detect at setup time (eventually early boot), whether the
-     underlying hypervisor supports it.
+Today you are thinking about this object as an irqdomain, irqchip, and
+msi xarray - I think?
 
-     The only reasonable way to support that is the availability of
-     interrupt remapping via vIOMMU, as we discussed before.
+> >    It is a logical handle for the physical resource the holds the MSI
+> >    addr/data paris.
+> >
+> >  - Use a pointer instead of idx as the API for referring to a MSI
+> >    irq. Most drivers probably only use msi_desc->irq?
+> 
+> No. pci_irq_vector() translates the hw index to linux irq number.  The
+> hardware index is known by the driver when it is doing a batched
+> allocation, right?
 
-  3) IOMMU/Interrupt remapping dependency
+Yes
 
-     While IMS just works without interrupt remapping on bare metal the
-     fact that there is no reliable way to figure out whether the kernel
-     runs on bare metal or not, makes it pretty much mandatory, at least
-     on x86.
+> I'm fine with using the info struct I described above as the reference
+> cookie.
 
-     That's not a hardcoded constraint. It's a decision made during the
-     setup of the underlying architecture/subarchitecture specific
-     irqdomain.
+IMHO an opaque pointer to refer to the MSI is cleaner
+ 
+> >  - We do not have device->msi, it is held in the driver instead.
+> 
+> No. First of all drivers have no business with that, really.
 
-  4) The resulting irqdomain hierarchy would ideally look like this:
+I'm reading your second email and still not entirely clear what your
+thinking is for devices->msi?
 
-     VECTOR -> [IOMMU, ROUTING, ...] -> PCI/[MSI/MSI-X/IMS] domains
+> >    dev->irqdomain is always the bus/platform originated irqdomain of
+> >    the physical device.
+> 
+> This is a guarantee for subtle bugs and I'm not even remotely interested
+> going there. See also below.
 
-     That does not work in all cases due to architecture and host
-     controller constraints, so we might end up with:
+Not sure I follow this? My suggestion is that it is either as-is today
+or NULL and we don't try to use eg mdev->irqdomain for anything.
 
-           VECTOR -> IOMMU -> SHIM -> PCI/[MSI/MSI-X/IMS] domains
+> >    Thus we break the 1:1 of the device and irqdomain. A device can
+> >    spawn many msi_tables, but only one would be on the dev->irqdomain
+> 
+> Why are you trying brute force to push things into device drivers?
+> That's really the wrong direction. We want common infrastructure to be
+> managed by generic code. And all of this is about common infrastructure.
 
-     The nice thing about the irqdomain hierarchy concept is that this
-     does not create any runtime special cases as the base hierarchy is
-     established at boot or device detection time. It's just another
-     layer of indirection.
+The driver needs some kind of handle to tell the core code what MSI
+'namespace' it is talking about in every API - eg MSI or IMS.
 
-  5) The design rules for the device specific IMS irqdomains have to be
-     documented and enforced to the extent possible.
+Pointers are the usual way to make such a handle.
 
-     Rules which I have in my notes as of today:
+Going along the IMS == MSI principle that says there should be a
+driver facing API with a pointer handle for the MSI and a pointer
+handle for the IMS.
 
-       - The device specific IMS irq chip / irqdomain has to be strictly
-         separated from the rest of the driver code and can only
-         interact via the irq chip data which is either per interrupt or
-         per device.
+Yes, this means the existing API is some compat wrapper around a
+pointer API and would have to store the pointer handle in the device,
+but the idea would be to make that pci->dev ONLY for the compat API,
+not used in the IRQ infrastructure.
 
-         I have some ideas how to enforce these things to go into
-         drivers/irqchip/ so they are exposed to scrutiny and not
-         burried in some "my device is special" driver code and applied
-         by subsystem maintainers before anyone can even look at it. 
+> > Is it sane? What really needs device->msi anyhow?
+> 
+> device->msi is a container for interrupt management and that's done by
+> the interrupt code and not by random device drivers. Again, struct
+> msi_desc is a software construct which the interrupt core code and the
+> irqdomains and irq chip implementation use for various purposes. Nothing
+> outside of this realm has to even know about the fact that this data
+> structure exists in the first place. See below.
 
-       - The irqchip callbacks which can be implemented by these top
-         level domains are going to be restricted.
+I imagined that msi_desc remains as part of the interrupt core code
+and the 'msi_table' object is another interrupt core code object for
+dealing with device's MSI
 
-       - For the irqchip callbacks which are allowed/required the rules
-         vs. following down the hierarchy need to be defined and
-         enforced.
+> > IMS is a logical progression of this concept:
+> >
+> > probe()
+> >    mystruct->msi_table = pci_allocate_msi_table(pci_dev);
+> >    mystruct->ims_irqdomain = <....>
+> >    mystruct->ims_table = msi_allocate_table(pci_dev->dev,  mystruct->ims_irqdomain ..)
+> >
+> >    // Use MSI
+> >    mystruct->desc0 = msi_table_alloc_vector(mystruct->msi_table, hw_label=0);
+> >    // Use IMS
+> >    mystruct->desc1 = msi_table_alloc_vector(mystruct->ims_table, hw_label=0);
+> >
+> > Not saying we can/should go out and just do something so radical, but
+> > as a thought experiment, can it guide toward a direction like this?
+> 
+> What I agree on is that the interface should be in a way that the driver
+> can:
+> 
+>  1) Allocate vectors at a given hardware index
+> 
+>  2) Allocate vectors within a given hardware index range
+> 
+>  3) The core returns the hardware index and the Linux irq number in
+>     a separate info structure which is independent of the interrupt
+>     stack internal data representations.
 
-       - To achieve that the registration interface will not be based on
-         struct irq_chip. This will be a new representation and the core
-         will convert that into a proper irq chip which fits into the
-         hierarchy. This provides one central place where the hierarchy
-         requirements can be handled as they depend on the underlying
-         MSI domain (IOMMU, SHIM, etc.). Otherwise any change on that
-         would require to chase the IMS irqchips all over the place.
+Still slightly like an opaque pointer better than a two entry struct -
+but compat is compat..
 
-Consequences:
+> Sure the driver can get a cookie of some sort to do allocation/free from
+> different resource pools, e.g. PCI-MSI[X] and IMS. But the internal data
+> representation management has to be done at the core level.
 
-  1) A more radical split between legacy and hierarchical irqdomain
-     code in drivers/pci/msi/ into:
+And here I still see it in the core level - this 'msi table' is a core
+level data-structure and the opaque 'msi handle' is a core level
+data-structure
+ 
+We are just exposing a handle that the drive can use to. You are
+calling it a cooking, but IMHO using a cookie instead of a pointer
+seems obfuscating a bit?
 
-       - api
-       - legacy
-       - irqdomain
-       - shared
+> even try to make the irqchip/domain code mangled into the other device
+> code. It should create the irqdomain with the associated chip and that
+> creation process returns a cookie which is passed to the actual device
+> specific code. Allocation then can use that cookie and not the irqdomain
+> pointer itself.
 
-     That means that we are going to end up with duplicated code for
-     some of the mechanisms up to the point where the stuck-in-the-mud
-     parts either get converted or deleted.
+Sounds like your cookie == my msi_table? Maybe we are all agreeing at
+this point then?
 
-  2) The device centric storage concept will stay as it does not make
-     any sense to push it towards drivers and what's worse it would be a
-     major pain vs. the not yet up to the task irqdomains and the legacy
-     architecture backends to change that. I really have no interrest to
-     make the legacy code 
+> So thanks for being patient in educating me here.
 
-     It also makes sense because the interrupts are strictly tied to the
-     device. They cannot originate from some disconnected layer of thin
-     air.
+I'm happy you got something out of all these words!
+ 
+> The fact that we will be able to support this at all is based on years
+> of cleanups, consolidation and restructuring of the infrastructure. The
+> result of doing this is that my trust in driver developers in that
+> regard is very close to zero. The cleanup patches I had to do for this
+> series just to solve the single irqdomain case did not help to elevate
+> the trust level either.
 
-     Sorry Jason, no tables for you. :)
+Yes, it is amazing how many patches this is at already.
 
-How to get there:
-
-  1) I'm going to post part 1-3 of the series once more with the fallout
-     and review comments addressed.
-
-  2) If nobody objects, I'll merge that into tip irq/msi and work on top
-     of that.
-
-     The consolidation makes sense on it's own and is required anyway. I
-     might need to revisit some of the already touched places, but that
-     should be a halfways limited number. I rather do that step for step
-     on top than going back to start and mixing the new concepts in from
-     the very beginning.
-
-     But I drop part 4 in it's current form because that's going to be
-     part of the new infrastructure.
-
-  3) I'll work on that bottom up towards a driver exposable API as that
-     is going to be a result of the final requirements of the underlying
-     infrastructure.
-
-     The final driver visible interfaces can be bikeshedded on top to
-     make them palatable for driver writers.
-
-  4) Convert x86 PCI/MSI[x] to the new scheme
-
-  5) Implement an IMS user.
-
-     The obvious candidate which should be halfways accessible is the
-     ath11 PCI driver which falls into that category.
-
-     It uses horrendous hackery to make it "work" by abusing MSI. It's a
-     wonder that it works at all, by some definition of "works".
-
-     I'm pretty sure how to make it fall apart without touching a single
-     line of code.
-
-     With a small code change I can make it fail hard without blowing up
-     any other MSI/MSI-X user except the switchtec NTB.
-
-     That's a prime example for the way how driver writers behave.
-
-     Instead of talking to the people who are responsible for the
-     interrupt subsystem, they go off and do their own thing. It does
-     not explode on their test machine, but it's not even remotely close
-     to the requirements for PCI drivers to work independent of the
-     underlying platform.
-
-     Of course the responsible maintainer does not even notice and waves
-     it through without questioning it.
-
-Thoughts?
-
-Thanks,
-
-        tglx
+Jason
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87o85v3znb.ffs%40tglx.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211206141922.GZ4670%40nvidia.com.
