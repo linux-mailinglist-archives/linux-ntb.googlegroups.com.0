@@ -1,34 +1,34 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERB2NHXKGQMGQE3NCCVBI@googlegroups.com>
+Return-Path: <linux-ntb+bncBDAMN6NI5EERB25HXKGQMGQEBZUNY7I@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wr1-x440.google.com (mail-wr1-x440.google.com [IPv6:2a00:1450:4864:20::440])
-	by mail.lfdr.de (Postfix) with ESMTPS id F413846AD48
-	for <lists+linux-ntb@lfdr.de>; Mon,  6 Dec 2021 23:51:21 +0100 (CET)
-Received: by mail-wr1-x440.google.com with SMTP id h7-20020adfaa87000000b001885269a937sf2414550wrc.17
-        for <lists+linux-ntb@lfdr.de>; Mon, 06 Dec 2021 14:51:21 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1638831081; cv=pass;
+Received: from mail-wr1-x437.google.com (mail-wr1-x437.google.com [IPv6:2a00:1450:4864:20::437])
+	by mail.lfdr.de (Postfix) with ESMTPS id 445B046AD4A
+	for <lists+linux-ntb@lfdr.de>; Mon,  6 Dec 2021 23:51:24 +0100 (CET)
+Received: by mail-wr1-x437.google.com with SMTP id y4-20020adfd084000000b00186b16950f3sf2407426wrh.14
+        for <lists+linux-ntb@lfdr.de>; Mon, 06 Dec 2021 14:51:24 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1638831084; cv=pass;
         d=google.com; s=arc-20160816;
-        b=rFH1zgY+gR+aK6QGpT6oNUt03BorBVzspz+g9n2g9SuNNgnPVcj4Sg8r5r5jh6uMza
-         nO1GzAANJCXIRI/NTR3V+wNddPZJwpYWELuFcBkn79wgc1bwpncUnSErV4r3W4CePqib
-         F4z1h+aiovdur4fKUYd0Gg4TXrrq60A0UdvzxID1zoyNtKCJGocms6g34mwL9+U5vGgX
-         SsVtAh4+/4Mk4Fv9+iVzJdSSqpjin114h1dfyAWV+c13u/N98iCSCGJa9rvpuErRf/W3
-         BmfUn5yeKmd/W+GoRPnxVwS4ArtWjCSYHoCFp3UNvPWU2ttx1mc/i+D5TFQc2IWeeGwy
-         3PIw==
+        b=RpdC3Whs+KCnpOfi6Is/nCWZ5KxYIwHTUF7rHbyPT+sx9yvPI1FUK7UvVh0KVA3sRn
+         zCL09oMx8BeIqtjvoyI2FNThF6hIfw42VKLV4kIK4ru++AXcoNEBoaH6c+EdKKTZn/xC
+         I84Z2Gae0r0ySXCMrTrB26PyHvDz6a+oKMxJ8jrsg7yzjcbSQSR40MgM5g9yXjF8PEwd
+         X4IYME9UwMIafXRzSiNb/8NRupVOQ552CWPAmYJAiNjEiDCZXmGUl2uU9v1D3+Gz5bC4
+         VVK98iJcJD123eTHVqJG409NnGB8Nk5jAQDKDQvNDQiGH78fP0wj8saQmKwjUwoWEa3Y
+         xsZQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:date:mime-version:references
          :subject:cc:to:from:message-id:sender:dkim-signature;
-        bh=zFhYo8d+SALNTaa/QNMtt3MH3BGjGDJfmpMZO4tZLsg=;
-        b=JTN8bHcdi0zWRcG4KwBT3fozzQMFoZE+WuYwS/52odpwRdH7wvzWF0WqcTOnRHLJ4c
-         QnecchL9ofntSlfev+Ks/ydODnjvk38RwgZR9JiUjz+JwegYkUJPl9VxUCiYqELp6yoO
-         BE2Em1sdD6oh5rZQumEaLGJL6UngB9NFjPYWNX3lUzNxPO/cpr1UaLqQRbpLtkypOz8j
-         sxCr0nnXbiRsyS9AFCQExgVZP8ayVz/8Oiu4gOMGWatlkkY+cNxBSrYuKPlcJMQj8zSu
-         TunS5MJmHvQ0hkZn0f7ehxc9NZOhWdBv4Wv0NgVfPntdYmoV5baM/QBTD3BLGeeIqmom
-         p8Cg==
+        bh=b5aginktStgAd7iNgLT/CScRC+UourpAiS/fvwnInrg=;
+        b=VTCC2Bf4XUL2SrtlJwKD7jsguMO8N52jCmQjcV/i7Iviibi5tk+0YUMUBj9vZNpHvC
+         VXCRzz0vtKd4wsnuSRDxacnY2p/3wczKc8gm+ofj5HSIyBH7FP9uhe09E0pMODprn2Gv
+         t1BpdZg9HmUcPWZjLp0hAH3Iz672ID9lz1YmML2IrYW3UegZ/jclufoXjVgaNFLslWNA
+         MUcnxlMxJ3L0CxelP4a3Cp73uh6ppozBJpeOhIuteDLhCf4a5kAUUe6l+fpyDo6cd2q1
+         OlrZY7tGK1Ob8+sRCihltxKOsfx3AZW1IVytp9PqIIN6U1sGIvUE2NvKZenaKbhqyO6J
+         cOyA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=BKB85X+Y;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b="ukVi5c/T";
        dkim=neutral (no key) header.i=@linutronix.de;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
@@ -36,13 +36,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=zFhYo8d+SALNTaa/QNMtt3MH3BGjGDJfmpMZO4tZLsg=;
-        b=ek98eFVruu8ascSXiS87JwmcTKjmK8SsK2YuR0GAEA8eW4a/PM27ND6PC4eMLGjs6r
-         1D0BJ7Ea0jLOaE5uwF7wuy7JrIfgf6OHB/pmVa7MOTx5nV0IHHgsOMleP/oyCabdK2Yq
-         PSX1+YlgXnpyCu+3El/gWtxX2j93gf3xAqTRszqbs/Mj4a/FSGrO6cMX2o4YbN8lZvPl
-         P9ibxa0mFp9pliwWYHzRf8LwG7dze9Tta7OppAdJxGlwIWlv1T3A2Q/OCuuKZo8KGJPz
-         PHSQb19G6jcI9OWVnux9vLV8kJ3sb9i3AikCFIuEX8n4SphoheNTAvgk+4OlwiPglt7z
-         tsCg==
+        bh=b5aginktStgAd7iNgLT/CScRC+UourpAiS/fvwnInrg=;
+        b=f4OiQT64mWdunnXDYgWhmhFlWFmMGiGAF2EUCl9JFWxp7XJmvJz6TLZeqtv4953LUg
+         TDJ6FWHhvflnglwZYxwIt5bpn6aByGQRqol7XSw5EtAPZJCo8UmqWLgahR0b7cp4gXSu
+         hgI0n1vomkIrwBquLB5g65V0QNZtjr81yUAxtoqA1bW7eDfQYIyDUl0DA3227x3HA9ay
+         EH94M2LNyJx9Dtcp0TcwtivozFXqpyYMYYJMihrRfhzdNtm7yPsf2JozNsvRiOcd5TUh
+         l8cjuC+pKEw+qqDaOM0dNsUtA0pm/w/xKZZ2BuyPBuCkPmP5mALLPqCLsjDwB9ql71x3
+         2/Sw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=sender:x-gm-message-state:message-id:from:to:cc:subject:references
@@ -50,54 +50,54 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:precedence:mailing-list:list-id
          :x-spam-checked-in-group:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=zFhYo8d+SALNTaa/QNMtt3MH3BGjGDJfmpMZO4tZLsg=;
-        b=DOZ/IchhXjlln/cVKHVW1+pHHIvmAiAKjNN1THRpCFPEE3fZZVKpqPQE2pXuAkYA0U
-         Ym+TWpJQ6FR3Pn5EO/6J4DSN9njcx7fDylOEBJoxe9ZblckDbvVfZdssvJvcr26cvyPh
-         mNsZZdh9DidMLKmHR3mdXJtBolzS9DCFwl8lRYC9tlAiQScDg2rs5dOk9+Bqk0sUtVd5
-         Nhffg+7iTJfUSpo2siSdNNIVlp+jsb72Kizl1EUlRpij2Hu9g1OKcKGxEtkk/G3IMzXS
-         orx2YZ/i4eUHCvz/VT7hbOjKSe3EXmbiM0zhv613UEB0YB3tZTmjuGAYkURuxHSXcwZ4
-         BjJg==
+        bh=b5aginktStgAd7iNgLT/CScRC+UourpAiS/fvwnInrg=;
+        b=cqbAwPCU8jazN5tRIUabX/BUqxJ7i2oglqX/LopBiEHTvC0LiFedHs8sZS1V52UyxC
+         AebxPk4ELmp6JT162RcwnyPmFSPxFEb7GEepN42YyKXQ+xZvipzCQDZGTZY4HkCsbbnF
+         V7sBpjIMxGHbONUwPYRSB6aPST/07BSooNQCBYLN0gq0NYbOPfesiXQbvbXmXnAABFyO
+         gVvD8Z8f+c+YA6zYnhb4CrspctOCaqdXykzSo509aqLaXwPa/YOxh7/5dIub6xcQ8ZPi
+         3bfmXmY0bpHF6VYuYSMW4prFVs/JatS9ccvmTCVq/fXaaa1QF7YsS0QURT//BlhzQ0BH
+         oDrA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5301JCFCmRd+Qbe1zRUrnxVNHrDqj5eIh9yv5uMX2Pqgo695M79U
-	R3Ae3j6wtoS9Z1upQ92KnQ4=
-X-Google-Smtp-Source: ABdhPJzBqDcCRIciF0QtLz6ewuYNOXtkxo5Z+3wx8NiGPh2YdEsC0Mg9JXdC/86qHDmFWDrZ85aALA==
-X-Received: by 2002:a1c:1906:: with SMTP id 6mr1966842wmz.19.1638831081795;
-        Mon, 06 Dec 2021 14:51:21 -0800 (PST)
+X-Gm-Message-State: AOAM5306XkBUlbOYqLSBU2XDmxC4R/xZj3KRuW61z0is/VyqxUHNAyP2
+	DbpmCsMa5oiWXGhtRgB1PeU=
+X-Google-Smtp-Source: ABdhPJw28kxXby5nyazdP7fyNT9TaknsI6B6x/fF28Jk3M0AyQ6HxEyEiOR3iSl7g44QVd/MIiccUQ==
+X-Received: by 2002:a5d:6ac2:: with SMTP id u2mr44774679wrw.486.1638831084020;
+        Mon, 06 Dec 2021 14:51:24 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a1c:7e16:: with SMTP id z22ls264488wmc.2.canary-gmail; Mon,
- 06 Dec 2021 14:51:21 -0800 (PST)
-X-Received: by 2002:a05:600c:a55:: with SMTP id c21mr1875734wmq.191.1638831081006;
-        Mon, 06 Dec 2021 14:51:21 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1638831081; cv=none;
+Received: by 2002:a1c:7e16:: with SMTP id z22ls264511wmc.2.canary-gmail; Mon,
+ 06 Dec 2021 14:51:23 -0800 (PST)
+X-Received: by 2002:a05:600c:2dc8:: with SMTP id e8mr1860848wmh.189.1638831083338;
+        Mon, 06 Dec 2021 14:51:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1638831083; cv=none;
         d=google.com; s=arc-20160816;
-        b=avajepZSsRUxhtDfT0/QaJOb/qcYujS8G2kcyzADqP7KF5vmCANTFIrynqdBRM36IY
-         PT1+ceAcxawRO/enNIuh4+46zfk7/Rbe0XDLpQYoR/vd52Jx+aPoE4qK134kn2kd331S
-         +dcBkU9IbzApji4tV5AtVqx+4II+FnQSmCpSWwcQNT17upxOxng5KlQWJhzZy+yzMbVS
-         789T0qzU4VT2hZ4y8LuE50d0GYM+UyPVuhERmHtZcaMPAwWqTZu8LRHWIg5+1ytW6HuE
-         jkrnhaV5JSXaChMrKJgo3OoEpVV7lf7fqQBIfLkKgG9AiTZJwEP+R1cOThbIX1NW6RtW
-         TO7w==
+        b=AsIKa1uPcu6qrQwzKtyI6L0yjYQ0VDEQt1SiJa4YYX50PX4zMrPu4dlb4OKbBYSGGV
+         dTIJr4M1fjQKlbCTlltmCfuHWJ0bXxfaMIUQMw6sf2bYdoE5IELTDKcXet4taH1JOkIg
+         XXUc1c1e5AF49Izm8VwoVTCjhhGY5nS6PoCxumkxJsf5BGfF9BV9+Hy6cH7gDubJUHxe
+         TrOia2Ji9AfVjhjVBqDI59OKzLHDIKlEryQmZbSayfW55THSxrug5KzmWty0WCWie4yQ
+         LMtZ1qvUfQ/rqTWYWqFD3/Ua4Ftr5ZaOMp2CBvQShkIlTzA9Ero3HGimdtFmdhrLSWH1
+         XGnw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=date:mime-version:references:subject:cc:to:from:dkim-signature
          :dkim-signature:message-id;
-        bh=mHgTxiBl9Pg381SuWjuguHHZxZ6bDXurYM8uLZLwzPA=;
-        b=joM+/n4yskECj+JCFtuMzNe2CCSVfAg96RDM+nYAcLpJFTvRs/BsbUxCAH+iEekkQz
-         +Fzd1OqkKWMVPoyNdSrKZ1nJt2jWEeqqMqv+w2VcX2TW9oYdlDvBO4vNVfvujKLIL8FB
-         ZGhoKGTdBhmnPpn3NtAIidCnR+Z8O9J4KbdizrswjRn4aiF/AVPTE+9YJ86SeFmpV0IC
-         o/MvYX4PU72FWMsa3M2kMdKohCKv8IUfeSaahxt/sxt/u5Vgoh8JyiRBgfWzycSpJttV
-         PRriyTTyJID9QWKECZhZr/gNQZ9heZkJbcy2MLRfwrtYyrb3qozAsN4p+L4GmR5TzIXG
-         4EIg==
+        bh=JXvHU/eN0iJfDqMWbOd2UGXYgpl11UY148yTUdaqnAk=;
+        b=FSCjQFPg/vclydMKIdzmXn1f2MeJ3nQw8qs1+uJPz2mP2AIAMlP6LHrWvknlZ8ZGw3
+         R9rfI8XvtaRSZ2w/pMQqQWYgFVqc8aluQDnYduCfWOW9mvUIaKfzkrUIsHUDCeZAjDQ7
+         ecRzBYoCiKXRox/DVCKt0vfdyDihK1zP8n2jUfIwfQOVoMsHsMHWgtZ6kQqmzyrf+Rt9
+         zsTZXHfnkB5e43W4Trd9OTrN599QV9okDhtRct5x9UIcNKYP/Rvkjwo8h8brPgnf7akU
+         pA9XR40dxhvFdm3jtYe2oxcwPL3P5zFhOxSYZX+vcIN+Pp2PFuAfCVo9esEa+BRG31Km
+         AuKw==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=BKB85X+Y;
+       dkim=pass header.i=@linutronix.de header.s=2020 header.b="ukVi5c/T";
        dkim=neutral (no key) header.i=@linutronix.de;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
+       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
-        by gmr-mx.google.com with ESMTPS id e2si768282wre.5.2021.12.06.14.51.20
+Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
+        by gmr-mx.google.com with ESMTPS id d9si527222wrf.0.2021.12.06.14.51.23
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 06 Dec 2021 14:51:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
-Message-ID: <20211206210748.198359105@linutronix.de>
+        Mon, 06 Dec 2021 14:51:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
+Message-ID: <20211206210748.251752714@linutronix.de>
 From: Thomas Gleixner <tglx@linutronix.de>
 To: LKML <linux-kernel@vger.kernel.org>
 Cc: Bjorn Helgaas <helgaas@kernel.org>,
@@ -121,16 +121,16 @@ Cc: Bjorn Helgaas <helgaas@kernel.org>,
  Dave Jiang <dave.jiang@intel.com>,
  Allen Hubbe <allenbh@gmail.com>,
  linux-ntb@googlegroups.com
-Subject: [patch V2 11/31] x86/pci/xen: Use msi_for_each_desc()
+Subject: [patch V2 12/31] xen/pcifront: Rework MSI handling
 References: <20211206210600.123171746@linutronix.de>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-Date: Mon,  6 Dec 2021 23:51:20 +0100 (CET)
+Date: Mon,  6 Dec 2021 23:51:21 +0100 (CET)
 X-Original-Sender: tglx@linutronix.de
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=BKB85X+Y;       dkim=neutral
+ header.i=@linutronix.de header.s=2020 header.b="ukVi5c/T";       dkim=neutral
  (no key) header.i=@linutronix.de;       spf=pass (google.com: domain of
- tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender)
+ tglx@linutronix.de designates 193.142.43.55 as permitted sender)
  smtp.mailfrom=tglx@linutronix.de;       dmarc=pass (p=NONE sp=QUARANTINE
  dis=NONE) header.from=linutronix.de
 Precedence: list
@@ -149,55 +149,22 @@ Replace the about to vanish iterators.
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---
- arch/x86/pci/xen.c |   14 ++++++--------
- 1 file changed, 6 insertions(+), 8 deletions(-)
+ drivers/pci/xen-pcifront.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/arch/x86/pci/xen.c
-+++ b/arch/x86/pci/xen.c
-@@ -184,7 +184,7 @@ static int xen_setup_msi_irqs(struct pci
- 	if (ret)
- 		goto error;
- 	i = 0;
--	for_each_pci_msi_entry(msidesc, dev) {
-+	msi_for_each_desc(msidesc, &dev->dev, MSI_DESC_NOTASSOCIATED) {
- 		irq = xen_bind_pirq_msi_to_irq(dev, msidesc, v[i],
- 					       (type == PCI_CAP_ID_MSI) ? nvec : 1,
- 					       (type == PCI_CAP_ID_MSIX) ?
-@@ -235,7 +235,7 @@ static int xen_hvm_setup_msi_irqs(struct
- 	if (type == PCI_CAP_ID_MSI && nvec > 1)
- 		return 1;
- 
--	for_each_pci_msi_entry(msidesc, dev) {
-+	msi_for_each_desc(msidesc, &dev->dev, MSI_DESC_NOTASSOCIATED) {
- 		pirq = xen_allocate_pirq_msi(dev, msidesc);
- 		if (pirq < 0) {
- 			irq = -ENODEV;
-@@ -270,7 +270,7 @@ static int xen_initdom_setup_msi_irqs(st
- 	int ret = 0;
- 	struct msi_desc *msidesc;
- 
--	for_each_pci_msi_entry(msidesc, dev) {
-+	msi_for_each_desc(msidesc, &dev->dev, MSI_DESC_NOTASSOCIATED) {
- 		struct physdev_map_pirq map_irq;
- 		domid_t domid;
- 
-@@ -389,11 +389,9 @@ static void xen_teardown_msi_irqs(struct
- 	struct msi_desc *msidesc;
- 	int i;
- 
--	for_each_pci_msi_entry(msidesc, dev) {
--		if (msidesc->irq) {
--			for (i = 0; i < msidesc->nvec_used; i++)
--				xen_destroy_irq(msidesc->irq + i);
--		}
-+	msi_for_each_desc(msidesc, &dev->dev, MSI_DESC_ASSOCIATED) {
-+		for (i = 0; i < msidesc->nvec_used; i++)
-+			xen_destroy_irq(msidesc->irq + i);
+--- a/drivers/pci/xen-pcifront.c
++++ b/drivers/pci/xen-pcifront.c
+@@ -262,7 +262,7 @@ static int pci_frontend_enable_msix(stru
  	}
- }
  
+ 	i = 0;
+-	for_each_pci_msi_entry(entry, dev) {
++	msi_for_each_desc(entry, &dev->dev, MSI_DESC_NOTASSOCIATED) {
+ 		op.msix_entries[i].entry = entry->msi_index;
+ 		/* Vector is useless at this point. */
+ 		op.msix_entries[i].vector = -1;
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211206210748.198359105%40linutronix.de.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211206210748.251752714%40linutronix.de.
