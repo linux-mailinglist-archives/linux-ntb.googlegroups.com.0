@@ -1,132 +1,179 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBNFK5GGQMGQEWCLL34I@googlegroups.com>
+Return-Path: <linux-ntb+bncBCHPZHMXUEARBWN56GGQMGQESS56X3Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x33f.google.com (mail-wm1-x33f.google.com [IPv6:2a00:1450:4864:20::33f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 7AAB94763BC
-	for <lists+linux-ntb@lfdr.de>; Wed, 15 Dec 2021 21:51:01 +0100 (CET)
-Received: by mail-wm1-x33f.google.com with SMTP id b83-20020a1c1b56000000b0033283ea5facsf308724wmb.1
-        for <lists+linux-ntb@lfdr.de>; Wed, 15 Dec 2021 12:51:01 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1639601461; cv=pass;
+Received: from mail-io1-xd3d.google.com (mail-io1-xd3d.google.com [IPv6:2607:f8b0:4864:20::d3d])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AD33478846
+	for <lists+linux-ntb@lfdr.de>; Fri, 17 Dec 2021 10:56:43 +0100 (CET)
+Received: by mail-io1-xd3d.google.com with SMTP id k6-20020a0566022d8600b005e6ff1b6bbasf1067174iow.8
+        for <lists+linux-ntb@lfdr.de>; Fri, 17 Dec 2021 01:56:43 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1639735002; cv=pass;
         d=google.com; s=arc-20160816;
-        b=jkDyzNMjSXWmLzNfIJwNG2XbKmIjLs2alA2z4DqYahiGpHxY5kTkC439rx+e8Ctd7y
-         UnoyHJgcDXcl0JXUs9F6twKjJe1MUV1WrJrloDC+RBgnqcPlEvzMSlkKuhh5ImUqPa3j
-         yqkfdf0OOzZR4my0NQE1aJCzgPqWWJlc9FybKpsIyscSEwtT79r6XVfnK2sEyz5IvE/A
-         XY/COFqDfv6lTjOoWPEQew/WiGqRiPkx0RxurN5bMMd2rGIxNTbXJ59GBn61gGq1t2/p
-         I6oWLU+Uiptr+MwmFPN4V2ccYC6XSajL57Fwe4paQBWVPD6/9KNNIQ6O6GusjzPfDW8H
-         NKyQ==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=v82DVH3kgUYXWMk7CM/OEpmp8oQD87LBqOK+wO7DVKEJb2uoAOYwLgybKZoFOVgcL0
+         nZwgOIQ4PsO5pv8UtRooDitOdZMBJ3OjoXxE61TGMrw5JPrWTJuEDpresUDfX8K/xS6d
+         VB+vc9IrheZY0Vu4MKsfRirLxzCd2g+LqO+NSC6DhEiYytgH9uHoBqxk+MqQe4B88Lek
+         K0YBwlH4RtRwO0eJUFLOw2dpZD3eIao8rVB6nK3WRc+WIxlLJVASg/teTqko8ljUW6Pf
+         g7M3TyIZeekn/S+YSSBO+tfzybfauTFEcYHRgmOnZYAb/loRdnHu/EqY4aqdXhzvH9UB
+         4wzA==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
-        bh=KzvMAdl3Ruc3K/12dy3Y7DrljXTnKXvbAcHLsnRqDB8=;
-        b=BKF4RC5dC205Oc/TI0cmruW9J4e26uIeUNhhyDmTtpfDRdGkiIuR2Wl+sy3b2UOGGy
-         gCVus+ejNm34S53tX3kOjP1QS2E8E5nnotqPBqRczSR5S8f7JiaswTAESO0NFvrWoVCu
-         M0ZhH9s/usGxUM8kZJIoq6aFsgWwYMp9smUVy86nUvBxvSJlpvIExNpwEz9uOyiOaC3Q
-         fwb3KBbCk7FC3LOX0AZFYpoQcclodOUFyRA9HSL5lpPlwwfInOoiIngjSMlvs/c4FXe2
-         lDt/Q4kWdybPy9BClR18Q6MyAafiZ7z2Kv96v+zReWUkrmPsos3Q+3vi1zpQc8+fAYcW
-         PWhg==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=0MC08SjO;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=SDPAxqej;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+         :list-id:mailing-list:precedence:reply-to:mime-version:message-id
+         :date:subject:cc:to:from:dkim-signature;
+        bh=GR15xbbDJ1jinmSwF5oRbLpQfF6PbexlwdzrZKcYg0U=;
+        b=OJ/docfZ5hddsOoNz2Q2o/CyZscGPcN9sFi5wUcYoDTOh0l+eLXBMxDbueQUxN/4ds
+         WxhmX9JDBZLjoiS2Qrp8xNmKkUEsKmgrj6Du864swmx9kxvSfVTM5MnEdXlMu1Mugx/8
+         UwvR1Ogvqljox0cWfw7Qc37kDIbW0y2H+aum+C8JS+7i9QFnyOF16D0RHuCAulJDw7GG
+         BYKMvjcxK0VpDwHYtmi/w/EmTXKXeTHINH1Y9CuOVzB4LdyXqaglbk5dRmS4zAX7lDKO
+         h+5DxbnPDh48ee6/goz12p1updJYU9aJHGR+BH/xohIksarJI8aWogCcQOW+mwNUpDx2
+         39eg==
+ARC-Authentication-Results: i=3; gmr-mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=aMEvL2d5;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of sanju.mehta@amd.com designates 40.107.95.82 as permitted sender) smtp.mailfrom=Sanju.Mehta@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=KzvMAdl3Ruc3K/12dy3Y7DrljXTnKXvbAcHLsnRqDB8=;
-        b=Cw5815tXc7EG66B7PdXUJDqLyYKlPYkraE03yK43cdfsjCr6UJ8z0dANSz1yvkxdFm
-         XgefbIY93EYhNYM77xZVDBiKL2cGsJ3A3vPrzVYuPsk67gbB1oX+M0NTpvlIpPawuVIH
-         6MweLcXeQmXDkSAaLupg3hJnl7e8hy6XgJMc2t4+78Yf6VwgjWy9/Is83URDaZ7NBaFh
-         0XVK0R9IgQIKuBUplRgabZkAhoLez0dhD1PCwCwfLsmyvgXb4f8yCbNMV5tr7dTBh/T8
-         PJ6Z2c3IGvjeSd7ZsXokowWuJeoLsBG5M2YWO8lEKbNBCOMS4xkke7DS8+Oe6ehEK3aS
-         1CUQ==
+        h=from:to:cc:subject:date:message-id:mime-version:x-original-sender
+         :x-original-authentication-results:reply-to:precedence:mailing-list
+         :list-id:list-post:list-help:list-archive:list-subscribe
+         :list-unsubscribe;
+        bh=GR15xbbDJ1jinmSwF5oRbLpQfF6PbexlwdzrZKcYg0U=;
+        b=X3l7GvKpx8UdWNrbTmZYRe2f29RPZre38cGMrfdqlD5xHypR6PErhYJcAwJaLmL2bA
+         DvGkQ6ngi8t5sH0Tp8FGqpG5ZmLvdB7qnWyAIzQg+RxZjuW9gpcc+fy+gDQEXJODR2uS
+         jjKRZTQ5RiM53o/SvxSa/FX/hp/+CNnJ3b3PuEdkyg2EYRH2awUCJ72UR66KsWajrpJi
+         SnFF8fkEnWl9MHxvQV5rb4VugfrqFeNcBPl0sgzDOZV64X2nsiyDB/iJkHphje7y0pQc
+         bYhaE2LxDLDH1FbaqcclJ2R7pyOfuuy+PKCRi3ZNCcxJyiwD/cywm4voqpudP2LrgD45
+         g1rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
-         :date:message-id:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=KzvMAdl3Ruc3K/12dy3Y7DrljXTnKXvbAcHLsnRqDB8=;
-        b=HWIsq26d90ASpCe1wm1Wuk+Q3tsxXwPs5ZiYkL4AMmqnXXeP7N/YcF/h366GSCHtC4
-         tt8nv0M0UN7mt+bIG0bzc/LY2NnigxTrdxOTED6mxwY23ghqyEuSOR4aHEpNrklp2BRU
-         /JMEO5v4cXkq20zvave2txJcV2Uu4y5aA1EHeeDY43ljVylQBWT51YpoeMrEkynFRWLu
-         PkGYPOjVxQe6oBlmgOdm2YqdYJEmjuNFdV7iEE6Ynp2MssWhdlGAIJF1lGH0TOpVeLJQ
-         kEq/I295GbH/xlkYRSIULV3HCo7Yd8S2mVDuwj4yZd1wYIqfm0fk+PuCDAVb6T9cfM3j
-         8jLA==
-Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533lq0y8HNsrQ2rNr0BcSqI9T4d7vmh3l5Bv1ft91t94h1x2OnG1
-	YYi5G4wLFI6R/KKqyVzYCIQ=
-X-Google-Smtp-Source: ABdhPJw4SqADyInBeV+ukab/38qiKOoD4M6n7lXLQS6pwpPqoIpD8GPemV/eYaVumaRvAwupDSVcig==
-X-Received: by 2002:a5d:6ac7:: with SMTP id u7mr5946622wrw.57.1639601461103;
-        Wed, 15 Dec 2021 12:51:01 -0800 (PST)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :x-original-sender:x-original-authentication-results:reply-to
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=GR15xbbDJ1jinmSwF5oRbLpQfF6PbexlwdzrZKcYg0U=;
+        b=2CqIKPXW+mI9nyAuaKr/TAPYc9zvEF72eapQMdZgxplOns5cEDu+MpjPR5p0iXLs7+
+         4GYoOjGBP6UcR+bNJfKt2UoWswG7Vbvu5LnNvG7hs7KTTL/Ni8AppnfprzDAM5OY7kBT
+         LBxOl+uzzqeD6Gxwmc1PeFQnyUNmTIi56I4RWYX43wuRS58W9EHudbm2fusH++tmVqSk
+         io36Bu+Uqa/fFjR9E4z2bVPU3NLkbvZxt0KypqOMKgE3uHjeqjWdF+znfd8Za9m7wBTK
+         gSwZxqLAWK3HApPbL4TGXJdx7xo1IFJV73QzZNpgEc5nTwGyDnTWqOD1qWYHPHo4zLEH
+         GHQw==
+X-Gm-Message-State: AOAM530GYgQ0ZURm2g6GH1eT8id/rdiEcxHCoylu0z1hSw793Q/1XNbj
+	4zWvWNBH3RC69Um1oVgMkyM=
+X-Google-Smtp-Source: ABdhPJzRqlv6qkH2mRmF7ZWNybmkF7kFkGN2oFH8+d/Anpvaah++7He879o+po66DKT6tjHJUY3D0Q==
+X-Received: by 2002:a05:6e02:b4a:: with SMTP id f10mr1009455ilu.281.1639735002025;
+        Fri, 17 Dec 2021 01:56:42 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a1c:3b56:: with SMTP id i83ls1682947wma.0.canary-gmail; Wed,
- 15 Dec 2021 12:51:00 -0800 (PST)
-X-Received: by 2002:a1c:1b15:: with SMTP id b21mr1930147wmb.174.1639601460065;
-        Wed, 15 Dec 2021 12:51:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639601460; cv=none;
+Received: by 2002:a05:6e02:1a84:: with SMTP id k4ls1348644ilv.4.gmail; Fri, 17
+ Dec 2021 01:56:41 -0800 (PST)
+X-Received: by 2002:a05:6e02:1212:: with SMTP id a18mr966836ilq.165.1639735001670;
+        Fri, 17 Dec 2021 01:56:41 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1639735001; cv=pass;
         d=google.com; s=arc-20160816;
-        b=RZRdS5Nq3+kI31ubi7yfs2C4FYIoQafBZ7geJ+Xlvqm97fdWs11LitfLfWTYV4PcOL
-         4dqioH29FVn5ajDGLz8u8wQJiuWD5SHTQ1Zb4HB8F+QwVGoDYX5PfyoUIyDiFE2dKchZ
-         fLbJcs/fMrnftdNGioAAwTpoTkHKrD5vVx4fOzvWv77hHEuxYCWWSW9gAguVpKgwS6Ht
-         /SCVTnkETsg6LGr+7ffFLkiYk8Z0cklx9rhoZ1glkHADOupCl0pbPUwTidbJLzYCR1Gi
-         UfaqqjIm4jDfyVAR9wXd0IjL60+/e+S4KOGt11R61ZCWIRF3A1ZOfDriMlqj6NsQx3XC
-         940Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :dkim-signature:dkim-signature:from;
-        bh=77DCNiXl9B9x9ao8a3ckFicR+A7/8jsezE822YCoYkI=;
-        b=jzzqpkmlMcQ1m9jpn5Eo61s4TqOP6swqltGIvwalb0NTKbYfx9bQh3Xf6e5GrZRMjU
-         PyGqXX3n+v28qLn4LwQ5VJvv86r/mBFJVMnR8dE727O9oR1XgTgddEMy4LnLddCJPPCD
-         X5DeGvLgqhJIoYYgc5GDeYWKiTbhcXpS2pnpMhbSdn0EVEGNIUU5CDGl0nKgN4cKOHNN
-         rVgsyGPSOMCprTJJ2RPE9hh+F2av0uaD1Tt8JQtL2ciiJfXbYQbG8+LnkPNTDUVI4ZzU
-         gWsCd5iv6lC2Mh9HcJfo9xSPx4KpdCFWzussa28087e6lQsZuHKSsNmpzWz5vRBoQ2Nc
-         d2XQ==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=0MC08SjO;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=SDPAxqej;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [2a0a:51c0:0:12e:550::1])
-        by gmr-mx.google.com with ESMTPS id o29si200919wms.1.2021.12.15.12.50.59
+        b=sD/bmCj3WObRL8YYvJ1ZTAs6PLz+0imNgIcTHkUF1lsjsjGeBEYunyAW9QAhShpptH
+         3sQxx1aNLyiSAX9FI3rF2aCC3Aewpc8dJRxgVPzMrd4v21Dkj1WpCQw/XcLKblw1mWjh
+         NziNJvpvAraRLZyrs3Q6g8i5Z6g91mYv/b/vkzwYioxICxPjpOt+sbPn7Y7A7bCX3xGD
+         OC7UeJYNNUZjiFx7LHmWVe1xHgdp+2uC6kO0foQZ+pi/iIZ0Xh9smvzPJW0cxIddvZ9H
+         wtU1+pzuvg+It1L/staJ6Lf20P1D0TOhbbx1J+TAxVPJWhNqWxuJkdcJeWmB9O5Pjit+
+         Pt7A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=ZybGgRaNDjmTu26//9eDFA9G2SdOQAMHYsXqj8Zy7os=;
+        b=0wkiWZgCqU2OwVyllx1U1zt2XPeu0GFRME3IyhEEiYolFOpY30uCMY/FBqUz6OJ0JI
+         KMMRzVcNhfPlLeg2QEBY2UPQY/ytjmMze1OT19NI5mu4okHriA87O9bIv+GXaCrYwpjF
+         VipcHWVCjCggdCC8DeK5ezeGuWW6J7IJKEQ0zFPDBlayr+t6Te4fnglpzUYu7AZL/6iC
+         WZQWDsIptwG8O2ifxc0Rc0T6q/B4uxs98O4Q8nxqiJOQM5zZNLe3pKkG4zKLIZ3KgsOM
+         wRBdWmltnijoZkW3jZhWbUb1Zph8YVsE3owbAt4+6TFYcFpr3YAmENCCDPcf0lu4VSRL
+         VjtQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@amd.com header.s=selector1 header.b=aMEvL2d5;
+       arc=pass (i=1 spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);
+       spf=pass (google.com: domain of sanju.mehta@amd.com designates 40.107.95.82 as permitted sender) smtp.mailfrom=Sanju.Mehta@amd.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+Received: from NAM02-DM3-obe.outbound.protection.outlook.com (mail-dm3nam07on2082.outbound.protection.outlook.com. [40.107.95.82])
+        by gmr-mx.google.com with ESMTPS id 8926c6da1cb9f-2faa6b53fbfsi1061383173.1.2021.12.17.01.56.41
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 15 Dec 2021 12:50:59 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 2a0a:51c0:0:12e:550::1 as permitted sender) client-ip=2a0a:51c0:0:12e:550::1;
-From: Thomas Gleixner <tglx@linutronix.de>
-To: LKML <linux-kernel@vger.kernel.org>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>, Alex
- Williamson <alex.williamson@redhat.com>, Kevin Tian
- <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>, Megha Dey
- <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
- linux-pci@vger.kernel.org, Cedric Le Goater <clg@kaod.org>,
- xen-devel@lists.xenproject.org, Juergen Gross <jgross@suse.com>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Niklas Schnelle
- <schnelle@linux.ibm.com>, linux-s390@vger.kernel.org, Heiko Carstens
- <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>, Logan
- Gunthorpe <logang@deltatee.com>, Jon Mason <jdmason@kudzu.us>, Dave Jiang
- <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com, Nishanth Menon <nm@ti.com>
-Subject: Re: [patch V2 21/31] soc: ti: ti_sci_inta_msi: Rework MSI
- descriptor allocation
-In-Reply-To: <20211206210748.737904583@linutronix.de>
-References: <20211206210600.123171746@linutronix.de>
- <20211206210748.737904583@linutronix.de>
-Date: Wed, 15 Dec 2021 21:50:58 +0100
-Message-ID: <87a6h1r3rh.ffs@tglx>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 17 Dec 2021 01:56:41 -0800 (PST)
+Received-SPF: pass (google.com: domain of sanju.mehta@amd.com designates 40.107.95.82 as permitted sender) client-ip=40.107.95.82;
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=CPHX7s/GXdcp9QRbkCBlWfdhi9lRmofxjO+sAKr8c1o+gkb53XZH1lvwp6OlYupD8aTFkbC7PgJ6avU+hGWYBa6dLBQkgq3pQKSO7ce13LH4Bz+0hfaMXk8iRFbupidlHERpVQGZi6ST0Ii6hmRZj+Ry+ctsnE88J3HoZ8V0bLmt5LB5yQ+gnl8lVGMJxQVMSFa0WZmsU1e/69wvTdHESpHYr70eof4xRlpVuEsfa8UCmvYRgHDyhg2vz19xotXLqMW/sYVBcPEuH83RHPWRiajDsha/vd9aQqv9fENvBYtUpgX92OXXbGOxDCn5t5ikuweKYES6oZDLuyUk0bhu1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ZybGgRaNDjmTu26//9eDFA9G2SdOQAMHYsXqj8Zy7os=;
+ b=P+MjIyqRwjftpNhbLvM1LuYddmAO63AGdVxUa674gmUkf19OxJg3vxgKF+IQS0UzdMN50sIjKdbVktWuyKblzZmZ+iCUgJmGksgbMuyfYZQu5uiJW6oRpHTD+ts15mz99NIOhrMB81JzF1g4TsB0v8Sh/XMtdUxTOnRGdHXI+uwhHFACoLVPdSLYYS6oQOlE4ILOOugJdFketq/Pdo3c3GjOZif7milcjaY8RKljI1Ngg06w131k8yDeZ/1T4L1rXq//AnG4laq64dWKLl+ZfFnMCOxktmqnYEfV+HvASmPDb+TLVsAhImnAJZKj46KwCOVlcms2thBiffa0Qf2nQw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=kudzu.us smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none
+Received: from DM5PR04CA0025.namprd04.prod.outlook.com (2603:10b6:3:12b::11)
+ by BYAPR12MB3031.namprd12.prod.outlook.com (2603:10b6:a03:d8::32) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4801.14; Fri, 17 Dec
+ 2021 09:56:39 +0000
+Received: from DM6NAM11FT060.eop-nam11.prod.protection.outlook.com
+ (2603:10b6:3:12b:cafe::40) by DM5PR04CA0025.outlook.office365.com
+ (2603:10b6:3:12b::11) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.4778.16 via Frontend
+ Transport; Fri, 17 Dec 2021 09:56:38 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB03.amd.com;
+Received: from SATLEXMB03.amd.com (165.204.84.17) by
+ DM6NAM11FT060.mail.protection.outlook.com (10.13.173.63) with Microsoft SMTP
+ Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.4801.14 via Frontend Transport; Fri, 17 Dec 2021 09:56:38 +0000
+Received: from sanjuamdntb2.amd.com (10.180.168.240) by SATLEXMB03.amd.com
+ (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2375.17; Fri, 17 Dec
+ 2021 03:56:31 -0600
+From: "'Sanjay R Mehta' via linux-ntb" <linux-ntb@googlegroups.com>
+To: <jdmason@kudzu.us>, <dave.jiang@intel.com>, <allenbh@gmail.com>,
+	<logang@deltatee.com>
+CC: <linux-ntb@googlegroups.com>, <linux-kernel@vger.kernel.org>, "Sanjay R
+ Mehta" <sanju.mehta@amd.com>
+Subject: [PATCH] ntb_hw_amd: Add NTB PCI ID for new gen CPU
+Date: Fri, 17 Dec 2021 03:56:20 -0600
+Message-ID: <1639734980-9748-1-git-send-email-sanju.mehta@amd.com>
+X-Mailer: git-send-email 2.7.4
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: tglx@linutronix.de
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: SATLEXMB04.amd.com (10.181.40.145) To SATLEXMB03.amd.com
+ (10.181.40.144)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: 307850b6-f6ee-4772-1ec1-08d9c14384d7
+X-MS-TrafficTypeDiagnostic: BYAPR12MB3031:EE_
+X-Microsoft-Antispam-PRVS: <BYAPR12MB3031DD50B35E2D8CF482FB88E5789@BYAPR12MB3031.namprd12.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:1186;
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: VwMHXirmIoYFhRBy1bkd+2f+BL038zq0UChT19megutovfNcJXMipc+CoWmqFzaqaqjPmHwxtLAwfKU5ItY+WDfB074lS1EWHBBu7btUpCzmtfKzcWolcws1TyH672CYphaJ0pUTIbvaWbH6+19uBc+jUkvK4DbpQvp4/BojesiYUVe88VFfJIGBC9JWufvM0VpQ4csvmMFRGLKtMcRrT081K1FzjPyQTD9mGeatXtYie/pYpW/G1fVjWVWvFbKOsXZhNBDiuXObf7c1FxSn558M9eVSidBKKBM7DOsVcR3eMlUGa6AScMpLnxqq9r1tdqqGb3P02c8AWZZMQznAOThDLMqHJQcU3sn6HP6PbkqQATREN2T83LaUCVxdvJiXAeWOcJLcCOHTfhKCguwgsV7uwA9uhtJt+3ya+zoPF53C7wkYriwb+LsjLc24y7os57kzmjHjmMhTQ1N18MU2tkj3PlaD+7jBvfd8QEhLs3lLs7bnNJM8PdECKBYrP9pE3gQj9wvwJa30GhfdBPWQMdRflkkHK1L6p2uSeBhjuNic/tLNM/OxavjcglDdsypfcHnx6CR1/CNsMHjZPNvgJlSCyjC0vrfa8vPfxeaR6F6STHDeDo857z/+gPKTqELKWmWEO50dympTqmWtY7Fcn9BZG13ZCZkMS6wovWe+YqJodtUMnUh/N3K3ejQVrAmr+ijCQNHGIAc/4vlRQQvhrzOGoEnXGhS8BJuAQvQhz4Uqf2DLaugVCsVdoBEBI0+r9oOZhdhBb/Bq2jF4gAJnnG33aqwBOXNfHM2U+y0McZE=
+X-Forefront-Antispam-Report: CIP:165.204.84.17;CTRY:US;LANG:en;SCL:1;SRV:;IPV:CAL;SFV:NSPM;H:SATLEXMB03.amd.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(4636009)(36840700001)(46966006)(40470700001)(54906003)(2616005)(508600001)(40460700001)(336012)(36860700001)(5660300002)(186003)(26005)(16526019)(8936002)(8676002)(7696005)(4744005)(86362001)(426003)(47076005)(70586007)(70206006)(356005)(82310400004)(36756003)(6666004)(81166007)(110136005)(2906002)(316002)(4326008)(36900700001);DIR:OUT;SFP:1101;
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 17 Dec 2021 09:56:38.4427
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 307850b6-f6ee-4772-1ec1-08d9c14384d7
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d;Ip=[165.204.84.17];Helo=[SATLEXMB03.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: DM6NAM11FT060.eop-nam11.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR12MB3031
+X-Original-Sender: sanju.mehta@amd.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=0MC08SjO;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e header.b=SDPAxqej;
-       spf=pass (google.com: domain of tglx@linutronix.de designates
- 2a0a:51c0:0:12e:550::1 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+ header.i=@amd.com header.s=selector1 header.b=aMEvL2d5;       arc=pass (i=1
+ spf=pass spfdomain=amd.com dmarc=pass fromdomain=amd.com);       spf=pass
+ (google.com: domain of sanju.mehta@amd.com designates 40.107.95.82 as
+ permitted sender) smtp.mailfrom=Sanju.Mehta@amd.com;       dmarc=pass
+ (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=amd.com
+X-Original-From: Sanjay R Mehta <sanju.mehta@amd.com>
+Reply-To: Sanjay R Mehta <sanju.mehta@amd.com>
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -139,40 +186,30 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-On Mon, Dec 06 2021 at 23:51, Thomas Gleixner wrote:
->
-> No functional change intended.
+Add NTB support for new generation of processor
 
-Famous last words.
-
->  static int ti_sci_inta_msi_alloc_descs(struct device *dev,
->  				       struct ti_sci_resource *res)
->  {
-> -	struct msi_desc *msi_desc;
-> +	struct msi_desc msi_desc;
->  	int set, i, count = 0;
->  
-> +	memset(&msi_desc, 0, sizeof(msi_desc));
-
-This fails to initialize msi_desc.nvec_used which makes the subsequent
-interrupt allocation fail. Delta fix below.
-
-Thanks,
-
-        tglx
+Signed-off-by: Sanjay R Mehta <sanju.mehta@amd.com>
 ---
---- a/drivers/soc/ti/ti_sci_inta_msi.c
-+++ b/drivers/soc/ti/ti_sci_inta_msi.c
-@@ -68,6 +68,7 @@ static int ti_sci_inta_msi_alloc_descs(s
- 	int set, i, count = 0;
- 
- 	memset(&msi_desc, 0, sizeof(msi_desc));
-+	msi_desc.nvec_used = 1;
- 
- 	for (set = 0; set < res->sets; set++) {
- 		for (i = 0; i < res->desc[set].num; i++, count++) {
+ drivers/ntb/hw/amd/ntb_hw_amd.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/ntb/hw/amd/ntb_hw_amd.c b/drivers/ntb/hw/amd/ntb_hw_amd.c
+index 87847c3..04550b1 100644
+--- a/drivers/ntb/hw/amd/ntb_hw_amd.c
++++ b/drivers/ntb/hw/amd/ntb_hw_amd.c
+@@ -1321,6 +1321,8 @@ static const struct ntb_dev_data dev_data[] = {
+ static const struct pci_device_id amd_ntb_pci_tbl[] = {
+ 	{ PCI_VDEVICE(AMD, 0x145b), (kernel_ulong_t)&dev_data[0] },
+ 	{ PCI_VDEVICE(AMD, 0x148b), (kernel_ulong_t)&dev_data[1] },
++	{ PCI_VDEVICE(AMD, 0x14c0), (kernel_ulong_t)&dev_data[1] },
++	{ PCI_VDEVICE(AMD, 0x14c3), (kernel_ulong_t)&dev_data[1] },
+ 	{ PCI_VDEVICE(HYGON, 0x145b), (kernel_ulong_t)&dev_data[0] },
+ 	{ 0, }
+ };
+-- 
+2.7.4
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87a6h1r3rh.ffs%40tglx.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/1639734980-9748-1-git-send-email-sanju.mehta%40amd.com.
