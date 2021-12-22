@@ -1,127 +1,120 @@
-Return-Path: <linux-ntb+bncBCYMHO6M7UJBB7FIQCHAMGQE2MWKQ2Q@googlegroups.com>
+Return-Path: <linux-ntb+bncBCI4JMU65IPRBEELRKHAMGQELTZXQ3A@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wr1-x438.google.com (mail-wr1-x438.google.com [IPv6:2a00:1450:4864:20::438])
-	by mail.lfdr.de (Postfix) with ESMTPS id 5A1DE47A48B
-	for <lists+linux-ntb@lfdr.de>; Mon, 20 Dec 2021 06:28:29 +0100 (CET)
-Received: by mail-wr1-x438.google.com with SMTP id j26-20020adfb31a000000b001a2356afd4fsf3300409wrd.21
-        for <lists+linux-ntb@lfdr.de>; Sun, 19 Dec 2021 21:28:29 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1639978109; cv=pass;
+Received: from mail-qv1-xf3d.google.com (mail-qv1-xf3d.google.com [IPv6:2607:f8b0:4864:20::f3d])
+	by mail.lfdr.de (Postfix) with ESMTPS id 62EBE47CB27
+	for <lists+linux-ntb@lfdr.de>; Wed, 22 Dec 2021 02:55:29 +0100 (CET)
+Received: by mail-qv1-xf3d.google.com with SMTP id fn12-20020ad45d6c000000b003bd9c921c0esf853699qvb.21
+        for <lists+linux-ntb@lfdr.de>; Tue, 21 Dec 2021 17:55:29 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1640138128; cv=pass;
         d=google.com; s=arc-20160816;
-        b=NPAp10WDIkHzFDd0GWvt5QDzCEDulbgVWf8Zjo4u1xtHiIteo13LpUgINbr6/M4z8U
-         wQsnWtyFbBcnmExxQWwXjBDzyji2VFVRenNeFaZQa14UHAPKgGYfIlpHs5vlHFslTAg8
-         z/tzV1GIgTsxLrx2WUS1oKBrg94tblsuQx7fKwPWToW+vSHqTH7FeN2N0u2p/bWiQhlw
-         Go9hL2XOPFkuSF/+B0rA7k8YuGZPKerykN2vs3mhmFWmUAEfvBzd6JPBCyH0BayYzwBS
-         N2/jk5d0DKhisu3+Xshsl/MEQ2Jt1S15NkMrE44fI/xlbRFb16lzaYkO/9P6SeHFBJhV
-         vZmg==
+        b=Yfq1CU5egDvdnakmIKT7oUssU3kpySXPF5jRZ2cP/dlYPMEWZ1ptH8SkoyYXlF25p0
+         c3tDglnURcXXG6gzru4ERyjYzWejSpPkjA+CxH5+7YzmTiK7FUKeyUWYiRcgBmVtYVrL
+         ajaULWDnUWgB4WcO15yvnGukXnbvBJS9v6rEb99QEfe9C5VkFBLdh0evTfZSKuabDrgW
+         aeOzzK5uiFrectD0WtWqJBAN+QOZbnT9EgM9gnXZYTwuY8eYWkhZX/3Ab8zAL4oOdFGJ
+         gLwYIjpm8CaJxrw+wG/a14/Ffs9dLu1dp4iHJRw37pKIfkGUBSEsWcIDfAcIEXSgspDU
+         GRFQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:to:subject:message-id:date:from
-         :mime-version:sender:dkim-signature:dkim-signature;
-        bh=i4xg0AK/8rkS5Lm4bAA91dXEGE8kyTMQBD9b+hlzc7E=;
-        b=d4cVvBXvxftS+RKveV3uS/w9vNLllzk17RundBORYUMnFPvMv0tY/5Gsn2EiSkejNj
-         ByGNvHqM03jtFkSIs/li3hBuIAJcBAFNNldu1Lei6Ks+HWGLxS/s+3mrjC2flDEhX5js
-         Fjo3GDYUizrqh/wHRyxqU5Gvk57Ey/37CwSbd94d+lAtx3U3CcRYoXDJbfJlRwxqQKGm
-         0DYl/QlEr8FGDODmbHdA8bHmYXw8bj6DXQkjiB52SFE+im3qLg+IphNN/2NZ+/YXrHIt
-         Ss677ssbmIo+s0wdqhna97l3AxvW1RbvqEDmj2Vo1sQpcwYvlhTbQJGr3OkGIM1K5Kn6
-         o8yQ==
+         :list-id:mailing-list:precedence:mime-version:message-id:date
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=p68Xwnu0DM+wELlekXaxMfzUL/ttwaTmwqL6FJGJ74E=;
+        b=gSfuJ9UIdgnznH+iBz8O6/oVkVAzvIPN6q0cvyua5SBbnOLobfdIuPZvq+r0kcBiB/
+         hsChfAF9cPpc+LML34/G8KlcAWtUOEQ6AW7qyEes7ev2oWKRWKtkJfUFRGKRj9lctUc2
+         5G7QH7feRkHHGeoDW1rGdiwPEQRuJkIxbfzzwCb3JZO5BpOwfP2otwg/iNqp4B+BR5Rg
+         Ma7nDJnZsDcQbmKPTlCdlliB0YlZ6J22vZPESBP7Zzd7k0btLEn/PrgVB1Y3ZICiTv10
+         8Op+jBWonAbB+HfrbQeF3L/KnahnkaZ+4Di6/+w8jL5N8e8ufkX+pMDuEI7KlF5S0Mhy
+         b2sQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=qRempdIZ;
-       spf=pass (google.com: domain of williams147jessy@gmail.com designates 2a00:1450:4864:20::434 as permitted sender) smtp.mailfrom=williams147jessy@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       spf=pass (google.com: domain of yang.lee@linux.alibaba.com designates 115.124.30.56 as permitted sender) smtp.mailfrom=yang.lee@linux.alibaba.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:mime-version:from:date:message-id:subject:to
+        h=sender:from:to:cc:subject:date:message-id:mime-version
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=i4xg0AK/8rkS5Lm4bAA91dXEGE8kyTMQBD9b+hlzc7E=;
-        b=C2OyNUcWO2hkrKPKE7ksJUMojF7+xlRyYqkYN+yyQv+8Ww7Vt0WZ7UDPToM18Kq+U8
-         VCwffCLgso6AHKS/FQ+p8OybI3+SuJ92HKMzipBHEiwKVuM+0mEHpClIl6ZYtggUF8Gc
-         wE88nItLn8gYKsW4KXZOVx4r30+1BDr8rRkkHu9DVCXx7PQuVndCICzwQedTVIi+0RAW
-         EX80BVqGY618UDzRN1NZCmaVbAJIiOWUDHWdIv+8ff0yGLGqg3Jx3Z6IhCQv7NqsmThT
-         IP+2J9dFo/XI2cF3dJbVBZBp/xRVVaw64SPYu2WRDlvSqVRqx9DwXutNlPX3zk+ozVBS
-         WH/g==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20210112;
-        h=mime-version:from:date:message-id:subject:to:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=i4xg0AK/8rkS5Lm4bAA91dXEGE8kyTMQBD9b+hlzc7E=;
-        b=fFO+d+b4btBpWgPGEkb0IccJoWqD6xJd0DK2b9bJd2cI6mIy7Hb4IMz+ZDmJkmq/jb
-         xEDzxefDkn67oShO3rQA2EMHY+VWfX5NuaQeHRvtqL51jBC5R6l3uiBnDCgqo+ocyUGz
-         AzgAoNGm3bCHSdn8thzR44VXEKXa0M7ifG9ewgE8NLbo/SW7R9o/Wd44KPhmzRA8BWsE
-         k5geZJIsf9W9pe1DruO9+o3+RuxCWbE8dwIZsW0iXjuIsSZr5hZM2HMLtOxU3ADSDyOw
-         Cde+nICo8TwOT0zHqh+MPXRv+A281uypv7egn8wwAVLf8c2S9sfmjhaz+wU5qXOsFB1Y
-         HkSg==
+        bh=p68Xwnu0DM+wELlekXaxMfzUL/ttwaTmwqL6FJGJ74E=;
+        b=M1vUR4KX0AdSab0N6HAdMqdBe1yvzF4OCUZ+LR+ZIKhnNXPLLT6OdE+rW/bmXNVSpv
+         NegkdbJVdhHVr5SOcX/RhHuLE1U61PSOw+XMK4R4QnRNt1+S3zAbI60/1A5TuoEy0PoQ
+         YNvJe82erso7wNosZTv8F3odcfZNVoGXEITNg0yNkebvsvVJvYJ3REBHUQGalluQ/dBw
+         SlNj2b3eSf9hN1DWC7Iuznxt+B4Iw0fgi4GxbdnnD/UZT4YRx3MHrwkWtoQ48WrmKYcg
+         kIM43c6eoK8Rngsu9I9XfWTN2xifGF8Npmj1X6GW2eV/c9skI4tFC2Du9kuEolDN57kR
+         g4XA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
-         :to:x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=i4xg0AK/8rkS5Lm4bAA91dXEGE8kyTMQBD9b+hlzc7E=;
-        b=24P+S7TTVJf/EBPjI1ZeQlWLP7b4uBUCG55wRaP59fV4efmNAAp3uDRouPawaCUjUb
-         BanEhHabTLDRKEAh/K+XUHhq24GY7HFIO2BqDq/Bkh3ImRJv2OMDc9y6ROhvktEqRDZ9
-         pf+HgQ1kgAG0048EMulNUGVcF4xaq3QBUd9nm3VC3c9cvHb0Hg8iwhKJYo9WQQp8rmA+
-         y9vD2MG217Tj71PAQFBiK2oWKZqPk4CUb8htqHwecfl4mOKikR7h4VnF05R7pXUQtLqV
-         ysQmacS5wVhQufjZdhFFi/OxCFqVmnKWUfpIyABhFgGjmt1StRpenOmxiMkAv+pwNcpV
-         NoQg==
+        h=sender:x-gm-message-state:from:to:cc:subject:date:message-id
+         :mime-version:x-original-sender:x-original-authentication-results
+         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
+         :list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=p68Xwnu0DM+wELlekXaxMfzUL/ttwaTmwqL6FJGJ74E=;
+        b=uuVI/BYTfUQku2eJKaBz97Im/902e2K+kgDmXgDWW8deKzcGJ77QZqsU7WhjLD6p6q
+         OzJWdu9EZsuVo7Y1B8y6oCCr47/4nnDLXdGKGAph1wb0dyFgYaChQxJfsypFTm1MdOq/
+         6rV6yHrryaPxVt+sgPOh7lQJ7ojqHkt2CKkGNtf7Lc5mon+Jsy6oVVRzRd133+7oKI+K
+         zMAVR04kSYiffTdrFrjxSuJTYaCA6tO143RkuYfSacHmvYKqDQoylhB1yPpRothwz5VI
+         j1mn2/BH0Qj+dAKO+YXhbdftTy7vgvCfXPhuymd1WdbAMj3a+5/FYZmyB1zDgDAOYStd
+         A+EA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM530TPgGmccS7T4ALLwZnPDM3ZQP3Z0qxAylbBBfHRPzlFVK1pqvr
-	im3GkEb88Z1O0WvBZcEAlZw=
-X-Google-Smtp-Source: ABdhPJweVn6jXagWgU1U4v8T4nZWpvW2svL6OtCoSo0vcHoorM6Xhr3ezssRSa9IzktdgW04O1pATw==
-X-Received: by 2002:a05:6000:1241:: with SMTP id j1mr12262327wrx.601.1639978109017;
-        Sun, 19 Dec 2021 21:28:29 -0800 (PST)
+X-Gm-Message-State: AOAM530F/xy6eLVfJU4mmeDUSeovr7m9pFVv1qVhr9Er7hOn2NWii29O
+	wA8+uKChktR2FyJV74rCgyU=
+X-Google-Smtp-Source: ABdhPJwPrRv4HsO11mK3S3UicZNYBCyRAHE3XUd6bnZ9C1vIIykX1/i8Ur7q6xvGKkwRgaMz4NryHA==
+X-Received: by 2002:a37:aa89:: with SMTP id t131mr783281qke.337.1640138128144;
+        Tue, 21 Dec 2021 17:55:28 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:adf:a4cc:: with SMTP id h12ls2551365wrb.2.gmail; Sun, 19 Dec
- 2021 21:28:28 -0800 (PST)
-X-Received: by 2002:a5d:47a3:: with SMTP id 3mr2928022wrb.583.1639978108243;
-        Sun, 19 Dec 2021 21:28:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1639978108; cv=none;
+Received: by 2002:a0c:db8e:: with SMTP id m14ls269038qvk.3.gmail; Tue, 21 Dec
+ 2021 17:55:27 -0800 (PST)
+X-Received: by 2002:a05:6214:518b:: with SMTP id kl11mr885934qvb.43.1640138127815;
+        Tue, 21 Dec 2021 17:55:27 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1640138127; cv=none;
         d=google.com; s=arc-20160816;
-        b=jx3I1KffQtnUt0xauH5GmT0fIgBlyj+e668yb9tlw/PIaNKQLU5C+HPjX26D6s03yi
-         eV1VzRQRwUJLjx4v4Ex5S45o2MZsIxE8i+iBP5k/v+kn1bLEaTBVCcqj1P6mQKV+44if
-         XKTYHBKfvsGnFpahIXQm8sGby0zU6d+WO5QDbN8JYS3nWqdKAFzBdA7NsyOCIslgxoh+
-         +ePh9Ud3hqvfSa5lD30zYxDQZGiW2nKW9l+EYI4Whx0Uygb31EqoD0UQUalXIOPx4EZm
-         SDOuboTh09Zu922FQjOcbmeTy3n/9F+fIE7Ihj49Zhza70nx8LZKtutWZjQ7ysGFLJTJ
-         F+7w==
+        b=u76cVPCdLfqbi8Np1nk4rai+jxzgO8CIcO8DyYuOz+r3Z8R7v9zzCD+sJaYg+mBRZ1
+         MafyWusviHycJxAFm3fB8L7d/46R9H0JPvdWPKfnSoOjJfbWW+xIZUca93lSlGqtOsJn
+         yxv7xX+GTBasv+bds1uwE3bhrqLi5KAhStpg/Db8uwtkEyxivJWpi76WE+ice+ZReNHg
+         q+t8jUH/L2nUcsVrfakifDZ/p5ZVtuzpWnVs1K36/FrICoaacMaInJcHT13I7Dmxd5gZ
+         nnNdiI9l7OOPlCV2QRr5StgLpbbxIGBE4S9tfyYtnaxPqKFpg9FIdI7TRwDOnaAtqvvT
+         ygFQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=ObT+p3H1cSr2W+fFABhJrko1t5ffs1xovBkmDU8YcYs=;
-        b=ETZi4rGvZtTkzSY7Olqnn5434v8y9vt1LkuAdozIstrHCXLe5hEpD21kHksacUmIPx
-         3VM3BpvWpE97hJGbrCaYGNXe+9vWPY/6rYrziFsLYfgRRx0vq1k1/u9rrV8hDejj7Y65
-         4INZXwed+CEU3au/EoGdNmC2QTxzuY8a9BA3h8X70arsWilsf/0ET0W36ZeQM5Lq0q+M
-         kRg1SqLqZQ7EQu2iYV68CBpj2Sz1Stiy2BuJWI7aoZV8xQ7Dkw+b4JDZmVcJwzUrpmts
-         Lg+qBL4PWzo8rIdHNOsec2X5T4lILgY8bYdp0ZcG8d6r/5WVK6SbZ43U8pmsOD/y2TV5
-         k+7w==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=5DJJSsWW9UOCh/+psQuAgPUKmb1hB3nfBhHQcE5nqwU=;
+        b=h4q0R+MPjyTLniWPlr88Y8FsEWv7GGQsfSo8ace705lRPFoTzboy/zzLFdbFjSwMt1
+         hM3S9PbL4RGbxbRWjjgFoDyS66zsu62W6Yvyq6FFUSh94+isb//Kl1J8ISYZrqKjMWK1
+         wDEWWgWUWwtMfZUBu3wkL01GbsYzds8Dyk2n9/XD27gt9gDyCleTCbwc7qyfPtT+6eZh
+         TtUtHmIsx7OdiBlGN9ZdWLX5gp9BwNlWoP3o1oVBwUoTg6JUfOIddnnDYT+T1vn7ahfX
+         IWcVo2d8jEyJlFdKpLDIXSmQ05j3RXIojK4ecOcD0pR9WTV2acHp7u3Y+GXDCjvwpKZB
+         fKVg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=qRempdIZ;
-       spf=pass (google.com: domain of williams147jessy@gmail.com designates 2a00:1450:4864:20::434 as permitted sender) smtp.mailfrom=williams147jessy@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-wr1-x434.google.com (mail-wr1-x434.google.com. [2a00:1450:4864:20::434])
-        by gmr-mx.google.com with ESMTPS id z16si348202wmp.1.2021.12.19.21.28.28
+       spf=pass (google.com: domain of yang.lee@linux.alibaba.com designates 115.124.30.56 as permitted sender) smtp.mailfrom=yang.lee@linux.alibaba.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
+Received: from out30-56.freemail.mail.aliyun.com (out30-56.freemail.mail.aliyun.com. [115.124.30.56])
+        by gmr-mx.google.com with ESMTPS id k10si143046qko.0.2021.12.21.17.55.24
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sun, 19 Dec 2021 21:28:28 -0800 (PST)
-Received-SPF: pass (google.com: domain of williams147jessy@gmail.com designates 2a00:1450:4864:20::434 as permitted sender) client-ip=2a00:1450:4864:20::434;
-Received: by mail-wr1-x434.google.com with SMTP id r17so17282638wrc.3
-        for <linux-ntb@googlegroups.com>; Sun, 19 Dec 2021 21:28:28 -0800 (PST)
-X-Received: by 2002:adf:d1e2:: with SMTP id g2mr12038117wrd.362.1639978107993;
- Sun, 19 Dec 2021 21:28:27 -0800 (PST)
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 21 Dec 2021 17:55:27 -0800 (PST)
+Received-SPF: pass (google.com: domain of yang.lee@linux.alibaba.com designates 115.124.30.56 as permitted sender) client-ip=115.124.30.56;
+X-Alimail-AntiSpam: AC=PASS;BC=-1|-1;BR=01201311R591e4;CH=green;DM=||false|;DS=||;FP=0|-1|-1|-1|0|-1|-1|-1;HT=e01e04407;MF=yang.lee@linux.alibaba.com;NM=1;PH=DS;RN=7;SR=0;TI=SMTPD_---0V.Na7RS_1640138116;
+Received: from localhost(mailfrom:yang.lee@linux.alibaba.com fp:SMTPD_---0V.Na7RS_1640138116)
+          by smtp.aliyun-inc.com(127.0.0.1);
+          Wed, 22 Dec 2021 09:55:16 +0800
+From: Yang Li <yang.lee@linux.alibaba.com>
+To: jdmason@kudzu.us
+Cc: dave.jiang@intel.com,
+	allenbh@gmail.com,
+	linux-ntb@googlegroups.com,
+	linux-kernel@vger.kernel.org,
+	Yang Li <yang.lee@linux.alibaba.com>,
+	Abaci Robot <abaci@linux.alibaba.com>
+Subject: [PATCH next] NTB/msi: Fix ntbm_msi_request_threaded_irq() kernel-doc comment
+Date: Wed, 22 Dec 2021 09:55:13 +0800
+Message-Id: <20211222015513.23106-1-yang.lee@linux.alibaba.com>
+X-Mailer: git-send-email 2.20.1.7.g153144c
 MIME-Version: 1.0
-From: Williamsn Jessy <williams147jessy@gmail.com>
-Date: Mon, 20 Dec 2021 06:28:16 +0100
-Message-ID: <CAJm+zzNXZdHD1zA+LsSJ+DgYAfRzFDLQLN8yHnuTZNHX+VZRtg@mail.gmail.com>
-Subject: HELLO
-To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="00000000000090ffe605d38d28bb"
-X-Original-Sender: williams147jessy@gmail.com
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20210112 header.b=qRempdIZ;       spf=pass
- (google.com: domain of williams147jessy@gmail.com designates
- 2a00:1450:4864:20::434 as permitted sender) smtp.mailfrom=williams147jessy@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+X-Original-Sender: yang.lee@linux.alibaba.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of yang.lee@linux.alibaba.com designates 115.124.30.56 as
+ permitted sender) smtp.mailfrom=yang.lee@linux.alibaba.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
+Content-Type: text/plain; charset="UTF-8"
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -134,39 +127,42 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---00000000000090ffe605d38d28bb
-Content-Type: text/plain; charset="UTF-8"
+Add the description of @msi_desc and change the @devname to @name
+in ntbm_msi_request_threaded_irq() kernel-doc comment to remove
+some warnings found by running scripts/kernel-doc, which is caused
+by using 'make W=1'.
+drivers/ntb/msi.c:285: warning: Function parameter or member 'name' not
+described in 'ntbm_msi_request_threaded_irq'
+drivers/ntb/msi.c:285: warning: Function parameter or member 'msi_desc'
+not described in 'ntbm_msi_request_threaded_irq'
+drivers/ntb/msi.c:285: warning: Excess function parameter 'devname'
+description in 'ntbm_msi_request_threaded_irq'
 
- hello again...
-no response from you yet
-is everything ok?.... get back to me quickly
- its urgent
+Reported-by: Abaci Robot <abaci@linux.alibaba.com>
+Signed-off-by: Yang Li <yang.lee@linux.alibaba.com>
+---
+ drivers/ntb/msi.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/ntb/msi.c b/drivers/ntb/msi.c
+index 2818bfcf4031..dd683cb58d09 100644
+--- a/drivers/ntb/msi.c
++++ b/drivers/ntb/msi.c
+@@ -262,8 +262,9 @@ static int ntbm_msi_setup_callback(struct ntb_dev *ntb, struct msi_desc *entry,
+  * @handler:	Function to be called when the IRQ occurs
+  * @thread_fn:  Function to be called in a threaded interrupt context. NULL
+  *              for clients which handle everything in @handler
+- * @devname:    An ascii name for the claiming device, dev_name(dev) if NULL
++ * @name:    An ascii name for the claiming device, dev_name(dev) if NULL
+  * @dev_id:     A cookie passed back to the handler function
++ * @msi_desc:	MSI descriptor data which triggers the interrupt
+  *
+  * This function assigns an interrupt handler to an unused
+  * MSI interrupt and returns the descriptor used to trigger
+-- 
+2.20.1.7.g153144c
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAJm%2BzzNXZdHD1zA%2BLsSJ%2BDgYAfRzFDLQLN8yHnuTZNHX%2BVZRtg%40mail.gmail.com.
-
---00000000000090ffe605d38d28bb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">=C2=A0hello again...<div>no response=C2=A0from you yet</di=
-v><div>is everything ok?.... get back to me quickly</div><div>=C2=A0its urg=
-ent=C2=A0</div></div>
-
-<p></p>
-
--- <br />
-You received this message because you are subscribed to the Google Groups &=
-quot;linux-ntb&quot; group.<br />
-To unsubscribe from this group and stop receiving emails from it, send an e=
-mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
-+unsubscribe@googlegroups.com</a>.<br />
-To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CAJm%2BzzNXZdHD1zA%2BLsSJ%2BDgYAfRzFDLQLN8yHnuTZNHX%2B=
-VZRtg%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://grou=
-ps.google.com/d/msgid/linux-ntb/CAJm%2BzzNXZdHD1zA%2BLsSJ%2BDgYAfRzFDLQLN8y=
-HnuTZNHX%2BVZRtg%40mail.gmail.com</a>.<br />
-
---00000000000090ffe605d38d28bb--
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/20211222015513.23106-1-yang.lee%40linux.alibaba.com.
