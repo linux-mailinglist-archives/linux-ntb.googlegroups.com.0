@@ -1,48 +1,48 @@
-Return-Path: <linux-ntb+bncBCP4ZTXNRIFBBKXP6GHAMGQEYFP7O4Q@googlegroups.com>
+Return-Path: <linux-ntb+bncBCUJ7YGL3QFBB24M6WHAMGQE6QFQI2Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lf1-x13f.google.com (mail-lf1-x13f.google.com [IPv6:2a00:1450:4864:20::13f])
-	by mail.lfdr.de (Postfix) with ESMTPS id 50FF5489EEA
-	for <lists+linux-ntb@lfdr.de>; Mon, 10 Jan 2022 19:15:07 +0100 (CET)
-Received: by mail-lf1-x13f.google.com with SMTP id m8-20020a0565120a8800b00425edb1a456sf7153984lfu.16
-        for <lists+linux-ntb@lfdr.de>; Mon, 10 Jan 2022 10:15:07 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1641838507; cv=pass;
+Received: from mail-qv1-xf40.google.com (mail-qv1-xf40.google.com [IPv6:2607:f8b0:4864:20::f40])
+	by mail.lfdr.de (Postfix) with ESMTPS id 1F1A648A9F6
+	for <lists+linux-ntb@lfdr.de>; Tue, 11 Jan 2022 09:57:17 +0100 (CET)
+Received: by mail-qv1-xf40.google.com with SMTP id jo14-20020a056214500e00b00411de582251sf15538486qvb.8
+        for <lists+linux-ntb@lfdr.de>; Tue, 11 Jan 2022 00:57:17 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1641891436; cv=pass;
         d=google.com; s=arc-20160816;
-        b=xNgHnEYqCp+AJ77sA86X8nAL/FjjELeGS45w4xNJoPS2FO/YFqifqldpu0wwMHjhSe
-         cVBq3FAfpLWM9gmOohTQjzF73vjX8g/HYf+Ke6l7pIb9H5Iply4/7AZN85Lk1E5fCA+o
-         i1BPOItG9dQv7H66Oq5y3//ckZCQJsbGJfOZk8lBThOzawK5Y6Zkc3JrmHZsd/t4eNnb
-         rzWUD/6ZnCFStsM0lP+h8A5zlM8N/ZbMRARDsGmQAHpEdE90e/PJjcdmZSLcFQ1BfTPh
-         +ejHoVuLKzw7B7fLWejTnkikpn9RnOdV92/jigTKm9qeG9uq1hq5qGqh9uTTj/KebRHI
-         R3tg==
+        b=XEtmryF+vl/o5AxdDkQTnD+ZN/Cr1Lsb1frmBG9FLa8qmNbbmpSNs2O57NZ50vIE7/
+         ayiqkH1YiDdwaGnOHBlA+yWPVC2p7RlsA9eZ/aa8TDV/jPNlX888IGdKWftn+XIKqKa1
+         1bfPrPD3hVfbQ7uMouMSNmdWtQxeWYiBOaxTiw4JnMxQtAt51+3reDpGCzCQjvknAjcL
+         eqqCZQh/DMxATHo1YhLjnZ0Km8bOUr9RlxpFNtLwYODTzPdT618PTD6gDQwwZ947YdQg
+         4H40Wjx2ZUvnX4m+imp9nVG0z0OFtuhFwrcbL4ZWl6PpM95g9FH0OrilSJrb+42FD5Cr
+         f2Jg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:cc:to:from:date:sender
          :dkim-signature;
-        bh=TT7gNM3pSHJsWWJimB7MS7NYEqhZhVVVer125IITDrE=;
-        b=yQvNhXQQdtWKFJdlRQzqWeDsuPNGQ2K0gjACn2ACWT/WALfxo7MWzyd7w54dyekpa0
-         xoAfhFt2BjlgGIzF4CTMnOD3gE3HWzKXBDwP3LcxFrJ8RSyCmi2rFEC0xXbnAIjlzA+q
-         olPs9/yNT34ArxaQw34KR4MmqNvVM2YYFMYUrueMUw7CV4ZroIuRJjzy++rGFTihgywE
-         BvaGT+iOidvkmA5w/3UkkVOcQaAulwMsQg4KyrEw4aHsL5+/szTpIBfjwOU0QSJjZ8qV
-         DlLJcG5DQdttyh+8gfx/WZtTL73nLyN4xqxuU+Wd1eQV8tAfuUAR0TjtpgBsfLw86QC2
-         xBKA==
+        bh=WyPHVvWKApLjFqKbWPNUOioArWe6JYm02rdBHl7tq6c=;
+        b=UR8eO0myiHB17g76hC8seIR1/+IxBroj3QSlMTONnRwBoBLYenybSVDuPw7c82jX7M
+         yQyRjgK9G1Ak87o44N9BkRyyrSrSxQGfGPVYUw14KsHIxKY5T3RI5NPp3w2oAHHlNx8F
+         3KjtC0VkPC6p1T+a9E3g4zHs5Yr1HKX+ZxI0NlN8zopt/1oxL8nFGUAk9WP9AfhKVm2e
+         +/qya0kga3zucB1R1EAPAgQ6QkIc5cyl0E9sjjt1OUApezc7Fd8xW+Ln9nVoEmVNTtST
+         U7qJzFnRbbQFDFEty5aiN1GpEtRJvwtkKr6qtGvta9lxlCm+b+h91EQgXgpF9MylTJKi
+         kxtw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@alien8.de header.s=dkim header.b=XNy8DlnS;
-       spf=pass (google.com: domain of bp@alien8.de designates 5.9.137.197 as permitted sender) smtp.mailfrom=bp@alien8.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=alien8.de
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=iqf1MXWM;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
         h=sender:date:from:to:cc:subject:message-id:references:mime-version
          :content-disposition:in-reply-to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=TT7gNM3pSHJsWWJimB7MS7NYEqhZhVVVer125IITDrE=;
-        b=gd5CngS1zTZoUl0eadHdVWhM+H5oe6GHjMD9E358pGi4stg1oRwmKnpbnZNR3hLobE
-         Tdz4hGsCNgTSVqXuhC6z04TD71vVlMkDZc+VDPTWsFBXIGOexzRdvoRhJ6By+5t160o3
-         l/Kjbu11Do8ER1aIgYA2SM7LL6J9x8a4k/n0qvplANeblIfU+ROjeGfxqjm/2C3D9YRP
-         8uP4YMtD4WNAEnymBe77a0MyuNlO1Poz8hz0kSxO18zsl6dViMlISRSVDO3gvLJE4d6k
-         K6gPBN0FtrShDG11D4kPr/OwSdrjozUQ5VYhrC3MV7aN+Td41L0fNMjzv/xbEcZSIzgq
-         Y22g==
+        bh=WyPHVvWKApLjFqKbWPNUOioArWe6JYm02rdBHl7tq6c=;
+        b=nnp8ZOK8Lq5TNqjDSSbL8bi2R0y/i55p7WeKozMgZr8WqQltGaNOb0+d+VH549QJwq
+         ba0/gwp++FHxYtxCnzqbtH8erLrRO8VvkPIi2JfxlTOIZoSdEhhsw3LTJbH47Fm0ja3y
+         ot3XJBiSuCakqX8P5cQdVBDTg/TkRAo190sUfgzop3vy+odVvi383lspZSPIuswH0PqJ
+         d7Re2VRoG1viVZIyB0ePmCq/alvTVbXUKlHHpgWwX/P+aCpq1vbYPvBwav3/dpWPw838
+         GFt0isesKIXNnd7/RhHqKZeiqoxXbvB/rbqadPMsF7ONJN9W7jGXksy/dSYPCPMwp1+H
+         nu4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=sender:x-gm-message-state:date:from:to:cc:subject:message-id
@@ -50,59 +50,61 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=TT7gNM3pSHJsWWJimB7MS7NYEqhZhVVVer125IITDrE=;
-        b=HeilxwFygesEu34JnBvpNIBvtFeWCt3CffzXdwyYGSAhD5tVrtbpiw72PwAJMZYbVN
-         3CiS0SIMX+BF2N0GWO4HfRkqBNiRmCsECciPh6XLiE9e0RqoF/INTCZOd+dce7y47D4c
-         OvWCF9f06JjB40NSeBrSP+CdEimHSy6qOxyvBwhCk0MGNr96wzrfoPMiWbl6YN2uA4Ug
-         NJ+VK4wLTE5NZz9NW0UQSt9x38PE/zc+iAdswXME4DZf6SipEps7MCvckHFLIAwUzy58
-         Hi+g5Myr2kHLafojGsV3t/D0aPYkJV7fC87FWoiufXVY24VPkb7y4s6cKey9EYTHnbTK
-         yN4w==
+        bh=WyPHVvWKApLjFqKbWPNUOioArWe6JYm02rdBHl7tq6c=;
+        b=v+qmoBAf5KPBH3X74kdxmJQ4WVH3joV3C43eFQMiJZsRH6scdVMuxIB/iNcJBFlcrj
+         +RWU/h04Y/e5viwlbortx3vDZC0craTs1wt/MdFPxY8Pio18ZaAFCUT5Il4LDUgGpGd6
+         6XDgnlVqkGIdnQCdo5zaN04+VY3vSEXSXRAW+cOz+vHSF4QOGLF461RE13U8Kuxuw/MD
+         6QJbsg40YeMLySoJhMAkMeP43ZpbWUfDxviVNpFtWVxdLc6QvAVryHjmlZJmtR6pkq7M
+         HR2wo2a6S/WayNvh4HmeHek5ceRgi1B/vo4ElwWzdEcMhzbem7YefvsgjqabDjw7FkD0
+         ROHA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM5338af5BIV51j9C5uB81b54dgWXohSgua/XbUxVLhf7YEPvad00S
-	NatjPwpkyqJWBe+7k8utsmw=
-X-Google-Smtp-Source: ABdhPJxt0K0aq6+pDh9Vy7614lUgKZt6ToN7Lqnr/zRHrehWx08Jj0qaeWhORFZwwnhk3Czf+u9GHA==
-X-Received: by 2002:a05:6512:3a94:: with SMTP id q20mr652484lfu.544.1641838506779;
-        Mon, 10 Jan 2022 10:15:06 -0800 (PST)
+X-Gm-Message-State: AOAM533xt/onuWpBWqJEi2oFRdfNYxChoI83//iFRaceDWyc4wj+sMmn
+	05Bz8RLQMhR5pLEovvcjJgQ=
+X-Google-Smtp-Source: ABdhPJxZPqBRqhcRn8gXBQiL6SFoqAgeZzkMjy0dOJhBBUo1caw+QavQcXskTwGIKRhoq30VMW8mEA==
+X-Received: by 2002:a05:622a:38f:: with SMTP id j15mr2809853qtx.349.1641891435870;
+        Tue, 11 Jan 2022 00:57:15 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6512:3d2a:: with SMTP id d42ls705219lfv.0.gmail; Mon, 10
- Jan 2022 10:15:05 -0800 (PST)
-X-Received: by 2002:a19:6542:: with SMTP id c2mr636104lfj.661.1641838505796;
-        Mon, 10 Jan 2022 10:15:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1641838505; cv=none;
+Received: by 2002:a0c:fe68:: with SMTP id b8ls389969qvv.8.gmail; Tue, 11 Jan
+ 2022 00:57:15 -0800 (PST)
+X-Received: by 2002:ad4:5b87:: with SMTP id 7mr2898611qvp.71.1641891435442;
+        Tue, 11 Jan 2022 00:57:15 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1641891435; cv=none;
         d=google.com; s=arc-20160816;
-        b=qMvK12Kh1O3vRLNKITI28/A1+/DG40tg/KBuzp5w013CsOFkvP9QcX+OPoZjcxJIjw
-         PYOO/45MrhRDZ+G0+1VdzekpTWErqz75oF8rI2DQFxgFGeoGrlCgk2aQhV7w0d2rFMp+
-         iH7P64GnIS+hPUWV8SmZFbfGB/EzWqCZz1gAIRrLAi+o2FAfunjLSUD9+skKo/re6PiF
-         l3OJ1aUdwXMB8bi6a0A7gStNfz7XWc5Hlx98NO9i6W958pb09SXZYhsU9iXUatB+SIjK
-         FlkpstigxXZ6vTATYXkGKKy6GPegfD2ZaKHVZfwVUFotxVEdnx9G74/ejXK6xM3zwthH
-         wRqA==
+        b=TO+L+FjFDaDWZlfmQYKzr3ui7BIdbmXUCm2/fL1xKieKUvAGXSyKSX+NxkFDaUs0ea
+         JD4Q0Pj3sBRvqChxJ3gOIo/+poHHFBHFREllAmOX4Oie46/qXEJsUe50v6DHXX1/BOKg
+         LO3WgiL8f+MeZwrc9dft/T4xtNNg3HhKVUL7CL9xTm+53ut5Ug31RbPGmQzG7pmZtngF
+         WCw+cR4uowTEB9Yj8AOX2sSgL+8/AmmcPCgjv+e+dYvd74DXj4sTG1eDLkF9zmcFIS3D
+         H97DZQWCIpdywdPbIDQUqpDB26cKjPMw+OqzerUhFfJkwtQYtif9JypB3KWGuAaMFicr
+         GvMw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=yJijyw2InAbx08UK5J76GgYEEJY5KfsyCm4JE5m3fms=;
-        b=ygQZclWacpx0Kapiykgpw7/PzOH/JHk5DE9SIA12MDay07inffcvl2C18EvyLIAy16
-         es8jN5xTzR8HLqWKtG3dr+KJjtRXtOUN8BaLG2TwX3mTVSF3VPU94dJGLYvK2/eAgHfz
-         hAF6HrymMvUZbOfzW4xfzNZx8MYR1zjnDLHqPZNqMeUCKom5JgjJ9+uusEVUAehEMJVE
-         Yr/v0DlCz1iz6OY/zgxd8KaKk4uWgbPD2IWMRGIrmgxaBIqRTybmFq/6pKbk+tqF9GPS
-         i9GTCpbVkIt3P3v00nM51vuMUFcqvkc/FW/Fai2huE94bABvlUTm0w/cTJPCWeGrAIh7
-         9XCw==
+        bh=DH6Rr6CrfSV8hL9CwYaWyVUnTVqD11f/7Ekn6Qb5GdQ=;
+        b=AER9QZMKGIBp7r6Ga0nIRYaTQrggQmmpQCsLqletCs8oioW0LG56IY7L9lOXQAp+8u
+         nnC6QbRtrTsdeTP/m9L1fpba0iJxrKez1C3TU3oD2pImzJdDP9gFp4P7Fyck5SGMz5vf
+         l0bBcN2on85SFtVHUYqzQ2m3bIwfoRdiu9gtpc+utxJ2B9OlZuIVMK29PwKu6kEz/Xoo
+         wXmpEePAOLHAw4sz/r4B/DS3mVkTMbFfA/gF09gTQvQorUwtjf/CizfCb1QHK/vQIjAg
+         K3BsxI9rV4T2vhdvimgCMhbZmafQdoSoExd8q5Xeh55nfxA0hMp6uBsAYKV4tsCH+8Nr
+         1QmA==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@alien8.de header.s=dkim header.b=XNy8DlnS;
-       spf=pass (google.com: domain of bp@alien8.de designates 5.9.137.197 as permitted sender) smtp.mailfrom=bp@alien8.de;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=alien8.de
-Received: from mail.skyhub.de (mail.skyhub.de. [5.9.137.197])
-        by gmr-mx.google.com with ESMTPS id x32si352773lfu.8.2022.01.10.10.15.05
+       dkim=pass header.i=@linuxfoundation.org header.s=korg header.b=iqf1MXWM;
+       spf=pass (google.com: domain of gregkh@linuxfoundation.org designates 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
+Received: from sin.source.kernel.org (sin.source.kernel.org. [2604:1380:40e1:4800::1])
+        by gmr-mx.google.com with ESMTPS id s7si731302qkp.0.2022.01.11.00.57.15
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 10 Jan 2022 10:15:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of bp@alien8.de designates 5.9.137.197 as permitted sender) client-ip=5.9.137.197;
-Received: from zn.tnic (dslb-088-067-202-008.088.067.pools.vodafone-ip.de [88.67.202.8])
+        Tue, 11 Jan 2022 00:57:15 -0800 (PST)
+Received-SPF: pass (google.com: domain of gregkh@linuxfoundation.org designates 2604:1380:40e1:4800::1 as permitted sender) client-ip=2604:1380:40e1:4800::1;
+Received: from smtp.kernel.org (relay.kernel.org [52.25.139.140])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by mail.skyhub.de (SuperMail on ZX Spectrum 128k) with ESMTPSA id C94C31EC0588;
-	Mon, 10 Jan 2022 19:15:00 +0100 (CET)
-Date: Mon, 10 Jan 2022 19:15:03 +0100
-From: Borislav Petkov <bp@alien8.de>
+	by sin.source.kernel.org (Postfix) with ESMTPS id 0D8D4CE0B9A;
+	Tue, 11 Jan 2022 08:57:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 01CF8C36AE9;
+	Tue, 11 Jan 2022 08:57:10 +0000 (UTC)
+Date: Tue, 11 Jan 2022 09:57:08 +0100
+From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 To: Thomas Gleixner <tglx@linutronix.de>
 Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
 	Marc Zygnier <maz@kernel.org>,
@@ -111,7 +113,6 @@ Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
 	Megha Dey <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
 	linux-pci@vger.kernel.org, Cedric Le Goater <clg@kaod.org>,
 	xen-devel@lists.xenproject.org, Juergen Gross <jgross@suse.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	Niklas Schnelle <schnelle@linux.ibm.com>,
 	linux-s390@vger.kernel.org, Heiko Carstens <hca@linux.ibm.com>,
 	Christian Borntraeger <borntraeger@de.ibm.com>,
@@ -119,7 +120,7 @@ Cc: LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas <helgaas@kernel.org>,
 	Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
 	linux-ntb@googlegroups.com
 Subject: Re: [patch] genirq/msi: Populate sysfs entry only once
-Message-ID: <Ydx3p35NW6Y9tDvO@zn.tnic>
+Message-ID: <Yd1GZMvstSNTc80B@kroah.com>
 References: <20211206210600.123171746@linutronix.de>
  <20211206210749.224917330@linutronix.de>
  <87leznqx2a.ffs@tglx>
@@ -127,12 +128,12 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
 In-Reply-To: <87leznqx2a.ffs@tglx>
-X-Original-Sender: bp@alien8.de
+X-Original-Sender: gregkh@linuxfoundation.org
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@alien8.de header.s=dkim header.b=XNy8DlnS;       spf=pass
- (google.com: domain of bp@alien8.de designates 5.9.137.197 as permitted
- sender) smtp.mailfrom=bp@alien8.de;       dmarc=pass (p=NONE sp=NONE
- dis=NONE) header.from=alien8.de
+ header.i=@linuxfoundation.org header.s=korg header.b=iqf1MXWM;       spf=pass
+ (google.com: domain of gregkh@linuxfoundation.org designates
+ 2604:1380:40e1:4800::1 as permitted sender) smtp.mailfrom=gregkh@linuxfoundation.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linuxfoundation.org
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -159,39 +160,10 @@ On Mon, Jan 10, 2022 at 07:12:45PM +0100, Thomas Gleixner wrote:
 > ---
 >  kernel/irq/msi.c |   11 +++++------
 >  1 file changed, 5 insertions(+), 6 deletions(-)
-> 
-> --- a/kernel/irq/msi.c
-> +++ b/kernel/irq/msi.c
-> @@ -887,12 +887,11 @@ int __msi_domain_alloc_irqs(struct irq_d
->  			ret = msi_init_virq(domain, virq + i, vflags);
->  			if (ret)
->  				return ret;
-> -
-> -			if (info->flags & MSI_FLAG_DEV_SYSFS) {
-> -				ret = msi_sysfs_populate_desc(dev, desc);
-> -				if (ret)
-> -					return ret;
-> -			}
-> +		}
-> +		if (info->flags & MSI_FLAG_DEV_SYSFS) {
-> +			ret = msi_sysfs_populate_desc(dev, desc);
-> +			if (ret)
-> +				return ret;
->  		}
->  		allocated++;
->  	}
 
-Yap, works.
-
-Tested-by: Borislav Petkov <bp@suse.de>
-
--- 
-Regards/Gruss,
-    Boris.
-
-https://people.kernel.org/tglx/notes-about-netiquette
+Reviewed-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/Ydx3p35NW6Y9tDvO%40zn.tnic.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/Yd1GZMvstSNTc80B%40kroah.com.
