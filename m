@@ -1,133 +1,136 @@
-Return-Path: <linux-ntb+bncBDAMN6NI5EERBENJTWHQMGQEDHSKAEI@googlegroups.com>
+Return-Path: <linux-ntb+bncBCCNVOPP2QNBBE47T6HQMGQEHLUZK3Q@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lf1-x138.google.com (mail-lf1-x138.google.com [IPv6:2a00:1450:4864:20::138])
-	by mail.lfdr.de (Postfix) with ESMTPS id 182C9493181
-	for <lists+linux-ntb@lfdr.de>; Wed, 19 Jan 2022 01:00:18 +0100 (CET)
-Received: by mail-lf1-x138.google.com with SMTP id 7-20020ac24827000000b0042e731a7bc7sf297582lft.18
-        for <lists+linux-ntb@lfdr.de>; Tue, 18 Jan 2022 16:00:18 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1642550417; cv=pass;
+Received: from mail-pg1-x537.google.com (mail-pg1-x537.google.com [IPv6:2607:f8b0:4864:20::537])
+	by mail.lfdr.de (Postfix) with ESMTPS id 3AC4A49367D
+	for <lists+linux-ntb@lfdr.de>; Wed, 19 Jan 2022 09:45:09 +0100 (CET)
+Received: by mail-pg1-x537.google.com with SMTP id c75-20020a63354e000000b003408e4153d1sf1206187pga.9
+        for <lists+linux-ntb@lfdr.de>; Wed, 19 Jan 2022 00:45:09 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1642581907; cv=pass;
         d=google.com; s=arc-20160816;
-        b=WGBxjKAQVvVfv9alq1CNdjj/+lFOCao5BkU6vkgPgc4uy4F3xpx+iNlIUB9JsAvHQv
-         DwmFcEQ5DJv9XMaKQo2l4mx1Qwgvm2pDBqc39pxdMXIWPNVUGYXlJYebvIOHomb5LVDo
-         tvqcFZgh5sqva1UML3jAjv3/RC5/mywAuKARPFM8MWVWuvbPOgvkWSSKuKvc4Tw2ED1P
-         Qirpndn0amf+cAKtPcS0GIdHLG1EALb8gDJ6582lYg9mt2eQBky4CYyB14u2W4qyEH0d
-         nNZNEzsbMUMBD88h8c0GT3iErzHCZiwXeYZIMUVCNEkOx5MFFv6rLmxnI8BNnUszlWxJ
-         gcUw==
+        b=u9KQUYZU3l6A0qF8wjdSLmpucw3xqBogy8KlRp7WzsmjZdh2iLg0F1WwHhj3/5u0rr
+         WrU2gnsBSbowbK5JQ0HneQ8eqqGq4KuTvTm9A6juzTgosWcO5OPkMWPESjnA1Zip7Cpk
+         c5iUKCIyLdj6RLvY8oyKdJGIshksXDLTaTQ91XknJFVhr6bZzY5NFcloeVmb8XC0CLgV
+         WeB4SM/TJorG8Ekegr3ZqewZoWKn3JavLmek1jkL2HoxZOyRbya5sx5MCH4SvWncCVWx
+         XhRIyLOd1jKirWhR3tb7SSLuTaryBIREpg/c7g33qtNVyrhs2TVDiWpFP2Xn++CkIrsA
+         2/bg==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:mime-version:message-id:date
-         :references:in-reply-to:subject:cc:to:from:sender:dkim-signature;
-        bh=lnNXGQKLkXaJ+gQCkJJLe7iR9lrUAHsxZfSmrA58j3Y=;
-        b=09EUadBIluCAux+uzkSnanq+b0eySwEFbyzze7MLLUS1ijcJieVkWF8qhp+bYFHTg4
-         ovFa5cGKv7l/q8NtA7KibxKMmx49Mo0np6UImIdjcIXf3X5mBFs7tlsxWRdK+kIBgSxT
-         y819R420wDONqDI/uIhyV5o3/pjg/00DwTrCinFuIUBSG8AxgViDlpz5eyXsOBGpKQ+p
-         3ghy+e/y5suhaZ+21272kfHvCTCsF83EBMJmeD+OASf2RimvTdTSpnTkrWtAzqzokev8
-         tvPJx2FjH+PxmGllbN+Ufxmpasgbjf/UDyLIu5dD2V3hYQzRtycCUfiJ+q5OwiRssor0
-         KWOA==
+         :list-id:mailing-list:precedence:content-language:in-reply-to
+         :mime-version:user-agent:date:message-id:from:references:cc:to
+         :subject:sender:dkim-signature;
+        bh=rvPf35wh2r5nCZolCZoRhimZAApfon2LRRP2dhZyPgE=;
+        b=E3kuuim/LPdGVcbCi5KTgiCob/t7uDHRlKjUCIoVeH8re02XHBxdo1O8Be/21o90I1
+         geUWVB/NoegQqGKQ+1N0+LMzjGcnD8ELnqjrNmyBlSxRhwFkrkzUCqpx4HH/yiBoP0qY
+         6J4WGSKPp4sLjzpJxqIHT+ogUGf2snnoY0ukYOQ2ovjgDeqG1Z/ENF8nFIrKKljXsUc7
+         8AJ7HD+ONtiuzNQP9eo6d5IhRJf4qc5Yl00NnDSu0t67hLGQfvTDk+qaXK96a0NHkGb3
+         pg5tFWwfSG4v3XOxAzvigU6Ll5qbRAF8D5nYpdrI+W+4sfPFrXLNaOXDnwiMq3aAA7W9
+         wdDw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=a9MMj8Qk;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=m3IN+KU7;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+       spf=pass (google.com: domain of hayashi.kunihiko@socionext.com designates 202.248.49.38 as permitted sender) smtp.mailfrom=hayashi.kunihiko@socionext.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:from:to:cc:subject:in-reply-to:references:date:message-id
-         :mime-version:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=lnNXGQKLkXaJ+gQCkJJLe7iR9lrUAHsxZfSmrA58j3Y=;
-        b=GJBECuFw5Ps1XZ1jokNokAmiIFiiAa3ldtGRsXzXiRQKCKUpnFDS3DTLYEt8R+0V75
-         DG+DhvQL3RSiFV2GOCSIyftBRt3db+vSf6AxAdk76MUXDIRVKZmnMf1MPhti7KXqXLcE
-         AKgBZcn27iWssO93R99LdE4swzdy6D3hOwb1YiQzUiN1Sk+bB2/HGhkxkhNR0UuR52mc
-         sDtHlWXjsY0egAgEyVPsSRoI4NoWXEk/ZgVhjFaKrosirVtK1nMnfIO3c6CdQJ9rlSxZ
-         nMlNDHyRW+XgSlc01q8bN+oaa8l5zBx9gJw3V0bJt891OxSgS0gGAPGuhzpKhYlg7+l4
-         48SQ==
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=rvPf35wh2r5nCZolCZoRhimZAApfon2LRRP2dhZyPgE=;
+        b=p5KNTn0vkQ7B0WeEdC4HAStQ5ryEYTpopdExBptNaWU6N6a2nk934n0qJ2OcaWxOjw
+         4YbeTzZyFEQipL5wL3faR++WjYeNQLj+tSdCXs8i0GOOckD10KGs1K1DZHAmzfZtx8C9
+         udOCFa1t0WjCaHbuiVxS3PT3h0sE1kfXnJ+hMzR9R2QW0/CyoW47U/hfDmqf2hkq0iJe
+         4QU51mrv6sEOI07G0yBoQiJ++bJIkjR7j0w74AyjBmt9i89FkjVzO0veWSYNe+CkTT0/
+         iTNwvQEAitcKQ4J9gAKOt3R0VH9OuY8HovoWBgBGoy/fGAPCOkKwT3aOyMWuHZiqPVOE
+         hIXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:from:to:cc:subject:in-reply-to:references
-         :date:message-id:mime-version:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :x-spam-checked-in-group:list-post:list-help:list-archive
-         :list-subscribe:list-unsubscribe;
-        bh=lnNXGQKLkXaJ+gQCkJJLe7iR9lrUAHsxZfSmrA58j3Y=;
-        b=Cw7rVmXC2v7tOVSQRshkMHUm2Y/aeC6cm+NpU3lkbUXwr/Vc9Q+Pva9YQtQmYls8y3
-         bF7gS0dKp21EycAfPHXdKDT0aYXyUHwLJ+fG7YXCKdh4PjwZh0t49dF/omx3c7++vx84
-         thTjAAf8rpQJZo8qWNi97y+/NkTcthICLVFXHio9atzoUWhlJOBRk9df49mmM4VBc6rZ
-         sDNuN/o5+OwnsgZEuX3ojCY6XLtXhmP7oIk2XLnQzjwMmezF61mvKzHFAWArxdriE3CY
-         JbkCDGlU5hEbN9C92SEqtpJ44Ci2ldtxWJjywEyQsQx8Ulz+Rt5CHPzXyl54a5dpvSTz
-         FJkw==
+        h=sender:x-gm-message-state:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=rvPf35wh2r5nCZolCZoRhimZAApfon2LRRP2dhZyPgE=;
+        b=CJxBPx6EqjZBWBYpI1OG5FyEM1g5EccyEANuqh/mI6sZpYun+iGBKBF6YiQG3yDKfZ
+         7z6art0wTV1lF+aKiL/dvFN53r0Bx7WJFyOS4ZbB2Z4N5kVC1dolwN1Xnb2aZE30yqv8
+         QaGXrGC5eUTIXZYbpP+0bj62RnB29uupIyn3/cNAVBCMA9WyOphBcK+gzj1iPPCyb2h4
+         x7jVbyzdjN+otGj9zJMHV+HFjDWtJDxD4Klb5Az7ZD0ROUtsw8+ph16AtMayKVNTCsOA
+         RdlpROanWOgXJFfuvIKQqR5gN26CcnA+fIrXZrvypDG10GaG7e0HjVY5ubkm9OOyItCL
+         9C+w==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531pf7nfiEcG64JrOTU8ia6lbePo8DqtYa4enje66scPfYSO1gPS
-	53UXtwCb791NC8GrX1Z3GN0=
-X-Google-Smtp-Source: ABdhPJwCVm3h/woO51C7gJCay4i+qqEE5nF0j9KWftk+hyldssN44E2PGykWGzXs+djnn2YOwYREWQ==
-X-Received: by 2002:a2e:9654:: with SMTP id z20mr18190262ljh.526.1642550417402;
-        Tue, 18 Jan 2022 16:00:17 -0800 (PST)
+X-Gm-Message-State: AOAM531311GmRmkAakSwTjDhD85FPkG+IwRJg5yrq5KkDHtdmSGViBoX
+	JwHZbjfOxIz+4Ig8L0KEPHc=
+X-Google-Smtp-Source: ABdhPJxYguTkx03mRdqhwPlyf2G/P+Y9GRj11SqtdeHIBUYZc+S6o6sA/jN7kNvVK6BiFwBDji0fpw==
+X-Received: by 2002:a17:90a:4482:: with SMTP id t2mr3005285pjg.133.1642581907713;
+        Wed, 19 Jan 2022 00:45:07 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:651c:550:: with SMTP id q16ls54912ljp.1.gmail; Tue, 18
- Jan 2022 16:00:16 -0800 (PST)
-X-Received: by 2002:a2e:b7ca:: with SMTP id p10mr12365652ljo.455.1642550416294;
-        Tue, 18 Jan 2022 16:00:16 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642550416; cv=none;
+Received: by 2002:a63:34c8:: with SMTP id b191ls551988pga.7.gmail; Wed, 19 Jan
+ 2022 00:45:05 -0800 (PST)
+X-Received: by 2002:aa7:8c41:0:b0:4bc:2888:6951 with SMTP id e1-20020aa78c41000000b004bc28886951mr29828840pfd.16.1642581905804;
+        Wed, 19 Jan 2022 00:45:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1642581905; cv=none;
         d=google.com; s=arc-20160816;
-        b=s3UhNq/9ixQU5xUvYLkufmr2MFXTOOzdMIyIoS/T5ffrJanM9FFslhFhV8IzI5dnNR
-         lDDb56rQ96wSvllCj4VqnNzqTDF8IHBxdTsQTr/aJpfB0ldGeuHN5EKSKbHwcT+bLS7y
-         6u4QP/7v59y1+9ex0bIjJKtfX579FwY06zTQcrM6tfT51/inhzXwXmK8SxQrTWjT7Rbw
-         Rl/g0O+/06YTb4Wv46/VO8ENEz2PCHhh58fcIJ0ItYLY5GM/yI/bh8sg/UIqS8NrFu6H
-         qOin0wO+ler100i1TZGeQitTTp0ctruOugzFlBcLPvgNZd8Jp7LTRh7K9KQaW+3Oq5xz
-         tLng==
+        b=KMed2B06081fGeOue9UvkxKkqfQ8cQMMGZvGpdaUB2udbbWP41iDhggTIAZnmMPEiN
+         EhxRdWYTd/ATs3TUicTHI3OHScarFLW6/tI9GdMVWinwFgOf4r/iQpPbYrsjVi5gXYdH
+         vp5OyrGKS+I5bEFafC+vBoxBMybDMFJd2ROzeYchO9MXZck9rFEEzEQNidRJmQMG5bGP
+         HS19q9W4VPnQTBLUHEiE9GqBmCYY1t0+nosWV9jYPvrq3mYXSKaywKfpuHkw033UeOfP
+         np/YOMZOwc9l/e8Xoqf0/FkOk12NbKguWNZfraCcXcVSObRt+pk/HFMgNlhkSpJ1N0Ku
+         SNqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :dkim-signature:dkim-signature:from;
-        bh=GJoRNYCC0qaPQvmOXkM+nCsiL5/VV0xKtAJ9Mq0RcS0=;
-        b=fmDxQaepkx1Yx118tNjhFG1uWgmshYfFYFxarmI4UxQVg4Q6cJVRvggSaVGRFeyTDF
-         C2a42ddyt61NBiQOSo7WGVLXfUSACqHXtPtAvMPVPPRPO7rtyB//JcTjrhNbLawjJbeB
-         3zT+eQ5Tg8VBGzPEodsgo5Jb9utWhz2JopTurdDyOpTlKJ2zj3ZxaBZk2FkBroxzZ/lx
-         poEKlPxpVxlVAF1l4iBPDx5UbSgZi8QaUB/BONmYLsu8Vs2H64vK4ppAj0RIw2FcFUyh
-         tlt0S4t2LRTMur0fMhXJYKchLYB5IZ1cDyYb/hZiNP+5Pcfbfrt1wkdxAnM4Thm8htIr
-         hGpQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=OAr0GoXUKYzQQkw26d6VgQ1EQLS6d3mdSPasFtAsZ6w=;
+        b=oQjBl8sCptkDN6vuNfyIp+Qbo6jiXncrh3DcECuxJTMYzOP03MrPg1eWAaCfqf38SJ
+         E44ubqmV6r10/jzL3yr85Zq703ZijmBpVNUB7NFc+gqdPWDQlVEh9+UYiNXf9QGrLH/4
+         Plas/5d/hYqMiXvq7rqh3goirbYDn3bqnkkzgc5Q2HzLXB8eV4ktF6B4/9jAtXDIJA/H
+         Pna2x2RYCU/xFWo+wxJ7BsazTHKBV/1P3R+3P/dTnfSOCyzUCyHPQ6VjIQfCkIswQRUP
+         mehdQx6kxkNlzgBLy7AHgmtqoY/4Q31ksUgfbWux4K47O89yL/TmzAgZikzYYeJYPjml
+         G3ng==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@linutronix.de header.s=2020 header.b=a9MMj8Qk;
-       dkim=neutral (no key) header.i=@linutronix.de header.s=2020e header.b=m3IN+KU7;
-       spf=pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
-Received: from galois.linutronix.de (Galois.linutronix.de. [193.142.43.55])
-        by gmr-mx.google.com with ESMTPS id m13si290672lji.2.2022.01.18.16.00.16
-        for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 18 Jan 2022 16:00:16 -0800 (PST)
-Received-SPF: pass (google.com: domain of tglx@linutronix.de designates 193.142.43.55 as permitted sender) client-ip=193.142.43.55;
-From: Thomas Gleixner <tglx@linutronix.de>
-To: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, LKML
- <linux-kernel@vger.kernel.org>
-Cc: Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>, Alex
- Williamson <alex.williamson@redhat.com>, Kevin Tian
- <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>, Megha Dey
- <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
- linux-pci@vger.kernel.org, Cedric Le Goater <clg@kaod.org>,
- xen-devel@lists.xenproject.org, Juergen Gross <jgross@suse.com>, Greg
- Kroah-Hartman <gregkh@linuxfoundation.org>, Niklas Schnelle
- <schnelle@linux.ibm.com>, linux-s390@vger.kernel.org, Heiko Carstens
- <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>, Logan
- Gunthorpe <logang@deltatee.com>, Jon Mason <jdmason@kudzu.us>, Dave Jiang
- <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
- linux-ntb@googlegroups.com
+       spf=pass (google.com: domain of hayashi.kunihiko@socionext.com designates 202.248.49.38 as permitted sender) smtp.mailfrom=hayashi.kunihiko@socionext.com
+Received: from mx.socionext.com (mx.socionext.com. [202.248.49.38])
+        by gmr-mx.google.com with ESMTP id z10si901929pgv.0.2022.01.19.00.45.05
+        for <linux-ntb@googlegroups.com>;
+        Wed, 19 Jan 2022 00:45:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of hayashi.kunihiko@socionext.com designates 202.248.49.38 as permitted sender) client-ip=202.248.49.38;
+Received: from unknown (HELO kinkan2-ex.css.socionext.com) ([172.31.9.52])
+  by mx.socionext.com with ESMTP; 19 Jan 2022 17:45:04 +0900
+Received: from mail.mfilter.local (m-filter-2 [10.213.24.62])
+	by kinkan2-ex.css.socionext.com (Postfix) with ESMTP id F085B2059054;
+	Wed, 19 Jan 2022 17:45:03 +0900 (JST)
+Received: from 172.31.9.51 (172.31.9.51) by m-FILTER with ESMTP; Wed, 19 Jan 2022 17:45:03 +0900
+Received: from [10.212.181.226] (unknown [10.212.181.226])
+	by kinkan2.css.socionext.com (Postfix) with ESMTP id 11233B62A1;
+	Wed, 19 Jan 2022 17:45:02 +0900 (JST)
 Subject: Re: [patch] genirq/msi: Populate sysfs entry only once
-In-Reply-To: <1d5711be-c26d-d57b-10db-1b45d279515d@socionext.com>
+To: Thomas Gleixner <tglx@linutronix.de>, LKML <linux-kernel@vger.kernel.org>
+Cc: Bjorn Helgaas <helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ Kevin Tian <kevin.tian@intel.com>, Jason Gunthorpe <jgg@nvidia.com>,
+ Megha Dey <megha.dey@intel.com>, Ashok Raj <ashok.raj@intel.com>,
+ linux-pci@vger.kernel.org, Cedric Le Goater <clg@kaod.org>,
+ xen-devel@lists.xenproject.org, Juergen Gross <jgross@suse.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Niklas Schnelle <schnelle@linux.ibm.com>, linux-s390@vger.kernel.org,
+ Heiko Carstens <hca@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Logan Gunthorpe <logang@deltatee.com>, Jon Mason <jdmason@kudzu.us>,
+ Dave Jiang <dave.jiang@intel.com>, Allen Hubbe <allenbh@gmail.com>,
+ linux-ntb@googlegroups.com
 References: <20211206210600.123171746@linutronix.de>
  <20211206210749.224917330@linutronix.de> <87leznqx2a.ffs@tglx>
- <1d5711be-c26d-d57b-10db-1b45d279515d@socionext.com>
-Date: Wed, 19 Jan 2022 00:59:58 +0100
-Message-ID: <87a6fsa935.ffs@tglx>
+ <1d5711be-c26d-d57b-10db-1b45d279515d@socionext.com> <87a6fsa935.ffs@tglx>
+From: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
+Message-ID: <7d6445e9-011f-60ec-0fd0-3c354d507d57@socionext.com>
+Date: Wed, 19 Jan 2022 17:45:01 +0900
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-X-Original-Sender: tglx@linutronix.de
-X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@linutronix.de header.s=2020 header.b=a9MMj8Qk;       dkim=neutral
- (no key) header.i=@linutronix.de header.s=2020e header.b=m3IN+KU7;
-       spf=pass (google.com: domain of tglx@linutronix.de designates
- 193.142.43.55 as permitted sender) smtp.mailfrom=tglx@linutronix.de;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=linutronix.de
+In-Reply-To: <87a6fsa935.ffs@tglx>
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Language: en-US
+X-Original-Sender: hayashi.kunihiko@socionext.com
+X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
+ (google.com: domain of hayashi.kunihiko@socionext.com designates
+ 202.248.49.38 as permitted sender) smtp.mailfrom=hayashi.kunihiko@socionext.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -140,23 +143,31 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-Kunihiko,
+Hi Thomas,
 
-On Wed, Jan 12 2022 at 09:05, Kunihiko Hayashi wrote:
-> Is this fix the same as below?
-> https://marc.info/?l=linux-kernel&m=164061119923119&w=2
+On 2022/01/19 8:59, Thomas Gleixner wrote:
+> Kunihiko,
+> 
+> On Wed, Jan 12 2022 at 09:05, Kunihiko Hayashi wrote:
+>> Is this fix the same as below?
+>> https://marc.info/?l=linux-kernel&m=164061119923119&w=2
+> 
+> pretty much the same, but I missed that patch. I was off for 2+ weeks
+> and on return Boris poked me about this issue and I fixed it. Then I
+> went ahead and marked all vacation mail read as I always do :)
+> 
+> So sorry for not noticing that patch.
 
-pretty much the same, but I missed that patch. I was off for 2+ weeks
-and on return Boris poked me about this issue and I fixed it. Then I
-went ahead and marked all vacation mail read as I always do :)
+No problem. If this issue wansn't resolved, the PCIe controller wouldn't
+work properly, so I'm relieved to solve the issue and get your response.
 
-So sorry for not noticing that patch.
+Thank you,
 
-Thanks,
-
-        Thomas
+---
+Best Regards
+Kunihiko Hayashi
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/87a6fsa935.ffs%40tglx.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/7d6445e9-011f-60ec-0fd0-3c354d507d57%40socionext.com.
