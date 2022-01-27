@@ -1,139 +1,125 @@
-Return-Path: <linux-ntb+bncBD3NBC7Z7QMBBYF4VOHQMGQEXDZMUGA@googlegroups.com>
+Return-Path: <linux-ntb+bncBDXYVT6AR4MRBFMCZSHQMGQEXCBFVTI@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-il1-x137.google.com (mail-il1-x137.google.com [IPv6:2607:f8b0:4864:20::137])
-	by mail.lfdr.de (Postfix) with ESMTPS id 16EF54962BD
-	for <lists+linux-ntb@lfdr.de>; Fri, 21 Jan 2022 17:25:06 +0100 (CET)
-Received: by mail-il1-x137.google.com with SMTP id i9-20020a056e021b0900b002b799b36190sf6246322ilv.13
-        for <lists+linux-ntb@lfdr.de>; Fri, 21 Jan 2022 08:25:06 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1642782304; cv=pass;
+Received: from mail-ej1-x640.google.com (mail-ej1-x640.google.com [IPv6:2a00:1450:4864:20::640])
+	by mail.lfdr.de (Postfix) with ESMTPS id 0C7FC49EC7F
+	for <lists+linux-ntb@lfdr.de>; Thu, 27 Jan 2022 21:31:18 +0100 (CET)
+Received: by mail-ej1-x640.google.com with SMTP id mp5-20020a1709071b0500b0069f2ba47b20sf1823127ejc.19
+        for <lists+linux-ntb@lfdr.de>; Thu, 27 Jan 2022 12:31:18 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1643315477; cv=pass;
         d=google.com; s=arc-20160816;
-        b=V6a6E5QoHM2ZfVvvKdfEuNZxT3cMgdTtJjh5oY5L6np9JbilV1RMqkXOaEwXodaxPg
-         TfSKRDoZR6V7k+HnER8CjMpXunv32ajQdXSNYIALeDZpbvnSHrJREmiCtxpAMQn/Jsl3
-         z0uyWF94nNrntiOYCv0I1hc3xLcO4Wx2B5IKypZk3j9L5RP8s5n8aEJxXPDlt8iMBDDw
-         R265gqcednKlfe3w+oT/Jdqmyej+/rganwzPphrrSxxlyJjUr+e0pI01anOcdssxW5KU
-         rIxvr4ZL0HWsxSMj7wSMO7k+M/ZegpLz/VO/nj6Fg6A7WpCtL+Q8aO7W2fU5gZGtyvTx
-         FdIg==
+        b=i3+H3CTOtNjIFaOYbTbvQ5NyCRcyjjfIBJyJxPQixsl0HJH7v+tswzSSZkUVrSHm7F
+         ItYZMze7jb3rSsEAdHGazpga6WDnfwcSXUQuNyi5U2Bg+AQvl1dfC7ZFNNquVo61ZoGr
+         CZkD9OBYKoAS+IYM+bRUcjuWlGXiaiNfHIWjLwtXA66WcL0h6zHfLezP7dN6hV7Il8xF
+         BbUW0jbxTvViWtwOr2+zxi/0WQtIYAh57aWdcxVviKYtFPkrfTDzsIcOphRRDSkrg0ev
+         s4xnbZs9dloThBnsjx1muZAoAnoq7POnyDz4n+9dvme5TIgGw5wRr0H2wqWCsld22Kmg
+         AqZQ==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:subject:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:sender:dkim-signature;
-        bh=DVZFbc9cG4kA+thQd0f9Re9b2UJJJIwlBkBwb1mtp/Q=;
-        b=P8rWMO+FNWG5bB5LXZfQi0BLq9f/s14xRi4iPbFUQfBrvbFcdUb6W31BluhKf5H6k+
-         WYgMWUqJsmvgmgVJK9xSC6qlLlEA0+sFYufMdqQ4H7kXnmWZzGJUFunKV+t1vLhbDg59
-         mPJOGUkh1zSSd5E17/myFTEU+FgDmfxEnLEeLAnTyLUMr94fUW626vnpkDgMIl5Sgj9b
-         xTE3VepwHfsES6DWwlv/G73o8NAt05mTtd9hqBMxShZfV25m8bwAhgAm4JOEcNvXxIlr
-         ZFTmPq+7rYIi4FybrCLY0iP7olS7AwGYi012f6bZcJnlNyWWWymP5gkVifx5lxpiwk0V
-         mEFQ==
+         :list-id:mailing-list:precedence:mime-version:user-agent:message-id
+         :date:cc:to:from:subject:sender:dkim-signature;
+        bh=Jg9Sy0yWOBdgCk+RiKULIPp2Exf6bpu8fP1N8oaRwlo=;
+        b=SNEDlJcO+ZdClIZsOW3g643SS3F3MIkyjXAOnCnWFDJkuMXRm4SWUPPL1Uwhc8CuEs
+         bRdmKws3c3j3/sP3H9aB8l4THARDI6s1hJdQjXS89Tu9qqNGVyxzFdapyOWTGUGDNGuJ
+         8O5KVR5mHT8IWt5RXCIRudSTNNm1F3iwJvgJqA80oAxDLLgsF9KINGo1Kx2VjiKJz9ei
+         BSlvCPcdlHV9s8iDqGDOXIKXF1a+Ac4tbz/scJGpAFCu3goPv5J/PMqHqDNCMlAfPiTN
+         aVMpanrcEUvPiiJIwHXY0cNK5nT4APYOSuyJWyOruEmajz/MWXhpvgfbyacASIwMbh70
+         IieQ==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@deltatee.com header.s=20200525 header.b=e2F4wgWj;
-       spf=pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) smtp.mailfrom=logang@deltatee.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=deltatee.com
+       dkim=pass header.i=@intel.com header.s=Intel header.b=DCKLyemk;
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:subject:x-original-sender
-         :x-original-authentication-results:precedence:mailing-list:list-id
-         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=DVZFbc9cG4kA+thQd0f9Re9b2UJJJIwlBkBwb1mtp/Q=;
-        b=turNSkqwQjeNjPb0QBiaQFQZGS0VD7MroyydS1Kfv81XskuL1X/4un7j2TfKA7Tp+Y
-         E9QUjPv7MgxKKJh+k9zT6+lQ5JpgucoZBzlC9N/JGRfuNFcIfYko8Our6dIXA50w3HbK
-         UI1Xt90aRNkvpTGhajhNg6narQWXWCFtweBSetGGZg19dhu3Q/vrbMHmWPykgLxjSYiO
-         u+eN4RPTBGX034hwQp+3gF9hqfKbMFOn6L5kAdyFzwW5ffXPHfSQMphR/UXa+D9L4T7j
-         S+8OicaMVZRp6FGbptWVvzyBP+9VYlXbpCW7hbPCgQuHOB2OvgbU3ymZ+Lb9zmbkc7Ex
-         Ck8w==
+        h=sender:subject:from:to:cc:date:message-id:user-agent:mime-version
+         :x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=Jg9Sy0yWOBdgCk+RiKULIPp2Exf6bpu8fP1N8oaRwlo=;
+        b=eDAaRlrp+t4KZ2Y8aRAEAPUcXi3W68L74N3V0tztpWkTys6fYn60xa3D73/JmiRVE/
+         m61RBaDfxzBVwXltA2XzEg++7RF8b9iWjGdW4dGMJsxdoPsyp3GT5NtkwT6WwLVdOzc8
+         e3sIrwV0Ih8O65+xOCxgjH/wp5oHK+UXK22JC4eyPkV74OyDL2SojxaI9WKh4imUjleN
+         UUCmMoMF3+F56gb3N4gxAuNOVy0KwRCZfVkUU5h/Zwe1AUXgdOG+lSfhwQpesVe0wRmm
+         ny4wJgPDclfbHf49IWRskWc4Z3AiG0YFq4FrvwHGZSS+XfM5WmTS0L4IU0dRQlH4R0nH
+         nj3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language:subject
-         :x-original-sender:x-original-authentication-results:precedence
-         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
-         :list-archive:list-subscribe:list-unsubscribe;
-        bh=DVZFbc9cG4kA+thQd0f9Re9b2UJJJIwlBkBwb1mtp/Q=;
-        b=SKS5Uw9VPcbF1MSBLzvJwzywOl/4qmvI543MimUsZMbRnK2se7nw2N57jwpr6gmHJ5
-         3Xf91rJv1TPYx0+WmsfcsSik2ArJubhfmfFn88Ws2WxiBMUPZtPjRV/OuFogRoL8hlec
-         w+XDm8CV1F8M20b/GPFIWNnj1BJJXiHoCoGX2Wnk30puyxidQAE68TmkIcoF2H0xpEty
-         VeF4dO1eCiBhk7dIfxINjWNfLAJM6+bR7yRucTNjoAnT495IwVMQFh8oo43PDbc2XETX
-         4BdHbqiOtst4sdPZOM0DA52+f+nHAZUS6Qc8TVR+eApvWXDPUar25sAQ3vVsxfKgvUKV
-         DU/A==
+        h=sender:x-gm-message-state:subject:from:to:cc:date:message-id
+         :user-agent:mime-version:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :x-spam-checked-in-group:list-post:list-help:list-archive
+         :list-subscribe:list-unsubscribe;
+        bh=Jg9Sy0yWOBdgCk+RiKULIPp2Exf6bpu8fP1N8oaRwlo=;
+        b=WLbu+jFInIkHrwfE8Tt/CTn9PDnd/nE4FwqQek/zXEE/8V3+HWPIInnyYC0clrXUtv
+         lfkdwqn+01nn8aboOatYMBpKElk2/t8ft/m2Wley+8HsKQix0Xt2ysiWpFYobYMaTUIj
+         r2qq75na6CEv97rJkLFsDpVYF/BqkeVc0oVuD7vD8/tAoat+u0Zn7/mOs9FvI+LJ5Vop
+         mVRulhQ5jqdcR+UXga3VO31zrC/s8DY/hbDPFIOeah7ZflD3wXZ9s0KMWMmtnl2+tTeR
+         7MfXmYWFXQHSz6D7AIbe2crW9xWqND1dATNvt7wNBR0k4V/aN2ZxKCOZFqBiMMWEgsPG
+         B9WQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM533Ezl9XE66ZTl90nToHpefGmiqm0ceteW8e/SxCKwUZdSZyK0av
-	MyLpwOv9aC7Tfqa89rEJeOA=
-X-Google-Smtp-Source: ABdhPJyj7n4VvjSZHavbcyTu1MxsVva3nxsVp/NtUcJeozxxW7Ta498lP7rqUDsejIoMiSV+cZ5QUQ==
-X-Received: by 2002:a92:ca47:: with SMTP id q7mr2513354ilo.236.1642782304349;
-        Fri, 21 Jan 2022 08:25:04 -0800 (PST)
+X-Gm-Message-State: AOAM530RVkD+NS6j2P56Lpk9YHIMJ5wqO2rMKgsDNnhPOWJWS2CuN1vv
+	Ev8RGPj+MHaBI15mCN7xm+k=
+X-Google-Smtp-Source: ABdhPJyyeZz9BOzBx+Z4l9HjhCREOAz33R3jxq/J37AnjvGEzB1q4Vx5++MMf71kn2hVf7pqEjKwRA==
+X-Received: by 2002:a17:907:961b:: with SMTP id gb27mr4158128ejc.444.1643315477567;
+        Thu, 27 Jan 2022 12:31:17 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6602:2e0c:: with SMTP id o12ls1081356iow.5.gmail; Fri,
- 21 Jan 2022 08:25:04 -0800 (PST)
-X-Received: by 2002:a05:6602:2d8e:: with SMTP id k14mr2425707iow.197.1642782303958;
-        Fri, 21 Jan 2022 08:25:03 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1642782303; cv=none;
+Received: by 2002:a17:907:629d:: with SMTP id nd29ls2979535ejc.4.gmail; Thu,
+ 27 Jan 2022 12:31:16 -0800 (PST)
+X-Received: by 2002:a17:907:7d89:: with SMTP id oz9mr4074074ejc.400.1643315476725;
+        Thu, 27 Jan 2022 12:31:16 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1643315476; cv=none;
         d=google.com; s=arc-20160816;
-        b=P4+FHocAXvufC0G3yiyQACXrQETnxHyfzrVfGNMN9F/jJ0ZpwIWPCjnVK8h+aJI5qP
-         W2r3V8R+zz/K9tYeMDr/g4VlehWiNhYwJyYPCUBTn1HaxKRV5Lf1AfAVdHLwRqM8bK38
-         NepqMYW5b2P1QR6q7DoWpbOaM9kqAAkq5ShCYwP9bOHS/uCYEt1zyjE5IgJi7EWD5wnn
-         Quke90TQtetJBHMe5iV1a4uN+WSsdrJskhMU3o/HPtk5rygANFEZ5cHYsA65O15lFcQX
-         e0UgyxfVbZeIIU8a1jrnqgaXkrRRkYa0OhWcFmXQlJm/0Byjl7L3uZMljvUKGL8aRskP
-         sK6w==
+        b=eEqlKlIhZ2MFxWOJvXM/vWuyo1NzCQq9IsNRAYXrGxcL/zW0AMob+J1gICHMGCkmoz
+         V6ostKYjUyit5nNUkCcVTmPdpI8tIlx2NPsYr4SzY1Uxds34A7GpZF3QbW3aJrrssphR
+         DNyUF4qeqMPeqChqC9fMbC878iH7+9BVxGOWwComyS3hbcRDW6LefHUO33CSU3Fo7p6R
+         vy7pku4AcAvOoxR/FVU7O7PxCcgYMvl/CTaZD/8pl5EMhX8PJ5xTn0JdLkja8nQZ7YgI
+         TjlxA8Fju3PNHF4hrpveCECgFMbaINDpd9AtcaU+oyDHKlho2fiakeswrghBE3vqBCcy
+         QVeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=subject:content-transfer-encoding:content-language:in-reply-to
-         :mime-version:user-agent:date:message-id:from:references:cc:to
-         :dkim-signature;
-        bh=kytrEWZ9vHuQBWDT3D9VZ4/u4ZwGzsRQyn7am4nCe9A=;
-        b=aHRDuQbdftAJ3RAml2sTZvgpAUwuGmdjnuD57m5ZB80vETfM+7Rstg3N+okZXWjJ10
-         6cMq1Ej/60dzPFMPtoMhzzj2vF8TtBbX1yovbKxYoH3MpO/Oa1aZP2B0GfPDGjPsz39D
-         GMTMOP/aJfIBP6UpIx+TwcN7m2erVzYxCEQUnw1IU1C3YsfavMSrqrr2+faeM9m0FGne
-         1S/vn/gOiB4E78N7apG4fNBihXm1M760AaD+Ibw4t7nBRDLrLLXOMh6ZesTte7vvUZXE
-         YcpJEFuhzuc/xkkmIO/RDCeGgfbIQdTccxJ+AO7yKH2ro+pPs+ffMKKv3mUjLFCSMEs7
-         4OEg==
+        h=content-transfer-encoding:mime-version:user-agent:message-id:date
+         :cc:to:from:subject:dkim-signature;
+        bh=ApIJtUO1umvfe8kobRqJakbbM2SGzHqkBUZkkYC+xaY=;
+        b=nIwerooQI6omfLDdqcym2uQDYpCyTkEeBKLN0tUmHRg3vx9BIbdLQW7hKb7gyg4RjE
+         KyDHctiy0weOFgpB9hggE+pZv7e2HT38jyA02W1r0I2W5ARq98VKY4wU4Rux/vBE3fiN
+         hDFnPtmgWcbnTcBOPW56q16qH4FCQ0L2sg3x00MDa9kAMUcyQoAuzykjIB5mFXqlx2tX
+         sM7olgZtfpLcSkqCrXqBErrPRU4FAzUabDFCBGl2IwjoncAm04YspFFON+ZWhYwK4T0w
+         jhps517jHCS0zCmlS3fg18ifxP/U1ushfFMG+Eez4QchnGfX4C4Bib3DT5+MXkBhvdGC
+         lAAg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@deltatee.com header.s=20200525 header.b=e2F4wgWj;
-       spf=pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) smtp.mailfrom=logang@deltatee.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=deltatee.com
-Received: from ale.deltatee.com (ale.deltatee.com. [204.191.154.188])
-        by gmr-mx.google.com with ESMTPS id j19si199223jat.1.2022.01.21.08.25.03
+       dkim=pass header.i=@intel.com header.s=Intel header.b=DCKLyemk;
+       spf=pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.93 as permitted sender) smtp.mailfrom=dave.jiang@intel.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
+Received: from mga11.intel.com (mga11.intel.com. [192.55.52.93])
+        by gmr-mx.google.com with ESMTPS id i16si131809edc.4.2022.01.27.12.31.15
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 21 Jan 2022 08:25:03 -0800 (PST)
-Received-SPF: pass (google.com: domain of logang@deltatee.com designates 204.191.154.188 as permitted sender) client-ip=204.191.154.188;
-Received: from s0106a84e3fe8c3f3.cg.shawcable.net ([24.64.144.200] helo=[192.168.0.10])
-	by ale.deltatee.com with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.94.2)
-	(envelope-from <logang@deltatee.com>)
-	id 1nAwij-000Rlw-FT; Fri, 21 Jan 2022 09:25:02 -0700
-To: "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- Jon Mason <jdmason@kudzu.us>, Dave Jiang <dave.jiang@intel.com>,
- Allen Hubbe <allenbh@gmail.com>
-Cc: linux-ntb@googlegroups.com, linux-kernel@vger.kernel.org,
- linux-hardening@vger.kernel.org
-References: <20220120230247.GA40182@embeddedor>
-From: Logan Gunthorpe <logang@deltatee.com>
-Message-ID: <b2d9c1ad-9a6d-4e0c-e877-44029f4c1a7e@deltatee.com>
-Date: Fri, 21 Jan 2022 09:24:59 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.14.0
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 27 Jan 2022 12:31:16 -0800 (PST)
+Received-SPF: pass (google.com: domain of dave.jiang@intel.com designates 192.55.52.93 as permitted sender) client-ip=192.55.52.93;
+X-IronPort-AV: E=McAfee;i="6200,9189,10239"; a="244560442"
+X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; 
+   d="scan'208";a="244560442"
+Received: from orsmga002.jf.intel.com ([10.7.209.21])
+  by fmsmga102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jan 2022 12:31:13 -0800
+X-IronPort-AV: E=Sophos;i="5.88,321,1635231600"; 
+   d="scan'208";a="495859920"
+Received: from djiang5-desk3.ch.intel.com ([143.182.136.137])
+  by orsmga002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 27 Jan 2022 12:31:13 -0800
+Subject: [PATCH] ntb: intel: fix port config status offset for SPR
+From: Dave Jiang <dave.jiang@intel.com>
+To: jdmason@kudzu.us
+Cc: Jerry Dai <jerry.dai@intel.com>, allenbh@gmail.com,
+ linux-ntb@googlegroups.com
+Date: Thu, 27 Jan 2022 13:31:12 -0700
+Message-ID: <164331547261.135051.8301478137022089685.stgit@djiang5-desk3.ch.intel.com>
+User-Agent: StGit/1.1
 MIME-Version: 1.0
-In-Reply-To: <20220120230247.GA40182@embeddedor>
 Content-Type: text/plain; charset="UTF-8"
-Content-Language: en-CA
-X-SA-Exim-Connect-IP: 24.64.144.200
-X-SA-Exim-Rcpt-To: linux-hardening@vger.kernel.org, linux-kernel@vger.kernel.org, linux-ntb@googlegroups.com, allenbh@gmail.com, dave.jiang@intel.com, jdmason@kudzu.us, gustavoars@kernel.org
-X-SA-Exim-Mail-From: logang@deltatee.com
-X-Spam-Checker-Version: SpamAssassin 3.4.6 (2021-04-09) on ale.deltatee.com
-X-Spam-Level: 
-X-Spam-Status: No, score=-5.9 required=5.0 tests=ALL_TRUSTED,BAYES_00,
-	LR_URI_NUMERIC_ENDING,NICE_REPLY_A autolearn=no autolearn_force=no
-	version=3.4.6
-Subject: Re: [PATCH][next] NTB/msi: Use struct_size() helper in devm_kzalloc()
-X-SA-Exim-Version: 4.2.1 (built Sat, 13 Feb 2021 17:57:42 +0000)
-X-SA-Exim-Scanned: Yes (on ale.deltatee.com)
-X-Original-Sender: logang@deltatee.com
+X-Original-Sender: dave.jiang@intel.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@deltatee.com header.s=20200525 header.b=e2F4wgWj;       spf=pass
- (google.com: domain of logang@deltatee.com designates 204.191.154.188 as
- permitted sender) smtp.mailfrom=logang@deltatee.com;       dmarc=pass (p=NONE
- sp=NONE dis=NONE) header.from=deltatee.com
+ header.i=@intel.com header.s=Intel header.b=DCKLyemk;       spf=pass
+ (google.com: domain of dave.jiang@intel.com designates 192.55.52.93 as
+ permitted sender) smtp.mailfrom=dave.jiang@intel.com;       dmarc=pass
+ (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -146,25 +132,100 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
+The field offset for port configuration status on SPR has been changed to
+bit 14 from ICX where it resides at bit 12. By chance link status detection
+continued to work on SPR. This is due to bit 12 being a configuration bit
+which is in sync with the status bit. Fix this by checking for a SPR device
+and checking correct status bit.
 
+Tested-by: Jerry Dai <jerry.dai@intel.com>
+Signed-off-by: Dave Jiang <dave.jiang@intel.com>
+---
+ drivers/ntb/hw/intel/ntb_hw_gen4.c |   17 ++++++++++++++++-
+ drivers/ntb/hw/intel/ntb_hw_gen4.h |   16 ++++++++++++++++
+ 2 files changed, 32 insertions(+), 1 deletion(-)
 
+diff --git a/drivers/ntb/hw/intel/ntb_hw_gen4.c b/drivers/ntb/hw/intel/ntb_hw_gen4.c
+index fede05151f69..4081fc538ff4 100644
+--- a/drivers/ntb/hw/intel/ntb_hw_gen4.c
++++ b/drivers/ntb/hw/intel/ntb_hw_gen4.c
+@@ -168,6 +168,18 @@ static enum ntb_topo gen4_ppd_topo(struct intel_ntb_dev *ndev, u32 ppd)
+ 	return NTB_TOPO_NONE;
+ }
+ 
++static enum ntb_topo spr_ppd_topo(struct intel_ntb_dev *ndev, u32 ppd)
++{
++	switch (ppd & SPR_PPD_TOPO_MASK) {
++	case SPR_PPD_TOPO_B2B_USD:
++		return NTB_TOPO_B2B_USD;
++	case SPR_PPD_TOPO_B2B_DSD:
++		return NTB_TOPO_B2B_DSD;
++	}
++
++	return NTB_TOPO_NONE;
++}
++
+ int gen4_init_dev(struct intel_ntb_dev *ndev)
+ {
+ 	struct pci_dev *pdev = ndev->ntb.pdev;
+@@ -183,7 +195,10 @@ int gen4_init_dev(struct intel_ntb_dev *ndev)
+ 	}
+ 
+ 	ppd1 = ioread32(ndev->self_mmio + GEN4_PPD1_OFFSET);
+-	ndev->ntb.topo = gen4_ppd_topo(ndev, ppd1);
++	if (pdev_is_ICX(pdev))
++		ndev->ntb.topo = gen4_ppd_topo(ndev, ppd1);
++	else if (pdev_is_SPR(pdev))
++		ndev->ntb.topo = spr_ppd_topo(ndev, ppd1);
+ 	dev_dbg(&pdev->dev, "ppd %#x topo %s\n", ppd1,
+ 		ntb_topo_string(ndev->ntb.topo));
+ 	if (ndev->ntb.topo == NTB_TOPO_NONE)
+diff --git a/drivers/ntb/hw/intel/ntb_hw_gen4.h b/drivers/ntb/hw/intel/ntb_hw_gen4.h
+index 3fcd3fdce9ed..f91323eaf5ce 100644
+--- a/drivers/ntb/hw/intel/ntb_hw_gen4.h
++++ b/drivers/ntb/hw/intel/ntb_hw_gen4.h
+@@ -49,10 +49,14 @@
+ #define GEN4_PPD_CLEAR_TRN		0x0001
+ #define GEN4_PPD_LINKTRN		0x0008
+ #define GEN4_PPD_CONN_MASK		0x0300
++#define SPR_PPD_CONN_MASK		0x0700
+ #define GEN4_PPD_CONN_B2B		0x0200
+ #define GEN4_PPD_DEV_MASK		0x1000
+ #define GEN4_PPD_DEV_DSD		0x1000
+ #define GEN4_PPD_DEV_USD		0x0000
++#define SPR_PPD_DEV_MASK		0x4000
++#define SPR_PPD_DEV_DSD 		0x4000
++#define SPR_PPD_DEV_USD 		0x0000
+ #define GEN4_LINK_CTRL_LINK_DISABLE	0x0010
+ 
+ #define GEN4_SLOTSTS			0xb05a
+@@ -62,6 +66,10 @@
+ #define GEN4_PPD_TOPO_B2B_USD	(GEN4_PPD_CONN_B2B | GEN4_PPD_DEV_USD)
+ #define GEN4_PPD_TOPO_B2B_DSD	(GEN4_PPD_CONN_B2B | GEN4_PPD_DEV_DSD)
+ 
++#define SPR_PPD_TOPO_MASK	(SPR_PPD_CONN_MASK | SPR_PPD_DEV_MASK)
++#define SPR_PPD_TOPO_B2B_USD	(GEN4_PPD_CONN_B2B | SPR_PPD_DEV_USD)
++#define SPR_PPD_TOPO_B2B_DSD	(GEN4_PPD_CONN_B2B | SPR_PPD_DEV_DSD)
++
+ #define GEN4_DB_COUNT			32
+ #define GEN4_DB_LINK			32
+ #define GEN4_DB_LINK_BIT		BIT_ULL(GEN4_DB_LINK)
+@@ -112,4 +120,12 @@ static inline int pdev_is_ICX(struct pci_dev *pdev)
+ 	return 0;
+ }
+ 
++static inline int pdev_is_SPR(struct pci_dev *pdev)
++{
++	if (pdev_is_gen4(pdev) &&
++	    pdev->revision > PCI_DEVICE_REVISION_ICX_MAX)
++		return 1;
++	return 0;
++}
++
+ #endif
 
-On 2022-01-20 4:02 p.m., Gustavo A. R. Silva wrote:
-> Make use of the struct_size() helper instead of an open-coded version,
-> in order to avoid any potential type mistakes or integer overflows that,
-> in the worst scenario, could lead to heap overflows.
-> 
-> Also, address the following sparse warnings:
-> drivers/ntb/msi.c:46:23: warning: using sizeof on a flexible structure
-> 
-> Link: https://github.com/KSPP/linux/issues/174
-> Signed-off-by: Gustavo A. R. Silva <gustavoars@kernel.org>
-
-Thanks, looks good to me.
-
-Reviewed-by: Logan Gunthorpe <logang@deltatee.com>
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/b2d9c1ad-9a6d-4e0c-e877-44029f4c1a7e%40deltatee.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/164331547261.135051.8301478137022089685.stgit%40djiang5-desk3.ch.intel.com.
