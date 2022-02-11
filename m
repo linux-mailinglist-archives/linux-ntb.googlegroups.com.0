@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBDMZPPHJX4HBBOVDSWIAMGQENODSJEQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBCUZDTX4YQNBBI4ZTOIAMGQEFAGY7IY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-io1-xd38.google.com (mail-io1-xd38.google.com [IPv6:2607:f8b0:4864:20::d38])
-	by mail.lfdr.de (Postfix) with ESMTPS id EB1EC4B14B3
-	for <lists+linux-ntb@lfdr.de>; Thu, 10 Feb 2022 18:56:11 +0100 (CET)
-Received: by mail-io1-xd38.google.com with SMTP id y23-20020a5e8717000000b0060fd92726cbsf4536944ioj.22
-        for <lists+linux-ntb@lfdr.de>; Thu, 10 Feb 2022 09:56:11 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1644515770; cv=pass;
+Received: from mail-yb1-xb3a.google.com (mail-yb1-xb3a.google.com [IPv6:2607:f8b0:4864:20::b3a])
+	by mail.lfdr.de (Postfix) with ESMTPS id A12DE4B2EDF
+	for <lists+linux-ntb@lfdr.de>; Fri, 11 Feb 2022 21:52:52 +0100 (CET)
+Received: by mail-yb1-xb3a.google.com with SMTP id x1-20020a25a001000000b0061c64ee0196sf21368832ybh.9
+        for <lists+linux-ntb@lfdr.de>; Fri, 11 Feb 2022 12:52:52 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1644612771; cv=pass;
         d=google.com; s=arc-20160816;
-        b=QTHnpwBzXDSJFGWBsl8zEgPmLRTNp31FiVHugwRRxLrfXP/RmgG++c3xx0v+esjN6M
-         44YIbB5o2OR+iSK6n6cA+P44VUoGLyc8Aajbq4IAB7N8cTECL7Of+48yeBNdlzx8ETu4
-         aJOCw4X7KxWcoV47ybt4VNuT8oL1Mt+ulsYE8tbK62x0WWsBMHsRMcYXtsIWOWdd1RHk
-         Gau3Fl1lNpAZlWHR65bqNzcbxS0zc36ZLO7vm7Hnm1nrIG5XyVEol0CaCoAN0dgqjq6r
-         KJU39x7qcY/c464EuUretRAoXUf3+MPZ94M41pWqBgID33AVhdsfEfRBO4zX1Wbww6ab
-         98Hg==
+        b=e2fusNkvsKzQPEjQc+ftjoD/oECb7Fpv8WyviXIuRnhT02QaoaxXUduqxAGC4U/lTl
+         XHujVA8PZTnh1BQMgTjMonWnmNcw0x9Mxo21ViFs/ldhiFc6o4PSaMNpWBYmNcu6gpNU
+         Zy6ZAu/2srw/0hxlbWrF8Lid9iu4CRmCU6sseEK2pcjkUVPNBU7cdMD+ksu/PR42pK66
+         PgRIosftX0evgQeu86OgXwDd7LB3jW8L5CwTBoC3RF3fX8RsJT0QRipkeisHmyLQebZl
+         re6s09Ksyt0ulgZ3DUuwOHtsvzrtb+6IflCwhf9EM7kstmJRr5TmU+RxEkJJ7u5zLs0L
+         /ydw==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:to:subject:message-id:date:from
          :mime-version:sender:dkim-signature:dkim-signature;
-        bh=KoPheyXGuBZmESSi4YvzCC9924SYEVzF0pJmx2PLBh4=;
-        b=zSo3owdVNHGs0jNQiIvo+g2y9QGc7M0R0iQ2RF27yhMejly6K3Uv10tI/RTRxfXeP5
-         /0reVOP/8kvb0v1gYRZAZ+vmup1WelMO/NMillNWIJEECVE4nsw6oKKtK9ajqGB4+YKD
-         0yTNtodGcE0wUUiVn7ITWKyYsBCKfmZhJ9C4d+3nVf9KyKjBnoE45dLY9KyGhq39ByKn
-         I9wVnwTLd1R56+nx8p0Oxmz7JQDrDFuHcMiQQwHnfrYf7aYw8y0/h7UvXZvOTQh5omlq
-         FHMXf91WTolyUsqgMObf35jGLzJDgzN3dckHEYSkLnH3xcDuGHfcERTKxiQEAhacjtQR
-         HU2A==
+        bh=xYgItjX4Ip7K4AQFLK/LG/x12LtY+o9jh8KnUJxDI7w=;
+        b=B3a9+aGXitenoF3ooQoNT6c2D9RZgDJfO+GG1qS22WnA7/LkkGR3HeLATYO2xYnLqs
+         MUDzVkFvi2mGrEYD/OmQiPDi9w1KrCqwt3gXNO5/DtnVhxssARdpxNXHv3KTWn8I9FOf
+         k9yi8cOuaziNBAxH4ErLaUZ0XZY/9QY7NUACYMGUj4aCYcim3truDD/NUHFLCV8tfEpF
+         q7AiaWL6rTSH4mRc9IYbWDJNZYUct/2e14PWmLyKMxj0qZKnqNYOc9L1jqEv5UZlJZxL
+         0I589wcZdRNQpnv9j8EogojjYWyhwnol6n89svuRLlWuBhGQx6rbxXAPWi+v03LCyeEP
+         F7jw==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=isSCwwoT;
-       spf=pass (google.com: domain of tonynelsonson@gmail.com designates 2607:f8b0:4864:20::92b as permitted sender) smtp.mailfrom=tonynelsonson@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZxtKosrb;
+       spf=pass (google.com: domain of morganblakechurch42@gmail.com designates 2607:f8b0:4864:20::12d as permitted sender) smtp.mailfrom=morganblakechurch42@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
@@ -35,93 +35,93 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=KoPheyXGuBZmESSi4YvzCC9924SYEVzF0pJmx2PLBh4=;
-        b=LABakzvmqmYxBtC1TQZcghroCislCk4KCVD59spTeNl+ksLLfDwTj7de/mzPGnNHUi
-         Rk4Bj4BQT4zpmxIu2iSmB0o1KXz94ByiHKJ7D5HDH8ExKpa3B8YrQF9leGlp+ohSVlFE
-         0yK/Cp1v/TTtD6p5gxgR7Wtc/O5/KzJNSumgzjw0bKldFSWSmxTWuZxVAw9J71flE3Yu
-         XUEDV8aepQ2eFlldNWx8tZjWqc137XJaHpPKx+E+IQkcQ8TJlpHZ7idhjbRT65MbJZKO
-         sOfqzsZ1bJaHR6ys1Xnzl3gnShM/F15Kg/qSci4HiVR/9rJXIxHkqPV+4Q90F/k8+k/T
-         dEUg==
+        bh=xYgItjX4Ip7K4AQFLK/LG/x12LtY+o9jh8KnUJxDI7w=;
+        b=ddaTdMGo82prC+WDgzKdajhCMBwmbd7WeZl/4OUQvqJAwTbGfdwRHGJFQBhX2VgEDt
+         Bjlf4wPeif6WyjUbe3tX/ivNyc9MGL1m0KXS3gVieTcWWPujO557HmGVKf9DpXT5OCJW
+         BQKhoLIV/cT2vUJDwrzcwddBZ2qGg09kBFcW4cojnif3PAzykA2YInuwYaXyvgHLPQT+
+         x/wFZ3RTVBtrQ3JEKbBKrx3KfQK3LnAMhH5mMMvaoQouE8Fj9s3XiRjteEVvKBh2soQz
+         gBcXd3D42ExoYbK2f9vn/suPKuEZmkmNL266Iq8A1/Cay7lmDGszlZZAs8/BwTTtEENe
+         hoEg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20210112;
         h=mime-version:from:date:message-id:subject:to:x-original-sender
          :x-original-authentication-results:precedence:mailing-list:list-id
          :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=KoPheyXGuBZmESSi4YvzCC9924SYEVzF0pJmx2PLBh4=;
-        b=DRUBgUeu8aBHK2fJCzY6Jz7wadMUYcu3VLUgoqhWkjwf8ClzaQUQZMNhAE7oZ6OA6d
-         ge2lUolf54rxhkUHFKmqR3rbuKZKa3iP0mzWc3NwaSCeNW/MXSscg79wdHhHns+gQ1Cm
-         vrHKBMuPqsrWdk+0EFLcC3PbsUsQDqijOofDd/ICn86xzvn6U/X78Y8lSleDvh4EN2p5
-         RpL1wYtTVEkSFW5srUv+JUbuIho8p3YsxzUYL7skDavkRds+b5FY/0l9AspvM0g7mGLj
-         ILJEVr6a0JQ0URYHEf0P/uMc/jMUA0g0s0VL1bR139AtbFomSJOsjQBoz7jztQVyuUJR
-         uWUw==
+        bh=xYgItjX4Ip7K4AQFLK/LG/x12LtY+o9jh8KnUJxDI7w=;
+        b=Zf0cdqyY5DsdUDaBATsFXt1lSPzRGPSCuqOrwOEAtzosxWe7W6EQIcZbZYMzJJ+sIt
+         gWDWI3omS4uMnUHjhvSzivmIGLWbooAowTvsrcpkSfwVfsY6CK0pSLkJwXI/wPCn+v2d
+         2HBz2YtAsY15KbGSLYda/1uHY6qPu4UsR9fQYJwOYBV3X6dKi25i8k/OYonQCsIp4x1y
+         Hf7UuohVTRp0gtN5GHedk77meRwQLBgNVUNx/v/CzSttqNjFuCKVpHv0VeLcBg2gw5tU
+         QLdoTu7DCsbOu63Z6TBeKSNGhdrcvXfNIu5DCrKoA0k0a3y/Q1w09Y3YzA1T4B5zy6h9
+         bidg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
          :to:x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
          :list-archive:list-subscribe:list-unsubscribe;
-        bh=KoPheyXGuBZmESSi4YvzCC9924SYEVzF0pJmx2PLBh4=;
-        b=GSCvGRVOrOaSWqpsgkya1z5XDkmsoEy/iAS4BxLRIXze/l0JAc8HCqmwrS56imQAul
-         5yaIDJ+hsSC2m35JcJeo6fpkcoLUe43Hp3cTihnSORF4jmVCxU8R9fA0N9RZyUCb29vd
-         x8EQxl6AHXiwfMXuppufny1A8K87jUJu+ELJimoJfZTQQ1g505LyL7oTdJZsc7/0LbTA
-         tb0VPvRckXuo/mTcWeVdc1SmXpo4HdllzqxVy+VBYfzkUqHUvcnjMi988CwLvd20GKvB
-         lrwIXGHBY3MtilEDTY5IIalqxm2+MhqqB2vQ5bB8l4tNjffTCscTr8STpRsrSzpe5XhO
-         rlVA==
+        bh=xYgItjX4Ip7K4AQFLK/LG/x12LtY+o9jh8KnUJxDI7w=;
+        b=dnJC9FPwrFWoy/x5OAekItDLuXXIq4qi9rhCPlyxg89XjL/kXtq9S7tNEleFA4lqx+
+         lvfmOk5+MkwJy9qvYiZKMS33W0o8tyOwqkoXoLMqvsTGNawUE9wuQulaK2fRSEfcORGS
+         fw//GeBdjz+VjpMfttxfs4yFXryefdik1ohREaaAa7iHUtnfsoYj4EOMolZ9nIpMwjl/
+         NnMcShu+hqp9Qy3r+P05517IGFFtOWMb1WUAWFuatu9qmpsyOCJIn+/2uW7kMunC5Phl
+         Pjmd1wkNeXa1I3wIMROJBcw4BXGln38DSctxICauGKpW+lXvqX1UeLVzBsmWDjf/K+G9
+         +8Yw==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM531XJmOsIgcZpO20CzImT4qaCaroo1jANvFEkkI79FU2T8ij2A/6
-	QYyfc1j11k4W8dbYjnFj1tk=
-X-Google-Smtp-Source: ABdhPJzj7FdhQXmNxvGKl417uIewRw7MSYSW366QrcrpVlubbn0+ZhZXqFCkdHk9N/lm8jbk292aVg==
-X-Received: by 2002:a05:6638:528:: with SMTP id j8mr4606515jar.24.1644515770702;
-        Thu, 10 Feb 2022 09:56:10 -0800 (PST)
+X-Gm-Message-State: AOAM531wM8dF1n5Fbhi0zlTOYkl/FTrki9KQZWeG8jmsFRYyO6BGHZ30
+	NAQ4i/EWz4LOnG6GtIRkScQ=
+X-Google-Smtp-Source: ABdhPJzSlyZz7YbhIyUUoAA+Vqkw0wjka6o2OWWdXzLxjRUPnTk9vWQMData8xnSoYJ/GC7v+v59Gg==
+X-Received: by 2002:a81:a7ca:: with SMTP id e193mr3519947ywh.277.1644612771415;
+        Fri, 11 Feb 2022 12:52:51 -0800 (PST)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:6638:1ec:: with SMTP id t12ls1128037jaq.10.gmail; Thu,
- 10 Feb 2022 09:56:10 -0800 (PST)
-X-Received: by 2002:a02:c916:: with SMTP id t22mr4879857jao.300.1644515770326;
-        Thu, 10 Feb 2022 09:56:10 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1644515770; cv=none;
+Received: by 2002:a81:34d8:: with SMTP id b207ls5049711ywa.9.gmail; Fri, 11
+ Feb 2022 12:52:51 -0800 (PST)
+X-Received: by 2002:a81:c40c:: with SMTP id j12mr3856257ywi.37.1644612770928;
+        Fri, 11 Feb 2022 12:52:50 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1644612770; cv=none;
         d=google.com; s=arc-20160816;
-        b=TBLvfx3cSBrpXybkFivRy+7vS1o+GMW88vr8kFNu9B61qDkf2CFfDbwXUaeY1DNNra
-         /8PBGbiYObCFV43nELj4SQG9aO6YUJZAf5kyUZMUX6sJfxPg886XwH/XYxYXz8ZmzUzB
-         +H9hHLhVT7FJb05h2rsXMSTNVL7+5COdOxGU8qa446yAIzOCeQiOOiR6XbJf3qJ2VHuA
-         DsFEwuo+OzA8Es3lq/kDnTldDyxIeDoxGN7qUv1Q9abp/BR2mUhHDpyF2ze/qtX+6f8v
-         b57GQ/J6A99ta7SaO9AdrvVEEIcRZkuHfjwA6k13ZFDOf1u+fLFpoBLdf3sy3YT5NTIr
-         45Ng==
+        b=qObUr5itwhcThPRF6PqWfTxwzWzphooTPogsxKn1y1foVxNiIoaaLrXfT5pQvwIWgE
+         NdEfb+NXFCgGc3lhQ/HifzokAUt6UUDwJfVG0YIJ5YNdto754eA/ZOi2gEbV68NUZKRe
+         SkPGuVBj33sjT3t6KHwOfZpTn4zlMzxaSUwKcEkNBOBmNfZjYdOkfhGhDhx1vGLKPSdL
+         lHDjP11GWoIzDqM38zBTHR06Ojm02xDhjw7VueeTrZ3Kd/DRyg8KP+QzkU3uQJrvSXf1
+         wpYR/3m3STIqTkX+c7YIftE+cefZBWphs2D6E7Rs0jAarG1erX2Rw8MczRq8y56zMPyE
+         vt8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=pypwbY1qJPzMZz1nCuJqprSaF/Rglgrxm/XpjftGJVk=;
-        b=I86cTK+RnSKpoolZgGYTgrsF4NptKcIdJ9ChnoN9rqHrCDLEgQBavzkdkj0QR/C8uj
-         jeUMXhFOfjn0VHY67/jqL/BSnQoQ2rbbN5Bwb9GiVfOFFybtvYAFQ0lk9ebJItN0zB8+
-         SRwkbFvTFIvKUHeXYtdWIZ/A2zpC9n4GgW6TQV3utZbIc50KEFHWkOSpBtQ4a2i+QhaV
-         JnzEVUUinkgfiCgOBbmHeCYBJlB/u7lnpbywVoPu457H/V8fe8VEkMpH1JiU4OnHgzTB
-         K0gcwtSUpKZYCE3y2FN3qGhqMtVPB3u0CTAIIR2w3/fEr9uzS6jwODfTEOzIX1m9c2yl
-         NbZg==
+        bh=TEb0GIOxViSIITSa/u5KZScyU1V70ms7NEJGPl6eucE=;
+        b=RjwMYl1M78rp+lOTXw+8FEY/BGHb5bgL3BpyEKYYn3/ZWHOsokNxz+442w+5GNlhcJ
+         Kr/vNp2qcZw0pfQGZdcuBD7LVtS9BcNDCieUHh5N8fG5L/kbzP1N7R+6NLM11+LoGwJb
+         /EV6Bd595ob5SQagy9OuixWx2Bm27rL7rMso29YYl8Od+Po3ohA0gZ1XpywoG9pZVMcY
+         UhjBIz1nH/m7da8PgYNW2XgFfGwN02S447QX0dIc33KejgJN3r7Z9tOvImvF1wT2qYLz
+         YTimRG+3PgVqrnbEcCA2cU2ebRChj/XbRpV9gzeAYLgcVBIsElXv7d5ZvrlFzPkiNI1y
+         GYmQ==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20210112 header.b=isSCwwoT;
-       spf=pass (google.com: domain of tonynelsonson@gmail.com designates 2607:f8b0:4864:20::92b as permitted sender) smtp.mailfrom=tonynelsonson@gmail.com;
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=ZxtKosrb;
+       spf=pass (google.com: domain of morganblakechurch42@gmail.com designates 2607:f8b0:4864:20::12d as permitted sender) smtp.mailfrom=morganblakechurch42@gmail.com;
        dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from mail-ua1-x92b.google.com (mail-ua1-x92b.google.com. [2607:f8b0:4864:20::92b])
-        by gmr-mx.google.com with ESMTPS id m17si2059828jav.6.2022.02.10.09.56.10
+Received: from mail-il1-x12d.google.com (mail-il1-x12d.google.com. [2607:f8b0:4864:20::12d])
+        by gmr-mx.google.com with ESMTPS id f5si1334939ybf.2.2022.02.11.12.52.50
         for <linux-ntb@googlegroups.com>
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 10 Feb 2022 09:56:10 -0800 (PST)
-Received-SPF: pass (google.com: domain of tonynelsonson@gmail.com designates 2607:f8b0:4864:20::92b as permitted sender) client-ip=2607:f8b0:4864:20::92b;
-Received: by mail-ua1-x92b.google.com with SMTP id c36so3405357uae.13
-        for <linux-ntb@googlegroups.com>; Thu, 10 Feb 2022 09:56:10 -0800 (PST)
-X-Received: by 2002:ab0:3045:: with SMTP id x5mr2874248ual.17.1644515769944;
- Thu, 10 Feb 2022 09:56:09 -0800 (PST)
+        Fri, 11 Feb 2022 12:52:50 -0800 (PST)
+Received-SPF: pass (google.com: domain of morganblakechurch42@gmail.com designates 2607:f8b0:4864:20::12d as permitted sender) client-ip=2607:f8b0:4864:20::12d;
+Received: by mail-il1-x12d.google.com with SMTP id o10so7841849ilh.0
+        for <linux-ntb@googlegroups.com>; Fri, 11 Feb 2022 12:52:50 -0800 (PST)
+X-Received: by 2002:a92:da0b:: with SMTP id z11mr1719169ilm.321.1644612770282;
+ Fri, 11 Feb 2022 12:52:50 -0800 (PST)
 MIME-Version: 1.0
-From: Nathan Caleb <nathancalebnathan@gmail.com>
-Date: Thu, 10 Feb 2022 05:55:47 -1200
-Message-ID: <CAF=5axs_6ydz0sjvjU_hPju8Aausn2v+zJ7s6MXv2_4vfq_dJw@mail.gmail.com>
-Subject: From Karen Smith Trust
+From: akeem owonikoko <morganblakechurch42@gmail.com>
+Date: Fri, 11 Feb 2022 21:52:36 +0100
+Message-ID: <CAO-qwSYA-Dnu17ti+w8BwA+XHC0pgjxv9AnL5py=nB2HGtViUA@mail.gmail.com>
+Subject: EMPLOYMENT
 To: undisclosed-recipients:;
-Content-Type: multipart/alternative; boundary="0000000000004b8f3405d7adaa6b"
-X-Original-Sender: nathancalebnathan@gmail.com
+Content-Type: multipart/alternative; boundary="000000000000f745fd05d7c43f8c"
+X-Original-Sender: morganblakechurch42@gmail.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@gmail.com header.s=20210112 header.b=isSCwwoT;       spf=pass
- (google.com: domain of tonynelsonson@gmail.com designates 2607:f8b0:4864:20::92b
- as permitted sender) smtp.mailfrom=tonynelsonson@gmail.com;       dmarc=pass
- (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+ header.i=@gmail.com header.s=20210112 header.b=ZxtKosrb;       spf=pass
+ (google.com: domain of morganblakechurch42@gmail.com designates
+ 2607:f8b0:4864:20::12d as permitted sender) smtp.mailfrom=morganblakechurch42@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -134,28 +134,257 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
---0000000000004b8f3405d7adaa6b
+--000000000000f745fd05d7c43f8c
 Content-Type: text/plain; charset="UTF-8"
 
-I wrote a previous message which was not answered, hope all is well with
-you?
+SEMEN INDONESIA (PERSERO) TBK
+The East Tower 18th floor
+Jl. DR Ide Anak Agung Gde Agung
+Jakarta Kav.E.3.2 1-12950
+Email: <Email%3Amorganblakechurch07@gmail.com>morganblakechurch42@gmail.com
 
-Sincerely yours
-Nathan Caleb
-For Karen Smith Trust
+
+I am Mr Morgan Blake Church , Job Instructor for PT Semen Indonesia
+(Persero) Tbk and Accountant/HR Manager here to present to you a Part
+Time Job.
+
+Work from Home/Temporarily and get paid weekly. We are glad to offer
+you a job position in our organization, We need someone to work for
+the company as a Representative/Bookkeeper in the USA and CANADA. This
+is in view of our not having an office presently in the USA and
+CANADA. You don't need to have an office and this certainly won't
+disturb any form of employment you have presently.
+
+Our Customers in the USA usually make payments for our supplies in the
+form of PayPal , Bank Transfer within the USA and Credit card. All
+these are not readily acceptable here in Indonesia. They can only be
+acceptable in the USA instantly Payment/24hour Deposit. Major
+responsibilities include:
+
+-Receiving payments from existing and new customers
+-Distributing received funds according to given instructions Initial
+requirements:
+-Ability to manage payments between the company and its clients
+-Ability to plan and organize his/her work
+-Ability to contribute 3-4 hours daily.
+-Full legal age.
+-Authorized to work in the USA or CANADA
+
+Advantages: You do not have to go out as you will work as an
+independent contractor right from your home/office. Your job is
+absolutely legal. You can earn up to $3000-$4000 monthly depending on
+time you will spend for this job.
+
+You do not need any capital to start. You can do the Work easily
+without leaving or affecting your present Job.
+
+Pay: A commission of 10% on every transaction. The Issue of trust is
+very Vital, however, I believe I am protected by the Terms and
+Conditions above as going against the Terms and Conditions will mean a
+breach of Contract. We do hope that you find the offer attractive.
+
+OUR REQUIREMENTS:
+
+*VALID FIRST NAME:
+
+*VALID LAST NAME:
+
+*VALID ADDRESS
+
+* VALID CITY:
+
+* VALID STATE:
+
+* VALID PROVINCE/TERRITORY
+
+*VALID ZIP CODE:
+
+* VALID COUNTRY:
+
+*VALID PHONE NUMBER CELL:
+
+* AGE:
+
+* GENDER :
+
+* VALID E Mail:
+
+*OCCUPATION {PRESENT JOB}
+
+* VALID DATE OF BIRTH :
+
+*COPY OF YOUR IDENITITY ID OR DRIVING ID {FRONT & BACK}
+
+
+ATTN :- PLEASE IF YOU ARE NOT ABLE TO PROVIDE THE ABOVE LISTED
+REQUIREMENTS , KINDLY DON'T RESPOND BACK TO US.
+
+Thank You
+
+SEMEN INDONESIA (PERSERO) TBK
+Morgan Blake Church
+ReplyForward
+<https://drive.google.com/u/0/settings/storage?hl=en&utm_medium=web&utm_source=gmail&utm_campaign=storage_meter&utm_content=storage_normal>
+<https://www.google.com/intl/en/policies/terms/>
+<https://www.google.com/intl/en/policies/privacy/>
+<https://www.google.com/gmail/about/policy/>
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAF%3D5axs_6ydz0sjvjU_hPju8Aausn2v%2BzJ7s6MXv2_4vfq_dJw%40mail.gmail.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/CAO-qwSYA-Dnu17ti%2Bw8BwA%2BXHC0pgjxv9AnL5py%3DnB2HGtViUA%40mail.gmail.com.
 
---0000000000004b8f3405d7adaa6b
+--000000000000f745fd05d7c43f8c
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr">I wrote a previous message which was not answered, hope al=
-l is well with you?<br><br>Sincerely yours<br>Nathan Caleb<br>For Karen Smi=
-th Trust<br></div>
+<div dir=3D"ltr"><table class=3D"gmail-Bs gmail-nH gmail-iY gmail-bAt" cell=
+padding=3D"0" role=3D"presentation" style=3D"border-spacing:0px;padding:0px=
+;border-collapse:collapse;width:887.111px;display:block;color:rgb(32,33,36)=
+;font-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-size:medium=
+"><tbody><tr class=3D"gmail-xHfw3"><td class=3D"gmail-Bu gmail-yM" style=3D=
+"vertical-align:top;padding:0px;width:0px;background-image:initial;backgrou=
+nd-position:initial;background-size:initial;background-repeat:initial;backg=
+round-origin:initial;background-clip:initial"></td><td class=3D"gmail-Bu gm=
+ail-bAn" style=3D"vertical-align:top;padding:0px;display:block;background-i=
+mage:initial;background-position:initial;background-size:initial;background=
+-repeat:initial;background-origin:initial;background-clip:initial"><div cla=
+ss=3D"gmail-nH gmail-if" style=3D"margin:0px 16px 0px 0px;padding:0px"><div=
+ class=3D"gmail-nH gmail-aHU" style=3D""><div class=3D"gmail-nH gmail-hx" s=
+tyle=3D"background-color:transparent;color:rgb(34,34,34);min-width:502px;pa=
+dding:0px"><div class=3D"gmail-nH" role=3D"list"><div class=3D"gmail-h7 gma=
+il-ie gmail-nH gmail-oy8Mbf" role=3D"listitem" aria-expanded=3D"true" tabin=
+dex=3D"-1" style=3D"clear:both;padding-bottom:0px;max-width:100000px;outlin=
+e:none"><div class=3D"gmail-Bk" style=3D"margin-bottom:0px;border-width:0px=
+;border-top-style:solid;border-right-style:initial;border-bottom-style:init=
+ial;border-left-style:initial;border-top-color:rgb(239,239,239);border-righ=
+t-color:initial;border-left-color:initial;border-bottom-color:initial;borde=
+r-radius:0px;float:left;width:871.111px"><div class=3D"gmail-G3 gmail-G2" s=
+tyle=3D"padding-top:0px;background-color:transparent;border-right:0px;borde=
+r-bottom:0px rgba(100,121,143,0.12);border-left:0px;border-top:none;border-=
+radius:0px;margin-bottom:0px;margin-left:0px;margin-right:0px"><div><div id=
+=3D"gmail-:6l"><div class=3D"gmail-adn gmail-ads" style=3D"border-left:none=
+;padding:0px;display:flex"><div class=3D"gmail-gs" style=3D"margin:0px;padd=
+ing:0px 0px 20px;width:799.111px"><div class=3D"gmail-"><div id=3D"gmail-:6=
+i" class=3D"gmail-ii gmail-gt" style=3D"direction:ltr;margin:8px 0px 0px;pa=
+dding:0px;font-size:0.875rem"><div id=3D"gmail-:6j" class=3D"gmail-a3s gmai=
+l-aiL" style=3D"font-variant-numeric:normal;font-variant-east-asian:normal;=
+font-stretch:normal;font-size:small;line-height:1.5;font-family:Arial,Helve=
+tica,sans-serif;overflow:hidden"><div dir=3D"auto">SEMEN INDONESIA (PERSERO=
+) TBK<br>The East Tower 18th floor<br>Jl. DR Ide Anak Agung Gde Agung<br>Ja=
+karta Kav.E.3.2 1-12950<br><a href=3D"mailto:Email%3Amorganblakechurch07@gm=
+ail.com" target=3D"_blank">Email:</a><span style=3D"color:rgb(95,99,104);fo=
+nt-family:Roboto,RobotoDraft,Helvetica,Arial,sans-serif;font-size:14px;lett=
+er-spacing:0.2px;text-align:center;white-space:nowrap"><a href=3D"mailto:mo=
+rganblakechurch42@gmail.com">morganblakechurch42@gmail.com</a></span><br><b=
+r><br>I am Mr Morgan Blake Church , Job Instructor for PT Semen Indonesia<b=
+r>(Persero) Tbk and Accountant/HR Manager here to present to you a Part<br>=
+Time Job.<br><br>Work from Home/Temporarily and get paid weekly. We are gla=
+d to offer<br>you a job position in our organization, We need someone to wo=
+rk for<br>the company as a Representative/Bookkeeper in the USA and CANADA.=
+ This<br>is in view of our not having an office presently in the USA and<br=
+>CANADA. You don&#39;t need to have an office and this certainly won&#39;t<=
+br>disturb any form of employment you have presently.<br><br>Our Customers =
+in the USA usually make payments for our supplies in the<br>form of PayPal =
+, Bank Transfer within the USA and Credit card. All<br>these are not readil=
+y acceptable here in Indonesia. They can only be<br>acceptable in the USA i=
+nstantly Payment/24hour Deposit. Major<br>responsibilities include:<br><br>=
+-Receiving payments from existing and new customers<br>-Distributing receiv=
+ed funds according to given instructions Initial<br>requirements:<br>-Abili=
+ty to manage payments between the company and its clients<br>-Ability to pl=
+an and organize his/her work<br>-Ability to contribute 3-4 hours daily.<br>=
+-Full legal age.<br>-Authorized to work in the USA or CANADA<br><br>Advanta=
+ges: You do not have to go out as you will work as an<br>independent contra=
+ctor right from your home/office. Your job is<br>absolutely legal. You can =
+earn up to $3000-$4000 monthly depending on<br>time you will spend for this=
+ job.<br><br>You do not need any capital to start. You can do the Work easi=
+ly<br>without leaving or affecting your present Job.<br><br>Pay: A commissi=
+on of 10% on every transaction. The Issue of trust is<br>very Vital, howeve=
+r, I believe I am protected by the Terms and<br>Conditions above as going a=
+gainst the Terms and Conditions will mean a<br>breach of Contract. We do ho=
+pe that you find the offer attractive.<br><br>OUR REQUIREMENTS:<br><br>*VAL=
+ID FIRST NAME:<br><br>*VALID LAST NAME:<br><br>*VALID ADDRESS<br><br>* VALI=
+D CITY:<br><br>* VALID STATE:<br><br>* VALID PROVINCE/TERRITORY<br><br>*VAL=
+ID ZIP CODE:<br><br>* VALID COUNTRY:<br><br>*VALID PHONE NUMBER CELL:<br><b=
+r>* AGE:<br><br>* GENDER :<br><br>* VALID E Mail:<br><br>*OCCUPATION {PRESE=
+NT JOB}<br><br>* VALID DATE OF BIRTH :<br><br>*COPY OF YOUR IDENITITY ID OR=
+ DRIVING ID {FRONT &amp; BACK}<br><br><br>ATTN :- PLEASE IF YOU ARE NOT ABL=
+E TO PROVIDE THE ABOVE LISTED<br>REQUIREMENTS , KINDLY DON&#39;T RESPOND BA=
+CK TO US.<br><br>Thank You<br><br>SEMEN INDONESIA (PERSERO) TBK<br>Morgan B=
+lake Church=C2=A0</div><div class=3D"gmail-yj6qo"></div><div class=3D"gmail=
+-adL"></div></div></div><div class=3D"gmail-hi" style=3D"border-bottom-left=
+-radius:1px;border-bottom-right-radius:1px;padding:0px;width:auto;backgroun=
+d:rgb(242,242,242);margin:0px"></div></div></div><div class=3D"gmail-ajx" s=
+tyle=3D"clear:both"></div></div><div class=3D"gmail-gA gmail-gt gmail-acV" =
+style=3D"font-size:0.875rem;padding:0px;width:auto;border-bottom-left-radiu=
+s:0px;border-bottom-right-radius:0px;border-top:none;margin:0px;background:=
+transparent"><div class=3D"gmail-gB gmail-xu" style=3D"border-top:0px;paddi=
+ng:0px"><div class=3D"gmail-ip gmail-iq" style=3D"clear:both;margin:0px;pad=
+ding:16px 0px;border-top:none"><div id=3D"gmail-:6h"><table class=3D"gmail-=
+cf gmail-wS" role=3D"presentation" style=3D"border-collapse:collapse"><tbod=
+y><tr><td class=3D"gmail-amq" style=3D"padding:0px 16px;vertical-align:top;=
+width:44px"><img id=3D"gmail-:5w_2" name=3D":5w" src=3D"https://lh3.googleu=
+sercontent.com/a-/AOh14GjLJ5j8rUvnIEJ-gx5pggZOejPjON39TG_sGnu_nQ=3Ds40" cla=
+ss=3D"gmail-ajn gmail-bofPge" style=3D"display: block; width: 40px; height:=
+ 40px; border-radius: 50%;"></td><td class=3D"gmail-amr" style=3D"padding:0=
+px;width:799.111px"><div class=3D"gmail-nr gmail-wR" style=3D"box-sizing:bo=
+rder-box;border-radius:1px;padding:0px;border:none;margin:0px"><div class=
+=3D"gmail-amn" style=3D"color:inherit;height:auto;padding:0px;display:flex;=
+line-height:20px"><span id=3D"gmail-:6n" role=3D"link" tabindex=3D"0" class=
+=3D"gmail-ams gmail-bkH" style=3D"border:none;display:inline-flex;font-fami=
+ly:&quot;Google Sans&quot;,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;fo=
+nt-size:0.875rem;letter-spacing:0.25px;background:none;border-radius:4px;bo=
+x-sizing:border-box;color:rgb(95,99,104);height:36px;outline:none;padding:0=
+px 16px 0px 12px;min-width:104px;margin-right:12px">Reply</span><span id=3D=
+"gmail-:9k" role=3D"link" tabindex=3D"0" class=3D"gmail-ams gmail-bkG" styl=
+e=3D"border:none;display:inline-flex;font-family:&quot;Google Sans&quot;,Ro=
+boto,RobotoDraft,Helvetica,Arial,sans-serif;font-size:0.875rem;letter-spaci=
+ng:0.25px;background:none;border-radius:4px;box-sizing:border-box;color:rgb=
+(95,99,104);height:36px;outline:none;padding:0px 16px 0px 12px;min-width:10=
+4px;margin-right:12px">Forward</span></div></div></td></tr></tbody></table>=
+</div></div></div></div></div></div></div></div></div></div><div class=3D"g=
+mail-nH"></div><div class=3D"gmail-nH"></div></div></div><div class=3D"gmai=
+l-nH"><div class=3D"gmail-l2 gmail-pfiaof" role=3D"contentinfo" style=3D"ma=
+rgin:0px 0px 16px;padding:0px 16px 0px 72px;text-align:center"><div id=3D"g=
+mail-:73" class=3D"gmail-aeV" style=3D"float:left;width:260.764px;text-alig=
+n:left"><div><div class=3D"gmail-ajd" style=3D"display:flex"><a target=3D"_=
+blank" href=3D"https://drive.google.com/u/0/settings/storage?hl=3Den&amp;ut=
+m_medium=3Dweb&amp;utm_source=3Dgmail&amp;utm_campaign=3Dstorage_meter&amp;=
+utm_content=3Dstorage_normal" class=3D"gmail-aiF" style=3D"text-decoration-=
+line:none;width:220px"><div class=3D"gmail-aiC" style=3D"background-color:r=
+gb(218,220,224);border-radius:8px;height:6px;margin:7px 0px"><div class=3D"=
+gmail-aiA" style=3D"background-color:rgb(95,99,104);border-radius:8px;heigh=
+t:6px;width:30.7917px"></div></div><div class=3D"gmail-aiG" style=3D"displa=
+y:flex"><div class=3D"gmail-aiD" style=3D"font-size:0.75rem;letter-spacing:=
+0.3px;color:rgb(95,99,104)"><span dir=3D"ltr"></span><span dir=3D"ltr"></sp=
+an></div><div class=3D"gmail-aiz" role=3D"img" aria-label=3D"Follow link to=
+ manage storage" style=3D"background-image:url(&quot;https://www.gstatic.co=
+m/images/icons/material/system_gm/1x/launch_gm_grey_18dp.png&quot;);backgro=
+und-size:18px;height:20px;width:20px;margin:0px 8px;opacity:1"></div></div>=
+</a></div></div></div><div class=3D"gmail-aeU" style=3D"float:left;width:26=
+0.764px"><div id=3D"gmail-:6w"><div><div class=3D"gmail-ma" style=3D"font-s=
+ize:0.75rem;color:rgb(95,99,104);padding-top:0px;letter-spacing:0.3px;line-=
+height:20px"><a href=3D"https://www.google.com/intl/en/policies/terms/" tar=
+get=3D"_blank" class=3D"gmail-l9" style=3D"color:rgb(34,34,34);text-decorat=
+ion-line:none"></a><a href=3D"https://www.google.com/intl/en/policies/priva=
+cy/" target=3D"_blank" class=3D"gmail-l9" style=3D"color:rgb(34,34,34);text=
+-decoration-line:none"></a><a href=3D"https://www.google.com/gmail/about/po=
+licy/" target=3D"_blank" class=3D"gmail-l9" style=3D"color:rgb(34,34,34);te=
+xt-decoration-line:none"></a></div></div></div></div><div id=3D"gmail-:6y" =
+class=3D"gmail-ae3" style=3D"float:left;width:260.764px;text-align:right"><=
+div><div class=3D"gmail-l6" style=3D"padding-top:0px;font-size:0.75rem;colo=
+r:rgb(95,99,104);letter-spacing:0.3px;line-height:20px"><div></div><span id=
+=3D"gmail-:6o" class=3D"gmail-l8 gmail-LJOhwe" tabindex=3D"0" role=3D"link"=
+ style=3D"color:rgb(34,34,34)"></span></div></div></div><div style=3D"clear=
+:both"></div></div></div></div></td><td class=3D"gmail-Bu gmail-yM" style=
+=3D"vertical-align:top;padding:0px;width:0px;background-image:initial;backg=
+round-position:initial;background-size:initial;background-repeat:initial;ba=
+ckground-origin:initial;background-clip:initial"><div class=3D"gmail-Bt" st=
+yle=3D"height:0px;overflow:hidden;width:0px"></div><div class=3D"gmail-nH" =
+style=3D"width:0px"><div class=3D"gmail-no" style=3D"float:left"><div class=
+=3D"gmail-nH gmail-nn" style=3D"min-height:1px;float:left;width:0px"></div>=
+</div></div></td></tr></tbody></table><br class=3D"gmail-Apple-interchange-=
+newline"></div>
 
 <p></p>
 
@@ -166,9 +395,9 @@ To unsubscribe from this group and stop receiving emails from it, send an e=
 mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
 +unsubscribe@googlegroups.com</a>.<br />
 To view this discussion on the web visit <a href=3D"https://groups.google.c=
-om/d/msgid/linux-ntb/CAF%3D5axs_6ydz0sjvjU_hPju8Aausn2v%2BzJ7s6MXv2_4vfq_dJ=
-w%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.g=
-oogle.com/d/msgid/linux-ntb/CAF%3D5axs_6ydz0sjvjU_hPju8Aausn2v%2BzJ7s6MXv2_=
-4vfq_dJw%40mail.gmail.com</a>.<br />
+om/d/msgid/linux-ntb/CAO-qwSYA-Dnu17ti%2Bw8BwA%2BXHC0pgjxv9AnL5py%3DnB2HGtV=
+iUA%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups=
+.google.com/d/msgid/linux-ntb/CAO-qwSYA-Dnu17ti%2Bw8BwA%2BXHC0pgjxv9AnL5py%=
+3DnB2HGtViUA%40mail.gmail.com</a>.<br />
 
---0000000000004b8f3405d7adaa6b--
+--000000000000f745fd05d7c43f8c--
