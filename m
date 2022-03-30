@@ -1,114 +1,128 @@
-Return-Path: <linux-ntb+bncBDV7Z6UB24IRBFWL52IQMGQE3FZ2LCI@googlegroups.com>
+Return-Path: <linux-ntb+bncBDM7RQV2QAERBKOHSCJAMGQEZYXTK4Y@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-qv1-xf3c.google.com (mail-qv1-xf3c.google.com [IPv6:2607:f8b0:4864:20::f3c])
-	by mail.lfdr.de (Postfix) with ESMTPS id 42E424E5B96
-	for <lists+linux-ntb@lfdr.de>; Wed, 23 Mar 2022 23:56:24 +0100 (CET)
-Received: by mail-qv1-xf3c.google.com with SMTP id z1-20020ad44781000000b00440ded04b09sf2297517qvy.22
-        for <lists+linux-ntb@lfdr.de>; Wed, 23 Mar 2022 15:56:24 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1648076183; cv=pass;
+Received: from mail-io1-xd3a.google.com (mail-io1-xd3a.google.com [IPv6:2607:f8b0:4864:20::d3a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 140FB4EBDB0
+	for <lists+linux-ntb@lfdr.de>; Wed, 30 Mar 2022 11:32:27 +0200 (CEST)
+Received: by mail-io1-xd3a.google.com with SMTP id h10-20020a05660224ca00b0064c77aa4477sf5636983ioe.17
+        for <lists+linux-ntb@lfdr.de>; Wed, 30 Mar 2022 02:32:27 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1648632745; cv=pass;
         d=google.com; s=arc-20160816;
-        b=IoYegswujmjSU8Lr3nItyYnHanPqSB35NDRVY7RLyLkiDcWqG/7IlwEPwh4ItFWtp/
-         dWf3KTOPLmwR9UUR4xjge1wK3uBpekxM9iIXW9z5UDyCVO5ASG/9wrlqDgxaA48lScOV
-         avCZFaPn97VxsIgm2GVTQfqYIptA5nvSaVVBhJAqjCXh499u+ofG6ANKMXxGDU8zA1W8
-         aARWG10hGd2426TMy5kr7DIJYGCPY0R8z8JCtIW44cGavsnvR8Wb+7QFCHQRDMG6CZ1G
-         /THtYhYOD3bsgp1exvVRFQi3vJdIWAJlYuXovGOTMauhcc1/qaEXVrHA4Sxun1z/ZgUj
-         lT3Q==
+        b=f0skSe+lhV7XVe8W0SnvrMNMf9LpjwWYQ7T47haYwDImjGWE5Hl7dpjJIUqdumqj5a
+         Mh2m2kZ73Rs6mnD4tjF/fwLGXSMoYucEyZd0ITAA1jJ6Icoi/cReCn/N9hopn6SVDj/w
+         9z9hAhHEaKF3bGFU5JnBAXhElS9Gf0nk0fn8NeaZavgdNGb+ClzBYcnTLTg8dJxZw8al
+         uLZgkhspAOMnxPHPgVRqVN0RoHW7VGKg4f16y77yo+dhO7aSijZB5rfpHTVrGLGCPv2R
+         AIJGAd23KYYwXadTisEQ0K5fqUmC9JaIQYq1c+czwmqJMP8Oqaqv4k5P7bTHbDDv/zor
+         re2g==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:message-id:date:mime-version:to
-         :subject:from:sender:dkim-signature;
-        bh=WUwT5eIQ7jk/4nP14Sax9PrCXUWSfas381shNnlfHYI=;
-        b=LAy4wlzmUShX25ZGciTNxDslvvZKwhA6Obpqp64veti14reUZtdRv/Rl5teueWQ5Zf
-         O0NTxNKEYmIosFeEICeKgaqk1CXTuyi9EQmIqpcNscxiEwNGoY3MCDvHVP/nHkDzJx8H
-         6BPNR/Ic2vqLrm8dZtdUMLxict3dvS9/kg4bJKiVJfZ9Q19rPccmnnWkllzpfcGeDWTA
-         Vs+Aoj2VJPl6+oUW1IGMJdPJd9OzCHyyWN7P5uA3jRKrn+iqiQ6foQB+m8v0PXg1qhEe
-         MKrgmrji45/oyM6K0Wcv42lFuAJkISdP73fqsnQn1cTRGlmI3cXMIgwpRUdSzvXQkiO/
-         3mzw==
+         :list-id:mailing-list:precedence:to:subject:message-id:date:from
+         :mime-version:sender:dkim-signature:dkim-signature;
+        bh=heFe+RhLfHPxPrBdZ+WBzwYmEbjsoG8A6TvgdgW3MuU=;
+        b=pFX411Yuk7ANdaIoMEnEMLsvgDc4y9y1bbieJG8/Lc870eZ5do1IdsbR6Pab2E4uLj
+         5i0xUOCLG6pQ///CnyeqBQWHv7QYdNBO2VkZHDBVuASNhhlOW7rs6VfZ6LCCmG/1bz+k
+         rUZkZFvBO8MzcLaaR2prjR9WSZ8bg4uk/bC5em1qfaMUzBm23Zj4syebjyx4n3FTPlR8
+         MOVatRVoVOd0aY/49N3m08vOYLU+rom8QpcCJUi05Ect7Ezf+DpsXqDu9uu0woyaNGDS
+         gj1dwAHdd4BoDCU0rb92yAdVCJ4s1rvphPv9X+jWMKHOeg4i/Vj961se6xpoweZMQWqN
+         i8Dg==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       spf=pass (google.com: domain of takamasa@cathand.com designates 153.126.147.102 as permitted sender) smtp.mailfrom=takamasa@cathand.com
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=FFfIAk2m;
+       spf=pass (google.com: domain of moubarakgoumpougni@gmail.com designates 2607:f8b0:4864:20::b2d as permitted sender) smtp.mailfrom=moubarakgoumpougni@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
-        h=sender:from:subject:to:mime-version:date:message-id
+        h=sender:mime-version:from:date:message-id:subject:to
          :x-original-sender:x-original-authentication-results:precedence
          :mailing-list:list-id:list-post:list-help:list-archive
          :list-subscribe:list-unsubscribe;
-        bh=WUwT5eIQ7jk/4nP14Sax9PrCXUWSfas381shNnlfHYI=;
-        b=jjfxv1GrWLxisWyEM5z26H9ZFUxjtnElL5WLticXo4K+ciDmc2Z/PlOzZJ8mkGlllA
-         415nZDB3613FpC45lXrpeZejox3PJMqkn4Iru7FOH3bj8mglNFCvUUkxoLwspUJOzaJs
-         lNFkZl0OusmZLt9YhgoqZ627y7ik+NdygGUUz75vepdCrzObgB16f6VPH0upAplwdtEH
-         Ifh/YPNrn2xyfFSv4xmOTBfRpD1ZzKI2uMvfiDZHxBc4TGzIdJi02BiqO4Fi1xSEBEt9
-         Epih67WU0YtjL+94tw7gwkGp/s6H4B28UFCXe/tERhj9LznzcOHxGloGPDS4EFZBfytt
-         0hkw==
+        bh=heFe+RhLfHPxPrBdZ+WBzwYmEbjsoG8A6TvgdgW3MuU=;
+        b=ZGmWqHibtubU0KBItW2ySoppyz2MNysLATHBxSXpMNvhl3tPbN3dOvtPtigOVLZcg5
+         BEygQqGLn0bfrYBLU/b7SqRWbQvr4BmnzP468ZVLHCQIeF0gmBnEwrbFYLWU5SyU96ms
+         CagYedZ4HJZF8f6o9VyhvmXbFTgvl6ia1Dq7T+7Bkk24ASJ/1zuHRIJcDcpNYw9gMSBR
+         4R8CdHJRmlzgu01v41qbWgM0+mg6Xa0stfmFsb5sc5dgYEvzwqez2vJM5HeGCGgouzRw
+         /58rIKmowtDH/B1f+IsNTBiSxsp6rtJsXLzK572qiULXWlWoa6nR/nFoBgNnhIwc3tlr
+         Uz3w==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to:x-original-sender
+         :x-original-authentication-results:precedence:mailing-list:list-id
+         :list-post:list-help:list-archive:list-subscribe:list-unsubscribe;
+        bh=heFe+RhLfHPxPrBdZ+WBzwYmEbjsoG8A6TvgdgW3MuU=;
+        b=BnyISdfMCBXrMxRE1ySTyaaHShuvvTURIcZjsS8LM6bSIF/7Og7G227w+rdLaOFFcb
+         m9DTmfYF1VAMCt7Y8QkOpYrlw7kNuy71Y3rnurgmgKRS6usYY6tgZA2xubAnnVse6whE
+         CuoMbV0ZDiHtt/ZIhDzbOziiIyityXW/nZMii+vetjz9qvV0yJZXYzy7hjvjezxqmE0w
+         d3PmnHxkJnJYS3uKyUvYObh36u3GBlWKIsSs7fNRSuwwqci9LzmS6W+MmRqt0uDBtjhZ
+         1vZ2hvdsAKfnWDTDAMcEzWrmH++tztg9F4gg6TszDoP2SIPPErpRHkXP3lwi02U6ii4w
+         Fciw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
-        h=sender:x-gm-message-state:from:subject:to:mime-version:date
-         :message-id:x-original-sender:x-original-authentication-results
-         :precedence:mailing-list:list-id:x-spam-checked-in-group:list-post
-         :list-help:list-archive:list-subscribe:list-unsubscribe;
-        bh=WUwT5eIQ7jk/4nP14Sax9PrCXUWSfas381shNnlfHYI=;
-        b=WFF36aYcYoN5cPgtR97AXSeAB1jZZiNXxI7Dkk0lYYa/tyoyeGXWzgwrSXP409p2vQ
-         QwUstrEtAzrZY6Rc24G6bwwBXRhW2T56zyvyCjBLxWyJ36KviYTg9EJ408cyP1/ev876
-         drFgcp+vwQwrYbrdM1SCDnvY4e0bAI0Yqlxrul5LoJ38L5NZwWXBhbckGK8x1zssMBtu
-         meToKtInfASR6ngp1N5pWYqMhAn9WH58WFQrEdyXDXLFeGYj4oJM15L5fJaS9NVkqotF
-         0Ru9GNsC4ORuInUOBN1Zn/M9TJ6U3KeuznCuZwOjWYF2QC118AE0Se8Yhc1P4dlhyAi6
-         vW6Q==
+        h=sender:x-gm-message-state:mime-version:from:date:message-id:subject
+         :to:x-original-sender:x-original-authentication-results:precedence
+         :mailing-list:list-id:x-spam-checked-in-group:list-post:list-help
+         :list-archive:list-subscribe:list-unsubscribe;
+        bh=heFe+RhLfHPxPrBdZ+WBzwYmEbjsoG8A6TvgdgW3MuU=;
+        b=YgeIPcnyKPgnRgpK04ROFlQmzZBWSJHVvkhdZ2KBNWqU8qDyOaXwfwFbd5TDAU3TC0
+         BwIQhhvSzSW4nVBkWgZ0uOUr8J3WNImTtesQjCf+bfmWkktrG4rvK5/yVlpiJmMnBQNh
+         b7aOZnZPf5AD3HBsRrOOS0WbnKPZ5iMqmJp8OnVkVw35k83d9ka6QpEaZfsyn57jlYK7
+         ll7Qd6C06LFauvuy4jDkSFa5r9m9MEB6cVJ+ShHSIT+gYkUDD6x962BatQmBnCKQ8pAf
+         fQMDkP3Ashcpx8sa+l6u0n81HVARnLC1EXv05/2RkZfvdRaF0TDQ/WmF2LVtYFjGxBSA
+         y/hQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: AOAM532uuENJo8o4+6feVKrk/ixyVA5lNWYKOymayRDe1gVaJq3CB+nZ
-	wGEtOum0PAq9ODwrKpQNVxI=
-X-Google-Smtp-Source: ABdhPJy/fbFK7Rs+vmhvnhRPgutKAV/RD8CeeYeLcvzefD+dtMJpt33X+Fm0rBXA8/tu1SYOWkESPA==
-X-Received: by 2002:a05:620a:4145:b0:67d:a12e:1f39 with SMTP id k5-20020a05620a414500b0067da12e1f39mr1598101qko.352.1648076183029;
-        Wed, 23 Mar 2022 15:56:23 -0700 (PDT)
+X-Gm-Message-State: AOAM5322NAtcB2VFluBMj+cf46PcjJC+ZwR915c7hyV65d1IvyWFiP0e
+	UqYix2H7iGwTXVYIKYOdpL4=
+X-Google-Smtp-Source: ABdhPJxd0awVdfrerFu9lRLarVB5sCmE85vQl3s4rMOv8Cg0Zy8Bj6LJ8BvW6VI8vd+u6UfklpC61g==
+X-Received: by 2002:a05:6638:d53:b0:31a:c87:a704 with SMTP id d19-20020a0566380d5300b0031a0c87a704mr18581423jak.207.1648632745658;
+        Wed, 30 Mar 2022 02:32:25 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:620a:4081:b0:67f:b1:1ce6 with SMTP id
- f1-20020a05620a408100b0067f00b11ce6ls149832qko.0.gmail; Wed, 23 Mar 2022
- 15:56:22 -0700 (PDT)
-X-Received: by 2002:a05:620a:4403:b0:67d:b78d:9ece with SMTP id v3-20020a05620a440300b0067db78d9ecemr1526186qkp.515.1648076182471;
-        Wed, 23 Mar 2022 15:56:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1648076182; cv=none;
+Received: by 2002:a02:a499:0:b0:323:63cf:a68b with SMTP id d25-20020a02a499000000b0032363cfa68bls324652jam.10.gmail;
+ Wed, 30 Mar 2022 02:32:25 -0700 (PDT)
+X-Received: by 2002:a05:6638:a3a:b0:323:5c6d:ae20 with SMTP id 26-20020a0566380a3a00b003235c6dae20mr11063330jao.80.1648632745123;
+        Wed, 30 Mar 2022 02:32:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648632745; cv=none;
         d=google.com; s=arc-20160816;
-        b=uKASrDVUlWzX/zkDtD0qabF0O6snvjgUbY+hVGIX5tSegLtRWdFQBONUnQAUvKT72i
-         zudHkb3aP/wCE0l9J3rVep4Qcylpr8xY7dGHDfO4BCSfJXcE/mIUD6DdrMotHGV7Po71
-         oLRn4JbgWGZlAQcvy9l9sYJzxV9qyv0Y8b+jWAeqR98+ze2CemhyBunSPG3Bcy4WMdRz
-         Op/Y4IKA2xvbzIo0Ow/KmwLiM52IHSVYFGVwD+FudqFZtdhE2L5kRxMyk0acTVTGfJJv
-         DgyM9gc4Tk3b1gn9oQA9glRyL65fvBv+BSPKGtYc0PfhSkCVLpYl6QWEpcZaVMiEJgUq
-         4naQ==
+        b=InkAjQmDpnrlk8xSH+HS9h7hGLe0siCneDjO6n4cXhBshWA+8sT2meL765wb+AhV/c
+         RVvI0pSJN54gUQWzguxpvzNy373MtpTXs22Ft/4ceORiYXPCX1AMSQbczfvgkNVHWn1j
+         XuvqhdpQv/NHDWSgBmz/jVcQSR1/gX9s8EJAh4TtqbkXXi/IBxtsm9+GQ32eosKkoV9r
+         GrWIBs595ptOcOdxobwIXT3wPxX59sgIiIeL5nt4bc3g7wZelq4OonJ33Yp2idJB0kLD
+         NActEa2jxHa5Li9Dyzc7cOy/WroP1XjwQcRUJNxXEaP9WlvsVZUmf/umjeiqx5K+M2gS
+         xbXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=message-id:date:mime-version:to:subject:from;
-        bh=FNGPaU3H2qI+U0BG3Jrghsd+YHNNa86Zea8KMFm9pPs=;
-        b=azf4NVFpMnYBocBcljPXkrnjI4wTZ5G40tzdSCnHW4PtJynkfuv5Nxb0xHmVODfSUh
-         sQh33ypTRoQBhr5esBhi9IyVgxowqCUB3/czCp324/zWJB8DaxuzQ1JNO/oEl+KKCapP
-         26jNt3ls8qm4lNv6PWMpyjWz8GseTzzqTdmSIEguxph2QwNtjeOjJP8zZ12/6SykoJWe
-         pK/nfjKaDU/m+8T98+ZWqw/5lpUdLTf4LjeIGUtDT4Cl3HPHKAoIMccAlG9Q4Xs0J6fw
-         OHbYHNR5WyWe7G73kepGT+5xYPBO6WWD/gs4xmGRsVdiKqDclYXCij9zJoKvFVIg9JY8
-         Z12Q==
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=ajds4vQJqzzfWfFoJdFk3NcQ+94bj0ecRubwlQfUBUE=;
+        b=ie9tpmAjdwaZExxdn0Jk3Q75t1wjnPUywEobknql5YSniJSjOqW1kzeja6nctNmw2y
+         0kUK2S5UY/xF4/QnaIrsh1P2dLngozpmiwDHEAH2tq11I6p332PLOXRs3pv9ZGk241JG
+         BNYeIGd+WkVqtdEasjNCRwV/XIgOPATZFp3jeY4PWfJaFX4LAQfd8n2IId4A6VboAfts
+         MuJSKuerrjdCDApy22c3Mxz2+x8p6cDUi6WD858HBjbeFre6XJC5ZmaUeCy/SmrN+/+E
+         OnppBhcxhyFN8w4B1l2qwHC3eRzth4wKDaGtmhvpQWNRPeF5xfsBiFoEbkjyF+wp3lxe
+         bz+g==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       spf=pass (google.com: domain of takamasa@cathand.com designates 153.126.147.102 as permitted sender) smtp.mailfrom=takamasa@cathand.com
-Received: from mail.cathand.com (ik1-309-14848.vs.sakura.ne.jp. [153.126.147.102])
-        by gmr-mx.google.com with ESMTPS id f23-20020ae9ea17000000b0067bf948c7cfsi78189qkg.5.2022.03.23.15.56.22
+       dkim=pass header.i=@gmail.com header.s=20210112 header.b=FFfIAk2m;
+       spf=pass (google.com: domain of moubarakgoumpougni@gmail.com designates 2607:f8b0:4864:20::b2d as permitted sender) smtp.mailfrom=moubarakgoumpougni@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from mail-yb1-xb2d.google.com (mail-yb1-xb2d.google.com. [2607:f8b0:4864:20::b2d])
+        by gmr-mx.google.com with ESMTPS id y6-20020a056e02118600b002c7e25b0919si935388ili.5.2022.03.30.02.32.25
         for <linux-ntb@googlegroups.com>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 23 Mar 2022 15:56:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of takamasa@cathand.com designates 153.126.147.102 as permitted sender) client-ip=153.126.147.102;
-Received: from pc248 (unknown [58.243.143.49])
-	by mail.cathand.com (Postfix) with ESMTPA id 30529160EB1
-	for <linux-ntb@googlegroups.com>; Wed, 23 Mar 2022 15:56:19 -0700 (PDT)
-X-GUID: 430D309C-E099-4232-992C-B7A3457314DA
-X-Has-Attach: no
-From: =?UTF-8?B?Iue0p+aApemAmuefpe+8mumCrueuse+8iOezu+e7n+S8mOWMlu+8iSIgIOag?=
- =?UTF-8?B?oeWbrQ==?=
- <takamasa@cathand.com>
-Subject: =?UTF-8?B?5YWz5LqO77ya5YWs5Y+45ZCv55So5paw6YKu5Lu257O757uf6YCa55+l77yB?=
-To: "linux-ntb" <linux-ntb@googlegroups.com>
-Content-Type: multipart/alternative; charset=UTF-8; boundary="----=_620_NextPart581602021255_=----"
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 30 Mar 2022 02:32:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of moubarakgoumpougni@gmail.com designates 2607:f8b0:4864:20::b2d as permitted sender) client-ip=2607:f8b0:4864:20::b2d;
+Received: by mail-yb1-xb2d.google.com with SMTP id j2so36056456ybu.0
+        for <linux-ntb@googlegroups.com>; Wed, 30 Mar 2022 02:32:25 -0700 (PDT)
+X-Received: by 2002:a25:8303:0:b0:633:7c97:5882 with SMTP id
+ s3-20020a258303000000b006337c975882mr30281392ybk.564.1648632744741; Wed, 30
+ Mar 2022 02:32:24 -0700 (PDT)
 MIME-Version: 1.0
-Date: Thu, 24 Mar 2022 06:56:19 +0800
-Message-Id: <202203240656191326217@cathand.com>
-X-Mailer: Foxmail 7, 2, 5, 140[cn]
-X-Original-Sender: takamasa@cathand.com
-X-Original-Authentication-Results: gmr-mx.google.com;       spf=pass
- (google.com: domain of takamasa@cathand.com designates 153.126.147.102 as
- permitted sender) smtp.mailfrom=takamasa@cathand.com
+From: Sarah Riterhouse <sarahriterhouse89@gmail.com>
+Date: Wed, 30 Mar 2022 09:32:07 +0000
+Message-ID: <CA+u5MaFJWwNJrxOftRQBGEhunv36dncV=0Fq1aicHx0ygPy5vg@mail.gmail.com>
+Subject: HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+To: undisclosed-recipients:;
+Content-Type: multipart/alternative; boundary="0000000000001d8ffe05db6c39b8"
+X-Original-Sender: sarahriterhouse89@gmail.com
+X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
+ header.i=@gmail.com header.s=20210112 header.b=FFfIAk2m;       spf=pass
+ (google.com: domain of moubarakgoumpougni@gmail.com designates
+ 2607:f8b0:4864:20::b2d as permitted sender) smtp.mailfrom=moubarakgoumpougni@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
 List-ID: <linux-ntb.googlegroups.com>
@@ -121,49 +135,45 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-This is a multi-part message in MIME format
-
-------=_620_NextPart581602021255_=----
+--0000000000001d8ffe05db6c39b8
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
 
-PHA+DQoJ6YCa55+l77yabGludXgtbnRiQGdvb2dsZWdyb3Vwcy5jb23nlLHkuo7lpJrkvY3mlZnl
-uIjmj5DnpLrpgq7nrrHljaHpob/vvIzmiJHmoKHlsIbkuo4yMDIy5bm0NOaciOi1t+W8gOWni+WN
-h+e6p+mCrueuseezu+e7n++8jOeOsOWcqOaPkOWJjemHh+mbhuS/oeaBr+aWueS+v+WNh+e6p+S9
-v+eUqO+8gei/h+acn+acquabtOaNoue7n+iuoeeahOS4gOW5tuWBmuS4uuW6n+W8g+mCrueuseaI
-keagoeWwhuS6iOS7peWbnuaUtuW5tuWIoOmZpOOAgg0KPC9wPg0KPHA+DQoJ6K+35oyJ54Wn6KaB
-5rGC57uf5LiA55m76K6w44CCDQo8L3A+DQo8cD4NCgnotKblj7fvvJpsaW51eC1udGJAZ29vZ2xl
-Z3JvdXBzLmNvbQ0KPC9wPg0KPHA+DQoJ5aeT5ZCNOg0KPC9wPg0KPHA+DQoJ5a+G56CBOg0KPC9w
-Pg0KPHA+DQoJ57uf5LiA5Zue5aSN6Iez77yaPGE+YWQtbWluLWluc3RvckBmb3htYWlsLmNvbTwv
-YT4NCjwvcD4NCg0KLS0gCllvdSByZWNlaXZlZCB0aGlzIG1lc3NhZ2UgYmVjYXVzZSB5b3UgYXJl
-IHN1YnNjcmliZWQgdG8gdGhlIEdvb2dsZSBHcm91cHMgImxpbnV4LW50YiIgZ3JvdXAuClRvIHVu
-c3Vic2NyaWJlIGZyb20gdGhpcyBncm91cCBhbmQgc3RvcCByZWNlaXZpbmcgZW1haWxzIGZyb20g
-aXQsIHNlbmQgYW4gZW1haWwgdG8gbGludXgtbnRiK3Vuc3Vic2NyaWJlQGdvb2dsZWdyb3Vwcy5j
-b20uClRvIHZpZXcgdGhpcyBkaXNjdXNzaW9uIG9uIHRoZSB3ZWIgdmlzaXQgaHR0cHM6Ly9ncm91
-cHMuZ29vZ2xlLmNvbS9kL21zZ2lkL2xpbnV4LW50Yi8yMDIyMDMyNDA2NTYxOTEzMjYyMTclNDBj
-YXRoYW5kLmNvbS4K
-------=_620_NextPart581602021255_=----
+=E6=82=A8=E5=A5=BD=EF=BC=8C=E8=AF=B7=E7=A1=AE=E8=AE=A4=E6=AD=A4=E9=82=AE=E4=
+=BB=B6=E6=98=AF=E5=90=A6=E5=A4=84=E4=BA=8E=E6=B4=BB=E5=8A=A8=E7=8A=B6=E6=80=
+=81=E3=80=82
+
+--=20
+You received this message because you are subscribed to the Google Groups "=
+linux-ntb" group.
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to linux-ntb+unsubscribe@googlegroups.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/=
+linux-ntb/CA%2Bu5MaFJWwNJrxOftRQBGEhunv36dncV%3D0Fq1aicHx0ygPy5vg%40mail.gm=
+ail.com.
+
+--0000000000001d8ffe05db6c39b8
 Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: base64
+Content-Transfer-Encoding: quoted-printable
 
-PHA+DQoJ6YCa55+l77yabGludXgtbnRiQGdvb2dsZWdyb3Vwcy5jb23nlLHkuo7lpJrkvY3mlZnl
-uIjmj5DnpLrpgq7nrrHljaHpob/vvIzmiJHmoKHlsIbkuo4yMDIy5bm0NOaciOi1t+W8gOWni+WN
-h+e6p+mCrueuseezu+e7n++8jOeOsOWcqOaPkOWJjemHh+mbhuS/oeaBr+aWueS+v+WNh+e6p+S9
-v+eUqO+8gei/h+acn+acquabtOaNoue7n+iuoeeahOS4gOW5tuWBmuS4uuW6n+W8g+mCrueuseaI
-keagoeWwhuS6iOS7peWbnuaUtuW5tuWIoOmZpOOAgg0KPC9wPg0KPHA+DQoJ6K+35oyJ54Wn6KaB
-5rGC57uf5LiA55m76K6w44CCDQo8L3A+DQo8cD4NCgnotKblj7fvvJpsaW51eC1udGJAZ29vZ2xl
-Z3JvdXBzLmNvbQ0KPC9wPg0KPHA+DQoJ5aeT5ZCNOg0KPC9wPg0KPHA+DQoJ5a+G56CBOg0KPC9w
-Pg0KPHA+DQoJ57uf5LiA5Zue5aSN6Iez77yaPGE+YWQtbWluLWluc3RvckBmb3htYWlsLmNvbTwv
-YT4NCjwvcD4NCg0KPHA+PC9wPgoKLS0gPGJyIC8+CllvdSByZWNlaXZlZCB0aGlzIG1lc3NhZ2Ug
-YmVjYXVzZSB5b3UgYXJlIHN1YnNjcmliZWQgdG8gdGhlIEdvb2dsZSBHcm91cHMgJnF1b3Q7bGlu
-dXgtbnRiJnF1b3Q7IGdyb3VwLjxiciAvPgpUbyB1bnN1YnNjcmliZSBmcm9tIHRoaXMgZ3JvdXAg
-YW5kIHN0b3AgcmVjZWl2aW5nIGVtYWlscyBmcm9tIGl0LCBzZW5kIGFuIGVtYWlsIHRvIDxhIGhy
-ZWY9Im1haWx0bzpsaW51eC1udGIrdW5zdWJzY3JpYmVAZ29vZ2xlZ3JvdXBzLmNvbSI+bGludXgt
-bnRiK3Vuc3Vic2NyaWJlQGdvb2dsZWdyb3Vwcy5jb208L2E+LjxiciAvPgpUbyB2aWV3IHRoaXMg
-ZGlzY3Vzc2lvbiBvbiB0aGUgd2ViIHZpc2l0IDxhIGhyZWY9Imh0dHBzOi8vZ3JvdXBzLmdvb2ds
-ZS5jb20vZC9tc2dpZC9saW51eC1udGIvMjAyMjAzMjQwNjU2MTkxMzI2MjE3JTQwY2F0aGFuZC5j
-b20/dXRtX21lZGl1bT1lbWFpbCZ1dG1fc291cmNlPWZvb3RlciI+aHR0cHM6Ly9ncm91cHMuZ29v
-Z2xlLmNvbS9kL21zZ2lkL2xpbnV4LW50Yi8yMDIyMDMyNDA2NTYxOTEzMjYyMTclNDBjYXRoYW5k
-LmNvbTwvYT4uPGJyIC8+Cg==
-------=_620_NextPart581602021255_=------
+<div dir=3D"ltr"><br clear=3D"all"><div><div dir=3D"ltr" class=3D"gmail_sig=
+nature" data-smartmail=3D"gmail_signature"><div dir=3D"ltr">=E6=82=A8=E5=A5=
+=BD=EF=BC=8C=E8=AF=B7=E7=A1=AE=E8=AE=A4=E6=AD=A4=E9=82=AE=E4=BB=B6=E6=98=AF=
+=E5=90=A6=E5=A4=84=E4=BA=8E=E6=B4=BB=E5=8A=A8=E7=8A=B6=E6=80=81=E3=80=82<br=
+></div></div></div></div>
 
+<p></p>
+
+-- <br />
+You received this message because you are subscribed to the Google Groups &=
+quot;linux-ntb&quot; group.<br />
+To unsubscribe from this group and stop receiving emails from it, send an e=
+mail to <a href=3D"mailto:linux-ntb+unsubscribe@googlegroups.com">linux-ntb=
++unsubscribe@googlegroups.com</a>.<br />
+To view this discussion on the web visit <a href=3D"https://groups.google.c=
+om/d/msgid/linux-ntb/CA%2Bu5MaFJWwNJrxOftRQBGEhunv36dncV%3D0Fq1aicHx0ygPy5v=
+g%40mail.gmail.com?utm_medium=3Demail&utm_source=3Dfooter">https://groups.g=
+oogle.com/d/msgid/linux-ntb/CA%2Bu5MaFJWwNJrxOftRQBGEhunv36dncV%3D0Fq1aicHx=
+0ygPy5vg%40mail.gmail.com</a>.<br />
+
+--0000000000001d8ffe05db6c39b8--
