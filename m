@@ -1,33 +1,33 @@
-Return-Path: <linux-ntb+bncBC4LXIPCY4NRBWEH4KLQMGQEFJHCPAQ@googlegroups.com>
+Return-Path: <linux-ntb+bncBC4LXIPCY4NRBDMC4OLQMGQEQPVZJWA@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x23b.google.com (mail-lj1-x23b.google.com [IPv6:2a00:1450:4864:20::23b])
-	by mail.lfdr.de (Postfix) with ESMTPS id CF44B591E5E
-	for <lists+linux-ntb@lfdr.de>; Sun, 14 Aug 2022 07:10:49 +0200 (CEST)
-Received: by mail-lj1-x23b.google.com with SMTP id by17-20020a05651c1a1100b0025e54bda6c7sf1444782ljb.22
-        for <lists+linux-ntb@lfdr.de>; Sat, 13 Aug 2022 22:10:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1660453849; cv=pass;
+Received: from mail-lj1-x23a.google.com (mail-lj1-x23a.google.com [IPv6:2a00:1450:4864:20::23a])
+	by mail.lfdr.de (Postfix) with ESMTPS id 524CF591F48
+	for <lists+linux-ntb@lfdr.de>; Sun, 14 Aug 2022 11:31:59 +0200 (CEST)
+Received: by mail-lj1-x23a.google.com with SMTP id q5-20020a2e84c5000000b0025ec9ff93c8sf1545248ljh.15
+        for <lists+linux-ntb@lfdr.de>; Sun, 14 Aug 2022 02:31:59 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1660469518; cv=pass;
         d=google.com; s=arc-20160816;
-        b=PkcLOyJn1kyPOSldZb11PypCFlYizvEc4tF3tBtCDUuPFwC4ITrRVbeDG3lNFNOyoa
-         s7cJQA9gR8xoq9XNl3bVH/NSgm4799P2ICLDLwhQE2tiw00eihwOUXpkHMS4U/+QF401
-         uTBa78aGO1uzcIjkoojYcT13ahjoFQtgHp3v8NMFUlNiITfx8UfMuNS8+TLhmHqksi00
-         8Vh8XUStyvL8HY/ECNoNutNQnH35eTn2NjqVADSc+VE1oM/KwOUtcQlwm9Y2uryagj4x
-         ADoUSy4zztopZUFQ7GqepcAUqB47dHaKaddEXJg0PIl0UrXLZg5PVKf4GZbeRUoH+wjQ
-         Hw5A==
+        b=nhGtCgRLxyOHdv6d25qj+HL03GJtEsAY5meAT1vos9TT5GiTDJTib1zi3l4N5XTCiw
+         Jw0NqOBjUYXNmeRmQqZMWaZ6FoNxC+gTCWOKZYZFFiYP3x6bkrkiQkEf0nJe3AHi/QGZ
+         to6ZG9bTHqM3roUDVuOC4Q5/Kegts2l+GcdVNkwTdX9SqT9xpBe7PtT253z/ACWBHveL
+         0lEyOAZTWDuuodliIxnsaWtk4tCf/UxIblrSWoWOAVM8kunQbhM59ZFzkjNajR+5SFwn
+         oPGAjkXJSjrrO98FispxO4cwghXQtfS7DW7MiTuTtpm+4M6wvzv3hdmlKPdZGu29h7bN
+         TPow==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-disposition:mime-version
          :message-id:subject:cc:to:from:date:sender:dkim-signature;
-        bh=mS77iRR52okfI9Ow3IpTn9doi92KdQMH2nKPe3WGKwU=;
-        b=Zy+v9rbvb8m+y6oSJY6/haCBxaJZ56Iv0Y6rh3jMi9ddAxTwSvX8PTKuuU6OuqYLGd
-         gKYWduqjscBfzV5Qw61y0y5D7CbBW4FIfUf7wC/I1H6U92+fK4mSBAuSreM/O6G6eBNT
-         oCVD7h61yIsn/HWWUWg7HHJqkN/d+UVpCL09yUz9GAauX+dmMNpYd2kaciHAWPJD1c7X
-         c+ez3nqNPf14cBJPXWUccZ6Gbpn4v3c/kGZP/TWywms1mupOIbgy/QCG9Jbuz9PDMyjc
-         57ZhebWjMIty+VrhJltoD0fJw/XFIYzgLHN30TVSPLZ1tV/h/ZYte54TWOtl6zTwZ7Gj
-         57WA==
+        bh=G21nyFgnpRADgsWlVi+QH79oM5tWcCZbKJ796sScfcs=;
+        b=Dg8ZFKcEICcZYNam2H4jbaPgfld+7rEr5+1UIoQ6sdxje3qJeLg/RPzn8nnHBTTUlQ
+         t38EhbK65kevT/XdK6+YL8OUNf5vhpGBSKyhi0GUiw3eIRxAXczM9rv3SzizcAi4QREa
+         17eyxn6U3vnjH9BhkN7u78mXuY6efS4xF3Bh1+WJhCjJ2yCwfLgpPMQvyuDyla/9ztcP
+         YUBhEtln49SnSBflwPBBG+GPfSfrXyhkmTKoL3c1Rz+Gfqdsdsr9xf/o7KFXfA8GDZIJ
+         7qK7sqNux8n7mMtKCXdkngvsqnsrVF6HGisNsQZXknghJaA1Y1FB5k3wgqbzgB/a8U0+
+         bT2w==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=XBsXexBp;
-       spf=pass (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=lkp@intel.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=dbb1eG5s;
+       spf=pass (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=lkp@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :list-id:mailing-list:precedence:x-original-authentication-results
          :x-original-sender:content-disposition:mime-version:message-id
          :subject:cc:to:from:date:sender:from:to:cc;
-        bh=mS77iRR52okfI9Ow3IpTn9doi92KdQMH2nKPe3WGKwU=;
-        b=O79v3HadtJth3xTmhkJnRAK5EQGdunUNOvIn4QhuBm5o+R3jZNNhno+0RYHgEWVtKt
-         2RiVjcH66BdBlYrgRai3I1odowhl3Q1S65ufxg+ReRxpGRLRJrmcvVwnLj1NIr/E6CX3
-         dSiIaHllX/YRYzvdc6VUc/iAC6grbSDbysbJ3uoUcbtQE0CZ8R7wgsmteLP7Ud0j8B+I
-         y+3LEkpVJqF4ieEMTOATP2rB2jGgOeCg+keaD2hXsHVKSzqEW0/JhQaBnCA0IS/w4KLh
-         3gyzW4C6NmOEhasatZ/KnsJ//fvyskxcg0u/Uia2u5GtBfTiFzMcObjwbnTtFPEHN8sE
-         eQ1w==
+        bh=G21nyFgnpRADgsWlVi+QH79oM5tWcCZbKJ796sScfcs=;
+        b=XRppdEWmumHGeElCysuG/tEr16GU9AT4zorXgJNDKO1pjx1O3FwjoQOknfk9kt0ylo
+         UWMUCP8EY05ReKWAkZ7hxa+1sqCgXn4kpDEC644m/rdu+/tnoHifbW4wYDoh85QCE1JR
+         9FQdOyVoIDrGn3iBTCZH8DQvMYAq832E70GaxVX9lwFHtZ+CDcphBdNj+qfOvL8chjj2
+         f3CCfF2ewNbZuebF4GDCM3xjWwCAm2Zq2by5fF52Htd3KkngQE7Dl3BqXjvCQT5Y7+Ca
+         kamxC2oMaxp+Dmo+aipSmx4qoRTyQH6eYdcT6n8A1wYvgqQcxJnDNoNXtdQ80DWqAyNf
+         S2Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
@@ -49,82 +49,82 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:x-original-sender
          :content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:sender:from:to:cc;
-        bh=mS77iRR52okfI9Ow3IpTn9doi92KdQMH2nKPe3WGKwU=;
-        b=0ZPobBe/aPQdpk10ttVYf72rsKKraYHzDVlsHzRTAfS9x7V+n7XDWn0QuseUqRsWPz
-         QkL3R3/EC0Uxt4cvS7LD1GqDDxLvP/9rkeZVmrKq3w6pASoCpexAmOcyOeMQIIxgSHPC
-         8l/bu+4eq9UiqwfIQqTA9tvp6w6OCue9B2bivb8GCGwMGHoO5KsHhVfGOjV05uQx1yab
-         gPLfedMPEBk+McDnSX+Qmp2HOUAG/QKXEkWSguJEe+X5SZl+ZllN/N2xsy4WQQwK5TEI
-         1gN3Pv1UUd9+kInE6NDPekeld6k6ddc1nf1plOVaEYB4pM9UpvCZqcAvpqiZ88cWcDS9
-         yiog==
+        bh=G21nyFgnpRADgsWlVi+QH79oM5tWcCZbKJ796sScfcs=;
+        b=HR4rIuULUiW6Weje8cOUeyt3uqoAnQqvdjaBFXVO7P893TRkiADlx/NtIMwRV6vvjB
+         kk5NumGL2K/fYYm1RQtqDJeyfaDRTmS+aufopY7v0zRDFU6fNK3QocfKQ7Or69+XNxNQ
+         Kh6BJ3Q8EVYoTTrNBOA9wiD/VSAKPngXZJiFXg68IfJWHwZSM6VG/o0D19tuetvXmXR3
+         Li/oWUWpQZuPkzV9YZFpZqAs3DL9BBrtzL4Ejw82oA9p9bIc/i6PWCkycQFNu3JKhCsT
+         3Oo+DKg4dzuB8Co0jRYGgVEwP7HWkzuUewqtZnuh4wSzVw3A+3i9nTo4x5t7A/NLzG/H
+         2iOA==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ACgBeo3KyZIs3B/dusH4PePsLl2nUYEKWH2lQzBnoB683yOTcEarhzJr
-	lpxSIGdF/bcF3vqJ2/XG/G0=
-X-Google-Smtp-Source: AA6agR75BL7vduBPsroEJKqUjojv5bLi3jyCINsA3qyIAVh+aQYS40zY2TKvdavvXbZ7so0vopXiDA==
-X-Received: by 2002:a05:6512:3288:b0:48a:e823:3390 with SMTP id p8-20020a056512328800b0048ae8233390mr3945622lfe.451.1660453849260;
-        Sat, 13 Aug 2022 22:10:49 -0700 (PDT)
+X-Gm-Message-State: ACgBeo1zM2SyFukVL6eed6/lvmPBNdvMG4/DOgN93vYps6U0Vbf/HIcy
+	McuvA6NFActbuZ0m8j/HDSI=
+X-Google-Smtp-Source: AA6agR5TAcwoXSGlzf16VgeAMb47MejtMtQ8+kv5abPwbrTxlrLbR2djdNgvBkr2SD6uYrC4g/m7Fg==
+X-Received: by 2002:a05:651c:1a1e:b0:25f:e7bd:6a4e with SMTP id by30-20020a05651c1a1e00b0025fe7bd6a4emr3688228ljb.362.1660469517780;
+        Sun, 14 Aug 2022 02:31:57 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a2e:9858:0:b0:25e:5272:6478 with SMTP id e24-20020a2e9858000000b0025e52726478ls1357524ljj.8.-pod-prod-gmail;
- Sat, 13 Aug 2022 22:10:47 -0700 (PDT)
-X-Received: by 2002:a05:651c:19a7:b0:25f:e198:a9be with SMTP id bx39-20020a05651c19a700b0025fe198a9bemr2992620ljb.309.1660453847890;
-        Sat, 13 Aug 2022 22:10:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660453847; cv=none;
+Received: by 2002:a2e:8958:0:b0:25f:dcd4:53b4 with SMTP id b24-20020a2e8958000000b0025fdcd453b4ls1399656ljk.3.-pod-prod-gmail;
+ Sun, 14 Aug 2022 02:31:56 -0700 (PDT)
+X-Received: by 2002:a2e:7007:0:b0:261:6dd1:e0f5 with SMTP id l7-20020a2e7007000000b002616dd1e0f5mr3603281ljc.394.1660469516353;
+        Sun, 14 Aug 2022 02:31:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660469516; cv=none;
         d=google.com; s=arc-20160816;
-        b=Olnt/zlM38v1ssVQDYUbLQoAnSfK/K/OaVarjovmru0V5mBC4xl0G6pTzsjUqSkkIe
-         Fhh2GQ2bPKQq3ABHW/nW44q+VaOhxAdJU7y04w4y/czGfVIMiLz/WrmtMuQsN6dUHdDA
-         599Hl6t0/FschfZWzYZtzxPaBYob82JE0OIOvI+3PoU3waQk8McK3WR80bsvBJyvyBud
-         yeFjMG5iE1gEuwgXdp4zs+V/z0R8VdvEoHRCy3G2GPgy29PacUr1wCM/ZqLY5jNynblr
-         sq/oEi7BsoxZf5tWWOZgQt+n7ItYPyb5d7kS+RbDd2+M88qTEh4NHuT7CjYiT2mT4M66
-         cPvw==
+        b=VRI8l/A/nWp006cBS9b2K9WbjeGaJs7FyNvjkPCHb1lYMkguSu4Ku+/La3gHyz5ydb
+         2uuYEqQVSG2mrVt5sHVc2mz8ubtdWiBHkkIBqvo5XKVXWtqm4YTQuCLb2Cjo4APBIDam
+         dWnJADLdC0XgB42lXmMZO9OTp/NMO+kup93VkihPv1rVXu5pC6GZD7Vy3zBOMS0kGJa6
+         Vc6jjUH/RthiL1HCGPI3iaBw5NI7kucIVvvd1whTXso/OmycfIIuschAVWp+/7BHqtpN
+         bRREcHkfNIQbH5KHziX+ZbVV6z2BFpnmJAJ7EE+QJepqNcctCa+B8JWOF0Jfdiw8Y3fR
+         nukA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=JMZ3ZOaqs+GMebuUabLtCSdicrtzUnjpZ2c1KuQJ1SM=;
-        b=Txw5ktkTdP2y6XI8ZeOf+rJPobAwmZerSXore+ggptu/9XcNKK1to7+iQhV9boO87A
-         ZLw3UKAYYTWNmJaOW3+Ky5wrMrq9IEn8Rrs3YNHJ32E9cpYurdOjLaLqlRLeFDnVETRh
-         fYLr6d8iI0+28syxhuBH2E/ZEeoyJXqBobBX50yh68yoqmbdmQ/awKX+SvckkWgwRnhO
-         CqJ6r0SeW97t+OelOSzb9AHGbzRBigAx57A71bSGnjl6Gtvb0A46fVFoaMbrfV9Ne5wS
-         9cLCkAe7esGAeq4ekfnsGnlamVvgfq1RgUP9LO+c6IS2Yly2tq92wCsbTJ8xCwUDYGp5
-         x10w==
+        bh=ZHVyzozDap1t2bAkmXGsbor82nbQ0H5jMrnxWD74xFg=;
+        b=OD12Rf5frp0mS+f0/GxenBvwyF8udzzBMsYJnLiiDaHdrlbnKR8E2BABGS/1OdQ45f
+         CER0fLgRERkaOpG41EKCsSMu2Lrnl4hEm2367e9p6qfBT25IibLYqOqMozmwL6x0e3ai
+         ALaWZ+EjaQLahjDNwxmygUO1PLhUXzxA+s6YySlbJxzHHI0T/Y3Bqulv/KcSt4x3x9FF
+         FgR4G1tJOZCmUhutvTU2QIGV9Jrje9VyQTtxcs/dK40lqh9H0/C84fnhTcD7V6mj0X7S
+         KyN/gIHN+EYhMw5Pzvv82Vk1KRhUYbSXSfVQ174z7AlX2uAwZm21EGEpGRCtG3a3KiWO
+         LOGg==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=XBsXexBp;
-       spf=pass (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=lkp@intel.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=dbb1eG5s;
+       spf=pass (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=lkp@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga14.intel.com (mga14.intel.com. [192.55.52.115])
-        by gmr-mx.google.com with ESMTPS id t1-20020a2e8e61000000b0026187cf0f12si4803ljk.8.2022.08.13.22.10.46
+Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
+        by gmr-mx.google.com with ESMTPS id v5-20020a05651203a500b0048b12871da5si532432lfp.4.2022.08.14.02.31.54
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Aug 2022 22:10:47 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted sender) client-ip=192.55.52.115;
-X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="291796393"
+        Sun, 14 Aug 2022 02:31:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
+X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="292607368"
 X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; 
-   d="scan'208";a="291796393"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2022 22:10:44 -0700
+   d="scan'208";a="292607368"
+Received: from orsmga006.jf.intel.com ([10.7.209.51])
+  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2022 02:31:50 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; 
-   d="scan'208";a="666291699"
+   d="scan'208";a="582556787"
 Received: from lkp-server02.sh.intel.com (HELO 8745164cafc7) ([10.239.97.151])
-  by fmsmga008.fm.intel.com with ESMTP; 13 Aug 2022 22:10:43 -0700
+  by orsmga006.jf.intel.com with ESMTP; 14 Aug 2022 02:31:48 -0700
 Received: from kbuild by 8745164cafc7 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1oN5ta-0002WN-1p;
-	Sun, 14 Aug 2022 05:10:42 +0000
-Date: Sun, 14 Aug 2022 13:10:39 +0800
+	id 1oN9yF-0002hV-2j;
+	Sun, 14 Aug 2022 09:31:47 +0000
+Date: Sun, 14 Aug 2022 17:31:30 +0800
 From: kernel test robot <lkp@intel.com>
 To: Frank Li <Frank.Li@nxp.com>
 Cc: kbuild-all@lists.01.org, linux-ntb@googlegroups.com,
 	linux-kernel@vger.kernel.org, Jon Mason <jdmason@kudzu.us>
 Subject: [jonmason-ntb:ntb-next-hacking 16/18]
- drivers/irqchip/irq-imx-mu-msi.c:142:19: warning: excess elements in struct
- initializer
-Message-ID: <202208141350.BoRK1ikN-lkp@intel.com>
+ drivers/irqchip/irq-imx-mu-msi.c:138:15: error: variable 'its_pmsi_ops' has
+ initializer but incomplete type
+Message-ID: <202208141740.eJRBGaw2-lkp@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
 X-Original-Sender: lkp@intel.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@intel.com header.s=Intel header.b=XBsXexBp;       spf=pass
- (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted
+ header.i=@intel.com header.s=Intel header.b=dbb1eG5s;       spf=pass
+ (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted
  sender) smtp.mailfrom=lkp@intel.com;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=intel.com
 Precedence: list
@@ -142,8 +142,8 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 tree:   https://github.com/jonmason/ntb ntb-next-hacking
 head:   d90921d21692b59734d2452efea346217a526f44
 commit: 1db755129d2544df84dc197095c14170cfa419c7 [16/18] irqchip: imx mu worked as msi controller
-config: loongarch-allyesconfig (https://download.01.org/0day-ci/archive/20220814/202208141350.BoRK1ikN-lkp@intel.com/config)
-compiler: loongarch64-linux-gcc (GCC) 12.1.0
+config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20220814/202208141740.eJRBGaw2-lkp@intel.com/config)
+compiler: sh4-linux-gcc (GCC) 12.1.0
 reproduce (this is a W=1 build):
         wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
         chmod +x ~/bin/make.cross
@@ -153,43 +153,43 @@ reproduce (this is a W=1 build):
         git checkout 1db755129d2544df84dc197095c14170cfa419c7
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=loongarch SHELL=/bin/bash drivers/irqchip/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh SHELL=/bin/bash drivers/
 
 If you fix the issue, kindly add following tag where applicable
 Reported-by: kernel test robot <lkp@intel.com>
 
-All warnings (new ones prefixed by >>):
+All errors (new ones prefixed by >>):
 
-   drivers/irqchip/irq-imx-mu-msi.c:138:15: error: variable 'its_pmsi_ops' has initializer but incomplete type
+>> drivers/irqchip/irq-imx-mu-msi.c:138:15: error: variable 'its_pmsi_ops' has initializer but incomplete type
      138 | static struct msi_domain_ops its_pmsi_ops = {
          |               ^~~~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:141:15: error: variable 'imx_mu_msi_domain_info' has initializer but incomplete type
+>> drivers/irqchip/irq-imx-mu-msi.c:141:15: error: variable 'imx_mu_msi_domain_info' has initializer but incomplete type
      141 | static struct msi_domain_info imx_mu_msi_domain_info = {
          |               ^~~~~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:142:10: error: 'struct msi_domain_info' has no member named 'flags'
+>> drivers/irqchip/irq-imx-mu-msi.c:142:10: error: 'struct msi_domain_info' has no member named 'flags'
      142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
          |          ^~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:142:20: error: 'MSI_FLAG_USE_DEF_DOM_OPS' undeclared here (not in a function)
+>> drivers/irqchip/irq-imx-mu-msi.c:142:20: error: 'MSI_FLAG_USE_DEF_DOM_OPS' undeclared here (not in a function)
      142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
          |                    ^~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:143:20: error: 'MSI_FLAG_USE_DEF_CHIP_OPS' undeclared here (not in a function)
+>> drivers/irqchip/irq-imx-mu-msi.c:143:20: error: 'MSI_FLAG_USE_DEF_CHIP_OPS' undeclared here (not in a function)
      143 |                    MSI_FLAG_USE_DEF_CHIP_OPS |
          |                    ^~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:144:20: error: 'MSI_FLAG_PCI_MSIX' undeclared here (not in a function)
+>> drivers/irqchip/irq-imx-mu-msi.c:144:20: error: 'MSI_FLAG_PCI_MSIX' undeclared here (not in a function)
      144 |                    MSI_FLAG_PCI_MSIX),
          |                    ^~~~~~~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:142:19: warning: excess elements in struct initializer
+   drivers/irqchip/irq-imx-mu-msi.c:142:19: warning: excess elements in struct initializer
      142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
          |                   ^
    drivers/irqchip/irq-imx-mu-msi.c:142:19: note: (near initialization for 'imx_mu_msi_domain_info')
-   drivers/irqchip/irq-imx-mu-msi.c:145:10: error: 'struct msi_domain_info' has no member named 'ops'
+>> drivers/irqchip/irq-imx-mu-msi.c:145:10: error: 'struct msi_domain_info' has no member named 'ops'
      145 |         .ops    = &its_pmsi_ops,
          |          ^~~
    drivers/irqchip/irq-imx-mu-msi.c:145:19: warning: excess elements in struct initializer
      145 |         .ops    = &its_pmsi_ops,
          |                   ^
    drivers/irqchip/irq-imx-mu-msi.c:145:19: note: (near initialization for 'imx_mu_msi_domain_info')
-   drivers/irqchip/irq-imx-mu-msi.c:146:10: error: 'struct msi_domain_info' has no member named 'chip'
+>> drivers/irqchip/irq-imx-mu-msi.c:146:10: error: 'struct msi_domain_info' has no member named 'chip'
      146 |         .chip   = &imx_mu_msi_irq_chip,
          |          ^~~~
    drivers/irqchip/irq-imx-mu-msi.c:146:19: warning: excess elements in struct initializer
@@ -197,38 +197,41 @@ All warnings (new ones prefixed by >>):
          |                   ^
    drivers/irqchip/irq-imx-mu-msi.c:146:19: note: (near initialization for 'imx_mu_msi_domain_info')
    drivers/irqchip/irq-imx-mu-msi.c: In function 'imx_mu_msi_domain_irq_alloc':
-   drivers/irqchip/irq-imx-mu-msi.c:179:9: error: unknown type name 'msi_alloc_info_t'
+>> drivers/irqchip/irq-imx-mu-msi.c:179:9: error: unknown type name 'msi_alloc_info_t'
      179 |         msi_alloc_info_t *info = args;
          |         ^~~~~~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:197:41: error: request for member 'desc' in something not a structure or union
+>> drivers/irqchip/irq-imx-mu-msi.c:197:41: error: request for member 'desc' in something not a structure or union
      197 |         err = iommu_dma_prepare_msi(info->desc, msi_data->msiir_addr + pos * 4);
          |                                         ^~
    drivers/irqchip/irq-imx-mu-msi.c: In function 'imx_mu_msi_domains_init':
-   drivers/irqchip/irq-imx-mu-msi.c:262:32: error: implicit declaration of function 'platform_msi_create_irq_domain' [-Werror=implicit-function-declaration]
+>> drivers/irqchip/irq-imx-mu-msi.c:262:32: error: implicit declaration of function 'platform_msi_create_irq_domain' [-Werror=implicit-function-declaration]
      262 |         msi_data->msi_domain = platform_msi_create_irq_domain(
          |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:262:30: warning: assignment to 'struct irq_domain *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+   drivers/irqchip/irq-imx-mu-msi.c:262:30: warning: assignment to 'struct irq_domain *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
      262 |         msi_data->msi_domain = platform_msi_create_irq_domain(
          |                              ^
    drivers/irqchip/irq-imx-mu-msi.c: At top level:
-   drivers/irqchip/irq-imx-mu-msi.c:138:30: error: storage size of 'its_pmsi_ops' isn't known
+>> drivers/irqchip/irq-imx-mu-msi.c:138:30: error: storage size of 'its_pmsi_ops' isn't known
      138 | static struct msi_domain_ops its_pmsi_ops = {
          |                              ^~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:141:31: error: storage size of 'imx_mu_msi_domain_info' isn't known
+>> drivers/irqchip/irq-imx-mu-msi.c:141:31: error: storage size of 'imx_mu_msi_domain_info' isn't known
      141 | static struct msi_domain_info imx_mu_msi_domain_info = {
          |                               ^~~~~~~~~~~~~~~~~~~~~~
    cc1: some warnings being treated as errors
 
 
-vim +142 drivers/irqchip/irq-imx-mu-msi.c
+vim +/its_pmsi_ops +138 drivers/irqchip/irq-imx-mu-msi.c
 
+   137	
+ > 138	static struct msi_domain_ops its_pmsi_ops = {
+   139	};
    140	
-   141	static struct msi_domain_info imx_mu_msi_domain_info = {
+ > 141	static struct msi_domain_info imx_mu_msi_domain_info = {
  > 142		.flags	= (MSI_FLAG_USE_DEF_DOM_OPS |
-   143			   MSI_FLAG_USE_DEF_CHIP_OPS |
-   144			   MSI_FLAG_PCI_MSIX),
-   145		.ops	= &its_pmsi_ops,
-   146		.chip	= &imx_mu_msi_irq_chip,
+ > 143			   MSI_FLAG_USE_DEF_CHIP_OPS |
+ > 144			   MSI_FLAG_PCI_MSIX),
+ > 145		.ops	= &its_pmsi_ops,
+ > 146		.chip	= &imx_mu_msi_irq_chip,
    147	};
    148	
    149	static void imx_mu_msi_compose_msg(struct irq_data *data, struct msi_msg *msg)
@@ -261,7 +264,7 @@ vim +142 drivers/irqchip/irq-imx-mu-msi.c
    176						void *args)
    177	{
    178		struct imx_mu_msi *msi_data = domain->host_data;
-   179		msi_alloc_info_t *info = args;
+ > 179		msi_alloc_info_t *info = args;
    180		int pos, err = 0;
    181	
    182		pm_runtime_get_sync(&msi_data->pdev->dev);
@@ -279,7 +282,7 @@ vim +142 drivers/irqchip/irq-imx-mu-msi.c
    194		if (err)
    195			return err;
    196	
-   197		err = iommu_dma_prepare_msi(info->desc, msi_data->msiir_addr + pos * 4);
+ > 197		err = iommu_dma_prepare_msi(info->desc, msi_data->msiir_addr + pos * 4);
    198		if (err)
    199			return err;
    200	
@@ -366,4 +369,4 @@ https://01.org/lkp
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/202208141350.BoRK1ikN-lkp%40intel.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/202208141740.eJRBGaw2-lkp%40intel.com.
