@@ -1,32 +1,32 @@
-Return-Path: <linux-ntb+bncBC4LXIPCY4NRBCON4GLQMGQEG7ISB2A@googlegroups.com>
+Return-Path: <linux-ntb+bncBC4LXIPCY4NRBWEH4KLQMGQEFJHCPAQ@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-wm1-x33b.google.com (mail-wm1-x33b.google.com [IPv6:2a00:1450:4864:20::33b])
-	by mail.lfdr.de (Postfix) with ESMTPS id CFF47591DA8
-	for <lists+linux-ntb@lfdr.de>; Sun, 14 Aug 2022 05:05:45 +0200 (CEST)
-Received: by mail-wm1-x33b.google.com with SMTP id v130-20020a1cac88000000b003a4f057ed9fsf2555237wme.7
-        for <lists+linux-ntb@lfdr.de>; Sat, 13 Aug 2022 20:05:45 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1660446345; cv=pass;
+Received: from mail-lj1-x23b.google.com (mail-lj1-x23b.google.com [IPv6:2a00:1450:4864:20::23b])
+	by mail.lfdr.de (Postfix) with ESMTPS id CF44B591E5E
+	for <lists+linux-ntb@lfdr.de>; Sun, 14 Aug 2022 07:10:49 +0200 (CEST)
+Received: by mail-lj1-x23b.google.com with SMTP id by17-20020a05651c1a1100b0025e54bda6c7sf1444782ljb.22
+        for <lists+linux-ntb@lfdr.de>; Sat, 13 Aug 2022 22:10:49 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1660453849; cv=pass;
         d=google.com; s=arc-20160816;
-        b=LFjFKAO4sLx4Gomt9Z9DuXkplYTCLYKCLDTj/+QH7vnEkrZLahDkuTzyqRepzoeQQE
-         eMNqMuyBWfY3v1js5idMoOSmYFm0aRQyOK6B6T/oiY+QOh3yErfZ+mzWuoX4mNMnbzDj
-         tnyObDFiqunb9OI1YAdVUHNNRAtcxHwSE3RQymGyi8E2o9gGy4gJ6QdH+Xu7rrs87/9y
-         7e4lLE345vQOMKFcBYQJcM7q3zZKUmZHxDVNKvo5GP6J6WAZrl7H2nE5cMm/Vvlxj4Fb
-         aMW9Dg+HPGOBGU8mygpBqUEUZzC4c0zBdvogdT6tJwBUCGCgIZbZgz3L02NQQ+FaZZVa
-         H5dg==
+        b=PkcLOyJn1kyPOSldZb11PypCFlYizvEc4tF3tBtCDUuPFwC4ITrRVbeDG3lNFNOyoa
+         s7cJQA9gR8xoq9XNl3bVH/NSgm4799P2ICLDLwhQE2tiw00eihwOUXpkHMS4U/+QF401
+         uTBa78aGO1uzcIjkoojYcT13ahjoFQtgHp3v8NMFUlNiITfx8UfMuNS8+TLhmHqksi00
+         8Vh8XUStyvL8HY/ECNoNutNQnH35eTn2NjqVADSc+VE1oM/KwOUtcQlwm9Y2uryagj4x
+         ADoUSy4zztopZUFQ7GqepcAUqB47dHaKaddEXJg0PIl0UrXLZg5PVKf4GZbeRUoH+wjQ
+         Hw5A==
 ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:content-disposition:mime-version
          :message-id:subject:cc:to:from:date:sender:dkim-signature;
-        bh=GG2+L18LK5XEpmBWVo1AIATD2aQP6iTx10zyMcYEos8=;
-        b=Spey0E6j+rnKfzRqhYJXIbFa+rcE1iiR8yTJMvubk2aD2n/LMNkT8isYEoc4B/r8jf
-         IjiiCT/Xfweg/s7173tjKS/4NhZA/hdqFnMGhAPutvP2y4fRybHYmg7nH0/QI4mxGWTw
-         YLPJTuPNUBPAwmku6e4zJHzox46LdVeTo0QYKdbwkDUoLVhqgXP4T9M8btw6Ac88J8Ox
-         Kiqdi4lr867RAGLNYnOnbShakbWXjJR48A/sMgruGczGYx8gG+2Z6YQKjbpgp6yuO6n3
-         CjuIz4OwO3aSSpg/12phK0CMiwGoJzMXfzs4ITd65G3A+8vgBxo+vKmFp0GrjTDRb9A8
-         Jr8A==
+        bh=mS77iRR52okfI9Ow3IpTn9doi92KdQMH2nKPe3WGKwU=;
+        b=Zy+v9rbvb8m+y6oSJY6/haCBxaJZ56Iv0Y6rh3jMi9ddAxTwSvX8PTKuuU6OuqYLGd
+         gKYWduqjscBfzV5Qw61y0y5D7CbBW4FIfUf7wC/I1H6U92+fK4mSBAuSreM/O6G6eBNT
+         oCVD7h61yIsn/HWWUWg7HHJqkN/d+UVpCL09yUz9GAauX+dmMNpYd2kaciHAWPJD1c7X
+         c+ez3nqNPf14cBJPXWUccZ6Gbpn4v3c/kGZP/TWywms1mupOIbgy/QCG9Jbuz9PDMyjc
+         57ZhebWjMIty+VrhJltoD0fJw/XFIYzgLHN30TVSPLZ1tV/h/ZYte54TWOtl6zTwZ7Gj
+         57WA==
 ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=fATmv9Ta;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=XBsXexBp;
        spf=pass (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=lkp@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
@@ -35,13 +35,13 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :list-id:mailing-list:precedence:x-original-authentication-results
          :x-original-sender:content-disposition:mime-version:message-id
          :subject:cc:to:from:date:sender:from:to:cc;
-        bh=GG2+L18LK5XEpmBWVo1AIATD2aQP6iTx10zyMcYEos8=;
-        b=DBOFcaiUtQYFPQkqQ10Uz01BpHUp22ZZyrtFnoGMDwaN2+vQ8H2tV6etOZlTaaGOD3
-         5ggOy/Akzj8puBsIhmj0rJXU/x3D/D7uYZR87W1VjdVnZBDpq0100SRszCo+vGox3NU0
-         6O7pMG42A2MP41XKrc6joPFmknK9291tVsROOBCWVtAVgZ/dCsbcNiX6t8qIArUAxm5B
-         A/42AQXNWRSC3VvDeL0nPsxXk6xt3QFqfcd8u40zNSZmtrTzqkXsMYZlZncs5KFDjl2x
-         iGde/jg7eT95n5S614UFoC7QV1dk97JH3DnprtE+zGZ4oKu0B/djq5NJS0j+MfHeqAr4
-         xfcQ==
+        bh=mS77iRR52okfI9Ow3IpTn9doi92KdQMH2nKPe3WGKwU=;
+        b=O79v3HadtJth3xTmhkJnRAK5EQGdunUNOvIn4QhuBm5o+R3jZNNhno+0RYHgEWVtKt
+         2RiVjcH66BdBlYrgRai3I1odowhl3Q1S65ufxg+ReRxpGRLRJrmcvVwnLj1NIr/E6CX3
+         dSiIaHllX/YRYzvdc6VUc/iAC6grbSDbysbJ3uoUcbtQE0CZ8R7wgsmteLP7Ud0j8B+I
+         y+3LEkpVJqF4ieEMTOATP2rB2jGgOeCg+keaD2hXsHVKSzqEW0/JhQaBnCA0IS/w4KLh
+         3gyzW4C6NmOEhasatZ/KnsJ//fvyskxcg0u/Uia2u5GtBfTiFzMcObjwbnTtFPEHN8sE
+         eQ1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
@@ -49,82 +49,81 @@ X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
          :x-original-authentication-results:x-original-sender
          :content-disposition:mime-version:message-id:subject:cc:to:from:date
          :x-gm-message-state:sender:from:to:cc;
-        bh=GG2+L18LK5XEpmBWVo1AIATD2aQP6iTx10zyMcYEos8=;
-        b=BD0Hn47nxDIB+ZN1QFrmug+rsRMwhSBcAQO3jua9O9iIWZnV1WANfOcBqdTrfvz1X6
-         oM+WRjUwj4UwY7W/4iPDcu/pjX44zTTflgNEf0n99dyCYKB7QiGbOs7d0C2L0AfR3LSK
-         ksLaTSw3ZPNE9OOoCMD0/fsdV0MXpFQ8E+JH71u3gAJ0iaLscVH73tgdyTK11TClC9Uf
-         XBTmGdNerYnE5St1haFrRxF1Osi/WzfIutNwhffZSWYyvfXbBa3D0sVA+TtP4sDNMa0w
-         t9Db9ZAYO6XE7Yh5ct+nG8cCHMUq6bsmFnYcQSM0Fpfbvhc2soWaKW7KGQ6pbHvOZi2e
-         F8vA==
+        bh=mS77iRR52okfI9Ow3IpTn9doi92KdQMH2nKPe3WGKwU=;
+        b=0ZPobBe/aPQdpk10ttVYf72rsKKraYHzDVlsHzRTAfS9x7V+n7XDWn0QuseUqRsWPz
+         QkL3R3/EC0Uxt4cvS7LD1GqDDxLvP/9rkeZVmrKq3w6pASoCpexAmOcyOeMQIIxgSHPC
+         8l/bu+4eq9UiqwfIQqTA9tvp6w6OCue9B2bivb8GCGwMGHoO5KsHhVfGOjV05uQx1yab
+         gPLfedMPEBk+McDnSX+Qmp2HOUAG/QKXEkWSguJEe+X5SZl+ZllN/N2xsy4WQQwK5TEI
+         1gN3Pv1UUd9+kInE6NDPekeld6k6ddc1nf1plOVaEYB4pM9UpvCZqcAvpqiZ88cWcDS9
+         yiog==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ACgBeo3k3dzbO2m4dACuGHauCO3BcJaRaI4efs4rBDynxOPiuNy+cc3M
-	X9l4ljhZ0v6QcD9eYs/AGug=
-X-Google-Smtp-Source: AA6agR5vMWInrul6MQpSGWKtw4Uaim+tViZd4qd7XOjqL4ZskNskqy5/hm2uR7aCTPrC1pC1Pw6nNA==
-X-Received: by 2002:a05:600c:4047:b0:3a5:452e:9117 with SMTP id j7-20020a05600c404700b003a5452e9117mr6313909wmm.117.1660446345278;
-        Sat, 13 Aug 2022 20:05:45 -0700 (PDT)
+X-Gm-Message-State: ACgBeo3KyZIs3B/dusH4PePsLl2nUYEKWH2lQzBnoB683yOTcEarhzJr
+	lpxSIGdF/bcF3vqJ2/XG/G0=
+X-Google-Smtp-Source: AA6agR75BL7vduBPsroEJKqUjojv5bLi3jyCINsA3qyIAVh+aQYS40zY2TKvdavvXbZ7so0vopXiDA==
+X-Received: by 2002:a05:6512:3288:b0:48a:e823:3390 with SMTP id p8-20020a056512328800b0048ae8233390mr3945622lfe.451.1660453849260;
+        Sat, 13 Aug 2022 22:10:49 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a05:600c:294:b0:3a5:22da:8671 with SMTP id
- 20-20020a05600c029400b003a522da8671ls2614498wmk.1.-pod-control-gmail; Sat, 13
- Aug 2022 20:05:44 -0700 (PDT)
-X-Received: by 2002:a05:600c:4f4f:b0:3a5:a530:4fd7 with SMTP id m15-20020a05600c4f4f00b003a5a5304fd7mr13030476wmq.36.1660446344300;
-        Sat, 13 Aug 2022 20:05:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660446344; cv=none;
+Received: by 2002:a2e:9858:0:b0:25e:5272:6478 with SMTP id e24-20020a2e9858000000b0025e52726478ls1357524ljj.8.-pod-prod-gmail;
+ Sat, 13 Aug 2022 22:10:47 -0700 (PDT)
+X-Received: by 2002:a05:651c:19a7:b0:25f:e198:a9be with SMTP id bx39-20020a05651c19a700b0025fe198a9bemr2992620ljb.309.1660453847890;
+        Sat, 13 Aug 2022 22:10:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1660453847; cv=none;
         d=google.com; s=arc-20160816;
-        b=omU2OakrPSc8eUbRF53ihbDRpf6Tnvj/7VAY8ePmp+Tsd1nl65+Ez413rNrbwKyiQW
-         e7htXaeDHLcuAgWtdNlHJDLDiELZQSC3dJl4Jcrd5OrS3dTMGEmtsWbr1dJrlke6jome
-         N7xkcmstm9o28Vjl/j4TVDlBaPEbnHKF4kEudRjQCjkImjsGOgImjpNn8U2FR2cIWc9M
-         hU2TWHdX8rQMRw01P7iwQcYJUTFschgLvUa9oQ4BwWQhruLg+P53mxVppSW92rAwdx+U
-         BNfrTHlPxK7T/N5H7yZF6JG1s3oTocGa4aIIDrAkCr7kjAEUY9xzY/K1IWxdzlhCgRgx
-         UkLw==
+        b=Olnt/zlM38v1ssVQDYUbLQoAnSfK/K/OaVarjovmru0V5mBC4xl0G6pTzsjUqSkkIe
+         Fhh2GQ2bPKQq3ABHW/nW44q+VaOhxAdJU7y04w4y/czGfVIMiLz/WrmtMuQsN6dUHdDA
+         599Hl6t0/FschfZWzYZtzxPaBYob82JE0OIOvI+3PoU3waQk8McK3WR80bsvBJyvyBud
+         yeFjMG5iE1gEuwgXdp4zs+V/z0R8VdvEoHRCy3G2GPgy29PacUr1wCM/ZqLY5jNynblr
+         sq/oEi7BsoxZf5tWWOZgQt+n7ItYPyb5d7kS+RbDd2+M88qTEh4NHuT7CjYiT2mT4M66
+         cPvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-disposition:mime-version:message-id:subject:cc:to:from:date
          :dkim-signature;
-        bh=nKY8Tj2S1+5Hy2yNLk4DVqf9XKGjVUIVFO545T90Qmw=;
-        b=H4ejyKX7uXZZJ5EK1D4JMLrJk2UNbKAzPJlWOHUICszWXyWssi5pheM6h+Sod0YOkU
-         6HPYzqtOAWDlB4ElR8XZjqvEAO75Zku8gPDfWoSgD+h/R6GRHaa+lVL0w6PU/xgOTbwj
-         0gUjuXanKWlIjdPmPyAPxnQt99tXM0rcSJ87EAb8UbtrP4DtXCQ3jb2pM/MvBAKxwwh0
-         c0U6J/eepOKhD2tNEP9m03nqtEbpmgiosMOjFdhEoCB4vs0NuItr5VMPugJFWXhV26ly
-         /np2SqRpBCKr4VYgVUizoVZ4D5A7V+4b98ExcN0tXEww7CjjnZbMVDX5TcHBRIqPnz73
-         OXVA==
+        bh=JMZ3ZOaqs+GMebuUabLtCSdicrtzUnjpZ2c1KuQJ1SM=;
+        b=Txw5ktkTdP2y6XI8ZeOf+rJPobAwmZerSXore+ggptu/9XcNKK1to7+iQhV9boO87A
+         ZLw3UKAYYTWNmJaOW3+Ky5wrMrq9IEn8Rrs3YNHJ32E9cpYurdOjLaLqlRLeFDnVETRh
+         fYLr6d8iI0+28syxhuBH2E/ZEeoyJXqBobBX50yh68yoqmbdmQ/awKX+SvckkWgwRnhO
+         CqJ6r0SeW97t+OelOSzb9AHGbzRBigAx57A71bSGnjl6Gtvb0A46fVFoaMbrfV9Ne5wS
+         9cLCkAe7esGAeq4ekfnsGnlamVvgfq1RgUP9LO+c6IS2Yly2tq92wCsbTJ8xCwUDYGp5
+         x10w==
 ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=fATmv9Ta;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=XBsXexBp;
        spf=pass (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted sender) smtp.mailfrom=lkp@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 Received: from mga14.intel.com (mga14.intel.com. [192.55.52.115])
-        by gmr-mx.google.com with ESMTPS id e35-20020a5d5963000000b0021d91e1ca87si418301wri.1.2022.08.13.20.05.43
+        by gmr-mx.google.com with ESMTPS id t1-20020a2e8e61000000b0026187cf0f12si4803ljk.8.2022.08.13.22.10.46
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 13 Aug 2022 20:05:44 -0700 (PDT)
+        Sat, 13 Aug 2022 22:10:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted sender) client-ip=192.55.52.115;
-X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="291791740"
+X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="291796393"
 X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; 
-   d="scan'208";a="291791740"
-Received: from orsmga004.jf.intel.com ([10.7.209.38])
-  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2022 20:05:42 -0700
+   d="scan'208";a="291796393"
+Received: from fmsmga008.fm.intel.com ([10.253.24.58])
+  by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Aug 2022 22:10:44 -0700
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; 
-   d="scan'208";a="732599022"
+   d="scan'208";a="666291699"
 Received: from lkp-server02.sh.intel.com (HELO 8745164cafc7) ([10.239.97.151])
-  by orsmga004.jf.intel.com with ESMTP; 13 Aug 2022 20:05:40 -0700
+  by fmsmga008.fm.intel.com with ESMTP; 13 Aug 2022 22:10:43 -0700
 Received: from kbuild by 8745164cafc7 with local (Exim 4.96)
 	(envelope-from <lkp@intel.com>)
-	id 1oN3wZ-0002QB-2o;
-	Sun, 14 Aug 2022 03:05:39 +0000
-Date: Sun, 14 Aug 2022 11:05:38 +0800
+	id 1oN5ta-0002WN-1p;
+	Sun, 14 Aug 2022 05:10:42 +0000
+Date: Sun, 14 Aug 2022 13:10:39 +0800
 From: kernel test robot <lkp@intel.com>
 To: Frank Li <Frank.Li@nxp.com>
 Cc: kbuild-all@lists.01.org, linux-ntb@googlegroups.com,
 	linux-kernel@vger.kernel.org, Jon Mason <jdmason@kudzu.us>
-Subject: [jonmason-ntb:ntb-next-hacking 18/18]
- drivers/pci/endpoint/functions/pci-epf-vntb.c:541:40: warning: variable
- 'epc_features' set but not used
-Message-ID: <202208141103.CnuY3Xvp-lkp@intel.com>
+Subject: [jonmason-ntb:ntb-next-hacking 16/18]
+ drivers/irqchip/irq-imx-mu-msi.c:142:19: warning: excess elements in struct
+ initializer
+Message-ID: <202208141350.BoRK1ikN-lkp@intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Disposition: inline
 X-Original-Sender: lkp@intel.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@intel.com header.s=Intel header.b=fATmv9Ta;       spf=pass
+ header.i=@intel.com header.s=Intel header.b=XBsXexBp;       spf=pass
  (google.com: domain of lkp@intel.com designates 192.55.52.115 as permitted
  sender) smtp.mailfrom=lkp@intel.com;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=intel.com
@@ -142,88 +141,223 @@ List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegro
 
 tree:   https://github.com/jonmason/ntb ntb-next-hacking
 head:   d90921d21692b59734d2452efea346217a526f44
-commit: d90921d21692b59734d2452efea346217a526f44 [18/18] pcie: endpoint: pci-epf-vntb: add endpoint msi support
-config: i386-allyesconfig (https://download.01.org/0day-ci/archive/20220814/202208141103.CnuY3Xvp-lkp@intel.com/config)
-compiler: gcc-11 (Debian 11.3.0-3) 11.3.0
+commit: 1db755129d2544df84dc197095c14170cfa419c7 [16/18] irqchip: imx mu worked as msi controller
+config: loongarch-allyesconfig (https://download.01.org/0day-ci/archive/20220814/202208141350.BoRK1ikN-lkp@intel.com/config)
+compiler: loongarch64-linux-gcc (GCC) 12.1.0
 reproduce (this is a W=1 build):
-        # https://github.com/jonmason/ntb/commit/d90921d21692b59734d2452efea346217a526f44
+        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
+        chmod +x ~/bin/make.cross
+        # https://github.com/jonmason/ntb/commit/1db755129d2544df84dc197095c14170cfa419c7
         git remote add jonmason-ntb https://github.com/jonmason/ntb
         git fetch --no-tags jonmason-ntb ntb-next-hacking
-        git checkout d90921d21692b59734d2452efea346217a526f44
+        git checkout 1db755129d2544df84dc197095c14170cfa419c7
         # save the config file
         mkdir build_dir && cp config build_dir/.config
-        make W=1 O=build_dir ARCH=i386 SHELL=/bin/bash drivers/pci/endpoint/functions/ fs/notify/fanotify/
+        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=loongarch SHELL=/bin/bash drivers/irqchip/
 
 If you fix the issue, kindly add following tag where applicable
 Reported-by: kernel test robot <lkp@intel.com>
 
 All warnings (new ones prefixed by >>):
 
-   drivers/pci/endpoint/functions/pci-epf-vntb.c: In function 'epf_ntb_db_bar_init':
->> drivers/pci/endpoint/functions/pci-epf-vntb.c:541:40: warning: variable 'epc_features' set but not used [-Wunused-but-set-variable]
-     541 |         const struct pci_epc_features *epc_features;
-         |                                        ^~~~~~~~~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:138:15: error: variable 'its_pmsi_ops' has initializer but incomplete type
+     138 | static struct msi_domain_ops its_pmsi_ops = {
+         |               ^~~~~~~~~~~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:141:15: error: variable 'imx_mu_msi_domain_info' has initializer but incomplete type
+     141 | static struct msi_domain_info imx_mu_msi_domain_info = {
+         |               ^~~~~~~~~~~~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:142:10: error: 'struct msi_domain_info' has no member named 'flags'
+     142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
+         |          ^~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:142:20: error: 'MSI_FLAG_USE_DEF_DOM_OPS' undeclared here (not in a function)
+     142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
+         |                    ^~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:143:20: error: 'MSI_FLAG_USE_DEF_CHIP_OPS' undeclared here (not in a function)
+     143 |                    MSI_FLAG_USE_DEF_CHIP_OPS |
+         |                    ^~~~~~~~~~~~~~~~~~~~~~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:144:20: error: 'MSI_FLAG_PCI_MSIX' undeclared here (not in a function)
+     144 |                    MSI_FLAG_PCI_MSIX),
+         |                    ^~~~~~~~~~~~~~~~~
+>> drivers/irqchip/irq-imx-mu-msi.c:142:19: warning: excess elements in struct initializer
+     142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
+         |                   ^
+   drivers/irqchip/irq-imx-mu-msi.c:142:19: note: (near initialization for 'imx_mu_msi_domain_info')
+   drivers/irqchip/irq-imx-mu-msi.c:145:10: error: 'struct msi_domain_info' has no member named 'ops'
+     145 |         .ops    = &its_pmsi_ops,
+         |          ^~~
+   drivers/irqchip/irq-imx-mu-msi.c:145:19: warning: excess elements in struct initializer
+     145 |         .ops    = &its_pmsi_ops,
+         |                   ^
+   drivers/irqchip/irq-imx-mu-msi.c:145:19: note: (near initialization for 'imx_mu_msi_domain_info')
+   drivers/irqchip/irq-imx-mu-msi.c:146:10: error: 'struct msi_domain_info' has no member named 'chip'
+     146 |         .chip   = &imx_mu_msi_irq_chip,
+         |          ^~~~
+   drivers/irqchip/irq-imx-mu-msi.c:146:19: warning: excess elements in struct initializer
+     146 |         .chip   = &imx_mu_msi_irq_chip,
+         |                   ^
+   drivers/irqchip/irq-imx-mu-msi.c:146:19: note: (near initialization for 'imx_mu_msi_domain_info')
+   drivers/irqchip/irq-imx-mu-msi.c: In function 'imx_mu_msi_domain_irq_alloc':
+   drivers/irqchip/irq-imx-mu-msi.c:179:9: error: unknown type name 'msi_alloc_info_t'
+     179 |         msi_alloc_info_t *info = args;
+         |         ^~~~~~~~~~~~~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:197:41: error: request for member 'desc' in something not a structure or union
+     197 |         err = iommu_dma_prepare_msi(info->desc, msi_data->msiir_addr + pos * 4);
+         |                                         ^~
+   drivers/irqchip/irq-imx-mu-msi.c: In function 'imx_mu_msi_domains_init':
+   drivers/irqchip/irq-imx-mu-msi.c:262:32: error: implicit declaration of function 'platform_msi_create_irq_domain' [-Werror=implicit-function-declaration]
+     262 |         msi_data->msi_domain = platform_msi_create_irq_domain(
+         |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+>> drivers/irqchip/irq-imx-mu-msi.c:262:30: warning: assignment to 'struct irq_domain *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
+     262 |         msi_data->msi_domain = platform_msi_create_irq_domain(
+         |                              ^
+   drivers/irqchip/irq-imx-mu-msi.c: At top level:
+   drivers/irqchip/irq-imx-mu-msi.c:138:30: error: storage size of 'its_pmsi_ops' isn't known
+     138 | static struct msi_domain_ops its_pmsi_ops = {
+         |                              ^~~~~~~~~~~~
+   drivers/irqchip/irq-imx-mu-msi.c:141:31: error: storage size of 'imx_mu_msi_domain_info' isn't known
+     141 | static struct msi_domain_info imx_mu_msi_domain_info = {
+         |                               ^~~~~~~~~~~~~~~~~~~~~~
+   cc1: some warnings being treated as errors
 
 
-vim +/epc_features +541 drivers/pci/endpoint/functions/pci-epf-vntb.c
+vim +142 drivers/irqchip/irq-imx-mu-msi.c
 
-d90921d21692b59 Frank Li 2022-07-07  534  
-53efbaa43643f36 Frank Li 2022-02-22  535  /**
-53efbaa43643f36 Frank Li 2022-02-22  536   * epf_ntb_db_bar_init() - Configure Doorbell window BARs
-53efbaa43643f36 Frank Li 2022-02-22  537   * @ntb: NTB device that facilitates communication between HOST and vHOST
-53efbaa43643f36 Frank Li 2022-02-22  538   */
-53efbaa43643f36 Frank Li 2022-02-22  539  static int epf_ntb_db_bar_init(struct epf_ntb *ntb)
-53efbaa43643f36 Frank Li 2022-02-22  540  {
-53efbaa43643f36 Frank Li 2022-02-22 @541  	const struct pci_epc_features *epc_features;
-53efbaa43643f36 Frank Li 2022-02-22  542  	u32 align;
-53efbaa43643f36 Frank Li 2022-02-22  543  	struct device *dev = &ntb->epf->dev;
-53efbaa43643f36 Frank Li 2022-02-22  544  	int ret;
-53efbaa43643f36 Frank Li 2022-02-22  545  	struct pci_epf_bar *epf_bar;
-d90921d21692b59 Frank Li 2022-07-07  546  	void __iomem *mw_addr = NULL;
-53efbaa43643f36 Frank Li 2022-02-22  547  	enum pci_barno barno;
-d90921d21692b59 Frank Li 2022-07-07  548  	size_t size;
-53efbaa43643f36 Frank Li 2022-02-22  549  
-53efbaa43643f36 Frank Li 2022-02-22  550  	epc_features = pci_epc_get_features(ntb->epf->epc,
-53efbaa43643f36 Frank Li 2022-02-22  551  					    ntb->epf->func_no,
-53efbaa43643f36 Frank Li 2022-02-22  552  					    ntb->epf->vfunc_no);
-53efbaa43643f36 Frank Li 2022-02-22  553  
-d90921d21692b59 Frank Li 2022-07-07  554  	size = epf_ntb_db_size(ntb);
-53efbaa43643f36 Frank Li 2022-02-22  555  
-53efbaa43643f36 Frank Li 2022-02-22  556  	barno = ntb->epf_ntb_bar[BAR_DB];
-d90921d21692b59 Frank Li 2022-07-07  557  	epf_bar = &ntb->epf->bar[barno];
-53efbaa43643f36 Frank Li 2022-02-22  558  
-d90921d21692b59 Frank Li 2022-07-07  559  	if (!ntb->epf_db_phy) {
-53efbaa43643f36 Frank Li 2022-02-22  560  		mw_addr = pci_epf_alloc_space(ntb->epf, size, barno, align, 0);
-53efbaa43643f36 Frank Li 2022-02-22  561  		if (!mw_addr) {
-53efbaa43643f36 Frank Li 2022-02-22  562  			dev_err(dev, "Failed to allocate OB address\n");
-53efbaa43643f36 Frank Li 2022-02-22  563  			return -ENOMEM;
-53efbaa43643f36 Frank Li 2022-02-22  564  		}
-d90921d21692b59 Frank Li 2022-07-07  565  	} else {
-d90921d21692b59 Frank Li 2022-07-07  566  		epf_bar->phys_addr = ntb->epf_db_phy;
-d90921d21692b59 Frank Li 2022-07-07  567  		epf_bar->barno = barno;
-d90921d21692b59 Frank Li 2022-07-07  568  		epf_bar->size = size;
-d90921d21692b59 Frank Li 2022-07-07  569  	}
-53efbaa43643f36 Frank Li 2022-02-22  570  
-53efbaa43643f36 Frank Li 2022-02-22  571  	ntb->epf_db = mw_addr;
-53efbaa43643f36 Frank Li 2022-02-22  572  
-53efbaa43643f36 Frank Li 2022-02-22  573  	ret = pci_epc_set_bar(ntb->epf->epc, ntb->epf->func_no, ntb->epf->vfunc_no, epf_bar);
-53efbaa43643f36 Frank Li 2022-02-22  574  	if (ret) {
-53efbaa43643f36 Frank Li 2022-02-22  575  		dev_err(dev, "Doorbell BAR set failed\n");
-53efbaa43643f36 Frank Li 2022-02-22  576  			goto err_alloc_peer_mem;
-53efbaa43643f36 Frank Li 2022-02-22  577  	}
-53efbaa43643f36 Frank Li 2022-02-22  578  	return ret;
-53efbaa43643f36 Frank Li 2022-02-22  579  
-53efbaa43643f36 Frank Li 2022-02-22  580  err_alloc_peer_mem:
-53efbaa43643f36 Frank Li 2022-02-22  581  	pci_epc_mem_free_addr(ntb->epf->epc, epf_bar->phys_addr, mw_addr, epf_bar->size);
-53efbaa43643f36 Frank Li 2022-02-22  582  	return -1;
-53efbaa43643f36 Frank Li 2022-02-22  583  }
-53efbaa43643f36 Frank Li 2022-02-22  584  
-
-:::::: The code at line 541 was first introduced by commit
-:::::: 53efbaa43643f36d203700e7f436eaac11695274 PCI: endpoint: Support NTB transfer between RC and EP
-
-:::::: TO: Frank Li <Frank.Li@nxp.com>
-:::::: CC: Jon Mason <jdmason@kudzu.us>
+   140	
+   141	static struct msi_domain_info imx_mu_msi_domain_info = {
+ > 142		.flags	= (MSI_FLAG_USE_DEF_DOM_OPS |
+   143			   MSI_FLAG_USE_DEF_CHIP_OPS |
+   144			   MSI_FLAG_PCI_MSIX),
+   145		.ops	= &its_pmsi_ops,
+   146		.chip	= &imx_mu_msi_irq_chip,
+   147	};
+   148	
+   149	static void imx_mu_msi_compose_msg(struct irq_data *data, struct msi_msg *msg)
+   150	{
+   151		struct imx_mu_msi *msi_data = irq_data_get_irq_chip_data(data);
+   152	
+   153		msg->address_hi = upper_32_bits(msi_data->msiir_addr);
+   154		msg->address_lo = lower_32_bits(msi_data->msiir_addr + 4 * data->hwirq);
+   155		msg->data = data->hwirq;
+   156	
+   157		iommu_dma_compose_msi_msg(irq_data_get_msi_desc(data), msg);
+   158	}
+   159	
+   160	static int imx_mu_msi_set_affinity(struct irq_data *irq_data,
+   161					   const struct cpumask *mask, bool force)
+   162	
+   163	{
+   164		return IRQ_SET_MASK_OK;
+   165	}
+   166	
+   167	static struct irq_chip imx_mu_msi_parent_chip = {
+   168		.name			= "MU",
+   169		.irq_compose_msi_msg	= imx_mu_msi_compose_msg,
+   170		.irq_set_affinity = imx_mu_msi_set_affinity,
+   171	};
+   172	
+   173	static int imx_mu_msi_domain_irq_alloc(struct irq_domain *domain,
+   174						unsigned int virq,
+   175						unsigned int nr_irqs,
+   176						void *args)
+   177	{
+   178		struct imx_mu_msi *msi_data = domain->host_data;
+   179		msi_alloc_info_t *info = args;
+   180		int pos, err = 0;
+   181	
+   182		pm_runtime_get_sync(&msi_data->pdev->dev);
+   183	
+   184		WARN_ON(nr_irqs != 1);
+   185	
+   186		spin_lock(&msi_data->lock);
+   187		pos = find_first_zero_bit(&msi_data->used, msi_data->irqs_num);
+   188		if (pos < msi_data->irqs_num)
+   189			__set_bit(pos, &msi_data->used);
+   190		else
+   191			err = -ENOSPC;
+   192		spin_unlock(&msi_data->lock);
+   193	
+   194		if (err)
+   195			return err;
+   196	
+   197		err = iommu_dma_prepare_msi(info->desc, msi_data->msiir_addr + pos * 4);
+   198		if (err)
+   199			return err;
+   200	
+   201		irq_domain_set_info(domain, virq, pos,
+   202				    &imx_mu_msi_parent_chip, msi_data,
+   203				    handle_simple_irq, NULL, NULL);
+   204		return 0;
+   205	}
+   206	
+   207	static void imx_mu_msi_domain_irq_free(struct irq_domain *domain,
+   208					       unsigned int virq, unsigned int nr_irqs)
+   209	{
+   210		struct irq_data *d = irq_domain_get_irq_data(domain, virq);
+   211		struct imx_mu_msi *msi_data = irq_data_get_irq_chip_data(d);
+   212		int pos;
+   213	
+   214		pos = d->hwirq;
+   215		if (pos < 0 || pos >= msi_data->irqs_num) {
+   216			pr_err("failed to teardown msi. Invalid hwirq %d\n", pos);
+   217			return;
+   218		}
+   219	
+   220		spin_lock(&msi_data->lock);
+   221		__clear_bit(pos, &msi_data->used);
+   222		spin_unlock(&msi_data->lock);
+   223	
+   224		pm_runtime_put(&msi_data->pdev->dev);
+   225	}
+   226	
+   227	static const struct irq_domain_ops imx_mu_msi_domain_ops = {
+   228		.alloc	= imx_mu_msi_domain_irq_alloc,
+   229		.free	= imx_mu_msi_domain_irq_free,
+   230	};
+   231	
+   232	static void imx_mu_msi_irq_handler(struct irq_desc *desc)
+   233	{
+   234		struct imx_mu_msi *msi_data = irq_desc_get_handler_data(desc);
+   235		u32 status;
+   236		int i;
+   237	
+   238		status = imx_mu_read(msi_data, msi_data->cfg->xSR[IMX_MU_RSR]);
+   239	
+   240		chained_irq_enter(irq_desc_get_chip(desc), desc);
+   241		for (i = 0; i < IMX_MU_CHANS; i++) {
+   242			if (status & IMX_MU_xSR_RFn(msi_data->cfg->type, i)) {
+   243				imx_mu_read(msi_data, msi_data->cfg->xRR + i * 4);
+   244				generic_handle_domain_irq(msi_data->parent, i);
+   245			}
+   246		}
+   247		chained_irq_exit(irq_desc_get_chip(desc), desc);
+   248	}
+   249	
+   250	static int imx_mu_msi_domains_init(struct imx_mu_msi *msi_data)
+   251	{
+   252		/* Initialize MSI domain parent */
+   253		msi_data->parent = irq_domain_add_linear(NULL,
+   254							 msi_data->irqs_num,
+   255							 &imx_mu_msi_domain_ops,
+   256							 msi_data);
+   257		if (!msi_data->parent) {
+   258			dev_err(&msi_data->pdev->dev, "failed to create IRQ domain\n");
+   259			return -ENOMEM;
+   260		}
+   261	
+ > 262		msi_data->msi_domain = platform_msi_create_irq_domain(
+   263					of_node_to_fwnode(msi_data->pdev->dev.of_node),
+   264					&imx_mu_msi_domain_info,
+   265					msi_data->parent);
+   266	
+   267		if (!msi_data->msi_domain) {
+   268			dev_err(&msi_data->pdev->dev, "failed to create MSI domain\n");
+   269			irq_domain_remove(msi_data->parent);
+   270			return -ENOMEM;
+   271		}
+   272	
+   273		return 0;
+   274	}
+   275	
 
 -- 
 0-DAY CI Kernel Test Service
@@ -232,4 +366,4 @@ https://01.org/lkp
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/202208141103.CnuY3Xvp-lkp%40intel.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/202208141350.BoRK1ikN-lkp%40intel.com.
