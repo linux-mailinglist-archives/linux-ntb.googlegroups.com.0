@@ -1,131 +1,253 @@
-Return-Path: <linux-ntb+bncBC4LXIPCY4NRBDMC4OLQMGQEQPVZJWA@googlegroups.com>
+Return-Path: <linux-ntb+bncBCX27RGNVQNBBQG6ROMQMGQEQN5AMUY@googlegroups.com>
 X-Original-To: lists+linux-ntb@lfdr.de
 Delivered-To: lists+linux-ntb@lfdr.de
-Received: from mail-lj1-x23a.google.com (mail-lj1-x23a.google.com [IPv6:2a00:1450:4864:20::23a])
-	by mail.lfdr.de (Postfix) with ESMTPS id 524CF591F48
-	for <lists+linux-ntb@lfdr.de>; Sun, 14 Aug 2022 11:31:59 +0200 (CEST)
-Received: by mail-lj1-x23a.google.com with SMTP id q5-20020a2e84c5000000b0025ec9ff93c8sf1545248ljh.15
-        for <lists+linux-ntb@lfdr.de>; Sun, 14 Aug 2022 02:31:59 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1660469518; cv=pass;
+Received: from mail-lj1-x239.google.com (mail-lj1-x239.google.com [IPv6:2a00:1450:4864:20::239])
+	by mail.lfdr.de (Postfix) with ESMTPS id 33E8E5B9758
+	for <lists+linux-ntb@lfdr.de>; Thu, 15 Sep 2022 11:24:17 +0200 (CEST)
+Received: by mail-lj1-x239.google.com with SMTP id r19-20020a2eb893000000b0026c224ef967sf2215566ljp.17
+        for <lists+linux-ntb@lfdr.de>; Thu, 15 Sep 2022 02:24:17 -0700 (PDT)
+ARC-Seal: i=3; a=rsa-sha256; t=1663233856; cv=pass;
         d=google.com; s=arc-20160816;
-        b=nhGtCgRLxyOHdv6d25qj+HL03GJtEsAY5meAT1vos9TT5GiTDJTib1zi3l4N5XTCiw
-         Jw0NqOBjUYXNmeRmQqZMWaZ6FoNxC+gTCWOKZYZFFiYP3x6bkrkiQkEf0nJe3AHi/QGZ
-         to6ZG9bTHqM3roUDVuOC4Q5/Kegts2l+GcdVNkwTdX9SqT9xpBe7PtT253z/ACWBHveL
-         0lEyOAZTWDuuodliIxnsaWtk4tCf/UxIblrSWoWOAVM8kunQbhM59ZFzkjNajR+5SFwn
-         oPGAjkXJSjrrO98FispxO4cwghXQtfS7DW7MiTuTtpm+4M6wvzv3hdmlKPdZGu29h7bN
-         TPow==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=oL1u64DCKKUy+c6mPh2a0devLh6v7ltQU/urIsOxPm4u/HbpB2tCjvp3kT4l1egyIy
+         tv3f/zujZuoE3wwfspwrfuTIuBz/JkY6Anovc5ldrrCJPVat0IdQyDKAoUBrpAJdVj+O
+         1jWirvNXUhnjop8LPTUb4E8qOEsdRAXCmsZB0uxwLO0CBB1OfwiaSar/1p/cdSgV4V9B
+         zcL/ouquDaZ2GctTh0KjGnzZZEK7CJEAiSwpq8SLx+kwMnhfJCmfFd3WOly9zdAtBA1I
+         oxlEx0AsnaUopBS88HmkDc6HnQaRNd8/i3wqbVYOgYZHTEpEou2TXouiM7sCbaQYhABR
+         aMeA==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
-         :list-id:mailing-list:precedence:content-disposition:mime-version
-         :message-id:subject:cc:to:from:date:sender:dkim-signature;
-        bh=G21nyFgnpRADgsWlVi+QH79oM5tWcCZbKJ796sScfcs=;
-        b=Dg8ZFKcEICcZYNam2H4jbaPgfld+7rEr5+1UIoQ6sdxje3qJeLg/RPzn8nnHBTTUlQ
-         t38EhbK65kevT/XdK6+YL8OUNf5vhpGBSKyhi0GUiw3eIRxAXczM9rv3SzizcAi4QREa
-         17eyxn6U3vnjH9BhkN7u78mXuY6efS4xF3Bh1+WJhCjJ2yCwfLgpPMQvyuDyla/9ztcP
-         YUBhEtln49SnSBflwPBBG+GPfSfrXyhkmTKoL3c1Rz+Gfqdsdsr9xf/o7KFXfA8GDZIJ
-         7qK7sqNux8n7mMtKCXdkngvsqnsrVF6HGisNsQZXknghJaA1Y1FB5k3wgqbzgB/a8U0+
-         bT2w==
-ARC-Authentication-Results: i=2; gmr-mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=dbb1eG5s;
-       spf=pass (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=lkp@intel.com;
+         :list-id:mailing-list:precedence:mime-version:dlp-reaction
+         :dlp-product:dlp-version:content-language:accept-language
+         :in-reply-to:references:message-id:date:thread-index:thread-topic
+         :subject:cc:to:from:sender:dkim-signature;
+        bh=Y43rApOjJL15pHD8U2PWJO7VvxE7rIyTe8OELE6Dwcc=;
+        b=DJW6eMJXCssXFSwme3IGM66kJbBamtF0UwevnKmk1/tvSNsdHqqll9LkW3Q7eHpNv7
+         jjElBSwPhll8EDTRs0suqwuTXKm1Gt9VQP4gM8hEKmQBQAm18ImvLFkjYL5JDDHYr0KL
+         kmnb9QFS8fhAwYTDIZ3s8JW1HaXEZSH/U6fPgx2OF02dSprjDSIenSOb/q5OyvgewzUf
+         c4K3t450IUkUlQi44lSP7irnvPPyBjUyc9bY7T1jgZKpGuPG1WnLpFOA4hqnUdNBTyGw
+         j4/SjeHiSLaOUnSCc0SAD/sghHnaH2yeYJCjW1Uv1PvAi5bTqMVAKKMqO6Y9e2WCjSMR
+         zg1Q==
+ARC-Authentication-Results: i=3; gmr-mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=I7n23Il8;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kevin.tian@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=kevin.tian@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=googlegroups.com; s=20210112;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :list-id:mailing-list:precedence:x-original-authentication-results
-         :x-original-sender:content-disposition:mime-version:message-id
-         :subject:cc:to:from:date:sender:from:to:cc;
-        bh=G21nyFgnpRADgsWlVi+QH79oM5tWcCZbKJ796sScfcs=;
-        b=XRppdEWmumHGeElCysuG/tEr16GU9AT4zorXgJNDKO1pjx1O3FwjoQOknfk9kt0ylo
-         UWMUCP8EY05ReKWAkZ7hxa+1sqCgXn4kpDEC644m/rdu+/tnoHifbW4wYDoh85QCE1JR
-         9FQdOyVoIDrGn3iBTCZH8DQvMYAq832E70GaxVX9lwFHtZ+CDcphBdNj+qfOvL8chjj2
-         f3CCfF2ewNbZuebF4GDCM3xjWwCAm2Zq2by5fF52Htd3KkngQE7Dl3BqXjvCQT5Y7+Ca
-         kamxC2oMaxp+Dmo+aipSmx4qoRTyQH6eYdcT6n8A1wYvgqQcxJnDNoNXtdQ80DWqAyNf
-         S2Og==
+         :x-original-sender:mime-version:dlp-reaction:dlp-product:dlp-version
+         :content-language:accept-language:in-reply-to:references:message-id
+         :date:thread-index:thread-topic:subject:cc:to:from:sender:from:to:cc
+         :subject:date;
+        bh=Y43rApOjJL15pHD8U2PWJO7VvxE7rIyTe8OELE6Dwcc=;
+        b=Yc4OGeXHPrDy8X987oRV0C0qH65c/Fi7O8GTXkeP6k1LCgHlzEVLczhyov6s1dVn1C
+         aquDNH35gaLPET04B7oWE2LkdPkRcreJUZhVjbkdMEd53bZ1jyYhUNvfwyO7G096Cy+M
+         OCV7iVNOcEFbPXNh2HXSdcmlnhuL/BRQUitxUf2ZO1IUD3kEixQvxi3Ft05aU3HCjIk5
+         Ju6LpZJo5NSGjiMPBJFndkZMlfCoE+kkaUXqNd3usLEkJDCsRGSPfOqqPQX8/gLA0lCz
+         4hYyFqdB/uuuRWzImzLg9w/225FdraGwchFl2BKGnG1+cPrZqZllX7pg7AHm4W3nL3D3
+         Yewg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20210112;
         h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
          :x-spam-checked-in-group:list-id:mailing-list:precedence
-         :x-original-authentication-results:x-original-sender
-         :content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :x-gm-message-state:sender:from:to:cc;
-        bh=G21nyFgnpRADgsWlVi+QH79oM5tWcCZbKJ796sScfcs=;
-        b=HR4rIuULUiW6Weje8cOUeyt3uqoAnQqvdjaBFXVO7P893TRkiADlx/NtIMwRV6vvjB
-         kk5NumGL2K/fYYm1RQtqDJeyfaDRTmS+aufopY7v0zRDFU6fNK3QocfKQ7Or69+XNxNQ
-         Kh6BJ3Q8EVYoTTrNBOA9wiD/VSAKPngXZJiFXg68IfJWHwZSM6VG/o0D19tuetvXmXR3
-         Li/oWUWpQZuPkzV9YZFpZqAs3DL9BBrtzL4Ejw82oA9p9bIc/i6PWCkycQFNu3JKhCsT
-         3Oo+DKg4dzuB8Co0jRYGgVEwP7HWkzuUewqtZnuh4wSzVw3A+3i9nTo4x5t7A/NLzG/H
-         2iOA==
+         :x-original-authentication-results:x-original-sender:mime-version
+         :dlp-reaction:dlp-product:dlp-version:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:cc:to:from:x-gm-message-state:sender:from:to
+         :cc:subject:date;
+        bh=Y43rApOjJL15pHD8U2PWJO7VvxE7rIyTe8OELE6Dwcc=;
+        b=o9bZ9+sq4No+/Z2BN1u18+WfcnaPqzzvfgMYFLJBhY7D1GCpjchKlTmKpbNMPqHfN1
+         aRqUFnPXrU7RLJr5cion9syUEXMqlG4A45KO9T8riYKrv4BTKWY22T2NVb303BCUhfMM
+         WYZgP52kfgrD/xx3w+biJhSRo9LRAGLGaYIvakQWBkvG0yWApY2XqiHcsyA3Gqi8Apyk
+         4QKTx9M3cKuDxVskeNQfjTHykCn2xzSe+wJI+KQF8OaCgbyp4AucfsFZVceHdotjtQzz
+         a6tt49RNNioobUjU0k8vyyieg2CgV66Bfd3iZart83t7oLipw+kme2oejeIHQBl5xwZM
+         DlhQ==
 Sender: linux-ntb@googlegroups.com
-X-Gm-Message-State: ACgBeo1zM2SyFukVL6eed6/lvmPBNdvMG4/DOgN93vYps6U0Vbf/HIcy
-	McuvA6NFActbuZ0m8j/HDSI=
-X-Google-Smtp-Source: AA6agR5TAcwoXSGlzf16VgeAMb47MejtMtQ8+kv5abPwbrTxlrLbR2djdNgvBkr2SD6uYrC4g/m7Fg==
-X-Received: by 2002:a05:651c:1a1e:b0:25f:e7bd:6a4e with SMTP id by30-20020a05651c1a1e00b0025fe7bd6a4emr3688228ljb.362.1660469517780;
-        Sun, 14 Aug 2022 02:31:57 -0700 (PDT)
+X-Gm-Message-State: ACrzQf1y+BbCtNFpKx+/gHO/tR0+dcfbRyFOFZlFYnJsAHsys6SY42A0
+	UFoaM4MFNF+HuTvq/SrcvsM=
+X-Google-Smtp-Source: AMsMyM4NWMwr8pFL0O3vP73dnxDk4Bx1jtD2BGMgzFAnDxlHHewGbBn+iYqryuR3eqTZCakwR4hyJw==
+X-Received: by 2002:a2e:be29:0:b0:26c:337e:c7ac with SMTP id z41-20020a2ebe29000000b0026c337ec7acmr317999ljq.126.1663233856467;
+        Thu, 15 Sep 2022 02:24:16 -0700 (PDT)
 X-BeenThere: linux-ntb@googlegroups.com
-Received: by 2002:a2e:8958:0:b0:25f:dcd4:53b4 with SMTP id b24-20020a2e8958000000b0025fdcd453b4ls1399656ljk.3.-pod-prod-gmail;
- Sun, 14 Aug 2022 02:31:56 -0700 (PDT)
-X-Received: by 2002:a2e:7007:0:b0:261:6dd1:e0f5 with SMTP id l7-20020a2e7007000000b002616dd1e0f5mr3603281ljc.394.1660469516353;
-        Sun, 14 Aug 2022 02:31:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1660469516; cv=none;
+Received: by 2002:a05:6512:210e:b0:48b:2227:7787 with SMTP id
+ q14-20020a056512210e00b0048b22277787ls611955lfr.3.-pod-prod-gmail; Thu, 15
+ Sep 2022 02:24:15 -0700 (PDT)
+X-Received: by 2002:a05:6512:4002:b0:499:280:9c5b with SMTP id br2-20020a056512400200b0049902809c5bmr9738634lfb.593.1663233854978;
+        Thu, 15 Sep 2022 02:24:14 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1663233854; cv=pass;
         d=google.com; s=arc-20160816;
-        b=VRI8l/A/nWp006cBS9b2K9WbjeGaJs7FyNvjkPCHb1lYMkguSu4Ku+/La3gHyz5ydb
-         2uuYEqQVSG2mrVt5sHVc2mz8ubtdWiBHkkIBqvo5XKVXWtqm4YTQuCLb2Cjo4APBIDam
-         dWnJADLdC0XgB42lXmMZO9OTp/NMO+kup93VkihPv1rVXu5pC6GZD7Vy3zBOMS0kGJa6
-         Vc6jjUH/RthiL1HCGPI3iaBw5NI7kucIVvvd1whTXso/OmycfIIuschAVWp+/7BHqtpN
-         bRREcHkfNIQbH5KHziX+ZbVV6z2BFpnmJAJ7EE+QJepqNcctCa+B8JWOF0Jfdiw8Y3fR
-         nukA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
+        b=oPhzsQODo01jOwYUr7asoeIW3y3OS7qofwJN2FgCasFjXgCrgJxTZoD9WLGfH3Lh3u
+         RqQaAuv4HvF5HO0UBRy3XMu3MEog/pHulEwdmd5PJf+u3smyCC2oRLQny+QEt/V4Zaws
+         aq0DO2VijqPSZw0ZdU4bEwOc7b/9DX66uEV6xTlcGubAM0/bGh3baUete9+oAotvnGZp
+         t3TtqpNBi5bcfKVRiR0ZtG/LnM7p3zhzegGC4q4Lsj/vGI/C2QrQk0OQt9ba0Z1/v32J
+         39HVKIQhdkZqfptFH8boMaBbDp7h/SOcKBvJ0PjID0yp9oK6tluO1n6eit9MdggowVhY
+         2m6w==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:content-transfer-encoding:dlp-reaction:dlp-product
+         :dlp-version:content-language:accept-language:in-reply-to:references
+         :message-id:date:thread-index:thread-topic:subject:cc:to:from
          :dkim-signature;
-        bh=ZHVyzozDap1t2bAkmXGsbor82nbQ0H5jMrnxWD74xFg=;
-        b=OD12Rf5frp0mS+f0/GxenBvwyF8udzzBMsYJnLiiDaHdrlbnKR8E2BABGS/1OdQ45f
-         CER0fLgRERkaOpG41EKCsSMu2Lrnl4hEm2367e9p6qfBT25IibLYqOqMozmwL6x0e3ai
-         ALaWZ+EjaQLahjDNwxmygUO1PLhUXzxA+s6YySlbJxzHHI0T/Y3Bqulv/KcSt4x3x9FF
-         FgR4G1tJOZCmUhutvTU2QIGV9Jrje9VyQTtxcs/dK40lqh9H0/C84fnhTcD7V6mj0X7S
-         KyN/gIHN+EYhMw5Pzvv82Vk1KRhUYbSXSfVQ174z7AlX2uAwZm21EGEpGRCtG3a3KiWO
-         LOGg==
-ARC-Authentication-Results: i=1; gmr-mx.google.com;
-       dkim=pass header.i=@intel.com header.s=Intel header.b=dbb1eG5s;
-       spf=pass (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted sender) smtp.mailfrom=lkp@intel.com;
+        bh=UWstX29tZM07GBdaU4h4jPl4WjPvkI+M8odYjT8T9zo=;
+        b=oyh7fS1jHS6/0Kds6MBFYphmF/ImcSnEVVnUTxCn5qVnm9XzdrSfNWKIFgbLabVXhy
+         RF78aI8cBnqYnvGXBcU61zOdMgoKWg/+xdBqNb/CYXXCHCRG2NdnkU/8pStgmXYEafQS
+         4nJ9kaqy8icjvsYluJHIXrOxMrJis7XWm/kp8fJ7/BSc/WZkuMPnk81ef2H21xGVk8xo
+         Gf9cPW5KjpmVCu40cyBGvVua5/SLOprMjwJelObWBRc2z0cyboj/0Vz1s/KApEORS+4Z
+         jyhfovC+sZFLRcmXf1A/qkUZcB67cNL5nB9cGjAjwsen+SiB68No7ujANrWKECxRHjof
+         DPwQ==
+ARC-Authentication-Results: i=2; gmr-mx.google.com;
+       dkim=pass header.i=@intel.com header.s=Intel header.b=I7n23Il8;
+       arc=pass (i=1 spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass fromdomain=intel.com);
+       spf=pass (google.com: domain of kevin.tian@intel.com designates 192.55.52.136 as permitted sender) smtp.mailfrom=kevin.tian@intel.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=intel.com
-Received: from mga09.intel.com (mga09.intel.com. [134.134.136.24])
-        by gmr-mx.google.com with ESMTPS id v5-20020a05651203a500b0048b12871da5si532432lfp.4.2022.08.14.02.31.54
+Received: from mga12.intel.com (mga12.intel.com. [192.55.52.136])
+        by gmr-mx.google.com with ESMTPS id d15-20020a056512368f00b0048b38f379d7si485608lfs.0.2022.09.15.02.24.14
         for <linux-ntb@googlegroups.com>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 14 Aug 2022 02:31:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted sender) client-ip=134.134.136.24;
-X-IronPort-AV: E=McAfee;i="6400,9594,10437"; a="292607368"
-X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; 
-   d="scan'208";a="292607368"
-Received: from orsmga006.jf.intel.com ([10.7.209.51])
-  by orsmga102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Aug 2022 02:31:50 -0700
+        Thu, 15 Sep 2022 02:24:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kevin.tian@intel.com designates 192.55.52.136 as permitted sender) client-ip=192.55.52.136;
+X-IronPort-AV: E=McAfee;i="6500,9779,10470"; a="278392427"
+X-IronPort-AV: E=Sophos;i="5.93,317,1654585200"; 
+   d="scan'208";a="278392427"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+  by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2022 02:24:12 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="5.93,236,1654585200"; 
-   d="scan'208";a="582556787"
-Received: from lkp-server02.sh.intel.com (HELO 8745164cafc7) ([10.239.97.151])
-  by orsmga006.jf.intel.com with ESMTP; 14 Aug 2022 02:31:48 -0700
-Received: from kbuild by 8745164cafc7 with local (Exim 4.96)
-	(envelope-from <lkp@intel.com>)
-	id 1oN9yF-0002hV-2j;
-	Sun, 14 Aug 2022 09:31:47 +0000
-Date: Sun, 14 Aug 2022 17:31:30 +0800
-From: kernel test robot <lkp@intel.com>
-To: Frank Li <Frank.Li@nxp.com>
-Cc: kbuild-all@lists.01.org, linux-ntb@googlegroups.com,
-	linux-kernel@vger.kernel.org, Jon Mason <jdmason@kudzu.us>
-Subject: [jonmason-ntb:ntb-next-hacking 16/18]
- drivers/irqchip/irq-imx-mu-msi.c:138:15: error: variable 'its_pmsi_ops' has
- initializer but incomplete type
-Message-ID: <202208141740.eJRBGaw2-lkp@intel.com>
-MIME-Version: 1.0
+X-IronPort-AV: E=Sophos;i="5.93,317,1654585200"; 
+   d="scan'208";a="945877933"
+Received: from fmsmsx602.amr.corp.intel.com ([10.18.126.82])
+  by fmsmga005.fm.intel.com with ESMTP; 15 Sep 2022 02:24:12 -0700
+Received: from fmsmsx609.amr.corp.intel.com (10.18.126.89) by
+ fmsmsx602.amr.corp.intel.com (10.18.126.82) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 15 Sep 2022 02:24:11 -0700
+Received: from fmsmsx608.amr.corp.intel.com (10.18.126.88) by
+ fmsmsx609.amr.corp.intel.com (10.18.126.89) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31; Thu, 15 Sep 2022 02:24:11 -0700
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx608.amr.corp.intel.com (10.18.126.88) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2375.31 via Frontend Transport; Thu, 15 Sep 2022 02:24:11 -0700
+Received: from NAM04-MW2-obe.outbound.protection.outlook.com (104.47.73.177)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2375.31; Thu, 15 Sep 2022 02:24:11 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=bxhgt0FpxLza7gnO1EDn6JXfLQj6ahiN0V4/PEBq39cukiG/5T1CRlX25ddf7H2HNunXs0TbrPZRRjvLE9VeQKqMh3Yfw5qY7oMpcEKsgBWUc0w8hLI/KpHruFJXGSD190Ry/6qJv51Bcy8KTy0FnR5wSXMqdoWUlbl0GwUWf5WfUAi4rKHQbtaTbE/fWmBokCpGH6qdkgw42uxi1cNR7eLQ0RomaoxgFB2GqbfjZIhxyFBNquuyaBrjTapWQy43JOS6oVEAWta0G87vXwQ0e+XCTSdbm/RzMGUdIp7NSJRWCzDoGzEAmQAVdD5yo658Uo2dIcY4e1QngF3MoyWhWQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UWstX29tZM07GBdaU4h4jPl4WjPvkI+M8odYjT8T9zo=;
+ b=jfawxkSu0lg29IiCLyA+cZlCqfq80UfkSYGjRvbXJZ+6f2vPj+qJYEWqbkUEk9TPvKo+cLUIlA6HAi53R7+a/kzdbfmqlqRL/Z61axNLXe4pw/19z17DtfP0drgB2L7GbhfXNNsMH8Yjr2suso02EuIHxj6TlgMvQgDEqY9Kct8Qk7Hg5mEv3i08p12VePCoXKZx41IszsroXUc1kBxksJ4WFiern9GfhMCiJfNSIpB4E61q/HBij0/d++ud/47+RndRhx63SA7sHEgBrXZxLbpD3x51sNiQa/Tc3dP+XtjGypti2Odd1ALrhiVh1u+6AMEnk4KWPnIRqgVb5g023Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com (2603:10b6:408:135::18)
+ by IA1PR11MB6291.namprd11.prod.outlook.com (2603:10b6:208:3e5::11) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.5612.22; Thu, 15 Sep
+ 2022 09:24:07 +0000
+Received: from BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::a435:3eff:aa83:73d7]) by BN9PR11MB5276.namprd11.prod.outlook.com
+ ([fe80::a435:3eff:aa83:73d7%6]) with mapi id 15.20.5632.015; Thu, 15 Sep 2022
+ 09:24:07 +0000
+From: "Tian, Kevin" <kevin.tian@intel.com>
+To: Thomas Gleixner <tglx@linutronix.de>, Jason Gunthorpe <jgg@nvidia.com>,
+	"Chatre, Reinette" <reinette.chatre@intel.com>
+CC: "Jiang, Dave" <dave.jiang@intel.com>, Logan Gunthorpe
+	<logang@deltatee.com>, LKML <linux-kernel@vger.kernel.org>, Bjorn Helgaas
+	<helgaas@kernel.org>, Marc Zygnier <maz@kernel.org>, Alex Williamson
+	<alex.williamson@redhat.com>, "Dey, Megha" <megha.dey@intel.com>, "Raj,
+ Ashok" <ashok.raj@intel.com>, "linux-pci@vger.kernel.org"
+	<linux-pci@vger.kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jon Mason <jdmason@kudzu.us>, Allen Hubbe <allenbh@gmail.com>,
+	"linux-ntb@googlegroups.com" <linux-ntb@googlegroups.com>,
+	"linux-s390@vger.kernel.org" <linux-s390@vger.kernel.org>, Heiko Carstens
+	<hca@linux.ibm.com>, Christian Borntraeger <borntraeger@de.ibm.com>,
+	"x86@kernel.org" <x86@kernel.org>, "Rodel, Jorg" <jroedel@suse.de>,
+	"iommu@lists.linux-foundation.org" <iommu@lists.linux-foundation.org>
+Subject: RE: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
+Thread-Topic: [patch 21/32] NTB/msi: Convert to msi_on_each_desc()
+Thread-Index: AQHX4y1VNaiO68omHEet2J9DWrVARKwa1YEAgAAp0QCAABreAIAAIi2AgAE8MoCAAAd1gIAACyoAgAAPcQCAADDDAIAAp1uAgABn9QCAACTxgIAAAdGAgAAbd4CAAA94gIAABpSAgAt9SoCAADlJAIAAgb+AgABGMACAAAc8gIAAE+oAgAAmHACAAFJ4oIAAem8AgABqWwCAANPscIAAWxoAgADV7aCAAT/pAIGycJsw
+Date: Thu, 15 Sep 2022 09:24:07 +0000
+Message-ID: <BN9PR11MB5276961D838169BF237928E18C499@BN9PR11MB5276.namprd11.prod.outlook.com>
+References: <f4cc305b-a329-6d27-9fca-b74ebc9fa0c1@intel.com>
+ <878rx480fk.ffs@tglx>
+ <BN9PR11MB52765F2EF8420C60FD5945D18C709@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <87sfv2yy19.ffs@tglx> <20211209162129.GS6385@nvidia.com>
+ <878rwtzfh1.ffs@tglx> <20211209205835.GZ6385@nvidia.com>
+ <8735n1zaz3.ffs@tglx> <87sfv1xq3b.ffs@tglx>
+ <BN9PR11MB527619B099061B3814EB40408C719@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <20211210123938.GF6385@nvidia.com> <87fsr0xp31.ffs@tglx>
+ <BN9PR11MB527625E8A9BB854F3C0D19AE8C729@BN9PR11MB5276.namprd11.prod.outlook.com>
+ <875yrvwavf.ffs@tglx>
+ <BL1PR11MB5271326D39DAB692F07587768C739@BL1PR11MB5271.namprd11.prod.outlook.com>
+ <87fsqxv8zf.ffs@tglx>
+In-Reply-To: <87fsqxv8zf.ffs@tglx>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+dlp-version: 11.6.500.17
+dlp-product: dlpe-windows
+dlp-reaction: no-action
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BN9PR11MB5276:EE_|IA1PR11MB6291:EE_
+x-ms-office365-filtering-correlation-id: 3e616ee9-92a5-4e2d-8361-08da96fc0a28
+x-ld-processed: 46c98d88-e344-4ed4-8496-4ed7712e255d,ExtAddr
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: SkO2fqIwPvhdwKOuRRM+9uU9CicKIQZ8V/zsjy3YBXEnCmWn5Tyq+89AXWA/wt7+4/M0VOCT4IDmrwBr7CnQAd2r4wO1eV90PDBYElwbEZeVM93BtpYujiB1+XgcnkbDCldqo8VJkxGGpBZw38ukUSuRExogJ8xqKEiRMUUsawhxuR24BxgQMgvAcG5OGAxGQ+E6cnVMrFrpLPF3yXgrY9LkXcNAxWCsnoEir7pm7Er8PAtbx9e0HD9qDxNvlnnZU5+3rroZQsudv/wIkI5/zP9Hknl9NoTdixfvPuQVV2Zi2MlV5scKx+SZRgobqNE5v1u8Rq3FYsoULm8To0ckfOT36HIrCtmRaMF7bqFFLYiintr0bG3fruEC0iPWg51fPJ3yjNqg0C8l1K11Py3WgQZt5CTmPkeNOwdyKkLuExCxhQQ2kERUT4Vhp9NwKtTcWCy4tBLc6quV5CSMixXy2BWNd33vYaC0QBI7Wwc0eGQxr6ejNCkE/AR/pAr8xOiHmpHQcZCAkqbzF8T2JxKCDgFFX6WR6UB5FoGtjpYboyLtK8G7jE3RzmHwBy2W/Aaj8NG5u4J2AAShT0dyltVj4HoebqLRm8TQ9uTXGUbdbKZJdKbZHAQLPnLoGZBxIFa+CvPAukVPwmlkE2gfuWkuq10Vg5Zx9EKU17+Czja++nQRZgfFpb3F1PQwCBnObKCyX6Ch/+8rHHAxgPyNVaFzUqlL1HVYr9GZa/BAu1nMpC/l3bocsmkEl830XApB+eIzh9+V0HtYNBdomFvNsWU/MQ==
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:BN9PR11MB5276.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230022)(376002)(396003)(346002)(136003)(39860400002)(366004)(451199015)(82960400001)(26005)(52536014)(9686003)(86362001)(2906002)(5660300002)(54906003)(316002)(110136005)(33656002)(6636002)(478600001)(38100700002)(7416002)(122000001)(71200400001)(38070700005)(66556008)(66446008)(64756008)(66946007)(66476007)(4326008)(7696005)(186003)(6506007)(76116006)(83380400001)(41300700001)(8936002)(8676002)(55016003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?3etnuFfyokouhsDVbsAOTIvihoxnZMAheDyfGhkuZEASX8hgeHP50a4qJ8RY?=
+ =?us-ascii?Q?7ECN9A5Zowr9EuyGrmq9KJWNGqpXa+910hl7DWIcq0/kKkKA96yqUR8rDiaU?=
+ =?us-ascii?Q?EppPgftPazbxbnq9JhWbwJV/zPUY+oV4TSFfz020y6w587KKimH6sZLV5hty?=
+ =?us-ascii?Q?bB2WxT3dGXbfgXnF+eyIz00fWMsADcLGt+RKEF5bk5DI/skmTiMDtWdZ5LvX?=
+ =?us-ascii?Q?QVCOzZ3dEwlcKqZqYEXtsYusdKx7u/Qf59+jPEjnWyrgDm0Y/X/P8B5pBnW5?=
+ =?us-ascii?Q?DEuoQguJpR70hLyplr+drlp4RIOzc648cFUmXDajMFLDjcATQfv8CQ6jHItV?=
+ =?us-ascii?Q?5tETXkUCihCjvvc6xf8i+e8EhdPvOOQOHKFKqlK7BG3TjIi3rA4+6s9uQDFX?=
+ =?us-ascii?Q?YtbNY5wAwiQE3RLrGJMJJYPmVzV5saIVdjuIxBznyBZnkz3oU9GA9lWnC7cx?=
+ =?us-ascii?Q?QU/giQigDK0L3QGlO28Q9MmDogdsj2NZ4O9isTsLU4Oa8MzLJb37b7UADw7h?=
+ =?us-ascii?Q?NKA/eGSaH0Qi3iaTD5pwe1mkyWE0bZp+mxqveaWXZP7K2cu3bNO2fT9nJM8w?=
+ =?us-ascii?Q?HXw+dvxy/1w5Vh8fVrXL+dEJc/FDMej1VVxQH3CzezvRh3kcl/vwCRS/BfcH?=
+ =?us-ascii?Q?co+D7vUDRAHB15fM+oClUZ5NiclRAgXUz+wRkYuP/HXWBZ08Hfi7oVboDP5d?=
+ =?us-ascii?Q?MjCDLw+wG98efploLdN42Dgo+1Wn68wonbw5tfu6LxTQHoL+hLeJk6wYSiPI?=
+ =?us-ascii?Q?fNY04J0C4eZqm2rjuBCTFUAwMKoMqLgOjj9OSISVmO8uaYAzy4cjvg7i18lZ?=
+ =?us-ascii?Q?DwfuOoEv4+p5dagpYKMRijaV+POCIAfM7/11mdqzn2SMCQyGhLvRaCPgWs/3?=
+ =?us-ascii?Q?n6i/dB2Y9XmhmqJqQaQmnUW3XhMAxmNyurreM/a8HsWmycRIBuSEPN4gnJ7h?=
+ =?us-ascii?Q?qf7rArp2iruVcHGNgDtihy2e+n4XvNBREb5qNF/VETVFb5Caj77XV/wcISt/?=
+ =?us-ascii?Q?QB+VPOcaEq4k8VzSniovTeKEoEK4o36F7SBvjHjkoukCdk+aIZdNXR41/T6b?=
+ =?us-ascii?Q?M1DYp2Ow8nqlfiMwWhx+uTUx1uuwjWhGVU4KsED23rkC987uxZx+4TktBTDI?=
+ =?us-ascii?Q?6SrqNuEhurn5Kx6NGXGlLL5wlAzmEyi/XR1uW6auBTebGJl2pAlCaGf9zFcI?=
+ =?us-ascii?Q?I+wJGQ8KqaNM4tid2QKvC+74l8PucDA5B3QlzqfwpjZc+rC1JqG9AokhJWkl?=
+ =?us-ascii?Q?Oz11vC9/gH96RU6MpMa8403MwQb/1ST2Iv27Z64TwkEA8Y0r+yJ8/T/rMUhL?=
+ =?us-ascii?Q?qdZ+9g2ZAYXt9iBVqk7kzTaTSfjJYPYF7OHRnW4dxTx1q81e9EJT9emz9Ecg?=
+ =?us-ascii?Q?AMkggCj/qaLNIkMBKSXZjNP0mCQobNUzasqS40p9ur83i/QVsgnD1TgqAKo4?=
+ =?us-ascii?Q?g/wEZJqvPvO4IXGJrru+OQzQ/Z8a2r5Kis1hToU6G5BsYZyr8uAq3xKALTeX?=
+ =?us-ascii?Q?6ZpSC9KEqXaBVsu6L6AC0psHzKFZ01aNw85ey71HdIqeNzwFUNUvUnIKS1uu?=
+ =?us-ascii?Q?wPoDbk3KIM77ixyl21pX++WZiABvF4RSQkimDKrd?=
 Content-Type: text/plain; charset="UTF-8"
-Content-Disposition: inline
-X-Original-Sender: lkp@intel.com
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BN9PR11MB5276.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3e616ee9-92a5-4e2d-8361-08da96fc0a28
+X-MS-Exchange-CrossTenant-originalarrivaltime: 15 Sep 2022 09:24:07.2230
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 7xLu0oXSF14IOf7eZ+BeddbRpBD1NzRgpKly+qRlgNtSz8RrE9nFPnIqJJunTW58OZoJzJCsjiCJUv+A08tNyQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR11MB6291
+X-OriginatorOrg: intel.com
+X-Original-Sender: kevin.tian@intel.com
 X-Original-Authentication-Results: gmr-mx.google.com;       dkim=pass
- header.i=@intel.com header.s=Intel header.b=dbb1eG5s;       spf=pass
- (google.com: domain of lkp@intel.com designates 134.134.136.24 as permitted
- sender) smtp.mailfrom=lkp@intel.com;       dmarc=pass (p=NONE sp=NONE
+ header.i=@intel.com header.s=Intel header.b=I7n23Il8;       arc=pass (i=1
+ spf=pass spfdomain=intel.com dkim=pass dkdomain=intel.com dmarc=pass
+ fromdomain=intel.com);       spf=pass (google.com: domain of
+ kevin.tian@intel.com designates 192.55.52.136 as permitted sender)
+ smtp.mailfrom=kevin.tian@intel.com;       dmarc=pass (p=NONE sp=NONE
  dis=NONE) header.from=intel.com
 Precedence: list
 Mailing-list: list linux-ntb@googlegroups.com; contact linux-ntb+owners@googlegroups.com
@@ -139,234 +261,77 @@ List-Subscribe: <https://groups.google.com/group/linux-ntb/subscribe>, <mailto:l
 List-Unsubscribe: <mailto:googlegroups-manage+859317214201+unsubscribe@googlegroups.com>,
  <https://groups.google.com/group/linux-ntb/subscribe>
 
-tree:   https://github.com/jonmason/ntb ntb-next-hacking
-head:   d90921d21692b59734d2452efea346217a526f44
-commit: 1db755129d2544df84dc197095c14170cfa419c7 [16/18] irqchip: imx mu worked as msi controller
-config: sh-allmodconfig (https://download.01.org/0day-ci/archive/20220814/202208141740.eJRBGaw2-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 12.1.0
-reproduce (this is a W=1 build):
-        wget https://raw.githubusercontent.com/intel/lkp-tests/master/sbin/make.cross -O ~/bin/make.cross
-        chmod +x ~/bin/make.cross
-        # https://github.com/jonmason/ntb/commit/1db755129d2544df84dc197095c14170cfa419c7
-        git remote add jonmason-ntb https://github.com/jonmason/ntb
-        git fetch --no-tags jonmason-ntb ntb-next-hacking
-        git checkout 1db755129d2544df84dc197095c14170cfa419c7
-        # save the config file
-        mkdir build_dir && cp config build_dir/.config
-        COMPILER_INSTALL_PATH=$HOME/0day COMPILER=gcc-12.1.0 make.cross W=1 O=build_dir ARCH=sh SHELL=/bin/bash drivers/
+Hi, Thomas,
 
-If you fix the issue, kindly add following tag where applicable
-Reported-by: kernel test robot <lkp@intel.com>
+> From: Thomas Gleixner <tglx@linutronix.de>
+> Sent: Monday, December 13, 2021 4:56 AM
+> 
+> Kevin,
+> 
+> On Sun, Dec 12 2021 at 01:56, Kevin Tian wrote:
+> >> From: Thomas Gleixner <tglx@linutronix.de>
+> >> All I can find is drivers/iommu/virtio-iommu.c but I can't find anything
+> >> vIR related there.
+> >
+> > Well, virtio-iommu is a para-virtualized vIOMMU implementations.
+> >
+> > In reality there are also fully emulated vIOMMU implementations (e.g.
+> > Qemu fully emulates Intel/AMD/ARM IOMMUs). In those configurations
+> > the IR logic in existing iommu drivers just apply:
+> >
+> > 	drivers/iommu/intel/irq_remapping.c
+> > 	drivers/iommu/amd/iommu.c
+> 
+> thanks for the explanation. So that's a full IOMMU emulation. I was more
+> expecting a paravirtualized lightweight one.
+> 
 
-All errors (new ones prefixed by >>):
+Resume this old thread as I realized this open was not closed after discussing
+with Reinette who will pick up this work.
 
->> drivers/irqchip/irq-imx-mu-msi.c:138:15: error: variable 'its_pmsi_ops' has initializer but incomplete type
-     138 | static struct msi_domain_ops its_pmsi_ops = {
-         |               ^~~~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:141:15: error: variable 'imx_mu_msi_domain_info' has initializer but incomplete type
-     141 | static struct msi_domain_info imx_mu_msi_domain_info = {
-         |               ^~~~~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:142:10: error: 'struct msi_domain_info' has no member named 'flags'
-     142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
-         |          ^~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:142:20: error: 'MSI_FLAG_USE_DEF_DOM_OPS' undeclared here (not in a function)
-     142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
-         |                    ^~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:143:20: error: 'MSI_FLAG_USE_DEF_CHIP_OPS' undeclared here (not in a function)
-     143 |                    MSI_FLAG_USE_DEF_CHIP_OPS |
-         |                    ^~~~~~~~~~~~~~~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:144:20: error: 'MSI_FLAG_PCI_MSIX' undeclared here (not in a function)
-     144 |                    MSI_FLAG_PCI_MSIX),
-         |                    ^~~~~~~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:142:19: warning: excess elements in struct initializer
-     142 |         .flags  = (MSI_FLAG_USE_DEF_DOM_OPS |
-         |                   ^
-   drivers/irqchip/irq-imx-mu-msi.c:142:19: note: (near initialization for 'imx_mu_msi_domain_info')
->> drivers/irqchip/irq-imx-mu-msi.c:145:10: error: 'struct msi_domain_info' has no member named 'ops'
-     145 |         .ops    = &its_pmsi_ops,
-         |          ^~~
-   drivers/irqchip/irq-imx-mu-msi.c:145:19: warning: excess elements in struct initializer
-     145 |         .ops    = &its_pmsi_ops,
-         |                   ^
-   drivers/irqchip/irq-imx-mu-msi.c:145:19: note: (near initialization for 'imx_mu_msi_domain_info')
->> drivers/irqchip/irq-imx-mu-msi.c:146:10: error: 'struct msi_domain_info' has no member named 'chip'
-     146 |         .chip   = &imx_mu_msi_irq_chip,
-         |          ^~~~
-   drivers/irqchip/irq-imx-mu-msi.c:146:19: warning: excess elements in struct initializer
-     146 |         .chip   = &imx_mu_msi_irq_chip,
-         |                   ^
-   drivers/irqchip/irq-imx-mu-msi.c:146:19: note: (near initialization for 'imx_mu_msi_domain_info')
-   drivers/irqchip/irq-imx-mu-msi.c: In function 'imx_mu_msi_domain_irq_alloc':
->> drivers/irqchip/irq-imx-mu-msi.c:179:9: error: unknown type name 'msi_alloc_info_t'
-     179 |         msi_alloc_info_t *info = args;
-         |         ^~~~~~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:197:41: error: request for member 'desc' in something not a structure or union
-     197 |         err = iommu_dma_prepare_msi(info->desc, msi_data->msiir_addr + pos * 4);
-         |                                         ^~
-   drivers/irqchip/irq-imx-mu-msi.c: In function 'imx_mu_msi_domains_init':
->> drivers/irqchip/irq-imx-mu-msi.c:262:32: error: implicit declaration of function 'platform_msi_create_irq_domain' [-Werror=implicit-function-declaration]
-     262 |         msi_data->msi_domain = platform_msi_create_irq_domain(
-         |                                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   drivers/irqchip/irq-imx-mu-msi.c:262:30: warning: assignment to 'struct irq_domain *' from 'int' makes pointer from integer without a cast [-Wint-conversion]
-     262 |         msi_data->msi_domain = platform_msi_create_irq_domain(
-         |                              ^
-   drivers/irqchip/irq-imx-mu-msi.c: At top level:
->> drivers/irqchip/irq-imx-mu-msi.c:138:30: error: storage size of 'its_pmsi_ops' isn't known
-     138 | static struct msi_domain_ops its_pmsi_ops = {
-         |                              ^~~~~~~~~~~~
->> drivers/irqchip/irq-imx-mu-msi.c:141:31: error: storage size of 'imx_mu_msi_domain_info' isn't known
-     141 | static struct msi_domain_info imx_mu_msi_domain_info = {
-         |                               ^~~~~~~~~~~~~~~~~~~~~~
-   cc1: some warnings being treated as errors
+In practice emulated IOMMUs are still widely used and many new features
+(pasid, sva, etc.) will come to them first instead of on virtio-iommu. So it'd
+be good to make the new scheme working on emulated IOMMUs too.
 
+Following this direction probably one feasible option is to introduce certain
+PV facility in the spec of emulated IOMMUs as a contract to differentiate
+from their existing vIR logic, if we don't want to go back to do heuristics.
 
-vim +/its_pmsi_ops +138 drivers/irqchip/irq-imx-mu-msi.c
+Intel-IOMMU already defines a VCMD interface in the spec, in particular for
+exchanging information between host/guest. It can be easily extended to
+indicate and allow exchanging interrupt addr/data pair between host/guest.
 
-   137	
- > 138	static struct msi_domain_ops its_pmsi_ops = {
-   139	};
-   140	
- > 141	static struct msi_domain_info imx_mu_msi_domain_info = {
- > 142		.flags	= (MSI_FLAG_USE_DEF_DOM_OPS |
- > 143			   MSI_FLAG_USE_DEF_CHIP_OPS |
- > 144			   MSI_FLAG_PCI_MSIX),
- > 145		.ops	= &its_pmsi_ops,
- > 146		.chip	= &imx_mu_msi_irq_chip,
-   147	};
-   148	
-   149	static void imx_mu_msi_compose_msg(struct irq_data *data, struct msi_msg *msg)
-   150	{
-   151		struct imx_mu_msi *msi_data = irq_data_get_irq_chip_data(data);
-   152	
-   153		msg->address_hi = upper_32_bits(msi_data->msiir_addr);
-   154		msg->address_lo = lower_32_bits(msi_data->msiir_addr + 4 * data->hwirq);
-   155		msg->data = data->hwirq;
-   156	
-   157		iommu_dma_compose_msi_msg(irq_data_get_msi_desc(data), msg);
-   158	}
-   159	
-   160	static int imx_mu_msi_set_affinity(struct irq_data *irq_data,
-   161					   const struct cpumask *mask, bool force)
-   162	
-   163	{
-   164		return IRQ_SET_MASK_OK;
-   165	}
-   166	
-   167	static struct irq_chip imx_mu_msi_parent_chip = {
-   168		.name			= "MU",
-   169		.irq_compose_msi_msg	= imx_mu_msi_compose_msg,
-   170		.irq_set_affinity = imx_mu_msi_set_affinity,
-   171	};
-   172	
-   173	static int imx_mu_msi_domain_irq_alloc(struct irq_domain *domain,
-   174						unsigned int virq,
-   175						unsigned int nr_irqs,
-   176						void *args)
-   177	{
-   178		struct imx_mu_msi *msi_data = domain->host_data;
- > 179		msi_alloc_info_t *info = args;
-   180		int pos, err = 0;
-   181	
-   182		pm_runtime_get_sync(&msi_data->pdev->dev);
-   183	
-   184		WARN_ON(nr_irqs != 1);
-   185	
-   186		spin_lock(&msi_data->lock);
-   187		pos = find_first_zero_bit(&msi_data->used, msi_data->irqs_num);
-   188		if (pos < msi_data->irqs_num)
-   189			__set_bit(pos, &msi_data->used);
-   190		else
-   191			err = -ENOSPC;
-   192		spin_unlock(&msi_data->lock);
-   193	
-   194		if (err)
-   195			return err;
-   196	
- > 197		err = iommu_dma_prepare_msi(info->desc, msi_data->msiir_addr + pos * 4);
-   198		if (err)
-   199			return err;
-   200	
-   201		irq_domain_set_info(domain, virq, pos,
-   202				    &imx_mu_msi_parent_chip, msi_data,
-   203				    handle_simple_irq, NULL, NULL);
-   204		return 0;
-   205	}
-   206	
-   207	static void imx_mu_msi_domain_irq_free(struct irq_domain *domain,
-   208					       unsigned int virq, unsigned int nr_irqs)
-   209	{
-   210		struct irq_data *d = irq_domain_get_irq_data(domain, virq);
-   211		struct imx_mu_msi *msi_data = irq_data_get_irq_chip_data(d);
-   212		int pos;
-   213	
-   214		pos = d->hwirq;
-   215		if (pos < 0 || pos >= msi_data->irqs_num) {
-   216			pr_err("failed to teardown msi. Invalid hwirq %d\n", pos);
-   217			return;
-   218		}
-   219	
-   220		spin_lock(&msi_data->lock);
-   221		__clear_bit(pos, &msi_data->used);
-   222		spin_unlock(&msi_data->lock);
-   223	
-   224		pm_runtime_put(&msi_data->pdev->dev);
-   225	}
-   226	
-   227	static const struct irq_domain_ops imx_mu_msi_domain_ops = {
-   228		.alloc	= imx_mu_msi_domain_irq_alloc,
-   229		.free	= imx_mu_msi_domain_irq_free,
-   230	};
-   231	
-   232	static void imx_mu_msi_irq_handler(struct irq_desc *desc)
-   233	{
-   234		struct imx_mu_msi *msi_data = irq_desc_get_handler_data(desc);
-   235		u32 status;
-   236		int i;
-   237	
-   238		status = imx_mu_read(msi_data, msi_data->cfg->xSR[IMX_MU_RSR]);
-   239	
-   240		chained_irq_enter(irq_desc_get_chip(desc), desc);
-   241		for (i = 0; i < IMX_MU_CHANS; i++) {
-   242			if (status & IMX_MU_xSR_RFn(msi_data->cfg->type, i)) {
-   243				imx_mu_read(msi_data, msi_data->cfg->xRR + i * 4);
-   244				generic_handle_domain_irq(msi_data->parent, i);
-   245			}
-   246		}
-   247		chained_irq_exit(irq_desc_get_chip(desc), desc);
-   248	}
-   249	
-   250	static int imx_mu_msi_domains_init(struct imx_mu_msi *msi_data)
-   251	{
-   252		/* Initialize MSI domain parent */
-   253		msi_data->parent = irq_domain_add_linear(NULL,
-   254							 msi_data->irqs_num,
-   255							 &imx_mu_msi_domain_ops,
-   256							 msi_data);
-   257		if (!msi_data->parent) {
-   258			dev_err(&msi_data->pdev->dev, "failed to create IRQ domain\n");
-   259			return -ENOMEM;
-   260		}
-   261	
- > 262		msi_data->msi_domain = platform_msi_create_irq_domain(
-   263					of_node_to_fwnode(msi_data->pdev->dev.of_node),
-   264					&imx_mu_msi_domain_info,
-   265					msi_data->parent);
-   266	
-   267		if (!msi_data->msi_domain) {
-   268			dev_err(&msi_data->pdev->dev, "failed to create MSI domain\n");
-   269			irq_domain_remove(msi_data->parent);
-   270			return -ENOMEM;
-   271		}
-   272	
-   273		return 0;
-   274	}
-   275	
+Does it sound a right direction for other IOMMU vendors to follow if they
+want to benefit from the new scheme instead of using virtio-iommu? 
 
--- 
-0-DAY CI Kernel Test Service
-https://01.org/lkp
+And with that we don't need define CPU/VMM specific hypercalls. Just
+rely on vIOMMUs to claim the capability and enable the new vIR scheme.
+
+--
+
+btw another open is about VM live migration.
+
+After migration the IRTE index could change hence the addr/data pair
+acquired before migration becomes stale and must be fixed.
+
+and stale content is both programmed to the interrupt storage and cached
+in msi_desc.
+
+The host migration driver may be able to help fix the addr/data in MMIO-based
+IMS when restoring the device state, but not memory-based IMS and guest
+cached content.
+
+This kindly requires guest cooperation to get it right then, e.g. notify the guest
+mark previously acquired addr/data as stale before stopping the VM on src
+and then notify it to reacquire add/data after resuming the VM on dest.
+
+But I'm not sure how to handle interrupt lost in the window between resuming
+the VM and notifying it to reacquire...
+
+Thanks
+Kevin
 
 -- 
 You received this message because you are subscribed to the Google Groups "linux-ntb" group.
 To unsubscribe from this group and stop receiving emails from it, send an email to linux-ntb+unsubscribe@googlegroups.com.
-To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/202208141740.eJRBGaw2-lkp%40intel.com.
+To view this discussion on the web visit https://groups.google.com/d/msgid/linux-ntb/BN9PR11MB5276961D838169BF237928E18C499%40BN9PR11MB5276.namprd11.prod.outlook.com.
